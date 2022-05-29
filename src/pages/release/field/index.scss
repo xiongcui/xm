@@ -1,0 +1,54 @@
+.field {
+  height: 100vh;
+  background-image: linear-gradient(#ff2d50, #ff607a, #ffffff, #ffffff);
+  .field-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0px;
+    .field-image {
+      width: 124px;
+      height: 124px;
+    }
+    .field-top-txt {
+      margin-top: 20px;
+      font-size: 30px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+  }
+  .field-ct {
+    margin: 0 auto;
+    padding-top: 40px;
+    width: 90%;
+    height: 50%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    .field-ct-p1,
+    .field-ct-p2 {
+      padding: 0px 42px;
+      line-height: 38px;
+      font-size: 24px;
+      color: #333333;
+    }
+    .field-ct-p2 {
+      margin-top: 10px;
+    }
+  }
+  .field-bt {
+    display: flex;
+    justify-content: center;
+  }
+  .field-btn {
+    margin-top: 30px;
+    width: 380px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background-color: #ff2d50;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+  }
+}

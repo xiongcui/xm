@@ -1,16 +1,18 @@
 export default defineAppConfig({
   pages: [
+    "pages/release/index",
     "pages/home/index",
     "pages/my/index",
     "pages/position/index",
-    "pages/release/index",
     "pages/msg/index",
+    "pages/release/appointment/index",
+    "pages/release/field/index",
     "pages/index/index",
   ],
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
-    navigationBarTitleText: "WeChat",
+    navigationBarTitleText: "虾米约拍",
     navigationBarTextStyle: "black",
   },
   tabBar: {

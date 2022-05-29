@@ -1,0 +1,42 @@
+.appointment {
+  padding: 65rpx 0;
+  height: calc(100vh - 130rpx);
+}
+.appointment .appointment-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.appointment .appointment-item {
+  position: relative;
+  width: 260rpx;
+  height: 260rpx;
+}
+.appointment .appointment-item .appointment-image {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: -999;
+}
+.appointment .appointment-item .appointment-txt {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 30rpx;
+  left: 0;
+  font-size: 28rpx;
+  color: #333333;
+}

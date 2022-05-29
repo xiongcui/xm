@@ -1,0 +1,67 @@
+.field {
+  height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff2d50), color-stop(#ff607a), color-stop(#ffffff), to(#ffffff));
+  background-image: -webkit-linear-gradient(#ff2d50, #ff607a, #ffffff, #ffffff);
+  background-image: -o-linear-gradient(#ff2d50, #ff607a, #ffffff, #ffffff);
+  background-image: linear-gradient(#ff2d50, #ff607a, #ffffff, #ffffff);
+}
+.field .field-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 50rpx 0;
+}
+.field .field-top .field-image {
+  width: 124rpx;
+  height: 124rpx;
+}
+.field .field-top .field-top-txt {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+.field .field-ct {
+  margin: 0 auto;
+  padding-top: 40rpx;
+  width: 90%;
+  height: 50%;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+.field .field-ct .field-ct-p1,
+.field .field-ct .field-ct-p2 {
+  padding: 0 42rpx;
+  line-height: 38rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+.field .field-ct .field-ct-p2 {
+  margin-top: 10rpx;
+}
+.field .field-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.field .field-btn {
+  margin-top: 30rpx;
+  width: 380rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #ff2d50;
+  border-radius: 30rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+}

@@ -1,0 +1,34 @@
+.appointment {
+  padding: 65px 0px;
+  height: calc(100vh - 130px);
+  .appointment-list {
+    display: flex;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .appointment-item {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    .appointment-image {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      z-index: -999;
+    }
+    .appointment-txt {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      bottom: 30px;
+      left: 0px;
+      font-size: 28px;
+      color: #333333;
+    }
+  }
+}
