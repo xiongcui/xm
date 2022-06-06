@@ -41,7 +41,7 @@
           </view>
         </view>
       </view>
-      <view class="release-item">
+      <view class="release-item" @tap="releaseUrl(3)">
         <view class="release-left">
           <image
             src="../../assets/images/publishLocation.png"
@@ -98,6 +98,9 @@ export default {
           url = "appointment/index?id=1";
           break;
         case 2:
+          url = "works/index?id=1";
+          break;
+        case 3:
           url = "field/index?id=1";
           break;
       }

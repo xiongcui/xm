@@ -147,6 +147,10 @@ component.options.__file = "src/pages/release/index.vue"
           break;
 
         case 2:
+          url = "works/index?id=1";
+          break;
+
+        case 3:
           url = "field/index?id=1";
           break;
       }
@@ -266,31 +270,42 @@ var render = function () {
           ]),
         ]
       ),
-      _c("view", { staticClass: "release-item" }, [
-        _c("view", { staticClass: "release-left" }, [
-          _c("image", {
-            staticClass: "release-image",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/publishLocation.png */ "./src/assets/images/publishLocation.png"),
-              mode: "aspectFit",
+      _c(
+        "view",
+        {
+          staticClass: "release-item",
+          on: {
+            tap: function ($event) {
+              return _vm.releaseUrl(3)
             },
-          }),
-        ]),
-        _c("view", { staticClass: "release-right" }, [
-          _c("view", [
-            _c("text", { staticClass: "release-list-title" }, [
-              _vm._v(" 发布场地 "),
+          },
+        },
+        [
+          _c("view", { staticClass: "release-left" }, [
+            _c("image", {
+              staticClass: "release-image",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/publishLocation.png */ "./src/assets/images/publishLocation.png"),
+                mode: "aspectFit",
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "release-right" }, [
+            _c("view", [
+              _c("text", { staticClass: "release-list-title" }, [
+                _vm._v(" 发布场地 "),
+              ]),
+            ]),
+            _c("view", [
+              _c("text", { staticClass: "release-list-content" }, [
+                _vm._v(
+                  "您可以分享自己知道的比较适合的约拍场地，帮助他人创作，并获得奖励"
+                ),
+              ]),
             ]),
           ]),
-          _c("view", [
-            _c("text", { staticClass: "release-list-content" }, [
-              _vm._v(
-                "您可以分享自己知道的比较适合的约拍场地，帮助他人创作，并获得奖励"
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
+        ]
+      ),
       _c("view", { staticClass: "release-item" }, [
         _c("view", { staticClass: "release-left" }, [
           _c("image", {

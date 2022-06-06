@@ -1,12 +1,13 @@
 export default defineAppConfig({
   pages: [
+    "pages/my/index",
     "pages/release/index",
     "pages/home/index",
-    "pages/my/index",
     "pages/position/index",
     "pages/msg/index",
     "pages/release/appointment/index",
     "pages/release/field/index",
+    "pages/release/works/index",
     "pages/index/index",
   ],
   window: {
