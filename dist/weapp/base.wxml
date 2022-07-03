@@ -81,6 +81,14 @@
   <input value="{{i.value}}" type="{{xs.b(i.type,'')}}" password="{{xs.b(i.password,false)}}" placeholder="{{i.placeholder}}" placeholder-style="{{i.placeholderStyle}}" placeholder-class="{{xs.b(i.placeholderClass,'input-placeholder')}}" disabled="{{i.disabled}}" maxlength="{{xs.b(i.maxlength,140)}}" cursor-spacing="{{xs.b(i.cursorSpacing,0)}}" confirm-type="{{xs.b(i.confirmType,'done')}}" confirm-hold="{{xs.b(i.confirmHold,false)}}" cursor="{{xs.b(i.cursor,i.value.length)}}" selection-start="{{xs.b(i.selectionStart,-1)}}" selection-end="{{xs.b(i.selectionEnd,-1)}}" bindinput="eh" bindfocus="eh" bindblur="eh" bindconfirm="eh" name="{{i.name}}" always-embed="{{xs.b(i.alwaysEmbed,false)}}" adjust-position="{{xs.b(i.adjustPosition,true)}}" hold-keyboard="{{xs.b(i.holdKeyboard,false)}}" safe-password-cert-path="{{i.safePasswordCertPath}}" safe-password-length="{{i.safePasswordLength}}" safe-password-time-stamp="{{i.safePasswordTimeStamp}}" safe-password-nonce="{{i.safePasswordNonce}}" safe-password-salt="{{i.safePasswordSalt}}" safe-password-custom-hash="{{i.safePasswordCustomHash}}" bindkeyboardheightchange="eh" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></input>
 </template>
 
+<template name="tmpl_0_picker">
+  <picker mode="{{xs.b(i.mode,'selector')}}" disabled="{{i.disabled}}" range="{{i.range}}" range-key="{{i.rangeKey}}" value="{{i.value}}" start="{{i.start}}" end="{{i.end}}" fields="{{xs.b(i.fields,'day')}}" custom-item="{{i.customItem}}" name="{{i.name}}" bindcancel="eh" bindchange="eh" bindcolumnchange="eh" header-text="{{i.headerText}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </picker>
+</template>
+
 <template name="tmpl_0_switch">
   <switch checked="{{xs.b(i.checked,false)}}" disabled="{{i.disabled}}" type="{{xs.b(i.type,'switch')}}" color="{{xs.b(i.color,'#04BE02')}}" bindchange="eh" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></switch>
 </template>
@@ -119,6 +127,22 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </image>
+</template>
+
+<template name="tmpl_0_canvas">
+  <canvas canvas-id="{{i.canvasId}}" disable-scroll="{{xs.b(i.disableScroll,false)}}" binderror="eh" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongtap="eh" type="{{i.type}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </canvas>
+</template>
+
+<template name="tmpl_0_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_0_#text">
@@ -193,6 +217,14 @@
   </scroll-view>
 </template>
 
+<template name="tmpl_1_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_1_container">
   <template is="{{xs.a(1, i.nn, l)}}" data="{{i:i,cid:1,l:xs.f(l,i.nn)}}" />
 </template>
@@ -259,6 +291,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </scroll-view>
+</template>
+
+<template name="tmpl_2_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_2_container">
@@ -329,6 +369,14 @@
   </scroll-view>
 </template>
 
+<template name="tmpl_3_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_3_container">
   <template is="{{xs.a(3, i.nn, l)}}" data="{{i:i,cid:3,l:xs.f(l,i.nn)}}" />
 </template>
@@ -379,6 +427,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_4_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_4_container">
@@ -433,6 +489,14 @@
   </text>
 </template>
 
+<template name="tmpl_5_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_5_container">
   <template is="{{xs.a(5, i.nn, l)}}" data="{{i:i,cid:5,l:xs.f(l,i.nn)}}" />
 </template>
@@ -475,6 +539,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_6_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_6_container">
@@ -521,6 +593,14 @@
   </text>
 </template>
 
+<template name="tmpl_7_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_7_container">
   <template is="{{xs.a(7, i.nn, l)}}" data="{{i:i,cid:7,l:xs.f(l,i.nn)}}" />
 </template>
@@ -563,6 +643,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_8_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_8_container">
@@ -609,6 +697,14 @@
   </text>
 </template>
 
+<template name="tmpl_9_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_9_container">
   <template is="{{xs.a(9, i.nn, l)}}" data="{{i:i,cid:9,l:xs.f(l,i.nn)}}" />
 </template>
@@ -651,6 +747,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_10_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_10_container">
@@ -697,6 +801,14 @@
   </text>
 </template>
 
+<template name="tmpl_11_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_11_container">
   <template is="{{xs.a(11, i.nn, l)}}" data="{{i:i,cid:11,l:xs.f(l,i.nn)}}" />
 </template>
@@ -739,6 +851,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_12_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_12_container">
@@ -785,6 +905,14 @@
   </text>
 </template>
 
+<template name="tmpl_13_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
+</template>
+
 <template name="tmpl_13_container">
   <template is="{{xs.a(13, i.nn, l)}}" data="{{i:i,cid:13,l:xs.f(l,i.nn)}}" />
 </template>
@@ -827,6 +955,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_14_block">
+  <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </block>
 </template>
 
 <template name="tmpl_14_container">

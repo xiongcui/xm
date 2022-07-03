@@ -152,26 +152,68 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _utils_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/auth */ "./src/utils/auth.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api/index */ "./src/api/index.js");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 
 var App = {
   onLaunch: function onLaunch() {
     // 微信登陆
-    Object(_utils_auth__WEBPACK_IMPORTED_MODULE_0__[/* wxlogin */ "a"])({}, function (res) {
-      console.log(res);
-
-      if (res.code === 0 && res.result.openId) {
-        var openId = res.result.openId;
-        console.log(openId);
-        wx.setStorageSync("openId", openId);
+    var _this = App;
+    wx.login({
+      success: function success(res) {
+        _this.getWxLogin({
+          account: res.code,
+          secret: "",
+          type: 200
+        });
+      },
+      fail: function fail(err) {
+        console.log(err);
       }
     });
   },
   onShow: function onShow(options) {},
+  getWxLogin: function getWxLogin(params) {
+    var _this2 = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+      var res, token;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* wxlogin */ "b"])(params);
+
+            case 3:
+              res = _context.sent;
+              console.log("成功！", res);
+              token = res.data.data.token;
+              wx.setStorageSync("token", token);
+              _this2.pageshow = "bindphone";
+              _context.next = 12;
+              break;
+
+            case 10:
+              _context.prev = 10;
+              _context.t0 = _context["catch"](0);
+
+            case 12:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 10]]);
+    }))();
+  },
   render: function render(h) {
     // this.$slots.default 是将要会渲染的页面
     return h("block", this.$slots.default);
@@ -9174,7 +9216,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var config = {"pages":["pages/release/index","pages/home/index","pages/my/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/index/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}}};
+var config = {"pages":["pages/register/index","pages/login/index","pages/my/index","pages/release/index","pages/home/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/release/works/index","pages/index/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}}};
 _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__["window"].__taroAppConfig = config
 var inst = App(Object(_tarojs_plugin_framework_vue2_dist_runtime__WEBPACK_IMPORTED_MODULE_2__[/* createVueApp */ "a"])(_node_modules_babel_loader_lib_index_js_app_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], config))
 
@@ -9194,54 +9236,6 @@ Object(_tarojs_taro__WEBPACK_IMPORTED_MODULE_3__["initPxTransform"])({
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./src/utils/auth.js":
-/*!***************************!*\
-  !*** ./src/utils/auth.js ***!
-  \***************************/
-/*! exports provided: wxlogin */
-/*! exports used: wxlogin */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return wxlogin; });
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./util */ "./src/utils/util.js");
-
-var baseUrl = "https://tiot.sinochem-tech.com/shianlianwxdev/"; // WX登录,拿code换登录
-
-var wxlogin = function wxlogin(data, successcb, failcb) {
-  console.log("执行登录逻辑");
-  wx.login({
-    success: function success(res) {
-      console.log(res);
-      Object(_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
-        url: baseUrl + "wx/wexinLogin",
-        data: {
-          code: res.code
-        },
-        method: "POST",
-        dataType: "json",
-        responseType: "text",
-        success: function success(res) {
-          if (successcb) {
-            successcb(res.data || res);
-          }
-        },
-        fail: function fail(res) {
-          if (failcb) {
-            failcb(res);
-          }
-        },
-        complete: function complete(res) {}
-      });
-    },
-    fail: function fail(err) {
-      console.log(err);
-    }
-  });
-};
 
 /***/ })
 

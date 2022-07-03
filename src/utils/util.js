@@ -74,32 +74,29 @@ export const timeformat = function (date, fmt) {
 };
 
 // header拦截 wx.getStorageSync('token')
-export const request = (obj) => {
-  let param = Object.assign(
-    {
-      header: {
-        "identity-authentic-request-header": wx.getStorageSync("token") || "",
-      },
+export const request = (params) => {
+  let oheader = {
+    header: {
+      token: wx.getStorageSync("token") || "",
     },
-    obj
-  );
-  // console.log(param);
-  // 拦截器
-  const successcb = param.success;
-  param.success = (res) => {
-    if (res && res.data && (res.data.code == 10103 || res.data.code == 10104)) {
-      //登录状态失效，需重新登录
-      // wxlogin();
-      // wx.redirectTo({
-      //   url: '../../../../first/first',
-      // })
-      // return;
-    }
-    if (successcb) {
-      successcb(res);
-    }
   };
-  wx.request(param);
+  let data = Object.assign(oheader, params);
+  return new Promise((resolev, reject) => {
+    wx.request({
+      ...data,
+      url: params.url,
+      success: (res) => {
+        if (res.statusCode == 200) {
+          resolev(res);
+        } else {
+          reject(res);
+        }
+      },
+      fail: (err) => {
+        reject(err);
+      },
+    });
+  });
 };
 
 export const errortip = (txt) => {

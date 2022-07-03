@@ -1,0 +1,67 @@
+.avatar {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+.avatar image {
+  width: 220px;
+  height: 220px;
+}
+.avatar_select image {
+  width: 120px;
+  height: 80px;
+}
+.avatar_select {
+  display: flex;
+  justify-content: center;
+  margin-top: -60px;
+}
+.no_avatar {
+  background-image: url("../../assets/images/avatar_default.png");
+  background-size: 100% 100%;
+}
+.infor,
+.savebtn {
+  padding: 0px 60px;
+}
+.infor {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.item {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 16px;
+}
+.item_label {
+  width: 120px;
+  color: #333333;
+}
+.item_input {
+  color: #818181;
+}
+.item_input image {
+  width: 120px;
+  height: 60px;
+  margin-right: 30px;
+}
+.savebox {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.save-btn {
+  border-radius: 40px;
+  width: 90%;
+  height: 78px;
+  line-height: 78px;
+  text-align: center;
+  color: #ffffff;
+  background-color: #ff5355;
+}

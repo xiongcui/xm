@@ -1,0 +1,117 @@
+.login {
+  height: 100vh;
+}
+
+.login-top {
+  padding-top: 20%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-top .logo-img {
+  width: 150rpx;
+  height: 150rpx;
+}
+
+.login-top .desc {
+  color: #ff5355;
+  font-size: 30rpx;
+  margin: 30rpx 0;
+}
+
+.login-top .small-desc {
+  color: #ff5355;
+  font-size: 30rpx;
+  opacity: 0.5;
+}
+
+.login-bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 50vh;
+}
+
+.login-btn,
+.phone-btn {
+  border-radius: 40rpx;
+  width: 90%;
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  color: #ffffff;
+  background-color: #ff5355;
+}
+
+.cancel-btn {
+  margin-top: 30rpx;
+  border-radius: 40rpx;
+  width: 90%;
+  height: 78rpx;
+  line-height: 78rpx;
+  text-align: center;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+.login-tips {
+  position: absolute;
+  bottom: 8%;
+  font-size: 20rpx;
+  color: #c0c0c0;
+}
+
+.user-xy {
+  color: #1c63a4;
+}
+
+.user_infor {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30vh;
+}
+
+.user_avatar image {
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.get_phone {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 16rpx;
+}
+
+.user_name {
+  color: #b1b1b1;
+}

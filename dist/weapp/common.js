@@ -1,5 +1,38 @@
 (wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["common"],{
 
+/***/ "./src/api/index.js":
+/*!**************************!*\
+  !*** ./src/api/index.js ***!
+  \**************************/
+/*! exports provided: wxlogin, getPhone */
+/*! exports used: getPhone, wxlogin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPhone; });
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
+
+var baseUrl = "https://tapi.cupz.cn"; // WX登录,拿code换登录
+
+var wxlogin = function wxlogin(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
+    url: baseUrl + "/v1/token",
+    method: "POST",
+    data: data
+  });
+}; // 获取手机号码
+
+var getPhone = function getPhone(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
+    url: baseUrl + "/v1/phone",
+    method: "POST",
+    data: data
+  });
+};
+
+/***/ }),
+
 /***/ "./src/utils/util.js":
 /*!***************************!*\
   !*** ./src/utils/util.js ***!
@@ -15,6 +48,8 @@
 /* unused harmony export timeformat */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return request; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return errortip; });
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+
 var formatTime = function formatTime(date) {
   var year = date.getFullYear();
   var month = date.getMonth() + 1;
@@ -81,31 +116,28 @@ var timeformat = function timeformat(date, fmt) {
   return fmt;
 }; // header拦截 wx.getStorageSync('token')
 
-var request = function request(obj) {
-  var param = Object.assign({
+var request = function request(params) {
+  var oheader = {
     header: {
-      "identity-authentic-request-header": wx.getStorageSync("token") || ""
-    }
-  }, obj); // console.log(param);
-  // 拦截器
-
-  var successcb = param.success;
-
-  param.success = function (res) {
-    if (res && res.data && (res.data.code == 10103 || res.data.code == 10104)) {//登录状态失效，需重新登录
-      // wxlogin();
-      // wx.redirectTo({
-      //   url: '../../../../first/first',
-      // })
-      // return;
-    }
-
-    if (successcb) {
-      successcb(res);
+      token: wx.getStorageSync("token") || ""
     }
   };
-
-  wx.request(param);
+  var data = Object.assign(oheader, params);
+  return new Promise(function (resolev, reject) {
+    wx.request(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, data), {}, {
+      url: params.url,
+      success: function success(res) {
+        if (res.statusCode == 200) {
+          resolev(res);
+        } else {
+          reject(res);
+        }
+      },
+      fail: function fail(err) {
+        reject(err);
+      }
+    }));
+  });
 };
 var errortip = function errortip(txt) {
   wx.showToast({
