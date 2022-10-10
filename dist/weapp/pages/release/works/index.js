@@ -296,8 +296,9 @@ component.options.__file = "src/pages/release/works/index.vue"
 
           _this.imglist.push({
             imgurl: imgInfo.tempFilePath
-          }); //   _this.upImgs(imgInfo, "image");
+          });
 
+          _this.upImgs(imgInfo, "image");
         }
       });
     },
@@ -323,7 +324,9 @@ component.options.__file = "src/pages/release/works/index.vue"
 
           _this2.videolist.push(videoInfo);
 
-          console.log(videoInfo); //   _this.upImgs(videoInfo, "video");
+          console.log(videoInfo);
+
+          _this.upImgs(videoInfo, "video");
         }
       });
     },
@@ -335,9 +338,11 @@ component.options.__file = "src/pages/release/works/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "上传的网络地址",
+        url: "https://tapi.cupz.cn/f/v1/file/upload",
         filePath: type == "video" ? dataInfo.tempFilePath : dataInfo.path,
-        formData: null,
+        formData: {
+          type: "avatar"
+        },
         name: "file",
         header: {
           "content-type": "multipart/form-data"

@@ -341,25 +341,16 @@
         </view>
       </view>
     </view>
-    <view
-      catchtap="closeModelSign"
-      class="modal-bg"
-      v-if="showModelSign"
-    ></view>
+    <view @tap="close" class="modal-bg" v-if="showModelSign"></view>
     <view class="modal_box sign_modal" v-if="showModelSign">
       <view class="sign_md_close_btn">
         <image
-          catchtap="closeModelSign"
+          @tap="close"
           src="../../assets/images/common/tipclose.png"
         ></image>
       </view>
       <view class="sign_modal_main">
-        <form
-          bindreset="reset"
-          bindsubmit="subcomment"
-          class="main"
-          reportSubmit="true"
-        >
+        <form class="main">
           <view class="sign_md_top">
             <image src="../../assets/images/user/sign/addcoin.png"></image>
           </view>
@@ -396,7 +387,11 @@ export default {
       },
     };
   },
-  methods: {},
+  methods: {
+    close() {
+      this.showModelSign = false;
+    },
+  },
   created() {
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({

@@ -278,7 +278,7 @@ export default {
           _this.imglist.push({
             imgurl: imgInfo.tempFilePath,
           });
-          //   _this.upImgs(imgInfo, "image");
+          _this.upImgs(imgInfo, "image");
         },
       });
     },
@@ -300,7 +300,7 @@ export default {
           });
           this.videolist.push(videoInfo);
           console.log(videoInfo);
-          //   _this.upImgs(videoInfo, "video");
+          _this.upImgs(videoInfo, "video");
         },
       });
     },
@@ -311,9 +311,11 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "上传的网络地址",
+        url: "https://tapi.cupz.cn/f/v1/file/upload",
         filePath: type == "video" ? dataInfo.tempFilePath : dataInfo.path,
-        formData: null,
+        formData: {
+          type: "avatar",
+        },
         name: "file",
         header: {
           "content-type": "multipart/form-data",

@@ -328,6 +328,7 @@
   position: absolute;
   right: -23rpx;
   top: -23rpx;
+  z-index: 99;
 }
 .my .sign_md_close_btn image {
   width: 46rpx;
@@ -336,4 +337,25 @@
 .my .sign_modal_main {
   color: #ffffff;
   font-size: 30rpx;
+  text-align: center;
+}
+.my .sign_md_title {
+  color: #fcda2f;
+  font-size: 30rpx;
+  margin-bottom: 10rpx;
+}
+.my .sign_md_content {
+  font-size: 26rpx;
+  margin-bottom: 16rpx;
+}
+.my .sign_md_bottom {
+  width: 80%;
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: #fcda2f;
+  border-radius: 25rpx;
+  margin: 0 auto;
+  color: red;
+  margin-bottom: 10rpx;
 }

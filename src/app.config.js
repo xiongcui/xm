@@ -1,5 +1,7 @@
 export default defineAppConfig({
   pages: [
+    // "pages/vip/index",
+    "pages/release/works/index",
     "pages/my/index",
     "pages/login/index",
     "pages/register/index",
@@ -9,7 +11,6 @@ export default defineAppConfig({
     "pages/msg/index",
     "pages/release/appointment/index",
     "pages/release/field/index",
-    "pages/release/works/index",
     "pages/index/index",
   ],
   window: {

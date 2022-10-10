@@ -417,15 +417,6 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "my",
@@ -443,7 +434,11 @@ component.options.__file = "src/pages/my/index.vue"
       }
     };
   },
-  methods: {},
+  methods: {
+    close: function close() {
+      this.showModelSign = false;
+    }
+  },
   created: function created() {
     var _this = this;
 
@@ -979,58 +974,44 @@ var render = function () {
       ]),
     ]),
     _vm.showModelSign
-      ? _c("view", {
-          staticClass: "modal-bg",
-          attrs: { catchtap: "closeModelSign" },
-        })
+      ? _c("view", { staticClass: "modal-bg", on: { tap: _vm.close } })
       : _vm._e(),
     _vm.showModelSign
       ? _c("view", { staticClass: "modal_box sign_modal" }, [
           _c("view", { staticClass: "sign_md_close_btn" }, [
             _c("image", {
               attrs: {
-                catchtap: "closeModelSign",
                 src: __webpack_require__(/*! ../../assets/images/common/tipclose.png */ "./src/assets/images/common/tipclose.png"),
               },
+              on: { tap: _vm.close },
             }),
           ]),
           _c("view", { staticClass: "sign_modal_main" }, [
-            _c(
-              "form",
-              {
-                staticClass: "main",
-                attrs: {
-                  bindreset: "reset",
-                  bindsubmit: "subcomment",
-                  reportSubmit: "true",
-                },
-              },
-              [
-                _c("view", { staticClass: "sign_md_top" }, [
-                  _c("image", {
-                    attrs: {
-                      src: __webpack_require__(/*! ../../assets/images/user/sign/addcoin.png */ "./src/assets/images/user/sign/addcoin.png"),
-                    },
-                  }),
-                ]),
-                _c("view", { staticClass: "sign_md_title" }, [
-                  _c("view", [_vm._v("签到成功")]),
-                ]),
-                _c("view", { staticClass: "sign_md_content" }, [
-                  _c("view", [_vm._v("邀请好友，可获得更多麻豆")]),
-                ]),
-                _c("view", { staticClass: "sign_md_bottom" }, [
-                  _c(
-                    "view",
-                    {
-                      staticClass: "sign_md_btn",
-                      attrs: { catchtap: "invitego" },
-                    },
-                    [_vm._v("马上邀请")]
-                  ),
-                ]),
-              ]
-            ),
+            _c("form", { staticClass: "main" }, [
+              _c("view", { staticClass: "sign_md_top" }, [
+                _c("image", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/user/sign/addcoin.png */ "./src/assets/images/user/sign/addcoin.png"),
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "sign_md_title" }, [
+                _c("view", [_vm._v("签到成功")]),
+              ]),
+              _c("view", { staticClass: "sign_md_content" }, [
+                _c("view", [_vm._v("邀请好友，可获得更多麻豆")]),
+              ]),
+              _c("view", { staticClass: "sign_md_bottom" }, [
+                _c(
+                  "view",
+                  {
+                    staticClass: "sign_md_btn",
+                    attrs: { catchtap: "invitego" },
+                  },
+                  [_vm._v("马上邀请")]
+                ),
+              ]),
+            ]),
           ]),
         ])
       : _vm._e(),
