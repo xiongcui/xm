@@ -292,7 +292,6 @@ component.options.__file = "src/pages/release/works/index.vue"
             v["progress"] = 0;
             imgInfo = v;
           });
-          console.log(imgInfo.tempFilePath);
 
           _this.imglist.push({
             imgurl: imgInfo.tempFilePath
@@ -331,6 +330,8 @@ component.options.__file = "src/pages/release/works/index.vue"
       });
     },
     upImgs: function upImgs(dataInfo, type) {
+      console.log(dataInfo, "dataInfo");
+
       var _this = this;
 
       wx.showLoading({
@@ -339,9 +340,10 @@ component.options.__file = "src/pages/release/works/index.vue"
       });
       wx.uploadFile({
         url: "https://tapi.cupz.cn/f/v1/file/upload",
-        filePath: type == "video" ? dataInfo.tempFilePath : dataInfo.path,
+        filePath: type == "video" ? dataInfo.tempFilePath : dataInfo.tempFilePath,
         formData: {
-          type: "avatar"
+          type: "avatar",
+          file: [dataInfo.tempFilePath]
         },
         name: "file",
         header: {
@@ -352,10 +354,10 @@ component.options.__file = "src/pages/release/works/index.vue"
 
           if (type == "video") {
             // _this.setData({
-            console.log("视频地址：" + data.data.src);
-            console.log("视频封面：" + data.data.src + "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"); // ))
+            console.log("视频地址：" + res);
+            console.log("视频封面：" + res + "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"); // ))
           } else {
-            console.log("图片地址：" + data.data.src);
+            console.log("图片地址：" + res);
           }
         }
       });

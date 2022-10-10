@@ -274,7 +274,6 @@ export default {
             v["progress"] = 0;
             imgInfo = v;
           });
-          console.log(imgInfo.tempFilePath);
           _this.imglist.push({
             imgurl: imgInfo.tempFilePath,
           });
@@ -305,6 +304,7 @@ export default {
       });
     },
     upImgs(dataInfo, type) {
+      console.log(dataInfo, "dataInfo");
       let _this = this;
       wx.showLoading({
         title: "上传中",
@@ -312,9 +312,11 @@ export default {
       });
       wx.uploadFile({
         url: "https://tapi.cupz.cn/f/v1/file/upload",
-        filePath: type == "video" ? dataInfo.tempFilePath : dataInfo.path,
+        filePath:
+          type == "video" ? dataInfo.tempFilePath : dataInfo.tempFilePath,
         formData: {
           type: "avatar",
+          file: [dataInfo.tempFilePath],
         },
         name: "file",
         header: {
@@ -325,15 +327,15 @@ export default {
           //判断上传的是图片还是视频
           if (type == "video") {
             // _this.setData({
-            console.log("视频地址：" + data.data.src);
+            console.log("视频地址：" + res);
             console.log(
               "视频封面：" +
-                data.data.src +
+                res +
                 "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
             );
             // ))
           } else {
-            console.log("图片地址：" + data.data.src);
+            console.log("图片地址：" + res);
           }
         },
       });
