@@ -44,9 +44,14 @@ component.options.__file = "src/pages/release/works/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/release/works/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/release/works/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+
+
 //
 //
 //
@@ -162,14 +167,7 @@ component.options.__file = "src/pages/release/works/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -179,10 +177,17 @@ component.options.__file = "src/pages/release/works/index.vue"
       name: "",
       device: "",
       place: "",
-      imglist: [// {
-        //   imgurl: "",
-        // },
-      ],
+      imgList: [],
+      // 图片集合
+      baseImg: [],
+      // base64图片集合
+      maxImg: 9,
+      // 图片上传最高数量（根据需求设置）
+      // imgList: [
+      //   // {
+      //   //   imgurl: "",
+      //   // },
+      // ],
       videolist: [],
       taglist: [{
         name: "情侣",
@@ -276,32 +281,60 @@ component.options.__file = "src/pages/release/works/index.vue"
     };
   },
   methods: {
-    chooseImage: function chooseImage() {
-      var _this = this;
+    // 选择图片
+    selectPictures: function selectPictures() {
+      var that = this; // 最多上传图片数量
 
-      wx.chooseMedia({
-        count: 1,
-        mediaType: ["image"],
-        sourceType: ["album", "camera"],
-        maxDuration: 30,
-        camera: "back",
-        success: function success(res) {
-          var arr = res.tempFiles;
-          var imgInfo = {};
-          arr.map(function (v, i) {
-            v["progress"] = 0;
-            imgInfo = v;
-          });
+      if (that.imgList.length < that.maxImg) {
+        wx.chooseImage({
+          // 最多可以选择的图片张数（最大数量-当前已上传数量）
+          count: that.maxImg - that.imgList.length,
+          sizeType: "compressed",
+          success: function success(res) {
+            console.log(res, "res");
 
-          _this.imglist.push({
-            imgurl: imgInfo.tempFilePath
-          });
-
-          _this.upImgs(imgInfo, "image");
-        }
-      });
+            for (var i = 0; i < res.tempFilePaths.length; i++) {
+              that.imgList.push(res.tempFilePaths[i]);
+            }
+          }
+        });
+      } else {
+        wx.showToast({
+          title: "最多上传" + that.maxImg + "张照片！"
+        });
+      }
     },
-    chooseVideo: function chooseVideo() {
+    // 图片转base64
+    conversionAddress: function conversionAddress() {
+      var that = this; // 判断是否有图片
+
+      if (that.imgList.length !== 0) {
+        for (var i = 0; i < that.imgList.length; i++) {
+          // 转base64
+          wx.getFileSystemManager().readFile({
+            filePath: that.imgList[i],
+            encoding: "base64",
+            success: function success(res) {
+              console.log(res);
+              that.baseImg.push(res.data); //转换完毕，执行上传
+
+              if (that.imgList.length == that.baseImg.length) {
+                that.upCont({
+                  uuid: "123456",
+                  type: "avatar",
+                  file: that.baseImg
+                });
+              }
+            }
+          });
+        }
+      } else {
+        wx.showToast({
+          title: "请先选择图片！"
+        });
+      }
+    },
+    selectVideo: function selectVideo() {
       var _this2 = this;
 
       var _this = this;
@@ -325,6 +358,101 @@ component.options.__file = "src/pages/release/works/index.vue"
 
           console.log(videoInfo);
 
+          for (var i = 0; i < _this2.videolist.length; i++) {
+            // 转base64
+            wx.getFileSystemManager().readFile({
+              filePath: _this2.videolist[i],
+              // encoding: "base64",
+              success: function success(res) {
+                console.log(res, "res"); // this.baseImg.push("data:image/png;base64," + res.data);
+                //转换完毕，执行上传
+              }
+            });
+          } // _this.upImgs(videoInfo, "video");
+
+        }
+      });
+    },
+    upCont: function upCont(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* uploadFile */ "b"])(params);
+
+              case 3:
+                res = _context.sent;
+                console.log("成功！", res);
+                _context.next = 9;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    chooseImage: function chooseImage() {
+      var _this = this;
+
+      wx.chooseMedia({
+        count: 1,
+        mediaType: ["image"],
+        sourceType: ["album", "camera"],
+        maxDuration: 30,
+        camera: "back",
+        success: function success(res) {
+          var arr = res.tempFiles;
+          var imgInfo = {};
+          arr.map(function (v, i) {
+            v["progress"] = 0;
+            imgInfo = v;
+          });
+
+          _this.imgList.push({
+            imgurl: imgInfo.tempFilePath
+          });
+
+          console.log(2222);
+
+          _this.upImgs(imgInfo, "image");
+        }
+      });
+    },
+    chooseVideo: function chooseVideo() {
+      var _this3 = this;
+
+      var _this = this;
+
+      wx.chooseMedia({
+        count: 1,
+        mediaType: ["video"],
+        sourceType: ["album", "camera"],
+        maxDuration: 30,
+        camera: "back",
+        success: function success(res) {
+          console.log(res, "res");
+          var arr = res.tempFiles;
+          var videoInfo = {};
+          arr.map(function (v, i) {
+            v["progress"] = 0;
+            videoInfo = v;
+          });
+
+          _this3.videolist.push(videoInfo);
+
+          console.log(videoInfo);
+
           _this.upImgs(videoInfo, "video");
         }
       });
@@ -339,15 +467,17 @@ component.options.__file = "src/pages/release/works/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/f/v1/file/upload",
+        url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: type == "video" ? dataInfo.tempFilePath : dataInfo.tempFilePath,
         formData: {
-          type: "avatar",
-          file: [dataInfo.tempFilePath]
+          // method: "POST",
+          uuid: "123456",
+          type: "avatar"
         },
         name: "file",
         header: {
-          "content-type": "multipart/form-data"
+          "content-type": "multipart/form-data",
+          Authorization: "Bearer " + wx.getStorageSync("token")
         },
         success: function success(res) {
           wx.hideLoading(); //判断上传的是图片还是视频
@@ -372,25 +502,20 @@ component.options.__file = "src/pages/release/works/index.vue"
       this.name = e.detail.value;
     },
     submit: function submit() {
-      if (!this.name) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* errortip */ "a"])("请输入作品名称/描述！");
-        return false;
-      }
-
-      if (!this.imglist.length && !this.videolist.length) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* errortip */ "a"])("请上传作品！");
-        return false;
-      }
-
-      var checkTag = this.taglist.some(function (item) {
-        return item.checked;
-      });
-
-      if (!checkTag) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* errortip */ "a"])("请选择主题标签！");
-        return false;
-      }
-
+      // if (!this.name) {
+      //   errortip("请输入作品名称/描述！");
+      //   return false;
+      // }
+      // if (!this.imgList.length && !this.videolist.length) {
+      //   errortip("请上传作品！");
+      //   return false;
+      // }
+      // let checkTag = this.taglist.some((item) => item.checked);
+      // if (!checkTag) {
+      //   errortip("请选择主题标签！");
+      //   return false;
+      // }
+      this.conversionAddress();
       var params = {
         name: this.name
       };
@@ -445,11 +570,11 @@ var render = function () {
         _c(
           "view",
           { staticClass: "works-upload-list" },
-          _vm._l(_vm.imglist, function (item, index) {
+          _vm._l(_vm.imgList, function (item, index) {
             return _c("view", { key: index, staticClass: "works-upload-img" }, [
               _c("image", {
                 staticClass: "upload-width",
-                attrs: { src: item.imgurl, mode: "aspectFit" },
+                attrs: { src: item, mode: "aspectFit" },
               }),
             ])
           }),
@@ -463,9 +588,9 @@ var render = function () {
               "view",
               { key: index, staticClass: "works-upload-video" },
               [
-                _c("image", {
+                _c("video", {
                   staticClass: "upload-width",
-                  attrs: { src: item.thumbTempFilePath, mode: "aspectFit" },
+                  attrs: { src: item.thumbTempFilePath },
                 }),
               ]
             )

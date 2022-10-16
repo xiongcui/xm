@@ -1,12 +1,29 @@
 <template>
   <view class="home">
-    <button type="primary" @tap="map">获取位置</button>
+    <view class="pagenav">
+      <view
+        :style="{
+          height: statusBarHeight + 'px',
+        }"
+      ></view>
+      <view class="pagetop ub">
+        <view class="sign">
+          <image src="../../assets/images/common/icon_signed.png"></image>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
+import "./index.scss";
 export default {
   name: "home",
+  data() {
+    return {
+      statusBarHeight: 20,
+    };
+  },
   methods: {
     map() {
       wx.getLocation({

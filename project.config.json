@@ -1,13 +1,29 @@
 {
-  "miniprogramRoot": "./dist/weapp",
-  "projectname": "xiamiyuepai",
-  "description": "虾米约拍",
-  "appid": "wxf25a68ca76d7dcbe",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
-    "minified": false
-  },
-  "compileType": "miniprogram"
+    "miniprogramRoot": "dist/weapp/",
+    "projectname": "xiamiyuepai",
+    "description": "虾米约拍",
+    "appid": "wxf2d391f5561eae0c",
+    "setting": {
+        "urlCheck": true,
+        "es6": false,
+        "postcss": false,
+        "minified": false,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        }
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.27.0",
+    "srcMiniprogramRoot": "dist/weapp/",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "condition": {},
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    }
 }

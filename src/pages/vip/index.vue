@@ -1,6 +1,6 @@
 <template>
   <view class="ub ub-ver main">
-    <view class="block_user" v-if="!infor.isvip">
+    <!-- <view class="block_user" v-if="!infor.isvip">
       <view class="user_infor ub">
         <view class="avatar">
           <image mode="aspectFit" :src="infor.user.avatar"></image>
@@ -182,7 +182,7 @@
     </view>
     <view class="addbtn isIphoneX?'fix-iphonex-button':''" v-else>
       <button catchtap="onPay">立即续费 payitem_title 会员</button>
-    </view>
+    </view> -->
   </view>
 </template>
 

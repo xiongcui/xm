@@ -23,14 +23,10 @@
         <view class="works-upload-list">
           <view
             class="works-upload-img"
-            v-for="(item, index) in imglist"
+            v-for="(item, index) in imgList"
             :key="index"
           >
-            <image
-              :src="item.imgurl"
-              class="upload-width"
-              mode="aspectFit"
-            ></image>
+            <image :src="item" class="upload-width" mode="aspectFit"></image>
           </view>
         </view>
         <view class="works-upload-list">
@@ -39,11 +35,7 @@
             v-for="(item, index) in videolist"
             :key="index"
           >
-            <image
-              :src="item.thumbTempFilePath"
-              class="upload-width"
-              mode="aspectFit"
-            ></image>
+            <video :src="item.thumbTempFilePath" class="upload-width"></video>
           </view>
         </view>
         <view class="works-upload-img" @tap="chooseImage">
@@ -124,6 +116,7 @@
 <script>
 import "./index.scss";
 import { errortip } from "../../../utils/util";
+import { uploadFile } from "../../../api/index";
 export default {
   name: "works",
   data() {
@@ -131,11 +124,14 @@ export default {
       name: "",
       device: "",
       place: "",
-      imglist: [
-        // {
-        //   imgurl: "",
-        // },
-      ],
+      imgList: [], // 图片集合
+      baseImg: [], // base64图片集合
+      maxImg: 9, // 图片上传最高数量（根据需求设置）
+      // imgList: [
+      //   // {
+      //   //   imgurl: "",
+      //   // },
+      // ],
       videolist: [],
       taglist: [
         {
@@ -259,6 +255,98 @@ export default {
     };
   },
   methods: {
+    // 选择图片
+    selectPictures() {
+      const that = this;
+      // 最多上传图片数量
+      if (that.imgList.length < that.maxImg) {
+        wx.chooseImage({
+          // 最多可以选择的图片张数（最大数量-当前已上传数量）
+          count: that.maxImg - that.imgList.length,
+          sizeType: "compressed",
+          success(res) {
+            console.log(res, "res");
+            for (let i = 0; i < res.tempFilePaths.length; i++) {
+              that.imgList.push(res.tempFilePaths[i]);
+            }
+          },
+        });
+      } else {
+        wx.showToast({
+          title: "最多上传" + that.maxImg + "张照片！",
+        });
+      }
+    },
+    // 图片转base64
+    conversionAddress: function () {
+      const that = this;
+      // 判断是否有图片
+      if (that.imgList.length !== 0) {
+        for (let i = 0; i < that.imgList.length; i++) {
+          // 转base64
+          wx.getFileSystemManager().readFile({
+            filePath: that.imgList[i],
+            encoding: "base64",
+            success: function (res) {
+              console.log(res);
+              that.baseImg.push(res.data);
+              //转换完毕，执行上传
+              if (that.imgList.length == that.baseImg.length) {
+                that.upCont({
+                  uuid: "123456",
+                  type: "avatar",
+                  file: that.baseImg,
+                });
+              }
+            },
+          });
+        }
+      } else {
+        wx.showToast({
+          title: "请先选择图片！",
+        });
+      }
+    },
+    selectVideo() {
+      let _this = this;
+      wx.chooseMedia({
+        count: 1,
+        mediaType: ["video"],
+        sourceType: ["album", "camera"],
+        maxDuration: 30,
+        camera: "back",
+        success: (res) => {
+          console.log(res, "res");
+          let arr = res.tempFiles;
+          let videoInfo = {};
+          arr.map(function (v, i) {
+            v["progress"] = 0;
+            videoInfo = v;
+          });
+          this.videolist.push(videoInfo);
+          console.log(videoInfo);
+          for (let i = 0; i < this.videolist.length; i++) {
+            // 转base64
+            wx.getFileSystemManager().readFile({
+              filePath: this.videolist[i],
+              // encoding: "base64",
+              success: function (res) {
+                console.log(res, "res");
+                // this.baseImg.push("data:image/png;base64," + res.data);
+                //转换完毕，执行上传
+              },
+            });
+          }
+          // _this.upImgs(videoInfo, "video");
+        },
+      });
+    },
+    async upCont(params) {
+      try {
+        let res = await uploadFile(params);
+        console.log("成功！", res);
+      } catch (error) {}
+    },
     chooseImage() {
       let _this = this;
       wx.chooseMedia({
@@ -274,9 +362,10 @@ export default {
             v["progress"] = 0;
             imgInfo = v;
           });
-          _this.imglist.push({
+          _this.imgList.push({
             imgurl: imgInfo.tempFilePath,
           });
+          console.log(2222);
           _this.upImgs(imgInfo, "image");
         },
       });
@@ -311,16 +400,18 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/f/v1/file/upload",
+        url: "https://tapi.cupz.cn/v1/file/upload",
         filePath:
           type == "video" ? dataInfo.tempFilePath : dataInfo.tempFilePath,
         formData: {
+          // method: "POST",
+          uuid: "123456",
           type: "avatar",
-          file: [dataInfo.tempFilePath],
         },
         name: "file",
         header: {
           "content-type": "multipart/form-data",
+          Authorization: "Bearer " + wx.getStorageSync("token"),
         },
         success: (res) => {
           wx.hideLoading();
@@ -350,19 +441,20 @@ export default {
       this.name = e.detail.value;
     },
     submit() {
-      if (!this.name) {
-        errortip("请输入作品名称/描述！");
-        return false;
-      }
-      if (!this.imglist.length && !this.videolist.length) {
-        errortip("请上传作品！");
-        return false;
-      }
-      let checkTag = this.taglist.some((item) => item.checked);
-      if (!checkTag) {
-        errortip("请选择主题标签！");
-        return false;
-      }
+      // if (!this.name) {
+      //   errortip("请输入作品名称/描述！");
+      //   return false;
+      // }
+      // if (!this.imgList.length && !this.videolist.length) {
+      //   errortip("请上传作品！");
+      //   return false;
+      // }
+      // let checkTag = this.taglist.some((item) => item.checked);
+      // if (!checkTag) {
+      //   errortip("请选择主题标签！");
+      //   return false;
+      // }
+      this.conversionAddress();
       let params = {
         name: this.name,
       };

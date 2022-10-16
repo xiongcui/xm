@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { wxlogin } from "./api/index";
+
 import "./app.scss";
 
 const App = {

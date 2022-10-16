@@ -16,3 +16,14 @@ export const getPhone = (data) => {
     data,
   });
 };
+// 上传文件
+export const uploadFile = (data) => {
+  return request(
+    {
+      url: baseUrl + "/v1/file/upload",
+      method: "POST",
+      data,
+    },
+    true
+  );
+};

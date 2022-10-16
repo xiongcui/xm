@@ -129,6 +129,14 @@
   </image>
 </template>
 
+<template name="tmpl_0_video">
+  <video src="{{i.src}}" duration="{{i.duration}}" controls="{{xs.b(i.controls,true)}}" danmu-list="{{i.danmuList}}" danmu-btn="{{i.danmuBtn}}" enable-danmu="{{i.enableDanmu}}" autoplay="{{xs.b(i.autoplay,false)}}" loop="{{xs.b(i.loop,false)}}" muted="{{xs.b(i.muted,false)}}" initial-time="{{xs.b(i.initialTime,0)}}" page-gesture="{{xs.b(i.pageGesture,false)}}" direction="{{i.direction}}" show-progress="{{xs.b(i.showProgress,true)}}" show-fullscreen-btn="{{xs.b(i.showFullscreenBtn,true)}}" show-play-btn="{{xs.b(i.showPlayBtn,true)}}" show-center-play-btn="{{xs.b(i.showCenterPlayBtn,true)}}" enable-progress-gesture="{{xs.b(i.enableProgressGesture,true)}}" object-fit="{{xs.b(i.objectFit,'contain')}}" poster="{{i.poster}}" show-mute-btn="{{xs.b(i.showMuteBtn,false)}}" bindplay="eh" bindpause="eh" bindended="eh" bindtimeupdate="eh" bindfullscreenchange="eh" bindwaiting="eh" binderror="eh" animation="{{i.animation}}" bindanimationstart="eh" bindanimationiteration="eh" bindanimationend="eh" bindtransitionend="eh" title="{{i.title}}" play-btn-position="{{xs.b(i.playBtnPosition,'bottom')}}" enable-play-gesture="{{xs.b(i.enablePlayGesture,false)}}" auto-pause-if-navigate="{{xs.b(i.autoPauseIfNavigate,true)}}" auto-pause-if-open-native="{{xs.b(i.autoPauseIfOpenNative,true)}}" vslide-gesture="{{xs.b(i.vslideGesture,false)}}" vslide-gesture-in-fullscreen="{{xs.b(i.vslideGestureInFullscreen,true)}}" ad-unit-id="{{i.adUnitId}}" poster-for-crawler="{{i.posterForCrawler}}" show-casting-button="{{xs.b(i.showCastingButton,false)}}" picture-in-picture-mode="{{xs.b(i.pictureInPictureMode,[])}}" enable-auto-rotation="{{xs.b(i.enableAutoRotation,false)}}" show-screen-lock-button="{{xs.b(i.showScreenLockButton,false)}}" show-snapshot-button="{{xs.b(i.showSnapshotButton,false)}}" show-background-playback-button="{{xs.b(i.showBackgroundPlaybackButton,false)}}" background-poster="{{i.backgroundPoster}}" bindprogress="eh" bindloadedmetadata="eh" bindcontrolstoggle="eh" bindenterpictureinpicture="eh" bindleavepictureinpicture="eh" bindseekcomplete="eh" bindadload="eh" bindaderror="eh" bindadclose="eh" bindadplay="eh" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </video>
+</template>
+
 <template name="tmpl_0_canvas">
   <canvas canvas-id="{{i.canvasId}}" disable-scroll="{{xs.b(i.disableScroll,false)}}" binderror="eh" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongtap="eh" type="{{i.type}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">

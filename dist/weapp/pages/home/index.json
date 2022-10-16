@@ -1,1 +1,1 @@
-{"navigationBarTitleText":"首页","usingComponents":{"custom-wrapper":"../../custom-wrapper","comp":"../../comp"}}
+{"navigationBarTitleText":"虾米约拍","enablePullDownRefresh":true,"navigationStyle":"custom","navigationBarBackgroundColor":"#FE5457","navigationBarTextStyle":"white","backgroundColor":"#FE5457","backgroundColorTop":"#FE5457","backgroundColorBottom":"#f7f7f7","backgroundTextStyle":"dark","usingComponents":{"custom-wrapper":"../../custom-wrapper","comp":"../../comp"}}

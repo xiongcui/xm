@@ -191,7 +191,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* wxlogin */ "b"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* wxlogin */ "c"])(params);
 
             case 3:
               res = _context.sent;
@@ -9216,7 +9216,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var config = {"pages":["pages/my/index","pages/login/index","pages/register/index","pages/release/index","pages/home/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/release/works/index","pages/index/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}}};
+var config = {"pages":["pages/release/works/index","pages/my/index","pages/login/index","pages/register/index","pages/release/index","pages/home/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/index/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}}};
 _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__["window"].__taroAppConfig = config
 var inst = App(Object(_tarojs_plugin_framework_vue2_dist_runtime__WEBPACK_IMPORTED_MODULE_2__[/* createVueApp */ "a"])(_node_modules_babel_loader_lib_index_js_app_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], config))
 

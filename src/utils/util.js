@@ -74,12 +74,16 @@ export const timeformat = function (date, fmt) {
 };
 
 // header拦截 wx.getStorageSync('token')
-export const request = (params) => {
+export const request = (params, upload = false) => {
   let oheader = {
     header: {
-      token: wx.getStorageSync("token") || "",
+      Authorization: wx.getStorageSync("token") || "",
     },
   };
+  if (upload) {
+    oheader["content-type"] = "application/x-www-form-urlencoded";
+  }
+  console.log(oheader, "oheader");
   let data = Object.assign(oheader, params);
   return new Promise((resolev, reject) => {
     wx.request({
