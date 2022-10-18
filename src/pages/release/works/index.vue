@@ -1,5 +1,6 @@
 <template>
   <view class="works">
+    <view @tap="test">测试</view>
     <view class="works-item">
       <view class="works-title">
         作品名称/描述
@@ -117,6 +118,7 @@
 import "./index.scss";
 import { errortip } from "../../../utils/util";
 import { uploadFile } from "../../../api/index";
+import { Base64 } from "js-Base64";
 export default {
   name: "works",
   data() {
@@ -393,8 +395,9 @@ export default {
       });
     },
     upImgs(dataInfo, type) {
-      console.log(dataInfo, "dataInfo");
-      let _this = this;
+      let header = {};
+      let token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + Base64.encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true,
@@ -404,15 +407,10 @@ export default {
         filePath:
           type == "video" ? dataInfo.tempFilePath : dataInfo.tempFilePath,
         formData: {
-          // method: "POST",
-          uuid: "123456",
           type: "avatar",
         },
         name: "file",
-        header: {
-          "content-type": "multipart/form-data",
-          Authorization: "Bearer " + wx.getStorageSync("token"),
-        },
+        header,
         success: (res) => {
           wx.hideLoading();
           //判断上传的是图片还是视频
@@ -459,6 +457,27 @@ export default {
         name: this.name,
       };
       console.log(params, "params");
+    },
+    test() {
+      wx.request({
+        url: "https://tapi.cupz.cn/v1/user/image", //仅为示例，并非真实的接口地址
+        method: "POST",
+        data: {
+          height: 176,
+          weight: 56,
+          bust: 82,
+          waist: 67,
+          hip: 90,
+          size: 38,
+        },
+        header: {
+          "content-type": "application/json", // 默认值
+        },
+        success(res) {
+          console.log(res.data);
+        },
+      });
+      //
     },
   },
 };

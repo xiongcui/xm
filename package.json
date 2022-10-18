@@ -40,6 +40,7 @@
     "@tarojs/plugin-framework-vue2": "3.4.10",
     "@tarojs/runtime": "3.4.10",
     "@tarojs/taro": "3.4.10",
+    "js-base64": "^3.7.2",
     "taro-ui": "^2.3.4",
     "vue": "^2.5.0",
     "vue-template-compiler": "^2.5.0",

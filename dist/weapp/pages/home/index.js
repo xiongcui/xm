@@ -80,12 +80,35 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
   data: function data() {
     return {
-      statusBarHeight: 20
+      globalData: {
+        navHeight: 0,
+        navTop: 0,
+        navObj: 0,
+        navObjWid: 0
+      },
+      statusBarHeight: 20,
+      search: ""
     };
   },
   methods: {
@@ -104,6 +127,32 @@ component.options.__file = "src/pages/home/index.vue"
         }
       });
     }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    wx.getSystemInfo({
+      success: function success(res) {
+        //导航高度
+        var statusBarHeight = res.statusBarHeight,
+            navTop = menuButtonObject.top,
+            navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
+            // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
+        navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
+        _this.globalData.navHeight = navHeight; //导航栏总体高度
+
+        _this.globalData.navTop = navTop; //胶囊距离顶部距离
+
+        _this.globalData.navObj = menuButtonObject.height; //胶囊高度
+
+        _this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
+      },
+      fail: function fail(err) {
+        console.log(err);
+      }
+    });
   }
 });
 
@@ -124,23 +173,47 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "home" }, [
-    _c("view", { staticClass: "pagenav" }, [
-      _c("view", {
-        style: {
-          height: _vm.statusBarHeight + "px",
-        },
-      }),
-      _c("view", { staticClass: "pagetop ub" }, [
-        _c("view", { staticClass: "sign" }, [
-          _c("image", {
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/common/icon_signed.png */ "./src/assets/images/common/icon_signed.png"),
+  return _c("view", [
+    _c(
+      "view",
+      {
+        staticClass: "custom_head",
+        style: { height: _vm.globalData.navHeight + "px" },
+      },
+      [
+        _c(
+          "view",
+          {
+            staticClass: "flex-row",
+            style: {
+              height: _vm.globalData.navObj + "px",
+              "padding-top": _vm.globalData.navTop + "px",
+              "padding-right": _vm.globalData.navObjWid + 5 + "px",
             },
-          }),
-        ]),
-      ]),
-    ]),
+          },
+          [
+            _c("view", { staticClass: "head_sign" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/common/icon_sign.png */ "./src/assets/images/common/icon_sign.png"),
+                },
+              }),
+              _c("text", [_vm._v("签到")]),
+            ]),
+            _c("view", { staticClass: "search" }, [
+              _c("input", {
+                staticClass: "search-input",
+                attrs: {
+                  value: _vm.search,
+                  placeholder: "搜索约拍",
+                  "placeholder-class": "placeholder-style",
+                },
+              }),
+            ]),
+          ]
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -150,15 +223,15 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/images/common/icon_signed.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/common/icon_signed.png ***!
-  \**************************************************/
+/***/ "./src/assets/images/common/icon_sign.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/common/icon_sign.png ***!
+  \************************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAb1BMVEUAAAC9vb27u7u/v7+5ubm7u7u8vLy7u7u8vLy7u7u+vr68vLy+vr67u7u8vLy1tbW7u7u8vLy7u7u8vLy8vLy8vLy8vLy7u7u7u7u8vLy7u7u8vLy8vLy9vb28vLy8vLy7u7u4uLi5ubm5ubm7u7uS3/8WAAAAJHRSTlMAbKwsBvqeeEXpOxoQuF8D88Dc1aZu2M4++NOGZ03usJMkFguOA501AAABMklEQVQ4y73U3W6CMBiA4eJKW0BQRGX+Tt17/9c46ozfTEvHTvYeGEke0kLop36kj81CSafNXEVbw0WujtDH3Rk6ufoAboGZuybbQZE92wMb97p0WefEy+tS9m9IZfSDtUBhbGTdgymA9hsayK3/u4Tt63NUStsczH1vA3PKt4JWnL/d3+0G6PdYg3282GJVirv256PyWaiHF5JTaJVKF+Rz5fzy6Qw41fhl01loVAaHt3QHyAb3e390/Sxdf3f+J132n25x2a0nuMUauKacsE6PuMo6YayqsXVb2NzZTFjMbRmgsFH3vvRQe7atVNwJ3AsLnUBfJyxwAoUFTiqXdDcVuPC7r06fke9+6jmaei7lnKeOWy1zI57MDZlD0WQOyVwLszLXJs7J6XNX5nhY85zjX2jwP9fMmkpWAAAAAElFTkSuQmCC"
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAe1BMVEUAAAD/VVf/VVf/V1f/TE3/VFf/VFj/VVn/VVj/Ulb+VFf/VVf/VFf9U1f/U1b/UGD/Rk//VFf/VFj/U1f/VFf/VFf/VFj+U1f/VFf/U1b/VFf/U1f/U1j/VVj/VFb/U1b/UVj/Ulb/VVf/VFf/VFb/VVf/VVn/VVX/VFcV8O5qAAAAKHRSTlMAbKwsB3jqRZw7+rj5n18QA/MZ1NDAqNrYHPjchk0/ZiQWx498aTkSX9hYKQAAATlJREFUOMu9lNlugzAQRU2KbZZASCB70iRdz/9/Ye0SZVphLPrS84Bs6YxsRp6rfpBe6kYJ5+RTBdnAq+zeoQt7BlrZzYDbwFnYOjmASR60QGIXv6y8LAhTlLncPyNGlt61NWAqHTj3VBlg3YsZzLVfLmGrHpTASqV6Dtn33ZxmlefoSsVz5YWvtk7M+zp9b6w5foh37cxFeTSUriEFJlUxUkOxUBYqFacCq2p/bBwNtUrg9BTnBInzJvA3r5vF6XrPfeIk/+k12WEzwWs2wDXmibZLR7zVmxWN437s3Jf7upkBW6eNeDvcRrRR73npxV5bqbAnYud/wWlhT0TRIv3LvdiKNvREbG9q4A3f/f6cBt791DmaOpcy57FxKyU3wkhuSA4FkRySXBuiJdcm5uT03JUcH1I/cvwLSfZGI9VzynUAAAAASUVORK5CYII="
 
 /***/ }),
 
