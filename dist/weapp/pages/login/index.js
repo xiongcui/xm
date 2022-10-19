@@ -353,18 +353,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/images/avatar_default.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/avatar_default.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/logo.png":
 /*!************************************!*\
   !*** ./src/assets/images/logo.png ***!

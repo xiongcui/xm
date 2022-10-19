@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="home">
     <view class="custom_head" :style="{ height: globalData.navHeight + 'px' }">
       <view
         class="flex-row"
@@ -21,11 +21,163 @@
             placeholder-class="placeholder-style"
           />
         </view>
-        <!-- <view class="head_nav">
-          <view class="nav_item"> 通告 </view>
-          <view class="nav_item"> 约单 </view>
-          <view class="nav_item"> 活动 </view>
-        </view> -->
+      </view>
+    </view>
+    <view :style="{ height: globalData.navHeight + 'px' }"></view>
+    <view class="page-bg"></view>
+    <view class="page-section page-section-spacing swiper">
+      <swiper
+        :indicator-dots="indicatorDots"
+        :autoplay="autoplay"
+        :interval="interval"
+        :duration="duration"
+      >
+        <block v-for="(item, index) in background" :key="index">
+          <swiper-item>
+            <view class="swiper-item">
+              <image
+                mode="center"
+                :src="
+                  require('../../assets/images/lanmao' + (index + 1) + '.jpg')
+                "
+                class="swiper-item-img"
+              ></image>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <view class="page_nav">
+      <view class="page_nav_item">
+        <view class="page_nav_icon">
+          <image
+            src="../../assets/images/user/index/like.png"
+            class="page_nav_img"
+          ></image>
+        </view>
+        <text class="page_nav_text">通告</text>
+      </view>
+      <view class="page_nav_item">
+        <view class="page_nav_icon">
+          <image
+            src="../../assets/images/user/index/like.png"
+            class="page_nav_img"
+          ></image>
+        </view>
+        <text class="page_nav_text">约单</text>
+      </view>
+      <view class="page_nav_item">
+        <view class="page_nav_icon">
+          <image
+            src="../../assets/images/user/index/like.png"
+            class="page_nav_img"
+          ></image>
+        </view>
+        <text class="page_nav_text">活动</text>
+      </view>
+      <view class="page_nav_item">
+        <view class="page_nav_icon">
+          <image
+            src="../../assets/images/user/index/like.png"
+            class="page_nav_img"
+          ></image>
+        </view>
+        <text class="page_nav_text">待定</text>
+      </view>
+    </view>
+    <view class="nav_list">
+      <scroll-view class="swiper_tab" :enhanced="true" :scrollX="true">
+        <view class="nav_list_ct">
+          <text
+            class="nav_item"
+            v-for="(item, index) in navList"
+            :key="index"
+            :class="navActive == index ? 'nav_active' : ''"
+            >{{ item.name }}</text
+          >
+        </view>
+      </scroll-view>
+      <view class="sizer_block ub">
+        <view class="gradient"></view>
+        <view class="sizer ub" :class="sizer_num.length ? 'is_sizer' : ''">
+          <view class="ub">
+            <view>筛选</view>
+            <block v-if="sizer_num.length">
+              <view class="sizer_dian">·</view>
+              <view>{{ sizer_num.length }}</view>
+            </block>
+          </view>
+          <view class="sizer_img">
+            <image
+              src="../../assets/images/common/sizered.png"
+              v-if="sizer_num.length"
+            ></image>
+            <image src="../../assets/images/common/sizer.png" v-else></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="list_main">
+      <view class="list_box">
+        <view class="list_top">
+          <view class="list_top_left">
+            <image
+              src="../../assets/images/avatar_default.png"
+              class="avatar"
+            ></image>
+            <view class="list_info">
+              <view class="list_name">
+                BinWon
+                <!-- <image></image> -->
+              </view>
+              <view class="list_p">
+                <text> 摄影 | 北京</text>
+                <image
+                  src="../../assets/images/common/icon_real.png"
+                  class="list_p_img"
+                ></image>
+                <image
+                  src="../../assets/images/common/icon_pledge.png"
+                  class="list_p_img"
+                ></image>
+              </view>
+            </view>
+          </view>
+          <view class="list_collection">
+            <image src="../../assets/images/common/icon_favorite.png"></image>
+          </view>
+        </view>
+        <view class="list_content">
+          <view class="list_title">约模特·希望互勉</view>
+          <view class="list_loction"> 北京 </view>
+        </view>
+        <view class="list_desc">
+          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+        </view>
+        <view class="list_img">
+          <scroll-view :enhanced="true" :scrollX="true">
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+          </scroll-view>
+        </view>
       </view>
     </view>
   </view>
@@ -45,6 +197,48 @@ export default {
       },
       statusBarHeight: 20,
       search: "",
+      background: ["demo-text-1", "demo-text-2", "demo-text-3"],
+      indicatorDots: true,
+      vertical: false,
+      autoplay: false,
+      interval: 2000,
+      duration: 500,
+      sizer_num: [],
+      navActive: 0,
+      navList: [
+        {
+          name: "约拍",
+          value: 0,
+        },
+        {
+          name: "约拍2",
+          value: 1,
+        },
+        {
+          name: "约拍3",
+          value: 2,
+        },
+        {
+          name: "约拍4",
+          value: 3,
+        },
+        {
+          name: "约拍5",
+          value: 4,
+        },
+        {
+          name: "约拍6",
+          value: 5,
+        },
+        {
+          name: "约拍7",
+          value: 6,
+        },
+        {
+          name: "约拍8",
+          value: 7,
+        },
+      ],
     };
   },
   methods: {
@@ -89,9 +283,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.home {
-  padding: 30px;
-}
-</style>

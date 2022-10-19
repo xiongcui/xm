@@ -42,6 +42,18 @@ var uploadFile = function uploadFile(data) {
 
 /***/ }),
 
+/***/ "./src/assets/images/avatar_default.png":
+/*!**********************************************!*\
+  !*** ./src/assets/images/avatar_default.png ***!
+  \**********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
+
+/***/ }),
+
 /***/ "./src/utils/util.js":
 /*!***************************!*\
   !*** ./src/utils/util.js ***!
