@@ -128,7 +128,10 @@
             <view class="list_info">
               <view class="list_name">
                 BinWon
-                <!-- <image></image> -->
+                <image
+                  src="../../assets/images/nan.png"
+                  class="list_sex"
+                ></image>
               </view>
               <view class="list_p">
                 <text> 摄影 | 北京</text>
@@ -178,6 +181,110 @@
             ></image>
           </scroll-view>
         </view>
+        <view class="list_tags">
+          <view class="tag">汉服</view>
+          <view class="tag">情绪</view>
+          <view class="tag">情绪</view>
+          <view class="tag">情绪</view>
+        </view>
+        <view class="list_bottom">
+          <view class="list_time">
+            <image src="../../assets/images/common/time.png"></image>
+            1小时前
+          </view>
+          <view class="list_yuepai">
+            <image src="../../assets/images/user/index/invoice.png"></image>
+            收到约拍 20
+          </view>
+          <view class="list_read">
+            <image src="../../assets/images/user/index/invoice.png"></image>
+            阅读 20
+          </view>
+        </view>
+      </view>
+      <view class="list_box">
+        <view class="list_top">
+          <view class="list_top_left">
+            <image
+              src="../../assets/images/avatar_default.png"
+              class="avatar"
+            ></image>
+            <view class="list_info">
+              <view class="list_name">
+                BinWon
+                <image
+                  src="../../assets/images/nan.png"
+                  class="list_sex"
+                ></image>
+              </view>
+              <view class="list_p">
+                <text> 摄影 | 北京</text>
+                <image
+                  src="../../assets/images/common/icon_pledge_none.png"
+                  class="list_p_img"
+                ></image>
+                <image
+                  src="../../assets/images/common/icon_real_none.png"
+                  class="list_p_img"
+                ></image>
+              </view>
+            </view>
+          </view>
+          <view class="list_collection">
+            <image src="../../assets/images/common/icon_favorite.png"></image>
+          </view>
+        </view>
+        <view class="list_content">
+          <view class="list_title">约模特·希望互勉</view>
+          <view class="list_loction"> 北京 </view>
+        </view>
+        <view class="list_desc">
+          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+        </view>
+        <view class="list_img">
+          <scroll-view :enhanced="true" :scrollX="true">
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+            <image
+              src="../../assets/images/lanmao1.jpg"
+              mode="center"
+              class="list_img_item"
+            ></image>
+          </scroll-view>
+        </view>
+        <view class="list_tags">
+          <view class="tag">汉服</view>
+          <view class="tag">情绪</view>
+          <view class="tag">情绪</view>
+          <view class="tag">情绪</view>
+        </view>
+        <view class="list_bottom">
+          <view class="list_time">
+            <image src="../../assets/images/common/time.png"></image>
+            1小时前
+          </view>
+          <view class="list_yuepai">
+            <image src="../../assets/images/user/index/invoice.png"></image>
+            收到约拍 20
+          </view>
+          <view class="list_read">
+            <image src="../../assets/images/user/index/invoice.png"></image>
+            阅读 20
+          </view>
+        </view>
       </view>
     </view>
   </view>
@@ -207,36 +314,28 @@ export default {
       navActive: 0,
       navList: [
         {
-          name: "约拍",
+          name: "推荐",
           value: 0,
         },
         {
-          name: "约拍2",
+          name: "最新",
           value: 1,
         },
         {
-          name: "约拍3",
+          name: "同城",
           value: 2,
         },
         {
-          name: "约拍4",
+          name: "摄影",
           value: 3,
         },
         {
-          name: "约拍5",
+          name: "模特",
           value: 4,
         },
         {
-          name: "约拍6",
+          name: "互勉",
           value: 5,
-        },
-        {
-          name: "约拍7",
-          value: 6,
-        },
-        {
-          name: "约拍8",
-          value: 7,
         },
       ],
     };

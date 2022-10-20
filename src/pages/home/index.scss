@@ -113,7 +113,7 @@
     color: #333333;
     font-size: 30px;
     line-height: 82px;
-    padding: 0 15px;
+    padding: 0 16px;
   }
 }
 .swiper_tab {
@@ -162,7 +162,7 @@
   line-height: 50px;
   margin: 16px 18px 0 8px;
   padding-left: 10px;
-  padding-right: 20px;
+  padding-right: 16px;
 }
 .sizer_dian {
   font-family: Courier New, Courier, monospace;
@@ -189,15 +189,23 @@
 }
 .nav_active {
   border-bottom: 6px solid #ff1e3e;
-  border-radius: 5px;
 }
 .list_main {
   background: #ffffff;
-  padding: 16px;
+  padding: 16px 0px;
+  margin: 16px 0px;
+}
+.list_box {
+  border-bottom: 1px solid #e5e5e5;
+  margin: 16px 0px;
+  padding: 0px 16px 16px 16px;
+}
+.list_box:last-child {
+  border-bottom: none;
 }
 .avatar {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
 }
 .list_top {
   display: flex;
@@ -212,12 +220,12 @@
   margin-left: 16px;
   justify-content: center;
   .list_name {
-    margin-bottom: 10px;
-    color: #333333;
-    font-size: 30px;
+    margin-bottom: 5px;
+    color: #111111;
+    font-size: 34px;
   }
   .list_p {
-    color: rgba(0, 0, 0, 0.5);
+    color: #686868;
     font-size: 26px;
     display: flex;
     align-items: center;
@@ -229,28 +237,30 @@
   }
 }
 .list_collection image {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 .list_content {
   display: flex;
   justify-content: space-between;
-  color: #333333;
+  color: #2f2f2f;
   font-size: 30px;
-  margin-top: 6px;
+  margin: 10px 0px;
   .list_title {
-    font-size: 34px;
+    font-size: 38px;
   }
   .list_loction {
     background: url("../../assets/images/common/local.png") left center
       no-repeat;
     background-size: 36px;
     padding-left: 36px;
+    font-size: 36px;
+    color: #3a3a3a;
   }
 }
 .list_desc {
   font-size: 30px;
-  color: rgba(0, 0, 0, 0.5);
+  color: #6b6b6b;
   line-height: 36px;
   margin-bottom: 16px;
 }
@@ -262,5 +272,57 @@
     height: 225px;
     border-radius: 10px;
     margin-right: 20px;
+  }
+}
+.list_sex {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+}
+.list_tags {
+  display: flex;
+  margin: 10px 0px;
+  .tag {
+    padding: 4px 10px;
+    background: rgba(245, 50, 24, 0.08);
+    color: #ff1e3e;
+    font-size: 22px;
+    border-radius: 8px;
+    margin-right: 10px;
+  }
+}
+.list_bottom {
+  display: flex;
+  justify-content: space-between;
+  color: #6b6b6b;
+}
+.list_time {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  image {
+    width: 26px;
+    height: 26px;
+    margin-right: 4px;
+  }
+}
+.list_yuepai {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  image {
+    width: 26px;
+    height: 26px;
+    margin-right: 4px;
+  }
+}
+.list_read {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  image {
+    width: 26px;
+    height: 26px;
+    margin-right: 4px;
   }
 }

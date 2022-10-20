@@ -150,7 +150,7 @@
   color: #333333;
   font-size: 30rpx;
   line-height: 82rpx;
-  padding: 0 15rpx;
+  padding: 0 16rpx;
 }
 
 .swiper_tab {
@@ -210,7 +210,7 @@
   line-height: 50rpx;
   margin: 16rpx 18rpx 0 8rpx;
   padding-left: 10rpx;
-  padding-right: 20rpx;
+  padding-right: 16rpx;
 }
 
 .sizer_dian {
@@ -240,17 +240,27 @@
 
 .nav_active {
   border-bottom: 6rpx solid #ff1e3e;
-  border-radius: 5rpx;
 }
 
 .list_main {
   background: #ffffff;
-  padding: 16rpx;
+  padding: 16rpx 0;
+  margin: 16rpx 0;
+}
+
+.list_box {
+  border-bottom: 1rpx solid #e5e5e5;
+  margin: 16rpx 0;
+  padding: 0 16rpx 16rpx 16rpx;
+}
+
+.list_box:last-child {
+  border-bottom: none;
 }
 
 .avatar {
-  width: 120rpx;
-  height: 120rpx;
+  width: 110rpx;
+  height: 110rpx;
 }
 
 .list_top {
@@ -282,13 +292,13 @@
 }
 
 .list_info .list_name {
-  margin-bottom: 10rpx;
-  color: #333333;
-  font-size: 30rpx;
+  margin-bottom: 5rpx;
+  color: #111111;
+  font-size: 34rpx;
 }
 
 .list_info .list_p {
-  color: rgba(0, 0, 0, 0.5);
+  color: #686868;
   font-size: 26rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -305,8 +315,8 @@
 }
 
 .list_collection image {
-  width: 50rpx;
-  height: 50rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .list_content {
@@ -316,24 +326,26 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  color: #333333;
+  color: #2f2f2f;
   font-size: 30rpx;
-  margin-top: 6rpx;
+  margin: 10rpx 0;
 }
 
 .list_content .list_title {
-  font-size: 34rpx;
+  font-size: 38rpx;
 }
 
 .list_content .list_loction {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABC1BMVEUAAAAAAABVVVVtbW1VVVVxcXFdXV1iYmJmZmZmZmZoaGhqampsbGxoaGhqampra2tlZWVmZmZkZGRoaGhlZWVoaGhmZmZkZGRnZ2dkZGRnZ2doaGhmZmZnZ2dkZGRoaGhnZ2dmZmZnZ2dlZWVmZmZmZmZmZmZnZ2dmZmZmZmZmZmZnZ2dmZmZnZ2dmZmZlZWVlZWVnZ2dmZmZnZ2dmZmZmZmZmZmZmZmZmZmZlZWVmZmZnZ2dlZWVmZmZnZ2dmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmbPn1uaAAAAWHRSTlMAAQMHCQkLDQ8UFhgaGx0fJigpLDAxMjM0ODlAQU1PUVRaXGJnaW5vcHN1eXp8goOIiImLkZSWm6KrrK61tsLKztHX2Nrg4eTm5+jq7+/w8/X3+Pn6/P7+qZ4JDAAAAONJREFUGBmtwXc/QmEYBuC7YxwzZWZkJCNEVlb2qHAoovv7fxLnefn1jk7+6rrQNd5sNr+zOolIA3svVB5zPWgzX2HL/QQc6QYNbylYEu+0lAdhuqSo7S4sXlA5hiHRZOhjDqECRc2HtkFxCtEbUKShFSlyUK4ptqCdUBxBeFWKbWh5itc4QmtUVqAtU6lmhpOFLyrT0Pw6HU8xGM7oOIAp1aSlPgJLiZYibOOfNARDcOzTsA5X3x1brjy0mWnwTzCGCJv89b2ESOdUDhGt/4ahkocORsvkrY+Opp4f4vhHDN30A421Y+s8joZiAAAAAElFTkSuQmCC") left center no-repeat;
   background-size: 36rpx;
   padding-left: 36rpx;
+  font-size: 36rpx;
+  color: #3a3a3a;
 }
 
 .list_desc {
   font-size: 30rpx;
-  color: rgba(0, 0, 0, 0.5);
+  color: #6b6b6b;
   line-height: 36rpx;
   margin-bottom: 16rpx;
 }
@@ -350,4 +362,84 @@
   height: 225rpx;
   border-radius: 10rpx;
   margin-right: 20rpx;
+}
+
+.list_sex {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 4rpx;
+}
+
+.list_tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10rpx 0;
+}
+
+.list_tags .tag {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 22rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+}
+
+.list_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+}
+
+.list_time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.list_time image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.list_yuepai {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.list_yuepai image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.list_read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.list_read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
 }

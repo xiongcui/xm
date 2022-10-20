@@ -231,6 +231,113 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
@@ -253,29 +360,23 @@ component.options.__file = "src/pages/home/index.vue"
       sizer_num: [],
       navActive: 0,
       navList: [{
-        name: "约拍",
+        name: "推荐",
         value: 0
       }, {
-        name: "约拍2",
+        name: "最新",
         value: 1
       }, {
-        name: "约拍3",
+        name: "同城",
         value: 2
       }, {
-        name: "约拍4",
+        name: "摄影",
         value: 3
       }, {
-        name: "约拍5",
+        name: "模特",
         value: 4
       }, {
-        name: "约拍6",
+        name: "互勉",
         value: 5
-      }, {
-        name: "约拍7",
-        value: 6
-      }, {
-        name: "约拍8",
-        value: 7
       }]
     };
   },
@@ -545,7 +646,13 @@ var render = function () {
               attrs: { src: __webpack_require__(/*! ../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png") },
             }),
             _c("view", { staticClass: "list_info" }, [
-              _c("view", { staticClass: "list_name" }, [_vm._v(" BinWon ")]),
+              _c("view", { staticClass: "list_name" }, [
+                _vm._v(" BinWon "),
+                _c("image", {
+                  staticClass: "list_sex",
+                  attrs: { src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png") },
+                }),
+              ]),
               _c("view", { staticClass: "list_p" }, [
                 _c("text", [_vm._v(" 摄影 | 北京")]),
                 _c("image", {
@@ -619,6 +726,155 @@ var render = function () {
           ],
           1
         ),
+        _c("view", { staticClass: "list_tags" }, [
+          _c("view", { staticClass: "tag" }, [_vm._v("汉服")]),
+          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
+          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
+          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
+        ]),
+        _c("view", { staticClass: "list_bottom" }, [
+          _c("view", { staticClass: "list_time" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png") },
+            }),
+            _vm._v(" 1小时前 "),
+          ]),
+          _c("view", { staticClass: "list_yuepai" }, [
+            _c("image", {
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+              },
+            }),
+            _vm._v(" 收到约拍 20 "),
+          ]),
+          _c("view", { staticClass: "list_read" }, [
+            _c("image", {
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+              },
+            }),
+            _vm._v(" 阅读 20 "),
+          ]),
+        ]),
+      ]),
+      _c("view", { staticClass: "list_box" }, [
+        _c("view", { staticClass: "list_top" }, [
+          _c("view", { staticClass: "list_top_left" }, [
+            _c("image", {
+              staticClass: "avatar",
+              attrs: { src: __webpack_require__(/*! ../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png") },
+            }),
+            _c("view", { staticClass: "list_info" }, [
+              _c("view", { staticClass: "list_name" }, [
+                _vm._v(" BinWon "),
+                _c("image", {
+                  staticClass: "list_sex",
+                  attrs: { src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png") },
+                }),
+              ]),
+              _c("view", { staticClass: "list_p" }, [
+                _c("text", [_vm._v(" 摄影 | 北京")]),
+                _c("image", {
+                  staticClass: "list_p_img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                  },
+                }),
+                _c("image", {
+                  staticClass: "list_p_img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                  },
+                }),
+              ]),
+            ]),
+          ]),
+          _c("view", { staticClass: "list_collection" }, [
+            _c("image", {
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
+              },
+            }),
+          ]),
+        ]),
+        _c("view", { staticClass: "list_content" }, [
+          _c("view", { staticClass: "list_title" }, [
+            _vm._v("约模特·希望互勉"),
+          ]),
+          _c("view", { staticClass: "list_loction" }, [_vm._v(" 北京 ")]),
+        ]),
+        _c("view", { staticClass: "list_desc" }, [
+          _vm._v(
+            " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
+          ),
+        ]),
+        _c(
+          "view",
+          { staticClass: "list_img" },
+          [
+            _c("scroll-view", { attrs: { enhanced: true, scrollX: true } }, [
+              _c("image", {
+                staticClass: "list_img_item",
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
+                  mode: "center",
+                },
+              }),
+              _c("image", {
+                staticClass: "list_img_item",
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
+                  mode: "center",
+                },
+              }),
+              _c("image", {
+                staticClass: "list_img_item",
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
+                  mode: "center",
+                },
+              }),
+              _c("image", {
+                staticClass: "list_img_item",
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
+                  mode: "center",
+                },
+              }),
+            ]),
+          ],
+          1
+        ),
+        _c("view", { staticClass: "list_tags" }, [
+          _c("view", { staticClass: "tag" }, [_vm._v("汉服")]),
+          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
+          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
+          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
+        ]),
+        _c("view", { staticClass: "list_bottom" }, [
+          _c("view", { staticClass: "list_time" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png") },
+            }),
+            _vm._v(" 1小时前 "),
+          ]),
+          _c("view", { staticClass: "list_yuepai" }, [
+            _c("image", {
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+              },
+            }),
+            _vm._v(" 收到约拍 20 "),
+          ]),
+          _c("view", { staticClass: "list_read" }, [
+            _c("image", {
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+              },
+            }),
+            _vm._v(" 阅读 20 "),
+          ]),
+        ]),
       ]),
     ]),
   ])
@@ -690,6 +946,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADt
 
 /***/ }),
 
+/***/ "./src/assets/images/common/icon_pledge_none.png":
+/*!*******************************************************!*\
+  !*** ./src/assets/images/common/icon_pledge_none.png ***!
+  \*******************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADthUvBAAAAWlBMVEW8vLy7u7u8vLwAAAC7u7v////Kysr8/Pzz8/Pe3t729vbq6uri4uLFxcXNzc3c3NzZ2dn6+vrw8PDBwcHm5ubk5OS/v7/4+PjT09O9vb3Dw8Ps7OzW1tbQ0NA7SPhBAAAABHRSTlPwrSYAJ4s9KgAAAk5JREFUSMe9ltuSoyAQQM0MLSB3QRQv//+bK6DBbEw5O7XJeRAoTR/phkj1/XWr0Bupbl/f1VeF3syquKG3c6sq9HaeHF67Gf1viiT4sZ6dAYCGLsL6gI546Y9DIdEzwl5JBgyZBjL4IU4N9XFIG/QMI2jQG/JU0kKEUIEWZyDCriQab+RbHmvUYpMAdyohwKTYU2Rr2e4SRSMOHE2EIlFmiOjNr7BHbbe98isJf5z7LiFNpIe+Sfh1Vow1mDGp+lyKLAk9R7+SnKfrXEJB/pNE0VVyXZMHicCxaQlNNJeSDnD9I4lRER5vhTZJ2JpQbNYLfSkZmykgxAGm+0wsz6zDrWd3iVW4jZAYnZt5fw2SUvZSItfwgcbLXTKShMGATe6OWTITdUyXW+ofShBPe7ENfxfe9xp0X/a8nMBQe5T4mNABRwBSM5xuRpfKsTpSsOko6dwawu3F1BhMNBbJVjWhtWZN32K+dsSJxEETG0W65AgGSu1mM64hbK/ycNHjtrrGiLxL0pwH0qn2RbokwIAKCkCUv7UlhZBYP64uyBwlrI01IfRcgggYUZKOgRWf3kIMwI8SLzbCXaKwiJIaD+cSgcHIrb+sfZu7I4N5CxEtrSiSwi7hMOTVpUGfSPLbA/cxrgMw9fZTY5bDZpQGp5Y3yMqCyE84UPsSpqBPJajuATDjEwCQPXPB2YcdP8aEuc5MaIaCy08Mc9knVJxLkOcYIpiGp2SYugw61gkUbCHO/2ozFkY1EaYt+g3h4hv/Zj5yJPrI4e4jx9SPHLj/AIqsSKdYreuZAAAAAElFTkSuQmCC"
+
+/***/ }),
+
 /***/ "./src/assets/images/common/icon_real.png":
 /*!************************************************!*\
   !*** ./src/assets/images/common/icon_real.png ***!
@@ -699,6 +967,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADt
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADthUvBAAAAhFBMVEVXgf9Xgv9XgP8AAABXgf////9dhf/B0f+rwP+Hpf/k6v/F1P9rkP/4+v/W4P+Nqv/6/P/P2/+WsP+Trv9+nv9zlv9ukv9hiP/d5f+ctf94mv/t8v/2+P/m7P+xxP+Kp/+ku//y9f/v8/9ljP/a4/+Cof/o7v+7zP+1yP+guP/K1/+Zsv+5oLSFAAAABHRSTlPwrSYAJ4s9KgAAAh5JREFUSMfNlouOqjAQhtGdHyp3FYoIglxE3X3/9zuVdrmsEN2caPZLwMnE5Gs7TDPax3Kh0QvRFssPbanRixGKBb2chabRyxGON/BDEjHT900W0TMEq/ucFz6UBCVayqBLhasRQ/2l0OkHDKtHkjAFEsNIgLRb0Bkj9iQ4bVoYMhl0S9r6CZMEsxIXyEiQAW53gPaArZRYcIbAIMkRyaElQTwnCQFLRhYQ0gQnJXFH2VpKuItMZawkmpPEQKBqg34p7GtKotcXm8guTt8SbvhlvpdFuiKfrQkDbBnZACPFzriT5B7R5uAwsts6b2+vL4dFYWEGrUOt8PFO5iUC/VYBJ+Y49V+/eCoDrLL83vFsTXaN1eF+S9a7nIhTcFe6DfxG/ufJr0tJkvUALjKyArdwi3HbVsckZdHv+qQ/rnv2ZkxkmNTDYxdwzkwyK7FrDDp+XpJ7itJtf3LhNBrAL0xFiTlJUEAg765ZSSWeFGMckT4YXmSeSXG8l/SHlTJ5TrMSHZ54SXhhqYgkjyV6A5htn6x8CPzVlIT3N6BtIr1wGT8ryYCyogmJNSoHuIriotnHB3wGv5BUDpDTBOtir3eEbik7LzZhVDdpDcvuJAdDsZuWHIGa+o30W8l9DLneOu7T6XewTZxMV5LEVTTTkgzwJiXEvW2Hx+UFebSpI7rsVFRfSHFNJyVRdqVX8T+DxJ8aV7S3DHdvGVPfMnD/A66nTeBnc/ZPAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ "./src/assets/images/common/icon_real_none.png":
+/*!*****************************************************!*\
+  !*** ./src/assets/images/common/icon_real_none.png ***!
+  \*****************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADthUvBAAAAXVBMVEW8vLy7u7u8vLwAAAC7u7v////9/f319fXd3d37+/vLy8v5+fnu7u7l5eXi4uK9vb3U1NTQ0NDGxsby8vLOzs7X19fDw8O/v7/n5+fa2trKysrBwcHf39/p6enr6+vOwKCdAAAABHRSTlPwrSYAJ4s9KgAAAiZJREFUSMfNlouu4iAQQKuXGUoH+qAt9KH3/z9zKWBbL/a6bqLZk6gTLBxmgIbs63zK2BvJTuev7JyxN+MUJ/Z2TlnG3o5zfIAfEpu3iG1uk+dskbYVHUto9FPJRAgOpCkZEIqkb0lJU47dM4kWiFwpjij0b5Ki9uRwCcE6pRopD0yHEol4WX4viHKbnEeBCkHlmgYUe1CxwIjEPQT9kUQjDCEaANdUbt1if7v8LdkeGSRauinG/mSPJD1AcSsO9EflihJZzozNVNwkWiE1ugoDYXe4JjnAHKIZIP9F0jWu/FyMzMAyWu2/RF5p4pOv2jbD1zPZqJaxRG92rXb5KMzt4B2vrMlcBq5wjZFP9rt1szdO/XMX1og+G/bK7jKthwQICqFhYQW+zTLk/RGdR3JV+8dzYmmEkezds60riuJsw/QSQZR54FBiJMDDE6+GAoph2BY+QtL/dEtqHBCJRwiOJBMtggfvrp6Mk8x0m56Ae4QrFFeN5SWLjEcSLQBErllCg53fXQWOcW8FDA0xYoHnkooDhFXtEBzrgcpxjFu4xnJf3BZEaXz415ILAM0skZgr9us5qVHqrYZc9xyH6QWJFQANSygENbvD2JHwg1ZueGWXUkoczCrhKtImkugGydZE1lQqNd+deFMuCV0FXm8Z1NvR4CQjPJXEajWJZGMS0/4FOe7WorrIGMlyraV4XK5Lz95DlDzn/7+uZB+53H3kmvqRC/cf67NGUNQWz6MAAAAASUVORK5CYII="
 
 /***/ }),
 
@@ -735,6 +1015,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACN
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATElEQVQoU43QwQ2AIBBE0U8ohxqJtGgh1jAEYwwouzDnlzn8wMYkpbBykg4gu/BBpZ2ZsEcm/KIpnKEftNAAPfTCFbphiwmcQHSaXhWrcSf59InUrwAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ "./src/assets/images/common/time.png":
+/*!*******************************************!*\
+  !*** ./src/assets/images/common/time.png ***!
+  \*******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAZlBMVEUAAACZmZmZmZmampqYmJibm5uZmZmZmZmZmZmZmZmampqZmZmZmZmUlJSZmZmampqampqZmZmWlpaZmZmZmZmZmZmZmZmampqYmJiZmZmZmZmampqYmJibm5uampqampqenp6ZmZmhGzd/AAAAIXRSTlMA+sK9MDSSfN2CVuaaHxTHtZ8R83dxaaurTNOIYUU/OiJ5jHJYAAAAzUlEQVQoz4WS6Q6DMAyDnRZ6ARsMxu6j7/+SO2jC0CrhX5U+1XISg1V4VRFVyhdYqtRR2dAeg1VRl7/EUN0A6AyApiYjYKfd5DKMk7fTu4T0doOFNlud3BwT92TmzDcBSaZYSl76PHWNf4Rav3lscqiJBbxCDkF5KJtHVqEKeRQqUNsNgk7yp2sJdDAjki79I7325kALQ/j+PhumGKyhv0kMCc9OdOLwPLJopMAj86JE1zMvitfLkvXyUURylLVTzgWweynASm1Wypav6Avh0wlC+djhpgAAAABJRU5ErkJggg=="
 
 /***/ }),
 

@@ -54,6 +54,30 @@ module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 
 /***/ }),
 
+/***/ "./src/assets/images/nan.png":
+/*!***********************************!*\
+  !*** ./src/assets/images/nan.png ***!
+  \***********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/nan.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/user/index/invoice.png":
+/*!**************************************************!*\
+  !*** ./src/assets/images/user/index/invoice.png ***!
+  \**************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAuCAMAAACLUGAGAAAAgVBMVEUAAAA0NDQ0NDQzMzM2NjYzMzMzMzM0NDQ0NDQuLi4zMzMzMzMzMzMzMzMxMTEzMzMzMzMuLi4zMzMzMzMzMzMyMjIyMjIyMjIyMjIzMzMzMzMzMzMyMjIyMjIzMzMwMDAyMjIzMzMzMzMyMjIyMjIzMzMzMzMzMzM1NTUxMTEzMzMpKmdvAAAAKnRSTlMAcWOuJghpy2wE9UL74R6+pQ2BUkYys1nrzayZd0ooFcqRbuTa2NSNOjkVNVrzAAABFklEQVRIx+3U2XKDIBSA4YMNtgRFiVs0Rpt0P+//gD0MF8UFepOZTCb5bxT9ZHAZ4b4SMmZrnQu9xGWKvrZsgRMMtJstg2Z+ZdFacYeYDBMtCQvwdJpPHiMy8FUh5uDGECOv3iA+XULL2K0RQS3nj+6CGsoXt/BKll1N6/zZLRuCusFph6BW6fTLPv6zbu4m4Eae4I1qUfSlc/S4O49+rVpErDXYeEejvfTpwb72jINJZ/blF+u62iOmbEuzGz62JGO6IonWdE7uQ0FJm06AeicsgdfmQ1xqUzuaW0voyu83WnJFI5EjNdMFUpm2+8SpdGNPfSF1mmiR0YQcbI3hnwrA1ieYKpjyn8r5TR7qnv8NldTwyNsv5no8DtvqAe0AAAAASUVORK5CYII="
+
+/***/ }),
+
 /***/ "./src/utils/util.js":
 /*!***************************!*\
   !*** ./src/utils/util.js ***!
