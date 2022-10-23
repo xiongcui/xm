@@ -9,8 +9,8 @@
 }
 
 .avatar image {
-  width: 220rpx;
-  height: 220rpx;
+  width: 200rpx;
+  height: 200rpx;
 }
 
 .avatar_select image {
@@ -100,51 +100,4 @@
   text-align: center;
   color: #ffffff;
   background-color: #ff5355;
-}
-.cropper-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-}
-
-.cropper {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.btn {
-  height: 30rpx;
-  line-height: 30rpx;
-  padding: 0 24rpx;
-  border-radius: 2rpx;
-  color: #ffffff;
-}
-
-.cropper-buttons {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50rpx;
-  padding: 0 20rpx;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  line-height: 50rpx;
-  background: rgba(0, 0, 0, 0.95);
-  color: #ffffff;
 }

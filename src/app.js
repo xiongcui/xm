@@ -1,5 +1,6 @@
 import Vue from "vue";
 import { wxlogin } from "./api/index";
+import { openPage } from "./utils/util";
 
 import "./app.scss";
 
@@ -7,18 +8,26 @@ const App = {
   onLaunch: () => {
     // 微信登陆
     let _this = App;
-    wx.login({
-      success(res) {
-        _this.getWxLogin({
-          account: res.code,
-          secret: "",
-          type: 200,
-        });
-      },
-      fail(err) {
-        console.log(err);
-      },
-    });
+    let token = wx.getStorageSync("token");
+    if (!token) {
+      openPage("/pages/login/index");
+      // wx.login({
+      //   success(res) {
+      //     _this.getWxLogin({
+      //       account: res.code,
+      //       secret: "",
+      //       type: 200,
+      //     });
+      //   },
+      //   fail(err) {
+      //     console.log(err);
+      //   },
+      // });
+    } else {
+      // wx.switchTab({
+      //   url: "/pages/home/index",
+      // });
+    }
   },
   onShow(options) {},
   async getWxLogin(params) {

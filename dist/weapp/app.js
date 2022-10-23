@@ -155,8 +155,10 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api/index */ "./src/api/index.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/util */ "./src/utils/util.js");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -166,18 +168,25 @@ var App = {
   onLaunch: function onLaunch() {
     // 微信登陆
     var _this = App;
-    wx.login({
-      success: function success(res) {
-        _this.getWxLogin({
-          account: res.code,
-          secret: "",
-          type: 200
-        });
-      },
-      fail: function fail(err) {
-        console.log(err);
-      }
-    });
+    var token = wx.getStorageSync("token");
+
+    if (!token) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "a"])("/pages/login/index"); // wx.login({
+      //   success(res) {
+      //     _this.getWxLogin({
+      //       account: res.code,
+      //       secret: "",
+      //       type: 200,
+      //     });
+      //   },
+      //   fail(err) {
+      //     console.log(err);
+      //   },
+      // });
+    } else {// wx.switchTab({
+      //   url: "/pages/home/index",
+      // });
+    }
   },
   onShow: function onShow(options) {},
   getWxLogin: function getWxLogin(params) {
@@ -191,7 +200,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* wxlogin */ "c"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* wxlogin */ "e"])(params);
 
             case 3:
               res = _context.sent;

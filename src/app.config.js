@@ -1,11 +1,12 @@
 export default defineAppConfig({
   pages: [
     // "pages/vip/index",
+    // "pages/user/identity/index",
+    "pages/register/index",
     "pages/home/index",
     "pages/release/works/index",
     "pages/my/index",
     "pages/login/index",
-    "pages/register/index",
     "pages/release/index",
     "pages/position/index",
     "pages/msg/index",

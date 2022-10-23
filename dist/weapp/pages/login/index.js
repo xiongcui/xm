@@ -52,6 +52,7 @@ component.options.__file = "src/pages/login/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/login/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -103,6 +104,7 @@ component.options.__file = "src/pages/login/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -111,7 +113,7 @@ component.options.__file = "src/pages/login/index.vue"
     return {
       userInfo: {
         avatar: __webpack_require__(/*! ../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png"),
-        nickname: "xc",
+        nickname: "",
         phone: ""
       },
       pageshow: "login"
@@ -125,7 +127,7 @@ component.options.__file = "src/pages/login/index.vue"
       var _this = this;
 
       wx.getUserProfile({
-        desc: "登录",
+        desc: "用于完善个人资料",
         success: function success(res) {
           _this2.userInfo.avatar = res.userInfo.avatarUrl;
           _this2.userInfo.nickname = res.userInfo.nickName;
@@ -150,8 +152,6 @@ component.options.__file = "src/pages/login/index.vue"
       });
     },
     onGetPhoneNumber: function onGetPhoneNumber(e) {
-      console.log(e, "eee");
-
       var _this = this;
 
       var token = wx.getStorageSync("token");
@@ -162,19 +162,22 @@ component.options.__file = "src/pages/login/index.vue"
             success: function success() {
               //session_key 未过期，并且在本生命周期一直有效
               //这里进行请求服务端解密手机号
-              console.log(1111);
+              console.log(e.detail);
 
-              _this.getPhone({});
+              _this.getPhone({
+                code: e.detail.code,
+                encryptedData: e.detail.encryptedData,
+                iv: e.detail.iv
+              });
             },
             fail: function fail() {
               // session_key 已经失效，需要重新执行登录流程
-              console.log(222);
               wx.login({
                 success: function success(res) {
                   _this.getWxLogin({
+                    avatar: _this.userInfo.avatar,
+                    nickname: _this.userInfo.nickname,
                     account: res.code,
-                    avatar: res.userInfo.avatarUrl,
-                    nickname: res.userInfo.nickName,
                     secret: "",
                     type: 200
                   });
@@ -202,21 +205,34 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "c"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "e"])(params);
 
               case 3:
                 res = _context.sent;
-                console.log("成功！", res);
                 token = res.data.data.token;
                 wx.setStorageSync("token", token);
-                _this3.pageshow = "bindphone";
+                wx.setStorageSync("userInfo", {
+                  avatar: params.avatar,
+                  nickname: params.nickname
+                });
+
+                if (res.login_type == 1) {
+                  _this3.pageshow = "bindphone";
+                } else {
+                  // 跳转首页
+                  wx.switchTab({
+                    url: "/pages/home/index"
+                  });
+                } // this.pageshow = "bindphone";
+
+
                 _context.next = 13;
                 break;
 
               case 10:
                 _context.prev = 10;
                 _context.t0 = _context["catch"](0);
-                console.log("失败"); // this.pageshow = "bindphone";
+                console.log("失败");
 
               case 13:
               case "end":
@@ -235,19 +251,20 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "a"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "b"])(params);
 
               case 3:
                 res = _context2.sent;
                 console.log("成功！", res);
-                _context2.next = 9;
+                _context2.next = 10;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "a"])("../register/index");
 
-              case 9:
+              case 10:
               case "end":
                 return _context2.stop();
             }
@@ -256,10 +273,7 @@ component.options.__file = "src/pages/login/index.vue"
       }))();
     }
   },
-  created: function created() {
-    console.log(1111);
-    console.log(this.pageshow, "pageshow");
-  }
+  created: function created() {}
 });
 
 /***/ }),

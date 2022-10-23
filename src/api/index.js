@@ -11,19 +11,32 @@ export const wxlogin = (data) => {
 // 获取手机号码
 export const getPhone = (data) => {
   return request({
-    url: baseUrl + "/v1/phone",
+    url: baseUrl + "/v1/user/decrypt/mobile",
     method: "POST",
     data,
   });
 };
 // 上传文件
 export const uploadFile = (data) => {
-  return request(
-    {
-      url: baseUrl + "/v1/file/upload",
-      method: "POST",
-      data,
-    },
-    true
-  );
+  return request({
+    url: baseUrl + "/v1/file/upload",
+    method: "POST",
+    data,
+  });
+};
+// 获取省市区
+export const getArea = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/area",
+    method: "get",
+    data,
+  });
+};
+// 更新个人资料
+export const updateUser = (data) => {
+  return request({
+    url: baseUrl + "/v1/user",
+    method: "PUT",
+    data,
+  });
 };

@@ -73,25 +73,22 @@ export const timeformat = function (date, fmt) {
   return fmt;
 };
 
-// header拦截 wx.getStorageSync('token')
-export const request = (params, upload = false) => {
+export const request = (params) => {
   let oheader = {
     header: {
       Authorization: wx.getStorageSync("token") || "",
     },
   };
-  if (upload) {
-    oheader["content-type"] = "application/x-www-form-urlencoded";
-  }
-  console.log(oheader, "oheader");
   let data = Object.assign(oheader, params);
   return new Promise((resolev, reject) => {
     wx.request({
       ...data,
       url: params.url,
       success: (res) => {
-        if (res.statusCode == 200) {
+        if (res.statusCode == 200 && res.data.error_code == 0) {
           resolev(res);
+        } else if (res.data.error_code == 1003) {
+          openPage("/pages/login/index");
         } else {
           reject(res);
         }

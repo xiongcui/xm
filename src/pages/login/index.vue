@@ -50,6 +50,7 @@
 <script>
 import "./index.scss";
 import { wxlogin, getPhone } from "../../api/index";
+import { openPage } from "../../utils/util";
 
 export default {
   name: "login",
@@ -57,7 +58,7 @@ export default {
     return {
       userInfo: {
         avatar: require("../../assets/images/avatar_default.png"),
-        nickname: "xc",
+        nickname: "",
         phone: "",
       },
       pageshow: "login",
@@ -68,7 +69,7 @@ export default {
     getUserProfile() {
       let _this = this;
       wx.getUserProfile({
-        desc: "登录",
+        desc: "用于完善个人资料",
         success: (res) => {
           this.userInfo.avatar = res.userInfo.avatarUrl;
           this.userInfo.nickname = res.userInfo.nickName;
@@ -93,7 +94,6 @@ export default {
       });
     },
     onGetPhoneNumber(e) {
-      console.log(e, "eee");
       let _this = this;
       let token = wx.getStorageSync("token");
       if (token) {
@@ -102,18 +102,21 @@ export default {
             success() {
               //session_key 未过期，并且在本生命周期一直有效
               //这里进行请求服务端解密手机号
-              console.log(1111);
-              _this.getPhone({});
+              console.log(e.detail);
+              _this.getPhone({
+                code: e.detail.code,
+                encryptedData: e.detail.encryptedData,
+                iv: e.detail.iv,
+              });
             },
             fail() {
               // session_key 已经失效，需要重新执行登录流程
-              console.log(222);
               wx.login({
                 success(res) {
                   _this.getWxLogin({
+                    avatar: _this.userInfo.avatar,
+                    nickname: _this.userInfo.nickname,
                     account: res.code,
-                    avatar: res.userInfo.avatarUrl,
-                    nickname: res.userInfo.nickName,
                     secret: "",
                     type: 200,
                   });
@@ -133,26 +136,35 @@ export default {
     async getWxLogin(params) {
       try {
         let res = await wxlogin(params);
-        console.log("成功！", res);
         const token = res.data.data.token;
         wx.setStorageSync("token", token);
-        this.pageshow = "bindphone";
+        wx.setStorageSync("userInfo", {
+          avatar: params.avatar,
+          nickname: params.nickname,
+        });
+        if (res.login_type == 1) {
+          this.pageshow = "bindphone";
+        } else {
+          // 跳转首页
+          wx.switchTab({
+            url: "/pages/home/index",
+          });
+        }
+        // this.pageshow = "bindphone";
       } catch (error) {
         console.log("失败");
-        // this.pageshow = "bindphone";
       }
     },
     async getPhone(params) {
       try {
         let res = await getPhone(params);
         console.log("成功！", res);
-      } catch (error) {}
+      } catch (error) {
+        openPage("../register/index");
+      }
     },
   },
-  created() {
-    console.log(1111);
-    console.log(this.pageshow, "pageshow");
-  },
+  created() {},
 };
 </script>
 

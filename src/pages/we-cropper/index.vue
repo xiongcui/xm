@@ -1,5 +1,5 @@
 <template>
-  <view class="cropper-wrapper">
+  <view class="cropper-wrapper" v-if="visible">
     <canvas
       class="cropper"
       :disable-scroll="true"
@@ -38,11 +38,20 @@
 import "./index.scss";
 import WeCropper from "we-cropper";
 const device = wx.getSystemInfoSync(); // 获取设备信息
-console.log(device);
 const width = device.windowWidth; // 示例为一个与屏幕等宽的正方形裁剪框
-const height = device.windowHeight;
+const height = width;
 export default {
   name: "weCropper",
+  props: {
+    visible: {
+      type: Boolean,
+      default: false,
+    },
+    src: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
       cropper: null,
@@ -52,13 +61,14 @@ export default {
         pixelRatio: device.pixelRatio, // 传入设备像素比
         width, // 画布宽度
         height, // 画布高度
+        src: "",
         scale: 2.5, // 最大缩放倍数
         zoom: 8, // 缩放系数
         cut: {
-          x: (width - 200) / 2, // 裁剪框x轴起点
-          y: (height - 200) / 2, // 裁剪框y轴期起点
-          width: 200, // 裁剪框宽度
-          height: 200, // 裁剪框高度
+          x: (width - 320) / 2, // 裁剪框x轴起点
+          y: (width - 320) / 2, // 裁剪框y轴起点
+          width: 320, // 裁剪框宽度
+          height: 320, // 裁剪框高度
         },
       },
     };
@@ -115,6 +125,7 @@ export default {
     },
   },
   mounted() {
+    this.cropperOpt.src = this.src;
     this.cropper = new WeCropper(this.cropperOpt)
       .on("ready", (ctx) => {
         console.log(`wecropper is ready for work!`);
