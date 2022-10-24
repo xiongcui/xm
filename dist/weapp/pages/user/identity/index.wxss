@@ -1,1 +1,36 @@
-/* pages/user/identity/index.wxss */
+.identity-tips {
+  font-size: 28rpx;
+  line-height: 60rpx;
+  background: #fff9ec;
+  color: #de7b47;
+  padding: 0 16rpx;
+}
+.identity-tips image {
+  width: 30rpx;
+  height: 30rpx;
+}
+.identity-choice {
+  padding: 0 16rpx;
+  font-size: 30rpx;
+}
+.identity-choice .identity-choice-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.identity-choice .identity-choice-title {
+  color: #333333;
+  margin: 30rpx 0;
+}
+.identity-choice .identity-choice-item {
+  padding: 15rpx 30rpx;
+  border-radius: 8rpx;
+  background: #e93b46;
+  color: #ffffff;
+  margin-right: 16rpx;
+}
+.identity-choice .identity-choice-main {
+  background: #ffffff;
+  color: #e93b46;
+  border: 1rpx solid #e93b46;
+}

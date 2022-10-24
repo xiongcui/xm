@@ -75,36 +75,13 @@
         <view class="item ub item-b">
           <view class="item_label">地区</view>
           <view class="ub-f1 item_input">
-            <!-- <picker
-              @change="bindRegionChange"
-              mode="multiSelector"
-              :range="regionList"
-              rangeKey="name"
-              :value="region"
-            >
+            <picker mode="region" @change="bindRegionChange" value="region">
               <view
                 class="picker_children pick_city picked"
                 v-if="select_city"
                 >{{ select_city }}</view
               >
               <view class="picker_children" v-else>请选择地区</view>
-            </picker> -->
-            <picker
-              mode="multiSelector"
-              bindchange="bindMultiPickerChange"
-              bindcolumnchange="bindMultiPickerColumnChange"
-              range-key="name"
-              :value="multiIndex"
-              :range="multiArray"
-            >
-              <view class="picker flex-r">
-                <view class="bold"><text class="c-f00">*</text>地区</view>
-                <!-- <text>
-                  {{ multiArray[0][multiIndex[0]].name
-                  }}{{ multiArray[1][multiIndex[1]].name
-                  }}{{ multiArray[2][multiIndex[2]].name }}
-                </text> -->
-              </view>
             </picker>
           </view>
         </view>
@@ -151,12 +128,10 @@ export default {
       date: "",
       identity: "",
       select_city: "",
-      // region:["北京市", "北京市", "朝阳区"],
       region: [],
       regionList: [],
       multiArray: [], //地区
       type: 0,
-      multiIndex: [0, 0, 0],
       identityList: [
         "摄影师",
         "模特",
@@ -183,8 +158,8 @@ export default {
       this.date = e.detail.value;
     },
     bindRegionChange(e) {
-      console.log(e);
       this.select_city = e.detail.value.join("-");
+      this.regionList = e.detail.code;
     },
     // identityChange(e) {
     //   this.identity = this.identityList[e.detail.value];
@@ -210,74 +185,7 @@ export default {
       this.updateUser({});
       console.log(params);
     },
-    // async getArea(params) {
-    //   try {
-    //     let res = await getArea(params);
-    //     console.log(res, "=========");
-    //     this.multiArray = res.data.data.map((item, index) => {
-    //       return {
-    //         id: item.code,
-    //         name: item.name,
-    //       };
-    //     });
-    //     console.log(this.multiArray);
-    //   } catch (error) {}
-    // },
-    async getArea(type, arr, params) {
-      try {
-        let res = await getArea(params);
-        console.log(res, "=========");
-        // let arr = [];
-        if (type == 0) {
-          arr[type] = res.data.data.map((item, index) => {
-            return {
-              id: item.code,
-              name: item.name,
-            };
-          });
-        }
-        if (type == 1) {
-          console.log("ekwekek");
-          arr[type] = res.data.data.city.map((item, index) => {
-            return {
-              id: item.code,
-              name: item.name,
-            };
-          });
-        }
 
-        if (type < 1) {
-          this.getcitycode(type + 1, arr, {
-            province_code: res.data.data[0].code,
-          });
-        }
-        // if (type < 2) {
-        //   this.getcitycode(type + 1, {
-        //     province_code: res.data.data[0].code,
-        //   });
-        // }
-        this.multiArray = arr;
-        console.log(arr, type, "---multiArray");
-      } catch (error) {}
-    },
-
-    getcitycode(type, arr, params) {
-      // var self = this;
-      // var { multiArray, multiIndex, params, street } = this.data;
-      this.getArea(type, arr, params);
-      // app.ajax(
-      //   {
-      //     code,
-      //     url: "/shenshiqu",
-      //   },
-      //   function (result) {
-      //     multiArray[type] = result.data.data;
-      //     if (type < 2)
-      //       self.getcitycode(type + 1, result.data.data[index].taobaoid);
-      //   }
-      // );
-    },
-    // 获取省市区
     async updateUser(params) {
       try {
         let res = await updateUser(params);
@@ -289,8 +197,6 @@ export default {
     let userInfo = wx.getStorageSync("userInfo");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
-    // this.getArea("");
-    // this.getcitycode(this.type, [], "");
   },
 };
 </script>

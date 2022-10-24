@@ -1,0 +1,34 @@
+.identity-tips {
+  font-size: 28px;
+  line-height: 60px;
+  background: #fff9ec;
+  color: #de7b47;
+  padding: 0px 16px;
+  image {
+    width: 30px;
+    height: 30px;
+  }
+}
+.identity-choice {
+  padding: 0px 16px;
+  font-size: 30px;
+  .identity-choice-box {
+    display: flex;
+  }
+  .identity-choice-title {
+    color: #333333;
+    margin: 30px 0px;
+  }
+  .identity-choice-item {
+    padding: 15px 30px;
+    border-radius: 8px;
+    background: #e93b46;
+    color: #ffffff;
+    margin-right: 16px;
+  }
+  .identity-choice-main {
+    background: #ffffff;
+    color: #e93b46;
+    border: 1px solid #e93b46;
+  }
+}

@@ -169,29 +169,6 @@ component.options.__file = "src/pages/register/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
  // import weCropper from "../we-cropper/index.vue";
 
 
@@ -207,13 +184,11 @@ component.options.__file = "src/pages/register/index.vue"
       date: "",
       identity: "",
       select_city: "",
-      // region:["北京市", "北京市", "朝阳区"],
       region: [],
       regionList: [],
       multiArray: [],
       //地区
       type: 0,
-      multiIndex: [0, 0, 0],
       identityList: ["摄影师", "模特", "化妆师", "修图师", "商家", "经纪人", "造型师", "素人模特"]
     };
   },
@@ -231,8 +206,8 @@ component.options.__file = "src/pages/register/index.vue"
       this.date = e.detail.value;
     },
     bindRegionChange: function bindRegionChange(e) {
-      console.log(e);
       this.select_city = e.detail.value.join("-");
+      this.regionList = e.detail.code;
     },
     // identityChange(e) {
     //   this.identity = this.identityList[e.detail.value];
@@ -257,22 +232,7 @@ component.options.__file = "src/pages/register/index.vue"
       this.updateUser({});
       console.log(params);
     },
-    // async getArea(params) {
-    //   try {
-    //     let res = await getArea(params);
-    //     console.log(res, "=========");
-    //     this.multiArray = res.data.data.map((item, index) => {
-    //       return {
-    //         id: item.code,
-    //         name: item.name,
-    //       };
-    //     });
-    //     console.log(this.multiArray);
-    //   } catch (error) {}
-    // },
-    getArea: function getArea(type, arr, params) {
-      var _this = this;
-
+    updateUser: function updateUser(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
@@ -281,110 +241,31 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getArea */ "a"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "b"])(params);
 
               case 3:
                 res = _context.sent;
-                console.log(res, "========="); // let arr = [];
-
-                if (type == 0) {
-                  arr[type] = res.data.data.map(function (item, index) {
-                    return {
-                      id: item.code,
-                      name: item.name
-                    };
-                  });
-                }
-
-                if (type == 1) {
-                  console.log("ekwekek");
-                  arr[type] = res.data.data.city.map(function (item, index) {
-                    return {
-                      id: item.code,
-                      name: item.name
-                    };
-                  });
-                }
-
-                if (type < 1) {
-                  _this.getcitycode(type + 1, arr, {
-                    province_code: res.data.data[0].code
-                  });
-                } // if (type < 2) {
-                //   this.getcitycode(type + 1, {
-                //     province_code: res.data.data[0].code,
-                //   });
-                // }
-
-
-                _this.multiArray = arr;
-                console.log(arr, type, "---multiArray");
-                _context.next = 14;
+                console.log("成功！", res);
+                _context.next = 9;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
-              case 14:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 12]]);
-      }))();
-    },
-    getcitycode: function getcitycode(type, arr, params) {
-      // var self = this;
-      // var { multiArray, multiIndex, params, street } = this.data;
-      this.getArea(type, arr, params); // app.ajax(
-      //   {
-      //     code,
-      //     url: "/shenshiqu",
-      //   },
-      //   function (result) {
-      //     multiArray[type] = result.data.data;
-      //     if (type < 2)
-      //       self.getcitycode(type + 1, result.data.data[index].taobaoid);
-      //   }
-      // );
-    },
-    // 获取省市区
-    updateUser: function updateUser(params) {
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "c"])(params);
-
-              case 3:
-                res = _context2.sent;
-                console.log("成功！", res);
-                _context2.next = 9;
-                break;
-
-              case 7:
-                _context2.prev = 7;
-                _context2.t0 = _context2["catch"](0);
-
-              case 9:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     }
   },
   created: function created() {
     var userInfo = wx.getStorageSync("userInfo");
     this.avatar = userInfo.avatar;
-    this.nickname = userInfo.nickname; // this.getArea("");
-    // this.getcitycode(this.type, [], "");
+    this.nickname = userInfo.nickname;
   }
 });
 
@@ -544,22 +425,19 @@ var render = function () {
               _c(
                 "picker",
                 {
-                  attrs: {
-                    mode: "multiSelector",
-                    bindchange: "bindMultiPickerChange",
-                    bindcolumnchange: "bindMultiPickerColumnChange",
-                    "range-key": "name",
-                    value: _vm.multiIndex,
-                    range: _vm.multiArray,
-                  },
+                  attrs: { mode: "region", value: "region" },
+                  on: { change: _vm.bindRegionChange },
                 },
                 [
-                  _c("view", { staticClass: "picker flex-r" }, [
-                    _c("view", { staticClass: "bold" }, [
-                      _c("text", { staticClass: "c-f00" }, [_vm._v("*")]),
-                      _vm._v("地区"),
-                    ]),
-                  ]),
+                  _vm.select_city
+                    ? _c(
+                        "view",
+                        { staticClass: "picker_children pick_city picked" },
+                        [_vm._v(_vm._s(_vm.select_city))]
+                      )
+                    : _c("view", { staticClass: "picker_children" }, [
+                        _vm._v("请选择地区"),
+                      ]),
                 ]
               ),
             ],

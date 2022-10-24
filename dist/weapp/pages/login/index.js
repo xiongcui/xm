@@ -205,7 +205,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "e"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "d"])(params);
 
               case 3:
                 res = _context.sent;
@@ -215,8 +215,9 @@ component.options.__file = "src/pages/login/index.vue"
                   avatar: params.avatar,
                   nickname: params.nickname
                 });
+                console.log(res.data);
 
-                if (res.login_type == 1) {
+                if (res.data.data.login_type == 1) {
                   _this3.pageshow = "bindphone";
                 } else {
                   // 跳转首页
@@ -226,20 +227,20 @@ component.options.__file = "src/pages/login/index.vue"
                 } // this.pageshow = "bindphone";
 
 
-                _context.next = 13;
+                _context.next = 14;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 11:
+                _context.prev = 11;
                 _context.t0 = _context["catch"](0);
                 console.log("失败");
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 11]]);
       }))();
     },
     getPhone: function getPhone(params) {
@@ -251,7 +252,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "b"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "a"])(params);
 
               case 3:
                 res = _context2.sent;

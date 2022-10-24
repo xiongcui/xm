@@ -38,7 +38,7 @@
         "scopeDataCheck": false
     },
     "compileType": "miniprogram",
-    "libVersion": "2.27.0",
+    "libVersion": "2.25.4",
     "srcMiniprogramRoot": "dist/weapp/",
     "packOptions": {
         "ignore": [],

@@ -385,7 +385,7 @@ component.options.__file = "src/pages/release/works/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* uploadFile */ "d"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* uploadFile */ "c"])(params);
 
               case 3:
                 res = _context.sent;

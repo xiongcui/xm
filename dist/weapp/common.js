@@ -5,15 +5,15 @@
   !*** ./src/api/index.js ***!
   \**************************/
 /*! exports provided: wxlogin, getPhone, uploadFile, getArea, updateUser */
-/*! exports used: getArea, getPhone, updateUser, uploadFile, wxlogin */
+/*! exports used: getPhone, updateUser, uploadFile, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return wxlogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getPhone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return uploadFile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getArea; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return updateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPhone; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return uploadFile; });
+/* unused harmony export getArea */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return updateUser; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://tapi.cupz.cn"; // WX登录,拿code换登录

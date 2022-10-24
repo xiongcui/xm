@@ -142,7 +142,8 @@ export default {
           avatar: params.avatar,
           nickname: params.nickname,
         });
-        if (res.login_type == 1) {
+        console.log(res.data);
+        if (res.data.data.login_type == 1) {
           this.pageshow = "bindphone";
         } else {
           // 跳转首页
