@@ -1,3 +1,4 @@
+import { Base64 } from "js-Base64";
 export const formatTime = (date) => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -74,22 +75,22 @@ export const timeformat = function (date, fmt) {
 };
 
 export const request = (params) => {
-  let oheader = {
-    header: {
-      Authorization: wx.getStorageSync("token") || "",
-    },
-  };
-  let data = Object.assign(oheader, params);
+  let header = {};
+  let token = wx.getStorageSync("token");
+  header["Authorization"] = "Basic " + Base64.encode(token + ":");
+  let data = Object.assign(header, params);
   return new Promise((resolev, reject) => {
     wx.request({
       ...data,
+      header,
       url: params.url,
       success: (res) => {
-        if (res.statusCode == 200 && res.data.error_code == 0) {
+        if (res.data.code == 200) {
           resolev(res);
-        } else if (res.data.error_code == 1003) {
+        } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
           openPage("/pages/login/index");
         } else {
+          errortip(res.data.msg);
           reject(res);
         }
       },

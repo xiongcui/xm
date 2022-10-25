@@ -1,34 +1,103 @@
-.identity-tips {
-  font-size: 28px;
-  line-height: 60px;
-  background: #fff9ec;
-  color: #de7b47;
-  padding: 0px 16px;
-  image {
-    width: 30px;
-    height: 30px;
+.identity {
+  .identity-tips {
+    font-size: 28px;
+    line-height: 60px;
+    background: #fff9ec;
+    color: #de7b47;
+    padding: 0px 30px;
+    image {
+      width: 30px;
+      height: 30px;
+    }
   }
-}
-.identity-choice {
-  padding: 0px 16px;
-  font-size: 30px;
-  .identity-choice-box {
+  .identity-choice {
+    padding: 0px 30px;
+    font-size: 30px;
+    .identity-choice-box {
+      display: flex;
+    }
+    .identity-choice-title {
+      color: #333333;
+      margin: 30px 0px;
+    }
+    .identity-choice-item {
+      background-color: #ff5355;
+      border-radius: 4rpx;
+      color: #fff;
+      display: inline-block;
+      font-size: 28rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      margin-right: 18rpx;
+      padding: 0 30rpx;
+    }
+    .identity-choice-main {
+      background: #ffffff;
+      color: #e93b46;
+      border: 1px solid #e93b46;
+    }
+    .identity-choice-main {
+      background-color: #fff;
+      border: 1rpx solid #ff5355;
+      border-radius: 4rpx 0 0 4rpx;
+      box-sizing: border-box;
+      color: #ff5355;
+      font-size: 20rpx;
+      height: 60rpx;
+      line-height: 58rpx;
+      position: absolute;
+      text-align: center;
+      width: 40rpx;
+    }
+    .identity-choice-active {
+      padding: 0 30rpx 0 70px !important;
+    }
+  }
+  .tags_title {
+    color: #333;
+    font-size: 30rpx;
+    font-weight: 500;
+    height: 42rpx;
+    padding: 30px 30px 0px 30px;
+  }
+  .tags {
+    background-color: #fff;
+    padding: 30px;
+  }
+
+  .tag_item {
+    background-color: #f1f1f1;
+    border: 1rpx solid #f1f1f1;
+    border-radius: 8rpx;
+    color: #333;
+    display: inline-block;
+    font-size: 26rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    margin: 0 30rpx 20rpx 0;
+    padding: 0 30rpx;
+  }
+
+  .tag_itemed {
+    background-color: #ff5355;
+    border: 1rpx solid #ff5355;
+    color: #fff;
+  }
+
+  .real_identity {
+    background-color: #fff;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 26rpx;
+    margin-bottom: 16rpx;
+    padding: 24rpx;
     display: flex;
+    align-items: center;
   }
-  .identity-choice-title {
-    color: #333333;
-    margin: 30px 0px;
-  }
-  .identity-choice-item {
-    padding: 15px 30px;
-    border-radius: 8px;
-    background: #e93b46;
-    color: #ffffff;
-    margin-right: 16px;
-  }
-  .identity-choice-main {
-    background: #ffffff;
-    color: #e93b46;
-    border: 1px solid #e93b46;
+
+  .icon_real_identity {
+    height: 40rpx;
+    margin: -2rpx 4rpx 0 0;
+    width: 40rpx;
   }
 }

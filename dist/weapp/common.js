@@ -4,22 +4,23 @@
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, getArea, updateUser */
-/*! exports used: getPhone, updateUser, uploadFile, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer */
+/*! exports used: creatCareer, getCareer, getPhone, updateUser, uploadFile, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return wxlogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return getPhone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return uploadFile; });
-/* unused harmony export getArea */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return updateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getPhone; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return uploadFile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return updateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCareer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return creatCareer; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://tapi.cupz.cn"; // WX登录,拿code换登录
 
 var wxlogin = function wxlogin(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/token",
     method: "POST",
     data: data
@@ -27,7 +28,7 @@ var wxlogin = function wxlogin(data) {
 }; // 获取手机号码
 
 var getPhone = function getPhone(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/decrypt/mobile",
     method: "POST",
     data: data
@@ -35,25 +36,33 @@ var getPhone = function getPhone(data) {
 }; // 上传文件
 
 var uploadFile = function uploadFile(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/file/upload",
     method: "POST",
-    data: data
-  });
-}; // 获取省市区
-
-var getArea = function getArea(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
-    url: baseUrl + "/v1/public/area",
-    method: "get",
     data: data
   });
 }; // 更新个人资料
 
 var updateUser = function updateUser(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "b"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user",
     method: "PUT",
+    data: data
+  });
+}; // 获得身份
+
+var getCareer = function getCareer(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/career",
+    method: "get",
+    data: data
+  });
+}; // 创建身份
+
+var creatCareer = function creatCareer(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/career",
+    method: "post",
     data: data
   });
 };
@@ -101,17 +110,19 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAuCAMAAACL
   !*** ./src/utils/util.js ***!
   \***************************/
 /*! exports provided: formatTime, formatNumber, openPage, timeformat, request, errortip */
-/*! exports used: openPage, request */
+/*! exports used: errortip, openPage, request */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export formatTime */
 /* unused harmony export formatNumber */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return openPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return openPage; });
 /* unused harmony export timeformat */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return request; });
-/* unused harmony export errortip */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return request; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return errortip; });
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+
 
 var formatTime = function formatTime(date) {
   var year = date.getFullYear();
@@ -179,21 +190,21 @@ var timeformat = function timeformat(date, fmt) {
   return fmt;
 };
 var request = function request(params) {
-  var oheader = {
-    header: {
-      Authorization: wx.getStorageSync("token") || ""
-    }
-  };
-  var data = Object.assign(oheader, params);
+  var header = {};
+  var token = wx.getStorageSync("token");
+  header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_1__[/* Base64 */ "a"].encode(token + ":");
+  var data = Object.assign(header, params);
   return new Promise(function (resolev, reject) {
     wx.request(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])({}, data), {}, {
+      header: header,
       url: params.url,
       success: function success(res) {
-        if (res.statusCode == 200 && res.data.error_code == 0) {
+        if (res.data.code == 200) {
           resolev(res);
-        } else if (res.data.error_code == 1003) {
+        } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
           openPage("/pages/login/index");
         } else {
+          errortip(res.data.msg);
           reject(res);
         }
       },

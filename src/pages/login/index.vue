@@ -98,38 +98,20 @@ export default {
       let token = wx.getStorageSync("token");
       if (token) {
         if ("getPhoneNumber:ok" == e.detail.errMsg) {
-          wx.checkSession({
-            success() {
-              //session_key 未过期，并且在本生命周期一直有效
-              //这里进行请求服务端解密手机号
-              console.log(e.detail);
+          wx.login({
+            success(res) {
               _this.getPhone({
-                code: e.detail.code,
+                code: res.code,
                 encryptedData: e.detail.encryptedData,
                 iv: e.detail.iv,
               });
             },
-            fail() {
-              // session_key 已经失效，需要重新执行登录流程
-              wx.login({
-                success(res) {
-                  _this.getWxLogin({
-                    avatar: _this.userInfo.avatar,
-                    nickname: _this.userInfo.nickname,
-                    account: res.code,
-                    secret: "",
-                    type: 200,
-                  });
-                },
-                fail(err) {
-                  console.log(err);
-                },
-              });
+            fail(err) {
+              console.log(err);
             },
           });
         }
       } else {
-        console.log(3333);
         this.pageshow = "login";
       }
     },
@@ -142,16 +124,20 @@ export default {
           avatar: params.avatar,
           nickname: params.nickname,
         });
-        console.log(res.data);
-        if (res.data.data.login_type == 1) {
+        if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
           this.pageshow = "bindphone";
-        } else {
+        } else if (
+          res.data.data.login_type == 2 &&
+          res.data.data.is_bind_phone == 1
+        ) {
           // 跳转首页
           wx.switchTab({
             url: "/pages/home/index",
           });
+        } else {
+          // 未注册
+          openPage("/pages/register/index");
         }
-        // this.pageshow = "bindphone";
       } catch (error) {
         console.log("失败");
       }
@@ -159,10 +145,8 @@ export default {
     async getPhone(params) {
       try {
         let res = await getPhone(params);
-        console.log("成功！", res);
-      } catch (error) {
-        openPage("../register/index");
-      }
+        openPage("/pages/register/index");
+      } catch (error) {}
     },
   },
   created() {},

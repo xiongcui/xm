@@ -1,0 +1,45 @@
+.fl-fs {
+  align-items: flex-start;
+}
+.fl-s0 {
+  flex-shrink: 0;
+}
+.subbtn_bottom_block {
+  background-color: #fff;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
+.subbtn_bottom {
+  padding: 12rpx 0;
+  width: 100%;
+}
+
+.subbtn_bottom button {
+  background-color: #ff5355;
+  border-radius: 8rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  height: 76rpx;
+  line-height: 76rpx;
+  width: 690rpx;
+}
+
+.fix-iphonex-button {
+  padding-bottom: 68rpx !important;
+}
+
+button::after {
+  border: none;
+}
+
+.button-hover[type="primary"] {
+  background-color: rgba(255, 30, 62, 0.6);
+}
+
+button:focus {
+  outline: none;
+}

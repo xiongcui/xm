@@ -154,10 +154,11 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 "use strict";
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/util */ "./src/utils/util.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/util */ "./src/utils/util.js");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -171,22 +172,25 @@ var App = {
     var token = wx.getStorageSync("token");
 
     if (!token) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "a"])("/pages/login/index"); // wx.login({
-      //   success(res) {
-      //     _this.getWxLogin({
-      //       account: res.code,
-      //       secret: "",
-      //       type: 200,
-      //     });
-      //   },
-      //   fail(err) {
-      //     console.log(err);
-      //   },
-      // });
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/login/index");
     } else {// wx.switchTab({
       //   url: "/pages/home/index",
       // });
-    }
+    } // 判断是否为iphoneX
+
+
+    vue__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].prototype.globalData = _this.globalData;
+    wx.getSystemInfo({
+      success: function success(res) {
+        var model = res.model;
+
+        if (/iphone\sx/i.test(model) || /iphone/i.test(model) && /unknown/.test(model) || /iphone\s11/i.test(model) || /iphone\s12/i.test(model) || /iphone\s13/i.test(model)) {
+          _this.globalData.isIphoneX = true;
+        } else {
+          _this.globalData.isIphoneX = false;
+        }
+      }
+    });
   },
   onShow: function onShow(options) {},
   getWxLogin: function getWxLogin(params) {
@@ -200,7 +204,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* wxlogin */ "d"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "f"])(params);
 
             case 3:
               res = _context.sent;
@@ -226,6 +230,9 @@ var App = {
   render: function render(h) {
     // this.$slots.default 是将要会渲染的页面
     return h("block", this.$slots.default);
+  },
+  globalData: {
+    isIphoneX: false
   }
 };
 /* harmony default export */ __webpack_exports__["a"] = (App);

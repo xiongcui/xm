@@ -24,19 +24,27 @@ export const uploadFile = (data) => {
     data,
   });
 };
-// 获取省市区
-export const getArea = (data) => {
-  return request({
-    url: baseUrl + "/v1/public/area",
-    method: "get",
-    data,
-  });
-};
 // 更新个人资料
 export const updateUser = (data) => {
   return request({
     url: baseUrl + "/v1/user",
     method: "PUT",
+    data,
+  });
+};
+// 获得身份
+export const getCareer = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/career",
+    method: "get",
+    data,
+  });
+};
+// 创建身份
+export const creatCareer = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/career",
+    method: "post",
     data,
   });
 };

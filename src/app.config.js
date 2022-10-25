@@ -7,7 +7,6 @@ export default defineAppConfig({
     "pages/home/index",
     "pages/release/works/index",
     "pages/my/index",
-
     "pages/release/index",
     "pages/position/index",
     "pages/msg/index",

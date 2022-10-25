@@ -158,39 +158,20 @@ component.options.__file = "src/pages/login/index.vue"
 
       if (token) {
         if ("getPhoneNumber:ok" == e.detail.errMsg) {
-          wx.checkSession({
-            success: function success() {
-              //session_key 未过期，并且在本生命周期一直有效
-              //这里进行请求服务端解密手机号
-              console.log(e.detail);
-
+          wx.login({
+            success: function success(res) {
               _this.getPhone({
-                code: e.detail.code,
+                code: res.code,
                 encryptedData: e.detail.encryptedData,
                 iv: e.detail.iv
               });
             },
-            fail: function fail() {
-              // session_key 已经失效，需要重新执行登录流程
-              wx.login({
-                success: function success(res) {
-                  _this.getWxLogin({
-                    avatar: _this.userInfo.avatar,
-                    nickname: _this.userInfo.nickname,
-                    account: res.code,
-                    secret: "",
-                    type: 200
-                  });
-                },
-                fail: function fail(err) {
-                  console.log(err);
-                }
-              });
+            fail: function fail(err) {
+              console.log(err);
             }
           });
         }
       } else {
-        console.log(3333);
         this.pageshow = "login";
       }
     },
@@ -205,7 +186,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "d"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "f"])(params);
 
               case 3:
                 res = _context.sent;
@@ -215,32 +196,33 @@ component.options.__file = "src/pages/login/index.vue"
                   avatar: params.avatar,
                   nickname: params.nickname
                 });
-                console.log(res.data);
 
-                if (res.data.data.login_type == 1) {
+                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
                   _this3.pageshow = "bindphone";
-                } else {
+                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
                   // 跳转首页
                   wx.switchTab({
                     url: "/pages/home/index"
                   });
-                } // this.pageshow = "bindphone";
+                } else {
+                  // 未注册
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                }
 
-
-                _context.next = 14;
+                _context.next = 13;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
                 console.log("失败");
 
-              case 14:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
     getPhone: function getPhone(params) {
@@ -252,20 +234,19 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "a"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "c"])(params);
 
               case 3:
                 res = _context2.sent;
-                console.log("成功！", res);
-                _context2.next = 10;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                _context2.next = 9;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "a"])("../register/index");
 
-              case 10:
+              case 9:
               case "end":
                 return _context2.stop();
             }

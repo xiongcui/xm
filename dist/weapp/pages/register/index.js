@@ -169,6 +169,8 @@ component.options.__file = "src/pages/register/index.vue"
 //
 //
 //
+//
+//
  // import weCropper from "../we-cropper/index.vue";
 
 
@@ -212,9 +214,35 @@ component.options.__file = "src/pages/register/index.vue"
     // identityChange(e) {
     //   this.identity = this.identityList[e.detail.value];
     // },
-    identityFocus: function identityFocus() {// openPage()
+    identityFocus: function identityFocus() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/user/identity/index");
     },
     submit: function submit() {
+      if (!this.nickname) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写名称！");
+        return false;
+      }
+
+      if (this.sex === "") {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择性别！");
+        return false;
+      }
+
+      if (!this.date) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择生日！");
+        return false;
+      }
+
+      if (!this.select_city) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择地区！");
+        return false;
+      }
+
+      if (!this.identity) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择身份！");
+        return false;
+      }
+
       var params = {
         nickname: this.nickname,
         sex: this.sex,
@@ -241,7 +269,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "b"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "d"])(params);
 
               case 3:
                 res = _context.sent;
@@ -447,33 +475,20 @@ var render = function () {
         _c("view", { staticClass: "item ub item-b" }, [
           _c("view", { staticClass: "item_label" }, [_vm._v("身份")]),
           _c("view", { staticClass: "ub-f1 item_input" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.identity,
-                  expression: "identity",
-                },
-              ],
-              attrs: {
-                maxlength: "60",
-                name: "identity",
-                placeholder: "请选择身份",
-                placeholderClass: "nickname_tip",
-                type: "text",
-              },
-              domProps: { value: _vm.identity },
-              on: {
-                blur: _vm.identityFocus,
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.identity = $event.target.value
-                },
-              },
-            }),
+            _vm.identity
+              ? _c(
+                  "view",
+                  { staticClass: "picker_children pick_city picked" },
+                  [_vm._v(" " + _vm._s(_vm.identity) + " ")]
+                )
+              : _c(
+                  "view",
+                  {
+                    staticClass: "picker_children",
+                    on: { tap: _vm.identityFocus },
+                  },
+                  [_vm._v("请选择身份")]
+                ),
           ]),
         ]),
       ]),

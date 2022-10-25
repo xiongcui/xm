@@ -88,19 +88,21 @@
         <view class="item ub item-b">
           <view class="item_label">身份</view>
           <view class="ub-f1 item_input">
-            <!-- <picker @change="identityChange" :range="identityList">
-                      <view class="picker_children picked" v-if="identity">{{identity}}</view>
-                      <view class="picker_children" v-else>请选择身份</view>
-                  </picker> -->
-            <input
+            <!-- <input
               maxlength="60"
               name="identity"
               placeholder="请选择身份"
               placeholderClass="nickname_tip"
               type="text"
               v-model="identity"
-              @blur="identityFocus"
-            />
+              @focus="identityFocus"
+            /> -->
+            <view class="picker_children pick_city picked" v-if="identity">
+              {{ identity }}
+            </view>
+            <view class="picker_children" v-else @tap="identityFocus"
+              >请选择身份</view
+            >
           </view>
         </view>
       </view>
@@ -116,7 +118,7 @@
 import "./index.scss";
 // import weCropper from "../we-cropper/index.vue";
 import { getArea, updateUser } from "../../api/index";
-import { openPage } from "../../utils/util";
+import { errortip, openPage } from "../../utils/util";
 export default {
   name: "register",
   data() {
@@ -165,9 +167,29 @@ export default {
     //   this.identity = this.identityList[e.detail.value];
     // },
     identityFocus() {
-      // openPage()
+      openPage("/pages/user/identity/index");
     },
     submit() {
+      if (!this.nickname) {
+        errortip("请填写名称！");
+        return false;
+      }
+      if (this.sex === "") {
+        errortip("请选择性别！");
+        return false;
+      }
+      if (!this.date) {
+        errortip("请选择生日！");
+        return false;
+      }
+      if (!this.select_city) {
+        errortip("请选择地区！");
+        return false;
+      }
+      if (!this.identity) {
+        errortip("请选择身份！");
+        return false;
+      }
       let params = {
         nickname: this.nickname,
         sex: this.sex,
