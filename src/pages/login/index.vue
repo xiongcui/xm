@@ -69,7 +69,7 @@ export default {
     getUserProfile() {
       let _this = this;
       wx.getUserProfile({
-        desc: "用于完善个人资料",
+        desc: "用于完善会员资料",
         success: (res) => {
           this.userInfo.avatar = res.userInfo.avatarUrl;
           this.userInfo.nickname = res.userInfo.nickName;

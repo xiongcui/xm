@@ -84,20 +84,7 @@ export default {
         realidentity: "",
       },
       identity: [],
-      identity_data: [
-        // {
-        //   id: 1,
-        //   name: "艺人",
-        //   ispick: false,
-        //   is_artist: true,
-        // },
-        // {
-        //   id: 2,
-        //   name: "非艺人",
-        //   ispick: false,
-        //   is_artist: false,
-        // },
-      ],
+      identity_data: [],
     };
   },
   methods: {
@@ -131,7 +118,6 @@ export default {
         json: arr,
       };
       const index = this.identity.findIndex((ele) => ele.code == "ACTOR");
-      console.log(index, "index");
       if (index != -1) {
         wx.showModal({
           title: "温馨提示",
@@ -170,6 +156,11 @@ export default {
           this.identity = data.user_career.career_label;
         this.identity_data = data.career_list.map((item) => {
           item.ispick = false;
+          this.identity.map((identityItem) => {
+            if (item.cid == identityItem.cid) {
+              item.ispick = true;
+            }
+          });
           return item;
         });
       } catch (error) {}
@@ -180,21 +171,20 @@ export default {
         let identity = params.map((item) => {
           return item.role;
         });
-        wx.setStorageSync("identity", identity.join(","));
+        // let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+        // let prevPage = pages[pages.length - 2];
+        // //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+
+        // prevPage.setData({
+        //   // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+        //   identity: identity.join(","),
+        //   identity_arr: params,
+        // });
+        // console.log(prevPage, "prev");
         wx.navigateBack({
           delta: 1,
-          identity: identity.join(","),
         });
-      } catch (error) {
-        let identity = params.map((item) => {
-          return item.role;
-        });
-        wx.setStorageSync("identity", identity.join(","));
-        wx.navigateBack({
-          delta: 1,
-          identity: identity.join(","),
-        });
-      }
+      } catch (error) {}
     },
   },
   created() {

@@ -140,19 +140,7 @@ component.options.__file = "src/pages/user/identity/index.vue"
         realidentity: ""
       },
       identity: [],
-      identity_data: [// {
-        //   id: 1,
-        //   name: "艺人",
-        //   ispick: false,
-        //   is_artist: true,
-        // },
-        // {
-        //   id: 2,
-        //   name: "非艺人",
-        //   ispick: false,
-        //   is_artist: false,
-        // },
-      ]
+      identity_data: []
     };
   },
   methods: {
@@ -197,7 +185,6 @@ component.options.__file = "src/pages/user/identity/index.vue"
       var index = this.identity.findIndex(function (ele) {
         return ele.code == "ACTOR";
       });
-      console.log(index, "index");
 
       if (index != -1) {
         wx.showModal({
@@ -246,6 +233,13 @@ component.options.__file = "src/pages/user/identity/index.vue"
                 if (data.user_career.career_label) _this2.identity = data.user_career.career_label;
                 _this2.identity_data = data.career_list.map(function (item) {
                   item.ispick = false;
+
+                  _this2.identity.map(function (identityItem) {
+                    if (item.cid == identityItem.cid) {
+                      item.ispick = true;
+                    }
+                  });
+
                   return item;
                 });
                 _context.next = 13;
@@ -265,8 +259,7 @@ component.options.__file = "src/pages/user/identity/index.vue"
     },
     creatCareer: function creatCareer(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res, identity, _identity;
-
+        var res, identity;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -279,33 +272,32 @@ component.options.__file = "src/pages/user/identity/index.vue"
                 res = _context2.sent;
                 identity = params.map(function (item) {
                   return item.role;
-                });
-                wx.setStorageSync("identity", identity.join(","));
+                }); // let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+                // let prevPage = pages[pages.length - 2];
+                // //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+                // prevPage.setData({
+                //   // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+                //   identity: identity.join(","),
+                //   identity_arr: params,
+                // });
+                // console.log(prevPage, "prev");
+
                 wx.navigateBack({
-                  delta: 1,
-                  identity: identity.join(",")
+                  delta: 1
                 });
-                _context2.next = 14;
+                _context2.next = 10;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
-                _identity = params.map(function (item) {
-                  return item.role;
-                });
-                wx.setStorageSync("identity", _identity.join(","));
-                wx.navigateBack({
-                  delta: 1,
-                  identity: _identity.join(",")
-                });
 
-              case 14:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     }
   },

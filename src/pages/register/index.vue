@@ -97,11 +97,16 @@
               v-model="identity"
               @focus="identityFocus"
             /> -->
-            <view class="picker_children pick_city picked" v-if="identity">
+            <view>{{ globalData.identity }}</view>
+            <view
+              class="picker_children pick_city picked"
+              v-if="identity"
+              @tap="identityFocus"
+            >
               {{ identity }}
             </view>
             <view class="picker_children" v-else @tap="identityFocus"
-              >请选择身份</view
+              >请选择身份{{ globalData.identity }}</view
             >
           </view>
         </view>
@@ -117,7 +122,7 @@
 <script>
 import "./index.scss";
 // import weCropper from "../we-cropper/index.vue";
-import { getArea, updateUser } from "../../api/index";
+import { getCareer, updateUser } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 export default {
   name: "register",
@@ -134,16 +139,7 @@ export default {
       regionList: [],
       multiArray: [], //地区
       type: 0,
-      identityList: [
-        "摄影师",
-        "模特",
-        "化妆师",
-        "修图师",
-        "商家",
-        "经纪人",
-        "造型师",
-        "素人模特",
-      ],
+      identityList: [],
     };
   },
   // components: {
@@ -194,24 +190,35 @@ export default {
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
-        select_city: this.select_city,
+        addressName: this.select_city,
+        address: this.regionList,
         career_label: this.identity,
         avatar: this.avatar,
+        career_label: this.identityList,
       };
-      // career_label: [
-      //   {
-      //     career_id: "",
-      //     role: "摄影师",
-      //   },
-      // ];
-      this.updateUser({});
-      console.log(params);
+      this.updateUser(params);
     },
 
     async updateUser(params) {
       try {
         let res = await updateUser(params);
-        console.log("成功！", res);
+        // 跳转首页
+        wx.switchTab({
+          url: "/pages/home/index",
+        });
+      } catch (error) {}
+    },
+    async getCareer(params) {
+      try {
+        let res = await getCareer(params);
+        let data = res.data.data;
+        if (data.user_career.career_label) {
+          let arr = data.user_career.career_label.map((item) => {
+            return item.role;
+          });
+          this.identity = arr.join(".");
+          this.identityList = data.user_career.career_label;
+        }
       } catch (error) {}
     },
   },
@@ -219,6 +226,12 @@ export default {
     let userInfo = wx.getStorageSync("userInfo");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
+  },
+  onShow() {
+    // let pages = getCurrentPages();
+    // let currPage = pages[pages.length - 1]; //当前页面
+    // let data = currPage.data;
+    this.getCareer("");
   },
 };
 </script>

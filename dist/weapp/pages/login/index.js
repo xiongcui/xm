@@ -127,7 +127,7 @@ component.options.__file = "src/pages/login/index.vue"
       var _this = this;
 
       wx.getUserProfile({
-        desc: "用于完善个人资料",
+        desc: "用于完善会员资料",
         success: function success(res) {
           _this2.userInfo.avatar = res.userInfo.avatarUrl;
           _this2.userInfo.nickname = res.userInfo.nickName;

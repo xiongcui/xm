@@ -49,12 +49,19 @@ component.options.__file = "src/pages/register/index.vue"
 "use strict";
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/register/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/pages/register/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 
 
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -191,7 +198,7 @@ component.options.__file = "src/pages/register/index.vue"
       multiArray: [],
       //地区
       type: 0,
-      identityList: ["摄影师", "模特", "化妆师", "修图师", "商家", "经纪人", "造型师", "素人模特"]
+      identityList: []
     };
   },
   // components: {
@@ -215,50 +222,45 @@ component.options.__file = "src/pages/register/index.vue"
     //   this.identity = this.identityList[e.detail.value];
     // },
     identityFocus: function identityFocus() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/user/identity/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "b"])("/pages/user/identity/index");
     },
     submit: function submit() {
       if (!this.nickname) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写名称！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写名称！");
         return false;
       }
 
       if (this.sex === "") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择性别！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择性别！");
         return false;
       }
 
       if (!this.date) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择生日！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择生日！");
         return false;
       }
 
       if (!this.select_city) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择地区！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择地区！");
         return false;
       }
 
       if (!this.identity) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择身份！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择身份！");
         return false;
       }
 
-      var params = {
+      var params = Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
-        select_city: this.select_city,
+        addressName: this.select_city,
+        address: this.regionList,
         career_label: this.identity,
         avatar: this.avatar
-      }; // career_label: [
-      //   {
-      //     career_id: "",
-      //     role: "摄影师",
-      //   },
-      // ];
+      }, "career_label", this.identityList);
 
-      this.updateUser({});
-      console.log(params);
+      this.updateUser(params);
     },
     updateUser: function updateUser(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
@@ -269,11 +271,14 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "d"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* updateUser */ "d"])(params);
 
               case 3:
                 res = _context.sent;
-                console.log("成功！", res);
+                // 跳转首页
+                wx.switchTab({
+                  url: "/pages/home/index"
+                });
                 _context.next = 9;
                 break;
 
@@ -288,12 +293,58 @@ component.options.__file = "src/pages/register/index.vue"
           }
         }, _callee, null, [[0, 7]]);
       }))();
+    },
+    getCareer: function getCareer(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, data, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* getCareer */ "b"])(params);
+
+              case 3:
+                res = _context2.sent;
+                data = res.data.data;
+
+                if (data.user_career.career_label) {
+                  arr = data.user_career.career_label.map(function (item) {
+                    return item.role;
+                  });
+                  _this.identity = arr.join(".");
+                  _this.identityList = data.user_career.career_label;
+                }
+
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
     }
   },
   created: function created() {
     var userInfo = wx.getStorageSync("userInfo");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
+  },
+  onShow: function onShow() {
+    // let pages = getCurrentPages();
+    // let currPage = pages[pages.length - 1]; //当前页面
+    // let data = currPage.data;
+    this.getCareer("");
   }
 });
 
@@ -475,10 +526,14 @@ var render = function () {
         _c("view", { staticClass: "item ub item-b" }, [
           _c("view", { staticClass: "item_label" }, [_vm._v("身份")]),
           _c("view", { staticClass: "ub-f1 item_input" }, [
+            _c("view", [_vm._v(_vm._s(_vm.globalData.identity))]),
             _vm.identity
               ? _c(
                   "view",
-                  { staticClass: "picker_children pick_city picked" },
+                  {
+                    staticClass: "picker_children pick_city picked",
+                    on: { tap: _vm.identityFocus },
+                  },
                   [_vm._v(" " + _vm._s(_vm.identity) + " ")]
                 )
               : _c(
@@ -487,7 +542,7 @@ var render = function () {
                     staticClass: "picker_children",
                     on: { tap: _vm.identityFocus },
                   },
-                  [_vm._v("请选择身份")]
+                  [_vm._v("请选择身份" + _vm._s(_vm.globalData.identity))]
                 ),
           ]),
         ]),
