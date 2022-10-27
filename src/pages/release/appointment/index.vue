@@ -8,7 +8,7 @@
           class="appointment-image"
         >
         </image>
-        <text class="appointment-txt">约摄影师</text>
+        <text class="appointment-txt">摄影师</text>
       </view>
       <view class="appointment-item">
         <image
@@ -17,25 +17,7 @@
           class="appointment-image"
         >
         </image>
-        <text class="appointment-txt">约摄像师</text>
-      </view>
-      <view class="appointment-item">
-        <image
-          src="../../../assets/images/model.png"
-          mode="aspectFit"
-          class="appointment-image"
-        >
-        </image>
-        <text class="appointment-txt">约模特</text>
-      </view>
-      <view class="appointment-item">
-        <image
-          src="../../../assets/images/business.png"
-          mode="aspectFit"
-          class="appointment-image"
-        >
-        </image>
-        <text class="appointment-txt">约商家</text>
+        <text class="appointment-txt">摄像师</text>
       </view>
       <view class="appointment-item">
         <image
@@ -44,7 +26,16 @@
           class="appointment-image"
         >
         </image>
-        <text class="appointment-txt">约化妆师</text>
+        <text class="appointment-txt">造型师</text>
+      </view>
+      <view class="appointment-item">
+        <image
+          src="../../../assets/images/model.png"
+          mode="aspectFit"
+          class="appointment-image"
+        >
+        </image>
+        <text class="appointment-txt">经纪人</text>
       </view>
       <view class="appointment-item">
         <image
@@ -53,7 +44,16 @@
           class="appointment-image"
         >
         </image>
-        <text class="appointment-txt">约修图师</text>
+        <text class="appointment-txt">导演</text>
+      </view>
+      <view class="appointment-item">
+        <image
+          src="../../../assets/images/business.png"
+          mode="aspectFit"
+          class="appointment-image"
+        >
+        </image>
+        <text class="appointment-txt">商家</text>
       </view>
     </view>
   </view>

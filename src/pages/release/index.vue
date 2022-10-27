@@ -12,16 +12,31 @@
         </view>
         <view class="release-right">
           <view>
-            <text class="release-list-title"> 发布约拍 </text>
+            <text class="release-list-title"> 发布通告 </text>
           </view>
           <view>
-            <text class="release-list-content"
-              >您可以发布约拍需求。约拍摄影师、模特、商家、化妆师、修图师</text
-            >
+            <text class="release-list-content">招模特/红人/主播/演员等</text>
           </view>
         </view>
       </view>
       <view class="release-item" @tap="releaseUrl(2)">
+        <view class="release-left">
+          <image
+            src="../../assets/images/publishLocation.png"
+            mode="aspectFit"
+            class="release-image"
+          ></image>
+        </view>
+        <view class="release-right">
+          <view>
+            <text class="release-list-title"> 发布约单 </text>
+          </view>
+          <view>
+            <text class="release-list-content">艺人发布合作意向</text>
+          </view>
+        </view>
+      </view>
+      <view class="release-item" @tap="releaseUrl(3)">
         <view class="release-left">
           <image
             src="../../assets/images/works.png"
@@ -34,32 +49,11 @@
             <text class="release-list-title"> 发布作品 </text>
           </view>
           <view>
-            <text class="release-list-content">您可以上传自己的作品或照片</text>
-          </view>
-          <view>
-            <text class="release-list-content">来提高自己的约拍吸引力</text>
+            <text class="release-list-content">分享您的优秀作品</text>
           </view>
         </view>
       </view>
-      <view class="release-item" @tap="releaseUrl(3)">
-        <view class="release-left">
-          <image
-            src="../../assets/images/publishLocation.png"
-            mode="aspectFit"
-            class="release-image"
-          ></image>
-        </view>
-        <view class="release-right">
-          <view>
-            <text class="release-list-title"> 发布场地 </text>
-          </view>
-          <view>
-            <text class="release-list-content"
-              >您可以分享自己知道的比较适合的约拍场地，帮助他人创作，并获得奖励</text
-            >
-          </view>
-        </view>
-      </view>
+
       <view class="release-item">
         <view class="release-left">
           <image
@@ -74,11 +68,6 @@
           </view>
           <view>
             <text class="release-list-content">免费制作专业高清模卡</text>
-          </view>
-          <view>
-            <text class="release-list-content"
-              >模特卡、主播卡、演员卡数百种模版</text
-            >
           </view>
         </view>
       </view>
@@ -98,7 +87,8 @@ export default {
           url = "appointment/index?id=1";
           break;
         case 2:
-          url = "works/index?id=1";
+          url = "appointment/index?id=1";
+          // url = "works/index?id=1";
           break;
         case 3:
           url = "field/index?id=1";

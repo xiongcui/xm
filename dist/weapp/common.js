@@ -5,13 +5,13 @@
   !*** ./src/api/index.js ***!
   \**************************/
 /*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer */
-/*! exports used: creatCareer, getCareer, getPhone, updateUser, uploadFile, wxlogin */
+/*! exports used: creatCareer, getCareer, getPhone, updateUser, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return wxlogin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getPhone; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return uploadFile; });
+/* unused harmony export uploadFile */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return updateUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return getCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return creatCareer; });

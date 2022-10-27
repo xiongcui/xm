@@ -9,13 +9,17 @@
     background: #ffffff;
     border-radius: 4px;
   }
-  .works-title {
+  .works-title,
+  .works-info {
     padding: 10px 0px;
     display: flex;
     align-items: center;
     height: 66px;
     border-bottom: 1px solid #eeeeee;
     color: #333333;
+  }
+  .works-info {
+    justify-content: space-between;
   }
   .check-tips {
     color: #fe3e3f;
@@ -36,14 +40,15 @@
   }
   .works-upload-img,
   .works-upload-video {
-    width: 140px;
-    height: 140px;
+    width: 158px;
+    height: 158px;
     margin-right: 10px;
     background-color: #f7f7f7;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 16px;
   }
   .upload-width {
     width: 100%;
@@ -56,17 +61,27 @@
   }
   .upload-txt {
     color: #c7c7c7;
-    font-size: 22px;
+    font-size: 26px;
   }
   .works-upload-list {
     display: flex;
+    flex-wrap: wrap;
+    // justify-content: space-between;
   }
   .works-input,
-  .works-switch {
-    margin-left: 186px;
+  .works-select {
+    // margin-left: 186px;
+    width: 80%;
   }
-  .works-switch {
+  .works-info .works-input {
+    text-align: right;
+  }
+  .works-select-item {
     color: #808080;
+    text-align: right;
+    background: url("../../../assets/images/right.png") right center no-repeat;
+    background-size: 12px;
+    padding-right: 24px;
   }
   .switch-btn {
     margin-left: 16px;

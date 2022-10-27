@@ -44,15 +44,45 @@ component.options.__file = "src/pages/release/works/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/release/works/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
-/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
-
-
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/release/works/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -280,168 +310,52 @@ component.options.__file = "src/pages/release/works/index.vue"
         name: "复古",
         checked: false
       }],
-      switchChecked: false
+      switchChecked: false,
+      charge: "",
+      select_city: ""
     };
   },
   methods: {
-    // 选择图片
-    selectPictures: function selectPictures() {
-      var that = this; // 最多上传图片数量
-
-      if (that.imgList.length < that.maxImg) {
-        wx.chooseImage({
-          // 最多可以选择的图片张数（最大数量-当前已上传数量）
-          count: that.maxImg - that.imgList.length,
-          sizeType: "compressed",
-          success: function success(res) {
-            console.log(res, "res");
-
-            for (var i = 0; i < res.tempFilePaths.length; i++) {
-              that.imgList.push(res.tempFilePaths[i]);
-            }
-          }
-        });
-      } else {
-        wx.showToast({
-          title: "最多上传" + that.maxImg + "张照片！"
-        });
-      }
-    },
-    // 图片转base64
-    conversionAddress: function conversionAddress() {
-      var that = this; // 判断是否有图片
-
-      if (that.imgList.length !== 0) {
-        for (var i = 0; i < that.imgList.length; i++) {
-          // 转base64
-          wx.getFileSystemManager().readFile({
-            filePath: that.imgList[i],
-            encoding: "base64",
-            success: function success(res) {
-              console.log(res);
-              that.baseImg.push(res.data); //转换完毕，执行上传
-
-              if (that.imgList.length == that.baseImg.length) {
-                that.upCont({
-                  uuid: "123456",
-                  type: "avatar",
-                  file: that.baseImg
-                });
-              }
-            }
-          });
-        }
-      } else {
-        wx.showToast({
-          title: "请先选择图片！"
-        });
-      }
-    },
-    selectVideo: function selectVideo() {
-      var _this2 = this;
-
-      var _this = this;
-
-      wx.chooseMedia({
-        count: 1,
-        mediaType: ["video"],
-        sourceType: ["album", "camera"],
-        maxDuration: 30,
-        camera: "back",
-        success: function success(res) {
-          console.log(res, "res");
-          var arr = res.tempFiles;
-          var videoInfo = {};
-          arr.map(function (v, i) {
-            v["progress"] = 0;
-            videoInfo = v;
-          });
-
-          _this2.videolist.push(videoInfo);
-
-          console.log(videoInfo);
-
-          for (var i = 0; i < _this2.videolist.length; i++) {
-            // 转base64
-            wx.getFileSystemManager().readFile({
-              filePath: _this2.videolist[i],
-              // encoding: "base64",
-              success: function success(res) {
-                console.log(res, "res"); // this.baseImg.push("data:image/png;base64," + res.data);
-                //转换完毕，执行上传
-              }
-            });
-          } // _this.upImgs(videoInfo, "video");
-
-        }
-      });
-    },
-    upCont: function upCont(params) {
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* uploadFile */ "e"])(params);
-
-              case 3:
-                res = _context.sent;
-                console.log("成功！", res);
-                _context.next = 9;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 7]]);
-      }))();
-    },
     chooseImage: function chooseImage() {
+      if (this.imgList.length >= 9) {
+        wx.showToast({
+          title: "最多上传9张图！",
+          icon: "none"
+        });
+        return false;
+      }
+
       var _this = this;
 
       wx.chooseMedia({
-        count: 1,
+        count: 9,
         mediaType: ["image"],
         sourceType: ["album", "camera"],
         maxDuration: 30,
         camera: "back",
         success: function success(res) {
+          wx.showLoading({
+            title: "正在上传中"
+          });
           var arr = res.tempFiles;
           var imgInfo = {};
           arr.map(function (v, i) {
             v["progress"] = 0;
             imgInfo = v;
+
+            _this.upImgs(imgInfo, "image");
           });
-
-          _this.imgList.push({
-            imgurl: imgInfo.tempFilePath
-          });
-
-          console.log(2222);
-
-          _this.upImgs(imgInfo, "image");
         }
       });
     },
     chooseVideo: function chooseVideo() {
-      var _this3 = this;
-
       var _this = this;
 
       wx.chooseMedia({
         count: 1,
         mediaType: ["video"],
         sourceType: ["album", "camera"],
-        maxDuration: 30,
+        maxDuration: 58,
         camera: "back",
         success: function success(res) {
           console.log(res, "res");
@@ -450,20 +364,48 @@ component.options.__file = "src/pages/release/works/index.vue"
           arr.map(function (v, i) {
             v["progress"] = 0;
             videoInfo = v;
-          });
+          }); // this.videolist.push(videoInfo);
 
-          _this3.videolist.push(videoInfo);
+          console.log(videoInfo, "videoInfo"); //获取临时存放的视频资源
+          // let tempFilePath = res.tempFiles[0].tempFilePath;
+          //获取该视频的播放时间
 
-          console.log(videoInfo);
+          var duration = res.tempFiles[0].duration;
+          console.log("视频播放时间为" + duration); //获取视频的大小(MB单位)
 
-          _this.upImgs(videoInfo, "video");
+          var size = parseFloat(res.tempFiles[0].size / 1024 / 1024).toFixed(1);
+          console.log("视频大小为" + size); //获取视频的高度
+
+          var height = res.tempFiles[0].height;
+          console.log("视频高度为" + height); //获取视频的宽度
+
+          var width = res.tempFiles[0].width;
+          console.log("视频宽度为" + width); //校验大小后，符合进行上传
+
+          if (size > 20) {
+            var beyongSize = size - 20; //获取视频超出限制大小的数量
+
+            wx.showToast({
+              title: "上传的视频大小超限,超出" + beyongSize + "MB,请重新上传！",
+              icon: "none"
+            });
+            return;
+          } else {
+            //符合大小限制，进行上传
+            console.log("开始上传！！！");
+
+            _this.upImgs(videoInfo, "video");
+          } // _this.upImgs(videoInfo, "video");
+
         }
       });
     },
     upImgs: function upImgs(dataInfo, type) {
+      var _this2 = this;
+
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_3__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -479,12 +421,21 @@ component.options.__file = "src/pages/release/works/index.vue"
         success: function success(res) {
           wx.hideLoading(); //判断上传的是图片还是视频
 
-          if (type == "video") {
-            // _this.setData({
-            console.log("视频地址：" + res);
-            console.log("视频封面：" + res + "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"); // ))
+          var data = JSON.parse(res.data);
+
+          if (data.code == 200) {
+            if (type == "video") {
+              // _this.setData({
+              console.log("视频地址：" + res);
+              console.log("视频封面：" + res + "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"); // ))
+            } else {
+              _this2.imgList.push(data.data.file1);
+            }
           } else {
-            console.log("图片地址：" + res);
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none"
+            });
           }
         }
       });
@@ -517,28 +468,6 @@ component.options.__file = "src/pages/release/works/index.vue"
         name: this.name
       };
       console.log(params, "params");
-    },
-    test: function test() {
-      wx.request({
-        url: "https://tapi.cupz.cn/v1/user/image",
-        //仅为示例，并非真实的接口地址
-        method: "POST",
-        data: {
-          height: 176,
-          weight: 56,
-          bust: 82,
-          waist: 67,
-          hip: 90,
-          size: 38
-        },
-        header: {
-          "content-type": "application/json" // 默认值
-
-        },
-        success: function success(res) {
-          console.log(res.data);
-        }
-      }); //
     }
   }
 });
@@ -561,10 +490,20 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "works" }, [
-    _c("view", { on: { tap: _vm.test } }, [_vm._v("测试")]),
     _c("view", { staticClass: "works-item" }, [
       _c("view", { staticClass: "works-title" }, [
-        _vm._v(" 作品名称/描述 "),
+        _vm._v(" 标题 "),
+        _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
+      ]),
+      _c("input", {
+        staticClass: "works-name",
+        attrs: { placeholder: "填写标题会有更多邀约哦～", value: _vm.name },
+        on: { blur: _vm.nameBlur },
+      }),
+    ]),
+    _c("view", { staticClass: "works-item" }, [
+      _c("view", { staticClass: "works-title" }, [
+        _vm._v(" 描述 "),
         _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
       ]),
       _c("textarea", {
@@ -572,7 +511,7 @@ var render = function () {
         attrs: {
           "auto-height": "",
           placeholder:
-            "请输入作品名称/描述…（不能包含任何联系方式，照片中不能有漏点图片，否则审核不通过，5个字以上）",
+            "请描述您的约单内容，如您的特长、才艺、需求、地点、时间等（内容中不得含有任何联系方式，敏感语句、私房话题等，否则审核不予通过，至少7字以上）",
           value: _vm.name,
         },
         on: { blur: _vm.nameBlur },
@@ -580,25 +519,69 @@ var render = function () {
     ]),
     _c("view", { staticClass: "works-item" }, [
       _c("view", { staticClass: "works-title" }, [
-        _vm._v(" 上传作品 "),
+        _vm._v(" 上传照片/视频 "),
         _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
-        _c("text", { staticClass: "works-tips" }, [
-          _vm._v("必须本人拍摄/本人照片"),
-        ]),
       ]),
       _c("view", { staticClass: "works-upload" }, [
         _c(
           "view",
           { staticClass: "works-upload-list" },
-          _vm._l(_vm.imgList, function (item, index) {
-            return _c("view", { key: index, staticClass: "works-upload-img" }, [
-              _c("image", {
-                staticClass: "upload-width",
-                attrs: { src: item, mode: "aspectFit" },
-              }),
-            ])
-          }),
-          0
+          [
+            _vm._l(_vm.imgList, function (item, index) {
+              return _c(
+                "view",
+                { key: index, staticClass: "works-upload-img" },
+                [
+                  _c("image", {
+                    staticClass: "upload-width",
+                    attrs: { src: item, mode: "aspectFit" },
+                  }),
+                ]
+              )
+            }),
+            _c(
+              "view",
+              { staticClass: "works-upload-img", on: { tap: _vm.chooseImage } },
+              [
+                _c("image", {
+                  staticClass: "upload-img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../../assets/images/upload-img.png */ "./src/assets/images/upload-img.png"),
+                    mode: "aspectFit",
+                  },
+                }),
+                _c("view", [
+                  _c("text", { staticClass: "upload-txt" }, [
+                    _vm._v("上传照片"),
+                  ]),
+                ]),
+              ]
+            ),
+            !_vm.imgList.length
+              ? _c(
+                  "view",
+                  {
+                    staticClass: "works-upload-video",
+                    on: { tap: _vm.chooseVideo },
+                  },
+                  [
+                    _c("image", {
+                      staticClass: "upload-video",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../assets/images/upload-video.png */ "./src/assets/images/upload-video.png"),
+                        mode: "aspectFit",
+                      },
+                    }),
+                    _c("view", [
+                      _c("text", { staticClass: "upload-txt" }, [
+                        _vm._v("上传视频"),
+                      ]),
+                    ]),
+                  ]
+                )
+              : _vm._e(),
+          ],
+          2
         ),
         _c(
           "view",
@@ -617,74 +600,102 @@ var render = function () {
           }),
           0
         ),
-        _c(
-          "view",
-          { staticClass: "works-upload-img", on: { tap: _vm.chooseImage } },
-          [
-            _c("image", {
-              staticClass: "upload-img",
-              attrs: {
-                src: __webpack_require__(/*! ../../../assets/images/upload-img.png */ "./src/assets/images/upload-img.png"),
-                mode: "aspectFit",
-              },
-            }),
-            _c("view", [
-              _c("text", { staticClass: "upload-txt" }, [_vm._v("上传照片")]),
-            ]),
-          ]
-        ),
-        _c(
-          "view",
-          { staticClass: "works-upload-video", on: { tap: _vm.chooseVideo } },
-          [
-            _c("image", {
-              staticClass: "upload-video",
-              attrs: {
-                src: __webpack_require__(/*! ../../../assets/images/upload-video.png */ "./src/assets/images/upload-video.png"),
-                mode: "aspectFit",
-              },
-            }),
-            _c("view", [
-              _c("text", { staticClass: "upload-txt" }, [_vm._v("上传视频")]),
-            ]),
-          ]
-        ),
       ]),
     ]),
     _c("view", { staticClass: "works-item" }, [
-      _c("view", { staticClass: "works-title" }, [
-        _vm._v(" 使用设备 "),
+      _c("view", { staticClass: "works-info" }, [
+        _c("text", [_vm._v("时间")]),
         _c("input", {
           staticClass: "works-input",
-          attrs: { placeholder: "请输入使用设备（选填）", value: _vm.device },
+          attrs: { placeholder: "您期望的合作时间（选填）", value: _vm.device },
         }),
       ]),
-      _c("view", { staticClass: "works-title" }, [
-        _vm._v(" 拍摄地点 "),
+      _c("view", { staticClass: "works-info" }, [
+        _c("text", [_vm._v("地点")]),
         _c("input", {
           staticClass: "works-input",
-          attrs: { placeholder: "请输入拍摄地点（选填）", value: _vm.place },
+          attrs: { placeholder: "您期望的合作地点（选填）", value: _vm.place },
         }),
       ]),
-      _c("view", { staticClass: "works-title" }, [
-        _vm._v(" 约拍返片 "),
-        _c("view", { staticClass: "works-switch" }, [
-          _c("text", [_vm._v("是否约拍返片")]),
-          _c("switch", {
-            staticClass: "switch-btn",
-            attrs: {
-              name: "switch",
-              color: "#ff6467",
-              checked: _vm.switchChecked,
+      _c(
+        "view",
+        { staticClass: "works-info" },
+        [
+          _c("text", [_vm._v("收费模式")]),
+          _c(
+            "picker",
+            {
+              staticClass: "works-select",
+              attrs: { mode: "region", value: "region" },
             },
-            on: { change: _vm.switchChange },
-          }),
-        ]),
-      ]),
+            [
+              _vm.charge
+                ? _c("view", { staticClass: "works-select-item" }, [
+                    _vm._v(_vm._s(_vm.charge)),
+                  ])
+                : _c("view", { staticClass: "works-select-item" }, [
+                    _vm._v("请选择"),
+                  ]),
+            ]
+          ),
+        ],
+        1
+      ),
+      _c(
+        "view",
+        { staticClass: "works-info" },
+        [
+          _c("text", [_vm._v("面向地区")]),
+          _c(
+            "picker",
+            {
+              staticClass: "works-select",
+              attrs: { mode: "region", value: "region" },
+            },
+            [
+              _vm.select_city
+                ? _c("view", { staticClass: "works-select-item" }, [
+                    _vm._v(_vm._s(_vm.select_city)),
+                  ])
+                : _c("view", { staticClass: "works-select-item" }, [
+                    _vm._v("请选择"),
+                  ]),
+            ]
+          ),
+        ],
+        1
+      ),
     ]),
     _c("view", { staticClass: "works-item" }, [
       _c("view", { staticClass: "works-title" }, [
-        _vm._v(" 主题标签 "),
+        _vm._v(" 风格标签 "),
+        _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
+      ]),
+      _c(
+        "view",
+        { staticClass: "tag-list" },
+        _vm._l(_vm.taglist, function (item, index) {
+          return _c(
+            "text",
+            {
+              key: index,
+              staticClass: "tag-txt",
+              class: item.checked ? "active" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.chooseTag(index)
+                },
+              },
+            },
+            [_vm._v(_vm._s(item.name))]
+          )
+        }),
+        0
+      ),
+    ]),
+    _c("view", { staticClass: "works-item" }, [
+      _c("view", { staticClass: "works-title" }, [
+        _vm._v(" 约拍通告 "),
         _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
       ]),
       _c(

@@ -123,17 +123,6 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "release",
@@ -147,7 +136,8 @@ component.options.__file = "src/pages/release/index.vue"
           break;
 
         case 2:
-          url = "works/index?id=1";
+          url = "appointment/index?id=1"; // url = "works/index?id=1";
+
           break;
 
         case 3:
@@ -218,14 +208,12 @@ var render = function () {
           _c("view", { staticClass: "release-right" }, [
             _c("view", [
               _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布约拍 "),
+                _vm._v(" 发布通告 "),
               ]),
             ]),
             _c("view", [
               _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "您可以发布约拍需求。约拍摄影师、模特、商家、化妆师、修图师"
-                ),
+                _vm._v("招模特/红人/主播/演员等"),
               ]),
             ]),
           ]),
@@ -238,6 +226,40 @@ var render = function () {
           on: {
             tap: function ($event) {
               return _vm.releaseUrl(2)
+            },
+          },
+        },
+        [
+          _c("view", { staticClass: "release-left" }, [
+            _c("image", {
+              staticClass: "release-image",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/publishLocation.png */ "./src/assets/images/publishLocation.png"),
+                mode: "aspectFit",
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "release-right" }, [
+            _c("view", [
+              _c("text", { staticClass: "release-list-title" }, [
+                _vm._v(" 发布约单 "),
+              ]),
+            ]),
+            _c("view", [
+              _c("text", { staticClass: "release-list-content" }, [
+                _vm._v("艺人发布合作意向"),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "release-item",
+          on: {
+            tap: function ($event) {
+              return _vm.releaseUrl(3)
             },
           },
         },
@@ -259,48 +281,7 @@ var render = function () {
             ]),
             _c("view", [
               _c("text", { staticClass: "release-list-content" }, [
-                _vm._v("您可以上传自己的作品或照片"),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v("来提高自己的约拍吸引力"),
-              ]),
-            ]),
-          ]),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
-              return _vm.releaseUrl(3)
-            },
-          },
-        },
-        [
-          _c("view", { staticClass: "release-left" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/publishLocation.png */ "./src/assets/images/publishLocation.png"),
-                mode: "aspectFit",
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布场地 "),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "您可以分享自己知道的比较适合的约拍场地，帮助他人创作，并获得奖励"
-                ),
+                _vm._v("分享您的优秀作品"),
               ]),
             ]),
           ]),
@@ -325,11 +306,6 @@ var render = function () {
           _c("view", [
             _c("text", { staticClass: "release-list-content" }, [
               _vm._v("免费制作专业高清模卡"),
-            ]),
-          ]),
-          _c("view", [
-            _c("text", { staticClass: "release-list-content" }, [
-              _vm._v("模特卡、主播卡、演员卡数百种模版"),
             ]),
           ]),
         ]),

@@ -142,7 +142,7 @@ var render = function () {
             mode: "aspectFit",
           },
         }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("约摄影师")]),
+        _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄影师")]),
       ]),
       _c("view", { staticClass: "appointment-item" }, [
         _c("image", {
@@ -152,27 +152,7 @@ var render = function () {
             mode: "aspectFit",
           },
         }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("约摄像师")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/model.png */ "./src/assets/images/model.png"),
-            mode: "aspectFit",
-          },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("约模特")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png"),
-            mode: "aspectFit",
-          },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("约商家")]),
+        _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄像师")]),
       ]),
       _c("view", { staticClass: "appointment-item" }, [
         _c("image", {
@@ -182,7 +162,17 @@ var render = function () {
             mode: "aspectFit",
           },
         }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("约化妆师")]),
+        _c("text", { staticClass: "appointment-txt" }, [_vm._v("造型师")]),
+      ]),
+      _c("view", { staticClass: "appointment-item" }, [
+        _c("image", {
+          staticClass: "appointment-image",
+          attrs: {
+            src: __webpack_require__(/*! ../../../assets/images/model.png */ "./src/assets/images/model.png"),
+            mode: "aspectFit",
+          },
+        }),
+        _c("text", { staticClass: "appointment-txt" }, [_vm._v("经纪人")]),
       ]),
       _c("view", { staticClass: "appointment-item" }, [
         _c("image", {
@@ -192,7 +182,17 @@ var render = function () {
             mode: "aspectFit",
           },
         }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("约修图师")]),
+        _c("text", { staticClass: "appointment-txt" }, [_vm._v("导演")]),
+      ]),
+      _c("view", { staticClass: "appointment-item" }, [
+        _c("image", {
+          staticClass: "appointment-image",
+          attrs: {
+            src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png"),
+            mode: "aspectFit",
+          },
+        }),
+        _c("text", { staticClass: "appointment-txt" }, [_vm._v("商家")]),
       ]),
     ]),
   ])
@@ -301,7 +301,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/pages/release/appointment/index.vue");
 
 
-var config = {"navigationBarTitleText":"选择约拍对象"};
+var config = {"navigationBarTitleText":"选择约单对象"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'pages/release/appointment/index', {root:{cn:[]}}, config || {}))
