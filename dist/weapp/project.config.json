@@ -1,29 +1,52 @@
 {
-    "miniprogramRoot": "",
-    "projectname": "xiamiyuepai",
-    "description": "虾米约拍",
-    "appid": "wxf25a68ca76d7dcbe",
-    "setting": {
-        "urlCheck": true,
-        "es6": false,
-        "postcss": false,
-        "minified": false,
-        "ignoreUploadUnusedFiles": true,
-        "babelSetting": {
-            "ignore": [],
-            "disablePlugins": [],
-            "outputPath": ""
-        }
+  "miniprogramRoot": "./",
+  "projectname": "xiamiyuepai",
+  "description": "虾米约拍",
+  "appid": "wxf2d391f5561eae0c",
+  "setting": {
+    "localPlugins": false,
+    "urlCheck": true,
+    "es6": false,
+    "enhance": false,
+    "postcss": false,
+    "preloadBackgroundData": false,
+    "minified": false,
+    "coverView": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": true,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
     },
-    "compileType": "miniprogram",
-    "libVersion": "2.24.4",
-    "packOptions": {
-        "ignore": [],
-        "include": []
-    },
-    "condition": {},
-    "editorSetting": {
-        "tabIndent": "insertSpaces",
-        "tabSize": 4
-    }
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "useLanDebug": false,
+    "showES6CompileOption": false,
+    "scopeDataCheck": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.25.4",
+  "srcMiniprogramRoot": "dist/weapp/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 4
+  },
+  "condition": {}
 }

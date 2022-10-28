@@ -48,3 +48,19 @@ export const creatCareer = (data) => {
     data,
   });
 };
+// 获得参数
+export const publicConfig = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/config",
+    method: "post",
+    data,
+  });
+};
+// 创建约拍
+export const creatInvite = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/publish/invite",
+    method: "post",
+    data,
+  });
+};

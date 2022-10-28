@@ -1,7 +1,7 @@
 <template>
   <view class="appointment">
     <view class="appointment-list">
-      <view class="appointment-item">
+      <view class="appointment-item" @tap="goyuedan('20001')">
         <image
           src="../../../assets/images/cameraman.png"
           mode="aspectFit"
@@ -10,7 +10,7 @@
         </image>
         <text class="appointment-txt">摄影师</text>
       </view>
-      <view class="appointment-item">
+      <view class="appointment-item" @tap="goyuedan('20002')">
         <image
           src="../../../assets/images/cameraman1.png"
           mode="aspectFit"
@@ -19,7 +19,7 @@
         </image>
         <text class="appointment-txt">摄像师</text>
       </view>
-      <view class="appointment-item">
+      <view class="appointment-item" @tap="goyuedan('20003')">
         <image
           src="../../../assets/images/makeup.png"
           mode="aspectFit"
@@ -28,7 +28,7 @@
         </image>
         <text class="appointment-txt">造型师</text>
       </view>
-      <view class="appointment-item">
+      <view class="appointment-item" @tap="goyuedan('20007')">
         <image
           src="../../../assets/images/model.png"
           mode="aspectFit"
@@ -37,7 +37,7 @@
         </image>
         <text class="appointment-txt">经纪人</text>
       </view>
-      <view class="appointment-item">
+      <view class="appointment-item" @tap="goyuedan('20011')">
         <image
           src="../../../assets/images/ps.png"
           mode="aspectFit"
@@ -46,7 +46,7 @@
         </image>
         <text class="appointment-txt">导演</text>
       </view>
-      <view class="appointment-item">
+      <view class="appointment-item" @tap="goyuedan('20012')">
         <image
           src="../../../assets/images/business.png"
           mode="aspectFit"
@@ -63,6 +63,13 @@
 import "./index.scss";
 export default {
   name: "appointment",
+  methods: {
+    goyuedan(code) {
+      wx.navigateTo({
+        url: "/packageAdd/pages/yuedan/add_yuedan/index?id=" + code,
+      });
+    },
+  },
 };
 </script>
 

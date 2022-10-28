@@ -87,8 +87,8 @@ export default {
           url = "appointment/index?id=1";
           break;
         case 2:
-          url = "appointment/index?id=1";
-          // url = "works/index?id=1";
+          // url = "/packageAdd/pages/yuedan/add_yuedan/index?id=1";
+          url = "appointment/index";
           break;
         case 3:
           url = "field/index?id=1";
@@ -96,19 +96,6 @@ export default {
       }
       wx.navigateTo({
         url: url,
-        // events: {
-        //   // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
-        //   acceptDataFromOpenedPage: function (data) {
-        //     console.log(data);
-        //   },
-        //   someEvent: function (data) {
-        //     console.log(data);
-        //   },
-        // },
-        // success: function (res) {
-        //   // 通过 eventChannel 向被打开页面传送数据
-        //   res.eventChannel.emit("acceptDataFromOpenerPage", { data: "test" });
-        // },
       });
     },
   },

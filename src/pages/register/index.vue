@@ -88,15 +88,6 @@
         <view class="item ub item-b">
           <view class="item_label">身份</view>
           <view class="ub-f1 item_input">
-            <!-- <input
-              maxlength="60"
-              name="identity"
-              placeholder="请选择身份"
-              placeholderClass="nickname_tip"
-              type="text"
-              v-model="identity"
-              @focus="identityFocus"
-            /> -->
             <view>{{ globalData.identity }}</view>
             <view
               class="picker_children pick_city picked"
@@ -159,9 +150,6 @@ export default {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
     },
-    // identityChange(e) {
-    //   this.identity = this.identityList[e.detail.value];
-    // },
     identityFocus() {
       openPage("/pages/user/identity/index");
     },
@@ -198,7 +186,6 @@ export default {
       };
       this.updateUser(params);
     },
-
     async updateUser(params) {
       try {
         let res = await updateUser(params);

@@ -112,7 +112,14 @@ component.options.__file = "src/pages/release/appointment/index.vue"
 //
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "appointment"
+  name: "appointment",
+  methods: {
+    goyuedan: function goyuedan(code) {
+      wx.navigateTo({
+        url: "/packageAdd/pages/yuedan/add_yuedan/index?id=" + code
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -134,66 +141,132 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "appointment" }, [
     _c("view", { staticClass: "appointment-list" }, [
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/cameraman.png */ "./src/assets/images/cameraman.png"),
-            mode: "aspectFit",
+      _c(
+        "view",
+        {
+          staticClass: "appointment-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20001")
+            },
           },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄影师")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/cameraman1.png */ "./src/assets/images/cameraman1.png"),
-            mode: "aspectFit",
+        },
+        [
+          _c("image", {
+            staticClass: "appointment-image",
+            attrs: {
+              src: __webpack_require__(/*! ../../../assets/images/cameraman.png */ "./src/assets/images/cameraman.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄影师")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "appointment-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20002")
+            },
           },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄像师")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png"),
-            mode: "aspectFit",
+        },
+        [
+          _c("image", {
+            staticClass: "appointment-image",
+            attrs: {
+              src: __webpack_require__(/*! ../../../assets/images/cameraman1.png */ "./src/assets/images/cameraman1.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄像师")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "appointment-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20003")
+            },
           },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("造型师")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/model.png */ "./src/assets/images/model.png"),
-            mode: "aspectFit",
+        },
+        [
+          _c("image", {
+            staticClass: "appointment-image",
+            attrs: {
+              src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("text", { staticClass: "appointment-txt" }, [_vm._v("造型师")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "appointment-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20007")
+            },
           },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("经纪人")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/ps.png */ "./src/assets/images/ps.png"),
-            mode: "aspectFit",
+        },
+        [
+          _c("image", {
+            staticClass: "appointment-image",
+            attrs: {
+              src: __webpack_require__(/*! ../../../assets/images/model.png */ "./src/assets/images/model.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("text", { staticClass: "appointment-txt" }, [_vm._v("经纪人")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "appointment-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20011")
+            },
           },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("导演")]),
-      ]),
-      _c("view", { staticClass: "appointment-item" }, [
-        _c("image", {
-          staticClass: "appointment-image",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png"),
-            mode: "aspectFit",
+        },
+        [
+          _c("image", {
+            staticClass: "appointment-image",
+            attrs: {
+              src: __webpack_require__(/*! ../../../assets/images/ps.png */ "./src/assets/images/ps.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("text", { staticClass: "appointment-txt" }, [_vm._v("导演")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "appointment-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20012")
+            },
           },
-        }),
-        _c("text", { staticClass: "appointment-txt" }, [_vm._v("商家")]),
-      ]),
+        },
+        [
+          _c("image", {
+            staticClass: "appointment-image",
+            attrs: {
+              src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("text", { staticClass: "appointment-txt" }, [_vm._v("商家")]),
+        ]
+      ),
     ]),
   ])
 }

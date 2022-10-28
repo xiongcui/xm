@@ -32,16 +32,33 @@
       </view>
       <view class="works-upload">
         <view class="works-upload-list">
+          <block v-if="imgList.length">
+            <view
+              class="works-upload-img"
+              v-for="(item, index) in imgList"
+              :key="index"
+            >
+              <image :src="item" class="upload-width" mode="aspectFit"></image>
+              <text class="upload-close" @tap="uploadImgClose(index)"></text>
+            </view>
+          </block>
+          <block v-else>
+            <view
+              v-for="(item, index) in videolist"
+              :key="index"
+              class="upload-video-item"
+            >
+              <video :src="item" class="upload-video-width"></video>
+              <text class="upload-close" @tap="uploadVideoClose(index)"></text>
+            </view>
+          </block>
           <view
             class="works-upload-img"
-            v-for="(item, index) in imgList"
-            :key="index"
+            @tap="chooseImage"
+            v-if="!videolist.length"
           >
-            <image :src="item" class="upload-width" mode="aspectFit"></image>
-          </view>
-          <view class="works-upload-img" @tap="chooseImage">
             <image
-              src="../../../assets/images/upload-img.png"
+              src="../../../../assets/images/upload-img.png"
               class="upload-img"
               mode="aspectFit"
             ></image>
@@ -52,25 +69,16 @@
           <view
             class="works-upload-video"
             @tap="chooseVideo"
-            v-if="!imgList.length"
+            v-if="!imgList.length && !videolist.length"
           >
             <image
-              src="../../../assets/images/upload-video.png"
+              src="../../../../assets/images/upload-video.png"
               class="upload-video"
               mode="aspectFit"
             ></image>
             <view>
               <text class="upload-txt">上传视频</text>
             </view>
-          </view>
-        </view>
-        <view class="works-upload-list">
-          <view
-            class="works-upload-video"
-            v-for="(item, index) in videolist"
-            :key="index"
-          >
-            <video :src="item.thumbTempFilePath" class="upload-width"></video>
           </view>
         </view>
       </view>
@@ -94,7 +102,22 @@
       </view>
       <view class="works-info">
         <text>收费模式</text>
-        <picker mode="region" value="region" class="works-select">
+        <!-- <picker
+          mode="selector"
+          range="chargeList"
+          class="works-select"
+          range-key="value"
+          value="0"
+        >
+          <view class="works-select-item" v-if="charge">{{ charge }}</view>
+          <view class="works-select-item" v-else>请选择</view>
+        </picker> -->
+        <picker
+          @change="bindPickerChange"
+          :value="chargeIndex"
+          :range="chargeList"
+          :range-key="'value'"
+        >
           <view class="works-select-item" v-if="charge">{{ charge }}</view>
           <view class="works-select-item" v-else>请选择</view>
         </picker>
@@ -119,10 +142,10 @@
         <text
           class="tag-txt"
           :class="item.checked ? 'active' : ''"
-          v-for="(item, index) in taglist"
+          v-for="(item, index) in styleTaglist"
           :key="index"
-          @tap="chooseTag(index)"
-          >{{ item.name }}</text
+          @tap="chooseStyleTag(index)"
+          >{{ item.value }}</text
         >
       </view>
     </view>
@@ -138,7 +161,7 @@
           v-for="(item, index) in taglist"
           :key="index"
           @tap="chooseTag(index)"
-          >{{ item.name }}</text
+          >{{ item.value }}</text
         >
       </view>
     </view>
@@ -150,149 +173,39 @@
 
 <script>
 import "./index.scss";
-import { errortip } from "../../../utils/util";
-import { uploadFile } from "../../../api/index";
+import { errortip } from "../../../../utils/util";
+import { publicConfig, creatInvite } from "../../../../api/index";
 import { Base64 } from "js-Base64";
 export default {
   name: "works",
   data() {
     return {
+      id: "",
       name: "",
       device: "",
       place: "",
       imgList: [], // 图片集合
-      baseImg: [], // base64图片集合
-      maxImg: 9, // 图片上传最高数量（根据需求设置）
-      // imgList: [
-      //   // {
-      //   //   imgurl: "",
-      //   // },
-      // ],
       videolist: [],
-      taglist: [
-        {
-          name: "情侣",
-          checked: false,
-        },
-        {
-          name: "商务",
-          checked: false,
-        },
-        {
-          name: "民国",
-          checked: false,
-        },
-        {
-          name: "汉服",
-          checked: false,
-        },
-        {
-          name: "孕照",
-          checked: false,
-        },
-        {
-          name: "儿童摄影",
-          checked: false,
-        },
-        {
-          name: "暗黑",
-          checked: false,
-        },
-        {
-          name: "情绪",
-          checked: false,
-        },
-        {
-          name: "夜景",
-          checked: false,
-        },
-        {
-          name: "校园",
-          checked: false,
-        },
-        {
-          name: "妆容",
-          checked: false,
-        },
-        {
-          name: "古风",
-          checked: false,
-        },
-        {
-          name: "淘宝",
-          checked: false,
-        },
-        {
-          name: "时尚",
-          checked: false,
-        },
-        {
-          name: "和服",
-          checked: false,
-        },
-        {
-          name: "旗袍",
-          checked: false,
-        },
-        {
-          name: "韩系",
-          checked: false,
-        },
-        {
-          name: "欧美",
-          checked: false,
-        },
-        {
-          name: "森系",
-          checked: false,
-        },
-        {
-          name: "少女",
-          checked: false,
-        },
-        {
-          name: "宝丽来",
-          checked: false,
-        },
-        {
-          name: "清新",
-          checked: false,
-        },
-        {
-          name: "婚礼",
-          checked: false,
-        },
-        {
-          name: "cosplay",
-          checked: false,
-        },
-        {
-          name: "胶片",
-          checked: false,
-        },
-        {
-          name: "黑白",
-          checked: false,
-        },
-        {
-          name: "纪实",
-          checked: false,
-        },
-        {
-          name: "日系",
-          checked: false,
-        },
-        {
-          name: "复古",
-          checked: false,
-        },
-      ],
+      styleTaglist: [],
+      taglist: [],
       switchChecked: false,
       charge: "",
+      chargeIndex: 0,
+      chargeList: [],
       select_city: "",
     };
   },
   methods: {
+    bindPickerChange(e) {
+      this.charge = this.chargeList[e.detail.value].value;
+      this.chargeIndex = e.detail.value;
+    },
+    uploadImgClose(index) {
+      this.imgList.splice(index, 1);
+    },
+    uploadVideoClose(index) {
+      this.videolist.splice(index, 1);
+    },
     chooseImage() {
       if (this.imgList.length >= 9) {
         wx.showToast({
@@ -317,7 +230,7 @@ export default {
           arr.map(function (v, i) {
             v["progress"] = 0;
             imgInfo = v;
-            _this.upImgs(imgInfo, "image");
+            _this.upImgs(imgInfo);
           });
         },
       });
@@ -331,15 +244,12 @@ export default {
         maxDuration: 58,
         camera: "back",
         success: (res) => {
-          console.log(res, "res");
           let arr = res.tempFiles;
           let videoInfo = {};
           arr.map(function (v, i) {
             v["progress"] = 0;
             videoInfo = v;
           });
-          // this.videolist.push(videoInfo);
-          console.log(videoInfo, "videoInfo");
           //获取临时存放的视频资源
           // let tempFilePath = res.tempFiles[0].tempFilePath;
           //获取该视频的播放时间
@@ -364,14 +274,12 @@ export default {
             return;
           } else {
             //符合大小限制，进行上传
-            console.log("开始上传！！！");
-            _this.upImgs(videoInfo, "video");
+            _this.uploadVideo(videoInfo);
           }
-          // _this.upImgs(videoInfo, "video");
         },
       });
     },
-    upImgs(dataInfo, type) {
+    upImgs(dataInfo) {
       let header = {};
       let token = wx.getStorageSync("token");
       header["Authorization"] = "Basic " + Base64.encode(token + ":");
@@ -381,8 +289,7 @@ export default {
       });
       wx.uploadFile({
         url: "https://tapi.cupz.cn/v1/file/upload",
-        filePath:
-          type == "video" ? dataInfo.tempFilePath : dataInfo.tempFilePath,
+        filePath: dataInfo.tempFilePath,
         formData: {
           type: "avatar",
         },
@@ -393,18 +300,45 @@ export default {
           //判断上传的是图片还是视频
           let data = JSON.parse(res.data);
           if (data.code == 200) {
-            if (type == "video") {
-              // _this.setData({
-              console.log("视频地址：" + res);
-              console.log(
-                "视频封面：" +
-                  res +
-                  "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
-              );
-              // ))
-            } else {
-              this.imgList.push(data.data.file1);
-            }
+            this.imgList.push(data.data.file1);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none",
+            });
+          }
+        },
+      });
+    },
+    uploadVideo(dataInfo) {
+      let header = {};
+      let token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      wx.showLoading({
+        title: "上传中",
+        mask: true,
+      });
+      wx.uploadFile({
+        url: "https://tapi.cupz.cn/v1/file/upload",
+        filePath: dataInfo.tempFilePath,
+        formData: {
+          type: "invite",
+        },
+        name: "file",
+        header,
+        success: (res) => {
+          wx.hideLoading();
+          //判断上传的是图片还是视频
+          let data = JSON.parse(res.data);
+          if (data.code == 200) {
+            let videoData = res;
+            console.log("视频地址：" + videoData);
+            console.log(
+              "视频封面：" +
+                res +
+                "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
+            );
+            this.videolist.push(data.data.file1);
           } else {
             wx.showToast({
               title: "上传失败！",
@@ -416,6 +350,9 @@ export default {
     },
     switchChange(e) {
       this.switchChecked = e.detail.value;
+    },
+    chooseStyleTag(index) {
+      this.styleTaglist[index].checked = !this.styleTaglist[index].checked;
     },
     chooseTag(index) {
       this.taglist[index].checked = !this.taglist[index].checked;
@@ -437,12 +374,66 @@ export default {
       //   errortip("请选择主题标签！");
       //   return false;
       // }
-      this.conversionAddress();
       let params = {
+        type: this.id,
         name: this.name,
       };
       console.log(params, "params");
     },
+    async publicConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        let arr = [];
+        let arr1 = [];
+        let arr2 = [];
+        res.data.data.map((item) => {
+          if (item.type == "style_label") {
+            item.checked = false;
+            arr.push(item);
+          }
+          if (item.type == "notice_label") {
+            item.checked = false;
+            arr1.push(item);
+          }
+          if (item.type == "payment_type") {
+            item.checked = false;
+            arr2.push(item);
+          }
+        });
+        this.styleTaglist = arr;
+        this.taglist = arr1;
+        this.chargeList = arr2;
+        console.log(this.chargeList, "chargeList");
+      } catch (error) {}
+    },
+    async creatInvite(params) {
+      try {
+        let res = await creatInvite(params);
+        let arr = [];
+        let arr1 = [];
+        res.data.data.map((item) => {
+          if (item.type == "style_label") {
+            item.checked = false;
+            arr.push(item);
+          }
+          if (item.type == "notice_label") {
+            item.checked = false;
+            arr1.push(item);
+          }
+        });
+        this.styleTaglist = arr;
+        this.taglist = arr1;
+        //         收费模式：payment_type
+      } catch (error) {}
+    },
+  },
+  created() {
+    this.publicConfig({
+      type: ["notice_label", "payment_type", "style_label"],
+    });
+  },
+  onLoad: function (options) {
+    this.id = options.id;
   },
 };
 </script>

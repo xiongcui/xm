@@ -169,15 +169,6 @@ component.options.__file = "src/pages/register/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
  // import weCropper from "../we-cropper/index.vue";
 
 
@@ -218,9 +209,6 @@ component.options.__file = "src/pages/register/index.vue"
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
     },
-    // identityChange(e) {
-    //   this.identity = this.identityList[e.detail.value];
-    // },
     identityFocus: function identityFocus() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "b"])("/pages/user/identity/index");
     },
@@ -271,7 +259,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* updateUser */ "d"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* updateUser */ "f"])(params);
 
               case 3:
                 res = _context.sent;
@@ -305,7 +293,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* getCareer */ "b"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* getCareer */ "c"])(params);
 
               case 3:
                 res = _context2.sent;

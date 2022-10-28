@@ -49,10 +49,14 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 16px;
+    position: relative;
   }
   .upload-width {
     width: 100%;
     height: 100%;
+  }
+  .upload-video-width {
+    width: 400px;
   }
   .upload-img,
   .upload-video {
@@ -79,7 +83,8 @@
   .works-select-item {
     color: #808080;
     text-align: right;
-    background: url("../../../assets/images/right.png") right center no-repeat;
+    background: url("../../../../assets/images/right.png") right center
+      no-repeat;
     background-size: 12px;
     padding-right: 24px;
   }
@@ -112,8 +117,10 @@
     display: flex;
     justify-content: center;
     padding: 16px 0px;
+    z-index: 9;
     .release {
-      width: 440px;
+      //   width: 440px;
+      width: 90%;
       height: 68px;
       line-height: 68px;
       background-color: #fe3e3f;
@@ -122,5 +129,18 @@
       border-radius: 33px;
       font-size: 28px;
     }
+  }
+  .upload-video-item {
+    position: relative;
+  }
+  .upload-close {
+    width: 38px;
+    height: 38px;
+    background: url("../../../../assets/images/common/x_icon.png") no-repeat
+      rgba(0, 0, 0, 0.55);
+    background-size: 38px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
   }
 }
