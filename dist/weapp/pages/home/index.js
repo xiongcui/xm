@@ -44,8 +44,16 @@ component.options.__file = "src/pages/home/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/home/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/pages/home/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+
+
+
 //
 //
 //
@@ -338,6 +346,54 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
@@ -359,25 +415,22 @@ component.options.__file = "src/pages/home/index.vue"
       duration: 500,
       sizer_num: [],
       navActive: 0,
-      navList: [{
-        name: "推荐",
-        value: 0
+      navList: [],
+      filter: [{
+        quick_filter: 0
       }, {
-        name: "最新",
-        value: 1
+        face_province_id: 0
       }, {
-        name: "同城",
-        value: 2
+        face_cid: 0
       }, {
-        name: "摄影",
-        value: 3
+        sex: 100
       }, {
-        name: "模特",
-        value: 4
-      }, {
-        name: "互勉",
-        value: 5
-      }]
+        payment_type: 0
+      }],
+      pageNum: 1,
+      pageSize: 10,
+      list: [],
+      loading: true
     };
   },
   methods: {
@@ -395,10 +448,191 @@ component.options.__file = "src/pages/home/index.vue"
           });
         }
       });
+    },
+    navClick: function navClick(index) {
+      this.navActive = index;
+    },
+    query: function query(type) {
+      this.inviteList({
+        filter: this.filter,
+        page: this.pageNum,
+        per_page: this.pageSize
+      }, type);
+    },
+    //刷新
+    onRefresh: function onRefresh() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "刷新中..."
+      });
+      this.pageNum = 1;
+      this.query("init");
+    },
+    // 加载更多
+    onMore: function onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "数据加载中..."
+      });
+      this.loading = false;
+      this.query("more");
+    },
+    previewImage: function previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src,
+        // 图片的地址url
+        urls: urls // 预览的地址url
+
+      });
+    },
+    publicConfig: function publicConfig(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "f"])(params);
+
+              case 3:
+                res = _context.sent;
+                arr = [];
+                res.data.data.map(function (item) {
+                  if (item.type == "invite_filter") {
+                    arr.push(item);
+                  }
+                });
+                _this.navList = arr;
+                _this.filter = [Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({}, "quick_filter", _this.navList[0].key), {
+                  face_province_id: 0
+                }, {
+                  face_cid: 0
+                }, {
+                  sex: 100
+                }, {
+                  payment_type: 0
+                }];
+
+                _this.query("init");
+
+                _context.next = 13;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](0);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    inviteList: function inviteList(params, type) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* inviteList */ "e"])(params);
+
+              case 3:
+                res = _context2.sent;
+                //隐藏loading 提示框
+                wx.hideLoading(); //隐藏导航条加载动画
+
+                wx.hideNavigationBarLoading(); //停止下拉刷新
+
+                wx.stopPullDownRefresh();
+
+                if (!(type == "init")) {
+                  _context2.next = 11;
+                  break;
+                }
+
+                _this2.list = res.data.data.items;
+                _context2.next = 18;
+                break;
+
+              case 11:
+                if (!(type == "more")) {
+                  _context2.next = 18;
+                  break;
+                }
+
+                if (res.data.data.items.length) {
+                  _context2.next = 15;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("没有更多数据了～");
+                return _context2.abrupt("return", false);
+
+              case 15:
+                data = res.data.data.items;
+                _this2.list = _this2.list.concat(data);
+                _this2.loading = true;
+
+              case 18:
+                _context2.next = 22;
+                break;
+
+              case 20:
+                _context2.prev = 20;
+                _context2.t0 = _context2["catch"](0);
+
+              case 22:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 20]]);
+      }))();
     }
   },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function onPullDownRefresh() {
+    //调用刷新时将执行的方法
+    this.onRefresh();
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function onReachBottom() {
+    console.log("下拉加载更多");
+    this.pageNum++;
+
+    if (this.loading) {
+      this.onMore();
+    }
+  },
+  // created() {
+  //   this.publicConfig({
+  //     type: ["invite_filter"],
+  //   });
+  // },
   mounted: function mounted() {
-    var _this = this;
+    var _this3 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -409,18 +643,23 @@ component.options.__file = "src/pages/home/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this.globalData.navHeight = navHeight; //导航栏总体高度
+        _this3.globalData.navHeight = navHeight; //导航栏总体高度
 
-        _this.globalData.navTop = navTop; //胶囊距离顶部距离
+        _this3.globalData.navTop = navTop; //胶囊距离顶部距离
 
-        _this.globalData.navObj = menuButtonObject.height; //胶囊高度
+        _this3.globalData.navObj = menuButtonObject.height; //胶囊高度
 
-        _this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this3.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail: function fail(err) {
         console.log(err);
       }
+    });
+  },
+  onShow: function onShow() {
+    this.publicConfig({
+      type: ["invite_filter"]
     });
   }
 });
@@ -585,8 +824,13 @@ var render = function () {
                     key: index,
                     staticClass: "nav_item",
                     class: _vm.navActive == index ? "nav_active" : "",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.navClick(index)
+                      },
+                    },
                   },
-                  [_vm._v(_vm._s(item.name))]
+                  [_vm._v(_vm._s(item.value))]
                 )
               }),
               0
@@ -637,246 +881,205 @@ var render = function () {
       ],
       1
     ),
-    _c("view", { staticClass: "list_main" }, [
-      _c("view", { staticClass: "list_box" }, [
-        _c("view", { staticClass: "list_top" }, [
-          _c("view", { staticClass: "list_top_left" }, [
-            _c("image", {
-              staticClass: "avatar",
-              attrs: { src: __webpack_require__(/*! ../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png") },
-            }),
-            _c("view", { staticClass: "list_info" }, [
-              _c("view", { staticClass: "list_name" }, [
-                _vm._v(" BinWon "),
-                _c("image", {
-                  staticClass: "list_sex",
-                  attrs: { src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png") },
-                }),
-              ]),
-              _c("view", { staticClass: "list_p" }, [
-                _c("text", [_vm._v(" 摄影 | 北京")]),
-                _c("image", {
-                  staticClass: "list_p_img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
-                  },
-                }),
-                _c("image", {
-                  staticClass: "list_p_img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
-                  },
-                }),
+    _c(
+      "view",
+      { staticClass: "list_main" },
+      _vm._l(_vm.list, function (item, index) {
+        return _c("view", { key: index, staticClass: "list_box" }, [
+          _c("view", { staticClass: "list_top" }, [
+            _c("view", { staticClass: "list_top_left" }, [
+              _c("image", {
+                staticClass: "avatar",
+                attrs: {
+                  src: item.author.avatar
+                    ? item.author.avatar
+                    : "../../assets/images/avatar_default.png",
+                },
+              }),
+              _c("view", { staticClass: "list_info" }, [
+                _c(
+                  "view",
+                  { staticClass: "list_name" },
+                  [
+                    _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                    item.author.sex !== null
+                      ? _c("block", [
+                          item.author.sex == 1
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                },
+                              })
+                            : _vm._e(),
+                          item.author.sex == 0
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                },
+                              })
+                            : _vm._e(),
+                        ])
+                      : _vm._e(),
+                  ],
+                  1
+                ),
+                _c("view", { staticClass: "list_p" }, [
+                  _c("text", [
+                    _vm._v(
+                      " " +
+                        _vm._s(item.author.career_list[0]) +
+                        " | " +
+                        _vm._s(item.ip_location)
+                    ),
+                  ]),
+                  item.author.is_certify
+                    ? _c("image", {
+                        staticClass: "list_p_img",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                        },
+                      })
+                    : _c("image", {
+                        staticClass: "list_p_img",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                        },
+                      }),
+                  item.author.is_security
+                    ? _c("image", {
+                        staticClass: "list_p_img",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                        },
+                      })
+                    : _c("image", {
+                        staticClass: "list_p_img",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                        },
+                      }),
+                ]),
               ]),
             ]),
+            _c("view", { staticClass: "list_collection" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
+                },
+              }),
+            ]),
           ]),
-          _c("view", { staticClass: "list_collection" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
-              },
+          _c("view", { staticClass: "list_content" }, [
+            _c("view", { staticClass: "list_title" }, [
+              _vm._v(" 约" + _vm._s(item.face_career) + " "),
+              item.payment_type == 300 || item.payment_type == 400
+                ? _c("text", [_vm._v("·")])
+                : _vm._e(),
+              (item.payment_type == 300 && item.payment_range == 1) ||
+              (item.payment_type == 400 && item.payment_range == 1)
+                ? _c("text", [
+                    _vm._v(
+                      _vm._s(item.payment_name) +
+                        _vm._s(item.payment_min_amount) +
+                        "-" +
+                        _vm._s(item.payment_max_amount) +
+                        _vm._s(item.payment_unit)
+                    ),
+                  ])
+                : _vm._e(),
+              (item.payment_type == 300 && item.payment_range == 0) ||
+              (item.payment_type == 400 && item.payment_range == 0)
+                ? _c("text", [
+                    _vm._v(
+                      _vm._s(item.payment_name) +
+                        _vm._s(item.payment_amount) +
+                        _vm._s(item.payment_unit) +
+                        " "
+                    ),
+                  ])
+                : _vm._e(),
+            ]),
+            _c("view", { staticClass: "list_loction" }, [
+              _vm._v(" " + _vm._s(item.face_province_name) + " "),
+            ]),
+          ]),
+          _c("view", { staticClass: "list_desc" }, [
+            _vm._v(" " + _vm._s(item.summary) + " "),
+          ]),
+          item.file_type == "picture"
+            ? _c(
+                "view",
+                { staticClass: "list_img" },
+                [
+                  _c(
+                    "scroll-view",
+                    { attrs: { enhanced: true, scrollX: true } },
+                    _vm._l(item.cover, function (url, coverIndex) {
+                      return _c("image", {
+                        key: coverIndex,
+                        staticClass: "list_img_item",
+                        attrs: { src: url, mode: "aspectFill" },
+                        on: {
+                          tap: function ($event) {
+                            return _vm.previewImage(url, item.cover)
+                          },
+                        },
+                      })
+                    }),
+                    0
+                  ),
+                ],
+                1
+              )
+            : _vm._e(),
+          item.file_type == "video"
+            ? _c("view", { staticClass: "list_video" }, [
+                _c("video", {
+                  staticClass: "list_video-width",
+                  attrs: { src: item.video_cover && item.video_cover[0] },
+                }),
+              ])
+            : _vm._e(),
+          _c(
+            "view",
+            { staticClass: "list_tags" },
+            _vm._l(item.style_label, function (styleItem, styleIndex) {
+              return _c("view", { key: styleIndex, staticClass: "tag" }, [
+                _vm._v(_vm._s(styleItem)),
+              ])
             }),
-          ]),
-        ]),
-        _c("view", { staticClass: "list_content" }, [
-          _c("view", { staticClass: "list_title" }, [
-            _vm._v("约模特·希望互勉"),
-          ]),
-          _c("view", { staticClass: "list_loction" }, [_vm._v(" 北京 ")]),
-        ]),
-        _c("view", { staticClass: "list_desc" }, [
-          _vm._v(
-            " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
+            0
           ),
-        ]),
-        _c(
-          "view",
-          { staticClass: "list_img" },
-          [
-            _c("scroll-view", { attrs: { enhanced: true, scrollX: true } }, [
+          _c("view", { staticClass: "list_bottom" }, [
+            _c("view", { staticClass: "list_time" }, [
               _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
+                attrs: { src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png") },
               }),
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
+              _vm._v(" 1小时前 "),
             ]),
-          ],
-          1
-        ),
-        _c("view", { staticClass: "list_tags" }, [
-          _c("view", { staticClass: "tag" }, [_vm._v("汉服")]),
-          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
-          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
-          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
-        ]),
-        _c("view", { staticClass: "list_bottom" }, [
-          _c("view", { staticClass: "list_time" }, [
-            _c("image", {
-              attrs: { src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png") },
-            }),
-            _vm._v(" 1小时前 "),
-          ]),
-          _c("view", { staticClass: "list_yuepai" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-              },
-            }),
-            _vm._v(" 收到约拍 20 "),
-          ]),
-          _c("view", { staticClass: "list_read" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-              },
-            }),
-            _vm._v(" 阅读 20 "),
-          ]),
-        ]),
-      ]),
-      _c("view", { staticClass: "list_box" }, [
-        _c("view", { staticClass: "list_top" }, [
-          _c("view", { staticClass: "list_top_left" }, [
-            _c("image", {
-              staticClass: "avatar",
-              attrs: { src: __webpack_require__(/*! ../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png") },
-            }),
-            _c("view", { staticClass: "list_info" }, [
-              _c("view", { staticClass: "list_name" }, [
-                _vm._v(" BinWon "),
-                _c("image", {
-                  staticClass: "list_sex",
-                  attrs: { src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png") },
-                }),
-              ]),
-              _c("view", { staticClass: "list_p" }, [
-                _c("text", [_vm._v(" 摄影 | 北京")]),
-                _c("image", {
-                  staticClass: "list_p_img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
-                  },
-                }),
-                _c("image", {
-                  staticClass: "list_p_img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
-                  },
-                }),
-              ]),
+            _c("view", { staticClass: "list_yuepai" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+                },
+              }),
+              _vm._v(" 收到约拍 20 "),
+            ]),
+            _c("view", { staticClass: "list_read" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+                },
+              }),
+              _vm._v(" 阅读 20 "),
             ]),
           ]),
-          _c("view", { staticClass: "list_collection" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
-              },
-            }),
-          ]),
-        ]),
-        _c("view", { staticClass: "list_content" }, [
-          _c("view", { staticClass: "list_title" }, [
-            _vm._v("约模特·希望互勉"),
-          ]),
-          _c("view", { staticClass: "list_loction" }, [_vm._v(" 北京 ")]),
-        ]),
-        _c("view", { staticClass: "list_desc" }, [
-          _vm._v(
-            " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
-          ),
-        ]),
-        _c(
-          "view",
-          { staticClass: "list_img" },
-          [
-            _c("scroll-view", { attrs: { enhanced: true, scrollX: true } }, [
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
-              _c("image", {
-                staticClass: "list_img_item",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"),
-                  mode: "center",
-                },
-              }),
-            ]),
-          ],
-          1
-        ),
-        _c("view", { staticClass: "list_tags" }, [
-          _c("view", { staticClass: "tag" }, [_vm._v("汉服")]),
-          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
-          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
-          _c("view", { staticClass: "tag" }, [_vm._v("情绪")]),
-        ]),
-        _c("view", { staticClass: "list_bottom" }, [
-          _c("view", { staticClass: "list_time" }, [
-            _c("image", {
-              attrs: { src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png") },
-            }),
-            _vm._v(" 1小时前 "),
-          ]),
-          _c("view", { staticClass: "list_yuepai" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-              },
-            }),
-            _vm._v(" 收到约拍 20 "),
-          ]),
-          _c("view", { staticClass: "list_read" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-              },
-            }),
-            _vm._v(" 阅读 20 "),
-          ]),
-        ]),
-      ]),
-    ]),
+        ])
+      }),
+      0
+    ),
   ])
 }
 var staticRenderFns = []

@@ -1108,18 +1108,6 @@ module.exports = __webpack_require__.p + "assets/images/history.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/nv.png":
-/*!**********************************!*\
-  !*** ./src/assets/images/nv.png ***!
-  \**********************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/nv.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/real-name.png":
 /*!*****************************************!*\
   !*** ./src/assets/images/real-name.png ***!

@@ -64,3 +64,12 @@ export const creatInvite = (data) => {
     data,
   });
 };
+
+// 约拍列表
+export const inviteList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/invite/list",
+    method: "post",
+    data,
+  });
+};

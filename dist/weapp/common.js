@@ -4,19 +4,20 @@
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer, publicConfig, creatInvite */
-/*! exports used: creatCareer, creatInvite, getCareer, getPhone, publicConfig, updateUser, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer, publicConfig, creatInvite, inviteList */
+/*! exports used: creatCareer, creatInvite, getCareer, getPhone, inviteList, publicConfig, updateUser, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return wxlogin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getPhone; });
 /* unused harmony export uploadFile */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return updateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return updateUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return creatCareer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return publicConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return publicConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return creatInvite; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return inviteList; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://tapi.cupz.cn"; // WX登录,拿code换登录
@@ -83,19 +84,15 @@ var creatInvite = function creatInvite(data) {
     method: "post",
     data: data
   });
+}; // 约拍列表
+
+var inviteList = function inviteList(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/note/invite/list",
+    method: "post",
+    data: data
+  });
 };
-
-/***/ }),
-
-/***/ "./src/assets/images/avatar_default.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/avatar_default.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 
 /***/ }),
 
@@ -108,6 +105,18 @@ module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/nan.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/nv.png":
+/*!**********************************!*\
+  !*** ./src/assets/images/nv.png ***!
+  \**********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/nv.png";
 
 /***/ }),
 
@@ -235,8 +244,8 @@ var request = function request(params) {
 var errortip = function errortip(txt) {
   wx.showToast({
     title: txt,
-    icon: "error",
-    duration: 2000
+    icon: "none",
+    duration: 3000
   });
 };
 

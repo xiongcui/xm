@@ -93,7 +93,8 @@
             v-for="(item, index) in navList"
             :key="index"
             :class="navActive == index ? 'nav_active' : ''"
-            >{{ item.name }}</text
+            @tap="navClick(index)"
+            >{{ item.value }}</text
           >
         </view>
       </scroll-view>
@@ -118,30 +119,57 @@
       </view>
     </view>
     <view class="list_main">
-      <view class="list_box">
+      <view class="list_box" v-for="(item, index) in list" :key="index">
         <view class="list_top">
           <view class="list_top_left">
             <image
-              src="../../assets/images/avatar_default.png"
+              :src="
+                item.author.avatar
+                  ? item.author.avatar
+                  : '../../assets/images/avatar_default.png'
+              "
               class="avatar"
             ></image>
             <view class="list_info">
               <view class="list_name">
-                BinWon
-                <image
-                  src="../../assets/images/nan.png"
-                  class="list_sex"
-                ></image>
+                {{ item.author.nickname }}
+                <block v-if="item.author.sex !== null">
+                  <image
+                    src="../../assets/images/nan.png"
+                    class="list_sex"
+                    v-if="item.author.sex == 1"
+                  ></image>
+                  <image
+                    src="../../assets/images/nv.png"
+                    class="list_sex"
+                    v-if="item.author.sex == 0"
+                  ></image>
+                </block>
               </view>
               <view class="list_p">
-                <text> 摄影 | 北京</text>
+                <text>
+                  {{ item.author.career_list[0] }} |
+                  {{ item.ip_location }}</text
+                >
                 <image
                   src="../../assets/images/common/icon_real.png"
                   class="list_p_img"
+                  v-if="item.author.is_certify"
+                ></image>
+                <image
+                  src="../../assets/images/common/icon_pledge_none.png"
+                  class="list_p_img"
+                  v-else
                 ></image>
                 <image
                   src="../../assets/images/common/icon_pledge.png"
                   class="list_p_img"
+                  v-if="item.author.is_security"
+                ></image>
+                <image
+                  src="../../assets/images/common/icon_real_none.png"
+                  class="list_p_img"
+                  v-else
                 ></image>
               </view>
             </view>
@@ -151,41 +179,59 @@
           </view>
         </view>
         <view class="list_content">
-          <view class="list_title">约模特·希望互勉</view>
-          <view class="list_loction"> 北京 </view>
+          <view class="list_title">
+            约{{ item.face_career }}
+            <text v-if="item.payment_type == 300 || item.payment_type == 400"
+              >·</text
+            >
+            <text
+              v-if="
+                (item.payment_type == 300 && item.payment_range == 1) ||
+                (item.payment_type == 400 && item.payment_range == 1)
+              "
+              >{{ item.payment_name }}{{ item.payment_min_amount }}-{{
+                item.payment_max_amount
+              }}{{ item.payment_unit }}</text
+            >
+            <text
+              v-if="
+                (item.payment_type == 300 && item.payment_range == 0) ||
+                (item.payment_type == 400 && item.payment_range == 0)
+              "
+              >{{ item.payment_name }}{{ item.payment_amount
+              }}{{ item.payment_unit }}
+            </text>
+          </view>
+          <view class="list_loction"> {{ item.face_province_name }} </view>
         </view>
         <view class="list_desc">
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+          {{ item.summary }}
         </view>
-        <view class="list_img">
+        <view class="list_img" v-if="item.file_type == 'picture'">
           <scroll-view :enhanced="true" :scrollX="true">
             <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
+              :src="url"
+              mode="aspectFill"
               class="list_img_item"
-            ></image>
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
-            ></image>
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
-            ></image>
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
+              v-for="(url, coverIndex) in item.cover"
+              :key="coverIndex"
+              @tap="previewImage(url, item.cover)"
             ></image>
           </scroll-view>
         </view>
+        <view class="list_video" v-if="item.file_type == 'video'">
+          <video
+            :src="item.video_cover && item.video_cover[0]"
+            class="list_video-width"
+          ></video>
+        </view>
         <view class="list_tags">
-          <view class="tag">汉服</view>
-          <view class="tag">情绪</view>
-          <view class="tag">情绪</view>
-          <view class="tag">情绪</view>
+          <view
+            class="tag"
+            v-for="(styleItem, styleIndex) in item.style_label"
+            :key="styleIndex"
+            >{{ styleItem }}</view
+          >
         </view>
         <view class="list_bottom">
           <view class="list_time">
@@ -202,7 +248,7 @@
           </view>
         </view>
       </view>
-      <view class="list_box">
+      <!-- <view class="list_box">
         <view class="list_top">
           <view class="list_top_left">
             <image
@@ -285,13 +331,15 @@
             阅读 20
           </view>
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
+import { inviteList, publicConfig } from "../../api/index";
+import { errortip } from "../../utils/util";
 export default {
   name: "home",
   data() {
@@ -312,32 +360,20 @@ export default {
       duration: 500,
       sizer_num: [],
       navActive: 0,
-      navList: [
+      navList: [],
+      filter: [
         {
-          name: "推荐",
-          value: 0,
+          quick_filter: 0,
         },
-        {
-          name: "最新",
-          value: 1,
-        },
-        {
-          name: "同城",
-          value: 2,
-        },
-        {
-          name: "摄影",
-          value: 3,
-        },
-        {
-          name: "模特",
-          value: 4,
-        },
-        {
-          name: "互勉",
-          value: 5,
-        },
+        { face_province_id: 0 },
+        { face_cid: 0 },
+        { sex: 100 },
+        { payment_type: 0 },
       ],
+      pageNum: 1,
+      pageSize: 10,
+      list: [],
+      loading: true,
     };
   },
   methods: {
@@ -355,7 +391,115 @@ export default {
         },
       });
     },
+    navClick(index) {
+      this.navActive = index;
+    },
+    query(type) {
+      this.inviteList(
+        {
+          filter: this.filter,
+          page: this.pageNum,
+          per_page: this.pageSize,
+        },
+        type
+      );
+    },
+    //刷新
+    onRefresh() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading();
+      //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+      wx.showLoading({
+        title: "刷新中...",
+      });
+      this.pageNum = 1;
+      this.query("init");
+    },
+    // 加载更多
+    onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading();
+      //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+      wx.showLoading({
+        title: "数据加载中...",
+      });
+      this.loading = false;
+      this.query("more");
+    },
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
+    async publicConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        let arr = [];
+        res.data.data.map((item) => {
+          if (item.type == "invite_filter") {
+            arr.push(item);
+          }
+        });
+        this.navList = arr;
+        this.filter = [
+          {
+            ["quick_filter"]: this.navList[0].key,
+          },
+          { face_province_id: 0 },
+          { face_cid: 0 },
+          { sex: 100 },
+          { payment_type: 0 },
+        ];
+        this.query("init");
+      } catch (error) {}
+    },
+    async inviteList(params, type) {
+      try {
+        let res = await inviteList(params);
+        //隐藏loading 提示框
+        wx.hideLoading();
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+        if (type == "init") {
+          this.list = res.data.data.items;
+        } else if (type == "more") {
+          if (!res.data.data.items.length) {
+            errortip("没有更多数据了～");
+            return false;
+          }
+          let data = res.data.data.items;
+          this.list = this.list.concat(data);
+          this.loading = true;
+        }
+      } catch (error) {}
+    },
   },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
+    this.onRefresh();
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log("下拉加载更多");
+    this.pageNum++;
+    if (this.loading) {
+      this.onMore();
+    }
+  },
+  // created() {
+  //   this.publicConfig({
+  //     type: ["invite_filter"],
+  //   });
+  // },
   mounted() {
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -378,6 +522,11 @@ export default {
       fail(err) {
         console.log(err);
       },
+    });
+  },
+  onShow: function onShow() {
+    this.publicConfig({
+      type: ["invite_filter"],
     });
   },
 };

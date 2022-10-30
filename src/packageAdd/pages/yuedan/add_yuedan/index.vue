@@ -8,8 +8,7 @@
       <input
         class="works-name"
         placeholder="填写标题会有更多邀约哦～"
-        :value="name"
-        @blur="nameBlur"
+        v-model="name"
       />
     </view>
     <view class="works-item">
@@ -21,8 +20,7 @@
         class="works-name"
         auto-height
         placeholder="请描述您的约单内容，如您的特长、才艺、需求、地点、时间等（内容中不得含有任何联系方式，敏感语句、私房话题等，否则审核不予通过，至少7字以上）"
-        :value="name"
-        @blur="nameBlur"
+        v-model="desc"
       />
     </view>
     <view class="works-item">
@@ -38,7 +36,12 @@
               v-for="(item, index) in imgList"
               :key="index"
             >
-              <image :src="item" class="upload-width" mode="aspectFit"></image>
+              <image
+                :src="item"
+                class="upload-width"
+                mode="aspectFill"
+                @tap="previewImage(item, imgList)"
+              ></image>
               <text class="upload-close" @tap="uploadImgClose(index)"></text>
             </view>
           </block>
@@ -89,7 +92,7 @@
         <input
           placeholder="您期望的合作时间（选填）"
           class="works-input"
-          :value="device"
+          v-model="time"
         />
       </view>
       <view class="works-info">
@@ -97,21 +100,14 @@
         <input
           placeholder="您期望的合作地点（选填）"
           class="works-input"
-          :value="place"
+          v-model="place"
         />
       </view>
       <view class="works-info">
-        <text>收费模式</text>
-        <!-- <picker
-          mode="selector"
-          range="chargeList"
-          class="works-select"
-          range-key="value"
-          value="0"
-        >
-          <view class="works-select-item" v-if="charge">{{ charge }}</view>
-          <view class="works-select-item" v-else>请选择</view>
-        </picker> -->
+        <view>
+          <text>收费模式</text>
+          <text class="check-tips">*</text>
+        </view>
         <picker
           @change="bindPickerChange"
           :value="chargeIndex"
@@ -122,12 +118,104 @@
           <view class="works-select-item" v-else>请选择</view>
         </picker>
       </view>
+      <view
+        class="works-info"
+        v-if="
+          (this.charge && this.chargeList[this.chargeIndex].key == 300) ||
+          (this.charge && this.chargeList[this.chargeIndex].key == 400)
+        "
+      >
+        <view>
+          <text>收费金额</text>
+          <text class="check-tips">*</text>
+        </view>
+
+        <block class="payment-amount" v-if="!checked">
+          <input placeholder="请输入" class="amount1" v-model="amount" />
+          <picker
+            @change="companyChange"
+            :value="companyIndex"
+            :range="companyList"
+            :range-key="'value'"
+          >
+            <view class="works-select-item company" v-if="company"
+              >元{{ company }}</view
+            >
+            <view class="works-select-item company" v-else>元/单位</view>
+          </picker>
+          <text class="split">|</text>
+          <block>
+            <checkbox
+              :value="payment_range"
+              :checked="checked"
+              class="payment_range"
+              @tap="checkClick"
+            />
+            <text class="payment_range_text">区间</text>
+          </block>
+        </block>
+        <block class="payment-amount" v-if="checked">
+          <input
+            placeholder="最小金额"
+            class="min-amount"
+            v-model="minAmount"
+          />
+          <text class="split">-</text>
+          <input
+            placeholder="最大金额"
+            class="max-amount"
+            v-model="maxAmount"
+          />
+          <picker
+            @change="companyChange"
+            :value="companyIndex"
+            :range="companyList"
+            :range-key="'value'"
+          >
+            <view class="works-select-item company" v-if="company"
+              >元{{ company }}</view
+            >
+            <view class="works-select-item company" v-else>元/单位</view>
+          </picker>
+          <text class="split">|</text>
+          <block>
+            <checkbox
+              :value="payment_range"
+              :checked="checked"
+              class="payment_range"
+              @tap="checkClick"
+            />
+            <text class="payment_range_text">区间</text>
+          </block>
+        </block>
+      </view>
       <view class="works-info">
-        <text>面向地区</text>
-        <picker mode="region" value="region" class="works-select">
+        <view><text>面向地区</text> <text class="check-tips">*</text></view>
+        <picker
+          mode="region"
+          value="region"
+          class="works-select"
+          @change="bindRegionChange"
+        >
           <view class="works-select-item" v-if="select_city">{{
             select_city
           }}</view>
+          <view class="works-select-item" v-else>请选择</view>
+        </picker>
+      </view>
+      <view class="works-info">
+        <view>
+          <text>信用担保</text>
+          <text class="check-tips">*</text>
+        </view>
+        <picker
+          @change="securityChange"
+          :value="securityIndex"
+          :range="securityList"
+          :range-key="'value'"
+          class="works-select"
+        >
+          <view class="works-select-item" v-if="security">{{ security }}</view>
           <view class="works-select-item" v-else>请选择</view>
         </picker>
       </view>
@@ -180,19 +268,34 @@ export default {
   name: "works",
   data() {
     return {
-      id: "",
+      face_cid: "",
+      face_career: "",
       name: "",
-      device: "",
+      desc: "",
+      time: "",
       place: "",
       imgList: [], // 图片集合
       videolist: [],
+      videoCoverList: [],
       styleTaglist: [],
       taglist: [],
       switchChecked: false,
       charge: "",
       chargeIndex: 0,
       chargeList: [],
+      security: "",
+      securityList: [],
+      securityIndex: 0,
       select_city: "",
+      regionList: [],
+      company: "",
+      companyList: [],
+      companyIndex: 0,
+      checked: false,
+      payment_range: 0,
+      amount: "",
+      minAmount: "",
+      maxAmount: "",
     };
   },
   methods: {
@@ -200,11 +303,33 @@ export default {
       this.charge = this.chargeList[e.detail.value].value;
       this.chargeIndex = e.detail.value;
     },
+    companyChange(e) {
+      this.company = this.companyList[e.detail.value].value;
+      this.companyIndex = e.detail.value;
+    },
+    securityChange(e) {
+      this.security = this.securityList[e.detail.value].value;
+      this.securityIndex = e.detail.value;
+    },
+    bindRegionChange(e) {
+      this.select_city = e.detail.value.join("-");
+      this.regionList = e.detail.code;
+    },
     uploadImgClose(index) {
       this.imgList.splice(index, 1);
     },
     uploadVideoClose(index) {
       this.videolist.splice(index, 1);
+    },
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
+    checkClick() {
+      this.checked = !this.checked;
     },
     chooseImage() {
       if (this.imgList.length >= 9) {
@@ -250,6 +375,7 @@ export default {
             v["progress"] = 0;
             videoInfo = v;
           });
+          console.log(videoInfo, "videoInfo");
           //获取临时存放的视频资源
           // let tempFilePath = res.tempFiles[0].tempFilePath;
           //获取该视频的播放时间
@@ -279,6 +405,37 @@ export default {
         },
       });
     },
+    upCover(dataInfo) {
+      let header = {};
+      let token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      wx.showLoading({
+        title: "上传中",
+        mask: true,
+      });
+      wx.uploadFile({
+        url: "https://tapi.cupz.cn/v1/file/upload",
+        filePath: dataInfo.thumbTempFilePath,
+        formData: {
+          scr_type: "invite",
+        },
+        name: "file",
+        header,
+        success: (res) => {
+          wx.hideLoading();
+          //判断上传的是图片还是视频
+          let data = JSON.parse(res.data);
+          if (data.code == 200) {
+            this.videoCoverList.push(data.data.file1);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none",
+            });
+          }
+        },
+      });
+    },
     upImgs(dataInfo) {
       let header = {};
       let token = wx.getStorageSync("token");
@@ -291,7 +448,7 @@ export default {
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          type: "avatar",
+          scr_type: "invite",
         },
         name: "file",
         header,
@@ -322,7 +479,7 @@ export default {
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          type: "invite",
+          scr_type: "invite",
         },
         name: "file",
         header,
@@ -331,13 +488,14 @@ export default {
           //判断上传的是图片还是视频
           let data = JSON.parse(res.data);
           if (data.code == 200) {
-            let videoData = res;
-            console.log("视频地址：" + videoData);
-            console.log(
-              "视频封面：" +
-                res +
-                "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
-            );
+            // let videoData = res;
+            // console.log("视频地址：", videoData);
+            // console.log(
+            //   "视频封面：",
+            //   res,
+            //   "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
+            // );
+            this.upCover(dataInfo);
             this.videolist.push(data.data.file1);
           } else {
             wx.showToast({
@@ -360,25 +518,131 @@ export default {
     nameBlur(e) {
       this.name = e.detail.value;
     },
+    descBlur(e) {
+      this.desc = e.detail.value;
+    },
     submit() {
-      // if (!this.name) {
-      //   errortip("请输入作品名称/描述！");
-      //   return false;
-      // }
-      // if (!this.imgList.length && !this.videolist.length) {
-      //   errortip("请上传作品！");
-      //   return false;
-      // }
-      // let checkTag = this.taglist.some((item) => item.checked);
-      // if (!checkTag) {
-      //   errortip("请选择主题标签！");
-      //   return false;
-      // }
+      if (!this.name) {
+        errortip("请输入标题！");
+        return false;
+      }
+      if (!this.desc) {
+        errortip("请输入描述！");
+        return false;
+      }
+      if (!this.imgList.length && !this.videolist.length) {
+        errortip("请上传照片/视频！");
+        return false;
+      }
+      if (!this.charge) {
+        errortip("请选择收费模式！");
+        return false;
+      }
+      if (
+        this.chargeList[this.chargeIndex].key == 300 ||
+        this.chargeList[this.chargeIndex].key == 400
+      ) {
+        if (!this.checked && !this.amount) {
+          errortip("请填写收费金额！");
+          return false;
+        }
+        if (
+          (this.checked && !this.minAmount) ||
+          (this.checked && !this.maxAmount)
+        ) {
+          errortip("请填写收费金额区间！");
+          return false;
+        }
+        if (
+          (!this.checked && !this.company) ||
+          (this.checked && !this.company)
+        ) {
+          errortip("请选择单位！");
+          return false;
+        }
+      }
+
+      if (!this.select_city) {
+        errortip("请选择面向地区！");
+        return false;
+      }
+      if (!this.security) {
+        errortip("请选择信用担保！");
+        return false;
+      }
+      let checkTag = this.styleTaglist.some((item) => item.checked);
+      if (!checkTag) {
+        errortip("请选择风格标签！");
+        return false;
+      }
+      let checkTag2 = this.taglist.some((item) => item.checked);
+      if (!checkTag2) {
+        errortip("请选择约拍通告！");
+        return false;
+      }
+      if (this.name.length < 4 || this.name.length > 20) {
+        errortip("标题长度必须在4~20之间");
+        return false;
+      }
       let params = {
-        type: this.id,
-        name: this.name,
+        type: 1,
+        face_cid: this.face_cid,
+        face_career: this.face_career,
+        title: this.name,
+        content: this.desc,
+        expect_time: this.time,
+        expect_locale: this.place,
+        payment_type: this.chargeList[this.chargeIndex].key,
+        payment_name: this.charge,
+        payment_amount: 0,
+        payment_min_amount: 0,
+        payment_max_amount: 0,
+        payment_unit: "",
+        addressName: this.select_city,
+        address: this.regionList,
+        security_type: this.securityList[this.securityIndex].key,
+        security_name: this.security,
+        style_label: "",
+        notice_label: "",
+        ip_address: "",
+        payment_range: this.checked ? 1 : 0,
+        scr_type: "invite",
+        file_type: this.imgList.length ? "picture" : "video",
+        cover: this.imgList.length ? this.imgList : this.videoCoverList,
+        video_cover: this.videolist,
       };
+      if (
+        this.chargeList[this.chargeIndex].key == 300 ||
+        this.chargeList[this.chargeIndex].key == 400
+      ) {
+        if (this.checked) {
+          params.payment_min_amount = Number(this.minAmount);
+          params.payment_max_amount = Number(this.maxAmount);
+        } else {
+          params.payment_amount = Number(this.amount);
+        }
+        params.payment_unit = this.company;
+      }
+      let style_label = [];
+      let notice_label = [];
+      this.styleTaglist.map((item) => {
+        if (item.checked) {
+          style_label.push({
+            [item.key]: item.value,
+          });
+        }
+      });
+      this.taglist.map((item) => {
+        if (item.checked) {
+          notice_label.push({
+            [item.key]: item.value,
+          });
+        }
+      });
+      params.style_label = style_label;
+      params.notice_label = notice_label;
       console.log(params, "params");
+      this.creatInvite(params);
     },
     async publicConfig(params) {
       try {
@@ -386,6 +650,8 @@ export default {
         let arr = [];
         let arr1 = [];
         let arr2 = [];
+        let arr3 = [];
+        let arr4 = [];
         res.data.data.map((item) => {
           if (item.type == "style_label") {
             item.checked = false;
@@ -399,41 +665,46 @@ export default {
             item.checked = false;
             arr2.push(item);
           }
+          if (item.type == "payment_unit") {
+            item.checked = false;
+            arr3.push(item);
+          }
+          if (item.type == "security_type") {
+            item.checked = false;
+            arr4.push(item);
+          }
         });
         this.styleTaglist = arr;
         this.taglist = arr1;
         this.chargeList = arr2;
-        console.log(this.chargeList, "chargeList");
+        this.companyList = arr3;
+        this.securityList = arr4;
       } catch (error) {}
     },
     async creatInvite(params) {
       try {
         let res = await creatInvite(params);
-        let arr = [];
-        let arr1 = [];
-        res.data.data.map((item) => {
-          if (item.type == "style_label") {
-            item.checked = false;
-            arr.push(item);
-          }
-          if (item.type == "notice_label") {
-            item.checked = false;
-            arr1.push(item);
-          }
+        // 跳转首页
+        wx.switchTab({
+          url: "/pages/home/index",
         });
-        this.styleTaglist = arr;
-        this.taglist = arr1;
-        //         收费模式：payment_type
       } catch (error) {}
     },
   },
   created() {
     this.publicConfig({
-      type: ["notice_label", "payment_type", "style_label"],
+      type: [
+        "notice_label",
+        "payment_type",
+        "style_label",
+        "payment_unit",
+        "security_type",
+      ],
     });
   },
   onLoad: function (options) {
-    this.id = options.id;
+    this.face_cid = options.id;
+    this.face_career = options.name;
   },
 };
 </script>

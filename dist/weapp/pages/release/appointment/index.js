@@ -114,9 +114,9 @@ component.options.__file = "src/pages/release/appointment/index.vue"
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "appointment",
   methods: {
-    goyuedan: function goyuedan(code) {
+    goyuedan: function goyuedan(code, name) {
       wx.navigateTo({
-        url: "/packageAdd/pages/yuedan/add_yuedan/index?id=" + code
+        url: "/packageAdd/pages/yuedan/add_yuedan/index?id=" + code + "&name=" + name
       });
     }
   }
@@ -147,7 +147,7 @@ var render = function () {
           staticClass: "appointment-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20001")
+              return _vm.goyuedan("20001", "摄影师")
             },
           },
         },
@@ -168,7 +168,7 @@ var render = function () {
           staticClass: "appointment-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20002")
+              return _vm.goyuedan("20002", "摄像师")
             },
           },
         },
@@ -189,7 +189,7 @@ var render = function () {
           staticClass: "appointment-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20003")
+              return _vm.goyuedan("20003", "造型师")
             },
           },
         },
@@ -210,7 +210,7 @@ var render = function () {
           staticClass: "appointment-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20007")
+              return _vm.goyuedan("20007", "经纪人")
             },
           },
         },
@@ -231,7 +231,7 @@ var render = function () {
           staticClass: "appointment-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20011")
+              return _vm.goyuedan("20011", "导演")
             },
           },
         },
@@ -252,7 +252,7 @@ var render = function () {
           staticClass: "appointment-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20012")
+              return _vm.goyuedan("20012", "商家")
             },
           },
         },

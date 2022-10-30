@@ -100,7 +100,7 @@
 }
 .works .works-input,
 .works .works-select {
-  width: 80%;
+  width: 75%;
 }
 .works .works-info .works-input {
   text-align: right;
@@ -172,4 +172,41 @@
   position: absolute;
   right: 0;
   top: 0;
+}
+.works .payment-amount {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.works .amount,
+.works .min-amount,
+.works .max-amount {
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 130rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+.works .amount1 {
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 210rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+.works .company,
+.works .payment_range,
+.works .payment_range_text {
+  font-size: 26rpx;
+}
+.works .split,
+.works .payment_range_text {
+  color: #a9a9a9;
+}
+.works .min-amount {
+  margin-right: 4rpx;
+}
+.works .max-amount {
+  margin-left: 4rpx;
+}
+.works .payment_range_text {
+  font-size: 26rpx;
 }

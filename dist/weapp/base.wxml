@@ -61,6 +61,14 @@
   </button>
 </template>
 
+<template name="tmpl_0_checkbox">
+  <checkbox value="{{i.value}}" disabled="{{i.disabled}}" checked="{{xs.b(i.checked,false)}}" color="{{xs.b(i.color,'#09BB07')}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </checkbox>
+</template>
+
 <template name="tmpl_0_form">
   <form report-submit="{{xs.b(i.reportSubmit,false)}}" bindsubmit="eh" bindreset="eh" name="{{i.name}}" report-submit-timeout="{{xs.b(i.reportSubmitTimeout,0)}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">

@@ -362,6 +362,7 @@
   height: 225rpx;
   border-radius: 10rpx;
   margin-right: 20rpx;
+  background: #e5e5e5;
 }
 
 .list_sex {
@@ -442,4 +443,8 @@
   width: 26rpx;
   height: 26rpx;
   margin-right: 4rpx;
+}
+
+.list_video-width {
+  width: 50%;
 }

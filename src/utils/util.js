@@ -104,7 +104,7 @@ export const request = (params) => {
 export const errortip = (txt) => {
   wx.showToast({
     title: txt,
-    icon: "error",
-    duration: 2000,
+    icon: "none",
+    duration: 3000,
   });
 };
