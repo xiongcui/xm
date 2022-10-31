@@ -248,90 +248,84 @@
           </view>
         </view>
       </view>
-      <!-- <view class="list_box">
-        <view class="list_top">
-          <view class="list_top_left">
-            <image
-              src="../../assets/images/avatar_default.png"
-              class="avatar"
-            ></image>
-            <view class="list_info">
-              <view class="list_name">
-                BinWon
-                <image
-                  src="../../assets/images/nan.png"
-                  class="list_sex"
-                ></image>
-              </view>
-              <view class="list_p">
-                <text> 摄影 | 北京</text>
-                <image
-                  src="../../assets/images/common/icon_pledge_none.png"
-                  class="list_p_img"
-                ></image>
-                <image
-                  src="../../assets/images/common/icon_real_none.png"
-                  class="list_p_img"
-                ></image>
+    </view>
+    <view class="select_block">
+      <view class="select_bg">
+        <view
+          class="statusbar"
+          :style="{ height: globalData.navHeight + 'px' }"
+        ></view>
+        <view class="location">
+          <view class="location_address">当前定位：北京</view>
+          <text class="reposition">重新定位</text>
+        </view>
+        <view class="address_box">
+          <view class="address_label">选择地区</view>
+          <view class="address_input">
+            <view class="pickers">
+              <view class="ub-f1">
+                <picker
+                  :mode="'multiSelector'"
+                  :value="regionListIndex"
+                  :range="sizer_region"
+                  :range-key="'name'"
+                  @change="sizerBindRegionChange"
+                  @columnchange="onBindcolumnchange"
+                >
+                  <view class="sizer_select_local bd_b fl">
+                    <view class="pickers pick-city picked" v-if="sizer_city">{{
+                      sizer_city
+                    }}</view>
+                    <view class="pickers pick-city" v-else>全部</view>
+                  </view>
+                </picker>
               </view>
             </view>
           </view>
-          <view class="list_collection">
-            <image src="../../assets/images/common/icon_favorite.png"></image>
+        </view>
+        <view class="select_item">
+          <view class="select_item_title">约单对象</view>
+          <view>
+            <text
+              @tap="select_tag(item)"
+              class="tag_item"
+              :class="item.ispick ? 'tag_itemed' : ''"
+              v-for="(item, index) in appointmentData"
+              :key="index"
+            >
+              {{ item.name }}
+            </text>
           </view>
         </view>
-        <view class="list_content">
-          <view class="list_title">约模特·希望互勉</view>
-          <view class="list_loction"> 北京 </view>
-        </view>
-        <view class="list_desc">
-          内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-        </view>
-        <view class="list_img">
-          <scroll-view :enhanced="true" :scrollX="true">
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
-            ></image>
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
-            ></image>
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
-            ></image>
-            <image
-              src="../../assets/images/lanmao1.jpg"
-              mode="center"
-              class="list_img_item"
-            ></image>
-          </scroll-view>
-        </view>
-        <view class="list_tags">
-          <view class="tag">汉服</view>
-          <view class="tag">情绪</view>
-          <view class="tag">情绪</view>
-          <view class="tag">情绪</view>
-        </view>
-        <view class="list_bottom">
-          <view class="list_time">
-            <image src="../../assets/images/common/time.png"></image>
-            1小时前
-          </view>
-          <view class="list_yuepai">
-            <image src="../../assets/images/user/index/invoice.png"></image>
-            收到约拍 20
-          </view>
-          <view class="list_read">
-            <image src="../../assets/images/user/index/invoice.png"></image>
-            阅读 20
+        <view class="select_item">
+          <view class="select_item_title">发起人性别</view>
+          <view>
+            <text
+              @tap="select_sex_tag(item)"
+              class="tag_item"
+              :class="item.ispick ? 'tag_itemed' : ''"
+              v-for="(item, index) in sexData"
+              :key="index"
+            >
+              {{ item.name }}
+            </text>
           </view>
         </view>
-      </view> -->
+        <view class="select_item">
+          <view class="select_item_title">收费模式</view>
+          <view>
+            <text
+              @tap="select_charge_tag(item)"
+              class="tag_item"
+              :class="item.ispick ? 'tag_itemed' : ''"
+              v-for="(item, index) in chargeData"
+              :key="index"
+            >
+              {{ item.name }}
+            </text>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -340,6 +334,7 @@
 import "./index.scss";
 import { inviteList, publicConfig } from "../../api/index";
 import { errortip } from "../../utils/util";
+import { city } from "../../utils/city";
 export default {
   name: "home",
   data() {
@@ -374,6 +369,40 @@ export default {
       pageSize: 10,
       list: [],
       loading: true,
+      show_sizer_modal: true,
+      sizer_region: [],
+      regionListIndex: [0, 0],
+      sizer_city: "",
+      appointmentData: [
+        {
+          name: "11",
+          ispick: true,
+        },
+        {
+          name: "22",
+          ispick: false,
+        },
+      ],
+      sexData: [
+        {
+          name: "全部",
+          ispick: false,
+        },
+        {
+          name: "男",
+          ispick: false,
+        },
+        {
+          name: "女",
+          ispick: false,
+        },
+      ],
+      chargeData: [
+        {
+          name: "全部",
+          ispick: false,
+        },
+      ],
     };
   },
   methods: {
@@ -391,8 +420,18 @@ export default {
         },
       });
     },
+    sizerBindRegionChange(e) {
+      console.log(e, "11");
+    },
+    onBindcolumnchange(e) {
+      console.log(e, "222");
+    },
     navClick(index) {
       this.navActive = index;
+    },
+    bindRegionChange(e) {
+      console.log(e);
+      this.sizer_city = e.detail.value;
     },
     query(type) {
       this.inviteList(
@@ -523,6 +562,15 @@ export default {
         console.log(err);
       },
     });
+    let arr = [[], []];
+    city.map((item) => {
+      arr[0].push(item);
+    });
+    arr[1].push(arr[0][0].citylist[0]);
+    arr[0].unshift({ name: "全部", code: "all" });
+    arr[1].unshift({ name: "全部", code: "all" });
+    this.sizer_region = arr;
+    // console.log(arr[0][0].citylist[0]);
   },
   onShow: function onShow() {
     this.publicConfig({

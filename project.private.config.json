@@ -3,5 +3,6 @@
     "projectname": "xiamiyuepai",
     "setting": {
         "compileHotReLoad": true
-    }
+    },
+    "libVersion": "2.27.0"
 }

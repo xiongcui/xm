@@ -330,3 +330,79 @@
 .list_video-width {
   width: 50%;
 }
+
+.select_block {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  .select_bg {
+    background: #ffffff;
+  }
+  .location {
+    background: #f1f1f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 66px;
+    padding: 0px 16px;
+    font-size: 28px;
+  }
+  .location_address {
+    background: url("../../assets/images/common/icon_location02.png") 0 center
+      no-repeat;
+    background-size: 23px 29px;
+    padding-left: 33px;
+    color: #333333;
+  }
+  .reposition {
+    color: #2196f3;
+  }
+  .address_box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0px 16px;
+    font-size: 28px;
+    border-bottom: 1px solid #f5f5f5;
+    color: #333333;
+  }
+  .pick-city {
+    background: url("../../assets/images/right.png") right center no-repeat;
+    background-size: 12px 22px;
+    padding-right: 32px;
+  }
+  .select_item {
+    padding: 0px 16px;
+    .select_item_title {
+      height: 80px;
+      line-height: 80px;
+      border-bottom: 1px solid #f5f5f5;
+      margin-bottom: 16px;
+      color: #333333;
+      font-size: 28px;
+    }
+  }
+  .tag_item {
+    background-color: #f1f1f1;
+    border: 1rpx solid #f1f1f1;
+    border-radius: 8rpx;
+    color: #333;
+    display: inline-block;
+    font-size: 26rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    margin: 0 30rpx 20rpx 0;
+    padding: 0 30rpx;
+  }
+
+  .tag_itemed {
+    background-color: #ff5355;
+    border: 1rpx solid #ff5355;
+    color: #fff;
+  }
+}
