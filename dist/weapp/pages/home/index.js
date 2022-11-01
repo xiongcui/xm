@@ -432,26 +432,52 @@ component.options.__file = "src/pages/home/index.vue"
       regionListIndex: [0, 0],
       sizer_city: "",
       appointmentData: [{
-        name: "11",
-        ispick: true
+        cid: 1,
+        name: "全部",
+        ispick: false
       }, {
-        name: "22",
+        cid: 20001,
+        name: "摄影师",
+        ispick: false
+      }, {
+        cid: 20002,
+        name: "摄像师",
+        ispick: false
+      }, {
+        cid: 20003,
+        name: "造型师",
+        ispick: false
+      }, {
+        cid: 20007,
+        name: "经纪人",
+        ispick: false
+      }, {
+        cid: 20011,
+        name: "导演",
+        ispick: false
+      }, {
+        cid: 20012,
+        name: "商家",
         ispick: false
       }],
       sexData: [{
         name: "全部",
+        vaule: 2,
         ispick: false
       }, {
         name: "男",
+        value: 1,
         ispick: false
       }, {
         name: "女",
+        value: 0,
         ispick: false
       }],
-      chargeData: [{
-        name: "全部",
-        ispick: false
-      }]
+      chargeData: [],
+      multiArray: [[], []],
+      multiIndex: [0, 0],
+      allCity: [],
+      sizerSelect: []
     };
   },
   methods: {
@@ -471,10 +497,51 @@ component.options.__file = "src/pages/home/index.vue"
       });
     },
     sizerBindRegionChange: function sizerBindRegionChange(e) {
-      console.log(e, "11");
+      var province = this.multiArray[0][e.detail.value[0]].name;
+      var city = this.multiArray[1][e.detail.value[1]].name;
+      this.sizer_city = city == "全部" ? province : city;
+      this.sizerSelect = e.detail.value;
     },
     onBindcolumnchange: function onBindcolumnchange(e) {
-      console.log(e, "222");
+      if (e.detail.column == 0) {
+        var select = this.multiArray[0][e.detail.value];
+        var city = this.allCity;
+
+        for (var i = 0; i < city.length; i++) {
+          if (city[i].code == select.code) {
+            var multiArray = this.multiArray;
+            var all = [{
+              name: "全部",
+              code: "all"
+            }];
+            multiArray[1] = all.concat(city[i].citylist);
+            var multiIndex = this.multiIndex;
+            multiIndex[0] = e.detail.value;
+            multiIndex[1] = 0;
+            this.multiArray = JSON.parse(JSON.stringify(multiArray));
+            this.multiIndex = multiIndex;
+            break;
+          }
+        }
+      }
+    },
+    select_tag: function select_tag(row) {
+      this.appointmentData.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_sex_tag: function select_sex_tag(row) {
+      this.sexData.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_charge_tag: function select_charge_tag(row) {
+      this.chargeData.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
     },
     navClick: function navClick(index) {
       this.navActive = index;
@@ -525,7 +592,7 @@ component.options.__file = "src/pages/home/index.vue"
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, arr;
+        var res, arr, arr2;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -537,12 +604,23 @@ component.options.__file = "src/pages/home/index.vue"
               case 3:
                 res = _context.sent;
                 arr = [];
+                arr2 = [];
                 res.data.data.map(function (item) {
                   if (item.type == "invite_filter") {
                     arr.push(item);
+                  } else if (item.type == "payment_type") {
+                    item.ispick = false;
+                    arr2.push(item);
                   }
                 });
                 _this.navList = arr;
+                arr2.unshift({
+                  key: "all",
+                  name: "全部",
+                  value: "全部",
+                  ispick: false
+                });
+                _this.chargeData = arr2;
                 _this.filter = [Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({}, "quick_filter", _this.navList[0].key), {
                   face_province_id: 0
                 }, {
@@ -555,19 +633,19 @@ component.options.__file = "src/pages/home/index.vue"
 
                 _this.query("init");
 
-                _context.next = 13;
+                _context.next = 16;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](0);
 
-              case 13:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 14]]);
       }))();
     },
     inviteList: function inviteList(params, type) {
@@ -657,11 +735,6 @@ component.options.__file = "src/pages/home/index.vue"
       this.onMore();
     }
   },
-  // created() {
-  //   this.publicConfig({
-  //     type: ["invite_filter"],
-  //   });
-  // },
   mounted: function mounted() {
     var _this3 = this;
 
@@ -700,11 +773,12 @@ component.options.__file = "src/pages/home/index.vue"
       name: "全部",
       code: "all"
     });
-    this.sizer_region = arr; // console.log(arr[0][0].citylist[0]);
+    this.multiArray = arr;
+    this.allCity = _utils_city__WEBPACK_IMPORTED_MODULE_6__[/* city */ "a"];
   },
   onShow: function onShow() {
     this.publicConfig({
-      type: ["invite_filter"]
+      type: ["invite_filter", "payment_type"]
     });
   }
 });
@@ -1150,8 +1224,8 @@ var render = function () {
                     {
                       attrs: {
                         mode: "multiSelector",
-                        value: _vm.regionListIndex,
-                        range: _vm.sizer_region,
+                        value: _vm.multiIndex,
+                        range: _vm.multiArray,
                         "range-key": "name",
                       },
                       on: {
@@ -1252,7 +1326,7 @@ var render = function () {
                     },
                   },
                 },
-                [_vm._v(" " + _vm._s(item.name) + " ")]
+                [_vm._v(" " + _vm._s(item.value) + " ")]
               )
             }),
             0

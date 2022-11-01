@@ -49,6 +49,7 @@
   "devDependencies": {
     "@babel/core": "^7.8.0",
     "@tarojs/mini-runner": "3.4.10",
+    "@tarojs/plugin-html": "^3.5.7",
     "@tarojs/webpack-runner": "3.4.10",
     "@types/webpack-env": "^1.13.6",
     "babel-preset-taro": "3.4.10",

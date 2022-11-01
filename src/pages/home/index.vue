@@ -266,8 +266,8 @@
               <view class="ub-f1">
                 <picker
                   :mode="'multiSelector'"
-                  :value="regionListIndex"
-                  :range="sizer_region"
+                  :value="multiIndex"
+                  :range="multiArray"
                   :range-key="'name'"
                   @change="sizerBindRegionChange"
                   @columnchange="onBindcolumnchange"
@@ -321,7 +321,7 @@
               v-for="(item, index) in chargeData"
               :key="index"
             >
-              {{ item.name }}
+              {{ item.value }}
             </text>
           </view>
         </view>
@@ -335,6 +335,7 @@ import "./index.scss";
 import { inviteList, publicConfig } from "../../api/index";
 import { errortip } from "../../utils/util";
 import { city } from "../../utils/city";
+
 export default {
   name: "home",
   data() {
@@ -374,35 +375,36 @@ export default {
       regionListIndex: [0, 0],
       sizer_city: "",
       appointmentData: [
-        {
-          name: "11",
-          ispick: true,
-        },
-        {
-          name: "22",
-          ispick: false,
-        },
+        { cid: 1, name: "全部", ispick: false },
+        { cid: 20001, name: "摄影师", ispick: false },
+        { cid: 20002, name: "摄像师", ispick: false },
+        { cid: 20003, name: "造型师", ispick: false },
+        { cid: 20007, name: "经纪人", ispick: false },
+        { cid: 20011, name: "导演", ispick: false },
+        { cid: 20012, name: "商家", ispick: false },
       ],
       sexData: [
         {
           name: "全部",
+          vaule: 2,
           ispick: false,
         },
         {
           name: "男",
+          value: 1,
           ispick: false,
         },
         {
           name: "女",
+          value: 0,
           ispick: false,
         },
       ],
-      chargeData: [
-        {
-          name: "全部",
-          ispick: false,
-        },
-      ],
+      chargeData: [],
+      multiArray: [[], []],
+      multiIndex: [0, 0],
+      allCity: [],
+      sizerSelect: [],
     };
   },
   methods: {
@@ -421,10 +423,47 @@ export default {
       });
     },
     sizerBindRegionChange(e) {
-      console.log(e, "11");
+      let province = this.multiArray[0][e.detail.value[0]].name;
+      let city = this.multiArray[1][e.detail.value[1]].name;
+      this.sizer_city = city == "全部" ? province : city;
+      this.sizerSelect = e.detail.value;
     },
     onBindcolumnchange(e) {
-      console.log(e, "222");
+      if (e.detail.column == 0) {
+        var select = this.multiArray[0][e.detail.value];
+        var city = this.allCity;
+        for (var i = 0; i < city.length; i++) {
+          if (city[i].code == select.code) {
+            var multiArray = this.multiArray;
+            var all = [{ name: "全部", code: "all" }];
+            multiArray[1] = all.concat(city[i].citylist);
+            var multiIndex = this.multiIndex;
+            multiIndex[0] = e.detail.value;
+            multiIndex[1] = 0;
+            this.multiArray = JSON.parse(JSON.stringify(multiArray));
+            this.multiIndex = multiIndex;
+            break;
+          }
+        }
+      }
+    },
+    select_tag(row) {
+      this.appointmentData.map((item) => {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_sex_tag(row) {
+      this.sexData.map((item) => {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_charge_tag(row) {
+      this.chargeData.map((item) => {
+        item.ispick = false;
+      });
+      row.ispick = true;
     },
     navClick(index) {
       this.navActive = index;
@@ -476,12 +515,23 @@ export default {
       try {
         let res = await publicConfig(params);
         let arr = [];
+        let arr2 = [];
         res.data.data.map((item) => {
           if (item.type == "invite_filter") {
             arr.push(item);
+          } else if (item.type == "payment_type") {
+            item.ispick = false;
+            arr2.push(item);
           }
         });
         this.navList = arr;
+        arr2.unshift({
+          key: "all",
+          name: "全部",
+          value: "全部",
+          ispick: false,
+        });
+        this.chargeData = arr2;
         this.filter = [
           {
             ["quick_filter"]: this.navList[0].key,
@@ -534,11 +584,6 @@ export default {
       this.onMore();
     }
   },
-  // created() {
-  //   this.publicConfig({
-  //     type: ["invite_filter"],
-  //   });
-  // },
   mounted() {
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -569,12 +614,12 @@ export default {
     arr[1].push(arr[0][0].citylist[0]);
     arr[0].unshift({ name: "全部", code: "all" });
     arr[1].unshift({ name: "全部", code: "all" });
-    this.sizer_region = arr;
-    // console.log(arr[0][0].citylist[0]);
+    this.multiArray = arr;
+    this.allCity = city;
   },
   onShow: function onShow() {
     this.publicConfig({
-      type: ["invite_filter"],
+      type: ["invite_filter", "payment_type"],
     });
   },
 };

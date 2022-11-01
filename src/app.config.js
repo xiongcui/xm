@@ -10,8 +10,8 @@ export default defineAppConfig({
     "pages/release/index",
     "pages/position/index",
     "pages/msg/index",
-    "pages/release/appointment/index",
-    "pages/release/field/index",
+    // "pages/release/appointment/index",
+    // "pages/release/field/index",
     "pages/index/index",
   ],
   window: {
