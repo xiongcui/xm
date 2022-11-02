@@ -45,8 +45,8 @@ component.options.__file = "src/pages/home/index.vue"
 
 "use strict";
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/pages/home/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
@@ -55,6 +55,10 @@ component.options.__file = "src/pages/home/index.vue"
 
 
 
+//
+//
+//
+//
 //
 //
 //
@@ -407,6 +411,7 @@ component.options.__file = "src/pages/home/index.vue"
       indicatorDots: true,
       vertical: false,
       autoplay: false,
+      showModal: false,
       interval: 2000,
       duration: 500,
       sizer_num: [],
@@ -416,6 +421,8 @@ component.options.__file = "src/pages/home/index.vue"
         quick_filter: 0
       }, {
         face_province_id: 0
+      }, {
+        face_city_id: 0
       }, {
         face_cid: 0
       }, {
@@ -432,9 +439,9 @@ component.options.__file = "src/pages/home/index.vue"
       regionListIndex: [0, 0],
       sizer_city: "",
       appointmentData: [{
-        cid: 1,
+        cid: 0,
         name: "全部",
-        ispick: false
+        ispick: true
       }, {
         cid: 20001,
         name: "摄影师",
@@ -462,8 +469,8 @@ component.options.__file = "src/pages/home/index.vue"
       }],
       sexData: [{
         name: "全部",
-        vaule: 2,
-        ispick: false
+        value: 100,
+        ispick: true
       }, {
         name: "男",
         value: 1,
@@ -495,6 +502,13 @@ component.options.__file = "src/pages/home/index.vue"
           });
         }
       });
+    },
+    screen: function screen() {
+      this.showModal = true;
+      this.sizer_num = [];
+    },
+    close: function close() {
+      this.showModal = false;
     },
     sizerBindRegionChange: function sizerBindRegionChange(e) {
       var province = this.multiArray[0][e.detail.value[0]].name;
@@ -588,10 +602,83 @@ component.options.__file = "src/pages/home/index.vue"
 
       });
     },
+    clear: function clear() {
+      this.appointmentData = this.appointmentData.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.sexData = this.sexData.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.chargeData = this.chargeData.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+    },
+    submit: function submit() {
+      var facedata = this.appointmentData.filter(function (item) {
+        return item.ispick;
+      });
+      var sexdata = this.sexData.filter(function (item) {
+        return item.ispick;
+      });
+      var paymentdata = this.chargeData.filter(function (item) {
+        return item.ispick;
+      });
+      this.filter = [Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({}, "quick_filter", this.navList[this.navActive].key), {
+        face_province_id: this.sizerSelect[0]
+      }, {
+        face_city_id: this.sizerSelect[1]
+      }, {
+        face_cid: facedata[0].cid
+      }, {
+        sex: sexdata[0].value == 100 ? "" : sexdata[0].value
+      }, {
+        payment_type: paymentdata[0].key == "all" ? "" : paymentdata[0].key
+      }];
+
+      if (this.sizerSelect[0]) {
+        var num = this.sizer_num.find(function (item) {
+          return item == 1;
+        });
+        if (!num) this.sizer_num.push(1);
+      }
+
+      if (facedata[0].cid) {
+        var num2 = this.sizer_num.find(function (item) {
+          return item == 2;
+        });
+        if (!num2) this.sizer_num.push(2);
+      }
+
+      if (sexdata[0].value != 100) {
+        var num3 = this.sizer_num.find(function (item) {
+          return item == 3;
+        });
+        if (!num3) this.sizer_num.push(3);
+      }
+
+      if (paymentdata[0].key != "all") {
+        var num4 = this.sizer_num.find(function (item) {
+          return item == 4;
+        });
+        if (!num4) this.sizer_num.push(4);
+      }
+
+      if (facedata[0].key) {
+        var num5 = this.sizer_num.find(function (item) {
+          return item == 5;
+        });
+        if (!num5) this.sizer_num.push(5);
+      }
+
+      this.showModal = false;
+    },
     publicConfig: function publicConfig(params) {
       var _this = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, arr, arr2;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
@@ -605,7 +692,7 @@ component.options.__file = "src/pages/home/index.vue"
                 res = _context.sent;
                 arr = [];
                 arr2 = [];
-                res.data.data.map(function (item) {
+                res.data.data.map(function (item, index) {
                   if (item.type == "invite_filter") {
                     arr.push(item);
                   } else if (item.type == "payment_type") {
@@ -618,11 +705,13 @@ component.options.__file = "src/pages/home/index.vue"
                   key: "all",
                   name: "全部",
                   value: "全部",
-                  ispick: false
+                  ispick: true
                 });
                 _this.chargeData = arr2;
-                _this.filter = [Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])({}, "quick_filter", _this.navList[0].key), {
+                _this.filter = [Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({}, "quick_filter", _this.navList[0].key), {
                   face_province_id: 0
+                }, {
+                  face_city_id: 0
                 }, {
                   face_cid: 0
                 }, {
@@ -651,7 +740,7 @@ component.options.__file = "src/pages/home/index.vue"
     inviteList: function inviteList(params, type) {
       var _this2 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res, data;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
@@ -956,7 +1045,7 @@ var render = function () {
             ),
           ]
         ),
-        _c("view", { staticClass: "sizer_block ub" }, [
+        _c("view", { staticClass: "sizer_block ub", on: { tap: _vm.screen } }, [
           _c("view", { staticClass: "gradient" }),
           _c(
             "view",
@@ -1199,141 +1288,179 @@ var render = function () {
       }),
       0
     ),
-    _c("view", { staticClass: "select_block" }, [
-      _c("view", { staticClass: "select_bg" }, [
-        _c("view", {
-          staticClass: "statusbar",
-          style: { height: _vm.globalData.navHeight + "px" },
-        }),
-        _c("view", { staticClass: "location" }, [
-          _c("view", { staticClass: "location_address" }, [
-            _vm._v("当前定位：北京"),
-          ]),
-          _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
-        ]),
-        _c("view", { staticClass: "address_box" }, [
-          _c("view", { staticClass: "address_label" }, [_vm._v("选择地区")]),
-          _c("view", { staticClass: "address_input" }, [
-            _c("view", { staticClass: "pickers" }, [
-              _c(
-                "view",
-                { staticClass: "ub-f1" },
-                [
+    _c(
+      "view",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showModal,
+            expression: "showModal",
+          },
+        ],
+        staticClass: "select_block",
+        on: { tap: _vm.close },
+      },
+      [
+        _c(
+          "view",
+          {
+            staticClass: "select_bg",
+            on: {
+              tap: function ($event) {
+                $event.stopPropagation()
+              },
+            },
+          },
+          [
+            _c("view", {
+              staticClass: "statusbar",
+              style: { height: _vm.globalData.navHeight + "px" },
+            }),
+            _c("view", { staticClass: "location" }, [
+              _c("view", { staticClass: "location_address" }, [
+                _vm._v("当前定位：北京"),
+              ]),
+              _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
+            ]),
+            _c("view", { staticClass: "address_box" }, [
+              _c("view", { staticClass: "address_label" }, [
+                _vm._v("选择地区"),
+              ]),
+              _c("view", { staticClass: "address_input" }, [
+                _c("view", { staticClass: "pickers" }, [
                   _c(
-                    "picker",
-                    {
-                      attrs: {
-                        mode: "multiSelector",
-                        value: _vm.multiIndex,
-                        range: _vm.multiArray,
-                        "range-key": "name",
-                      },
-                      on: {
-                        change: _vm.sizerBindRegionChange,
-                        columnchange: _vm.onBindcolumnchange,
-                      },
-                    },
+                    "view",
+                    { staticClass: "ub-f1" },
                     [
                       _c(
-                        "view",
-                        { staticClass: "sizer_select_local bd_b fl" },
+                        "picker",
+                        {
+                          attrs: {
+                            mode: "multiSelector",
+                            value: _vm.multiIndex,
+                            range: _vm.multiArray,
+                            "range-key": "name",
+                          },
+                          on: {
+                            change: _vm.sizerBindRegionChange,
+                            columnchange: _vm.onBindcolumnchange,
+                          },
+                        },
                         [
-                          _vm.sizer_city
-                            ? _c(
-                                "view",
-                                { staticClass: "pickers pick-city picked" },
-                                [_vm._v(_vm._s(_vm.sizer_city))]
-                              )
-                            : _c("view", { staticClass: "pickers pick-city" }, [
-                                _vm._v("全部"),
-                              ]),
+                          _c(
+                            "view",
+                            { staticClass: "sizer_select_local bd_b fl" },
+                            [
+                              _vm.sizer_city
+                                ? _c(
+                                    "view",
+                                    { staticClass: "pickers pick-city picked" },
+                                    [_vm._v(_vm._s(_vm.sizer_city))]
+                                  )
+                                : _c(
+                                    "view",
+                                    { staticClass: "pickers pick-city" },
+                                    [_vm._v("全部")]
+                                  ),
+                            ]
+                          ),
                         ]
                       ),
-                    ]
+                    ],
+                    1
                   ),
-                ],
-                1
+                ]),
+              ]),
+            ]),
+            _c("view", { staticClass: "select_item" }, [
+              _c("view", { staticClass: "select_item_title" }, [
+                _vm._v("约单对象"),
+              ]),
+              _c(
+                "view",
+                _vm._l(_vm.appointmentData, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "tag_item",
+                      class: item.ispick ? "tag_itemed" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.select_tag(item)
+                        },
+                      },
+                    },
+                    [_vm._v(" " + _vm._s(item.name) + " ")]
+                  )
+                }),
+                0
               ),
             ]),
-          ]),
-        ]),
-        _c("view", { staticClass: "select_item" }, [
-          _c("view", { staticClass: "select_item_title" }, [
-            _vm._v("约单对象"),
-          ]),
-          _c(
-            "view",
-            _vm._l(_vm.appointmentData, function (item, index) {
-              return _c(
-                "text",
-                {
-                  key: index,
-                  staticClass: "tag_item",
-                  class: item.ispick ? "tag_itemed" : "",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.select_tag(item)
+            _c("view", { staticClass: "select_item" }, [
+              _c("view", { staticClass: "select_item_title" }, [
+                _vm._v("发起人性别"),
+              ]),
+              _c(
+                "view",
+                _vm._l(_vm.sexData, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "tag_item",
+                      class: item.ispick ? "tag_itemed" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.select_sex_tag(item)
+                        },
+                      },
                     },
-                  },
-                },
-                [_vm._v(" " + _vm._s(item.name) + " ")]
-              )
-            }),
-            0
-          ),
-        ]),
-        _c("view", { staticClass: "select_item" }, [
-          _c("view", { staticClass: "select_item_title" }, [
-            _vm._v("发起人性别"),
-          ]),
-          _c(
-            "view",
-            _vm._l(_vm.sexData, function (item, index) {
-              return _c(
-                "text",
-                {
-                  key: index,
-                  staticClass: "tag_item",
-                  class: item.ispick ? "tag_itemed" : "",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.select_sex_tag(item)
+                    [_vm._v(" " + _vm._s(item.name) + " ")]
+                  )
+                }),
+                0
+              ),
+            ]),
+            _c("view", { staticClass: "select_item" }, [
+              _c("view", { staticClass: "select_item_title" }, [
+                _vm._v("收费模式"),
+              ]),
+              _c(
+                "view",
+                _vm._l(_vm.chargeData, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "tag_item",
+                      class: item.ispick ? "tag_itemed" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.select_charge_tag(item)
+                        },
+                      },
                     },
-                  },
-                },
-                [_vm._v(" " + _vm._s(item.name) + " ")]
-              )
-            }),
-            0
-          ),
-        ]),
-        _c("view", { staticClass: "select_item" }, [
-          _c("view", { staticClass: "select_item_title" }, [
-            _vm._v("收费模式"),
-          ]),
-          _c(
-            "view",
-            _vm._l(_vm.chargeData, function (item, index) {
-              return _c(
-                "text",
-                {
-                  key: index,
-                  staticClass: "tag_item",
-                  class: item.ispick ? "tag_itemed" : "",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.select_charge_tag(item)
-                    },
-                  },
-                },
-                [_vm._v(" " + _vm._s(item.value) + " ")]
-              )
-            }),
-            0
-          ),
-        ]),
-      ]),
-    ]),
+                    [_vm._v(" " + _vm._s(item.value) + " ")]
+                  )
+                }),
+                0
+              ),
+            ]),
+            _c("view", { staticClass: "select_button" }, [
+              _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
+                _vm._v("清除"),
+              ]),
+              _c("text", { staticClass: "confirm", on: { tap: _vm.submit } }, [
+                _vm._v("确认"),
+              ]),
+            ]),
+          ]
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []

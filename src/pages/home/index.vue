@@ -98,7 +98,7 @@
           >
         </view>
       </scroll-view>
-      <view class="sizer_block ub">
+      <view class="sizer_block ub" @tap="screen">
         <view class="gradient"></view>
         <view class="sizer ub" :class="sizer_num.length ? 'is_sizer' : ''">
           <view class="ub">
@@ -249,8 +249,8 @@
         </view>
       </view>
     </view>
-    <view class="select_block">
-      <view class="select_bg">
+    <view class="select_block" v-show="showModal" @tap="close">
+      <view class="select_bg" @tap.stop="">
         <view
           class="statusbar"
           :style="{ height: globalData.navHeight + 'px' }"
@@ -325,6 +325,10 @@
             </text>
           </view>
         </view>
+        <view class="select_button">
+          <text class="clear" @tap="clear">清除</text>
+          <text class="confirm" @tap="submit">确认</text>
+        </view>
       </view>
     </view>
   </view>
@@ -352,6 +356,7 @@ export default {
       indicatorDots: true,
       vertical: false,
       autoplay: false,
+      showModal: false,
       interval: 2000,
       duration: 500,
       sizer_num: [],
@@ -362,6 +367,7 @@ export default {
           quick_filter: 0,
         },
         { face_province_id: 0 },
+        { face_city_id: 0 },
         { face_cid: 0 },
         { sex: 100 },
         { payment_type: 0 },
@@ -375,7 +381,7 @@ export default {
       regionListIndex: [0, 0],
       sizer_city: "",
       appointmentData: [
-        { cid: 1, name: "全部", ispick: false },
+        { cid: 0, name: "全部", ispick: true },
         { cid: 20001, name: "摄影师", ispick: false },
         { cid: 20002, name: "摄像师", ispick: false },
         { cid: 20003, name: "造型师", ispick: false },
@@ -386,8 +392,8 @@ export default {
       sexData: [
         {
           name: "全部",
-          vaule: 2,
-          ispick: false,
+          value: 100,
+          ispick: true,
         },
         {
           name: "男",
@@ -421,6 +427,13 @@ export default {
           });
         },
       });
+    },
+    screen() {
+      this.showModal = true;
+      this.sizer_num = [];
+    },
+    close() {
+      this.showModal = false;
     },
     sizerBindRegionChange(e) {
       let province = this.multiArray[0][e.detail.value[0]].name;
@@ -511,12 +524,78 @@ export default {
         urls: urls, // 预览的地址url
       });
     },
+    clear() {
+      this.appointmentData = this.appointmentData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.sexData = this.sexData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.chargeData = this.chargeData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+    },
+    submit() {
+      let facedata = this.appointmentData.filter((item) => {
+        return item.ispick;
+      });
+      let sexdata = this.sexData.filter((item) => {
+        return item.ispick;
+      });
+      let paymentdata = this.chargeData.filter((item) => {
+        return item.ispick;
+      });
+      this.filter = [
+        {
+          ["quick_filter"]: this.navList[this.navActive].key,
+        },
+        { face_province_id: this.sizerSelect[0] },
+        { face_city_id: this.sizerSelect[1] },
+        { face_cid: facedata[0].cid },
+        { sex: sexdata[0].value == 100 ? "" : sexdata[0].value },
+        { payment_type: paymentdata[0].key == "all" ? "" : paymentdata[0].key },
+      ];
+      if (this.sizerSelect[0]) {
+        let num = this.sizer_num.find((item) => {
+          return item == 1;
+        });
+        if (!num) this.sizer_num.push(1);
+      }
+      if (facedata[0].cid) {
+        let num2 = this.sizer_num.find((item) => {
+          return item == 2;
+        });
+        if (!num2) this.sizer_num.push(2);
+      }
+      if (sexdata[0].value != 100) {
+        let num3 = this.sizer_num.find((item) => {
+          return item == 3;
+        });
+        if (!num3) this.sizer_num.push(3);
+      }
+      if (paymentdata[0].key != "all") {
+        let num4 = this.sizer_num.find((item) => {
+          return item == 4;
+        });
+        if (!num4) this.sizer_num.push(4);
+      }
+      if (facedata[0].key) {
+        let num5 = this.sizer_num.find((item) => {
+          return item == 5;
+        });
+        if (!num5) this.sizer_num.push(5);
+      }
+      this.showModal = false;
+    },
     async publicConfig(params) {
       try {
         let res = await publicConfig(params);
         let arr = [];
         let arr2 = [];
-        res.data.data.map((item) => {
+        res.data.data.map((item, index) => {
           if (item.type == "invite_filter") {
             arr.push(item);
           } else if (item.type == "payment_type") {
@@ -529,7 +608,7 @@ export default {
           key: "all",
           name: "全部",
           value: "全部",
-          ispick: false,
+          ispick: true,
         });
         this.chargeData = arr2;
         this.filter = [
@@ -537,6 +616,7 @@ export default {
             ["quick_filter"]: this.navList[0].key,
           },
           { face_province_id: 0 },
+          { face_city_id: 0 },
           { face_cid: 0 },
           { sex: 100 },
           { payment_type: 0 },
