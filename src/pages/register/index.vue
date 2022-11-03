@@ -151,7 +151,8 @@ export default {
       this.regionList = e.detail.code;
     },
     identityFocus() {
-      openPage("/pages/user/identity/index");
+      // openPage("/pages/user/identity/index");
+      openPage("/packageAdd/pages/user/identity/index");
     },
     submit() {
       if (!this.nickname) {

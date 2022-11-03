@@ -119,134 +119,144 @@
       </view>
     </view>
     <view class="list_main">
-      <view class="list_box" v-for="(item, index) in list" :key="index">
-        <view class="list_top">
-          <view class="list_top_left">
-            <image
-              :src="
-                item.author.avatar
-                  ? item.author.avatar
-                  : '../../assets/images/avatar_default.png'
-              "
-              class="avatar"
-            ></image>
-            <view class="list_info">
-              <view class="list_name">
-                {{ item.author.nickname }}
-                <block v-if="item.author.sex !== null">
+      <block v-if="list.length">
+        <view class="list_box" v-for="(item, index) in list" :key="index">
+          <view class="list_top">
+            <view class="list_top_left">
+              <image
+                :src="
+                  item.author.avatar
+                    ? item.author.avatar
+                    : '../../assets/images/avatar_default.png'
+                "
+                class="avatar"
+              ></image>
+              <view class="list_info">
+                <view class="list_name">
+                  {{ item.author.nickname }}
+                  <block v-if="item.author.sex !== null">
+                    <image
+                      src="../../assets/images/nan.png"
+                      class="list_sex"
+                      v-if="item.author.sex == 1"
+                    ></image>
+                    <image
+                      src="../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.author.sex == 0"
+                    ></image>
+                  </block>
+                </view>
+                <view class="list_p">
+                  <text>
+                    {{ item.author.career_list[0] }} |
+                    {{ item.ip_location }}</text
+                  >
                   <image
-                    src="../../assets/images/nan.png"
-                    class="list_sex"
-                    v-if="item.author.sex == 1"
+                    src="../../assets/images/common/icon_real.png"
+                    class="list_p_img"
+                    v-if="item.author.is_certify"
                   ></image>
                   <image
-                    src="../../assets/images/nv.png"
-                    class="list_sex"
-                    v-if="item.author.sex == 0"
+                    src="../../assets/images/common/icon_pledge_none.png"
+                    class="list_p_img"
+                    v-else
                   ></image>
-                </block>
-              </view>
-              <view class="list_p">
-                <text>
-                  {{ item.author.career_list[0] }} |
-                  {{ item.ip_location }}</text
-                >
-                <image
-                  src="../../assets/images/common/icon_real.png"
-                  class="list_p_img"
-                  v-if="item.author.is_certify"
-                ></image>
-                <image
-                  src="../../assets/images/common/icon_pledge_none.png"
-                  class="list_p_img"
-                  v-else
-                ></image>
-                <image
-                  src="../../assets/images/common/icon_pledge.png"
-                  class="list_p_img"
-                  v-if="item.author.is_security"
-                ></image>
-                <image
-                  src="../../assets/images/common/icon_real_none.png"
-                  class="list_p_img"
-                  v-else
-                ></image>
+                  <image
+                    src="../../assets/images/common/icon_pledge.png"
+                    class="list_p_img"
+                    v-if="item.author.is_security"
+                  ></image>
+                  <image
+                    src="../../assets/images/common/icon_real_none.png"
+                    class="list_p_img"
+                    v-else
+                  ></image>
+                </view>
               </view>
             </view>
+            <view class="list_collection">
+              <image src="../../assets/images/common/icon_favorite.png"></image>
+            </view>
           </view>
-          <view class="list_collection">
-            <image src="../../assets/images/common/icon_favorite.png"></image>
+          <view class="list_content">
+            <view class="list_title">
+              约{{ item.face_career }}
+              <text v-if="item.payment_type == 300 || item.payment_type == 400"
+                >·</text
+              >
+              <text
+                v-if="
+                  (item.payment_type == 300 && item.payment_range == 1) ||
+                  (item.payment_type == 400 && item.payment_range == 1)
+                "
+                >{{ item.payment_name }}{{ item.payment_min_amount }}-{{
+                  item.payment_max_amount
+                }}{{ item.payment_unit }}</text
+              >
+              <text
+                v-if="
+                  (item.payment_type == 300 && item.payment_range == 0) ||
+                  (item.payment_type == 400 && item.payment_range == 0)
+                "
+                >{{ item.payment_name }}{{ item.payment_amount
+                }}{{ item.payment_unit }}
+              </text>
+            </view>
+            <view class="list_loction"> {{ item.face_province_name }} </view>
           </view>
-        </view>
-        <view class="list_content">
-          <view class="list_title">
-            约{{ item.face_career }}
-            <text v-if="item.payment_type == 300 || item.payment_type == 400"
-              >·</text
+          <view class="list_desc">
+            {{ item.summary }}
+          </view>
+          <view class="list_img" v-if="item.file_type == 'picture'">
+            <scroll-view :enhanced="true" :scrollX="true">
+              <image
+                :src="url"
+                mode="aspectFill"
+                class="list_img_item"
+                v-for="(url, coverIndex) in item.cover"
+                :key="coverIndex"
+                @tap="previewImage(url, item.cover)"
+              ></image>
+            </scroll-view>
+          </view>
+          <view class="list_video" v-if="item.file_type == 'video'">
+            <video
+              :src="item.video_cover && item.video_cover[0]"
+              class="list_video-width"
+            ></video>
+          </view>
+          <view class="list_tags">
+            <view
+              class="tag"
+              v-for="(styleItem, styleIndex) in item.style_label"
+              :key="styleIndex"
+              >{{ styleItem }}</view
             >
-            <text
-              v-if="
-                (item.payment_type == 300 && item.payment_range == 1) ||
-                (item.payment_type == 400 && item.payment_range == 1)
-              "
-              >{{ item.payment_name }}{{ item.payment_min_amount }}-{{
-                item.payment_max_amount
-              }}{{ item.payment_unit }}</text
-            >
-            <text
-              v-if="
-                (item.payment_type == 300 && item.payment_range == 0) ||
-                (item.payment_type == 400 && item.payment_range == 0)
-              "
-              >{{ item.payment_name }}{{ item.payment_amount
-              }}{{ item.payment_unit }}
-            </text>
           </view>
-          <view class="list_loction"> {{ item.face_province_name }} </view>
-        </view>
-        <view class="list_desc">
-          {{ item.summary }}
-        </view>
-        <view class="list_img" v-if="item.file_type == 'picture'">
-          <scroll-view :enhanced="true" :scrollX="true">
-            <image
-              :src="url"
-              mode="aspectFill"
-              class="list_img_item"
-              v-for="(url, coverIndex) in item.cover"
-              :key="coverIndex"
-              @tap="previewImage(url, item.cover)"
-            ></image>
-          </scroll-view>
-        </view>
-        <view class="list_video" v-if="item.file_type == 'video'">
-          <video
-            :src="item.video_cover && item.video_cover[0]"
-            class="list_video-width"
-          ></video>
-        </view>
-        <view class="list_tags">
-          <view
-            class="tag"
-            v-for="(styleItem, styleIndex) in item.style_label"
-            :key="styleIndex"
-            >{{ styleItem }}</view
-          >
-        </view>
-        <view class="list_bottom">
-          <view class="list_time">
-            <image src="../../assets/images/common/time.png"></image>
-            1小时前
-          </view>
-          <view class="list_yuepai">
-            <image src="../../assets/images/user/index/invoice.png"></image>
-            收到约拍 20
-          </view>
-          <view class="list_read">
-            <image src="../../assets/images/user/index/invoice.png"></image>
-            阅读 20
+          <view class="list_bottom">
+            <view class="list_time">
+              <image src="../../assets/images/common/time.png"></image>
+              1小时前
+            </view>
+            <view class="list_yuepai">
+              <image src="../../assets/images/user/index/invoice.png"></image>
+              收到约拍 20
+            </view>
+            <view class="list_read">
+              <image src="../../assets/images/user/index/invoice.png"></image>
+              阅读 20
+            </view>
           </view>
         </view>
+      </block>
+      <view v-else class="none-data">
+        <image
+          src="../../assets/images/common/none.png"
+          mode="aspectFill"
+          class="none-img"
+        ></image>
+        <view>当前暂无信息哦～</view>
       </view>
     </view>
     <view class="select_block" v-show="showModal" @tap="close">
@@ -362,16 +372,13 @@ export default {
       sizer_num: [],
       navActive: 0,
       navList: [],
-      filter: [
-        {
-          quick_filter: 0,
-        },
-        { face_province_id: 0 },
-        { face_city_id: 0 },
-        { face_cid: 0 },
-        { sex: 100 },
-        { payment_type: 0 },
-      ],
+      filter: {
+        face_province_id: 0,
+        face_city_id: 0,
+        face_cid: 0,
+        sex: 10,
+        payment_type: 0,
+      },
       pageNum: 1,
       pageSize: 10,
       list: [],
@@ -480,15 +487,20 @@ export default {
     },
     navClick(index) {
       this.navActive = index;
+      this.query("init");
     },
     bindRegionChange(e) {
       console.log(e);
       this.sizer_city = e.detail.value;
     },
     query(type) {
+      wx.showLoading({
+        title: "加载中...",
+      });
       this.inviteList(
         {
           filter: this.filter,
+          quick_filter: this.navList[this.navActive].key,
           page: this.pageNum,
           per_page: this.pageSize,
         },
@@ -525,6 +537,9 @@ export default {
       });
     },
     clear() {
+      this.multiIndex = [0, 0];
+      this.sizer_city = "";
+      this.sizerSelect = [];
       this.appointmentData = this.appointmentData.map((item, index) => {
         item.ispick = index != 0 ? false : true;
         return item;
@@ -548,16 +563,17 @@ export default {
       let paymentdata = this.chargeData.filter((item) => {
         return item.ispick;
       });
-      this.filter = [
-        {
-          ["quick_filter"]: this.navList[this.navActive].key,
-        },
-        { face_province_id: this.sizerSelect[0] },
-        { face_city_id: this.sizerSelect[1] },
-        { face_cid: facedata[0].cid },
-        { sex: sexdata[0].value == 100 ? "" : sexdata[0].value },
-        { payment_type: paymentdata[0].key == "all" ? "" : paymentdata[0].key },
-      ];
+      this.filter = {
+        face_province_id: this.sizerSelect[0]
+          ? Number(this.multiArray[0][this.sizerSelect[0]].code)
+          : 0,
+        face_city_id: this.sizerSelect[1]
+          ? Number(this.multiArray[1][this.sizerSelect[1]].code)
+          : 0,
+        face_cid: facedata[0].cid,
+        sex: sexdata[0].value == 100 ? 100 : sexdata[0].value,
+        payment_type: paymentdata[0].key == "all" ? 0 : paymentdata[0].key,
+      };
       if (this.sizerSelect[0]) {
         let num = this.sizer_num.find((item) => {
           return item == 1;
@@ -589,6 +605,7 @@ export default {
         if (!num5) this.sizer_num.push(5);
       }
       this.showModal = false;
+      this.query("init");
     },
     async publicConfig(params) {
       try {
@@ -611,16 +628,13 @@ export default {
           ispick: true,
         });
         this.chargeData = arr2;
-        this.filter = [
-          {
-            ["quick_filter"]: this.navList[0].key,
-          },
-          { face_province_id: 0 },
-          { face_city_id: 0 },
-          { face_cid: 0 },
-          { sex: 100 },
-          { payment_type: 0 },
-        ];
+        this.filter = {
+          face_province_id: 0,
+          face_city_id: 0,
+          face_cid: 0,
+          sex: 10,
+          payment_type: 0,
+        };
         this.query("init");
       } catch (error) {}
     },

@@ -437,3 +437,16 @@
     line-height: 54px;
   }
 }
+.none-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  color: #333;
+}
+.none-img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 16px;
+}

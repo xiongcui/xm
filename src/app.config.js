@@ -1,17 +1,16 @@
 export default defineAppConfig({
   pages: [
     // "pages/vip/index",
-    // "pages/release/works/index",
     "pages/home/index",
     "pages/login/index",
-    "pages/user/identity/index",
+    // "pages/user/identity/index",
     "pages/register/index",
     "pages/my/index",
     "pages/release/index",
     "pages/position/index",
     "pages/msg/index",
-    // "pages/release/appointment/index",
-    // "pages/release/field/index",
+    "pages/release/appointment/index",
+    "pages/release/field/index",
     "pages/index/index",
   ],
   window: {
@@ -62,7 +61,7 @@ export default defineAppConfig({
     {
       root: "packageAdd/",
       name: "packadd",
-      pages: ["pages/yuedan/add_yuedan/index"],
+      pages: ["pages/yuedan/add_yuedan/index", "pages/user/identity/index"],
     },
   ],
   permission: {
