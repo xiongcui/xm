@@ -316,6 +316,13 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -389,6 +396,9 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
     },
     checkClick: function checkClick() {
       this.checked = !this.checked;
+    },
+    bindended: function bindended() {
+      wx.createVideoContext("video").exitFullScreen();
     },
     chooseImage: function chooseImage() {
       if (this.imgList.length >= 9) {
@@ -719,7 +729,6 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
       });
       params.style_label = style_label;
       params.notice_label = notice_label;
-      console.log(params, "params");
       this.creatInvite(params);
     },
     publicConfig: function publicConfig(params) {
@@ -803,7 +812,12 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
                 res = _context2.sent;
                 // 跳转首页
                 wx.switchTab({
-                  url: "/pages/home/index"
+                  url: "/pages/home/index",
+                  success: function success(e) {
+                    var page = getCurrentPages().pop();
+                    if (page == undefined || page == null) return;
+                    page.onLoad();
+                  }
                 });
                 _context2.next = 9;
                 break;
@@ -957,7 +971,13 @@ var render = function () {
                       [
                         _c("video", {
                           staticClass: "upload-video-width",
-                          attrs: { src: item },
+                          attrs: {
+                            src: item,
+                            objectFit: "cover",
+                            poster: _vm.videoCoverList[0],
+                            id: "video",
+                          },
+                          on: { ended: _vm.bindended },
                         }),
                         _c("text", {
                           staticClass: "upload-close",

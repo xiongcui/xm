@@ -157,7 +157,7 @@
   background-color: #fff;
   height: 88rpx;
   white-space: nowrap;
-  width: 100%;
+  width: calc(100% - 110rpx);
   z-index: 99;
 }
 
@@ -560,28 +560,28 @@
 .select_block .clear {
   display: inline-block;
   width: 200rpx;
-  height: 54rpx;
+  height: 64rpx;
   text-align: center;
   background-color: #f1f1f1;
   border: 1rpx solid #f1f1f1;
   color: #333;
   border-radius: 8rpx;
   font-size: 26rpx;
-  line-height: 54rpx;
+  line-height: 64rpx;
   margin-right: 16rpx;
 }
 
 .select_block .confirm {
   display: inline-block;
   width: 200rpx;
-  height: 54rpx;
+  height: 64rpx;
   text-align: center;
   background-color: #ff5355;
   border: 1rpx solid #ff5355;
   color: #fff;
   border-radius: 8rpx;
   font-size: 26rpx;
-  line-height: 54rpx;
+  line-height: 64rpx;
 }
 
 .none-data {

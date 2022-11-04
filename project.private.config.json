@@ -4,5 +4,18 @@
     "setting": {
         "compileHotReLoad": true
     },
-    "libVersion": "2.27.0"
+    "libVersion": "2.27.0",
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "约单详情",
+                    "pathName": "packageAdd/pages/yuedan/yuedan_detail/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }

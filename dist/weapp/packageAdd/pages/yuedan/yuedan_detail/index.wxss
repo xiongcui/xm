@@ -1,0 +1,106 @@
+.yuedan_detail {
+  background: #f6f6f6;
+  padding: 16rpx 0;
+}
+.yuedan_detail .avatar {
+  width: 110rpx;
+  height: 110rpx;
+}
+.yuedan_detail .yuedan_top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx;
+  background: #ffffff;
+  margin: 0 16rpx;
+  border-radius: 8rpx;
+  position: relative;
+}
+.yuedan_detail .yuedan_top_left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.yuedan_detail .yuedan_info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 16rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.yuedan_detail .yuedan_info .yuedan_name {
+  margin-bottom: 5rpx;
+  color: #111111;
+  font-size: 34rpx;
+}
+.yuedan_detail .yuedan_info .yuedan_p {
+  color: #686868;
+  font-size: 26rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.yuedan_detail .yuedan_info .yuedan_p_img {
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 16rpx;
+}
+.yuedan_detail .yuedan_right {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 16rpx;
+}
+.yuedan_detail .yuedan_right .follow {
+  width: 112rpx;
+  height: 53rpx;
+}
+.yuedan_detail .yuedan_right .share {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+.yuedan_detail .yuedan_icon {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin: 16rpx;
+  padding: 16rpx;
+}
+.yuedan_detail .yuedan_icon .yuedan_icon_box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 200rpx;
+}
+.yuedan_detail .yuedan_icon .yuedan_icon_box image {
+  width: 72rpx;
+  height: 72rpx;
+}
+.yuedan_detail .yuedan_icon .yuedan_icon_box text {
+  font-size: 26rpx;
+  color: #333333;
+}

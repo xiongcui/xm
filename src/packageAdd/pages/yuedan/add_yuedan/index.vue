@@ -51,7 +51,14 @@
               :key="index"
               class="upload-video-item"
             >
-              <video :src="item" class="upload-video-width"></video>
+              <video
+                :src="item"
+                class="upload-video-width"
+                objectFit="cover"
+                :poster="videoCoverList[0]"
+                @ended="bindended"
+                id="video"
+              ></video>
               <text class="upload-close" @tap="uploadVideoClose(index)"></text>
             </view>
           </block>
@@ -330,6 +337,9 @@ export default {
     },
     checkClick() {
       this.checked = !this.checked;
+    },
+    bindended() {
+      wx.createVideoContext("video").exitFullScreen();
     },
     chooseImage() {
       if (this.imgList.length >= 9) {
@@ -641,7 +651,6 @@ export default {
       });
       params.style_label = style_label;
       params.notice_label = notice_label;
-      console.log(params, "params");
       this.creatInvite(params);
     },
     async publicConfig(params) {
@@ -687,6 +696,11 @@ export default {
         // 跳转首页
         wx.switchTab({
           url: "/pages/home/index",
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            page.onLoad();
+          },
         });
       } catch (error) {}
     },

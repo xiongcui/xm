@@ -3,7 +3,6 @@ export default defineAppConfig({
     // "pages/vip/index",
     "pages/home/index",
     "pages/login/index",
-    // "pages/user/identity/index",
     "pages/register/index",
     "pages/my/index",
     "pages/release/index",
@@ -61,7 +60,11 @@ export default defineAppConfig({
     {
       root: "packageAdd/",
       name: "packadd",
-      pages: ["pages/yuedan/add_yuedan/index", "pages/user/identity/index"],
+      pages: [
+        "pages/yuedan/add_yuedan/index",
+        "pages/user/identity/index",
+        "pages/yuedan/yuedan_detail/index",
+      ],
     },
   ],
   permission: {
@@ -69,4 +72,5 @@ export default defineAppConfig({
       desc: "你的位置信息将用于小程序位置接口的效果展示", // 高速公路行驶持续后台定位
     },
   },
+  requiredPrivateInfos: ["getLocation"],
 });

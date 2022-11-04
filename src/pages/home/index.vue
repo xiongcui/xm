@@ -222,6 +222,8 @@
           </view>
           <view class="list_video" v-if="item.file_type == 'video'">
             <video
+              objectFit="cover"
+              :poster="item.cover[0]"
               :src="item.video_cover && item.video_cover[0]"
               class="list_video-width"
             ></video>
@@ -360,7 +362,6 @@ export default {
         navObj: 0,
         navObjWid: 0,
       },
-      statusBarHeight: 20,
       search: "",
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
@@ -421,23 +422,62 @@ export default {
     };
   },
   methods: {
-    map() {
+    //获取用户地理位置权限
+    getPermission() {
+      //获取用户地理位置
+      //先判断用户是否授权获取地理位置
+      let that = this;
+      wx.getSetting({
+        success(res) {
+          if (res.authSetting["scope.userLocation"] == false) {
+            //如果没有授权地理位置
+            wx.openSetting({
+              success(res) {
+                res.authSetting = {
+                  //打开授权位置页面，让用户自己开启
+                  "scope.userLocation": true,
+                };
+              },
+            });
+          } else {
+            //用户开启授权后可直接获取地理位置
+            wx.authorize({
+              scope: "scope.userLocation",
+              success() {
+                //获取位置后相关操作
+                that.getLocation();
+              },
+            });
+          }
+        },
+      });
+    },
+    // 新增下面这部分代码
+    getLocation() {
+      var that = this;
       wx.getLocation({
-        type: "gcj02", //返回可以用于 wx.openLocation 的经纬度
+        type: "wgs84",
         success(res) {
           const latitude = res.latitude;
           const longitude = res.longitude;
-          wx.openLocation({
-            latitude,
-            longitude,
-            scale: 18,
-          });
+          const speed = res.speed;
+          const accuracy = res.accuracy;
+          console.log(res); //将获取到的经纬度信息输出到控制台以便检查
+          // that.setData({
+          //   //将获取到的经度、纬度数值分别赋值给本地变量
+          //   latitude: res.latitude,
+          //   longitude: res.longitude,
+          // });
+        },
+        fail(error) {
+          console.log(error);
         },
       });
     },
     screen() {
       this.showModal = true;
       this.sizer_num = [];
+      this.getPermission();
     },
     close() {
       this.showModal = false;
@@ -678,6 +718,11 @@ export default {
       this.onMore();
     }
   },
+  created() {
+    this.publicConfig({
+      type: ["invite_filter", "payment_type"],
+    });
+  },
   mounted() {
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -711,10 +756,10 @@ export default {
     this.multiArray = arr;
     this.allCity = city;
   },
-  onShow: function onShow() {
-    this.publicConfig({
-      type: ["invite_filter", "payment_type"],
-    });
-  },
+  // onShow: function onShow() {
+  //   this.publicConfig({
+  //     type: ["invite_filter", "payment_type"],
+  //   });
+  // },
 };
 </script>
