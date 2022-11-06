@@ -401,6 +401,8 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -419,7 +421,7 @@ component.options.__file = "src/pages/home/index.vue"
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
-      autoplay: false,
+      autoplay: true,
       showModal: false,
       interval: 2000,
       duration: 500,
@@ -542,6 +544,10 @@ component.options.__file = "src/pages/home/index.vue"
           console.log(error);
         }
       });
+    },
+    godetail: function godetail(oid, author_id) {
+      console.log(oid, author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     screen: function screen() {
       this.showModal = true;
@@ -732,7 +738,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "f"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "g"])(params);
 
               case 3:
                 res = _context.sent;
@@ -790,7 +796,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "e"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "f"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1003,7 +1009,7 @@ var render = function () {
                     _c("image", {
                       staticClass: "swiper-item-img",
                       attrs: {
-                        mode: "center",
+                        mode: "aspectFill",
                         src: __webpack_require__("./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$")("./lanmao" +
                           (index + 1) +
                           ".jpg"),
@@ -1025,7 +1031,7 @@ var render = function () {
         _c("view", { staticClass: "page_nav_icon" }, [
           _c("image", {
             staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/user/index/like.png */ "./src/assets/images/user/index/like.png") },
+            attrs: { src: __webpack_require__(/*! ../../assets/images/tonggao.png */ "./src/assets/images/tonggao.png") },
           }),
         ]),
         _c("text", { staticClass: "page_nav_text" }, [_vm._v("通告")]),
@@ -1034,7 +1040,7 @@ var render = function () {
         _c("view", { staticClass: "page_nav_icon" }, [
           _c("image", {
             staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/user/index/like.png */ "./src/assets/images/user/index/like.png") },
+            attrs: { src: __webpack_require__(/*! ../../assets/images/yuedan.png */ "./src/assets/images/yuedan.png") },
           }),
         ]),
         _c("text", { staticClass: "page_nav_text" }, [_vm._v("约单")]),
@@ -1043,7 +1049,7 @@ var render = function () {
         _c("view", { staticClass: "page_nav_icon" }, [
           _c("image", {
             staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/user/index/like.png */ "./src/assets/images/user/index/like.png") },
+            attrs: { src: __webpack_require__(/*! ../../assets/images/activity.png */ "./src/assets/images/activity.png") },
           }),
         ]),
         _c("text", { staticClass: "page_nav_text" }, [_vm._v("活动")]),
@@ -1052,7 +1058,7 @@ var render = function () {
         _c("view", { staticClass: "page_nav_icon" }, [
           _c("image", {
             staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/user/index/like.png */ "./src/assets/images/user/index/like.png") },
+            attrs: { src: __webpack_require__(/*! ../../assets/images/more.png */ "./src/assets/images/more.png") },
           }),
         ]),
         _c("text", { staticClass: "page_nav_text" }, [_vm._v("待定")]),
@@ -1144,206 +1150,223 @@ var render = function () {
           ? _c(
               "block",
               _vm._l(_vm.list, function (item, index) {
-                return _c("view", { key: index, staticClass: "list_box" }, [
-                  _c("view", { staticClass: "list_top" }, [
-                    _c("view", { staticClass: "list_top_left" }, [
-                      _c("image", {
-                        staticClass: "avatar",
-                        attrs: {
-                          src: item.author.avatar
-                            ? item.author.avatar
-                            : "../../assets/images/avatar_default.png",
-                        },
-                      }),
-                      _c("view", { staticClass: "list_info" }, [
-                        _c(
-                          "view",
-                          { staticClass: "list_name" },
-                          [
-                            _vm._v(" " + _vm._s(item.author.nickname) + " "),
-                            item.author.sex !== null
-                              ? _c("block", [
-                                  item.author.sex == 1
-                                    ? _c("image", {
-                                        staticClass: "list_sex",
-                                        attrs: {
-                                          src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                                        },
-                                      })
-                                    : _vm._e(),
-                                  item.author.sex == 0
-                                    ? _c("image", {
-                                        staticClass: "list_sex",
-                                        attrs: {
-                                          src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                                        },
-                                      })
-                                    : _vm._e(),
-                                ])
-                              : _vm._e(),
-                          ],
-                          1
-                        ),
-                        _c("view", { staticClass: "list_p" }, [
-                          _c("text", [
-                            _vm._v(
-                              " " +
-                                _vm._s(item.author.career_list[0]) +
-                                " | " +
-                                _vm._s(item.ip_location)
-                            ),
-                          ]),
-                          item.author.is_certify
-                            ? _c("image", {
-                                staticClass: "list_p_img",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
-                                },
-                              })
-                            : _c("image", {
-                                staticClass: "list_p_img",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
-                                },
-                              }),
-                          item.author.is_security
-                            ? _c("image", {
-                                staticClass: "list_p_img",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
-                                },
-                              })
-                            : _c("image", {
-                                staticClass: "list_p_img",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
-                                },
-                              }),
-                        ]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "list_collection" }, [
-                      _c("image", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
-                        },
-                      }),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "list_content" }, [
-                    _c("view", { staticClass: "list_title" }, [
-                      _vm._v(" 约" + _vm._s(item.face_career) + " "),
-                      item.payment_type == 300 || item.payment_type == 400
-                        ? _c("text", [_vm._v("·")])
-                        : _vm._e(),
-                      (item.payment_type == 300 && item.payment_range == 1) ||
-                      (item.payment_type == 400 && item.payment_range == 1)
-                        ? _c("text", [
-                            _vm._v(
-                              _vm._s(item.payment_name) +
-                                _vm._s(item.payment_min_amount) +
-                                "-" +
-                                _vm._s(item.payment_max_amount) +
-                                _vm._s(item.payment_unit)
-                            ),
-                          ])
-                        : _vm._e(),
-                      (item.payment_type == 300 && item.payment_range == 0) ||
-                      (item.payment_type == 400 && item.payment_range == 0)
-                        ? _c("text", [
-                            _vm._v(
-                              _vm._s(item.payment_name) +
-                                _vm._s(item.payment_amount) +
-                                _vm._s(item.payment_unit) +
-                                " "
-                            ),
-                          ])
-                        : _vm._e(),
-                    ]),
-                    _c("view", { staticClass: "list_loction" }, [
-                      _vm._v(" " + _vm._s(item.face_province_name) + " "),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "list_desc" }, [
-                    _vm._v(" " + _vm._s(item.summary) + " "),
-                  ]),
-                  item.file_type == "picture"
-                    ? _c(
-                        "view",
-                        { staticClass: "list_img" },
-                        [
-                          _c(
-                            "scroll-view",
-                            { attrs: { enhanced: true, scrollX: true } },
-                            _vm._l(item.cover, function (url, coverIndex) {
-                              return _c("image", {
-                                key: coverIndex,
-                                staticClass: "list_img_item",
-                                attrs: { src: url, mode: "aspectFill" },
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.previewImage(url, item.cover)
-                                  },
-                                },
-                              })
-                            }),
-                            0
-                          ),
-                        ],
-                        1
-                      )
-                    : _vm._e(),
-                  item.file_type == "video"
-                    ? _c("view", { staticClass: "list_video" }, [
-                        _c("video", {
-                          staticClass: "list_video-width",
+                return _c(
+                  "view",
+                  {
+                    key: index,
+                    staticClass: "list_box",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.godetail(item.oid, item.author_id)
+                      },
+                    },
+                  },
+                  [
+                    _c("view", { staticClass: "list_top" }, [
+                      _c("view", { staticClass: "list_top_left" }, [
+                        _c("image", {
+                          staticClass: "avatar",
                           attrs: {
-                            objectFit: "cover",
-                            poster: item.cover[0],
-                            src: item.video_cover && item.video_cover[0],
+                            src: item.author.avatar
+                              ? item.author.avatar
+                              : "../../assets/images/avatar_default.png",
                           },
                         }),
-                      ])
-                    : _vm._e(),
-                  _c(
-                    "view",
-                    { staticClass: "list_tags" },
-                    _vm._l(item.style_label, function (styleItem, styleIndex) {
-                      return _c(
-                        "view",
-                        { key: styleIndex, staticClass: "tag" },
-                        [_vm._v(_vm._s(styleItem))]
-                      )
-                    }),
-                    0
-                  ),
-                  _c("view", { staticClass: "list_bottom" }, [
-                    _c("view", { staticClass: "list_time" }, [
-                      _c("image", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
-                        },
-                      }),
-                      _vm._v(" 1小时前 "),
+                        _c("view", { staticClass: "list_info" }, [
+                          _c(
+                            "view",
+                            { staticClass: "list_name" },
+                            [
+                              _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                              item.author.sex !== null
+                                ? _c("block", [
+                                    item.author.sex == 1
+                                      ? _c("image", {
+                                          staticClass: "list_sex",
+                                          attrs: {
+                                            src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                          },
+                                        })
+                                      : _vm._e(),
+                                    item.author.sex == 0
+                                      ? _c("image", {
+                                          staticClass: "list_sex",
+                                          attrs: {
+                                            src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                          },
+                                        })
+                                      : _vm._e(),
+                                  ])
+                                : _vm._e(),
+                            ],
+                            1
+                          ),
+                          _c("view", { staticClass: "list_p" }, [
+                            _c("text", [
+                              _vm._v(
+                                " " +
+                                  _vm._s(item.author.career_list[0]) +
+                                  " | " +
+                                  _vm._s(item.author.province_name)
+                              ),
+                            ]),
+                            item.author.is_certify
+                              ? _c("image", {
+                                  staticClass: "list_p_img",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                                  },
+                                })
+                              : _c("image", {
+                                  staticClass: "list_p_img",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                                  },
+                                }),
+                            item.author.is_security
+                              ? _c("image", {
+                                  staticClass: "list_p_img",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                                  },
+                                })
+                              : _c("image", {
+                                  staticClass: "list_p_img",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                                  },
+                                }),
+                          ]),
+                        ]),
+                      ]),
+                      _c("view", { staticClass: "list_collection" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
+                          },
+                        }),
+                      ]),
                     ]),
-                    _c("view", { staticClass: "list_yuepai" }, [
-                      _c("image", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-                        },
-                      }),
-                      _vm._v(" 收到约拍 20 "),
+                    _c("view", { staticClass: "list_content" }, [
+                      _c("view", { staticClass: "list_title" }, [
+                        _vm._v(" " + _vm._s(item.major_subject) + " "),
+                        (item.payment_type == 300 && item.payment_range == 1) ||
+                        (item.payment_type == 400 && item.payment_range == 1)
+                          ? _c("text", [
+                              _vm._v(
+                                _vm._s(item.payment_name) +
+                                  _vm._s(item.payment_min_amount) +
+                                  "-" +
+                                  _vm._s(item.payment_max_amount) +
+                                  _vm._s(item.payment_unit)
+                              ),
+                            ])
+                          : _vm._e(),
+                        (item.payment_type == 300 && item.payment_range == 0) ||
+                        (item.payment_type == 400 && item.payment_range == 0)
+                          ? _c("text", [
+                              _vm._v(
+                                _vm._s(item.payment_name) +
+                                  _vm._s(item.payment_amount) +
+                                  _vm._s(item.payment_unit) +
+                                  " "
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _c("view", { staticClass: "list_loction" }, [
+                        _vm._v(" " + _vm._s(item.face_province_name) + " "),
+                      ]),
                     ]),
-                    _c("view", { staticClass: "list_read" }, [
-                      _c("image", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-                        },
-                      }),
-                      _vm._v(" 阅读 20 "),
+                    _c("view", { staticClass: "list_desc" }, [
+                      _vm._v(" " + _vm._s(item.summary) + " "),
                     ]),
-                  ]),
-                ])
+                    item.file_type == "picture"
+                      ? _c(
+                          "view",
+                          { staticClass: "list_img" },
+                          [
+                            _c(
+                              "scroll-view",
+                              { attrs: { enhanced: true, scrollX: true } },
+                              _vm._l(item.cover, function (url, coverIndex) {
+                                return _c("image", {
+                                  key: coverIndex,
+                                  staticClass: "list_img_item",
+                                  attrs: { src: url, mode: "aspectFill" },
+                                  on: {
+                                    tap: function ($event) {
+                                      $event.stopPropagation()
+                                      return _vm.previewImage(url, item.cover)
+                                    },
+                                  },
+                                })
+                              }),
+                              0
+                            ),
+                          ],
+                          1
+                        )
+                      : _vm._e(),
+                    item.file_type == "video"
+                      ? _c("view", { staticClass: "list_video" }, [
+                          _c("video", {
+                            staticClass: "list_video-width",
+                            attrs: {
+                              objectFit: "cover",
+                              poster: item.cover[0],
+                              src: item.video_cover && item.video_cover[0],
+                            },
+                          }),
+                        ])
+                      : _vm._e(),
+                    _c(
+                      "view",
+                      { staticClass: "list_tags" },
+                      _vm._l(
+                        item.style_label,
+                        function (styleItem, styleIndex) {
+                          return _c(
+                            "view",
+                            { key: styleIndex, staticClass: "tag" },
+                            [_vm._v(_vm._s(styleItem))]
+                          )
+                        }
+                      ),
+                      0
+                    ),
+                    _c("view", { staticClass: "list_bottom" }, [
+                      _c("view", { staticClass: "list_time" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
+                          },
+                        }),
+                        _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                      ]),
+                      _c("view", { staticClass: "list_yuepai" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                          },
+                        }),
+                        _vm._v(
+                          " 收到约拍 " + _vm._s(item.statistic.invite_cnt) + " "
+                        ),
+                      ]),
+                      _c("view", { staticClass: "list_read" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+                          },
+                        }),
+                        _vm._v(
+                          " 阅读 " + _vm._s(item.statistic.read_cnt) + " "
+                        ),
+                      ]),
+                    ]),
+                  ]
+                )
               }),
               0
             )
@@ -1578,15 +1601,15 @@ webpackContext.id = "./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$";
 
 /***/ }),
 
-/***/ "./src/assets/images/common/icon_favorite.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/common/icon_favorite.png ***!
-  \****************************************************/
+/***/ "./src/assets/images/activity.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/activity.png ***!
+  \****************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/common/icon_favorite.png";
+module.exports = __webpack_require__.p + "assets/images/activity.png";
 
 /***/ }),
 
@@ -1638,18 +1661,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACN
 
 /***/ }),
 
-/***/ "./src/assets/images/common/time.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/common/time.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAMAAACelLz8AAAAZlBMVEUAAACZmZmZmZmampqYmJibm5uZmZmZmZmZmZmZmZmampqZmZmZmZmUlJSZmZmampqampqZmZmWlpaZmZmZmZmZmZmZmZmampqYmJiZmZmZmZmampqYmJibm5uampqampqenp6ZmZmhGzd/AAAAIXRSTlMA+sK9MDSSfN2CVuaaHxTHtZ8R83dxaaurTNOIYUU/OiJ5jHJYAAAAzUlEQVQoz4WS6Q6DMAyDnRZ6ARsMxu6j7/+SO2jC0CrhX5U+1XISg1V4VRFVyhdYqtRR2dAeg1VRl7/EUN0A6AyApiYjYKfd5DKMk7fTu4T0doOFNlud3BwT92TmzDcBSaZYSl76PHWNf4Rav3lscqiJBbxCDkF5KJtHVqEKeRQqUNsNgk7yp2sJdDAjki79I7325kALQ/j+PhumGKyhv0kMCc9OdOLwPLJopMAj86JE1zMvitfLkvXyUURylLVTzgWweynASm1Wypav6Avh0wlC+djhpgAAAABJRU5ErkJggg=="
-
-/***/ }),
-
 /***/ "./src/assets/images/lanmao1.jpg":
 /*!***************************************!*\
   !*** ./src/assets/images/lanmao1.jpg ***!
@@ -1686,15 +1697,39 @@ module.exports = __webpack_require__.p + "assets/images/lanmao3.jpg";
 
 /***/ }),
 
-/***/ "./src/assets/images/user/index/like.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/user/index/like.png ***!
-  \***********************************************/
+/***/ "./src/assets/images/more.png":
+/*!************************************!*\
+  !*** ./src/assets/images/more.png ***!
+  \************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/user/index/like.png";
+module.exports = __webpack_require__.p + "assets/images/more.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/tonggao.png":
+/*!***************************************!*\
+  !*** ./src/assets/images/tonggao.png ***!
+  \***************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/tonggao.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/yuedan.png":
+/*!**************************************!*\
+  !*** ./src/assets/images/yuedan.png ***!
+  \**************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/yuedan.png";
 
 /***/ }),
 

@@ -7,7 +7,7 @@
   display: -ms-flexbox;
   display: flex;
   background-color: #ffffff;
-  padding: 16rpx;
+  padding: 16rpx 16rpx 4rpx 16rpx;
 }
 .my .my-head .head-img {
   width: 120rpx;
@@ -19,26 +19,30 @@
   color: #333333;
   margin-top: 10rpx;
 }
-.my .my-head .sex {
-  width: 32rpx;
-  height: 32rpx;
-  margin-left: 5rpx;
-}
 .my .my-head .my-head-ct {
   width: 64%;
 }
+.my .my-head .my-account {
+  color: #999999;
+  font-size: 26rpx;
+  margin-bottom: 5rpx;
+}
 .my .my-head .my-info {
   color: #999999;
-  font-size: 24rpx;
+  font-size: 26rpx;
   margin-bottom: 10rpx;
-}
-.my .my-head .phone {
-  margin-left: 24rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .my .my-head .head-tag-box {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  margin-left: 16rpx;
 }
 .my .my-head .head-tag {
   display: -webkit-flex;
@@ -75,9 +79,16 @@
   width: 22rpx;
   height: 22rpx;
 }
-.my .my-ct-infos {
-  background-color: #ffffff;
-  height: 100rpx;
+.my .my-head-ct {
+  background: #ffffff;
+  padding: 0 16rpx;
+}
+.my .my-head-ct .my-desc {
+  color: #999999;
+  font-size: 26rpx;
+  line-height: 30rpx;
+}
+.my .my-count {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -87,28 +98,31 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 16rpx;
+  padding-bottom: 16rpx;
 }
-.my .my-ct-infos .my-ct-info-item {
-  width: 190rpx;
+.my .my-count .my-conunt-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 26rpx;
+}
+.my .my-count .my-conunt-rt {
+  color: #6493d7;
+  font-size: 26rpx;
+}
+.my .my-count .my-count-box {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  margin-right: 26rpx;
+  text-align: center;
+  color: #999999;
 }
-.my .my-ct-infos .nums {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333333;
-}
-.my .my-ct-infos .name {
-  font-size: 26rpx;
-  color: #666666;
+.my .my-count .my-count-box .num {
+  margin-bottom: 4rpx;
 }
 .my .my-vip {
   display: -webkit-flex;
@@ -120,16 +134,12 @@
   background-color: #363636;
   height: 96rpx;
   border-radius: 10rpx;
-  padding: 0 24rpx;
+  margin-top: 16rpx;
 }
 .my .my-vip .my-vip-img {
-  width: 36rpx;
-  height: 36rpx;
-  margin-right: 4rpx;
-}
-.my .my-vip .my-vip-rt-img {
-  width: 18rpx;
-  height: 18rpx;
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
 }
 .my .my-vip .my-vip-title {
   display: -webkit-flex;
@@ -148,21 +158,27 @@
   font-size: 20rpx;
   color: #ffdd90;
 }
+.my .my-vip .my-vip-left,
 .my .my-vip .my-vip-rt {
-  width: 118rpx;
-  height: 42rpx;
-  text-indent: 14rpx;
-  line-height: 42rpx;
-  background-color: #ffdd90;
-  border-radius: 21rpx;
-  position: relative;
-  font-size: 20rpx;
-  margin-top: 30rpx;
+  width: 50%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  line-height: 34rpx;
+  margin: 16rpx 0;
+  padding: 0 24rpx;
 }
-.my .my-vip .my-vip-rt-img {
-  position: absolute;
-  top: 12rpx;
-  right: 10rpx;
+.my .my-vip .my-vip-left {
+  border-right: 1rpx solid rgba(255, 255, 255, 0.85);
+}
+.my .my-vip .vip-text {
+  color: #e5c385;
 }
 .my .my-column {
   display: -webkit-flex;
@@ -171,10 +187,13 @@
   background-color: #ffffff;
   border-radius: 10rpx;
   margin-top: 16rpx;
-  padding: 20rpx 0;
+  padding: 20rpx 16rpx;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .my .my-column .my-column-item {
-  width: 25%;
+  width: 90rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -211,6 +230,12 @@
   font-size: 30rpx;
 }
 .my .item_icon {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-right: 16rpx;
 }
 .my .item_icon image {
@@ -358,4 +383,32 @@
   margin: 0 auto;
   color: red;
   margin-bottom: 10rpx;
+}
+.my .my_tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+.my .my_tags .tag {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.my .my_tags .sex {
+  width: 32rpx;
+  height: 32rpx;
 }

@@ -193,6 +193,11 @@ export default {
         // 跳转首页
         wx.switchTab({
           url: "/pages/home/index",
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            page.onLoad();
+          },
         });
       } catch (error) {}
     },
@@ -201,9 +206,7 @@ export default {
         let res = await getCareer(params);
         let data = res.data.data;
         if (data.user_career.career_label) {
-          let arr = data.user_career.career_label.map((item) => {
-            return item.role;
-          });
+          let arr = data.user_career.career_label;
           this.identity = arr.join(".");
           this.identityList = data.user_career.career_label;
         }

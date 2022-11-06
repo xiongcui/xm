@@ -36,7 +36,7 @@
           <swiper-item>
             <view class="swiper-item">
               <image
-                mode="center"
+                mode="aspectFill"
                 :src="
                   require('../../assets/images/lanmao' + (index + 1) + '.jpg')
                 "
@@ -51,7 +51,7 @@
       <view class="page_nav_item">
         <view class="page_nav_icon">
           <image
-            src="../../assets/images/user/index/like.png"
+            src="../../assets/images/tonggao.png"
             class="page_nav_img"
           ></image>
         </view>
@@ -60,7 +60,7 @@
       <view class="page_nav_item">
         <view class="page_nav_icon">
           <image
-            src="../../assets/images/user/index/like.png"
+            src="../../assets/images/yuedan.png"
             class="page_nav_img"
           ></image>
         </view>
@@ -69,7 +69,7 @@
       <view class="page_nav_item">
         <view class="page_nav_icon">
           <image
-            src="../../assets/images/user/index/like.png"
+            src="../../assets/images/activity.png"
             class="page_nav_img"
           ></image>
         </view>
@@ -78,7 +78,7 @@
       <view class="page_nav_item">
         <view class="page_nav_icon">
           <image
-            src="../../assets/images/user/index/like.png"
+            src="../../assets/images/more.png"
             class="page_nav_img"
           ></image>
         </view>
@@ -120,7 +120,12 @@
     </view>
     <view class="list_main">
       <block v-if="list.length">
-        <view class="list_box" v-for="(item, index) in list" :key="index">
+        <view
+          class="list_box"
+          v-for="(item, index) in list"
+          :key="index"
+          @tap="godetail(item.oid, item.author_id)"
+        >
           <view class="list_top">
             <view class="list_top_left">
               <image
@@ -150,7 +155,7 @@
                 <view class="list_p">
                   <text>
                     {{ item.author.career_list[0] }} |
-                    {{ item.ip_location }}</text
+                    {{ item.author.province_name }}</text
                   >
                   <image
                     src="../../assets/images/common/icon_real.png"
@@ -181,10 +186,7 @@
           </view>
           <view class="list_content">
             <view class="list_title">
-              约{{ item.face_career }}
-              <text v-if="item.payment_type == 300 || item.payment_type == 400"
-                >·</text
-              >
+              {{ item.major_subject }}
               <text
                 v-if="
                   (item.payment_type == 300 && item.payment_range == 1) ||
@@ -216,7 +218,7 @@
                 class="list_img_item"
                 v-for="(url, coverIndex) in item.cover"
                 :key="coverIndex"
-                @tap="previewImage(url, item.cover)"
+                @tap.stop="previewImage(url, item.cover)"
               ></image>
             </scroll-view>
           </view>
@@ -239,15 +241,15 @@
           <view class="list_bottom">
             <view class="list_time">
               <image src="../../assets/images/common/time.png"></image>
-              1小时前
+              {{ item.date_humanize }}
             </view>
             <view class="list_yuepai">
-              <image src="../../assets/images/user/index/invoice.png"></image>
-              收到约拍 20
+              <image src="../../assets/images/user/index/yuepai.png"></image>
+              收到约拍 {{ item.statistic.invite_cnt }}
             </view>
             <view class="list_read">
               <image src="../../assets/images/user/index/invoice.png"></image>
-              阅读 20
+              阅读 {{ item.statistic.read_cnt }}
             </view>
           </view>
         </view>
@@ -349,7 +351,7 @@
 <script>
 import "./index.scss";
 import { inviteList, publicConfig } from "../../api/index";
-import { errortip } from "../../utils/util";
+import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
 
 export default {
@@ -366,7 +368,7 @@ export default {
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
-      autoplay: false,
+      autoplay: true,
       showModal: false,
       interval: 2000,
       duration: 500,
@@ -473,6 +475,15 @@ export default {
           console.log(error);
         },
       });
+    },
+    godetail(oid, author_id) {
+      console.log(oid, author_id);
+      openPage(
+        "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
     },
     screen() {
       this.showModal = true;

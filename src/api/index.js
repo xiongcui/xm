@@ -73,3 +73,11 @@ export const inviteList = (data) => {
     data,
   });
 };
+// 约拍详情页
+export const inviteInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/invite/info",
+    method: "post",
+    data,
+  });
+};

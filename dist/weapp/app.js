@@ -159,15 +159,11 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/util */ "./src/utils/util.js");
 /* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
 /* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var taro_ui_dist_style_index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! taro-ui/dist/style/index.scss */ "./node_modules/taro-ui/dist/style/index.scss");
-/* harmony import */ var taro_ui_dist_style_index_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(taro_ui_dist_style_index_scss__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
 
 
-
- // 全局引入一次即可
 
 var App = {
   onLaunch: function onLaunch() {
@@ -208,7 +204,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "h"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "i"])(params);
 
             case 3:
               res = _context.sent;
@@ -635,17 +631,6 @@ process.umask = function() { return 0; };
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../process/browser.js */ "./node_modules/process/browser.js")))
-
-/***/ }),
-
-/***/ "./node_modules/taro-ui/dist/style/index.scss":
-/*!****************************************************!*\
-  !*** ./node_modules/taro-ui/dist/style/index.scss ***!
-  \****************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 

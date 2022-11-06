@@ -1,10 +1,11 @@
 .yuedan_detail {
   background: #f6f6f6;
-  padding: 16rpx 0;
+  padding: 16rpx 0 110rpx 0;
 }
 .yuedan_detail .avatar {
   width: 110rpx;
   height: 110rpx;
+  border-radius: 50%;
 }
 .yuedan_detail .yuedan_top {
   display: -webkit-flex;
@@ -103,4 +104,196 @@
 .yuedan_detail .yuedan_icon .yuedan_icon_box text {
   font-size: 26rpx;
   color: #333333;
+}
+.yuedan_detail .yuepai_swiper {
+  margin: 0 16rpx;
+}
+.yuedan_detail .yuepai_swiper image {
+  width: 100%;
+  height: 100%;
+}
+.yuedan_detail .yuepai_info {
+  background: #ffffff;
+  margin: 0 16rpx;
+  padding: 16rpx;
+}
+.yuedan_detail .yuepai_title {
+  color: #2f2f2f;
+  font-size: 38rpx;
+  margin-bottom: 16rpx;
+}
+.yuedan_detail .yuepai_content {
+  font-size: 30rpx;
+  color: #6b6b6b;
+  line-height: 38rpx;
+  margin-bottom: 16rpx;
+}
+.yuedan_detail .spot {
+  width: 10rpx;
+  height: 10rpx;
+  background: #fe5457;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+.yuedan_detail .yuepai_time,
+.yuedan_detail .yuepai_address {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+.yuedan_detail .yuepai_label {
+  color: #6b6b6b;
+}
+.yuedan_detail .yuepai_tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+.yuedan_detail .yuepai_tags .tag {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 22rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+}
+.yuedan_detail .yuepai_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+}
+.yuedan_detail .yuepai_bottom_time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.yuedan_detail .yuepai_bottom_time image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.yuedan_detail .yuepai_bottom_yuepai {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.yuedan_detail .yuepai_bottom_yuepai image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.yuedan_detail .yuepai_bottom_read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.yuedan_detail .yuepai_bottom_read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.yuedan_detail .yuepai_num {
+  margin: 16rpx;
+  background: #ffffff;
+  padding: 16rpx;
+}
+.yuedan_detail .yuepai_num_label {
+  border-left: 4rpx solid #fe5457;
+  padding-left: 16rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+.yuedan_detail .yuedan_sex {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 4rpx;
+}
+.yuedan_detail .yuepai_img {
+  margin: 16rpx 0;
+}
+.yuedan_detail .yuepai_img image {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: -30rpx;
+}
+.yuedan_detail .yuepai_video-width {
+  margin: 0 16rpx;
+  width: calc(100% - 32rpx);
+}
+.yuedan_detail .yuepai_fixed_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  padding: 20rpx 20rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_item {
+  margin-right: 20rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30rpx;
+  color: #333333;
+}
+.yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_item image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 6rpx;
+}
+.yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt {
+  width: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #fe5457;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 10rpx;
 }

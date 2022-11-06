@@ -46,6 +46,51 @@
       <view class="my-head-ct">
         <view>
           <text class="my-head-name">Bin.Won</text>
+          <!-- <image
+            src="../../assets/images/nan.png"
+            mode="aspectFit"
+            class="sex"
+            v-if="sex == 1"
+          ></image>
+          <image
+            src="../../assets/images/nv.png"
+            mode="aspectFit"
+            class="sex"
+            v-if="sex == 0"
+          ></image> -->
+        </view>
+        <view class="my-account">账号：66666666</view>
+        <view class="my-info">
+          <text>IP归属：</text>
+          <text>北京市</text>
+          <!-- <text class="phone">137****6230</text> -->
+          <view class="head-tag-box">
+            <view class="head-tag">
+              <image
+                src="../../assets/images/real-name.png"
+                class="head-tag-img"
+                mode="aspectFit"
+              ></image>
+              <text>未实名</text>
+            </view>
+            <view class="head-tag">
+              <image
+                src="../../assets/images/guarantee.png"
+                class="head-tag-img"
+                mode="aspectFit"
+              ></image>
+              <text>未担保</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="my-head-ct">
+      <view class="my-desc">
+        摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地
+      </view>
+      <view class="my_tags">
+        <view class="tag">
           <image
             src="../../assets/images/nan.png"
             mode="aspectFit"
@@ -58,135 +103,99 @@
             class="sex"
             v-if="sex == 0"
           ></image>
+          20岁
         </view>
-        <view class="my-info">
-          <text>摄影师</text>
-          <text>｜</text>
-          <text>北京市</text>
-          <text class="phone">137****6230</text>
-        </view>
-        <view class="head-tag-box">
-          <view class="head-tag">
-            <image
-              src="../../assets/images/real-name.png"
-              class="head-tag-img"
-              mode="aspectFit"
-            ></image>
-            <text>未实名</text>
-          </view>
-          <view class="head-tag">
-            <image
-              src="../../assets/images/guarantee.png"
-              class="head-tag-img"
-              mode="aspectFit"
-            ></image>
-            <text>未担保</text>
-          </view>
-        </view>
+        <view class="tag"> 北京·朝阳 </view>
+        <view class="tag"> 摄影 </view>
+        <view class="tag"> 模特 </view>
       </view>
-      <view class="my-head-rt">
-        <text>个人主页 </text>
-        <view class="arrow">
-          <image
-            mode="aspectFit"
-            src="../../assets/images/user/index/right.png"
-          ></image>
+      <view class="my-count">
+        <view class="my-conunt-left">
+          <view class="my-count-box">
+            <text class="num">100</text>
+            <text>粉丝</text>
+          </view>
+          <view class="my-count-box">
+            <text class="num">100</text>
+            <text>关注</text>
+          </view>
+          <view class="my-count-box">
+            <text class="num">100</text>
+            <text>约拍</text>
+          </view>
+          <view class="my-count-box">
+            <text class="num">100</text>
+            <text>访客</text>
+          </view>
+          <view class="my-count-box">
+            <text class="num">100</text>
+            <text>足迹</text>
+          </view>
         </view>
+        <view class="my-conunt-rt"> 编辑资料 </view>
       </view>
     </view>
     <view class="my-ct">
-      <view class="my-ct-infos">
-        <view class="my-ct-info-item">
-          <view class="nums">
-            <view>17</view>
-          </view>
-          <view class="name">
-            <view>麻豆</view>
-          </view>
-        </view>
-        <view class="my-ct-info-item">
-          <view class="nums">
-            <view>17</view>
-          </view>
-          <view class="name">
-            <view>关注</view>
-          </view>
-        </view>
-        <view class="my-ct-info-item">
-          <view class="nums">
-            <view>0</view>
-          </view>
-          <view class="name">
-            <view>粉丝</view>
-          </view>
-        </view>
-      </view>
       <view class="my-vip">
         <view class="my-vip-left">
-          <view class="my-vip-title">
-            <image
-              src="../../assets/images/vip.png"
-              class="my-vip-img"
-              mode="aspectFit"
-            ></image>
-            <text>麻豆约拍 VIP</text>
-          </view>
-          <view class="my-vip-txt">
-            <text>点亮会员标志 享受尊贵特权</text>
+          <image
+            src="../../assets/images/money.png"
+            class="my-vip-img"
+            mode="aspectFit"
+          ></image>
+          <view>
+            <view>我的金币</view>
+            <view>20币</view>
           </view>
         </view>
         <view class="my-vip-rt">
-          <text>开通会员</text>
           <image
-            src="../../assets/images/arrow-right.png"
-            class="my-vip-rt-img"
+            src="../../assets/images/vip.png"
+            class="my-vip-img"
+            mode="aspectFit"
           ></image>
+          <view>
+            <view>会员中心</view>
+            <view class="vip-text">开通会员尊享特权</view>
+          </view>
         </view>
       </view>
       <view class="my-column">
         <view class="my-column-item">
           <image
+            src="../../assets/images/zhuye.png"
+            class="my-column-img"
+            mode="aspectFill"
+          ></image>
+          <text>主页</text>
+        </view>
+        <view class="my-column-item">
+          <image
             src="../../assets/images/album.png"
             class="my-column-img"
-            mode="aspectFit"
+            mode="aspectFill"
           ></image>
-          <text>作品相册</text>
+          <text>作品</text>
         </view>
         <view class="my-column-item">
           <image
             src="../../assets/images/collection.png"
             class="my-column-img"
-            mode="aspectFit"
+            mode="aspectFill"
           ></image>
-          <text>我的收藏</text>
-        </view>
-        <view class="my-column-item">
-          <image
-            src="../../assets/images/thumbs.png"
-            class="my-column-img"
-            mode="aspectFit"
-          ></image>
-          <text>我的点赞</text>
-        </view>
-        <view class="my-column-item">
-          <image
-            src="../../assets/images/history.png"
-            class="my-column-img"
-            mode="aspectFit"
-          ></image>
-          <text>浏览历史</text>
+          <text>收藏</text>
         </view>
       </view>
       <view class="items">
-        <view catchtap="myYuepai" class="item ub">
+        <view catchtap="onMyAd" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/yuepai.png"
+              src="../../assets/images/user/index/ad.png"
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">我的约拍</view>
+            <view class="item_text">通告管理</view>
           </view>
           <view class="arrow">
             <image
@@ -195,15 +204,15 @@
             ></image>
           </view>
         </view>
-        <view catchtap="onMyAd" class="item ub line-t" v-if="show_my_ad">
+        <view catchtap="myYuepai" class="item ub">
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/ad.png"
+              src="../../assets/images/user/index/yuepai.png"
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">我的推广</view>
+            <view class="item_text">约单管理</view>
           </view>
           <view class="arrow">
             <image
@@ -216,11 +225,45 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/madou.png"
+              src="../../assets/images/user/index/huodong.png"
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">我的麻豆</view>
+            <view class="item_text">活动管理</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view catchtap="coin" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/zuopin1.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">作品管理</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view catchtap="coin" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/moka.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">模卡管理</view>
           </view>
           <view class="arrow">
             <image
@@ -231,6 +274,23 @@
         </view>
       </view>
       <view class="items">
+        <view catchtap="coin" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/dengji.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">我的等级</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
         <view catchtap="realName" class="item ub" v-if="!infor.realname">
           <view class="item_icon">
             <image
@@ -239,7 +299,7 @@
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">实名认证</view>
+            <view class="item_text">我的认证</view>
           </view>
           <view class="item_tip" v-if="infor.realname">已实名</view>
           <view class="arrow">
@@ -279,6 +339,40 @@
             <view class="item_text">邀请好友</view>
           </view>
           <view class="item_tip">赚麻豆</view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view catchtap="coin" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/kefu1.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">联系客服</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view catchtap="coin" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/gongzhonghao.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">关注公众号</view>
+          </view>
           <view class="arrow">
             <image
               mode="aspectFit"

@@ -260,13 +260,18 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* updateUser */ "g"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* updateUser */ "h"])(params);
 
               case 3:
                 res = _context.sent;
                 // 跳转首页
                 wx.switchTab({
-                  url: "/pages/home/index"
+                  url: "/pages/home/index",
+                  success: function success(e) {
+                    var page = getCurrentPages().pop();
+                    if (page == undefined || page == null) return;
+                    page.onLoad();
+                  }
                 });
                 _context.next = 9;
                 break;
@@ -301,9 +306,7 @@ component.options.__file = "src/pages/register/index.vue"
                 data = res.data.data;
 
                 if (data.user_career.career_label) {
-                  arr = data.user_career.career_label.map(function (item) {
-                    return item.role;
-                  });
+                  arr = data.user_career.career_label;
                   _this.identity = arr.join(".");
                   _this.identityList = data.user_career.career_label;
                 }

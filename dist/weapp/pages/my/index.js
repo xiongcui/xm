@@ -417,6 +417,100 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "my",
@@ -582,6 +676,44 @@ var render = function () {
       _c("view", { staticClass: "my-head-ct" }, [
         _c("view", [
           _c("text", { staticClass: "my-head-name" }, [_vm._v("Bin.Won")]),
+        ]),
+        _c("view", { staticClass: "my-account" }, [_vm._v("账号：66666666")]),
+        _c("view", { staticClass: "my-info" }, [
+          _c("text", [_vm._v("IP归属：")]),
+          _c("text", [_vm._v("北京市")]),
+          _c("view", { staticClass: "head-tag-box" }, [
+            _c("view", { staticClass: "head-tag" }, [
+              _c("image", {
+                staticClass: "head-tag-img",
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/real-name.png */ "./src/assets/images/real-name.png"),
+                  mode: "aspectFit",
+                },
+              }),
+              _c("text", [_vm._v("未实名")]),
+            ]),
+            _c("view", { staticClass: "head-tag" }, [
+              _c("image", {
+                staticClass: "head-tag-img",
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/guarantee.png */ "./src/assets/images/guarantee.png"),
+                  mode: "aspectFit",
+                },
+              }),
+              _c("text", [_vm._v("未担保")]),
+            ]),
+          ]),
+        ]),
+      ]),
+    ]),
+    _c("view", { staticClass: "my-head-ct" }, [
+      _c("view", { staticClass: "my-desc" }, [
+        _vm._v(
+          " 摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地 "
+        ),
+      ]),
+      _c("view", { staticClass: "my_tags" }, [
+        _c("view", { staticClass: "tag" }, [
           _vm.sex == 1
             ? _c("image", {
                 staticClass: "sex",
@@ -600,85 +732,67 @@ var render = function () {
                 },
               })
             : _vm._e(),
+          _vm._v(" 20岁 "),
         ]),
-        _c("view", { staticClass: "my-info" }, [
-          _c("text", [_vm._v("摄影师")]),
-          _c("text", [_vm._v("｜")]),
-          _c("text", [_vm._v("北京市")]),
-          _c("text", { staticClass: "phone" }, [_vm._v("137****6230")]),
-        ]),
-        _c("view", { staticClass: "head-tag-box" }, [
-          _c("view", { staticClass: "head-tag" }, [
-            _c("image", {
-              staticClass: "head-tag-img",
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/real-name.png */ "./src/assets/images/real-name.png"),
-                mode: "aspectFit",
-              },
-            }),
-            _c("text", [_vm._v("未实名")]),
-          ]),
-          _c("view", { staticClass: "head-tag" }, [
-            _c("image", {
-              staticClass: "head-tag-img",
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/guarantee.png */ "./src/assets/images/guarantee.png"),
-                mode: "aspectFit",
-              },
-            }),
-            _c("text", [_vm._v("未担保")]),
-          ]),
-        ]),
+        _c("view", { staticClass: "tag" }, [_vm._v(" 北京·朝阳 ")]),
+        _c("view", { staticClass: "tag" }, [_vm._v(" 摄影 ")]),
+        _c("view", { staticClass: "tag" }, [_vm._v(" 模特 ")]),
       ]),
-      _c("view", { staticClass: "my-head-rt" }, [
-        _c("text", [_vm._v("个人主页 ")]),
-        _c("view", { staticClass: "arrow" }, [
-          _c("image", {
-            attrs: {
-              mode: "aspectFit",
-              src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-            },
-          }),
+      _c("view", { staticClass: "my-count" }, [
+        _c("view", { staticClass: "my-conunt-left" }, [
+          _c("view", { staticClass: "my-count-box" }, [
+            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", [_vm._v("粉丝")]),
+          ]),
+          _c("view", { staticClass: "my-count-box" }, [
+            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", [_vm._v("关注")]),
+          ]),
+          _c("view", { staticClass: "my-count-box" }, [
+            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", [_vm._v("约拍")]),
+          ]),
+          _c("view", { staticClass: "my-count-box" }, [
+            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", [_vm._v("访客")]),
+          ]),
+          _c("view", { staticClass: "my-count-box" }, [
+            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", [_vm._v("足迹")]),
+          ]),
         ]),
+        _c("view", { staticClass: "my-conunt-rt" }, [_vm._v(" 编辑资料 ")]),
       ]),
     ]),
     _c("view", { staticClass: "my-ct" }, [
-      _c("view", { staticClass: "my-ct-infos" }, [
-        _c("view", { staticClass: "my-ct-info-item" }, [
-          _c("view", { staticClass: "nums" }, [_c("view", [_vm._v("17")])]),
-          _c("view", { staticClass: "name" }, [_c("view", [_vm._v("麻豆")])]),
-        ]),
-        _c("view", { staticClass: "my-ct-info-item" }, [
-          _c("view", { staticClass: "nums" }, [_c("view", [_vm._v("17")])]),
-          _c("view", { staticClass: "name" }, [_c("view", [_vm._v("关注")])]),
-        ]),
-        _c("view", { staticClass: "my-ct-info-item" }, [
-          _c("view", { staticClass: "nums" }, [_c("view", [_vm._v("0")])]),
-          _c("view", { staticClass: "name" }, [_c("view", [_vm._v("粉丝")])]),
-        ]),
-      ]),
       _c("view", { staticClass: "my-vip" }, [
         _c("view", { staticClass: "my-vip-left" }, [
-          _c("view", { staticClass: "my-vip-title" }, [
-            _c("image", {
-              staticClass: "my-vip-img",
-              attrs: {
-                src: __webpack_require__(/*! ../../assets/images/vip.png */ "./src/assets/images/vip.png"),
-                mode: "aspectFit",
-              },
-            }),
-            _c("text", [_vm._v("麻豆约拍 VIP")]),
-          ]),
-          _c("view", { staticClass: "my-vip-txt" }, [
-            _c("text", [_vm._v("点亮会员标志 享受尊贵特权")]),
+          _c("image", {
+            staticClass: "my-vip-img",
+            attrs: {
+              src: __webpack_require__(/*! ../../assets/images/money.png */ "./src/assets/images/money.png"),
+              mode: "aspectFit",
+            },
+          }),
+          _c("view", [
+            _c("view", [_vm._v("我的金币")]),
+            _c("view", [_vm._v("20币")]),
           ]),
         ]),
         _c("view", { staticClass: "my-vip-rt" }, [
-          _c("text", [_vm._v("开通会员")]),
           _c("image", {
-            staticClass: "my-vip-rt-img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/arrow-right.png */ "./src/assets/images/arrow-right.png") },
+            staticClass: "my-vip-img",
+            attrs: {
+              src: __webpack_require__(/*! ../../assets/images/vip.png */ "./src/assets/images/vip.png"),
+              mode: "aspectFit",
+            },
           }),
+          _c("view", [
+            _c("view", [_vm._v("会员中心")]),
+            _c("view", { staticClass: "vip-text" }, [
+              _vm._v("开通会员尊享特权"),
+            ]),
+          ]),
         ]),
       ]),
       _c("view", { staticClass: "my-column" }, [
@@ -686,44 +800,59 @@ var render = function () {
           _c("image", {
             staticClass: "my-column-img",
             attrs: {
-              src: __webpack_require__(/*! ../../assets/images/album.png */ "./src/assets/images/album.png"),
-              mode: "aspectFit",
+              src: __webpack_require__(/*! ../../assets/images/zhuye.png */ "./src/assets/images/zhuye.png"),
+              mode: "aspectFill",
             },
           }),
-          _c("text", [_vm._v("作品相册")]),
+          _c("text", [_vm._v("主页")]),
+        ]),
+        _c("view", { staticClass: "my-column-item" }, [
+          _c("image", {
+            staticClass: "my-column-img",
+            attrs: {
+              src: __webpack_require__(/*! ../../assets/images/album.png */ "./src/assets/images/album.png"),
+              mode: "aspectFill",
+            },
+          }),
+          _c("text", [_vm._v("作品")]),
         ]),
         _c("view", { staticClass: "my-column-item" }, [
           _c("image", {
             staticClass: "my-column-img",
             attrs: {
               src: __webpack_require__(/*! ../../assets/images/collection.png */ "./src/assets/images/collection.png"),
-              mode: "aspectFit",
+              mode: "aspectFill",
             },
           }),
-          _c("text", [_vm._v("我的收藏")]),
-        ]),
-        _c("view", { staticClass: "my-column-item" }, [
-          _c("image", {
-            staticClass: "my-column-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/thumbs.png */ "./src/assets/images/thumbs.png"),
-              mode: "aspectFit",
-            },
-          }),
-          _c("text", [_vm._v("我的点赞")]),
-        ]),
-        _c("view", { staticClass: "my-column-item" }, [
-          _c("image", {
-            staticClass: "my-column-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/history.png */ "./src/assets/images/history.png"),
-              mode: "aspectFit",
-            },
-          }),
-          _c("text", [_vm._v("浏览历史")]),
+          _c("text", [_vm._v("收藏")]),
         ]),
       ]),
       _c("view", { staticClass: "items" }, [
+        _c(
+          "view",
+          { staticClass: "item ub line-t", attrs: { catchtap: "onMyAd" } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/ad.png */ "./src/assets/images/user/index/ad.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("通告管理")]),
+            ]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
         _c(
           "view",
           { staticClass: "item ub", attrs: { catchtap: "myYuepai" } },
@@ -737,7 +866,7 @@ var render = function () {
               }),
             ]),
             _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("我的约拍")]),
+              _c("view", { staticClass: "item_text" }, [_vm._v("约单管理")]),
             ]),
             _c("view", { staticClass: "arrow" }, [
               _c("image", {
@@ -749,35 +878,6 @@ var render = function () {
             ]),
           ]
         ),
-        _vm.show_my_ad
-          ? _c(
-              "view",
-              { staticClass: "item ub line-t", attrs: { catchtap: "onMyAd" } },
-              [
-                _c("view", { staticClass: "item_icon" }, [
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../assets/images/user/index/ad.png */ "./src/assets/images/user/index/ad.png"),
-                    },
-                  }),
-                ]),
-                _c("view", { staticClass: "ub-f1" }, [
-                  _c("view", { staticClass: "item_text" }, [
-                    _vm._v("我的推广"),
-                  ]),
-                ]),
-                _c("view", { staticClass: "arrow" }, [
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-                    },
-                  }),
-                ]),
-              ]
-            )
-          : _vm._e(),
         _c(
           "view",
           { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
@@ -786,12 +886,62 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/madou.png */ "./src/assets/images/user/index/madou.png"),
+                  src: __webpack_require__(/*! ../../assets/images/user/index/huodong.png */ "./src/assets/images/user/index/huodong.png"),
                 },
               }),
             ]),
             _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("我的麻豆")]),
+              _c("view", { staticClass: "item_text" }, [_vm._v("活动管理")]),
+            ]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
+        _c(
+          "view",
+          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/zuopin1.png */ "./src/assets/images/user/index/zuopin1.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("作品管理")]),
+            ]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
+        _c(
+          "view",
+          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/moka.png */ "./src/assets/images/user/index/moka.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("模卡管理")]),
             ]),
             _c("view", { staticClass: "arrow" }, [
               _c("image", {
@@ -805,6 +955,31 @@ var render = function () {
         ),
       ]),
       _c("view", { staticClass: "items" }, [
+        _c(
+          "view",
+          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/dengji.png */ "./src/assets/images/user/index/dengji.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("我的等级")]),
+            ]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
         !_vm.infor.realname
           ? _c(
               "view",
@@ -820,7 +995,7 @@ var render = function () {
                 ]),
                 _c("view", { staticClass: "ub-f1" }, [
                   _c("view", { staticClass: "item_text" }, [
-                    _vm._v("实名认证"),
+                    _vm._v("我的认证"),
                   ]),
                 ]),
                 _vm.infor.realname
@@ -888,6 +1063,56 @@ var render = function () {
               _c("view", { staticClass: "item_text" }, [_vm._v("邀请好友")]),
             ]),
             _c("view", { staticClass: "item_tip" }, [_vm._v("赚麻豆")]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
+        _c(
+          "view",
+          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/kefu1.png */ "./src/assets/images/user/index/kefu1.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("联系客服")]),
+            ]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
+        _c(
+          "view",
+          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/gongzhonghao.png */ "./src/assets/images/user/index/gongzhonghao.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("关注公众号")]),
+            ]),
             _c("view", { staticClass: "arrow" }, [
               _c("image", {
                 attrs: {
@@ -1036,18 +1261,6 @@ module.exports = __webpack_require__.p + "assets/images/album.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/arrow-right.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/arrow-right.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/arrow-right.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/collection.png":
 /*!******************************************!*\
   !*** ./src/assets/images/collection.png ***!
@@ -1096,15 +1309,15 @@ module.exports = __webpack_require__.p + "assets/images/head.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/history.png":
-/*!***************************************!*\
-  !*** ./src/assets/images/history.png ***!
-  \***************************************/
+/***/ "./src/assets/images/money.png":
+/*!*************************************!*\
+  !*** ./src/assets/images/money.png ***!
+  \*************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/history.png";
+module.exports = __webpack_require__.p + "assets/images/money.png";
 
 /***/ }),
 
@@ -1117,18 +1330,6 @@ module.exports = __webpack_require__.p + "assets/images/history.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/real-name.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/thumbs.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/thumbs.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/thumbs.png";
 
 /***/ }),
 
@@ -1156,6 +1357,30 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAP
 
 /***/ }),
 
+/***/ "./src/assets/images/user/index/dengji.png":
+/*!*************************************************!*\
+  !*** ./src/assets/images/user/index/dengji.png ***!
+  \*************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/user/index/dengji.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/user/index/gongzhonghao.png":
+/*!*******************************************************!*\
+  !*** ./src/assets/images/user/index/gongzhonghao.png ***!
+  \*******************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/user/index/gongzhonghao.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/user/index/helpcenter.png":
 /*!*****************************************************!*\
   !*** ./src/assets/images/user/index/helpcenter.png ***!
@@ -1165,6 +1390,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAP
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAuCAMAAACLUGAGAAAAjVBMVEUAAAAyMjI0NDQzMzM0NDQzMzM1NTU0NDQ0NDQ0NDQzMzMxMTEwMDA0NDQ0NDQ0NDQ0NDQ0NDQxMTEzMzM0NDQ0NDQ0NDQ0NDQ0NDQzMzM0NDQzMzM0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQzMzM1NTU0NDQ0NDQzMzMzMzM1NTU0NDSFlWmcAAAALnRSTlMABft8cyoO8dKVjRUK9baIXFcfG+bKoE8+Muzg2rxsYUhD3s7Eq6d3JriwnTg1z/osOwAAAdVJREFUSMftk9m2ojAQRUMAGQRFRcV51la79/9/XocFwQSudj/fdfcLqXBSdYoK4vvgj9w4Gnrz/r+liyhHE976n7V3LNLovd6JJYr108tGO/eyRLEcvRFPpmW22G8O7x8oIucr8fgIzOzKf07A5Qt5fw1y1zE3K1N01QMIfjemFn5SL2/Ati3egtzXVeIcFW2KKozU+lfLRwBePZwVFbJK6WxgYKuHcK5WifK/Gm6H5ZnK2TitVxpnCXVhD9Y99eyFcGlSXU31HKb18gyZKBlBXvcsSXuG+vnqO4BJdQsgrffuMDfUyqtuO45joXOvROMuNmxLgs5cwtdYCuurjOHUFj9A+npYEBr3Hza2ONkoceO1p0x9UDvlPTgIQ320nISW2lXihf3e6jJtD8u8jgd4GGEIvrCcBY5damiEEXhGWLScnWFvhPvW6yRxhGU7SEyjuX26yPp25acwuUH4SudB/pL7Unel6eVmI1Ng1LhS0UXYZNQ3tfNzXSGY6MDYTOc6nTtrBhnrOraXsrzb2R1QWuzSPwF3+++eH4FIR9088npwdLwry0lXvMFLUQSD+Oa50VmiOB7EW8YzicnSTcQnJu6JmnSQdbVd/8XOc71s4Ygf/oO/YZw+4tXipE8AAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ "./src/assets/images/user/index/huodong.png":
+/*!**************************************************!*\
+  !*** ./src/assets/images/user/index/huodong.png ***!
+  \**************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/user/index/huodong.png";
 
 /***/ }),
 
@@ -1216,15 +1453,27 @@ module.exports = __webpack_require__.p + "assets/images/user/index/invite.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/user/index/madou.png":
+/***/ "./src/assets/images/user/index/kefu1.png":
 /*!************************************************!*\
-  !*** ./src/assets/images/user/index/madou.png ***!
+  !*** ./src/assets/images/user/index/kefu1.png ***!
   \************************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/user/index/madou.png";
+module.exports = __webpack_require__.p + "assets/images/user/index/kefu1.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/user/index/moka.png":
+/*!***********************************************!*\
+  !*** ./src/assets/images/user/index/moka.png ***!
+  \***********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/user/index/moka.png";
 
 /***/ }),
 
@@ -1264,15 +1513,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACO
 
 /***/ }),
 
-/***/ "./src/assets/images/user/index/yuepai.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/index/yuepai.png ***!
-  \*************************************************/
+/***/ "./src/assets/images/user/index/zuopin1.png":
+/*!**************************************************!*\
+  !*** ./src/assets/images/user/index/zuopin1.png ***!
+  \**************************************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAABelBMVEUAAAAAAAAAAAAAAABAQEAzMzMrKyskJCQuLi4nJyc3NzcwMDA2NjYzMzMuLi41NTUzMzM3Nzc1NTUzMzMwMDAzMzMyMjI0NDQ0NDQzMzMyMjIwMDA0NDQyMjIwMDAzMzMyMjI0NDQxMTEzMzMyMjIyMjIzMzM0NDQzMzMyMjIyMjIyMjIzMzMzMzM0NDQ0NDQzMzMzMzMzMzMzMzMyMjIzMzMzMzMyMjIyMjIyMjIzMzMzMzMzMzMyMjIyMjIzMzMzMzMzMzMyMjI0NDQzMzMyMjIyMjIzMzMzMzMyMjIzMzMzMzMyMjI0NDQzMzMzMzMyMjIzMzMyMjI0NDQzMzMzMzMyMjIyMjIzMzMzMzMyMjIzMzMyMjIzMzMzMzMzMzMzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzPqmi6JAAAAfXRSTlMAAQIDBAUGBwsNDhATFBYYGRwdHiAjJCcsMjM1Njg6PD1AREZHTVBUVVtcZmpucXZ3gYOIiYuMjpOUlZebnZ6goaWnqKusra6wsrO0tre4ubu/wMHCxMXGx8jKztDR0tPb3N3e39/h4uPk5ebo6err7O3v8vP09fb3+Pr8/hfJ7skAAAF7SURBVEjH7ZVXTwJBFEZHulhQECv2XsCKBbAXUFQUUVERGyB2FAVEvv8uG1h3je6MiTxynu79crIzNzOZJaRIgWncjiNPYreVIZuSEJHupNsnwKYjz3oGERVN7gZmhW4GGKTZx3g3CJ0uiSvFL1bVdPAiSxiwieMp4JrLg/ZqUWq45edKiWOiS/D5g1FIF4HABoer7/uavW4PxxngFMIYfNKzqGpJiRdvQpCGQ9r2YIjYAYWU3TaxumZt5zs/Rii20ZcbzF+X68s7ZNJ2fQzI3EQzwEvDVyhlq8+BhRpC9A4gomHZZmAyV40hu2GG7cedOlcpwwiw7CTm+NKGDzndVmZg5dNRQMv49jNcfLmEBGsnTqTyd1b3ii2W3ZU9ljKuKN0Delg2WcneaYupyRwC3MzTIZod/k57tWybyC33nPs0rCR/sAmRNfcPtMjFCc3+yT/sRxzJabLsAHGhmweu9ilcAsui5yQEBlG9aKmK8cNTCn5rZfHvUxA+AWWctuD+3T7EAAAAAElFTkSuQmCC"
+module.exports = __webpack_require__.p + "assets/images/user/index/zuopin1.png";
 
 /***/ }),
 
@@ -1297,6 +1546,18 @@ module.exports = __webpack_require__.p + "assets/images/user/sign/addcoin.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/vip.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/zhuye.png":
+/*!*************************************!*\
+  !*** ./src/assets/images/zhuye.png ***!
+  \*************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/zhuye.png";
 
 /***/ }),
 

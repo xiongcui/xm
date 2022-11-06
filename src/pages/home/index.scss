@@ -84,8 +84,8 @@
 }
 
 .page_nav_img {
-  width: 90%;
-  height: 90%;
+  width: 60%;
+  height: 60%;
 }
 .page_nav_item {
   text-align: center;
@@ -206,6 +206,7 @@
 .avatar {
   width: 110px;
   height: 110px;
+  border-radius: 50%;
 }
 .list_top {
   display: flex;
@@ -282,7 +283,9 @@
 }
 .list_tags {
   display: flex;
-  margin: 10px 0px;
+  flex-wrap: wrap;
+  //   margin: 10px 0px;
+  margin-top: 16px;
   .tag {
     padding: 4px 10px;
     background: rgba(245, 50, 24, 0.08);
@@ -290,6 +293,7 @@
     font-size: 22px;
     border-radius: 8px;
     margin-right: 10px;
+    margin-bottom: 16px;
   }
 }
 .list_bottom {

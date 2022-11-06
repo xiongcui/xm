@@ -110,8 +110,8 @@
 }
 
 .page_nav_img {
-  width: 90%;
-  height: 90%;
+  width: 60%;
+  height: 60%;
 }
 
 .page_nav_item {
@@ -262,6 +262,7 @@
 .avatar {
   width: 110rpx;
   height: 110rpx;
+  border-radius: 50%;
 }
 
 .list_top {
@@ -376,7 +377,10 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin: 10rpx 0;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
 }
 
 .list_tags .tag {
@@ -386,6 +390,7 @@
   font-size: 22rpx;
   border-radius: 8rpx;
   margin-right: 10rpx;
+  margin-bottom: 16rpx;
 }
 
 .list_bottom {
