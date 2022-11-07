@@ -38,56 +38,47 @@
     <view class="my-head">
       <view class="my-head-left">
         <image
-          src="../../assets/images/head.png"
+          :src="infor.avatar ? infor.avatar : '../../assets/images/head.png'"
           class="head-img"
           mode="aspectFit"
         ></image>
       </view>
       <view class="my-head-ct">
         <view>
-          <text class="my-head-name">Bin.Won</text>
-          <!-- <image
-            src="../../assets/images/nan.png"
-            mode="aspectFit"
-            class="sex"
-            v-if="sex == 1"
-          ></image>
-          <image
-            src="../../assets/images/nv.png"
-            mode="aspectFit"
-            class="sex"
-            v-if="sex == 0"
-          ></image> -->
+          <text class="my-head-name">{{ infor.nickname }}</text>
         </view>
-        <view class="my-account">账号：66666666</view>
+        <view class="my-account">账号：</view>
         <view class="my-info">
           <text>IP归属：</text>
-          <text>北京市</text>
-          <!-- <text class="phone">137****6230</text> -->
+          <text>{{ infor.province_name }}</text>
           <view class="head-tag-box">
-            <view class="head-tag">
-              <image
-                src="../../assets/images/real-name.png"
-                class="head-tag-img"
-                mode="aspectFit"
-              ></image>
-              <text>未实名</text>
-            </view>
-            <view class="head-tag">
-              <image
-                src="../../assets/images/guarantee.png"
-                class="head-tag-img"
-                mode="aspectFit"
-              ></image>
-              <text>未担保</text>
-            </view>
+            <image
+              src="../../assets/images/common/icon_real.png"
+              class="head-tag-img"
+              v-if="infor.is_certify"
+            ></image>
+            <image
+              src="../../assets/images/common/icon_pledge_none.png"
+              class="head-tag-img"
+              v-else
+            ></image>
+            <image
+              src="../../assets/images/common/icon_pledge.png"
+              class="head-tag-img"
+              v-if="infor.is_security"
+            ></image>
+            <image
+              src="../../assets/images/common/icon_real_none.png"
+              class="head-tag-img"
+              v-else
+            ></image>
           </view>
         </view>
       </view>
     </view>
     <view class="my-head-ct">
       <view class="my-desc">
-        摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地
+        {{ infor.resume }}
       </view>
       <view class="my_tags">
         <view class="tag">
@@ -95,40 +86,45 @@
             src="../../assets/images/nan.png"
             mode="aspectFit"
             class="sex"
-            v-if="sex == 1"
+            v-if="infor.sex == 1"
           ></image>
           <image
             src="../../assets/images/nv.png"
             mode="aspectFit"
             class="sex"
-            v-if="sex == 0"
+            v-if="infor.sex == 0"
           ></image>
-          20岁
+          {{ infor.age }}岁
         </view>
-        <view class="tag"> 北京·朝阳 </view>
-        <view class="tag"> 摄影 </view>
-        <view class="tag"> 模特 </view>
+        <view class="tag"> {{ infor.province_name }} </view>
+        <view
+          class="tag"
+          v-for="(item, index) in infor.career_list"
+          :key="index"
+        >
+          {{ item }}
+        </view>
       </view>
       <view class="my-count">
         <view class="my-conunt-left">
           <view class="my-count-box">
-            <text class="num">100</text>
+            <text class="num">{{ infor.statistic.followed_cnt }}</text>
             <text>粉丝</text>
           </view>
           <view class="my-count-box">
-            <text class="num">100</text>
+            <text class="num">{{ infor.statistic.follower_cnt }}</text>
             <text>关注</text>
           </view>
           <view class="my-count-box">
-            <text class="num">100</text>
+            <text class="num">{{ infor.statistic.invite_cnt }}</text>
             <text>约拍</text>
           </view>
           <view class="my-count-box">
-            <text class="num">100</text>
+            <text class="num">{{ infor.statistic.read_cnt }}</text>
             <text>访客</text>
           </view>
           <view class="my-count-box">
-            <text class="num">100</text>
+            <text class="num">{{ infor.statistic.track_cnt }}</text>
             <text>足迹</text>
           </view>
         </view>
@@ -465,6 +461,7 @@
 
 <script>
 import "./index.scss";
+import { userInfo } from "../../api/index";
 export default {
   name: "my",
   data() {
@@ -509,6 +506,13 @@ export default {
         console.log(err);
       },
     });
+    this.userInfo("");
+  },
+  async userInfo(params) {
+    try {
+      let res = await userInfo(params);
+      this.infor = res.data.data;
+    } catch (error) {}
   },
 };
 </script>

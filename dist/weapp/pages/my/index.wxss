@@ -59,9 +59,9 @@
   font-size: 20rpx;
 }
 .my .my-head .head-tag-img {
-  width: 20rpx;
-  height: 20rpx;
-  margin-right: 4rpx;
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 16rpx;
 }
 .my .my-head .my-head-rt {
   display: -webkit-flex;

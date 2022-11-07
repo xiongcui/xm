@@ -81,3 +81,19 @@ export const inviteInfo = (data) => {
     data,
   });
 };
+// 用户主页信息
+export const userInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/info",
+    method: "get",
+    data,
+  });
+};
+// 地理位置
+export const getGeometry = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/geometry",
+    method: "post",
+    data,
+  });
+};

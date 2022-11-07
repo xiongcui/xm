@@ -44,8 +44,13 @@ component.options.__file = "src/pages/my/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/my/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/my/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+
+
 //
 //
 //
@@ -507,10 +512,7 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "my",
@@ -559,6 +561,38 @@ component.options.__file = "src/pages/my/index.vue"
         console.log(err);
       }
     });
+    this.userInfo("");
+  },
+  userInfo: function userInfo(params) {
+    var _this2 = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "i"])(params);
+
+            case 3:
+              res = _context.sent;
+              _this2.infor = res.data.data;
+              _context.next = 9;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }))();
   }
 });
 
@@ -668,96 +702,124 @@ var render = function () {
         _c("image", {
           staticClass: "head-img",
           attrs: {
-            src: __webpack_require__(/*! ../../assets/images/head.png */ "./src/assets/images/head.png"),
+            src: _vm.infor.avatar
+              ? _vm.infor.avatar
+              : "../../assets/images/head.png",
             mode: "aspectFit",
           },
         }),
       ]),
       _c("view", { staticClass: "my-head-ct" }, [
         _c("view", [
-          _c("text", { staticClass: "my-head-name" }, [_vm._v("Bin.Won")]),
+          _c("text", { staticClass: "my-head-name" }, [
+            _vm._v(_vm._s(_vm.infor.nickname)),
+          ]),
         ]),
-        _c("view", { staticClass: "my-account" }, [_vm._v("账号：66666666")]),
+        _c("view", { staticClass: "my-account" }, [_vm._v("账号：")]),
         _c("view", { staticClass: "my-info" }, [
           _c("text", [_vm._v("IP归属：")]),
-          _c("text", [_vm._v("北京市")]),
+          _c("text", [_vm._v(_vm._s(_vm.infor.province_name))]),
           _c("view", { staticClass: "head-tag-box" }, [
-            _c("view", { staticClass: "head-tag" }, [
-              _c("image", {
-                staticClass: "head-tag-img",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/real-name.png */ "./src/assets/images/real-name.png"),
-                  mode: "aspectFit",
-                },
-              }),
-              _c("text", [_vm._v("未实名")]),
-            ]),
-            _c("view", { staticClass: "head-tag" }, [
-              _c("image", {
-                staticClass: "head-tag-img",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/guarantee.png */ "./src/assets/images/guarantee.png"),
-                  mode: "aspectFit",
-                },
-              }),
-              _c("text", [_vm._v("未担保")]),
-            ]),
+            _vm.infor.is_certify
+              ? _c("image", {
+                  staticClass: "head-tag-img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                  },
+                })
+              : _c("image", {
+                  staticClass: "head-tag-img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                  },
+                }),
+            _vm.infor.is_security
+              ? _c("image", {
+                  staticClass: "head-tag-img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                  },
+                })
+              : _c("image", {
+                  staticClass: "head-tag-img",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                  },
+                }),
           ]),
         ]),
       ]),
     ]),
     _c("view", { staticClass: "my-head-ct" }, [
       _c("view", { staticClass: "my-desc" }, [
-        _vm._v(
-          " 摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地，摄影和模特的互勉约拍聚集地 "
-        ),
+        _vm._v(" " + _vm._s(_vm.infor.resume) + " "),
       ]),
-      _c("view", { staticClass: "my_tags" }, [
-        _c("view", { staticClass: "tag" }, [
-          _vm.sex == 1
-            ? _c("image", {
-                staticClass: "sex",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                  mode: "aspectFit",
-                },
-              })
-            : _vm._e(),
-          _vm.sex == 0
-            ? _c("image", {
-                staticClass: "sex",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                  mode: "aspectFit",
-                },
-              })
-            : _vm._e(),
-          _vm._v(" 20岁 "),
-        ]),
-        _c("view", { staticClass: "tag" }, [_vm._v(" 北京·朝阳 ")]),
-        _c("view", { staticClass: "tag" }, [_vm._v(" 摄影 ")]),
-        _c("view", { staticClass: "tag" }, [_vm._v(" 模特 ")]),
-      ]),
+      _c(
+        "view",
+        { staticClass: "my_tags" },
+        [
+          _c("view", { staticClass: "tag" }, [
+            _vm.infor.sex == 1
+              ? _c("image", {
+                  staticClass: "sex",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                    mode: "aspectFit",
+                  },
+                })
+              : _vm._e(),
+            _vm.infor.sex == 0
+              ? _c("image", {
+                  staticClass: "sex",
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                    mode: "aspectFit",
+                  },
+                })
+              : _vm._e(),
+            _vm._v(" " + _vm._s(_vm.infor.age) + "岁 "),
+          ]),
+          _c("view", { staticClass: "tag" }, [
+            _vm._v(" " + _vm._s(_vm.infor.province_name) + " "),
+          ]),
+          _vm._l(_vm.infor.career_list, function (item, index) {
+            return _c("view", { key: index, staticClass: "tag" }, [
+              _vm._v(" " + _vm._s(item) + " "),
+            ])
+          }),
+        ],
+        2
+      ),
       _c("view", { staticClass: "my-count" }, [
         _c("view", { staticClass: "my-conunt-left" }, [
           _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.infor.statistic.followed_cnt)),
+            ]),
             _c("text", [_vm._v("粉丝")]),
           ]),
           _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.infor.statistic.follower_cnt)),
+            ]),
             _c("text", [_vm._v("关注")]),
           ]),
           _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.infor.statistic.invite_cnt)),
+            ]),
             _c("text", [_vm._v("约拍")]),
           ]),
           _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.infor.statistic.read_cnt)),
+            ]),
             _c("text", [_vm._v("访客")]),
           ]),
           _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [_vm._v("100")]),
+            _c("text", { staticClass: "num" }, [
+              _vm._v(_vm._s(_vm.infor.statistic.track_cnt)),
+            ]),
             _c("text", [_vm._v("足迹")]),
           ]),
         ]),
@@ -1285,30 +1347,6 @@ module.exports = __webpack_require__.p + "assets/images/common/tipclose.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/guarantee.png":
-/*!*****************************************!*\
-  !*** ./src/assets/images/guarantee.png ***!
-  \*****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/guarantee.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/head.png":
-/*!************************************!*\
-  !*** ./src/assets/images/head.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/head.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/money.png":
 /*!*************************************!*\
   !*** ./src/assets/images/money.png ***!
@@ -1318,18 +1356,6 @@ module.exports = __webpack_require__.p + "assets/images/head.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/money.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/real-name.png":
-/*!*****************************************!*\
-  !*** ./src/assets/images/real-name.png ***!
-  \*****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/real-name.png";
 
 /***/ }),
 
