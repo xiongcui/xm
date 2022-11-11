@@ -49,12 +49,10 @@ component.options.__file = "src/pages/register/index.vue"
 "use strict";
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/pages/register/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
-
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/register/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -210,45 +208,43 @@ component.options.__file = "src/pages/register/index.vue"
       this.regionList = e.detail.code;
     },
     identityFocus: function identityFocus() {
-      // openPage("/pages/user/identity/index");
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "b"])("/packageAdd/pages/user/identity/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/identity/index");
     },
     submit: function submit() {
       if (!this.nickname) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写名称！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写名称！");
         return false;
       }
 
       if (this.sex === "") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择性别！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择性别！");
         return false;
       }
 
       if (!this.date) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择生日！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择生日！");
         return false;
       }
 
       if (!this.select_city) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择地区！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择地区！");
         return false;
       }
 
       if (!this.identity) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择身份！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择身份！");
         return false;
       }
 
-      var params = Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({
+      var params = {
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
         addressName: this.select_city,
         address: this.regionList,
-        career_label: this.identity,
-        avatar: this.avatar
-      }, "career_label", this.identityList);
-
+        avatar: this.avatar,
+        career_label: this.identityList
+      };
       this.updateUser(params);
     },
     updateUser: function updateUser(params) {
@@ -260,7 +256,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* updateUser */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "i"])(params);
 
               case 3:
                 res = _context.sent;
@@ -299,7 +295,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* getCareer */ "c"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "c"])(params);
 
               case 3:
                 res = _context2.sent;

@@ -1625,18 +1625,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACB
 
 /***/ }),
 
-/***/ "./src/assets/images/common/none.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/common/none.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/none.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/common/sizer.png":
 /*!********************************************!*\
   !*** ./src/assets/images/common/sizer.png ***!

@@ -13,6 +13,7 @@
   width: 120rpx;
   height: 120rpx;
   margin-right: 16rpx;
+  border-radius: 50%;
 }
 .my .my-head .my-head-name {
   font-size: 36rpx;

@@ -146,7 +146,7 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
   methods: {
     select_tag: function select_tag(row) {
       var result = this.identity.find(function (ele) {
-        return ele.cid === row.cid;
+        return ele === row.role;
       });
 
       if (!result) {
@@ -155,10 +155,10 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
           return false;
         }
 
-        this.identity.push(row);
+        this.identity.push(row.role);
       } else {
         var index = this.identity.findIndex(function (ele) {
-          return ele.cid === row.cid;
+          return ele === row.role;
         });
         this.identity.splice(index, 1);
       }
@@ -166,6 +166,8 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
       row.ispick = !row.ispick;
     },
     submit: function submit() {
+      var _this2 = this;
+
       var _this = this;
 
       if (!this.identity.length) {
@@ -173,15 +175,17 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
         return false;
       }
 
-      var arr = this.identity.map(function (item) {
-        return {
-          cid: item.cid,
-          role: item.role
-        };
+      var arr = [];
+      this.identity.map(function (item) {
+        _this2.identity_data.map(function (items) {
+          if (item == items.role) {
+            arr.push({
+              cid: items.cid,
+              role: items.role
+            });
+          }
+        });
       });
-      var params = {
-        json: arr
-      };
       var index = this.identity.findIndex(function (ele) {
         return ele.code == "ACTOR";
       });
@@ -213,7 +217,7 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
       }
     },
     getCareer: function getCareer(params) {
-      var _this2 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, data;
@@ -228,14 +232,14 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
               case 3:
                 res = _context.sent;
                 data = res.data.data;
-                _this2.cur_modify_career_cnt = data.user_career.cur_modify_career_cnt;
-                _this2.total_modify_career_cnt = data.user_career.total_modify_career_cnt;
-                if (data.user_career.career_label) _this2.identity = data.user_career.career_label;
-                _this2.identity_data = data.career_list.map(function (item) {
+                _this3.cur_modify_career_cnt = data.user_career.cur_modify_career_cnt;
+                _this3.total_modify_career_cnt = data.user_career.total_modify_career_cnt;
+                if (data.user_career.career_label) _this3.identity = data.user_career.career_label;
+                _this3.identity_data = data.career_list.map(function (item) {
                   item.ispick = false;
 
-                  _this2.identity.map(function (identityItem) {
-                    if (item.cid == identityItem.cid) {
+                  _this3.identity.map(function (identityItem) {
+                    if (item.role == identityItem) {
                       item.ispick = true;
                     }
                   });
@@ -259,7 +263,7 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
     },
     creatCareer: function creatCareer(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res, identity;
+        var res, identity, pages, prevPage;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -272,32 +276,32 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
                 res = _context2.sent;
                 identity = params.map(function (item) {
                   return item.role;
-                }); // let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
-                // let prevPage = pages[pages.length - 2];
-                // //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
-                // prevPage.setData({
-                //   // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
-                //   identity: identity.join(","),
-                //   identity_arr: params,
-                // });
-                // console.log(prevPage, "prev");
+                });
+                pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+
+                prevPage = pages[pages.length - 2]; //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+
+                prevPage.setData({
+                  // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+                  identity: identity.join(".")
+                }); // console.log(prevPage, "prev");
 
                 wx.navigateBack({
                   delta: 1
                 });
-                _context2.next = 10;
+                _context2.next = 13;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 11:
+                _context2.prev = 11;
                 _context2.t0 = _context2["catch"](0);
 
-              case 10:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 11]]);
       }))();
     }
   },
@@ -377,11 +381,11 @@ var render = function () {
                           staticClass:
                             "identity-choice-item identity-choice-active",
                         },
-                        [_vm._v(_vm._s(item.role))]
+                        [_vm._v(_vm._s(item))]
                       ),
                     ])
                   : _c("text", { staticClass: "identity-choice-item" }, [
-                      _vm._v(" " + _vm._s(item.role) + " "),
+                      _vm._v(" " + _vm._s(item) + " "),
                     ]),
               ],
               1

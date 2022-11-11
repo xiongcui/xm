@@ -253,7 +253,6 @@ export default {
       };
       this.inviteInfo(params);
     }
-    console.log(this.oid, this.author_id, "333");
   },
 };
 </script>

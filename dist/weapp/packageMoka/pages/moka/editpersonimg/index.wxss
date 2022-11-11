@@ -1,0 +1,147 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.main,
+page {
+  height: 100%;
+  width: 100%;
+}
+
+.ub-f1 {
+  box-flex: 1;
+}
+
+.editpersonimg {
+  display: block;
+  padding-top: 10rpx;
+}
+
+.none_main {
+  background-color: #fff;
+}
+
+.side_gap {
+  width: 30rpx;
+}
+
+.side_gap_right {
+  width: 10rpx;
+}
+
+.personimgs {
+  background-color: #fff;
+  margin: 0 auto;
+  padding: 0 30rpx;
+}
+
+.imgsblock {
+  background-color: #fff !important;
+  width: 100%;
+}
+
+.imgs,
+.imgsblock {
+  display: block;
+  float: left;
+}
+
+.imgs {
+  padding-bottom: 20rpx;
+}
+
+.pick_img {
+  background-color: #f7f8fa;
+  border-radius: 4rpx;
+  display: inline-block;
+  float: left;
+  height: 310rpx;
+  margin: 30rpx 20rpx 0 0;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 217rpx;
+}
+
+.pick_img_btn {
+  height: 150rpx;
+  text-align: center;
+}
+
+.pick_img_btn image {
+  height: 38rpx;
+  margin-top: 113rpx;
+  width: 38rpx;
+}
+
+.upload-text {
+  color: #ccc;
+  font-size: 24rpx;
+  height: 75rpx;
+  padding-top: 13rpx;
+  text-align: center;
+}
+
+.preview_img {
+  background-color: #f7f8fa;
+  display: inline-block;
+  float: left;
+  height: 310rpx;
+  margin: 30rpx 20rpx 0 0;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 217rpx;
+}
+
+.preview_img > image {
+  border-radius: 4rpx;
+  height: 100%;
+  width: 100%;
+}
+
+.preview_delet {
+  background: #000;
+  border-radius: 4rpx;
+  color: #fff;
+  font-size: 22rpx;
+  height: 34rpx;
+  line-height: 34rpx;
+  opacity: 0.5;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 60rpx;
+}
+
+.preview_delet > image {
+  height: 100%;
+  position: absolute;
+  right: 2rpx;
+  width: 100%;
+}
+
+.icon_coverimg {
+  background-color: #ff1e3e;
+  border-radius: 20rpx 0 0 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 24rpx;
+  padding: 6rpx 0;
+  position: absolute;
+  right: 0;
+  width: 68rpx;
+}
+
+.sub_btn {
+  padding: 80rpx 103rpx 90rpx;
+}
+
+.sub_btn button {
+  background-color: #ff1e3e;
+  color: #fff;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}

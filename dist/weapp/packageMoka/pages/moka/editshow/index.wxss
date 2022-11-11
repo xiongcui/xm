@@ -1,0 +1,293 @@
+.main {
+  background-color: #f7f7f7;
+}
+.main .main_top {
+  position: relative;
+}
+.main .homeimg {
+  background: #ea6a6b;
+  width: 100%;
+  padding-bottom: 40rpx;
+}
+.main .homeimg-show {
+  width: 100%;
+  padding-bottom: 10rpx;
+}
+.main .my-head {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16rpx 16rpx 4rpx 16rpx;
+}
+.main .my-head .head-img {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 16rpx;
+  border-radius: 50%;
+}
+.main .my-head .my-head-name {
+  font-size: 36rpx;
+  color: #fffefb;
+  margin-top: 10rpx;
+}
+.main .my-head .my-head-ct {
+  width: 64%;
+}
+.main .my-head .my-account {
+  color: #fffefb;
+  font-size: 26rpx;
+  margin-bottom: 5rpx;
+}
+.main .my-head .my-info {
+  color: #fffefb;
+  font-size: 26rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main .my-head .head-tag-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 16rpx;
+}
+.main .my-head .head-tag {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 2rpx;
+  margin-right: 8rpx;
+  padding: 4rpx 6rpx;
+  background-color: #eb7d80;
+  color: #fffefb;
+  font-size: 20rpx;
+}
+.main .my-head .head-tag-img {
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 16rpx;
+}
+.main .my-head .my-head-rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24rpx;
+  color: #fffefb;
+  width: 126rpx;
+  position: relative;
+}
+.main .my-head .my-head-rt image {
+  width: 22rpx;
+  height: 22rpx;
+}
+.main .my-head-ct {
+  padding: 0 16rpx;
+}
+.main .my-head-ct .my-desc {
+  color: #fffefb;
+  font-size: 26rpx;
+  line-height: 30rpx;
+}
+.main .my-count {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 16rpx;
+}
+.main .my-count .my-conunt-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 26rpx;
+}
+.main .my-count .my-conunt-rt image {
+  width: 112rpx;
+  height: 53rpx;
+}
+.main .my-count .my-count-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-right: 26rpx;
+  text-align: center;
+  color: #fffefb;
+}
+.main .my-count .my-count-box .num {
+  margin-bottom: 4rpx;
+}
+.main .my_tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+.main .my_tags .tag {
+  padding: 4rpx 10rpx;
+  background-color: #eb7d80;
+  color: #fffefb;
+  font-size: 24rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main .my_tags .sex {
+  width: 32rpx;
+  height: 32rpx;
+}
+.main .line-bg {
+  position: absolute;
+  width: 100%;
+  top: -26rpx;
+  border-radius: 26rpx 26rpx 0 0;
+  height: 26rpx;
+  background: #ffffff;
+}
+.main .main_list {
+  width: 100%;
+  position: relative;
+}
+.main .main_list .swiper_tab {
+  height: 88rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 50rpx;
+  background: #ffffff;
+}
+.main .main_list .tab_item {
+  line-height: 82rpx;
+  padding: 0 16rpx;
+}
+.main .main_list .on {
+  border-bottom: 6rpx solid #ff1e3e;
+}
+.main .main_list .home_item {
+  padding: 16rpx;
+  background: #ffffff;
+  margin-top: 16rpx;
+  color: #333333;
+}
+.main .main_list .home_item_title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.main .main_list .home_item_title_text {
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.main .main_list .user_infor_text {
+  font-size: 26rpx;
+  color: #999999;
+}
+.main .main_list .home_item_title_edit {
+  color: #6493d7;
+  font-size: 28rpx;
+  margin-right: 10rpx;
+}
+.main .main_list .home_item_main {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 26rpx 0;
+}
+.main .main_list .user_infor_text,
+.main .main_list .user_infor_value {
+  width: 175rpx;
+  text-align: center;
+}
+.main .main_list .user_infor_value {
+  margin-bottom: 10rpx;
+}
+.main .main_list .home_img_add {
+  background-color: #f7f7f7;
+  height: 300rpx;
+  width: 220rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main .main_list .home_img_add image {
+  width: 58rpx;
+  height: 58rpx;
+}
+.main .main_list .home_video_add {
+  background-color: #f7f7f7;
+  height: 300rpx;
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main .main_list .home_video_add image {
+  width: 58rpx;
+  height: 58rpx;
+}
+.main .main_list .home_item_tag {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.main .main_list .home_item_tag .tag_item {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 22rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+}

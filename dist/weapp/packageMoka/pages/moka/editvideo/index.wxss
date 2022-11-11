@@ -1,0 +1,70 @@
+editvideomain {
+  background-color: #fff;
+  height: 100%;
+  padding: 30rpx 30rpx 0;
+}
+
+.video_none {
+  background-color: #f2f2f2;
+  color: #ccc;
+  font-size: 28rpx;
+  height: 388rpx;
+  text-align: center;
+  width: 690rpx;
+}
+
+.video_none image {
+  height: 58rpx;
+  margin: 148rpx 0 13rpx;
+  width: 58rpx;
+}
+
+.video_item {
+  height: 388rpx;
+  width: 690rpx;
+}
+
+.item_bottom {
+  padding: 23rpx 0 32rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.setVideoLeft {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn_set {
+  background-color: #ff1e3e;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 24rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 26rpx;
+  text-align: center;
+}
+
+.btn_delete {
+  background: #ededed;
+  color: #333;
+  margin-right: 30rpx;
+}
+
+.sub_btn {
+  padding: 80rpx 103rpx 90rpx;
+}
+
+.sub_btn button {
+  background-color: #ff1e3e;
+  color: #fff;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}

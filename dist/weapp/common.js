@@ -4,23 +4,26 @@
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry */
-/*! exports used: creatCareer, creatInvite, getCareer, getPhone, inviteInfo, inviteList, publicConfig, updateUser, userInfo, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar */
+/*! exports used: creatCareer, creatInvite, getCareer, getPhone, inviteInfo, inviteList, publicConfig, updateAvatar, updateUser, userInfo, userProfile, userResume, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return wxlogin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getPhone; });
 /* unused harmony export uploadFile */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return updateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return updateUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return creatCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return publicConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return creatInvite; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return inviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return inviteInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return userInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return userInfo; });
 /* unused harmony export getGeometry */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return userResume; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return userProfile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return updateAvatar; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://tapi.cupz.cn"; // WX登录,拿code换登录
@@ -119,6 +122,30 @@ var getGeometry = function getGeometry(data) {
     method: "post",
     data: data
   });
+}; // 自我简介
+
+var userResume = function userResume(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/resume",
+    method: "post",
+    data: data
+  });
+}; // 获取编辑资料
+
+var userProfile = function userProfile(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/profile",
+    method: "get",
+    data: data
+  });
+}; // 更新头像
+
+var updateAvatar = function updateAvatar(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/avatar",
+    method: "PUT",
+    data: data
+  });
 };
 
 /***/ }),
@@ -132,6 +159,18 @@ var getGeometry = function getGeometry(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/common/add_icon.png":
+/*!***********************************************!*\
+  !*** ./src/assets/images/common/add_icon.png ***!
+  \***********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/add_icon.png";
 
 /***/ }),
 
@@ -192,6 +231,30 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADt
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAAAeCAMAAADthUvBAAAAXVBMVEW8vLy7u7u8vLwAAAC7u7v////9/f319fXd3d37+/vLy8v5+fnu7u7l5eXi4uK9vb3U1NTQ0NDGxsby8vLOzs7X19fDw8O/v7/n5+fa2trKysrBwcHf39/p6enr6+vOwKCdAAAABHRSTlPwrSYAJ4s9KgAAAiZJREFUSMfNlouu4iAQQKuXGUoH+qAt9KH3/z9zKWBbL/a6bqLZk6gTLBxmgIbs63zK2BvJTuev7JyxN+MUJ/Z2TlnG3o5zfIAfEpu3iG1uk+dskbYVHUto9FPJRAgOpCkZEIqkb0lJU47dM4kWiFwpjij0b5Ki9uRwCcE6pRopD0yHEol4WX4viHKbnEeBCkHlmgYUe1CxwIjEPQT9kUQjDCEaANdUbt1if7v8LdkeGSRauinG/mSPJD1AcSsO9EflihJZzozNVNwkWiE1ugoDYXe4JjnAHKIZIP9F0jWu/FyMzMAyWu2/RF5p4pOv2jbD1zPZqJaxRG92rXb5KMzt4B2vrMlcBq5wjZFP9rt1szdO/XMX1og+G/bK7jKthwQICqFhYQW+zTLk/RGdR3JV+8dzYmmEkezds60riuJsw/QSQZR54FBiJMDDE6+GAoph2BY+QtL/dEtqHBCJRwiOJBMtggfvrp6Mk8x0m56Ae4QrFFeN5SWLjEcSLQBErllCg53fXQWOcW8FDA0xYoHnkooDhFXtEBzrgcpxjFu4xnJf3BZEaXz415ILAM0skZgr9us5qVHqrYZc9xyH6QWJFQANSygENbvD2JHwg1ZueGWXUkoczCrhKtImkugGydZE1lQqNd+deFMuCV0FXm8Z1NvR4CQjPJXEajWJZGMS0/4FOe7WorrIGMlyraV4XK5Lz95DlDzn/7+uZB+53H3kmvqRC/cf67NGUNQWz6MAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ "./src/assets/images/common/icon_right.png":
+/*!*************************************************!*\
+  !*** ./src/assets/images/common/icon_right.png ***!
+  \*************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAMAAABfE/ZQAAAAz1BMVEUAAABVVVVjY2Nra2tmZmZhYWFoaGhkZGRgYGBqampmZmZiYmJoaGhkZGRqampmZmZoaGhkZGRpaWllZWVlZWVnZ2dnZ2dlZWVoaGhlZWVmZmZmZmZlZWVmZmZmZmZmZmZnZ2dmZmZnZ2dlZWVnZ2dmZmZnZ2dlZWVnZ2dnZ2dnZ2dlZWVnZ2dmZmZmZmZmZmZmZmZnZ2dmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmasldbwAAAARHRSTlMACRITFBUWFxgYGRobHB0eICEiMGBhY2Vnamxub3Fzdnd6fH6BhIaIiIuNoa620dLU1dbX2Nna29zd3t/g4eLr7P3+/gIezZcAAACYSURBVBjTTc/FAoIAEEVR7AK7xe4uVGyB+//f5G6Y2Z27emMsvrah7wcDbRsY6tALYKRDN4CxDp0AJjq0fZjq0PJhpkPTg7kODQ+WOtQ9WOlQ82CtQx+ohCzc4RkRWi4ck0LzBqeUMHcFJyPMOnDJCdNnuJnC5BFcS5g4wD0vjO/hURDGdvAqhrM28C6p1Vs+Zf1FtJrR/APIKBjhjJdrOgAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ "./src/assets/images/common/none.png":
+/*!*******************************************!*\
+  !*** ./src/assets/images/common/none.png ***!
+  \*******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/none.png";
 
 /***/ }),
 

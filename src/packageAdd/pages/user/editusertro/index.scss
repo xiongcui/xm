@@ -1,0 +1,53 @@
+page {
+  background-color: #f7f8fa;
+  height: 100%;
+}
+
+.side_gap {
+  width: 30rpx;
+}
+
+.content {
+  background: #fff;
+  margin-top: 10rpx;
+  padding: 0px 16px;
+}
+
+.intro_content {
+  background: #fff;
+  font-size: 30rpx !important;
+  min-height: 454rpx;
+  padding: 30rpx 0;
+  width: 100%;
+}
+
+.intro_content_none {
+  background: #fff;
+  color: #959595;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+}
+
+.sub_btn {
+  margin-top: 60rpx;
+  padding: 60rpx 103rpx 90rpx;
+}
+
+.sub_btn button {
+  background-color: #ff1e3e;
+  border-radius: 44rpx;
+  color: #fff;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.button-hover[type="primary"] {
+  background-color: #ff1e3e;
+  color: rgba(51, 51, 51, 0.6);
+}

@@ -49,6 +49,7 @@ component.options.__file = "src/pages/my/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/my/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -512,6 +513,7 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -525,6 +527,7 @@ component.options.__file = "src/pages/my/index.vue"
       show_my_ad: false,
       showModelSign: false,
       infor: {
+        avatar: "",
         realname: "",
         ispledge: ""
       }
@@ -533,10 +536,44 @@ component.options.__file = "src/pages/my/index.vue"
   methods: {
     close: function close() {
       this.showModelSign = false;
+    },
+    goZhuye: function goZhuye() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMoka/pages/moka/editshow/index");
+    },
+    userInfo: function userInfo(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "j"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.infor = res.data.data;
+                _context.next = 9;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -547,13 +584,13 @@ component.options.__file = "src/pages/my/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this.navHeight = navHeight; //导航栏总体高度
+        _this2.navHeight = navHeight; //导航栏总体高度
 
-        _this.navTop = navTop; //胶囊距离顶部距离
+        _this2.navTop = navTop; //胶囊距离顶部距离
 
-        _this.navObj = menuButtonObject.height; //胶囊高度
+        _this2.navObj = menuButtonObject.height; //胶囊高度
 
-        _this.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this2.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
 
         console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
       },
@@ -563,36 +600,9 @@ component.options.__file = "src/pages/my/index.vue"
     });
     this.userInfo("");
   },
-  userInfo: function userInfo(params) {
-    var _this2 = this;
-
-    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-      var res;
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "i"])(params);
-
-            case 3:
-              res = _context.sent;
-              _this2.infor = res.data.data;
-              _context.next = 9;
-              break;
-
-            case 7:
-              _context.prev = 7;
-              _context.t0 = _context["catch"](0);
-
-            case 9:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 7]]);
-    }))();
+  onShow: function onShow() {
+    var userInfo = wx.getStorageSync("userInfo");
+    this.infor.avatar = userInfo.avatar;
   }
 });
 
@@ -858,16 +868,20 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "my-column" }, [
-        _c("view", { staticClass: "my-column-item" }, [
-          _c("image", {
-            staticClass: "my-column-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/zhuye.png */ "./src/assets/images/zhuye.png"),
-              mode: "aspectFill",
-            },
-          }),
-          _c("text", [_vm._v("主页")]),
-        ]),
+        _c(
+          "view",
+          { staticClass: "my-column-item", on: { tap: _vm.goZhuye } },
+          [
+            _c("image", {
+              staticClass: "my-column-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/zhuye.png */ "./src/assets/images/zhuye.png"),
+                mode: "aspectFill",
+              },
+            }),
+            _c("text", [_vm._v("主页")]),
+          ]
+        ),
         _c("view", { staticClass: "my-column-item" }, [
           _c("image", {
             staticClass: "my-column-img",

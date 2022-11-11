@@ -1,0 +1,59 @@
+.wx-content-info {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #0c0c0e;
+  bottom: 0;
+  display: block;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.cropper-content {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 8rpx auto 0;
+  min-height: calc(100% - 120rpx);
+  width: 720rpx;
+}
+
+.cropper-config {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100rpx;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.cropper-config .cropper-cancle,
+.cropper-config .cropper-save {
+  color: #fff;
+  font-size: 28rpx;
+  padding: 15rpx 25rpx;
+}
+
+.cropper-save {
+  background-color: #ff1e3e !important;
+  border-radius: 8rpx;
+  color: #fff !important;
+  height: 60rpx !important;
+  line-height: 60rpx !important;
+  margin-right: 25rpx;
+  padding: 0 !important;
+  text-align: center;
+  width: 136rpx;
+}

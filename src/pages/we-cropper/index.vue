@@ -1,35 +1,31 @@
 <template>
-  <view class="cropper-wrapper" v-if="visible">
-    <canvas
-      class="cropper"
-      :disable-scroll="true"
-      @touchstart="touchStart"
-      @touchmove="touchMove"
-      @touchend="touchEnd"
-      :style="[
-        { width: cropperOpt.width + 'px' },
-        { height: cropperOpt.height + 'px' },
-        { 'background-color': 'rgba(0, 0, 0, 0.8)' },
-      ]"
-      canvas-id="cropper"
-    >
-    </canvas>
-    <canvas
-      class="cropper"
-      :disable-scroll="true"
-      :style="[
-        { position: 'fixed' },
-        { top: -cropperOpt.width * cropperOpt.pixelRatio + 'px' },
-        { left: -cropperOpt.height * cropperOpt.pixelRatio + 'px' },
-        { width: cropperOpt.width * cropperOpt.pixelRatio + 'px' },
-        { height: cropperOpt.height * cropperOpt.pixelRatio + 'px' },
-      ]"
-      canvas-id="targetCropper"
-    >
-    </canvas>
-    <view class="cropper-buttons">
-      <view class="upload" @tap="uploadTap"> 上传图片 </view>
-      <view class="getCropperImage" @tap="getCropperImage"> 生成图片 </view>
+  <view>
+    <view class="wx-content-info">
+      <view class="cropper-content">
+        <canvas
+          class="cropper"
+          :disable-scroll="true"
+          @touchstart="touchStart"
+          @touchmove="touchMove"
+          @touchend="touchEnd"
+          :style="[
+            { width: cropperOpt.width + 'px' },
+            { height: cropperOpt.height + 'px' },
+          ]"
+          canvas-id="cropper"
+        >
+        </canvas>
+      </view>
+      <view
+        class="cropper-config"
+        :class="isIphoneX ? 'fix-iphonex-button' : ''"
+      >
+        <text @tap="close" class="cropper-cancle">取消</text>
+        <text @tap="uploadTap" class="cropper-cancle">重新选择</text>
+        <text @tap="getImageInfo" class="cropper-save">{{
+          nextImg ? "下一个" : "完成"
+        }}</text>
+      </view>
     </view>
   </view>
 </template>
@@ -42,18 +38,12 @@ const width = device.windowWidth; // 示例为一个与屏幕等宽的正方形�
 const height = width;
 export default {
   name: "weCropper",
-  props: {
-    visible: {
-      type: Boolean,
-      default: false,
-    },
-    src: {
-      type: String,
-      default: "",
-    },
-  },
   data() {
     return {
+      isIphoneX: false,
+      nextImg: false,
+      imgSrc: "",
+      imgType: "",
       cropper: null,
       cropperOpt: {
         id: "cropper", // 用于手势操作的canvas组件标识符
@@ -74,6 +64,11 @@ export default {
     };
   },
   methods: {
+    close() {
+      wx.navigateBack({
+        delta: 1,
+      });
+    },
     touchStart(e) {
       this.cropper.touchStart(e);
     },
@@ -84,48 +79,62 @@ export default {
       this.cropper.touchEnd(e);
     },
     //当点击生成图片按钮的时候，得到图片的src后，调用wx.uploadFile()上传图片，成功后可以再跳转到想要去的页面
-    getCropperImage() {
-      this.cropper
-        .getCropperImage()
-        .then((src) => {
-          console.log(src);
-          wx.uploadFile({
-            url: "http://t.kan.cn/roune/auth_api/uploadimage?uid=198", //这里是上传的服务器地址
-            filePath: src,
-            name: "avatar",
-            success: function (res) {
-              console.log(res);
-              console.log("uploadOK");
-              // wx.redirectTo({
-              //     ...........
-              // })
-            },
-          });
-        })
-        .catch((err) => {
-          wx.showModal({
-            title: "温馨提示",
-            content: err.message,
-          });
+    getImageInfo() {
+      wx.showLoading({
+        title: "裁剪中",
+        mask: true,
+      });
+      this.cropper.getCropperImage().then((src) => {
+        let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+        let prevPage = pages[pages.length - 2];
+        //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+        prevPage.setData({
+          // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+          homeimg: src,
         });
+
+        wx.navigateBack({
+          delta: 1,
+        });
+        // this.upImgs(src);
+        //   wx.uploadFile({
+        //     url: "http://t.kan.cn/roune/auth_api/uploadimage?uid=198", //这里是上传的服务器地址
+        //     filePath: src,
+        //     name: "avatar",
+        //     success: function (res) {
+        //       console.log(res);
+        //       console.log("uploadOK");
+        //       // wx.redirectTo({
+        //       //     ...........
+        //       // })
+        //     },
+        //   });
+        // })
+        // .catch((err) => {
+        //   wx.showModal({
+        //     title: "温馨提示",
+        //     content: err.message,
+        //   });
+      });
     },
     uploadTap() {
-      const self = this;
-
+      const _this = this;
       wx.chooseImage({
         count: 1, // 默认9
         sizeType: ["original", "compressed"], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ["album", "camera"], // 可以指定来源是相册还是相机，默认二者都有
         success(res) {
           const src = res.tempFilePaths[0];
-
-          self.cropper.pushOrign(src);
+          _this.cropper.pushOrign(src);
         },
       });
     },
   },
-  mounted() {
-    this.cropperOpt.src = this.src;
+  mounted() {},
+  onLoad: function (options) {
+    this.imgSrc = options.imgSrc;
+    this.imgType = options.type;
+    this.cropperOpt.src = this.imgSrc;
     this.cropper = new WeCropper(this.cropperOpt)
       .on("ready", (ctx) => {
         console.log(`wecropper is ready for work!`);

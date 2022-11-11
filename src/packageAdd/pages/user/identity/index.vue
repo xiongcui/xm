@@ -23,10 +23,10 @@
           <block v-if="index == 0">
             <text class="identity-choice-main">主</text>
             <text class="identity-choice-item identity-choice-active">{{
-              item.role
+              item
             }}</text>
           </block>
-          <text v-else class="identity-choice-item"> {{ item.role }} </text>
+          <text v-else class="identity-choice-item"> {{ item }} </text>
         </block>
       </view>
     </view>
@@ -89,15 +89,15 @@ export default {
   },
   methods: {
     select_tag(row) {
-      let result = this.identity.find((ele) => ele.cid === row.cid);
+      let result = this.identity.find((ele) => ele === row.role);
       if (!result) {
         if (this.identity.length > 2) {
           errortip("最多选择3个身份！");
           return false;
         }
-        this.identity.push(row);
+        this.identity.push(row.role);
       } else {
-        const index = this.identity.findIndex((ele) => ele.cid === row.cid);
+        const index = this.identity.findIndex((ele) => ele === row.role);
         this.identity.splice(index, 1);
       }
       row.ispick = !row.ispick;
@@ -108,15 +108,17 @@ export default {
         errortip("请选择身份！");
         return false;
       }
-      let arr = this.identity.map((item) => {
-        return {
-          cid: item.cid,
-          role: item.role,
-        };
+      let arr = [];
+      this.identity.map((item) => {
+        this.identity_data.map((items) => {
+          if (item == items.role) {
+            arr.push({
+              cid: items.cid,
+              role: items.role,
+            });
+          }
+        });
       });
-      let params = {
-        json: arr,
-      };
       const index = this.identity.findIndex((ele) => ele.code == "ACTOR");
       if (index != -1) {
         wx.showModal({
@@ -157,7 +159,7 @@ export default {
         this.identity_data = data.career_list.map((item) => {
           item.ispick = false;
           this.identity.map((identityItem) => {
-            if (item.cid == identityItem.cid) {
+            if (item.role == identityItem) {
               item.ispick = true;
             }
           });
@@ -171,15 +173,14 @@ export default {
         let identity = params.map((item) => {
           return item.role;
         });
-        // let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
-        // let prevPage = pages[pages.length - 2];
-        // //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+        let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+        let prevPage = pages[pages.length - 2];
+        //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
 
-        // prevPage.setData({
-        //   // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
-        //   identity: identity.join(","),
-        //   identity_arr: params,
-        // });
+        prevPage.setData({
+          // 将我们想要传递的参数在这里直接setData。上个页面就会执行这里的操作。
+          identity: identity.join("."),
+        });
         // console.log(prevPage, "prev");
         wx.navigateBack({
           delta: 1,

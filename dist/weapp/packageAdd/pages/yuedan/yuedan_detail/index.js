@@ -334,8 +334,6 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       };
       this.inviteInfo(params);
     }
-
-    console.log(this.oid, this.author_id, "333");
   }
 });
 

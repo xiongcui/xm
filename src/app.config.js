@@ -11,6 +11,7 @@ export default defineAppConfig({
     "pages/release/appointment/index",
     "pages/release/field/index",
     "pages/index/index",
+    "pages/we-cropper/index",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -63,7 +64,19 @@ export default defineAppConfig({
       pages: [
         "pages/yuedan/add_yuedan/index",
         "pages/user/identity/index",
+        "pages/user/editinfor/index",
+        "pages/user/editusertro/index",
         "pages/yuedan/yuedan_detail/index",
+      ],
+    },
+    {
+      root: "packageMoka/",
+      name: "packmoka",
+      pages: [
+        "pages/moka/editshow/index",
+        "pages/moka/editpersondata/index",
+        "pages/moka/editpersonimg/index",
+        "pages/moka/editvideo/index",
       ],
     },
   ],

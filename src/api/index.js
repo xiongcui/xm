@@ -97,3 +97,27 @@ export const getGeometry = (data) => {
     data,
   });
 };
+// 自我简介
+export const userResume = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/resume",
+    method: "post",
+    data,
+  });
+};
+// 获取编辑资料
+export const userProfile = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/profile",
+    method: "get",
+    data,
+  });
+};
+// 更新头像
+export const updateAvatar = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/avatar",
+    method: "PUT",
+    data,
+  });
+};

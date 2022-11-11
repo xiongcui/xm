@@ -157,7 +157,7 @@
         </view>
       </view>
       <view class="my-column">
-        <view class="my-column-item">
+        <view class="my-column-item" @tap="goZhuye">
           <image
             src="../../assets/images/zhuye.png"
             class="my-column-img"
@@ -462,6 +462,7 @@
 <script>
 import "./index.scss";
 import { userInfo } from "../../api/index";
+import { openPage } from "../../utils/util";
 export default {
   name: "my",
   data() {
@@ -473,6 +474,7 @@ export default {
       show_my_ad: false,
       showModelSign: false,
       infor: {
+        avatar: "",
         realname: "",
         ispledge: "",
       },
@@ -481,6 +483,15 @@ export default {
   methods: {
     close() {
       this.showModelSign = false;
+    },
+    goZhuye() {
+      openPage("/packageMoka/pages/moka/editshow/index");
+    },
+    async userInfo(params) {
+      try {
+        let res = await userInfo(params);
+        this.infor = res.data.data;
+      } catch (error) {}
     },
   },
   created() {
@@ -508,11 +519,9 @@ export default {
     });
     this.userInfo("");
   },
-  async userInfo(params) {
-    try {
-      let res = await userInfo(params);
-      this.infor = res.data.data;
-    } catch (error) {}
+  onShow() {
+    let userInfo = wx.getStorageSync("userInfo");
+    this.infor.avatar = userInfo.avatar;
   },
 };
 </script>

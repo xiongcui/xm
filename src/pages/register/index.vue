@@ -151,7 +151,6 @@ export default {
       this.regionList = e.detail.code;
     },
     identityFocus() {
-      // openPage("/pages/user/identity/index");
       openPage("/packageAdd/pages/user/identity/index");
     },
     submit() {
@@ -181,7 +180,6 @@ export default {
         birthday: this.date,
         addressName: this.select_city,
         address: this.regionList,
-        career_label: this.identity,
         avatar: this.avatar,
         career_label: this.identityList,
       };

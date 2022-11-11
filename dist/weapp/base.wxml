@@ -165,6 +165,14 @@
   </video>
 </template>
 
+<template name="tmpl_0_canvas">
+  <canvas canvas-id="{{i.canvasId}}" disable-scroll="{{xs.b(i.disableScroll,false)}}" binderror="eh" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongtap="eh" type="{{i.type}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </canvas>
+</template>
+
 <template name="tmpl_0_block">
   <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
