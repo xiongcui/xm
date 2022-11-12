@@ -10,14 +10,21 @@
                 :id="index"
                 :markImgindex="index"
                 mode="widthFix"
-                :src="item.url"
+                :src="item"
               ></image>
-              <view bindtap="delete_preview" class="preview_delet" :id="index"
+              <view
+                @tap="delete_preview(index)"
+                class="preview_delet"
+                :id="index"
                 >编辑</view
               >
               <view class="icon_coverimg" v-if="index == 0"> 封面 </view>
             </view>
-            <view bindtap="choosePersonImg" class="pick_img" v-if="addImgbtn">
+            <view
+              @tap="choosePersonImg"
+              class="pick_img"
+              v-if="imgs.length < 9"
+            >
               <view class="pick_img_btn">
                 <image
                   src="../../../../assets/images/common/add_icon.png"
@@ -34,20 +41,138 @@
       <view class="side_gap_right"></view>
     </view>
     <view class="sub_btn">
-      <button formType="submit" type="primary">保存</button>
+      <button @tap="submit" type="primary">保存</button>
     </view>
   </view>
 </template>
 
 <script>
+import { openPage } from "../../../../utils/util";
+import { userAlbum, uploadImagePhoto } from "../../../../api/index";
 import "./index.scss";
 export default {
   name: "editpersonimg",
   data() {
     return {
       imgs: [],
-      addImgbtn: true,
+      uploadImgList: [],
     };
+  },
+  methods: {
+    choosePersonImg() {
+      if (this.imgs.length >= 9) {
+        wx.showToast({
+          title: "最多上传9张图！",
+          icon: "none",
+        });
+        return false;
+      }
+      wx.chooseMedia({
+        count: 9 - this.imgs.length,
+        mediaType: ["image"],
+        sourceType: ["album", "camera"],
+        maxDuration: 30,
+        camera: "back",
+        success(res) {
+          let arr = res.tempFiles.map((item) => {
+            return item.tempFilePath;
+          });
+          wx.setStorageSync("imgList", arr);
+          openPage("/pages/we-cropper/index?type=imgList");
+        },
+      });
+    },
+    delete_preview(index) {
+      let _this = this;
+      wx.showActionSheet({
+        itemList: ["设为封面", "替换", "删除"],
+        success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              let first = _this.imgs[index];
+              _this.imgs.splice(index, 1);
+              _this.imgs.unshift(first);
+              break;
+            case 1:
+              wx.chooseMedia({
+                count: 1,
+                mediaType: ["image"],
+                sourceType: ["album", "camera"],
+                maxDuration: 30,
+                camera: "back",
+                success(res) {
+                  let arr = res.tempFiles.map((item) => {
+                    return item.tempFilePath;
+                  });
+                  openPage(
+                    "/pages/we-cropper/index?type=imgId&imgId=" +
+                      index +
+                      "&imgSrc=" +
+                      arr[0]
+                  );
+                },
+              });
+              break;
+            case 2:
+              _this.imgs.splice(index, 1);
+              break;
+          }
+        },
+        fail(res) {
+          console.log(res.errMsg);
+        },
+      });
+    },
+    submit() {
+      let arr = [];
+      this.imgs.map((item, index) => {
+        arr[index] = this.uploadImagePhoto(item, {
+          scr_type: "album",
+        });
+      });
+      Promise.all(arr)
+        .then(() => {
+          this.userAlbum({
+            scr_type: "album",
+            file_type: "phote",
+            photo_album: this.uploadImgList,
+            video_album: [],
+          });
+        })
+        .catch(() => {
+          wx.showToast({
+            title: "有图片上传失败！",
+            icon: "none",
+          });
+          this.imgs = this.uploadImgList;
+        });
+    },
+    async userAlbum(params) {
+      try {
+        let res = await userAlbum(params);
+        this.uploadImgList = [];
+        wx.navigateBack({
+          delta: 1,
+        });
+      } catch (error) {}
+    },
+    async uploadImagePhoto(path, params) {
+      try {
+        let res = await uploadImagePhoto(path, params);
+        this.uploadImgList.push(res.data.file1);
+      } catch (error) {}
+    },
+  },
+  onShow() {
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.updateimg) {
+      this.imgs = this.imgs.concat(this.globalData.imgList);
+      this.globalData.imgList = [];
+    }
+    if (currPage.data.imgId) {
+      this.imgs[Number(currPage.data.imgId)] = currPage.data.homeimg;
+    }
   },
 };
 </script>

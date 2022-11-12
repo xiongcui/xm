@@ -32,7 +32,7 @@ page {
 .personimgs {
   background-color: #fff;
   margin: 0 auto;
-  padding: 0 30rpx;
+  padding: 0 16rpx;
 }
 
 .imgsblock {

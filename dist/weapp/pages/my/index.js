@@ -537,6 +537,9 @@ component.options.__file = "src/pages/my/index.vue"
     close: function close() {
       this.showModelSign = false;
     },
+    personDetail: function personDetail() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/editinfor/index");
+    },
     goZhuye: function goZhuye() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMoka/pages/moka/editshow/index");
     },
@@ -551,7 +554,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "j"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "l"])(params);
 
               case 3:
                 res = _context.sent;
@@ -601,8 +604,9 @@ component.options.__file = "src/pages/my/index.vue"
     this.userInfo("");
   },
   onShow: function onShow() {
-    var userInfo = wx.getStorageSync("userInfo");
-    this.infor.avatar = userInfo.avatar;
+    // let userInfo = wx.getStorageSync("userInfo");
+    // this.infor.avatar = userInfo.avatar;
+    this.userInfo("");
   }
 });
 
@@ -833,7 +837,11 @@ var render = function () {
             _c("text", [_vm._v("足迹")]),
           ]),
         ]),
-        _c("view", { staticClass: "my-conunt-rt" }, [_vm._v(" 编辑资料 ")]),
+        _c(
+          "view",
+          { staticClass: "my-conunt-rt", on: { tap: _vm.personDetail } },
+          [_vm._v(" 编辑资料 ")]
+        ),
       ]),
     ]),
     _c("view", { staticClass: "my-ct" }, [

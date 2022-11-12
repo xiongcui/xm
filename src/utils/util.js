@@ -101,6 +101,48 @@ export const request = (params) => {
   });
 };
 
+export const requestUpload = (path, params) => {
+  let header = {};
+  let token = wx.getStorageSync("token");
+  header["Authorization"] = "Basic " + Base64.encode(token + ":");
+  let formData = params;
+  console.log(formData, "formData");
+  wx.showLoading({
+    title: "上传中",
+    mask: true,
+  });
+  return new Promise((resolev, reject) => {
+    wx.uploadFile({
+      url: "https://tapi.cupz.cn/v1/file/upload",
+      filePath: path,
+      formData,
+      name: "file",
+      header,
+      success: (res) => {
+        wx.hideLoading();
+        //判断上传的是图片还是视频
+        let data = JSON.parse(res.data);
+        if (data.code == 200) {
+          resolev(data);
+        } else {
+          wx.showToast({
+            title: "上传失败！",
+            icon: "none",
+          });
+          reject(res);
+        }
+      },
+      fail: (error) => {
+        wx.showToast({
+          title: "上传失败！",
+          icon: "none",
+        });
+        reject(error);
+      },
+    });
+  });
+};
+
 export const errortip = (txt) => {
   wx.showToast({
     title: txt,

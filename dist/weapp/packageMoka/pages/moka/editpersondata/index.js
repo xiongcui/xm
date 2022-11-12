@@ -47,13 +47,14 @@ component.options.__file = "src/packageMoka/pages/moka/editpersondata/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editpersondata/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editpersondata/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+
+
 //
 //
 //
@@ -155,6 +156,8 @@ component.options.__file = "src/packageMoka/pages/moka/editpersondata/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "editpersondata",
   data: function data() {
@@ -165,10 +168,153 @@ component.options.__file = "src/packageMoka/pages/moka/editpersondata/index.vue"
       weightIndex: "",
       shoes: [],
       shoeIndex: "",
-      BWHs: [],
+      BWHs: [[], [], []],
       BWHIndex: Array(),
       isshowBWH: true
     };
+  },
+  methods: {
+    heightChange: function heightChange(e) {
+      this.heightIndex = e.detail.value;
+    },
+    weightChange: function weightChange(e) {
+      this.weightIndex = e.detail.value;
+    },
+    BWHChange: function BWHChange(e) {
+      this.BWHIndex = e.detail.value;
+    },
+    shoeChange: function shoeChange(e) {
+      this.shoeIndex = e.detail.value;
+    },
+    sub: function sub() {
+      var height = this.heights[this.heightIndex];
+      var weight = this.weights[this.weightIndex];
+      var bust = this.BWHs[0][this.BWHIndex[0]];
+      var waist = this.BWHs[1][this.BWHIndex[1]];
+      var hip = this.BWHs[2][this.BWHIndex[2]];
+      var size = this.shoes[this.shoeIndex];
+
+      if (!height) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择身高！");
+        return;
+      }
+
+      if (!weight) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择体重！");
+        return;
+      }
+
+      if (!bust && !waist && !hip) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择三围！");
+        return;
+      }
+
+      if (!size) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择鞋码！");
+        return;
+      }
+
+      var params = {
+        height: height,
+        weight: weight,
+        bust: bust,
+        waist: waist,
+        hip: hip,
+        size: size
+      };
+      this.userShape(params);
+    },
+    userShape: function userShape(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShape */ "o"])(params);
+
+              case 3:
+                res = _context.sent;
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context.next = 9;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    publicConfig: function publicConfig(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, arr, arr2, arr3, arr4;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "g"])(params);
+
+              case 3:
+                res = _context2.sent;
+                arr = [];
+                arr2 = [];
+                arr3 = [];
+                arr4 = [];
+                res.data.data.map(function (item) {
+                  if (item.type == "shape_height") {
+                    arr.push(item.value);
+                  }
+
+                  if (item.type == "shape_weight") {
+                    arr2.push(item.value);
+                  }
+
+                  if (item.type == "shape_bwh") {
+                    arr3.push(item.value);
+                  }
+
+                  if (item.type == "shape_size") {
+                    arr4.push(item.value);
+                  }
+                });
+                _this.heights = arr;
+                _this.weights = arr2;
+                _this.BWHs = [arr3, arr3, arr3];
+                _this.shoes = arr4;
+                _context2.next = 17;
+                break;
+
+              case 15:
+                _context2.prev = 15;
+                _context2.t0 = _context2["catch"](0);
+
+              case 17:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 15]]);
+      }))();
+    }
+  },
+  created: function created() {
+    this.publicConfig({
+      type: ["shape_height", "shape_weight", "shape_bwh", "shape_size"]
+    });
   }
 });
 
@@ -189,176 +335,161 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      staticClass: "editpersondata",
-      attrs: { bindreset: "reset", bindsubmit: "sub", reportSubmit: "true" },
-    },
-    [
-      _c(
-        "view",
-        { staticClass: "infor" },
-        [
-          _c(
-            "picker",
-            {
-              attrs: {
-                bindchange: "heightChange",
-                range: "heights",
-                value: _vm.heightIndex ? _vm.heightIndex : 125,
-              },
+  return _c("view", { staticClass: "editpersondata" }, [
+    _c(
+      "view",
+      { staticClass: "infor" },
+      [
+        _c(
+          "picker",
+          {
+            attrs: {
+              range: _vm.heights,
+              value: _vm.heightIndex ? _vm.heightIndex : 125,
             },
-            [
-              _c("view", { staticClass: "item ub item-b" }, [
-                _c("view", { staticClass: "ub-f1 ub item_mid" }, [
-                  _c("view", { staticClass: "item_label" }, [
-                    _vm._v("身高（cm）"),
-                  ]),
-                  _c("view", { staticClass: "ub-f1 item_input" }, [
-                    _vm.heightIndex === ""
-                      ? _c("view", { staticClass: "picker" }, [
-                          _vm._v("请选择"),
-                        ])
-                      : _c("view", { staticClass: "picker" }, [
-                          _vm._v(_vm._s(_vm.heights[_vm.heightIndex]) + "cm"),
-                        ]),
-                  ]),
+            on: { change: _vm.heightChange },
+          },
+          [
+            _c("view", { staticClass: "item ub item-b" }, [
+              _c("view", { staticClass: "ub-f1 ub item_mid" }, [
+                _c("view", { staticClass: "item_label" }, [
+                  _vm._v("身高（cm）"),
                 ]),
-                _c("view", { staticClass: "item_right" }, [
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
-                    },
-                  }),
+                _c("view", { staticClass: "ub-f1 item_input" }, [
+                  _vm.heightIndex === ""
+                    ? _c("view", { staticClass: "picker" }, [_vm._v("请选择")])
+                    : _c("view", { staticClass: "picker" }, [
+                        _vm._v(_vm._s(_vm.heights[_vm.heightIndex]) + "cm"),
+                      ]),
                 ]),
               ]),
-            ]
-          ),
-          _c(
-            "picker",
-            {
-              attrs: {
-                bindchange: "weightChange",
-                range: "weights",
-                value: _vm.weightIndex ? _vm.weightIndex : 35,
-              },
+              _c("view", { staticClass: "item_right" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  },
+                }),
+              ]),
+            ]),
+          ]
+        ),
+        _c(
+          "picker",
+          {
+            attrs: {
+              range: _vm.weights,
+              value: _vm.weightIndex ? _vm.weightIndex : 35,
             },
-            [
-              _c("view", { staticClass: "item ub item-b" }, [
-                _c("view", { staticClass: "ub-f1 ub item_mid" }, [
-                  _c("view", { staticClass: "item_label" }, [
-                    _vm._v("体重（kg）"),
-                  ]),
-                  _c("view", { staticClass: "ub-f1 item_input" }, [
-                    _vm.weightIndex === ""
-                      ? _c("view", { staticClass: "picker" }, [
-                          _vm._v("请选择"),
-                        ])
-                      : _c("view", { staticClass: "picker" }, [
-                          _vm._v(_vm._s(_vm.weights[_vm.weightIndex]) + "kg"),
-                        ]),
-                  ]),
+            on: { change: _vm.weightChange },
+          },
+          [
+            _c("view", { staticClass: "item ub item-b" }, [
+              _c("view", { staticClass: "ub-f1 ub item_mid" }, [
+                _c("view", { staticClass: "item_label" }, [
+                  _vm._v("体重（kg）"),
                 ]),
-                _c("view", { staticClass: "item_right" }, [
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
-                    },
-                  }),
+                _c("view", { staticClass: "ub-f1 item_input" }, [
+                  _vm.weightIndex === ""
+                    ? _c("view", { staticClass: "picker" }, [_vm._v("请选择")])
+                    : _c("view", { staticClass: "picker" }, [
+                        _vm._v(_vm._s(_vm.weights[_vm.weightIndex]) + "kg"),
+                      ]),
                 ]),
               ]),
-            ]
-          ),
-          _c(
-            "picker",
-            {
-              attrs: {
-                bindchange: "BWHChange",
-                mode: "multiSelector",
-                range: "BWHs",
-                value: "BWHIndex",
-              },
+              _c("view", { staticClass: "item_right" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  },
+                }),
+              ]),
+            ]),
+          ]
+        ),
+        _c(
+          "picker",
+          {
+            attrs: {
+              mode: "multiSelector",
+              range: _vm.BWHs,
+              value: _vm.BWHIndex,
             },
-            [
-              _c("view", { staticClass: "item ub item-b" }, [
-                _c("view", { staticClass: "ub-f1 ub item_mid" }, [
-                  _c("view", { staticClass: "item_label" }, [_vm._v("三围")]),
-                  _c("view", { staticClass: "ub-f1 item_input" }, [
-                    _vm.BWHIndex.length
-                      ? _c("view", { staticClass: "picker" }, [
-                          _vm._v(
-                            " 胸围" +
-                              _vm._s(_vm.BWHs[0][_vm.BWHIndex[0]]) +
-                              " 腰围" +
-                              _vm._s(_vm.BWHs[1][_vm.BWHIndex[1]]) +
-                              " 臀围" +
-                              _vm._s(_vm.BWHs[2][_vm.BWHIndex[2]]) +
-                              " "
-                          ),
-                        ])
-                      : _c("view", { staticClass: "picker" }, [
-                          _vm._v("请选择"),
-                        ]),
-                  ]),
-                ]),
-                _c("view", { staticClass: "item_right" }, [
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
-                    },
-                  }),
+            on: { change: _vm.BWHChange },
+          },
+          [
+            _c("view", { staticClass: "item ub item-b" }, [
+              _c("view", { staticClass: "ub-f1 ub item_mid" }, [
+                _c("view", { staticClass: "item_label" }, [_vm._v("三围")]),
+                _c("view", { staticClass: "ub-f1 item_input" }, [
+                  _vm.BWHIndex.length
+                    ? _c("view", { staticClass: "picker" }, [
+                        _vm._v(
+                          " 胸围" +
+                            _vm._s(_vm.BWHs[0][_vm.BWHIndex[0]]) +
+                            " 腰围" +
+                            _vm._s(_vm.BWHs[1][_vm.BWHIndex[1]]) +
+                            " 臀围" +
+                            _vm._s(_vm.BWHs[2][_vm.BWHIndex[2]]) +
+                            " "
+                        ),
+                      ])
+                    : _c("view", { staticClass: "picker" }, [_vm._v("请选择")]),
                 ]),
               ]),
-            ]
-          ),
-          _c(
-            "picker",
-            {
-              attrs: {
-                bindchange: "shoeChange",
-                range: "shoes",
-                value: _vm.shoeIndex ? _vm.shoeIndex : 18,
-              },
+              _c("view", { staticClass: "item_right" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  },
+                }),
+              ]),
+            ]),
+          ]
+        ),
+        _c(
+          "picker",
+          {
+            attrs: {
+              range: _vm.shoes,
+              value: _vm.shoeIndex ? _vm.shoeIndex : 18,
             },
-            [
-              _c("view", { staticClass: "item ub" }, [
-                _c("view", { staticClass: "ub-f1 ub item_mid" }, [
-                  _c("view", { staticClass: "item_label" }, [_vm._v("鞋码")]),
-                  _c("view", { staticClass: "ub-f1 item_input" }, [
-                    _vm.shoeIndex === ""
-                      ? _c("view", { staticClass: "picker" }, [
-                          _vm._v("请选择"),
-                        ])
-                      : _c("view", { staticClass: "picker" }, [
-                          _vm._v(_vm._s(_vm.shoes[_vm.shoeIndex])),
-                        ]),
-                  ]),
-                ]),
-                _c("view", { staticClass: "item_right" }, [
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
-                    },
-                  }),
+            on: { change: _vm.shoeChange },
+          },
+          [
+            _c("view", { staticClass: "item ub" }, [
+              _c("view", { staticClass: "ub-f1 ub item_mid" }, [
+                _c("view", { staticClass: "item_label" }, [_vm._v("鞋码")]),
+                _c("view", { staticClass: "ub-f1 item_input" }, [
+                  _vm.shoeIndex === ""
+                    ? _c("view", { staticClass: "picker" }, [_vm._v("请选择")])
+                    : _c("view", { staticClass: "picker" }, [
+                        _vm._v(_vm._s(_vm.shoes[_vm.shoeIndex])),
+                      ]),
                 ]),
               ]),
-            ]
-          ),
-        ],
-        1
-      ),
-      _c("view", { staticClass: "sub_btn" }, [
-        _c("button", { attrs: { formType: "submit", type: "primary" } }, [
-          _vm._v("保存"),
-        ]),
+              _c("view", { staticClass: "item_right" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  },
+                }),
+              ]),
+            ]),
+          ]
+        ),
+      ],
+      1
+    ),
+    _c("view", { staticClass: "sub_btn" }, [
+      _c("button", { attrs: { type: "primary" }, on: { tap: _vm.sub } }, [
+        _vm._v("保存"),
       ]),
-    ]
-  )
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

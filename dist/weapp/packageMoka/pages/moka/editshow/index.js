@@ -610,6 +610,20 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -670,6 +684,17 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     personDetail: function personDetail() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/editinfor/index");
     },
+    goback: function goback() {
+      wx.navigateBack({
+        delta: 1
+      });
+    },
+    editpersondata: function editpersondata() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editpersondata/index");
+    },
+    editpersonimg: function editpersonimg() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editpersonimg/index");
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -681,7 +706,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "j"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "l"])(params);
 
               case 3:
                 res = _context.sent;
@@ -730,8 +755,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     this.userInfo("");
   },
   onShow: function onShow() {
-    var userInfo = wx.getStorageSync("userInfo");
-    this.infor.avatar = userInfo.avatar;
+    // let userInfo = wx.getStorageSync("userInfo");
+    // this.infor.avatar = userInfo.avatar;
+    this.userInfo("");
   }
 });
 
@@ -754,6 +780,26 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "main" }, [
     _c("view", { staticClass: "main_top" }, [
+      _c(
+        "view",
+        {
+          staticClass: "back",
+          style: {
+            height: _vm.globalData.navHeight + "px",
+          },
+        },
+        [
+          _c("image", {
+            style: {
+              top: _vm.globalData.navTop + "px",
+            },
+            attrs: {
+              src: __webpack_require__(/*! ../../../../assets/images/common/goback.png */ "./src/assets/images/common/goback.png"),
+            },
+            on: { tap: _vm.goback },
+          }),
+        ]
+      ),
       _c(
         "view",
         {
@@ -966,7 +1012,7 @@ var render = function () {
                             "view",
                             {
                               staticClass: "home_item_title_edit",
-                              attrs: { catchtap: "editpersondata" },
+                              on: { tap: _vm.editpersondata },
                             },
                             [_vm._v("编辑")]
                           ),
@@ -1069,7 +1115,7 @@ var render = function () {
                             "view",
                             {
                               staticClass: "home_item_title_edit",
-                              attrs: { catchtap: "editpersonimg" },
+                              on: { tap: _vm.editpersonimg },
                             },
                             [
                               _vm._v(
@@ -1926,6 +1972,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/common/goback.png":
+/*!*********************************************!*\
+  !*** ./src/assets/images/common/goback.png ***!
+  \*********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/goback.png";
 
 /***/ }),
 

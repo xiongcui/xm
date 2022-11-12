@@ -4,6 +4,16 @@
 .main .main_top {
   position: relative;
 }
+.main .back {
+  position: absolute;
+  top: 0;
+  left: 16rpx;
+}
+.main .back image {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+}
 .main .homeimg {
   background: #ea6a6b;
   width: 100%;

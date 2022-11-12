@@ -1,4 +1,4 @@
-import { request } from "../utils/util";
+import { request, requestUpload } from "../utils/util";
 const baseUrl = "https://tapi.cupz.cn";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
@@ -120,4 +120,24 @@ export const updateAvatar = (data) => {
     method: "PUT",
     data,
   });
+};
+// 保存体型
+export const userShape = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/shape",
+    method: "post",
+    data,
+  });
+};
+// 保存形象视频&主页视频
+export const userAlbum = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/album",
+    method: "post",
+    data,
+  });
+};
+// 上传形象照片
+export const uploadImagePhoto = (path, params) => {
+  return requestUpload(path, params);
 };

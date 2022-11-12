@@ -2,6 +2,20 @@
   <view class="main">
     <view class="main_top">
       <view
+        :style="{
+          height: globalData.navHeight + 'px',
+        }"
+        class="back"
+      >
+        <image
+          src="../../../../assets/images/common/goback.png"
+          :style="{
+            top: globalData.navTop + 'px',
+          }"
+          @tap="goback"
+        ></image>
+      </view>
+      <view
         catchtap="goEditHomeimg"
         class="homeimg"
         :style="{
@@ -144,7 +158,7 @@
           <view class="home_item">
             <view class="home_item_title">
               <view class="home_item_title_text">模卡信息</view>
-              <view catchtap="editpersondata" class="home_item_title_edit"
+              <view @tap="editpersondata" class="home_item_title_edit"
                 >编辑</view
               >
             </view>
@@ -183,7 +197,7 @@
           <view class="home_item">
             <view class="home_item_title ub">
               <view class="home_item_title_text ub-f1">照片相册</view>
-              <view catchtap="editpersonimg" class="home_item_title_edit">
+              <view @tap="editpersonimg" class="home_item_title_edit">
                 {{ homeInfor.personimg.length ? "编辑" : "添加" }}</view
               >
             </view>
@@ -627,6 +641,17 @@ export default {
     personDetail() {
       openPage("/packageAdd/pages/user/editinfor/index");
     },
+    goback() {
+      wx.navigateBack({
+        delta: 1,
+      });
+    },
+    editpersondata() {
+      openPage("/packageMoka/pages/moka/editpersondata/index");
+    },
+    editpersonimg() {
+      openPage("/packageMoka/pages/moka/editpersonimg/index");
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
@@ -660,8 +685,9 @@ export default {
     this.userInfo("");
   },
   onShow() {
-    let userInfo = wx.getStorageSync("userInfo");
-    this.infor.avatar = userInfo.avatar;
+    // let userInfo = wx.getStorageSync("userInfo");
+    // this.infor.avatar = userInfo.avatar;
+    this.userInfo("");
   },
 };
 </script>

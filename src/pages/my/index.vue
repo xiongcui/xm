@@ -128,7 +128,7 @@
             <text>足迹</text>
           </view>
         </view>
-        <view class="my-conunt-rt"> 编辑资料 </view>
+        <view class="my-conunt-rt" @tap="personDetail"> 编辑资料 </view>
       </view>
     </view>
     <view class="my-ct">
@@ -484,6 +484,9 @@ export default {
     close() {
       this.showModelSign = false;
     },
+    personDetail() {
+      openPage("/packageAdd/pages/user/editinfor/index");
+    },
     goZhuye() {
       openPage("/packageMoka/pages/moka/editshow/index");
     },
@@ -520,8 +523,9 @@ export default {
     this.userInfo("");
   },
   onShow() {
-    let userInfo = wx.getStorageSync("userInfo");
-    this.infor.avatar = userInfo.avatar;
+    // let userInfo = wx.getStorageSync("userInfo");
+    // this.infor.avatar = userInfo.avatar;
+    this.userInfo("");
   },
 };
 </script>

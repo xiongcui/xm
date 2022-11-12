@@ -35,6 +35,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "模卡信息",
+                    "pathName": "packageMoka/pages/moka/editpersondata/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

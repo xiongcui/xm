@@ -47,8 +47,21 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editpersonimg/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editpersonimg/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+
+
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -91,13 +104,188 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "editpersonimg",
   data: function data() {
     return {
       imgs: [],
-      addImgbtn: true
+      uploadImgList: []
     };
+  },
+  methods: {
+    choosePersonImg: function choosePersonImg() {
+      if (this.imgs.length >= 9) {
+        wx.showToast({
+          title: "最多上传9张图！",
+          icon: "none"
+        });
+        return false;
+      }
+
+      wx.chooseMedia({
+        count: 9 - this.imgs.length,
+        mediaType: ["image"],
+        sourceType: ["album", "camera"],
+        maxDuration: 30,
+        camera: "back",
+        success: function success(res) {
+          var arr = res.tempFiles.map(function (item) {
+            return item.tempFilePath;
+          });
+          wx.setStorageSync("imgList", arr);
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/pages/we-cropper/index?type=imgList");
+        }
+      });
+    },
+    delete_preview: function delete_preview(index) {
+      var _this = this;
+
+      wx.showActionSheet({
+        itemList: ["设为封面", "替换", "删除"],
+        success: function success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              var first = _this.imgs[index];
+
+              _this.imgs.splice(index, 1);
+
+              _this.imgs.unshift(first);
+
+              break;
+
+            case 1:
+              wx.chooseMedia({
+                count: 1,
+                mediaType: ["image"],
+                sourceType: ["album", "camera"],
+                maxDuration: 30,
+                camera: "back",
+                success: function success(res) {
+                  var arr = res.tempFiles.map(function (item) {
+                    return item.tempFilePath;
+                  });
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/pages/we-cropper/index?type=imgId&imgId=" + index + "&imgSrc=" + arr[0]);
+                }
+              });
+              break;
+
+            case 2:
+              _this.imgs.splice(index, 1);
+
+              break;
+          }
+        },
+        fail: function fail(res) {
+          console.log(res.errMsg);
+        }
+      });
+    },
+    submit: function submit() {
+      var _this2 = this;
+
+      var arr = [];
+      this.imgs.map(function (item, index) {
+        arr[index] = _this2.uploadImagePhoto(item, {
+          scr_type: "album"
+        });
+      });
+      Promise.all(arr).then(function () {
+        _this2.userAlbum({
+          scr_type: "album",
+          file_type: "phote",
+          photo_album: _this2.uploadImgList,
+          video_album: []
+        });
+      }).catch(function () {
+        wx.showToast({
+          title: "有图片上传失败！",
+          icon: "none"
+        });
+        _this2.imgs = _this2.uploadImgList;
+      });
+    },
+    userAlbum: function userAlbum(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "k"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this3.uploadImgList = [];
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    uploadImagePhoto: function uploadImagePhoto(path, params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "j"])(path, params);
+
+              case 3:
+                res = _context2.sent;
+
+                _this4.uploadImgList.push(res.data.file1);
+
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    }
+  },
+  onShow: function onShow() {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+
+    if (currPage.data.updateimg) {
+      this.imgs = this.imgs.concat(this.globalData.imgList);
+      this.globalData.imgList = [];
+    }
+
+    if (currPage.data.imgId) {
+      this.imgs[Number(currPage.data.imgId)] = currPage.data.homeimg;
+    }
   }
 });
 
@@ -134,14 +322,19 @@ var render = function () {
                       id: index,
                       markImgindex: index,
                       mode: "widthFix",
-                      src: item.url,
+                      src: item,
                     },
                   }),
                   _c(
                     "view",
                     {
                       staticClass: "preview_delet",
-                      attrs: { bindtap: "delete_preview", id: index },
+                      attrs: { id: index },
+                      on: {
+                        tap: function ($event) {
+                          return _vm.delete_preview(index)
+                        },
+                      },
                     },
                     [_vm._v("编辑")]
                   ),
@@ -152,12 +345,12 @@ var render = function () {
                     : _vm._e(),
                 ])
               }),
-              _vm.addImgbtn
+              _vm.imgs.length < 9
                 ? _c(
                     "view",
                     {
                       staticClass: "pick_img",
-                      attrs: { bindtap: "choosePersonImg" },
+                      on: { tap: _vm.choosePersonImg },
                     },
                     [
                       _c("view", { staticClass: "pick_img_btn" }, [
@@ -182,7 +375,7 @@ var render = function () {
       _c("view", { staticClass: "side_gap_right" }),
     ]),
     _c("view", { staticClass: "sub_btn" }, [
-      _c("button", { attrs: { formType: "submit", type: "primary" } }, [
+      _c("button", { attrs: { type: "primary" }, on: { tap: _vm.submit } }, [
         _vm._v("保存"),
       ]),
     ]),
