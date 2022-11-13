@@ -1,0 +1,59 @@
+.editlabel {
+  padding: 0 20rpx 0 20rpx;
+  background: #f7f7f7;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.editlabel .editlabel-item {
+  margin: 10rpx 0;
+  padding: 0 16rpx 16rpx 16rpx;
+  background: #ffffff;
+  border-radius: 4rpx;
+}
+.editlabel .editlabel-title,
+.editlabel .editlabel-info {
+  padding: 10rpx 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 66rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  color: #333333;
+}
+.editlabel .editlabel-info {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.editlabel .check-tips {
+  color: #fe3e3f;
+  margin-left: 10rpx;
+}
+.editlabel .tags {
+  background-color: #fff;
+  padding-top: 16rpx;
+}
+.editlabel .tag_item {
+  background-color: #f1f1f1;
+  border: 1rpx solid #f1f1f1;
+  border-radius: 8rpx;
+  color: #333;
+  display: inline-block;
+  font-size: 26rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  margin: 0 30rpx 20rpx 0;
+  padding: 0 30rpx;
+}
+.editlabel .tag_itemed {
+  background-color: #ff5355;
+  border: 1rpx solid #ff5355;
+  color: #fff;
+}

@@ -205,15 +205,15 @@
               <view
                 class="personimg_item"
                 v-if="index <= 2"
-                v-for="(imgitem, key) in homeInfor.personimg"
-                :key="key"
+                v-for="(imgitem, index) in homeInfor.personimg"
+                :key="index"
               >
                 <image
                   catchtap="showbigPersonimg"
                   class="personimg"
                   :data-index="index"
                   mode="aspectFill"
-                  :src="imgitem.url"
+                  :src="imgitem"
                 ></image>
                 <view class="icon_imgnum" v-if="index == 2">
                   <text>{{ homeInfor.personimg.length }}张</text>
@@ -241,23 +241,29 @@
           <view class="home_item">
             <view class="home_item_title ub">
               <view class="home_item_title_text ub-f1">视频相册</view>
-              <view catchtap="editvideo" class="home_item_title_edit">
-                {{ homeInfor.video.video_url ? "编辑" : "添加" }}</view
+              <view @tap="editvideo" class="home_item_title_edit">
+                {{ homeInfor.video.length ? "编辑" : "添加" }}</view
               >
             </view>
-            <view class="home_item_main" v-if="homeInfor.video.video_url">
-              <video
-                bindended="bindended"
-                class="video_item"
-                id="user_video"
-                :poster="homeInfor.video.cover_url"
-                :src="homeInfor.video.video_url"
-                :title="homeInfor.nickname"
-                :vslideGestureInFullscreen="false"
-              ></video>
+            <view class="home_item_main" v-if="homeInfor.video.length">
+              <block v-for="(item, index) in homeInfor.video" :key="index">
+                <video
+                  class="video_item"
+                  id="user_video"
+                  objectFit="cover"
+                  :poster="item.cover"
+                  :src="item.file"
+                  :title="homeInfor.nickname"
+                  :vslideGestureInFullscreen="false"
+                  v-if="index < 2"
+                ></video>
+                <view class="icon_imgnum" v-if="index == 2">
+                  <text>{{ homeInfor.video.length }}个</text>
+                </view>
+              </block>
             </view>
             <view class="home_item_main" v-else>
-              <view catchtap="editvideo" class="home_video_add">
+              <view @tap="editvideo" class="home_video_add">
                 <image
                   src="../../../../assets/images/common/add_icon.png"
                 ></image>
@@ -568,7 +574,11 @@
 </template>
 
 <script>
-import { userInfo } from "../../../../api/index";
+import {
+  userInfo,
+  userShapeDetail,
+  userAlbumDetail,
+} from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
@@ -590,9 +600,16 @@ export default {
       select_tab: "home",
       isartist: [],
       homeInfor: {
-        video: {
-          video_url: "",
-        },
+        height: "",
+        weight: "",
+        bwh_b: "",
+        bwh_w: "",
+        bwh_h: "",
+        shoe: "",
+        // video: {
+        //   video_url: "",
+        // },
+        video: [],
         personimg: [],
         zytag_name: [
           {
@@ -652,10 +669,33 @@ export default {
     editpersonimg() {
       openPage("/packageMoka/pages/moka/editpersonimg/index");
     },
+    editvideo() {
+      openPage("/packageMoka/pages/moka/editvideo/index");
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
         this.infor = res.data.data;
+      } catch (error) {}
+    },
+    async userShapeDetail(params) {
+      try {
+        let res = await userShapeDetail(params);
+        this.homeInfor.height = res.data.data.height;
+        this.homeInfor.weight = res.data.data.weight;
+        this.homeInfor.bwh_b = res.data.data.bust;
+        this.homeInfor.bwh_w = res.data.data.waist;
+        this.homeInfor.bwh_h = res.data.data.hip;
+        this.homeInfor.shoe = res.data.data.size;
+      } catch (error) {}
+    },
+    async userAlbumDetail(params) {
+      try {
+        let res = await userAlbumDetail(params);
+        this.homeInfor.personimg = [];
+        this.homeInfor.video = [];
+        this.homeInfor.personimg = res.data.data.photo_album;
+        this.homeInfor.video = res.data.data.video_album;
       } catch (error) {}
     },
   },
@@ -683,11 +723,13 @@ export default {
       },
     });
     this.userInfo("");
+    this.userShapeDetail("");
   },
   onShow() {
-    // let userInfo = wx.getStorageSync("userInfo");
-    // this.infor.avatar = userInfo.avatar;
-    this.userInfo("");
+    setTimeout(() => {
+      this.userInfo("");
+      this.userAlbumDetail("");
+    });
   },
 };
 </script>

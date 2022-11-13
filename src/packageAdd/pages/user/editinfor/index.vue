@@ -204,20 +204,22 @@ export default {
         address: this.regionList.join("-"),
         avatar: this.infor.avatar,
       };
-      console.log(params);
       this.updateUser(params);
     },
     async updateUser(params, type) {
       try {
         let res = await updateUser(params);
-        wx.navigateTo({
-          url: "/packageMoka/pages/moka/editshow/index",
-          success: function (e) {
-            var page = getCurrentPages().pop();
-            if (page == undefined || page == null) return;
-            page.onLoad();
-          },
+        wx.navigateBack({
+          delta: 1,
         });
+        // wx.navigateTo({
+        //   url: "/packageMoka/pages/moka/editshow/index",
+        //   success: function (e) {
+        //     var page = getCurrentPages().pop();
+        //     if (page == undefined || page == null) return;
+        //     page.onLoad();
+        //   },
+        // });
       } catch (error) {}
     },
     async updateAvatar(params) {

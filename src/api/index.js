@@ -141,3 +141,35 @@ export const userAlbum = (data) => {
 export const uploadImagePhoto = (path, params) => {
   return requestUpload(path, params);
 };
+// 获取形象信息
+export const userShapeDetail = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/shape",
+    method: "get",
+    data,
+  });
+};
+// 获取相册和视频
+export const userAlbumDetail = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/album",
+    method: "get",
+    data,
+  });
+};
+// 获取标签
+export const userSticker = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/sticker",
+    method: "get",
+    data,
+  });
+};
+// 提交标签
+export const subUserSticker = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/sticker",
+    method: "post",
+    data,
+  });
+};

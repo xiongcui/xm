@@ -71,6 +71,7 @@ export default {
         height: 310, // 裁剪框高度
       },
       imgId: "",
+      videoId: "",
     };
   },
   methods: {
@@ -131,6 +132,9 @@ export default {
           if (_this.imgType == "imgId") {
             obj.imgId = _this.imgId;
           }
+          if (_this.imgType == "videoId") {
+            obj.videoId = _this.videoId;
+          }
           prevPage.setData(obj);
 
           wx.navigateBack({
@@ -163,6 +167,7 @@ export default {
     } else {
       this.imgSrc = options.imgSrc;
       this.imgId = options.imgId;
+      this.videoId = options.videoId;
     }
     this.imgType = options.type;
     this.cropperOpt.src = this.imgSrc;

@@ -100,7 +100,11 @@
 
 <script>
 import "./index.scss";
-import { publicConfig, userShape } from "../../../../api/index";
+import {
+  publicConfig,
+  userShape,
+  userShapeDetail,
+} from "../../../../api/index";
 import { errortip } from "../../../../utils/util";
 export default {
   name: "editpersondata",
@@ -171,6 +175,30 @@ export default {
         });
       } catch (error) {}
     },
+    async userShapeDetail(params) {
+      try {
+        let res = await userShapeDetail(params);
+        this.heightIndex = this.heights.findIndex((item) => {
+          return item == res.data.data.height;
+        });
+        this.weightIndex = this.weights.findIndex((item) => {
+          return item == res.data.data.weight;
+        });
+        this.BWHIndex[0] = this.BWHs[0].findIndex((item) => {
+          return item == res.data.data.bust;
+        });
+        this.BWHIndex[1] = this.BWHs[1].findIndex((item) => {
+          return item == res.data.data.waist;
+        });
+        this.BWHIndex[2] = this.BWHs[2].findIndex((item) => {
+          return item == res.data.data.hip;
+        });
+        this.shoeIndex = this.shoes.findIndex((item) => {
+          return item == res.data.data.size;
+        });
+        this.BWHIndex = JSON.parse(JSON.stringify(this.BWHIndex));
+      } catch (error) {}
+    },
     async publicConfig(params) {
       try {
         let res = await publicConfig(params);
@@ -196,6 +224,7 @@ export default {
         this.weights = arr2;
         this.BWHs = [arr3, arr3, arr3];
         this.shoes = arr4;
+        this.userShapeDetail("");
       } catch (error) {}
     },
   },

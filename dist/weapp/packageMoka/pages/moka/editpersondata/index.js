@@ -233,7 +233,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersondata/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShape */ "o"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShape */ "q"])(params);
 
               case 3:
                 res = _context.sent;
@@ -255,21 +255,70 @@ component.options.__file = "src/packageMoka/pages/moka/editpersondata/index.vue"
         }, _callee, null, [[0, 7]]);
       }))();
     },
-    publicConfig: function publicConfig(params) {
+    userShapeDetail: function userShapeDetail(params) {
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res, arr, arr2, arr3, arr4;
+        var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "g"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "r"])(params);
 
               case 3:
                 res = _context2.sent;
+                _this.heightIndex = _this.heights.findIndex(function (item) {
+                  return item == res.data.data.height;
+                });
+                _this.weightIndex = _this.weights.findIndex(function (item) {
+                  return item == res.data.data.weight;
+                });
+                _this.BWHIndex[0] = _this.BWHs[0].findIndex(function (item) {
+                  return item == res.data.data.bust;
+                });
+                _this.BWHIndex[1] = _this.BWHs[1].findIndex(function (item) {
+                  return item == res.data.data.waist;
+                });
+                _this.BWHIndex[2] = _this.BWHs[2].findIndex(function (item) {
+                  return item == res.data.data.hip;
+                });
+                _this.shoeIndex = _this.shoes.findIndex(function (item) {
+                  return item == res.data.data.size;
+                });
+                _this.BWHIndex = JSON.parse(JSON.stringify(_this.BWHIndex));
+                _context2.next = 15;
+                break;
+
+              case 13:
+                _context2.prev = 13;
+                _context2.t0 = _context2["catch"](0);
+
+              case 15:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 13]]);
+      }))();
+    },
+    publicConfig: function publicConfig(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res, arr, arr2, arr3, arr4;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "g"])(params);
+
+              case 3:
+                res = _context3.sent;
                 arr = [];
                 arr2 = [];
                 arr3 = [];
@@ -291,23 +340,26 @@ component.options.__file = "src/packageMoka/pages/moka/editpersondata/index.vue"
                     arr4.push(item.value);
                   }
                 });
-                _this.heights = arr;
-                _this.weights = arr2;
-                _this.BWHs = [arr3, arr3, arr3];
-                _this.shoes = arr4;
-                _context2.next = 17;
+                _this2.heights = arr;
+                _this2.weights = arr2;
+                _this2.BWHs = [arr3, arr3, arr3];
+                _this2.shoes = arr4;
+
+                _this2.userShapeDetail("");
+
+                _context3.next = 18;
                 break;
 
-              case 15:
-                _context2.prev = 15;
-                _context2.t0 = _context2["catch"](0);
+              case 16:
+                _context3.prev = 16;
+                _context3.t0 = _context3["catch"](0);
 
-              case 17:
+              case 18:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, null, [[0, 15]]);
+        }, _callee3, null, [[0, 16]]);
       }))();
     }
   },

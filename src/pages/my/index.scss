@@ -3,7 +3,7 @@
   .my-head {
     display: flex;
     background-color: #ffffff;
-    padding: 16px 16px 4px 16px;
+    padding: 16px 30px 4px 30px;
     margin-top: 16px;
     .head-img {
       width: 120px;
@@ -66,7 +66,7 @@
   }
   .my-head-ct {
     background: #ffffff;
-    padding: 0px 16px;
+    padding: 0px 30px;
     .my-desc {
       color: #999999;
       font-size: 26px;
@@ -147,10 +147,9 @@
     background-color: #ffffff;
     border-radius: 10px;
     margin-top: 16px;
-    padding: 20px 16px;
+    padding: 20px 30px;
     justify-content: space-between;
     .my-column-item {
-      // width: 32%;
       width: 90px;
       display: flex;
       flex-direction: column;
@@ -173,7 +172,7 @@
   }
   .items {
     background: #ffffff;
-    padding: 0px 16px;
+    padding: 0px 30px;
     border-radius: 2px;
     margin: 16px 0px;
     font-size: 30px;

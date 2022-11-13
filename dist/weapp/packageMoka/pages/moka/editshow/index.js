@@ -624,6 +624,12 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -646,9 +652,16 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       select_tab: "home",
       isartist: [],
       homeInfor: {
-        video: {
-          video_url: ""
-        },
+        height: "",
+        weight: "",
+        bwh_b: "",
+        bwh_w: "",
+        bwh_h: "",
+        shoe: "",
+        // video: {
+        //   video_url: "",
+        // },
+        video: [],
         personimg: [],
         zytag_name: [{
           name: "平面模特"
@@ -695,6 +708,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     editpersonimg: function editpersonimg() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editpersonimg/index");
     },
+    editvideo: function editvideo() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editvideo/index");
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -706,7 +722,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "l"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "n"])(params);
 
               case 3:
                 res = _context.sent;
@@ -725,10 +741,80 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
           }
         }, _callee, null, [[0, 7]]);
       }))();
+    },
+    userShapeDetail: function userShapeDetail(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "r"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this2.homeInfor.height = res.data.data.height;
+                _this2.homeInfor.weight = res.data.data.weight;
+                _this2.homeInfor.bwh_b = res.data.data.bust;
+                _this2.homeInfor.bwh_w = res.data.data.waist;
+                _this2.homeInfor.bwh_h = res.data.data.hip;
+                _this2.homeInfor.shoe = res.data.data.size;
+                _context2.next = 14;
+                break;
+
+              case 12:
+                _context2.prev = 12;
+                _context2.t0 = _context2["catch"](0);
+
+              case 14:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 12]]);
+      }))();
+    },
+    userAlbumDetail: function userAlbumDetail(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "m"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this3.homeInfor.personimg = [];
+                _this3.homeInfor.video = [];
+                _this3.homeInfor.personimg = res.data.data.photo_album;
+                _this3.homeInfor.video = res.data.data.video_album;
+                _context3.next = 12;
+                break;
+
+              case 10:
+                _context3.prev = 10;
+                _context3.t0 = _context3["catch"](0);
+
+              case 12:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 10]]);
+      }))();
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this4 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -739,13 +825,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this2.globalData.navHeight = navHeight; //导航栏总体高度
+        _this4.globalData.navHeight = navHeight; //导航栏总体高度
 
-        _this2.globalData.navTop = navTop; //胶囊距离顶部距离
+        _this4.globalData.navTop = navTop; //胶囊距离顶部距离
 
-        _this2.globalData.navObj = menuButtonObject.height; //胶囊高度
+        _this4.globalData.navObj = menuButtonObject.height; //胶囊高度
 
-        _this2.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this4.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail: function fail(err) {
@@ -753,11 +839,16 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }
     });
     this.userInfo("");
+    this.userShapeDetail("");
   },
   onShow: function onShow() {
-    // let userInfo = wx.getStorageSync("userInfo");
-    // this.infor.avatar = userInfo.avatar;
-    this.userInfo("");
+    var _this5 = this;
+
+    setTimeout(function () {
+      _this5.userInfo("");
+
+      _this5.userAlbumDetail("");
+    });
   }
 });
 
@@ -1135,12 +1226,12 @@ var render = function () {
                               { staticClass: "home_item_main" },
                               _vm._l(
                                 _vm.homeInfor.personimg,
-                                function (imgitem, key) {
-                                  return _vm.index <= 2
+                                function (imgitem, index) {
+                                  return index <= 2
                                     ? _c(
                                         "view",
                                         {
-                                          key: key,
+                                          key: index,
                                           staticClass: "personimg_item",
                                         },
                                         [
@@ -1148,12 +1239,12 @@ var render = function () {
                                             staticClass: "personimg",
                                             attrs: {
                                               catchtap: "showbigPersonimg",
-                                              "data-index": _vm.index,
+                                              "data-index": index,
                                               mode: "aspectFill",
-                                              src: imgitem.url,
+                                              src: imgitem,
                                             },
                                           }),
-                                          _vm.index == 2
+                                          index == 2
                                             ? _c(
                                                 "view",
                                                 { staticClass: "icon_imgnum" },
@@ -1232,40 +1323,65 @@ var render = function () {
                             "view",
                             {
                               staticClass: "home_item_title_edit",
-                              attrs: { catchtap: "editvideo" },
+                              on: { tap: _vm.editvideo },
                             },
                             [
                               _vm._v(
                                 " " +
                                   _vm._s(
-                                    _vm.homeInfor.video.video_url
-                                      ? "编辑"
-                                      : "添加"
+                                    _vm.homeInfor.video.length ? "编辑" : "添加"
                                   )
                               ),
                             ]
                           ),
                         ]),
-                        _vm.homeInfor.video.video_url
-                          ? _c("view", { staticClass: "home_item_main" }, [
-                              _c("video", {
-                                staticClass: "video_item",
-                                attrs: {
-                                  bindended: "bindended",
-                                  id: "user_video",
-                                  poster: _vm.homeInfor.video.cover_url,
-                                  src: _vm.homeInfor.video.video_url,
-                                  title: _vm.homeInfor.nickname,
-                                  vslideGestureInFullscreen: false,
-                                },
-                              }),
-                            ])
+                        _vm.homeInfor.video.length
+                          ? _c(
+                              "view",
+                              { staticClass: "home_item_main" },
+                              _vm._l(
+                                _vm.homeInfor.video,
+                                function (item, index) {
+                                  return _c("block", { key: index }, [
+                                    index < 2
+                                      ? _c("video", {
+                                          staticClass: "video_item",
+                                          attrs: {
+                                            id: "user_video",
+                                            objectFit: "cover",
+                                            poster: item.cover,
+                                            src: item.file,
+                                            title: _vm.homeInfor.nickname,
+                                            vslideGestureInFullscreen: false,
+                                          },
+                                        })
+                                      : _vm._e(),
+                                    index == 2
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "icon_imgnum" },
+                                          [
+                                            _c("text", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  _vm.homeInfor.video.length
+                                                ) + "个"
+                                              ),
+                                            ]),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ])
+                                }
+                              ),
+                              1
+                            )
                           : _c("view", { staticClass: "home_item_main" }, [
                               _c(
                                 "view",
                                 {
                                   staticClass: "home_video_add",
-                                  attrs: { catchtap: "editvideo" },
+                                  on: { tap: _vm.editvideo },
                                 },
                                 [
                                   _c("image", {

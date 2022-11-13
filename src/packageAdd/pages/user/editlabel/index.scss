@@ -1,0 +1,51 @@
+.editlabel {
+  padding: 0px 20px 0px 20px;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  .editlabel-item {
+    margin: 10px 0px;
+    padding: 0px 16px 16px 16px;
+    background: #ffffff;
+    border-radius: 4px;
+  }
+  .editlabel-title,
+  .editlabel-info {
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    height: 66px;
+    border-bottom: 1px solid #eeeeee;
+    color: #333333;
+  }
+  .editlabel-info {
+    justify-content: space-between;
+  }
+  .check-tips {
+    color: #fe3e3f;
+    margin-left: 10px;
+  }
+  .tags {
+    background-color: #fff;
+    padding-top: 16px;
+  }
+
+  .tag_item {
+    background-color: #f1f1f1;
+    border: 1rpx solid #f1f1f1;
+    border-radius: 8rpx;
+    color: #333;
+    display: inline-block;
+    font-size: 26rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    margin: 0 30rpx 20rpx 0;
+    padding: 0 30rpx;
+  }
+
+  .tag_itemed {
+    background-color: #ff5355;
+    border: 1rpx solid #ff5355;
+    color: #fff;
+  }
+}

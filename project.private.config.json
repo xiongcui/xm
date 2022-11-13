@@ -42,6 +42,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "标签信息",
+                    "pathName": "packageAdd/pages/user/editlabel/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

@@ -4,29 +4,33 @@
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto */
-/*! exports used: creatCareer, creatInvite, getCareer, getPhone, inviteInfo, inviteList, publicConfig, updateAvatar, updateUser, uploadImagePhoto, userAlbum, userInfo, userProfile, userResume, userShape, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, updateUser, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker */
+/*! exports used: creatCareer, creatInvite, getCareer, getPhone, inviteInfo, inviteList, publicConfig, subUserSticker, updateAvatar, updateUser, uploadImagePhoto, userAlbum, userAlbumDetail, userInfo, userProfile, userResume, userShape, userShapeDetail, userSticker, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return wxlogin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getPhone; });
 /* unused harmony export uploadFile */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return updateUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return updateUser; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return creatCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return publicConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return creatInvite; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return inviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return inviteInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return userInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return userInfo; });
 /* unused harmony export getGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return userResume; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return userProfile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return updateAvatar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return userShape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return userAlbum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return uploadImagePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return userResume; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return userProfile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return updateAvatar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return userShape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return userAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return uploadImagePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return userShapeDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return userAlbumDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return userSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return subUserSticker; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://tapi.cupz.cn"; // WX登录,拿code换登录
@@ -169,6 +173,38 @@ var userAlbum = function userAlbum(data) {
 
 var uploadImagePhoto = function uploadImagePhoto(path, params) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* requestUpload */ "d"])(path, params);
+}; // 获取形象信息
+
+var userShapeDetail = function userShapeDetail(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/shape",
+    method: "get",
+    data: data
+  });
+}; // 获取相册和视频
+
+var userAlbumDetail = function userAlbumDetail(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/album",
+    method: "get",
+    data: data
+  });
+}; // 获取标签
+
+var userSticker = function userSticker(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/sticker",
+    method: "get",
+    data: data
+  });
+}; // 提交标签
+
+var subUserSticker = function subUserSticker(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/user/sticker",
+    method: "post",
+    data: data
+  });
 };
 
 /***/ }),
@@ -456,7 +492,6 @@ var requestUpload = function requestUpload(path, params) {
   var token = wx.getStorageSync("token");
   header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_1__[/* Base64 */ "a"].encode(token + ":");
   var formData = params;
-  console.log(formData, "formData");
   wx.showLoading({
     title: "上传中",
     mask: true
@@ -473,7 +508,7 @@ var requestUpload = function requestUpload(path, params) {
 
         var data = JSON.parse(res.data);
 
-        if (data.code == 200) {
+        if (data.code == 200 && res.statusCode == 200) {
           resolev(data);
         } else {
           wx.showToast({

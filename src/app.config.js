@@ -62,10 +62,11 @@ export default defineAppConfig({
       root: "packageAdd/",
       name: "packadd",
       pages: [
-        "pages/yuedan/add_yuedan/index",
         "pages/user/identity/index",
         "pages/user/editinfor/index",
         "pages/user/editusertro/index",
+        "pages/user/editlabel/index",
+        "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
       ],
     },

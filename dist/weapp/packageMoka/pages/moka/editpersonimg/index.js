@@ -185,17 +185,24 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
     submit: function submit() {
       var _this2 = this;
 
+      if (this.imgs.length < 3) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("形象照不能少于3张哦");
+        return;
+      }
+
       var arr = [];
       this.imgs.map(function (item, index) {
-        arr[index] = _this2.uploadImagePhoto(item, {
-          scr_type: "album"
-        });
+        if (item.indexOf("http:") != -1) {
+          arr[index] = _this2.uploadImagePhoto(item, {
+            scr_type: "album"
+          }, index);
+        }
       });
       Promise.all(arr).then(function () {
         _this2.userAlbum({
           scr_type: "album",
-          file_type: "phote",
-          photo_album: _this2.uploadImgList,
+          file_type: "photo",
+          photo_album: _this2.imgs,
           video_album: []
         });
       }).catch(function () {
@@ -217,7 +224,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "k"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "l"])(params);
 
               case 3:
                 res = _context.sent;
@@ -240,7 +247,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
         }, _callee, null, [[0, 8]]);
       }))();
     },
-    uploadImagePhoto: function uploadImagePhoto(path, params) {
+    uploadImagePhoto: function uploadImagePhoto(path, params, index) {
       var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
@@ -251,13 +258,11 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "j"])(path, params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "k"])(path, params);
 
               case 3:
                 res = _context2.sent;
-
-                _this4.uploadImgList.push(res.data.file1);
-
+                _this4.imgs[index] = res.data.file1;
                 _context2.next = 9;
                 break;
 
@@ -272,7 +277,41 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
           }
         }, _callee2, null, [[0, 7]]);
       }))();
+    },
+    userAlbumDetail: function userAlbumDetail(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "m"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this5.imgs = res.data.data.photo_album;
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
+      }))();
     }
+  },
+  created: function created() {
+    this.userAlbumDetail();
   },
   onShow: function onShow() {
     var pages = getCurrentPages();
@@ -285,6 +324,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 
     if (currPage.data.imgId) {
       this.imgs[Number(currPage.data.imgId)] = currPage.data.homeimg;
+      this.imgs = JSON.parse(JSON.stringify(this.imgs));
     }
   }
 });
@@ -413,7 +453,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMoka/pages/moka/editpersonimg/index.vue");
 
 
-var config = {};
+var config = {"navigationBarTitleText":"照片相册","usingComponents":{}};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageMoka/pages/moka/editpersonimg/index', {root:{cn:[]}}, config || {}))

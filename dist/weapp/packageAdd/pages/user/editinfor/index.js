@@ -260,7 +260,6 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         address: this.regionList.join("-"),
         avatar: this.infor.avatar
       };
-      console.log(params);
       this.updateUser(params);
     },
     updateUser: function updateUser(params, type) {
@@ -272,18 +271,21 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "j"])(params);
 
               case 3:
                 res = _context.sent;
-                wx.navigateTo({
-                  url: "/packageMoka/pages/moka/editshow/index",
-                  success: function success(e) {
-                    var page = getCurrentPages().pop();
-                    if (page == undefined || page == null) return;
-                    page.onLoad();
-                  }
-                });
+                wx.navigateBack({
+                  delta: 1
+                }); // wx.navigateTo({
+                //   url: "/packageMoka/pages/moka/editshow/index",
+                //   success: function (e) {
+                //     var page = getCurrentPages().pop();
+                //     if (page == undefined || page == null) return;
+                //     page.onLoad();
+                //   },
+                // });
+
                 _context.next = 9;
                 break;
 
@@ -310,7 +312,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "i"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -344,7 +346,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "o"])(params);
 
               case 3:
                 res = _context3.sent;

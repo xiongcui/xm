@@ -47,8 +47,12 @@
 </template>
 
 <script>
-import { openPage } from "../../../../utils/util";
-import { userAlbum, uploadImagePhoto } from "../../../../api/index";
+import { errortip, openPage } from "../../../../utils/util";
+import {
+  userAlbum,
+  uploadImagePhoto,
+  userAlbumDetail,
+} from "../../../../api/index";
 import "./index.scss";
 export default {
   name: "editpersonimg",
@@ -124,18 +128,28 @@ export default {
       });
     },
     submit() {
+      if (this.imgs.length < 3) {
+        errortip("形象照不能少于3张哦");
+        return;
+      }
       let arr = [];
       this.imgs.map((item, index) => {
-        arr[index] = this.uploadImagePhoto(item, {
-          scr_type: "album",
-        });
+        if (item.indexOf("http:") != -1) {
+          arr[index] = this.uploadImagePhoto(
+            item,
+            {
+              scr_type: "album",
+            },
+            index
+          );
+        }
       });
       Promise.all(arr)
         .then(() => {
           this.userAlbum({
             scr_type: "album",
-            file_type: "phote",
-            photo_album: this.uploadImgList,
+            file_type: "photo",
+            photo_album: this.imgs,
             video_album: [],
           });
         })
@@ -156,12 +170,21 @@ export default {
         });
       } catch (error) {}
     },
-    async uploadImagePhoto(path, params) {
+    async uploadImagePhoto(path, params, index) {
       try {
         let res = await uploadImagePhoto(path, params);
-        this.uploadImgList.push(res.data.file1);
+        this.imgs[index] = res.data.file1;
       } catch (error) {}
     },
+    async userAlbumDetail(params) {
+      try {
+        let res = await userAlbumDetail(params);
+        this.imgs = res.data.data.photo_album;
+      } catch (error) {}
+    },
+  },
+  created() {
+    this.userAlbumDetail();
   },
   onShow() {
     let pages = getCurrentPages();
@@ -172,6 +195,7 @@ export default {
     }
     if (currPage.data.imgId) {
       this.imgs[Number(currPage.data.imgId)] = currPage.data.homeimg;
+      this.imgs = JSON.parse(JSON.stringify(this.imgs));
     }
   },
 };

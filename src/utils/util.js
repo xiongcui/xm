@@ -106,7 +106,6 @@ export const requestUpload = (path, params) => {
   let token = wx.getStorageSync("token");
   header["Authorization"] = "Basic " + Base64.encode(token + ":");
   let formData = params;
-  console.log(formData, "formData");
   wx.showLoading({
     title: "上传中",
     mask: true,
@@ -122,7 +121,7 @@ export const requestUpload = (path, params) => {
         wx.hideLoading();
         //判断上传的是图片还是视频
         let data = JSON.parse(res.data);
-        if (data.code == 200) {
+        if (data.code == 200 && res.statusCode == 200) {
           resolev(data);
         } else {
           wx.showToast({

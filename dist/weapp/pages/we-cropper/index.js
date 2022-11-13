@@ -139,7 +139,8 @@ var height = width;
         height: 310 // 裁剪框高度
 
       },
-      imgId: ""
+      imgId: "",
+      videoId: ""
     };
   },
   methods: {
@@ -209,6 +210,10 @@ var height = width;
             obj.imgId = _this.imgId;
           }
 
+          if (_this.imgType == "videoId") {
+            obj.videoId = _this.videoId;
+          }
+
           prevPage.setData(obj);
           wx.navigateBack({
             delta: 1
@@ -245,6 +250,7 @@ var height = width;
     } else {
       this.imgSrc = options.imgSrc;
       this.imgId = options.imgId;
+      this.videoId = options.videoId;
     }
 
     this.imgType = options.type;

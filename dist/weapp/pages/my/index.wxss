@@ -6,7 +6,7 @@
   display: -ms-flexbox;
   display: flex;
   background-color: #ffffff;
-  padding: 16rpx 16rpx 4rpx 16rpx;
+  padding: 16rpx 30rpx 4rpx 30rpx;
   margin-top: 16rpx;
 }
 .my .my-head .head-img {
@@ -82,7 +82,7 @@
 }
 .my .my-head-ct {
   background: #ffffff;
-  padding: 0 16rpx;
+  padding: 0 30rpx;
 }
 .my .my-head-ct .my-desc {
   color: #999999;
@@ -188,7 +188,7 @@
   background-color: #ffffff;
   border-radius: 10rpx;
   margin-top: 16rpx;
-  padding: 20rpx 16rpx;
+  padding: 20rpx 30rpx;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -225,7 +225,7 @@
 }
 .my .items {
   background: #ffffff;
-  padding: 0 16rpx;
+  padding: 0 30rpx;
   border-radius: 2rpx;
   margin: 16rpx 0;
   font-size: 30rpx;
