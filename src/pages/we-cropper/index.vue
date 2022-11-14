@@ -117,10 +117,6 @@ export default {
           }
         });
       } else {
-        // wx.showLoading({
-        //   title: "裁剪中",
-        //   mask: true,
-        // });
         let _this = this;
         this.cropper.getCropperImage().then((src) => {
           let pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
@@ -158,12 +154,14 @@ export default {
   },
   mounted() {},
   onLoad: function (options) {
+    if (options.type == "imgList" || options.type == "imgId") {
+      this.cropperOpt.cut = this.imgListOpt;
+    }
     if (options.type == "imgList") {
       let imgList = wx.getStorageSync("imgList");
       this.imgSrc = imgList[0];
       this.imgList = imgList;
       this.nextImg = this.imgList.length > 1 ? true : false;
-      this.cropperOpt.cut = this.imgListOpt;
     } else {
       this.imgSrc = options.imgSrc;
       this.imgId = options.imgId;

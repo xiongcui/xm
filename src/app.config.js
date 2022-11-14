@@ -68,6 +68,7 @@ export default defineAppConfig({
         "pages/user/editlabel/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
+        "pages/zuopin/add_zuopin/index",
       ],
     },
     {

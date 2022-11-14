@@ -191,10 +191,6 @@ var height = width;
           }
         });
       } else {
-        // wx.showLoading({
-        //   title: "裁剪中",
-        //   mask: true,
-        // });
         var _this = this;
 
         this.cropper.getCropperImage().then(function (src) {
@@ -241,12 +237,15 @@ var height = width;
   },
   mounted: function mounted() {},
   onLoad: function onLoad(options) {
+    if (options.type == "imgList" || options.type == "imgId") {
+      this.cropperOpt.cut = this.imgListOpt;
+    }
+
     if (options.type == "imgList") {
       var imgList = wx.getStorageSync("imgList");
       this.imgSrc = imgList[0];
       this.imgList = imgList;
       this.nextImg = this.imgList.length > 1 ? true : false;
-      this.cropperOpt.cut = this.imgListOpt;
     } else {
       this.imgSrc = options.imgSrc;
       this.imgId = options.imgId;

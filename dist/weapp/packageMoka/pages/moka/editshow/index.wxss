@@ -321,6 +321,9 @@
   margin-right: 10rpx;
   margin-bottom: 16rpx;
 }
+.main .main_list .home_item_tag:last-child {
+  margin-bottom: 16rpx;
+}
 .main .main_list .video_item {
   width: 337rpx;
   margin-right: 16rpx;

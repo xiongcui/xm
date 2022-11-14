@@ -134,7 +134,9 @@ export default {
       }
       let arr = [];
       this.imgs.map((item, index) => {
-        if (item.indexOf("http:") != -1) {
+        console.log(item.indexOf("https:") < 0);
+        if (item.indexOf("https:") < 0) {
+          // if (item.indexOf("http:") != -1 || item.indexOf("wxfile://" != -1)) {
           arr[index] = this.uploadImagePhoto(
             item,
             {

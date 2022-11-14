@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "约单详情",
-                    "pathName": "packageAdd/pages/yuedan/yuedan_detail/index",
+                    "name": "发布作品",
+                    "pathName": "packageAdd/pages/zuopin/add_zuopin/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

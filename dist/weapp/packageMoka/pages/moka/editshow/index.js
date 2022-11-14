@@ -663,21 +663,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         // },
         video: [],
         personimg: [],
-        zytag_name: [{
-          name: "平面模特"
-        }, {
-          name: "平面模特1"
-        }, {
-          name: "平面模特1"
-        }],
-        tgtag_name: [{
-          name: "人像创造"
-        }, {
-          name: "人像创造"
-        }],
-        xxtag_name: [{
-          name: "人像创造"
-        }]
+        mode_sticker: [],
+        notice_sticker: [],
+        style_sticker: []
       },
       homeInfo_none: false,
       swiper_tab_fixed: false,
@@ -710,6 +698,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     },
     editvideo: function editvideo() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editvideo/index");
+    },
+    editzytag: function editzytag() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/editlabel/index");
     },
     userInfo: function userInfo(params) {
       var _this = this;
@@ -811,10 +802,43 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
           }
         }, _callee3, null, [[0, 10]]);
       }))();
+    },
+    userSticker: function userSticker(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "s"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _this4.homeInfor.mode_sticker = res.data.data.cur_sticker_list.mode_sticker;
+                _this4.homeInfor.notice_sticker = res.data.data.cur_sticker_list.notice_sticker;
+                _this4.homeInfor.style_sticker = res.data.data.cur_sticker_list.style_sticker;
+                _context4.next = 11;
+                break;
+
+              case 9:
+                _context4.prev = 9;
+                _context4.t0 = _context4["catch"](0);
+
+              case 11:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 9]]);
+      }))();
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -825,29 +849,31 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this4.globalData.navHeight = navHeight; //导航栏总体高度
+        _this5.globalData.navHeight = navHeight; //导航栏总体高度
 
-        _this4.globalData.navTop = navTop; //胶囊距离顶部距离
+        _this5.globalData.navTop = navTop; //胶囊距离顶部距离
 
-        _this4.globalData.navObj = menuButtonObject.height; //胶囊高度
+        _this5.globalData.navObj = menuButtonObject.height; //胶囊高度
 
-        _this4.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this5.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail: function fail(err) {
         console.log(err);
       }
     });
-    this.userInfo("");
-    this.userShapeDetail("");
   },
   onShow: function onShow() {
-    var _this5 = this;
+    var _this6 = this;
 
     setTimeout(function () {
-      _this5.userInfo("");
+      _this6.userInfo("");
 
-      _this5.userAlbumDetail("");
+      _this6.userShapeDetail("");
+
+      _this6.userAlbumDetail("");
+
+      _this6.userSticker("");
     });
   }
 });
@@ -1404,13 +1430,13 @@ var render = function () {
                             "view",
                             {
                               staticClass: "home_item_title_edit",
-                              attrs: { catchtap: "editzytag" },
+                              on: { tap: _vm.editzytag },
                             },
                             [
                               _vm._v(
                                 " " +
                                   _vm._s(
-                                    _vm.homeInfor.zytag_name.length
+                                    _vm.homeInfor.mode_sticker.length
                                       ? "编辑"
                                       : "添加"
                                   )
@@ -1418,19 +1444,19 @@ var render = function () {
                             ]
                           ),
                         ]),
-                        _vm.homeInfor.zytag_name.length
+                        _vm.homeInfor.mode_sticker.length
                           ? _c(
                               "view",
                               { staticClass: "home_item_tag" },
                               [
                                 _c("text", [_vm._v("身份标签：")]),
                                 _vm._l(
-                                  _vm.homeInfor.zytag_name,
+                                  _vm.homeInfor.mode_sticker,
                                   function (item, index) {
                                     return _c(
                                       "text",
                                       { key: index, staticClass: "tag_item" },
-                                      [_vm._v(_vm._s(item.name))]
+                                      [_vm._v(_vm._s(item))]
                                     )
                                   }
                                 ),
@@ -1438,19 +1464,19 @@ var render = function () {
                               2
                             )
                           : _vm._e(),
-                        _vm.homeInfor.tgtag_name.length
+                        _vm.homeInfor.notice_sticker.length
                           ? _c(
                               "view",
                               { staticClass: "home_item_tag" },
                               [
                                 _c("text", [_vm._v("接单通告：")]),
                                 _vm._l(
-                                  _vm.homeInfor.tgtag_name,
+                                  _vm.homeInfor.notice_sticker,
                                   function (item, index) {
                                     return _c(
                                       "text",
                                       { key: index, staticClass: "tag_item" },
-                                      [_vm._v(_vm._s(item.name))]
+                                      [_vm._v(_vm._s(item))]
                                     )
                                   }
                                 ),
@@ -1458,19 +1484,19 @@ var render = function () {
                               2
                             )
                           : _vm._e(),
-                        _vm.homeInfor.xxtag_name.length
+                        _vm.homeInfor.style_sticker.length
                           ? _c(
                               "view",
                               { staticClass: "home_item_tag" },
                               [
                                 _c("text", [_vm._v("形象风格：")]),
                                 _vm._l(
-                                  _vm.homeInfor.xxtag_name,
+                                  _vm.homeInfor.style_sticker,
                                   function (item, index) {
                                     return _c(
                                       "text",
                                       { key: index, staticClass: "tag_item" },
-                                      [_vm._v(_vm._s(item.name))]
+                                      [_vm._v(_vm._s(item))]
                                     )
                                   }
                                 ),

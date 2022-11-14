@@ -273,35 +273,35 @@
           <view class="home_item">
             <view class="home_item_title ub">
               <view class="home_item_title_text ub-f1">标签信息</view>
-              <view catchtap="editzytag" class="home_item_title_edit">
-                {{ homeInfor.zytag_name.length ? "编辑" : "添加" }}</view
+              <view @tap="editzytag" class="home_item_title_edit">
+                {{ homeInfor.mode_sticker.length ? "编辑" : "添加" }}</view
               >
             </view>
-            <view class="home_item_tag" v-if="homeInfor.zytag_name.length">
+            <view class="home_item_tag" v-if="homeInfor.mode_sticker.length">
               <text>身份标签：</text>
               <text
                 class="tag_item"
-                v-for="(item, index) in homeInfor.zytag_name"
+                v-for="(item, index) in homeInfor.mode_sticker"
                 :key="index"
-                >{{ item.name }}</text
+                >{{ item }}</text
               >
             </view>
-            <view class="home_item_tag" v-if="homeInfor.tgtag_name.length">
+            <view class="home_item_tag" v-if="homeInfor.notice_sticker.length">
               <text>接单通告：</text>
               <text
                 class="tag_item"
-                v-for="(item, index) in homeInfor.tgtag_name"
+                v-for="(item, index) in homeInfor.notice_sticker"
                 :key="index"
-                >{{ item.name }}</text
+                >{{ item }}</text
               >
             </view>
-            <view class="home_item_tag" v-if="homeInfor.xxtag_name.length">
+            <view class="home_item_tag" v-if="homeInfor.style_sticker.length">
               <text>形象风格：</text>
               <text
                 class="tag_item"
-                v-for="(item, index) in homeInfor.xxtag_name"
+                v-for="(item, index) in homeInfor.style_sticker"
                 :key="index"
-                >{{ item.name }}</text
+                >{{ item }}</text
               >
             </view>
           </view>
@@ -578,6 +578,7 @@ import {
   userInfo,
   userShapeDetail,
   userAlbumDetail,
+  userSticker,
 } from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 import "./index.scss";
@@ -611,30 +612,9 @@ export default {
         // },
         video: [],
         personimg: [],
-        zytag_name: [
-          {
-            name: "平面模特",
-          },
-          {
-            name: "平面模特1",
-          },
-          {
-            name: "平面模特1",
-          },
-        ],
-        tgtag_name: [
-          {
-            name: "人像创造",
-          },
-          {
-            name: "人像创造",
-          },
-        ],
-        xxtag_name: [
-          {
-            name: "人像创造",
-          },
-        ],
+        mode_sticker: [],
+        notice_sticker: [],
+        style_sticker: [],
       },
       homeInfo_none: false,
       swiper_tab_fixed: false,
@@ -672,6 +652,9 @@ export default {
     editvideo() {
       openPage("/packageMoka/pages/moka/editvideo/index");
     },
+    editzytag() {
+      openPage("/packageAdd/pages/user/editlabel/index");
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
@@ -698,6 +681,17 @@ export default {
         this.homeInfor.video = res.data.data.video_album;
       } catch (error) {}
     },
+    async userSticker(params) {
+      try {
+        let res = await userSticker(params);
+        this.homeInfor.mode_sticker =
+          res.data.data.cur_sticker_list.mode_sticker;
+        this.homeInfor.notice_sticker =
+          res.data.data.cur_sticker_list.notice_sticker;
+        this.homeInfor.style_sticker =
+          res.data.data.cur_sticker_list.style_sticker;
+      } catch (error) {}
+    },
   },
   created() {
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
@@ -722,13 +716,13 @@ export default {
         console.log(err);
       },
     });
-    this.userInfo("");
-    this.userShapeDetail("");
   },
   onShow() {
     setTimeout(() => {
       this.userInfo("");
+      this.userShapeDetail("");
       this.userAlbumDetail("");
+      this.userSticker("");
     });
   },
 };

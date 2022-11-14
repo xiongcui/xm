@@ -192,7 +192,10 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 
       var arr = [];
       this.imgs.map(function (item, index) {
-        if (item.indexOf("http:") != -1) {
+        console.log(item.indexOf("https:") < 0);
+
+        if (item.indexOf("https:") < 0) {
+          // if (item.indexOf("http:") != -1 || item.indexOf("wxfile://" != -1)) {
           arr[index] = _this2.uploadImagePhoto(item, {
             scr_type: "album"
           }, index);

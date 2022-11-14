@@ -82,24 +82,88 @@ export default {
   },
   methods: {
     sub() {
-      //         {
-      //     'notice_sticker': [{'key': 14, 'value': '人像创作'}, {'key': 20, 'value': '网拍寄拍'}, {'key': 19, 'value': '社交活动'}],
-      //     'style_sticker': [{'key': 20, 'value': '呆萌'}, {'key': 26, 'value': '运动'}],
-      //     'mode_sticker': [{'key': 12, 'value': '兼职模特'}, {'key': 23, 'value': '淘宝模特'}]
-      // }
+      if (!this.identity.length) {
+        errortip("请选择身份标签!");
+        return;
+      }
+      if (!this.notice.length) {
+        errortip("请选择接单通告!");
+        return;
+      }
+      if (!this.style.length) {
+        errortip("请选择形象风格!");
+        return;
+      }
+      let mode_sticker = [];
+      let notice_sticker = [];
+      let style_sticker = [];
+      this.identity_data.map((item) => {
+        this.identity.map((identityItem) => {
+          if (item.value == identityItem) {
+            mode_sticker.push({
+              key: item.key,
+              value: item.value,
+            });
+          }
+        });
+      });
+      this.notice_data.map((item) => {
+        this.notice.map((identityItem) => {
+          if (item.value == identityItem) {
+            notice_sticker.push({
+              key: item.key,
+              value: item.value,
+            });
+          }
+        });
+      });
+      this.style_data.map((item) => {
+        this.style.map((identityItem) => {
+          if (item.value == identityItem) {
+            style_sticker.push({
+              key: item.key,
+              value: item.value,
+            });
+          }
+        });
+      });
+      let params = {
+        mode_sticker: mode_sticker,
+        notice_sticker: notice_sticker,
+        style_sticker: style_sticker,
+      };
+      this.subUserSticker(params);
     },
     select_tag(row) {
-      let result = this.identity.find((ele) => ele === row.role);
+      let result = this.identity.find((ele) => ele === row.value);
       if (!result) {
-        this.identity.push(row.role);
+        this.identity.push(row.value);
       } else {
-        const index = this.identity.findIndex((ele) => ele === row.role);
+        const index = this.identity.findIndex((ele) => ele === row.value);
         this.identity.splice(index, 1);
       }
       row.ispick = !row.ispick;
     },
-    select_notice_tag() {},
-    select_style_tag() {},
+    select_notice_tag(row) {
+      let result = this.notice.find((ele) => ele === row.value);
+      if (!result) {
+        this.notice.push(row.value);
+      } else {
+        const index = this.notice.findIndex((ele) => ele === row.value);
+        this.notice.splice(index, 1);
+      }
+      row.ispick = !row.ispick;
+    },
+    select_style_tag(row) {
+      let result = this.style.find((ele) => ele === row.value);
+      if (!result) {
+        this.style.push(row.value);
+      } else {
+        const index = this.style.findIndex((ele) => ele === row.value);
+        this.style.splice(index, 1);
+      }
+      row.ispick = !row.ispick;
+    },
     async userSticker(params) {
       try {
         let res = await userSticker(params);
@@ -108,15 +172,15 @@ export default {
         let arr2 = [];
         res.data.data.all_sticker_list.map((item) => {
           if (item.type == "mode_sticker") {
-            item.checked = false;
+            item.ispick = false;
             arr.push(item);
           }
           if (item.type == "notice_sticker") {
-            item.checked = false;
+            item.ispick = false;
             arr1.push(item);
           }
           if (item.type == "style_sticker") {
-            item.checked = false;
+            item.ispick = false;
             arr2.push(item);
           }
         });
@@ -126,54 +190,47 @@ export default {
         this.identity = res.data.data.cur_sticker_list.mode_sticker;
         this.notice = res.data.data.cur_sticker_list.notice_sticker;
         this.style = res.data.data.cur_sticker_list.style_sticker;
-        console.log(
-          res.data.data.cur_sticker_list.mode_sticker,
-          "res.data.data.cur_sticker_list"
-        );
         if (res.data.data.cur_sticker_list.mode_sticker.length) {
-          this.identity_data = res.data.data.cur_sticker_list.mode_sticker.map(
-            (item) => {
-              item.ispick = false;
-              this.identity.map((identityItem) => {
-                if (item.value == identityItem) {
-                  item.ispick = true;
-                }
-              });
-              return item;
-            }
-          );
+          this.identity_data = this.identity_data.map((item) => {
+            item.ispick = false;
+            this.identity.map((identityItem) => {
+              if (item.value == identityItem) {
+                item.ispick = true;
+              }
+            });
+            return item;
+          });
         }
         if (res.data.data.cur_sticker_list.notice_sticker.length) {
-          this.notice_data = res.data.data.cur_sticker_list.notice_sticker.map(
-            (item) => {
-              item.ispick = false;
-              this.notice.map((identityItem) => {
-                if (item.value == identityItem) {
-                  item.ispick = true;
-                }
-              });
-              return item;
-            }
-          );
+          this.notice_data = this.notice_data.map((item) => {
+            item.ispick = false;
+            this.notice.map((identityItem) => {
+              if (item.value == identityItem) {
+                item.ispick = true;
+              }
+            });
+            return item;
+          });
         }
         if (res.data.data.cur_sticker_list.style_sticker.length) {
-          this.style_data = res.data.data.cur_sticker_list.style_sticker.map(
-            (item) => {
-              item.ispick = false;
-              this.style.map((identityItem) => {
-                if (item.value == identityItem) {
-                  item.ispick = true;
-                }
-              });
-              return item;
-            }
-          );
+          this.style_data = this.style_data.map((item) => {
+            item.ispick = false;
+            this.style.map((identityItem) => {
+              if (item.value == identityItem) {
+                item.ispick = true;
+              }
+            });
+            return item;
+          });
         }
       } catch (error) {}
     },
     async subUserSticker(params) {
       try {
         let res = await subUserSticker(params);
+        wx.navigateBack({
+          delta: 1,
+        });
       } catch (error) {}
     },
   },

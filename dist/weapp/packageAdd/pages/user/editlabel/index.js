@@ -136,32 +136,114 @@ component.options.__file = "src/packageAdd/pages/user/editlabel/index.vue"
     };
   },
   methods: {
-    sub: function sub() {//         {
-      //     'notice_sticker': [{'key': 14, 'value': '人像创作'}, {'key': 20, 'value': '网拍寄拍'}, {'key': 19, 'value': '社交活动'}],
-      //     'style_sticker': [{'key': 20, 'value': '呆萌'}, {'key': 26, 'value': '运动'}],
-      //     'mode_sticker': [{'key': 12, 'value': '兼职模特'}, {'key': 23, 'value': '淘宝模特'}]
-      // }
+    sub: function sub() {
+      var _this = this;
+
+      if (!this.identity.length) {
+        errortip("请选择身份标签!");
+        return;
+      }
+
+      if (!this.notice.length) {
+        errortip("请选择接单通告!");
+        return;
+      }
+
+      if (!this.style.length) {
+        errortip("请选择形象风格!");
+        return;
+      }
+
+      var mode_sticker = [];
+      var notice_sticker = [];
+      var style_sticker = [];
+      this.identity_data.map(function (item) {
+        _this.identity.map(function (identityItem) {
+          if (item.value == identityItem) {
+            mode_sticker.push({
+              key: item.key,
+              value: item.value
+            });
+          }
+        });
+      });
+      this.notice_data.map(function (item) {
+        _this.notice.map(function (identityItem) {
+          if (item.value == identityItem) {
+            notice_sticker.push({
+              key: item.key,
+              value: item.value
+            });
+          }
+        });
+      });
+      this.style_data.map(function (item) {
+        _this.style.map(function (identityItem) {
+          if (item.value == identityItem) {
+            style_sticker.push({
+              key: item.key,
+              value: item.value
+            });
+          }
+        });
+      });
+      var params = {
+        mode_sticker: mode_sticker,
+        notice_sticker: notice_sticker,
+        style_sticker: style_sticker
+      };
+      this.subUserSticker(params);
     },
     select_tag: function select_tag(row) {
       var result = this.identity.find(function (ele) {
-        return ele === row.role;
+        return ele === row.value;
       });
 
       if (!result) {
-        this.identity.push(row.role);
+        this.identity.push(row.value);
       } else {
         var index = this.identity.findIndex(function (ele) {
-          return ele === row.role;
+          return ele === row.value;
         });
         this.identity.splice(index, 1);
       }
 
       row.ispick = !row.ispick;
     },
-    select_notice_tag: function select_notice_tag() {},
-    select_style_tag: function select_style_tag() {},
+    select_notice_tag: function select_notice_tag(row) {
+      var result = this.notice.find(function (ele) {
+        return ele === row.value;
+      });
+
+      if (!result) {
+        this.notice.push(row.value);
+      } else {
+        var index = this.notice.findIndex(function (ele) {
+          return ele === row.value;
+        });
+        this.notice.splice(index, 1);
+      }
+
+      row.ispick = !row.ispick;
+    },
+    select_style_tag: function select_style_tag(row) {
+      var result = this.style.find(function (ele) {
+        return ele === row.value;
+      });
+
+      if (!result) {
+        this.style.push(row.value);
+      } else {
+        var index = this.style.findIndex(function (ele) {
+          return ele === row.value;
+        });
+        this.style.splice(index, 1);
+      }
+
+      row.ispick = !row.ispick;
+    },
     userSticker: function userSticker(params) {
-      var _this = this;
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, arr, arr1, arr2;
@@ -180,33 +262,32 @@ component.options.__file = "src/packageAdd/pages/user/editlabel/index.vue"
                 arr2 = [];
                 res.data.data.all_sticker_list.map(function (item) {
                   if (item.type == "mode_sticker") {
-                    item.checked = false;
+                    item.ispick = false;
                     arr.push(item);
                   }
 
                   if (item.type == "notice_sticker") {
-                    item.checked = false;
+                    item.ispick = false;
                     arr1.push(item);
                   }
 
                   if (item.type == "style_sticker") {
-                    item.checked = false;
+                    item.ispick = false;
                     arr2.push(item);
                   }
                 });
-                _this.identity_data = arr;
-                _this.notice_data = arr1;
-                _this.style_data = arr2;
-                _this.identity = res.data.data.cur_sticker_list.mode_sticker;
-                _this.notice = res.data.data.cur_sticker_list.notice_sticker;
-                _this.style = res.data.data.cur_sticker_list.style_sticker;
-                console.log(res.data.data.cur_sticker_list.mode_sticker, "res.data.data.cur_sticker_list");
+                _this2.identity_data = arr;
+                _this2.notice_data = arr1;
+                _this2.style_data = arr2;
+                _this2.identity = res.data.data.cur_sticker_list.mode_sticker;
+                _this2.notice = res.data.data.cur_sticker_list.notice_sticker;
+                _this2.style = res.data.data.cur_sticker_list.style_sticker;
 
                 if (res.data.data.cur_sticker_list.mode_sticker.length) {
-                  _this.identity_data = res.data.data.cur_sticker_list.mode_sticker.map(function (item) {
+                  _this2.identity_data = _this2.identity_data.map(function (item) {
                     item.ispick = false;
 
-                    _this.identity.map(function (identityItem) {
+                    _this2.identity.map(function (identityItem) {
                       if (item.value == identityItem) {
                         item.ispick = true;
                       }
@@ -217,10 +298,10 @@ component.options.__file = "src/packageAdd/pages/user/editlabel/index.vue"
                 }
 
                 if (res.data.data.cur_sticker_list.notice_sticker.length) {
-                  _this.notice_data = res.data.data.cur_sticker_list.notice_sticker.map(function (item) {
+                  _this2.notice_data = _this2.notice_data.map(function (item) {
                     item.ispick = false;
 
-                    _this.notice.map(function (identityItem) {
+                    _this2.notice.map(function (identityItem) {
                       if (item.value == identityItem) {
                         item.ispick = true;
                       }
@@ -231,10 +312,10 @@ component.options.__file = "src/packageAdd/pages/user/editlabel/index.vue"
                 }
 
                 if (res.data.data.cur_sticker_list.style_sticker.length) {
-                  _this.style_data = res.data.data.cur_sticker_list.style_sticker.map(function (item) {
+                  _this2.style_data = _this2.style_data.map(function (item) {
                     item.ispick = false;
 
-                    _this.style.map(function (identityItem) {
+                    _this2.style.map(function (identityItem) {
                       if (item.value == identityItem) {
                         item.ispick = true;
                       }
@@ -244,19 +325,19 @@ component.options.__file = "src/packageAdd/pages/user/editlabel/index.vue"
                   });
                 }
 
-                _context.next = 22;
+                _context.next = 21;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 19:
+                _context.prev = 19;
                 _context.t0 = _context["catch"](0);
 
-              case 22:
+              case 21:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 20]]);
+        }, _callee, null, [[0, 19]]);
       }))();
     },
     subUserSticker: function subUserSticker(params) {
@@ -272,19 +353,22 @@ component.options.__file = "src/packageAdd/pages/user/editlabel/index.vue"
 
               case 3:
                 res = _context2.sent;
-                _context2.next = 8;
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context2.next = 9;
                 break;
 
-              case 6:
-                _context2.prev = 6;
+              case 7:
+                _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
 
-              case 8:
+              case 9:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 6]]);
+        }, _callee2, null, [[0, 7]]);
       }))();
     }
   },

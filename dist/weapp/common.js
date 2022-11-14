@@ -353,6 +353,30 @@ module.exports = __webpack_require__.p + "assets/images/nv.png";
 
 /***/ }),
 
+/***/ "./src/assets/images/upload-img.png":
+/*!******************************************!*\
+  !*** ./src/assets/images/upload-img.png ***!
+  \******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/upload-img.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/upload-video.png":
+/*!********************************************!*\
+  !*** ./src/assets/images/upload-video.png ***!
+  \********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/upload-video.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/user/index/invoice.png":
 /*!**************************************************!*\
   !*** ./src/assets/images/user/index/invoice.png ***!

@@ -1,0 +1,96 @@
+.zuopin {
+  padding: 0 20rpx 100rpx 20rpx;
+  background: #f7f7f7;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.zuopin .zuopin-item {
+  margin: 10rpx 0;
+  padding: 0 16rpx 16rpx 16rpx;
+  background: #ffffff;
+  border-radius: 4rpx;
+}
+.zuopin .zuopin-title,
+.zuopin .zuopin-info {
+  padding: 10rpx 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 66rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  color: #333333;
+}
+.zuopin .zuopin-info {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.zuopin .check-tips {
+  color: #fe3e3f;
+  margin-left: 10rpx;
+}
+.zuopin .zuopin-tips {
+  color: #999999;
+  margin-left: 10rpx;
+}
+.zuopin .zuopin-upload {
+  padding: 28rpx 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.zuopin .zuopin-upload-img,
+.zuopin .zuopin-upload-video {
+  width: 158rpx;
+  height: 158rpx;
+  margin-right: 10rpx;
+  background-color: #f7f7f7;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 16rpx;
+  position: relative;
+}
+.zuopin .upload-width {
+  width: 100%;
+  height: 100%;
+}
+.zuopin .upload-video-width {
+  width: 400rpx;
+}
+.zuopin .upload-img,
+.zuopin .upload-video {
+  width: 40rpx;
+  height: 36rpx;
+}
+.zuopin .upload-txt {
+  color: #c7c7c7;
+  font-size: 26rpx;
+}
+.zuopin .zuopin-upload-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}

@@ -412,7 +412,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
       var _this = this;
 
       wx.chooseMedia({
-        count: 9,
+        count: 9 - this.imgList.length,
         mediaType: ["image"],
         sourceType: ["album", "camera"],
         maxDuration: 30,
@@ -1430,30 +1430,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/upload-img.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/upload-img.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/upload-img.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/upload-video.png":
-/*!********************************************!*\
-  !*** ./src/assets/images/upload-video.png ***!
-  \********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/upload-video.png";
 
 /***/ }),
 

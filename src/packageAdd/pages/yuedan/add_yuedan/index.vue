@@ -351,7 +351,7 @@ export default {
       }
       let _this = this;
       wx.chooseMedia({
-        count: 9,
+        count: 9 - this.imgList.length,
         mediaType: ["image"],
         sourceType: ["album", "camera"],
         maxDuration: 30,
