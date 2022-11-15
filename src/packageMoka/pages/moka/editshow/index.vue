@@ -595,7 +595,13 @@ export default {
       infor: {
         avatar: "",
         homeimg: "",
-        statistic: {},
+        statistic: {
+          followed_cnt: 0,
+          follower_cnt: 0,
+          invite_cnt: 20,
+          read_cnt: 20,
+          track_cnt: 20,
+        },
       },
       currentTab: 0,
       select_tab: "home",
@@ -607,9 +613,6 @@ export default {
         bwh_w: "",
         bwh_h: "",
         shoe: "",
-        // video: {
-        //   video_url: "",
-        // },
         video: [],
         personimg: [],
         mode_sticker: [],
@@ -659,6 +662,13 @@ export default {
       try {
         let res = await userInfo(params);
         this.infor = res.data.data;
+        this.homeInfor.personimg = [];
+        this.homeInfor.video = [];
+        this.homeInfor.personimg = res.data.data.album.photo_album;
+        this.homeInfor.video = res.data.data.album.video_album;
+        this.homeInfor.mode_sticker = res.data.data.mode_sticker;
+        this.homeInfor.notice_sticker = res.data.data.notice_sticker;
+        this.homeInfor.style_sticker = res.data.data.style_sticker;
       } catch (error) {}
     },
     async userShapeDetail(params) {
@@ -675,10 +685,6 @@ export default {
     async userAlbumDetail(params) {
       try {
         let res = await userAlbumDetail(params);
-        this.homeInfor.personimg = [];
-        this.homeInfor.video = [];
-        this.homeInfor.personimg = res.data.data.photo_album;
-        this.homeInfor.video = res.data.data.video_album;
       } catch (error) {}
     },
     async userSticker(params) {
@@ -718,12 +724,13 @@ export default {
     });
   },
   onShow() {
-    setTimeout(() => {
-      this.userInfo("");
-      this.userShapeDetail("");
-      this.userAlbumDetail("");
-      this.userSticker("");
-    });
+    this.userInfo("");
+    this.userShapeDetail("");
+    // setTimeout(() => {
+
+    //   this.userAlbumDetail("");
+    //   this.userSticker("");
+    // });
   },
 };
 </script>

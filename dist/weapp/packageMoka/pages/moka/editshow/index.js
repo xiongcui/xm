@@ -646,7 +646,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       infor: {
         avatar: "",
         homeimg: "",
-        statistic: {}
+        statistic: {
+          followed_cnt: 0,
+          follower_cnt: 0,
+          invite_cnt: 20,
+          read_cnt: 20,
+          track_cnt: 20
+        }
       },
       currentTab: 0,
       select_tab: "home",
@@ -658,9 +664,6 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         bwh_w: "",
         bwh_h: "",
         shoe: "",
-        // video: {
-        //   video_url: "",
-        // },
         video: [],
         personimg: [],
         mode_sticker: [],
@@ -718,19 +721,26 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 3:
                 res = _context.sent;
                 _this.infor = res.data.data;
-                _context.next = 9;
+                _this.homeInfor.personimg = [];
+                _this.homeInfor.video = [];
+                _this.homeInfor.personimg = res.data.data.album.photo_album;
+                _this.homeInfor.video = res.data.data.album.video_album;
+                _this.homeInfor.mode_sticker = res.data.data.mode_sticker;
+                _this.homeInfor.notice_sticker = res.data.data.notice_sticker;
+                _this.homeInfor.style_sticker = res.data.data.style_sticker;
+                _context.next = 16;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](0);
 
-              case 9:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 14]]);
       }))();
     },
     userShapeDetail: function userShapeDetail(params) {
@@ -770,8 +780,6 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }))();
     },
     userAlbumDetail: function userAlbumDetail(params) {
-      var _this3 = this;
-
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
@@ -784,27 +792,23 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 
               case 3:
                 res = _context3.sent;
-                _this3.homeInfor.personimg = [];
-                _this3.homeInfor.video = [];
-                _this3.homeInfor.personimg = res.data.data.photo_album;
-                _this3.homeInfor.video = res.data.data.video_album;
-                _context3.next = 12;
+                _context3.next = 8;
                 break;
 
-              case 10:
-                _context3.prev = 10;
+              case 6:
+                _context3.prev = 6;
                 _context3.t0 = _context3["catch"](0);
 
-              case 12:
+              case 8:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 10]]);
+        }, _callee3, null, [[0, 6]]);
       }))();
     },
     userSticker: function userSticker(params) {
-      var _this4 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
@@ -818,9 +822,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 
               case 3:
                 res = _context4.sent;
-                _this4.homeInfor.mode_sticker = res.data.data.cur_sticker_list.mode_sticker;
-                _this4.homeInfor.notice_sticker = res.data.data.cur_sticker_list.notice_sticker;
-                _this4.homeInfor.style_sticker = res.data.data.cur_sticker_list.style_sticker;
+                _this3.homeInfor.mode_sticker = res.data.data.cur_sticker_list.mode_sticker;
+                _this3.homeInfor.notice_sticker = res.data.data.cur_sticker_list.notice_sticker;
+                _this3.homeInfor.style_sticker = res.data.data.cur_sticker_list.style_sticker;
                 _context4.next = 11;
                 break;
 
@@ -838,7 +842,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this4 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -849,13 +853,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this5.globalData.navHeight = navHeight; //导航栏总体高度
+        _this4.globalData.navHeight = navHeight; //导航栏总体高度
 
-        _this5.globalData.navTop = navTop; //胶囊距离顶部距离
+        _this4.globalData.navTop = navTop; //胶囊距离顶部距离
 
-        _this5.globalData.navObj = menuButtonObject.height; //胶囊高度
+        _this4.globalData.navObj = menuButtonObject.height; //胶囊高度
 
-        _this5.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this4.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail: function fail(err) {
@@ -864,17 +868,11 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     });
   },
   onShow: function onShow() {
-    var _this6 = this;
-
-    setTimeout(function () {
-      _this6.userInfo("");
-
-      _this6.userShapeDetail("");
-
-      _this6.userAlbumDetail("");
-
-      _this6.userSticker("");
-    });
+    this.userInfo("");
+    this.userShapeDetail(""); // setTimeout(() => {
+    //   this.userAlbumDetail("");
+    //   this.userSticker("");
+    // });
   }
 });
 
