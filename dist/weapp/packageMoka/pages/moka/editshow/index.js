@@ -728,19 +728,25 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
                 _this.homeInfor.mode_sticker = res.data.data.mode_sticker;
                 _this.homeInfor.notice_sticker = res.data.data.notice_sticker;
                 _this.homeInfor.style_sticker = res.data.data.style_sticker;
-                _context.next = 16;
+                _this.homeInfor.height = res.data.data.shape.height;
+                _this.homeInfor.weight = res.data.data.shape.weight;
+                _this.homeInfor.bwh_b = res.data.data.shape.bust;
+                _this.homeInfor.bwh_w = res.data.data.shape.waist;
+                _this.homeInfor.bwh_h = res.data.data.shape.hip;
+                _this.homeInfor.shoe = res.data.data.shape.size;
+                _context.next = 22;
                 break;
 
-              case 14:
-                _context.prev = 14;
+              case 20:
+                _context.prev = 20;
                 _context.t0 = _context["catch"](0);
 
-              case 16:
+              case 22:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 14]]);
+        }, _callee, null, [[0, 20]]);
       }))();
     },
     userShapeDetail: function userShapeDetail(params) {
@@ -868,11 +874,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     });
   },
   onShow: function onShow() {
-    this.userInfo("");
-    this.userShapeDetail(""); // setTimeout(() => {
-    //   this.userAlbumDetail("");
-    //   this.userSticker("");
-    // });
+    this.userInfo(""); // this.userShapeDetail("");
   }
 });
 

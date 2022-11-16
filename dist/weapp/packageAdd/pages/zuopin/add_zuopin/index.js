@@ -134,7 +134,6 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "addZuopin",
@@ -162,6 +161,17 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
         // 图片的地址url
         urls: urls // 预览的地址url
 
+      });
+    },
+    onChooseLocation: function onChooseLocation() {
+      wx.chooseLocation({
+        success: function success(res) {
+          console.log(res);
+          wx.openLocation({
+            latitude: res.latitude,
+            longitude: res.longitude
+          });
+        }
       });
     },
     chooseImage: function chooseImage() {
@@ -502,7 +512,7 @@ var render = function () {
             expression: "name",
           },
         ],
-        staticClass: "zuopin-name",
+        staticClass: "zuopin-input",
         attrs: { placeholder: "给作品起个名字有更多邀约哦～" },
         domProps: { value: _vm.name },
         on: {
@@ -514,8 +524,6 @@ var render = function () {
           },
         },
       }),
-    ]),
-    _c("view", { staticClass: "zuopin-item" }, [
       _c("textarea", {
         directives: [
           {
@@ -542,6 +550,7 @@ var render = function () {
         },
       }),
     ]),
+    _c("button", { on: { tap: _vm.onChooseLocation } }, [_vm._v("打开地图")]),
   ])
 }
 var staticRenderFns = []

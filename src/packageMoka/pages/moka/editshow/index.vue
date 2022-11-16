@@ -669,6 +669,12 @@ export default {
         this.homeInfor.mode_sticker = res.data.data.mode_sticker;
         this.homeInfor.notice_sticker = res.data.data.notice_sticker;
         this.homeInfor.style_sticker = res.data.data.style_sticker;
+        this.homeInfor.height = res.data.data.shape.height;
+        this.homeInfor.weight = res.data.data.shape.weight;
+        this.homeInfor.bwh_b = res.data.data.shape.bust;
+        this.homeInfor.bwh_w = res.data.data.shape.waist;
+        this.homeInfor.bwh_h = res.data.data.shape.hip;
+        this.homeInfor.shoe = res.data.data.shape.size;
       } catch (error) {}
     },
     async userShapeDetail(params) {
@@ -725,12 +731,7 @@ export default {
   },
   onShow() {
     this.userInfo("");
-    this.userShapeDetail("");
-    // setTimeout(() => {
-
-    //   this.userAlbumDetail("");
-    //   this.userSticker("");
-    // });
+    // this.userShapeDetail("");
   },
 };
 </script>

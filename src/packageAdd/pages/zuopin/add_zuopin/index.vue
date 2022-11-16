@@ -68,12 +68,10 @@
     </view>
     <view class="zuopin-item">
       <input
-        class="zuopin-name"
+        class="zuopin-input"
         placeholder="给作品起个名字有更多邀约哦～"
         v-model="name"
       />
-    </view>
-    <view class="zuopin-item">
       <textarea
         class="zuopin-name"
         auto-height
@@ -81,6 +79,7 @@
         v-model="desc"
       />
     </view>
+    <button @tap="onChooseLocation">打开地图</button>
   </view>
 </template>
 
@@ -109,6 +108,17 @@ export default {
       wx.previewImage({
         current: src, // 图片的地址url
         urls: urls, // 预览的地址url
+      });
+    },
+    onChooseLocation() {
+      wx.chooseLocation({
+        success: (res) => {
+          console.log(res);
+          wx.openLocation({
+            latitude: res.latitude,
+            longitude: res.longitude,
+          });
+        },
       });
     },
     chooseImage() {
