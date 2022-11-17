@@ -87,5 +87,13 @@ export default defineAppConfig({
       desc: "你的位置信息将用于小程序位置接口的效果展示", // 高速公路行驶持续后台定位
     },
   },
-  requiredPrivateInfos: ["getLocation", "openLocation", "chooseLocation"],
+  requiredPrivateInfos: [
+    "chooseAddress",
+    "chooseLocation",
+    "choosePoi",
+    "getLocation",
+    "onLocationChange",
+    "startLocationUpdateBackground",
+    "startLocationUpdate",
+  ],
 });

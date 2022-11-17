@@ -79,7 +79,101 @@
         v-model="desc"
       />
     </view>
-    <button @tap="onChooseLocation">打开地图</button>
+    <view class="zuopin-item">
+      <view class="zuopin-localtion" @tap="onChooseLocation">
+        <view class="zuopin-item-left">
+          <image
+            class="zuopin-icon"
+            src="../../../../assets/images/position.png"
+          >
+          </image>
+          <text>添加位置</text>
+        </view>
+        <view class="zuopin-item-right">
+          <image
+            mode="aspectFit"
+            src="../../../../assets/images/common/icon_right.png"
+          ></image>
+        </view>
+      </view>
+      <view class="zuopin-localtion">
+        <view class="zuopin-item-left">
+          <image class="zuopin-icon" src="../../../../assets/images/time.png">
+          </image>
+          <text>约拍返片</text>
+        </view>
+        <view class="zuopin-item-right">
+          <switch :checked="checked" @change="switchChange" color="#fe5457" />
+        </view>
+      </view>
+      <view class="zuopin-localtion">
+        <view class="zuopin-item-left">
+          <image
+            class="zuopin-icon"
+            src="../../../../assets/images/user/index/yuepai.png"
+          >
+          </image>
+          <text>拍摄设备</text>
+        </view>
+        <view class="zuopin-item-right">
+          <input
+            placeholder="请填写拍摄设备"
+            class="works-input"
+            v-model="place"
+          />
+        </view>
+      </view>
+    </view>
+    <view class="zuopin-item">
+      <view class="zuopin-localtion">
+        <view>
+          <text>主题标签</text>
+        </view>
+        <picker
+          @change="bindPickerChange"
+          :value="themeIndex"
+          :range="themeList"
+          :range-key="'value'"
+        >
+          <view class="zuopin-item-right">
+            <view class="zuopin-select-item" v-if="theme">{{ theme }}</view>
+            <view class="zuopin-select-item" v-else>请选择</view>
+            <image
+              mode="aspectFit"
+              src="../../../../assets/images/common/icon_right.png"
+            ></image>
+          </view>
+        </picker>
+      </view>
+      <view class="zuopin-localtion">
+        <view>
+          <text>作品标签</text>
+        </view>
+        <picker
+          @change="bindPickerChange"
+          :value="worksIndex"
+          :range="worksList"
+          :range-key="'value'"
+        >
+          <view class="zuopin-item-right">
+            <view class="zuopin-select-item" v-if="works">{{ theme }}</view>
+            <view class="zuopin-select-item" v-else>请选择</view>
+            <image
+              mode="aspectFit"
+              src="../../../../assets/images/common/icon_right.png"
+            ></image>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <cover-view
+      class="subbtn_bottom_block"
+      :class="isIphoneX ? 'fix-iphonex-button' : ''"
+    >
+      <cover-view class="subbtn_bottom">
+        <button @tap="submit">保存</button>
+      </cover-view>
+    </cover-view>
   </view>
 </template>
 
@@ -89,14 +183,25 @@ export default {
   name: "addZuopin",
   data() {
     return {
+      isIphoneX: false,
       name: "",
       desc: "",
       imgList: [], // 图片集合
       videolist: [],
       videoCoverList: [],
+      checked: true,
+      place: "",
+      theme: "",
+      themeIndex: "",
+      themeList: [],
+      worksIndex: "",
+      worksList: [],
+      works: "",
     };
   },
   methods: {
+    bindPickerChange() {},
+    switchChange() {},
     uploadImgClose(index) {
       this.imgList.splice(index, 1);
     },
@@ -113,11 +218,7 @@ export default {
     onChooseLocation() {
       wx.chooseLocation({
         success: (res) => {
-          console.log(res);
-          wx.openLocation({
-            latitude: res.latitude,
-            longitude: res.longitude,
-          });
+          console.log(res, "--------------");
         },
       });
     },
@@ -296,8 +397,25 @@ export default {
         },
       });
     },
+    submit() {},
+  },
+  created() {
+    this.isIphoneX = this.globalData.isIphoneX;
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.wx-switch-input {
+  width: 80rpx !important;
+  height: 48rpx !important;
+}
+.wx-switch-input::before {
+  width: 75rpx !important;
+  height: 44rpx !important;
+}
+.wx-switch-input::after {
+  width: 40rpx !important;
+  height: 40rpx !important;
+}
+</style>

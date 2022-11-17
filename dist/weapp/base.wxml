@@ -97,6 +97,10 @@
   </picker>
 </template>
 
+<template name="tmpl_0_switch">
+  <switch checked="{{xs.b(i.checked,false)}}" disabled="{{i.disabled}}" type="{{xs.b(i.type,'switch')}}" color="{{xs.b(i.color,'#04BE02')}}" bindchange="eh" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></switch>
+</template>
+
 <template name="tmpl_0_textarea">
   <template is="{{xs.c(i, 'tmpl_0_')}}" data="{{i:i}}" />
 </template>

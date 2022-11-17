@@ -3,6 +3,10 @@
   background: #f7f7f7;
   display: flex;
   flex-direction: column;
+  color: #333333;
+  .zuopin-name {
+    width: 100%;
+  }
   .zuopin-item {
     margin: 10px 0px;
     padding: 0px 16px 16px 16px;
@@ -71,5 +75,34 @@
     height: 88px;
     border-bottom: 1px solid #f5f5f5;
     margin-bottom: 16px;
+  }
+  .zuopin-item-right {
+    display: flex;
+    align-items: center;
+    text-align: right;
+  }
+  .zuopin-item-left {
+    display: flex;
+    align-items: center;
+  }
+  .zuopin-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .zuopin-item-right image {
+    height: 22rpx;
+    width: 12rpx;
+  }
+  .zuopin-localtion {
+    height: 88px;
+    padding-bottom: 0px;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .zuopin-select-item {
+    margin-right: 16px;
   }
 }
