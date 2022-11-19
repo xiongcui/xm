@@ -87,7 +87,7 @@
             src="../../../../assets/images/position.png"
           >
           </image>
-          <text>添加位置</text>
+          <text> {{ localtion ? localtion : "添加位置" }}</text>
         </view>
         <view class="zuopin-item-right">
           <image
@@ -129,41 +129,31 @@
         <view>
           <text>主题标签</text>
         </view>
-        <picker
-          @change="bindPickerChange"
-          :value="themeIndex"
-          :range="themeList"
-          :range-key="'value'"
+      </view>
+      <view class="tag-list">
+        <text
+          class="tag-txt"
+          :class="item.checked ? 'active' : ''"
+          v-for="(item, index) in styleTaglist"
+          :key="index"
+          @tap="chooseStyleTag(index)"
+          >{{ item.value }}</text
         >
-          <view class="zuopin-item-right">
-            <view class="zuopin-select-item" v-if="theme">{{ theme }}</view>
-            <view class="zuopin-select-item" v-else>请选择</view>
-            <image
-              mode="aspectFit"
-              src="../../../../assets/images/common/icon_right.png"
-            ></image>
-          </view>
-        </picker>
       </view>
       <view class="zuopin-localtion">
         <view>
           <text>作品标签</text>
         </view>
-        <picker
-          @change="bindPickerChange"
-          :value="worksIndex"
-          :range="worksList"
-          :range-key="'value'"
+      </view>
+      <view class="tag-list">
+        <text
+          class="tag-txt"
+          :class="item.checked ? 'active' : ''"
+          v-for="(item, index) in photoTaglist"
+          :key="index"
+          @tap="choosePhotoTag(index)"
+          >{{ item.value }}</text
         >
-          <view class="zuopin-item-right">
-            <view class="zuopin-select-item" v-if="works">{{ theme }}</view>
-            <view class="zuopin-select-item" v-else>请选择</view>
-            <image
-              mode="aspectFit"
-              src="../../../../assets/images/common/icon_right.png"
-            ></image>
-          </view>
-        </picker>
       </view>
     </view>
     <cover-view
@@ -179,6 +169,9 @@
 
 <script>
 import "./index.scss";
+import { errortip } from "../../../../utils/util";
+import { publicConfig, subNotePhoto } from "../../../../api/index";
+import { Base64 } from "js-Base64";
 export default {
   name: "addZuopin",
   data() {
@@ -186,22 +179,26 @@ export default {
       isIphoneX: false,
       name: "",
       desc: "",
+      localtion: "",
       imgList: [], // 图片集合
       videolist: [],
       videoCoverList: [],
       checked: true,
       place: "",
-      theme: "",
-      themeIndex: "",
-      themeList: [],
-      worksIndex: "",
-      worksList: [],
-      works: "",
+      styleTaglist: [],
+      photoTaglist: [],
     };
   },
   methods: {
-    bindPickerChange() {},
-    switchChange() {},
+    chooseStyleTag(index) {
+      this.styleTaglist[index].checked = !this.styleTaglist[index].checked;
+    },
+    choosePhotoTag(index) {
+      this.photoTaglist[index].checked = !this.photoTaglist[index].checked;
+    },
+    switchChange(e) {
+      this.checked = e.detail.value;
+    },
     uploadImgClose(index) {
       this.imgList.splice(index, 1);
     },
@@ -218,7 +215,8 @@ export default {
     onChooseLocation() {
       wx.chooseLocation({
         success: (res) => {
-          console.log(res, "--------------");
+          this.localtion = res.address;
+          console.log(res, "--------------", this.localtion);
         },
       });
     },
@@ -308,7 +306,7 @@ export default {
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.thumbTempFilePath,
         formData: {
-          scr_type: "invite",
+          scr_type: "photo",
         },
         name: "file",
         header,
@@ -339,7 +337,7 @@ export default {
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "invite",
+          scr_type: "photo",
         },
         name: "file",
         header,
@@ -370,7 +368,7 @@ export default {
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "invite",
+          scr_type: "photo",
         },
         name: "file",
         header,
@@ -379,13 +377,6 @@ export default {
           //判断上传的是图片还是视频
           let data = JSON.parse(res.data);
           if (data.code == 200) {
-            // let videoData = res;
-            // console.log("视频地址：", videoData);
-            // console.log(
-            //   "视频封面：",
-            //   res,
-            //   "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
-            // );
             this.upCover(dataInfo);
             this.videolist.push(data.data.file1);
           } else {
@@ -397,10 +388,103 @@ export default {
         },
       });
     },
-    submit() {},
+    submit() {
+      if (!this.imgList.length && !this.videolist.length) {
+        errortip("请上传照片/视频！");
+        return false;
+      }
+      if (!this.name) {
+        errortip("请填写作品名称！");
+        return false;
+      }
+      if (!this.desc) {
+        errortip("请填写作品背后的故事！");
+        return false;
+      }
+      let checkTag = this.styleTaglist.some((item) => item.checked);
+      if (!checkTag) {
+        errortip("请选择主题标签！");
+        return false;
+      }
+      let checkTag2 = this.photoTaglist.some((item) => item.checked);
+      if (!checkTag2) {
+        errortip("请选择作品标签！");
+        return false;
+      }
+      let params = {
+        type: 30,
+        title: this.name,
+        content: this.desc,
+        style_label: [],
+        photo_label: [],
+        capture_locale: this.localtion,
+        return_photo: this.checked ? 1 : 0,
+        capture_tools: this.place,
+        scr_type: "photo",
+        file_type: this.imgList.length ? "picture" : "video",
+        cover: this.imgList.length ? this.imgList : this.videoCoverList,
+        video_cover: this.videolist,
+      };
+      let style_label = [];
+      let photo_label = [];
+      this.styleTaglist.map((item) => {
+        if (item.checked) {
+          style_label.push({
+            [item.key]: item.value,
+          });
+        }
+      });
+      this.photoTaglist.map((item) => {
+        if (item.checked) {
+          photo_label.push({
+            [item.key]: item.value,
+          });
+        }
+      });
+      params.style_label = style_label;
+      params.photo_label = photo_label;
+      console.log(params);
+      this.subNotePhoto(params);
+    },
+    async publicConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        let arr = [];
+        let arr1 = [];
+        res.data.data.map((item) => {
+          if (item.type == "style_label") {
+            item.checked = false;
+            arr.push(item);
+          }
+          if (item.type == "photo_label") {
+            item.checked = false;
+            arr1.push(item);
+          }
+        });
+        this.styleTaglist = arr;
+        this.photoTaglist = arr1;
+      } catch (error) {}
+    },
+    async subNotePhoto(params) {
+      try {
+        let res = await subNotePhoto(params);
+        // 跳转首页
+        wx.switchTab({
+          url: "/pages/home/index",
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            page.onLoad();
+          },
+        });
+      } catch (error) {}
+    },
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.publicConfig({
+      type: ["style_label", "photo_label"],
+    });
   },
 };
 </script>

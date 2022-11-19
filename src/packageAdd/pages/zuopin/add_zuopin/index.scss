@@ -105,4 +105,33 @@
   .zuopin-select-item {
     margin-right: 16px;
   }
+  .upload-close {
+    width: 38px;
+    height: 38px;
+    background: url("../../../../assets/images/common/x_icon.png") no-repeat
+      rgba(0, 0, 0, 0.55);
+    background-size: 38px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .tag-list {
+    padding: 16px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    .tag-txt {
+      padding: 8px 24px;
+      border: 1px solid #a9a9a9;
+      border-radius: 25px;
+      font-size: 22px;
+      color: #a9a9a9;
+      margin-right: 20px;
+      margin-bottom: 16px;
+    }
+    .active {
+      background-color: #fe3e3f;
+      color: #ffffff;
+      border: 1px solid #fe3e3f;
+    }
+  }
 }

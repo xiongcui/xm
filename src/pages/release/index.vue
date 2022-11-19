@@ -87,11 +87,10 @@ export default {
           url = "appointment/index?id=1";
           break;
         case 2:
-          // url = "/packageAdd/pages/yuedan/add_yuedan/index?id=1";
           url = "appointment/index";
           break;
         case 3:
-          url = "field/index?id=1";
+          url = "/packageAdd/pages/zuopin/add_zuopin/index";
           break;
       }
       wx.navigateTo({

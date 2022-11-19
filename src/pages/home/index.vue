@@ -4,6 +4,7 @@
       <view
         class="flex-row"
         :style="{
+          width: '100%',
           height: globalData.navObj + 'px',
           'padding-top': globalData.navTop + 'px',
           'padding-right': globalData.navObjWid + 5 + 'px',
@@ -13,338 +14,357 @@
           <image src="../../assets/images/common/icon_sign.png"></image>
           <text>签到</text>
         </view>
-        <view class="search">
-          <input
-            :value="search"
-            class="search-input"
-            placeholder="搜索约拍"
-            placeholder-class="placeholder-style"
-          />
+        <view class="head_nav">
+          <text
+            class="head_nav_item"
+            v-for="(item, index) in headNavList"
+            :key="index"
+            :class="index == headCurrent ? 'acitve' : ''"
+            @tap="headNavClick(index)"
+          >
+            {{ item.name }}
+          </text>
         </view>
       </view>
     </view>
     <view :style="{ height: globalData.navHeight + 'px' }"></view>
-    <view class="page-bg"></view>
-    <view class="page-section page-section-spacing swiper">
-      <swiper
-        :indicator-dots="indicatorDots"
-        :autoplay="autoplay"
-        :interval="interval"
-        :duration="duration"
-      >
-        <block v-for="(item, index) in background" :key="index">
-          <swiper-item>
-            <view class="swiper-item">
-              <image
-                mode="aspectFill"
-                :src="
-                  require('../../assets/images/lanmao' + (index + 1) + '.jpg')
-                "
-                class="swiper-item-img"
-              ></image>
-            </view>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-    <view class="page_nav">
-      <view class="page_nav_item">
-        <view class="page_nav_icon">
-          <image
-            src="../../assets/images/tonggao.png"
-            class="page_nav_img"
-          ></image>
-        </view>
-        <text class="page_nav_text">通告</text>
-      </view>
-      <view class="page_nav_item">
-        <view class="page_nav_icon">
-          <image
-            src="../../assets/images/yuedan.png"
-            class="page_nav_img"
-          ></image>
-        </view>
-        <text class="page_nav_text">约单</text>
-      </view>
-      <view class="page_nav_item">
-        <view class="page_nav_icon">
-          <image
-            src="../../assets/images/activity.png"
-            class="page_nav_img"
-          ></image>
-        </view>
-        <text class="page_nav_text">活动</text>
-      </view>
-      <view class="page_nav_item">
-        <view class="page_nav_icon">
-          <image
-            src="../../assets/images/more.png"
-            class="page_nav_img"
-          ></image>
-        </view>
-        <text class="page_nav_text">待定</text>
-      </view>
-    </view>
-    <view class="nav_list">
-      <scroll-view class="swiper_tab" :enhanced="true" :scrollX="true">
-        <view class="nav_list_ct">
-          <text
-            class="nav_item"
-            v-for="(item, index) in navList"
-            :key="index"
-            :class="navActive == index ? 'nav_active' : ''"
-            @tap="navClick(index)"
-            >{{ item.value }}</text
-          >
-        </view>
-      </scroll-view>
-      <view class="sizer_block ub" @tap="screen">
-        <view class="gradient"></view>
-        <view class="sizer ub" :class="sizer_num.length ? 'is_sizer' : ''">
-          <view class="ub">
-            <view>筛选</view>
-            <block v-if="sizer_num.length">
-              <view class="sizer_dian">·</view>
-              <view>{{ sizer_num.length }}</view>
-            </block>
-          </view>
-          <view class="sizer_img">
-            <image
-              src="../../assets/images/common/sizered.png"
-              v-if="sizer_num.length"
-            ></image>
-            <image src="../../assets/images/common/sizer.png" v-else></image>
-          </view>
-        </view>
-      </view>
-    </view>
-    <view class="list_main">
-      <block v-if="list.length">
-        <view
-          class="list_box"
-          v-for="(item, index) in list"
-          :key="index"
-          @tap="godetail(item.oid, item.author_id)"
+    <block v-if="headCurrent == 0">
+      <view class="page-bg"></view>
+      <view class="page-section page-section-spacing swiper">
+        <swiper
+          :indicator-dots="indicatorDots"
+          :autoplay="autoplay"
+          :interval="interval"
+          :duration="duration"
         >
-          <view class="list_top">
-            <view class="list_top_left">
+          <block v-for="(item, index) in background" :key="index">
+            <swiper-item>
+              <view class="swiper-item">
+                <image
+                  mode="aspectFill"
+                  :src="
+                    require('../../assets/images/lanmao' + (index + 1) + '.jpg')
+                  "
+                  class="swiper-item-img"
+                ></image>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view class="page_nav">
+        <view class="page_nav_item">
+          <view class="page_nav_icon">
+            <image
+              src="../../assets/images/tonggao.png"
+              class="page_nav_img"
+            ></image>
+          </view>
+          <text class="page_nav_text">通告</text>
+        </view>
+        <view class="page_nav_item">
+          <view class="page_nav_icon">
+            <image
+              src="../../assets/images/yuedan.png"
+              class="page_nav_img"
+            ></image>
+          </view>
+          <text class="page_nav_text">约单</text>
+        </view>
+        <view class="page_nav_item">
+          <view class="page_nav_icon">
+            <image
+              src="../../assets/images/activity.png"
+              class="page_nav_img"
+            ></image>
+          </view>
+          <text class="page_nav_text">活动</text>
+        </view>
+        <view class="page_nav_item">
+          <view class="page_nav_icon">
+            <image
+              src="../../assets/images/more.png"
+              class="page_nav_img"
+            ></image>
+          </view>
+          <text class="page_nav_text">待定</text>
+        </view>
+      </view>
+      <view class="nav_list">
+        <scroll-view class="swiper_tab" :enhanced="true" :scrollX="true">
+          <view class="nav_list_ct">
+            <text
+              class="nav_item"
+              v-for="(item, index) in navList"
+              :key="index"
+              :class="navActive == index ? 'nav_active' : ''"
+              @tap="navClick(index)"
+              >{{ item.value }}</text
+            >
+          </view>
+        </scroll-view>
+        <view class="sizer_block ub" @tap="screen">
+          <view class="gradient"></view>
+          <view class="sizer ub" :class="sizer_num.length ? 'is_sizer' : ''">
+            <view class="ub">
+              <view>筛选</view>
+              <block v-if="sizer_num.length">
+                <view class="sizer_dian">·</view>
+                <view>{{ sizer_num.length }}</view>
+              </block>
+            </view>
+            <view class="sizer_img">
               <image
-                :src="
-                  item.author.avatar
-                    ? item.author.avatar
-                    : '../../assets/images/avatar_default.png'
-                "
-                class="avatar"
+                src="../../assets/images/common/sizered.png"
+                v-if="sizer_num.length"
               ></image>
-              <view class="list_info">
-                <view class="list_name">
-                  {{ item.author.nickname }}
-                  <block v-if="item.author.sex !== null">
+              <image src="../../assets/images/common/sizer.png" v-else></image>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="list_main">
+        <block v-if="list.length">
+          <view
+            class="list_box"
+            v-for="(item, index) in list"
+            :key="index"
+            @tap="godetail(item.oid, item.author_id)"
+          >
+            <view class="list_top">
+              <view class="list_top_left">
+                <image
+                  :src="
+                    item.author.avatar
+                      ? item.author.avatar
+                      : '../../assets/images/avatar_default.png'
+                  "
+                  class="avatar"
+                ></image>
+                <view class="list_info">
+                  <view class="list_name">
+                    {{ item.author.nickname }}
+                    <block v-if="item.author.sex !== null">
+                      <image
+                        src="../../assets/images/nan.png"
+                        class="list_sex"
+                        v-if="item.author.sex == 1"
+                      ></image>
+                      <image
+                        src="../../assets/images/nv.png"
+                        class="list_sex"
+                        v-if="item.author.sex == 0"
+                      ></image>
+                    </block>
+                  </view>
+                  <view class="list_p">
+                    <text>
+                      {{ item.author.career_list[0] }} |
+                      {{ item.author.province_name }}</text
+                    >
                     <image
-                      src="../../assets/images/nan.png"
-                      class="list_sex"
-                      v-if="item.author.sex == 1"
+                      src="../../assets/images/common/icon_real.png"
+                      class="list_p_img"
+                      v-if="item.author.is_certify"
                     ></image>
                     <image
-                      src="../../assets/images/nv.png"
-                      class="list_sex"
-                      v-if="item.author.sex == 0"
+                      src="../../assets/images/common/icon_pledge_none.png"
+                      class="list_p_img"
+                      v-else
                     ></image>
-                  </block>
+                    <image
+                      src="../../assets/images/common/icon_pledge.png"
+                      class="list_p_img"
+                      v-if="item.author.is_security"
+                    ></image>
+                    <image
+                      src="../../assets/images/common/icon_real_none.png"
+                      class="list_p_img"
+                      v-else
+                    ></image>
+                  </view>
                 </view>
-                <view class="list_p">
-                  <text>
-                    {{ item.author.career_list[0] }} |
-                    {{ item.author.province_name }}</text
+              </view>
+              <view class="list_collection">
+                <image
+                  src="../../assets/images/common/icon_favorite.png"
+                ></image>
+              </view>
+            </view>
+            <view class="list_content">
+              <view class="list_title">
+                {{ item.major_subject }}
+                <text
+                  v-if="
+                    (item.payment_type == 300 && item.payment_range == 1) ||
+                    (item.payment_type == 400 && item.payment_range == 1)
+                  "
+                  >{{ item.payment_name }}{{ item.payment_min_amount }}-{{
+                    item.payment_max_amount
+                  }}{{ item.payment_unit }}</text
+                >
+                <text
+                  v-if="
+                    (item.payment_type == 300 && item.payment_range == 0) ||
+                    (item.payment_type == 400 && item.payment_range == 0)
+                  "
+                  >{{ item.payment_name }}{{ item.payment_amount
+                  }}{{ item.payment_unit }}
+                </text>
+              </view>
+              <view class="list_loction"> {{ item.face_province_name }} </view>
+            </view>
+            <view class="list_desc">
+              {{ item.summary }}
+            </view>
+            <view class="list_img" v-if="item.file_type == 'picture'">
+              <scroll-view :enhanced="true" :scrollX="true">
+                <image
+                  :src="url"
+                  mode="aspectFill"
+                  class="list_img_item"
+                  v-for="(url, coverIndex) in item.cover"
+                  :key="coverIndex"
+                  @tap.stop="previewImage(url, item.cover)"
+                ></image>
+              </scroll-view>
+            </view>
+            <view class="list_video" v-if="item.file_type == 'video'">
+              <video
+                objectFit="cover"
+                :poster="item.cover[0]"
+                :src="item.video_cover && item.video_cover[0]"
+                class="list_video-width"
+              ></video>
+            </view>
+            <view class="list_tags">
+              <view
+                class="tag"
+                v-for="(styleItem, styleIndex) in item.style_label"
+                :key="styleIndex"
+                >{{ styleItem }}</view
+              >
+            </view>
+            <view class="list_bottom">
+              <view class="list_time">
+                <image src="../../assets/images/common/time.png"></image>
+                {{ item.date_humanize }}
+              </view>
+              <view class="list_yuepai">
+                <image src="../../assets/images/user/index/yuepai.png"></image>
+                收到约拍 {{ item.statistic.invite_cnt }}
+              </view>
+              <view class="list_read">
+                <image src="../../assets/images/eyes.png"></image>
+                阅读 {{ item.statistic.read_cnt }}
+              </view>
+            </view>
+          </view>
+        </block>
+        <view v-else class="none-data">
+          <image
+            src="../../assets/images/common/none.png"
+            mode="aspectFill"
+            class="none-img"
+          ></image>
+          <view>当前暂无信息哦～</view>
+        </view>
+      </view>
+      <view class="select_block" v-show="showModal" @tap="close">
+        <view class="select_bg" @tap.stop="">
+          <view
+            class="statusbar"
+            :style="{ height: globalData.navHeight + 'px' }"
+          ></view>
+          <view class="location">
+            <view class="location_address">当前定位：北京</view>
+            <text class="reposition">重新定位</text>
+          </view>
+          <view class="address_box">
+            <view class="address_label">选择地区</view>
+            <view class="address_input">
+              <view class="pickers">
+                <view class="ub-f1">
+                  <picker
+                    :mode="'multiSelector'"
+                    :value="multiIndex"
+                    :range="multiArray"
+                    :range-key="'name'"
+                    @change="sizerBindRegionChange"
+                    @columnchange="onBindcolumnchange"
                   >
-                  <image
-                    src="../../assets/images/common/icon_real.png"
-                    class="list_p_img"
-                    v-if="item.author.is_certify"
-                  ></image>
-                  <image
-                    src="../../assets/images/common/icon_pledge_none.png"
-                    class="list_p_img"
-                    v-else
-                  ></image>
-                  <image
-                    src="../../assets/images/common/icon_pledge.png"
-                    class="list_p_img"
-                    v-if="item.author.is_security"
-                  ></image>
-                  <image
-                    src="../../assets/images/common/icon_real_none.png"
-                    class="list_p_img"
-                    v-else
-                  ></image>
+                    <view class="sizer_select_local bd_b fl">
+                      <view
+                        class="pickers pick-city picked"
+                        v-if="sizer_city"
+                        >{{ sizer_city }}</view
+                      >
+                      <view class="pickers pick-city" v-else>全部</view>
+                    </view>
+                  </picker>
                 </view>
               </view>
             </view>
-            <view class="list_collection">
-              <image src="../../assets/images/common/icon_favorite.png"></image>
-            </view>
           </view>
-          <view class="list_content">
-            <view class="list_title">
-              {{ item.major_subject }}
+          <view class="select_item">
+            <view class="select_item_title">约单对象</view>
+            <view>
               <text
-                v-if="
-                  (item.payment_type == 300 && item.payment_range == 1) ||
-                  (item.payment_type == 400 && item.payment_range == 1)
-                "
-                >{{ item.payment_name }}{{ item.payment_min_amount }}-{{
-                  item.payment_max_amount
-                }}{{ item.payment_unit }}</text
+                @tap="select_tag(item)"
+                class="tag_item"
+                :class="item.ispick ? 'tag_itemed' : ''"
+                v-for="(item, index) in appointmentData"
+                :key="index"
               >
-              <text
-                v-if="
-                  (item.payment_type == 300 && item.payment_range == 0) ||
-                  (item.payment_type == 400 && item.payment_range == 0)
-                "
-                >{{ item.payment_name }}{{ item.payment_amount
-                }}{{ item.payment_unit }}
+                {{ item.name }}
               </text>
             </view>
-            <view class="list_loction"> {{ item.face_province_name }} </view>
           </view>
-          <view class="list_desc">
-            {{ item.summary }}
-          </view>
-          <view class="list_img" v-if="item.file_type == 'picture'">
-            <scroll-view :enhanced="true" :scrollX="true">
-              <image
-                :src="url"
-                mode="aspectFill"
-                class="list_img_item"
-                v-for="(url, coverIndex) in item.cover"
-                :key="coverIndex"
-                @tap.stop="previewImage(url, item.cover)"
-              ></image>
-            </scroll-view>
-          </view>
-          <view class="list_video" v-if="item.file_type == 'video'">
-            <video
-              objectFit="cover"
-              :poster="item.cover[0]"
-              :src="item.video_cover && item.video_cover[0]"
-              class="list_video-width"
-            ></video>
-          </view>
-          <view class="list_tags">
-            <view
-              class="tag"
-              v-for="(styleItem, styleIndex) in item.style_label"
-              :key="styleIndex"
-              >{{ styleItem }}</view
-            >
-          </view>
-          <view class="list_bottom">
-            <view class="list_time">
-              <image src="../../assets/images/common/time.png"></image>
-              {{ item.date_humanize }}
-            </view>
-            <view class="list_yuepai">
-              <image src="../../assets/images/user/index/yuepai.png"></image>
-              收到约拍 {{ item.statistic.invite_cnt }}
-            </view>
-            <view class="list_read">
-              <image src="../../assets/images/user/index/invoice.png"></image>
-              阅读 {{ item.statistic.read_cnt }}
+          <view class="select_item">
+            <view class="select_item_title">发起人性别</view>
+            <view>
+              <text
+                @tap="select_sex_tag(item)"
+                class="tag_item"
+                :class="item.ispick ? 'tag_itemed' : ''"
+                v-for="(item, index) in sexData"
+                :key="index"
+              >
+                {{ item.name }}
+              </text>
             </view>
           </view>
-        </view>
-      </block>
-      <view v-else class="none-data">
-        <image
-          src="../../assets/images/common/none.png"
-          mode="aspectFill"
-          class="none-img"
-        ></image>
-        <view>当前暂无信息哦～</view>
-      </view>
-    </view>
-    <view class="select_block" v-show="showModal" @tap="close">
-      <view class="select_bg" @tap.stop="">
-        <view
-          class="statusbar"
-          :style="{ height: globalData.navHeight + 'px' }"
-        ></view>
-        <view class="location">
-          <view class="location_address">当前定位：北京</view>
-          <text class="reposition">重新定位</text>
-        </view>
-        <view class="address_box">
-          <view class="address_label">选择地区</view>
-          <view class="address_input">
-            <view class="pickers">
-              <view class="ub-f1">
-                <picker
-                  :mode="'multiSelector'"
-                  :value="multiIndex"
-                  :range="multiArray"
-                  :range-key="'name'"
-                  @change="sizerBindRegionChange"
-                  @columnchange="onBindcolumnchange"
-                >
-                  <view class="sizer_select_local bd_b fl">
-                    <view class="pickers pick-city picked" v-if="sizer_city">{{
-                      sizer_city
-                    }}</view>
-                    <view class="pickers pick-city" v-else>全部</view>
-                  </view>
-                </picker>
-              </view>
+          <view class="select_item">
+            <view class="select_item_title">收费模式</view>
+            <view>
+              <text
+                @tap="select_charge_tag(item)"
+                class="tag_item"
+                :class="item.ispick ? 'tag_itemed' : ''"
+                v-for="(item, index) in chargeData"
+                :key="index"
+              >
+                {{ item.value }}
+              </text>
             </view>
           </view>
-        </view>
-        <view class="select_item">
-          <view class="select_item_title">约单对象</view>
-          <view>
-            <text
-              @tap="select_tag(item)"
-              class="tag_item"
-              :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in appointmentData"
-              :key="index"
-            >
-              {{ item.name }}
-            </text>
+          <view class="select_button">
+            <text class="clear" @tap="clear">清除</text>
+            <text class="confirm" @tap="submit">确认</text>
           </view>
-        </view>
-        <view class="select_item">
-          <view class="select_item_title">发起人性别</view>
-          <view>
-            <text
-              @tap="select_sex_tag(item)"
-              class="tag_item"
-              :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in sexData"
-              :key="index"
-            >
-              {{ item.name }}
-            </text>
-          </view>
-        </view>
-        <view class="select_item">
-          <view class="select_item_title">收费模式</view>
-          <view>
-            <text
-              @tap="select_charge_tag(item)"
-              class="tag_item"
-              :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in chargeData"
-              :key="index"
-            >
-              {{ item.value }}
-            </text>
-          </view>
-        </view>
-        <view class="select_button">
-          <text class="clear" @tap="clear">清除</text>
-          <text class="confirm" @tap="submit">确认</text>
         </view>
       </view>
-    </view>
+    </block>
+    <block v-if="headCurrent == 1">
+      <ZuopinList
+        :base_data="allCity"
+        :multi_array="multiArray"
+        :more="zuopinMore"
+        :refresh="zuopinRefresh"
+        @closeMore="closeMore"
+        @closeRefresh="closeRefresh"
+      ></ZuopinList>
+    </block>
   </view>
 </template>
 
@@ -353,6 +373,7 @@ import "./index.scss";
 import { inviteList, publicConfig } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
+import ZuopinList from "../../components/zuopinList/index.vue";
 
 export default {
   name: "home",
@@ -364,7 +385,10 @@ export default {
         navObj: 0,
         navObjWid: 0,
       },
-      search: "",
+      headCurrent: 0,
+      zuopinMore: false,
+      zuopinRefresh: false,
+      // search: "",
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
@@ -399,6 +423,16 @@ export default {
         { cid: 20011, name: "导演", ispick: false },
         { cid: 20012, name: "商家", ispick: false },
       ],
+      headNavList: [
+        {
+          name: "约单",
+          value: 0,
+        },
+        {
+          name: "作品",
+          value: 1,
+        },
+      ],
       sexData: [
         {
           name: "全部",
@@ -423,7 +457,21 @@ export default {
       sizerSelect: [],
     };
   },
+  components: {
+    ZuopinList,
+  },
   methods: {
+    closeRefresh() {
+      console.log("刷新了--------");
+      this.zuopinRefresh = false;
+    },
+    closeMore() {
+      console.log("关闭了--------");
+      this.zuopinMore = false;
+    },
+    headNavClick(index) {
+      this.headCurrent = index;
+    },
     //获取用户地理位置权限
     getPermission() {
       //获取用户地理位置
@@ -538,6 +586,7 @@ export default {
     },
     navClick(index) {
       this.navActive = index;
+      this.pageNum = 1;
       this.query("init");
     },
     bindRegionChange(e) {
@@ -551,7 +600,9 @@ export default {
       this.inviteList(
         {
           filter: this.filter,
-          quick_filter: this.navList[this.navActive].key,
+          quick_filter: this.navList.length
+            ? this.navList[this.navActive].key
+            : "",
           page: this.pageNum,
           per_page: this.pageSize,
         },
@@ -566,8 +617,12 @@ export default {
       wx.showLoading({
         title: "刷新中...",
       });
-      this.pageNum = 1;
-      this.query("init");
+      if (this.headCurrent == 0) {
+        this.pageNum = 1;
+        this.query("init");
+      } else {
+        this.zuopinRefresh = true;
+      }
     },
     // 加载更多
     onMore() {
@@ -578,7 +633,12 @@ export default {
         title: "数据加载中...",
       });
       this.loading = false;
-      this.query("more");
+      if (this.headCurrent == 0) {
+        this.query("more");
+      } else {
+        // console.log("ldlldldll");
+        this.zuopinMore = true;
+      }
     },
     previewImage(src, urls) {
       // 微信预览图片的方法
@@ -626,36 +686,22 @@ export default {
         payment_type: paymentdata[0].key == "all" ? 0 : paymentdata[0].key,
       };
       if (this.sizerSelect[0]) {
-        let num = this.sizer_num.find((item) => {
-          return item == 1;
-        });
-        if (!num) this.sizer_num.push(1);
+        this.sizer_num.push(1);
       }
       if (facedata[0].cid) {
-        let num2 = this.sizer_num.find((item) => {
-          return item == 2;
-        });
-        if (!num2) this.sizer_num.push(2);
+        this.sizer_num.push(2);
       }
       if (sexdata[0].value != 100) {
-        let num3 = this.sizer_num.find((item) => {
-          return item == 3;
-        });
-        if (!num3) this.sizer_num.push(3);
+        this.sizer_num.push(3);
       }
       if (paymentdata[0].key != "all") {
-        let num4 = this.sizer_num.find((item) => {
-          return item == 4;
-        });
-        if (!num4) this.sizer_num.push(4);
+        this.sizer_num.push(4);
       }
       if (facedata[0].key) {
-        let num5 = this.sizer_num.find((item) => {
-          return item == 5;
-        });
-        if (!num5) this.sizer_num.push(5);
+        this.sizer_num.push(5);
       }
       this.showModal = false;
+      this.pageNum = 1;
       this.query("init");
     },
     async publicConfig(params) {

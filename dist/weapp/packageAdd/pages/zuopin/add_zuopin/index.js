@@ -61,18 +61,17 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/zuopin/add_zuopin/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/zuopin/add_zuopin/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+
+
+
 //
 //
 //
@@ -243,6 +242,9 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "addZuopin",
   data: function data() {
@@ -250,23 +252,27 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       isIphoneX: false,
       name: "",
       desc: "",
+      localtion: "",
       imgList: [],
       // 图片集合
       videolist: [],
       videoCoverList: [],
       checked: true,
       place: "",
-      theme: "",
-      themeIndex: "",
-      themeList: [],
-      worksIndex: "",
-      worksList: [],
-      works: ""
+      styleTaglist: [],
+      photoTaglist: []
     };
   },
   methods: {
-    bindPickerChange: function bindPickerChange() {},
-    switchChange: function switchChange() {},
+    chooseStyleTag: function chooseStyleTag(index) {
+      this.styleTaglist[index].checked = !this.styleTaglist[index].checked;
+    },
+    choosePhotoTag: function choosePhotoTag(index) {
+      this.photoTaglist[index].checked = !this.photoTaglist[index].checked;
+    },
+    switchChange: function switchChange(e) {
+      this.checked = e.detail.value;
+    },
     uploadImgClose: function uploadImgClose(index) {
       this.imgList.splice(index, 1);
     },
@@ -283,9 +289,12 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       });
     },
     onChooseLocation: function onChooseLocation() {
+      var _this2 = this;
+
       wx.chooseLocation({
         success: function success(res) {
-          console.log(res, "--------------");
+          _this2.localtion = res.address;
+          console.log(res, "--------------", _this2.localtion);
         }
       });
     },
@@ -369,11 +378,11 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       });
     },
     upCover: function upCover(dataInfo) {
-      var _this2 = this;
+      var _this3 = this;
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -382,7 +391,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.thumbTempFilePath,
         formData: {
-          scr_type: "invite"
+          scr_type: "photo"
         },
         name: "file",
         header: header,
@@ -392,7 +401,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
           var data = JSON.parse(res.data);
 
           if (data.code == 200) {
-            _this2.videoCoverList.push(data.data.file1);
+            _this3.videoCoverList.push(data.data.file1);
           } else {
             wx.showToast({
               title: "上传失败！",
@@ -403,11 +412,11 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       });
     },
     upImgs: function upImgs(dataInfo) {
-      var _this3 = this;
+      var _this4 = this;
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -416,7 +425,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "invite"
+          scr_type: "photo"
         },
         name: "file",
         header: header,
@@ -426,7 +435,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
           var data = JSON.parse(res.data);
 
           if (data.code == 200) {
-            _this3.imgList.push(data.data.file1);
+            _this4.imgList.push(data.data.file1);
           } else {
             wx.showToast({
               title: "上传失败！",
@@ -437,11 +446,11 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       });
     },
     uploadVideo: function uploadVideo(dataInfo) {
-      var _this4 = this;
+      var _this5 = this;
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -450,7 +459,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "invite"
+          scr_type: "photo"
         },
         name: "file",
         header: header,
@@ -460,16 +469,9 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
           var data = JSON.parse(res.data);
 
           if (data.code == 200) {
-            // let videoData = res;
-            // console.log("视频地址：", videoData);
-            // console.log(
-            //   "视频封面：",
-            //   res,
-            //   "?spm=qipa250&x-oss-process=video/snapshot,t_1000,f_jpg,w_800,h_400,m_fast"
-            // );
-            _this4.upCover(dataInfo);
+            _this5.upCover(dataInfo);
 
-            _this4.videolist.push(data.data.file1);
+            _this5.videolist.push(data.data.file1);
           } else {
             wx.showToast({
               title: "上传失败！",
@@ -479,10 +481,159 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
         }
       });
     },
-    submit: function submit() {}
+    submit: function submit() {
+      if (!this.imgList.length && !this.videolist.length) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请上传照片/视频！");
+        return false;
+      }
+
+      if (!this.name) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写作品名称！");
+        return false;
+      }
+
+      if (!this.desc) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写作品背后的故事！");
+        return false;
+      }
+
+      var checkTag = this.styleTaglist.some(function (item) {
+        return item.checked;
+      });
+
+      if (!checkTag) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择主题标签！");
+        return false;
+      }
+
+      var checkTag2 = this.photoTaglist.some(function (item) {
+        return item.checked;
+      });
+
+      if (!checkTag2) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择作品标签！");
+        return false;
+      }
+
+      var params = {
+        type: 30,
+        title: this.name,
+        content: this.desc,
+        style_label: [],
+        photo_label: [],
+        capture_locale: this.localtion,
+        return_photo: this.checked ? 1 : 0,
+        capture_tools: this.place,
+        scr_type: "photo",
+        file_type: this.imgList.length ? "picture" : "video",
+        cover: this.imgList.length ? this.imgList : this.videoCoverList,
+        video_cover: this.videolist
+      };
+      var style_label = [];
+      var photo_label = [];
+      this.styleTaglist.map(function (item) {
+        if (item.checked) {
+          style_label.push(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({}, item.key, item.value));
+        }
+      });
+      this.photoTaglist.map(function (item) {
+        if (item.checked) {
+          photo_label.push(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({}, item.key, item.value));
+        }
+      });
+      params.style_label = style_label;
+      params.photo_label = photo_label;
+      console.log(params);
+      this.subNotePhoto(params);
+    },
+    publicConfig: function publicConfig(params) {
+      var _this6 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, arr, arr1;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "h"])(params);
+
+              case 3:
+                res = _context.sent;
+                arr = [];
+                arr1 = [];
+                res.data.data.map(function (item) {
+                  if (item.type == "style_label") {
+                    item.checked = false;
+                    arr.push(item);
+                  }
+
+                  if (item.type == "photo_label") {
+                    item.checked = false;
+                    arr1.push(item);
+                  }
+                });
+                _this6.styleTaglist = arr;
+                _this6.photoTaglist = arr1;
+                _context.next = 13;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](0);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    subNotePhoto: function subNotePhoto(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* subNotePhoto */ "i"])(params);
+
+              case 3:
+                res = _context2.sent;
+                // 跳转首页
+                wx.switchTab({
+                  url: "/pages/home/index",
+                  success: function success(e) {
+                    var page = getCurrentPages().pop();
+                    if (page == undefined || page == null) return;
+                    page.onLoad();
+                  }
+                });
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    }
   },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.publicConfig({
+      type: ["style_label", "photo_label"]
+    });
   }
 });
 
@@ -687,7 +838,11 @@ var render = function () {
                   src: __webpack_require__(/*! ../../../../assets/images/position.png */ "./src/assets/images/position.png"),
                 },
               }),
-              _c("text", [_vm._v("添加位置")]),
+              _c("text", [
+                _vm._v(
+                  " " + _vm._s(_vm.localtion ? _vm.localtion : "添加位置")
+                ),
+              ]),
             ]),
             _c("view", { staticClass: "zuopin-item-right" }, [
               _c("image", {
@@ -750,77 +905,53 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "zuopin-item" }, [
+        _c("view", { staticClass: "zuopin-localtion" }, [
+          _c("view", [_c("text", [_vm._v("主题标签")])]),
+        ]),
         _c(
           "view",
-          { staticClass: "zuopin-localtion" },
-          [
-            _c("view", [_c("text", [_vm._v("主题标签")])]),
-            _c(
-              "picker",
+          { staticClass: "tag-list" },
+          _vm._l(_vm.styleTaglist, function (item, index) {
+            return _c(
+              "text",
               {
-                attrs: {
-                  value: _vm.themeIndex,
-                  range: _vm.themeList,
-                  "range-key": "value",
+                key: index,
+                staticClass: "tag-txt",
+                class: item.checked ? "active" : "",
+                on: {
+                  tap: function ($event) {
+                    return _vm.chooseStyleTag(index)
+                  },
                 },
-                on: { change: _vm.bindPickerChange },
               },
-              [
-                _c("view", { staticClass: "zuopin-item-right" }, [
-                  _vm.theme
-                    ? _c("view", { staticClass: "zuopin-select-item" }, [
-                        _vm._v(_vm._s(_vm.theme)),
-                      ])
-                    : _c("view", { staticClass: "zuopin-select-item" }, [
-                        _vm._v("请选择"),
-                      ]),
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
-                    },
-                  }),
-                ]),
-              ]
-            ),
-          ],
-          1
+              [_vm._v(_vm._s(item.value))]
+            )
+          }),
+          0
         ),
+        _c("view", { staticClass: "zuopin-localtion" }, [
+          _c("view", [_c("text", [_vm._v("作品标签")])]),
+        ]),
         _c(
           "view",
-          { staticClass: "zuopin-localtion" },
-          [
-            _c("view", [_c("text", [_vm._v("作品标签")])]),
-            _c(
-              "picker",
+          { staticClass: "tag-list" },
+          _vm._l(_vm.photoTaglist, function (item, index) {
+            return _c(
+              "text",
               {
-                attrs: {
-                  value: _vm.worksIndex,
-                  range: _vm.worksList,
-                  "range-key": "value",
+                key: index,
+                staticClass: "tag-txt",
+                class: item.checked ? "active" : "",
+                on: {
+                  tap: function ($event) {
+                    return _vm.choosePhotoTag(index)
+                  },
                 },
-                on: { change: _vm.bindPickerChange },
               },
-              [
-                _c("view", { staticClass: "zuopin-item-right" }, [
-                  _vm.works
-                    ? _c("view", { staticClass: "zuopin-select-item" }, [
-                        _vm._v(_vm._s(_vm.theme)),
-                      ])
-                    : _c("view", { staticClass: "zuopin-select-item" }, [
-                        _vm._v("请选择"),
-                      ]),
-                  _c("image", {
-                    attrs: {
-                      mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
-                    },
-                  }),
-                ]),
-              ]
-            ),
-          ],
-          1
+              [_vm._v(_vm._s(item.value))]
+            )
+          }),
+          0
         ),
       ]),
       _c(

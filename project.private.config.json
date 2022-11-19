@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "我的",
-                    "pathName": "pages/my/index",
+                    "name": "作品列表",
+                    "pathName": "packageAdd/pages/zuopin/list/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

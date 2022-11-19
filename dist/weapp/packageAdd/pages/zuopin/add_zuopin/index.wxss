@@ -146,6 +146,38 @@
 .zuopin .zuopin-select-item {
   margin-right: 16rpx;
 }
+.zuopin .upload-close {
+  width: 38rpx;
+  height: 38rpx;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC") no-repeat rgba(0, 0, 0, 0.55);
+  background-size: 38rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.zuopin .tag-list {
+  padding: 16rpx 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.zuopin .tag-list .tag-txt {
+  padding: 8rpx 24rpx;
+  border: 1rpx solid #a9a9a9;
+  border-radius: 25rpx;
+  font-size: 22rpx;
+  color: #a9a9a9;
+  margin-right: 20rpx;
+  margin-bottom: 16rpx;
+}
+.zuopin .tag-list .active {
+  background-color: #fe3e3f;
+  color: #ffffff;
+  border: 1rpx solid #fe3e3f;
+}
 .wx-switch-input {
   width: 80rpx !important;
   height: 48rpx !important;

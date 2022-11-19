@@ -136,12 +136,11 @@ component.options.__file = "src/pages/release/index.vue"
           break;
 
         case 2:
-          // url = "/packageAdd/pages/yuedan/add_yuedan/index?id=1";
           url = "appointment/index";
           break;
 
         case 3:
-          url = "field/index?id=1";
+          url = "/packageAdd/pages/zuopin/add_zuopin/index";
           break;
       }
 

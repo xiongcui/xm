@@ -173,3 +173,21 @@ export const subUserSticker = (data) => {
     data,
   });
 };
+
+// 创建作品
+export const subNotePhoto = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/photo",
+    method: "post",
+    data,
+  });
+};
+
+// 作品列表
+export const photoList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/photo/list",
+    method: "post",
+    data,
+  });
+};

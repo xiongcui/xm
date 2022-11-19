@@ -35,6 +35,676 @@ component.options.__file = "src/pages/home/index.vue"
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/zuopinList/index.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/zuopinList/index.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/components/zuopinList/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "zuopinList",
+  props: {
+    base_data: {
+      type: Array,
+      default: []
+    },
+    multi_array: {
+      type: Array,
+      default: []
+    },
+    more: {
+      type: Boolean,
+      default: false
+    },
+    refresh: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    base_data: {
+      handler: function handler(newVal, oldVal) {
+        this.allCity = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    multi_array: {
+      handler: function handler(newVal, oldVal) {
+        this.multiArray = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    more: {
+      handler: function handler(newVal, oldVal) {
+        this.zuopinMore = newVal;
+
+        if (this.zuopinMore) {
+          this.pageNum++;
+          this.onMore();
+        }
+      },
+      deep: true,
+      immediate: true
+    },
+    refresh: {
+      handler: function handler(newVal, oldVal) {
+        this.zuopinRefresh = newVal;
+
+        if (this.zuopinRefresh) {
+          this.onRefresh();
+        }
+      },
+      deep: true,
+      immediate: true
+    }
+  },
+  data: function data() {
+    return {
+      showModal: false,
+      zuopinMore: false,
+      zuopinRefresh: false,
+      sizer_num: [],
+      navActive: 0,
+      sex: 0,
+      height: 0,
+      navList: [// {
+        //   name: "11",
+        //   value: "11",
+        // },
+      ],
+      sexData: [{
+        name: "全部",
+        value: 100,
+        ispick: true
+      }, {
+        name: "男",
+        value: 1,
+        ispick: false
+      }, {
+        name: "女",
+        value: 0,
+        ispick: false
+      }],
+      show_sizer_modal: true,
+      sizer_region: [],
+      regionListIndex: [0, 0],
+      sizer_city: "",
+      multiIndex: [0, 0],
+      allCity: [],
+      sizerSelect: [],
+      identity_data: [],
+      multiArray: [[], []],
+      list: [],
+      pageNum: 1,
+      pageSize: 10,
+      filter: {
+        face_province_id: 0,
+        face_cid: 0,
+        career_cid: 0,
+        sex: 10
+      }
+    };
+  },
+  methods: {
+    navClick: function navClick(index) {
+      this.navActive = index;
+      this.pageNum = 1;
+      this.query("init");
+    },
+    select_identity_tag: function select_identity_tag(row) {
+      this.identity_data.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    //获取用户地理位置权限
+    getPermission: function getPermission() {
+      //获取用户地理位置
+      //先判断用户是否授权获取地理位置
+      var that = this;
+      wx.getSetting({
+        success: function success(res) {
+          if (res.authSetting["scope.userLocation"] == false) {
+            //如果没有授权地理位置
+            wx.openSetting({
+              success: function success(res) {
+                res.authSetting = {
+                  //打开授权位置页面，让用户自己开启
+                  "scope.userLocation": true
+                };
+              }
+            });
+          } else {
+            //用户开启授权后可直接获取地理位置
+            wx.authorize({
+              scope: "scope.userLocation",
+              success: function success() {
+                //获取位置后相关操作
+                that.getLocation();
+              }
+            });
+          }
+        }
+      });
+    },
+    // 新增下面这部分代码
+    getLocation: function getLocation() {
+      var that = this;
+      wx.getLocation({
+        type: "wgs84",
+        success: function success(res) {
+          var latitude = res.latitude;
+          var longitude = res.longitude;
+          var speed = res.speed;
+          var accuracy = res.accuracy;
+          console.log(res); //将获取到的经纬度信息输出到控制台以便检查
+          // that.setData({
+          //   //将获取到的经度、纬度数值分别赋值给本地变量
+          //   latitude: res.latitude,
+          //   longitude: res.longitude,
+          // });
+        },
+        fail: function fail(error) {
+          console.log(error);
+        }
+      });
+    },
+    screen: function screen() {
+      this.showModal = true;
+      this.sizer_num = [];
+      this.getPermission();
+    },
+    close: function close() {
+      this.showModal = false;
+    },
+    sizerBindRegionChange: function sizerBindRegionChange(e) {
+      var province = this.multiArray[0][e.detail.value[0]].name;
+      var city = this.multiArray[1][e.detail.value[1]].name;
+      this.sizer_city = city == "全部" ? province : city;
+      this.sizerSelect = e.detail.value;
+    },
+    onBindcolumnchange: function onBindcolumnchange(e) {
+      if (e.detail.column == 0) {
+        var select = this.multiArray[0][e.detail.value];
+        var city = this.allCity;
+
+        for (var i = 0; i < city.length; i++) {
+          if (city[i].code == select.code) {
+            var multiArray = this.multiArray;
+            var all = [{
+              name: "全部",
+              code: "all"
+            }];
+            multiArray[1] = all.concat(city[i].citylist);
+            var multiIndex = this.multiIndex;
+            multiIndex[0] = e.detail.value;
+            multiIndex[1] = 0;
+            this.multiArray = JSON.parse(JSON.stringify(multiArray));
+            this.multiIndex = multiIndex;
+            break;
+          }
+        }
+      }
+    },
+    select_tag: function select_tag(row) {
+      this.appointmentData.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_sex_tag: function select_sex_tag(row) {
+      this.sexData.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    submit: function submit() {
+      var sexdata = this.sexData.filter(function (item) {
+        return item.ispick;
+      });
+      var identitydata = this.identity_data.filter(function (item) {
+        return item.ispick;
+      });
+      this.filter = {
+        face_province_id: this.sizerSelect[0] ? Number(this.multiArray[0][this.sizerSelect[0]].code) : 0,
+        face_city_id: this.sizerSelect[1] ? Number(this.multiArray[1][this.sizerSelect[1]].code) : 0,
+        sex: sexdata[0].value == 100 ? 100 : sexdata[0].value,
+        career_cid: identitydata[0].cid == "all" ? 0 : identitydata[0].cid
+      };
+
+      if (this.sizerSelect[0]) {
+        this.sizer_num.push(1);
+      }
+
+      if (sexdata[0].value != 100) {
+        this.sizer_num.push(2);
+      }
+
+      if (identitydata[0].cid != "all") {
+        this.sizer_num.push(3);
+      }
+
+      this.showModal = false;
+      this.pageNum = 1;
+      this.query("init");
+    },
+    clear: function clear() {
+      this.multiIndex = [0, 0];
+      this.sizer_city = "";
+      this.sizerSelect = [];
+      this.sexData = this.sexData.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.identity_data = this.identity_data.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+    },
+    //刷新
+    onRefresh: function onRefresh() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "刷新中..."
+      });
+      this.pageNum = 1;
+      this.query("init");
+    },
+    // 加载更多
+    onMore: function onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "数据加载中..."
+      });
+      this.loading = false;
+      this.query("more");
+    },
+    query: function query(type) {
+      wx.showLoading({
+        title: "加载中..."
+      });
+      var params = {
+        filter: this.filter,
+        quick_filter: this.navList[this.navActive].key,
+        page: this.pageNum,
+        per_page: this.pageSize
+      };
+      this.photoList(params, type);
+    },
+    publicConfig: function publicConfig(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "h"])(params);
+
+              case 3:
+                res = _context.sent;
+                arr = [];
+                res.data.data.map(function (item, index) {
+                  if (item.type == "photo_filter") {
+                    arr.push(item);
+                  } else if (item.type == "payment_type") {
+                    item.ispick = false;
+                    arr2.push(item);
+                  }
+                });
+                _this.navList = arr;
+                _this.filter = {
+                  face_province_id: 0,
+                  face_cid: 0,
+                  career_cid: 0,
+                  sex: 10
+                };
+
+                _this.query("init");
+
+                _context.next = 13;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](0);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    photoList: function photoList(params, type) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "g"])(params);
+
+              case 3:
+                res = _context2.sent;
+                //隐藏loading 提示框
+                wx.hideLoading(); //隐藏导航条加载动画
+
+                wx.hideNavigationBarLoading(); //停止下拉刷新
+
+                wx.stopPullDownRefresh();
+
+                if (!(type == "init")) {
+                  _context2.next = 12;
+                  break;
+                }
+
+                _this2.list = res.data.data.items;
+
+                _this2.$emit("closeRefresh");
+
+                _context2.next = 20;
+                break;
+
+              case 12:
+                if (!(type == "more")) {
+                  _context2.next = 20;
+                  break;
+                }
+
+                if (res.data.data.items.length) {
+                  _context2.next = 16;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                return _context2.abrupt("return", false);
+
+              case 16:
+                data = res.data.data.items;
+                _this2.list = _this2.list.concat(data);
+                _this2.loading = true;
+
+                _this2.$emit("closeMore");
+
+              case 20:
+                _context2.next = 24;
+                break;
+
+              case 22:
+                _context2.prev = 22;
+                _context2.t0 = _context2["catch"](0);
+
+              case 24:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 22]]);
+      }))();
+    },
+    getCareer: function getCareer(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res, data, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "c"])(params);
+
+              case 3:
+                res = _context3.sent;
+                data = res.data.data;
+                arr = [];
+                arr = data.career_list.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr.unshift({
+                  cid: "all",
+                  role: "全部",
+                  value: "全部",
+                  ispick: true
+                });
+                _this3.identity_data = arr;
+                _context3.next = 13;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](0);
+
+              case 13:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 11]]);
+      }))();
+    }
+  },
+  created: function created() {
+    var _this4 = this;
+
+    this.publicConfig({
+      type: ["photo_filter"]
+    });
+    this.getCareer("");
+    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    wx.getSystemInfo({
+      success: function success(res) {
+        //导航高度
+        var statusBarHeight = res.statusBarHeight,
+            navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
+        _this4.height = navHeight; //导航栏总体高度
+      },
+      fail: function fail(err) {
+        console.log(err);
+      }
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/pages/home/index.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/home/index.vue?vue&type=script&lang=js& ***!
@@ -51,6 +721,7 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _utils_city__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/city */ "./src/utils/city.js");
+/* harmony import */ var _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/zuopinList/index.vue */ "./src/components/zuopinList/index.vue");
 
 
 //
@@ -403,6 +1074,27 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -417,7 +1109,10 @@ component.options.__file = "src/pages/home/index.vue"
         navObj: 0,
         navObjWid: 0
       },
-      search: "",
+      headCurrent: 0,
+      zuopinMore: false,
+      zuopinRefresh: false,
+      // search: "",
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
@@ -472,6 +1167,13 @@ component.options.__file = "src/pages/home/index.vue"
         name: "商家",
         ispick: false
       }],
+      headNavList: [{
+        name: "约单",
+        value: 0
+      }, {
+        name: "作品",
+        value: 1
+      }],
       sexData: [{
         name: "全部",
         value: 100,
@@ -492,7 +1194,21 @@ component.options.__file = "src/pages/home/index.vue"
       sizerSelect: []
     };
   },
+  components: {
+    ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]
+  },
   methods: {
+    closeRefresh: function closeRefresh() {
+      console.log("刷新了--------");
+      this.zuopinRefresh = false;
+    },
+    closeMore: function closeMore() {
+      console.log("关闭了--------");
+      this.zuopinMore = false;
+    },
+    headNavClick: function headNavClick(index) {
+      this.headCurrent = index;
+    },
     //获取用户地理位置权限
     getPermission: function getPermission() {
       //获取用户地理位置
@@ -606,6 +1322,7 @@ component.options.__file = "src/pages/home/index.vue"
     },
     navClick: function navClick(index) {
       this.navActive = index;
+      this.pageNum = 1;
       this.query("init");
     },
     bindRegionChange: function bindRegionChange(e) {
@@ -618,7 +1335,7 @@ component.options.__file = "src/pages/home/index.vue"
       });
       this.inviteList({
         filter: this.filter,
-        quick_filter: this.navList[this.navActive].key,
+        quick_filter: this.navList.length ? this.navList[this.navActive].key : "",
         page: this.pageNum,
         per_page: this.pageSize
       }, type);
@@ -631,8 +1348,13 @@ component.options.__file = "src/pages/home/index.vue"
       wx.showLoading({
         title: "刷新中..."
       });
-      this.pageNum = 1;
-      this.query("init");
+
+      if (this.headCurrent == 0) {
+        this.pageNum = 1;
+        this.query("init");
+      } else {
+        this.zuopinRefresh = true;
+      }
     },
     // 加载更多
     onMore: function onMore() {
@@ -643,7 +1365,13 @@ component.options.__file = "src/pages/home/index.vue"
         title: "数据加载中..."
       });
       this.loading = false;
-      this.query("more");
+
+      if (this.headCurrent == 0) {
+        this.query("more");
+      } else {
+        // console.log("ldlldldll");
+        this.zuopinMore = true;
+      }
     },
     previewImage: function previewImage(src, urls) {
       // 微信预览图片的方法
@@ -690,41 +1418,27 @@ component.options.__file = "src/pages/home/index.vue"
       };
 
       if (this.sizerSelect[0]) {
-        var num = this.sizer_num.find(function (item) {
-          return item == 1;
-        });
-        if (!num) this.sizer_num.push(1);
+        this.sizer_num.push(1);
       }
 
       if (facedata[0].cid) {
-        var num2 = this.sizer_num.find(function (item) {
-          return item == 2;
-        });
-        if (!num2) this.sizer_num.push(2);
+        this.sizer_num.push(2);
       }
 
       if (sexdata[0].value != 100) {
-        var num3 = this.sizer_num.find(function (item) {
-          return item == 3;
-        });
-        if (!num3) this.sizer_num.push(3);
+        this.sizer_num.push(3);
       }
 
       if (paymentdata[0].key != "all") {
-        var num4 = this.sizer_num.find(function (item) {
-          return item == 4;
-        });
-        if (!num4) this.sizer_num.push(4);
+        this.sizer_num.push(4);
       }
 
       if (facedata[0].key) {
-        var num5 = this.sizer_num.find(function (item) {
-          return item == 5;
-        });
-        if (!num5) this.sizer_num.push(5);
+        this.sizer_num.push(5);
       }
 
       this.showModal = false;
+      this.pageNum = 1;
       this.query("init");
     },
     publicConfig: function publicConfig(params) {
@@ -738,7 +1452,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "g"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "h"])(params);
 
               case 3:
                 res = _context.sent;
@@ -927,10 +1641,10 @@ component.options.__file = "src/pages/home/index.vue"
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/pages/home/index.vue?vue&type=template&id=5b685826&":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/home/index.vue?vue&type=template&id=5b685826& ***!
-  \***********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/zuopinList/index.vue?vue&type=template&id=56fa8292&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/zuopinList/index.vue?vue&type=template&id=56fa8292&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /*! exports used: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -942,128 +1656,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "home" }, [
-    _c(
-      "view",
-      {
-        staticClass: "custom_head",
-        style: { height: _vm.globalData.navHeight + "px" },
-      },
-      [
-        _c(
-          "view",
-          {
-            staticClass: "flex-row",
-            style: {
-              height: _vm.globalData.navObj + "px",
-              "padding-top": _vm.globalData.navTop + "px",
-              "padding-right": _vm.globalData.navObjWid + 5 + "px",
-            },
-          },
-          [
-            _c("view", { staticClass: "head_sign" }, [
-              _c("image", {
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/common/icon_sign.png */ "./src/assets/images/common/icon_sign.png"),
-                },
-              }),
-              _c("text", [_vm._v("签到")]),
-            ]),
-            _c("view", { staticClass: "search" }, [
-              _c("input", {
-                staticClass: "search-input",
-                attrs: {
-                  value: _vm.search,
-                  placeholder: "搜索约拍",
-                  "placeholder-class": "placeholder-style",
-                },
-              }),
-            ]),
-          ]
-        ),
-      ]
-    ),
-    _c("view", { style: { height: _vm.globalData.navHeight + "px" } }),
-    _c("view", { staticClass: "page-bg" }),
-    _c(
-      "view",
-      { staticClass: "page-section page-section-spacing swiper" },
-      [
-        _c(
-          "swiper",
-          {
-            attrs: {
-              "indicator-dots": _vm.indicatorDots,
-              autoplay: _vm.autoplay,
-              interval: _vm.interval,
-              duration: _vm.duration,
-            },
-          },
-          _vm._l(_vm.background, function (item, index) {
-            return _c(
-              "block",
-              { key: index },
-              [
-                _c("swiper-item", [
-                  _c("view", { staticClass: "swiper-item" }, [
-                    _c("image", {
-                      staticClass: "swiper-item-img",
-                      attrs: {
-                        mode: "aspectFill",
-                        src: __webpack_require__("./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$")("./lanmao" +
-                          (index + 1) +
-                          ".jpg"),
-                      },
-                    }),
-                  ]),
-                ]),
-              ],
-              1
-            )
-          }),
-          1
-        ),
-      ],
-      1
-    ),
-    _c("view", { staticClass: "page_nav" }, [
-      _c("view", { staticClass: "page_nav_item" }, [
-        _c("view", { staticClass: "page_nav_icon" }, [
-          _c("image", {
-            staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/tonggao.png */ "./src/assets/images/tonggao.png") },
-          }),
-        ]),
-        _c("text", { staticClass: "page_nav_text" }, [_vm._v("通告")]),
-      ]),
-      _c("view", { staticClass: "page_nav_item" }, [
-        _c("view", { staticClass: "page_nav_icon" }, [
-          _c("image", {
-            staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/yuedan.png */ "./src/assets/images/yuedan.png") },
-          }),
-        ]),
-        _c("text", { staticClass: "page_nav_text" }, [_vm._v("约单")]),
-      ]),
-      _c("view", { staticClass: "page_nav_item" }, [
-        _c("view", { staticClass: "page_nav_icon" }, [
-          _c("image", {
-            staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/activity.png */ "./src/assets/images/activity.png") },
-          }),
-        ]),
-        _c("text", { staticClass: "page_nav_text" }, [_vm._v("活动")]),
-      ]),
-      _c("view", { staticClass: "page_nav_item" }, [
-        _c("view", { staticClass: "page_nav_icon" }, [
-          _c("image", {
-            staticClass: "page_nav_img",
-            attrs: { src: __webpack_require__(/*! ../../assets/images/more.png */ "./src/assets/images/more.png") },
-          }),
-        ]),
-        _c("text", { staticClass: "page_nav_text" }, [_vm._v("待定")]),
-      ]),
-    ]),
+  return _c("view", { staticClass: "zuppin_list" }, [
     _c(
       "view",
       { staticClass: "nav_list" },
@@ -1142,247 +1735,99 @@ var render = function () {
       ],
       1
     ),
-    _c(
-      "view",
-      { staticClass: "list_main" },
-      [
-        _vm.list.length
-          ? _c(
-              "block",
-              _vm._l(_vm.list, function (item, index) {
-                return _c(
-                  "view",
-                  {
-                    key: index,
-                    staticClass: "list_box",
-                    on: {
-                      tap: function ($event) {
-                        return _vm.godetail(item.oid, item.author_id)
-                      },
+    _vm.list.length
+      ? _c(
+          "view",
+          { staticClass: "main_list" },
+          _vm._l(_vm.list, function (item, index) {
+            return _c("view", { key: index, staticClass: "zuopin_box" }, [
+              item.file_type == "picture"
+                ? _c("image", {
+                    staticClass: "zuopin_img",
+                    attrs: { src: item.cover[0], mode: "aspectFill" },
+                  })
+                : _vm._e(),
+              item.file_type == "video"
+                ? _c("video", {
+                    staticClass: "list_video-width",
+                    attrs: {
+                      objectFit: "cover",
+                      poster: item.cover[0],
+                      src: item.video_cover && item.video_cover[0],
                     },
+                  })
+                : _vm._e(),
+              _c("view", { staticClass: "zuopin_desc" }, [
+                _vm._v(_vm._s(item.summary)),
+              ]),
+              _c("view", { staticClass: "zuopin_info" }, [
+                _c("image", {
+                  staticClass: "avatar",
+                  attrs: {
+                    src: item.author.avatar
+                      ? item.author.avatar
+                      : "../../assets/images/avatar_default.png",
+                    mode: "aspectFill",
                   },
-                  [
-                    _c("view", { staticClass: "list_top" }, [
-                      _c("view", { staticClass: "list_top_left" }, [
-                        _c("image", {
-                          staticClass: "avatar",
-                          attrs: {
-                            src: item.author.avatar
-                              ? item.author.avatar
-                              : "../../assets/images/avatar_default.png",
-                          },
-                        }),
-                        _c("view", { staticClass: "list_info" }, [
-                          _c(
-                            "view",
-                            { staticClass: "list_name" },
-                            [
-                              _vm._v(" " + _vm._s(item.author.nickname) + " "),
-                              item.author.sex !== null
-                                ? _c("block", [
-                                    item.author.sex == 1
-                                      ? _c("image", {
-                                          staticClass: "list_sex",
-                                          attrs: {
-                                            src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                                          },
-                                        })
-                                      : _vm._e(),
-                                    item.author.sex == 0
-                                      ? _c("image", {
-                                          staticClass: "list_sex",
-                                          attrs: {
-                                            src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                                          },
-                                        })
-                                      : _vm._e(),
-                                  ])
-                                : _vm._e(),
-                            ],
-                            1
-                          ),
-                          _c("view", { staticClass: "list_p" }, [
-                            _c("text", [
-                              _vm._v(
-                                " " +
-                                  _vm._s(item.author.career_list[0]) +
-                                  " | " +
-                                  _vm._s(item.author.province_name)
-                              ),
-                            ]),
-                            item.author.is_certify
-                              ? _c("image", {
-                                  staticClass: "list_p_img",
-                                  attrs: {
-                                    src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
-                                  },
-                                })
-                              : _c("image", {
-                                  staticClass: "list_p_img",
-                                  attrs: {
-                                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
-                                  },
-                                }),
-                            item.author.is_security
-                              ? _c("image", {
-                                  staticClass: "list_p_img",
-                                  attrs: {
-                                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
-                                  },
-                                })
-                              : _c("image", {
-                                  staticClass: "list_p_img",
-                                  attrs: {
-                                    src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
-                                  },
-                                }),
-                          ]),
-                        ]),
+                }),
+                _c("view", [
+                  _c(
+                    "view",
+                    { staticClass: "list_p_title" },
+                    [
+                      _c("text", { staticClass: "list_name" }, [
+                        _vm._v(_vm._s(item.author.nickname)),
                       ]),
-                      _c("view", { staticClass: "list_collection" }, [
-                        _c("image", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
-                          },
-                        }),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "list_content" }, [
-                      _c("view", { staticClass: "list_title" }, [
-                        _vm._v(" " + _vm._s(item.major_subject) + " "),
-                        (item.payment_type == 300 && item.payment_range == 1) ||
-                        (item.payment_type == 400 && item.payment_range == 1)
-                          ? _c("text", [
-                              _vm._v(
-                                _vm._s(item.payment_name) +
-                                  _vm._s(item.payment_min_amount) +
-                                  "-" +
-                                  _vm._s(item.payment_max_amount) +
-                                  _vm._s(item.payment_unit)
-                              ),
-                            ])
+                      _c("block", [
+                        item.author.sex == 1
+                          ? _c("image", {
+                              staticClass: "list_sex",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                              },
+                            })
                           : _vm._e(),
-                        (item.payment_type == 300 && item.payment_range == 0) ||
-                        (item.payment_type == 400 && item.payment_range == 0)
-                          ? _c("text", [
-                              _vm._v(
-                                _vm._s(item.payment_name) +
-                                  _vm._s(item.payment_amount) +
-                                  _vm._s(item.payment_unit) +
-                                  " "
-                              ),
-                            ])
+                        item.author.sex == 0
+                          ? _c("image", {
+                              staticClass: "list_sex",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                              },
+                            })
                           : _vm._e(),
                       ]),
-                      _c("view", { staticClass: "list_loction" }, [
-                        _vm._v(" " + _vm._s(item.face_province_name) + " "),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "list_desc" }, [
-                      _vm._v(" " + _vm._s(item.summary) + " "),
-                    ]),
-                    item.file_type == "picture"
-                      ? _c(
-                          "view",
-                          { staticClass: "list_img" },
-                          [
-                            _c(
-                              "scroll-view",
-                              { attrs: { enhanced: true, scrollX: true } },
-                              _vm._l(item.cover, function (url, coverIndex) {
-                                return _c("image", {
-                                  key: coverIndex,
-                                  staticClass: "list_img_item",
-                                  attrs: { src: url, mode: "aspectFill" },
-                                  on: {
-                                    tap: function ($event) {
-                                      $event.stopPropagation()
-                                      return _vm.previewImage(url, item.cover)
-                                    },
-                                  },
-                                })
-                              }),
-                              0
-                            ),
-                          ],
-                          1
-                        )
-                      : _vm._e(),
-                    item.file_type == "video"
-                      ? _c("view", { staticClass: "list_video" }, [
-                          _c("video", {
-                            staticClass: "list_video-width",
-                            attrs: {
-                              objectFit: "cover",
-                              poster: item.cover[0],
-                              src: item.video_cover && item.video_cover[0],
-                            },
-                          }),
-                        ])
-                      : _vm._e(),
-                    _c(
-                      "view",
-                      { staticClass: "list_tags" },
-                      _vm._l(
-                        item.style_label,
-                        function (styleItem, styleIndex) {
-                          return _c(
-                            "view",
-                            { key: styleIndex, staticClass: "tag" },
-                            [_vm._v(_vm._s(styleItem))]
-                          )
-                        }
+                    ],
+                    1
+                  ),
+                  _c("view", { staticClass: "list_p" }, [
+                    _c("text", [
+                      _vm._v(
+                        " " +
+                          _vm._s(item.author.career_list[0]) +
+                          " |" +
+                          _vm._s(item.author.province_name)
                       ),
-                      0
-                    ),
-                    _c("view", { staticClass: "list_bottom" }, [
-                      _c("view", { staticClass: "list_time" }, [
-                        _c("image", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
-                          },
-                        }),
-                        _vm._v(" " + _vm._s(item.date_humanize) + " "),
-                      ]),
-                      _c("view", { staticClass: "list_yuepai" }, [
-                        _c("image", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
-                          },
-                        }),
-                        _vm._v(
-                          " 收到约拍 " + _vm._s(item.statistic.invite_cnt) + " "
-                        ),
-                      ]),
-                      _c("view", { staticClass: "list_read" }, [
-                        _c("image", {
-                          attrs: {
-                            src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
-                          },
-                        }),
-                        _vm._v(
-                          " 阅读 " + _vm._s(item.statistic.read_cnt) + " "
-                        ),
-                      ]),
                     ]),
-                  ]
-                )
-              }),
-              0
-            )
-          : _c("view", { staticClass: "none-data" }, [
-              _c("image", {
-                staticClass: "none-img",
-                attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
-                  mode: "aspectFill",
-                },
-              }),
-              _c("view", [_vm._v("当前暂无信息哦～")]),
-            ]),
-      ],
-      1
-    ),
+                    _c("text", { staticClass: "read" }, [
+                      _vm._v(_vm._s(item.statistic.read_cnt)),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ])
+          }),
+          0
+        )
+      : _c("view", { staticClass: "none-data" }, [
+          _c("image", {
+            staticClass: "none-img",
+            attrs: {
+              src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+              mode: "aspectFill",
+            },
+          }),
+          _c("view", [_vm._v("当前暂无信息哦～")]),
+        ]),
     _c(
       "view",
       {
@@ -1411,7 +1856,7 @@ var render = function () {
           [
             _c("view", {
               staticClass: "statusbar",
-              style: { height: _vm.globalData.navHeight + "px" },
+              style: { height: _vm.height + "px" },
             }),
             _c("view", { staticClass: "location" }, [
               _c("view", { staticClass: "location_address" }, [
@@ -1471,11 +1916,11 @@ var render = function () {
             ]),
             _c("view", { staticClass: "select_item" }, [
               _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("约单对象"),
+                _vm._v("发布人身份"),
               ]),
               _c(
                 "view",
-                _vm._l(_vm.appointmentData, function (item, index) {
+                _vm._l(_vm.identity_data, function (item, index) {
                   return _c(
                     "text",
                     {
@@ -1484,11 +1929,11 @@ var render = function () {
                       class: item.ispick ? "tag_itemed" : "",
                       on: {
                         tap: function ($event) {
-                          return _vm.select_tag(item)
+                          return _vm.select_identity_tag(item)
                         },
                       },
                     },
-                    [_vm._v(" " + _vm._s(item.name) + " ")]
+                    [_vm._v(" " + _vm._s(item.role) + " ")]
                   )
                 }),
                 0
@@ -1496,7 +1941,7 @@ var render = function () {
             ]),
             _c("view", { staticClass: "select_item" }, [
               _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("发起人性别"),
+                _vm._v("发布人性别"),
               ]),
               _c(
                 "view",
@@ -1519,31 +1964,6 @@ var render = function () {
                 0
               ),
             ]),
-            _c("view", { staticClass: "select_item" }, [
-              _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("收费模式"),
-              ]),
-              _c(
-                "view",
-                _vm._l(_vm.chargeData, function (item, index) {
-                  return _c(
-                    "text",
-                    {
-                      key: index,
-                      staticClass: "tag_item",
-                      class: item.ispick ? "tag_itemed" : "",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.select_charge_tag(item)
-                        },
-                      },
-                    },
-                    [_vm._v(" " + _vm._s(item.value) + " ")]
-                  )
-                }),
-                0
-              ),
-            ]),
             _c("view", { staticClass: "select_button" }, [
               _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
                 _vm._v("清除"),
@@ -1557,6 +1977,731 @@ var render = function () {
       ]
     ),
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/pages/home/index.vue?vue&type=template&id=5b685826&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/home/index.vue?vue&type=template&id=5b685826& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "view",
+    { staticClass: "home" },
+    [
+      _c(
+        "view",
+        {
+          staticClass: "custom_head",
+          style: { height: _vm.globalData.navHeight + "px" },
+        },
+        [
+          _c(
+            "view",
+            {
+              staticClass: "flex-row",
+              style: {
+                width: "100%",
+                height: _vm.globalData.navObj + "px",
+                "padding-top": _vm.globalData.navTop + "px",
+                "padding-right": _vm.globalData.navObjWid + 5 + "px",
+              },
+            },
+            [
+              _c("view", { staticClass: "head_sign" }, [
+                _c("image", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/common/icon_sign.png */ "./src/assets/images/common/icon_sign.png"),
+                  },
+                }),
+                _c("text", [_vm._v("签到")]),
+              ]),
+              _c(
+                "view",
+                { staticClass: "head_nav" },
+                _vm._l(_vm.headNavList, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "head_nav_item",
+                      class: index == _vm.headCurrent ? "acitve" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.headNavClick(index)
+                        },
+                      },
+                    },
+                    [_vm._v(" " + _vm._s(item.name) + " ")]
+                  )
+                }),
+                0
+              ),
+            ]
+          ),
+        ]
+      ),
+      _c("view", { style: { height: _vm.globalData.navHeight + "px" } }),
+      _vm.headCurrent == 0
+        ? _c("block", [
+            _c("view", { staticClass: "page-bg" }),
+            _c(
+              "view",
+              { staticClass: "page-section page-section-spacing swiper" },
+              [
+                _c(
+                  "swiper",
+                  {
+                    attrs: {
+                      "indicator-dots": _vm.indicatorDots,
+                      autoplay: _vm.autoplay,
+                      interval: _vm.interval,
+                      duration: _vm.duration,
+                    },
+                  },
+                  _vm._l(_vm.background, function (item, index) {
+                    return _c(
+                      "block",
+                      { key: index },
+                      [
+                        _c("swiper-item", [
+                          _c("view", { staticClass: "swiper-item" }, [
+                            _c("image", {
+                              staticClass: "swiper-item-img",
+                              attrs: {
+                                mode: "aspectFill",
+                                src: __webpack_require__("./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$")("./lanmao" +
+                                  (index + 1) +
+                                  ".jpg"),
+                              },
+                            }),
+                          ]),
+                        ]),
+                      ],
+                      1
+                    )
+                  }),
+                  1
+                ),
+              ],
+              1
+            ),
+            _c("view", { staticClass: "page_nav" }, [
+              _c("view", { staticClass: "page_nav_item" }, [
+                _c("view", { staticClass: "page_nav_icon" }, [
+                  _c("image", {
+                    staticClass: "page_nav_img",
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/tonggao.png */ "./src/assets/images/tonggao.png") },
+                  }),
+                ]),
+                _c("text", { staticClass: "page_nav_text" }, [_vm._v("通告")]),
+              ]),
+              _c("view", { staticClass: "page_nav_item" }, [
+                _c("view", { staticClass: "page_nav_icon" }, [
+                  _c("image", {
+                    staticClass: "page_nav_img",
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/yuedan.png */ "./src/assets/images/yuedan.png") },
+                  }),
+                ]),
+                _c("text", { staticClass: "page_nav_text" }, [_vm._v("约单")]),
+              ]),
+              _c("view", { staticClass: "page_nav_item" }, [
+                _c("view", { staticClass: "page_nav_icon" }, [
+                  _c("image", {
+                    staticClass: "page_nav_img",
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/activity.png */ "./src/assets/images/activity.png") },
+                  }),
+                ]),
+                _c("text", { staticClass: "page_nav_text" }, [_vm._v("活动")]),
+              ]),
+              _c("view", { staticClass: "page_nav_item" }, [
+                _c("view", { staticClass: "page_nav_icon" }, [
+                  _c("image", {
+                    staticClass: "page_nav_img",
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/more.png */ "./src/assets/images/more.png") },
+                  }),
+                ]),
+                _c("text", { staticClass: "page_nav_text" }, [_vm._v("待定")]),
+              ]),
+            ]),
+            _c(
+              "view",
+              { staticClass: "nav_list" },
+              [
+                _c(
+                  "scroll-view",
+                  {
+                    staticClass: "swiper_tab",
+                    attrs: { enhanced: true, scrollX: true },
+                  },
+                  [
+                    _c(
+                      "view",
+                      { staticClass: "nav_list_ct" },
+                      _vm._l(_vm.navList, function (item, index) {
+                        return _c(
+                          "text",
+                          {
+                            key: index,
+                            staticClass: "nav_item",
+                            class: _vm.navActive == index ? "nav_active" : "",
+                            on: {
+                              tap: function ($event) {
+                                return _vm.navClick(index)
+                              },
+                            },
+                          },
+                          [_vm._v(_vm._s(item.value))]
+                        )
+                      }),
+                      0
+                    ),
+                  ]
+                ),
+                _c(
+                  "view",
+                  { staticClass: "sizer_block ub", on: { tap: _vm.screen } },
+                  [
+                    _c("view", { staticClass: "gradient" }),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "sizer ub",
+                        class: _vm.sizer_num.length ? "is_sizer" : "",
+                      },
+                      [
+                        _c(
+                          "view",
+                          { staticClass: "ub" },
+                          [
+                            _c("view", [_vm._v("筛选")]),
+                            _vm.sizer_num.length
+                              ? _c("block", [
+                                  _c("view", { staticClass: "sizer_dian" }, [
+                                    _vm._v("·"),
+                                  ]),
+                                  _c("view", [
+                                    _vm._v(_vm._s(_vm.sizer_num.length)),
+                                  ]),
+                                ])
+                              : _vm._e(),
+                          ],
+                          1
+                        ),
+                        _c("view", { staticClass: "sizer_img" }, [
+                          _vm.sizer_num.length
+                            ? _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/common/sizered.png */ "./src/assets/images/common/sizered.png"),
+                                },
+                              })
+                            : _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/common/sizer.png */ "./src/assets/images/common/sizer.png"),
+                                },
+                              }),
+                        ]),
+                      ]
+                    ),
+                  ]
+                ),
+              ],
+              1
+            ),
+            _c(
+              "view",
+              { staticClass: "list_main" },
+              [
+                _vm.list.length
+                  ? _c(
+                      "block",
+                      _vm._l(_vm.list, function (item, index) {
+                        return _c(
+                          "view",
+                          {
+                            key: index,
+                            staticClass: "list_box",
+                            on: {
+                              tap: function ($event) {
+                                return _vm.godetail(item.oid, item.author_id)
+                              },
+                            },
+                          },
+                          [
+                            _c("view", { staticClass: "list_top" }, [
+                              _c("view", { staticClass: "list_top_left" }, [
+                                _c("image", {
+                                  staticClass: "avatar",
+                                  attrs: {
+                                    src: item.author.avatar
+                                      ? item.author.avatar
+                                      : "../../assets/images/avatar_default.png",
+                                  },
+                                }),
+                                _c("view", { staticClass: "list_info" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "list_name" },
+                                    [
+                                      _vm._v(
+                                        " " + _vm._s(item.author.nickname) + " "
+                                      ),
+                                      item.author.sex !== null
+                                        ? _c("block", [
+                                            item.author.sex == 1
+                                              ? _c("image", {
+                                                  staticClass: "list_sex",
+                                                  attrs: {
+                                                    src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                                  },
+                                                })
+                                              : _vm._e(),
+                                            item.author.sex == 0
+                                              ? _c("image", {
+                                                  staticClass: "list_sex",
+                                                  attrs: {
+                                                    src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                                  },
+                                                })
+                                              : _vm._e(),
+                                          ])
+                                        : _vm._e(),
+                                    ],
+                                    1
+                                  ),
+                                  _c("view", { staticClass: "list_p" }, [
+                                    _c("text", [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.author.career_list[0]) +
+                                          " | " +
+                                          _vm._s(item.author.province_name)
+                                      ),
+                                    ]),
+                                    item.author.is_certify
+                                      ? _c("image", {
+                                          staticClass: "list_p_img",
+                                          attrs: {
+                                            src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                                          },
+                                        })
+                                      : _c("image", {
+                                          staticClass: "list_p_img",
+                                          attrs: {
+                                            src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                                          },
+                                        }),
+                                    item.author.is_security
+                                      ? _c("image", {
+                                          staticClass: "list_p_img",
+                                          attrs: {
+                                            src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                                          },
+                                        })
+                                      : _c("image", {
+                                          staticClass: "list_p_img",
+                                          attrs: {
+                                            src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                                          },
+                                        }),
+                                  ]),
+                                ]),
+                              ]),
+                              _c("view", { staticClass: "list_collection" }, [
+                                _c("image", {
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
+                                  },
+                                }),
+                              ]),
+                            ]),
+                            _c("view", { staticClass: "list_content" }, [
+                              _c("view", { staticClass: "list_title" }, [
+                                _vm._v(" " + _vm._s(item.major_subject) + " "),
+                                (item.payment_type == 300 &&
+                                  item.payment_range == 1) ||
+                                (item.payment_type == 400 &&
+                                  item.payment_range == 1)
+                                  ? _c("text", [
+                                      _vm._v(
+                                        _vm._s(item.payment_name) +
+                                          _vm._s(item.payment_min_amount) +
+                                          "-" +
+                                          _vm._s(item.payment_max_amount) +
+                                          _vm._s(item.payment_unit)
+                                      ),
+                                    ])
+                                  : _vm._e(),
+                                (item.payment_type == 300 &&
+                                  item.payment_range == 0) ||
+                                (item.payment_type == 400 &&
+                                  item.payment_range == 0)
+                                  ? _c("text", [
+                                      _vm._v(
+                                        _vm._s(item.payment_name) +
+                                          _vm._s(item.payment_amount) +
+                                          _vm._s(item.payment_unit) +
+                                          " "
+                                      ),
+                                    ])
+                                  : _vm._e(),
+                              ]),
+                              _c("view", { staticClass: "list_loction" }, [
+                                _vm._v(
+                                  " " + _vm._s(item.face_province_name) + " "
+                                ),
+                              ]),
+                            ]),
+                            _c("view", { staticClass: "list_desc" }, [
+                              _vm._v(" " + _vm._s(item.summary) + " "),
+                            ]),
+                            item.file_type == "picture"
+                              ? _c(
+                                  "view",
+                                  { staticClass: "list_img" },
+                                  [
+                                    _c(
+                                      "scroll-view",
+                                      {
+                                        attrs: {
+                                          enhanced: true,
+                                          scrollX: true,
+                                        },
+                                      },
+                                      _vm._l(
+                                        item.cover,
+                                        function (url, coverIndex) {
+                                          return _c("image", {
+                                            key: coverIndex,
+                                            staticClass: "list_img_item",
+                                            attrs: {
+                                              src: url,
+                                              mode: "aspectFill",
+                                            },
+                                            on: {
+                                              tap: function ($event) {
+                                                $event.stopPropagation()
+                                                return _vm.previewImage(
+                                                  url,
+                                                  item.cover
+                                                )
+                                              },
+                                            },
+                                          })
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
+                            item.file_type == "video"
+                              ? _c("view", { staticClass: "list_video" }, [
+                                  _c("video", {
+                                    staticClass: "list_video-width",
+                                    attrs: {
+                                      objectFit: "cover",
+                                      poster: item.cover[0],
+                                      src:
+                                        item.video_cover && item.video_cover[0],
+                                    },
+                                  }),
+                                ])
+                              : _vm._e(),
+                            _c(
+                              "view",
+                              { staticClass: "list_tags" },
+                              _vm._l(
+                                item.style_label,
+                                function (styleItem, styleIndex) {
+                                  return _c(
+                                    "view",
+                                    { key: styleIndex, staticClass: "tag" },
+                                    [_vm._v(_vm._s(styleItem))]
+                                  )
+                                }
+                              ),
+                              0
+                            ),
+                            _c("view", { staticClass: "list_bottom" }, [
+                              _c("view", { staticClass: "list_time" }, [
+                                _c("image", {
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
+                                  },
+                                }),
+                                _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                              ]),
+                              _c("view", { staticClass: "list_yuepai" }, [
+                                _c("image", {
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                                  },
+                                }),
+                                _vm._v(
+                                  " 收到约拍 " +
+                                    _vm._s(item.statistic.invite_cnt) +
+                                    " "
+                                ),
+                              ]),
+                              _c("view", { staticClass: "list_read" }, [
+                                _c("image", {
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
+                                  },
+                                }),
+                                _vm._v(
+                                  " 阅读 " +
+                                    _vm._s(item.statistic.read_cnt) +
+                                    " "
+                                ),
+                              ]),
+                            ]),
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  : _c("view", { staticClass: "none-data" }, [
+                      _c("image", {
+                        staticClass: "none-img",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                          mode: "aspectFill",
+                        },
+                      }),
+                      _c("view", [_vm._v("当前暂无信息哦～")]),
+                    ]),
+              ],
+              1
+            ),
+            _c(
+              "view",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.showModal,
+                    expression: "showModal",
+                  },
+                ],
+                staticClass: "select_block",
+                on: { tap: _vm.close },
+              },
+              [
+                _c(
+                  "view",
+                  {
+                    staticClass: "select_bg",
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                      },
+                    },
+                  },
+                  [
+                    _c("view", {
+                      staticClass: "statusbar",
+                      style: { height: _vm.globalData.navHeight + "px" },
+                    }),
+                    _c("view", { staticClass: "location" }, [
+                      _c("view", { staticClass: "location_address" }, [
+                        _vm._v("当前定位：北京"),
+                      ]),
+                      _c("text", { staticClass: "reposition" }, [
+                        _vm._v("重新定位"),
+                      ]),
+                    ]),
+                    _c("view", { staticClass: "address_box" }, [
+                      _c("view", { staticClass: "address_label" }, [
+                        _vm._v("选择地区"),
+                      ]),
+                      _c("view", { staticClass: "address_input" }, [
+                        _c("view", { staticClass: "pickers" }, [
+                          _c(
+                            "view",
+                            { staticClass: "ub-f1" },
+                            [
+                              _c(
+                                "picker",
+                                {
+                                  attrs: {
+                                    mode: "multiSelector",
+                                    value: _vm.multiIndex,
+                                    range: _vm.multiArray,
+                                    "range-key": "name",
+                                  },
+                                  on: {
+                                    change: _vm.sizerBindRegionChange,
+                                    columnchange: _vm.onBindcolumnchange,
+                                  },
+                                },
+                                [
+                                  _c(
+                                    "view",
+                                    {
+                                      staticClass: "sizer_select_local bd_b fl",
+                                    },
+                                    [
+                                      _vm.sizer_city
+                                        ? _c(
+                                            "view",
+                                            {
+                                              staticClass:
+                                                "pickers pick-city picked",
+                                            },
+                                            [_vm._v(_vm._s(_vm.sizer_city))]
+                                          )
+                                        : _c(
+                                            "view",
+                                            {
+                                              staticClass: "pickers pick-city",
+                                            },
+                                            [_vm._v("全部")]
+                                          ),
+                                    ]
+                                  ),
+                                ]
+                              ),
+                            ],
+                            1
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _c("view", { staticClass: "select_item" }, [
+                      _c("view", { staticClass: "select_item_title" }, [
+                        _vm._v("约单对象"),
+                      ]),
+                      _c(
+                        "view",
+                        _vm._l(_vm.appointmentData, function (item, index) {
+                          return _c(
+                            "text",
+                            {
+                              key: index,
+                              staticClass: "tag_item",
+                              class: item.ispick ? "tag_itemed" : "",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.select_tag(item)
+                                },
+                              },
+                            },
+                            [_vm._v(" " + _vm._s(item.name) + " ")]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                    _c("view", { staticClass: "select_item" }, [
+                      _c("view", { staticClass: "select_item_title" }, [
+                        _vm._v("发起人性别"),
+                      ]),
+                      _c(
+                        "view",
+                        _vm._l(_vm.sexData, function (item, index) {
+                          return _c(
+                            "text",
+                            {
+                              key: index,
+                              staticClass: "tag_item",
+                              class: item.ispick ? "tag_itemed" : "",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.select_sex_tag(item)
+                                },
+                              },
+                            },
+                            [_vm._v(" " + _vm._s(item.name) + " ")]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                    _c("view", { staticClass: "select_item" }, [
+                      _c("view", { staticClass: "select_item_title" }, [
+                        _vm._v("收费模式"),
+                      ]),
+                      _c(
+                        "view",
+                        _vm._l(_vm.chargeData, function (item, index) {
+                          return _c(
+                            "text",
+                            {
+                              key: index,
+                              staticClass: "tag_item",
+                              class: item.ispick ? "tag_itemed" : "",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.select_charge_tag(item)
+                                },
+                              },
+                            },
+                            [_vm._v(" " + _vm._s(item.value) + " ")]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                    _c("view", { staticClass: "select_button" }, [
+                      _c(
+                        "text",
+                        { staticClass: "clear", on: { tap: _vm.clear } },
+                        [_vm._v("清除")]
+                      ),
+                      _c(
+                        "text",
+                        { staticClass: "confirm", on: { tap: _vm.submit } },
+                        [_vm._v("确认")]
+                      ),
+                    ]),
+                  ]
+                ),
+              ]
+            ),
+          ])
+        : _vm._e(),
+      _vm.headCurrent == 1
+        ? _c(
+            "block",
+            [
+              _c("ZuopinList", {
+                attrs: {
+                  base_data: _vm.allCity,
+                  multi_array: _vm.multiArray,
+                  more: _vm.zuopinMore,
+                  refresh: _vm.zuopinRefresh,
+                },
+                on: {
+                  closeMore: _vm.closeMore,
+                  closeRefresh: _vm.closeRefresh,
+                },
+              }),
+            ],
+            1
+          )
+        : _vm._e(),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1625,27 +2770,15 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACB
 
 /***/ }),
 
-/***/ "./src/assets/images/common/sizer.png":
-/*!********************************************!*\
-  !*** ./src/assets/images/common/sizer.png ***!
-  \********************************************/
+/***/ "./src/assets/images/eyes.png":
+/*!************************************!*\
+  !*** ./src/assets/images/eyes.png ***!
+  \************************************/
 /*! no static exports found */
 /*! all exports used */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAUUlEQVQoU2NkIALMmjVLm5GQupkzZ9YzMDDU4lUIVdQAMgynQmRFOBWiK8KqEJsiDIW4FKEoxKcIrpCQIrBCUGD+////IgMDAzOuMP3///9bAIjrIgU5KCwUAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/common/sizered.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/common/sizered.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATElEQVQoU43QwQ2AIBBE0U8ohxqJtGgh1jAEYwwouzDnlzn8wMYkpbBykg4gu/BBpZ2ZsEcm/KIpnKEftNAAPfTCFbphiwmcQHSaXhWrcSf59InUrwAAAABJRU5ErkJggg=="
+module.exports = __webpack_require__.p + "assets/images/eyes.png";
 
 /***/ }),
 
@@ -1718,6 +2851,87 @@ module.exports = __webpack_require__.p + "assets/images/tonggao.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/yuedan.png";
+
+/***/ }),
+
+/***/ "./src/components/zuopinList/index.scss":
+/*!**********************************************!*\
+  !*** ./src/components/zuopinList/index.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/zuopinList/index.vue":
+/*!*********************************************!*\
+  !*** ./src/components/zuopinList/index.vue ***!
+  \*********************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_vue_vue_type_template_id_56fa8292_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=56fa8292&scoped=true& */ "./src/components/zuopinList/index.vue?vue&type=template&id=56fa8292&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/components/zuopinList/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+function injectStyles (context) {
+  
+  
+}
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
+  _index_vue_vue_type_template_id_56fa8292_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_56fa8292_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  false,
+  injectStyles,
+  "56fa8292",
+  "405adea2"
+  
+)
+
+component.options.__file = "src/components/zuopinList/index.vue"
+/* harmony default export */ __webpack_exports__["a"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/zuopinList/index.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./src/components/zuopinList/index.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/zuopinList/index.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
+
+/***/ }),
+
+/***/ "./src/components/zuopinList/index.vue?vue&type=template&id=56fa8292&scoped=true&":
+/*!****************************************************************************************!*\
+  !*** ./src/components/zuopinList/index.vue?vue&type=template&id=56fa8292&scoped=true& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_56fa8292_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=56fa8292&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/zuopinList/index.vue?vue&type=template&id=56fa8292&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_56fa8292_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_56fa8292_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
+
+
 
 /***/ }),
 
