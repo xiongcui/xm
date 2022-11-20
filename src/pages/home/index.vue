@@ -379,16 +379,9 @@ export default {
   name: "home",
   data() {
     return {
-      globalData: {
-        navHeight: 0,
-        navTop: 0,
-        navObj: 0,
-        navObjWid: 0,
-      },
       headCurrent: 0,
       zuopinMore: false,
       zuopinRefresh: false,
-      // search: "",
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
@@ -464,13 +457,19 @@ export default {
     closeRefresh() {
       console.log("刷新了--------");
       this.zuopinRefresh = false;
+      this.loading = true;
     },
     closeMore() {
       console.log("关闭了--------");
       this.zuopinMore = false;
+      this.loading = true;
     },
     headNavClick(index) {
+      this.pageNum = 1;
       this.headCurrent = index;
+      if (index == 0) {
+        this.query("init");
+      }
     },
     //获取用户地理位置权限
     getPermission() {
@@ -525,7 +524,6 @@ export default {
       });
     },
     godetail(oid, author_id) {
-      console.log(oid, author_id);
       openPage(
         "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
           oid +
@@ -590,7 +588,6 @@ export default {
       this.query("init");
     },
     bindRegionChange(e) {
-      console.log(e);
       this.sizer_city = e.detail.value;
     },
     query(type) {
@@ -636,7 +633,6 @@ export default {
       if (this.headCurrent == 0) {
         this.query("more");
       } else {
-        // console.log("ldlldldll");
         this.zuopinMore = true;
       }
     },
@@ -749,6 +745,7 @@ export default {
         } else if (type == "more") {
           if (!res.data.data.items.length) {
             errortip("没有更多数据了～");
+            this.loading = true;
             return false;
           }
           let data = res.data.data.items;
@@ -769,40 +766,14 @@ export default {
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log("下拉加载更多");
+    console.log("下拉加载更多", this.loading);
     this.pageNum++;
     if (this.loading) {
       this.onMore();
     }
   },
   created() {
-    this.publicConfig({
-      type: ["invite_filter", "payment_type"],
-    });
-  },
-  mounted() {
-    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: (res) => {
-        //导航高度
-        let statusBarHeight = res.statusBarHeight,
-          navTop = menuButtonObject.top,
-          navObjWid =
-            res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-          navHeight =
-            statusBarHeight +
-            menuButtonObject.height +
-            (menuButtonObject.top - statusBarHeight) * 2;
-        this.globalData.navHeight = navHeight; //导航栏总体高度
-        this.globalData.navTop = navTop; //胶囊距离顶部距离
-        this.globalData.navObj = menuButtonObject.height; //胶囊高度
-        this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-        // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
-      },
-      fail(err) {
-        console.log(err);
-      },
-    });
+    this.globalData = this.globalData;
     let arr = [[], []];
     city.map((item) => {
       arr[0].push(item);
@@ -812,6 +783,9 @@ export default {
     arr[1].unshift({ name: "全部", code: "all" });
     this.multiArray = arr;
     this.allCity = city;
+    this.publicConfig({
+      type: ["invite_filter", "payment_type"],
+    });
   },
   // onShow: function onShow() {
   //   this.publicConfig({

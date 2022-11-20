@@ -1,0 +1,314 @@
+page {
+  background: #f6f6f6;
+}
+
+.zuopin_detail {
+  background: #f6f6f6;
+  padding: 16rpx 0 110rpx 0;
+}
+
+.zuopin_detail .avatar {
+  width: 110rpx;
+  height: 110rpx;
+  border-radius: 50%;
+}
+
+.zuopin_detail .zuopin_top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx;
+  background: #ffffff;
+  margin: 0 16rpx;
+  border-radius: 8rpx;
+  position: relative;
+}
+
+.zuopin_detail .zuopin_top_left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.zuopin_detail .zuopin_author_info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 16rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.zuopin_detail .zuopin_author_info .zuopin_name {
+  margin-bottom: 5rpx;
+  color: #111111;
+  font-size: 34rpx;
+}
+
+.zuopin_detail .zuopin_author_info .zuopin_p {
+  color: #686868;
+  font-size: 26rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.zuopin_detail .zuopin_author_info .zuopin_p_img {
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 16rpx;
+}
+
+.zuopin_detail .zuopin_right {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  right: 16rpx;
+}
+
+.zuopin_detail .zuopin_right .follow {
+  width: 112rpx;
+  height: 53rpx;
+}
+
+.zuopin_detail .zuopin_right .share {
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+
+.zuopin_detail .zuopin_sex {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 4rpx;
+}
+
+.zuopin_detail .zuopin_info {
+  background: #ffffff;
+  margin: 16rpx;
+  padding: 16rpx;
+}
+
+.zuopin_detail .zuopin_title {
+  color: #2f2f2f;
+  font-size: 38rpx;
+  margin-bottom: 16rpx;
+}
+
+.zuopin_detail .zuopin_content {
+  font-size: 30rpx;
+  color: #6b6b6b;
+  line-height: 38rpx;
+  margin-bottom: 16rpx;
+}
+
+.zuopin_detail .zuopin_icon {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.zuopin_detail .spot {
+  width: 10rpx;
+  height: 10rpx;
+  background: #fe5457;
+  border-radius: 5rpx;
+  margin-right: 10rpx;
+}
+
+.zuopin_detail .zuopin_icon_box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 26rpx;
+  color: #6b6b6b;
+  margin-right: 10rpx;
+}
+
+.zuopin_detail .zuopin_video-width {
+  margin: 16rpx 0;
+  width: 100%;
+}
+
+.zuopin_detail .zuopin_icon_title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.zuopin_detail .zuopin_img {
+  margin-top: 16rpx;
+}
+
+.zuopin_detail .zuopin_img image {
+  width: 100%;
+  margin-bottom: 16rpx;
+}
+
+.zuopin_detail .zuopin_tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+
+.zuopin_detail .zuopin_tags .tag {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 22rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+}
+
+.zuopin_detail .zuopin_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+}
+
+.zuopin_detail .zuopin_bottom_time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.zuopin_detail .zuopin_bottom_time image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.zuopin_detail .zuopin_bottom_zuopin {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.zuopin_detail .zuopin_bottom_zuopin image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.zuopin_detail .zuopin_bottom_read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.zuopin_detail .zuopin_bottom_read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.zuopin_detail .zuopin_bottom_dianzan {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.zuopin_detail .zuopin_bottom_dianzan image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.zuopin_detail .zuopin_fixed_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  padding: 20rpx 20rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_item {
+  margin-right: 20rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_item image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 6rpx;
+}
+
+.zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_rt {
+  width: 100rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #fe5457;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 10rpx;
+}

@@ -513,6 +513,9 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -522,14 +525,20 @@ component.options.__file = "src/pages/my/index.vue"
     return {
       s_id: "1",
       isSign: "",
-      statusBarHeight: 100,
       sex: 1,
       show_my_ad: false,
       showModelSign: false,
       infor: {
         avatar: "",
         realname: "",
-        ispledge: ""
+        ispledge: "",
+        statistic: {
+          followed_cnt: 0,
+          follower_cnt: 0,
+          invite_cnt: 0,
+          read_cnt: 0,
+          track_cnt: 0
+        }
       }
     };
   },
@@ -554,7 +563,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "p"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "q"])(params);
 
               case 3:
                 res = _context.sent;
@@ -576,31 +585,29 @@ component.options.__file = "src/pages/my/index.vue"
     }
   },
   created: function created() {
-    var _this2 = this;
-
-    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: function success(res) {
-        //导航高度
-        var statusBarHeight = res.statusBarHeight,
-            navTop = menuButtonObject.top,
-            navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
-            // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-        navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this2.navHeight = navHeight; //导航栏总体高度
-
-        _this2.navTop = navTop; //胶囊距离顶部距离
-
-        _this2.navObj = menuButtonObject.height; //胶囊高度
-
-        _this2.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-
-        console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
-      },
-      fail: function fail(err) {
-        console.log(err);
-      }
-    });
+    // let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    // wx.getSystemInfo({
+    //   success: (res) => {
+    //     //导航高度
+    //     let statusBarHeight = res.statusBarHeight,
+    //       navTop = menuButtonObject.top,
+    //       navObjWid =
+    //         res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
+    //       navHeight =
+    //         statusBarHeight +
+    //         menuButtonObject.height +
+    //         (menuButtonObject.top - statusBarHeight) * 2;
+    //     this.navHeight = navHeight; //导航栏总体高度
+    //     this.navTop = navTop; //胶囊距离顶部距离
+    //     this.navObj = menuButtonObject.height; //胶囊高度
+    //     this.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+    //     console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
+    //   },
+    //   fail(err) {
+    //     console.log(err);
+    //   },
+    // });
+    this.globalData = this.globalData;
     this.userInfo("");
   },
   onShow: function onShow() {
@@ -630,16 +637,19 @@ var render = function () {
   return _c("view", { staticClass: "my" }, [
     _c(
       "view",
-      { staticClass: "custom_head", style: { height: _vm.navHeight + "px" } },
+      {
+        staticClass: "custom_head",
+        style: { height: _vm.globalData.navHeight + "px" },
+      },
       [
         _c(
           "view",
           {
             staticClass: "flex-row j_b",
             style: {
-              height: _vm.navObj + "px",
-              "padding-top": _vm.navTop + "px",
-              "padding-right": _vm.navObjWid + 5 + "px",
+              height: _vm.globalData.navObj + "px",
+              "padding-top": _vm.globalData.navTop + "px",
+              "padding-right": _vm.globalData.navObjWid + 5 + "px",
             },
           },
           [
@@ -709,7 +719,7 @@ var render = function () {
     ),
     _c("view", {
       staticClass: "nav_bg",
-      style: { height: _vm.navHeight + "px" },
+      style: { height: _vm.globalData.navHeight + "px" },
     }),
     _c("view", { staticClass: "my-head" }, [
       _c("view", { staticClass: "my-head-left" }, [
@@ -729,7 +739,9 @@ var render = function () {
             _vm._v(_vm._s(_vm.infor.nickname)),
           ]),
         ]),
-        _c("view", { staticClass: "my-account" }, [_vm._v("账号：")]),
+        _c("view", { staticClass: "my-account" }, [
+          _vm._v("账号：" + _vm._s(_vm.infor.uuid)),
+        ]),
         _c("view", { staticClass: "my-info" }, [
           _c("text", [_vm._v("IP归属：")]),
           _c("text", [_vm._v(_vm._s(_vm.infor.province_name))]),

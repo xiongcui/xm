@@ -42,7 +42,7 @@
             <view>
               <text class="my-head-name">{{ infor.nickname }}</text>
             </view>
-            <view class="my-account">账号：</view>
+            <view class="my-account">账号：{{ infor.uuid }}</view>
             <view class="my-info">
               <text>IP归属：</text>
               <text>{{ infor.province_name }}</text>

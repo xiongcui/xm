@@ -1,0 +1,210 @@
+page {
+  background: #f6f6f6;
+}
+.zuopin_detail {
+  background: #f6f6f6;
+  padding: 16px 0px 110px 0px;
+  .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+  }
+  .zuopin_top {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    background: #ffffff;
+    margin: 0px 16px;
+    border-radius: 8px;
+    position: relative;
+  }
+  .zuopin_top_left {
+    display: flex;
+  }
+  .zuopin_author_info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    justify-content: center;
+    .zuopin_name {
+      margin-bottom: 5px;
+      color: #111111;
+      font-size: 34px;
+    }
+    .zuopin_p {
+      color: #686868;
+      font-size: 26px;
+      display: flex;
+      align-items: center;
+    }
+    .zuopin_p_img {
+      width: 100px;
+      height: 30px;
+      margin-left: 16px;
+    }
+  }
+  .zuopin_right {
+    display: flex;
+    position: absolute;
+    right: 16px;
+    .follow {
+      width: 112px;
+      height: 53px;
+    }
+    .share {
+      width: 50px;
+      height: 50px;
+      margin-left: 16px;
+    }
+  }
+  .zuopin_sex {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+  }
+  .zuopin_info {
+    background: #ffffff;
+    margin: 16px;
+    padding: 16px;
+  }
+  .zuopin_title {
+    color: #2f2f2f;
+    font-size: 38px;
+    margin-bottom: 16px;
+  }
+  .zuopin_content {
+    font-size: 30px;
+    color: #6b6b6b;
+    line-height: 38px;
+    margin-bottom: 16px;
+  }
+  .zuopin_icon {
+    display: flex;
+    justify-content: space-between;
+  }
+  .spot {
+    width: 10px;
+    height: 10px;
+    background: #fe5457;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  .zuopin_icon_box {
+    display: flex;
+    // align-items: center;
+    flex-direction: column;
+    font-size: 26px;
+    color: #6b6b6b;
+    margin-right: 10px;
+  }
+  .zuopin_video-width {
+    margin: 16px 0px;
+    width: 100%;
+  }
+  .zuopin_icon_title {
+    display: flex;
+    align-items: center;
+  }
+  .zuopin_img {
+    margin-top: 16px;
+    image {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+  .zuopin_tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+    .tag {
+      padding: 4px 10px;
+      background: rgba(245, 50, 24, 0.08);
+      color: #ff1e3e;
+      font-size: 22px;
+      border-radius: 8px;
+      margin-right: 10px;
+      margin-bottom: 16px;
+    }
+  }
+  .zuopin_bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6b6b;
+  }
+  .zuopin_bottom_time {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .zuopin_bottom_zuopin {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .zuopin_bottom_read {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .zuopin_bottom_dianzan {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .zuopin_fixed_bottom {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0px;
+    background: #ffffff;
+    width: 100%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    .zuopin_fixed_left {
+      display: flex;
+      align-items: center;
+    }
+    .zuopin_fixed_item {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      font-size: 30px;
+      color: #333333;
+      image {
+        width: 50px;
+        height: 50px;
+        margin-right: 6px;
+      }
+    }
+    .zuopin_fixed_rt {
+      width: 100px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      background: #fe5457;
+      color: #ffffff;
+      font-size: 30px;
+      border-radius: 10px;
+    }
+  }
+}

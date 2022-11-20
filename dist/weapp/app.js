@@ -190,6 +190,28 @@ var App = {
           _this.globalData.isIphoneX = false;
         }
       }
+    }); // 获取导航栏信息
+
+    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    wx.getSystemInfo({
+      success: function success(res) {
+        //导航高度
+        var statusBarHeight = res.statusBarHeight,
+            navTop = menuButtonObject.top,
+            navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
+            // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
+        navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
+        _this.globalData.navHeight = navHeight; //导航栏总体高度
+
+        _this.globalData.navTop = navTop; //胶囊距离顶部距离
+
+        _this.globalData.navObj = menuButtonObject.height; //胶囊高度
+
+        _this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+      },
+      fail: function fail(err) {
+        console.log(err);
+      }
     });
   },
   onShow: function onShow(options) {},
@@ -204,7 +226,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "v"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "w"])(params);
 
             case 3:
               res = _context.sent;
@@ -9232,7 +9254,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var config = {"pages":["pages/home/index","pages/login/index","pages/register/index","pages/my/index","pages/release/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/index/index","pages/we-cropper/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"subPackages":[{"root":"packageAdd/","name":"packadd","pages":["pages/yuedan/add_yuedan/index","pages/user/identity/index","pages/user/editinfor/index","pages/yuedan/yuedan_detail/index"]},{"root":"packageMoka/","name":"packmoka","pages":["pages/moka/editshow/index","pages/moka/editpersondata/index","pages/moka/editpersonimg/index","pages/moka/editvideo/index"]}],"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}},"requiredPrivateInfos":["getLocation"]};
+var config = {"pages":["pages/home/index","pages/login/index","pages/register/index","pages/my/index","pages/release/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/index/index","pages/we-cropper/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"subPackages":[{"root":"packageAdd/","name":"packadd","pages":["pages/user/identity/index","pages/user/editinfor/index","pages/user/editusertro/index","pages/user/editlabel/index","pages/yuedan/add_yuedan/index","pages/yuedan/yuedan_detail/index","pages/zuopin/add_zuopin/index","pages/zuopin/zuopin_detail/index"]},{"root":"packageMoka/","name":"packmoka","pages":["pages/moka/editshow/index","pages/moka/editpersondata/index","pages/moka/editpersonimg/index","pages/moka/editvideo/index"]}],"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}},"requiredPrivateInfos":["chooseAddress","chooseLocation","choosePoi","getLocation","onLocationChange","startLocationUpdateBackground","startLocationUpdate"]};
 _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__["window"].__taroAppConfig = config
 var inst = App(Object(_tarojs_plugin_framework_vue2_dist_runtime__WEBPACK_IMPORTED_MODULE_2__[/* createVueApp */ "a"])(_node_modules_babel_loader_lib_index_js_app_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], config))
 

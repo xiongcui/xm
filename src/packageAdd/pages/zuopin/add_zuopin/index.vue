@@ -87,7 +87,8 @@
             src="../../../../assets/images/position.png"
           >
           </image>
-          <text> {{ localtion ? localtion : "添加位置" }}</text>
+          <text v-if="localtion"> {{ localtion }}</text>
+          <text v-else> 添加位置</text>
         </view>
         <view class="zuopin-item-right">
           <image
@@ -187,9 +188,13 @@ export default {
       place: "",
       styleTaglist: [],
       photoTaglist: [],
+      locale_address: {},
     };
   },
   methods: {
+    bindended() {
+      wx.createVideoContext("video").exitFullScreen();
+    },
     chooseStyleTag(index) {
       this.styleTaglist[index].checked = !this.styleTaglist[index].checked;
     },
@@ -216,7 +221,8 @@ export default {
       wx.chooseLocation({
         success: (res) => {
           this.localtion = res.address;
-          console.log(res, "--------------", this.localtion);
+          this.locale_address = res;
+          //   console.log(res, "--------------", this.localtion);
         },
       });
     },
@@ -424,6 +430,7 @@ export default {
         file_type: this.imgList.length ? "picture" : "video",
         cover: this.imgList.length ? this.imgList : this.videoCoverList,
         video_cover: this.videolist,
+        locale_address: this.locale_address,
       };
       let style_label = [];
       let photo_label = [];

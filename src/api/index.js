@@ -191,3 +191,12 @@ export const photoList = (data) => {
     data,
   });
 };
+
+// 作品详情
+export const photoInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/photo/info",
+    method: "post",
+    data,
+  });
+};

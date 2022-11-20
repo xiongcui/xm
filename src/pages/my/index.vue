@@ -1,12 +1,12 @@
 <template>
   <view class="my">
-    <view class="custom_head" :style="{ height: navHeight + 'px' }">
+    <view class="custom_head" :style="{ height: globalData.navHeight + 'px' }">
       <view
         class="flex-row j_b"
         :style="{
-          height: navObj + 'px',
-          'padding-top': navTop + 'px',
-          'padding-right': navObjWid + 5 + 'px',
+          height: globalData.navObj + 'px',
+          'padding-top': globalData.navTop + 'px',
+          'padding-right': globalData.navObjWid + 5 + 'px',
         }"
       >
         <view class="pagetop ub">
@@ -34,7 +34,10 @@
         </view>
       </view>
     </view>
-    <view class="nav_bg" :style="{ height: navHeight + 'px' }"></view>
+    <view
+      class="nav_bg"
+      :style="{ height: globalData.navHeight + 'px' }"
+    ></view>
     <view class="my-head">
       <view class="my-head-left">
         <image
@@ -47,7 +50,7 @@
         <view>
           <text class="my-head-name">{{ infor.nickname }}</text>
         </view>
-        <view class="my-account">账号：</view>
+        <view class="my-account">账号：{{ infor.uuid }}</view>
         <view class="my-info">
           <text>IP归属：</text>
           <text>{{ infor.province_name }}</text>
@@ -469,7 +472,6 @@ export default {
     return {
       s_id: "1",
       isSign: "",
-      statusBarHeight: 100,
       sex: 1,
       show_my_ad: false,
       showModelSign: false,
@@ -477,6 +479,13 @@ export default {
         avatar: "",
         realname: "",
         ispledge: "",
+        statistic: {
+          followed_cnt: 0,
+          follower_cnt: 0,
+          invite_cnt: 0,
+          read_cnt: 0,
+          track_cnt: 0,
+        },
       },
     };
   },
@@ -498,28 +507,29 @@ export default {
     },
   },
   created() {
-    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: (res) => {
-        //导航高度
-        let statusBarHeight = res.statusBarHeight,
-          navTop = menuButtonObject.top,
-          navObjWid =
-            res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-          navHeight =
-            statusBarHeight +
-            menuButtonObject.height +
-            (menuButtonObject.top - statusBarHeight) * 2;
-        this.navHeight = navHeight; //导航栏总体高度
-        this.navTop = navTop; //胶囊距离顶部距离
-        this.navObj = menuButtonObject.height; //胶囊高度
-        this.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-        console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
-      },
-      fail(err) {
-        console.log(err);
-      },
-    });
+    // let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+    // wx.getSystemInfo({
+    //   success: (res) => {
+    //     //导航高度
+    //     let statusBarHeight = res.statusBarHeight,
+    //       navTop = menuButtonObject.top,
+    //       navObjWid =
+    //         res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
+    //       navHeight =
+    //         statusBarHeight +
+    //         menuButtonObject.height +
+    //         (menuButtonObject.top - statusBarHeight) * 2;
+    //     this.navHeight = navHeight; //导航栏总体高度
+    //     this.navTop = navTop; //胶囊距离顶部距离
+    //     this.navObj = menuButtonObject.height; //胶囊高度
+    //     this.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+    //     console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
+    //   },
+    //   fail(err) {
+    //     console.log(err);
+    //   },
+    // });
+    this.globalData = this.globalData;
     this.userInfo("");
   },
   onShow() {

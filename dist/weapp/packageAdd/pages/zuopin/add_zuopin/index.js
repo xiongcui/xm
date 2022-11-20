@@ -241,6 +241,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 //
 //
 //
+//
 
 
 
@@ -260,10 +261,14 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       checked: true,
       place: "",
       styleTaglist: [],
-      photoTaglist: []
+      photoTaglist: [],
+      locale_address: {}
     };
   },
   methods: {
+    bindended: function bindended() {
+      wx.createVideoContext("video").exitFullScreen();
+    },
     chooseStyleTag: function chooseStyleTag(index) {
       this.styleTaglist[index].checked = !this.styleTaglist[index].checked;
     },
@@ -294,7 +299,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       wx.chooseLocation({
         success: function success(res) {
           _this2.localtion = res.address;
-          console.log(res, "--------------", _this2.localtion);
+          _this2.locale_address = res; //   console.log(res, "--------------", this.localtion);
         }
       });
     },
@@ -527,7 +532,8 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
         scr_type: "photo",
         file_type: this.imgList.length ? "picture" : "video",
         cover: this.imgList.length ? this.imgList : this.videoCoverList,
-        video_cover: this.videolist
+        video_cover: this.videolist,
+        locale_address: this.locale_address
       };
       var style_label = [];
       var photo_label = [];
@@ -557,7 +563,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "i"])(params);
 
               case 3:
                 res = _context.sent;
@@ -600,7 +606,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* subNotePhoto */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* subNotePhoto */ "j"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -838,11 +844,9 @@ var render = function () {
                   src: __webpack_require__(/*! ../../../../assets/images/position.png */ "./src/assets/images/position.png"),
                 },
               }),
-              _c("text", [
-                _vm._v(
-                  " " + _vm._s(_vm.localtion ? _vm.localtion : "添加位置")
-                ),
-              ]),
+              _vm.localtion
+                ? _c("text", [_vm._v(" " + _vm._s(_vm.localtion))])
+                : _c("text", [_vm._v(" 添加位置")]),
             ]),
             _c("view", { staticClass: "zuopin-item-right" }, [
               _c("image", {

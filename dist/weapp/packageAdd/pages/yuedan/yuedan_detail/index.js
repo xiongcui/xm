@@ -655,7 +655,7 @@ var render = function () {
                 src: __webpack_require__(/*! ../../../../assets/images/common/icon_like.png */ "./src/assets/images/common/icon_like.png"),
               },
             }),
-            _vm._v(" 20 "),
+            _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.vote_cnt) + " "),
           ]),
           _c("view", { staticClass: "yuepai_fixed_item" }, [
             _c("image", {
@@ -663,7 +663,7 @@ var render = function () {
                 src: __webpack_require__(/*! ../../../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
               },
             }),
-            _vm._v(" 20 "),
+            _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.collect_cnt) + " "),
           ]),
         ]),
         _c("view", { staticClass: "yuepai_fixed_rt" }, [_vm._v(" 约拍 ")]),
@@ -675,42 +675,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/follow_red.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/common/follow_red.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/follow_red.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/icon_like.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/icon_like.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/icon_like.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/icon_share.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/common/icon_share.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/icon_share.png";
 
 /***/ }),
 

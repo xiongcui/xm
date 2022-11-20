@@ -170,13 +170,13 @@
         </view>
         <view class="yuepai_fixed_item">
           <image src="../../../../assets/images/common/icon_like.png"></image>
-          20
+          {{ yuepaiInfo.statistic.vote_cnt }}
         </view>
         <view class="yuepai_fixed_item">
           <image
             src="../../../../assets/images/common/icon_favorite.png"
           ></image>
-          20
+          {{ yuepaiInfo.statistic.collect_cnt }}
         </view>
       </view>
       <view class="yuepai_fixed_rt"> 约拍 </view>

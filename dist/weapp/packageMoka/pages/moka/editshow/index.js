@@ -716,7 +716,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "p"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "q"])(params);
 
               case 3:
                 res = _context.sent;
@@ -760,7 +760,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "t"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "u"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -794,7 +794,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "o"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "p"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -824,7 +824,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "v"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -949,7 +949,9 @@ var render = function () {
                   _vm._v(_vm._s(_vm.infor.nickname)),
                 ]),
               ]),
-              _c("view", { staticClass: "my-account" }, [_vm._v("账号：")]),
+              _c("view", { staticClass: "my-account" }, [
+                _vm._v("账号：" + _vm._s(_vm.infor.uuid)),
+              ]),
               _c("view", { staticClass: "my-info" }, [
                 _c("text", [_vm._v("IP归属：")]),
                 _c("text", [_vm._v(_vm._s(_vm.infor.province_name))]),

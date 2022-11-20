@@ -79,14 +79,14 @@ export const request = (params) => {
   let token = wx.getStorageSync("token");
   header["Authorization"] = "Basic " + Base64.encode(token + ":");
   let data = Object.assign(header, params);
-  return new Promise((resolev, reject) => {
+  return new Promise((resolve, reject) => {
     wx.request({
       ...data,
       header,
       url: params.url,
       success: (res) => {
         if (res.data.code == 200) {
-          resolev(res);
+          resolve(res);
         } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
           openPage("/pages/login/index");
         } else {
@@ -110,7 +110,7 @@ export const requestUpload = (path, params) => {
     title: "上传中",
     mask: true,
   });
-  return new Promise((resolev, reject) => {
+  return new Promise((resolve, reject) => {
     wx.uploadFile({
       url: "https://tapi.cupz.cn/v1/file/upload",
       filePath: path,
@@ -122,7 +122,7 @@ export const requestUpload = (path, params) => {
         //判断上传的是图片还是视频
         let data = JSON.parse(res.data);
         if (data.code == 200 && res.statusCode == 200) {
-          resolev(data);
+          resolve(data);
         } else {
           wx.showToast({
             title: "上传失败！",

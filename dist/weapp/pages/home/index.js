@@ -218,6 +218,11 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -328,6 +333,9 @@ component.options.__file = "src/pages/home/index.vue"
     };
   },
   methods: {
+    godetail: function godetail(oid, author_id) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
+    },
     navClick: function navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
@@ -502,7 +510,6 @@ component.options.__file = "src/pages/home/index.vue"
       wx.showLoading({
         title: "数据加载中..."
       });
-      this.loading = false;
       this.query("more");
     },
     query: function query(type) {
@@ -528,7 +535,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "i"])(params);
 
               case 3:
                 res = _context.sent;
@@ -577,7 +584,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "g"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "h"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -607,17 +614,19 @@ component.options.__file = "src/pages/home/index.vue"
                 }
 
                 if (res.data.data.items.length) {
-                  _context2.next = 16;
+                  _context2.next = 17;
                   break;
                 }
 
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+
+                _this2.$emit("closeMore");
+
                 return _context2.abrupt("return", false);
 
-              case 16:
+              case 17:
                 data = res.data.data.items;
                 _this2.list = _this2.list.concat(data);
-                _this2.loading = true;
 
                 _this2.$emit("closeMore");
 
@@ -682,24 +691,11 @@ component.options.__file = "src/pages/home/index.vue"
     }
   },
   created: function created() {
-    var _this4 = this;
-
     this.publicConfig({
       type: ["photo_filter"]
     });
     this.getCareer("");
-    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: function success(res) {
-        //导航高度
-        var statusBarHeight = res.statusBarHeight,
-            navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this4.height = navHeight; //导航栏总体高度
-      },
-      fail: function fail(err) {
-        console.log(err);
-      }
-    });
+    this.height = this.globalData.navHeight;
   }
 });
 
@@ -1103,16 +1099,9 @@ component.options.__file = "src/pages/home/index.vue"
   name: "home",
   data: function data() {
     return {
-      globalData: {
-        navHeight: 0,
-        navTop: 0,
-        navObj: 0,
-        navObjWid: 0
-      },
       headCurrent: 0,
       zuopinMore: false,
       zuopinRefresh: false,
-      // search: "",
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
@@ -1201,13 +1190,20 @@ component.options.__file = "src/pages/home/index.vue"
     closeRefresh: function closeRefresh() {
       console.log("刷新了--------");
       this.zuopinRefresh = false;
+      this.loading = true;
     },
     closeMore: function closeMore() {
       console.log("关闭了--------");
       this.zuopinMore = false;
+      this.loading = true;
     },
     headNavClick: function headNavClick(index) {
+      this.pageNum = 1;
       this.headCurrent = index;
+
+      if (index == 0) {
+        this.query("init");
+      }
     },
     //获取用户地理位置权限
     getPermission: function getPermission() {
@@ -1262,7 +1258,6 @@ component.options.__file = "src/pages/home/index.vue"
       });
     },
     godetail: function godetail(oid, author_id) {
-      console.log(oid, author_id);
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     screen: function screen() {
@@ -1326,7 +1321,6 @@ component.options.__file = "src/pages/home/index.vue"
       this.query("init");
     },
     bindRegionChange: function bindRegionChange(e) {
-      console.log(e);
       this.sizer_city = e.detail.value;
     },
     query: function query(type) {
@@ -1369,7 +1363,6 @@ component.options.__file = "src/pages/home/index.vue"
       if (this.headCurrent == 0) {
         this.query("more");
       } else {
-        // console.log("ldlldldll");
         this.zuopinMore = true;
       }
     },
@@ -1452,7 +1445,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "i"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1527,42 +1520,43 @@ component.options.__file = "src/pages/home/index.vue"
                 }
 
                 _this2.list = res.data.data.items;
-                _context2.next = 18;
+                _context2.next = 19;
                 break;
 
               case 11:
                 if (!(type == "more")) {
-                  _context2.next = 18;
+                  _context2.next = 19;
                   break;
                 }
 
                 if (res.data.data.items.length) {
-                  _context2.next = 15;
+                  _context2.next = 16;
                   break;
                 }
 
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                _this2.loading = true;
                 return _context2.abrupt("return", false);
 
-              case 15:
+              case 16:
                 data = res.data.data.items;
                 _this2.list = _this2.list.concat(data);
                 _this2.loading = true;
 
-              case 18:
-                _context2.next = 22;
+              case 19:
+                _context2.next = 23;
                 break;
 
-              case 20:
-                _context2.prev = 20;
+              case 21:
+                _context2.prev = 21;
                 _context2.t0 = _context2["catch"](0);
 
-              case 22:
+              case 23:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 20]]);
+        }, _callee2, null, [[0, 21]]);
       }))();
     }
   },
@@ -1579,7 +1573,7 @@ component.options.__file = "src/pages/home/index.vue"
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function onReachBottom() {
-    console.log("下拉加载更多");
+    console.log("下拉加载更多", this.loading);
     this.pageNum++;
 
     if (this.loading) {
@@ -1587,35 +1581,7 @@ component.options.__file = "src/pages/home/index.vue"
     }
   },
   created: function created() {
-    this.publicConfig({
-      type: ["invite_filter", "payment_type"]
-    });
-  },
-  mounted: function mounted() {
-    var _this3 = this;
-
-    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: function success(res) {
-        //导航高度
-        var statusBarHeight = res.statusBarHeight,
-            navTop = menuButtonObject.top,
-            navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
-            // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-        navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this3.globalData.navHeight = navHeight; //导航栏总体高度
-
-        _this3.globalData.navTop = navTop; //胶囊距离顶部距离
-
-        _this3.globalData.navObj = menuButtonObject.height; //胶囊高度
-
-        _this3.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-        // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
-      },
-      fail: function fail(err) {
-        console.log(err);
-      }
-    });
+    this.globalData = this.globalData;
     var arr = [[], []];
     _utils_city__WEBPACK_IMPORTED_MODULE_5__[/* city */ "a"].map(function (item) {
       arr[0].push(item);
@@ -1631,6 +1597,9 @@ component.options.__file = "src/pages/home/index.vue"
     });
     this.multiArray = arr;
     this.allCity = _utils_city__WEBPACK_IMPORTED_MODULE_5__[/* city */ "a"];
+    this.publicConfig({
+      type: ["invite_filter", "payment_type"]
+    });
   } // onShow: function onShow() {
   //   this.publicConfig({
   //     type: ["invite_filter", "payment_type"],
@@ -1740,81 +1709,93 @@ var render = function () {
           "view",
           { staticClass: "main_list" },
           _vm._l(_vm.list, function (item, index) {
-            return _c("view", { key: index, staticClass: "zuopin_box" }, [
-              item.file_type == "picture"
-                ? _c("image", {
-                    staticClass: "zuopin_img",
-                    attrs: { src: item.cover[0], mode: "aspectFill" },
-                  })
-                : _vm._e(),
-              item.file_type == "video"
-                ? _c("video", {
-                    staticClass: "list_video-width",
-                    attrs: {
-                      objectFit: "cover",
-                      poster: item.cover[0],
-                      src: item.video_cover && item.video_cover[0],
-                    },
-                  })
-                : _vm._e(),
-              _c("view", { staticClass: "zuopin_desc" }, [
-                _vm._v(_vm._s(item.summary)),
-              ]),
-              _c("view", { staticClass: "zuopin_info" }, [
-                _c("image", {
-                  staticClass: "avatar",
-                  attrs: {
-                    src: item.author.avatar
-                      ? item.author.avatar
-                      : "../../assets/images/avatar_default.png",
-                    mode: "aspectFill",
+            return _c(
+              "view",
+              {
+                key: index,
+                staticClass: "zuopin_box",
+                on: {
+                  tap: function ($event) {
+                    return _vm.godetail(item.oid, item.author_id)
                   },
-                }),
-                _c("view", [
-                  _c(
-                    "view",
-                    { staticClass: "list_p_title" },
-                    [
-                      _c("text", { staticClass: "list_name" }, [
-                        _vm._v(_vm._s(item.author.nickname)),
+                },
+              },
+              [
+                item.file_type == "picture"
+                  ? _c("image", {
+                      staticClass: "zuopin_img",
+                      attrs: { src: item.cover[0], mode: "aspectFill" },
+                    })
+                  : _vm._e(),
+                item.file_type == "video"
+                  ? _c("video", {
+                      staticClass: "list_video-width",
+                      attrs: {
+                        objectFit: "cover",
+                        poster: item.cover[0],
+                        src: item.video_cover && item.video_cover[0],
+                      },
+                    })
+                  : _vm._e(),
+                _c("view", { staticClass: "zuopin_desc" }, [
+                  _vm._v(_vm._s(item.summary)),
+                ]),
+                _c("view", { staticClass: "zuopin_info" }, [
+                  _c("image", {
+                    staticClass: "avatar",
+                    attrs: {
+                      src: item.author.avatar
+                        ? item.author.avatar
+                        : "../../assets/images/avatar_default.png",
+                      mode: "aspectFill",
+                    },
+                  }),
+                  _c("view", [
+                    _c(
+                      "view",
+                      { staticClass: "list_p_title" },
+                      [
+                        _c("text", { staticClass: "list_name" }, [
+                          _vm._v(_vm._s(item.author.nickname)),
+                        ]),
+                        _c("block", [
+                          item.author.sex == 1
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                },
+                              })
+                            : _vm._e(),
+                          item.author.sex == 0
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                },
+                              })
+                            : _vm._e(),
+                        ]),
+                      ],
+                      1
+                    ),
+                    _c("view", { staticClass: "list_p" }, [
+                      _c("text", [
+                        _vm._v(
+                          " " +
+                            _vm._s(item.author.career_list[0]) +
+                            " |" +
+                            _vm._s(item.author.province_name)
+                        ),
                       ]),
-                      _c("block", [
-                        item.author.sex == 1
-                          ? _c("image", {
-                              staticClass: "list_sex",
-                              attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                              },
-                            })
-                          : _vm._e(),
-                        item.author.sex == 0
-                          ? _c("image", {
-                              staticClass: "list_sex",
-                              attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                              },
-                            })
-                          : _vm._e(),
+                      _c("text", { staticClass: "read" }, [
+                        _vm._v(_vm._s(item.statistic.read_cnt)),
                       ]),
-                    ],
-                    1
-                  ),
-                  _c("view", { staticClass: "list_p" }, [
-                    _c("text", [
-                      _vm._v(
-                        " " +
-                          _vm._s(item.author.career_list[0]) +
-                          " |" +
-                          _vm._s(item.author.province_name)
-                      ),
-                    ]),
-                    _c("text", { staticClass: "read" }, [
-                      _vm._v(_vm._s(item.statistic.read_cnt)),
                     ]),
                   ]),
                 ]),
-              ]),
-            ])
+              ]
+            )
           }),
           0
         )
@@ -2767,6 +2748,30 @@ module.exports = __webpack_require__.p + "assets/images/activity.png";
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAe1BMVEUAAAD/VVf/VVf/V1f/TE3/VFf/VFj/VVn/VVj/Ulb+VFf/VVf/VFf9U1f/U1b/UGD/Rk//VFf/VFj/U1f/VFf/VFf/VFj+U1f/VFf/U1b/VFf/U1f/U1j/VVj/VFb/U1b/UVj/Ulb/VVf/VFf/VFb/VVf/VVn/VVX/VFcV8O5qAAAAKHRSTlMAbKwsB3jqRZw7+rj5n18QA/MZ1NDAqNrYHPjchk0/ZiQWx498aTkSX9hYKQAAATlJREFUOMu9lNlugzAQRU2KbZZASCB70iRdz/9/Ye0SZVphLPrS84Bs6YxsRp6rfpBe6kYJ5+RTBdnAq+zeoQt7BlrZzYDbwFnYOjmASR60QGIXv6y8LAhTlLncPyNGlt61NWAqHTj3VBlg3YsZzLVfLmGrHpTASqV6Dtn33ZxmlefoSsVz5YWvtk7M+zp9b6w5foh37cxFeTSUriEFJlUxUkOxUBYqFacCq2p/bBwNtUrg9BTnBInzJvA3r5vF6XrPfeIk/+k12WEzwWs2wDXmibZLR7zVmxWN437s3Jf7upkBW6eNeDvcRrRR73npxV5bqbAnYud/wWlhT0TRIv3LvdiKNvREbG9q4A3f/f6cBt791DmaOpcy57FxKyU3wkhuSA4FkRySXBuiJdcm5uT03JUcH1I/cvwLSfZGI9VzynUAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ "./src/assets/images/common/sizer.png":
+/*!********************************************!*\
+  !*** ./src/assets/images/common/sizer.png ***!
+  \********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAUUlEQVQoU2NkIALMmjVLm5GQupkzZ9YzMDDU4lUIVdQAMgynQmRFOBWiK8KqEJsiDIW4FKEoxKcIrpCQIrBCUGD+////IgMDAzOuMP3///9bAIjrIgU5KCwUAAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ "./src/assets/images/common/sizered.png":
+/*!**********************************************!*\
+  !*** ./src/assets/images/common/sizered.png ***!
+  \**********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAATElEQVQoU43QwQ2AIBBE0U8ohxqJtGgh1jAEYwwouzDnlzn8wMYkpbBykg4gu/BBpZ2ZsEcm/KIpnKEftNAAPfTCFbphiwmcQHSaXhWrcSf59InUrwAAAABJRU5ErkJggg=="
 
 /***/ }),
 

@@ -34,7 +34,12 @@
       </view>
     </view>
     <view class="main_list" v-if="list.length">
-      <view class="zuopin_box" v-for="(item, index) in list" :key="index">
+      <view
+        class="zuopin_box"
+        v-for="(item, index) in list"
+        :key="index"
+        @tap="godetail(item.oid, item.author_id)"
+      >
         <image
           v-if="item.file_type == 'picture'"
           class="zuopin_img"
@@ -167,7 +172,7 @@
 <script>
 import "./index.scss";
 import { publicConfig, photoList, getCareer } from "../../api/index";
-import { errortip } from "../../utils/util";
+import { errortip, openPage } from "../../utils/util";
 export default {
   name: "zuopinList",
   props: {
@@ -278,6 +283,14 @@ export default {
     };
   },
   methods: {
+    godetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/zuopin/zuopin_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
     navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
@@ -448,7 +461,6 @@ export default {
       wx.showLoading({
         title: "数据加载中...",
       });
-      this.loading = false;
       this.query("more");
     },
     query(type) {
@@ -500,11 +512,11 @@ export default {
         } else if (type == "more") {
           if (!res.data.data.items.length) {
             errortip("没有更多数据了～");
+            this.$emit("closeMore");
             return false;
           }
           let data = res.data.data.items;
           this.list = this.list.concat(data);
-          this.loading = true;
           this.$emit("closeMore");
         }
       } catch (error) {}
@@ -533,21 +545,7 @@ export default {
       type: ["photo_filter"],
     });
     this.getCareer("");
-    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: (res) => {
-        //导航高度
-        let statusBarHeight = res.statusBarHeight,
-          navHeight =
-            statusBarHeight +
-            menuButtonObject.height +
-            (menuButtonObject.top - statusBarHeight) * 2;
-        this.height = navHeight; //导航栏总体高度
-      },
-      fail(err) {
-        console.log(err);
-      },
-    });
+    this.height = this.globalData.navHeight;
   },
 };
 </script>
