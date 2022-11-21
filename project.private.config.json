@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "发布作品",
-                    "pathName": "packageAdd/pages/zuopin/add_zuopin/index",
+                    "name": "通告类型",
+                    "pathName": "packageTonggao/pages/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

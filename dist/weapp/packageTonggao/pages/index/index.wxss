@@ -1,0 +1,133 @@
+page {
+  background-color: #f7f7f7;
+  color: #333333;
+}
+
+.tonggao {
+  padding: 16rpx 30rpx;
+}
+
+.tonggao .hot-tg {
+  margin-bottom: 16rpx;
+}
+
+.tonggao .tg-title {
+  margin: 15rpx 0;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 32rpx;
+  padding-left: 20rpx;
+  border-left: 6rpx solid #fe5457;
+}
+
+.tonggao .hot-type {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tonggao .hot-item {
+  width: 152rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #ffffff;
+  margin-right: 20rpx;
+  text-align: center;
+  font-size: 30rpx;
+  border-radius: 4rpx;
+  -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+          box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+}
+
+.tonggao .select-type {
+  padding-top: 16rpx;
+}
+
+.tonggao .select-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.tonggao .select-item {
+  width: 325rpx;
+  padding: 16rpx 0;
+  background: #ffffff;
+  margin-right: 20rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4rpx;
+  -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+          box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+  margin-bottom: 16rpx;
+}
+
+.tonggao .select-item image {
+  width: 84rpx;
+  height: 84rpx;
+  margin: 0 30rpx;
+}
+
+.tonggao .select-item text {
+  font-size: 30rpx;
+}
+
+.tonggao .tonggao-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.tonggao .tonggao-mask .mask-box {
+  background: #ffffff;
+  padding: 30rpx;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 60rpx);
+  border-radius: 16rpx 16rpx 0 0;
+}
+
+.tonggao .tonggao-mask .mask-box .mask-title {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.tonggao .tonggao-mask .mask-box .mask-ct {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.tonggao .tonggao-mask .mask-box .mask-item {
+  width: 320rpx;
+  padding: 16rpx 0;
+  text-align: center;
+  border-radius: 4rpx;
+  border: 1rpx solid #e5e5e5;
+  margin-bottom: 26rpx;
+  margin-right: 20rpx;
+}
+
+.tonggao .tonggao-mask .mask-box .close {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 10rpx;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC") no-repeat;
+  background-size: 38rpx;
+}

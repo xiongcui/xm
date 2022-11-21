@@ -133,6 +133,11 @@ export default {
           // 跳转首页
           wx.switchTab({
             url: "/pages/home/index",
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            },
           });
         } else {
           // 未注册

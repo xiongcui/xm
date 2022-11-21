@@ -202,7 +202,12 @@ component.options.__file = "src/pages/login/index.vue"
                 } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
                   // 跳转首页
                   wx.switchTab({
-                    url: "/pages/home/index"
+                    url: "/pages/home/index",
+                    success: function success(e) {
+                      var page = getCurrentPages().pop();
+                      if (page == undefined || page == null) return;
+                      page.onLoad();
+                    }
                   });
                 } else {
                   // 未注册

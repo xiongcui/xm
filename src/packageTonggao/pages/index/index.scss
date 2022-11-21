@@ -1,0 +1,101 @@
+page {
+  background-color: #f7f7f7;
+  color: #333333;
+}
+.tonggao {
+  padding: 16px 30px;
+  .hot-tg {
+    margin-bottom: 16px;
+  }
+  .tg-title {
+    margin: 15px 0px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 32px;
+    padding-left: 20px;
+    border-left: 6px solid #fe5457;
+  }
+  .hot-type {
+    display: flex;
+  }
+  .hot-item {
+    width: 152px;
+    height: 80px;
+    line-height: 80px;
+    background: #ffffff;
+    margin-right: 20px;
+    text-align: center;
+    font-size: 30px;
+    border-radius: 4px;
+    box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.02);
+  }
+  .select-type {
+    padding-top: 16px;
+  }
+  .select-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .select-item {
+    width: 325px;
+    padding: 16px 0px;
+    background: #ffffff;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    box-shadow: 0 -1px 8px 0 rgba(0, 0, 0, 0.02);
+    margin-bottom: 16px;
+    image {
+      width: 84px;
+      height: 84px;
+      margin: 0px 30px;
+    }
+    text {
+      font-size: 30px;
+    }
+  }
+  .tonggao-mask {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    .mask-box {
+      background: #ffffff;
+      padding: 30px;
+      position: absolute;
+      bottom: 0px;
+      width: calc(100% - 60px);
+      border-radius: 16px 16px 0px 0px;
+      .mask-title {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .mask-ct {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .mask-item {
+        width: 320px;
+        padding: 16px 0px;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid #e5e5e5;
+        margin-bottom: 26px;
+        margin-right: 20px;
+      }
+      .close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 16px;
+        right: 10px;
+        background: url("../../../assets/images/common/x_icon.png") no-repeat;
+        background-size: 38px;
+      }
+    }
+  }
+}

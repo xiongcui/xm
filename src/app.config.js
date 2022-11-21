@@ -82,6 +82,11 @@ export default defineAppConfig({
         "pages/moka/editvideo/index",
       ],
     },
+    {
+      root: "packageTonggao/",
+      name: "packtonggao",
+      pages: ["pages/index/index"],
+    },
   ],
   permission: {
     "scope.userLocation": {
