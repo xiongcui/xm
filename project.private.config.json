@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "通告类型",
-                    "pathName": "packageTonggao/pages/index/index",
+                    "name": "通用发布",
+                    "pathName": "packageTonggao/pages/add/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

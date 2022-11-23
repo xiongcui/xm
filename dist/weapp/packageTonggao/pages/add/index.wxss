@@ -1,0 +1,88 @@
+page {
+  background: #f7f7f7;
+}
+
+.add-tonggao {
+  padding: 0 16rpx 100rpx 16rpx;
+}
+
+.add-tonggao .tonggao-box {
+  margin-top: 16rpx;
+  background: #ffffff;
+}
+
+.add-tonggao .tonggao-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx 30rpx;
+  height: 66rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  color: #333333;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-tonggao .tonggao-rt {
+  color: #808080;
+}
+
+.add-tonggao .tonggao-select-item {
+  text-align: right;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII=") right center no-repeat;
+  background-size: 12rpx;
+  padding-right: 24rpx;
+}
+
+.add-tonggao .tonggao-dete {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-tonggao .tonggao-dete .tonggao-name {
+  text-align: right;
+}
+
+.add-tonggao .tonggao-dete .tonggao-split {
+  margin: 0 16rpx;
+}
+
+.add-tonggao .tonggao-dete .long-term {
+  margin-right: 16rpx;
+}
+
+.add-tonggao .tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-tonggao .tag_item {
+  background-color: #f1f1f1;
+  border: 1rpx solid #f1f1f1;
+  border-radius: 8rpx;
+  color: #333;
+  display: inline-block;
+  font-size: 26rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  margin-left: 30rpx;
+  padding: 0 30rpx;
+}
+
+.add-tonggao .tag_itemed {
+  background-color: #ff5355;
+  border: 1rpx solid #ff5355;
+  color: #fff;
+}

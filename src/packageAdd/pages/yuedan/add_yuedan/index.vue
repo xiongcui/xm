@@ -666,7 +666,7 @@ export default {
             item.checked = false;
             arr.push(item);
           }
-          if (item.type == "notice_label") {
+          if (item.type == "notice_sticker") {
             item.checked = false;
             arr1.push(item);
           }
@@ -708,7 +708,7 @@ export default {
   created() {
     this.publicConfig({
       type: [
-        "notice_label",
+        "notice_sticker",
         "payment_type",
         "style_label",
         "payment_unit",

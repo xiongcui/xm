@@ -1,0 +1,64 @@
+page {
+  background: #f7f7f7;
+}
+.add-tonggao {
+  padding: 0px 16px 100px 16px;
+  .tonggao-box {
+    margin-top: 16px;
+    background: #ffffff;
+  }
+  .tonggao-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 30px;
+    height: 66px;
+    border-bottom: 1px solid #eeeeee;
+    color: #333333;
+    align-items: center;
+  }
+  .tonggao-rt {
+    color: #808080;
+  }
+  .tonggao-select-item {
+    text-align: right;
+    background: url("../../../assets/images/right.png") right center no-repeat;
+    background-size: 12px;
+    padding-right: 24px;
+  }
+  .tonggao-dete {
+    display: flex;
+    align-items: center;
+    .tonggao-name {
+      text-align: right;
+    }
+    .tonggao-split {
+      margin: 0px 16px;
+    }
+    .long-term {
+      margin-right: 16px;
+    }
+  }
+  .tags {
+    display: flex;
+    align-items: center;
+  }
+
+  .tag_item {
+    background-color: #f1f1f1;
+    border: 1rpx solid #f1f1f1;
+    border-radius: 8rpx;
+    color: #333;
+    display: inline-block;
+    font-size: 26rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    margin-left: 30px;
+    padding: 0 30rpx;
+  }
+
+  .tag_itemed {
+    background-color: #ff5355;
+    border: 1rpx solid #ff5355;
+    color: #fff;
+  }
+}

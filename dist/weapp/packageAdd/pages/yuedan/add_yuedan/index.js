@@ -757,7 +757,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
                     arr.push(item);
                   }
 
-                  if (item.type == "notice_label") {
+                  if (item.type == "notice_sticker") {
                     item.checked = false;
                     arr1.push(item);
                   }
@@ -837,7 +837,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
   },
   created: function created() {
     this.publicConfig({
-      type: ["notice_label", "payment_type", "style_label", "payment_unit", "security_type"]
+      type: ["notice_sticker", "payment_type", "style_label", "payment_unit", "security_type"]
     });
   },
   onLoad: function onLoad(options) {
