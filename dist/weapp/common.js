@@ -416,6 +416,18 @@ module.exports = __webpack_require__.p + "assets/images/nv.png";
 
 /***/ }),
 
+/***/ "./src/assets/images/position.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/position.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/position.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/upload-img.png":
 /*!******************************************!*\
   !*** ./src/assets/images/upload-img.png ***!

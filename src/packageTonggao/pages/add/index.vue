@@ -44,7 +44,7 @@
           <view class="tonggao-dete">
             <input
               class="tonggao-name"
-              placeholder="清选择报名截止日期"
+              placeholder="请选择报名截止日期"
               v-model="date"
             />
             <text class="tonggao-split">|</text>
@@ -72,18 +72,180 @@
     <view class="tonggao-box">
       <view class="tonggao-item">
         <view class="tonggao-left"> 通告费用 </view>
-        <view class="tonggao-rt"> 发型创作 </view>
+        <view class="tonggao-rt">
+          <picker
+            @change="costChange"
+            :value="costIndex"
+            :range="costList"
+            :range-key="'value'"
+            class="tonggao-select"
+          >
+            <view class="tonggao-select-item" v-if="cost">{{ cost }}</view>
+            <view class="tonggao-select-item" v-else>请选择</view>
+          </picker>
+        </view>
+      </view>
+      <view class="tonggao-item">
+        <view class="tonggao-left"> 收费金额 </view>
+        <view class="tonggao-rt">
+          <block class="payment-amount" v-if="!checked1">
+            <input placeholder="请输入" class="amount1" v-model="amount" />
+            <picker
+              @change="companyChange"
+              :value="companyIndex"
+              :range="companyList"
+              :range-key="'value'"
+            >
+              <view class="tonggao-select-item company" v-if="company"
+                >元{{ company }}</view
+              >
+              <view class="tonggao-select-item company" v-else>元/单位</view>
+            </picker>
+            <text class="tonggao-split">|</text>
+            <block>
+              <checkbox
+                :value="payment_range"
+                :checked="checked1"
+                class="payment_range"
+                @tap="checkClick"
+              />
+              <text class="payment_range_text">区间</text>
+            </block>
+          </block>
+          <block class="payment-amount" v-if="checked1">
+            <input
+              placeholder="最小金额"
+              class="min-amount"
+              v-model="minAmount"
+            />
+            <text class="split">-</text>
+            <input
+              placeholder="最大金额"
+              class="max-amount"
+              v-model="maxAmount"
+            />
+            <picker
+              @change="companyChange"
+              :value="companyIndex"
+              :range="companyList"
+              :range-key="'value'"
+            >
+              <view class="tonggao-select-item company" v-if="company"
+                >元{{ company }}</view
+              >
+              <view class="tonggao-select-item company" v-else>元/单位</view>
+            </picker>
+            <text class="tonggao-split">|</text>
+            <block>
+              <checkbox
+                :value="payment_range"
+                :checked="checked1"
+                class="payment_range"
+                @tap="checkClick"
+              />
+              <text class="payment_range_text">区间</text>
+            </block>
+          </block>
+        </view>
+      </view>
+      <view class="tonggao-item">
+        <view class="tonggao-left"> 招募人数 </view>
+        <view class="tonggao-rt">
+          <input
+            class="tonggao-name"
+            placeholder="请输入招募人数"
+            v-model="date"
+          />
+          <text class="tonggao-split">|</text>
+          <text class="long-term">不限</text>
+          <checkbox :checked="checked2" @tap="checkClick2" class="checked2" />
+        </view>
       </view>
     </view>
+    <view class="tonggao-box">
+      <view class="tonggao-item">
+        <input
+          placeholder="给通告取个名字会有更多报名哦～"
+          v-model="name"
+          class="tonggao-width"
+        />
+      </view>
+      <view class="tonggao-item">
+        <textarea
+          class="tonggao-width"
+          auto-height
+          placeholder="您需要什么样的合作？比如：模特形象、模特风格、模特经验、合作费用等。配图更佳，但不得含有联系方式，否则不予通过。"
+          v-model="desc"
+        />
+      </view>
+      <view class="tonggao-item">
+        <text>时间</text>
+        <input
+          placeholder="您期望的合作时间（选填）"
+          class="tonggao-input"
+          v-model="time"
+        />
+      </view>
+      <view class="tonggao-item">
+        <text>地点</text>
+        <input
+          placeholder="您期望的合作地点（选填）"
+          class="tonggao-input"
+          v-model="place"
+        />
+      </view>
+      <view class="tonggao-item">
+        <view class="tonggao-upload">
+          <view class="tonggao-upload-title">上传照片</view>
+          <view class="tonggao-upload-list">
+            <block v-if="imgList.length">
+              <view
+                class="tonggao-upload-img"
+                v-for="(item, index) in imgList"
+                :key="index"
+              >
+                <image
+                  :src="item"
+                  class="upload-width"
+                  mode="aspectFill"
+                  @tap="previewImage(item, imgList)"
+                ></image>
+                <text class="upload-close" @tap="uploadImgClose(index)"></text>
+              </view>
+            </block>
+            <view class="tonggao-upload-img" @tap="chooseImage">
+              <image
+                src="../../../assets/images/upload-img.png"
+                class="upload-img"
+                mode="aspectFit"
+              ></image>
+              <view>
+                <text class="upload-txt">上传照片</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <cover-view
+      class="subbtn_bottom_block"
+      :class="isIphoneX ? 'fix-iphonex-button' : ''"
+    >
+      <cover-view class="subbtn_bottom">
+        <button @tap="submit">发布</button>
+      </cover-view>
+    </cover-view>
   </view>
 </template>
 
 <script>
+import { Base64 } from "js-Base64";
 import "./index.scss";
 export default {
   name: "addtonggao",
   data() {
     return {
+      isIphoneX: false,
       identity: "",
       identityIndex: "",
       identityList: [],
@@ -108,16 +270,42 @@ export default {
           ispick: false,
         },
       ],
+      cost: "",
+      costIndex: "",
+      costList: [],
+      company: "",
+      companyList: [],
+      companyIndex: 0,
+      checked1: false,
+      payment_range: 0,
+      amount: "",
+      minAmount: "",
+      maxAmount: "",
+      checked2: false,
+      name: "",
+      time: "",
+      place: "",
+      imgList: [],
     };
   },
   methods: {
+    uploadImgClose(index) {
+      this.imgList.splice(index, 1);
+    },
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
     identityChange() {},
     bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
     },
     checkClick() {
-      this.checked = !this.checked;
+      this.checked1 = !this.checked1;
     },
     select_tag(row) {
       //   let result = this.identity.find((ele) => ele === row.role);
@@ -133,6 +321,78 @@ export default {
       //   }
       row.ispick = !row.ispick;
     },
+    costChange() {},
+    companyChange(e) {
+      this.company = this.companyList[e.detail.value].value;
+      this.companyIndex = e.detail.value;
+    },
+    checkClick2() {
+      this.checked2 = !this.checked2;
+    },
+    chooseImage() {
+      if (this.imgList.length >= 9) {
+        wx.showToast({
+          title: "最多上传9张图！",
+          icon: "none",
+        });
+        return false;
+      }
+      let _this = this;
+      wx.chooseMedia({
+        count: 9 - this.imgList.length,
+        mediaType: ["image"],
+        sourceType: ["album", "camera"],
+        maxDuration: 30,
+        camera: "back",
+        success(res) {
+          wx.showLoading({
+            title: "正在上传中",
+          });
+          let arr = res.tempFiles;
+          var imgInfo = {};
+          arr.map(function (v, i) {
+            v["progress"] = 0;
+            imgInfo = v;
+            _this.upImgs(imgInfo);
+          });
+        },
+      });
+    },
+    upImgs(dataInfo) {
+      let header = {};
+      let token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      wx.showLoading({
+        title: "上传中",
+        mask: true,
+      });
+      wx.uploadFile({
+        url: "https://tapi.cupz.cn/v1/file/upload",
+        filePath: dataInfo.tempFilePath,
+        formData: {
+          scr_type: "invite",
+        },
+        name: "file",
+        header,
+        success: (res) => {
+          wx.hideLoading();
+          //判断上传的是图片还是视频
+          let data = JSON.parse(res.data);
+          if (data.code == 200) {
+            this.imgList.push(data.data.file1);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none",
+            });
+          }
+        },
+      });
+    },
+    submit() {},
+  },
+  created() {
+    this.isIphoneX = this.globalData.isIphoneX;
   },
 };
 </script>

@@ -2,22 +2,27 @@ page {
   background: #f7f7f7;
 }
 .add-tonggao {
-  padding: 0px 16px 100px 16px;
+  padding-bottom: 120px;
   .tonggao-box {
-    margin-top: 16px;
+    margin: 16px 16px 0px 16px;
     background: #ffffff;
   }
   .tonggao-item {
     display: flex;
     justify-content: space-between;
-    padding: 16px 30px;
-    height: 66px;
+    padding: 16px 16px;
+    min-height: 66px;
     border-bottom: 1px solid #eeeeee;
     color: #333333;
     align-items: center;
   }
+  .tonggao-left {
+    font-size: 32px;
+  }
   .tonggao-rt {
     color: #808080;
+    display: flex;
+    align-items: center;
   }
   .tonggao-select-item {
     text-align: right;
@@ -28,15 +33,18 @@ page {
   .tonggao-dete {
     display: flex;
     align-items: center;
-    .tonggao-name {
-      text-align: right;
-    }
-    .tonggao-split {
-      margin: 0px 16px;
-    }
     .long-term {
       margin-right: 16px;
     }
+  }
+  .tonggao-name {
+    text-align: right;
+  }
+  .tonggao-split {
+    margin: 0px 16px;
+  }
+  .split {
+    margin: 0px 6px;
   }
   .tags {
     display: flex;
@@ -60,5 +68,92 @@ page {
     background-color: #ff5355;
     border: 1rpx solid #ff5355;
     color: #fff;
+  }
+
+  .payment-amount {
+    display: flex;
+  }
+  .amount,
+  .min-amount,
+  .max-amount {
+    border-bottom: 1px solid #e5e5e5;
+    width: 110px;
+    text-align: center;
+    font-size: 26px;
+  }
+  .amount1 {
+    border-bottom: 1px solid #e5e5e5;
+    width: 210px;
+    text-align: center;
+    font-size: 26px;
+  }
+  .company,
+  .payment_range,
+  .payment_range_text {
+    font-size: 26px;
+  }
+  .min-amount {
+    margin-right: 4px;
+  }
+  .max-amount {
+    margin-left: 4px;
+  }
+  .payment_range_text {
+    display: flex;
+    align-items: center;
+  }
+  .company {
+    margin-left: 10px;
+    color: #333333;
+  }
+  .checked2 {
+    margin-left: 16px;
+  }
+  .tonggao-width {
+    width: 100%;
+  }
+  .tonggao-input {
+    width: 380px;
+  }
+  .tonggao-upload {
+    padding: 0px 0px 28px 0px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tonggao-upload-img {
+    width: 158px;
+    height: 158px;
+    margin-right: 10px;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .upload-width {
+    width: 100%;
+    height: 100%;
+  }
+  .upload-video-width {
+    width: 400px;
+  }
+  .upload-img {
+    width: 40px;
+    height: 36px;
+  }
+  .upload-txt {
+    color: #c7c7c7;
+    font-size: 26px;
+  }
+  .tonggao-upload-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .tonggao-upload-title {
+    display: block;
+    width: 100%;
+    margin-bottom: 16px;
   }
 }

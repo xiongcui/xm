@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "作品详情",
-                    "pathName": "packageAdd/pages/zuopin/zuopin_detail/index",
+                    "name": "探店推广",
+                    "pathName": "packageTonggao/pages/shop/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

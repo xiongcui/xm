@@ -982,18 +982,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/images/position.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/position.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/position.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/time.png":
 /*!************************************!*\
   !*** ./src/assets/images/time.png ***!

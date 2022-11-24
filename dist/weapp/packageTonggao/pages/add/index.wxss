@@ -3,11 +3,11 @@ page {
 }
 
 .add-tonggao {
-  padding: 0 16rpx 100rpx 16rpx;
+  padding-bottom: 120rpx;
 }
 
 .add-tonggao .tonggao-box {
-  margin-top: 16rpx;
+  margin: 16rpx 16rpx 0 16rpx;
   background: #ffffff;
 }
 
@@ -18,8 +18,8 @@ page {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 16rpx 30rpx;
-  height: 66rpx;
+  padding: 16rpx 16rpx;
+  min-height: 66rpx;
   border-bottom: 1rpx solid #eeeeee;
   color: #333333;
   -webkit-align-items: center;
@@ -27,8 +27,18 @@ page {
           align-items: center;
 }
 
+.add-tonggao .tonggao-left {
+  font-size: 32rpx;
+}
+
 .add-tonggao .tonggao-rt {
   color: #808080;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .add-tonggao .tonggao-select-item {
@@ -47,16 +57,20 @@ page {
           align-items: center;
 }
 
-.add-tonggao .tonggao-dete .tonggao-name {
+.add-tonggao .tonggao-dete .long-term {
+  margin-right: 16rpx;
+}
+
+.add-tonggao .tonggao-name {
   text-align: right;
 }
 
-.add-tonggao .tonggao-dete .tonggao-split {
+.add-tonggao .tonggao-split {
   margin: 0 16rpx;
 }
 
-.add-tonggao .tonggao-dete .long-term {
-  margin-right: 16rpx;
+.add-tonggao .split {
+  margin: 0 6rpx;
 }
 
 .add-tonggao .tags {
@@ -85,4 +99,131 @@ page {
   background-color: #ff5355;
   border: 1rpx solid #ff5355;
   color: #fff;
+}
+
+.add-tonggao .payment-amount {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-tonggao .amount,
+.add-tonggao .min-amount,
+.add-tonggao .max-amount {
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 110rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.add-tonggao .amount1 {
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 210rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.add-tonggao .company,
+.add-tonggao .payment_range,
+.add-tonggao .payment_range_text {
+  font-size: 26rpx;
+}
+
+.add-tonggao .min-amount {
+  margin-right: 4rpx;
+}
+
+.add-tonggao .max-amount {
+  margin-left: 4rpx;
+}
+
+.add-tonggao .payment_range_text {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-tonggao .company {
+  margin-left: 10rpx;
+  color: #333333;
+}
+
+.add-tonggao .checked2 {
+  margin-left: 16rpx;
+}
+
+.add-tonggao .tonggao-width {
+  width: 100%;
+}
+
+.add-tonggao .tonggao-input {
+  width: 380rpx;
+}
+
+.add-tonggao .tonggao-upload {
+  padding: 0 0 28rpx 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.add-tonggao .tonggao-upload-img {
+  width: 158rpx;
+  height: 158rpx;
+  margin-right: 10rpx;
+  background-color: #f7f7f7;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 16rpx;
+  position: relative;
+}
+
+.add-tonggao .upload-width {
+  width: 100%;
+  height: 100%;
+}
+
+.add-tonggao .upload-video-width {
+  width: 400rpx;
+}
+
+.add-tonggao .upload-img {
+  width: 40rpx;
+  height: 36rpx;
+}
+
+.add-tonggao .upload-txt {
+  color: #c7c7c7;
+  font-size: 26rpx;
+}
+
+.add-tonggao .tonggao-upload-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.add-tonggao .tonggao-upload-title {
+  display: block;
+  width: 100%;
+  margin-bottom: 16rpx;
 }

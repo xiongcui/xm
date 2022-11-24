@@ -1,0 +1,76 @@
+page {
+  background: #f7f7f7;
+}
+.shop {
+  padding-bottom: 120px;
+  .shop-box {
+    margin: 16px 16px 0px 16px;
+    background: #ffffff;
+  }
+  .shop-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 16px;
+    min-height: 66px;
+    border-bottom: 1px solid #eeeeee;
+    color: #333333;
+    align-items: center;
+  }
+  .shop-left {
+    font-size: 32px;
+  }
+  .shop-rt {
+    color: #808080;
+    display: flex;
+    align-items: center;
+  }
+  .shop-select-item {
+    text-align: right;
+    background: url("../../../assets/images/right.png") right center no-repeat;
+    background-size: 12px;
+    padding-right: 24px;
+  }
+  .shop-input {
+    width: 500px;
+    text-align: right;
+  }
+  .shop-select-item {
+    text-align: right;
+    background: url("../../../assets/images/right.png") right center no-repeat;
+    background-size: 12px;
+    padding-right: 24px;
+  }
+  .shop-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .shop-item-right image {
+    margin-left: 16px;
+    height: 22rpx;
+    width: 12rpx;
+  }
+  .tags {
+    display: flex;
+    align-items: center;
+  }
+
+  .tag_item {
+    background-color: #f1f1f1;
+    border: 1rpx solid #f1f1f1;
+    border-radius: 8rpx;
+    color: #333;
+    display: inline-block;
+    font-size: 26rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    margin-right: 30px;
+    padding: 0 30rpx;
+  }
+
+  .tag_itemed {
+    background-color: #ff5355;
+    border: 1rpx solid #ff5355;
+    color: #fff;
+  }
+}

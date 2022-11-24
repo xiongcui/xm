@@ -1,0 +1,101 @@
+page {
+  background: #f7f7f7;
+}
+
+.shop {
+  padding-bottom: 120rpx;
+}
+
+.shop .shop-box {
+  margin: 16rpx 16rpx 0 16rpx;
+  background: #ffffff;
+}
+
+.shop .shop-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx 16rpx;
+  min-height: 66rpx;
+  border-bottom: 1rpx solid #eeeeee;
+  color: #333333;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.shop .shop-left {
+  font-size: 32rpx;
+}
+
+.shop .shop-rt {
+  color: #808080;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.shop .shop-select-item {
+  text-align: right;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII=") right center no-repeat;
+  background-size: 12rpx;
+  padding-right: 24rpx;
+}
+
+.shop .shop-input {
+  width: 500rpx;
+  text-align: right;
+}
+
+.shop .shop-select-item {
+  text-align: right;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII=") right center no-repeat;
+  background-size: 12rpx;
+  padding-right: 24rpx;
+}
+
+.shop .shop-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.shop .shop-item-right image {
+  margin-left: 16rpx;
+  height: 22rpx;
+  width: 12rpx;
+}
+
+.shop .tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.shop .tag_item {
+  background-color: #f1f1f1;
+  border: 1rpx solid #f1f1f1;
+  border-radius: 8rpx;
+  color: #333;
+  display: inline-block;
+  font-size: 26rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  margin-right: 30rpx;
+  padding: 0 30rpx;
+}
+
+.shop .tag_itemed {
+  background-color: #ff5355;
+  border: 1rpx solid #ff5355;
+  color: #fff;
+}
