@@ -62,7 +62,6 @@
           <view class="ub-f1 item_input">
             <picker
               @change="dateChange"
-              end="2020-09-01"
               mode="date"
               start="1960-09-01"
               value="2000-01-01"

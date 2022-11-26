@@ -187,7 +187,6 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 //
 //
 //
-//
 
 
 
@@ -271,7 +270,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "o"])(params);
 
               case 3:
                 res = _context.sent;
@@ -312,7 +311,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "l"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "n"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -346,7 +345,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "r"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "t"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -541,12 +540,7 @@ var render = function () {
           _c(
             "picker",
             {
-              attrs: {
-                end: "2020-10-01",
-                mode: "date",
-                start: "1960-06-01",
-                value: _vm.birthday,
-              },
+              attrs: { mode: "date", start: "1960-06-01", value: _vm.birthday },
               on: { change: _vm.birthdayChange },
             },
             [

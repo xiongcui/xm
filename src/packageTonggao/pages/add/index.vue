@@ -3,7 +3,7 @@
     <view class="tonggao-box">
       <view class="tonggao-item">
         <view class="tonggao-left"> 通告类型 </view>
-        <view class="tonggao-rt"> 发型创作 </view>
+        <view class="tonggao-rt">{{ type }}</view>
       </view>
       <view class="tonggao-item">
         <view class="tonggao-left"> 面向身份 </view>
@@ -12,7 +12,7 @@
             @change="identityChange"
             :value="identityIndex"
             :range="identityList"
-            :range-key="'value'"
+            :range-key="'name'"
             class="tonggao-select"
           >
             <view class="tonggao-select-item" v-if="identity">{{
@@ -46,6 +46,7 @@
               class="tonggao-name"
               placeholder="请选择报名截止日期"
               v-model="date"
+              @blur="dateBlur"
             />
             <text class="tonggao-split">|</text>
             <text class="long-term">长期</text>
@@ -85,7 +86,10 @@
           </picker>
         </view>
       </view>
-      <view class="tonggao-item">
+      <view
+        class="tonggao-item"
+        v-if="costList.length && costList[Number(this.costIndex)].key == 400"
+      >
         <view class="tonggao-left"> 收费金额 </view>
         <view class="tonggao-rt">
           <block class="payment-amount" v-if="!checked1">
@@ -107,7 +111,7 @@
                 :value="payment_range"
                 :checked="checked1"
                 class="payment_range"
-                @tap="checkClick"
+                @tap="checkClick1"
               />
               <text class="payment_range_text">区间</text>
             </block>
@@ -141,7 +145,7 @@
                 :value="payment_range"
                 :checked="checked1"
                 class="payment_range"
-                @tap="checkClick"
+                @tap="checkClick1"
               />
               <text class="payment_range_text">区间</text>
             </block>
@@ -154,7 +158,8 @@
           <input
             class="tonggao-name"
             placeholder="请输入招募人数"
-            v-model="date"
+            v-model="recruitNum"
+            @blur="recruitBlur"
           />
           <text class="tonggao-split">|</text>
           <text class="long-term">不限</text>
@@ -174,7 +179,7 @@
         <textarea
           class="tonggao-width"
           auto-height
-          placeholder="您需要什么样的合作？比如：模特形象、模特风格、模特经验、合作费用等。配图更佳，但不得含有联系方式，否则不予通过。"
+          placeholder="您需要什么样的合作? 比如：模特形象、模特风格、模特经验、合作费用等。配图更佳，但不得含有联系方式，否则不予通过。"
           v-model="desc"
         />
       </view>
@@ -241,11 +246,16 @@
 <script>
 import { Base64 } from "js-Base64";
 import "./index.scss";
+import { noticeTemplate, submitNotice } from "../../../api/index.js";
+import { errortip } from "../../../utils/util";
 export default {
   name: "addtonggao",
   data() {
     return {
       isIphoneX: false,
+      type: "",
+      key: "",
+      code: "",
       identity: "",
       identityIndex: "",
       identityList: [],
@@ -253,11 +263,13 @@ export default {
       regionList: [],
       date: "",
       checked: false,
+      desc: "",
+      recruitNum: "",
       sexData: [
         {
           name: "男",
           value: 1,
-          ispick: true,
+          ispick: false,
         },
         {
           name: "女",
@@ -267,7 +279,7 @@ export default {
         {
           name: "不限",
           value: 100,
-          ispick: false,
+          ispick: true,
         },
       ],
       cost: "",
@@ -299,35 +311,56 @@ export default {
         urls: urls, // 预览的地址url
       });
     },
-    identityChange() {},
+    identityChange(e) {
+      this.identityIndex = e.detail.value;
+      this.identity = this.identityList[this.identityIndex].name;
+    },
     bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
     },
     checkClick() {
+      this.checked = !this.checked;
+      if (this.checked) {
+        this.date = "";
+      }
+    },
+    checkClick1() {
       this.checked1 = !this.checked1;
     },
+    dateBlur() {
+      if (this.date) {
+        this.checked = false;
+      } else {
+        this.checked = true;
+      }
+    },
+    recruitBlur() {
+      if (this.recruitNum) {
+        this.checked2 = false;
+      } else {
+        this.checked2 = true;
+      }
+    },
     select_tag(row) {
-      //   let result = this.identity.find((ele) => ele === row.role);
-      //   if (!result) {
-      //     if (this.identity.length > 2) {
-      //       errortip("最多选择3个身份！");
-      //       return false;
-      //     }
-      //     this.identity.push(row.role);
-      //   } else {
-      //     const index = this.identity.findIndex((ele) => ele === row.role);
-      //     this.identity.splice(index, 1);
-      //   }
+      this.sexData.map((item) => {
+        item.ispick = false;
+      });
       row.ispick = !row.ispick;
     },
-    costChange() {},
+    costChange(e) {
+      this.cost = this.costList[e.detail.value].value;
+      this.costIndex = e.detail.value;
+    },
     companyChange(e) {
       this.company = this.companyList[e.detail.value].value;
       this.companyIndex = e.detail.value;
     },
     checkClick2() {
       this.checked2 = !this.checked2;
+      if (this.checked2) {
+        this.recruitNum = "";
+      }
     },
     chooseImage() {
       if (this.imgList.length >= 9) {
@@ -370,7 +403,7 @@ export default {
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "invite",
+          scr_type: "notice",
         },
         name: "file",
         header,
@@ -389,10 +422,136 @@ export default {
         },
       });
     },
-    submit() {},
+    submit() {
+      if (!this.identity) {
+        errortip("请选择身份！");
+        return false;
+      }
+      if (!this.select_city) {
+        errortip("请选择面向地区！");
+        return false;
+      }
+      if (!this.date && !this.checked) {
+        errortip("请填写截止日期！");
+        return false;
+      }
+      if (!this.cost) {
+        errortip("请填写通告费用！");
+        return false;
+      }
+      if (this.costList[this.costIndex].key == 400) {
+        if (!this.checked1 && !this.amount) {
+          errortip("请填写收费金额！");
+          return false;
+        }
+        if (
+          (this.checked1 && !this.minAmount) ||
+          (this.checked1 && !this.maxAmount)
+        ) {
+          errortip("请填写收费金额区间！");
+          return false;
+        }
+        if (
+          (!this.checked1 && !this.company) ||
+          (this.checked1 && !this.company)
+        ) {
+          errortip("请选择单位！");
+          return false;
+        }
+      }
+      if (!this.recruitNum && !this.checked2) {
+        errortip("请填写招募人数！");
+        return false;
+      }
+      if (!this.name) {
+        errortip("请填写通告名称！");
+        return false;
+      }
+      if (!this.desc) {
+        errortip("请填写通告描述！");
+        return false;
+      }
+      if (!this.imgList.length) {
+        errortip("请上传图片！");
+        return false;
+      }
+      let sexData = this.sexData.find((item) => {
+        return item.ispick;
+      });
+      let params = {
+        type: 20,
+        first_code: this.code,
+        second_code: this.key,
+        second_name: this.type,
+        face_cid: this.identityList[Number(this.identityIndex)].cid,
+        face_career: this.identityList[Number(this.identityIndex)].name,
+        addressName: this.select_city,
+        address: this.regionList,
+        no_limit_deadline: this.checked ? 1 : 0, // 是否长期（长期:1，此时deadline_date为空，短期:0,此时deadline_date填日期）
+        deadline_date: this.checked ? "" : this.date,
+        face_sex: sexData.value,
+        payment_type: this.costList[this.costIndex].key,
+        payment_name: this.cost,
+        payment_amount: 0,
+        payment_min_amount: 0,
+        payment_max_amount: 0,
+        payment_unit: "",
+        payment_range: this.checked1 ? 1 : 0,
+        no_limit_number: this.checked2 ? 1 : 0, // 不限人数(不限制：1)
+        recruit_number: this.checked2 ? 0 : this.recruitNum,
+        title: this.name,
+        content: this.desc,
+        expect_time: this.time,
+        expect_locale: this.place,
+        scr_type: "notice",
+        file_type: "picture",
+        cover: this.imgList,
+      };
+      if (this.costList[this.costIndex].key == 400) {
+        if (this.checked1) {
+          params.payment_min_amount = Number(this.minAmount);
+          params.payment_max_amount = Number(this.maxAmount);
+        } else {
+          params.payment_amount = Number(this.amount);
+        }
+        params.payment_unit = this.company;
+      }
+      console.log(params);
+      this.submitNotice(params);
+    },
+    async noticeTemplate(params) {
+      try {
+        let res = await noticeTemplate(params);
+        if (res.data.data.career.length == 1) {
+          this.identity = res.data.data.career[0].name;
+        }
+        this.identityList = res.data.data.career;
+        this.costList = res.data.data.payment_type;
+        this.companyList = res.data.data.payment_unit;
+      } catch (error) {}
+    },
+    async submitNotice(params) {
+      try {
+        let res = await submitNotice(params);
+        errortip("提交成功！");
+      } catch (error) {}
+    },
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
+  },
+  onLoad: function (options) {
+    this.type = options.type;
+    this.key = options.key;
+    this.code = options.code;
+    if (this.type) {
+      wx.setNavigationBarTitle({
+        title: "发布" + options.type + "通告",
+      });
+      this.noticeTemplate({
+        second_code: options.key,
+      });
+    }
   },
 };
 </script>

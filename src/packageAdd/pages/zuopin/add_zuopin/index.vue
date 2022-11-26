@@ -496,17 +496,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.wx-switch-input {
-  width: 80rpx !important;
-  height: 48rpx !important;
-}
-.wx-switch-input::before {
-  width: 75rpx !important;
-  height: 44rpx !important;
-}
-.wx-switch-input::after {
-  width: 40rpx !important;
-  height: 40rpx !important;
-}
-</style>
+<style lang="scss"></style>

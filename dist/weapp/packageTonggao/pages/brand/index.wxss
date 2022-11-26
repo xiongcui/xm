@@ -2,16 +2,16 @@ page {
   background: #f7f7f7;
 }
 
-.add-tonggao {
+.brand {
   padding-bottom: 120rpx;
 }
 
-.add-tonggao .tonggao-box {
+.brand .brand-box {
   margin: 16rpx 16rpx 0 16rpx;
   background: #ffffff;
 }
 
-.add-tonggao .tonggao-item {
+.brand .brand-item {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -27,11 +27,11 @@ page {
           align-items: center;
 }
 
-.add-tonggao .tonggao-left {
+.brand .brand-left {
   font-size: 32rpx;
 }
 
-.add-tonggao .tonggao-rt {
+.brand .brand-rt {
   color: #808080;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,39 +41,38 @@ page {
           align-items: center;
 }
 
-.add-tonggao .tonggao-select-item {
+.brand .brand-select-item {
   text-align: right;
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII=") right center no-repeat;
   background-size: 12rpx;
   padding-right: 24rpx;
 }
 
-.add-tonggao .tonggao-dete {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.add-tonggao .tonggao-dete .long-term {
-  margin-right: 16rpx;
-}
-
-.add-tonggao .tonggao-name {
+.brand .brand-input {
+  width: 500rpx;
   text-align: right;
 }
 
-.add-tonggao .tonggao-split {
-  margin: 0 16rpx;
+.brand .brand-select-item {
+  text-align: right;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII=") right center no-repeat;
+  background-size: 12rpx;
+  padding-right: 24rpx;
 }
 
-.add-tonggao .split {
-  margin: 0 6rpx;
+.brand .brand-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
 }
 
-.add-tonggao .tags {
+.brand .brand-item-right image {
+  margin-left: 16rpx;
+  height: 22rpx;
+  width: 12rpx;
+}
+
+.brand .tags {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -82,7 +81,7 @@ page {
           align-items: center;
 }
 
-.add-tonggao .tag_item {
+.brand .tag_item {
   background-color: #f1f1f1;
   border: 1rpx solid #f1f1f1;
   border-radius: 8rpx;
@@ -91,80 +90,104 @@ page {
   font-size: 26rpx;
   height: 54rpx;
   line-height: 54rpx;
-  margin-left: 30rpx;
+  margin-right: 30rpx;
   padding: 0 30rpx;
 }
 
-.add-tonggao .tag_itemed {
+.brand .tag_itemed {
   background-color: #ff5355;
   border: 1rpx solid #ff5355;
   color: #fff;
 }
 
-.add-tonggao .payment-amount {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.add-tonggao .amount,
-.add-tonggao .min-amount,
-.add-tonggao .max-amount {
-  border-bottom: 1rpx solid #e5e5e5;
-  width: 110rpx;
-  text-align: center;
-  font-size: 26rpx;
-}
-
-.add-tonggao .amount1 {
-  border-bottom: 1rpx solid #e5e5e5;
-  width: 210rpx;
-  text-align: center;
-  font-size: 26rpx;
-}
-
-.add-tonggao .company,
-.add-tonggao .payment_range,
-.add-tonggao .payment_range_text {
-  font-size: 26rpx;
-}
-
-.add-tonggao .min-amount {
-  margin-right: 4rpx;
-}
-
-.add-tonggao .max-amount {
-  margin-left: 4rpx;
-}
-
-.add-tonggao .payment_range_text {
+.brand .need,
+.brand .no-need {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 16rpx;
+  font-size: 30rpx;
 }
 
-.add-tonggao .company {
+.brand .need text,
+.brand .no-need text {
+  margin-right: 16rpx;
+}
+
+.brand .need .active,
+.brand .no-need .active {
+  color: #333333;
+}
+
+.brand .payment-amount {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.brand .amount,
+.brand .min-amount,
+.brand .max-amount,
+.brand .min-fans,
+.brand .max-fans {
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 130rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.brand .amount1 {
+  border-bottom: 1rpx solid #e5e5e5;
+  width: 210rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.brand .company,
+.brand .payment_range,
+.brand .payment_range_text {
+  font-size: 26rpx;
+}
+
+.brand .min-amount {
+  margin-right: 4rpx;
+}
+
+.brand .max-amount {
+  margin-left: 4rpx;
+}
+
+.brand .payment_range_text {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 16rpx;
+}
+
+.brand .company {
   margin-left: 10rpx;
   color: #333333;
 }
 
-.add-tonggao .checked2 {
-  margin-left: 16rpx;
+.brand .tonggao-split {
+  margin: 0 16rpx;
 }
 
-.add-tonggao .tonggao-width {
+.brand .yuan {
+  font-size: 26rpx;
+}
+
+.brand .tonggao-width {
   width: 100%;
 }
 
-.add-tonggao .tonggao-input {
-  width: 380rpx;
-  text-align: right;
-}
-
-.add-tonggao .tonggao-upload {
+.brand .tonggao-upload {
   padding: 0 0 28rpx 0;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -174,7 +197,7 @@ page {
           flex-wrap: wrap;
 }
 
-.add-tonggao .tonggao-upload-img {
+.brand .tonggao-upload-img {
   width: 158rpx;
   height: 158rpx;
   margin-right: 10rpx;
@@ -195,26 +218,26 @@ page {
   position: relative;
 }
 
-.add-tonggao .upload-width {
+.brand .upload-width {
   width: 100%;
   height: 100%;
 }
 
-.add-tonggao .upload-video-width {
+.brand .upload-video-width {
   width: 400rpx;
 }
 
-.add-tonggao .upload-img {
+.brand .upload-img {
   width: 40rpx;
   height: 36rpx;
 }
 
-.add-tonggao .upload-txt {
+.brand .upload-txt {
   color: #c7c7c7;
   font-size: 26rpx;
 }
 
-.add-tonggao .tonggao-upload-list {
+.brand .tonggao-upload-list {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -223,7 +246,7 @@ page {
           flex-wrap: wrap;
 }
 
-.add-tonggao .tonggao-upload-title {
+.brand .tonggao-upload-title {
   display: block;
   width: 100%;
   margin-bottom: 16rpx;

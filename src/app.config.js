@@ -85,7 +85,12 @@ export default defineAppConfig({
     {
       root: "packageTonggao/",
       name: "packtonggao",
-      pages: ["pages/index/index", "pages/add/index", "pages/shop/index"],
+      pages: [
+        "pages/index/index",
+        "pages/add/index",
+        "pages/shop/index",
+        "pages/brand/index",
+      ],
     },
   ],
   permission: {

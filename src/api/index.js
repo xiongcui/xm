@@ -173,7 +173,6 @@ export const subUserSticker = (data) => {
     data,
   });
 };
-
 // 创建作品
 export const subNotePhoto = (data) => {
   return request({
@@ -182,7 +181,6 @@ export const subNotePhoto = (data) => {
     data,
   });
 };
-
 // 作品列表
 export const photoList = (data) => {
   return request({
@@ -191,11 +189,26 @@ export const photoList = (data) => {
     data,
   });
 };
-
 // 作品详情
 export const photoInfo = (data) => {
   return request({
     url: baseUrl + "/v1/note/photo/info",
+    method: "post",
+    data,
+  });
+};
+// 通告详情
+export const noticeTemplate = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/notice/template",
+    method: "post",
+    data,
+  });
+};
+// 提交通告
+export const submitNotice = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/notice",
     method: "post",
     data,
   });

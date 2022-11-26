@@ -1,74 +1,59 @@
 <template>
-  <view class="shop">
-    <view class="shop-box">
-      <view class="shop-item">
-        <view class="shop-left"> 任务标题 </view>
-        <view class="shop-rt">
+  <view class="brand">
+    <view class="brand-box">
+      <view class="brand-item">
+        <view class="brand-left"> 任务标题 </view>
+        <view class="brand-rt">
           <input
-            class="shop-input"
+            class="brand-input"
             placeholder="请输入标题(包含店铺名称)"
             v-model="title"
           />
         </view>
       </view>
-      <view class="shop-item">
-        <view class="shop-left"> 推广平台</view>
-        <view class="shop-rt">
+      <view class="brand-item">
+        <view class="brand-left"> 推广平台</view>
+        <view class="brand-rt">
           <picker
             @change="platformChange"
             :value="platformIndex"
             :range="platformList"
             :range-key="'value'"
-            class="shop-select"
+            class="brand-select"
           >
-            <view class="shop-select-item" v-if="platform">{{ platform }}</view>
-            <view class="shop-select-item" v-else>请选择</view>
+            <view class="brand-select-item" v-if="platform">{{
+              platform
+            }}</view>
+            <view class="brand-select-item" v-else>请选择</view>
           </picker>
         </view>
       </view>
-    </view>
-    <view class="shop-box">
-      <view class="shop-item">
-        <view class="shop-left"> 店铺名称 </view>
-        <view class="shop-rt">
+      <view class="brand-item">
+        <view class="brand-left"> 产品名称 </view>
+        <view class="brand-rt">
           <input
-            class="shop-input"
-            placeholder="请输入店铺名称"
-            v-model="name"
+            class="brand-input"
+            placeholder="请输入产品名称"
+            v-model="productName"
           />
         </view>
       </view>
-      <view class="shop-item">
-        <view class="shop-left"> 店铺地址 </view>
-        <view class="shop-rt" @tap="onChooseLocation">
-          <image class="shop-icon" src="../../../assets/images/position.png">
-          </image>
-          <text v-if="localtion"> {{ localtion }}</text>
-          <text v-else> 请选择店铺地址</text>
-          <view class="shop-item-right">
-            <image
-              mode="aspectFit"
-              src="../../../assets/images/right.png"
-            ></image>
-          </view>
-        </view>
-      </view>
-      <view class="shop-item">
-        <view class="shop-left"> 门牌号码 </view>
-        <view class="shop-rt">
-          <input
-            class="shop-input"
-            placeholder="请输入详细地址，如x单元x层x室"
-            v-model="doorplate"
+      <view class="brand-item">
+        <view class="brand-left"> 品牌匿名 </view>
+        <view class="brand-rt">
+          <switch
+            :checked="anonymous"
+            @change="anonymousChange"
+            color="#fe5457"
           />
         </view>
       </view>
     </view>
-    <view class="shop-box">
-      <view class="shop-item">
-        <view class="shop-left"> 任务奖励 </view>
+    <view class="brand-box">
+      <view class="brand-item">
+        <view class="brand-left"> 任务奖励 </view>
       </view>
-      <view class="shop-item">
+      <view class="brand-item">
         <view class="tags">
           <text
             @tap="select_tag(item)"
@@ -80,9 +65,9 @@
           >
         </view>
       </view>
-      <view class="shop-item" v-if="taskIndex == 1 || taskIndex == 3">
-        <view class="shop-left"> 人均稿费 </view>
-        <view class="shop-rt">
+      <view class="brand-item" v-if="taskIndex == 1 || taskIndex == 3">
+        <view class="brand-left"> 人均稿费 </view>
+        <view class="brand-rt">
           <block class="payment-amount" v-if="checked1">
             <input placeholder="请输入" class="amount1" v-model="amount" />
             <text class="yuan">元</text>
@@ -90,6 +75,7 @@
             <block>
               <text class="payment_range_text">额定</text>
               <checkbox
+                :value="payment_range"
                 :checked="checked1"
                 class="payment_range"
                 @tap="checkClick1"
@@ -113,6 +99,7 @@
             <block>
               <text class="payment_range_text">额定</text>
               <checkbox
+                :value="payment_range"
                 :checked="checked1"
                 class="payment_range"
                 @tap="checkClick1"
@@ -121,40 +108,40 @@
           </block>
         </view>
       </view>
-      <view class="shop-item" v-if="taskIndex == 2 || taskIndex == 3">
-        <view class="shop-left"> 赠送产品 </view>
-        <view class="shop-rt">
+      <view class="brand-item" v-if="taskIndex == 2 || taskIndex == 3">
+        <view class="brand-left"> 赠送产品 </view>
+        <view class="brand-rt">
           <input
-            class="shop-input"
+            class="brand-input"
             placeholder="请输入赠送产品"
             v-model="product"
           />
         </view>
       </view>
-      <view class="shop-item" v-if="taskIndex == 2 || taskIndex == 3">
-        <view class="shop-left"> 赠品价值 </view>
-        <view class="shop-rt">
+      <view class="brand-item" v-if="taskIndex == 2 || taskIndex == 3">
+        <view class="brand-left"> 赠品价值 </view>
+        <view class="brand-rt">
           <input
-            class="shop-input"
+            class="brand-input"
             placeholder="请输入赠送产品价值"
             v-model="giftsValue"
           />
           <text style="color: #333333; margin-left: 6px">元</text>
         </view>
       </view>
-      <view class="shop-item">
-        <view class="shop-left"> 招募人数 </view>
-        <view class="shop-rt">
+      <view class="brand-item">
+        <view class="brand-left"> 招募人数 </view>
+        <view class="brand-rt">
           <input
-            class="shop-input"
+            class="brand-input"
             placeholder="请输入招募人数"
             v-model="recruitNum"
           />
         </view>
       </view>
-      <view class="shop-item">
-        <view class="shop-left"> 需要红人自我报价 </view>
-        <view class="shop-rt">
+      <view class="brand-item">
+        <view class="brand-left"> 需要红人自我报价 </view>
+        <view class="brand-rt">
           <view class="need">
             <text :class="checked ? 'active' : ''">需要</text>
             <checkbox :checked="checked" @tap="checkClick" class="checked" />
@@ -166,10 +153,10 @@
         </view>
       </view>
     </view>
-    <view class="shop-box">
-      <view class="shop-item">
-        <view class="shop-left"> 粉丝要求 </view>
-        <view class="shop-rt">
+    <view class="brand-box">
+      <view class="brand-item">
+        <view class="brand-left"> 粉丝要求 </view>
+        <view class="brand-rt">
           <block class="payment-amount">
             <input
               placeholder="最低粉丝数"
@@ -187,42 +174,55 @@
             <block>
               <text class="payment_range_text">不限</text>
               <checkbox
-                :checked="checked2"
+                :checked="checked3"
                 class="payment_range"
-                @tap="checkClick2"
+                @tap="checkClick3"
                 @blur="fansChange"
               />
             </block>
           </block>
         </view>
       </view>
-      <view class="shop-item">
-        <view class="shop-left"> 截止日期 </view>
-        <view class="shop-rt">
+      <view class="brand-item">
+        <view class="brand-left"> 截止日期 </view>
+        <view class="brand-rt">
           <picker
             @change="dateChange"
             mode="date"
             start="1960-09-01"
             value="2000-01-01"
-            class="shop-select"
+            class="brand-select"
           >
-            <view class="shop-select-item" v-if="date">{{ date }}</view>
-            <view class="shop-select-item" v-else>请选择</view>
+            <view class="brand-select-item" v-if="date">{{ date }}</view>
+            <view class="brand-select-item" v-else>请选择</view>
           </picker>
         </view>
       </view>
-      <view class="shop-item">
-        <view class="shop-left"> 任务描述 </view>
+      <view class="brand-item">
+        <view class="brand-left"> 收件地址 </view>
+        <view class="brand-rt">
+          <view class="need">
+            <text :class="checked4 ? 'active' : ''">需要</text>
+            <checkbox :checked="checked4" @tap="checkClick4" class="checked" />
+          </view>
+          <view class="no-need">
+            <text :class="!checked4 ? 'active' : ''">不需要</text>
+            <checkbox :checked="!checked4" @tap="checkClick4" class="checked" />
+          </view>
+        </view>
       </view>
-      <view class="shop-item">
+      <view class="brand-item">
+        <view class="brand-left"> 任务描述 </view>
+      </view>
+      <view class="brand-item">
         <textarea
           class="tonggao-width"
           auto-height
-          placeholder="您需要什么样的合作？请介绍您的店铺、产品、合作费用、合作要求等，但不得含有联系方式，否则不予通过。"
+          placeholder="您需要什么样的合作？请介绍您的产品特征、产品价格、合作费用、合作要求等，但不得含有联系方式，否则不予通过。"
           v-model="desc"
         />
       </view>
-      <view class="shop-item">
+      <view class="brand-item">
         <view class="tonggao-upload">
           <view class="tonggao-upload-title">上传照片</view>
           <view class="tonggao-upload-list">
@@ -248,7 +248,7 @@
                 mode="aspectFit"
               ></image>
               <view>
-                <text class="upload-txt">上传店铺照片</text>
+                <text class="upload-txt">上传产品照片</text>
               </view>
             </view>
           </view>
@@ -267,37 +267,37 @@
 </template>
 
 <script>
-import { Base64 } from "js-Base64";
-import { errortip } from "../../../utils/util";
-import { publicConfig, submitNotice } from "../../../api/index.js";
 import "./index.scss";
+import { Base64 } from "js-Base64";
+import { publicConfig, submitNotice } from "../../../api/index.js";
+import { errortip } from "../../../utils/util";
 export default {
-  name: "shop",
+  name: "brand",
   data() {
     return {
       isIphoneX: false,
-      name: "",
       title: "",
-      doorplate: "",
       platform: "",
       platformIndex: "",
       platformList: [],
-      localtion: "",
-      recruitNum: "",
-      product: "",
-      giftsValue: "",
-      desc: "",
+      productName: "",
+      taskIndex: "",
       checked: false,
       checked1: false,
-      checked2: true,
+      checked3: true,
+      checked4: false,
       amount: "",
       minAmount: "",
       maxAmount: "",
       payment_range: "",
       minFans: "",
       maxFans: "",
-      taskIndex: "",
+      product: "",
+      giftsValue: "",
+      recruitNum: "",
+      anonymous: false,
       date: "",
+      desc: "",
       imgList: [],
       taskData: [
         {
@@ -316,32 +316,12 @@ export default {
           ispick: false,
         },
       ],
-      locale_address: {},
     };
   },
   methods: {
-    uploadImgClose(index) {
-      this.imgList.splice(index, 1);
-    },
-    previewImage(src, urls) {
-      // 微信预览图片的方法
-      wx.previewImage({
-        current: src, // 图片的地址url
-        urls: urls, // 预览的地址url
-      });
-    },
     platformChange(e) {
       this.platform = this.platformList[e.detail.value].value;
       this.platformIndex = e.detail.value;
-    },
-    onChooseLocation() {
-      wx.chooseLocation({
-        success: (res) => {
-          this.localtion = res.address;
-          this.locale_address = res;
-          //   console.log(res, "--------------", this.localtion);
-        },
-      });
     },
     select_tag(row) {
       this.taskIndex = row.value;
@@ -356,22 +336,24 @@ export default {
     checkClick1() {
       this.checked1 = !this.checked1;
     },
-    checkClick2() {
-      this.checked2 = !this.checked2;
-      if (this.checked2) {
-        this.minFans = "";
-        this.maxFans = "";
-      }
+    checkClick3() {
+      this.checked3 = !this.checked3;
     },
-    fansChange(e) {
-      if (this.minFans || this.maxFans) {
-        this.checked2 = false;
-      } else {
-        this.checked2 = true;
-      }
+    checkClick4() {
+      this.checked4 = !this.checked4;
+    },
+    anonymousChange() {
+      this.anonymous = !this.anonymous;
     },
     dateChange(e) {
       this.date = e.detail.value;
+    },
+    fansChange(e) {
+      if (this.minFans || this.maxFans) {
+        this.checked3 = false;
+      } else {
+        this.checked3 = true;
+      }
     },
     chooseImage() {
       if (this.imgList.length >= 9) {
@@ -442,16 +424,8 @@ export default {
         errortip("请选择推广平台！");
         return false;
       }
-      if (!this.name) {
-        errortip("请填写店铺名称！");
-        return false;
-      }
-      if (!this.localtion) {
-        errortip("请填写店铺地址！");
-        return false;
-      }
-      if (!this.doorplate) {
-        errortip("请填写门牌号码！");
+      if (!this.productName) {
+        errortip("请填写产品名称！");
         return false;
       }
       if (!this.taskIndex) {
@@ -500,16 +474,15 @@ export default {
       let params = {
         type: 20,
         first_code: "celebrity_spread",
-        second_code: "CS8001",
-        second_name: "探店推广",
+        second_code: "CS8002",
+        second_name: "品牌种草",
         title: this.title,
         spread_platform_code: this.platformList[Number(this.platformIndex)].key,
         spread_platform_name:
           this.platformList[Number(this.platformIndex)].value,
-        store_name: this.name,
-        store_address: this.localtion,
-        store_locale_address: this.locale_address,
-        store_doorplate: this.doorplate,
+        product_brand: this.productName,
+        is_hide_brand: this.anonymous ? 1 : 0,
+        is_deliver_address: this.checked4 ? 1 : 0, //收货地址（1:需要; 0:不需要）
         task_reward_type: this.taskIndex + "00",
         task_reward_name: this.taskData[Number(this.taskIndex - 1)].name,
         payment_range: this.checked1 ? 0 : 1, // 费用区间(1:区间；0非区间)
@@ -522,7 +495,7 @@ export default {
         no_limit_number: 0, // 不限人数(不限制：1)
         recruit_number: this.recruitNum, //招募人数
         is_quoted_price: this.checked ? 1 : 0, // 自报价格(1:是，0:否)
-        no_limit_fans: this.checked2 ? 1 : 0, // 不限粉丝(1:不限；0:限制)
+        no_limit_fans: this.checked3 ? 1 : 0, // 不限粉丝(1:不限；0:限制)
         fans_min_number: Number(this.minFans),
         fans_max_number: Number(this.maxFans),
         no_limit_deadline: 0, // 是否长期（长期:1，此时deadline_date为空，短期:0,此时deadline_date填日期）

@@ -50,7 +50,6 @@
       </picker>
       <picker
         @change="birthdayChange"
-        end="2020-10-01"
         mode="date"
         start="1960-06-01"
         :value="birthday"

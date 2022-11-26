@@ -47,9 +47,15 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/add/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/add/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index.js */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
 //
 //
 //
@@ -290,6 +296,13 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -297,6 +310,9 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
   data: function data() {
     return {
       isIphoneX: false,
+      type: "",
+      key: "",
+      code: "",
       identity: "",
       identityIndex: "",
       identityList: [],
@@ -304,10 +320,12 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
       regionList: [],
       date: "",
       checked: false,
+      desc: "",
+      recruitNum: "",
       sexData: [{
         name: "男",
         value: 1,
-        ispick: true
+        ispick: false
       }, {
         name: "女",
         value: 0,
@@ -315,7 +333,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
       }, {
         name: "不限",
         value: 100,
-        ispick: false
+        ispick: true
       }],
       cost: "",
       costIndex: "",
@@ -348,35 +366,58 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 
       });
     },
-    identityChange: function identityChange() {},
+    identityChange: function identityChange(e) {
+      this.identityIndex = e.detail.value;
+      this.identity = this.identityList[this.identityIndex].name;
+    },
     bindRegionChange: function bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
     },
     checkClick: function checkClick() {
+      this.checked = !this.checked;
+
+      if (this.checked) {
+        this.date = "";
+      }
+    },
+    checkClick1: function checkClick1() {
       this.checked1 = !this.checked1;
     },
+    dateBlur: function dateBlur() {
+      if (this.date) {
+        this.checked = false;
+      } else {
+        this.checked = true;
+      }
+    },
+    recruitBlur: function recruitBlur() {
+      if (this.recruitNum) {
+        this.checked2 = false;
+      } else {
+        this.checked2 = true;
+      }
+    },
     select_tag: function select_tag(row) {
-      //   let result = this.identity.find((ele) => ele === row.role);
-      //   if (!result) {
-      //     if (this.identity.length > 2) {
-      //       errortip("最多选择3个身份！");
-      //       return false;
-      //     }
-      //     this.identity.push(row.role);
-      //   } else {
-      //     const index = this.identity.findIndex((ele) => ele === row.role);
-      //     this.identity.splice(index, 1);
-      //   }
+      this.sexData.map(function (item) {
+        item.ispick = false;
+      });
       row.ispick = !row.ispick;
     },
-    costChange: function costChange() {},
+    costChange: function costChange(e) {
+      this.cost = this.costList[e.detail.value].value;
+      this.costIndex = e.detail.value;
+    },
     companyChange: function companyChange(e) {
       this.company = this.companyList[e.detail.value].value;
       this.companyIndex = e.detail.value;
     },
     checkClick2: function checkClick2() {
       this.checked2 = !this.checked2;
+
+      if (this.checked2) {
+        this.recruitNum = "";
+      }
     },
     chooseImage: function chooseImage() {
       if (this.imgList.length >= 9) {
@@ -415,7 +456,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_0__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_2__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -424,7 +465,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
         url: "https://tapi.cupz.cn/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "invite"
+          scr_type: "notice"
         },
         name: "file",
         header: header,
@@ -444,10 +485,197 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
         }
       });
     },
-    submit: function submit() {}
+    submit: function submit() {
+      if (!this.identity) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择身份！");
+        return false;
+      }
+
+      if (!this.select_city) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择面向地区！");
+        return false;
+      }
+
+      if (!this.date && !this.checked) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写截止日期！");
+        return false;
+      }
+
+      if (!this.cost) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写通告费用！");
+        return false;
+      }
+
+      if (this.costList[this.costIndex].key == 400) {
+        if (!this.checked1 && !this.amount) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写收费金额！");
+          return false;
+        }
+
+        if (this.checked1 && !this.minAmount || this.checked1 && !this.maxAmount) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写收费金额区间！");
+          return false;
+        }
+
+        if (!this.checked1 && !this.company || this.checked1 && !this.company) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择单位！");
+          return false;
+        }
+      }
+
+      if (!this.recruitNum && !this.checked2) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写招募人数！");
+        return false;
+      }
+
+      if (!this.name) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写通告名称！");
+        return false;
+      }
+
+      if (!this.desc) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写通告描述！");
+        return false;
+      }
+
+      if (!this.imgList.length) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请上传图片！");
+        return false;
+      }
+
+      var sexData = this.sexData.find(function (item) {
+        return item.ispick;
+      });
+      var params = {
+        type: 20,
+        first_code: this.code,
+        second_code: this.key,
+        second_name: this.type,
+        face_cid: this.identityList[Number(this.identityIndex)].cid,
+        face_career: this.identityList[Number(this.identityIndex)].name,
+        addressName: this.select_city,
+        address: this.regionList,
+        no_limit_deadline: this.checked ? 1 : 0,
+        // 是否长期（长期:1，此时deadline_date为空，短期:0,此时deadline_date填日期）
+        deadline_date: this.checked ? "" : this.date,
+        face_sex: sexData.value,
+        payment_type: this.costList[this.costIndex].key,
+        payment_name: this.cost,
+        payment_amount: 0,
+        payment_min_amount: 0,
+        payment_max_amount: 0,
+        payment_unit: "",
+        payment_range: this.checked1 ? 1 : 0,
+        no_limit_number: this.checked2 ? 1 : 0,
+        // 不限人数(不限制：1)
+        recruit_number: this.checked2 ? 0 : this.recruitNum,
+        title: this.name,
+        content: this.desc,
+        expect_time: this.time,
+        expect_locale: this.place,
+        scr_type: "notice",
+        file_type: "picture",
+        cover: this.imgList
+      };
+
+      if (this.costList[this.costIndex].key == 400) {
+        if (this.checked1) {
+          params.payment_min_amount = Number(this.minAmount);
+          params.payment_max_amount = Number(this.maxAmount);
+        } else {
+          params.payment_amount = Number(this.amount);
+        }
+
+        params.payment_unit = this.company;
+      }
+
+      console.log(params);
+      this.submitNotice(params);
+    },
+    noticeTemplate: function noticeTemplate(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticeTemplate */ "g"])(params);
+
+              case 3:
+                res = _context.sent;
+
+                if (res.data.data.career.length == 1) {
+                  _this3.identity = res.data.data.career[0].name;
+                }
+
+                _this3.identityList = res.data.data.career;
+                _this3.costList = res.data.data.payment_type;
+                _this3.companyList = res.data.data.payment_unit;
+                _context.next = 12;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](0);
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 10]]);
+      }))();
+    },
+    submitNotice: function submitNotice(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "m"])(params);
+
+              case 3:
+                res = _context2.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("提交成功！");
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    }
   },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
+  },
+  onLoad: function onLoad(options) {
+    this.type = options.type;
+    this.key = options.key;
+    this.code = options.code;
+
+    if (this.type) {
+      wx.setNavigationBarTitle({
+        title: "发布" + options.type + "通告"
+      });
+      this.noticeTemplate({
+        second_code: options.key
+      });
+    }
   }
 });
 
@@ -475,7 +703,7 @@ var render = function () {
       _c("view", { staticClass: "tonggao-box" }, [
         _c("view", { staticClass: "tonggao-item" }, [
           _c("view", { staticClass: "tonggao-left" }, [_vm._v(" 通告类型 ")]),
-          _c("view", { staticClass: "tonggao-rt" }, [_vm._v(" 发型创作 ")]),
+          _c("view", { staticClass: "tonggao-rt" }, [_vm._v(_vm._s(_vm.type))]),
         ]),
         _c("view", { staticClass: "tonggao-item" }, [
           _c("view", { staticClass: "tonggao-left" }, [_vm._v(" 面向身份 ")]),
@@ -490,7 +718,7 @@ var render = function () {
                   attrs: {
                     value: _vm.identityIndex,
                     range: _vm.identityList,
-                    "range-key": "value",
+                    "range-key": "name",
                   },
                   on: { change: _vm.identityChange },
                 },
@@ -555,6 +783,7 @@ var render = function () {
                   attrs: { placeholder: "请选择报名截止日期" },
                   domProps: { value: _vm.date },
                   on: {
+                    blur: _vm.dateBlur,
                     input: function ($event) {
                       if ($event.target.composing) {
                         return
@@ -633,186 +862,206 @@ var render = function () {
             1
           ),
         ]),
-        _c("view", { staticClass: "tonggao-item" }, [
-          _c("view", { staticClass: "tonggao-left" }, [_vm._v(" 收费金额 ")]),
-          _c(
-            "view",
-            { staticClass: "tonggao-rt" },
-            [
-              !_vm.checked1
-                ? _c(
-                    "block",
-                    { staticClass: "payment-amount" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.amount,
-                            expression: "amount",
-                          },
-                        ],
-                        staticClass: "amount1",
-                        attrs: { placeholder: "请输入" },
-                        domProps: { value: _vm.amount },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.amount = $event.target.value
-                          },
-                        },
-                      }),
-                      _c(
-                        "picker",
-                        {
-                          attrs: {
-                            value: _vm.companyIndex,
-                            range: _vm.companyList,
-                            "range-key": "value",
-                          },
-                          on: { change: _vm.companyChange },
-                        },
-                        [
-                          _vm.company
-                            ? _c(
-                                "view",
-                                { staticClass: "tonggao-select-item company" },
-                                [_vm._v("元" + _vm._s(_vm.company))]
-                              )
-                            : _c(
-                                "view",
-                                { staticClass: "tonggao-select-item company" },
-                                [_vm._v("元/单位")]
-                              ),
-                        ]
-                      ),
-                      _c("text", { staticClass: "tonggao-split" }, [
-                        _vm._v("|"),
-                      ]),
-                      _c(
+        _vm.costList.length && _vm.costList[Number(this.costIndex)].key == 400
+          ? _c("view", { staticClass: "tonggao-item" }, [
+              _c("view", { staticClass: "tonggao-left" }, [
+                _vm._v(" 收费金额 "),
+              ]),
+              _c(
+                "view",
+                { staticClass: "tonggao-rt" },
+                [
+                  !_vm.checked1
+                    ? _c(
                         "block",
+                        { staticClass: "payment-amount" },
                         [
-                          _c("checkbox", {
-                            staticClass: "payment_range",
-                            attrs: {
-                              value: _vm.payment_range,
-                              checked: _vm.checked1,
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.amount,
+                                expression: "amount",
+                              },
+                            ],
+                            staticClass: "amount1",
+                            attrs: { placeholder: "请输入" },
+                            domProps: { value: _vm.amount },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.amount = $event.target.value
+                              },
                             },
-                            on: { tap: _vm.checkClick },
                           }),
-                          _c("text", { staticClass: "payment_range_text" }, [
-                            _vm._v("区间"),
+                          _c(
+                            "picker",
+                            {
+                              attrs: {
+                                value: _vm.companyIndex,
+                                range: _vm.companyList,
+                                "range-key": "value",
+                              },
+                              on: { change: _vm.companyChange },
+                            },
+                            [
+                              _vm.company
+                                ? _c(
+                                    "view",
+                                    {
+                                      staticClass:
+                                        "tonggao-select-item company",
+                                    },
+                                    [_vm._v("元" + _vm._s(_vm.company))]
+                                  )
+                                : _c(
+                                    "view",
+                                    {
+                                      staticClass:
+                                        "tonggao-select-item company",
+                                    },
+                                    [_vm._v("元/单位")]
+                                  ),
+                            ]
+                          ),
+                          _c("text", { staticClass: "tonggao-split" }, [
+                            _vm._v("|"),
                           ]),
+                          _c(
+                            "block",
+                            [
+                              _c("checkbox", {
+                                staticClass: "payment_range",
+                                attrs: {
+                                  value: _vm.payment_range,
+                                  checked: _vm.checked1,
+                                },
+                                on: { tap: _vm.checkClick1 },
+                              }),
+                              _c(
+                                "text",
+                                { staticClass: "payment_range_text" },
+                                [_vm._v("区间")]
+                              ),
+                            ],
+                            1
+                          ),
                         ],
                         1
-                      ),
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm.checked1
-                ? _c(
-                    "block",
-                    { staticClass: "payment-amount" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.minAmount,
-                            expression: "minAmount",
-                          },
-                        ],
-                        staticClass: "min-amount",
-                        attrs: { placeholder: "最小金额" },
-                        domProps: { value: _vm.minAmount },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.minAmount = $event.target.value
-                          },
-                        },
-                      }),
-                      _c("text", { staticClass: "split" }, [_vm._v("-")]),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.maxAmount,
-                            expression: "maxAmount",
-                          },
-                        ],
-                        staticClass: "max-amount",
-                        attrs: { placeholder: "最大金额" },
-                        domProps: { value: _vm.maxAmount },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.maxAmount = $event.target.value
-                          },
-                        },
-                      }),
-                      _c(
-                        "picker",
-                        {
-                          attrs: {
-                            value: _vm.companyIndex,
-                            range: _vm.companyList,
-                            "range-key": "value",
-                          },
-                          on: { change: _vm.companyChange },
-                        },
-                        [
-                          _vm.company
-                            ? _c(
-                                "view",
-                                { staticClass: "tonggao-select-item company" },
-                                [_vm._v("元" + _vm._s(_vm.company))]
-                              )
-                            : _c(
-                                "view",
-                                { staticClass: "tonggao-select-item company" },
-                                [_vm._v("元/单位")]
-                              ),
-                        ]
-                      ),
-                      _c("text", { staticClass: "tonggao-split" }, [
-                        _vm._v("|"),
-                      ]),
-                      _c(
+                      )
+                    : _vm._e(),
+                  _vm.checked1
+                    ? _c(
                         "block",
+                        { staticClass: "payment-amount" },
                         [
-                          _c("checkbox", {
-                            staticClass: "payment_range",
-                            attrs: {
-                              value: _vm.payment_range,
-                              checked: _vm.checked1,
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.minAmount,
+                                expression: "minAmount",
+                              },
+                            ],
+                            staticClass: "min-amount",
+                            attrs: { placeholder: "最小金额" },
+                            domProps: { value: _vm.minAmount },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.minAmount = $event.target.value
+                              },
                             },
-                            on: { tap: _vm.checkClick },
                           }),
-                          _c("text", { staticClass: "payment_range_text" }, [
-                            _vm._v("区间"),
+                          _c("text", { staticClass: "split" }, [_vm._v("-")]),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.maxAmount,
+                                expression: "maxAmount",
+                              },
+                            ],
+                            staticClass: "max-amount",
+                            attrs: { placeholder: "最大金额" },
+                            domProps: { value: _vm.maxAmount },
+                            on: {
+                              input: function ($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.maxAmount = $event.target.value
+                              },
+                            },
+                          }),
+                          _c(
+                            "picker",
+                            {
+                              attrs: {
+                                value: _vm.companyIndex,
+                                range: _vm.companyList,
+                                "range-key": "value",
+                              },
+                              on: { change: _vm.companyChange },
+                            },
+                            [
+                              _vm.company
+                                ? _c(
+                                    "view",
+                                    {
+                                      staticClass:
+                                        "tonggao-select-item company",
+                                    },
+                                    [_vm._v("元" + _vm._s(_vm.company))]
+                                  )
+                                : _c(
+                                    "view",
+                                    {
+                                      staticClass:
+                                        "tonggao-select-item company",
+                                    },
+                                    [_vm._v("元/单位")]
+                                  ),
+                            ]
+                          ),
+                          _c("text", { staticClass: "tonggao-split" }, [
+                            _vm._v("|"),
                           ]),
+                          _c(
+                            "block",
+                            [
+                              _c("checkbox", {
+                                staticClass: "payment_range",
+                                attrs: {
+                                  value: _vm.payment_range,
+                                  checked: _vm.checked1,
+                                },
+                                on: { tap: _vm.checkClick1 },
+                              }),
+                              _c(
+                                "text",
+                                { staticClass: "payment_range_text" },
+                                [_vm._v("区间")]
+                              ),
+                            ],
+                            1
+                          ),
                         ],
                         1
-                      ),
-                    ],
-                    1
-                  )
-                : _vm._e(),
-            ],
-            1
-          ),
-        ]),
+                      )
+                    : _vm._e(),
+                ],
+                1
+              ),
+            ])
+          : _vm._e(),
         _c("view", { staticClass: "tonggao-item" }, [
           _c("view", { staticClass: "tonggao-left" }, [_vm._v(" 招募人数 ")]),
           _c(
@@ -824,19 +1073,20 @@ var render = function () {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.date,
-                    expression: "date",
+                    value: _vm.recruitNum,
+                    expression: "recruitNum",
                   },
                 ],
                 staticClass: "tonggao-name",
                 attrs: { placeholder: "请输入招募人数" },
-                domProps: { value: _vm.date },
+                domProps: { value: _vm.recruitNum },
                 on: {
+                  blur: _vm.recruitBlur,
                   input: function ($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.date = $event.target.value
+                    _vm.recruitNum = $event.target.value
                   },
                 },
               }),
@@ -890,7 +1140,7 @@ var render = function () {
             attrs: {
               "auto-height": "",
               placeholder:
-                "您需要什么样的合作？比如：模特形象、模特风格、模特经验、合作费用等。配图更佳，但不得含有联系方式，否则不予通过。",
+                "您需要什么样的合作? 比如：模特形象、模特风格、模特经验、合作费用等。配图更佳，但不得含有联系方式，否则不予通过。",
             },
             domProps: { value: _vm.desc },
             on: {
@@ -1067,7 +1317,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/add/index.vue");
 
 
-var config = {};
+var config = {"navigationBarTitleText":"发布通告"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageTonggao/pages/add/index', {root:{cn:[]}}, config || {}))

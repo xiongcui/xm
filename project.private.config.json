@@ -23,8 +23,8 @@
                     "scene": null
                 },
                 {
-                    "name": "裁剪",
-                    "pathName": "pages/we-cropper/index",
+                    "name": "品牌种草",
+                    "pathName": "packageTonggao/pages/brand/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "标签信息",
-                    "pathName": "packageAdd/pages/user/editlabel/index",
+                    "name": "选择通告",
+                    "pathName": "packageTonggao/pages/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

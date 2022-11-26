@@ -1,16 +1,16 @@
-(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["packageTonggao/pages/shop/index"],{
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["packageTonggao/pages/brand/index"],{
 
-/***/ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/shop/index.vue":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/shop/index.vue ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/brand/index.vue":
+/*!************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/brand/index.vue ***!
+  \************************************************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_vue_vue_type_template_id_5eb1b4af_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=5eb1b4af&scoped=true& */ "./src/packageTonggao/pages/shop/index.vue?vue&type=template&id=5eb1b4af&scoped=true&");
-/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/packageTonggao/pages/shop/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _index_vue_vue_type_template_id_ea4c68f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=ea4c68f8&scoped=true& */ "./src/packageTonggao/pages/brand/index.vue?vue&type=template&id=ea4c68f8&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/packageTonggao/pages/brand/index.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -24,24 +24,24 @@ function injectStyles (context) {
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
   _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
-  _index_vue_vue_type_template_id_5eb1b4af_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
-  _index_vue_vue_type_template_id_5eb1b4af_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  _index_vue_vue_type_template_id_ea4c68f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_ea4c68f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
   false,
   injectStyles,
-  "5eb1b4af",
-  "2dfbb3a1"
+  "ea4c68f8",
+  "b660aa5c"
   
 )
 
-component.options.__file = "src/packageTonggao/pages/shop/index.vue"
+component.options.__file = "src/packageTonggao/pages/brand/index.vue"
 /* harmony default export */ __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/shop/index.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/packageTonggao/pages/shop/index.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/brand/index.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/packageTonggao/pages/brand/index.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -49,11 +49,11 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 "use strict";
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/brand/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 /* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index.js */ "./src/api/index.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/shop/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -329,32 +329,32 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "shop",
+  name: "brand",
   data: function data() {
     return {
       isIphoneX: false,
-      name: "",
       title: "",
-      doorplate: "",
       platform: "",
       platformIndex: "",
       platformList: [],
-      localtion: "",
-      recruitNum: "",
-      product: "",
-      giftsValue: "",
-      desc: "",
+      productName: "",
+      taskIndex: "",
       checked: false,
       checked1: false,
-      checked2: true,
+      checked3: true,
+      checked4: false,
       amount: "",
       minAmount: "",
       maxAmount: "",
       payment_range: "",
       minFans: "",
       maxFans: "",
-      taskIndex: "",
+      product: "",
+      giftsValue: "",
+      recruitNum: "",
+      anonymous: false,
       date: "",
+      desc: "",
       imgList: [],
       taskData: [{
         name: "支付稿费",
@@ -368,36 +368,13 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
         name: "稿费+赠送",
         value: 3,
         ispick: false
-      }],
-      locale_address: {}
+      }]
     };
   },
   methods: {
-    uploadImgClose: function uploadImgClose(index) {
-      this.imgList.splice(index, 1);
-    },
-    previewImage: function previewImage(src, urls) {
-      // 微信预览图片的方法
-      wx.previewImage({
-        current: src,
-        // 图片的地址url
-        urls: urls // 预览的地址url
-
-      });
-    },
     platformChange: function platformChange(e) {
       this.platform = this.platformList[e.detail.value].value;
       this.platformIndex = e.detail.value;
-    },
-    onChooseLocation: function onChooseLocation() {
-      var _this2 = this;
-
-      wx.chooseLocation({
-        success: function success(res) {
-          _this2.localtion = res.address;
-          _this2.locale_address = res; //   console.log(res, "--------------", this.localtion);
-        }
-      });
     },
     select_tag: function select_tag(row) {
       this.taskIndex = row.value;
@@ -412,23 +389,24 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
     checkClick1: function checkClick1() {
       this.checked1 = !this.checked1;
     },
-    checkClick2: function checkClick2() {
-      this.checked2 = !this.checked2;
-
-      if (this.checked2) {
-        this.minFans = "";
-        this.maxFans = "";
-      }
+    checkClick3: function checkClick3() {
+      this.checked3 = !this.checked3;
     },
-    fansChange: function fansChange(e) {
-      if (this.minFans || this.maxFans) {
-        this.checked2 = false;
-      } else {
-        this.checked2 = true;
-      }
+    checkClick4: function checkClick4() {
+      this.checked4 = !this.checked4;
+    },
+    anonymousChange: function anonymousChange() {
+      this.anonymous = !this.anonymous;
     },
     dateChange: function dateChange(e) {
       this.date = e.detail.value;
+    },
+    fansChange: function fansChange(e) {
+      if (this.minFans || this.maxFans) {
+        this.checked3 = false;
+      } else {
+        this.checked3 = true;
+      }
     },
     chooseImage: function chooseImage() {
       if (this.imgList.length >= 9) {
@@ -463,11 +441,11 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
       });
     },
     upImgs: function upImgs(dataInfo) {
-      var _this3 = this;
+      var _this2 = this;
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_2__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_3__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -486,7 +464,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
           var data = JSON.parse(res.data);
 
           if (data.code == 200) {
-            _this3.imgList.push(data.data.file1);
+            _this2.imgList.push(data.data.file1);
           } else {
             wx.showToast({
               title: "上传失败！",
@@ -498,91 +476,81 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
     },
     submit: function submit() {
       if (!this.title) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写任务标题！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写任务标题！");
         return false;
       }
 
       if (!this.platform) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择推广平台！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择推广平台！");
         return false;
       }
 
-      if (!this.name) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写店铺名称！");
-        return false;
-      }
-
-      if (!this.localtion) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写店铺地址！");
-        return false;
-      }
-
-      if (!this.doorplate) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写门牌号码！");
+      if (!this.productName) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写产品名称！");
         return false;
       }
 
       if (!this.taskIndex) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写任务奖励！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写任务奖励！");
         return false;
       }
 
       if (this.taskIndex == 1 || this.taskIndex == 3) {
         if (this.checked1 && !this.amount) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写人均稿费！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写人均稿费！");
           return false;
         }
 
         if (!this.checked1 && !this.minAmount || !this.checked1 && !this.maxAmount) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写人均稿费！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写人均稿费！");
           return false;
         }
       }
 
       if (this.taskIndex == 2 || this.taskIndex == 3) {
         if (!this.product) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写赠送产品！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写赠送产品！");
           return false;
         }
 
         if (!this.giftsValue) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写赠品价值！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写赠品价值！");
           return false;
         }
       }
 
       if (!this.recruitNum) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写招募人数！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写招募人数！");
         return false;
       }
 
       if (!this.date) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写截止日期！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写截止日期！");
         return false;
       }
 
       if (!this.desc) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写任务描述！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写任务描述！");
         return false;
       }
 
       if (!this.imgList.length) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请上传图片！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请上传图片！");
         return false;
       }
 
       var params = {
         type: 20,
         first_code: "celebrity_spread",
-        second_code: "CS8001",
-        second_name: "探店推广",
+        second_code: "CS8002",
+        second_name: "品牌种草",
         title: this.title,
         spread_platform_code: this.platformList[Number(this.platformIndex)].key,
         spread_platform_name: this.platformList[Number(this.platformIndex)].value,
-        store_name: this.name,
-        store_address: this.localtion,
-        store_locale_address: this.locale_address,
-        store_doorplate: this.doorplate,
+        product_brand: this.productName,
+        is_hide_brand: this.anonymous ? 1 : 0,
+        is_deliver_address: this.checked4 ? 1 : 0,
+        //收货地址（1:需要; 0:不需要）
         task_reward_type: this.taskIndex + "00",
         task_reward_name: this.taskData[Number(this.taskIndex - 1)].name,
         payment_range: this.checked1 ? 0 : 1,
@@ -600,7 +568,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
         //招募人数
         is_quoted_price: this.checked ? 1 : 0,
         // 自报价格(1:是，0:否)
-        no_limit_fans: this.checked2 ? 1 : 0,
+        no_limit_fans: this.checked3 ? 1 : 0,
         // 不限粉丝(1:不限；0:限制)
         fans_min_number: Number(this.minFans),
         fans_max_number: Number(this.maxFans),
@@ -628,7 +596,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
       this.submitNotice(params);
     },
     publicConfig: function publicConfig(params) {
-      var _this4 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -642,7 +610,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 
               case 3:
                 res = _context.sent;
-                _this4.platformList = res.data.data;
+                _this3.platformList = res.data.data;
                 _context.next = 9;
                 break;
 
@@ -671,7 +639,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 
               case 3:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("提交成功！");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("提交成功！");
                 _context2.next = 9;
                 break;
 
@@ -698,10 +666,10 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/shop/index.vue?vue&type=template&id=5eb1b4af&scoped=true&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/packageTonggao/pages/shop/index.vue?vue&type=template&id=5eb1b4af&scoped=true& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/brand/index.vue?vue&type=template&id=ea4c68f8&scoped=true&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/packageTonggao/pages/brand/index.vue?vue&type=template&id=ea4c68f8&scoped=true& ***!
+  \***************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /*! exports used: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -715,12 +683,12 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "view",
-    { staticClass: "shop" },
+    { staticClass: "brand" },
     [
-      _c("view", { staticClass: "shop-box" }, [
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 任务标题 ")]),
-          _c("view", { staticClass: "shop-rt" }, [
+      _c("view", { staticClass: "brand-box" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 任务标题 ")]),
+          _c("view", { staticClass: "brand-rt" }, [
             _c("input", {
               directives: [
                 {
@@ -730,7 +698,7 @@ var render = function () {
                   expression: "title",
                 },
               ],
-              staticClass: "shop-input",
+              staticClass: "brand-input",
               attrs: { placeholder: "请输入标题(包含店铺名称)" },
               domProps: { value: _vm.title },
               on: {
@@ -744,16 +712,16 @@ var render = function () {
             }),
           ]),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 推广平台")]),
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 推广平台")]),
           _c(
             "view",
-            { staticClass: "shop-rt" },
+            { staticClass: "brand-rt" },
             [
               _c(
                 "picker",
                 {
-                  staticClass: "shop-select",
+                  staticClass: "brand-select",
                   attrs: {
                     value: _vm.platformIndex,
                     range: _vm.platformList,
@@ -763,10 +731,10 @@ var render = function () {
                 },
                 [
                   _vm.platform
-                    ? _c("view", { staticClass: "shop-select-item" }, [
+                    ? _c("view", { staticClass: "brand-select-item" }, [
                         _vm._v(_vm._s(_vm.platform)),
                       ])
-                    : _c("view", { staticClass: "shop-select-item" }, [
+                    : _c("view", { staticClass: "brand-select-item" }, [
                         _vm._v("请选择"),
                       ]),
                 ]
@@ -775,90 +743,47 @@ var render = function () {
             1
           ),
         ]),
-      ]),
-      _c("view", { staticClass: "shop-box" }, [
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 店铺名称 ")]),
-          _c("view", { staticClass: "shop-rt" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 产品名称 ")]),
+          _c("view", { staticClass: "brand-rt" }, [
             _c("input", {
               directives: [
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.name,
-                  expression: "name",
+                  value: _vm.productName,
+                  expression: "productName",
                 },
               ],
-              staticClass: "shop-input",
-              attrs: { placeholder: "请输入店铺名称" },
-              domProps: { value: _vm.name },
+              staticClass: "brand-input",
+              attrs: { placeholder: "请输入产品名称" },
+              domProps: { value: _vm.productName },
               on: {
                 input: function ($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.name = $event.target.value
+                  _vm.productName = $event.target.value
                 },
               },
             }),
           ]),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 店铺地址 ")]),
-          _c(
-            "view",
-            { staticClass: "shop-rt", on: { tap: _vm.onChooseLocation } },
-            [
-              _c("image", {
-                staticClass: "shop-icon",
-                attrs: { src: __webpack_require__(/*! ../../../assets/images/position.png */ "./src/assets/images/position.png") },
-              }),
-              _vm.localtion
-                ? _c("text", [_vm._v(" " + _vm._s(_vm.localtion))])
-                : _c("text", [_vm._v(" 请选择店铺地址")]),
-              _c("view", { staticClass: "shop-item-right" }, [
-                _c("image", {
-                  attrs: {
-                    mode: "aspectFit",
-                    src: __webpack_require__(/*! ../../../assets/images/right.png */ "./src/assets/images/right.png"),
-                  },
-                }),
-              ]),
-            ]
-          ),
-        ]),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 门牌号码 ")]),
-          _c("view", { staticClass: "shop-rt" }, [
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.doorplate,
-                  expression: "doorplate",
-                },
-              ],
-              staticClass: "shop-input",
-              attrs: { placeholder: "请输入详细地址，如x单元x层x室" },
-              domProps: { value: _vm.doorplate },
-              on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.doorplate = $event.target.value
-                },
-              },
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 品牌匿名 ")]),
+          _c("view", { staticClass: "brand-rt" }, [
+            _c("switch", {
+              attrs: { checked: _vm.anonymous, color: "#fe5457" },
+              on: { change: _vm.anonymousChange },
             }),
           ]),
         ]),
       ]),
-      _c("view", { staticClass: "shop-box" }, [
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 任务奖励 ")]),
+      _c("view", { staticClass: "brand-box" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 任务奖励 ")]),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
+        _c("view", { staticClass: "brand-item" }, [
           _c(
             "view",
             { staticClass: "tags" },
@@ -882,11 +807,11 @@ var render = function () {
           ),
         ]),
         _vm.taskIndex == 1 || _vm.taskIndex == 3
-          ? _c("view", { staticClass: "shop-item" }, [
-              _c("view", { staticClass: "shop-left" }, [_vm._v(" 人均稿费 ")]),
+          ? _c("view", { staticClass: "brand-item" }, [
+              _c("view", { staticClass: "brand-left" }, [_vm._v(" 人均稿费 ")]),
               _c(
                 "view",
-                { staticClass: "shop-rt" },
+                { staticClass: "brand-rt" },
                 [
                   _vm.checked1
                     ? _c(
@@ -928,7 +853,10 @@ var render = function () {
                               ),
                               _c("checkbox", {
                                 staticClass: "payment_range",
-                                attrs: { checked: _vm.checked1 },
+                                attrs: {
+                                  value: _vm.payment_range,
+                                  checked: _vm.checked1,
+                                },
                                 on: { tap: _vm.checkClick1 },
                               }),
                             ],
@@ -1000,7 +928,10 @@ var render = function () {
                               ),
                               _c("checkbox", {
                                 staticClass: "payment_range",
-                                attrs: { checked: _vm.checked1 },
+                                attrs: {
+                                  value: _vm.payment_range,
+                                  checked: _vm.checked1,
+                                },
                                 on: { tap: _vm.checkClick1 },
                               }),
                             ],
@@ -1016,9 +947,9 @@ var render = function () {
             ])
           : _vm._e(),
         _vm.taskIndex == 2 || _vm.taskIndex == 3
-          ? _c("view", { staticClass: "shop-item" }, [
-              _c("view", { staticClass: "shop-left" }, [_vm._v(" 赠送产品 ")]),
-              _c("view", { staticClass: "shop-rt" }, [
+          ? _c("view", { staticClass: "brand-item" }, [
+              _c("view", { staticClass: "brand-left" }, [_vm._v(" 赠送产品 ")]),
+              _c("view", { staticClass: "brand-rt" }, [
                 _c("input", {
                   directives: [
                     {
@@ -1028,7 +959,7 @@ var render = function () {
                       expression: "product",
                     },
                   ],
-                  staticClass: "shop-input",
+                  staticClass: "brand-input",
                   attrs: { placeholder: "请输入赠送产品" },
                   domProps: { value: _vm.product },
                   on: {
@@ -1044,9 +975,9 @@ var render = function () {
             ])
           : _vm._e(),
         _vm.taskIndex == 2 || _vm.taskIndex == 3
-          ? _c("view", { staticClass: "shop-item" }, [
-              _c("view", { staticClass: "shop-left" }, [_vm._v(" 赠品价值 ")]),
-              _c("view", { staticClass: "shop-rt" }, [
+          ? _c("view", { staticClass: "brand-item" }, [
+              _c("view", { staticClass: "brand-left" }, [_vm._v(" 赠品价值 ")]),
+              _c("view", { staticClass: "brand-rt" }, [
                 _c("input", {
                   directives: [
                     {
@@ -1056,7 +987,7 @@ var render = function () {
                       expression: "giftsValue",
                     },
                   ],
-                  staticClass: "shop-input",
+                  staticClass: "brand-input",
                   attrs: { placeholder: "请输入赠送产品价值" },
                   domProps: { value: _vm.giftsValue },
                   on: {
@@ -1076,9 +1007,9 @@ var render = function () {
               ]),
             ])
           : _vm._e(),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 招募人数 ")]),
-          _c("view", { staticClass: "shop-rt" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 招募人数 ")]),
+          _c("view", { staticClass: "brand-rt" }, [
             _c("input", {
               directives: [
                 {
@@ -1088,7 +1019,7 @@ var render = function () {
                   expression: "recruitNum",
                 },
               ],
-              staticClass: "shop-input",
+              staticClass: "brand-input",
               attrs: { placeholder: "请输入招募人数" },
               domProps: { value: _vm.recruitNum },
               on: {
@@ -1102,11 +1033,11 @@ var render = function () {
             }),
           ]),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [
             _vm._v(" 需要红人自我报价 "),
           ]),
-          _c("view", { staticClass: "shop-rt" }, [
+          _c("view", { staticClass: "brand-rt" }, [
             _c(
               "view",
               { staticClass: "need" },
@@ -1140,12 +1071,12 @@ var render = function () {
           ]),
         ]),
       ]),
-      _c("view", { staticClass: "shop-box" }, [
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 粉丝要求 ")]),
+      _c("view", { staticClass: "brand-box" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 粉丝要求 ")]),
           _c(
             "view",
-            { staticClass: "shop-rt" },
+            { staticClass: "brand-rt" },
             [
               _c(
                 "block",
@@ -1204,8 +1135,8 @@ var render = function () {
                       ]),
                       _c("checkbox", {
                         staticClass: "payment_range",
-                        attrs: { checked: _vm.checked2 },
-                        on: { tap: _vm.checkClick2, blur: _vm.fansChange },
+                        attrs: { checked: _vm.checked3 },
+                        on: { tap: _vm.checkClick3, blur: _vm.fansChange },
                       }),
                     ],
                     1
@@ -1217,16 +1148,16 @@ var render = function () {
             1
           ),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 截止日期 ")]),
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 截止日期 ")]),
           _c(
             "view",
-            { staticClass: "shop-rt" },
+            { staticClass: "brand-rt" },
             [
               _c(
                 "picker",
                 {
-                  staticClass: "shop-select",
+                  staticClass: "brand-select",
                   attrs: {
                     mode: "date",
                     start: "1960-09-01",
@@ -1236,10 +1167,10 @@ var render = function () {
                 },
                 [
                   _vm.date
-                    ? _c("view", { staticClass: "shop-select-item" }, [
+                    ? _c("view", { staticClass: "brand-select-item" }, [
                         _vm._v(_vm._s(_vm.date)),
                       ])
-                    : _c("view", { staticClass: "shop-select-item" }, [
+                    : _c("view", { staticClass: "brand-select-item" }, [
                         _vm._v("请选择"),
                       ]),
                 ]
@@ -1248,10 +1179,45 @@ var render = function () {
             1
           ),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
-          _c("view", { staticClass: "shop-left" }, [_vm._v(" 任务描述 ")]),
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 收件地址 ")]),
+          _c("view", { staticClass: "brand-rt" }, [
+            _c(
+              "view",
+              { staticClass: "need" },
+              [
+                _c("text", { class: _vm.checked4 ? "active" : "" }, [
+                  _vm._v("需要"),
+                ]),
+                _c("checkbox", {
+                  staticClass: "checked",
+                  attrs: { checked: _vm.checked4 },
+                  on: { tap: _vm.checkClick4 },
+                }),
+              ],
+              1
+            ),
+            _c(
+              "view",
+              { staticClass: "no-need" },
+              [
+                _c("text", { class: !_vm.checked4 ? "active" : "" }, [
+                  _vm._v("不需要"),
+                ]),
+                _c("checkbox", {
+                  staticClass: "checked",
+                  attrs: { checked: !_vm.checked4 },
+                  on: { tap: _vm.checkClick4 },
+                }),
+              ],
+              1
+            ),
+          ]),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
+        _c("view", { staticClass: "brand-item" }, [
+          _c("view", { staticClass: "brand-left" }, [_vm._v(" 任务描述 ")]),
+        ]),
+        _c("view", { staticClass: "brand-item" }, [
           _c("textarea", {
             directives: [
               {
@@ -1265,7 +1231,7 @@ var render = function () {
             attrs: {
               "auto-height": "",
               placeholder:
-                "您需要什么样的合作？请介绍您的店铺、产品、合作费用、合作要求等，但不得含有联系方式，否则不予通过。",
+                "您需要什么样的合作？请介绍您的产品特征、产品价格、合作费用、合作要求等，但不得含有联系方式，否则不予通过。",
             },
             domProps: { value: _vm.desc },
             on: {
@@ -1278,7 +1244,7 @@ var render = function () {
             },
           }),
         ]),
-        _c("view", { staticClass: "shop-item" }, [
+        _c("view", { staticClass: "brand-item" }, [
           _c("view", { staticClass: "tonggao-upload" }, [
             _c("view", { staticClass: "tonggao-upload-title" }, [
               _vm._v("上传照片"),
@@ -1334,7 +1300,7 @@ var render = function () {
                     }),
                     _c("view", [
                       _c("text", { staticClass: "upload-txt" }, [
-                        _vm._v("上传店铺照片"),
+                        _vm._v("上传产品照片"),
                       ]),
                     ]),
                   ]
@@ -1369,22 +1335,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/images/right.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/right.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./src/packageTonggao/pages/shop/index.scss":
-/*!**************************************************!*\
-  !*** ./src/packageTonggao/pages/shop/index.scss ***!
-  \**************************************************/
+/***/ "./src/packageTonggao/pages/brand/index.scss":
+/*!***************************************************!*\
+  !*** ./src/packageTonggao/pages/brand/index.scss ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1392,10 +1346,10 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD
 
 /***/ }),
 
-/***/ "./src/packageTonggao/pages/shop/index.vue":
-/*!*************************************************!*\
-  !*** ./src/packageTonggao/pages/shop/index.vue ***!
-  \*************************************************/
+/***/ "./src/packageTonggao/pages/brand/index.vue":
+/*!**************************************************!*\
+  !*** ./src/packageTonggao/pages/brand/index.vue ***!
+  \**************************************************/
 /*! no exports provided */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1403,50 +1357,50 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js");
-/* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/shop/index.vue");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/brand/index.vue");
 
 
-var config = {"navigationBarTitleText":"发布探店任务通告"};
+var config = {"navigationBarTitleText":"发布种草任务通告"};
 
 
-var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageTonggao/pages/shop/index', {root:{cn:[]}}, config || {}))
+var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageTonggao/pages/brand/index', {root:{cn:[]}}, config || {}))
 
 
 
 
 /***/ }),
 
-/***/ "./src/packageTonggao/pages/shop/index.vue?vue&type=script&lang=js&":
-/*!**************************************************************************!*\
-  !*** ./src/packageTonggao/pages/shop/index.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************/
+/***/ "./src/packageTonggao/pages/brand/index.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./src/packageTonggao/pages/brand/index.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/shop/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/brand/index.vue?vue&type=script&lang=js&");
  /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
 
 /***/ }),
 
-/***/ "./src/packageTonggao/pages/shop/index.vue?vue&type=template&id=5eb1b4af&scoped=true&":
-/*!********************************************************************************************!*\
-  !*** ./src/packageTonggao/pages/shop/index.vue?vue&type=template&id=5eb1b4af&scoped=true& ***!
-  \********************************************************************************************/
+/***/ "./src/packageTonggao/pages/brand/index.vue?vue&type=template&id=ea4c68f8&scoped=true&":
+/*!*********************************************************************************************!*\
+  !*** ./src/packageTonggao/pages/brand/index.vue?vue&type=template&id=ea4c68f8&scoped=true& ***!
+  \*********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /*! exports used: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_5eb1b4af_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=5eb1b4af&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/shop/index.vue?vue&type=template&id=5eb1b4af&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_5eb1b4af_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_ea4c68f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=ea4c68f8&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageTonggao/pages/brand/index.vue?vue&type=template&id=ea4c68f8&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_ea4c68f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_5eb1b4af_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_ea4c68f8_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
 
 
 
 /***/ })
 
-},[["./src/packageTonggao/pages/shop/index.vue","runtime","taro","vendors","common"]]]);
+},[["./src/packageTonggao/pages/brand/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map
