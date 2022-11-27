@@ -243,25 +243,24 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "k"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.zuopinInfo = res.data.data;
-                console.log(_this.zuopinInfo);
-                _context.next = 10;
+                _context.next = 9;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
-              case 10:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     }
   },

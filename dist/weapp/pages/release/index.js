@@ -132,7 +132,7 @@ component.options.__file = "src/pages/release/index.vue"
 
       switch (type) {
         case 1:
-          url = "appointment/index?id=1";
+          url = "/packageTonggao/pages/index/index";
           break;
 
         case 2:

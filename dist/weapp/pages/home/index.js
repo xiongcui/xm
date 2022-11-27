@@ -35,6 +35,708 @@ component.options.__file = "src/pages/home/index.vue"
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/tonggaoList/index.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/components/tonggaoList/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "tonggaoList",
+  props: {
+    base_data: {
+      type: Array,
+      default: []
+    },
+    multi_array: {
+      type: Array,
+      default: []
+    },
+    more: {
+      type: Boolean,
+      default: false
+    },
+    refresh: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    base_data: {
+      handler: function handler(newVal, oldVal) {
+        this.allCity = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    multi_array: {
+      handler: function handler(newVal, oldVal) {
+        this.multiArray = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    more: {
+      handler: function handler(newVal, oldVal) {
+        this.tonggaoMore = newVal;
+
+        if (this.tonggaoMore) {
+          this.pageNum++;
+          this.onMore();
+        }
+      },
+      deep: true,
+      immediate: true
+    },
+    refresh: {
+      handler: function handler(newVal, oldVal) {
+        this.tonggaoRefresh = newVal;
+
+        if (this.tonggaoRefresh) {
+          this.onRefresh();
+        }
+      },
+      deep: true,
+      immediate: true
+    }
+  },
+  data: function data() {
+    return {
+      height: 0,
+      tonggaoMore: false,
+      tonggaoRefresh: false,
+      sizer_num: [],
+      navActive: 0,
+      showModal: false,
+      navList: [],
+      sizer_city: "",
+      multiIndex: [0, 0],
+      allCity: [],
+      sizerSelect: [],
+      identity_data: [],
+      multiArray: [[], []],
+      list: [],
+      notice_data: [],
+      charge_data: [],
+      pageNum: 1,
+      pageSize: 10,
+      filter: {
+        first_code: "",
+        payment_type: 0,
+        career_cid: 0,
+        face_cid: 0,
+        face_province_id: 0
+      }
+    };
+  },
+  methods: {
+    navClick: function navClick(index) {
+      this.navActive = index;
+      this.pageNum = 1;
+      this.query("init");
+    },
+    godetail: function godetail(oid, author_id) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+    },
+    //获取用户地理位置权限
+    getPermission: function getPermission() {
+      //获取用户地理位置
+      //先判断用户是否授权获取地理位置
+      var that = this;
+      wx.getSetting({
+        success: function success(res) {
+          if (res.authSetting["scope.userLocation"] == false) {
+            //如果没有授权地理位置
+            wx.openSetting({
+              success: function success(res) {
+                res.authSetting = {
+                  //打开授权位置页面，让用户自己开启
+                  "scope.userLocation": true
+                };
+              }
+            });
+          } else {
+            //用户开启授权后可直接获取地理位置
+            wx.authorize({
+              scope: "scope.userLocation",
+              success: function success() {
+                //获取位置后相关操作
+                that.getLocation();
+              }
+            });
+          }
+        }
+      });
+    },
+    // 新增下面这部分代码
+    getLocation: function getLocation() {
+      var that = this;
+      wx.getLocation({
+        type: "wgs84",
+        success: function success(res) {
+          var latitude = res.latitude;
+          var longitude = res.longitude;
+          var speed = res.speed;
+          var accuracy = res.accuracy;
+          console.log(res); //将获取到的经纬度信息输出到控制台以便检查
+          // that.setData({
+          //   //将获取到的经度、纬度数值分别赋值给本地变量
+          //   latitude: res.latitude,
+          //   longitude: res.longitude,
+          // });
+        },
+        fail: function fail(error) {
+          console.log(error);
+        }
+      });
+    },
+    screen: function screen() {
+      this.showModal = true;
+      this.sizer_num = [];
+      this.getPermission();
+    },
+    close: function close() {
+      this.showModal = false;
+    },
+    select_identity_tag: function select_identity_tag(row) {
+      this.identity_data.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_notice_tag: function select_notice_tag(row) {
+      this.notice_data.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_charge_tag: function select_charge_tag(row) {
+      this.charge_data.map(function (item) {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    sizerBindRegionChange: function sizerBindRegionChange(e) {
+      var province = this.multiArray[0][e.detail.value[0]].name;
+      var city = this.multiArray[1][e.detail.value[1]].name;
+      this.sizer_city = city == "全部" ? province : city;
+      this.sizerSelect = e.detail.value;
+    },
+    onBindcolumnchange: function onBindcolumnchange(e) {
+      if (e.detail.column == 0) {
+        var select = this.multiArray[0][e.detail.value];
+        var city = this.allCity;
+
+        for (var i = 0; i < city.length; i++) {
+          if (city[i].code == select.code) {
+            var multiArray = this.multiArray;
+            var all = [{
+              name: "全部",
+              code: "all"
+            }];
+            multiArray[1] = all.concat(city[i].citylist);
+            var multiIndex = this.multiIndex;
+            multiIndex[0] = e.detail.value;
+            multiIndex[1] = 0;
+            this.multiArray = JSON.parse(JSON.stringify(multiArray));
+            this.multiIndex = multiIndex;
+            break;
+          }
+        }
+      }
+    },
+    submit: function submit() {
+      var identitydata = this.identity_data.filter(function (item) {
+        return item.ispick;
+      });
+      var noticedata = this.notice_data.filter(function (item) {
+        return item.ispick;
+      });
+      var chargedata = this.charge_data.filter(function (item) {
+        return item.ispick;
+      });
+      this.filter = {
+        first_code: noticedata[0].key != "all" ? noticedata[0].key : 0,
+        payment_type: chargedata[0].key != "all" ? chargedata[0].key : 0,
+        face_province_id: this.sizerSelect[0] ? Number(this.multiArray[0][this.sizerSelect[0]].code) : 0,
+        face_city_id: this.sizerSelect[1] ? Number(this.multiArray[1][this.sizerSelect[1]].code) : 0,
+        face_cid: identitydata[0].cid == "all" ? 0 : identitydata[0].cid
+      };
+
+      if (this.sizerSelect[0]) {
+        this.sizer_num.push(1);
+      }
+
+      if (noticedata[0].key != "all") {
+        this.sizer_num.push(2);
+      }
+
+      if (identitydata[0].cid != "all") {
+        this.sizer_num.push(3);
+      }
+
+      if (chargedata[0].key != "all") {
+        this.sizer_num.push(4);
+      }
+
+      this.showModal = false;
+      this.pageNum = 1;
+      this.query("init");
+    },
+    clear: function clear() {
+      this.multiIndex = [0, 0];
+      this.sizer_city = "";
+      this.sizerSelect = [];
+      this.identity_data = this.identity_data.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.notice_data = this.notice_data.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.charge_data = this.charge_data.map(function (item, index) {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+    },
+    //刷新
+    onRefresh: function onRefresh() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "刷新中..."
+      });
+      this.pageNum = 1;
+      this.query("init");
+    },
+    // 加载更多
+    onMore: function onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "数据加载中..."
+      });
+      this.query("more");
+    },
+    query: function query(type) {
+      wx.showLoading({
+        title: "加载中..."
+      });
+      var params = {
+        filter: this.filter,
+        quick_filter: this.navList[this.navActive].key,
+        page: this.pageNum,
+        per_page: this.pageSize
+      };
+      this.noticeList(params, type);
+    },
+    noticeFilter: function noticeFilter(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data, arr, arr1, arr2;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "g"])(params);
+
+              case 3:
+                res = _context.sent;
+                console.log(res.data);
+                data = res.data.data;
+                arr = [];
+                arr1 = [];
+                arr2 = [];
+                arr = data.career.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr1 = data.first_code.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr2 = data.payment_type.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr.unshift({
+                  cid: "all",
+                  name: "全部",
+                  value: "全部",
+                  ispick: true
+                });
+                arr1.unshift({
+                  key: "all",
+                  value: "全部",
+                  ispick: true
+                });
+                arr2.unshift({
+                  key: "all",
+                  value: "全部",
+                  ispick: true
+                });
+                _this.identity_data = arr;
+                _this.notice_data = arr1;
+                _this.charge_data = arr2;
+                _context.next = 22;
+                break;
+
+              case 20:
+                _context.prev = 20;
+                _context.t0 = _context["catch"](0);
+
+              case 22:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 20]]);
+      }))();
+    },
+    publicConfig: function publicConfig(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this2.navList = res.data.data;
+                _this2.filter = {
+                  first_code: "",
+                  payment_type: 0,
+                  career_cid: 0,
+                  face_cid: 0,
+                  face_province_id: 0
+                };
+
+                _this2.query("init");
+
+                _context2.next = 11;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    },
+    noticeList: function noticeList(params, type) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "i"])(params);
+
+              case 3:
+                res = _context3.sent;
+                //隐藏loading 提示框
+                wx.hideLoading(); //隐藏导航条加载动画
+
+                wx.hideNavigationBarLoading(); //停止下拉刷新
+
+                wx.stopPullDownRefresh();
+
+                if (!(type == "init")) {
+                  _context3.next = 12;
+                  break;
+                }
+
+                _this3.list = res.data.data.items;
+
+                _this3.$emit("closeRefresh");
+
+                _context3.next = 20;
+                break;
+
+              case 12:
+                if (!(type == "more")) {
+                  _context3.next = 20;
+                  break;
+                }
+
+                if (res.data.data.items.length) {
+                  _context3.next = 17;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+
+                _this3.$emit("closeMore");
+
+                return _context3.abrupt("return", false);
+
+              case 17:
+                data = res.data.data.items;
+                _this3.list = _this3.list.concat(data);
+
+                _this3.$emit("closeMore");
+
+              case 20:
+                _context3.next = 24;
+                break;
+
+              case 22:
+                _context3.prev = 22;
+                _context3.t0 = _context3["catch"](0);
+
+              case 24:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 22]]);
+      }))();
+    }
+  },
+  created: function created() {
+    this.height = this.globalData.navHeight;
+    this.publicConfig({
+      type: ["notice_filter"]
+    });
+    this.noticeFilter("");
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/zuopinList/index.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/zuopinList/index.vue?vue&type=script&lang=js& ***!
@@ -312,9 +1014,6 @@ component.options.__file = "src/pages/home/index.vue"
         value: 0,
         ispick: false
       }],
-      show_sizer_modal: true,
-      sizer_region: [],
-      regionListIndex: [0, 0],
       sizer_city: "",
       multiIndex: [0, 0],
       allCity: [],
@@ -535,7 +1234,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "j"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
 
               case 3:
                 res = _context.sent;
@@ -584,7 +1283,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "l"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -718,6 +1417,7 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _utils_city__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/city */ "./src/utils/city.js");
 /* harmony import */ var _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/zuopinList/index.vue */ "./src/components/zuopinList/index.vue");
+/* harmony import */ var _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/tonggaoList/index.vue */ "./src/components/tonggaoList/index.vue");
 
 
 //
@@ -1090,6 +1790,17 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -1099,7 +1810,9 @@ component.options.__file = "src/pages/home/index.vue"
   name: "home",
   data: function data() {
     return {
-      headCurrent: 0,
+      headCurrent: 1,
+      tonggaoMore: false,
+      tonggaoRefresh: false,
       zuopinMore: false,
       zuopinRefresh: false,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
@@ -1157,6 +1870,9 @@ component.options.__file = "src/pages/home/index.vue"
         ispick: false
       }],
       headNavList: [{
+        name: "通告",
+        value: -1
+      }, {
         name: "约单",
         value: 0
       }, {
@@ -1184,24 +1900,27 @@ component.options.__file = "src/pages/home/index.vue"
     };
   },
   components: {
-    ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]
+    ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"],
+    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"]
   },
   methods: {
     closeRefresh: function closeRefresh() {
       console.log("刷新了--------");
       this.zuopinRefresh = false;
+      this.tonggaoRefresh = false;
       this.loading = true;
     },
     closeMore: function closeMore() {
       console.log("关闭了--------");
       this.zuopinMore = false;
+      this.tonggaoMore = false;
       this.loading = true;
     },
     headNavClick: function headNavClick(index) {
       this.pageNum = 1;
       this.headCurrent = index;
 
-      if (index == 0) {
+      if (index == 1) {
         this.query("init");
       }
     },
@@ -1344,9 +2063,11 @@ component.options.__file = "src/pages/home/index.vue"
       });
 
       if (this.headCurrent == 0) {
+        this.tonggaoRefresh = true;
+      } else if (this.headCurrent == 1) {
         this.pageNum = 1;
         this.query("init");
-      } else {
+      } else if (this.headCurrent == 2) {
         this.zuopinRefresh = true;
       }
     },
@@ -1361,8 +2082,10 @@ component.options.__file = "src/pages/home/index.vue"
       this.loading = false;
 
       if (this.headCurrent == 0) {
+        this.tonggaoMore = true;
+      } else if (this.headCurrent == 1) {
         this.query("more");
-      } else {
+      } else if (this.headCurrent == 2) {
         this.zuopinMore = true;
       }
     },
@@ -1445,7 +2168,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "j"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1607,6 +2330,400 @@ component.options.__file = "src/pages/home/index.vue"
   // },
 
 });
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("view", { staticClass: "tonggao_list" }, [
+    _c(
+      "view",
+      { staticClass: "nav_list" },
+      [
+        _c(
+          "scroll-view",
+          {
+            staticClass: "swiper_tab",
+            attrs: { enhanced: true, scrollX: true },
+          },
+          [
+            _c(
+              "view",
+              { staticClass: "nav_list_ct" },
+              _vm._l(_vm.navList, function (item, index) {
+                return _c(
+                  "text",
+                  {
+                    key: index,
+                    staticClass: "nav_item",
+                    class: _vm.navActive == index ? "nav_active" : "",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.navClick(index)
+                      },
+                    },
+                  },
+                  [_vm._v(_vm._s(item.value))]
+                )
+              }),
+              0
+            ),
+          ]
+        ),
+        _c("view", { staticClass: "sizer_block ub", on: { tap: _vm.screen } }, [
+          _c("view", { staticClass: "gradient" }),
+          _c(
+            "view",
+            {
+              staticClass: "sizer ub",
+              class: _vm.sizer_num.length ? "is_sizer" : "",
+            },
+            [
+              _c(
+                "view",
+                { staticClass: "ub" },
+                [
+                  _c("view", [_vm._v("筛选")]),
+                  _vm.sizer_num.length
+                    ? _c("block", [
+                        _c("view", { staticClass: "sizer_dian" }, [
+                          _vm._v("·"),
+                        ]),
+                        _c("view", [_vm._v(_vm._s(_vm.sizer_num.length))]),
+                      ])
+                    : _vm._e(),
+                ],
+                1
+              ),
+              _c("view", { staticClass: "sizer_img" }, [
+                _vm.sizer_num.length
+                  ? _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/sizered.png */ "./src/assets/images/common/sizered.png"),
+                      },
+                    })
+                  : _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/sizer.png */ "./src/assets/images/common/sizer.png"),
+                      },
+                    }),
+              ]),
+            ]
+          ),
+        ]),
+      ],
+      1
+    ),
+    _vm.list.length
+      ? _c(
+          "view",
+          { staticClass: "main_list" },
+          _vm._l(_vm.list, function (item, index) {
+            return _c(
+              "view",
+              {
+                key: index,
+                staticClass: "tonggao_box",
+                on: {
+                  tap: function ($event) {
+                    return _vm.godetail(item.oid, item.author_id)
+                  },
+                },
+              },
+              [
+                _c("view", { staticClass: "tonggao_title" }, [
+                  _c("text", { staticClass: "list_title" }, [
+                    _vm._v(
+                      _vm._s(item.major_subject) + _vm._s(item.payment_format)
+                    ),
+                  ]),
+                  _c("view", { staticClass: "list_loction" }, [
+                    _vm._v(" " + _vm._s(item.author.province_name) + " "),
+                  ]),
+                ]),
+                _c("view", { staticClass: "tonggao_ct" }, [
+                  _c("view", { staticClass: "tonggao_left" }, [
+                    _c("view", { staticClass: "tonggao_desc" }, [
+                      _vm._v(" " + _vm._s(item.summary) + " "),
+                    ]),
+                    _c("view", { staticClass: "tonggao_tags" }, [
+                      _c("view", { staticClass: "tag-item" }, [
+                        _vm._v(_vm._s(item.second_name)),
+                      ]),
+                      item.first_code == "celebrity_spread"
+                        ? _c("view", { staticClass: "tag-item" }, [
+                            _vm._v("粉丝要求：" + _vm._s(item.fans_number)),
+                          ])
+                        : _vm._e(),
+                      item.face_sex !== null &&
+                      item.first_code != "celebrity_spread"
+                        ? _c("view", { staticClass: "tag-item" }, [
+                            _vm._v(
+                              "性别要求：" +
+                                _vm._s(item.face_sex == 1 ? "男" : "女")
+                            ),
+                          ])
+                        : _vm._e(),
+                    ]),
+                    _c("view", { staticClass: "tonggao_info" }, [
+                      _c("image", {
+                        staticClass: "head-img",
+                        attrs: {
+                          src: item.author.avatar
+                            ? item.author.avatar
+                            : "../../assets/images/avatar_default.png",
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                      item.author.is_security
+                        ? _c("image", {
+                            staticClass: "pledge-img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                            },
+                          })
+                        : _vm._e(),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "tonggao-right" }, [
+                    _c("image", {
+                      attrs: { mode: "aspectFill", src: item.cover[0] },
+                    }),
+                  ]),
+                ]),
+                _c("view", { staticClass: "tonggao_bottom" }, [
+                  _c("view", { staticClass: "tonggao_time" }, [
+                    _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
+                      },
+                    }),
+                    _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                  ]),
+                  _c("view", { staticClass: "tonggao_bottom_rt" }, [
+                    _c("view", { staticClass: "tonggao_yuepai" }, [
+                      _c("image", {
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.statistic.invite_cnt) + " "),
+                    ]),
+                    _c("view", { staticClass: "tonggao_read" }, [
+                      _c("image", {
+                        attrs: { src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png") },
+                      }),
+                      _vm._v(" " + _vm._s(item.statistic.read_cnt) + " "),
+                    ]),
+                  ]),
+                ]),
+              ]
+            )
+          }),
+          0
+        )
+      : _c("view", { staticClass: "none-data" }, [
+          _c("image", {
+            staticClass: "none-img",
+            attrs: {
+              src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+              mode: "aspectFill",
+            },
+          }),
+          _c("view", [_vm._v("当前暂无信息哦～")]),
+        ]),
+    _c(
+      "view",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showModal,
+            expression: "showModal",
+          },
+        ],
+        staticClass: "select_block",
+        on: { tap: _vm.close },
+      },
+      [
+        _c(
+          "view",
+          {
+            staticClass: "select_bg",
+            on: {
+              tap: function ($event) {
+                $event.stopPropagation()
+              },
+            },
+          },
+          [
+            _c("view", {
+              staticClass: "statusbar",
+              style: { height: _vm.height + "px" },
+            }),
+            _c("view", { staticClass: "location" }, [
+              _c("view", { staticClass: "location_address" }, [
+                _vm._v("当前定位：北京"),
+              ]),
+              _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
+            ]),
+            _c("view", { staticClass: "address_box" }, [
+              _c("view", { staticClass: "address_label" }, [
+                _vm._v("选择地区"),
+              ]),
+              _c("view", { staticClass: "address_input" }, [
+                _c("view", { staticClass: "pickers" }, [
+                  _c(
+                    "view",
+                    { staticClass: "ub-f1" },
+                    [
+                      _c(
+                        "picker",
+                        {
+                          attrs: {
+                            mode: "multiSelector",
+                            value: _vm.multiIndex,
+                            range: _vm.multiArray,
+                            "range-key": "name",
+                          },
+                          on: {
+                            change: _vm.sizerBindRegionChange,
+                            columnchange: _vm.onBindcolumnchange,
+                          },
+                        },
+                        [
+                          _c(
+                            "view",
+                            { staticClass: "sizer_select_local bd_b fl" },
+                            [
+                              _vm.sizer_city
+                                ? _c(
+                                    "view",
+                                    { staticClass: "pickers pick-city picked" },
+                                    [_vm._v(_vm._s(_vm.sizer_city))]
+                                  )
+                                : _c(
+                                    "view",
+                                    { staticClass: "pickers pick-city" },
+                                    [_vm._v("全部")]
+                                  ),
+                            ]
+                          ),
+                        ]
+                      ),
+                    ],
+                    1
+                  ),
+                ]),
+              ]),
+            ]),
+            _c("view", { staticClass: "select_item" }, [
+              _c("view", { staticClass: "select_item_title" }, [
+                _vm._v("招募身份"),
+              ]),
+              _c(
+                "view",
+                _vm._l(_vm.identity_data, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "tag_item",
+                      class: item.ispick ? "tag_itemed" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.select_identity_tag(item)
+                        },
+                      },
+                    },
+                    [_vm._v(" " + _vm._s(item.name) + " ")]
+                  )
+                }),
+                0
+              ),
+            ]),
+            _c("view", { staticClass: "select_item" }, [
+              _c("view", { staticClass: "select_item_title" }, [
+                _vm._v("通告类型"),
+              ]),
+              _c(
+                "view",
+                _vm._l(_vm.notice_data, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "tag_item",
+                      class: item.ispick ? "tag_itemed" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.select_notice_tag(item)
+                        },
+                      },
+                    },
+                    [_vm._v(" " + _vm._s(item.value) + " ")]
+                  )
+                }),
+                0
+              ),
+            ]),
+            _c("view", { staticClass: "select_item" }, [
+              _c("view", { staticClass: "select_item_title" }, [
+                _vm._v("收费模式"),
+              ]),
+              _c(
+                "view",
+                _vm._l(_vm.charge_data, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "tag_item",
+                      class: item.ispick ? "tag_itemed" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.select_charge_tag(item)
+                        },
+                      },
+                    },
+                    [_vm._v(" " + _vm._s(item.value) + " ")]
+                  )
+                }),
+                0
+              ),
+            ]),
+            _c("view", { staticClass: "select_button" }, [
+              _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
+                _vm._v("清除"),
+              ]),
+              _c("text", { staticClass: "confirm", on: { tap: _vm.submit } }, [
+                _vm._v("确认"),
+              ]),
+            ]),
+          ]
+        ),
+      ]
+    ),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -2039,6 +3156,26 @@ var render = function () {
       ),
       _c("view", { style: { height: _vm.globalData.navHeight + "px" } }),
       _vm.headCurrent == 0
+        ? _c(
+            "block",
+            [
+              _c("TonggaoList", {
+                attrs: {
+                  base_data: _vm.allCity,
+                  multi_array: _vm.multiArray,
+                  more: _vm.tonggaoMore,
+                  refresh: _vm.tonggaoRefresh,
+                },
+                on: {
+                  closeMore: _vm.closeMore,
+                  closeRefresh: _vm.closeRefresh,
+                },
+              }),
+            ],
+            1
+          )
+        : _vm._e(),
+      _vm.headCurrent == 1
         ? _c("block", [
             _c("view", { staticClass: "page-bg" }),
             _c(
@@ -2660,7 +3797,7 @@ var render = function () {
             ),
           ])
         : _vm._e(),
-      _vm.headCurrent == 1
+      _vm.headCurrent == 2
         ? _c(
             "block",
             [
@@ -2775,18 +3912,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACN
 
 /***/ }),
 
-/***/ "./src/assets/images/eyes.png":
-/*!************************************!*\
-  !*** ./src/assets/images/eyes.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/eyes.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/lanmao1.jpg":
 /*!***************************************!*\
   !*** ./src/assets/images/lanmao1.jpg ***!
@@ -2856,6 +3981,87 @@ module.exports = __webpack_require__.p + "assets/images/tonggao.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/yuedan.png";
+
+/***/ }),
+
+/***/ "./src/components/tonggaoList/index.scss":
+/*!***********************************************!*\
+  !*** ./src/components/tonggaoList/index.scss ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/tonggaoList/index.vue":
+/*!**********************************************!*\
+  !*** ./src/components/tonggaoList/index.vue ***!
+  \**********************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_vue_vue_type_template_id_04d931fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=04d931fc&scoped=true& */ "./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/components/tonggaoList/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+function injectStyles (context) {
+  
+  
+}
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
+  _index_vue_vue_type_template_id_04d931fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_04d931fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  false,
+  injectStyles,
+  "04d931fc",
+  "e085c6f6"
+  
+)
+
+component.options.__file = "src/components/tonggaoList/index.vue"
+/* harmony default export */ __webpack_exports__["a"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/tonggaoList/index.vue?vue&type=script&lang=js&":
+/*!***********************************************************************!*\
+  !*** ./src/components/tonggaoList/index.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
+
+/***/ }),
+
+/***/ "./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true&":
+/*!*****************************************************************************************!*\
+  !*** ./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_04d931fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=04d931fc&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_04d931fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_04d931fc_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
+
+
 
 /***/ }),
 

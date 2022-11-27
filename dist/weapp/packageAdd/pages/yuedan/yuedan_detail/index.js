@@ -367,7 +367,7 @@ var render = function () {
             { staticClass: "yuedan_name" },
             [
               _vm._v(" " + _vm._s(_vm.yuepaiInfo.author.nickname) + " "),
-              _vm.author.sex !== null
+              _vm.yuepaiInfo.author.sex !== null
                 ? _c("block", [
                     _vm.yuepaiInfo.author.sex == 1
                       ? _c("image", {

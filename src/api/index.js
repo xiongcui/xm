@@ -213,3 +213,27 @@ export const submitNotice = (data) => {
     data,
   });
 };
+// 通告列表页筛选
+export const noticeFilter = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/notice/filter",
+    method: "get",
+    data,
+  });
+};
+// 通告列表
+export const noticeList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/notice/list",
+    method: "post",
+    data,
+  });
+};
+// 通告详情
+export const noticeInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/notice/info",
+    method: "post",
+    data,
+  });
+};

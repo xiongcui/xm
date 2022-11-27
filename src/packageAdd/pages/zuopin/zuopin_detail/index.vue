@@ -181,7 +181,6 @@ export default {
       try {
         let res = await photoInfo(params);
         this.zuopinInfo = res.data.data;
-        console.log(this.zuopinInfo);
       } catch (error) {}
     },
   },

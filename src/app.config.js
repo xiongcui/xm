@@ -90,6 +90,7 @@ export default defineAppConfig({
         "pages/add/index",
         "pages/shop/index",
         "pages/brand/index",
+        "pages/detail/index",
       ],
     },
   ],

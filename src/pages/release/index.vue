@@ -84,7 +84,7 @@ export default {
       let url = "";
       switch (type) {
         case 1:
-          url = "appointment/index?id=1";
+          url = "/packageTonggao/pages/index/index";
           break;
         case 2:
           url = "appointment/index";

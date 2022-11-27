@@ -6,7 +6,7 @@
         <view class="yuedan_info">
           <view class="yuedan_name">
             {{ yuepaiInfo.author.nickname }}
-            <block v-if="author.sex !== null">
+            <block v-if="yuepaiInfo.author.sex !== null">
               <image
                 src="../../../../assets/images/nan.png"
                 class="yuedan_sex"

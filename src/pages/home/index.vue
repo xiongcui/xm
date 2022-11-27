@@ -29,6 +29,16 @@
     </view>
     <view :style="{ height: globalData.navHeight + 'px' }"></view>
     <block v-if="headCurrent == 0">
+      <TonggaoList
+        :base_data="allCity"
+        :multi_array="multiArray"
+        :more="tonggaoMore"
+        :refresh="tonggaoRefresh"
+        @closeMore="closeMore"
+        @closeRefresh="closeRefresh"
+      ></TonggaoList>
+    </block>
+    <block v-if="headCurrent == 1">
       <view class="page-bg"></view>
       <view class="page-section page-section-spacing swiper">
         <swiper
@@ -355,7 +365,7 @@
         </view>
       </view>
     </block>
-    <block v-if="headCurrent == 1">
+    <block v-if="headCurrent == 2">
       <ZuopinList
         :base_data="allCity"
         :multi_array="multiArray"
@@ -374,12 +384,14 @@ import { inviteList, publicConfig } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
 import ZuopinList from "../../components/zuopinList/index.vue";
-
+import TonggaoList from "../../components/tonggaoList/index.vue";
 export default {
   name: "home",
   data() {
     return {
-      headCurrent: 0,
+      headCurrent: 1,
+      tonggaoMore: false,
+      tonggaoRefresh: false,
       zuopinMore: false,
       zuopinRefresh: false,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
@@ -418,6 +430,10 @@ export default {
       ],
       headNavList: [
         {
+          name: "通告",
+          value: -1,
+        },
+        {
           name: "约单",
           value: 0,
         },
@@ -452,22 +468,25 @@ export default {
   },
   components: {
     ZuopinList,
+    TonggaoList,
   },
   methods: {
     closeRefresh() {
       console.log("刷新了--------");
       this.zuopinRefresh = false;
+      this.tonggaoRefresh = false;
       this.loading = true;
     },
     closeMore() {
       console.log("关闭了--------");
       this.zuopinMore = false;
+      this.tonggaoMore = false;
       this.loading = true;
     },
     headNavClick(index) {
       this.pageNum = 1;
       this.headCurrent = index;
-      if (index == 0) {
+      if (index == 1) {
         this.query("init");
       }
     },
@@ -615,9 +634,11 @@ export default {
         title: "刷新中...",
       });
       if (this.headCurrent == 0) {
+        this.tonggaoRefresh = true;
+      } else if (this.headCurrent == 1) {
         this.pageNum = 1;
         this.query("init");
-      } else {
+      } else if (this.headCurrent == 2) {
         this.zuopinRefresh = true;
       }
     },
@@ -631,8 +652,10 @@ export default {
       });
       this.loading = false;
       if (this.headCurrent == 0) {
+        this.tonggaoMore = true;
+      } else if (this.headCurrent == 1) {
         this.query("more");
-      } else {
+      } else if (this.headCurrent == 2) {
         this.zuopinMore = true;
       }
     },

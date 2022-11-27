@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "主页",
-                    "pathName": "packageMoka/pages/moka/editshow/index",
+                    "name": "通告详情",
+                    "pathName": "packageTonggao/pages/detail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

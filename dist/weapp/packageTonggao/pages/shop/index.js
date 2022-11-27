@@ -638,7 +638,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "j"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "m"])(params);
 
               case 3:
                 res = _context.sent;
@@ -667,24 +667,33 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "m"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "p"])(params);
 
               case 3:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("提交成功！");
-                _context2.next = 9;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("提交成功！"); // 跳转首页
+
+                wx.switchTab({
+                  url: "/pages/home/index",
+                  success: function success(e) {
+                    var page = getCurrentPages().pop();
+                    if (page == undefined || page == null) return;
+                    page.onLoad();
+                  }
+                });
+                _context2.next = 10;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     }
   },

@@ -45,8 +45,8 @@
   justify-content: center;
   .head_nav_item {
     color: rgba(255, 255, 255, 0.6);
-    // margin: 0px 20px;
-    padding: 0px 20px;
+    padding: 0px 10px;
+    margin: 0px 10px;
   }
   .acitve {
     color: #ffffff;
@@ -298,7 +298,6 @@
 .list_tags {
   display: flex;
   flex-wrap: wrap;
-  //   margin: 10px 0px;
   margin-top: 16px;
   .tag {
     padding: 4px 10px;
@@ -414,7 +413,7 @@
     font-size: 26rpx;
     height: 54rpx;
     line-height: 54rpx;
-    margin: 0 30rpx 20rpx 0;
+    margin: 0 16rpx 16rpx 0;
     padding: 0 30rpx;
   }
 
