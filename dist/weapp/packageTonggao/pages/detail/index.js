@@ -270,6 +270,30 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -483,26 +507,34 @@ var render = function () {
                     " "
                 ),
               ]),
-              _c("view", { staticClass: "tonggao_p" }, [
-                _c("image", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/zhifu.png */ "./src/assets/images/tonggao/zhifu.png"),
-                  },
-                }),
-                _vm._v(
-                  " 支付稿费：" + _vm._s(_vm.tonggaoInfo.payment_format) + "元 "
-                ),
-              ]),
-              _c("view", { staticClass: "tonggao_p" }, [
-                _c("image", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/product.png */ "./src/assets/images/tonggao/product.png"),
-                  },
-                }),
-                _vm._v(
-                  " 赠送产品：" + _vm._s(_vm.tonggaoInfo.reward_good) + " "
-                ),
-              ]),
+              _vm.tonggaoInfo.task_reward_type == 100 ||
+              _vm.tonggaoInfo.task_reward_type == 300
+                ? _c("view", { staticClass: "tonggao_p" }, [
+                    _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../assets/images/tonggao/zhifu.png */ "./src/assets/images/tonggao/zhifu.png"),
+                      },
+                    }),
+                    _vm._v(
+                      " 支付稿费：" +
+                        _vm._s(_vm.tonggaoInfo.payment_format) +
+                        " "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.tonggaoInfo.task_reward_type == 200 ||
+              _vm.tonggaoInfo.task_reward_type == 300
+                ? _c("view", { staticClass: "tonggao_p" }, [
+                    _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../assets/images/tonggao/product.png */ "./src/assets/images/tonggao/product.png"),
+                      },
+                    }),
+                    _vm._v(
+                      " 赠送产品：" + _vm._s(_vm.tonggaoInfo.reward_good) + " "
+                    ),
+                  ])
+                : _vm._e(),
               _c("view", { staticClass: "tonggao_p" }, [
                 _c("image", {
                   attrs: {
@@ -587,26 +619,34 @@ var render = function () {
                     " "
                 ),
               ]),
-              _c("view", { staticClass: "tonggao_p" }, [
-                _c("image", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/zhifu.png */ "./src/assets/images/tonggao/zhifu.png"),
-                  },
-                }),
-                _vm._v(
-                  " 支付稿费：" + _vm._s(_vm.tonggaoInfo.payment_format) + "元 "
-                ),
-              ]),
-              _c("view", { staticClass: "tonggao_p" }, [
-                _c("image", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/product.png */ "./src/assets/images/tonggao/product.png"),
-                  },
-                }),
-                _vm._v(
-                  " 赠送产品：" + _vm._s(_vm.tonggaoInfo.reward_good) + " "
-                ),
-              ]),
+              _vm.tonggaoInfo.task_reward_type == 100 ||
+              _vm.tonggaoInfo.task_reward_type == 300
+                ? _c("view", { staticClass: "tonggao_p" }, [
+                    _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../assets/images/tonggao/zhifu.png */ "./src/assets/images/tonggao/zhifu.png"),
+                      },
+                    }),
+                    _vm._v(
+                      " 支付稿费：" +
+                        _vm._s(_vm.tonggaoInfo.payment_format) +
+                        " "
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.tonggaoInfo.task_reward_type == 200 ||
+              _vm.tonggaoInfo.task_reward_type == 300
+                ? _c("view", { staticClass: "tonggao_p" }, [
+                    _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../assets/images/tonggao/product.png */ "./src/assets/images/tonggao/product.png"),
+                      },
+                    }),
+                    _vm._v(
+                      " 赠送产品：" + _vm._s(_vm.tonggaoInfo.reward_good) + " "
+                    ),
+                  ])
+                : _vm._e(),
               _c("view", { staticClass: "tonggao_p" }, [
                 _c("image", {
                   attrs: {

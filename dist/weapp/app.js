@@ -226,7 +226,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "B"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "C"])(params);
 
             case 3:
               res = _context.sent;

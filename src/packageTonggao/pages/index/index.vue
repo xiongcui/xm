@@ -5,8 +5,8 @@
       <view class="hot-type">
         <view class="hot-item" @tap="goRelease(1)">品牌种草</view>
         <view class="hot-item" @tap="goRelease(2)">探店推广</view>
-        <view class="hot-item">发型创作</view>
-        <view class="hot-item">人像创作</view>
+        <view class="hot-item" @tap="goRelease(3)">发型创作</view>
+        <view class="hot-item" @tap="goRelease(4)">人像创作</view>
       </view>
     </view>
     <view class="select-type">
@@ -106,6 +106,16 @@ export default {
       }
       if (type == 2) {
         openPage("/packageTonggao/pages/shop/index");
+      }
+      if (type == 3) {
+        openPage(
+          "/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002"
+        );
+      }
+      if (type == 4) {
+        openPage(
+          "/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001"
+        );
       }
     },
     maskClick(row) {

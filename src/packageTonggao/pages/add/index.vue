@@ -42,12 +42,22 @@
         <view class="tonggao-left"> 截止日期 </view>
         <view class="tonggao-rt">
           <view class="tonggao-dete">
-            <input
+            <!-- <input
               class="tonggao-name"
               placeholder="请选择报名截止日期"
               v-model="date"
               @blur="dateBlur"
-            />
+            /> -->
+            <picker
+              @change="dateChange"
+              mode="date"
+              start="1960-09-01"
+              value="2000-01-01"
+              class="brand-select"
+            >
+              <view class="brand-select-item" v-if="date">{{ date }}</view>
+              <view class="brand-select-item" v-else>请选择报名截止日期</view>
+            </picker>
             <text class="tonggao-split">|</text>
             <text class="long-term">长期</text>
             <checkbox :checked="checked" @tap="checkClick" />
@@ -301,6 +311,12 @@ export default {
     };
   },
   methods: {
+    dateChange(e) {
+      this.date = e.detail.value;
+      if (this.date) {
+        this.checked = false;
+      }
+    },
     uploadImgClose(index) {
       this.imgList.splice(index, 1);
     },

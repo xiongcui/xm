@@ -35,6 +35,50 @@ component.options.__file = "src/pages/home/index.vue"
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/loading/index.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/loading/index.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/components/loading/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "loading",
+  props: {
+    showLoading: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/tonggaoList/index.vue?vue&type=script&lang=js& ***!
@@ -50,6 +94,7 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
 //
@@ -250,6 +295,8 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+
 
 
 
@@ -314,6 +361,7 @@ component.options.__file = "src/pages/home/index.vue"
   },
   data: function data() {
     return {
+      showLoading: true,
       height: 0,
       tonggaoMore: false,
       tonggaoRefresh: false,
@@ -341,10 +389,25 @@ component.options.__file = "src/pages/home/index.vue"
       }
     };
   },
+  components: {
+    loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]
+  },
   methods: {
+    formatSex: function formatSex(sex) {
+      if (sex == 1) {
+        return "男";
+      }
+
+      if (sex == 0) {
+        return "女";
+      }
+
+      return "不限";
+    },
     navClick: function navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
+      this.showLoading = true;
       this.query("init");
     },
     godetail: function godetail(oid, author_id) {
@@ -534,9 +597,9 @@ component.options.__file = "src/pages/home/index.vue"
       this.query("more");
     },
     query: function query(type) {
-      wx.showLoading({
-        title: "加载中..."
-      });
+      //   wx.showLoading({
+      //     title: "加载中...",
+      //   });
       var params = {
         filter: this.filter,
         quick_filter: this.navList[this.navActive].key,
@@ -560,7 +623,6 @@ component.options.__file = "src/pages/home/index.vue"
 
               case 3:
                 res = _context.sent;
-                console.log(res.data);
                 data = res.data.data;
                 arr = [];
                 arr1 = [];
@@ -596,19 +658,19 @@ component.options.__file = "src/pages/home/index.vue"
                 _this.identity_data = arr;
                 _this.notice_data = arr1;
                 _this.charge_data = arr2;
-                _context.next = 22;
+                _context.next = 21;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 19:
+                _context.prev = 19;
                 _context.t0 = _context["catch"](0);
 
-              case 22:
+              case 21:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 20]]);
+        }, _callee, null, [[0, 19]]);
       }))();
     },
     publicConfig: function publicConfig(params) {
@@ -622,7 +684,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "n"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -668,6 +730,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 3:
                 res = _context3.sent;
                 //隐藏loading 提示框
+                _this3.showLoading = false;
                 wx.hideLoading(); //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
@@ -675,7 +738,7 @@ component.options.__file = "src/pages/home/index.vue"
                 wx.stopPullDownRefresh();
 
                 if (!(type == "init")) {
-                  _context3.next = 12;
+                  _context3.next = 13;
                   break;
                 }
 
@@ -683,17 +746,17 @@ component.options.__file = "src/pages/home/index.vue"
 
                 _this3.$emit("closeRefresh");
 
-                _context3.next = 20;
+                _context3.next = 21;
                 break;
 
-              case 12:
+              case 13:
                 if (!(type == "more")) {
-                  _context3.next = 20;
+                  _context3.next = 21;
                   break;
                 }
 
                 if (res.data.data.items.length) {
-                  _context3.next = 17;
+                  _context3.next = 18;
                   break;
                 }
 
@@ -703,26 +766,26 @@ component.options.__file = "src/pages/home/index.vue"
 
                 return _context3.abrupt("return", false);
 
-              case 17:
+              case 18:
                 data = res.data.data.items;
                 _this3.list = _this3.list.concat(data);
 
                 _this3.$emit("closeMore");
 
-              case 20:
-                _context3.next = 24;
+              case 21:
+                _context3.next = 25;
                 break;
 
-              case 22:
-                _context3.prev = 22;
+              case 23:
+                _context3.prev = 23;
                 _context3.t0 = _context3["catch"](0);
 
-              case 24:
+              case 25:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 22]]);
+        }, _callee3, null, [[0, 23]]);
       }))();
     }
   },
@@ -752,6 +815,7 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
 //
@@ -925,6 +989,8 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+
 
 
 
@@ -987,8 +1053,12 @@ component.options.__file = "src/pages/home/index.vue"
       immediate: true
     }
   },
+  components: {
+    loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]
+  },
   data: function data() {
     return {
+      showLoading: true,
       showModal: false,
       zuopinMore: false,
       zuopinRefresh: false,
@@ -1038,6 +1108,7 @@ component.options.__file = "src/pages/home/index.vue"
     navClick: function navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
+      this.showLoading = true;
       this.query("init");
     },
     select_identity_tag: function select_identity_tag(row) {
@@ -1212,9 +1283,9 @@ component.options.__file = "src/pages/home/index.vue"
       this.query("more");
     },
     query: function query(type) {
-      wx.showLoading({
-        title: "加载中..."
-      });
+      //   wx.showLoading({
+      //     title: "加载中...",
+      //   });
       var params = {
         filter: this.filter,
         quick_filter: this.navList[this.navActive].key,
@@ -1234,7 +1305,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "n"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1283,11 +1354,12 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "l"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "m"])(params);
 
               case 3:
                 res = _context2.sent;
                 //隐藏loading 提示框
+                _this2.showLoading = false;
                 wx.hideLoading(); //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
@@ -1295,7 +1367,7 @@ component.options.__file = "src/pages/home/index.vue"
                 wx.stopPullDownRefresh();
 
                 if (!(type == "init")) {
-                  _context2.next = 12;
+                  _context2.next = 13;
                   break;
                 }
 
@@ -1303,17 +1375,17 @@ component.options.__file = "src/pages/home/index.vue"
 
                 _this2.$emit("closeRefresh");
 
-                _context2.next = 20;
+                _context2.next = 21;
                 break;
 
-              case 12:
+              case 13:
                 if (!(type == "more")) {
-                  _context2.next = 20;
+                  _context2.next = 21;
                   break;
                 }
 
                 if (res.data.data.items.length) {
-                  _context2.next = 17;
+                  _context2.next = 18;
                   break;
                 }
 
@@ -1323,26 +1395,26 @@ component.options.__file = "src/pages/home/index.vue"
 
                 return _context2.abrupt("return", false);
 
-              case 17:
+              case 18:
                 data = res.data.data.items;
                 _this2.list = _this2.list.concat(data);
 
                 _this2.$emit("closeMore");
 
-              case 20:
-                _context2.next = 24;
+              case 21:
+                _context2.next = 25;
                 break;
 
-              case 22:
-                _context2.prev = 22;
+              case 23:
+                _context2.prev = 23;
                 _context2.t0 = _context2["catch"](0);
 
-              case 24:
+              case 25:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 22]]);
+        }, _callee2, null, [[0, 23]]);
       }))();
     },
     getCareer: function getCareer(params) {
@@ -1418,6 +1490,7 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _utils_city__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/city */ "./src/utils/city.js");
 /* harmony import */ var _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/zuopinList/index.vue */ "./src/components/zuopinList/index.vue");
 /* harmony import */ var _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/tonggaoList/index.vue */ "./src/components/tonggaoList/index.vue");
+/* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
 //
@@ -1800,6 +1873,14 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -1810,6 +1891,8 @@ component.options.__file = "src/pages/home/index.vue"
   name: "home",
   data: function data() {
     return {
+      showLoading: true,
+      showtoTop: false,
       headCurrent: 1,
       tonggaoMore: false,
       tonggaoRefresh: false,
@@ -1901,9 +1984,22 @@ component.options.__file = "src/pages/home/index.vue"
   },
   components: {
     ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"],
-    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"]
+    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"],
+    loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]
   },
   methods: {
+    totop: function totop() {
+      if (wx.pageScrollTo) {
+        wx.pageScrollTo({
+          scrollTop: 0
+        });
+      } else {
+        wx.showModal({
+          title: "提示",
+          content: "当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。"
+        });
+      }
+    },
     closeRefresh: function closeRefresh() {
       console.log("刷新了--------");
       this.zuopinRefresh = false;
@@ -2037,15 +2133,16 @@ component.options.__file = "src/pages/home/index.vue"
     navClick: function navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
+      this.showLoading = true;
       this.query("init");
     },
     bindRegionChange: function bindRegionChange(e) {
       this.sizer_city = e.detail.value;
     },
     query: function query(type) {
-      wx.showLoading({
-        title: "加载中..."
-      });
+      // wx.showLoading({
+      //   title: "加载中...",
+      // });
       this.inviteList({
         filter: this.filter,
         quick_filter: this.navList.length ? this.navList[this.navActive].key : "",
@@ -2168,7 +2265,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "n"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2231,6 +2328,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 3:
                 res = _context2.sent;
                 //隐藏loading 提示框
+                _this2.showLoading = false;
                 wx.hideLoading(); //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
@@ -2238,22 +2336,22 @@ component.options.__file = "src/pages/home/index.vue"
                 wx.stopPullDownRefresh();
 
                 if (!(type == "init")) {
-                  _context2.next = 11;
+                  _context2.next = 12;
                   break;
                 }
 
                 _this2.list = res.data.data.items;
-                _context2.next = 19;
+                _context2.next = 20;
                 break;
 
-              case 11:
+              case 12:
                 if (!(type == "more")) {
-                  _context2.next = 19;
+                  _context2.next = 20;
                   break;
                 }
 
                 if (res.data.data.items.length) {
-                  _context2.next = 16;
+                  _context2.next = 17;
                   break;
                 }
 
@@ -2261,26 +2359,34 @@ component.options.__file = "src/pages/home/index.vue"
                 _this2.loading = true;
                 return _context2.abrupt("return", false);
 
-              case 16:
+              case 17:
                 data = res.data.data.items;
                 _this2.list = _this2.list.concat(data);
                 _this2.loading = true;
 
-              case 19:
-                _context2.next = 23;
+              case 20:
+                _context2.next = 24;
                 break;
 
-              case 21:
-                _context2.prev = 21;
+              case 22:
+                _context2.prev = 22;
                 _context2.t0 = _context2["catch"](0);
 
-              case 23:
+              case 24:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 21]]);
+        }, _callee2, null, [[0, 22]]);
       }))();
+    }
+  },
+  // 获取滚动条当前位置
+  onPageScroll: function onPageScroll(e) {
+    if (e.scrollTop > 100) {
+      this.showtoTop = true;
+    } else {
+      this.showtoTop = false;
     }
   },
 
@@ -2333,6 +2439,57 @@ component.options.__file = "src/pages/home/index.vue"
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/loading/index.vue?vue&type=template&id=f4b50242&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/loading/index.vue?vue&type=template&id=f4b50242&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "view",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.showLoading,
+          expression: "showLoading",
+        },
+      ],
+      staticClass: "layout-loading",
+    },
+    [
+      _c("view", { staticClass: "layout-content" }, [
+        _c("view", { staticClass: "loader-animation" }, [
+          _c("view", { staticClass: "animation-box" }, [
+            _c("text"),
+            _c("text"),
+            _c("text"),
+            _c("text"),
+            _c("text"),
+          ]),
+          _c("view", { staticClass: "loading-label" }, [_vm._v("加载中")]),
+        ]),
+      ]),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true& ***!
@@ -2348,377 +2505,393 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "tonggao_list" }, [
-    _c(
-      "view",
-      { staticClass: "nav_list" },
-      [
-        _c(
-          "scroll-view",
-          {
-            staticClass: "swiper_tab",
-            attrs: { enhanced: true, scrollX: true },
-          },
-          [
-            _c(
-              "view",
-              { staticClass: "nav_list_ct" },
-              _vm._l(_vm.navList, function (item, index) {
-                return _c(
-                  "text",
-                  {
-                    key: index,
-                    staticClass: "nav_item",
-                    class: _vm.navActive == index ? "nav_active" : "",
-                    on: {
-                      tap: function ($event) {
-                        return _vm.navClick(index)
-                      },
-                    },
-                  },
-                  [_vm._v(_vm._s(item.value))]
-                )
-              }),
-              0
-            ),
-          ]
-        ),
-        _c("view", { staticClass: "sizer_block ub", on: { tap: _vm.screen } }, [
-          _c("view", { staticClass: "gradient" }),
+  return _c(
+    "view",
+    { staticClass: "tonggao_list" },
+    [
+      _c(
+        "view",
+        { staticClass: "nav_list" },
+        [
           _c(
-            "view",
+            "scroll-view",
             {
-              staticClass: "sizer ub",
-              class: _vm.sizer_num.length ? "is_sizer" : "",
+              staticClass: "swiper_tab",
+              attrs: { enhanced: true, scrollX: true },
             },
             [
               _c(
                 "view",
-                { staticClass: "ub" },
-                [
-                  _c("view", [_vm._v("筛选")]),
-                  _vm.sizer_num.length
-                    ? _c("block", [
-                        _c("view", { staticClass: "sizer_dian" }, [
-                          _vm._v("·"),
-                        ]),
-                        _c("view", [_vm._v(_vm._s(_vm.sizer_num.length))]),
-                      ])
-                    : _vm._e(),
-                ],
-                1
+                { staticClass: "nav_list_ct" },
+                _vm._l(_vm.navList, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "nav_item",
+                      class: _vm.navActive == index ? "nav_active" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.navClick(index)
+                        },
+                      },
+                    },
+                    [_vm._v(_vm._s(item.value))]
+                  )
+                }),
+                0
               ),
-              _c("view", { staticClass: "sizer_img" }, [
-                _vm.sizer_num.length
-                  ? _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/sizered.png */ "./src/assets/images/common/sizered.png"),
-                      },
-                    })
-                  : _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/sizer.png */ "./src/assets/images/common/sizer.png"),
-                      },
-                    }),
-              ]),
             ]
           ),
-        ]),
-      ],
-      1
-    ),
-    _vm.list.length
-      ? _c(
-          "view",
-          { staticClass: "main_list" },
-          _vm._l(_vm.list, function (item, index) {
-            return _c(
-              "view",
-              {
-                key: index,
-                staticClass: "tonggao_box",
-                on: {
-                  tap: function ($event) {
-                    return _vm.godetail(item.oid, item.author_id)
-                  },
+          _c(
+            "view",
+            { staticClass: "sizer_block ub", on: { tap: _vm.screen } },
+            [
+              _c("view", { staticClass: "gradient" }),
+              _c(
+                "view",
+                {
+                  staticClass: "sizer ub",
+                  class: _vm.sizer_num.length ? "is_sizer" : "",
                 },
-              },
-              [
-                _c("view", { staticClass: "tonggao_title" }, [
-                  _c("text", { staticClass: "list_title" }, [
-                    _vm._v(
-                      _vm._s(item.major_subject) + _vm._s(item.payment_format)
-                    ),
-                  ]),
-                  _c("view", { staticClass: "list_loction" }, [
-                    _vm._v(" " + _vm._s(item.author.province_name) + " "),
-                  ]),
-                ]),
-                _c("view", { staticClass: "tonggao_ct" }, [
-                  _c("view", { staticClass: "tonggao_left" }, [
-                    _c("view", { staticClass: "tonggao_desc" }, [
-                      _vm._v(" " + _vm._s(item.summary) + " "),
-                    ]),
-                    _c("view", { staticClass: "tonggao_tags" }, [
-                      _c("view", { staticClass: "tag-item" }, [
-                        _vm._v(_vm._s(item.second_name)),
-                      ]),
-                      item.first_code == "celebrity_spread"
-                        ? _c("view", { staticClass: "tag-item" }, [
-                            _vm._v("粉丝要求：" + _vm._s(item.fans_number)),
-                          ])
-                        : _vm._e(),
-                      item.face_sex !== null &&
-                      item.first_code != "celebrity_spread"
-                        ? _c("view", { staticClass: "tag-item" }, [
-                            _vm._v(
-                              "性别要求：" +
-                                _vm._s(item.face_sex == 1 ? "男" : "女")
-                            ),
-                          ])
-                        : _vm._e(),
-                    ]),
-                    _c("view", { staticClass: "tonggao_info" }, [
-                      _c("image", {
-                        staticClass: "head-img",
-                        attrs: {
-                          src: item.author.avatar
-                            ? item.author.avatar
-                            : "../../assets/images/avatar_default.png",
-                        },
-                      }),
-                      _vm._v(" " + _vm._s(item.author.nickname) + " "),
-                      item.author.is_security
-                        ? _c("image", {
-                            staticClass: "pledge-img",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
-                            },
-                          })
-                        : _vm._e(),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "tonggao-right" }, [
-                    _c("image", {
-                      attrs: { mode: "aspectFill", src: item.cover[0] },
-                    }),
-                  ]),
-                ]),
-                _c("view", { staticClass: "tonggao_bottom" }, [
-                  _c("view", { staticClass: "tonggao_time" }, [
-                    _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
-                      },
-                    }),
-                    _vm._v(" " + _vm._s(item.date_humanize) + " "),
-                  ]),
-                  _c("view", { staticClass: "tonggao_bottom_rt" }, [
-                    _c("view", { staticClass: "tonggao_yuepai" }, [
-                      _c("image", {
-                        attrs: {
-                          src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
-                        },
-                      }),
-                      _vm._v(" " + _vm._s(item.statistic.invite_cnt) + " "),
-                    ]),
-                    _c("view", { staticClass: "tonggao_read" }, [
-                      _c("image", {
-                        attrs: { src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png") },
-                      }),
-                      _vm._v(" " + _vm._s(item.statistic.read_cnt) + " "),
-                    ]),
-                  ]),
-                ]),
-              ]
-            )
-          }),
-          0
-        )
-      : _c("view", { staticClass: "none-data" }, [
-          _c("image", {
-            staticClass: "none-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
-              mode: "aspectFill",
-            },
-          }),
-          _c("view", [_vm._v("当前暂无信息哦～")]),
-        ]),
-    _c(
-      "view",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showModal,
-            expression: "showModal",
-          },
-        ],
-        staticClass: "select_block",
-        on: { tap: _vm.close },
-      },
-      [
-        _c(
-          "view",
-          {
-            staticClass: "select_bg",
-            on: {
-              tap: function ($event) {
-                $event.stopPropagation()
-              },
-            },
-          },
-          [
-            _c("view", {
-              staticClass: "statusbar",
-              style: { height: _vm.height + "px" },
-            }),
-            _c("view", { staticClass: "location" }, [
-              _c("view", { staticClass: "location_address" }, [
-                _vm._v("当前定位：北京"),
-              ]),
-              _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
-            ]),
-            _c("view", { staticClass: "address_box" }, [
-              _c("view", { staticClass: "address_label" }, [
-                _vm._v("选择地区"),
-              ]),
-              _c("view", { staticClass: "address_input" }, [
-                _c("view", { staticClass: "pickers" }, [
+                [
                   _c(
                     "view",
-                    { staticClass: "ub-f1" },
+                    { staticClass: "ub" },
                     [
-                      _c(
-                        "picker",
-                        {
-                          attrs: {
-                            mode: "multiSelector",
-                            value: _vm.multiIndex,
-                            range: _vm.multiArray,
-                            "range-key": "name",
-                          },
-                          on: {
-                            change: _vm.sizerBindRegionChange,
-                            columnchange: _vm.onBindcolumnchange,
-                          },
-                        },
-                        [
-                          _c(
-                            "view",
-                            { staticClass: "sizer_select_local bd_b fl" },
-                            [
-                              _vm.sizer_city
-                                ? _c(
-                                    "view",
-                                    { staticClass: "pickers pick-city picked" },
-                                    [_vm._v(_vm._s(_vm.sizer_city))]
-                                  )
-                                : _c(
-                                    "view",
-                                    { staticClass: "pickers pick-city" },
-                                    [_vm._v("全部")]
-                                  ),
-                            ]
-                          ),
-                        ]
-                      ),
+                      _c("view", [_vm._v("筛选")]),
+                      _vm.sizer_num.length
+                        ? _c("block", [
+                            _c("view", { staticClass: "sizer_dian" }, [
+                              _vm._v("·"),
+                            ]),
+                            _c("view", [_vm._v(_vm._s(_vm.sizer_num.length))]),
+                          ])
+                        : _vm._e(),
                     ],
                     1
                   ),
+                  _c("view", { staticClass: "sizer_img" }, [
+                    _vm.sizer_num.length
+                      ? _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/common/sizered.png */ "./src/assets/images/common/sizered.png"),
+                          },
+                        })
+                      : _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/common/sizer.png */ "./src/assets/images/common/sizer.png"),
+                          },
+                        }),
+                  ]),
+                ]
+              ),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm.list.length
+        ? _c(
+            "view",
+            { staticClass: "main_list" },
+            _vm._l(_vm.list, function (item, index) {
+              return _c(
+                "view",
+                {
+                  key: index,
+                  staticClass: "tonggao_box",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.godetail(item.oid, item.author_id)
+                    },
+                  },
+                },
+                [
+                  _c("view", { staticClass: "tonggao_title" }, [
+                    _c("text", { staticClass: "list_title" }, [
+                      _vm._v(
+                        _vm._s(item.major_subject) + _vm._s(item.payment_format)
+                      ),
+                    ]),
+                    _c("view", { staticClass: "list_loction" }, [
+                      _vm._v(" " + _vm._s(item.author.province_name) + " "),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "tonggao_ct" }, [
+                    _c("view", { staticClass: "tonggao_left" }, [
+                      _c("view", { staticClass: "tonggao_desc" }, [
+                        _vm._v(" " + _vm._s(item.summary) + " "),
+                      ]),
+                      _c("view", { staticClass: "tonggao_tags" }, [
+                        _c("view", { staticClass: "tag-item" }, [
+                          _vm._v(_vm._s(item.second_name)),
+                        ]),
+                        item.first_code == "celebrity_spread"
+                          ? _c("view", { staticClass: "tag-item" }, [
+                              _vm._v("粉丝要求：" + _vm._s(item.fans_number)),
+                            ])
+                          : _vm._e(),
+                        item.face_sex !== null &&
+                        item.first_code != "celebrity_spread"
+                          ? _c("view", { staticClass: "tag-item" }, [
+                              _vm._v(
+                                "性别要求：" +
+                                  _vm._s(_vm.formatSex(item.face_sex))
+                              ),
+                            ])
+                          : _vm._e(),
+                      ]),
+                      _c("view", { staticClass: "tonggao_info" }, [
+                        _c("image", {
+                          staticClass: "head-img",
+                          attrs: {
+                            src: item.author.avatar
+                              ? item.author.avatar
+                              : "../../assets/images/avatar_default.png",
+                          },
+                        }),
+                        _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                        item.author.is_security
+                          ? _c("image", {
+                              staticClass: "pledge-img",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                              },
+                            })
+                          : _vm._e(),
+                      ]),
+                    ]),
+                    _c("view", { staticClass: "tonggao-right" }, [
+                      _c("image", {
+                        attrs: { mode: "aspectFill", src: item.cover[0] },
+                      }),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "tonggao_bottom" }, [
+                    _c("view", { staticClass: "tonggao_time" }, [
+                      _c("image", {
+                        attrs: {
+                          src: __webpack_require__(/*! ../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                    ]),
+                    _c("view", { staticClass: "tonggao_bottom_rt" }, [
+                      _c("view", { staticClass: "tonggao_yuepai" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                          },
+                        }),
+                        _vm._v(" " + _vm._s(item.statistic.invite_cnt) + " "),
+                      ]),
+                      _c("view", { staticClass: "tonggao_read" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
+                          },
+                        }),
+                        _vm._v(" " + _vm._s(item.statistic.read_cnt) + " "),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              )
+            }),
+            0
+          )
+        : _c("view", { staticClass: "none-data" }, [
+            _c("image", {
+              staticClass: "none-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                mode: "aspectFill",
+              },
+            }),
+            _c("view", [_vm._v("当前暂无信息哦～")]),
+          ]),
+      _c(
+        "view",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showModal,
+              expression: "showModal",
+            },
+          ],
+          staticClass: "select_block",
+          on: { tap: _vm.close },
+        },
+        [
+          _c(
+            "view",
+            {
+              staticClass: "select_bg",
+              on: {
+                tap: function ($event) {
+                  $event.stopPropagation()
+                },
+              },
+            },
+            [
+              _c("view", {
+                staticClass: "statusbar",
+                style: { height: _vm.height + "px" },
+              }),
+              _c("view", { staticClass: "location" }, [
+                _c("view", { staticClass: "location_address" }, [
+                  _vm._v("当前定位：北京"),
+                ]),
+                _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
+              ]),
+              _c("view", { staticClass: "address_box" }, [
+                _c("view", { staticClass: "address_label" }, [
+                  _vm._v("选择地区"),
+                ]),
+                _c("view", { staticClass: "address_input" }, [
+                  _c("view", { staticClass: "pickers" }, [
+                    _c(
+                      "view",
+                      { staticClass: "ub-f1" },
+                      [
+                        _c(
+                          "picker",
+                          {
+                            attrs: {
+                              mode: "multiSelector",
+                              value: _vm.multiIndex,
+                              range: _vm.multiArray,
+                              "range-key": "name",
+                            },
+                            on: {
+                              change: _vm.sizerBindRegionChange,
+                              columnchange: _vm.onBindcolumnchange,
+                            },
+                          },
+                          [
+                            _c(
+                              "view",
+                              { staticClass: "sizer_select_local bd_b fl" },
+                              [
+                                _vm.sizer_city
+                                  ? _c(
+                                      "view",
+                                      {
+                                        staticClass: "pickers pick-city picked",
+                                      },
+                                      [_vm._v(_vm._s(_vm.sizer_city))]
+                                    )
+                                  : _c(
+                                      "view",
+                                      { staticClass: "pickers pick-city" },
+                                      [_vm._v("全部")]
+                                    ),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
                 ]),
               ]),
-            ]),
-            _c("view", { staticClass: "select_item" }, [
-              _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("招募身份"),
-              ]),
-              _c(
-                "view",
-                _vm._l(_vm.identity_data, function (item, index) {
-                  return _c(
-                    "text",
-                    {
-                      key: index,
-                      staticClass: "tag_item",
-                      class: item.ispick ? "tag_itemed" : "",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.select_identity_tag(item)
+              _c("view", { staticClass: "select_item" }, [
+                _c("view", { staticClass: "select_item_title" }, [
+                  _vm._v("招募身份"),
+                ]),
+                _c(
+                  "view",
+                  _vm._l(_vm.identity_data, function (item, index) {
+                    return _c(
+                      "text",
+                      {
+                        key: index,
+                        staticClass: "tag_item",
+                        class: item.ispick ? "tag_itemed" : "",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.select_identity_tag(item)
+                          },
                         },
                       },
-                    },
-                    [_vm._v(" " + _vm._s(item.name) + " ")]
-                  )
-                }),
-                0
-              ),
-            ]),
-            _c("view", { staticClass: "select_item" }, [
-              _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("通告类型"),
+                      [_vm._v(" " + _vm._s(item.name) + " ")]
+                    )
+                  }),
+                  0
+                ),
               ]),
-              _c(
-                "view",
-                _vm._l(_vm.notice_data, function (item, index) {
-                  return _c(
-                    "text",
-                    {
-                      key: index,
-                      staticClass: "tag_item",
-                      class: item.ispick ? "tag_itemed" : "",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.select_notice_tag(item)
+              _c("view", { staticClass: "select_item" }, [
+                _c("view", { staticClass: "select_item_title" }, [
+                  _vm._v("通告类型"),
+                ]),
+                _c(
+                  "view",
+                  _vm._l(_vm.notice_data, function (item, index) {
+                    return _c(
+                      "text",
+                      {
+                        key: index,
+                        staticClass: "tag_item",
+                        class: item.ispick ? "tag_itemed" : "",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.select_notice_tag(item)
+                          },
                         },
                       },
-                    },
-                    [_vm._v(" " + _vm._s(item.value) + " ")]
-                  )
-                }),
-                0
-              ),
-            ]),
-            _c("view", { staticClass: "select_item" }, [
-              _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("收费模式"),
+                      [_vm._v(" " + _vm._s(item.value) + " ")]
+                    )
+                  }),
+                  0
+                ),
               ]),
-              _c(
-                "view",
-                _vm._l(_vm.charge_data, function (item, index) {
-                  return _c(
-                    "text",
-                    {
-                      key: index,
-                      staticClass: "tag_item",
-                      class: item.ispick ? "tag_itemed" : "",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.select_charge_tag(item)
+              _c("view", { staticClass: "select_item" }, [
+                _c("view", { staticClass: "select_item_title" }, [
+                  _vm._v("收费模式"),
+                ]),
+                _c(
+                  "view",
+                  _vm._l(_vm.charge_data, function (item, index) {
+                    return _c(
+                      "text",
+                      {
+                        key: index,
+                        staticClass: "tag_item",
+                        class: item.ispick ? "tag_itemed" : "",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.select_charge_tag(item)
+                          },
                         },
                       },
-                    },
-                    [_vm._v(" " + _vm._s(item.value) + " ")]
-                  )
-                }),
-                0
-              ),
-            ]),
-            _c("view", { staticClass: "select_button" }, [
-              _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
-                _vm._v("清除"),
+                      [_vm._v(" " + _vm._s(item.value) + " ")]
+                    )
+                  }),
+                  0
+                ),
               ]),
-              _c("text", { staticClass: "confirm", on: { tap: _vm.submit } }, [
-                _vm._v("确认"),
+              _c("view", { staticClass: "select_button" }, [
+                _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
+                  _vm._v("清除"),
+                ]),
+                _c(
+                  "text",
+                  { staticClass: "confirm", on: { tap: _vm.submit } },
+                  [_vm._v("确认")]
+                ),
               ]),
-            ]),
-          ]
-        ),
-      ]
-    ),
-  ])
+            ]
+          ),
+        ]
+      ),
+      _c("loading", { attrs: { showLoading: _vm.showLoading } }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2742,339 +2915,353 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "zuppin_list" }, [
-    _c(
-      "view",
-      { staticClass: "nav_list" },
-      [
-        _c(
-          "scroll-view",
-          {
-            staticClass: "swiper_tab",
-            attrs: { enhanced: true, scrollX: true },
-          },
-          [
-            _c(
-              "view",
-              { staticClass: "nav_list_ct" },
-              _vm._l(_vm.navList, function (item, index) {
-                return _c(
-                  "text",
-                  {
-                    key: index,
-                    staticClass: "nav_item",
-                    class: _vm.navActive == index ? "nav_active" : "",
-                    on: {
-                      tap: function ($event) {
-                        return _vm.navClick(index)
-                      },
-                    },
-                  },
-                  [_vm._v(_vm._s(item.value))]
-                )
-              }),
-              0
-            ),
-          ]
-        ),
-        _c("view", { staticClass: "sizer_block ub", on: { tap: _vm.screen } }, [
-          _c("view", { staticClass: "gradient" }),
+  return _c(
+    "view",
+    { staticClass: "zuppin_list" },
+    [
+      _c(
+        "view",
+        { staticClass: "nav_list" },
+        [
           _c(
-            "view",
+            "scroll-view",
             {
-              staticClass: "sizer ub",
-              class: _vm.sizer_num.length ? "is_sizer" : "",
+              staticClass: "swiper_tab",
+              attrs: { enhanced: true, scrollX: true },
             },
             [
               _c(
                 "view",
-                { staticClass: "ub" },
-                [
-                  _c("view", [_vm._v("筛选")]),
-                  _vm.sizer_num.length
-                    ? _c("block", [
-                        _c("view", { staticClass: "sizer_dian" }, [
-                          _vm._v("·"),
-                        ]),
-                        _c("view", [_vm._v(_vm._s(_vm.sizer_num.length))]),
-                      ])
-                    : _vm._e(),
-                ],
-                1
+                { staticClass: "nav_list_ct" },
+                _vm._l(_vm.navList, function (item, index) {
+                  return _c(
+                    "text",
+                    {
+                      key: index,
+                      staticClass: "nav_item",
+                      class: _vm.navActive == index ? "nav_active" : "",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.navClick(index)
+                        },
+                      },
+                    },
+                    [_vm._v(_vm._s(item.value))]
+                  )
+                }),
+                0
               ),
-              _c("view", { staticClass: "sizer_img" }, [
-                _vm.sizer_num.length
-                  ? _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/sizered.png */ "./src/assets/images/common/sizered.png"),
-                      },
-                    })
-                  : _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/sizer.png */ "./src/assets/images/common/sizer.png"),
-                      },
-                    }),
-              ]),
             ]
           ),
-        ]),
-      ],
-      1
-    ),
-    _vm.list.length
-      ? _c(
-          "view",
-          { staticClass: "main_list" },
-          _vm._l(_vm.list, function (item, index) {
-            return _c(
-              "view",
-              {
-                key: index,
-                staticClass: "zuopin_box",
-                on: {
-                  tap: function ($event) {
-                    return _vm.godetail(item.oid, item.author_id)
-                  },
+          _c(
+            "view",
+            { staticClass: "sizer_block ub", on: { tap: _vm.screen } },
+            [
+              _c("view", { staticClass: "gradient" }),
+              _c(
+                "view",
+                {
+                  staticClass: "sizer ub",
+                  class: _vm.sizer_num.length ? "is_sizer" : "",
                 },
-              },
-              [
-                item.file_type == "picture"
-                  ? _c("image", {
-                      staticClass: "zuopin_img",
-                      attrs: { src: item.cover[0], mode: "aspectFill" },
-                    })
-                  : _vm._e(),
-                item.file_type == "video"
-                  ? _c("video", {
-                      staticClass: "list_video-width",
-                      attrs: {
-                        objectFit: "cover",
-                        poster: item.cover[0],
-                        src: item.video_cover && item.video_cover[0],
-                      },
-                    })
-                  : _vm._e(),
-                _c("view", { staticClass: "zuopin_desc" }, [
-                  _vm._v(_vm._s(item.summary)),
-                ]),
-                _c("view", { staticClass: "zuopin_info" }, [
-                  _c("image", {
-                    staticClass: "avatar",
-                    attrs: {
-                      src: item.author.avatar
-                        ? item.author.avatar
-                        : "../../assets/images/avatar_default.png",
-                      mode: "aspectFill",
-                    },
-                  }),
-                  _c("view", [
-                    _c(
-                      "view",
-                      { staticClass: "list_p_title" },
-                      [
-                        _c("text", { staticClass: "list_name" }, [
-                          _vm._v(_vm._s(item.author.nickname)),
-                        ]),
-                        _c("block", [
-                          item.author.sex == 1
-                            ? _c("image", {
-                                staticClass: "list_sex",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                                },
-                              })
-                            : _vm._e(),
-                          item.author.sex == 0
-                            ? _c("image", {
-                                staticClass: "list_sex",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                                },
-                              })
-                            : _vm._e(),
-                        ]),
-                      ],
-                      1
-                    ),
-                    _c("view", { staticClass: "list_p" }, [
-                      _c("text", [
-                        _vm._v(
-                          " " +
-                            _vm._s(item.author.career_list[0]) +
-                            " |" +
-                            _vm._s(item.author.province_name)
-                        ),
-                      ]),
-                      _c("text", { staticClass: "read" }, [
-                        _vm._v(_vm._s(item.statistic.read_cnt)),
-                      ]),
-                    ]),
-                  ]),
-                ]),
-              ]
-            )
-          }),
-          0
-        )
-      : _c("view", { staticClass: "none-data" }, [
-          _c("image", {
-            staticClass: "none-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
-              mode: "aspectFill",
-            },
-          }),
-          _c("view", [_vm._v("当前暂无信息哦～")]),
-        ]),
-    _c(
-      "view",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showModal,
-            expression: "showModal",
-          },
-        ],
-        staticClass: "select_block",
-        on: { tap: _vm.close },
-      },
-      [
-        _c(
-          "view",
-          {
-            staticClass: "select_bg",
-            on: {
-              tap: function ($event) {
-                $event.stopPropagation()
-              },
-            },
-          },
-          [
-            _c("view", {
-              staticClass: "statusbar",
-              style: { height: _vm.height + "px" },
-            }),
-            _c("view", { staticClass: "location" }, [
-              _c("view", { staticClass: "location_address" }, [
-                _vm._v("当前定位：北京"),
-              ]),
-              _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
-            ]),
-            _c("view", { staticClass: "address_box" }, [
-              _c("view", { staticClass: "address_label" }, [
-                _vm._v("选择地区"),
-              ]),
-              _c("view", { staticClass: "address_input" }, [
-                _c("view", { staticClass: "pickers" }, [
+                [
                   _c(
                     "view",
-                    { staticClass: "ub-f1" },
+                    { staticClass: "ub" },
                     [
-                      _c(
-                        "picker",
-                        {
-                          attrs: {
-                            mode: "multiSelector",
-                            value: _vm.multiIndex,
-                            range: _vm.multiArray,
-                            "range-key": "name",
-                          },
-                          on: {
-                            change: _vm.sizerBindRegionChange,
-                            columnchange: _vm.onBindcolumnchange,
-                          },
-                        },
-                        [
-                          _c(
-                            "view",
-                            { staticClass: "sizer_select_local bd_b fl" },
-                            [
-                              _vm.sizer_city
-                                ? _c(
-                                    "view",
-                                    { staticClass: "pickers pick-city picked" },
-                                    [_vm._v(_vm._s(_vm.sizer_city))]
-                                  )
-                                : _c(
-                                    "view",
-                                    { staticClass: "pickers pick-city" },
-                                    [_vm._v("全部")]
-                                  ),
-                            ]
-                          ),
-                        ]
-                      ),
+                      _c("view", [_vm._v("筛选")]),
+                      _vm.sizer_num.length
+                        ? _c("block", [
+                            _c("view", { staticClass: "sizer_dian" }, [
+                              _vm._v("·"),
+                            ]),
+                            _c("view", [_vm._v(_vm._s(_vm.sizer_num.length))]),
+                          ])
+                        : _vm._e(),
                     ],
                     1
                   ),
+                  _c("view", { staticClass: "sizer_img" }, [
+                    _vm.sizer_num.length
+                      ? _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/common/sizered.png */ "./src/assets/images/common/sizered.png"),
+                          },
+                        })
+                      : _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/common/sizer.png */ "./src/assets/images/common/sizer.png"),
+                          },
+                        }),
+                  ]),
+                ]
+              ),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm.list.length
+        ? _c(
+            "view",
+            { staticClass: "main_list" },
+            _vm._l(_vm.list, function (item, index) {
+              return _c(
+                "view",
+                {
+                  key: index,
+                  staticClass: "zuopin_box",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.godetail(item.oid, item.author_id)
+                    },
+                  },
+                },
+                [
+                  item.file_type == "picture"
+                    ? _c("image", {
+                        staticClass: "zuopin_img",
+                        attrs: { src: item.cover[0], mode: "aspectFill" },
+                      })
+                    : _vm._e(),
+                  item.file_type == "video"
+                    ? _c("video", {
+                        staticClass: "list_video-width",
+                        attrs: {
+                          objectFit: "cover",
+                          poster: item.cover[0],
+                          src: item.video_cover && item.video_cover[0],
+                        },
+                      })
+                    : _vm._e(),
+                  _c("view", { staticClass: "zuopin_desc" }, [
+                    _vm._v(_vm._s(item.summary)),
+                  ]),
+                  _c("view", { staticClass: "zuopin_info" }, [
+                    _c("image", {
+                      staticClass: "avatar",
+                      attrs: {
+                        src: item.author.avatar
+                          ? item.author.avatar
+                          : "../../assets/images/avatar_default.png",
+                        mode: "aspectFill",
+                      },
+                    }),
+                    _c("view", [
+                      _c(
+                        "view",
+                        { staticClass: "list_p_title" },
+                        [
+                          _c("text", { staticClass: "list_name" }, [
+                            _vm._v(_vm._s(item.author.nickname)),
+                          ]),
+                          _c("block", [
+                            item.author.sex == 1
+                              ? _c("image", {
+                                  staticClass: "list_sex",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                  },
+                                })
+                              : _vm._e(),
+                            item.author.sex == 0
+                              ? _c("image", {
+                                  staticClass: "list_sex",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                  },
+                                })
+                              : _vm._e(),
+                          ]),
+                        ],
+                        1
+                      ),
+                      _c("view", { staticClass: "list_p" }, [
+                        _c("text", [
+                          _vm._v(
+                            " " +
+                              _vm._s(item.author.career_list[0]) +
+                              " |" +
+                              _vm._s(item.author.province_name)
+                          ),
+                        ]),
+                        _c("text", { staticClass: "read" }, [
+                          _vm._v(_vm._s(item.statistic.read_cnt)),
+                        ]),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              )
+            }),
+            0
+          )
+        : _c("view", { staticClass: "none-data" }, [
+            _c("image", {
+              staticClass: "none-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                mode: "aspectFill",
+              },
+            }),
+            _c("view", [_vm._v("当前暂无信息哦～")]),
+          ]),
+      _c(
+        "view",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showModal,
+              expression: "showModal",
+            },
+          ],
+          staticClass: "select_block",
+          on: { tap: _vm.close },
+        },
+        [
+          _c(
+            "view",
+            {
+              staticClass: "select_bg",
+              on: {
+                tap: function ($event) {
+                  $event.stopPropagation()
+                },
+              },
+            },
+            [
+              _c("view", {
+                staticClass: "statusbar",
+                style: { height: _vm.height + "px" },
+              }),
+              _c("view", { staticClass: "location" }, [
+                _c("view", { staticClass: "location_address" }, [
+                  _vm._v("当前定位：北京"),
+                ]),
+                _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
+              ]),
+              _c("view", { staticClass: "address_box" }, [
+                _c("view", { staticClass: "address_label" }, [
+                  _vm._v("选择地区"),
+                ]),
+                _c("view", { staticClass: "address_input" }, [
+                  _c("view", { staticClass: "pickers" }, [
+                    _c(
+                      "view",
+                      { staticClass: "ub-f1" },
+                      [
+                        _c(
+                          "picker",
+                          {
+                            attrs: {
+                              mode: "multiSelector",
+                              value: _vm.multiIndex,
+                              range: _vm.multiArray,
+                              "range-key": "name",
+                            },
+                            on: {
+                              change: _vm.sizerBindRegionChange,
+                              columnchange: _vm.onBindcolumnchange,
+                            },
+                          },
+                          [
+                            _c(
+                              "view",
+                              { staticClass: "sizer_select_local bd_b fl" },
+                              [
+                                _vm.sizer_city
+                                  ? _c(
+                                      "view",
+                                      {
+                                        staticClass: "pickers pick-city picked",
+                                      },
+                                      [_vm._v(_vm._s(_vm.sizer_city))]
+                                    )
+                                  : _c(
+                                      "view",
+                                      { staticClass: "pickers pick-city" },
+                                      [_vm._v("全部")]
+                                    ),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ],
+                      1
+                    ),
+                  ]),
                 ]),
               ]),
-            ]),
-            _c("view", { staticClass: "select_item" }, [
-              _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("发布人身份"),
-              ]),
-              _c(
-                "view",
-                _vm._l(_vm.identity_data, function (item, index) {
-                  return _c(
-                    "text",
-                    {
-                      key: index,
-                      staticClass: "tag_item",
-                      class: item.ispick ? "tag_itemed" : "",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.select_identity_tag(item)
+              _c("view", { staticClass: "select_item" }, [
+                _c("view", { staticClass: "select_item_title" }, [
+                  _vm._v("发布人身份"),
+                ]),
+                _c(
+                  "view",
+                  _vm._l(_vm.identity_data, function (item, index) {
+                    return _c(
+                      "text",
+                      {
+                        key: index,
+                        staticClass: "tag_item",
+                        class: item.ispick ? "tag_itemed" : "",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.select_identity_tag(item)
+                          },
                         },
                       },
-                    },
-                    [_vm._v(" " + _vm._s(item.role) + " ")]
-                  )
-                }),
-                0
-              ),
-            ]),
-            _c("view", { staticClass: "select_item" }, [
-              _c("view", { staticClass: "select_item_title" }, [
-                _vm._v("发布人性别"),
+                      [_vm._v(" " + _vm._s(item.role) + " ")]
+                    )
+                  }),
+                  0
+                ),
               ]),
-              _c(
-                "view",
-                _vm._l(_vm.sexData, function (item, index) {
-                  return _c(
-                    "text",
-                    {
-                      key: index,
-                      staticClass: "tag_item",
-                      class: item.ispick ? "tag_itemed" : "",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.select_sex_tag(item)
+              _c("view", { staticClass: "select_item" }, [
+                _c("view", { staticClass: "select_item_title" }, [
+                  _vm._v("发布人性别"),
+                ]),
+                _c(
+                  "view",
+                  _vm._l(_vm.sexData, function (item, index) {
+                    return _c(
+                      "text",
+                      {
+                        key: index,
+                        staticClass: "tag_item",
+                        class: item.ispick ? "tag_itemed" : "",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.select_sex_tag(item)
+                          },
                         },
                       },
-                    },
-                    [_vm._v(" " + _vm._s(item.name) + " ")]
-                  )
-                }),
-                0
-              ),
-            ]),
-            _c("view", { staticClass: "select_button" }, [
-              _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
-                _vm._v("清除"),
+                      [_vm._v(" " + _vm._s(item.name) + " ")]
+                    )
+                  }),
+                  0
+                ),
               ]),
-              _c("text", { staticClass: "confirm", on: { tap: _vm.submit } }, [
-                _vm._v("确认"),
+              _c("view", { staticClass: "select_button" }, [
+                _c("text", { staticClass: "clear", on: { tap: _vm.clear } }, [
+                  _vm._v("清除"),
+                ]),
+                _c(
+                  "text",
+                  { staticClass: "confirm", on: { tap: _vm.submit } },
+                  [_vm._v("确认")]
+                ),
               ]),
-            ]),
-          ]
-        ),
-      ]
-    ),
-  ])
+            ]
+          ),
+        ]
+      ),
+      _c("loading", { attrs: { showLoading: _vm.showLoading } }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -3817,6 +4004,20 @@ var render = function () {
             1
           )
         : _vm._e(),
+      _c("image", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showtoTop,
+            expression: "showtoTop",
+          },
+        ],
+        staticClass: "totop",
+        attrs: { src: __webpack_require__(/*! ../../assets/images/common/totop.png */ "./src/assets/images/common/totop.png") },
+        on: { tap: _vm.totop },
+      }),
+      _c("loading", { attrs: { showLoading: _vm.showLoading } }),
     ],
     1
   )
@@ -3912,6 +4113,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACN
 
 /***/ }),
 
+/***/ "./src/assets/images/common/totop.png":
+/*!********************************************!*\
+  !*** ./src/assets/images/common/totop.png ***!
+  \********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/totop.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/lanmao1.jpg":
 /*!***************************************!*\
   !*** ./src/assets/images/lanmao1.jpg ***!
@@ -3981,6 +4194,87 @@ module.exports = __webpack_require__.p + "assets/images/tonggao.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/yuedan.png";
+
+/***/ }),
+
+/***/ "./src/components/loading/index.scss":
+/*!*******************************************!*\
+  !*** ./src/components/loading/index.scss ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/loading/index.vue":
+/*!******************************************!*\
+  !*** ./src/components/loading/index.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_vue_vue_type_template_id_f4b50242_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=f4b50242&scoped=true& */ "./src/components/loading/index.vue?vue&type=template&id=f4b50242&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/components/loading/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+function injectStyles (context) {
+  
+  
+}
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
+  _index_vue_vue_type_template_id_f4b50242_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_f4b50242_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  false,
+  injectStyles,
+  "f4b50242",
+  "26b46de2"
+  
+)
+
+component.options.__file = "src/components/loading/index.vue"
+/* harmony default export */ __webpack_exports__["a"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/loading/index.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./src/components/loading/index.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/loading/index.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
+
+/***/ }),
+
+/***/ "./src/components/loading/index.vue?vue&type=template&id=f4b50242&scoped=true&":
+/*!*************************************************************************************!*\
+  !*** ./src/components/loading/index.vue?vue&type=template&id=f4b50242&scoped=true& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_f4b50242_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=f4b50242&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/loading/index.vue?vue&type=template&id=f4b50242&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_f4b50242_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_f4b50242_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
+
+
 
 /***/ }),
 

@@ -47,12 +47,65 @@ component.options.__file = "src/pages/position/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+
+
 //
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "position"
+  name: "position",
+  methods: {
+    payClick: function payClick() {
+      this.paymina("");
+    },
+    paymina: function paymina(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* paymina */ "k"])(params);
+
+              case 3:
+                res = _context.sent;
+                console.log(res);
+                data = res.data.data;
+                wx.requestPayment({
+                  timeStamp: data.result.timeStamp,
+                  nonceStr: data.result.nonceStr,
+                  package: data.result.package,
+                  signType: data.result.signType,
+                  paySign: data.result.paySign,
+                  success: function success(res) {
+                    console.log(res, "成功了");
+                  },
+                  fail: function fail(res) {},
+                  complete: function complete(res) {}
+                });
+                _context.next = 11;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
+    }
+  }
 });
 
 /***/ }),
@@ -72,7 +125,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", [_vm._v(" position ")])
+  return _c("view", { on: { tap: _vm.payClick } }, [_vm._v(" 测试支付 ")])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -137,5 +190,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/pages/position/index.vue","runtime","taro","vendors"]]]);
+},[["./src/pages/position/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

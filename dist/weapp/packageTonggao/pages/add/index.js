@@ -301,6 +301,16 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -354,6 +364,13 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
     };
   },
   methods: {
+    dateChange: function dateChange(e) {
+      this.date = e.detail.value;
+
+      if (this.date) {
+        this.checked = false;
+      }
+    },
     uploadImgClose: function uploadImgClose(index) {
       this.imgList.splice(index, 1);
     },
@@ -639,7 +656,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "p"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "q"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -779,28 +796,27 @@ var render = function () {
               "view",
               { staticClass: "tonggao-dete" },
               [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.date,
-                      expression: "date",
+                _c(
+                  "picker",
+                  {
+                    staticClass: "brand-select",
+                    attrs: {
+                      mode: "date",
+                      start: "1960-09-01",
+                      value: "2000-01-01",
                     },
-                  ],
-                  staticClass: "tonggao-name",
-                  attrs: { placeholder: "请选择报名截止日期" },
-                  domProps: { value: _vm.date },
-                  on: {
-                    blur: _vm.dateBlur,
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.date = $event.target.value
-                    },
+                    on: { change: _vm.dateChange },
                   },
-                }),
+                  [
+                    _vm.date
+                      ? _c("view", { staticClass: "brand-select-item" }, [
+                          _vm._v(_vm._s(_vm.date)),
+                        ])
+                      : _c("view", { staticClass: "brand-select-item" }, [
+                          _vm._v("请选择报名截止日期"),
+                        ]),
+                  ]
+                ),
                 _c("text", { staticClass: "tonggao-split" }, [_vm._v("|")]),
                 _c("text", { staticClass: "long-term" }, [_vm._v("长期")]),
                 _c("checkbox", {

@@ -72,11 +72,23 @@
           <image src="../../../assets/images/position.png"></image>
           面向地区：{{ tonggaoInfo.face_province_name }}
         </view>
-        <view class="tonggao_p">
+        <view
+          class="tonggao_p"
+          v-if="
+            tonggaoInfo.task_reward_type == 100 ||
+            tonggaoInfo.task_reward_type == 300
+          "
+        >
           <image src="../../../assets/images/tonggao/zhifu.png"></image>
-          支付稿费：{{ tonggaoInfo.payment_format }}元
+          支付稿费：{{ tonggaoInfo.payment_format }}
         </view>
-        <view class="tonggao_p">
+        <view
+          class="tonggao_p"
+          v-if="
+            tonggaoInfo.task_reward_type == 200 ||
+            tonggaoInfo.task_reward_type == 300
+          "
+        >
           <image src="../../../assets/images/tonggao/product.png"></image>
           赠送产品：{{ tonggaoInfo.reward_good }}
         </view>
@@ -117,11 +129,23 @@
           <image src="../../../assets/images/position.png"></image>
           面向地区：{{ tonggaoInfo.face_province_name }}
         </view>
-        <view class="tonggao_p">
+        <view
+          class="tonggao_p"
+          v-if="
+            tonggaoInfo.task_reward_type == 100 ||
+            tonggaoInfo.task_reward_type == 300
+          "
+        >
           <image src="../../../assets/images/tonggao/zhifu.png"></image>
-          支付稿费：{{ tonggaoInfo.payment_format }}元
+          支付稿费：{{ tonggaoInfo.payment_format }}
         </view>
-        <view class="tonggao_p">
+        <view
+          class="tonggao_p"
+          v-if="
+            tonggaoInfo.task_reward_type == 200 ||
+            tonggaoInfo.task_reward_type == 300
+          "
+        >
           <image src="../../../assets/images/tonggao/product.png"></image>
           赠送产品：{{ tonggaoInfo.reward_good }}
         </view>

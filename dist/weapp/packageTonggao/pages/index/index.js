@@ -157,6 +157,14 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
       if (type == 2) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/shop/index");
       }
+
+      if (type == 3) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
+      }
+
+      if (type == 4) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
+      }
     },
     maskClick: function maskClick(row) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/add/index?code=" + this.code + "&type=" + row.value + "&key=" + row.key);
@@ -172,7 +180,7 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "n"])(params);
 
               case 3:
                 res = _context.sent;
@@ -241,8 +249,30 @@ var render = function () {
           },
           [_vm._v("探店推广")]
         ),
-        _c("view", { staticClass: "hot-item" }, [_vm._v("发型创作")]),
-        _c("view", { staticClass: "hot-item" }, [_vm._v("人像创作")]),
+        _c(
+          "view",
+          {
+            staticClass: "hot-item",
+            on: {
+              tap: function ($event) {
+                return _vm.goRelease(3)
+              },
+            },
+          },
+          [_vm._v("发型创作")]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: "hot-item",
+            on: {
+              tap: function ($event) {
+                return _vm.goRelease(4)
+              },
+            },
+          },
+          [_vm._v("人像创作")]
+        ),
       ]),
     ]),
     _c("view", { staticClass: "select-type" }, [

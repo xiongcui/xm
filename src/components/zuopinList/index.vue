@@ -166,6 +166,7 @@
         </view>
       </view>
     </view>
+    <loading :showLoading="showLoading"></loading>
   </view>
 </template>
 
@@ -173,6 +174,7 @@
 import "./index.scss";
 import { publicConfig, photoList, getCareer } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
+import loading from "../../components/loading/index.vue";
 export default {
   name: "zuopinList",
   props: {
@@ -230,8 +232,12 @@ export default {
       immediate: true,
     },
   },
+  components: {
+    loading,
+  },
   data() {
     return {
+      showLoading: true,
       showModal: false,
       zuopinMore: false,
       zuopinRefresh: false,
@@ -291,6 +297,7 @@ export default {
     navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
+      this.showLoading = true;
       this.query("init");
     },
     select_identity_tag(row) {
@@ -461,9 +468,9 @@ export default {
       this.query("more");
     },
     query(type) {
-      wx.showLoading({
-        title: "加载中...",
-      });
+      //   wx.showLoading({
+      //     title: "加载中...",
+      //   });
       let params = {
         filter: this.filter,
         quick_filter: this.navList[this.navActive].key,
@@ -498,6 +505,7 @@ export default {
       try {
         let res = await photoList(params);
         //隐藏loading 提示框
+        this.showLoading = false;
         wx.hideLoading();
         //隐藏导航条加载动画
         wx.hideNavigationBarLoading();

@@ -375,6 +375,13 @@
         @closeRefresh="closeRefresh"
       ></ZuopinList>
     </block>
+    <image
+      src="../../assets/images/common/totop.png"
+      class="totop"
+      @tap="totop"
+      v-show="showtoTop"
+    ></image>
+    <loading :showLoading="showLoading"></loading>
   </view>
 </template>
 
@@ -385,10 +392,13 @@ import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
 import ZuopinList from "../../components/zuopinList/index.vue";
 import TonggaoList from "../../components/tonggaoList/index.vue";
+import loading from "../../components/loading/index.vue";
 export default {
   name: "home",
   data() {
     return {
+      showLoading: true,
+      showtoTop: false,
       headCurrent: 1,
       tonggaoMore: false,
       tonggaoRefresh: false,
@@ -469,8 +479,22 @@ export default {
   components: {
     ZuopinList,
     TonggaoList,
+    loading,
   },
   methods: {
+    totop() {
+      if (wx.pageScrollTo) {
+        wx.pageScrollTo({
+          scrollTop: 0,
+        });
+      } else {
+        wx.showModal({
+          title: "提示",
+          content:
+            "当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。",
+        });
+      }
+    },
     closeRefresh() {
       console.log("刷新了--------");
       this.zuopinRefresh = false;
@@ -604,15 +628,16 @@ export default {
     navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
+      this.showLoading = true;
       this.query("init");
     },
     bindRegionChange(e) {
       this.sizer_city = e.detail.value;
     },
     query(type) {
-      wx.showLoading({
-        title: "加载中...",
-      });
+      // wx.showLoading({
+      //   title: "加载中...",
+      // });
       this.inviteList(
         {
           filter: this.filter,
@@ -758,6 +783,7 @@ export default {
       try {
         let res = await inviteList(params);
         //隐藏loading 提示框
+        this.showLoading = false;
         wx.hideLoading();
         //隐藏导航条加载动画
         wx.hideNavigationBarLoading();
@@ -777,6 +803,14 @@ export default {
         }
       } catch (error) {}
     },
+  },
+  // 获取滚动条当前位置
+  onPageScroll: function (e) {
+    if (e.scrollTop > 100) {
+      this.showtoTop = true;
+    } else {
+      this.showtoTop = false;
+    }
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作

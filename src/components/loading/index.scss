@@ -1,0 +1,91 @@
+.layout-loading {
+  background: #ffffff;
+  position: fixed;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .layout-content {
+    text-align: center;
+  }
+}
+
+.loading-label {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 28px;
+  text-align: center;
+  position: relative;
+  top: 5px;
+  font-family: PingFang SC, Microsoft YaHei, 微软雅黑;
+}
+.loader-animation {
+  width: 82px;
+}
+.loader-animation .animation-box {
+  margin: 0;
+  list-style: none;
+  position: relative;
+  padding: 0;
+  height: 38px;
+  transform: translateZ(0);
+  display: flex;
+}
+.loader-animation .animation-box text {
+  width: 8px;
+  height: 38px;
+  background-color: #ff5355;
+  border-radius: 3px;
+  transform: translateZ(0);
+  transform-origin: bottom;
+  margin-left: 10px;
+  -webkit-animation: sequence 1.8s ease-in-out infinite;
+  animation: sequence 1.8s ease-in-out infinite;
+}
+.loader-animation .animation-box text:first-child {
+  margin-left: 0;
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+.loader-animation .animation-box text:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.loader-animation .animation-box text:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.loader-animation .animation-box text:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.loader-animation .animation-box text:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+@-webkit-keyframes sequence {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes sequence {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.3);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

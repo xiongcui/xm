@@ -64,7 +64,7 @@
                   item.face_sex !== null &&
                   item.first_code != 'celebrity_spread'
                 "
-                >性别要求：{{ item.face_sex == 1 ? "男" : "女" }}</view
+                >性别要求：{{ formatSex(item.face_sex) }}</view
               >
             </view>
             <view class="tonggao_info">
@@ -193,6 +193,7 @@
         </view>
       </view>
     </view>
+    <loading :showLoading="showLoading"></loading>
   </view>
 </template>
 
@@ -200,6 +201,7 @@
 import "./index.scss";
 import { noticeFilter, publicConfig, noticeList } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
+import loading from "../../components/loading/index.vue";
 export default {
   name: "tonggaoList",
   props: {
@@ -259,6 +261,7 @@ export default {
   },
   data() {
     return {
+      showLoading: true,
       height: 0,
       tonggaoMore: false,
       tonggaoRefresh: false,
@@ -286,10 +289,23 @@ export default {
       },
     };
   },
+  components: {
+    loading,
+  },
   methods: {
+    formatSex(sex) {
+      if (sex == 1) {
+        return "男";
+      }
+      if (sex == 0) {
+        return "女";
+      }
+      return "不限";
+    },
     navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
+      this.showLoading = true;
       this.query("init");
     },
     godetail(oid, author_id) {
@@ -480,9 +496,9 @@ export default {
       this.query("more");
     },
     query(type) {
-      wx.showLoading({
-        title: "加载中...",
-      });
+      //   wx.showLoading({
+      //     title: "加载中...",
+      //   });
       let params = {
         filter: this.filter,
         quick_filter: this.navList[this.navActive].key,
@@ -494,7 +510,6 @@ export default {
     async noticeFilter(params) {
       try {
         let res = await noticeFilter(params);
-        console.log(res.data);
         let data = res.data.data;
         let arr = [];
         let arr1 = [];
@@ -550,6 +565,7 @@ export default {
       try {
         let res = await noticeList(params);
         //隐藏loading 提示框
+        this.showLoading = false;
         wx.hideLoading();
         //隐藏导航条加载动画
         wx.hideNavigationBarLoading();

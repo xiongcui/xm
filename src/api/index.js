@@ -237,3 +237,11 @@ export const noticeInfo = (data) => {
     data,
   });
 };
+// 支付
+export const paymina = (data) => {
+  return request({
+    url: baseUrl + "/v1/pay/mina",
+    method: "post",
+    data,
+  });
+};
