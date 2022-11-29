@@ -3411,7 +3411,7 @@ var render = function () {
                 _c("view", { staticClass: "page_nav_icon" }, [
                   _c("image", {
                     staticClass: "page_nav_img",
-                    attrs: { src: __webpack_require__(/*! ../../assets/images/tonggao.png */ "./src/assets/images/tonggao.png") },
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/tonggao1.png */ "./src/assets/images/tonggao1.png") },
                   }),
                 ]),
                 _c("text", { staticClass: "page_nav_text" }, [_vm._v("通告")]),
@@ -3420,7 +3420,7 @@ var render = function () {
                 _c("view", { staticClass: "page_nav_icon" }, [
                   _c("image", {
                     staticClass: "page_nav_img",
-                    attrs: { src: __webpack_require__(/*! ../../assets/images/yuedan.png */ "./src/assets/images/yuedan.png") },
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/yuepai.png */ "./src/assets/images/yuepai.png") },
                   }),
                 ]),
                 _c("text", { staticClass: "page_nav_text" }, [_vm._v("约单")]),
@@ -3429,7 +3429,7 @@ var render = function () {
                 _c("view", { staticClass: "page_nav_icon" }, [
                   _c("image", {
                     staticClass: "page_nav_img",
-                    attrs: { src: __webpack_require__(/*! ../../assets/images/activity.png */ "./src/assets/images/activity.png") },
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/huodong.png */ "./src/assets/images/huodong.png") },
                   }),
                 ]),
                 _c("text", { staticClass: "page_nav_text" }, [_vm._v("活动")]),
@@ -3438,10 +3438,10 @@ var render = function () {
                 _c("view", { staticClass: "page_nav_icon" }, [
                   _c("image", {
                     staticClass: "page_nav_img",
-                    attrs: { src: __webpack_require__(/*! ../../assets/images/more.png */ "./src/assets/images/more.png") },
+                    attrs: { src: __webpack_require__(/*! ../../assets/images/more1.png */ "./src/assets/images/more1.png") },
                   }),
                 ]),
-                _c("text", { staticClass: "page_nav_text" }, [_vm._v("待定")]),
+                _c("text", { staticClass: "page_nav_text" }, [_vm._v("更多")]),
               ]),
             ]),
             _c(
@@ -4065,18 +4065,6 @@ webpackContext.id = "./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$";
 
 /***/ }),
 
-/***/ "./src/assets/images/activity.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/activity.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/activity.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/common/icon_sign.png":
 /*!************************************************!*\
   !*** ./src/assets/images/common/icon_sign.png ***!
@@ -4125,6 +4113,18 @@ module.exports = __webpack_require__.p + "assets/images/common/totop.png";
 
 /***/ }),
 
+/***/ "./src/assets/images/huodong.png":
+/*!***************************************!*\
+  !*** ./src/assets/images/huodong.png ***!
+  \***************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/huodong.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/lanmao1.jpg":
 /*!***************************************!*\
   !*** ./src/assets/images/lanmao1.jpg ***!
@@ -4161,39 +4161,39 @@ module.exports = __webpack_require__.p + "assets/images/lanmao3.jpg";
 
 /***/ }),
 
-/***/ "./src/assets/images/more.png":
-/*!************************************!*\
-  !*** ./src/assets/images/more.png ***!
-  \************************************/
+/***/ "./src/assets/images/more1.png":
+/*!*************************************!*\
+  !*** ./src/assets/images/more1.png ***!
+  \*************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/more.png";
+module.exports = __webpack_require__.p + "assets/images/more1.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/tonggao.png":
-/*!***************************************!*\
-  !*** ./src/assets/images/tonggao.png ***!
-  \***************************************/
+/***/ "./src/assets/images/tonggao1.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/tonggao1.png ***!
+  \****************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/tonggao.png";
+module.exports = __webpack_require__.p + "assets/images/tonggao1.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/yuedan.png":
+/***/ "./src/assets/images/yuepai.png":
 /*!**************************************!*\
-  !*** ./src/assets/images/yuedan.png ***!
+  !*** ./src/assets/images/yuepai.png ***!
   \**************************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/images/yuedan.png";
+module.exports = __webpack_require__.p + "assets/images/yuepai.png";
 
 /***/ }),
 

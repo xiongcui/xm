@@ -112,8 +112,8 @@
 }
 
 .page_nav_img {
-  width: 60%;
-  height: 60%;
+  width: 100%;
+  height: 100%;
 }
 
 .page_nav_item {
@@ -123,17 +123,6 @@
 .page_nav_icon {
   width: 100rpx;
   height: 100rpx;
-  background: #f9e1bb;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 20rpx;
 }
 
 .page_nav_text {
@@ -948,6 +937,115 @@
   height: 150rpx;
   margin-bottom: 16rpx;
 }
+@charset "UTF-8";
+.layout-loading {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.layout-loading .layout-content {
+  text-align: center;
+}
+.loading-label {
+  font-size: 26rpx;
+  font-weight: 400;
+  line-height: 28rpx;
+  text-align: center;
+  position: relative;
+  top: 5rpx;
+  font-family: PingFang SC, Microsoft YaHei, 微软雅黑;
+}
+.loader-animation {
+  width: 82rpx;
+}
+.loader-animation .animation-box {
+  margin: 0;
+  list-style: none;
+  position: relative;
+  padding: 0;
+  height: 38rpx;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.loader-animation .animation-box text {
+  width: 8rpx;
+  height: 38rpx;
+  background-color: #ff5355;
+  border-radius: 3rpx;
+  -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+  -webkit-transform-origin: bottom;
+      -ms-transform-origin: bottom;
+          transform-origin: bottom;
+  margin-left: 10rpx;
+  -webkit-animation: sequence 1.8s ease-in-out infinite;
+  animation: sequence 1.8s ease-in-out infinite;
+}
+.loader-animation .animation-box text:first-child {
+  margin-left: 0;
+  -webkit-animation-delay: 0ms;
+  animation-delay: 0ms;
+}
+.loader-animation .animation-box text:nth-child(2) {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.loader-animation .animation-box text:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.loader-animation .animation-box text:nth-child(4) {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.loader-animation .animation-box text:nth-child(5) {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+@-webkit-keyframes sequence {
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0.3);
+            transform: scaleY(0.3);
+  }
+  to {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+@keyframes sequence {
+  0% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(0.3);
+            transform: scaleY(0.3);
+  }
+  to {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
 .tonggao_list {
   background: #f7f7f7;
   display: -webkit-flex;
@@ -1344,113 +1442,4 @@
   width: 150rpx;
   height: 150rpx;
   margin-bottom: 16rpx;
-}
-@charset "UTF-8";
-.layout-loading {
-  background: #ffffff;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.layout-loading .layout-content {
-  text-align: center;
-}
-.loading-label {
-  font-size: 26rpx;
-  font-weight: 400;
-  line-height: 28rpx;
-  text-align: center;
-  position: relative;
-  top: 5rpx;
-  font-family: PingFang SC, Microsoft YaHei, 微软雅黑;
-}
-.loader-animation {
-  width: 82rpx;
-}
-.loader-animation .animation-box {
-  margin: 0;
-  list-style: none;
-  position: relative;
-  padding: 0;
-  height: 38rpx;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-.loader-animation .animation-box text {
-  width: 8rpx;
-  height: 38rpx;
-  background-color: #ff5355;
-  border-radius: 3rpx;
-  -webkit-transform: translateZ(0);
-          transform: translateZ(0);
-  -webkit-transform-origin: bottom;
-      -ms-transform-origin: bottom;
-          transform-origin: bottom;
-  margin-left: 10rpx;
-  -webkit-animation: sequence 1.8s ease-in-out infinite;
-  animation: sequence 1.8s ease-in-out infinite;
-}
-.loader-animation .animation-box text:first-child {
-  margin-left: 0;
-  -webkit-animation-delay: 0ms;
-  animation-delay: 0ms;
-}
-.loader-animation .animation-box text:nth-child(2) {
-  -webkit-animation-delay: 0.1s;
-  animation-delay: 0.1s;
-}
-.loader-animation .animation-box text:nth-child(3) {
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-}
-.loader-animation .animation-box text:nth-child(4) {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s;
-}
-.loader-animation .animation-box text:nth-child(5) {
-  -webkit-animation-delay: 0.4s;
-  animation-delay: 0.4s;
-}
-@-webkit-keyframes sequence {
-  0% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-  50% {
-    -webkit-transform: scaleY(0.3);
-            transform: scaleY(0.3);
-  }
-  to {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-}
-@keyframes sequence {
-  0% {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
-  50% {
-    -webkit-transform: scaleY(0.3);
-            transform: scaleY(0.3);
-  }
-  to {
-    -webkit-transform: scaleY(1);
-            transform: scaleY(1);
-  }
 }

@@ -37,8 +37,8 @@
                     "scene": null
                 },
                 {
-                    "name": "模卡信息",
-                    "pathName": "packageMoka/pages/moka/editpersondata/index",
+                    "name": "消息",
+                    "pathName": "pages/msg/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

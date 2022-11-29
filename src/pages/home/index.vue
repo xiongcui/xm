@@ -66,7 +66,7 @@
         <view class="page_nav_item">
           <view class="page_nav_icon">
             <image
-              src="../../assets/images/tonggao.png"
+              src="../../assets/images/tonggao1.png"
               class="page_nav_img"
             ></image>
           </view>
@@ -75,7 +75,7 @@
         <view class="page_nav_item">
           <view class="page_nav_icon">
             <image
-              src="../../assets/images/yuedan.png"
+              src="../../assets/images/yuepai.png"
               class="page_nav_img"
             ></image>
           </view>
@@ -84,7 +84,7 @@
         <view class="page_nav_item">
           <view class="page_nav_icon">
             <image
-              src="../../assets/images/activity.png"
+              src="../../assets/images/huodong.png"
               class="page_nav_img"
             ></image>
           </view>
@@ -93,11 +93,11 @@
         <view class="page_nav_item">
           <view class="page_nav_icon">
             <image
-              src="../../assets/images/more.png"
+              src="../../assets/images/more1.png"
               class="page_nav_img"
             ></image>
           </view>
-          <text class="page_nav_text">待定</text>
+          <text class="page_nav_text">更多</text>
         </view>
       </view>
       <view class="nav_list">
