@@ -93,6 +93,11 @@ export default defineAppConfig({
         "pages/detail/index",
       ],
     },
+    {
+      root: "packageMsg/",
+      name: "packagemsg",
+      pages: ["pages/msgList/index", "pages/livevisitor/index"],
+    },
   ],
   permission: {
     "scope.userLocation": {

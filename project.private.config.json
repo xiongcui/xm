@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "选择通告",
-                    "pathName": "packageTonggao/pages/index/index",
+                    "name": "赞与访客",
+                    "pathName": "packageMsg/pages/livevisitor/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
