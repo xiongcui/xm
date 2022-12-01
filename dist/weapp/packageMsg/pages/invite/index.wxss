@@ -2,11 +2,7 @@ page {
   background: #f7f7f7;
 }
 
-.livevisitor {
-  height: 100vh;
-}
-
-.livevisitor .tab {
+.invite .tab {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -19,7 +15,7 @@ page {
   z-index: 9999;
 }
 
-.livevisitor .tab-item {
+.invite .tab-item {
   color: #333333;
   -webkit-flex: 1;
       -ms-flex: 1;
@@ -28,47 +24,56 @@ page {
   text-align: center;
   line-height: 80rpx;
   border-bottom: 6rpx solid #ffffff;
-  margin: 0 15%;
+  margin: 0 30rpx;
 }
 
-.livevisitor .content {
+.invite .content {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   height: 100vh;
 }
 
-.livevisitor .content > swiper {
+.invite .content > swiper {
   height: 100%;
 }
 
-.livevisitor .tab-item.on {
+.invite .tab-item.on {
   color: #333333;
   font-weight: bold;
   border-bottom-color: #ff1e3e;
 }
 
-.livevisitor .livevisitor-box {
+.invite .invite-box {
   background: #ffffff;
-  padding: 16rpx;
+  padding: 30rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
   border-bottom: 1rpx solid #f5f5f5;
 }
 
-.livevisitor .livevisitor-box:first-child {
+.invite .invite-box:first-child {
   margin-top: 104rpx;
 }
 
-.livevisitor .list_sex {
+.invite .invite-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.invite .list_sex {
   width: 30rpx;
   height: 30rpx;
   margin-left: 4rpx;
 }
 
-.livevisitor .livevisitor-info {
+.invite .invite-info {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -77,14 +82,14 @@ page {
           flex-direction: column;
 }
 
-.livevisitor .livevisitor-img image {
+.invite .invite-img image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;
   margin-right: 16rpx;
 }
 
-.livevisitor .livevisitor-name {
+.invite .invite-name {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -95,7 +100,7 @@ page {
   margin: 6rpx 0;
 }
 
-.livevisitor .identity {
+.invite .identity {
   color: #6b6b6b;
   font-size: 28rpx;
   display: -webkit-flex;
@@ -103,21 +108,21 @@ page {
   display: flex;
 }
 
-.livevisitor .identity .time {
+.invite .identity .time {
   color: #6b6b6b;
   font-size: 28rpx;
   margin-left: 30rpx;
 }
 
-.livevisitor .date {
+.invite .dian {
   color: #6b6b6b;
-  font-size: 28rpx;
+  font-size: 50rpx;
   position: absolute;
   right: 30rpx;
-  top: 30rpx;
+  top: 0;
 }
 
-.livevisitor .first-img {
+.invite .first-img {
   width: 100rpx;
   height: 100rpx;
   border-radius: 15rpx;
@@ -126,6 +131,34 @@ page {
   top: 16rpx;
 }
 
-.livevisitor .swiper-box {
+.invite .swiper-box {
   height: 100%;
+}
+
+.invite .invite-desc {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 28rpx;
+  color: #6b6b6b;
+}
+
+.invite .invite-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 16rpx;
+}
+
+.invite .fail {
+  color: #ff1e3e;
+}
+
+.invite .success {
+  color: #6493d7;
 }

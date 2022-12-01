@@ -96,7 +96,11 @@ export default defineAppConfig({
     {
       root: "packageMsg/",
       name: "packagemsg",
-      pages: ["pages/msgList/index", "pages/livevisitor/index"],
+      pages: [
+        "pages/msgList/index",
+        "pages/livevisitor/index",
+        "pages/invite/index",
+      ],
     },
   ],
   permission: {

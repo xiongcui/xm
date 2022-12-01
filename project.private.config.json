@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "通告详情",
-                    "pathName": "packageTonggao/pages/detail/index",
+                    "name": "收到约拍",
+                    "pathName": "packageMsg/pages/invite/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

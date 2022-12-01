@@ -47,8 +47,9 @@ component.options.__file = "src/pages/msg/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/msg/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/pages/msg/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -89,8 +90,26 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "msg"
+  name: "msg",
+  methods: {
+    openUrl: function openUrl(type) {
+      switch (type) {
+        case 1:
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageMsg/pages/livevisitor/index");
+          break;
+
+        case 2:
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageMsg/pages/invite/index");
+          break;
+
+        case 5:
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageMsg/pages/msgList/index");
+          break;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -112,20 +131,42 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "msg-box" }, [
     _c("view", { staticClass: "msg-icon" }, [
-      _c("view", { staticClass: "msg-icon-item" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../assets/images/msg/fabulous.png */ "./src/assets/images/msg/fabulous.png") },
-        }),
-        _c("text", [_vm._v("赞与访客")]),
-        _c("view", { staticClass: "msg-num" }, [_vm._v("1")]),
-      ]),
-      _c("view", { staticClass: "msg-icon-item" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../assets/images/msg/yuepai.png */ "./src/assets/images/msg/yuepai.png") },
-        }),
-        _c("text", [_vm._v("收到约拍")]),
-        _c("view", { staticClass: "msg-num" }, [_vm._v("22")]),
-      ]),
+      _c(
+        "view",
+        {
+          staticClass: "msg-icon-item",
+          on: {
+            tap: function ($event) {
+              return _vm.openUrl(1)
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/fabulous.png */ "./src/assets/images/msg/fabulous.png") },
+          }),
+          _c("text", [_vm._v("赞与访客")]),
+          _c("view", { staticClass: "msg-num" }, [_vm._v("1")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "msg-icon-item",
+          on: {
+            tap: function ($event) {
+              return _vm.openUrl(2)
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/yuepai.png */ "./src/assets/images/msg/yuepai.png") },
+          }),
+          _c("text", [_vm._v("收到约拍")]),
+          _c("view", { staticClass: "msg-num" }, [_vm._v("22")]),
+        ]
+      ),
       _c("view", { staticClass: "msg-icon-item" }, [
         _c("image", {
           attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
@@ -141,22 +182,33 @@ var render = function () {
         _c("view", { staticClass: "msg-num" }, [_vm._v("99+")]),
       ]),
     ]),
-    _c("view", { staticClass: "msg-notification" }, [
-      _c("view", { staticClass: "notification-left" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../assets/images/msg/xiaoxi.png */ "./src/assets/images/msg/xiaoxi.png") },
-        }),
-      ]),
-      _c("view", { staticClass: "notification-rt" }, [
-        _c("view", { staticClass: "notification-title" }, [
-          _c("text", [_vm._v("消息通知")]),
-          _c("text", { staticClass: "notification-time" }, [_vm._v("昨天")]),
+    _c(
+      "view",
+      {
+        staticClass: "msg-notification",
+        on: {
+          tap: function ($event) {
+            return _vm.openUrl(5)
+          },
+        },
+      },
+      [
+        _c("view", { staticClass: "notification-left" }, [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/xiaoxi.png */ "./src/assets/images/msg/xiaoxi.png") },
+          }),
         ]),
-        _c("view", { staticClass: "notification-txt" }, [
-          _vm._v("您有一条审核通知"),
+        _c("view", { staticClass: "notification-rt" }, [
+          _c("view", { staticClass: "notification-title" }, [
+            _c("text", [_vm._v("消息通知")]),
+            _c("text", { staticClass: "notification-time" }, [_vm._v("昨天")]),
+          ]),
+          _c("view", { staticClass: "notification-txt" }, [
+            _vm._v("您有一条审核通知"),
+          ]),
         ]),
-      ]),
-    ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -293,5 +345,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/pages/msg/index.vue","runtime","taro","vendors"]]]);
+},[["./src/pages/msg/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

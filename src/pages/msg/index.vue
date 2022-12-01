@@ -1,12 +1,12 @@
 <template>
   <view class="msg-box">
     <view class="msg-icon">
-      <view class="msg-icon-item">
+      <view class="msg-icon-item" @tap="openUrl(1)">
         <image src="../../assets/images/msg/fabulous.png"></image>
         <text>赞与访客</text>
         <view class="msg-num">1</view>
       </view>
-      <view class="msg-icon-item">
+      <view class="msg-icon-item" @tap="openUrl(2)">
         <image src="../../assets/images/msg/yuepai.png"></image>
         <text>收到约拍</text>
         <view class="msg-num">22</view>
@@ -22,7 +22,7 @@
         <view class="msg-num">99+</view>
       </view>
     </view>
-    <view class="msg-notification">
+    <view class="msg-notification" @tap="openUrl(5)">
       <view class="notification-left">
         <image src="../../assets/images/msg/xiaoxi.png"></image>
       </view>
@@ -38,9 +38,25 @@
 </template>
 
 <script>
+import { openPage } from "../../utils/util";
 import "./index.scss";
 export default {
   name: "msg",
+  methods: {
+    openUrl(type) {
+      switch (type) {
+        case 1:
+          openPage("/packageMsg/pages/livevisitor/index");
+          break;
+        case 2:
+          openPage("/packageMsg/pages/invite/index");
+          break;
+        case 5:
+          openPage("/packageMsg/pages/msgList/index");
+          break;
+      }
+    },
+  },
 };
 </script>
 
