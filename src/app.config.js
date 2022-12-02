@@ -66,6 +66,7 @@ export default defineAppConfig({
         "pages/user/editinfor/index",
         "pages/user/editusertro/index",
         "pages/user/editlabel/index",
+        "pages/user/addresslist/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/zuopin/add_zuopin/index",

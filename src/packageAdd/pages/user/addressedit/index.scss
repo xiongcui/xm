@@ -1,0 +1,198 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.main,
+page {
+  height: 100%;
+}
+
+.line_gap {
+  height: 20rpx;
+}
+
+.item {
+  background-color: #fff;
+  border-radius: 8rpx;
+  margin: 0 auto;
+  padding: 0 10rpx;
+  width: 710rpx;
+}
+
+.item,
+.item_child {
+  box-sizing: border-box;
+}
+
+.item_child {
+  line-height: 40rpx;
+  padding: 30rpx 20rpx;
+  width: 690rpx;
+}
+
+.bb1 {
+  border-bottom: 1rpx solid #f1f1f1;
+}
+
+.info_title {
+  color: #2f2f2f;
+  font-size: 28rpx;
+  font-weight: 400;
+  padding: 4rpx 26rpx 0 0;
+  width: 112rpx;
+}
+
+.info_value {
+  color: #333;
+}
+
+.info_value,
+.value_placeholder {
+  font-size: 26rpx;
+  font-weight: 400;
+  line-height: 37rpx;
+}
+
+.value_placeholder {
+  color: #bbb;
+}
+
+.address_info {
+  min-height: 519rpx;
+}
+
+.region_title {
+  padding-top: 0 !important;
+}
+
+.region {
+  margin-top: 2rpx;
+}
+
+.gap_line {
+  margin-top: -2rpx;
+}
+
+.gap_line,
+.gap_line image {
+  height: 26rpx;
+  width: 16rpx;
+}
+
+textarea {
+  height: 160rpx;
+  padding: 8rpx 0;
+  width: 468rpx;
+}
+
+.set_title {
+  color: #2f2f2f;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 40rpx;
+  width: 168rpx;
+}
+
+.tag_item {
+  background-color: #f1f1f1;
+  border-radius: 8rpx;
+  color: #333;
+  font-size: 26rpx;
+  font-weight: 400;
+  height: 54rpx;
+  line-height: 54rpx;
+  margin: -7rpx 0 0 20rpx;
+  text-align: center;
+  width: 112rpx;
+}
+
+.tag_itemed {
+  background-color: #ff1e3e;
+  color: #fff;
+}
+
+.check_btn {
+  height: 50rpx;
+  width: 83rpx;
+}
+
+.wx-switch-input {
+  background: #ff1e3e !important;
+  border: #ff1e3e !important;
+  height: 50rpx !important;
+  width: 83rpx !important;
+}
+
+.wx-switch-input::before {
+  border: 2rpx solid #ff1e3e !important;
+  height: 46rpx !important;
+  width: 83rpx !important;
+}
+
+.wx-switch-input::after {
+  height: 48rpx !important;
+  width: 48rpx !important;
+}
+
+.address_del {
+  color: #ff7487;
+  font-size: 28rpx;
+  font-weight: 400;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 16rpx 0 0 50rpx;
+  width: 170rpx;
+}
+
+.modal-bg {
+  background: #000;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  overflow: hidden;
+  top: 0;
+  z-index: 999;
+}
+
+.modal-bg,
+.model_box {
+  position: fixed;
+  width: 100%;
+}
+
+.model_box {
+  top: 30%;
+  z-index: 1001;
+}
+
+.model_main {
+  background: #fafafa;
+  border-radius: 10rpx;
+  width: 550rpx;
+}
+
+.model_title {
+  height: 48rpx;
+  line-height: 48rpx;
+  padding: 40rpx 0;
+}
+
+.btn_no,
+.btn_yes,
+.model_title {
+  color: #000;
+  font-size: 34rpx;
+  text-align: center;
+}
+
+.btn_no,
+.btn_yes {
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 20rpx 10rpx 40rpx;
+  width: 100rpx;
+}
+
+.btn_yes {
+  color: red;
+}

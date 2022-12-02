@@ -10,6 +10,20 @@
           flex-shrink: 0;
 }
 
+.ub {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ub-ver {
+  box-orient: vertical;
+}
+
+.ub-f1 {
+  box-flex: 1;
+}
+
 .subbtn_bottom_block {
   background-color: #fff;
   bottom: 0;
