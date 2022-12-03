@@ -16,15 +16,15 @@
                     "scene": null
                 },
                 {
-                    "name": "探店推广",
-                    "pathName": "packageTonggao/pages/shop/index",
+                    "name": "添加红人账号",
+                    "pathName": "packageAdd/pages/user/addfans/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "品牌种草",
-                    "pathName": "packageTonggao/pages/brand/index",
+                    "name": "红人账号",
+                    "pathName": "packageAdd/pages/user/sensationlist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -37,15 +37,15 @@
                     "scene": null
                 },
                 {
-                    "name": "消息",
-                    "pathName": "pages/msg/index",
+                    "name": "编辑收货地址",
+                    "pathName": "packageAdd/pages/user/addressedit/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "赞与访客",
-                    "pathName": "packageMsg/pages/livevisitor/index",
+                    "name": "发起约拍",
+                    "pathName": "packageAdd/pages/user/launchyuepai/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

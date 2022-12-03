@@ -1561,18 +1561,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAAN
 
 /***/ }),
 
-/***/ "./src/assets/images/user/index/right.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/index/right.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAbFBMVEUAAAAAAACYmJibm5uampqampqZmZmbm5ubm5uampqampqYmJiZmZmZmZmampqZmZmampqbm5uampqampqZmZmYmJiampqZmZmYmJiampqZmZmampqZmZmYmJiZmZmZmZmZmZmZmZmampqZmZkIFUpDAAAAI3RSTlMAAVRUVlhaXF5gYmNpa21ub3BydHV3eXt8fpaY+vv7/P3+/qWMeqwAAABgSURBVBjTbc9HEoAwDANASui9d0LQ//9ImAFNDvHJe5Etx11zh7NBFUR2QZVUIqFqKpa4WyrS6qjwBAYqOICREloT5e/A8sMzIPQ+WwLM6Pdob3nnfbT59lRXqKzlzNoPlxQJBPBBNbYAAAAASUVORK5CYII="
-
-/***/ }),
-
 /***/ "./src/assets/images/user/index/zuopin1.png":
 /*!**************************************************!*\
   !*** ./src/assets/images/user/index/zuopin1.png ***!

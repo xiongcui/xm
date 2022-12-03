@@ -65,11 +65,19 @@ page {
   padding-top: 0 !important;
 }
 
+.info_contact {
+  position: relative;
+}
 .region {
   margin-top: 2rpx;
+  width: 500px;
 }
-
+.region-picker {
+  width: 100%;
+}
 .gap_line {
+  position: absolute;
+  right: 16px;
   margin-top: -2rpx;
 }
 
@@ -116,24 +124,6 @@ textarea {
   width: 83rpx;
 }
 
-.wx-switch-input {
-  background: #ff1e3e !important;
-  border: #ff1e3e !important;
-  height: 50rpx !important;
-  width: 83rpx !important;
-}
-
-.wx-switch-input::before {
-  border: 2rpx solid #ff1e3e !important;
-  height: 46rpx !important;
-  width: 83rpx !important;
-}
-
-.wx-switch-input::after {
-  height: 48rpx !important;
-  width: 48rpx !important;
-}
-
 .address_del {
   color: #ff7487;
   font-size: 28rpx;
@@ -163,6 +153,8 @@ textarea {
 .model_box {
   top: 30%;
   z-index: 1001;
+  display: flex;
+  justify-content: center;
 }
 
 .model_main {
@@ -195,4 +187,14 @@ textarea {
 
 .btn_yes {
   color: red;
+}
+
+.set_lable,
+.set_default {
+  display: flex;
+  justify-content: space-between;
+}
+
+.model_btn {
+  justify-content: space-between;
 }

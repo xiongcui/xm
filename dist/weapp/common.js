@@ -302,6 +302,18 @@ module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 
 /***/ }),
 
+/***/ "./src/assets/images/common/add_black.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/common/add_black.png ***!
+  \************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAAUABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9+K+Sv+CNfi/xl4z/AGePG2oeNPEt7qk0Pxn8Vw289/cvNIkS6jJtjDOSdqjgDoBXC+Lf+CI2k3l3f+I4v+Cgv7RUAkklnFunxCkIizluD3r5u/4JO/8ABMBP2iv2Xbj4lzftp/GXw1M/jfXLGbT/AA14l+zQu0F48ZmYFGzI5G5jnkkmgD9hKK+P9F/4JJS6RpUGm/8ADfvx8l8lNvmHxqMn/wAh0UAfXkyq9s6uAQVIIPevn7/gml8F/CfwC/Z3m+H3gq6vpbA+MNevd2oSo8nmS6lOW5RFGOOBiiigD6E8tD/CKKKKAP/ZZWT6egAAAAA="
+
+/***/ }),
+
 /***/ "./src/assets/images/common/add_icon.png":
 /*!***********************************************!*\
   !*** ./src/assets/images/common/add_icon.png ***!
@@ -311,6 +323,18 @@ module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/common/add_icon.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/common/editbtn.png":
+/*!**********************************************!*\
+  !*** ./src/assets/images/common/editbtn.png ***!
+  \**********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/editbtn.png";
 
 /***/ }),
 
@@ -494,6 +518,30 @@ module.exports = __webpack_require__.p + "assets/images/position.png";
 
 /***/ }),
 
+/***/ "./src/assets/images/right.png":
+/*!*************************************!*\
+  !*** ./src/assets/images/right.png ***!
+  \*************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ "./src/assets/images/tonggao/user.png":
+/*!********************************************!*\
+  !*** ./src/assets/images/tonggao/user.png ***!
+  \********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/tonggao/user.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/upload-img.png":
 /*!******************************************!*\
   !*** ./src/assets/images/upload-img.png ***!
@@ -527,6 +575,18 @@ module.exports = __webpack_require__.p + "assets/images/upload-video.png";
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAuCAMAAACLUGAGAAAAgVBMVEUAAAA0NDQ0NDQzMzM2NjYzMzMzMzM0NDQ0NDQuLi4zMzMzMzMzMzMzMzMxMTEzMzMzMzMuLi4zMzMzMzMzMzMyMjIyMjIyMjIyMjIzMzMzMzMzMzMyMjIyMjIzMzMwMDAyMjIzMzMzMzMyMjIyMjIzMzMzMzMzMzM1NTUxMTEzMzMpKmdvAAAAKnRSTlMAcWOuJghpy2wE9UL74R6+pQ2BUkYys1nrzayZd0ooFcqRbuTa2NSNOjkVNVrzAAABFklEQVRIx+3U2XKDIBSA4YMNtgRFiVs0Rpt0P+//gD0MF8UFepOZTCb5bxT9ZHAZ4b4SMmZrnQu9xGWKvrZsgRMMtJstg2Z+ZdFacYeYDBMtCQvwdJpPHiMy8FUh5uDGECOv3iA+XULL2K0RQS3nj+6CGsoXt/BKll1N6/zZLRuCusFph6BW6fTLPv6zbu4m4Eae4I1qUfSlc/S4O49+rVpErDXYeEejvfTpwb72jINJZ/blF+u62iOmbEuzGz62JGO6IonWdE7uQ0FJm06AeicsgdfmQ1xqUzuaW0voyu83WnJFI5EjNdMFUpm2+8SpdGNPfSF1mmiR0YQcbI3hnwrA1ieYKpjyn8r5TR7qnv8NldTwyNsv5no8DtvqAe0AAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ "./src/assets/images/user/index/right.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/user/index/right.png ***!
+  \************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAUCAMAAACOLiwjAAAAbFBMVEUAAAAAAACYmJibm5uampqampqZmZmbm5ubm5uampqampqYmJiZmZmZmZmampqZmZmampqbm5uampqampqZmZmYmJiampqZmZmYmJiampqZmZmampqZmZmYmJiZmZmZmZmZmZmZmZmampqZmZkIFUpDAAAAI3RSTlMAAVRUVlhaXF5gYmNpa21ub3BydHV3eXt8fpaY+vv7/P3+/qWMeqwAAABgSURBVBjTbc9HEoAwDANASui9d0LQ//9ImAFNDvHJe5Etx11zh7NBFUR2QZVUIqFqKpa4WyrS6qjwBAYqOICREloT5e/A8sMzIPQ+WwLM6Pdob3nnfbT59lRXqKzlzNoPlxQJBPBBNbYAAAAASUVORK5CYII="
 
 /***/ }),
 

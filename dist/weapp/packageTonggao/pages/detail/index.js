@@ -890,18 +890,6 @@ module.exports = __webpack_require__.p + "assets/images/tonggao/time.png";
 
 /***/ }),
 
-/***/ "./src/assets/images/tonggao/user.png":
-/*!********************************************!*\
-  !*** ./src/assets/images/tonggao/user.png ***!
-  \********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/user.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/tonggao/zhifu.png":
 /*!*********************************************!*\
   !*** ./src/assets/images/tonggao/zhifu.png ***!

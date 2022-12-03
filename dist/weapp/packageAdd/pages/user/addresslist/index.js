@@ -243,30 +243,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/images/common/add_black.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/add_black.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAAUABMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9+K+Sv+CNfi/xl4z/AGePG2oeNPEt7qk0Pxn8Vw289/cvNIkS6jJtjDOSdqjgDoBXC+Lf+CI2k3l3f+I4v+Cgv7RUAkklnFunxCkIizluD3r5u/4JO/8ABMBP2iv2Xbj4lzftp/GXw1M/jfXLGbT/AA14l+zQu0F48ZmYFGzI5G5jnkkmgD9hKK+P9F/4JJS6RpUGm/8ADfvx8l8lNvmHxqMn/wAh0UAfXkyq9s6uAQVIIPevn7/gml8F/CfwC/Z3m+H3gq6vpbA+MNevd2oSo8nmS6lOW5RFGOOBiiigD6E8tD/CKKKKAP/ZZWT6egAAAAA="
-
-/***/ }),
-
-/***/ "./src/assets/images/common/editbtn.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/common/editbtn.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/editbtn.png";
-
-/***/ }),
-
 /***/ "./src/packageAdd/pages/user/addresslist/index.scss":
 /*!**********************************************************!*\
   !*** ./src/packageAdd/pages/user/addresslist/index.scss ***!
@@ -334,5 +310,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageAdd/pages/user/addresslist/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageAdd/pages/user/addresslist/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map
