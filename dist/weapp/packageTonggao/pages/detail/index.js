@@ -52,6 +52,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/detail/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -294,6 +295,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -324,6 +326,9 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
         return "不限";
       }
     },
+    launchYuepai: function launchYuepai() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+    },
     noticeInfo: function noticeInfo(params) {
       var _this = this;
 
@@ -335,7 +340,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeInfo */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeInfo */ "k"])(params);
 
               case 3:
                 res = _context.sent;
@@ -818,7 +823,11 @@ var render = function () {
             _vm._v(" " + _vm._s(_vm.tonggaoInfo.statistic.collect_cnt) + " "),
           ]),
         ]),
-        _c("view", { staticClass: "tonggao_fixed_rt" }, [_vm._v(" 我要报名 ")]),
+        _c(
+          "view",
+          { staticClass: "tonggao_fixed_rt", on: { tap: _vm.launchYuepai } },
+          [_vm._v(" 我要报名 ")]
+        ),
       ]
     ),
   ])

@@ -153,11 +153,14 @@ page {
 }
 
 .hr_icon {
-  height: 24rpx;
   position: absolute;
   right: 0;
   top: 0;
-  width: 78rpx;
+  font-size: 20rpx;
+  background-color: #ff1e3e;
+  color: #ffffff;
+  border-radius: 4rpx;
+  padding: 4rpx;
 }
 
 .info_type {
@@ -393,7 +396,8 @@ page {
 }
 
 .warning {
-  width: 120rpx;
+  width: 72rpx;
+  height: 62rpx;
   margin: 0 10rpx;
 }
 
@@ -508,4 +512,61 @@ page {
   margin: 30rpx auto 0;
   text-align: center;
   width: 100%;
+}
+
+.modal_box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.modal_box .modal_content {
+  position: relative;
+  background: #ffffff;
+  padding: 16rpx 0;
+  border-radius: 10rpx;
+  width: 360rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.modal_box .modal_content .qrcode-img {
+  width: 260rpx;
+  height: 260rpx;
+  margin: 16rpx 0;
+}
+
+.modal_box .modal_content .save {
+  color: #6493d7;
+  font-size: 26rpx;
+}
+
+.modal_box .modal_content .close-img {
+  width: 38rpx;
+  height: 38rpx;
+  position: absolute;
+  right: 16rpx;
+  top: 16rpx;
 }

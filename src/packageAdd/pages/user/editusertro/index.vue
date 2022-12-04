@@ -16,7 +16,7 @@
       <view class="side_gap"></view>
     </view>
     <view class="sub_btn" @tap="sub">
-      <button formType="submit" type="primary">保存</button>
+      <button type="primary">保存</button>
     </view>
   </view>
 </template>

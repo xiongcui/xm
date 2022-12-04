@@ -110,7 +110,7 @@ component.options.__file = "src/packageAdd/pages/user/editusertro/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userResume */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userResume */ "C"])(params);
 
               case 3:
                 res = _context.sent;
@@ -200,9 +200,7 @@ var render = function () {
       _c("view", { staticClass: "side_gap" }),
     ]),
     _c("view", { staticClass: "sub_btn", on: { tap: _vm.sub } }, [
-      _c("button", { attrs: { formType: "submit", type: "primary" } }, [
-        _vm._v("保存"),
-      ]),
+      _c("button", { attrs: { type: "primary" } }, [_vm._v("保存")]),
     ]),
   ])
 }

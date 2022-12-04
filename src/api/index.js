@@ -245,3 +245,43 @@ export const paymina = (data) => {
     data,
   });
 };
+// 获取发起约拍页模版
+export const inviteTemplate = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/invite/template",
+    method: "post",
+    data,
+  });
+};
+// 发起约拍提交
+export const inviteApply = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/invite/apply",
+    method: "post",
+    data,
+  });
+};
+// 红人列表
+export const celebrityList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/celebrity/list",
+    method: "get",
+    data,
+  });
+};
+// 创建|更新红人账号
+export const userCelebrity = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/celebrity",
+    method: "post",
+    data,
+  });
+};
+// 红人详情
+export const celebrityInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/celebrity/info",
+    method: "get",
+    data,
+  });
+};

@@ -87,7 +87,6 @@
       <view catchtap="" class="toptip ub">
         <image
           src="../../../../assets/images/common/icon_tongzhi.png"
-          mode="widthFix"
           class="warning"
         ></image>
         <view class="toptip_text ub-f1"
@@ -121,17 +120,17 @@
             </view>
           </view>
         </view>
-        <view class="yuepai_top_rt"> 1小时来过 </view>
+        <!-- <view class="yuepai_top_rt"> 1小时来过 </view> -->
       </view>
       <view class="reg_remark">
         <view class="reg_title ub">
           <view class="title_icon"></view>
-          <view class="title_text">约拍理由</view>
+          <view class="title_text">{{ yuepaiInfo.title }}</view>
         </view>
         <textarea
           id=""
           name="content"
-          placeholder="请简要输入约拍理由"
+          :placeholder="yuepaiInfo.tips"
           placeholderClass="placeholder_style"
         ></textarea>
       </view>
@@ -139,12 +138,12 @@
         <view class="reg_title ub">
           <view class="title_icon"></view>
           <view class="title_text"
-            >报名信息<text style="color: rgba(0, 0, 0, 0.3)"
+            >申请信息<text style="color: rgba(0, 0, 0, 0.3)"
               >（确保准确）</text
             ></view
           >
         </view>
-        <view catchtap="editContact" class="info_item ub">
+        <view catchtap="editContact" class="info_item ub" v-if="showContact">
           <view class="info_type">
             <view class="type_icon">
               <image
@@ -154,17 +153,23 @@
             </view>
             <view class="type_text">我的联系信息</view>
           </view>
-          <view class="info_content ub ub-ver ub-f1">
+          <view class="info_content ub ub-ver ub-f1" @tap="showQRcode">
             <view class="ub-f1"></view>
             <view class="content_text"
-              >联系人：{{ data.contact.contact_name }}</view
+              >联系人：{{
+                data.contact.person ? data.contact.person : "未设置"
+              }}</view
             >
-            <view v-if="data.contact.phone"
-              >手机号：{{ data.contact.phone }}</view
+            <view
+              >手机号：{{
+                data.contact.mobile ? data.contact.mobile : "未设置"
+              }}</view
             >
-            <view class="content_text" v-if="data.contact.wxid"
-              >微信号：{{ data.contact.wxid
-              }}<text class="qrcode">查看二维码</text></view
+            <view class="content_text"
+              >微信号：{{ data.contact.wechat ? data.contact.wechat : "未设置"
+              }}<text class="qrcode" v-if="data.contact.wechat_links"
+                >查看二维码</text
+              ></view
             >
             <view class="ub-f1"></view>
           </view>
@@ -175,9 +180,10 @@
         <view
           catchtap="chooseFans"
           class="info_item ub"
-          v-if="data.show_hongren"
+          v-if="showCelebrity"
+          @tap="goSensationlist"
         >
-          <image class="hr_icon" :src="media_info.logo_mini"></image>
+          <text class="hr_icon">{{ media_info.platform_name }}</text>
           <view class="info_type">
             <view class="type_icon">
               <image
@@ -187,11 +193,14 @@
             </view>
             <view class="type_text">红人账号</view>
           </view>
-          <view class="info_content ub ub-ver ub-f1" v-if="regdata_fans">
+          <view
+            class="info_content ub ub-ver ub-f1"
+            v-if="data.celebrity.nickname"
+          >
             <view class="ub-f1"></view>
-            <view class="content_text">{{ regdata_fans.nickname }}</view>
+            <view class="content_text">{{ data.celebrity.nickname }}</view>
             <view class="content_text"
-              >粉丝：{{ regdata_fans.follow_count }}</view
+              >粉丝：{{ data.celebrity.fans_number }}</view
             >
             <view class="ub-f1"></view>
           </view>
@@ -207,11 +216,7 @@
             <image src="../../../../assets/images/right.png"></image>
           </view>
         </view>
-        <view
-          catchtap="chooseAddress"
-          class="info_item ub"
-          v-if="data.show_address"
-        >
+        <view catchtap="chooseAddress" class="info_item ub" v-if="showAddress">
           <view class="info_type">
             <view class="type_icon">
               <image
@@ -221,17 +226,12 @@
             </view>
             <view class="type_text">收货地址</view>
           </view>
-          <view
-            class="info_content ub ub-ver ub-f1"
-            v-if="regdata_address.contact_name"
-          >
+          <view class="info_content ub ub-ver ub-f1" v-if="data.address.name">
             <view class="ub-f1"></view>
-            <view class="content_text">{{ regdata_address.contact_name }}</view>
-            <view class="content_text"
-              >手机号：{{ regdata_address.phone }}</view
-            >
+            <view class="content_text">{{ data.address.name }}</view>
+            <view class="content_text">手机号：{{ data.address.mobile }}</view>
             <view class="content_address"
-              >地址：{{ regdata_address.full_address }}</view
+              >地址：{{ data.address.detail_address }}</view
             >
             <view class="ub-f1"></view>
           </view>
@@ -249,23 +249,19 @@
         </view>
       </view>
       <view class="prompt">
-        <view>温馨提示：</view>
         <view
-          >双方私下沟通时注意防骗，切勿相信先缴纳费用的合作。如遇虚假通告、敲诈信息等不良行为，请立即向平台<text
-            catchtap="jubao"
-            class="complain"
-            >「投诉」</text
-          >
+          >{{ yuepaiInfo.warning
+          }}<text catchtap="jubao" class="complain">「投诉」</text>
         </view>
       </view>
       <view class="bottom ub" :class="isIphoneX ? 'fix-iphonex-button' : ''">
-        <block v-if="need_coin > 0">
+        <block v-if="pay_coin > 0">
           <view class="bottom_coin">
             <view class="needcoin">
-              <text> {{ need_coin }} 金豆 </text>
+              <text> {{ pay_coin }} 金豆 </text>
               <text class="vip-tips"> 开通会员仅需2金豆 >> </text>
             </view>
-            <view class="surplus_coin">剩余：{{ coin }} 金豆</view>
+            <view class="surplus_coin">剩余：{{ balance_coin }} 金豆</view>
           </view>
           <view class="ub-f1"></view>
           <view class="sub_btn">
@@ -277,12 +273,6 @@
         </view>
       </view>
     </form>
-    <view
-      bindtap="closecomment"
-      catchtouchmove="kong"
-      class="modal_bg"
-      v-if="showModel || showTipModel"
-    ></view>
     <view class="modal_box" v-if="false">
       <form
         bindreset="reset"
@@ -306,53 +296,150 @@
         </view>
       </form>
     </view>
+    <view class="modal_box" v-if="showModel">
+      <view class="modal_content">
+        <view> 微信二维码 </view>
+        <image
+          class="qrcode-img"
+          src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/41625d80-73b2-11ed-ae45-473a871aac32.jpg"
+        ></image>
+        <image
+          src="../../../../assets/images/common/x_icon.png"
+          class="close-img"
+          @tap="closeQRcode"
+        ></image>
+        <view class="save">保存到相册</view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
+import { inviteTemplate } from "../../../../api/index";
+import { openPage } from "../../../../utils/util";
 export default {
   name: "launchyuepai",
   data() {
     return {
+      oid: "",
       isIphoneX: false,
       pageshow: "normal",
       showModel: false,
       showTipModel: false,
-      need_coin: 1,
-      coin: 0,
+      pay_coin: 0,
+      balance_coin: 0,
       yuepaiInfo: {
+        title: "",
+        warning: "",
         author: {
           avatar: "",
           nickname: "",
           sex: 0,
-          career_list: ["11"],
-          province_name: "beijing",
+          career_list: [],
+          province_name: "",
         },
       },
+      showContact: false,
+      showCelebrity: false,
+      showAddress: false,
       data: {
-        show_hongren: true,
-        show_address: true,
         contact: {
-          contact_name: "熊翠",
-          wxid: "22",
-          phone: 13693628075,
+          person: "",
+          wechat: "",
+          wechat_links: "",
+          mobile: "",
+        },
+        celebrity: {
+          oid: "",
+          nickname: "",
+          fans_number: "",
+        },
+        address: {
+          oid: "",
+          detail_address: "",
+          mobile: "",
+          name: "",
         },
       },
       media_info: {
-        logo_mini: "",
-      },
-      regdata_fans: {
-        nickname: "nickname",
-        follow_count: 100,
-      },
-      //   regdata_fans: null,
-      regdata_address: {
-        contact_name: "熊翠",
-        phone: 13693628075,
-        full_address: "惠新里223号楼",
+        platform_name: "",
+        platform_code: "",
       },
     };
+  },
+  methods: {
+    showQRcode() {
+      this.showModel = true;
+    },
+    closeQRcode() {
+      this.showModel = false;
+    },
+    goSensationlist() {
+      openPage(
+        "/packageAdd/pages/user/sensationlist/index?platform_code=" +
+          this.media_info.platform_code +
+          "&platform_name=" +
+          this.media_info.platform_name +
+          "&oid=" +
+          this.data.celebrity.oid
+      );
+    },
+    async inviteTemplate(params) {
+      try {
+        let res = await inviteTemplate(params);
+        console.log(res);
+        this.yuepaiInfo.author = res.data.data.visited;
+        this.yuepaiInfo.tips = res.data.data.tips;
+        this.yuepaiInfo.title = res.data.data.title;
+        this.yuepaiInfo.warning = res.data.data.warning;
+
+        this.showContact = res.data.data.contact.is_enable;
+        this.showCelebrity = res.data.data.celebrity.is_enable;
+        this.showAddress = res.data.data.address.is_enable;
+
+        this.data.contact = res.data.data.contact.body;
+        // res.data.data.celebrity = {
+        //   body: {
+        //     date_humanize: "1天前",
+        //     fans_number: 600,
+        //     nickname: "小摄影红书",
+        //     platform_code: 201,
+        //     platform_name: "红薯",
+        //   },
+        //   is_enable: 1,
+        //   platform_name: "红薯",
+        //   platform_type: "201",
+        // };
+        // res.data.data.address = {
+        //   body: {
+        //     detail_address: "北京市石景山区惠新西街5号院",
+        //     mobile: 13716186230,
+        //     name: "王先生",
+        //   },
+        //   is_enable: 1,
+        // };
+        this.data.celebrity = res.data.data.celebrity.body;
+        this.data.address = res.data.data.address.body;
+        this.media_info.platform_name = res.data.data.celebrity.platform_name;
+        this.media_info.platform_code = res.data.data.celebrity.platform_type;
+        this.pay_coin = res.data.data.visitor.pay_coin;
+        this.balance_coin = res.data.data.visitor.balance_coin;
+      } catch (error) {}
+    },
+  },
+  onLoad: function (options) {
+    this.oid = options.oid;
+    this.inviteTemplate({
+      oid: this.oid,
+    });
+  },
+  onShow() {
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.celebrity) {
+      this.data.celebrity = currPage.data.celebrity;
+    }
   },
 };
 </script>

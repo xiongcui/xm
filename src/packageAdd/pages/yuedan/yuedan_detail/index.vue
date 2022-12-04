@@ -179,13 +179,14 @@
           {{ yuepaiInfo.statistic.collect_cnt }}
         </view>
       </view>
-      <view class="yuepai_fixed_rt"> 约拍 </view>
+      <view class="yuepai_fixed_rt" @tap="launchYuepai"> 约拍 </view>
     </view>
   </view>
 </template>
 
 <script>
 import { inviteInfo } from "../../../../api/index";
+import { openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
   name: "yuedanDetail",
@@ -232,11 +233,13 @@ export default {
     bindended() {
       wx.createVideoContext("video").exitFullScreen();
     },
+    launchYuepai() {
+      openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+    },
     async inviteInfo(params) {
       try {
         let res = await inviteInfo(params);
         this.yuepaiInfo = res.data.data;
-        console.log(this.yuepaiInfo);
       } catch (error) {}
     },
   },

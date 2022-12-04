@@ -233,7 +233,7 @@
           {{ tonggaoInfo.statistic.collect_cnt }}
         </view>
       </view>
-      <view class="tonggao_fixed_rt"> 我要报名 </view>
+      <view class="tonggao_fixed_rt" @tap="launchYuepai"> 我要报名 </view>
     </view>
   </view>
 </template>
@@ -241,6 +241,7 @@
 <script>
 import "./index.scss";
 import { noticeInfo } from "../../../api/index";
+import { openPage } from "../../../utils/util";
 export default {
   name: "tonggaoDetail",
   data() {
@@ -268,6 +269,9 @@ export default {
       } else {
         return "不限";
       }
+    },
+    launchYuepai() {
+      openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
     },
     async noticeInfo(params) {
       try {

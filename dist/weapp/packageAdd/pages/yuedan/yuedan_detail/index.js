@@ -50,8 +50,9 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/yuedan/yuedan_detail/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/yuedan/yuedan_detail/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
 
 
 //
@@ -240,6 +241,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -287,6 +289,9 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
     bindended: function bindended() {
       wx.createVideoContext("video").exitFullScreen();
     },
+    launchYuepai: function launchYuepai() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+    },
     inviteInfo: function inviteInfo(params) {
       var _this = this;
 
@@ -298,25 +303,24 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteInfo */ "e"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteInfo */ "g"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.yuepaiInfo = res.data.data;
-                console.log(_this.yuepaiInfo);
-                _context.next = 10;
+                _context.next = 9;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
-              case 10:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     }
   },
@@ -666,7 +670,11 @@ var render = function () {
             _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.collect_cnt) + " "),
           ]),
         ]),
-        _c("view", { staticClass: "yuepai_fixed_rt" }, [_vm._v(" 约拍 ")]),
+        _c(
+          "view",
+          { staticClass: "yuepai_fixed_rt", on: { tap: _vm.launchYuepai } },
+          [_vm._v(" 约拍 ")]
+        ),
       ]
     ),
   ])

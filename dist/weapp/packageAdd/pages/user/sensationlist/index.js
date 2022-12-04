@@ -47,8 +47,19 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/sensationlist/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/sensationlist/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -97,28 +108,152 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "",
   data: function data() {
     return {
       noneData: false,
-      listdata: [{
-        media_info: {
-          logo: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-        },
-        fans_data: [{
-          nickname: "nickname",
-          follow_count: 100,
-          status: 0,
-          timetext: "10分钟"
-        }, {
-          nickname: "nickname",
-          follow_count: 100,
-          status: -1,
-          timetext: "10分钟"
-        }]
-      }]
+      oid: "",
+      platform_code: "",
+      platform_name: "",
+      fans_data: [],
+      icon: {
+        201: __webpack_require__(/*! ../../../../assets/images/common/redbook.png */ "./src/assets/images/common/redbook.png"),
+        202: __webpack_require__(/*! ../../../../assets/images/common/douyin.png */ "./src/assets/images/common/douyin.png"),
+        203: __webpack_require__(/*! ../../../../assets/images/common/kuaishou.png */ "./src/assets/images/common/kuaishou.png"),
+        204: __webpack_require__(/*! ../../../../assets/images/common/weibo.png */ "./src/assets/images/common/weibo.png")
+      }
     };
+  },
+  methods: {
+    goChooseMedia: function goChooseMedia() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
+    },
+    editMedia: function editMedia(oid) {
+      var _this = this;
+
+      wx.showActionSheet({
+        itemList: ["重新编辑", "删除"],
+        success: function success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + _this.platform_code + "&platform_name=" + _this.platform_name + "&oid=" + oid);
+              break;
+
+            case 1:
+              _this.userCelebrity({
+                oid: oid,
+                is_delete: 1
+              });
+
+              break;
+          }
+        },
+        fail: function fail(res) {
+          console.log(res.errMsg);
+        }
+      });
+    },
+    chooseFans: function chooseFans(row) {
+      var pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。
+
+      var prevPage = pages[pages.length - 2];
+      prevPage.setData({
+        celebrity: row
+      });
+      wx.navigateBack({
+        delta: 1
+      });
+    },
+    celebrityList: function celebrityList(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* celebrityList */ "b"])(params);
+
+              case 3:
+                res = _context.sent;
+
+                if (!res.data.data) {
+                  _this2.noneData = true;
+                } else {
+                  _this2.noneData = false;
+                  _this2.fans_data = res.data.data;
+                }
+
+                console.log(res);
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    userCelebrity: function userCelebrity(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "z"])(params);
+
+              case 3:
+                res = _context2.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("删除成功");
+
+                _this3.celebrityList({
+                  platform_code: _this3.platform_code
+                });
+
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
+    }
+  },
+  onLoad: function onLoad(options) {
+    this.platform_code = options.platform_code;
+    this.platform_name = options.platform_name;
+    this.oid = options.oid;
+  },
+  onShow: function onShow() {
+    if (this.platform_code) {
+      this.celebrityList({
+        platform_code: this.platform_code
+      });
+    }
   }
 });
 
@@ -145,7 +280,8 @@ var render = function () {
           "view",
           {
             staticClass: "item_add",
-            attrs: { catchtap: "goChooseMedia", "data-id": "" },
+            attrs: { "data-id": "" },
+            on: { tap: _vm.goChooseMedia },
           },
           [
             _c("image", {
@@ -161,72 +297,82 @@ var render = function () {
         "view",
         { staticClass: "main ub ub-ver" },
         [
-          _vm._l(_vm.listdata, function (items, listIndex) {
+          _vm._l(_vm.fans_data, function (item, itemIndex) {
             return _c(
-              "block",
-              { key: listIndex },
-              _vm._l(items.fans_data, function (item, itemIndex) {
-                return _c(
-                  "view",
-                  {
-                    key: itemIndex,
-                    staticClass: "item ub",
-                    attrs: { catchtap: "chooseFans" },
+              "view",
+              {
+                key: itemIndex,
+                staticClass: "item ub",
+                class: _vm.oid == item.oid ? "item_active" : "",
+                on: {
+                  tap: function ($event) {
+                    return _vm.chooseFans(item)
                   },
-                  [
-                    _c("view", { staticClass: "item_main ub" }, [
-                      _c("view", { staticClass: "item_logo" }, [
-                        _c("image", {
-                          attrs: {
-                            mode: "aspectFit",
-                            src: items.media_info.logo,
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "ub-f1" }, [
-                        _c("view", { staticClass: "item_name" }, [
-                          _vm._v(_vm._s(item.nickname)),
-                        ]),
-                        _c("view", { staticClass: "item_fanscount" }, [
-                          _vm._v("粉丝：" + _vm._s(item.follow_count)),
-                        ]),
-                      ]),
-                      _c("image", {
-                        staticClass: "editbtn",
-                        attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/common/editbtn.png */ "./src/assets/images/common/editbtn.png"),
-                        },
-                      }),
+                },
+              },
+              [
+                _c("view", { staticClass: "item_main ub" }, [
+                  _c("view", { staticClass: "item_logo" }, [
+                    _c("image", {
+                      attrs: {
+                        mode: "aspectFit",
+                        src: _vm.icon[item.platform_code],
+                      },
+                    }),
+                  ]),
+                  _c("view", { staticClass: "ub-f1" }, [
+                    _c("view", { staticClass: "item_name" }, [
+                      _vm._v(_vm._s(item.nickname)),
                     ]),
-                    _c("view", { staticClass: "item_tags ub" }, [
-                      _c("view", { staticClass: "item_time" }, [
-                        _vm._v(_vm._s(item.timetext) + "创建"),
-                      ]),
-                      _c("view", { staticClass: "ub-f1" }),
-                      _c("view", { staticClass: "item_status" }, [
-                        item.status == 0
-                          ? _c("view", { staticClass: "item_status_wait" }, [
-                              _vm._v("待审核"),
-                            ])
-                          : _vm._e(),
-                        item.status == -1
-                          ? _c("view", { staticClass: "item_status_fail" }, [
-                              _vm._v("审核未通过"),
-                            ])
-                          : _vm._e(),
-                      ]),
+                    _c("view", { staticClass: "item_fanscount" }, [
+                      _vm._v("粉丝：" + _vm._s(item.fans_number)),
                     ]),
-                  ]
-                )
-              }),
-              0
+                  ]),
+                  _c("image", {
+                    staticClass: "editbtn",
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../assets/images/common/editbtn.png */ "./src/assets/images/common/editbtn.png"),
+                    },
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.editMedia(item.oid)
+                      },
+                    },
+                  }),
+                ]),
+                _c("view", { staticClass: "item_tags ub" }, [
+                  _c("view", { staticClass: "item_time" }, [
+                    _vm._v(_vm._s(item.date_humanize) + "创建"),
+                  ]),
+                  _c("view", { staticClass: "ub-f1" }),
+                  _c("view", { staticClass: "item_status" }, [
+                    item.status == "待审核中"
+                      ? _c("view", { staticClass: "item_status_wait" }, [
+                          _vm._v(_vm._s(item.status)),
+                        ])
+                      : _vm._e(),
+                    item.status == "审核失败"
+                      ? _c("view", { staticClass: "item_status_fail" }, [
+                          _vm._v(_vm._s(item.status)),
+                        ])
+                      : _vm._e(),
+                    item.status == "审核通过"
+                      ? _c("view", { staticClass: "item_status_sucess" }, [
+                          _vm._v(_vm._s(item.status)),
+                        ])
+                      : _vm._e(),
+                  ]),
+                ]),
+              ]
             )
           }),
           _c(
             "view",
             {
               staticClass: "item_add",
-              attrs: { catchtap: "goChooseMedia", "data-id": "" },
+              attrs: { "data-id": "" },
+              on: { tap: _vm.goChooseMedia },
             },
             [
               _c("image", {

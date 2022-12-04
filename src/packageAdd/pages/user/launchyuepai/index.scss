@@ -126,11 +126,14 @@ page {
 }
 
 .hr_icon {
-  height: 24rpx;
   position: absolute;
   right: 0;
   top: 0;
-  width: 78rpx;
+  font-size: 20px;
+  background-color: #ff1e3e;
+  color: #ffffff;
+  border-radius: 4rpx;
+  padding: 4px;
 }
 
 .info_type {
@@ -338,7 +341,9 @@ page {
   padding-right: 16px;
 }
 .warning {
-  width: 120px;
+  //   width: 120px;
+  width: 72px;
+  height: 62px;
   margin: 0px 10px;
 }
 
@@ -451,4 +456,45 @@ page {
   margin: 30rpx auto 0;
   text-align: center;
   width: 100%;
+}
+
+.modal_box {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal_content {
+    position: relative;
+    background: #ffffff;
+    padding: 16px 0px;
+    border-radius: 10px;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+    color: #333333;
+    .qrcode-img {
+      width: 260px;
+      height: 260px;
+      margin: 16px 0px;
+    }
+    .save {
+      color: #6493d7;
+      font-size: 26px;
+    }
+    .close-img {
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+    }
+  }
 }

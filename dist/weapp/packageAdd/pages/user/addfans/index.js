@@ -47,25 +47,14 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/addfans/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/addfans/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+
+
 //
 //
 //
@@ -521,12 +510,16 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "addfans",
   data: function data() {
     return {
+      oid: "",
       showModel: false,
       isIphoneX: false,
+      platform_name: "",
       paste_url: "",
       nickname_dis: false,
       like_count_dis: false,
@@ -555,6 +548,19 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
         weibo: "weibo",
         kuaishou: "kuaishou"
       },
+      //   (201: 红薯， 202：抖音， 203：快手， 204：微博)
+      platform: {
+        201: "redbook",
+        202: "douyin",
+        203: "kuaishou",
+        204: "weibo"
+      },
+      title: {
+        201: "打开小红书APP个人主页，点击「分享」后「复制链接」后粘贴",
+        202: "打开抖音APP，我的二维码里点击「分享」后「复制链接」后粘贴",
+        203: "打开快手APP，我的二维码里点击「分享」后「复制链接」后粘贴",
+        204: "打开微博APP个人主页，点击「分享」后「复制链接」后粘贴"
+      },
       icon: {
         douyin: __webpack_require__(/*! ../../../../assets/images/common/douyin.png */ "./src/assets/images/common/douyin.png"),
         redbook: __webpack_require__(/*! ../../../../assets/images/common/redbook.png */ "./src/assets/images/common/redbook.png"),
@@ -563,20 +569,388 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
       },
       media: {
         logo_show: "",
-        name: "红薯",
-        howget_msg: "howget_msg",
-        tag: [{
-          taged: true,
-          tag_name: "ds"
-        }, {
-          taged: false,
-          tag_name: "ds332"
-        }]
+        howget_msg: "",
+        tag: []
       }
     };
   },
+  methods: {
+    select_tag: function select_tag(row) {
+      row.taged = !row.taged;
+    },
+    inputAdPrice: function inputAdPrice(e) {
+      if (e.detail.value) {
+        this.bargin_ad_price = 0;
+      } else {
+        this.bargin_ad_price = 1;
+      }
+    },
+    inputPubPrice: function inputPubPrice(e) {
+      if (e.detail.value) {
+        this.bargin_pub_price = 0;
+      } else {
+        this.bargin_pub_price = 1;
+      }
+    },
+    inputSharePrice: function inputSharePrice() {
+      if (e.detail.value) {
+        this.bargin_share_price = 0;
+      } else {
+        this.bargin_share_price = 1;
+      }
+    },
+    inputVideoPrice: function inputVideoPrice() {
+      if (e.detail.value) {
+        this.bargin_video_price = 0;
+      } else {
+        this.bargin_video_price = 1;
+      }
+    },
+    inputLivePrice: function inputLivePrice() {
+      if (e.detail.value) {
+        this.bargin_live_price = 0;
+      } else {
+        this.bargin_live_price = 1;
+      }
+    },
+    chooseBarginAdPrice: function chooseBarginAdPrice() {
+      this.bargin_ad_price = !this.bargin_ad_price ? 1 : 0;
+
+      if (this.bargin_ad_price) {
+        this.ad_price = "";
+      }
+    },
+    chooseBarginPubPrice: function chooseBarginPubPrice() {
+      this.bargin_pub_price = !this.bargin_pub_price ? 1 : 0;
+
+      if (this.bargin_pub_price) {
+        this.pub_price = "";
+      }
+    },
+    chooseBarginSharePrice: function chooseBarginSharePrice() {
+      this.bargin_share_price = !this.bargin_share_price ? 1 : 0;
+
+      if (this.bargin_share_price) {
+        this.share_price = "";
+      }
+    },
+    chooseBarginVideoPrice: function chooseBarginVideoPrice() {
+      this.bargin_video_price = !this.bargin_video_price ? 1 : 0;
+
+      if (this.bargin_video_price) {
+        this.video_price = "";
+      }
+    },
+    chooseBarginLivePrice: function chooseBarginLivePrice() {
+      this.bargin_live_price = !this.bargin_live_price ? 1 : 0;
+
+      if (this.bargin_live_price) {
+        this.live_price = "";
+      }
+    },
+    chooseBrandPartner: function chooseBrandPartner() {
+      this.is_brand_partner = !this.is_brand_partner ? 1 : 0;
+    },
+    chooseOpenStore: function chooseOpenStore() {
+      this.is_open_store = !this.is_open_store ? 1 : 0;
+    },
+    paste: function paste() {
+      var _this = this;
+
+      wx.getClipboardData({
+        success: function success(res) {
+          if (res.data.indexOf("http") == -1) {
+            Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("未检测到链接");
+          } else {
+            _this.paste_url = res.data;
+          }
+        }
+      });
+    },
+    submit: function submit() {
+      if (!this.paste_url) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请复制" + this.platform_name + "主页链接");
+        return false;
+      }
+
+      if (!this.nickname) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请填写账号昵称");
+        return false;
+      }
+
+      if (!this.follow_count) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请填写粉丝数量");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.redbook && !this.like_count || this.media_item_id == this.const_media_item_ids.douyin && !this.like_count) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请填写赞藏数量");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.redbook && !this.bargin_ad_price && !this.ad_price) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择广告报价");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.weibo && !this.bargin_pub_price && !this.pub_price) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择直发报价");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.weibo && !this.bargin_share_price && !this.share_price) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择转发报价");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.douyin && !this.bargin_video_price && !this.video_price || this.media_item_id == this.const_media_item_ids.kuaishou && !this.bargin_video_price && !this.video_price) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择视频报价");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.douyin && !this.bargin_live_price && !this.live_price || this.media_item_id == this.const_media_item_ids.kuaishou && !this.bargin_live_price && !this.live_price) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择直播报价");
+        return false;
+      }
+
+      var tag = [];
+      this.media.tag.map(function (item) {
+        if (item.taged) {
+          tag.push(item.value);
+        }
+      });
+
+      if (!tag.length) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择账号领域");
+        return false;
+      }
+
+      var params = {
+        oid: this.oid,
+        platform_code: this.platform_code,
+        platform_name: this.platform_name,
+        nickname: this.nickname,
+        fans_number: Number(this.follow_count),
+        enjoy_number: 0,
+        brand_cooperator: 0,
+        shop_window: 0,
+        // 开通橱窗
+        little_shop: 0,
+        // 开通小店
+        advert_price: 0,
+        // 广告报价
+        direct_price: 0,
+        // 直发报价
+        forward_price: 0,
+        // 转发报价
+        video_price: 0,
+        // 视频报价
+        live_price: 0,
+        // 直播报价
+        links: this.paste_url,
+        // 主页链接
+        is_delete: 0,
+        acct_field: tag.join(",")
+      };
+
+      if (this.media_item_id == this.const_media_item_ids.redbook) {
+        params.enjoy_number = Number(this.like_count);
+        params.brand_cooperator = this.is_brand_partner;
+        params.advert_price = Number(this.ad_price ? this.ad_price : 0);
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.weibo) {
+        params.shop_window = this.is_open_store;
+        params.direct_price = Number(this.pub_price ? this.pub_pric : 0);
+        params.forward_price = Number(this.share_price ? this.share_price : 0);
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.douyin) {
+        params.enjoy_number = Number(this.like_count);
+        params.shop_window = this.is_open_store;
+        params.video_price = Number(this.video_price ? this.video_price : 0);
+        params.live_price = Number(this.live_price ? this.live_price : 0);
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.kuaishou) {
+        params.little_shop = this.is_open_store;
+      }
+
+      console.log(params);
+      this.userCelebrity(params);
+    },
+    publicConfig: function publicConfig(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "q"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this2.media.tag = res.data.data.map(function (item, index) {
+                  item.taged = false;
+                  return item;
+                }); // 红人详情
+
+                if (_this2.oid) {
+                  _this2.celebrityInfo({
+                    oid: _this2.oid
+                  });
+                }
+
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    userCelebrity: function userCelebrity(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "z"])(params);
+
+              case 3:
+                res = _context2.sent;
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    celebrityInfo: function celebrityInfo(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* celebrityInfo */ "a"])(params);
+
+              case 3:
+                res = _context3.sent;
+                data = res.data.data;
+                _this3.paste_url = data.links;
+                _this3.nickname = data.nickname;
+                _this3.follow_count = data.fans_number;
+                _this3.like_count = data.enjoy_number;
+                _this3.is_brand_partner = data.brand_cooperator;
+
+                if (!data.advert_price) {
+                  _this3.bargin_ad_price = 1;
+                  _this3.ad_price = "";
+                } else {
+                  _this3.ad_price = data.advert_price;
+                }
+
+                _this3.is_open_store = data.shop_window;
+
+                if (!data.direct_price) {
+                  _this3.bargin_pub_price = 1;
+                  _this3.pub_price = "";
+                } else {
+                  _this3.pub_price = data.direct_price;
+                }
+
+                if (!data.forward_price) {
+                  _this3.bargin_share_price = 1;
+                  _this3.share_price = "";
+                } else {
+                  _this3.share_price = data.forward_price;
+                }
+
+                if (!data.video_price) {
+                  _this3.bargin_video_price = 1;
+                  _this3.video_price = "";
+                } else {
+                  _this3.video_price = data.video_price;
+                }
+
+                if (!data.live_price) {
+                  _this3.bargin_live_price = 1;
+                  _this3.live_price = "";
+                } else {
+                  _this3.live_price = data.live_price;
+                }
+
+                data.acct_field.map(function (name) {
+                  _this3.media.tag.map(function (item) {
+                    if (name == item.value) {
+                      item.taged = true;
+                    }
+                  });
+                });
+                _context3.next = 21;
+                break;
+
+              case 19:
+                _context3.prev = 19;
+                _context3.t0 = _context3["catch"](0);
+
+              case 21:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 19]]);
+      }))();
+    }
+  },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
+  },
+  onLoad: function onLoad(options) {
+    this.platform_code = Number(options.platform_code);
+    this.platform_name = options.platform_name;
+    this.media_item_id = this.platform[this.platform_code];
+    this.media.logo_show = this.icon[this.media_item_id];
+    this.media.howget_msg = this.title[this.platform_code];
+    this.oid = options.oid;
+    wx.setNavigationBarTitle({
+      title: this.platform_name
+    }); // 查询账号领域
+
+    var type = "acct_field_" + this.platform_code;
+    this.publicConfig({
+      type: [type]
+    });
   }
 });
 
@@ -599,20 +973,18 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "main" }, [
     _c(
-      "form",
-      {
-        attrs: { bindreset: "reset", bindsubmit: "sub", reportSubmit: "true" },
-      },
+      "view",
+      { attrs: { bindreset: "reset" } },
       [
         _c("view", { staticClass: "item" }, [
           _c("view", { staticClass: "item_top ub" }, [
             _c(
               "view",
               { staticClass: "top_img", attrs: { catchtap: "openModel" } },
-              [_c("image", { attrs: { src: _vm.icon.redbook } })]
+              [_c("image", { attrs: { src: _vm.media.logo_show } })]
             ),
             _c("view", { staticClass: "top_text ub-f1" }, [
-              _vm._v(_vm._s(_vm.media.name) + "账号编辑"),
+              _vm._v(_vm._s(_vm.platform_name) + "账号编辑"),
             ]),
             _vm.item_id != "" && _vm.auto_get_visible == 1
               ? _c(
@@ -624,7 +996,7 @@ var render = function () {
           ]),
           _c("view", { staticClass: "item_tip ub" }, [
             _c("view", { staticClass: "tip_text" }, [
-              _vm._v(_vm._s(_vm.media.name) + "主页链接"),
+              _vm._v(_vm._s(_vm.platform_name) + "主页链接"),
             ]),
             _c("view", { staticClass: "tip_red" }, [_vm._v("*")]),
             _c(
@@ -644,11 +1016,9 @@ var render = function () {
               ]
             ),
             _c("view", { staticClass: "ub-f1" }),
-            _c(
-              "view",
-              { staticClass: "tip_ctrlv", attrs: { catchtap: "paste" } },
-              [_vm._v("点击粘贴")]
-            ),
+            _c("view", { staticClass: "tip_ctrlv", on: { tap: _vm.paste } }, [
+              _vm._v("点击粘贴"),
+            ]),
           ]),
           _c("view", { staticClass: "item_content" }, [
             _c("textarea", {
@@ -786,7 +1156,8 @@ var render = function () {
                 ]),
               ])
             : _vm._e(),
-          _vm.media_item_id == _vm.const_media_item_ids.redbook
+          _vm.media_item_id == _vm.const_media_item_ids.redbook ||
+          _vm.media_item_id == _vm.const_media_item_ids.douyin
             ? _c("view", { staticClass: "item_label ub" }, [
                 _c("view", { staticClass: "label_title" }, [_vm._v("赞藏数")]),
                 _c("view", { staticClass: "tip_red" }, [_vm._v("*")]),
@@ -847,10 +1218,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.is_open_store == 1 ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseOpenStore",
-                        "data-status": "1",
-                      },
+                      attrs: { "data-status": "1" },
+                      on: { tap: _vm.chooseOpenStore },
                     },
                     [
                       _vm._v(" 是"),
@@ -867,11 +1236,9 @@ var render = function () {
                     "view",
                     {
                       staticClass: "check_box",
-                      class: _vm.is_open_store == 2 ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseOpenStore",
-                        "data-status": "2",
-                      },
+                      class: _vm.is_open_store == 0 ? "check_box_ed" : "",
+                      attrs: { "data-status": "2" },
+                      on: { tap: _vm.chooseOpenStore },
                     },
                     [
                       _vm._v(" 否"),
@@ -900,10 +1267,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.is_brand_partner == 1 ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBrandPartner",
-                        "data-status": "1",
-                      },
+                      attrs: { "data-status": "1" },
+                      on: { tap: _vm.chooseBrandPartner },
                     },
                     [
                       _vm._v(" 是 "),
@@ -921,10 +1286,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.is_brand_partner == 0 ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBrandPartner",
-                        "data-status": "2",
-                      },
+                      attrs: { "data-status": "2" },
+                      on: { tap: _vm.chooseBrandPartner },
                     },
                     [
                       _vm._v(" 否 "),
@@ -951,10 +1314,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "ub-f1 pr-20",
-                      attrs: {
-                        catchtap: "chooseBarginPubPrice",
-                        "data-status": "0",
-                      },
+                      attrs: { "data-status": "0" },
                     },
                     [
                       _c("input", {
@@ -967,7 +1327,6 @@ var render = function () {
                           },
                         ],
                         attrs: {
-                          bindinput: "inputPubPrice",
                           cursorSpacing: "20",
                           maxlength: "5",
                           name: "pub_price",
@@ -977,12 +1336,15 @@ var render = function () {
                         },
                         domProps: { value: _vm.pub_price },
                         on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.pub_price = $event.target.value
-                          },
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.pub_price = $event.target.value
+                            },
+                            _vm.inputPubPrice,
+                          ],
                         },
                       }),
                     ]
@@ -996,10 +1358,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.bargin_pub_price ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBarginPubPrice",
-                        "data-status": _vm.bargin_pub_price,
-                      },
+                      attrs: { "data-status": _vm.bargin_pub_price },
+                      on: { tap: _vm.chooseBarginPubPrice },
                     },
                     [
                       _vm._v(" 议价 "),
@@ -1026,10 +1386,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "ub-f1 pr-20",
-                      attrs: {
-                        catchtap: "chooseBarginSharePrice",
-                        "data-status": "0",
-                      },
+                      attrs: { "data-status": "0" },
                     },
                     [
                       _c("input", {
@@ -1042,7 +1399,6 @@ var render = function () {
                           },
                         ],
                         attrs: {
-                          bindinput: "inputSharePrice",
                           cursorSpacing: "20",
                           maxlength: "5",
                           name: "share_price",
@@ -1052,12 +1408,15 @@ var render = function () {
                         },
                         domProps: { value: _vm.share_price },
                         on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.share_price = $event.target.value
-                          },
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.share_price = $event.target.value
+                            },
+                            _vm.inputSharePrice,
+                          ],
                         },
                       }),
                     ]
@@ -1071,10 +1430,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.bargin_share_price ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBarginSharePrice",
-                        "data-status": _vm.bargin_share_price,
-                      },
+                      attrs: { "data-status": _vm.bargin_share_price },
+                      on: { tap: _vm.chooseBarginSharePrice },
                     },
                     [
                       _vm._v(" 议价 "),
@@ -1094,7 +1451,7 @@ var render = function () {
           _vm.media_item_id == _vm.const_media_item_ids.kuaishou
             ? _c("view", { staticClass: "item_label ub" }, [
                 _c("view", { staticClass: "label_title" }, [
-                  _vm._v("短视频报价"),
+                  _vm._v("视频报价"),
                 ]),
                 _c("view", { staticClass: "tip_red" }, [_vm._v("*")]),
                 _c("view", { staticClass: "label_info ub-f1 ub" }, [
@@ -1102,10 +1459,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "ub-f1 pr-20",
-                      attrs: {
-                        catchtap: "chooseBarginVideoPrice",
-                        "data-status": "0",
-                      },
+                      attrs: { "data-status": "0" },
                     },
                     [
                       _c("input", {
@@ -1118,7 +1472,6 @@ var render = function () {
                           },
                         ],
                         attrs: {
-                          bindinput: "inputVideoPrice",
                           cursorSpacing: "20",
                           maxlength: "5",
                           name: "video_price",
@@ -1128,12 +1481,15 @@ var render = function () {
                         },
                         domProps: { value: _vm.video_price },
                         on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.video_price = $event.target.value
-                          },
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.video_price = $event.target.value
+                            },
+                            _vm.inputVideoPrice,
+                          ],
                         },
                       }),
                     ]
@@ -1147,10 +1503,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.bargin_video_price ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBarginVideoPrice",
-                        "data-status": _vm.bargin_video_price,
-                      },
+                      attrs: { "data-status": _vm.bargin_video_price },
+                      on: { tap: _vm.chooseBarginVideoPrice },
                     },
                     [
                       _vm._v(" 议价 "),
@@ -1178,10 +1532,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "ub-f1 pr-20",
-                      attrs: {
-                        catchtap: "chooseBarginLivePrice",
-                        "data-status": "0",
-                      },
+                      attrs: { "data-status": "0" },
                     },
                     [
                       _c("input", {
@@ -1194,7 +1545,6 @@ var render = function () {
                           },
                         ],
                         attrs: {
-                          bindinput: "inputLivePrice",
                           cursorSpacing: "20",
                           maxlength: "5",
                           name: "live_price",
@@ -1204,12 +1554,15 @@ var render = function () {
                         },
                         domProps: { value: _vm.live_price },
                         on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.live_price = $event.target.value
-                          },
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.live_price = $event.target.value
+                            },
+                            _vm.inputLivePrice,
+                          ],
                         },
                       }),
                     ]
@@ -1223,10 +1576,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.bargin_live_price ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBarginLivePrice",
-                        "data-status": _vm.bargin_live_price,
-                      },
+                      attrs: { "data-status": _vm.bargin_live_price },
+                      on: { tap: _vm.chooseBarginLivePrice },
                     },
                     [
                       _vm._v(" 议价 "),
@@ -1255,10 +1606,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "ub-f1 pr-20",
-                      attrs: {
-                        catchtap: "chooseBarginAdPrice",
-                        "data-status": "0",
-                      },
+                      attrs: { "data-status": "0" },
                     },
                     [
                       _c("input", {
@@ -1271,7 +1619,6 @@ var render = function () {
                           },
                         ],
                         attrs: {
-                          bindinput: "inputAdPrice",
                           cursorSpacing: "20",
                           maxlength: "5",
                           name: "ad_price",
@@ -1281,12 +1628,15 @@ var render = function () {
                         },
                         domProps: { value: _vm.ad_price },
                         on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.ad_price = $event.target.value
-                          },
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.ad_price = $event.target.value
+                            },
+                            _vm.inputAdPrice,
+                          ],
                         },
                       }),
                     ]
@@ -1300,10 +1650,8 @@ var render = function () {
                     {
                       staticClass: "check_box",
                       class: _vm.bargin_ad_price ? "check_box_ed" : "",
-                      attrs: {
-                        catchtap: "chooseBarginAdPrice",
-                        "data-status": _vm.bargin_ad_price,
-                      },
+                      attrs: { "data-status": _vm.bargin_ad_price },
+                      on: { tap: _vm.chooseBarginAdPrice },
                     },
                     [
                       _vm._v(" 议价 "),
@@ -1334,9 +1682,13 @@ var render = function () {
                         key: index,
                         staticClass: "tag_name",
                         class: tagitem.taged ? "taged" : "",
-                        attrs: { catchtap: "select_tag" },
+                        on: {
+                          tap: function ($event) {
+                            return _vm.select_tag(tagitem)
+                          },
+                        },
                       },
-                      [_vm._v(_vm._s(tagitem.tag_name))]
+                      [_vm._v(_vm._s(tagitem.value))]
                     )
                   }),
                   0
@@ -1352,7 +1704,7 @@ var render = function () {
           },
           [
             _c("cover-view", { staticClass: "subbtn_bottom" }, [
-              _c("button", { attrs: { formType: "submit" } }, [_vm._v("保存")]),
+              _c("button", { on: { tap: _vm.submit } }, [_vm._v("保存")]),
             ]),
           ],
           1
@@ -1469,42 +1821,6 @@ webpackContext.id = "./src/assets/images/common sync recursive ^\\.\\/select_.*\
 
 /***/ }),
 
-/***/ "./src/assets/images/common/douyin.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/common/douyin.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/douyin.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/kuaishou.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/common/kuaishou.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/kuaishou.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/redbook.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/common/redbook.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/redbook.png";
-
-/***/ }),
-
 /***/ "./src/assets/images/common/select_0.png":
 /*!***********************************************!*\
   !*** ./src/assets/images/common/select_0.png ***!
@@ -1526,18 +1842,6 @@ module.exports = "data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEB
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/common/select_1.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/weibo.png":
-/*!********************************************!*\
-  !*** ./src/assets/images/common/weibo.png ***!
-  \********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/weibo.png";
 
 /***/ }),
 
@@ -1608,5 +1912,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageAdd/pages/user/addfans/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageAdd/pages/user/addfans/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

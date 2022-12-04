@@ -47,8 +47,19 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/launchyuepai/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/launchyuepai/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
 //
 //
 //
@@ -361,48 +372,147 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "launchyuepai",
   data: function data() {
     return {
+      oid: "",
       isIphoneX: false,
       pageshow: "normal",
       showModel: false,
       showTipModel: false,
-      need_coin: 1,
-      coin: 0,
+      pay_coin: 0,
+      balance_coin: 0,
       yuepaiInfo: {
+        title: "",
+        warning: "",
         author: {
           avatar: "",
           nickname: "",
           sex: 0,
-          career_list: ["11"],
-          province_name: "beijing"
+          career_list: [],
+          province_name: ""
         }
       },
+      showContact: false,
+      showCelebrity: false,
+      showAddress: false,
       data: {
-        show_hongren: true,
-        show_address: true,
         contact: {
-          contact_name: "熊翠",
-          wxid: "22",
-          phone: 13693628075
+          person: "",
+          wechat: "",
+          wechat_links: "",
+          mobile: ""
+        },
+        celebrity: {
+          oid: "",
+          nickname: "",
+          fans_number: ""
+        },
+        address: {
+          oid: "",
+          detail_address: "",
+          mobile: "",
+          name: ""
         }
       },
       media_info: {
-        logo_mini: ""
-      },
-      regdata_fans: {
-        nickname: "nickname",
-        follow_count: 100
-      },
-      //   regdata_fans: null,
-      regdata_address: {
-        contact_name: "熊翠",
-        phone: 13693628075,
-        full_address: "惠新里223号楼"
+        platform_name: "",
+        platform_code: ""
       }
     };
+  },
+  methods: {
+    showQRcode: function showQRcode() {
+      this.showModel = true;
+    },
+    closeQRcode: function closeQRcode() {
+      this.showModel = false;
+    },
+    goSensationlist: function goSensationlist() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/sensationlist/index?platform_code=" + this.media_info.platform_code + "&platform_name=" + this.media_info.platform_name + "&oid=" + this.data.celebrity.oid);
+    },
+    inviteTemplate: function inviteTemplate(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "i"])(params);
+
+              case 3:
+                res = _context.sent;
+                console.log(res);
+                _this.yuepaiInfo.author = res.data.data.visited;
+                _this.yuepaiInfo.tips = res.data.data.tips;
+                _this.yuepaiInfo.title = res.data.data.title;
+                _this.yuepaiInfo.warning = res.data.data.warning;
+                _this.showContact = res.data.data.contact.is_enable;
+                _this.showCelebrity = res.data.data.celebrity.is_enable;
+                _this.showAddress = res.data.data.address.is_enable;
+                _this.data.contact = res.data.data.contact.body; // res.data.data.celebrity = {
+                //   body: {
+                //     date_humanize: "1天前",
+                //     fans_number: 600,
+                //     nickname: "小摄影红书",
+                //     platform_code: 201,
+                //     platform_name: "红薯",
+                //   },
+                //   is_enable: 1,
+                //   platform_name: "红薯",
+                //   platform_type: "201",
+                // };
+                // res.data.data.address = {
+                //   body: {
+                //     detail_address: "北京市石景山区惠新西街5号院",
+                //     mobile: 13716186230,
+                //     name: "王先生",
+                //   },
+                //   is_enable: 1,
+                // };
+
+                _this.data.celebrity = res.data.data.celebrity.body;
+                _this.data.address = res.data.data.address.body;
+                _this.media_info.platform_name = res.data.data.celebrity.platform_name;
+                _this.media_info.platform_code = res.data.data.celebrity.platform_type;
+                _this.pay_coin = res.data.data.visitor.pay_coin;
+                _this.balance_coin = res.data.data.visitor.balance_coin;
+                _context.next = 23;
+                break;
+
+              case 21:
+                _context.prev = 21;
+                _context.t0 = _context["catch"](0);
+
+              case 23:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 21]]);
+      }))();
+    }
+  },
+  onLoad: function onLoad(options) {
+    this.oid = options.oid;
+    this.inviteTemplate({
+      oid: this.oid
+    });
+  },
+  onShow: function onShow() {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+
+    if (currPage.data.celebrity) {
+      this.data.celebrity = currPage.data.celebrity;
+    }
   }
 });
 
@@ -590,7 +700,6 @@ var render = function () {
                 staticClass: "warning",
                 attrs: {
                   src: __webpack_require__(/*! ../../../../assets/images/common/icon_tongzhi.png */ "./src/assets/images/common/icon_tongzhi.png"),
-                  mode: "widthFix",
                 },
               }),
               _c("view", { staticClass: "toptip_text ub-f1" }, [
@@ -649,20 +758,19 @@ var render = function () {
                   ]),
                 ]),
               ]),
-              _c("view", { staticClass: "yuepai_top_rt" }, [
-                _vm._v(" 1小时来过 "),
-              ]),
             ]),
             _c("view", { staticClass: "reg_remark" }, [
               _c("view", { staticClass: "reg_title ub" }, [
                 _c("view", { staticClass: "title_icon" }),
-                _c("view", { staticClass: "title_text" }, [_vm._v("约拍理由")]),
+                _c("view", { staticClass: "title_text" }, [
+                  _vm._v(_vm._s(_vm.yuepaiInfo.title)),
+                ]),
               ]),
               _c("textarea", {
                 attrs: {
                   id: "",
                   name: "content",
-                  placeholder: "请简要输入约拍理由",
+                  placeholder: _vm.yuepaiInfo.tips,
                   placeholderClass: "placeholder_style",
                 },
               }),
@@ -671,75 +779,101 @@ var render = function () {
               _c("view", { staticClass: "reg_title ub" }, [
                 _c("view", { staticClass: "title_icon" }),
                 _c("view", { staticClass: "title_text" }, [
-                  _vm._v("报名信息"),
+                  _vm._v("申请信息"),
                   _c("text", { staticStyle: { color: "rgba(0, 0, 0, 0.3)" } }, [
                     _vm._v("（确保准确）"),
                   ]),
                 ]),
               ]),
-              _c(
-                "view",
-                {
-                  staticClass: "info_item ub",
-                  attrs: { catchtap: "editContact" },
-                },
-                [
-                  _c("view", { staticClass: "info_type" }, [
-                    _c("view", { staticClass: "type_icon" }, [
-                      _c("image", {
-                        attrs: {
-                          mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/tonggao/user.png */ "./src/assets/images/tonggao/user.png"),
+              _vm.showContact
+                ? _c(
+                    "view",
+                    {
+                      staticClass: "info_item ub",
+                      attrs: { catchtap: "editContact" },
+                    },
+                    [
+                      _c("view", { staticClass: "info_type" }, [
+                        _c("view", { staticClass: "type_icon" }, [
+                          _c("image", {
+                            attrs: {
+                              mode: "widthFix",
+                              src: __webpack_require__(/*! ../../../../assets/images/tonggao/user.png */ "./src/assets/images/tonggao/user.png"),
+                            },
+                          }),
+                        ]),
+                        _c("view", { staticClass: "type_text" }, [
+                          _vm._v("我的联系信息"),
+                        ]),
+                      ]),
+                      _c(
+                        "view",
+                        {
+                          staticClass: "info_content ub ub-ver ub-f1",
+                          on: { tap: _vm.showQRcode },
                         },
-                      }),
-                    ]),
-                    _c("view", { staticClass: "type_text" }, [
-                      _vm._v("我的联系信息"),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "info_content ub ub-ver ub-f1" }, [
-                    _c("view", { staticClass: "ub-f1" }),
-                    _c("view", { staticClass: "content_text" }, [
-                      _vm._v(
-                        "联系人：" + _vm._s(_vm.data.contact.contact_name)
-                      ),
-                    ]),
-                    _vm.data.contact.phone
-                      ? _c("view", [
-                          _vm._v("手机号：" + _vm._s(_vm.data.contact.phone)),
-                        ])
-                      : _vm._e(),
-                    _vm.data.contact.wxid
-                      ? _c("view", { staticClass: "content_text" }, [
-                          _vm._v("微信号：" + _vm._s(_vm.data.contact.wxid)),
-                          _c("text", { staticClass: "qrcode" }, [
-                            _vm._v("查看二维码"),
+                        [
+                          _c("view", { staticClass: "ub-f1" }),
+                          _c("view", { staticClass: "content_text" }, [
+                            _vm._v(
+                              "联系人：" +
+                                _vm._s(
+                                  _vm.data.contact.person
+                                    ? _vm.data.contact.person
+                                    : "未设置"
+                                )
+                            ),
                           ]),
-                        ])
-                      : _vm._e(),
-                    _c("view", { staticClass: "ub-f1" }),
-                  ]),
-                  _c("view", { staticClass: "info_btn" }, [
-                    _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
-                      },
-                    }),
-                  ]),
-                ]
-              ),
-              _vm.data.show_hongren
+                          _c("view", [
+                            _vm._v(
+                              "手机号：" +
+                                _vm._s(
+                                  _vm.data.contact.mobile
+                                    ? _vm.data.contact.mobile
+                                    : "未设置"
+                                )
+                            ),
+                          ]),
+                          _c("view", { staticClass: "content_text" }, [
+                            _vm._v(
+                              "微信号：" +
+                                _vm._s(
+                                  _vm.data.contact.wechat
+                                    ? _vm.data.contact.wechat
+                                    : "未设置"
+                                )
+                            ),
+                            _vm.data.contact.wechat_links
+                              ? _c("text", { staticClass: "qrcode" }, [
+                                  _vm._v("查看二维码"),
+                                ])
+                              : _vm._e(),
+                          ]),
+                          _c("view", { staticClass: "ub-f1" }),
+                        ]
+                      ),
+                      _c("view", { staticClass: "info_btn" }, [
+                        _c("image", {
+                          attrs: {
+                            src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                          },
+                        }),
+                      ]),
+                    ]
+                  )
+                : _vm._e(),
+              _vm.showCelebrity
                 ? _c(
                     "view",
                     {
                       staticClass: "info_item ub",
                       attrs: { catchtap: "chooseFans" },
+                      on: { tap: _vm.goSensationlist },
                     },
                     [
-                      _c("image", {
-                        staticClass: "hr_icon",
-                        attrs: { src: _vm.media_info.logo_mini },
-                      }),
+                      _c("text", { staticClass: "hr_icon" }, [
+                        _vm._v(_vm._s(_vm.media_info.platform_name)),
+                      ]),
                       _c("view", { staticClass: "info_type" }, [
                         _c("view", { staticClass: "type_icon" }, [
                           _c("image", {
@@ -753,19 +887,19 @@ var render = function () {
                           _vm._v("红人账号"),
                         ]),
                       ]),
-                      _vm.regdata_fans
+                      _vm.data.celebrity.nickname
                         ? _c(
                             "view",
                             { staticClass: "info_content ub ub-ver ub-f1" },
                             [
                               _c("view", { staticClass: "ub-f1" }),
                               _c("view", { staticClass: "content_text" }, [
-                                _vm._v(_vm._s(_vm.regdata_fans.nickname)),
+                                _vm._v(_vm._s(_vm.data.celebrity.nickname)),
                               ]),
                               _c("view", { staticClass: "content_text" }, [
                                 _vm._v(
                                   "粉丝：" +
-                                    _vm._s(_vm.regdata_fans.follow_count)
+                                    _vm._s(_vm.data.celebrity.fans_number)
                                 ),
                               ]),
                               _c("view", { staticClass: "ub-f1" }),
@@ -797,7 +931,7 @@ var render = function () {
                     ]
                   )
                 : _vm._e(),
-              _vm.data.show_address
+              _vm.showAddress
                 ? _c(
                     "view",
                     {
@@ -818,26 +952,24 @@ var render = function () {
                           _vm._v("收货地址"),
                         ]),
                       ]),
-                      _vm.regdata_address.contact_name
+                      _vm.data.address.name
                         ? _c(
                             "view",
                             { staticClass: "info_content ub ub-ver ub-f1" },
                             [
                               _c("view", { staticClass: "ub-f1" }),
                               _c("view", { staticClass: "content_text" }, [
-                                _vm._v(
-                                  _vm._s(_vm.regdata_address.contact_name)
-                                ),
+                                _vm._v(_vm._s(_vm.data.address.name)),
                               ]),
                               _c("view", { staticClass: "content_text" }, [
                                 _vm._v(
-                                  "手机号：" + _vm._s(_vm.regdata_address.phone)
+                                  "手机号：" + _vm._s(_vm.data.address.mobile)
                                 ),
                               ]),
                               _c("view", { staticClass: "content_address" }, [
                                 _vm._v(
                                   "地址：" +
-                                    _vm._s(_vm.regdata_address.full_address)
+                                    _vm._s(_vm.data.address.detail_address)
                                 ),
                               ]),
                               _c("view", { staticClass: "ub-f1" }),
@@ -871,11 +1003,8 @@ var render = function () {
                 : _vm._e(),
             ]),
             _c("view", { staticClass: "prompt" }, [
-              _c("view", [_vm._v("温馨提示：")]),
               _c("view", [
-                _vm._v(
-                  "双方私下沟通时注意防骗，切勿相信先缴纳费用的合作。如遇虚假通告、敲诈信息等不良行为，请立即向平台"
-                ),
+                _vm._v(_vm._s(_vm.yuepaiInfo.warning)),
                 _c(
                   "text",
                   { staticClass: "complain", attrs: { catchtap: "jubao" } },
@@ -890,19 +1019,19 @@ var render = function () {
                 class: _vm.isIphoneX ? "fix-iphonex-button" : "",
               },
               [
-                _vm.need_coin > 0
+                _vm.pay_coin > 0
                   ? _c("block", [
                       _c("view", { staticClass: "bottom_coin" }, [
                         _c("view", { staticClass: "needcoin" }, [
                           _c("text", [
-                            _vm._v(" " + _vm._s(_vm.need_coin) + " 金豆 "),
+                            _vm._v(" " + _vm._s(_vm.pay_coin) + " 金豆 "),
                           ]),
                           _c("text", { staticClass: "vip-tips" }, [
                             _vm._v(" 开通会员仅需2金豆 >> "),
                           ]),
                         ]),
                         _c("view", { staticClass: "surplus_coin" }, [
-                          _vm._v("剩余：" + _vm._s(_vm.coin) + " 金豆"),
+                          _vm._v("剩余：" + _vm._s(_vm.balance_coin) + " 金豆"),
                         ]),
                       ]),
                       _c("view", { staticClass: "ub-f1" }),
@@ -927,14 +1056,29 @@ var render = function () {
           ]
         )
       : _vm._e(),
-    _vm.showModel || _vm.showTipModel
-      ? _c("view", {
-          staticClass: "modal_bg",
-          attrs: { bindtap: "closecomment", catchtouchmove: "kong" },
-        })
-      : _vm._e(),
     false
       ? undefined
+      : _vm._e(),
+    _vm.showModel
+      ? _c("view", { staticClass: "modal_box" }, [
+          _c("view", { staticClass: "modal_content" }, [
+            _c("view", [_vm._v(" 微信二维码 ")]),
+            _c("image", {
+              staticClass: "qrcode-img",
+              attrs: {
+                src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/41625d80-73b2-11ed-ae45-473a871aac32.jpg",
+              },
+            }),
+            _c("image", {
+              staticClass: "close-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../../../assets/images/common/x_icon.png */ "./src/assets/images/common/x_icon.png"),
+              },
+              on: { tap: _vm.closeQRcode },
+            }),
+            _c("view", { staticClass: "save" }, [_vm._v("保存到相册")]),
+          ]),
+        ])
       : _vm._e(),
   ])
 }
@@ -978,6 +1122,18 @@ module.exports = __webpack_require__.p + "assets/images/common/tip_success.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/common/tongzhi3.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/common/x_icon.png":
+/*!*********************************************!*\
+  !*** ./src/assets/images/common/x_icon.png ***!
+  \*********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC"
 
 /***/ }),
 
