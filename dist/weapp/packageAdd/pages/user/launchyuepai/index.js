@@ -434,6 +434,9 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
     goSensationlist: function goSensationlist() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/sensationlist/index?platform_code=" + this.media_info.platform_code + "&platform_name=" + this.media_info.platform_name + "&oid=" + this.data.celebrity.oid);
     },
+    chooseAddress: function chooseAddress() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addresslist/index?oid=" + this.data.address.oid);
+    },
     inviteTemplate: function inviteTemplate(params) {
       var _this = this;
 
@@ -445,11 +448,10 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "k"])(params);
 
               case 3:
                 res = _context.sent;
-                console.log(res);
                 _this.yuepaiInfo.author = res.data.data.visited;
                 _this.yuepaiInfo.tips = res.data.data.tips;
                 _this.yuepaiInfo.title = res.data.data.title;
@@ -457,46 +459,26 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
                 _this.showContact = res.data.data.contact.is_enable;
                 _this.showCelebrity = res.data.data.celebrity.is_enable;
                 _this.showAddress = res.data.data.address.is_enable;
-                _this.data.contact = res.data.data.contact.body; // res.data.data.celebrity = {
-                //   body: {
-                //     date_humanize: "1天前",
-                //     fans_number: 600,
-                //     nickname: "小摄影红书",
-                //     platform_code: 201,
-                //     platform_name: "红薯",
-                //   },
-                //   is_enable: 1,
-                //   platform_name: "红薯",
-                //   platform_type: "201",
-                // };
-                // res.data.data.address = {
-                //   body: {
-                //     detail_address: "北京市石景山区惠新西街5号院",
-                //     mobile: 13716186230,
-                //     name: "王先生",
-                //   },
-                //   is_enable: 1,
-                // };
-
+                _this.data.contact = res.data.data.contact.body;
                 _this.data.celebrity = res.data.data.celebrity.body;
                 _this.data.address = res.data.data.address.body;
                 _this.media_info.platform_name = res.data.data.celebrity.platform_name;
                 _this.media_info.platform_code = res.data.data.celebrity.platform_type;
                 _this.pay_coin = res.data.data.visitor.pay_coin;
                 _this.balance_coin = res.data.data.visitor.balance_coin;
-                _context.next = 23;
+                _context.next = 22;
                 break;
 
-              case 21:
-                _context.prev = 21;
+              case 20:
+                _context.prev = 20;
                 _context.t0 = _context["catch"](0);
 
-              case 23:
+              case 22:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 21]]);
+        }, _callee, null, [[0, 20]]);
       }))();
     }
   },
@@ -512,6 +494,10 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 
     if (currPage.data.celebrity) {
       this.data.celebrity = currPage.data.celebrity;
+    }
+
+    if (currPage.data.address) {
+      this.data.address = currPage.data.address;
     }
   }
 });
@@ -936,7 +922,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "info_item ub",
-                      attrs: { catchtap: "chooseAddress" },
+                      on: { tap: _vm.chooseAddress },
                     },
                     [
                       _c("view", { staticClass: "info_type" }, [

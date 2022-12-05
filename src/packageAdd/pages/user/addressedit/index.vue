@@ -1,6 +1,6 @@
 <template>
   <view>
-    <form bindreset="reset" bindsubmit="sub" class="main" reportSubmit="true">
+    <view class="main">
       <view class="line_gap"></view>
       <view class="address_info item">
         <view class="info_contact item_child bb1 ub">
@@ -9,11 +9,11 @@
             <input
               cursorSpacing="10"
               maxlength="15"
-              name="contact_name"
+              name="name"
               placeholder="请填写收货人姓名"
               placeholderClass="value_placeholder"
               type="text"
-              v-model="data.contact_name"
+              v-model="data.name"
             />
           </view>
         </view>
@@ -23,11 +23,11 @@
             <input
               cursorSpacing="10"
               maxlength="15"
-              name="contact_phone"
+              name="mobile"
               placeholder="收货人手机号"
               placeholderClass="value_placeholder"
               type="number"
-              v-model="data.phone"
+              v-model="data.mobile"
             />
           </view>
         </view>
@@ -38,10 +38,9 @@
               @change="bindRegionChange"
               class="ub-f1 region-picker"
               mode="region"
-              v-model="region"
             >
-              <view class="info_value" v-if="region.length">{{
-                region_name
+              <view class="info_value" v-if="data.addressName.length">{{
+                data.addressName
               }}</view>
               <view class="value_placeholder" v-else>选择省市区县、乡镇等</view>
             </picker>
@@ -61,7 +60,7 @@
               placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元室等"
               placeholderClass="value_placeholder"
               rows="10"
-              v-model="data.address"
+              v-model="data.detail"
             ></textarea>
           </view>
         </view>
@@ -88,8 +87,8 @@
           <view class="ub-f1"></view>
           <view class="check_btn">
             <switch
-              bindchange="switch_selct"
-              :checked="switch_selct"
+              @change="switch_selct"
+              :checked="data.is_default"
               color="#fe5457"
             ></switch>
           </view>
@@ -103,15 +102,11 @@
         :class="isIphoneX ? 'fix-iphonex-button' : ''"
       >
         <view class="subbtn_bottom">
-          <button formType="submit">保存</button>
+          <button @tap="submit">保存</button>
         </view>
       </view>
-    </form>
-    <view
-      catchtap="closeModelPledge"
-      class="modal-bg"
-      v-if="showModel_del"
-    ></view>
+    </view>
+    <view @tap="closeModel_del" class="modal-bg" v-if="showModel_del"></view>
     <view class="model_box ub" v-if="showModel_del">
       <view class="ub-f1"></view>
       <view class="model_main">
@@ -133,14 +128,22 @@
 
 <script>
 import "./index.scss";
+import { submitAddress, addressInfo } from "../../../../api/index";
+import { errortip } from "../../../../utils/util";
 export default {
   name: "addressedit",
   data() {
     return {
       isIphoneX: false,
+      oid: "",
       data: {
-        contact_name: "熊翠",
-        phone: 13693628075,
+        name: "",
+        mobile: "",
+        addressName: "",
+        address: "",
+        detail: "",
+        label: "",
+        is_default: false,
       },
       tags: [
         {
@@ -156,18 +159,17 @@ export default {
           name: "学校",
         },
       ],
-      address: "惠新里223号楼",
-      region_name: "",
-      region: [],
-      switch_selct: false,
       showModel_del: false,
-      showDel: false,
+      showDel: true,
     };
   },
   methods: {
+    switch_selct(e) {
+      this.data.is_default = e.detail.value;
+    },
     bindRegionChange(e) {
-      this.region_name = e.detail.value.join("-");
-      this.region = e.detail.code;
+      this.data.addressName = e.detail.value.join("-");
+      this.data.address = e.detail.code;
     },
     select_tag(row) {
       this.tags.map((item, idenx) => {
@@ -182,11 +184,98 @@ export default {
       this.showModel_del = false;
     },
     del_address() {
-      this.showModel_del = false;
+      this.deleteAddress({
+        oid: this.oid,
+        is_delete: 1,
+      });
+    },
+    submit() {
+      if (!this.data.name) {
+        errortip("请填写收件人");
+        return false;
+      }
+      if (!this.data.mobile) {
+        errortip("请填写手机号码");
+        return false;
+      }
+      if (!this.data.addressName) {
+        errortip("请选择所属地区");
+        return false;
+      }
+      if (!this.data.detail) {
+        errortip("请填写详细地址");
+        return false;
+      }
+      let label = this.tags.find((item) => item.ispick);
+      if (!label) {
+        errortip("请选择地址标签");
+        return false;
+      }
+
+      let params = {
+        oid: this.oid,
+        name: this.data.name,
+        mobile: this.data.mobile,
+        addressName: this.data.addressName,
+        address: this.data.address,
+        detail: this.data.detail,
+        label: label.name,
+        is_default: this.data.is_default ? 1 : 0,
+      };
+      this.submitAddress(params);
+    },
+    async submitAddress(params) {
+      try {
+        let res = await submitAddress(params);
+        wx.navigateBack({
+          delta: 1,
+        });
+      } catch (error) {}
+    },
+    async addressInfo(params) {
+      try {
+        let res = await addressInfo(params);
+        this.data.name = res.data.data.name;
+        this.data.mobile = res.data.data.mobile;
+        this.data.addressName =
+          res.data.data.province_name +
+          "-" +
+          res.data.data.city_name +
+          "-" +
+          res.data.data.district_name;
+        this.data.address = [
+          res.data.data.province_id,
+          res.data.data.city_id,
+          res.data.data.district_id,
+        ];
+        this.data.detail = res.data.data.detail;
+        this.data.label = res.data.data.label;
+        this.tags.map((item) => {
+          if (res.data.data.label == item.name) {
+            item.ispick = true;
+          }
+        });
+        this.data.is_default = res.data.data.is_default ? true : false;
+      } catch (error) {}
+    },
+    async deleteAddress(params) {
+      try {
+        let res = await submitAddress(params);
+        this.showModel_del = false;
+        wx.navigateBack({
+          delta: 1,
+        });
+      } catch (error) {}
     },
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
+  },
+  onLoad: function (options) {
+    this.oid = options.oid;
+    this.addressInfo({
+      oid: this.oid,
+    });
   },
 };
 </script>

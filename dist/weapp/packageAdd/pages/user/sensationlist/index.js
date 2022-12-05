@@ -107,6 +107,23 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -115,7 +132,9 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
   data: function data() {
     return {
       noneData: false,
+      showModel_del: false,
       oid: "",
+      rowoid: "",
       platform_code: "",
       platform_name: "",
       fans_data: [],
@@ -128,6 +147,15 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
     };
   },
   methods: {
+    closeModel_del: function closeModel_del() {
+      this.showModel_del = false;
+    },
+    del_hongren: function del_hongren() {
+      this.userCelebrity({
+        oid: this.rowoid,
+        is_delete: 1
+      });
+    },
     goChooseMedia: function goChooseMedia() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
     },
@@ -143,11 +171,8 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
               break;
 
             case 1:
-              _this.userCelebrity({
-                oid: oid,
-                is_delete: 1
-              });
-
+              _this.rowoid = oid;
+              _this.showModel_del = true;
               break;
           }
         },
@@ -178,7 +203,7 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* celebrityList */ "b"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* celebrityList */ "d"])(params);
 
               case 3:
                 res = _context.sent;
@@ -217,29 +242,30 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "C"])(params);
 
               case 3:
                 res = _context2.sent;
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("删除成功");
+                _this3.showModel_del = false;
 
                 _this3.celebrityList({
                   platform_code: _this3.platform_code
                 });
 
-                _context2.next = 10;
+                _context2.next = 11;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 9]]);
       }))();
     }
   },
@@ -383,6 +409,41 @@ var render = function () {
               _vm._v("添加账号 "),
             ]
           ),
+          _vm.showModel_del
+            ? _c("view", {
+                staticClass: "modal-bg",
+                on: { tap: _vm.closeModel_del },
+              })
+            : _vm._e(),
+          _vm.showModel_del
+            ? _c("view", { staticClass: "model_box ub" }, [
+                _c("view", { staticClass: "ub-f1" }),
+                _c("view", { staticClass: "model_main" }, [
+                  _c("view", { staticClass: "model_title" }, [
+                    _c("view", [_vm._v("确定要删除该红人账号吗？")]),
+                  ]),
+                  _c("view", { staticClass: "model_btn ub" }, [
+                    _c("view", { staticClass: "ub-f1" }),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "btn_no",
+                        on: { tap: _vm.closeModel_del },
+                      },
+                      [_vm._v("取消")]
+                    ),
+                    _c("view", { staticClass: "ub-f1" }),
+                    _c(
+                      "view",
+                      { staticClass: "btn_yes", on: { tap: _vm.del_hongren } },
+                      [_vm._v("删除")]
+                    ),
+                    _c("view", { staticClass: "ub-f1" }),
+                  ]),
+                ]),
+                _c("view", { staticClass: "ub-f1" }),
+              ])
+            : _vm._e(),
         ],
         2
       )

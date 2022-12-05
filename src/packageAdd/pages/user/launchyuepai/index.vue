@@ -216,7 +216,7 @@
             <image src="../../../../assets/images/right.png"></image>
           </view>
         </view>
-        <view catchtap="chooseAddress" class="info_item ub" v-if="showAddress">
+        <view @tap="chooseAddress" class="info_item ub" v-if="showAddress">
           <view class="info_type">
             <view class="type_icon">
               <image
@@ -385,10 +385,14 @@ export default {
           this.data.celebrity.oid
       );
     },
+    chooseAddress() {
+      openPage(
+        "/packageAdd/pages/user/addresslist/index?oid=" + this.data.address.oid
+      );
+    },
     async inviteTemplate(params) {
       try {
         let res = await inviteTemplate(params);
-        console.log(res);
         this.yuepaiInfo.author = res.data.data.visited;
         this.yuepaiInfo.tips = res.data.data.tips;
         this.yuepaiInfo.title = res.data.data.title;
@@ -399,26 +403,6 @@ export default {
         this.showAddress = res.data.data.address.is_enable;
 
         this.data.contact = res.data.data.contact.body;
-        // res.data.data.celebrity = {
-        //   body: {
-        //     date_humanize: "1天前",
-        //     fans_number: 600,
-        //     nickname: "小摄影红书",
-        //     platform_code: 201,
-        //     platform_name: "红薯",
-        //   },
-        //   is_enable: 1,
-        //   platform_name: "红薯",
-        //   platform_type: "201",
-        // };
-        // res.data.data.address = {
-        //   body: {
-        //     detail_address: "北京市石景山区惠新西街5号院",
-        //     mobile: 13716186230,
-        //     name: "王先生",
-        //   },
-        //   is_enable: 1,
-        // };
         this.data.celebrity = res.data.data.celebrity.body;
         this.data.address = res.data.data.address.body;
         this.media_info.platform_name = res.data.data.celebrity.platform_name;
@@ -439,6 +423,9 @@ export default {
     let currPage = pages[pages.length - 1]; //当前页面
     if (currPage.data.celebrity) {
       this.data.celebrity = currPage.data.celebrity;
+    }
+    if (currPage.data.address) {
+      this.data.address = currPage.data.address;
     }
   },
 };

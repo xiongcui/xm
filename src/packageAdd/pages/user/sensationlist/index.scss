@@ -78,3 +78,65 @@ page {
 .item_active {
   border: 1px solid #ff1e3e;
 }
+.modal-bg {
+  background: #000;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  overflow: hidden;
+  top: 0;
+  z-index: 999;
+}
+.modal-bg,
+.model_box {
+  position: fixed;
+  width: 100%;
+}
+
+.model_box {
+  top: 30%;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+}
+
+.model_main {
+  background: #fafafa;
+  border-radius: 10rpx;
+  width: 550rpx;
+}
+
+.model_title {
+  height: 48rpx;
+  line-height: 48rpx;
+  padding: 40rpx 0;
+}
+.btn_no,
+.btn_yes,
+.model_title {
+  color: #000;
+  font-size: 34rpx;
+  text-align: center;
+}
+
+.btn_no,
+.btn_yes {
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 20rpx 10rpx 40rpx;
+  width: 100rpx;
+}
+
+.btn_yes {
+  color: red;
+}
+
+.set_lable,
+.set_default {
+  display: flex;
+  justify-content: space-between;
+}
+
+.model_btn {
+  justify-content: space-between;
+}

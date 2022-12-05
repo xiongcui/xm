@@ -98,3 +98,7 @@ page {
   vertical-align: middle;
   width: 25rpx;
 }
+
+.address_active {
+  border: 1rpx solid #ff1e3e;
+}

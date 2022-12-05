@@ -285,3 +285,27 @@ export const celebrityInfo = (data) => {
     data,
   });
 };
+// 获取地址列表
+export const addressList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/address/list",
+    method: "get",
+    data,
+  });
+};
+// 创建｜更新地址
+export const submitAddress = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/address",
+    method: "post",
+    data,
+  });
+};
+// 地址详情
+export const addressInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/address/info",
+    method: "post",
+    data,
+  });
+};

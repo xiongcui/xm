@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "通用发布",
-                    "pathName": "packageTonggao/pages/add/index",
+                    "name": "我的联系方式",
+                    "pathName": "packageAdd/pages/user/contact/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

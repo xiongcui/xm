@@ -71,6 +71,7 @@ export default defineAppConfig({
         "pages/user/launchyuepai/index",
         "pages/user/sensationlist/index",
         "pages/user/addfans/index",
+        "pages/user/contact/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/zuopin/add_zuopin/index",

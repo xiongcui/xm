@@ -47,6 +47,23 @@
       <image src="../../../../assets/images/common/add_black.png"></image
       >添加账号
     </view>
+    <view @tap="closeModel_del" class="modal-bg" v-if="showModel_del"></view>
+    <view class="model_box ub" v-if="showModel_del">
+      <view class="ub-f1"></view>
+      <view class="model_main">
+        <view class="model_title">
+          <view>确定要删除该红人账号吗？</view>
+        </view>
+        <view class="model_btn ub">
+          <view class="ub-f1"></view>
+          <view @tap="closeModel_del" class="btn_no">取消</view>
+          <view class="ub-f1"></view>
+          <view @tap="del_hongren" class="btn_yes">删除</view>
+          <view class="ub-f1"></view>
+        </view>
+      </view>
+      <view class="ub-f1"></view>
+    </view>
   </view>
 </template>
 
@@ -59,7 +76,9 @@ export default {
   data() {
     return {
       noneData: false,
+      showModel_del: false,
       oid: "",
+      rowoid: "",
       platform_code: "",
       platform_name: "",
       fans_data: [],
@@ -72,6 +91,15 @@ export default {
     };
   },
   methods: {
+    closeModel_del() {
+      this.showModel_del = false;
+    },
+    del_hongren() {
+      this.userCelebrity({
+        oid: this.rowoid,
+        is_delete: 1,
+      });
+    },
     goChooseMedia() {
       openPage(
         "/packageAdd/pages/user/addfans/index?platform_code=" +
@@ -97,10 +125,8 @@ export default {
               );
               break;
             case 1:
-              _this.userCelebrity({
-                oid: oid,
-                is_delete: 1,
-              });
+              _this.rowoid = oid;
+              _this.showModel_del = true;
               break;
           }
         },
@@ -135,6 +161,7 @@ export default {
       try {
         let res = await userCelebrity(params);
         errortip("删除成功");
+        this.showModel_del = false;
         this.celebrityList({
           platform_code: this.platform_code,
         });
