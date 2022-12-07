@@ -132,6 +132,7 @@
           name="content"
           :placeholder="yuepaiInfo.tips"
           placeholderClass="placeholder_style"
+          v-model="yuepaiInfo.content"
         ></textarea>
       </view>
       <view class="reg_info">
@@ -143,7 +144,7 @@
             ></view
           >
         </view>
-        <view catchtap="editContact" class="info_item ub" v-if="showContact">
+        <view @tap="editContact" class="info_item ub" v-if="showContact">
           <view class="info_type">
             <view class="type_icon">
               <image
@@ -153,21 +154,24 @@
             </view>
             <view class="type_text">我的联系信息</view>
           </view>
-          <view class="info_content ub ub-ver ub-f1" @tap="showQRcode">
+          <view class="info_content ub ub-ver ub-f1">
             <view class="ub-f1"></view>
             <view class="content_text"
               >联系人：{{
                 data.contact.person ? data.contact.person : "未设置"
               }}</view
             >
-            <view
+            <view v-if="data.contact.is_mobile"
               >手机号：{{
                 data.contact.mobile ? data.contact.mobile : "未设置"
               }}</view
             >
-            <view class="content_text"
+            <view class="content_text" v-if="data.contact.is_wechat"
               >微信号：{{ data.contact.wechat ? data.contact.wechat : "未设置"
-              }}<text class="qrcode" v-if="data.contact.wechat_links"
+              }}<text
+                class="qrcode"
+                v-if="data.contact.wechat_links"
+                @tap.stop="showQRcode"
                 >查看二维码</text
               ></view
             >
@@ -265,11 +269,11 @@
           </view>
           <view class="ub-f1"></view>
           <view class="sub_btn">
-            <button formType="submit" type="primary">确认提交</button>
+            <button @tap="submit" type="primary">确认提交</button>
           </view>
         </block>
         <view class="subbtn_bottom" v-else>
-          <button formType="submit" type="primary">确认提交</button>
+          <button @tap="submit" type="primary">确认提交</button>
         </view>
       </view>
     </form>
@@ -299,10 +303,7 @@
     <view class="modal_box" v-if="showModel">
       <view class="modal_content">
         <view> 微信二维码 </view>
-        <image
-          class="qrcode-img"
-          src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/41625d80-73b2-11ed-ae45-473a871aac32.jpg"
-        ></image>
+        <image class="qrcode-img" :src="data.contact.wechat_links"></image>
         <image
           src="../../../../assets/images/common/x_icon.png"
           class="close-img"
@@ -316,13 +317,14 @@
 
 <script>
 import "./index.scss";
-import { inviteTemplate } from "../../../../api/index";
-import { openPage } from "../../../../utils/util";
+import { inviteTemplate, subApply } from "../../../../api/index";
+import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "launchyuepai",
   data() {
     return {
       oid: "",
+      visited_id: "",
       isIphoneX: false,
       pageshow: "normal",
       showModel: false,
@@ -331,6 +333,7 @@ export default {
       balance_coin: 0,
       yuepaiInfo: {
         title: "",
+        content: "",
         warning: "",
         author: {
           avatar: "",
@@ -390,6 +393,35 @@ export default {
         "/packageAdd/pages/user/addresslist/index?oid=" + this.data.address.oid
       );
     },
+    editContact() {
+      openPage("/packageAdd/pages/user/contact/index");
+    },
+    submit() {
+      if (!this.yuepaiInfo.content) {
+        errortip("请输入" + this.yuepaiInfo.title);
+        return false;
+      }
+      if (this.showCelebrity && !this.data.celebrity.nickname) {
+        errortip("请选择红人账号");
+        return false;
+      }
+      if (this.showAddress && !this.data.address.name) {
+        errortip("请选择收货地址");
+        return false;
+      }
+      let params = {
+        oid: this.oid,
+        type: "NT",
+        visited_id: this.visited_id,
+        content: this.yuepaiInfo.content,
+        contact: this.data.contact,
+        celebrity: this.data.celebrity,
+        address: this.data.address,
+        visitor_coin: this.pay_coin,
+      };
+      console.log(params);
+      this.subApply(params);
+    },
     async inviteTemplate(params) {
       try {
         let res = await inviteTemplate(params);
@@ -409,6 +441,16 @@ export default {
         this.media_info.platform_code = res.data.data.celebrity.platform_type;
         this.pay_coin = res.data.data.visitor.pay_coin;
         this.balance_coin = res.data.data.visitor.balance_coin;
+
+        this.visited_id = res.data.data.visited_id;
+      } catch (error) {}
+    },
+    async subApply(params) {
+      try {
+        let res = await subApply(params);
+        wx.navigateBack({
+          delta: 1,
+        });
       } catch (error) {}
     },
   },
@@ -426,6 +468,9 @@ export default {
     }
     if (currPage.data.address) {
       this.data.address = currPage.data.address;
+    }
+    if (currPage.data.contact) {
+      this.data.contact = currPage.data.contact;
     }
   },
 };

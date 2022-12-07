@@ -58,32 +58,32 @@ export default {
         {
           name: "作品创作",
           value: "creation_content",
-          icon: "../../../assets/images/tonggao/xiangce.png",
+          icon: require("../../../assets/images/tonggao/xiangce.png"),
         },
         {
           name: "合作招募",
           value: "recruit_cooperate",
-          icon: "../../../assets/images/tonggao/hezuo.png",
+          icon: require("../../../assets/images/tonggao/hezuo.png"),
         },
         {
           name: "电商拍摄",
           value: "business_capture",
-          icon: "../../../assets/images/tonggao/dianshang.png",
+          icon: require("../../../assets/images/tonggao/dianshang.png"),
         },
         {
           name: "广告宣传",
           value: "advert_spread",
-          icon: "../../../assets/images/tonggao/guanggao.png",
+          icon: require("../../../assets/images/tonggao/guanggao.png"),
         },
         {
           name: "影视视频",
           value: "film_video",
-          icon: "../../../assets/images/tonggao/yingshi.png",
+          icon: require("../../../assets/images/tonggao/yingshi.png"),
         },
         {
           name: "商业活动",
           value: "business_activity",
-          icon: "../../../assets/images/tonggao/shangye.png",
+          icon: require("../../../assets/images/tonggao/shangye.png"),
         },
       ],
       maskData: [],

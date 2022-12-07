@@ -592,7 +592,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
         this.bargin_pub_price = 1;
       }
     },
-    inputSharePrice: function inputSharePrice() {
+    inputSharePrice: function inputSharePrice(e) {
       if (e.detail.value) {
         this.bargin_share_price = 0;
       } else {
@@ -829,7 +829,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "C"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "E"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -947,6 +947,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
       title: this.platform_name
     }); // 查询账号领域
 
+    console.log(this.platform_code, "this.platform_code");
     var type = "acct_field_" + this.platform_code;
     this.publicConfig({
       type: [type]

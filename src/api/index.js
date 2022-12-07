@@ -309,3 +309,27 @@ export const addressInfo = (data) => {
     data,
   });
 };
+// 获取我的联系方式
+export const userContact = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/contact",
+    method: "get",
+    data,
+  });
+};
+// 提交我的联系方式
+export const subContact = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/contact",
+    method: "post",
+    data,
+  });
+};
+// 提交我的联系方式
+export const subApply = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/invite/apply",
+    method: "post",
+    data,
+  });
+};

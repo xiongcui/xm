@@ -7,24 +7,6 @@ page {
   height: 100%;
 }
 
-.wx-switch-input {
-  background: #ff1e3e !important;
-  border: #ff1e3e !important;
-  height: 50rpx !important;
-  width: 83rpx !important;
-}
-
-.wx-switch-input::before {
-  border: 2rpx solid #ff1e3e !important;
-  height: 46rpx !important;
-  width: 83rpx !important;
-}
-
-.wx-switch-input::after {
-  height: 48rpx !important;
-  width: 48rpx !important;
-}
-
 .contact_info {
   background: #fff;
   border-radius: 8rpx;
@@ -54,6 +36,9 @@ page {
 }
 
 .item {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 10rpx 20rpx;
 }
 
@@ -176,4 +161,90 @@ page {
   font-weight: 400;
   line-height: 33rpx;
   padding: 10rpx 0 30rpx;
+}
+
+.sub_btn {
+  padding: 80rpx 103rpx 90rpx;
+}
+
+.sub_btn button {
+  background-color: #ff1e3e;
+  color: #fff;
+  font-size: 32rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.modal-bg {
+  background: #000;
+  height: 100%;
+  left: 0;
+  opacity: 0.5;
+  overflow: hidden;
+  top: 0;
+  z-index: 999;
+}
+
+.modal-bg,
+.model_box {
+  position: fixed;
+  width: 100%;
+}
+
+.model_box {
+  top: 30%;
+  z-index: 1001;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.model_main {
+  background: #fafafa;
+  border-radius: 10rpx;
+  width: 550rpx;
+}
+
+.model_title {
+  line-height: 48rpx;
+  padding: 40rpx;
+}
+
+.btn_no,
+.btn_yes,
+.model_title {
+  color: #000;
+  font-size: 34rpx;
+  text-align: center;
+}
+
+.btn_no,
+.btn_yes {
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 20rpx 10rpx 40rpx;
+  width: 100rpx;
+}
+
+.btn_yes {
+  color: red;
+}
+
+.set_lable,
+.set_default {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.model_btn {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }

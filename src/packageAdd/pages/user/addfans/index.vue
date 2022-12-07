@@ -540,7 +540,7 @@ export default {
         this.bargin_pub_price = 1;
       }
     },
-    inputSharePrice() {
+    inputSharePrice(e) {
       if (e.detail.value) {
         this.bargin_share_price = 0;
       } else {
@@ -816,6 +816,7 @@ export default {
       title: this.platform_name,
     });
     // 查询账号领域
+    console.log(this.platform_code, "this.platform_code");
     let type = "acct_field_" + this.platform_code;
     this.publicConfig({
       type: [type],

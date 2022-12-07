@@ -371,6 +371,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 //
 //
 //
+//
 
 
 
@@ -379,6 +380,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
   data: function data() {
     return {
       oid: "",
+      visited_id: "",
       isIphoneX: false,
       pageshow: "normal",
       showModel: false,
@@ -387,6 +389,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
       balance_coin: 0,
       yuepaiInfo: {
         title: "",
+        content: "",
         warning: "",
         author: {
           avatar: "",
@@ -437,6 +440,38 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
     chooseAddress: function chooseAddress() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addresslist/index?oid=" + this.data.address.oid);
     },
+    editContact: function editContact() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/contact/index");
+    },
+    submit: function submit() {
+      if (!this.yuepaiInfo.content) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请输入" + this.yuepaiInfo.title);
+        return false;
+      }
+
+      if (this.showCelebrity && !this.data.celebrity.nickname) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择红人账号");
+        return false;
+      }
+
+      if (this.showAddress && !this.data.address.name) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择收货地址");
+        return false;
+      }
+
+      var params = {
+        oid: this.oid,
+        type: "NT",
+        visited_id: this.visited_id,
+        content: this.yuepaiInfo.content,
+        contact: this.data.contact,
+        celebrity: this.data.celebrity,
+        address: this.data.address,
+        visitor_coin: this.pay_coin
+      };
+      console.log(params);
+      this.subApply(params);
+    },
     inviteTemplate: function inviteTemplate(params) {
       var _this = this;
 
@@ -466,19 +501,51 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
                 _this.media_info.platform_code = res.data.data.celebrity.platform_type;
                 _this.pay_coin = res.data.data.visitor.pay_coin;
                 _this.balance_coin = res.data.data.visitor.balance_coin;
-                _context.next = 22;
+                _this.visited_id = res.data.data.visited_id;
+                _context.next = 23;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 21:
+                _context.prev = 21;
                 _context.t0 = _context["catch"](0);
 
-              case 22:
+              case 23:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 20]]);
+        }, _callee, null, [[0, 21]]);
+      }))();
+    },
+    subApply: function subApply(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "t"])(params);
+
+              case 3:
+                res = _context2.sent;
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
       }))();
     }
   },
@@ -498,6 +565,10 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 
     if (currPage.data.address) {
       this.data.address = currPage.data.address;
+    }
+
+    if (currPage.data.contact) {
+      this.data.contact = currPage.data.contact;
     }
   }
 });
@@ -753,11 +824,28 @@ var render = function () {
                 ]),
               ]),
               _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.yuepaiInfo.content,
+                    expression: "yuepaiInfo.content",
+                  },
+                ],
                 attrs: {
                   id: "",
                   name: "content",
                   placeholder: _vm.yuepaiInfo.tips,
                   placeholderClass: "placeholder_style",
+                },
+                domProps: { value: _vm.yuepaiInfo.content },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.yuepaiInfo, "content", $event.target.value)
+                  },
                 },
               }),
             ]),
@@ -776,7 +864,7 @@ var render = function () {
                     "view",
                     {
                       staticClass: "info_item ub",
-                      attrs: { catchtap: "editContact" },
+                      on: { tap: _vm.editContact },
                     },
                     [
                       _c("view", { staticClass: "info_type" }, [
@@ -794,10 +882,7 @@ var render = function () {
                       ]),
                       _c(
                         "view",
-                        {
-                          staticClass: "info_content ub ub-ver ub-f1",
-                          on: { tap: _vm.showQRcode },
-                        },
+                        { staticClass: "info_content ub ub-ver ub-f1" },
                         [
                           _c("view", { staticClass: "ub-f1" }),
                           _c("view", { staticClass: "content_text" }, [
@@ -810,31 +895,48 @@ var render = function () {
                                 )
                             ),
                           ]),
-                          _c("view", [
-                            _vm._v(
-                              "手机号：" +
-                                _vm._s(
-                                  _vm.data.contact.mobile
-                                    ? _vm.data.contact.mobile
-                                    : "未设置"
-                                )
-                            ),
-                          ]),
-                          _c("view", { staticClass: "content_text" }, [
-                            _vm._v(
-                              "微信号：" +
-                                _vm._s(
-                                  _vm.data.contact.wechat
-                                    ? _vm.data.contact.wechat
-                                    : "未设置"
-                                )
-                            ),
-                            _vm.data.contact.wechat_links
-                              ? _c("text", { staticClass: "qrcode" }, [
-                                  _vm._v("查看二维码"),
-                                ])
-                              : _vm._e(),
-                          ]),
+                          _vm.data.contact.is_mobile
+                            ? _c("view", [
+                                _vm._v(
+                                  "手机号：" +
+                                    _vm._s(
+                                      _vm.data.contact.mobile
+                                        ? _vm.data.contact.mobile
+                                        : "未设置"
+                                    )
+                                ),
+                              ])
+                            : _vm._e(),
+                          _vm.data.contact.is_wechat
+                            ? _c("view", { staticClass: "content_text" }, [
+                                _vm._v(
+                                  "微信号：" +
+                                    _vm._s(
+                                      _vm.data.contact.wechat
+                                        ? _vm.data.contact.wechat
+                                        : "未设置"
+                                    )
+                                ),
+                                _vm.data.contact.wechat_links
+                                  ? _c(
+                                      "text",
+                                      {
+                                        staticClass: "qrcode",
+                                        on: {
+                                          tap: function ($event) {
+                                            $event.stopPropagation()
+                                            return _vm.showQRcode.apply(
+                                              null,
+                                              arguments
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("查看二维码")]
+                                    )
+                                  : _vm._e(),
+                              ])
+                            : _vm._e(),
                           _c("view", { staticClass: "ub-f1" }),
                         ]
                       ),
@@ -1024,7 +1126,10 @@ var render = function () {
                       _c("view", { staticClass: "sub_btn" }, [
                         _c(
                           "button",
-                          { attrs: { formType: "submit", type: "primary" } },
+                          {
+                            attrs: { type: "primary" },
+                            on: { tap: _vm.submit },
+                          },
                           [_vm._v("确认提交")]
                         ),
                       ]),
@@ -1032,7 +1137,7 @@ var render = function () {
                   : _c("view", { staticClass: "subbtn_bottom" }, [
                       _c(
                         "button",
-                        { attrs: { formType: "submit", type: "primary" } },
+                        { attrs: { type: "primary" }, on: { tap: _vm.submit } },
                         [_vm._v("确认提交")]
                       ),
                     ]),
@@ -1051,9 +1156,7 @@ var render = function () {
             _c("view", [_vm._v(" 微信二维码 ")]),
             _c("image", {
               staticClass: "qrcode-img",
-              attrs: {
-                src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/41625d80-73b2-11ed-ae45-473a871aac32.jpg",
-              },
+              attrs: { src: _vm.data.contact.wechat_links },
             }),
             _c("image", {
               staticClass: "close-img",
