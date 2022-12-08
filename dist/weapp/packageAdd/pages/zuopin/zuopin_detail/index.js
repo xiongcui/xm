@@ -52,6 +52,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/zuopin/zuopin_detail/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -211,6 +212,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -231,6 +233,9 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
   methods: {
     bindended: function bindended() {
       wx.createVideoContext("video").exitFullScreen();
+    },
+    launchYuepai: function launchYuepai() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
     },
     photoInfo: function photoInfo(params) {
       var _this = this;
@@ -517,7 +522,11 @@ var render = function () {
             _vm._v(" " + _vm._s(_vm.zuopinInfo.statistic.collect_cnt) + " "),
           ]),
         ]),
-        _c("view", { staticClass: "zuopin_fixed_rt" }, [_vm._v(" 约拍 ")]),
+        _c(
+          "view",
+          { staticClass: "zuopin_fixed_rt", on: { tap: _vm.launchYuepai } },
+          [_vm._v(" 约拍 ")]
+        ),
       ]
     ),
   ])

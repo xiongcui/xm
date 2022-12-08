@@ -575,7 +575,7 @@ export default {
           this.list = res.data.data.items;
           this.$emit("closeRefresh");
         } else if (type == "more") {
-          if (!res.data.data.items.length) {
+          if (!res.data.data || !res.data.data.items.length) {
             errortip("没有更多数据了～");
             this.$emit("closeMore");
             return false;

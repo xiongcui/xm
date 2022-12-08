@@ -789,10 +789,11 @@ export default {
         wx.hideNavigationBarLoading();
         //停止下拉刷新
         wx.stopPullDownRefresh();
+
         if (type == "init") {
           this.list = res.data.data.items;
         } else if (type == "more") {
-          if (!res.data.data.items.length) {
+          if (!res.data.data || !res.data.data.items.length) {
             errortip("没有更多数据了～");
             this.loading = true;
             return false;

@@ -150,7 +150,7 @@
           {{ zuopinInfo.statistic.collect_cnt }}
         </view>
       </view>
-      <view class="zuopin_fixed_rt"> 约拍 </view>
+      <view class="zuopin_fixed_rt" @tap="launchYuepai"> 约拍 </view>
     </view>
   </view>
 </template>
@@ -158,6 +158,7 @@
 <script>
 import "./index.scss";
 import { photoInfo } from "../../../../api/index";
+import { openPage } from "../../../../utils/util";
 export default {
   name: "zuopin_detail",
   data() {
@@ -176,6 +177,9 @@ export default {
   methods: {
     bindended() {
       wx.createVideoContext("video").exitFullScreen();
+    },
+    launchYuepai() {
+      openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
     },
     async photoInfo(params) {
       try {

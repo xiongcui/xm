@@ -755,7 +755,7 @@ component.options.__file = "src/pages/home/index.vue"
                   break;
                 }
 
-                if (res.data.data.items.length) {
+                if (!(!res.data.data || !res.data.data.items.length)) {
                   _context3.next = 18;
                   break;
                 }
@@ -1384,7 +1384,7 @@ component.options.__file = "src/pages/home/index.vue"
                   break;
                 }
 
-                if (res.data.data.items.length) {
+                if (!(!res.data.data || !res.data.data.items.length)) {
                   _context2.next = 18;
                   break;
                 }
@@ -2350,7 +2350,7 @@ component.options.__file = "src/pages/home/index.vue"
                   break;
                 }
 
-                if (res.data.data.items.length) {
+                if (!(!res.data.data || !res.data.data.items.length)) {
                   _context2.next = 17;
                   break;
                 }
