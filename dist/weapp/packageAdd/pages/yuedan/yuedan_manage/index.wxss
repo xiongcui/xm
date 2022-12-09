@@ -1,0 +1,73 @@
+page {
+  background: #f7f7f7;
+}
+
+.yuedan-manage .tab {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #ffffff;
+  position: fixed;
+  z-index: 9999;
+}
+
+.yuedan-manage .tab-item {
+  color: #333333;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #ffffff;
+  margin: 0 30rpx;
+}
+
+.yuedan-manage .content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100vh;
+}
+
+.yuedan-manage .content > swiper {
+  height: 100%;
+}
+
+.yuedan-manage .tab-item.on {
+  color: #333333;
+  font-weight: bold;
+  border-bottom-color: #ff1e3e;
+}
+
+.yuedan-manage .swiper-box {
+  height: 100%;
+}
+
+.yuedan-manage .yuedan-manage-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #2f2f2f;
+  font-size: 30rpx;
+  margin: 10rpx 0;
+}
+
+.yuedan-manage .yuedan-manage-list .list_title {
+  font-size: 38rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_loction {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABC1BMVEUAAAAAAABVVVVtbW1VVVVxcXFdXV1iYmJmZmZmZmZoaGhqampsbGxoaGhqampra2tlZWVmZmZkZGRoaGhlZWVoaGhmZmZkZGRnZ2dkZGRnZ2doaGhmZmZnZ2dkZGRoaGhnZ2dmZmZnZ2dlZWVmZmZmZmZmZmZnZ2dmZmZmZmZmZmZnZ2dmZmZnZ2dmZmZlZWVlZWVnZ2dmZmZnZ2dmZmZmZmZmZmZmZmZmZmZlZWVmZmZnZ2dlZWVmZmZnZ2dmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmbPn1uaAAAAWHRSTlMAAQMHCQkLDQ8UFhgaGx0fJigpLDAxMjM0ODlAQU1PUVRaXGJnaW5vcHN1eXp8goOIiImLkZSWm6KrrK61tsLKztHX2Nrg4eTm5+jq7+/w8/X3+Pn6/P7+qZ4JDAAAAONJREFUGBmtwXc/QmEYBuC7YxwzZWZkJCNEVlb2qHAoovv7fxLnefn1jk7+6rrQNd5sNr+zOolIA3svVB5zPWgzX2HL/QQc6QYNbylYEu+0lAdhuqSo7S4sXlA5hiHRZOhjDqECRc2HtkFxCtEbUKShFSlyUK4ptqCdUBxBeFWKbWh5itc4QmtUVqAtU6lmhpOFLyrT0Pw6HU8xGM7oOIAp1aSlPgJLiZYibOOfNARDcOzTsA5X3x1brjy0mWnwTzCGCJv89b2ESOdUDhGt/4ahkocORsvkrY+Opp4f4vhHDN30A421Y+s8joZiAAAAAElFTkSuQmCC") left center no-repeat;
+  background-size: 36rpx;
+  padding-left: 36rpx;
+  font-size: 36rpx;
+  color: #3a3a3a;
+}

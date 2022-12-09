@@ -333,3 +333,19 @@ export const subApply = (data) => {
     data,
   });
 };
+// 收到约拍列表
+export const applyList = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/apply/list",
+    method: "post",
+    data,
+  });
+};
+// 收到约拍详情
+export const applyInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/apply/info",
+    method: "post",
+    data,
+  });
+};

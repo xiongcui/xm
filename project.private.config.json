@@ -9,22 +9,22 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "我的联系方式",
-                    "pathName": "packageAdd/pages/user/contact/index",
+                    "name": "约单管理",
+                    "pathName": "packageAdd/pages/yuedan/yuedan_manage/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "添加红人账号",
-                    "pathName": "packageAdd/pages/user/addfans/index",
+                    "name": "收到约拍",
+                    "pathName": "packageMsg/pages/invite/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "红人账号",
-                    "pathName": "packageAdd/pages/user/sensationlist/index",
+                    "name": "约拍详情",
+                    "pathName": "packageMsg/pages/inviteDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

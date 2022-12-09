@@ -340,7 +340,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeInfo */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeInfo */ "o"])(params);
 
               case 3:
                 res = _context.sent;

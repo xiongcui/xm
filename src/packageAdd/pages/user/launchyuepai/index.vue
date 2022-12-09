@@ -78,12 +78,7 @@
       <view class="subtip_tiptext">您的报名请求发送成功，等待对方联系您~</view>
       <view catchtap="backpage" class="subtip_btn">返回</view>
     </view>
-    <form
-      bindreset="reset"
-      bindsubmit="sub"
-      reportSubmit="true"
-      v-if="pageshow == 'normal'"
-    >
+    <view v-if="pageshow == 'normal'">
       <view catchtap="" class="toptip ub">
         <image
           src="../../../../assets/images/common/icon_tongzhi.png"
@@ -202,7 +197,9 @@
             v-if="data.celebrity.nickname"
           >
             <view class="ub-f1"></view>
-            <view class="content_text">{{ data.celebrity.nickname }}</view>
+            <view class="content_text"
+              >昵称：{{ data.celebrity.nickname }}</view
+            >
             <view class="content_text"
               >粉丝：{{ data.celebrity.fans_number }}</view
             >
@@ -276,7 +273,7 @@
           <button @tap="submit" type="primary">确认提交</button>
         </view>
       </view>
-    </form>
+    </view>
     <view class="modal_box" v-if="false">
       <form
         bindreset="reset"
@@ -453,6 +450,9 @@ export default {
         });
       } catch (error) {}
     },
+  },
+  created() {
+    this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function (options) {
     this.oid = options.oid;

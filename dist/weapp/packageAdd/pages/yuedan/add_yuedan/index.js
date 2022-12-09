@@ -742,7 +742,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "s"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "u"])(params);
 
               case 3:
                 res = _context.sent;
@@ -806,7 +806,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "f"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "h"])(params);
 
               case 3:
                 res = _context2.sent;

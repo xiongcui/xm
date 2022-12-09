@@ -47,8 +47,201 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/invite/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/invite/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -164,25 +357,107 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "invite",
   data: function data() {
     return {
-      currentTab: 0
+      currentTab: 0,
+      list: [],
+      // 页面配置
+      winWidth: 0,
+      winHeight: 0,
+      status: 0,
+      pageNum: 1,
+      pageSize: 10
     };
   },
   methods: {
     // 点击tab切换
-    changeItem: function changeItem(index) {
+    changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
         return false;
       } else {
         this.currentTab = index;
+        this.status = type;
+        this.pageNum = 1;
+        this.list = [];
+        this.query();
       }
     },
     bindChange: function bindChange(e) {
       this.currentTab = e.detail.current;
+    },
+    scrollToLower: function scrollToLower() {
+      this.pageNum++;
+      this.query();
+    },
+    query: function query() {
+      var params = {
+        visited_status: this.status,
+        page: this.pageNum,
+        per_page: this.pageSize
+      };
+      this.applyList(params);
+    },
+    goDetail: function goDetail(oid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/inviteDetail/index?oid=" + oid);
+    },
+    applyList: function applyList(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyList */ "d"])(params);
+
+              case 3:
+                res = _context.sent;
+
+                if (!res.data.data || !res.data.data.items.length) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                }
+
+                data = res.data.data.items;
+                _this.list = _this.list.concat(data);
+                _context.next = 11;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
     }
+  },
+  created: function created() {
+    this.query();
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function onLoad(options) {
+    var that = this; // 获取系统信息
+
+    wx.getSystemInfo({
+      success: function success(res) {
+        that.winWidth = res.windowWidth;
+        that.winHeight = res.windowHeight;
+      }
+    });
   }
 });
 
@@ -212,7 +487,7 @@ var render = function () {
           class: _vm.currentTab == 0 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(0)
+              return _vm.changeItem(0, 0)
             },
           },
         },
@@ -225,7 +500,7 @@ var render = function () {
           class: _vm.currentTab == 1 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(1)
+              return _vm.changeItem(1, 200)
             },
           },
         },
@@ -238,7 +513,7 @@ var render = function () {
           class: _vm.currentTab == 2 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(2)
+              return _vm.changeItem(2, 210)
             },
           },
         },
@@ -251,7 +526,7 @@ var render = function () {
           class: _vm.currentTab == 3 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(3)
+              return _vm.changeItem(3, 230)
             },
           },
         },
@@ -275,46 +550,114 @@ var render = function () {
               [
                 _c(
                   "scroll-view",
-                  { attrs: { "scroll-y": "true", bindscrolltolower: "lower" } },
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true, "lower-threshold": 200 },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
                   [
-                    _c("view", { staticClass: "invite-box" }, [
-                      _c("view", { staticClass: "invite-top" }, [
-                        _c("view", { staticClass: "invite-img" }, [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "invite-box",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.goDetail(item.oid)
+                                  },
+                                },
+                              },
+                              [
+                                _c("view", { staticClass: "invite-top" }, [
+                                  _c("view", { staticClass: "invite-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
+                                    }),
+                                  ]),
+                                  _c("view", { staticClass: "invite-info" }, [
+                                    _c("view", { staticClass: "invite-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          "｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "dian" }, [
+                                      _vm._v("..."),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "invite-desc" }, [
+                                  _vm._v(
+                                    "邀约理由： " + _vm._s(item.content) + " "
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "invite-bt" }, [
+                                  _c("text", [
+                                    _vm._v(_vm._s(item.date_humanize)),
+                                  ]),
+                                  item.visited_status == 230
+                                    ? _c("text", { staticClass: "success" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : item.visited_status == 210
+                                    ? _c("text", { staticClass: "fail" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : _c("text", [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
                           _c("image", {
+                            staticClass: "none-img",
                             attrs: {
-                              src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
+                              src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              mode: "aspectFill",
                             },
                           }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                        _c("view", { staticClass: "invite-info" }, [
-                          _c("view", { staticClass: "invite-name" }, [
-                            _vm._v(" nemek "),
-                            _c("image", {
-                              staticClass: "list_sex",
-                              attrs: {
-                                src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                              },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "identity" }, [
-                            _vm._v("摄影师｜ 北京市"),
-                          ]),
-                          _c("view", { staticClass: "dian" }, [_vm._v("...")]),
-                        ]),
-                      ]),
-                      _c("view", { staticClass: "invite-desc" }, [
-                        _vm._v(
-                          " 约拍请求： 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
-                        ),
-                      ]),
-                      _c("view", { staticClass: "invite-bt" }, [
-                        _c("text", [_vm._v("2小时前")]),
-                        _c("text", { staticClass: "fail" }, [
-                          _vm._v("待查看对方联系方式"),
-                        ]),
-                      ]),
-                    ]),
-                  ]
+                  ],
+                  1
                 ),
               ],
               1
@@ -324,46 +667,348 @@ var render = function () {
               [
                 _c(
                   "scroll-view",
-                  { attrs: { "scroll-y": "true", bindscrolltolower: "lower" } },
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true, "lower-threshold": 200 },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
                   [
-                    _c("view", { staticClass: "invite-box" }, [
-                      _c("view", { staticClass: "invite-top" }, [
-                        _c("view", { staticClass: "invite-img" }, [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "invite-box",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.goDetail(item.oid)
+                                  },
+                                },
+                              },
+                              [
+                                _c("view", { staticClass: "invite-top" }, [
+                                  _c("view", { staticClass: "invite-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
+                                    }),
+                                  ]),
+                                  _c("view", { staticClass: "invite-info" }, [
+                                    _c("view", { staticClass: "invite-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          "｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "dian" }, [
+                                      _vm._v("..."),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "invite-desc" }, [
+                                  _vm._v(
+                                    "邀约理由： " + _vm._s(item.content) + " "
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "invite-bt" }, [
+                                  _c("text", [
+                                    _vm._v(_vm._s(item.date_humanize)),
+                                  ]),
+                                  item.visited_status == 230
+                                    ? _c("text", { staticClass: "success" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : item.visited_status == 210
+                                    ? _c("text", { staticClass: "fail" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : _c("text", [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
                           _c("image", {
+                            staticClass: "none-img",
                             attrs: {
-                              src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
+                              src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              mode: "aspectFill",
                             },
                           }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                        _c("view", { staticClass: "invite-info" }, [
-                          _c("view", { staticClass: "invite-name" }, [
-                            _vm._v(" nemek "),
-                            _c("image", {
-                              staticClass: "list_sex",
-                              attrs: {
-                                src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+            _c(
+              "swiper-item",
+              [
+                _c(
+                  "scroll-view",
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true, "lower-threshold": 200 },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "invite-box",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.goDetail(item.oid)
+                                  },
+                                },
                               },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "identity" }, [
-                            _vm._v("摄影师｜ 北京市"),
-                          ]),
-                          _c("view", { staticClass: "dian" }, [_vm._v("...")]),
+                              [
+                                _c("view", { staticClass: "invite-top" }, [
+                                  _c("view", { staticClass: "invite-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
+                                    }),
+                                  ]),
+                                  _c("view", { staticClass: "invite-info" }, [
+                                    _c("view", { staticClass: "invite-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          "｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "dian" }, [
+                                      _vm._v("..."),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "invite-desc" }, [
+                                  _vm._v(
+                                    "邀约理由： " + _vm._s(item.content) + " "
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "invite-bt" }, [
+                                  _c("text", [
+                                    _vm._v(_vm._s(item.date_humanize)),
+                                  ]),
+                                  item.visited_status == 230
+                                    ? _c("text", { staticClass: "success" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : item.visited_status == 210
+                                    ? _c("text", { staticClass: "fail" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : _c("text", [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]),
-                      _c("view", { staticClass: "invite-desc" }, [
-                        _vm._v(
-                          " 约拍请求： 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
-                        ),
-                      ]),
-                      _c("view", { staticClass: "invite-bt" }, [
-                        _c("text", [_vm._v("2小时前")]),
-                        _c("text", { staticClass: "fail" }, [
-                          _vm._v("待查看对方联系方式"),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+            _c(
+              "swiper-item",
+              [
+                _c(
+                  "scroll-view",
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true, "lower-threshold": 200 },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "invite-box",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.goDetail(item.oid)
+                                  },
+                                },
+                              },
+                              [
+                                _c("view", { staticClass: "invite-top" }, [
+                                  _c("view", { staticClass: "invite-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
+                                    }),
+                                  ]),
+                                  _c("view", { staticClass: "invite-info" }, [
+                                    _c("view", { staticClass: "invite-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          "｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "dian" }, [
+                                      _vm._v("..."),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "invite-desc" }, [
+                                  _vm._v(
+                                    "邀约理由： " + _vm._s(item.content) + " "
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "invite-bt" }, [
+                                  _c("text", [
+                                    _vm._v(_vm._s(item.date_humanize)),
+                                  ]),
+                                  item.visited_status == 230
+                                    ? _c("text", { staticClass: "success" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : item.visited_status == 210
+                                    ? _c("text", { staticClass: "fail" }, [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ])
+                                    : _c("text", [
+                                        _vm._v(
+                                          _vm._s(item.visited_status_name)
+                                        ),
+                                      ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]),
-                    ]),
-                  ]
+                  ],
+                  1
                 ),
               ],
               1
