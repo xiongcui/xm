@@ -203,7 +203,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="myYuepai" class="item ub">
+        <view @tap="myYuepai" class="item ub">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -211,7 +211,7 @@
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">约单管理</view>
+            <view class="item_text">约拍管理</view>
           </view>
           <view class="arrow">
             <image
@@ -237,7 +237,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="coin" class="item ub line-t">
+        <view @tap="myZuopin" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -499,6 +499,13 @@ export default {
     goZhuye() {
       openPage("/packageMoka/pages/moka/editshow/index");
     },
+    myYuepai() {
+      // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
+      openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
+    },
+    myZuopin() {
+      openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
@@ -507,34 +514,10 @@ export default {
     },
   },
   created() {
-    // let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    // wx.getSystemInfo({
-    //   success: (res) => {
-    //     //导航高度
-    //     let statusBarHeight = res.statusBarHeight,
-    //       navTop = menuButtonObject.top,
-    //       navObjWid =
-    //         res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-    //       navHeight =
-    //         statusBarHeight +
-    //         menuButtonObject.height +
-    //         (menuButtonObject.top - statusBarHeight) * 2;
-    //     this.navHeight = navHeight; //导航栏总体高度
-    //     this.navTop = navTop; //胶囊距离顶部距离
-    //     this.navObj = menuButtonObject.height; //胶囊高度
-    //     this.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-    //     console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
-    //   },
-    //   fail(err) {
-    //     console.log(err);
-    //   },
-    // });
     this.globalData = this.globalData;
     this.userInfo("");
   },
   onShow() {
-    // let userInfo = wx.getStorageSync("userInfo");
-    // this.infor.avatar = userInfo.avatar;
     this.userInfo("");
   },
 };

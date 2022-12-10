@@ -49,25 +49,237 @@ page {
 }
 
 .yuedan-manage .yuedan-manage-list {
+  color: #2f2f2f;
+  font-size: 30rpx;
+  margin: 16rpx 0;
+  background: #ffffff;
+  padding: 30rpx;
+  border-radius: 8rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list-content {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  color: #2f2f2f;
-  font-size: 30rpx;
-  margin: 10rpx 0;
+  position: relative;
+  padding-right: 60rpx;
+  margin-bottom: 10rpx;
 }
 
 .yuedan-manage .yuedan-manage-list .list_title {
-  font-size: 38rpx;
+  font-size: 32rpx;
 }
 
 .yuedan-manage .yuedan-manage-list .list_loction {
   background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAABC1BMVEUAAAAAAABVVVVtbW1VVVVxcXFdXV1iYmJmZmZmZmZoaGhqampsbGxoaGhqampra2tlZWVmZmZkZGRoaGhlZWVoaGhmZmZkZGRnZ2dkZGRnZ2doaGhmZmZnZ2dkZGRoaGhnZ2dmZmZnZ2dlZWVmZmZmZmZmZmZnZ2dmZmZmZmZmZmZnZ2dmZmZnZ2dmZmZlZWVlZWVnZ2dmZmZnZ2dmZmZmZmZmZmZmZmZmZmZlZWVmZmZnZ2dlZWVmZmZnZ2dmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmbPn1uaAAAAWHRSTlMAAQMHCQkLDQ8UFhgaGx0fJigpLDAxMjM0ODlAQU1PUVRaXGJnaW5vcHN1eXp8goOIiImLkZSWm6KrrK61tsLKztHX2Nrg4eTm5+jq7+/w8/X3+Pn6/P7+qZ4JDAAAAONJREFUGBmtwXc/QmEYBuC7YxwzZWZkJCNEVlb2qHAoovv7fxLnefn1jk7+6rrQNd5sNr+zOolIA3svVB5zPWgzX2HL/QQc6QYNbylYEu+0lAdhuqSo7S4sXlA5hiHRZOhjDqECRc2HtkFxCtEbUKShFSlyUK4ptqCdUBxBeFWKbWh5itc4QmtUVqAtU6lmhpOFLyrT0Pw6HU8xGM7oOIAp1aSlPgJLiZYibOOfNARDcOzTsA5X3x1brjy0mWnwTzCGCJv89b2ESOdUDhGt/4ahkocORsvkrY+Opp4f4vhHDN30A421Y+s8joZiAAAAAElFTkSuQmCC") left center no-repeat;
   background-size: 36rpx;
   padding-left: 36rpx;
-  font-size: 36rpx;
+  font-size: 28rpx;
   color: #3a3a3a;
+}
+
+.yuedan-manage .yuedan-manage-list .list_status {
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 22rpx;
+  color: #ffffff;
+  padding: 2rpx 6rpx;
+  border-radius: 0 0 0 12rpx;
+  position: absolute;
+  right: -30rpx;
+  top: -30rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_status_sucess {
+  background: #4395ff;
+  font-size: 22rpx;
+  color: #ffffff;
+  padding: 2rpx 6rpx;
+  border-radius: 0 0 0 12rpx;
+  position: absolute;
+  right: -30rpx;
+  top: -30rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_status_fail {
+  background: #ff1e3e;
+  font-size: 22rpx;
+  color: #ffffff;
+  padding: 2rpx 6rpx;
+  border-radius: 0 0 0 12rpx;
+  position: absolute;
+  right: -30rpx;
+  top: -30rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_desc {
+  font-size: 26rpx;
+  color: #6b6b6b;
+  line-height: 36rpx;
+  margin-bottom: 16rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_img {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+
+.yuedan-manage .yuedan-manage-list .list_img .list_img_item {
+  width: 216rpx;
+  height: 216rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  background: #e5e5e5;
+}
+
+.yuedan-manage .yuedan-manage-list .list_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+}
+
+.yuedan-manage .yuedan-manage-list .list_time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_time image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_yuepai {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_yuepai image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_operation {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+  margin-top: 16rpx;
+  border-top: 1rpx solid #f5f5f5;
+  padding-top: 16rpx;
+  color: #6b6b6b;
+}
+
+.yuedan-manage .yuedan-manage-list .icon_more {
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAMAAADypuvZAAAAflBMVEUAAABzc3NmZmZnZ2dpaWlmZmZmZmZoaGhmZmZmZmZmZmZoaGhra2tpaWlmZmZnZ2dnZ2dmZmZnZ2dycnJnZ2dnZ2dnZ2dpaWlra2tmZmZmZmZnZ2dnZ2dmZmZmZmZnZ2dmZmZmZmZoaGhoaGhmZmZoaGhmZmZmZmZmZmZmZmbi+0JoAAAAKXRSTlMABe7rJPH7NPbRiSocFOKSYNxGDKBYPDAQuo3IvYLWtJpyT2d9GcOmvtG9g/kAAAJnSURBVEjHlVXZlqpADGyWZpNdEAR3Hefm/3/wVlA2B6Gph5mmc6qTVCpHMQE/js6uLg0jOXuxKRRgVicawX1sFijpmVrohtMeD7sZyuZJjFMWF4GG722RZzox9vYXina0OEFUjG/TiHnWUZts30VMXidipceF1hOSFCECl0BMws8QNOw/CkikuYmvyB3Edx95wHFnR2KjEmfE8kNwSjGLHxcV+gOF8H1COwusEGr0Oh2bNxZho6+qmynmcxMKyDGv1lNPaC2UkMEbb7Vhg1KN5KPAtDnBow+hCA/ubXYBibaqpBI+5HFWRJ5QRkR0xD/snK1O2hGF6I0oEerQUJ8vYqJoBYlVz7nIeA0p5yTnUUua351MrZvOUNyCRYdX+7u7pOT1RGqQfFVgumRVPWlL5AqdrIE0QMgZAkmtz2qiUQcO5JPkDN0OFI21GFceJzF+e5IBgk569x0TYP2w8XF4Wx8aj8aP0pjY11t38Qynp9b0iZPx00uFL5EQBT0r9m6ttNVde3fqXQdbHcAMreTKKHilPJ7wCrCD+M9lpY3uvE7hGtKJF4otsVnVEud4EFWrltB7zVFu1dfpXdc/9osirvB4a1MjUOMEspvqnihTI11669oWUarCucHO5vAHwFzmmHJod62GCxfbKl3YThu8ASXrBVYATlIOb2yJm9kKffhHflhn56CvdEYDA5w/8R1uKQu+tAOtKdlM5K95r68Tjto+dIIG5aSvKgsxWX08aHtMsTxNTGOzJ0Z4ye2gSWHHUUKM3zmR0gO94eiO1Z4P9tLYjyGNEHpKO+rn0cENHctI9tF9qq7/hndKRMWF4MkAAAAASUVORK5CYII=") center left no-repeat;
+  background-size: 32rpx;
+  padding-left: 40rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .icon_refresh,
+.yuedan-manage .yuedan-manage-list .icon_open {
+  padding: 4rpx 12rpx;
+  background-color: #ff5355;
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .icon_delete {
+  padding: 4rpx 12rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border-radius: 8rpx;
+  font-size: 22rpx;
+}
+
+.yuedan-manage .yuedan-manage-list .list_tips {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f9dbdb;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  color: #a09595;
+}
+
+.yuedan-manage .yuedan-manage-list .warn_icon {
+  width: 31rpx;
+  height: 31rpx;
+  margin-right: 4rpx;
+}
+
+.yuedan-manage .yuedan-manage-list:first-child {
+  margin-top: 104rpx;
+}
+
+.yuedan-manage .list_video-width {
+  width: 50%;
+}
+
+.yuedan-manage .none-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 180rpx;
+  color: #333;
+}
+
+.yuedan-manage .none-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
 }

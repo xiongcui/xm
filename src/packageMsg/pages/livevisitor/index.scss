@@ -92,4 +92,17 @@ page {
   .swiper-box {
     height: 100%;
   }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
 }

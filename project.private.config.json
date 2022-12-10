@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "发起约拍",
-                    "pathName": "packageAdd/pages/user/launchyuepai/index",
+                    "name": "赞与访客",
+                    "pathName": "packageMsg/pages/livevisitor/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

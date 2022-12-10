@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "选择约单对象",
+  navigationBarTitleText: "选择约拍对象",
 });

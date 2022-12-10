@@ -47,200 +47,13 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/livevisitor/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/livevisitor/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+
+
 //
 //
 //
@@ -372,6 +185,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "livevisitor",
   data: function data() {
@@ -384,7 +198,11 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
       winWidth: 0,
       winHeight: 0,
       // tab切换
-      currentTab: 0
+      currentTab: 0,
+      list: [],
+      list2: [],
+      pageNum: 1,
+      pageSize: 10
     };
   },
   methods: {
@@ -399,7 +217,111 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
         return false;
       } else {
         this.currentTab = index;
+        this.pageNum = 1;
+        this.list = [];
+        this.list2 = [];
+        this.query();
       }
+    },
+    query: function query() {
+      var params = {
+        page: this.pageNum,
+        per_page: this.pageSize
+      };
+
+      if (this.currentTab == 1) {
+        this.visitorList(params);
+      } else {
+        this.voteList(params);
+      }
+    },
+    scrollToLower: function scrollToLower() {
+      this.pageNum++;
+      this.query();
+    },
+    visitorList: function visitorList(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "Q"])(params);
+
+              case 3:
+                res = _context.sent;
+
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context.next = 7;
+                  break;
+                }
+
+                errortip("没有更多数据了～");
+                return _context.abrupt("return", false);
+
+              case 7:
+                data = res.data.data.items;
+                _this.list2 = _this.list2.concat(data);
+                _context.next = 13;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](0);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    voteList: function voteList(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "R"])(params);
+
+              case 3:
+                res = _context2.sent;
+
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context2.next = 7;
+                  break;
+                }
+
+                errortip("没有更多数据了～");
+                return _context2.abrupt("return", false);
+
+              case 7:
+                data = res.data.data.items;
+                _this2.list = _this2.list.concat(data);
+                _context2.next = 13;
+                break;
+
+              case 11:
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](0);
+
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 11]]);
+      }))();
     }
   },
 
@@ -415,6 +337,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
         that.winHeight = res.windowHeight;
       }
     });
+    this.query();
   }
 });
 
@@ -481,41 +404,91 @@ var render = function () {
               [
                 _c(
                   "scroll-view",
-                  { attrs: { "scroll-y": "true", bindscrolltolower: "lower" } },
+                  {
+                    attrs: { "scroll-y": true, "lower-threshold": 200 },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
                   [
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              { key: index, staticClass: "livevisitor-box" },
+                              [
+                                _c("view", { staticClass: "livevisitor-img" }, [
+                                  _c("image", {
+                                    attrs: { src: item.visitor.avatar },
+                                  }),
+                                ]),
+                                _c(
+                                  "view",
+                                  { staticClass: "livevisitor-info" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "livevisitor-name" },
+                                      [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(item.visitor.nickname) +
+                                            " "
+                                        ),
+                                        item.visitor.sex == 1
+                                          ? _c("image", {
+                                              staticClass: "list_sex",
+                                              attrs: {
+                                                src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                              },
+                                            })
+                                          : _vm._e(),
+                                        item.visitor.sex == 0
+                                          ? _c("image", {
+                                              staticClass: "list_sex",
+                                              attrs: {
+                                                src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                              },
+                                            })
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.notify_tips) + " "
+                                      ),
+                                      _c("view", { staticClass: "time" }, [
+                                        _vm._v(
+                                          _vm._s(item.create_time_humanize)
+                                        ),
+                                      ]),
+                                    ]),
+                                    _c("image", {
+                                      staticClass: "first-img",
+                                      attrs: {
+                                        src: item.cover,
+                                        mode: "aspectFill",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
                           _c("image", {
-                            staticClass: "list_sex",
+                            staticClass: "none-img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                              src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              mode: "aspectFill",
                             },
                           }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v(" 赞了你的约拍 "),
-                          _c("view", { staticClass: "time" }, [
-                            _vm._v("4天前"),
-                          ]),
-                        ]),
-                        _c("image", {
-                          staticClass: "first-img",
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                    ]),
-                  ]
+                  ],
+                  1
                 ),
               ],
               1
@@ -527,274 +500,85 @@ var render = function () {
                   "scroll-view",
                   {
                     style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": "true", bindscrolltolower: "lower" },
+                    attrs: { "scroll-y": true, "lower-threshold": 200 },
+                    on: { scrolltolower: _vm.scrollToLower },
                   },
                   [
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
+                    _vm.list2.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list2, function (item, index) {
+                            return _c(
+                              "view",
+                              { key: index, staticClass: "livevisitor-box" },
+                              [
+                                _c("view", { staticClass: "livevisitor-img" }, [
+                                  _c("image", {
+                                    attrs: { src: item.visitor.avatar },
+                                  }),
+                                ]),
+                                _c(
+                                  "view",
+                                  { staticClass: "livevisitor-info" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "livevisitor-name" },
+                                      [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(item.visitor.nickname) +
+                                            " "
+                                        ),
+                                        item.visitor.sex == 1
+                                          ? _c("image", {
+                                              staticClass: "list_sex",
+                                              attrs: {
+                                                src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                                              },
+                                            })
+                                          : _vm._e(),
+                                        item.visitor.sex == 0
+                                          ? _c("image", {
+                                              staticClass: "list_sex",
+                                              attrs: {
+                                                src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                                              },
+                                            })
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(
+                                          item.visitor.career_list.join(".")
+                                        ) +
+                                          " ｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "date" }, [
+                                      _vm._v(_vm._s(item.create_time_humanize)),
+                                    ]),
+                                  ]
+                                ),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
                           _c("image", {
-                            staticClass: "list_sex",
+                            staticClass: "none-img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                              src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              mode: "aspectFill",
                             },
                           }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "livevisitor-box" }, [
-                      _c("view", { staticClass: "livevisitor-img" }, [
-                        _c("image", {
-                          attrs: {
-                            src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg",
-                          },
-                        }),
-                      ]),
-                      _c("view", { staticClass: "livevisitor-info" }, [
-                        _c("view", { staticClass: "livevisitor-name" }, [
-                          _vm._v(" nemek "),
-                          _c("image", {
-                            staticClass: "list_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          }),
-                        ]),
-                        _c("view", { staticClass: "identity" }, [
-                          _vm._v("摄影师·主持人·其他 ｜ 北京市"),
-                        ]),
-                        _c("view", { staticClass: "date" }, [_vm._v("4天前")]),
-                      ]),
-                    ]),
-                  ]
+                  ],
+                  1
                 ),
               ],
               1

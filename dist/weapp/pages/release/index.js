@@ -228,7 +228,7 @@ var render = function () {
           _c("view", { staticClass: "release-right" }, [
             _c("view", [
               _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布约单 "),
+                _vm._v(" 发布约拍 "),
               ]),
             ]),
             _c("view", [

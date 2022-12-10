@@ -22,296 +22,104 @@
         @change="bindChange"
       >
         <swiper-item>
-          <scroll-view scroll-y="true" bindscrolltolower="lower">
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :lower-threshold="200"
+          >
+            <block v-if="list.length">
+              <view
+                class="livevisitor-box"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="livevisitor-img">
+                  <image :src="item.visitor.avatar"></image>
                 </view>
-                <view class="identity">
-                  赞了你的约拍
-                  <view class="time">4天前</view></view
-                >
-                <image
-                  class="first-img"
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
+                <view class="livevisitor-info">
+                  <view class="livevisitor-name">
+                    {{ item.visitor.nickname }}
+                    <image
+                      src="../../../assets/images/nan.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 1"
+                    ></image>
+                    <image
+                      src="../../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image>
+                  </view>
+                  <view class="identity">
+                    {{ item.notify_tips }}
+                    <view class="time">{{
+                      item.create_time_humanize
+                    }}</view></view
+                  >
+                  <image
+                    class="first-img"
+                    :src="item.cover"
+                    mode="aspectFill"
+                  ></image>
+                </view>
               </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="../../../assets/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
             </view>
           </scroll-view>
         </swiper-item>
         <swiper-item>
           <scroll-view
-            scroll-y="true"
+            :scroll-y="true"
             :style="{ height: winHeight + 'px' }"
-            bindscrolltolower="lower"
+            @scrolltolower="scrollToLower"
+            :lower-threshold="200"
           >
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
+            <block v-if="list2.length">
+              <view
+                class="livevisitor-box"
+                v-for="(item, index) in list2"
+                :key="index"
+              >
+                <view class="livevisitor-img">
+                  <image :src="item.visitor.avatar"></image>
                 </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
+                <view class="livevisitor-info">
+                  <view class="livevisitor-name">
+                    {{ item.visitor.nickname }}
+                    <image
+                      src="../../../assets/images/nan.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 1"
+                    ></image>
+                    <image
+                      src="../../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image>
+                  </view>
+                  <view class="identity"
+                    >{{ item.visitor.career_list.join(".") }} ｜
+                    {{ item.visitor.province_name }}</view
+                  >
+                  <view class="date">{{ item.create_time_humanize }}</view>
                 </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
               </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
-            </view>
-            <view class="livevisitor-box">
-              <view class="livevisitor-img">
-                <image
-                  src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/93f5be46-67bb-11ed-ae45-473a871aac32.jpg"
-                ></image>
-              </view>
-              <view class="livevisitor-info">
-                <view class="livevisitor-name">
-                  nemek
-                  <image
-                    src="../../../assets/images/nan.png"
-                    class="list_sex"
-                  ></image>
-                  <!-- <image
-                  src="../../../assets/images/nv.png"
-                  class="list_sex"
-                  v-if="author.sex == 0"
-                ></image> -->
-                </view>
-                <view class="identity">摄影师·主持人·其他 ｜ 北京市</view>
-                <view class="date">4天前</view>
-              </view>
+            </block>
+
+            <view v-else class="none-data">
+              <image
+                src="../../../assets/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
             </view>
           </scroll-view>
         </swiper-item>
@@ -322,6 +130,7 @@
 
 <script>
 import "./index.scss";
+import { visitorList, voteList } from "../../../api/index";
 export default {
   name: "livevisitor",
   data() {
@@ -335,6 +144,10 @@ export default {
       winHeight: 0,
       // tab切换
       currentTab: 0,
+      list: [],
+      list2: [],
+      pageNum: 1,
+      pageSize: 10,
     };
   },
   methods: {
@@ -349,7 +162,48 @@ export default {
         return false;
       } else {
         this.currentTab = index;
+        this.pageNum = 1;
+        this.list = [];
+        this.list2 = [];
+        this.query();
       }
+    },
+    query() {
+      let params = {
+        page: this.pageNum,
+        per_page: this.pageSize,
+      };
+      if (this.currentTab == 1) {
+        this.visitorList(params);
+      } else {
+        this.voteList(params);
+      }
+    },
+    scrollToLower() {
+      this.pageNum++;
+      this.query();
+    },
+    async visitorList(params) {
+      try {
+        let res = await visitorList(params);
+        if (!res.data.data || !res.data.data.items.length) {
+          errortip("没有更多数据了～");
+          return false;
+        }
+        let data = res.data.data.items;
+        this.list2 = this.list2.concat(data);
+      } catch (error) {}
+    },
+    async voteList(params) {
+      try {
+        let res = await voteList(params);
+        if (!res.data.data || !res.data.data.items.length) {
+          errortip("没有更多数据了～");
+          return false;
+        }
+        let data = res.data.data.items;
+        this.list = this.list.concat(data);
+      } catch (error) {}
     },
   },
   /**
@@ -364,6 +218,7 @@ export default {
         that.winHeight = res.windowHeight;
       },
     });
+    this.query();
   },
 };
 </script>

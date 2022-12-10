@@ -349,3 +349,35 @@ export const applyInfo = (data) => {
     data,
   });
 };
+// 我的访客
+export const visitorList = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/visitor/list",
+    method: "post",
+    data,
+  });
+};
+// 收到的赞
+export const voteList = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/vote/list",
+    method: "post",
+    data,
+  });
+};
+// 点赞
+export const giveUp = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/vote",
+    method: "post",
+    data,
+  });
+};
+// 约单管理
+export const noteManageList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/list",
+    method: "post",
+    data,
+  });
+};

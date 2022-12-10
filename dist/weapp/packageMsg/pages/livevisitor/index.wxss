@@ -129,3 +129,26 @@ page {
 .livevisitor .swiper-box {
   height: 100%;
 }
+
+.livevisitor .none-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 180rpx;
+  color: #333;
+}
+
+.livevisitor .none-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
+}

@@ -37,21 +37,174 @@ page {
   }
 
   .yuedan-manage-list {
-    display: flex;
-    justify-content: space-between;
     color: #2f2f2f;
     font-size: 30px;
-    margin: 10px 0px;
+    margin: 16px 0px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    .list-content {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding-right: 60px;
+      margin-bottom: 10px;
+    }
     .list_title {
-      font-size: 38px;
+      font-size: 32px;
     }
     .list_loction {
       background: url("../../../../assets/images/common/local.png") left center
         no-repeat;
       background-size: 36px;
       padding-left: 36px;
-      font-size: 36px;
+      font-size: 28px;
       color: #3a3a3a;
     }
+    .list_status {
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 0px 12px;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+    }
+    .list_status_sucess {
+      background: #4395ff;
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 0px 12px;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+    }
+    .list_status_fail {
+      background: #ff1e3e;
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 0px 12px;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+    }
+    .list_desc {
+      font-size: 26px;
+      color: #6b6b6b;
+      line-height: 36px;
+      margin-bottom: 16px;
+    }
+    .list_img {
+      display: flex;
+      white-space: nowrap;
+      .list_img_item {
+        width: 216px;
+        height: 216px;
+        border-radius: 10px;
+        margin-right: 20px;
+        background: #e5e5e5;
+      }
+    }
+    .list_bottom {
+      display: flex;
+      justify-content: space-between;
+      color: #6b6b6b;
+    }
+    .list_time {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 4px;
+      }
+    }
+    .list_yuepai {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 4px;
+      }
+    }
+    .list_read {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 4px;
+      }
+    }
+    .list_operation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 26px;
+      margin-top: 16px;
+      border-top: 1rpx solid #f5f5f5;
+      padding-top: 16px;
+      color: #6b6b6b;
+    }
+    .icon_more {
+      background: url("../../../../assets/images/common/icon_more.png") center
+        left no-repeat;
+      background-size: 32px;
+      padding-left: 40px;
+    }
+    .icon_refresh,
+    .icon_open {
+      padding: 4px 12px;
+      background-color: #ff5355;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 22px;
+    }
+    .icon_delete {
+      padding: 4px 12px;
+      background-color: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border-radius: 8px;
+      font-size: 22px;
+    }
+    .list_tips {
+      display: flex;
+      align-items: center;
+      background-color: #f9dbdb;
+      padding: 4px 16px;
+      border-radius: 8px;
+      color: #a09595;
+    }
+    .warn_icon {
+      width: 31px;
+      height: 31px;
+      margin-right: 4px;
+    }
+  }
+  .yuedan-manage-list:first-child {
+    margin-top: 104px;
+  }
+  .list_video-width {
+    width: 50%;
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
   }
 }

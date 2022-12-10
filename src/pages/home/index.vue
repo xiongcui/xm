@@ -79,7 +79,7 @@
               class="page_nav_img"
             ></image>
           </view>
-          <text class="page_nav_text">约单</text>
+          <text class="page_nav_text">约拍</text>
         </view>
         <view class="page_nav_item">
           <view class="page_nav_icon">
@@ -317,7 +317,7 @@
             </view>
           </view>
           <view class="select_item">
-            <view class="select_item_title">约单对象</view>
+            <view class="select_item_title">约拍对象</view>
             <view>
               <text
                 @tap="select_tag(item)"
@@ -444,7 +444,7 @@ export default {
           value: -1,
         },
         {
-          name: "约单",
+          name: "约拍",
           value: 0,
         },
         {

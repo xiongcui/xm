@@ -168,8 +168,15 @@
           <image src="../../../../assets/images/user/index/yuepai.png"></image>
           {{ yuepaiInfo.statistic.invite_cnt }}
         </view>
-        <view class="yuepai_fixed_item">
-          <image src="../../../../assets/images/common/icon_like.png"></image>
+        <view class="yuepai_fixed_item" @tap="subGiveUp">
+          <image
+            src="../../../../assets/images/common/icon_likeed.png"
+            v-if="is_vote"
+          ></image>
+          <image
+            src="../../../../assets/images/common/icon_like.png"
+            v-else
+          ></image>
           {{ yuepaiInfo.statistic.vote_cnt }}
         </view>
         <view class="yuepai_fixed_item">
@@ -185,7 +192,7 @@
 </template>
 
 <script>
-import { inviteInfo } from "../../../../api/index";
+import { inviteInfo, giveUp } from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
@@ -207,6 +214,7 @@ export default {
       current: 0,
       oid: "",
       author_id: "",
+      is_vote: 0,
       yuepaiInfo: {
         author: {
           career_list: [],
@@ -236,10 +244,28 @@ export default {
     launchYuepai() {
       openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
     },
+    subGiveUp() {
+      let params = {
+        oid: this.oid,
+        visited_id: this.author_id,
+        page_type: "invite_details",
+        page_name: "约拍详情",
+        event_type: this.is_vote == 1 ? 0 : 1, // 1：点赞；0：取
+      };
+      this.giveUp(params);
+    },
     async inviteInfo(params) {
       try {
         let res = await inviteInfo(params);
         this.yuepaiInfo = res.data.data;
+        this.is_vote = res.data.data.action.is_vote;
+      } catch (error) {}
+    },
+    async giveUp(params) {
+      try {
+        let res = await giveUp(params);
+        this.is_vote = res.data.data.is_vote;
+        this.yuepaiInfo.statistic.vote_cnt = res.data.data.vote_cnt;
       } catch (error) {}
     },
   },

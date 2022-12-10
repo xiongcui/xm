@@ -716,7 +716,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "K"])(params);
 
               case 3:
                 res = _context.sent;
@@ -760,7 +760,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "O"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -794,7 +794,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "F"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "H"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -824,7 +824,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "P"])(params);
 
               case 3:
                 res = _context4.sent;

@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "发布约单",
+  navigationBarTitleText: "发布约拍",
 });

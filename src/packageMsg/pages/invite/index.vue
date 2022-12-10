@@ -353,6 +353,7 @@ export default {
         let res = await applyList(params);
         if (!res.data.data || !res.data.data.items.length) {
           errortip("没有更多数据了～");
+          return false;
         }
         let data = res.data.data.items;
         this.list = this.list.concat(data);
@@ -360,6 +361,11 @@ export default {
     },
   },
   created() {
+    this.query();
+  },
+  onShow() {
+    this.pageNum = 1;
+    this.list = [];
     this.query();
   },
   /**

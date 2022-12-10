@@ -29,7 +29,7 @@
         </view>
         <view class="release-right">
           <view>
-            <text class="release-list-title"> 发布约单 </text>
+            <text class="release-list-title"> 发布约拍 </text>
           </view>
           <view>
             <text class="release-list-content">艺人发布合作意向</text>

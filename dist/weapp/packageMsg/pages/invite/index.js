@@ -420,29 +420,39 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
               case 3:
                 res = _context.sent;
 
-                if (!res.data.data || !res.data.data.items.length) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context.next = 7;
+                  break;
                 }
 
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                return _context.abrupt("return", false);
+
+              case 7:
                 data = res.data.data.items;
                 _this.list = _this.list.concat(data);
-                _context.next = 11;
+                _context.next = 13;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 11:
+                _context.prev = 11;
                 _context.t0 = _context["catch"](0);
 
-              case 11:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 11]]);
       }))();
     }
   },
   created: function created() {
+    this.query();
+  },
+  onShow: function onShow() {
+    this.pageNum = 1;
+    this.list = [];
     this.query();
   },
 

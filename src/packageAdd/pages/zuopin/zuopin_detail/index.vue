@@ -139,8 +139,15 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <view class="zuopin_fixed_left">
-        <view class="zuopin_fixed_item">
-          <image src="../../../../assets/images/common/icon_like.png"></image>
+        <view class="zuopin_fixed_item" @tap="subGiveUp">
+          <image
+            src="../../../../assets/images/common/icon_likeed.png"
+            v-if="is_vote"
+          ></image>
+          <image
+            src="../../../../assets/images/common/icon_like.png"
+            v-else
+          ></image>
           {{ zuopinInfo.statistic.vote_cnt }}
         </view>
         <view class="zuopin_fixed_item">
@@ -157,7 +164,7 @@
 
 <script>
 import "./index.scss";
-import { photoInfo } from "../../../../api/index";
+import { photoInfo, giveUp } from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 export default {
   name: "zuopin_detail",
@@ -166,6 +173,7 @@ export default {
       author_id: "",
       oid: "",
       isIphoneX: false,
+      is_vote: 0,
       zuopinInfo: {
         author: {
           career_list: [],
@@ -181,10 +189,29 @@ export default {
     launchYuepai() {
       openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
     },
+    subGiveUp() {
+      let params = {
+        oid: this.oid,
+        visited_id: this.author_id,
+        page_type: "photo_details",
+        page_name: "作品详情",
+        event_type: this.is_vote == 1 ? 0 : 1, // 1：点赞；0：取
+      };
+      this.giveUp(params);
+    },
     async photoInfo(params) {
       try {
         let res = await photoInfo(params);
         this.zuopinInfo = res.data.data;
+        this.is_vote = res.data.data.action.is_vote;
+        console.log(this.is_vote);
+      } catch (error) {}
+    },
+    async giveUp(params) {
+      try {
+        let res = await giveUp(params);
+        this.is_vote = res.data.data.is_vote;
+        this.zuopinInfo.statistic.vote_cnt = res.data.data.vote_cnt;
       } catch (error) {}
     },
   },

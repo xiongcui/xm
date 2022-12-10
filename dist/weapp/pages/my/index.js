@@ -552,6 +552,13 @@ component.options.__file = "src/pages/my/index.vue"
     goZhuye: function goZhuye() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMoka/pages/moka/editshow/index");
     },
+    myYuepai: function myYuepai() {
+      // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
+    },
+    myZuopin: function myZuopin() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -563,7 +570,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "K"])(params);
 
               case 3:
                 res = _context.sent;
@@ -585,34 +592,10 @@ component.options.__file = "src/pages/my/index.vue"
     }
   },
   created: function created() {
-    // let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    // wx.getSystemInfo({
-    //   success: (res) => {
-    //     //导航高度
-    //     let statusBarHeight = res.statusBarHeight,
-    //       navTop = menuButtonObject.top,
-    //       navObjWid =
-    //         res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-    //       navHeight =
-    //         statusBarHeight +
-    //         menuButtonObject.height +
-    //         (menuButtonObject.top - statusBarHeight) * 2;
-    //     this.navHeight = navHeight; //导航栏总体高度
-    //     this.navTop = navTop; //胶囊距离顶部距离
-    //     this.navObj = menuButtonObject.height; //胶囊高度
-    //     this.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-    //     console.log(navHeight, navTop, menuButtonObject.height, navObjWid);
-    //   },
-    //   fail(err) {
-    //     console.log(err);
-    //   },
-    // });
     this.globalData = this.globalData;
     this.userInfo("");
   },
   onShow: function onShow() {
-    // let userInfo = wx.getStorageSync("userInfo");
-    // this.infor.avatar = userInfo.avatar;
     this.userInfo("");
   }
 });
@@ -949,31 +932,27 @@ var render = function () {
             ]),
           ]
         ),
-        _c(
-          "view",
-          { staticClass: "item ub", attrs: { catchtap: "myYuepai" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("约单管理")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-                },
-              }),
-            ]),
-          ]
-        ),
+        _c("view", { staticClass: "item ub", on: { tap: _vm.myYuepai } }, [
+          _c("view", { staticClass: "item_icon" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "ub-f1" }, [
+            _c("view", { staticClass: "item_text" }, [_vm._v("约拍管理")]),
+          ]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]),
         _c(
           "view",
           { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
@@ -1001,7 +980,7 @@ var render = function () {
         ),
         _c(
           "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          { staticClass: "item ub line-t", on: { tap: _vm.myZuopin } },
           [
             _c("view", { staticClass: "item_icon" }, [
               _c("image", {

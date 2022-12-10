@@ -619,7 +619,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "n"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "p"])(params);
 
               case 3:
                 res = _context.sent;
@@ -684,7 +684,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "w"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -725,7 +725,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "p"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "r"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1305,7 +1305,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "w"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1354,7 +1354,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "t"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "v"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1956,7 +1956,7 @@ component.options.__file = "src/pages/home/index.vue"
         name: "通告",
         value: -1
       }, {
-        name: "约单",
+        name: "约拍",
         value: 0
       }, {
         name: "作品",
@@ -2265,7 +2265,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "w"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2323,7 +2323,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "l"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "m"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -3423,7 +3423,7 @@ var render = function () {
                     attrs: { src: __webpack_require__(/*! ../../assets/images/yuepai.png */ "./src/assets/images/yuepai.png") },
                   }),
                 ]),
-                _c("text", { staticClass: "page_nav_text" }, [_vm._v("约单")]),
+                _c("text", { staticClass: "page_nav_text" }, [_vm._v("约拍")]),
               ]),
               _c("view", { staticClass: "page_nav_item" }, [
                 _c("view", { staticClass: "page_nav_icon" }, [
@@ -3893,7 +3893,7 @@ var render = function () {
                     ]),
                     _c("view", { staticClass: "select_item" }, [
                       _c("view", { staticClass: "select_item_title" }, [
-                        _vm._v("约单对象"),
+                        _vm._v("约拍对象"),
                       ]),
                       _c(
                         "view",
