@@ -78,3 +78,5 @@ button:focus {
   width: 40rpx !important;
   height: 40rpx !important;
 }
+
+@import "./common.wxss";

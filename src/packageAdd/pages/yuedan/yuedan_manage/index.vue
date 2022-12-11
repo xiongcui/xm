@@ -114,10 +114,12 @@
                   </view>
                 </view>
                 <view class="list_operation" v-if="item.publish_status == 200">
-                  <view class="icon_more" @tap="moreClick"> 更多 </view>
+                  <view class="icon_more" @tap="moreClick(item.oid)">
+                    更多
+                  </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security)"
+                    @tap="refreshClick(item.is_security, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -127,11 +129,13 @@
                     item.publish_status == 100 || item.publish_status == 300
                   "
                 >
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                   <view
                     class="icon_open"
                     v-if="item.publish_status == 300"
-                    @tap="openClick"
+                    @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
@@ -143,7 +147,9 @@
                     ></image>
                     {{ item.audit_reason }}
                   </view>
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                 </view>
               </view>
             </block>
@@ -238,10 +244,12 @@
                   </view>
                 </view>
                 <view class="list_operation" v-if="item.publish_status == 200">
-                  <view class="icon_more" @tap="moreClick"> 更多 </view>
+                  <view class="icon_more" @tap="moreClick(item.oid)">
+                    更多
+                  </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security)"
+                    @tap="refreshClick(item.is_security, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -251,11 +259,13 @@
                     item.publish_status == 100 || item.publish_status == 300
                   "
                 >
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                   <view
                     class="icon_open"
                     v-if="item.publish_status == 300"
-                    @tap="openClick"
+                    @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
@@ -267,7 +277,9 @@
                     ></image>
                     {{ item.audit_reason }}
                   </view>
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                 </view>
               </view>
             </block>
@@ -362,10 +374,12 @@
                   </view>
                 </view>
                 <view class="list_operation" v-if="item.publish_status == 200">
-                  <view class="icon_more" @tap="moreClick"> 更多 </view>
+                  <view class="icon_more" @tap="moreClick(item.oid)">
+                    更多
+                  </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security)"
+                    @tap="refreshClick(item.is_security, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -375,11 +389,13 @@
                     item.publish_status == 100 || item.publish_status == 300
                   "
                 >
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                   <view
                     class="icon_open"
                     v-if="item.publish_status == 300"
-                    @tap="openClick"
+                    @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
@@ -391,7 +407,9 @@
                     ></image>
                     {{ item.audit_reason }}
                   </view>
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                 </view>
               </view>
             </block>
@@ -486,10 +504,12 @@
                   </view>
                 </view>
                 <view class="list_operation" v-if="item.publish_status == 200">
-                  <view class="icon_more" @tap="moreClick"> 更多 </view>
+                  <view class="icon_more" @tap="moreClick(item.oid)">
+                    更多
+                  </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security)"
+                    @tap="refreshClick(item.is_security, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -499,11 +519,13 @@
                     item.publish_status == 100 || item.publish_status == 300
                   "
                 >
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                   <view
                     class="icon_open"
                     v-if="item.publish_status == 300"
-                    @tap="openClick"
+                    @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
@@ -515,7 +537,9 @@
                     ></image>
                     {{ item.audit_reason }}
                   </view>
-                  <view class="icon_delete" @tap="deleteYuepai">删除</view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.oid)"
+                    >删除</view
+                  >
                 </view>
               </view>
             </block>
@@ -536,7 +560,7 @@
 
 <script>
 import "./index.scss";
-import { noteManageList } from "../../../../api/index";
+import { noteManageList, manageEvent } from "../../../../api/index";
 import { errortip } from "../../../../utils/util";
 export default {
   name: "yuedan_manage",
@@ -580,7 +604,8 @@ export default {
         urls: urls, // 预览的地址url
       });
     },
-    moreClick() {
+    moreClick(oid) {
+      let _this = this;
       wx.showActionSheet({
         itemList: ["关闭", "删除"],
         success(res) {
@@ -588,11 +613,13 @@ export default {
             case 0:
               wx.showModal({
                 title: "温馨提示",
-                content: `关闭${this.optionMap[this.type]}，等同删除${
-                  this.optionMap[this.type]
-                }，不再接受${this.optionMap[this.type]}请求，确认关闭么？`,
+                content: `关闭${_this.optionMap[_this.type]}，等同删除${
+                  _this.optionMap[_this.type]
+                }，不再接受${_this.optionMap[_this.type]}请求，确认关闭么？`,
                 success: function (res) {
                   if (res.confirm) {
+                    let params = { oid: oid, even_type: 300 };
+                    _this.manageEvent(params);
                     console.log("用户点击确定");
                   } else if (res.cancel) {
                     console.log("用户点击取消");
@@ -601,7 +628,7 @@ export default {
               });
               break;
             case 1:
-              this.deleteYuepai();
+              _this.deleteYuepai();
               break;
           }
         },
@@ -610,7 +637,9 @@ export default {
         },
       });
     },
-    deleteYuepai() {
+    deleteYuepai(oid) {
+      // # 200:打开；300:关闭；400:删除
+      let _this = this;
       wx.showModal({
         title: "温馨提示",
         content: `删除${this.optionMap[this.type]}，将同时${
@@ -619,13 +648,16 @@ export default {
         success: function (res) {
           if (res.confirm) {
             console.log("用户点击确定");
+            let params = { oid: oid, even_type: 400 };
+            _this.manageEvent(params);
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         },
       });
     },
-    openClick() {
+    openClick(oid) {
+      let _this = this;
       wx.showModal({
         title: "温馨提示",
         content: `打开${this.optionMap[this.type]}，将继续接受${
@@ -634,14 +666,17 @@ export default {
         success: function (res) {
           if (res.confirm) {
             console.log("用户点击确定");
+            let params = { oid: oid, even_type: 200 };
+            _this.manageEvent(params);
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         },
       });
     },
-    refreshClick(is_security) {
+    refreshClick(is_security, oid) {
       if (!is_security) {
+        let _this = this;
         wx.showModal({
           confirmText: "去实名",
           title: "温馨提示",
@@ -651,6 +686,8 @@ export default {
           success: function (res) {
             if (res.confirm) {
               console.log("用户点击确定");
+              let params = { oid: oid, even_type: 700 };
+              _this.manageEvent(params);
             } else if (res.cancel) {
               console.log("用户点击取消");
             }
@@ -680,6 +717,18 @@ export default {
         }
         let data = res.data.data.items;
         this.list = this.list.concat(data);
+      } catch (error) {}
+    },
+    async manageEvent(params) {
+      try {
+        let res = await manageEvent(params);
+        if (params.even_type == 200) errortip("打开成功");
+        if (params.even_type == 300) errortip("关闭成功");
+        if (params.even_type == 400) errortip("删除成功");
+        if (params.even_type == 700) errortip("刷新成功");
+        this.pageNum = 1;
+        this.list = [];
+        this.query();
       } catch (error) {}
     },
   },

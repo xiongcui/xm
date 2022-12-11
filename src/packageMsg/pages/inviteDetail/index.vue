@@ -214,7 +214,7 @@
           class="close-img"
           @tap="closeQRcode"
         ></image>
-        <view class="save">保存到相册</view>
+        <view class="save" @tap="clickSaveImg">保存到相册</view>
       </view>
     </view>
   </view>
@@ -293,6 +293,61 @@ export default {
               if (res.data) {
                 errortip("复制成功");
               }
+            },
+          });
+        },
+      });
+    },
+    clickSaveImg() {
+      //先授权相册
+      wx.getSetting({
+        success: (res) => {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: () => {
+                //用户允许授权，保存到相册
+                this.saveImg();
+              },
+              fail: () => {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: () => {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: () => {
+                        //授权成功，保存图片
+                        this.saveImg();
+                      },
+                    });
+                  },
+                });
+              },
+            });
+          } else {
+            //已经授权
+            this.saveImg();
+          }
+        },
+      });
+    },
+    saveImg() {
+      //保存到相册
+      let url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: (res) => {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: (res) => {
+              wx.showToast({
+                title: "保存成功！",
+              });
+            },
+            faile: (err) => {
+              console.log("失败！");
             },
           });
         },

@@ -255,7 +255,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "E"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "H"])(params);
 
               case 3:
                 res = _context.sent;

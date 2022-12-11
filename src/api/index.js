@@ -373,10 +373,34 @@ export const giveUp = (data) => {
     data,
   });
 };
+// 收藏
+export const recordCollect = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/collect",
+    method: "post",
+    data,
+  });
+};
 // 约单管理
 export const noteManageList = (data) => {
   return request({
     url: baseUrl + "/v1/note/manage/list",
+    method: "post",
+    data,
+  });
+};
+// 作品管理和约拍管理按钮操作
+export const manageEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/event",
+    method: "post",
+    data,
+  });
+};
+// 作品列表
+export const photoListOwn = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/photo/list/own",
     method: "post",
     data,
   });

@@ -466,11 +466,67 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
         address: this.data.address,
         visitor_coin: this.pay_coin
       };
-      console.log(params);
       this.subApply(params);
     },
-    inviteTemplate: function inviteTemplate(params) {
+    clickSaveImg: function clickSaveImg() {
       var _this = this;
+
+      //先授权相册
+      wx.getSetting({
+        success: function success(res) {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: function success() {
+                //用户允许授权，保存到相册
+                _this.saveImg();
+              },
+              fail: function fail() {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: function success() {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: function succes() {
+                        //授权成功，保存图片
+                        _this.saveImg();
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          } else {
+            //已经授权
+            _this.saveImg();
+          }
+        }
+      });
+    },
+    saveImg: function saveImg() {
+      //保存到相册
+      var url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: function success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function success(res) {
+              wx.showToast({
+                title: "保存成功！"
+              });
+            },
+            faile: function faile(err) {
+              console.log("失败！");
+            }
+          });
+        }
+      });
+    },
+    inviteTemplate: function inviteTemplate(params) {
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -484,21 +540,21 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 
               case 3:
                 res = _context.sent;
-                _this.yuepaiInfo.author = res.data.data.visited;
-                _this.yuepaiInfo.tips = res.data.data.tips;
-                _this.yuepaiInfo.title = res.data.data.title;
-                _this.yuepaiInfo.warning = res.data.data.warning;
-                _this.showContact = res.data.data.contact.is_enable;
-                _this.showCelebrity = res.data.data.celebrity.is_enable;
-                _this.showAddress = res.data.data.address.is_enable;
-                _this.data.contact = res.data.data.contact.body;
-                _this.data.celebrity = res.data.data.celebrity.body;
-                _this.data.address = res.data.data.address.body;
-                _this.media_info.platform_name = res.data.data.celebrity.platform_name;
-                _this.media_info.platform_code = res.data.data.celebrity.platform_type;
-                _this.pay_coin = res.data.data.visitor.pay_coin;
-                _this.balance_coin = res.data.data.visitor.balance_coin;
-                _this.visited_id = res.data.data.visited_id;
+                _this2.yuepaiInfo.author = res.data.data.visited;
+                _this2.yuepaiInfo.tips = res.data.data.tips;
+                _this2.yuepaiInfo.title = res.data.data.title;
+                _this2.yuepaiInfo.warning = res.data.data.warning;
+                _this2.showContact = res.data.data.contact.is_enable;
+                _this2.showCelebrity = res.data.data.celebrity.is_enable;
+                _this2.showAddress = res.data.data.address.is_enable;
+                _this2.data.contact = res.data.data.contact.body;
+                _this2.data.celebrity = res.data.data.celebrity.body;
+                _this2.data.address = res.data.data.address.body;
+                _this2.media_info.platform_name = res.data.data.celebrity.platform_name;
+                _this2.media_info.platform_code = res.data.data.celebrity.platform_type;
+                _this2.pay_coin = res.data.data.visitor.pay_coin;
+                _this2.balance_coin = res.data.data.visitor.balance_coin;
+                _this2.visited_id = res.data.data.visited_id;
                 _context.next = 23;
                 break;
 
@@ -523,7 +579,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "A"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1149,7 +1205,9 @@ var render = function () {
               },
               on: { tap: _vm.closeQRcode },
             }),
-            _c("view", { staticClass: "save" }, [_vm._v("保存到相册")]),
+            _c("view", { staticClass: "save", on: { tap: _vm.clickSaveImg } }, [
+              _vm._v("保存到相册"),
+            ]),
           ]),
         ])
       : _vm._e(),

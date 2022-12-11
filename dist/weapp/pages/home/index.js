@@ -619,7 +619,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "p"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "q"])(params);
 
               case 3:
                 res = _context.sent;
@@ -684,7 +684,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "w"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "y"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -725,7 +725,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "r"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "s"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1305,7 +1305,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "w"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "y"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1354,7 +1354,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "v"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "w"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1493,6 +1493,7 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
+//
 //
 //
 //
@@ -2265,7 +2266,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "w"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "y"])(params);
 
               case 3:
                 res = _context.sent;
@@ -3725,6 +3726,11 @@ var render = function () {
                                       poster: item.cover[0],
                                       src:
                                         item.video_cover && item.video_cover[0],
+                                    },
+                                    on: {
+                                      tap: function ($event) {
+                                        $event.stopPropagation()
+                                      },
                                     },
                                   }),
                                 ])

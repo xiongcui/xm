@@ -1,0 +1,12 @@
+page {
+  background-color: #f7f7f7;
+}
+
+.main {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}

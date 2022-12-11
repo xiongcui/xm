@@ -77,6 +77,7 @@ export default defineAppConfig({
         "pages/yuedan/yuedan_manage/index",
         "pages/zuopin/add_zuopin/index",
         "pages/zuopin/zuopin_detail/index",
+        "pages/zuopin/zuopin_list/index",
       ],
     },
     {

@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "赞与访客",
-                    "pathName": "packageMsg/pages/livevisitor/index",
+                    "name": "主页",
+                    "pathName": "packageMoka/pages/moka/editshow/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

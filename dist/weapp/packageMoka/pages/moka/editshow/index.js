@@ -51,8 +51,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editshow/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_myZuopinList_index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../components/myZuopinList/index.vue */ "./src/components/myZuopinList/index.vue");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editshow/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
 
 
 //
@@ -412,224 +413,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
@@ -637,6 +421,8 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
   name: "editshow",
   data: function data() {
     return {
+      winWidth: 0,
+      winHeight: 0,
       globalData: {
         navHeight: 0,
         navTop: 0,
@@ -681,8 +467,14 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }, {
         tab_name: "模卡",
         tab_id: "moka"
-      }]
+      }],
+      list: [],
+      pageNum: 1,
+      pageSize: 10
     };
+  },
+  components: {
+    myZuopinList: _components_myZuopinList_index_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]
   },
   methods: {
     personDetail: function personDetail() {
@@ -705,6 +497,22 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     editzytag: function editzytag() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/editlabel/index");
     },
+    swichTab: function swichTab(index) {
+      this.select_tab = this.tabList[index].tab_id;
+      this.currentTab = index;
+
+      if (this.select_tab == "zuopin") {
+        this.pageNum = 1;
+        this.list = [];
+        this.queryZuopinList();
+      }
+    },
+    queryZuopinList: function queryZuopinList() {
+      this.photoListOwn({
+        page: this.pageNum,
+        per_page: this.pageSize
+      });
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -716,7 +524,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "N"])(params);
 
               case 3:
                 res = _context.sent;
@@ -760,7 +568,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "O"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "R"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -794,7 +602,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "H"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "K"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -824,7 +632,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "P"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "S"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -845,10 +653,52 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
           }
         }, _callee4, null, [[0, 9]]);
       }))();
+    },
+    photoListOwn: function photoListOwn(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "x"])(params);
+
+              case 3:
+                res = _context5.sent;
+
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context5.next = 7;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("没有更多数据了～");
+                return _context5.abrupt("return", false);
+
+              case 7:
+                data = res.data.data.items;
+                _this4.list = _this4.list.concat(data);
+                _context5.next = 13;
+                break;
+
+              case 11:
+                _context5.prev = 11;
+                _context5.t0 = _context5["catch"](0);
+
+              case 13:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 11]]);
+      }))();
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -859,13 +709,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this4.globalData.navHeight = navHeight; //导航栏总体高度
+        _this5.globalData.navHeight = navHeight; //导航栏总体高度
 
-        _this4.globalData.navTop = navTop; //胶囊距离顶部距离
+        _this5.globalData.navTop = navTop; //胶囊距离顶部距离
 
-        _this4.globalData.navObj = menuButtonObject.height; //胶囊高度
+        _this5.globalData.navObj = menuButtonObject.height; //胶囊高度
 
-        _this4.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this5.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail: function fail(err) {
@@ -874,7 +724,21 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     });
   },
   onShow: function onShow() {
-    this.userInfo(""); // this.userShapeDetail("");
+    this.userInfo("");
+  },
+  onReachBottom: function onReachBottom() {
+    this.pageNum++;
+    this.queryZuopinList();
+  },
+  onLoad: function onLoad(options) {
+    var that = this; // 获取系统信息
+
+    wx.getSystemInfo({
+      success: function success(res) {
+        that.winWidth = res.windowWidth;
+        that.winHeight = res.windowHeight;
+      }
+    });
   }
 });
 
@@ -928,7 +792,6 @@ var render = function () {
               : "#ea6a6b",
             "background-size": _vm.infor.homeimg ? "cover" : "inherit",
           },
-          attrs: { catchtap: "goEditHomeimg" },
         },
         [
           _c("view", { staticClass: "my-head" }, [
@@ -1087,7 +950,11 @@ var render = function () {
               {
                 key: index,
                 staticClass: "swiper_tab_item",
-                attrs: { bindtap: "swichTab" },
+                on: {
+                  tap: function ($event) {
+                    return _vm.swichTab(index)
+                  },
+                },
               },
               [
                 _c(
@@ -1591,521 +1458,11 @@ var render = function () {
             ])
           : _vm._e(),
         _vm.select_tab == "zuopin"
-          ? _c("block", [
-              _vm.noneData_zuopin
-                ? _c("view", { staticClass: "main ub ub-ver none_main" }, [
-                    _c("view", { staticClass: "none_tipimg" }, [
-                      _c("image", {
-                        attrs: {
-                          mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
-                        },
-                      }),
-                    ]),
-                    _c("view", { staticClass: "none_tiptext" }, [
-                      _vm._v("还没有发布过作品动态哦～"),
-                    ]),
-                    _c(
-                      "view",
-                      {
-                        staticClass: "none_now_make",
-                        attrs: { catchtap: "goAddZuopin" },
-                      },
-                      [_vm._v("马上发布")]
-                    ),
-                  ])
-                : _c(
-                    "view",
-                    { staticClass: "main ub ub-ver" },
-                    [
-                      _vm._l(_vm.listdata_zuopin, function (items, listIndex) {
-                        return _c(
-                          "block",
-                          { key: listIndex },
-                          _vm._l(items, function (item, itemIndex) {
-                            return _c(
-                              "view",
-                              {
-                                key: itemIndex,
-                                staticClass: "item",
-                                attrs: {
-                                  catchtap: "showZuopin",
-                                  id: item.item_id,
-                                },
-                              },
-                              [
-                                _c(
-                                  "view",
-                                  { staticClass: "item_main" },
-                                  [
-                                    item.type == 2
-                                      ? _c(
-                                          "block",
-                                          [
-                                            item.imgurl.length == 1
-                                              ? _c(
-                                                  "block",
-                                                  _vm._l(
-                                                    item.imgurl,
-                                                    function (
-                                                      imgitem,
-                                                      imgIndex
-                                                    ) {
-                                                      return _c("image", {
-                                                        key: imgIndex,
-                                                        staticClass:
-                                                          "zuopinitem_img zuopin_img1",
-                                                        attrs: {
-                                                          catchtap:
-                                                            "showzuoinbig",
-                                                          "data-imgindex":
-                                                            imgIndex,
-                                                          "data-index":
-                                                            itemIndex,
-                                                          "data-listindex":
-                                                            listIndex,
-                                                          mode: "aspectFill",
-                                                          src: imgitem.url,
-                                                        },
-                                                      })
-                                                    }
-                                                  ),
-                                                  0
-                                                )
-                                              : _vm._e(),
-                                            item.imgurl.length == 2
-                                              ? _c(
-                                                  "block",
-                                                  _vm._l(
-                                                    item.imgurl,
-                                                    function (
-                                                      imgitem,
-                                                      imgIndex
-                                                    ) {
-                                                      return _c("image", {
-                                                        key: imgIndex,
-                                                        staticClass:
-                                                          "zuopinitem_img zuopin_img2",
-                                                        class:
-                                                          "zuopin_img2-" +
-                                                          imgIndex,
-                                                        attrs: {
-                                                          catchtap:
-                                                            "showzuoinbig",
-                                                          "data-imgindex":
-                                                            imgIndex,
-                                                          "data-index":
-                                                            itemIndex,
-                                                          "data-listindex":
-                                                            listIndex,
-                                                          mode: "aspectFill",
-                                                          src: imgitem.url,
-                                                        },
-                                                      })
-                                                    }
-                                                  ),
-                                                  0
-                                                )
-                                              : _vm._e(),
-                                            item.imgurl.length == 3
-                                              ? _c(
-                                                  "block",
-                                                  [
-                                                    _vm._l(
-                                                      item.imgurl,
-                                                      function (
-                                                        imgitem,
-                                                        imgIndex
-                                                      ) {
-                                                        return _c("image", {
-                                                          key: imgIndex,
-                                                          staticClass:
-                                                            "zuopinitem_img zuopin_img3",
-                                                          class:
-                                                            "zuopin_img3-" +
-                                                            imgIndex,
-                                                          attrs: {
-                                                            catchtap:
-                                                              "showzuoinbig",
-                                                            "data-imgindex":
-                                                              imgIndex,
-                                                            "data-index":
-                                                              itemIndex,
-                                                            "data-listindex":
-                                                              listIndex,
-                                                            mode: "aspectFill",
-                                                            src: imgitem.url,
-                                                          },
-                                                        })
-                                                      }
-                                                    ),
-                                                    _c(
-                                                      "view",
-                                                      {
-                                                        staticClass:
-                                                          "img3class",
-                                                      },
-                                                      _vm._l(
-                                                        item.imgurl,
-                                                        function (
-                                                          imgitem,
-                                                          imgIndex
-                                                        ) {
-                                                          return _c("image", {
-                                                            key: imgIndex,
-                                                            staticClass:
-                                                              "zuopinitem_img zuopin_img3}",
-                                                            class:
-                                                              "zuopin_img3-" +
-                                                              imgIndex,
-                                                            attrs: {
-                                                              catchtap:
-                                                                "showzuoinbig",
-                                                              "data-imgindex":
-                                                                imgIndex,
-                                                              "data-index":
-                                                                itemIndex,
-                                                              "data-listindex":
-                                                                listIndex,
-                                                              mode: "aspectFill",
-                                                              src: imgitem.url,
-                                                            },
-                                                          })
-                                                        }
-                                                      ),
-                                                      0
-                                                    ),
-                                                  ],
-                                                  2
-                                                )
-                                              : _vm._e(),
-                                            item.imgurl.length == 4
-                                              ? _c(
-                                                  "block",
-                                                  _vm._l(
-                                                    item.imgurl,
-                                                    function (
-                                                      imgitem,
-                                                      imgIndex
-                                                    ) {
-                                                      return _c("image", {
-                                                        key: imgIndex,
-                                                        staticClass:
-                                                          "zuopinitem_img zuopin_img4",
-                                                        class:
-                                                          "zuopin_img4-" +
-                                                          imgIndex,
-                                                        attrs: {
-                                                          catchtap:
-                                                            "showzuoinbig",
-                                                          "data-imgindex":
-                                                            imgIndex,
-                                                          "data-index":
-                                                            itemIndex,
-                                                          "data-listindex":
-                                                            listIndex,
-                                                          mode: "aspectFill",
-                                                          src: imgitem.url,
-                                                        },
-                                                      })
-                                                    }
-                                                  ),
-                                                  0
-                                                )
-                                              : _vm._e(),
-                                            item.imgurl.length == 5
-                                              ? _c(
-                                                  "block",
-                                                  _vm._l(
-                                                    item.imgurl,
-                                                    function (
-                                                      imgitem,
-                                                      imgIndex
-                                                    ) {
-                                                      return _c("image", {
-                                                        key: imgIndex,
-                                                        staticClass:
-                                                          "zuopinitem_img zuopin_img5",
-                                                        class:
-                                                          "zuopin_img5-" +
-                                                          imgIndex,
-                                                        attrs: {
-                                                          catchtap:
-                                                            "showzuoinbig",
-                                                          "data-imgindex":
-                                                            imgIndex,
-                                                          "data-index":
-                                                            itemIndex,
-                                                          "data-listindex":
-                                                            listIndex,
-                                                          mode: "aspectFill",
-                                                          src: imgitem.url,
-                                                        },
-                                                      })
-                                                    }
-                                                  ),
-                                                  0
-                                                )
-                                              : _vm._e(),
-                                            item.imgurl.length == 6
-                                              ? _c(
-                                                  "block",
-                                                  [
-                                                    _vm._l(
-                                                      item.imgurl,
-                                                      function (
-                                                        imgitem,
-                                                        imgIndex
-                                                      ) {
-                                                        return _c("image", {
-                                                          key: imgIndex,
-                                                          staticClass:
-                                                            "zuopinitem_img zuopin_img6",
-                                                          class:
-                                                            "zuopin_img6-" +
-                                                            imgIndex,
-                                                          attrs: {
-                                                            catchtap:
-                                                              "showzuoinbig",
-                                                            "data-imgindex":
-                                                              imgIndex,
-                                                            "data-index":
-                                                              itemIndex,
-                                                            "data-listindex":
-                                                              listIndex,
-                                                            mode: "aspectFill",
-                                                            src: imgitem.url,
-                                                          },
-                                                        })
-                                                      }
-                                                    ),
-                                                    _c(
-                                                      "view",
-                                                      {
-                                                        staticClass:
-                                                          "img3class",
-                                                      },
-                                                      _vm._l(
-                                                        item.imgurl,
-                                                        function (
-                                                          imgitem,
-                                                          imgIndex
-                                                        ) {
-                                                          return imgIndex ==
-                                                            1 || imgIndex == 2
-                                                            ? _c("image", {
-                                                                key: imgIndex,
-                                                                staticClass:
-                                                                  "zuopinitem_img zuopin_img6",
-                                                                class:
-                                                                  "zuopin_img6-" +
-                                                                  imgIndex,
-                                                                attrs: {
-                                                                  catchtap:
-                                                                    "showzuoinbig",
-                                                                  "data-imgindex":
-                                                                    imgIndex,
-                                                                  "data-index":
-                                                                    itemIndex,
-                                                                  "data-listindex":
-                                                                    listIndex,
-                                                                  mode: "aspectFill",
-                                                                  src: imgitem.url,
-                                                                },
-                                                              })
-                                                            : _vm._e()
-                                                        }
-                                                      ),
-                                                      0
-                                                    ),
-                                                    _vm._l(
-                                                      item.imgurl,
-                                                      function (
-                                                        imgitem,
-                                                        imgIndex
-                                                      ) {
-                                                        return imgIndex > 2
-                                                          ? _c("image", {
-                                                              key: imgIndex,
-                                                              staticClass:
-                                                                "zuopinitem_img zuopin_img6",
-                                                              class:
-                                                                "zuopin_img6-" +
-                                                                imgIndex,
-                                                              attrs: {
-                                                                catchtap:
-                                                                  "showzuoinbig",
-                                                                "data-imgindex":
-                                                                  imgIndex,
-                                                                "data-index":
-                                                                  itemIndex,
-                                                                "data-listindex":
-                                                                  listIndex,
-                                                                mode: "aspectFill",
-                                                                src: imgitem.url,
-                                                              },
-                                                            })
-                                                          : _vm._e()
-                                                      }
-                                                    ),
-                                                  ],
-                                                  2
-                                                )
-                                              : _vm._e(),
-                                            item.imgurl.length >= 7
-                                              ? _c(
-                                                  "block",
-                                                  _vm._l(
-                                                    item.imgurl,
-                                                    function (
-                                                      imgitem,
-                                                      imgIndex
-                                                    ) {
-                                                      return _c("image", {
-                                                        key: imgIndex,
-                                                        staticClass:
-                                                          "zuopinitem_img zuopin_img7",
-                                                        class:
-                                                          "zuopin_img7-" +
-                                                          imgIndex,
-                                                        attrs: {
-                                                          catchtap:
-                                                            "showzuoinbig",
-                                                          "data-imgindex":
-                                                            imgIndex,
-                                                          "data-index":
-                                                            itemIndex,
-                                                          "data-listindex":
-                                                            listIndex,
-                                                          mode: "aspectFill",
-                                                          src: imgitem.url,
-                                                        },
-                                                      })
-                                                    }
-                                                  ),
-                                                  0
-                                                )
-                                              : _vm._e(),
-                                          ],
-                                          1
-                                        )
-                                      : _vm._e(),
-                                    item.type == 1
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "video_box",
-                                            class:
-                                              "yuedan_video" +
-                                                item.video_width >=
-                                              item.video_height
-                                                ? "_width"
-                                                : "",
-                                          },
-                                          [
-                                            _c("image", {
-                                              class:
-                                                "yuedan_video" +
-                                                  item.video_width >=
-                                                item.video_height
-                                                  ? "_width"
-                                                  : "",
-                                              attrs: {
-                                                mode: "aspectFill",
-                                                src: item.cover,
-                                              },
-                                            }),
-                                            _c("image", {
-                                              staticClass: "icon_video_play",
-                                              class:
-                                                item.video_width >=
-                                                item.video_height
-                                                  ? "width_play"
-                                                  : "",
-                                              attrs: {
-                                                src: "/images/common/icon_video_play.png",
-                                              },
-                                            }),
-                                          ]
-                                        )
-                                      : _vm._e(),
-                                    item.title
-                                      ? _c(
-                                          "view",
-                                          { staticClass: "zuopin_item_title" },
-                                          [_vm._v(_vm._s(item.title) + " ")]
-                                        )
-                                      : _vm._e(),
-                                    item.content
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "zuopin_item_content",
-                                          },
-                                          [_vm._v(" " + _vm._s(item.content))]
-                                        )
-                                      : _vm._e(),
-                                    item.tag
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "zuopin_item_tags ub",
-                                          },
-                                          _vm._l(
-                                            item.tag,
-                                            function (tagitem, id) {
-                                              return _c(
-                                                "view",
-                                                {
-                                                  key: id,
-                                                  staticClass: "zuopin_tag",
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    " " + _vm._s(tagitem.name)
-                                                  ),
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          0
-                                        )
-                                      : _vm._e(),
-                                  ],
-                                  1
-                                ),
-                                _c("view", { staticClass: "item_bottom ub" }, [
-                                  _c("view", { staticClass: "time_text" }, [
-                                    _vm._v(_vm._s(item.timetext)),
-                                  ]),
-                                  _c("view", { staticClass: "ub-f1" }),
-                                  _c("view", { staticClass: "view_count" }, [
-                                    _vm._v(
-                                      "阅读 " + _vm._s(item.view_count_text)
-                                    ),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      }),
-                      _vm.datamore_zuopin
-                        ? _c("view", { staticClass: "loadingmore" }, [
-                            _c("image", {
-                              attrs: {
-                                mode: "widthFix",
-                                src: __webpack_require__(/*! ../../../../assets/images/common/loading.gif */ "./src/assets/images/common/loading.gif"),
-                              },
-                            }),
-                          ])
-                        : _vm._e(),
-                      _c("view", { staticClass: "bottom_gap" }),
-                    ],
-                    2
-                  ),
-            ])
+          ? _c(
+              "block",
+              [_c("myZuopinList", { attrs: { base_data: _vm.list } })],
+              1
+            )
           : _vm._e(),
       ],
       1

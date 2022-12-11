@@ -147,16 +147,11 @@
         收到约拍：{{ yuepaiInfo.statistic.invite_cnt }}</view
       >
       <view class="yuepai_img">
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
-        <image src="../../../../assets/images/avatar_default.png"></image>
+        <image
+          :src="item"
+          v-for="(item, index) in yuepaiInfo.avatar"
+          :key="index"
+        ></image>
       </view>
     </view>
     <view
@@ -179,8 +174,13 @@
           ></image>
           {{ yuepaiInfo.statistic.vote_cnt }}
         </view>
-        <view class="yuepai_fixed_item">
+        <view class="yuepai_fixed_item" @tap="subRecordCollect">
           <image
+            v-if="is_collect"
+            src="../../../../assets/images/common/icon_favoriteed.png"
+          ></image>
+          <image
+            v-else
             src="../../../../assets/images/common/icon_favorite.png"
           ></image>
           {{ yuepaiInfo.statistic.collect_cnt }}
@@ -192,7 +192,7 @@
 </template>
 
 <script>
-import { inviteInfo, giveUp } from "../../../../api/index";
+import { inviteInfo, giveUp, recordCollect } from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
@@ -215,6 +215,7 @@ export default {
       oid: "",
       author_id: "",
       is_vote: 0,
+      is_collect: 0,
       yuepaiInfo: {
         author: {
           career_list: [],
@@ -254,11 +255,22 @@ export default {
       };
       this.giveUp(params);
     },
+    subRecordCollect() {
+      let params = {
+        oid: this.oid,
+        visited_id: this.author_id,
+        page_type: "invite_details",
+        page_name: "约拍详情",
+        event_type: this.is_collect == 1 ? 0 : 1, // 1：收藏；0：取
+      };
+      this.recordCollect(params);
+    },
     async inviteInfo(params) {
       try {
         let res = await inviteInfo(params);
         this.yuepaiInfo = res.data.data;
         this.is_vote = res.data.data.action.is_vote;
+        this.is_collect = res.data.data.action.is_collect;
       } catch (error) {}
     },
     async giveUp(params) {
@@ -266,6 +278,13 @@ export default {
         let res = await giveUp(params);
         this.is_vote = res.data.data.is_vote;
         this.yuepaiInfo.statistic.vote_cnt = res.data.data.vote_cnt;
+      } catch (error) {}
+    },
+    async recordCollect(params) {
+      try {
+        let res = await recordCollect(params);
+        this.is_collect = res.data.data.is_collect;
+        this.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
       } catch (error) {}
     },
   },

@@ -553,8 +553,8 @@ page {
 }
 
 .modal_box .modal_content .qrcode-img {
-  width: 260rpx;
-  height: 260rpx;
+  width: 300rpx;
+  height: 300rpx;
   margin: 16rpx 0;
 }
 

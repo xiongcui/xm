@@ -1,0 +1,135 @@
+.zuopin-list {
+  background: #ffffff;
+  padding: 30rpx;
+  margin-top: 16rpx;
+  width: 690rpx;
+}
+
+.list_img {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+
+.list_img .list_img_item {
+  width: 216rpx;
+  height: 216rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  background: #e5e5e5;
+}
+
+.list_title {
+  color: #2f2f2f;
+  font-size: 32rpx;
+}
+
+.list_desc {
+  font-size: 26rpx;
+  color: #6b6b6b;
+  line-height: 36rpx;
+  margin-bottom: 16rpx;
+}
+
+.list_tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+
+.list_tags .tag {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 22rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+}
+
+.list_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+  border-top: 1rpx solid #f5f5f5;
+  padding-top: 16rpx;
+}
+
+.list_time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.list_time image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.list_read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+
+.list_read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+
+.list_video-width {
+  width: 50%;
+}
+
+.none_main {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 80rpx 0;
+  color: #666666;
+  font-size: 30rpx;
+}
+
+.none_main image {
+  width: 200rpx;
+}
+
+.none_main .none_tiptext {
+  margin-top: 16rpx;
+}
+
+.none_main .none_now_make {
+  margin-top: 16rpx;
+  padding: 8rpx 16rpx;
+  color: #ffffff;
+  background: #ff1e3e;
+  border-radius: 8rpx;
+}

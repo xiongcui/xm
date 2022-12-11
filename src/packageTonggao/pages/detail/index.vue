@@ -209,18 +209,15 @@
       <view class="tonggao_lianxi">报名后，等待对方联系方式</view>
     </view>
     <view class="tonggao_box">
-      <view class="tonggao_title_left"> 已报名：33</view>
+      <view class="tonggao_title_left">
+        已报名：{{ tonggaoInfo.statistic.invite_cnt }}</view
+      >
       <view class="yuepai_img">
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <image src="../../../assets/images/avatar_default.png"></image>
+        <image
+          :src="item"
+          v-for="(item, index) in tonggaoInfo.avatar"
+          :key="index"
+        ></image>
       </view>
     </view>
     <view
@@ -228,8 +225,15 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <view class="tonggao_fixed_left">
-        <view class="tonggao_fixed_item">
-          <image src="../../../assets/images/common/icon_favorite.png"></image>
+        <view class="tonggao_fixed_item" @tap="subRecordCollect">
+          <image
+            v-if="is_collect"
+            src="../../../assets/images/common/icon_favoriteed.png"
+          ></image>
+          <image
+            v-else
+            src="../../../assets/images/common/icon_favorite.png"
+          ></image>
           {{ tonggaoInfo.statistic.collect_cnt }}
         </view>
       </view>
@@ -240,7 +244,7 @@
 
 <script>
 import "./index.scss";
-import { noticeInfo } from "../../../api/index";
+import { noticeInfo, recordCollect } from "../../../api/index";
 import { openPage } from "../../../utils/util";
 export default {
   name: "tonggaoDetail",
@@ -249,6 +253,7 @@ export default {
       isIphoneX: false,
       oid: "",
       author_id: "",
+      is_collect: 0,
       tonggaoInfo: {
         author: {
           sex: 0,
@@ -273,10 +278,28 @@ export default {
     launchYuepai() {
       openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
     },
+    subRecordCollect() {
+      let params = {
+        oid: this.oid,
+        visited_id: this.author_id,
+        page_type: "invite_details",
+        page_name: "约拍详情",
+        event_type: this.is_collect == 1 ? 0 : 1, // 1：收藏；0：取
+      };
+      this.recordCollect(params);
+    },
     async noticeInfo(params) {
       try {
         let res = await noticeInfo(params);
         this.tonggaoInfo = res.data.data;
+        this.is_collect = res.data.data.action.is_collect;
+      } catch (error) {}
+    },
+    async recordCollect(params) {
+      try {
+        let res = await recordCollect(params);
+        this.is_collect = res.data.data.is_collect;
+        this.tonggaoInfo.statistic.collect_cnt = res.data.data.collect_cnt;
       } catch (error) {}
     },
   },

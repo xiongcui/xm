@@ -52,6 +52,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/livevisitor/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -184,6 +185,8 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -250,7 +253,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "Q"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "T"])(params);
 
               case 3:
                 res = _context.sent;
@@ -260,7 +263,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
                   break;
                 }
 
-                errortip("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
                 return _context.abrupt("return", false);
 
               case 7:
@@ -292,7 +295,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "U"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -302,7 +305,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
                   break;
                 }
 
-                errortip("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
                 return _context2.abrupt("return", false);
 
               case 7:
@@ -405,6 +408,7 @@ var render = function () {
                 _c(
                   "scroll-view",
                   {
+                    style: { height: _vm.winHeight + "px" },
                     attrs: { "scroll-y": true, "lower-threshold": 200 },
                     on: { scrolltolower: _vm.scrollToLower },
                   },

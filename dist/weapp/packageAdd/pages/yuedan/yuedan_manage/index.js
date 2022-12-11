@@ -591,6 +591,30 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -638,7 +662,9 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
 
       });
     },
-    moreClick: function moreClick() {
+    moreClick: function moreClick(oid) {
+      var _this = this;
+
       wx.showActionSheet({
         itemList: ["关闭", "删除"],
         success: function success(res) {
@@ -646,9 +672,16 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
             case 0:
               wx.showModal({
                 title: "温馨提示",
-                content: "\u5173\u95ED".concat(this.optionMap[this.type], "\uFF0C\u7B49\u540C\u5220\u9664").concat(this.optionMap[this.type], "\uFF0C\u4E0D\u518D\u63A5\u53D7").concat(this.optionMap[this.type], "\u8BF7\u6C42\uFF0C\u786E\u8BA4\u5173\u95ED\u4E48\uFF1F"),
+                content: "\u5173\u95ED".concat(_this.optionMap[_this.type], "\uFF0C\u7B49\u540C\u5220\u9664").concat(_this.optionMap[_this.type], "\uFF0C\u4E0D\u518D\u63A5\u53D7").concat(_this.optionMap[_this.type], "\u8BF7\u6C42\uFF0C\u786E\u8BA4\u5173\u95ED\u4E48\uFF1F"),
                 success: function success(res) {
                   if (res.confirm) {
+                    var params = {
+                      oid: oid,
+                      even_type: 300
+                    };
+
+                    _this.manageEvent(params);
+
                     console.log("用户点击确定");
                   } else if (res.cancel) {
                     console.log("用户点击取消");
@@ -658,7 +691,8 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
               break;
 
             case 1:
-              this.deleteYuepai();
+              _this.deleteYuepai();
+
               break;
           }
         },
@@ -667,34 +701,53 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
         }
       });
     },
-    deleteYuepai: function deleteYuepai() {
+    deleteYuepai: function deleteYuepai(oid) {
+      // # 200:打开；300:关闭；400:删除
+      var _this = this;
+
       wx.showModal({
         title: "温馨提示",
         content: "\u5220\u9664".concat(this.optionMap[this.type], "\uFF0C\u5C06\u540C\u65F6").concat(this.optionMap[this.type], "\u6536\u5230\u7684").concat(this.optionMap[this.type], "\u8BF7\u6C42\uFF0C\u786E\u8BA4\u5220\u9664\u4E48\uFF1F"),
         success: function success(res) {
           if (res.confirm) {
             console.log("用户点击确定");
+            var params = {
+              oid: oid,
+              even_type: 400
+            };
+
+            _this.manageEvent(params);
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         }
       });
     },
-    openClick: function openClick() {
+    openClick: function openClick(oid) {
+      var _this = this;
+
       wx.showModal({
         title: "温馨提示",
         content: "\u6253\u5F00".concat(this.optionMap[this.type], "\uFF0C\u5C06\u7EE7\u7EED\u63A5\u53D7").concat(this.optionMap[this.type], "\u8BF7\u6C42\uFF0C\u786E\u8BA4\u6253\u5F00\u4E48\uFF1F"),
         success: function success(res) {
           if (res.confirm) {
             console.log("用户点击确定");
+            var params = {
+              oid: oid,
+              even_type: 200
+            };
+
+            _this.manageEvent(params);
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         }
       });
     },
-    refreshClick: function refreshClick(is_security) {
+    refreshClick: function refreshClick(is_security, oid) {
       if (!is_security) {
+        var _this = this;
+
         wx.showModal({
           confirmText: "去实名",
           title: "温馨提示",
@@ -702,6 +755,12 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
           success: function success(res) {
             if (res.confirm) {
               console.log("用户点击确定");
+              var params = {
+                oid: oid,
+                even_type: 700
+              };
+
+              _this.manageEvent(params);
             } else if (res.cancel) {
               console.log("用户点击取消");
             }
@@ -725,7 +784,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
       this.noteManageList(params);
     },
     noteManageList: function noteManageList(params) {
-      var _this = this;
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, data;
@@ -735,7 +794,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noteManageList */ "o"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noteManageList */ "p"])(params);
 
               case 3:
                 res = _context.sent;
@@ -750,7 +809,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
 
               case 7:
                 data = res.data.data.items;
-                _this.list = _this.list.concat(data);
+                _this2.list = _this2.list.concat(data);
                 _context.next = 13;
                 break;
 
@@ -764,6 +823,45 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
             }
           }
         }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    manageEvent: function manageEvent(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageEvent */ "o"])(params);
+
+              case 3:
+                res = _context2.sent;
+                if (params.even_type == 200) Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("打开成功");
+                if (params.even_type == 300) Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("关闭成功");
+                if (params.even_type == 400) Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("删除成功");
+                if (params.even_type == 700) Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("刷新成功");
+                _this3.pageNum = 1;
+                _this3.list = [];
+
+                _this3.query();
+
+                _context2.next = 15;
+                break;
+
+              case 13:
+                _context2.prev = 13;
+                _context2.t0 = _context2["catch"](0);
+
+              case 15:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 13]]);
       }))();
     }
   },
@@ -1037,7 +1135,11 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_more",
-                                            on: { tap: _vm.moreClick },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.moreClick(item.oid)
+                                              },
+                                            },
                                           },
                                           [_vm._v(" 更多 ")]
                                         ),
@@ -1048,7 +1150,8 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshClick(
-                                                  item.is_security
+                                                  item.is_security,
+                                                  item.oid
                                                 )
                                               },
                                             },
@@ -1068,7 +1171,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1077,7 +1186,13 @@ var render = function () {
                                               "view",
                                               {
                                                 staticClass: "icon_open",
-                                                on: { tap: _vm.openClick },
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.openClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
                                               },
                                               [_vm._v("打开")]
                                             )
@@ -1111,7 +1226,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1308,7 +1429,11 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_more",
-                                            on: { tap: _vm.moreClick },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.moreClick(item.oid)
+                                              },
+                                            },
                                           },
                                           [_vm._v(" 更多 ")]
                                         ),
@@ -1319,7 +1444,8 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshClick(
-                                                  item.is_security
+                                                  item.is_security,
+                                                  item.oid
                                                 )
                                               },
                                             },
@@ -1339,7 +1465,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1348,7 +1480,13 @@ var render = function () {
                                               "view",
                                               {
                                                 staticClass: "icon_open",
-                                                on: { tap: _vm.openClick },
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.openClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
                                               },
                                               [_vm._v("打开")]
                                             )
@@ -1382,7 +1520,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1579,7 +1723,11 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_more",
-                                            on: { tap: _vm.moreClick },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.moreClick(item.oid)
+                                              },
+                                            },
                                           },
                                           [_vm._v(" 更多 ")]
                                         ),
@@ -1590,7 +1738,8 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshClick(
-                                                  item.is_security
+                                                  item.is_security,
+                                                  item.oid
                                                 )
                                               },
                                             },
@@ -1610,7 +1759,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1619,7 +1774,13 @@ var render = function () {
                                               "view",
                                               {
                                                 staticClass: "icon_open",
-                                                on: { tap: _vm.openClick },
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.openClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
                                               },
                                               [_vm._v("打开")]
                                             )
@@ -1653,7 +1814,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1850,7 +2017,11 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_more",
-                                            on: { tap: _vm.moreClick },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.moreClick(item.oid)
+                                              },
+                                            },
                                           },
                                           [_vm._v(" 更多 ")]
                                         ),
@@ -1861,7 +2032,8 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshClick(
-                                                  item.is_security
+                                                  item.is_security,
+                                                  item.oid
                                                 )
                                               },
                                             },
@@ -1881,7 +2053,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),
@@ -1890,7 +2068,13 @@ var render = function () {
                                               "view",
                                               {
                                                 staticClass: "icon_open",
-                                                on: { tap: _vm.openClick },
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.openClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
                                               },
                                               [_vm._v("打开")]
                                             )
@@ -1924,7 +2108,13 @@ var render = function () {
                                           "view",
                                           {
                                             staticClass: "icon_delete",
-                                            on: { tap: _vm.deleteYuepai },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteYuepai(
+                                                  item.oid
+                                                )
+                                              },
+                                            },
                                           },
                                           [_vm._v("删除")]
                                         ),

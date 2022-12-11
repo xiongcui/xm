@@ -24,6 +24,7 @@
         <swiper-item>
           <scroll-view
             :scroll-y="true"
+            :style="{ height: winHeight + 'px' }"
             @scrolltolower="scrollToLower"
             :lower-threshold="200"
           >
@@ -131,6 +132,7 @@
 <script>
 import "./index.scss";
 import { visitorList, voteList } from "../../../api/index";
+import { errortip } from "../../../utils/util";
 export default {
   name: "livevisitor",
   data() {

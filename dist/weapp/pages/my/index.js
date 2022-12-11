@@ -552,6 +552,9 @@ component.options.__file = "src/pages/my/index.vue"
     goZhuye: function goZhuye() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMoka/pages/moka/editshow/index");
     },
+    goZuopin: function goZuopin() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/zuopin/zuopin_list/index");
+    },
     myYuepai: function myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
@@ -570,7 +573,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "N"])(params);
 
               case 3:
                 res = _context.sent;
@@ -885,16 +888,20 @@ var render = function () {
             _c("text", [_vm._v("主页")]),
           ]
         ),
-        _c("view", { staticClass: "my-column-item" }, [
-          _c("image", {
-            staticClass: "my-column-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/album.png */ "./src/assets/images/album.png"),
-              mode: "aspectFill",
-            },
-          }),
-          _c("text", [_vm._v("作品")]),
-        ]),
+        _c(
+          "view",
+          { staticClass: "my-column-item", on: { tap: _vm.goZuopin } },
+          [
+            _c("image", {
+              staticClass: "my-column-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/album.png */ "./src/assets/images/album.png"),
+                mode: "aspectFill",
+              },
+            }),
+            _c("text", [_vm._v("作品")]),
+          ]
+        ),
         _c("view", { staticClass: "my-column-item" }, [
           _c("image", {
             staticClass: "my-column-img",

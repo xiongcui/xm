@@ -16,7 +16,6 @@
         ></image>
       </view>
       <view
-        catchtap="goEditHomeimg"
         class="homeimg"
         :style="{
           'padding-top': globalData.navHeight + 'px',
@@ -134,7 +133,7 @@
       <view class="line-bg"></view>
       <view class="swiper_tab">
         <view
-          bindtap="swichTab"
+          @tap="swichTab(index)"
           class="swiper_tab_item"
           v-for="(item, index) in tabList"
           :key="index"
@@ -350,224 +349,7 @@
         </view>
       </block>
       <block v-if="select_tab == 'zuopin'">
-        <view class="main ub ub-ver none_main" v-if="noneData_zuopin">
-          <view class="none_tipimg">
-            <image
-              mode="widthFix"
-              src="../../../../assets/images/common/none.png"
-            ></image>
-          </view>
-          <view class="none_tiptext">还没有发布过作品动态哦～</view>
-          <view catchtap="goAddZuopin" class="none_now_make">马上发布</view>
-        </view>
-        <view class="main ub ub-ver" v-else>
-          <block v-for="(items, listIndex) in listdata_zuopin" :key="listIndex">
-            <view
-              catchtap="showZuopin"
-              class="item"
-              :id="item.item_id"
-              v-for="(item, itemIndex) in items"
-              :key="itemIndex"
-            >
-              <view class="item_main">
-                <block v-if="item.type == 2">
-                  <block v-if="item.imgurl.length == 1">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img1"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                  </block>
-                  <block v-if="item.imgurl.length == 2">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img2"
-                      :class="'zuopin_img2-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                  </block>
-                  <block v-if="item.imgurl.length == 3">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img3"
-                      :class="'zuopin_img3-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                    <view class="img3class">
-                      <image
-                        catchtap="showzuoinbig"
-                        class="zuopinitem_img zuopin_img3}"
-                        :class="'zuopin_img3-' + imgIndex"
-                        :data-imgindex="imgIndex"
-                        :data-index="itemIndex"
-                        :data-listindex="listIndex"
-                        mode="aspectFill"
-                        :src="imgitem.url"
-                        v-for="(imgitem, imgIndex) in item.imgurl"
-                        :key="imgIndex"
-                      ></image>
-                    </view>
-                  </block>
-                  <block v-if="item.imgurl.length == 4">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img4"
-                      :class="'zuopin_img4-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                  </block>
-                  <block v-if="item.imgurl.length == 5">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img5"
-                      :class="'zuopin_img5-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                  </block>
-                  <block v-if="item.imgurl.length == 6">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img6"
-                      :class="'zuopin_img6-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                    <view class="img3class">
-                      <image
-                        catchtap="showzuoinbig"
-                        class="zuopinitem_img zuopin_img6"
-                        :class="'zuopin_img6-' + imgIndex"
-                        :data-imgindex="imgIndex"
-                        :data-index="itemIndex"
-                        :data-listindex="listIndex"
-                        mode="aspectFill"
-                        :src="imgitem.url"
-                        v-for="(imgitem, imgIndex) in item.imgurl"
-                        :key="imgIndex"
-                        v-if="imgIndex == 1 || imgIndex == 2"
-                      ></image>
-                    </view>
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img6"
-                      :class="'zuopin_img6-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                      v-if="imgIndex > 2"
-                    ></image>
-                  </block>
-                  <block v-if="item.imgurl.length >= 7">
-                    <image
-                      catchtap="showzuoinbig"
-                      class="zuopinitem_img zuopin_img7"
-                      :class="'zuopin_img7-' + imgIndex"
-                      :data-imgindex="imgIndex"
-                      :data-index="itemIndex"
-                      :data-listindex="listIndex"
-                      mode="aspectFill"
-                      :src="imgitem.url"
-                      v-for="(imgitem, imgIndex) in item.imgurl"
-                      :key="imgIndex"
-                    ></image>
-                  </block>
-                </block>
-                <view
-                  class="video_box"
-                  :class="
-                    'yuedan_video' + item.video_width >= item.video_height
-                      ? '_width'
-                      : ''
-                  "
-                  v-if="item.type == 1"
-                >
-                  <image
-                    :class="
-                      'yuedan_video' + item.video_width >= item.video_height
-                        ? '_width'
-                        : ''
-                    "
-                    mode="aspectFill"
-                    :src="item.cover"
-                  ></image>
-                  <image
-                    class="icon_video_play"
-                    :class="
-                      item.video_width >= item.video_height ? 'width_play' : ''
-                    "
-                    src="/images/common/icon_video_play.png"
-                  ></image>
-                </view>
-                <view class="zuopin_item_title" v-if="item.title"
-                  >{{ item.title }}
-                </view>
-                <view class="zuopin_item_content" v-if="item.content">
-                  {{ item.content }}</view
-                >
-                <view class="zuopin_item_tags ub" v-if="item.tag">
-                  <view
-                    class="zuopin_tag"
-                    v-for="(tagitem, id) in item.tag"
-                    :key="id"
-                  >
-                    {{ tagitem.name }}</view
-                  >
-                </view>
-              </view>
-              <view class="item_bottom ub">
-                <view class="time_text">{{ item.timetext }}</view>
-                <view class="ub-f1"></view>
-                <view class="view_count">阅读 {{ item.view_count_text }}</view>
-              </view>
-            </view>
-          </block>
-          <view class="loadingmore" v-if="datamore_zuopin">
-            <image
-              mode="widthFix"
-              src="../../../../assets/images/common/loading.gif"
-            ></image>
-          </view>
-          <view class="bottom_gap"></view>
-        </view>
+        <myZuopinList :base_data="list"></myZuopinList>
       </block>
     </view>
   </view>
@@ -579,13 +361,17 @@ import {
   userShapeDetail,
   userAlbumDetail,
   userSticker,
+  photoListOwn,
 } from "../../../../api/index";
-import { openPage } from "../../../../utils/util";
+import { errortip, openPage } from "../../../../utils/util";
+import myZuopinList from "../../../../components/myZuopinList/index.vue";
 import "./index.scss";
 export default {
   name: "editshow",
   data() {
     return {
+      winWidth: 0,
+      winHeight: 0,
       globalData: {
         navHeight: 0,
         navTop: 0,
@@ -635,7 +421,13 @@ export default {
           tab_id: "moka",
         },
       ],
+      list: [],
+      pageNum: 1,
+      pageSize: 10,
     };
+  },
+  components: {
+    myZuopinList,
   },
   methods: {
     personDetail() {
@@ -657,6 +449,21 @@ export default {
     },
     editzytag() {
       openPage("/packageAdd/pages/user/editlabel/index");
+    },
+    swichTab(index) {
+      this.select_tab = this.tabList[index].tab_id;
+      this.currentTab = index;
+      if (this.select_tab == "zuopin") {
+        this.pageNum = 1;
+        this.list = [];
+        this.queryZuopinList();
+      }
+    },
+    queryZuopinList() {
+      this.photoListOwn({
+        page: this.pageNum,
+        per_page: this.pageSize,
+      });
     },
     async userInfo(params) {
       try {
@@ -704,6 +511,17 @@ export default {
           res.data.data.cur_sticker_list.style_sticker;
       } catch (error) {}
     },
+    async photoListOwn(params) {
+      try {
+        let res = await photoListOwn(params);
+        if (!res.data.data || !res.data.data.items.length) {
+          errortip("没有更多数据了～");
+          return false;
+        }
+        let data = res.data.data.items;
+        this.list = this.list.concat(data);
+      } catch (error) {}
+    },
   },
   created() {
     let menuButtonObject = wx.getMenuButtonBoundingClientRect();
@@ -731,7 +549,20 @@ export default {
   },
   onShow() {
     this.userInfo("");
-    // this.userShapeDetail("");
+  },
+  onReachBottom() {
+    this.pageNum++;
+    this.queryZuopinList();
+  },
+  onLoad: function (options) {
+    var that = this;
+    // 获取系统信息
+    wx.getSystemInfo({
+      success: function (res) {
+        that.winWidth = res.windowWidth;
+        that.winHeight = res.windowHeight;
+      },
+    });
   },
 };
 </script>

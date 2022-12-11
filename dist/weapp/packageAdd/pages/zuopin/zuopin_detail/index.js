@@ -219,6 +219,11 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -230,6 +235,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       oid: "",
       isIphoneX: false,
       is_vote: 0,
+      is_collect: 0,
       zuopinInfo: {
         author: {
           career_list: []
@@ -256,6 +262,17 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       };
       this.giveUp(params);
     },
+    subRecordCollect: function subRecordCollect() {
+      var params = {
+        oid: this.oid,
+        visited_id: this.author_id,
+        page_type: "photo_details",
+        page_name: "作品详情",
+        event_type: this.is_collect == 1 ? 0 : 1 // 1：收藏；0：取
+
+      };
+      this.recordCollect(params);
+    },
     photoInfo: function photoInfo(params) {
       var _this = this;
 
@@ -267,13 +284,13 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "v"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.zuopinInfo = res.data.data;
                 _this.is_vote = res.data.data.action.is_vote;
-                console.log(_this.is_vote);
+                _this.is_collect = res.data.data.action.is_collect;
                 _context.next = 11;
                 break;
 
@@ -319,6 +336,38 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
             }
           }
         }, _callee2, null, [[0, 8]]);
+      }))();
+    },
+    recordCollect: function recordCollect(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "z"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this3.is_collect = res.data.data.is_collect;
+                _this3.zuopinInfo.statistic.collect_cnt = res.data.data.collect_cnt;
+                _context3.next = 10;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 8]]);
       }))();
     }
   },
@@ -576,14 +625,27 @@ var render = function () {
               _vm._v(" " + _vm._s(_vm.zuopinInfo.statistic.vote_cnt) + " "),
             ]
           ),
-          _c("view", { staticClass: "zuopin_fixed_item" }, [
-            _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
-              },
-            }),
-            _vm._v(" " + _vm._s(_vm.zuopinInfo.statistic.collect_cnt) + " "),
-          ]),
+          _c(
+            "view",
+            {
+              staticClass: "zuopin_fixed_item",
+              on: { tap: _vm.subRecordCollect },
+            },
+            [
+              _vm.is_collect
+                ? _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_favoriteed.png */ "./src/assets/images/common/icon_favoriteed.png"),
+                    },
+                  })
+                : _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_favorite.png */ "./src/assets/images/common/icon_favorite.png"),
+                    },
+                  }),
+              _vm._v(" " + _vm._s(_vm.zuopinInfo.statistic.collect_cnt) + " "),
+            ]
+          ),
         ]),
         _c(
           "view",

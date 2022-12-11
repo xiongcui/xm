@@ -168,7 +168,7 @@
           ></image>
           <text>主页</text>
         </view>
-        <view class="my-column-item">
+        <view class="my-column-item" @tap="goZuopin">
           <image
             src="../../assets/images/album.png"
             class="my-column-img"
@@ -498,6 +498,9 @@ export default {
     },
     goZhuye() {
       openPage("/packageMoka/pages/moka/editshow/index");
+    },
+    goZuopin() {
+      openPage("/packageAdd/pages/zuopin/zuopin_list/index");
     },
     myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH

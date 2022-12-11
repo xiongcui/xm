@@ -245,6 +245,7 @@
                 :poster="item.cover[0]"
                 :src="item.video_cover && item.video_cover[0]"
                 class="list_video-width"
+                @tap.stop=""
               ></video>
             </view>
             <view class="list_tags">
