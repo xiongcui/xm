@@ -1,5 +1,6 @@
 <template>
   <view class="ub ub-ver main">
+    vip
     <!-- <view class="block_user" v-if="!infor.isvip">
       <view class="user_infor ub">
         <view class="avatar">

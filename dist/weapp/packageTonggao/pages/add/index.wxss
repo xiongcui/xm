@@ -3,7 +3,7 @@ page {
 }
 
 .add-tonggao {
-  padding-bottom: 120rpx;
+  padding-bottom: 200rpx;
 }
 
 .add-tonggao .tonggao-box {

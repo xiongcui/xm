@@ -3,7 +3,7 @@ page {
 }
 
 .shop {
-  padding-bottom: 120rpx;
+  padding-bottom: 200rpx;
 }
 
 .shop .shop-box {

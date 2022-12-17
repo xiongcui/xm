@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "约单管理",
-                    "pathName": "packageAdd/pages/yuedan/yuedan_manage/index",
+                    "name": "开通会员",
+                    "pathName": "packageVip/pages/vip/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "主页",
-                    "pathName": "packageMoka/pages/moka/editshow/index",
+                    "name": "我的收藏",
+                    "pathName": "packageAdd/pages/user/collection/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

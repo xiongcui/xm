@@ -176,7 +176,7 @@
           ></image>
           <text>作品</text>
         </view>
-        <view class="my-column-item">
+        <view class="my-column-item" @tap="goCollection">
           <image
             src="../../assets/images/collection.png"
             class="my-column-img"
@@ -501,6 +501,9 @@ export default {
     },
     goZuopin() {
       openPage("/packageAdd/pages/zuopin/zuopin_list/index");
+    },
+    goCollection() {
+      openPage("/packageAdd/pages/user/collection/index");
     },
     myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH

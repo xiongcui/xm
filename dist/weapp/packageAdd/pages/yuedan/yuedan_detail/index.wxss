@@ -1,6 +1,6 @@
 .yuedan_detail {
   background: #f6f6f6;
-  padding: 16rpx 0 110rpx 0;
+  padding: 16rpx 0 200rpx 0;
 }
 .yuedan_detail .avatar {
   width: 110rpx;

@@ -405,3 +405,28 @@ export const photoListOwn = (data) => {
     data,
   });
 };
+// 收藏列表
+export const collectList = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/collect/list",
+    method: "post",
+    data,
+  });
+};
+
+// 收藏列表：
+// [POST] -> [/v1/record/collect/list]
+// {
+//     "page": 1,
+//     "per_page": 10,
+//     "type": "PH"
+// }
+
+// 金币用途、赚取金币 [POST] -> /v1/coin/rule/list
+// {"type": 'earn'} # earn：赚取金币；cost：消费金币
+
+// 金币支付：[POST] -> /v1/coin/apply/pay
+// {"oid": 'NE221210223505487819987', 'rule_code': 'apply_invite'}
+
+// 开通会员：[POST] -> /v1/member/open
+// {"amount": 119, 'valid_time': 3, 'valid_time_unit': 'M'}

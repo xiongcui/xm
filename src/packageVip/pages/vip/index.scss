@@ -1,0 +1,174 @@
+.vip-center {
+  padding-bottom: 200px;
+}
+.vip-bg {
+  background: #333333;
+  width: 100%;
+  height: 180px;
+  border-radius: 0px 0px 10px 10px;
+}
+.vip-card {
+  background: #e4c284;
+  margin: -140px 30px 30px 30px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  .headimg {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 16px;
+  }
+  .card-left-info {
+    display: flex;
+    align-items: center;
+  }
+  .info-box {
+    display: flex;
+    flex-direction: column;
+    .name {
+      font-size: 32px;
+      color: #333333;
+    }
+    .vip-tips {
+      font-size: 28px;
+      color: #ff1e3e;
+      margin-top: 6px;
+    }
+  }
+  .card-left-vipinfo {
+    margin-top: 16px;
+    font-size: 28px;
+    color: #9a732d;
+    margin-top: 16px;
+  }
+  .card-rt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    image {
+      width: 120px;
+      height: 120px;
+    }
+    text {
+      font-size: 26px;
+      background: #333333;
+      padding: 4px 8px;
+      color: #f5ba68;
+      border-radius: 15px;
+    }
+  }
+}
+.vip-icon-list {
+  padding: 16px 30px;
+  display: flex;
+  justify-content: space-between;
+  .vip-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .vip-icon image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+  }
+  .vip-icon text {
+    font-size: 28px;
+    color: #333333;
+  }
+}
+.vip-package {
+  padding: 30px;
+}
+.vip-title {
+  text-align: center;
+  font-size: 32px;
+  color: #333333;
+}
+.package-list {
+  display: flex;
+  justify-content: space-between;
+  .package-box {
+    display: flex;
+    padding: 30px 0px;
+    flex-direction: column;
+    border: 1px solid #babbbb;
+    border-radius: 8px;
+    font-size: 30px;
+    width: 200px;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+  }
+  .month {
+    font-weight: bold;
+    color: #333333;
+  }
+  .amount {
+    font-size: 50px;
+    color: #d3a94f;
+    margin: 5px 0px;
+  }
+  .company {
+    font-size: 30px;
+  }
+  .original-price {
+    color: #bdc0be;
+    font-size: 28px;
+    text-decoration: line-through;
+    margin-bottom: 5px;
+  }
+  .price-red {
+    color: #ff1e3e;
+    font-size: 28px;
+  }
+  .active {
+    background: #faf4ea;
+    border-color: #d4a850;
+  }
+  .tag {
+    position: absolute;
+    left: 0px;
+    top: -22px;
+    background: #ff1e3e;
+    color: #ffffff;
+    font-size: 22px;
+    padding: 6px;
+    border-radius: 25% 0px 25% 0px;
+  }
+}
+.privilege-list {
+  margin-top: 16px;
+}
+.privilege-box {
+  margin: 0px 30px;
+  padding: 16px 0px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #cfcece;
+  font-size: 26px;
+  color: rgba(0, 0, 0, 0.4);
+  .blod {
+    font-weight: bold;
+    color: #333333;
+    font-size: 30px;
+  }
+  .service,
+  .vip,
+  .novip {
+    flex: 1;
+  }
+  .vip {
+    text-align: center;
+  }
+  .novip {
+    text-align: right;
+  }
+  image {
+    width: 30px;
+    height: 30px;
+  }
+}

@@ -3,7 +3,7 @@ page {
 }
 
 .brand {
-  padding-bottom: 120rpx;
+  padding-bottom: 200rpx;
 }
 
 .brand .brand-box {

@@ -555,6 +555,9 @@ component.options.__file = "src/pages/my/index.vue"
     goZuopin: function goZuopin() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/zuopin/zuopin_list/index");
     },
+    goCollection: function goCollection() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/collection/index");
+    },
     myYuepai: function myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
@@ -573,7 +576,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "O"])(params);
 
               case 3:
                 res = _context.sent;
@@ -902,16 +905,20 @@ var render = function () {
             _c("text", [_vm._v("作品")]),
           ]
         ),
-        _c("view", { staticClass: "my-column-item" }, [
-          _c("image", {
-            staticClass: "my-column-img",
-            attrs: {
-              src: __webpack_require__(/*! ../../assets/images/collection.png */ "./src/assets/images/collection.png"),
-              mode: "aspectFill",
-            },
-          }),
-          _c("text", [_vm._v("收藏")]),
-        ]),
+        _c(
+          "view",
+          { staticClass: "my-column-item", on: { tap: _vm.goCollection } },
+          [
+            _c("image", {
+              staticClass: "my-column-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/collection.png */ "./src/assets/images/collection.png"),
+                mode: "aspectFill",
+              },
+            }),
+            _c("text", [_vm._v("收藏")]),
+          ]
+        ),
       ]),
       _c("view", { staticClass: "items" }, [
         _c(

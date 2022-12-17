@@ -72,6 +72,7 @@ export default defineAppConfig({
         "pages/user/sensationlist/index",
         "pages/user/addfans/index",
         "pages/user/contact/index",
+        "pages/user/collection/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/yuedan/yuedan_manage/index",
@@ -110,6 +111,11 @@ export default defineAppConfig({
         "pages/invite/index",
         "pages/inviteDetail/index",
       ],
+    },
+    {
+      root: "packageVip/",
+      name: "packagevip",
+      pages: ["pages/vip/index"],
     },
   ],
   permission: {
