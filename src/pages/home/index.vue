@@ -52,9 +52,7 @@
               <view class="swiper-item">
                 <image
                   mode="aspectFill"
-                  :src="
-                    require('../../assets/images/lanmao' + (index + 1) + '.jpg')
-                  "
+                  :src="'https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/9f7062c8-67b9-11ed-ae45-473a871aac32.jpg'"
                   class="swiper-item-img"
                 ></image>
               </view>
@@ -388,7 +386,7 @@
 
 <script>
 import "./index.scss";
-import { inviteList, publicConfig } from "../../api/index";
+import { inviteList, publicConfig, notifyNumber } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
 import ZuopinList from "../../components/zuopinList/index.vue";
@@ -805,6 +803,20 @@ export default {
         }
       } catch (error) {}
     },
+    async notifyNumber(params) {
+      try {
+        let res = await notifyNumber(params);
+        if (res.data.data.is_notify_warn) {
+          wx.showTabBarRedDot({
+            index: 3,
+          });
+        } else {
+          wx.hideTabBarRedDot({
+            index: 3,
+          });
+        }
+      } catch (error) {}
+    },
   },
   // 获取滚动条当前位置
   onPageScroll: function (e) {
@@ -845,6 +857,8 @@ export default {
     this.publicConfig({
       type: ["invite_filter", "payment_type"],
     });
+    // 消息通知红点
+    this.notifyNumber("");
   },
   // onShow: function onShow() {
   //   this.publicConfig({

@@ -135,7 +135,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
             return item.tempFilePath;
           });
           wx.setStorageSync("imgList", arr);
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/pages/we-cropper/index?type=imgList");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageAdd/pages/user/we-cropper/index?type=imgList");
         }
       });
     },
@@ -166,7 +166,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
                   var arr = res.tempFiles.map(function (item) {
                     return item.tempFilePath;
                   });
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/pages/we-cropper/index?type=imgId&imgId=" + index + "&imgSrc=" + arr[0]);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageAdd/pages/user/we-cropper/index?type=imgId&imgId=" + index + "&imgSrc=" + arr[0]);
                 }
               });
               break;
@@ -227,7 +227,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "R"])(params);
 
               case 3:
                 res = _context.sent;
@@ -261,7 +261,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "J"])(path, params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "Q"])(path, params);
 
               case 3:
                 res = _context2.sent;
@@ -292,7 +292,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "L"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "S"])(params);
 
               case 3:
                 res = _context3.sent;

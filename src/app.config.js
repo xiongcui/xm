@@ -1,6 +1,5 @@
 export default defineAppConfig({
   pages: [
-    // "pages/vip/index",
     "pages/home/index",
     "pages/login/index",
     "pages/register/index",
@@ -11,7 +10,7 @@ export default defineAppConfig({
     "pages/release/appointment/index",
     "pages/release/field/index",
     "pages/index/index",
-    "pages/we-cropper/index",
+    // "pages/we-cropper/index",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -73,6 +72,9 @@ export default defineAppConfig({
         "pages/user/addfans/index",
         "pages/user/contact/index",
         "pages/user/collection/index",
+        "pages/user/coin/index",
+        "pages/user/rechargecoin/index",
+        "pages/user/we-cropper/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/yuedan/yuedan_manage/index",

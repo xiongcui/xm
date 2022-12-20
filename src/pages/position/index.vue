@@ -1,5 +1,6 @@
 <template>
-  <view @tap="payClick"> 测试支付 </view>
+  <!-- <view @tap="payClick"> 测试支付 </view> -->
+  <view @tap="test">人脸</view>
 </template>
 
 <script>
@@ -7,6 +8,14 @@ import { paymina } from "../../api/index";
 export default {
   name: "position",
   methods: {
+    test() {
+      wx.checkIsSoterEnrolledInDevice({
+        checkAuthMode: "facial",
+        success(res) {
+          console.log(res.isEnrolled);
+        },
+      });
+    },
     payClick() {
       this.paymina("");
     },

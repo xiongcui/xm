@@ -1,0 +1,187 @@
+.coin {
+  .coin-bg {
+    padding: 0px 30px;
+    background: #ea6a6b;
+    color: #fffefb;
+    height: 270px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .coin-bg-left {
+    display: flex;
+    flex-direction: column;
+    .coin-total {
+      font-size: 50px;
+      margin-bottom: 16px;
+    }
+    .company {
+      font-size: 30px;
+    }
+    .coin-tips {
+      font-size: 28px;
+    }
+  }
+  .coin-bg-rt {
+    padding: 6px 12px 6px 50px;
+    border: 1px solid #fffefb;
+    border-radius: 14px;
+    font-size: 28px;
+    background: url("../../../../assets/images/user/coin/coin.png") no-repeat
+      10px center;
+    background-size: 30px;
+  }
+  .coin-content {
+    margin-top: -60px;
+  }
+
+  .tab {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+    // position: fixed;
+    // z-index: 9999;
+    border-radius: 20px 20px 0px 0px;
+  }
+  .tab-item {
+    color: #333333;
+    flex: 1;
+    font-size: 30px;
+    text-align: center;
+    line-height: 80rpx;
+    border-bottom: 6rpx solid #ffffff;
+    margin: 0px 30px;
+  }
+  .content {
+    flex: 1;
+    height: 100vh;
+  }
+  .content > swiper {
+    height: 100%;
+  }
+  .tab-item.on {
+    color: #333333;
+    font-weight: bold;
+    border-bottom-color: #ff1e3e;
+  }
+
+  .swiper-box {
+    height: 100%;
+  }
+  .privilege-list {
+    // margin-top: 100px;
+    margin-top: 16px;
+  }
+  .privilege-box {
+    margin: 0px 30px;
+    padding: 16px 0px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #cfcece;
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.4);
+    .blod {
+      font-weight: bold;
+      color: #333333;
+      font-size: 30px;
+    }
+    .service,
+    .vip,
+    .novip {
+      flex: 1;
+    }
+    .vip {
+      text-align: center;
+    }
+    .novip {
+      text-align: right;
+    }
+    image {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .red {
+    color: #ea6a6b;
+  }
+  .coin-title {
+    text-align: center;
+    font-size: 32px;
+    color: #ea6a6b;
+  }
+  .get-coin {
+    margin-top: 30px;
+    // margin-top: 116px;
+  }
+  .coin-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .task-dian {
+    width: 14px;
+    height: 14px;
+    background: #ea6a6b;
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    top: 16px;
+  }
+  .task-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    position: relative;
+  }
+  .task-title {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .task-coin {
+    font-size: 28px;
+    color: #ea6a6b;
+    margin-left: 30px;
+  }
+  .task-tips {
+    margin-top: 6px;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+  .task-btn {
+    width: 100rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    background: #fe5457;
+    color: #ffffff;
+    font-size: 26rpx;
+    border-radius: 10rpx;
+  }
+  .mt16 {
+    margin-top: 16px;
+  }
+  .task-num {
+    color: #ea6a6b;
+  }
+  .detailed-list {
+    // margin-top: 100px;
+    margin-top: 16px;
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+}

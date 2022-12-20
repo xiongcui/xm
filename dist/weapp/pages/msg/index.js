@@ -47,9 +47,14 @@ component.options.__file = "src/pages/msg/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/pages/msg/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/pages/msg/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+
+
 //
 //
 //
@@ -89,26 +94,84 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "msg",
+  data: function data() {
+    return {
+      invite_cnt: 0,
+      notice_cnt: 0,
+      vote_visitor_cnt: 0
+    };
+  },
   methods: {
     openUrl: function openUrl(type) {
       switch (type) {
         case 1:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageMsg/pages/livevisitor/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/livevisitor/index");
           break;
 
         case 2:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageMsg/pages/invite/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/invite/index");
           break;
 
         case 5:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageMsg/pages/msgList/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/msgList/index");
           break;
       }
+    },
+    notifyNumber: function notifyNumber(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "B"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.invite_cnt = res.data.data.invite_cnt;
+                _this.notice_cnt = res.data.data.notice_cnt;
+                _this.vote_visitor_cnt = res.data.data.vote_visitor_cnt;
+                console.log(_this.invite_cnt, "11");
+
+                if (res.data.data.is_notify_warn) {
+                  wx.showTabBarRedDot({
+                    index: 3
+                  });
+                } else {
+                  wx.hideTabBarRedDot({
+                    index: 3
+                  });
+                }
+
+                _context.next = 13;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](0);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 11]]);
+      }))();
     }
+  },
+  onShow: function onShow() {
+    this.notifyNumber("");
   }
 });
 
@@ -146,7 +209,11 @@ var render = function () {
             attrs: { src: __webpack_require__(/*! ../../assets/images/msg/fabulous.png */ "./src/assets/images/msg/fabulous.png") },
           }),
           _c("text", [_vm._v("赞与访客")]),
-          _c("view", { staticClass: "msg-num" }, [_vm._v("1")]),
+          _vm.vote_visitor_cnt > 0
+            ? _c("view", { staticClass: "msg-num" }, [
+                _vm._v(_vm._s(_vm.vote_visitor_cnt)),
+              ])
+            : _vm._e(),
         ]
       ),
       _c(
@@ -164,7 +231,11 @@ var render = function () {
             attrs: { src: __webpack_require__(/*! ../../assets/images/msg/yuepai.png */ "./src/assets/images/msg/yuepai.png") },
           }),
           _c("text", [_vm._v("收到约拍")]),
-          _c("view", { staticClass: "msg-num" }, [_vm._v("22")]),
+          _vm.invite_cnt > 0
+            ? _c("view", { staticClass: "msg-num" }, [
+                _vm._v(_vm._s(_vm.invite_cnt)),
+              ])
+            : _vm._e(),
         ]
       ),
       _c("view", { staticClass: "msg-icon-item" }, [
@@ -172,14 +243,17 @@ var render = function () {
           attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
         }),
         _c("text", [_vm._v("收到报名")]),
-        _c("view", { staticClass: "msg-num" }, [_vm._v("33")]),
+        _vm.notice_cnt > 0
+          ? _c("view", { staticClass: "msg-num" }, [
+              _vm._v(_vm._s(_vm.notice_cnt)),
+            ])
+          : _vm._e(),
       ]),
       _c("view", { staticClass: "msg-icon-item" }, [
         _c("image", {
           attrs: { src: __webpack_require__(/*! ../../assets/images/msg/contact.png */ "./src/assets/images/msg/contact.png") },
         }),
         _c("text", [_vm._v("收到联系")]),
-        _c("view", { staticClass: "msg-num" }, [_vm._v("99+")]),
       ]),
     ]),
     _c(

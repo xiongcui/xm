@@ -413,20 +413,62 @@ export const collectList = (data) => {
     data,
   });
 };
-
-// 收藏列表：
-// [POST] -> [/v1/record/collect/list]
-// {
-//     "page": 1,
-//     "per_page": 10,
-//     "type": "PH"
-// }
-
-// 金币用途、赚取金币 [POST] -> /v1/coin/rule/list
-// {"type": 'earn'} # earn：赚取金币；cost：消费金币
+// 开通会员
+export const memberOpen = (data) => {
+  return request({
+    url: baseUrl + "/v1/member/open",
+    method: "post",
+    data,
+  });
+};
+// 会员信息
+export const memberInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/member/info",
+    method: "get",
+    data,
+  });
+};
+// 金币用途、赚取金币
+export const coinList = (data) => {
+  return request({
+    url: baseUrl + "/v1/coin/rule/list",
+    method: "post",
+    data,
+  });
+};
+// 金币明细
+export const coinItemList = (data) => {
+  return request({
+    url: baseUrl + "/v1/coin/item/list",
+    method: "post",
+    data,
+  });
+};
+// 获取金币数量
+export const coinAcct = (data) => {
+  return request({
+    url: baseUrl + "/v1/coin/acct",
+    method: "get",
+    data,
+  });
+};
+// 金币充值
+export const coinStore = (data) => {
+  return request({
+    url: baseUrl + "/v1/coin/store",
+    method: "post",
+    data,
+  });
+};
+// 消息通知
+export const notifyNumber = (data) => {
+  return request({
+    url: baseUrl + "/v1/notify/number/warn",
+    method: "get",
+    data,
+  });
+};
 
 // 金币支付：[POST] -> /v1/coin/apply/pay
 // {"oid": 'NE221210223505487819987', 'rule_code': 'apply_invite'}
-
-// 开通会员：[POST] -> /v1/member/open
-// {"amount": 119, 'valid_time': 3, 'valid_time_unit': 'M'}

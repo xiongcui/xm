@@ -16,15 +16,15 @@
                     "scene": null
                 },
                 {
-                    "name": "收到约拍",
-                    "pathName": "packageMsg/pages/invite/index",
+                    "name": "金币中心",
+                    "pathName": "packageAdd/pages/user/coin/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "约拍详情",
-                    "pathName": "packageMsg/pages/inviteDetail/index",
+                    "name": "充值金币",
+                    "pathName": "packageAdd/pages/user/rechargecoin/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

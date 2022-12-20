@@ -186,7 +186,11 @@ export default {
         camera: "back",
         success(res) {
           let path = res.tempFiles[0].tempFilePath;
-          openPage("/pages/we-cropper/index?imgSrc=" + path + "&type=avatar");
+          openPage(
+            "/packageAdd/pages/user/we-cropper/index?imgSrc=" +
+              path +
+              "&type=avatar"
+          );
         },
       });
     },

@@ -136,7 +136,7 @@
     </view>
     <view class="my-ct">
       <view class="my-vip">
-        <view class="my-vip-left">
+        <view class="my-vip-left" @tap="goCoin">
           <image
             src="../../assets/images/money.png"
             class="my-vip-img"
@@ -144,10 +144,10 @@
           ></image>
           <view>
             <view>我的金币</view>
-            <view>20币</view>
+            <view>{{ coin }}币</view>
           </view>
         </view>
-        <view class="my-vip-rt">
+        <view class="my-vip-rt" @tap="goVip">
           <image
             src="../../assets/images/vip.png"
             class="my-vip-img"
@@ -345,7 +345,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="coin" class="item ub line-t">
+        <view @tap="customerService" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -487,6 +487,7 @@ export default {
           track_cnt: 0,
         },
       },
+      coin: 0,
     };
   },
   methods: {
@@ -512,10 +513,24 @@ export default {
     myZuopin() {
       openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
     },
+    goVip() {
+      openPage("/packageVip/pages/vip/index");
+    },
+    goCoin() {
+      openPage("/packageAdd/pages/user/coin/index");
+    },
+    customerService() {
+      wx.openCustomerServiceChat({
+        extInfo: { url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6" },
+        corpId: "ww9ad8086390afbfaa",
+        success(res) {},
+      });
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
         this.infor = res.data.data;
+        this.coin = res.data.data.acct.coin;
       } catch (error) {}
     },
   },

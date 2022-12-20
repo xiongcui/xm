@@ -67,7 +67,7 @@ export default {
             return item.tempFilePath;
           });
           openPage(
-            "/pages/we-cropper/index?type=videoId&videoId=" +
+            "/packageAdd/pages/user/we-cropper/index?type=videoId&videoId=" +
               index +
               "&imgSrc=" +
               arr[0]

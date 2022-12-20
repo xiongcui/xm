@@ -374,7 +374,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/pages/release/appointment/index.vue");
 
 
-var config = {"navigationBarTitleText":"选择约单对象"};
+var config = {"navigationBarTitleText":"选择约拍对象"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'pages/release/appointment/index', {root:{cn:[]}}, config || {}))

@@ -524,7 +524,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "O"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "V"])(params);
 
               case 3:
                 res = _context.sent;
@@ -568,7 +568,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Z"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -602,7 +602,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "L"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "S"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -632,7 +632,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "T"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "ab"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -665,7 +665,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "F"])(params);
 
               case 3:
                 res = _context5.sent;

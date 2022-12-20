@@ -4,19 +4,16 @@
     <view class="vip-card">
       <view class="card-left">
         <view class="card-left-info">
-          <image
-            class="headimg"
-            src="https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/photo/L3cNKAhF/89ca4714-67f4-11ed-ae45-473a871aac32.png"
-          >
-          </image>
+          <image class="headimg" :src="avatar"> </image>
           <view class="info-box">
-            <view class="name">昵称</view>
-            <view class="vip-tips">会员尚未开通</view>
+            <view class="name">{{ nickname }}</view>
+            <view class="vip-tips" v-if="!ismember">会员尚未开通</view>
+            <view class="vip-tips" v-else>{{ endtime }}到期</view>
           </view>
         </view>
         <view class="card-left-vipinfo">
           <view>¥49/月起</view>
-          <view>开通会员，再得金豆</view>
+          <view v-if="!ismember">开通会员，再得金豆</view>
         </view>
       </view>
       <view class="card-rt">
@@ -49,21 +46,33 @@
     <view class="vip-package">
       <view class="vip-title">/ 会员套餐推荐 /</view>
       <view class="package-list">
-        <view class="package-box">
+        <view
+          class="package-box"
+          :class="active == 0 ? 'active' : ''"
+          @tap="packageClick(0, 49)"
+        >
           <text class="month">1个月</text>
           <text class="amount"> <text class="company">¥</text>49</text>
           <text class="original-price">原价 ¥99</text>
           <text class="price-red">¥49/月</text>
           <text class="tag">限时</text>
         </view>
-        <view class="package-box active">
+        <view
+          class="package-box"
+          :class="active == 1 ? 'active' : ''"
+          @tap="packageClick(1, 119)"
+        >
           <text class="month">3个月</text>
           <text class="amount"> <text class="company">¥</text>119</text>
           <text class="original-price">原价 ¥299</text>
           <text class="price-red">¥39/月</text>
           <text class="tag">送30金币</text>
         </view>
-        <view class="package-box">
+        <view
+          class="package-box"
+          :class="active == 2 ? 'active' : ''"
+          @tap="packageClick(2, 299)"
+        >
           <text class="month">1年</text>
           <text class="amount"> <text class="company">¥</text>299</text>
           <text class="original-price">原价 ¥599</text>
@@ -138,7 +147,12 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <cover-view class="subbtn_bottom">
-        <button @tap="submit">立即以119元开通</button>
+        <button @tap="submit">
+          立即以{{ price }}元{{ ismember ? "续费" : "开通" }}
+        </button>
+        <text class="tagcoin" v-if="coin > 0"
+          >{{ ismember ? "续费" : "开通" }}可得{{ coin }}金币</text
+        >
       </cover-view>
     </cover-view>
   </view>
@@ -146,15 +160,86 @@
 
 <script>
 import "./index.scss";
+import { memberOpen, memberInfo } from "../../../api/index";
+import { errortip } from "../../../utils/util";
 export default {
   name: "vip",
   data() {
     return {
       isIphoneX: false,
+      active: 1,
+      coin: 30,
+      price: 119,
+      time: {
+        0: 1,
+        1: 3,
+        2: 12,
+      },
+      nickname: "",
+      avatar: "",
+      ismember: 0,
+      endtime: "",
     };
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.memberInfo("");
+  },
+  methods: {
+    packageClick(active, price) {
+      this.active = active;
+      this.price = price;
+      if (active == 0) {
+        this.coin = 0;
+      }
+      if (active == 1) {
+        this.coin = 30;
+      }
+      if (active == 2) {
+        this.coin = 150;
+      }
+    },
+    async memberOpen(params) {
+      try {
+        let res = await memberOpen(params);
+        let data = res.data.data;
+        wx.requestPayment({
+          timeStamp: data.result.timeStamp,
+          nonceStr: data.result.nonceStr,
+          package: data.result.package,
+          signType: data.result.signType,
+          paySign: data.result.paySign,
+          success: function (res) {
+            console.log(res, "成功了");
+            errortip(!this.ismember ? "开通成功" : "续费成功");
+            wx.navigateBack({
+              delta: 1,
+            });
+          },
+          fail: function (res) {},
+          complete: function (res) {},
+        });
+      } catch (error) {}
+    },
+    async memberInfo(params) {
+      try {
+        let res = await memberInfo(params);
+        this.nickname = res.data.data.nickname;
+        this.avatar = res.data.data.avatar;
+        this.ismember = res.data.data.is_member;
+        this.endtime = res.data.data.end_time;
+      } catch (error) {}
+    },
+    submit() {
+      let params = {
+        amount: Number(this.price),
+        valid_time: this.time[this.active],
+        valid_time_unit: "M",
+        coin: this.coin,
+      };
+      console.log(params);
+      this.memberOpen(params);
+    },
   },
 };
 </script>

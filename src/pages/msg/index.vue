@@ -4,22 +4,24 @@
       <view class="msg-icon-item" @tap="openUrl(1)">
         <image src="../../assets/images/msg/fabulous.png"></image>
         <text>赞与访客</text>
-        <view class="msg-num">1</view>
+        <view class="msg-num" v-if="vote_visitor_cnt > 0">{{
+          vote_visitor_cnt
+        }}</view>
       </view>
       <view class="msg-icon-item" @tap="openUrl(2)">
         <image src="../../assets/images/msg/yuepai.png"></image>
         <text>收到约拍</text>
-        <view class="msg-num">22</view>
+        <view class="msg-num" v-if="invite_cnt > 0">{{ invite_cnt }}</view>
       </view>
       <view class="msg-icon-item">
         <image src="../../assets/images/msg/baoming.png"></image>
         <text>收到报名</text>
-        <view class="msg-num">33</view>
+        <view class="msg-num" v-if="notice_cnt > 0">{{ notice_cnt }}</view>
       </view>
       <view class="msg-icon-item">
         <image src="../../assets/images/msg/contact.png"></image>
         <text>收到联系</text>
-        <view class="msg-num">99+</view>
+        <!-- <view class="msg-num"></view> -->
       </view>
     </view>
     <view class="msg-notification" @tap="openUrl(5)">
@@ -39,9 +41,17 @@
 
 <script>
 import { openPage } from "../../utils/util";
+import { notifyNumber } from "../../api/index";
 import "./index.scss";
 export default {
   name: "msg",
+  data() {
+    return {
+      invite_cnt: 0,
+      notice_cnt: 0,
+      vote_visitor_cnt: 0,
+    };
+  },
   methods: {
     openUrl(type) {
       switch (type) {
@@ -56,6 +66,27 @@ export default {
           break;
       }
     },
+    async notifyNumber(params) {
+      try {
+        let res = await notifyNumber(params);
+        this.invite_cnt = res.data.data.invite_cnt;
+        this.notice_cnt = res.data.data.notice_cnt;
+        this.vote_visitor_cnt = res.data.data.vote_visitor_cnt;
+        console.log(this.invite_cnt, "11");
+        if (res.data.data.is_notify_warn) {
+          wx.showTabBarRedDot({
+            index: 3,
+          });
+        } else {
+          wx.hideTabBarRedDot({
+            index: 3,
+          });
+        }
+      } catch (error) {}
+    },
+  },
+  onShow() {
+    this.notifyNumber("");
   },
 };
 </script>

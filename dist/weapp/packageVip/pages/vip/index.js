@@ -47,8 +47,28 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageVip/pages/vip/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageVip/pages/vip/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -196,15 +216,137 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "vip",
   data: function data() {
     return {
-      isIphoneX: false
+      isIphoneX: false,
+      active: 1,
+      coin: 30,
+      price: 119,
+      time: {
+        0: 1,
+        1: 3,
+        2: 12
+      },
+      nickname: "",
+      avatar: "",
+      ismember: 0,
+      endtime: ""
     };
   },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.memberInfo("");
+  },
+  methods: {
+    packageClick: function packageClick(active, price) {
+      this.active = active;
+      this.price = price;
+
+      if (active == 0) {
+        this.coin = 0;
+      }
+
+      if (active == 1) {
+        this.coin = 30;
+      }
+
+      if (active == 2) {
+        this.coin = 150;
+      }
+    },
+    memberOpen: function memberOpen(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "v"])(params);
+
+              case 3:
+                res = _context.sent;
+                data = res.data.data;
+                wx.requestPayment({
+                  timeStamp: data.result.timeStamp,
+                  nonceStr: data.result.nonceStr,
+                  package: data.result.package,
+                  signType: data.result.signType,
+                  paySign: data.result.paySign,
+                  success: function success(res) {
+                    console.log(res, "成功了");
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(!this.ismember ? "开通成功" : "续费成功");
+                    wx.navigateBack({
+                      delta: 1
+                    });
+                  },
+                  fail: function fail(res) {},
+                  complete: function complete(res) {}
+                });
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    memberInfo: function memberInfo(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "u"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this.nickname = res.data.data.nickname;
+                _this.avatar = res.data.data.avatar;
+                _this.ismember = res.data.data.is_member;
+                _this.endtime = res.data.data.end_time;
+                _context2.next = 12;
+                break;
+
+              case 10:
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](0);
+
+              case 12:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 10]]);
+      }))();
+    },
+    submit: function submit() {
+      var params = {
+        amount: Number(this.price),
+        valid_time: this.time[this.active],
+        valid_time_unit: "M",
+        coin: this.coin
+      };
+      console.log(params);
+      this.memberOpen(params);
+    }
   }
 });
 
@@ -233,20 +375,25 @@ var render = function () {
       _c("view", { staticClass: "vip-card" }, [
         _c("view", { staticClass: "card-left" }, [
           _c("view", { staticClass: "card-left-info" }, [
-            _c("image", {
-              staticClass: "headimg",
-              attrs: {
-                src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/photo/L3cNKAhF/89ca4714-67f4-11ed-ae45-473a871aac32.png",
-              },
-            }),
+            _c("image", { staticClass: "headimg", attrs: { src: _vm.avatar } }),
             _c("view", { staticClass: "info-box" }, [
-              _c("view", { staticClass: "name" }, [_vm._v("昵称")]),
-              _c("view", { staticClass: "vip-tips" }, [_vm._v("会员尚未开通")]),
+              _c("view", { staticClass: "name" }, [
+                _vm._v(_vm._s(_vm.nickname)),
+              ]),
+              !_vm.ismember
+                ? _c("view", { staticClass: "vip-tips" }, [
+                    _vm._v("会员尚未开通"),
+                  ])
+                : _c("view", { staticClass: "vip-tips" }, [
+                    _vm._v(_vm._s(_vm.endtime) + "到期"),
+                  ]),
             ]),
           ]),
           _c("view", { staticClass: "card-left-vipinfo" }, [
             _c("view", [_vm._v("¥49/月起")]),
-            _c("view", [_vm._v("开通会员，再得金豆")]),
+            !_vm.ismember
+              ? _c("view", [_vm._v("开通会员，再得金豆")])
+              : _vm._e(),
           ]),
         ]),
         _c("view", { staticClass: "card-rt" }, [
@@ -299,40 +446,78 @@ var render = function () {
       _c("view", { staticClass: "vip-package" }, [
         _c("view", { staticClass: "vip-title" }, [_vm._v("/ 会员套餐推荐 /")]),
         _c("view", { staticClass: "package-list" }, [
-          _c("view", { staticClass: "package-box" }, [
-            _c("text", { staticClass: "month" }, [_vm._v("1个月")]),
-            _c("text", { staticClass: "amount" }, [
-              _c("text", { staticClass: "company" }, [_vm._v("¥")]),
-              _vm._v("49"),
-            ]),
-            _c("text", { staticClass: "original-price" }, [_vm._v("原价 ¥99")]),
-            _c("text", { staticClass: "price-red" }, [_vm._v("¥49/月")]),
-            _c("text", { staticClass: "tag" }, [_vm._v("限时")]),
-          ]),
-          _c("view", { staticClass: "package-box active" }, [
-            _c("text", { staticClass: "month" }, [_vm._v("3个月")]),
-            _c("text", { staticClass: "amount" }, [
-              _c("text", { staticClass: "company" }, [_vm._v("¥")]),
-              _vm._v("119"),
-            ]),
-            _c("text", { staticClass: "original-price" }, [
-              _vm._v("原价 ¥299"),
-            ]),
-            _c("text", { staticClass: "price-red" }, [_vm._v("¥39/月")]),
-            _c("text", { staticClass: "tag" }, [_vm._v("送30金币")]),
-          ]),
-          _c("view", { staticClass: "package-box" }, [
-            _c("text", { staticClass: "month" }, [_vm._v("1年")]),
-            _c("text", { staticClass: "amount" }, [
-              _c("text", { staticClass: "company" }, [_vm._v("¥")]),
-              _vm._v("299"),
-            ]),
-            _c("text", { staticClass: "original-price" }, [
-              _vm._v("原价 ¥599"),
-            ]),
-            _c("text", { staticClass: "price-red" }, [_vm._v("¥25/月")]),
-            _c("text", { staticClass: "tag" }, [_vm._v("送150金币")]),
-          ]),
+          _c(
+            "view",
+            {
+              staticClass: "package-box",
+              class: _vm.active == 0 ? "active" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.packageClick(0, 49)
+                },
+              },
+            },
+            [
+              _c("text", { staticClass: "month" }, [_vm._v("1个月")]),
+              _c("text", { staticClass: "amount" }, [
+                _c("text", { staticClass: "company" }, [_vm._v("¥")]),
+                _vm._v("49"),
+              ]),
+              _c("text", { staticClass: "original-price" }, [
+                _vm._v("原价 ¥99"),
+              ]),
+              _c("text", { staticClass: "price-red" }, [_vm._v("¥49/月")]),
+              _c("text", { staticClass: "tag" }, [_vm._v("限时")]),
+            ]
+          ),
+          _c(
+            "view",
+            {
+              staticClass: "package-box",
+              class: _vm.active == 1 ? "active" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.packageClick(1, 119)
+                },
+              },
+            },
+            [
+              _c("text", { staticClass: "month" }, [_vm._v("3个月")]),
+              _c("text", { staticClass: "amount" }, [
+                _c("text", { staticClass: "company" }, [_vm._v("¥")]),
+                _vm._v("119"),
+              ]),
+              _c("text", { staticClass: "original-price" }, [
+                _vm._v("原价 ¥299"),
+              ]),
+              _c("text", { staticClass: "price-red" }, [_vm._v("¥39/月")]),
+              _c("text", { staticClass: "tag" }, [_vm._v("送30金币")]),
+            ]
+          ),
+          _c(
+            "view",
+            {
+              staticClass: "package-box",
+              class: _vm.active == 2 ? "active" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.packageClick(2, 299)
+                },
+              },
+            },
+            [
+              _c("text", { staticClass: "month" }, [_vm._v("1年")]),
+              _c("text", { staticClass: "amount" }, [
+                _c("text", { staticClass: "company" }, [_vm._v("¥")]),
+                _vm._v("299"),
+              ]),
+              _c("text", { staticClass: "original-price" }, [
+                _vm._v("原价 ¥599"),
+              ]),
+              _c("text", { staticClass: "price-red" }, [_vm._v("¥25/月")]),
+              _c("text", { staticClass: "tag" }, [_vm._v("送150金币")]),
+            ]
+          ),
         ]),
       ]),
       _c("view", { staticClass: "vip-privilege" }, [
@@ -437,8 +622,24 @@ var render = function () {
         [
           _c("cover-view", { staticClass: "subbtn_bottom" }, [
             _c("button", { on: { tap: _vm.submit } }, [
-              _vm._v("立即以119元开通"),
+              _vm._v(
+                " 立即以" +
+                  _vm._s(_vm.price) +
+                  "元" +
+                  _vm._s(_vm.ismember ? "续费" : "开通") +
+                  " "
+              ),
             ]),
+            _vm.coin > 0
+              ? _c("text", { staticClass: "tagcoin" }, [
+                  _vm._v(
+                    _vm._s(_vm.ismember ? "续费" : "开通") +
+                      "可得" +
+                      _vm._s(_vm.coin) +
+                      "金币"
+                  ),
+                ])
+              : _vm._e(),
           ]),
         ],
         1
@@ -617,5 +818,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageVip/pages/vip/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageVip/pages/vip/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

@@ -742,7 +742,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "G"])(params);
 
               case 3:
                 res = _context.sent;
@@ -806,7 +806,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "m"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1458,7 +1458,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageAdd/pages/yuedan/add_yuedan/index.vue");
 
 
-var config = {"navigationBarTitleText":"发布约单"};
+var config = {"navigationBarTitleText":"发布约拍"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageAdd/pages/yuedan/add_yuedan/index', {root:{cn:[]}}, config || {}))

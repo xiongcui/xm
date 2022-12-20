@@ -82,7 +82,7 @@ export default {
             return item.tempFilePath;
           });
           wx.setStorageSync("imgList", arr);
-          openPage("/pages/we-cropper/index?type=imgList");
+          openPage("/packageAdd/pages/user/we-cropper/index?type=imgList");
         },
       });
     },
@@ -109,7 +109,7 @@ export default {
                     return item.tempFilePath;
                   });
                   openPage(
-                    "/pages/we-cropper/index?type=imgId&imgId=" +
+                    "/packageAdd/pages/user/we-cropper/index?type=imgId&imgId=" +
                       index +
                       "&imgSrc=" +
                       arr[0]

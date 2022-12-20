@@ -619,7 +619,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "r"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "x"])(params);
 
               case 3:
                 res = _context.sent;
@@ -684,7 +684,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "G"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -725,7 +725,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "t"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "z"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1305,7 +1305,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "G"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1354,7 +1354,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "E"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1428,7 +1428,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "j"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "n"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1493,8 +1493,6 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
-//
-//
 //
 //
 //
@@ -2266,7 +2264,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "G"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2324,7 +2322,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "n"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "r"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -2380,6 +2378,45 @@ component.options.__file = "src/pages/home/index.vue"
           }
         }, _callee2, null, [[0, 22]]);
       }))();
+    },
+    notifyNumber: function notifyNumber(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "B"])(params);
+
+              case 3:
+                res = _context3.sent;
+
+                if (res.data.data.is_notify_warn) {
+                  wx.showTabBarRedDot({
+                    index: 3
+                  });
+                } else {
+                  wx.hideTabBarRedDot({
+                    index: 3
+                  });
+                }
+
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
+      }))();
     }
   },
   // 获取滚动条当前位置
@@ -2429,7 +2466,9 @@ component.options.__file = "src/pages/home/index.vue"
     this.allCity = _utils_city__WEBPACK_IMPORTED_MODULE_5__[/* city */ "a"];
     this.publicConfig({
       type: ["invite_filter", "payment_type"]
-    });
+    }); // 消息通知红点
+
+    this.notifyNumber("");
   } // onShow: function onShow() {
   //   this.publicConfig({
   //     type: ["invite_filter", "payment_type"],
@@ -3391,9 +3430,7 @@ var render = function () {
                               staticClass: "swiper-item-img",
                               attrs: {
                                 mode: "aspectFill",
-                                src: __webpack_require__("./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$")("./lanmao" +
-                                  (index + 1) +
-                                  ".jpg"),
+                                src: "https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/9f7062c8-67b9-11ed-ae45-473a871aac32.jpg",
                               },
                             }),
                           ]),
@@ -4028,42 +4065,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$":
-/*!****************************************************!*\
-  !*** ./src/assets/images sync ^\.\/lanmao.*\.jpg$ ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./lanmao1.jpg": "./src/assets/images/lanmao1.jpg",
-	"./lanmao2.jpg": "./src/assets/images/lanmao2.jpg",
-	"./lanmao3.jpg": "./src/assets/images/lanmao3.jpg"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./src/assets/images sync recursive ^\\.\\/lanmao.*\\.jpg$";
-
-/***/ }),
-
 /***/ "./src/assets/images/common/icon_sign.png":
 /*!************************************************!*\
   !*** ./src/assets/images/common/icon_sign.png ***!
@@ -4121,42 +4122,6 @@ module.exports = __webpack_require__.p + "assets/images/common/totop.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/huodong.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/lanmao1.jpg":
-/*!***************************************!*\
-  !*** ./src/assets/images/lanmao1.jpg ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/lanmao1.jpg";
-
-/***/ }),
-
-/***/ "./src/assets/images/lanmao2.jpg":
-/*!***************************************!*\
-  !*** ./src/assets/images/lanmao2.jpg ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/lanmao2.jpg";
-
-/***/ }),
-
-/***/ "./src/assets/images/lanmao3.jpg":
-/*!***************************************!*\
-  !*** ./src/assets/images/lanmao3.jpg ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/lanmao3.jpg";
 
 /***/ }),
 

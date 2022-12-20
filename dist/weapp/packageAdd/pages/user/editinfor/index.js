@@ -241,7 +241,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         camera: "back",
         success: function success(res) {
           var path = res.tempFiles[0].tempFilePath;
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/pages/we-cropper/index?imgSrc=" + path + "&type=avatar");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageAdd/pages/user/we-cropper/index?imgSrc=" + path + "&type=avatar");
         }
       });
     },
@@ -270,7 +270,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "P"])(params);
 
               case 3:
                 res = _context.sent;
@@ -311,7 +311,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "H"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "O"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -345,7 +345,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "P"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "W"])(params);
 
               case 3:
                 res = _context3.sent;

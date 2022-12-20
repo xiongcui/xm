@@ -1,0 +1,57 @@
+.card {
+  background: #ea6a6b;
+  color: #fffefb;
+  padding: 30px;
+  margin: 16px;
+  height: 200px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .balance-title {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .balance {
+    font-size: 60px;
+    font-weight: bold;
+  }
+  .company {
+    font-size: 32px;
+  }
+  .card-rt image {
+    width: 100px;
+    height: 100px;
+  }
+}
+.coin-list {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .select-coin {
+    width: 260px;
+    padding: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #333333;
+    font-size: 36px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .active {
+    border-color: #ea6a6b;
+    color: #ea6a6b;
+  }
+  .tag {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: #ff1e3e;
+    color: #ffffff;
+    font-size: 22px;
+    padding: 6px;
+    border-radius: 25% 0px 25% 0px;
+  }
+}

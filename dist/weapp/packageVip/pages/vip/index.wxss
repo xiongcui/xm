@@ -249,3 +249,14 @@
   width: 30rpx;
   height: 30rpx;
 }
+
+.tagcoin {
+  position: absolute;
+  right: 16rpx;
+  top: 0;
+  background: #ff1e3e;
+  color: #ffffff;
+  font-size: 22rpx;
+  padding: 6rpx;
+  border-radius: 25% 0 25% 0;
+}

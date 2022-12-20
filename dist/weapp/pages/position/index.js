@@ -56,10 +56,19 @@ component.options.__file = "src/pages/position/index.vue"
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "position",
   methods: {
+    test: function test() {
+      wx.checkIsSoterEnrolledInDevice({
+        checkAuthMode: "facial",
+        success: function success(res) {
+          console.log(res.isEnrolled);
+        }
+      });
+    },
     payClick: function payClick() {
       this.paymina("");
     },
@@ -72,7 +81,7 @@ component.options.__file = "src/pages/position/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* paymina */ "v"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* paymina */ "C"])(params);
 
               case 3:
                 res = _context.sent;
@@ -125,7 +134,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { on: { tap: _vm.payClick } }, [_vm._v(" 测试支付 ")])
+  return _c("view", { on: { tap: _vm.test } }, [_vm._v("人脸")])
 }
 var staticRenderFns = []
 render._withStripped = true

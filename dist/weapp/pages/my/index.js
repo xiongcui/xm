@@ -539,7 +539,8 @@ component.options.__file = "src/pages/my/index.vue"
           read_cnt: 0,
           track_cnt: 0
         }
-      }
+      },
+      coin: 0
     };
   },
   methods: {
@@ -565,6 +566,21 @@ component.options.__file = "src/pages/my/index.vue"
     myZuopin: function myZuopin() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
     },
+    goVip: function goVip() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageVip/pages/vip/index");
+    },
+    goCoin: function goCoin() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/coin/index");
+    },
+    customerService: function customerService() {
+      wx.openCustomerServiceChat({
+        extInfo: {
+          url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6"
+        },
+        corpId: "ww9ad8086390afbfaa",
+        success: function success(res) {}
+      });
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -576,24 +592,25 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "O"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "V"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.infor = res.data.data;
-                _context.next = 9;
+                _this.coin = res.data.data.acct.coin;
+                _context.next = 10;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 8]]);
       }))();
     }
   },
@@ -847,7 +864,7 @@ var render = function () {
     ]),
     _c("view", { staticClass: "my-ct" }, [
       _c("view", { staticClass: "my-vip" }, [
-        _c("view", { staticClass: "my-vip-left" }, [
+        _c("view", { staticClass: "my-vip-left", on: { tap: _vm.goCoin } }, [
           _c("image", {
             staticClass: "my-vip-img",
             attrs: {
@@ -857,10 +874,10 @@ var render = function () {
           }),
           _c("view", [
             _c("view", [_vm._v("我的金币")]),
-            _c("view", [_vm._v("20币")]),
+            _c("view", [_vm._v(_vm._s(_vm.coin) + "币")]),
           ]),
         ]),
-        _c("view", { staticClass: "my-vip-rt" }, [
+        _c("view", { staticClass: "my-vip-rt", on: { tap: _vm.goVip } }, [
           _c("image", {
             staticClass: "my-vip-img",
             attrs: {
@@ -1164,7 +1181,7 @@ var render = function () {
         ),
         _c(
           "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
+          { staticClass: "item ub line-t", on: { tap: _vm.customerService } },
           [
             _c("view", { staticClass: "item_icon" }, [
               _c("image", {
