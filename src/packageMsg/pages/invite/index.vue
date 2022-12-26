@@ -339,6 +339,7 @@ export default {
     },
     query() {
       let params = {
+        type: "NE",
         visited_status: this.status,
         page: this.pageNum,
         per_page: this.pageSize,

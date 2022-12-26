@@ -112,6 +112,7 @@ export default defineAppConfig({
         "pages/livevisitor/index",
         "pages/invite/index",
         "pages/inviteDetail/index",
+        "pages/signup/index",
       ],
     },
     {

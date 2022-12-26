@@ -470,5 +470,23 @@ export const notifyNumber = (data) => {
   });
 };
 
+export const faceToken = (data) => {
+  return request({
+    url: baseUrl + "/v1/identify/face/token",
+    method: "get",
+    data,
+  });
+};
+
+export const facePrint = (data) => {
+  return request({
+    url: "https://brain.baidu.com/face/print",
+    method: "get",
+    data,
+  });
+};
+
+// https://brain.baidu.com/face/print/?token=xxx
+
 // 金币支付：[POST] -> /v1/coin/apply/pay
 // {"oid": 'NE221210223505487819987', 'rule_code': 'apply_invite'}

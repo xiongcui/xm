@@ -322,7 +322,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "T"])(params);
 
               case 3:
                 res = _context.sent;
@@ -356,7 +356,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "U"])(params);
 
               case 3:
                 res = _context2.sent;

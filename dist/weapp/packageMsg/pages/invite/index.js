@@ -395,6 +395,7 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
     },
     query: function query() {
       var params = {
+        type: "NE",
         visited_status: this.status,
         page: this.pageNum,
         per_page: this.pageSize

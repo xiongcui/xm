@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "收货地址",
-                    "pathName": "packageAdd/pages/user/addresslist/index",
+                    "name": "收到报名",
+                    "pathName": "packageMsg/pages/signup/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

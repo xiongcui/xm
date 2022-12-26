@@ -177,6 +177,14 @@
   </canvas>
 </template>
 
+<template name="tmpl_0_web-view">
+  <web-view src="{{i.src}}" bindmessage="eh" bindload="eh" binderror="eh" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </web-view>
+</template>
+
 <template name="tmpl_0_block">
   <block  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
