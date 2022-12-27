@@ -130,6 +130,229 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "sigup",
@@ -297,6 +520,303 @@ var render = function () {
                   _vm._v(" 来自通告：朝阳区周六日汉服约拍 "),
                   _c("text", { staticClass: "notice-btn" }, [
                     _vm._v("查看全部报名"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-cotent" }, [
+                  _c("text", { staticClass: "signup-desc" }, [
+                    _vm._v(
+                      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("text", { staticClass: "signup-detail" }, [
+                    _vm._v("查看详情"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-btns" }, [
+                  _c("view", { staticClass: "signup-btn-left" }, [
+                    _c("text", { staticClass: "more" }, [_vm._v("更多")]),
+                    _c("text", { staticClass: "remarks" }, [_vm._v("备注")]),
+                  ]),
+                  _c("view", { staticClass: "signup-btn-rt" }, [
+                    _c(
+                      "view",
+                      { staticClass: "btn-yellow" },
+                      [
+                        _c("icon", {
+                          attrs: {
+                            type: "cancel",
+                            size: "12",
+                            color: "#ffffff",
+                          },
+                        }),
+                        _vm._v("不符"),
+                      ],
+                      1
+                    ),
+                    _c(
+                      "view",
+                      { staticClass: "btn-red" },
+                      [
+                        _c("icon", {
+                          attrs: {
+                            type: "success_no_circle",
+                            size: "12",
+                            color: "#ffffff",
+                          },
+                        }),
+                        _vm._v("合适"),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _c("swiper-item", [
+              _c("view", { staticClass: "signup-box" }, [
+                _c("view", { staticClass: "signup-top" }, [
+                  _c("view", { staticClass: "signup-img" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIX4GibOqaLwcYuaOdFrEPSEGLoYlibQNkwZ5jOj8En8xicWdg0Mb5ebgLETD5icysAYJo7cr05U8bV0A/132",
+                      },
+                    }),
+                  ]),
+                  _c("view", { staticClass: "signup-info" }, [
+                    _c("view", { staticClass: "signup-name" }, [
+                      _vm._v(" nickname "),
+                      _c("image", {
+                        staticClass: "list_sex",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        },
+                      }),
+                    ]),
+                    _c("view", { staticClass: "identity" }, [
+                      _vm._v("摄影师 ｜ 北京市"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "signup-rt" }, [
+                    _c("view", { staticClass: "contact" }, [
+                      _vm._v("立即联系"),
+                    ]),
+                    _c("view", { staticClass: "time" }, [
+                      _vm._v("1小时前报名"),
+                    ]),
+                  ]),
+                ]),
+                _c("view", { staticClass: "notice" }, [
+                  _vm._v(" 来自通告：朝阳区周六日汉服约拍 "),
+                  _c("text", { staticClass: "notice-btn" }, [
+                    _vm._v("查看全部报名"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-cotent" }, [
+                  _c("text", { staticClass: "signup-desc" }, [
+                    _vm._v(
+                      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("text", { staticClass: "signup-detail" }, [
+                    _vm._v("查看详情"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-btns" }, [
+                  _c("view", { staticClass: "signup-btn-left" }, [
+                    _c("text", { staticClass: "more" }, [_vm._v("更多")]),
+                    _c("text", { staticClass: "remarks" }, [_vm._v("备注")]),
+                  ]),
+                  _c("view", { staticClass: "signup-btn-rt" }, [
+                    _c("view", { staticClass: "btn-yellow" }, [
+                      _vm._v("放弃合作"),
+                    ]),
+                    _c("view", { staticClass: "btn-red" }, [
+                      _vm._v("完成合作"),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _c("swiper-item", [
+              _c("view", { staticClass: "signup-box" }, [
+                _c("view", { staticClass: "signup-top" }, [
+                  _c("view", { staticClass: "signup-img" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIX4GibOqaLwcYuaOdFrEPSEGLoYlibQNkwZ5jOj8En8xicWdg0Mb5ebgLETD5icysAYJo7cr05U8bV0A/132",
+                      },
+                    }),
+                  ]),
+                  _c("view", { staticClass: "signup-info" }, [
+                    _c("view", { staticClass: "signup-name" }, [
+                      _vm._v(" nickname "),
+                      _c("image", {
+                        staticClass: "list_sex",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        },
+                      }),
+                    ]),
+                    _c("view", { staticClass: "identity" }, [
+                      _vm._v("摄影师 ｜ 北京市"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "signup-rt" }, [
+                    _c("view", { staticClass: "contact" }, [
+                      _vm._v("立即联系"),
+                    ]),
+                    _c("view", { staticClass: "time" }, [
+                      _vm._v("1小时前报名"),
+                    ]),
+                  ]),
+                ]),
+                _c("view", { staticClass: "notice" }, [
+                  _vm._v(" 来自通告：朝阳区周六日汉服约拍 "),
+                  _c("text", { staticClass: "notice-btn" }, [
+                    _vm._v("查看全部报名"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-cotent" }, [
+                  _c("text", { staticClass: "signup-desc" }, [
+                    _vm._v(
+                      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("text", { staticClass: "signup-detail" }, [
+                    _vm._v("查看详情"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-btns" }, [
+                  _c("view", { staticClass: "signup-btn-left" }, [
+                    _c("text", { staticClass: "more" }, [_vm._v("更多")]),
+                    _c("text", { staticClass: "remarks" }, [_vm._v("备注")]),
+                  ]),
+                  _c("view", { staticClass: "signup-btn-rt" }, [
+                    _c("view", { staticClass: "btn-blue" }, [
+                      _vm._v("恢复待定"),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _c("swiper-item", [
+              _c("view", { staticClass: "signup-box" }, [
+                _c("view", { staticClass: "signup-top" }, [
+                  _c("view", { staticClass: "signup-img" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIX4GibOqaLwcYuaOdFrEPSEGLoYlibQNkwZ5jOj8En8xicWdg0Mb5ebgLETD5icysAYJo7cr05U8bV0A/132",
+                      },
+                    }),
+                  ]),
+                  _c("view", { staticClass: "signup-info" }, [
+                    _c("view", { staticClass: "signup-name" }, [
+                      _vm._v(" nickname "),
+                      _c("image", {
+                        staticClass: "list_sex",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        },
+                      }),
+                    ]),
+                    _c("view", { staticClass: "identity" }, [
+                      _vm._v("摄影师 ｜ 北京市"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "signup-rt" }, [
+                    _c("view", { staticClass: "contact" }, [
+                      _vm._v("立即联系"),
+                    ]),
+                    _c("view", { staticClass: "time" }, [
+                      _vm._v("1小时前报名"),
+                    ]),
+                  ]),
+                ]),
+                _c("view", { staticClass: "notice" }, [
+                  _vm._v(" 来自通告：朝阳区周六日汉服约拍 "),
+                  _c("text", { staticClass: "notice-btn" }, [
+                    _vm._v("查看全部报名"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-cotent" }, [
+                  _c("text", { staticClass: "signup-desc" }, [
+                    _vm._v(
+                      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("text", { staticClass: "signup-detail" }, [
+                    _vm._v("查看详情"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-btns" }, [
+                  _c("view", { staticClass: "signup-btn-left" }, [
+                    _c("text", { staticClass: "more" }, [_vm._v("更多")]),
+                    _c("text", { staticClass: "remarks" }, [_vm._v("备注")]),
+                  ]),
+                  _c("view", { staticClass: "signup-btn-rt" }, [
+                    _c("view", { staticClass: "btn-yellow" }, [
+                      _vm._v("恢复合适"),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _c("swiper-item", [
+              _c("view", { staticClass: "signup-box" }, [
+                _c("view", { staticClass: "signup-top" }, [
+                  _c("view", { staticClass: "signup-img" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIX4GibOqaLwcYuaOdFrEPSEGLoYlibQNkwZ5jOj8En8xicWdg0Mb5ebgLETD5icysAYJo7cr05U8bV0A/132",
+                      },
+                    }),
+                  ]),
+                  _c("view", { staticClass: "signup-info" }, [
+                    _c("view", { staticClass: "signup-name" }, [
+                      _vm._v(" nickname "),
+                      _c("image", {
+                        staticClass: "list_sex",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        },
+                      }),
+                    ]),
+                    _c("view", { staticClass: "identity" }, [
+                      _vm._v("摄影师 ｜ 北京市"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "signup-rt" }, [
+                    _c("view", { staticClass: "contact" }, [
+                      _vm._v("立即联系"),
+                    ]),
+                    _c("view", { staticClass: "time" }, [
+                      _vm._v("1小时前报名"),
+                    ]),
+                  ]),
+                ]),
+                _c("view", { staticClass: "notice" }, [
+                  _vm._v(" 来自通告：朝阳区周六日汉服约拍 "),
+                  _c("text", { staticClass: "notice-btn" }, [
+                    _vm._v("查看全部报名"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-cotent" }, [
+                  _c("text", { staticClass: "signup-desc" }, [
+                    _vm._v(
+                      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("text", { staticClass: "signup-detail" }, [
+                    _vm._v("查看详情"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-btns" }, [
+                  _c("view", { staticClass: "signup-btn-left" }, [
+                    _c("text", { staticClass: "more" }, [_vm._v("更多")]),
+                    _c("text", { staticClass: "remarks" }, [_vm._v("备注")]),
+                  ]),
+                  _c("view", { staticClass: "signup-btn-rt" }, [
+                    _c("view", { staticClass: "btn-del" }, [_vm._v("删除")]),
                   ]),
                 ]),
               ]),

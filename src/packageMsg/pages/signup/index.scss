@@ -117,4 +117,85 @@ page {
       font-size: 24px;
     }
   }
+  .signup-cotent {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    font-size: 26px;
+    color: #333333;
+    .signup-desc {
+      width: 78%;
+      background: url("../../../assets/images/msg/email.png") 0px 4px no-repeat;
+      background-size: 30px;
+      padding-left: 40px;
+    }
+    .signup-detail {
+      color: #6493d7;
+    }
+  }
+  .signup-btns {
+    border-top: 1px solid #f5f5f5;
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .more {
+    background: url("../../../assets/images/common/icon_more.png") left center
+      no-repeat;
+    background-size: 28px;
+    font-size: 26px;
+    padding-left: 40px;
+    color: #6b6b6b;
+  }
+  .remarks {
+    background: url("../../../assets/images/common/editbtn.png") left center
+      no-repeat;
+    background-size: 32px;
+    font-size: 26px;
+    padding-left: 40px;
+    color: #6b6b6b;
+    margin-left: 16px;
+  }
+  .signup-btn-rt {
+    display: flex;
+    .btn-yellow {
+      background: #fa8b15;
+      padding: 4px 16px;
+      font-size: 24px;
+      border-radius: 26px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+    }
+    .btn-red {
+      background: #ff1e3e;
+      padding: 4px 16px;
+      font-size: 24px;
+      border-radius: 26px;
+      color: #ffffff;
+      margin-left: 16px;
+      display: flex;
+      align-items: center;
+    }
+    .btn-blue {
+      background: #1990ff;
+      padding: 4px 16px;
+      font-size: 24px;
+      border-radius: 26px;
+      color: #ffffff;
+      margin-left: 16px;
+      display: flex;
+      align-items: center;
+    }
+    .btn-del {
+      background: #999999;
+      padding: 4px 16px;
+      font-size: 24px;
+      border-radius: 26px;
+      color: #ffffff;
+      margin-left: 16px;
+      display: flex;
+      align-items: center;
+    }
+  }
 }

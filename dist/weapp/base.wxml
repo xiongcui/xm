@@ -37,6 +37,10 @@
   </view>
 </template>
 
+<template name="tmpl_0_icon">
+  <icon type="{{i.type}}" size="{{xs.b(i.size,23)}}" color="{{i.color}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></icon>
+</template>
+
 <template name="tmpl_0_static-text">
   <text selectable="{{xs.b(i.selectable,false)}}" space="{{i.space}}" decode="{{xs.b(i.decode,false)}}" user-select="{{xs.b(i.userSelect,false)}}" style="{{i.st}}" class="{{i.cl}}"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
