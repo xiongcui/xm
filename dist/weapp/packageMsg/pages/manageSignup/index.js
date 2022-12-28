@@ -1,16 +1,16 @@
-(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["packageMsg/pages/signup/index"],{
+(wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["packageMsg/pages/manageSignup/index"],{
 
-/***/ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/signup/index.vue":
-/*!*********************************************************************************************!*\
-  !*** ./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/signup/index.vue ***!
-  \*********************************************************************************************/
+/***/ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/manageSignup/index.vue":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/manageSignup/index.vue ***!
+  \***************************************************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_vue_vue_type_template_id_80526e9e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=80526e9e&scoped=true& */ "./src/packageMsg/pages/signup/index.vue?vue&type=template&id=80526e9e&scoped=true&");
-/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/packageMsg/pages/signup/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _index_vue_vue_type_template_id_5db6e9b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=5db6e9b6&scoped=true& */ "./src/packageMsg/pages/manageSignup/index.vue?vue&type=template&id=5db6e9b6&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/packageMsg/pages/manageSignup/index.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -24,24 +24,24 @@ function injectStyles (context) {
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
   _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
-  _index_vue_vue_type_template_id_80526e9e_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
-  _index_vue_vue_type_template_id_80526e9e_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  _index_vue_vue_type_template_id_5db6e9b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_5db6e9b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
   false,
   injectStyles,
-  "80526e9e",
-  "5b17dc23"
+  "5db6e9b6",
+  "69241fa8"
   
 )
 
-component.options.__file = "src/packageMsg/pages/signup/index.vue"
+component.options.__file = "src/packageMsg/pages/manageSignup/index.vue"
 /* harmony default export */ __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/signup/index.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/packageMsg/pages/signup/index.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/manageSignup/index.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/packageMsg/pages/manageSignup/index.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -51,41 +51,10 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/signup/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/manageSignup/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
 
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -505,10 +474,6 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       this.loading = false;
       this.applyList(params);
     },
-    scrollToLower: function scrollToLower() {
-      this.pageNum++;
-      this.query();
-    },
     applyList: function applyList(params) {
       var _this = this;
 
@@ -558,30 +523,20 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
     this.list = [];
     this.query();
   },
-  onLoad: function onLoad(options) {
-    var that = this; // 获取系统信息
-
-    wx.getSystemInfo({
-      success: function success(res) {
-        that.winWidth = res.windowWidth;
-        that.winHeight = res.windowHeight;
-      }
-    });
-  } //   onReachBottom() {
-  //     if (this.loading) {
-  //       this.pageNum++;
-  //       this.query();
-  //     }
-  //   },
-
+  onReachBottom: function onReachBottom() {
+    if (this.loading) {
+      this.pageNum++;
+      this.query();
+    }
+  }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/signup/index.vue?vue&type=template&id=80526e9e&scoped=true&":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/packageMsg/pages/signup/index.vue?vue&type=template&id=80526e9e&scoped=true& ***!
-  \************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/manageSignup/index.vue?vue&type=template&id=5db6e9b6&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/packageMsg/pages/manageSignup/index.vue?vue&type=template&id=5db6e9b6&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /*! exports used: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -673,173 +628,100 @@ var render = function () {
             on: { change: _vm.bindChange },
           },
           [
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  _vm._l(_vm.list, function (item, index) {
-                    return _c(
+            _c("swiper-item", [
+              _c("view", { staticClass: "signup-box" }, [
+                _c("view", { staticClass: "signup-top" }, [
+                  _c("view", { staticClass: "signup-img" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIX4GibOqaLwcYuaOdFrEPSEGLoYlibQNkwZ5jOj8En8xicWdg0Mb5ebgLETD5icysAYJo7cr05U8bV0A/132",
+                      },
+                    }),
+                  ]),
+                  _c("view", { staticClass: "signup-info" }, [
+                    _c("view", { staticClass: "signup-name" }, [
+                      _vm._v(" nickname "),
+                      _c("image", {
+                        staticClass: "list_sex",
+                        attrs: {
+                          src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        },
+                      }),
+                    ]),
+                    _c("view", { staticClass: "identity" }, [
+                      _vm._v("摄影师 ｜ 北京市"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "signup-rt" }, [
+                    _c("view", { staticClass: "contact" }, [
+                      _vm._v("立即联系"),
+                    ]),
+                    _c("view", { staticClass: "time" }, [
+                      _vm._v("1小时前报名"),
+                    ]),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-cotent" }, [
+                  _c("text", { staticClass: "signup-desc" }, [
+                    _vm._v(
+                      "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("text", { staticClass: "signup-detail" }, [
+                    _vm._v("查看详情"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "signup-btns" }, [
+                  _c("view", { staticClass: "signup-btn-left" }, [
+                    _c(
+                      "text",
+                      { staticClass: "more", on: { tap: _vm.moreClick } },
+                      [_vm._v("更多")]
+                    ),
+                    _c(
+                      "text",
+                      { staticClass: "remarks", on: { tap: _vm.saveRemarks } },
+                      [_vm._v("备注")]
+                    ),
+                  ]),
+                  _c("view", { staticClass: "signup-btn-rt" }, [
+                    _c(
                       "view",
-                      { key: index, staticClass: "signup-box" },
+                      {
+                        staticClass: "btn-yellow",
+                        on: { tap: _vm.noConformance },
+                      },
                       [
-                        _c("view", { staticClass: "signup-top" }, [
-                          _c("view", { staticClass: "signup-img" }, [
-                            _c("image", {
-                              attrs: { src: item.visitor.avatar },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "signup-info" }, [
-                            _c("view", { staticClass: "signup-name" }, [
-                              _vm._v(" " + _vm._s(item.visitor.nickname) + " "),
-                              item.visitor.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.visitor.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                                    },
-                                  })
-                                : _vm._e(),
-                            ]),
-                            _c("view", { staticClass: "identity" }, [
-                              _vm._v(
-                                _vm._s(item.visitor.career_list[0]) +
-                                  " ｜ " +
-                                  _vm._s(item.province_name)
-                              ),
-                            ]),
-                          ]),
-                          _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
-                            _c("view", { staticClass: "time" }, [
-                              _vm._v(_vm._s(item.date_humanize) + "报名"),
-                            ]),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "notice" }, [
-                          _vm._v(" 来自通告：" + _vm._s(item.summary) + " "),
-                          _c("text", { staticClass: "notice-btn" }, [
-                            _vm._v("查看全部报名"),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "signup-cotent" }, [
-                          _c("text", { staticClass: "signup-desc" }, [
-                            _vm._v(_vm._s(item.content)),
-                          ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "signup-btns" }, [
-                          _c("view", { staticClass: "signup-btn-left" }, [
-                            _c(
-                              "text",
-                              {
-                                staticClass: "more",
-                                on: { tap: _vm.moreClick },
-                              },
-                              [_vm._v("更多")]
-                            ),
-                            _c(
-                              "text",
-                              {
-                                staticClass: "remarks",
-                                on: { tap: _vm.saveRemarks },
-                              },
-                              [_vm._v("备注")]
-                            ),
-                          ]),
-                          _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: { tap: _vm.noConformance },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "cancel",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("不符"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: { tap: _vm.appropriate },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "success_no_circle",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("合适"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c("view", { staticClass: "btn-yellow" }, [
-                                  _vm._v("放弃合作"),
-                                ])
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c("view", { staticClass: "btn-red" }, [
-                                  _vm._v("完成合作"),
-                                ])
-                              : _vm._e(),
-                            item.visited_status == 420
-                              ? _c("view", { staticClass: "btn-blue" }, [
-                                  _vm._v("恢复待定"),
-                                ])
-                              : _vm._e(),
-                            item.visited_status == 430
-                              ? _c("view", { staticClass: "btn-yellow" }, [
-                                  _vm._v("恢复合适"),
-                                ])
-                              : _vm._e(),
-                            item.visited_status == 440
-                              ? _c("view", { staticClass: "btn-del" }, [
-                                  _vm._v("删除"),
-                                ])
-                              : _vm._e(),
-                          ]),
-                        ]),
-                      ]
-                    )
-                  }),
-                  0
-                ),
-              ],
-              1
-            ),
+                        _c("icon", {
+                          attrs: {
+                            type: "cancel",
+                            size: "12",
+                            color: "#ffffff",
+                          },
+                        }),
+                        _vm._v("不符"),
+                      ],
+                      1
+                    ),
+                    _c(
+                      "view",
+                      { staticClass: "btn-red", on: { tap: _vm.appropriate } },
+                      [
+                        _c("icon", {
+                          attrs: {
+                            type: "success_no_circle",
+                            size: "12",
+                            color: "#ffffff",
+                          },
+                        }),
+                        _vm._v("合适"),
+                      ],
+                      1
+                    ),
+                  ]),
+                ]),
+              ]),
+            ]),
             _c("swiper-item", [
               _c("view", { staticClass: "signup-box" }, [
                 _c("view", { staticClass: "signup-top" }, [
@@ -1148,10 +1030,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/packageMsg/pages/signup/index.scss":
-/*!************************************************!*\
-  !*** ./src/packageMsg/pages/signup/index.scss ***!
-  \************************************************/
+/***/ "./src/packageMsg/pages/manageSignup/index.scss":
+/*!******************************************************!*\
+  !*** ./src/packageMsg/pages/manageSignup/index.scss ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1159,10 +1041,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/packageMsg/pages/signup/index.vue":
-/*!***********************************************!*\
-  !*** ./src/packageMsg/pages/signup/index.vue ***!
-  \***********************************************/
+/***/ "./src/packageMsg/pages/manageSignup/index.vue":
+/*!*****************************************************!*\
+  !*** ./src/packageMsg/pages/manageSignup/index.vue ***!
+  \*****************************************************/
 /*! no exports provided */
 /*! all exports used */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1170,50 +1052,50 @@ render._withStripped = true
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @tarojs/runtime */ "./node_modules/@tarojs/runtime/dist/runtime.esm.js");
-/* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/signup/index.vue");
+/* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/manageSignup/index.vue");
 
 
-var config = {"navigationBarTitleText":"收到报名"};
+var config = {"navigationBarTitleText":"管理报名"};
 
 
-var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageMsg/pages/signup/index', {root:{cn:[]}}, config || {}))
+var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageMsg/pages/manageSignup/index', {root:{cn:[]}}, config || {}))
 
 
 
 
 /***/ }),
 
-/***/ "./src/packageMsg/pages/signup/index.vue?vue&type=script&lang=js&":
-/*!************************************************************************!*\
-  !*** ./src/packageMsg/pages/signup/index.vue?vue&type=script&lang=js& ***!
-  \************************************************************************/
+/***/ "./src/packageMsg/pages/manageSignup/index.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./src/packageMsg/pages/manageSignup/index.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/signup/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/manageSignup/index.vue?vue&type=script&lang=js&");
  /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
 
 /***/ }),
 
-/***/ "./src/packageMsg/pages/signup/index.vue?vue&type=template&id=80526e9e&scoped=true&":
-/*!******************************************************************************************!*\
-  !*** ./src/packageMsg/pages/signup/index.vue?vue&type=template&id=80526e9e&scoped=true& ***!
-  \******************************************************************************************/
+/***/ "./src/packageMsg/pages/manageSignup/index.vue?vue&type=template&id=5db6e9b6&scoped=true&":
+/*!************************************************************************************************!*\
+  !*** ./src/packageMsg/pages/manageSignup/index.vue?vue&type=template&id=5db6e9b6&scoped=true& ***!
+  \************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /*! exports used: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_80526e9e_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=80526e9e&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/signup/index.vue?vue&type=template&id=80526e9e&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_80526e9e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_5db6e9b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=5db6e9b6&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/packageMsg/pages/manageSignup/index.vue?vue&type=template&id=5db6e9b6&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_5db6e9b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_80526e9e_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_5db6e9b6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
 
 
 
 /***/ })
 
-},[["./src/packageMsg/pages/signup/index.vue","runtime","taro","vendors","common"]]]);
+},[["./src/packageMsg/pages/manageSignup/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

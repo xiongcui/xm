@@ -113,6 +113,7 @@ export default defineAppConfig({
         "pages/invite/index",
         "pages/inviteDetail/index",
         "pages/signup/index",
+        "pages/manageSignup/index",
       ],
     },
     {

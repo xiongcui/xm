@@ -41,91 +41,60 @@
         @change="bindChange"
       >
         <swiper-item>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <view class="signup-box" v-for="(item, index) in list" :key="index">
-              <view class="signup-top">
-                <view class="signup-img">
-                  <image :src="item.visitor.avatar"></image>
-                </view>
-                <view class="signup-info">
-                  <view class="signup-name">
-                    {{ item.visitor.nickname }}
-                    <image
-                      v-if="item.visitor.sex == 1"
-                      src="../../../assets/images/nan.png"
-                      class="list_sex"
-                    ></image>
-                    <image
+          <view class="signup-box">
+            <view class="signup-top">
+              <view class="signup-img">
+                <image
+                  src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIX4GibOqaLwcYuaOdFrEPSEGLoYlibQNkwZ5jOj8En8xicWdg0Mb5ebgLETD5icysAYJo7cr05U8bV0A/132"
+                ></image>
+              </view>
+              <view class="signup-info">
+                <view class="signup-name">
+                  nickname
+                  <image
+                    src="../../../assets/images/nan.png"
+                    class="list_sex"
+                  ></image>
+                  <!-- <image
                       src="../../../assets/images/nv.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 0"
-                    ></image>
-                  </view>
-                  <view class="identity"
-                    >{{ item.visitor.career_list[0] }} ｜
-                    {{ item.province_name }}</view
-                  >
+                    ></image> -->
                 </view>
-                <view class="signup-rt">
-                  <view class="contact">立即联系</view>
-                  <view class="time">{{ item.date_humanize }}报名</view>
-                </view>
+                <view class="identity">摄影师 ｜ 北京市</view>
               </view>
-              <view class="notice">
-                来自通告：{{ item.summary }}
-                <text class="notice-btn">查看全部报名</text></view
-              >
-              <view class="signup-cotent">
-                <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
-              </view>
-              <view class="signup-btns">
-                <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick">更多</text>
-                  <text class="remarks" @tap="saveRemarks">备注</text>
-                </view>
-                <view class="signup-btn-rt">
-                  <view
-                    class="btn-yellow"
-                    @tap="noConformance"
-                    v-if="item.visited_status == 200"
-                    ><icon type="cancel" size="12" color="#ffffff"></icon
-                    >不符</view
-                  >
-                  <view
-                    class="btn-red"
-                    @tap="appropriate"
-                    v-if="item.visited_status == 200"
-                    ><icon
-                      type="success_no_circle"
-                      size="12"
-                      color="#ffffff"
-                    ></icon
-                    >合适</view
-                  >
-                  <view class="btn-yellow" v-if="item.visited_status == 410"
-                    >放弃合作</view
-                  >
-                  <view class="btn-red" v-if="item.visited_status == 410"
-                    >完成合作</view
-                  >
-                  <view class="btn-blue" v-if="item.visited_status == 420"
-                    >恢复待定</view
-                  >
-                  <view class="btn-yellow" v-if="item.visited_status == 430"
-                    >恢复合适</view
-                  >
-                  <view class="btn-del" v-if="item.visited_status == 440"
-                    >删除</view
-                  >
-                </view>
+              <view class="signup-rt">
+                <view class="contact">立即联系</view>
+                <view class="time">1小时前报名</view>
               </view>
             </view>
-          </scroll-view>
+            <view class="signup-cotent">
+              <text class="signup-desc"
+                >内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</text
+              >
+              <text class="signup-detail">查看详情</text>
+            </view>
+            <view class="signup-btns">
+              <view class="signup-btn-left">
+                <text class="more" @tap="moreClick">更多</text>
+                <text class="remarks" @tap="saveRemarks">备注</text>
+              </view>
+              <view class="signup-btn-rt">
+                <view class="btn-yellow" @tap="noConformance"
+                  ><icon type="cancel" size="12" color="#ffffff"></icon
+                  >不符</view
+                >
+                <view class="btn-red" @tap="appropriate"
+                  ><icon
+                    type="success_no_circle"
+                    size="12"
+                    color="#ffffff"
+                  ></icon
+                  >合适</view
+                >
+              </view>
+            </view>
+          </view>
         </swiper-item>
         <swiper-item>
           <view class="signup-box">
@@ -143,10 +112,10 @@
                     class="list_sex"
                   ></image>
                   <!-- <image
-                    src="../../../assets/images/nv.png"
-                    class="list_sex"
-                    v-if="item.visitor.sex == 0"
-                  ></image> -->
+                      src="../../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image> -->
                 </view>
                 <view class="identity">摄影师 ｜ 北京市</view>
               </view>
@@ -193,10 +162,10 @@
                     class="list_sex"
                   ></image>
                   <!-- <image
-                    src="../../../assets/images/nv.png"
-                    class="list_sex"
-                    v-if="item.visitor.sex == 0"
-                  ></image> -->
+                      src="../../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image> -->
                 </view>
                 <view class="identity">摄影师 ｜ 北京市</view>
               </view>
@@ -242,10 +211,10 @@
                     class="list_sex"
                   ></image>
                   <!-- <image
-                    src="../../../assets/images/nv.png"
-                    class="list_sex"
-                    v-if="item.visitor.sex == 0"
-                  ></image> -->
+                      src="../../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image> -->
                 </view>
                 <view class="identity">摄影师 ｜ 北京市</view>
               </view>
@@ -291,10 +260,10 @@
                     class="list_sex"
                   ></image>
                   <!-- <image
-                    src="../../../assets/images/nv.png"
-                    class="list_sex"
-                    v-if="item.visitor.sex == 0"
-                  ></image> -->
+                      src="../../../assets/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image> -->
                 </view>
                 <view class="identity">摄影师 ｜ 北京市</view>
               </view>
@@ -450,10 +419,6 @@ export default {
       this.loading = false;
       this.applyList(params);
     },
-    scrollToLower() {
-      this.pageNum++;
-      this.query();
-    },
     async applyList(params) {
       try {
         let res = await applyList(params);
@@ -472,22 +437,12 @@ export default {
     this.list = [];
     this.query();
   },
-  onLoad: function (options) {
-    var that = this;
-    // 获取系统信息
-    wx.getSystemInfo({
-      success: function (res) {
-        that.winWidth = res.windowWidth;
-        that.winHeight = res.windowHeight;
-      },
-    });
+  onReachBottom() {
+    if (this.loading) {
+      this.pageNum++;
+      this.query();
+    }
   },
-  //   onReachBottom() {
-  //     if (this.loading) {
-  //       this.pageNum++;
-  //       this.query();
-  //     }
-  //   },
 };
 </script>
 

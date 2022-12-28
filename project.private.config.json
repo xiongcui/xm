@@ -23,8 +23,8 @@
                     "scene": null
                 },
                 {
-                    "name": "充值金币",
-                    "pathName": "packageAdd/pages/user/rechargecoin/index",
+                    "name": "管理报名",
+                    "pathName": "packageMsg/pages/manageSignup/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
