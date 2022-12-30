@@ -13,7 +13,7 @@
         <text>收到约拍</text>
         <view class="msg-num" v-if="invite_cnt > 0">{{ invite_cnt }}</view>
       </view>
-      <view class="msg-icon-item">
+      <view class="msg-icon-item" @tap="openUrl(3)">
         <image src="../../assets/images/msg/baoming.png"></image>
         <text>收到报名</text>
         <view class="msg-num" v-if="notice_cnt > 0">{{ notice_cnt }}</view>
@@ -60,6 +60,9 @@ export default {
           break;
         case 2:
           openPage("/packageMsg/pages/invite/index");
+          break;
+        case 3:
+          openPage("/packageMsg/pages/signup/index");
           break;
         case 5:
           openPage("/packageMsg/pages/msgList/index");

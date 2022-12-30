@@ -37,7 +37,7 @@ page {
     display: flex;
     flex-direction: column;
     position: relative;
-    border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 16px;
   }
   .signup-box:first-child {
     margin-top: 104px;
@@ -253,5 +253,13 @@ page {
     line-height: 40rpx;
     min-height: 200rpx;
     padding: 20rpx 5rpx;
+  }
+  .remark {
+    background: #fef9f5;
+    border-radius: 8px;
+    padding: 6px 16px;
+    margin-top: 16px;
+    font-size: 26px;
+    color: #dc9141;
   }
 }

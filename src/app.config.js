@@ -114,6 +114,7 @@ export default defineAppConfig({
         "pages/inviteDetail/index",
         "pages/signup/index",
         "pages/manageSignup/index",
+        "pages/tgregreceiveshow/index",
       ],
     },
     {

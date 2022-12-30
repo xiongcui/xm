@@ -119,6 +119,10 @@ component.options.__file = "src/pages/msg/index.vue"
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/invite/index");
           break;
 
+        case 3:
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/signup/index");
+          break;
+
         case 5:
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/msgList/index");
           break;
@@ -135,7 +139,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "D"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "E"])(params);
 
               case 3:
                 res = _context.sent;
@@ -238,17 +242,28 @@ var render = function () {
             : _vm._e(),
         ]
       ),
-      _c("view", { staticClass: "msg-icon-item" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
-        }),
-        _c("text", [_vm._v("收到报名")]),
-        _vm.notice_cnt > 0
-          ? _c("view", { staticClass: "msg-num" }, [
-              _vm._v(_vm._s(_vm.notice_cnt)),
-            ])
-          : _vm._e(),
-      ]),
+      _c(
+        "view",
+        {
+          staticClass: "msg-icon-item",
+          on: {
+            tap: function ($event) {
+              return _vm.openUrl(3)
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
+          }),
+          _c("text", [_vm._v("收到报名")]),
+          _vm.notice_cnt > 0
+            ? _c("view", { staticClass: "msg-num" }, [
+                _vm._v(_vm._s(_vm.notice_cnt)),
+              ])
+            : _vm._e(),
+        ]
+      ),
       _c("view", { staticClass: "msg-icon-item" }, [
         _c("image", {
           attrs: { src: __webpack_require__(/*! ../../assets/images/msg/contact.png */ "./src/assets/images/msg/contact.png") },

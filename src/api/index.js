@@ -486,6 +486,15 @@ export const facePrint = (data) => {
   });
 };
 
+// 收到操作
+export const applyManage = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/apply/manage",
+    method: "post",
+    data,
+  });
+};
+
 // https://brain.baidu.com/face/print/?token=xxx
 
 // 金币支付：[POST] -> /v1/coin/apply/pay

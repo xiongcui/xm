@@ -37,8 +37,8 @@
                     "scene": null
                 },
                 {
-                    "name": "编辑收货地址",
-                    "pathName": "packageAdd/pages/user/addressedit/index",
+                    "name": "报名通告",
+                    "pathName": "packageMsg/pages/tgregreceiveshow/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
