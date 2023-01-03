@@ -130,154 +130,81 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "tgregreceiveshow",
   data: function data() {
     return {
-      infor: {}
+      showModel: false,
+      tgregreceiveInfo: {
+        author: {}
+      }
     };
+  },
+  methods: {
+    closeQRcode: function closeQRcode() {
+      this.showModel = false;
+    },
+    showQRcode: function showQRcode() {
+      this.showModel = true;
+    },
+    clickSaveImg: function clickSaveImg() {
+      var _this = this;
+
+      //先授权相册
+      wx.getSetting({
+        success: function success(res) {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: function success() {
+                //用户允许授权，保存到相册
+                _this.saveImg();
+              },
+              fail: function fail() {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: function success() {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: function succes() {
+                        //授权成功，保存图片
+                        _this.saveImg();
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          } else {
+            //已经授权
+            _this.saveImg();
+          }
+        }
+      });
+    },
+    saveImg: function saveImg() {
+      //保存到相册
+      var url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: function success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function success(res) {
+              wx.showToast({
+                title: "保存成功！"
+              });
+            },
+            faile: function faile(err) {
+              console.log("失败！");
+            }
+          });
+        }
+      });
+    }
   }
 });
 
@@ -298,7 +225,118 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div")
+  return _c("view", { staticClass: "tgregreceiveshow" }, [
+    _c("view", { staticClass: "tgregreceive_top" }, [
+      _c("view", { staticClass: "tgregreceive_top_left" }, [
+        _c("image", {
+          staticClass: "avatar",
+          attrs: { src: _vm.tgregreceiveInfo.author.avatar },
+        }),
+        _c("view", { staticClass: "tgregreceive_info" }, [
+          _c(
+            "view",
+            { staticClass: "tgregreceive_name" },
+            [
+              _vm._v(" nickname "),
+              _vm.tgregreceiveInfo.author.sex !== null
+                ? _c("block", [
+                    _vm.tgregreceiveInfo.author.sex == 1
+                      ? _c("image", {
+                          staticClass: "tgregreceive_sex",
+                          attrs: {
+                            src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                          },
+                        })
+                      : _vm._e(),
+                    _vm.tgregreceiveInfo.author.sex == 0
+                      ? _c("image", {
+                          staticClass: "tgregreceive_sex",
+                          attrs: {
+                            src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                          },
+                        })
+                      : _vm._e(),
+                  ])
+                : _vm._e(),
+            ],
+            1
+          ),
+          _c("view", { staticClass: "tgregreceive_p" }, [
+            _c("text", [_vm._v(" ewe | 北京 ")]),
+          ]),
+        ]),
+      ]),
+      _c("view", { staticClass: "tgregreceive_right" }, [
+        _c("view", { staticClass: "time" }, [_vm._v("6天前来过")]),
+        _c("view", { staticClass: "complaint" }, [_vm._v("投诉")]),
+      ]),
+    ]),
+    _c("view", { staticClass: "tgregreceive_info" }, [
+      _c("view", { staticClass: "tgregreceive_title" }, [
+        _vm._v(" 对方报名信息 "),
+      ]),
+      _c("view", { staticClass: "tgregreceive_remark" }, [
+        _c("view", { staticClass: "tgregreceive_remark_label" }, [
+          _vm._v("报名备注："),
+        ]),
+        _c("view", { staticClass: "tgregreceive_remark_ct" }, [
+          _vm._v(
+            "内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+          ),
+        ]),
+      ]),
+    ]),
+    _c("view", { staticClass: "tgregreceive_contact" }, [
+      _c("view", { staticClass: "tgregreceive_title" }, [
+        _vm._v(" 对方联系方式 "),
+      ]),
+      _c("view", { staticClass: "contact_info" }, [
+        _c("view", { staticClass: "contact_info_left" }, [
+          _c("view", [_vm._v("手机号：")]),
+          _c("view", [_vm._v("13693628075")]),
+        ]),
+        _c("view", { staticClass: "copy" }, [_vm._v("复制")]),
+      ]),
+      _c("view", { staticClass: "contact_info" }, [
+        _c("view", { staticClass: "contact_info_left" }, [
+          _c("view", [_vm._v("微信号：")]),
+          _c("view", [_vm._v("Anne")]),
+        ]),
+        _c("view", { staticClass: "copy", on: { tap: _vm.showQRcode } }, [
+          _vm._v("点击查看微信二维码"),
+        ]),
+      ]),
+    ]),
+    _c("view", { staticClass: "tgregreceive_bottom" }, [
+      _c("view", { staticClass: "tgregreceive_bottom_left" }, [
+        _c("view", { staticClass: "tgregreceive_bottom_nobg" }, [
+          _vm._v("不合适"),
+        ]),
+        _c("view", { staticClass: "tgregreceive_bottom_bg" }, [_vm._v("合适")]),
+      ]),
+      _c("view", { staticClass: "tgregreceive_bottom_rt" }, [
+        _c("view", { staticClass: "communicate" }, [_vm._v("发起沟通")]),
+      ]),
+    ]),
+    _vm.showModel
+      ? _c("view", { staticClass: "modal_box" }, [
+          _c("view", { staticClass: "modal_content" }, [
+            _c("view", [_vm._v(" 微信二维码 ")]),
+            _c("image", { staticClass: "qrcode-img", attrs: { src: "" } }),
+            _c("image", {
+              staticClass: "close-img",
+              attrs: {
+                src: __webpack_require__(/*! ../../../assets/images/common/x_icon.png */ "./src/assets/images/common/x_icon.png"),
+              },
+              on: { tap: _vm.closeQRcode },
+            }),
+            _c("view", { staticClass: "save", on: { tap: _vm.clickSaveImg } }, [
+              _vm._v("保存到相册"),
+            ]),
+          ]),
+        ])
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -332,7 +370,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/tgregreceiveshow/index.vue");
 
 
-var config = {"navigationBarTitleText":"报名通告"};
+var config = {"navigationBarTitleText":"报名详情"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageMsg/pages/tgregreceiveshow/index', {root:{cn:[]}}, config || {}))
@@ -374,5 +412,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageMsg/pages/tgregreceiveshow/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageMsg/pages/tgregreceiveshow/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

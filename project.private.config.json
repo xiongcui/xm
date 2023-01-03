@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "金币中心",
-                    "pathName": "packageAdd/pages/user/coin/index",
+                    "name": "投诉",
+                    "pathName": "packageMsg/pages/complaint/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -37,7 +37,7 @@
                     "scene": null
                 },
                 {
-                    "name": "报名通告",
+                    "name": "报名详情",
                     "pathName": "packageMsg/pages/tgregreceiveshow/index",
                     "query": "",
                     "launchMode": "default",

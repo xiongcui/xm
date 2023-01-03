@@ -115,6 +115,7 @@ export default defineAppConfig({
         "pages/signup/index",
         "pages/manageSignup/index",
         "pages/tgregreceiveshow/index",
+        "pages/complaint/index",
       ],
     },
     {

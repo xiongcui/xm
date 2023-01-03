@@ -1,223 +1,82 @@
 <template>
-  <!-- <import src="/common/templates/user_info_icon.wxml"></import> -->
-  <!-- <view class="main_title ub">
-    <view class="title_label">报名通告：</view>
-    <view class="title_info ub-f1">{{ infor.tonggao_info.title }}</view>
-  </view>
-  <view class="item ub">
-    <view
-      catchtap="userShow"
-      class="title_head_portrait"
-      data-id="{{infor.user_info.user_id}}"
-    >
-      <image
-        class="avatar {{infor.user_info.isvip?'avatar_vip':''}}"
-        src="{{infor.user_info.avatar}}"
-      ></image>
-      <image
-        class="icon_vips"
-        src="/images/user/vip/icon_vips.png"
-        wx:if="{{infor.user_info.isvip}}"
-      ></image>
-    </view>
-    <view class="title_info ub-f1">
-      <view class="info_content fl">
-        <view class="info_name">{{ infor.user_info.nickname }}</view>
-        <template
-          is="ku_user_info_icon"
-          data="{{item:infor.user_info}}"
-        ></template>
-      </view>
-      <view class="title_info_lable fl">
-        <view class="lable_identity fl-s0">{{ infor.user_info.identity }}</view>
-        <view class="lable_vertical fl-s0"></view>
-        <view class="lable_city fl-g1">{{ infor.user_info.city_name }}</view>
-      </view>
-    </view>
-    <view class="title_other">
-      <view
-        catchtap="jubao"
-        class="other_complain"
-        data-id="{{infor.user_info.user_id}}"
-        >投诉</view
-      >
-      <view class="other_time">{{ infor.reg_info.time_text }}</view>
-    </view>
-  </view>
-  <view class="item">
-    <view class="reg_title fl">
-      <view class="title_icon"></view>
-      <view class="title_text">对方报名信息</view>
-    </view>
-    <view class="item_content">
-      <view class="content_item ub">
-        <view class="content_title">报名备注：</view>
-        <text class="content_text ub-f1">{{ infor.reg_info.content }}</text>
-      </view>
-      <view class="content_item ub" wx:if="{{infor.reg_info.price}}">
-        <view class="content_title">本次报价：</view>
-        <view class="content_text ub-f1">{{ infor.reg_info.price }}</view>
-      </view>
-      <view class="content_item ub" wx:if="{{infor.reg_info.show_hongren}}">
-        <view class="content_title">红人账号：</view>
-        <view class="content_info ub-f1">
-          <view class="info_item ub">
-            <view class="info_img">
-              <image src="{{infor.reg_info.media_info.media_icon}}"></image>
-            </view>
-            <view class="info_text">{{
-              infor.reg_info.media_info.nickname
-            }}</view>
+  <view class="tgregreceiveshow">
+    <view class="tgregreceive_top">
+      <view class="tgregreceive_top_left">
+        <image :src="tgregreceiveInfo.author.avatar" class="avatar"></image>
+        <view class="tgregreceive_info">
+          <view class="tgregreceive_name">
+            nickname
+            <block v-if="tgregreceiveInfo.author.sex !== null">
+              <image
+                src="../../../assets/images/nan.png"
+                class="tgregreceive_sex"
+                v-if="tgregreceiveInfo.author.sex == 1"
+              ></image>
+              <image
+                src="../../../assets/images/nv.png"
+                class="tgregreceive_sex"
+                v-if="tgregreceiveInfo.author.sex == 0"
+              ></image>
+            </block>
           </view>
-          <view class="info_item">
-            <view class="info_text"
-              >粉丝数：{{ infor.reg_info.media_info.follow_count }}</view
-            >
-          </view>
-          <view
-            class="info_item"
-            wx:for="{{infor.reg_info.media_info.extra}}"
-            wx:key="index"
-          >
-            <view class="info_text">{{ item.key }}：{{ item.value }}</view>
-          </view>
-          <view class="info_item ub">
-            <view class="info_text lh45">账号领域：</view>
-            <view
-              class="info_label mr8"
-              wx:for="{{infor.reg_info.media_info.tags}}"
-              wx:key="index"
-              >{{ item.tag_name }}</view
-            >
+          <view class="tgregreceive_p">
+            <text> ewe | 北京 </text>
           </view>
         </view>
       </view>
-      <view class="content_item ub" wx:if="{{infor.reg_info.show_address}}">
-        <view class="content_title">收货地址：</view>
-        <view class="content_info ub-f1">
-          <view class="info_item ub">
-            <view class="info_text"
-              >收货人：{{ infor.reg_info.address.contact_name }}
-            </view>
-            <view class="ub-f1"></view>
-            <view
-              catchtap="copy"
-              class="info_btn"
-              data-value="{{infor.reg_info.address.full_address}}"
-              >复制地址
-            </view>
-          </view>
-          <view class="info_item">
-            <view class="info_text"
-              >手机号：{{ infor.reg_info.address.phone }}</view
-            >
-          </view>
-          <view class="info_item ub">
-            <view class="info_text w98">地址：</view>
-            <view class="info_address ub-f1">{{
-              infor.reg_info.address.full_address
-            }}</view>
-          </view>
+      <view class="tgregreceive_right">
+        <view class="time">6天前来过</view>
+        <view class="complaint">投诉</view>
+      </view>
+    </view>
+    <view class="tgregreceive_info">
+      <view class="tgregreceive_title"> 对方报名信息 </view>
+      <view class="tgregreceive_remark">
+        <view class="tgregreceive_remark_label">报名备注：</view>
+        <view class="tgregreceive_remark_ct"
+          >内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view
+        >
+      </view>
+    </view>
+    <view class="tgregreceive_contact">
+      <view class="tgregreceive_title"> 对方联系方式 </view>
+      <view class="contact_info">
+        <view class="contact_info_left">
+          <view>手机号：</view>
+          <view>13693628075</view>
         </view>
+        <view class="copy">复制</view>
+      </view>
+      <view class="contact_info">
+        <view class="contact_info_left">
+          <view>微信号：</view>
+          <view>Anne</view>
+        </view>
+        <view class="copy" @tap="showQRcode">点击查看微信二维码</view>
       </view>
     </view>
-  </view>
-  <view class="item">
-    <view class="reg_title fl">
-      <view class="title_icon"></view>
-      <view class="title_text">对方联系方式</view>
-    </view>
-    <view class="item_content">
-      <view class="content_item ub">
-        <view class="content_title w156">联系人：</view>
-        <view class="content_text ub-f1">{{
-          infor.contact_info.contact_name
-        }}</view>
+    <view class="tgregreceive_bottom">
+      <view class="tgregreceive_bottom_left">
+        <view class="tgregreceive_bottom_nobg">不合适</view>
+        <view class="tgregreceive_bottom_bg">合适</view>
       </view>
-      <view class="content_item ub" wx:if="{{infor.contact_info.wxid}}">
-        <view class="content_title w156">微信号：</view>
-        <view class="content_text">{{ infor.contact_info.wxid }}</view>
-        <view class="ub-f1"></view>
-        <view
-          catchtap="copy"
-          class="content_text colorb"
-          data-value="{{infor.contact_info.wxid}}"
-          >复制</view
-        >
-      </view>
-      <view class="content_item ub" wx:if="{{infor.contact_info.phone}}">
-        <view class="content_title w156">手机号：</view>
-        <view class="content_text">{{ infor.contact_info.phone }}</view>
-        <view class="ub-f1"></view>
-        <view
-          catchtap="copy"
-          class="content_text colorb"
-          data-value="{{infor.contact_info.phone}}"
-          >复制</view
-        >
-      </view>
-      <view
-        class="content_item ub"
-        wx:if="{{infor.contact_info.wxid_qrcode_url}}"
-      >
-        <view class="content_title w156">微信二维码：</view>
-        <view catchtap="showModel" class="content_text colorb"
-          >点击查看二维码</view
-        >
+      <view class="tgregreceive_bottom_rt">
+        <view class="communicate">发起沟通</view>
       </view>
     </view>
-  </view>
-  <view style="height: 240rpx"></view>
-  <view class="bottom ub {{isIphoneX?'fix-iphonex-button':''}}">
-    <block wx:if="{{infor.reg_info.progress_status==1}}">
-      <view catchtap="setProgressNoFit" class="btn_item btn_unbefitting"
-        >不合适</view
-      >
-      <view catchtap="setProgressFit" class="btn_item btn_have">合适</view>
-    </block>
-    <block wx:if="{{infor.reg_info.progress_status==2}}">
-      <view catchtap="setProgressFail" class="btn_item btn_unbefitting"
-        >未合作</view
-      >
-      <view catchtap="setProgresszSuccess" class="btn_item btn_have"
-        >合作完成</view
-      >
-    </block>
-    <view
-      catchtap="setProgressResetFit"
-      class="btn_big"
-      wx:if="{{infor.reg_info.progress_status==3}}"
-      >恢复待定</view
-    >
-    <view
-      catchtap="setProgressRecover"
-      class="btn_big"
-      wx:if="{{infor.reg_info.progress_status==5}}"
-      >恢复合适</view
-    >
-    <view
-      catchtap="chat"
-      class="btn_nowcontact {{infor.reg_info.progress_status==4?'lang_btn':''}}"
-      data-userid="{{infor.user_info.user_id}}"
-      >发起沟通</view
-    >
-  </view>
-  <view catchtap="closeModel" class="modal-bg" wx:if="{{showModel}}"></view>
-  <view class="model_box ub" wx:if="{{showModel}}">
-    <view class="ub-f1"></view>
-    <view class="model_main">
-      <view class="model_title">
+    <view class="modal_box" v-if="showModel">
+      <view class="modal_content">
+        <view> 微信二维码 </view>
+        <image class="qrcode-img" src=""></image>
         <image
-          catchtap="showWxQrcode"
-          data-url="{{infor.contact_info.wxid_qrcode_url}}"
-          mode="widthFix"
-          src="{{infor.contact_info.wxid_qrcode_url}}"
+          src="../../../assets/images/common/x_icon.png"
+          class="close-img"
+          @tap="closeQRcode"
         ></image>
+        <view class="save" @tap="clickSaveImg">保存到相册</view>
       </view>
-      <view catchtap="closeModel" class="model_close">关闭</view>
     </view>
-    <view class="ub-f1"></view>
-  </view> -->
+  </view>
 </template>
 
 <script>
@@ -226,8 +85,74 @@ export default {
   name: "tgregreceiveshow",
   data() {
     return {
-      infor: {},
+      showModel: false,
+      tgregreceiveInfo: {
+        author: {},
+      },
     };
+  },
+  methods: {
+    closeQRcode() {
+      this.showModel = false;
+    },
+    showQRcode() {
+      this.showModel = true;
+    },
+    clickSaveImg() {
+      //先授权相册
+      wx.getSetting({
+        success: (res) => {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: () => {
+                //用户允许授权，保存到相册
+                this.saveImg();
+              },
+              fail: () => {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: () => {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: () => {
+                        //授权成功，保存图片
+                        this.saveImg();
+                      },
+                    });
+                  },
+                });
+              },
+            });
+          } else {
+            //已经授权
+            this.saveImg();
+          }
+        },
+      });
+    },
+    saveImg() {
+      //保存到相册
+      let url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: (res) => {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: (res) => {
+              wx.showToast({
+                title: "保存成功！",
+              });
+            },
+            faile: (err) => {
+              console.log("失败！");
+            },
+          });
+        },
+      });
+    },
   },
 };
 </script>
