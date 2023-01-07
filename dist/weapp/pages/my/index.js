@@ -559,6 +559,9 @@ component.options.__file = "src/pages/my/index.vue"
     goCollection: function goCollection() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/collection/index");
     },
+    pledgecash: function pledgecash() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/creditGuarantee/index");
+    },
     myYuepai: function myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
@@ -592,7 +595,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "bb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1121,7 +1124,7 @@ var render = function () {
         _vm.infor.ispledge != 1
           ? _c(
               "view",
-              { staticClass: "item ub", attrs: { catchtap: "pledgecash" } },
+              { staticClass: "item ub", on: { tap: _vm.pledgecash } },
               [
                 _c("view", { staticClass: "item_icon" }, [
                   _c("image", {

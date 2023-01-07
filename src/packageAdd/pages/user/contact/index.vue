@@ -220,7 +220,7 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "wechat_qr_code",
@@ -262,10 +262,8 @@ export default {
     async subContact(params) {
       try {
         let res = await subContact(params);
-        console.log(res, "-------");
         let pages = getCurrentPages();
         let prevPage = pages[pages.length - 2];
-        console.log(2222);
         prevPage.setData({
           contact: this.info,
         });

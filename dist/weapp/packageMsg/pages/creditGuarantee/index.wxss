@@ -1,0 +1,132 @@
+.credit-guarantee {
+  height: 100vh;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.credit-guarantee .credit-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #ea6a6b;
+  color: #fffefb;
+  height: 200rpx;
+  font-size: 40rpx;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  margin-bottom: 160rpx;
+}
+.credit-guarantee .credit-top .security {
+  width: 70rpx;
+  height: 70rpx;
+  margin: 0 16rpx;
+}
+.credit-guarantee .credit-info {
+  position: absolute;
+  background: #ffffff;
+  color: #ea6a6b;
+  margin: 0 16rpx 16rpx 16rpx;
+  bottom: -120rpx;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.24);
+          box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.24);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.credit-guarantee .credit-info .credit-item {
+  width: 50%;
+  font-size: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  line-height: 50rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.credit-guarantee .credit-info .credit-item image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+.credit-guarantee .price {
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 60rpx;
+  color: #333333;
+  font-weight: 700;
+}
+.credit-guarantee .submit-red {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  background: #ea6a6b;
+  margin: 16rpx auto;
+  color: #ffffff;
+  text-align: center;
+  font-size: 30rpx;
+}
+.credit-guarantee .submit-yellow {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  background: #f98b14;
+  margin: 16rpx auto;
+  color: #ffffff;
+  text-align: center;
+  font-size: 30rpx;
+}
+.credit-guarantee .or {
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.credit-guarantee .credit-tips {
+  color: red;
+  font-size: 26rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.credit-guarantee .credit-content {
+  margin-top: 40rpx;
+  padding: 16rpx;
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+.credit-guarantee .credit-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 6rpx;
+}

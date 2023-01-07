@@ -473,7 +473,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "notice"
@@ -638,7 +638,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "J"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "K"])(params);
 
               case 3:
                 res = _context.sent;
@@ -667,7 +667,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "Q"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "T"])(params);
 
               case 3:
                 res = _context2.sent;

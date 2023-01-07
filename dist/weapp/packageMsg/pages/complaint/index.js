@@ -47,20 +47,15 @@ component.options.__file = "src/packageMsg/pages/complaint/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/complaint/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/complaint/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index.js */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+
+
 //
 //
 //
@@ -142,26 +137,23 @@ component.options.__file = "src/packageMsg/pages/complaint/index.vue"
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "complaint",
   data: function data() {
     return {
       isIphoneX: false,
-      complaintInfo: {
-        author: {}
-      },
+      visitor_id: "",
+      avatar: "",
+      nickname: "",
+      province_name: "",
+      career: "",
       reason: "",
       imgList: [],
-      reasonData: [{
-        name: 11,
-        ispick: false
-      }, {
-        name: 22,
-        ispick: false
-      }, {
-        name: 44,
-        ispick: false
-      }]
+      reasonData: [],
+      uuid: ""
     };
   },
   methods: {
@@ -220,16 +212,16 @@ component.options.__file = "src/packageMsg/pages/complaint/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "photo"
+          scr_type: "complain"
         },
         name: "file",
         header: header,
@@ -249,10 +241,114 @@ component.options.__file = "src/packageMsg/pages/complaint/index.vue"
         }
       });
     },
-    submit: function submit() {}
+    submit: function submit() {
+      var reason = this.reasonData.find(function (item) {
+        return item.ispick;
+      });
+
+      if (!reason) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择投诉原因");
+        return false;
+      }
+
+      if (!this.reason) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请输入您投诉的内容");
+        return false;
+      }
+
+      var params = {
+        content: this.reason,
+        evidence: this.imgList,
+        reason: reason.value,
+        source: "收到报名",
+        sued_uuid: this.visitor_id
+      };
+      this.publicComplain(params);
+      console.log(params);
+    },
+    publicConfig: function publicConfig(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "K"])(params);
+
+              case 3:
+                res = _context.sent;
+                arr = [];
+                arr = res.data.data.map(function (item, index) {
+                  item.ispick = false;
+                  return item;
+                });
+                _this3.reasonData = arr;
+                _context.next = 11;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
+    },
+    publicComplain: function publicComplain(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publicComplain */ "J"])(params);
+
+              case 3:
+                res = _context2.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("投诉成功");
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  });
+                }, 3000);
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
+    }
+  },
+  onLoad: function onLoad(options) {
+    this.visitor_id = options.visitor_id;
+    this.avatar = options.avatar;
+    this.nickname = options.nickname;
+    this.province_name = options.province_name;
+    this.career = options.career;
   },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.publicConfig({
+      type: ["complain_reason"]
+    });
   }
 });
 
@@ -280,38 +376,13 @@ var render = function () {
       _c("view", { staticClass: "complaint-title" }, [_vm._v("投诉用户")]),
       _c("view", { staticClass: "complaint_top" }, [
         _c("view", { staticClass: "complaint_top_left" }, [
-          _c("image", { staticClass: "avatar", attrs: { src: "a" } }),
+          _c("image", { staticClass: "avatar", attrs: { src: _vm.avatar } }),
           _c("view", { staticClass: "complaint_info" }, [
-            _c(
-              "view",
-              { staticClass: "complaint_name" },
-              [
-                _vm._v(" nickname "),
-                _vm.complaintInfo.author.sex !== null
-                  ? _c("block", [
-                      _vm.complaintInfo.author.sex == 1
-                        ? _c("image", {
-                            staticClass: "complaint_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                            },
-                          })
-                        : _vm._e(),
-                      _vm.complaintInfo.author.sex == 0
-                        ? _c("image", {
-                            staticClass: "complaint_sex",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                            },
-                          })
-                        : _vm._e(),
-                    ])
-                  : _vm._e(),
-              ],
-              1
-            ),
+            _c("view", { staticClass: "complaint_name" }, [
+              _vm._v(" " + _vm._s(_vm.nickname) + " "),
+            ]),
             _c("view", { staticClass: "complaint_p" }, [
-              _c("text", [_vm._v(" 模特 ")]),
+              _c("text", [_vm._v(" " + _vm._s(_vm.career) + " ")]),
             ]),
           ]),
         ]),
@@ -336,7 +407,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v(" " + _vm._s(item.name) + " ")]
+              [_vm._v(" " + _vm._s(item.value) + " ")]
             )
           }),
           0

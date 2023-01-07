@@ -285,7 +285,7 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "wechat_qr_code"
@@ -330,7 +330,7 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userContact */ "X"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userContact */ "ab"])(params);
 
               case 3:
                 res = _context.sent;
@@ -361,33 +361,31 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subContact */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subContact */ "P"])(params);
 
               case 3:
                 res = _context2.sent;
-                console.log(res, "-------");
                 pages = getCurrentPages();
                 prevPage = pages[pages.length - 2];
-                console.log(2222);
                 prevPage.setData({
                   contact: _this4.info
                 });
                 wx.navigateBack({
                   delta: 1
                 });
-                _context2.next = 14;
+                _context2.next = 12;
                 break;
 
-              case 12:
-                _context2.prev = 12;
+              case 10:
+                _context2.prev = 10;
                 _context2.t0 = _context2["catch"](0);
 
-              case 14:
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 12]]);
+        }, _callee2, null, [[0, 10]]);
       }))();
     }
   },

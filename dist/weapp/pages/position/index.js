@@ -154,7 +154,7 @@ component.options.__file = "src/pages/position/index.vue"
 
               case 3:
                 res = _context2.sent;
-                _this.url = "https://tapi.cupz.cn/face/print/statement/statement?token=" + res.data.data.result.verify_token;
+                _this.url = "https://pai.qubeitech.com/face/print/statement/statement?token=" + res.data.data.result.verify_token;
                 _context2.next = 9;
                 break;
 

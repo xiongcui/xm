@@ -193,11 +193,6 @@
                   </view>
                 </view>
               </view>
-              <!-- <view class="list_collection">
-                <image
-                  src="../../assets/images/common/icon_favorite.png"
-                ></image>
-              </view> -->
             </view>
             <view class="list_content">
               <view class="list_title">

@@ -490,7 +490,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.thumbTempFilePath,
         formData: {
           scr_type: "invite"
@@ -524,7 +524,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "invite"
@@ -558,7 +558,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "invite"
@@ -742,7 +742,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "K"])(params);
 
               case 3:
                 res = _context.sent;

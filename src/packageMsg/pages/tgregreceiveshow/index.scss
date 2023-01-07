@@ -48,6 +48,7 @@ page {
     .time {
       color: rgba(0, 0, 0, 0.4);
       font-size: 24px;
+      text-align: right;
     }
     .complaint {
       background: url("../../../assets/images/common/jubao2.png") no-repeat;
@@ -71,8 +72,7 @@ page {
     margin: 16px 0px;
     font-weight: 600;
   }
-  .tgregreceive_info {
-    margin-top: 16px;
+  .tgregreceive_infos {
     background: #ffffff;
     border-radius: 8px;
     margin: 16px;
@@ -107,6 +107,7 @@ page {
     }
     .copy {
       color: #6493d7;
+      min-width: 60px;
     }
   }
   .tgregreceive_bottom {

@@ -23,6 +23,11 @@ page {
   border-radius: 50%;
 }
 
+.complaint .upload-width {
+  width: 100%;
+  height: 100%;
+}
+
 .complaint .complaint_top {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -218,6 +223,7 @@ page {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 16rpx;
+  position: relative;
 }
 
 .complaint .upload-img {

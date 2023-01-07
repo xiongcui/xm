@@ -46,7 +46,7 @@
                 class="invite-box"
                 v-for="(item, index) in list"
                 :key="index"
-                @tap="goDetail(item.oid)"
+                @tap="goDetail(item.sid)"
               >
                 <view class="invite-top">
                   <view class="invite-img">
@@ -111,7 +111,7 @@
                 class="invite-box"
                 v-for="(item, index) in list"
                 :key="index"
-                @tap="goDetail(item.oid)"
+                @tap="goDetail(item.sid)"
               >
                 <view class="invite-top">
                   <view class="invite-img">
@@ -176,7 +176,7 @@
                 class="invite-box"
                 v-for="(item, index) in list"
                 :key="index"
-                @tap="goDetail(item.oid)"
+                @tap="goDetail(item.sid)"
               >
                 <view class="invite-top">
                   <view class="invite-img">
@@ -241,7 +241,7 @@
                 class="invite-box"
                 v-for="(item, index) in list"
                 :key="index"
-                @tap="goDetail(item.oid)"
+                @tap="goDetail(item.sid)"
               >
                 <view class="invite-top">
                   <view class="invite-img">
@@ -346,8 +346,8 @@ export default {
       };
       this.applyList(params);
     },
-    goDetail(oid) {
-      openPage("/packageMsg/pages/inviteDetail/index?oid=" + oid);
+    goDetail(sid) {
+      openPage("/packageMsg/pages/inviteDetail/index?sid=" + sid);
     },
     async applyList(params) {
       try {

@@ -421,11 +421,11 @@ export default {
     async collectList(params) {
       try {
         let res = await collectList(params);
-        if (!res.data.data || !res.data.data.length) {
+        if (!res.data.data.items || !res.data.data.items.length) {
           errortip("没有更多数据了～");
           return false;
         }
-        let data = res.data.data;
+        let data = res.data.data.items;
         this.list = this.list.concat(data);
       } catch (error) {}
     },

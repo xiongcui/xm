@@ -116,6 +116,7 @@ export default defineAppConfig({
         "pages/manageSignup/index",
         "pages/tgregreceiveshow/index",
         "pages/complaint/index",
+        "pages/creditGuarantee/index",
       ],
     },
     {

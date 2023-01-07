@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "投诉",
-                    "pathName": "packageMsg/pages/complaint/index",
+                    "name": "信用担保",
+                    "pathName": "packageMsg/pages/creditGuarantee/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

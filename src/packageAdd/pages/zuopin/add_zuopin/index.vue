@@ -309,7 +309,7 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.thumbTempFilePath,
         formData: {
           scr_type: "photo",
@@ -340,7 +340,7 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "photo",
@@ -371,7 +371,7 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "photo",

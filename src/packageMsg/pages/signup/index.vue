@@ -77,7 +77,7 @@
               </view>
               <view class="notice">
                 来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupDetail(item.oid)"
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
                   >查看全部报名</text
                 ></view
               >
@@ -86,11 +86,17 @@
               >
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid)">更多</text>
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
                   <text class="remarks" @tap="saveRemarks(item)">备注</text>
                 </view>
                 <view class="signup-btn-rt">
@@ -184,17 +190,26 @@
               </view>
               <view class="notice">
                 来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupDetail(item.oid)"
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
                   >查看全部报名</text
                 ></view
               >
+              <view class="remark" v-if="item.remark">
+                备注：{{ item.remark }}</view
+              >
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid)">更多</text>
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
                   <text class="remarks" @tap="saveRemarks(item)">备注</text>
                 </view>
                 <view class="signup-btn-rt">
@@ -288,17 +303,26 @@
               </view>
               <view class="notice">
                 来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupDetail(item.oid)"
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
                   >查看全部报名</text
                 ></view
               >
+              <view class="remark" v-if="item.remark">
+                备注：{{ item.remark }}</view
+              >
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid)">更多</text>
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
                   <text class="remarks" @tap="saveRemarks(item)">备注</text>
                 </view>
                 <view class="signup-btn-rt">
@@ -392,17 +416,26 @@
               </view>
               <view class="notice">
                 来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupDetail(item.oid)"
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
                   >查看全部报名</text
                 ></view
               >
+              <view class="remark" v-if="item.remark">
+                备注：{{ item.remark }}</view
+              >
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid)">更多</text>
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
                   <text class="remarks" @tap="saveRemarks(item)">备注</text>
                 </view>
                 <view class="signup-btn-rt">
@@ -496,17 +529,26 @@
               </view>
               <view class="notice">
                 来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupDetail(item.oid)"
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
                   >查看全部报名</text
                 ></view
               >
+              <view class="remark" v-if="item.remark">
+                备注：{{ item.remark }}</view
+              >
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid)">更多</text>
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
                   <text class="remarks" @tap="saveRemarks(item)">备注</text>
                 </view>
                 <view class="signup-btn-rt">
@@ -633,7 +675,7 @@ export default {
     close() {
       this.visible = false;
     },
-    signupDetail(oid) {
+    signupAllDetail(oid) {
       openPage(
         "/packageMsg/pages/manageSignup/index?oid=" +
           oid +
@@ -643,6 +685,14 @@ export default {
           this.currentTab
       );
     },
+    signupDetail(sid, visited_status) {
+      openPage(
+        "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+          sid +
+          "&visited_status=" +
+          visited_status
+      );
+    },
     clickSave() {
       this.applyManage({
         even_type: 500,
@@ -650,13 +700,12 @@ export default {
         remark: this.remarks,
       });
     },
-    moreClick(sid) {
+    moreClick(sid, row) {
       wx.showActionSheet({
         itemList: ["删除", "投诉"],
         success(res) {
           switch (res.tapIndex) {
             case 0:
-              console.log("删除");
               this.Delete({
                 even_type: 111,
                 sid: sid,
@@ -664,6 +713,18 @@ export default {
               break;
             case 1:
               console.log("投诉");
+              openPage(
+                "/packageMsg/pages/complaint/index?visitor_id=" +
+                  row.visitor_id +
+                  "&avatar=" +
+                  row.visitor.avatar +
+                  "&nickname=" +
+                  row.visitor.nickname +
+                  "&province_name=" +
+                  row.visitor.province_name +
+                  "&career=" +
+                  row.visitor.career_list[0]
+              );
               break;
           }
         },
@@ -771,11 +832,14 @@ export default {
       } catch (error) {}
     },
   },
-  //   onShow() {
-  //     this.pageNum = 1;
-  //     this.list = [];
-  //     this.query();
-  //   },
+  onShow() {
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.refresh) {
+      this.list = [];
+      this.query();
+    }
+  },
   onLoad: function (options) {
     var that = this;
     // 获取系统信息

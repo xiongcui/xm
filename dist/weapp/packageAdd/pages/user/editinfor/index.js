@@ -270,7 +270,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateUser */ "V"])(params);
 
               case 3:
                 res = _context.sent;
@@ -311,7 +311,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "U"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -345,7 +345,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "cb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -383,7 +383,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: path,
         formData: {
           scr_type: "avatar"

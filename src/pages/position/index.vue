@@ -53,7 +53,7 @@ export default {
       try {
         let res = await faceToken(params);
         this.url =
-          "https://tapi.cupz.cn/face/print/statement/statement?token=" +
+          "https://pai.qubeitech.com/face/print/statement/statement?token=" +
           res.data.data.result.verify_token;
       } catch (error) {}
     },

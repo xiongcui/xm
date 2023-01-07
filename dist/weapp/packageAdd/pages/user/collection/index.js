@@ -493,7 +493,7 @@ component.options.__file = "src/packageAdd/pages/user/collection/index.vue"
               case 3:
                 res = _context.sent;
 
-                if (!(!res.data.data || !res.data.data.length)) {
+                if (!(!res.data.data.items || !res.data.data.items.length)) {
                   _context.next = 7;
                   break;
                 }
@@ -502,7 +502,7 @@ component.options.__file = "src/packageAdd/pages/user/collection/index.vue"
                 return _context.abrupt("return", false);
 
               case 7:
-                data = res.data.data;
+                data = res.data.data.items;
                 _this.list = _this.list.concat(data);
                 _context.next = 13;
                 break;

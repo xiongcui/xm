@@ -3,25 +3,13 @@
     <view class="complaint-title">投诉用户</view>
     <view class="complaint_top">
       <view class="complaint_top_left">
-        <image :src="'a'" class="avatar"></image>
+        <image :src="avatar" class="avatar"></image>
         <view class="complaint_info">
           <view class="complaint_name">
-            nickname
-            <block v-if="complaintInfo.author.sex !== null">
-              <image
-                src="../../../assets/images/nan.png"
-                class="complaint_sex"
-                v-if="complaintInfo.author.sex == 1"
-              ></image>
-              <image
-                src="../../../assets/images/nv.png"
-                class="complaint_sex"
-                v-if="complaintInfo.author.sex == 0"
-              ></image>
-            </block>
+            {{ nickname }}
           </view>
           <view class="complaint_p">
-            <text> 模特 </text>
+            <text> {{ career }} </text>
           </view>
         </view>
       </view>
@@ -36,7 +24,7 @@
           v-for="(item, index) in reasonData"
           :key="index"
         >
-          {{ item.name }}
+          {{ item.value }}
         </text>
       </view>
       <view class="complaint_input">
@@ -92,30 +80,23 @@
 
 <script>
 import "./index.scss";
+import { publicConfig, publicComplain } from "../../../api/index.js";
+import { errortip } from "../../../utils/util";
+import { Base64 } from "js-Base64";
 export default {
   name: "complaint",
   data() {
     return {
       isIphoneX: false,
-      complaintInfo: {
-        author: {},
-      },
+      visitor_id: "",
+      avatar: "",
+      nickname: "",
+      province_name: "",
+      career: "",
       reason: "",
       imgList: [],
-      reasonData: [
-        {
-          name: 11,
-          ispick: false,
-        },
-        {
-          name: 22,
-          ispick: false,
-        },
-        {
-          name: 44,
-          ispick: false,
-        },
-      ],
+      reasonData: [],
+      uuid: "",
     };
   },
   methods: {
@@ -173,10 +154,10 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "photo",
+          scr_type: "complain",
         },
         name: "file",
         header,
@@ -195,10 +176,63 @@ export default {
         },
       });
     },
-    submit() {},
+    submit() {
+      let reason = this.reasonData.find((item) => {
+        return item.ispick;
+      });
+      if (!reason) {
+        errortip("请选择投诉原因");
+        return false;
+      }
+      if (!this.reason) {
+        errortip("请输入您投诉的内容");
+        return false;
+      }
+      let params = {
+        content: this.reason,
+        evidence: this.imgList,
+        reason: reason.value,
+        source: "收到报名",
+        sued_uuid: this.visitor_id,
+      };
+      this.publicComplain(params);
+      console.log(params);
+    },
+    async publicConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        let arr = [];
+        arr = res.data.data.map((item, index) => {
+          item.ispick = false;
+          return item;
+        });
+        this.reasonData = arr;
+      } catch (error) {}
+    },
+    async publicComplain(params) {
+      try {
+        let res = await publicComplain(params);
+        errortip("投诉成功");
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1,
+          });
+        }, 3000);
+      } catch (error) {}
+    },
+  },
+  onLoad: function (options) {
+    this.visitor_id = options.visitor_id;
+    this.avatar = options.avatar;
+    this.nickname = options.nickname;
+    this.province_name = options.province_name;
+    this.career = options.career;
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.publicConfig({
+      type: ["complain_reason"],
+    });
   },
 };
 </script>

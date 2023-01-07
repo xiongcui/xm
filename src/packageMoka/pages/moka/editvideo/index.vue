@@ -174,7 +174,7 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "album",
@@ -220,7 +220,7 @@ export default {
         mask: true,
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: path,
         formData: {
           scr_type: "album",

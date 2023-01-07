@@ -284,7 +284,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
   name: "invite-detail",
   data: function data() {
     return {
-      oid: "",
+      sid: "",
       showModel: false,
       isIphoneX: false,
       yuepaiInfo: {
@@ -463,11 +463,11 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
     this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function onLoad(options) {
-    this.oid = options.oid;
+    this.sid = options.sid;
 
-    if (this.oid) {
+    if (this.sid) {
       this.applyInfo({
-        oid: this.oid
+        sid: this.sid
       });
     }
   }

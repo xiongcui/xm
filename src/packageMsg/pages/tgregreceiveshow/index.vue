@@ -2,63 +2,126 @@
   <view class="tgregreceiveshow">
     <view class="tgregreceive_top">
       <view class="tgregreceive_top_left">
-        <image :src="tgregreceiveInfo.author.avatar" class="avatar"></image>
+        <image :src="tgregreceiveInfo.visitor.avatar" class="avatar"></image>
         <view class="tgregreceive_info">
           <view class="tgregreceive_name">
             nickname
-            <block v-if="tgregreceiveInfo.author.sex !== null">
+            <block v-if="tgregreceiveInfo.visitor.sex !== null">
               <image
                 src="../../../assets/images/nan.png"
                 class="tgregreceive_sex"
-                v-if="tgregreceiveInfo.author.sex == 1"
+                v-if="tgregreceiveInfo.visitor.sex == 1"
               ></image>
               <image
                 src="../../../assets/images/nv.png"
                 class="tgregreceive_sex"
-                v-if="tgregreceiveInfo.author.sex == 0"
+                v-if="tgregreceiveInfo.visitor.sex == 0"
               ></image>
             </block>
           </view>
           <view class="tgregreceive_p">
-            <text> ewe | 北京 </text>
+            <text>
+              {{
+                tgregreceiveInfo.visitor.career_list &&
+                tgregreceiveInfo.visitor.career_list[0]
+              }}
+              |
+              {{ tgregreceiveInfo.visitor.province_name }}
+            </text>
           </view>
         </view>
       </view>
       <view class="tgregreceive_right">
-        <view class="time">6天前来过</view>
-        <view class="complaint">投诉</view>
+        <view class="time">{{ tgregreceiveInfo.date_humanize }}</view>
+        <view class="complaint" @tap="complaint">投诉</view>
       </view>
     </view>
-    <view class="tgregreceive_info">
+    <view class="tgregreceive_infos">
       <view class="tgregreceive_title"> 对方报名信息 </view>
       <view class="tgregreceive_remark">
-        <view class="tgregreceive_remark_label">报名备注：</view>
-        <view class="tgregreceive_remark_ct"
-          >内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view
+        <view class="tgregreceive_remark_label"
+          >{{ tgregreceiveInfo.title }}：</view
         >
+        <view class="tgregreceive_remark_ct">{{
+          tgregreceiveInfo.content
+        }}</view>
       </view>
     </view>
     <view class="tgregreceive_contact">
       <view class="tgregreceive_title"> 对方联系方式 </view>
-      <view class="contact_info">
+      <view class="contact_info" v-if="showAddress">
         <view class="contact_info_left">
           <view>手机号：</view>
-          <view>13693628075</view>
+          <view>{{ data.address.mobile }}</view>
         </view>
-        <view class="copy">复制</view>
+        <view class="copy" @tap="copy(data.address.mobile)">复制</view>
       </view>
-      <view class="contact_info">
+      <view class="contact_info" v-if="showAddress">
+        <view class="contact_info_left">
+          <view>地址：</view>
+          <view>{{ data.address.detail_address }}</view>
+        </view>
+        <view class="copy" @tap="copy(data.address.detail_address)">复制</view>
+      </view>
+      <view class="contact_info" v-if="showCelebrity">
+        <view class="contact_info_left">
+          <view>红人账号：</view>
+          <view>{{ data.celebrity.nickname }}</view>
+        </view>
+        <view class="copy" @tap="copy(data.celebrity.nickname)">复制</view>
+      </view>
+      <view class="contact_info" v-if="showContact">
         <view class="contact_info_left">
           <view>微信号：</view>
-          <view>Anne</view>
+          <view>{{ data.contact.wechat }}</view>
         </view>
         <view class="copy" @tap="showQRcode">点击查看微信二维码</view>
       </view>
     </view>
     <view class="tgregreceive_bottom">
       <view class="tgregreceive_bottom_left">
-        <view class="tgregreceive_bottom_nobg">不合适</view>
-        <view class="tgregreceive_bottom_bg">合适</view>
+        <view
+          class="tgregreceive_bottom_nobg"
+          @tap="noConformance"
+          v-if="visited_status == 200"
+          >不符</view
+        >
+        <view
+          class="tgregreceive_bottom_bg"
+          @tap="appropriate"
+          v-if="visited_status == 200"
+          >合适</view
+        >
+        <view
+          class="tgregreceive_bottom_nobg"
+          v-if="visited_status == 410"
+          @tap="abandonCooperation"
+          >放弃合作</view
+        >
+        <view
+          class="tgregreceive_bottom_bg"
+          v-if="visited_status == 410"
+          @tap="completeCooperation"
+          >完成合作</view
+        >
+        <view
+          class="tgregreceive_bottom_nobg"
+          v-if="visited_status == 420"
+          @tap="recoveryPending"
+          >恢复待定</view
+        >
+        <view
+          class="tgregreceive_bottom_bg"
+          v-if="visited_status == 430"
+          @tap="restoreAppropriately"
+          >恢复合适</view
+        >
+        <view
+          class="tgregreceive_bottom_nobg"
+          v-if="visited_status == 440"
+          @tap="Delete"
+          >删除</view
+        >
       </view>
       <view class="tgregreceive_bottom_rt">
         <view class="communicate">发起沟通</view>
@@ -67,7 +130,7 @@
     <view class="modal_box" v-if="showModel">
       <view class="modal_content">
         <view> 微信二维码 </view>
-        <image class="qrcode-img" src=""></image>
+        <image class="qrcode-img" :src="data.contact.wechat_links"></image>
         <image
           src="../../../assets/images/common/x_icon.png"
           class="close-img"
@@ -81,13 +144,39 @@
 
 <script>
 import "./index.scss";
+import { applyInfo, applyManage } from "../../../api/index";
+import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "tgregreceiveshow",
   data() {
     return {
+      sid: "",
+      visited_status: "",
       showModel: false,
       tgregreceiveInfo: {
-        author: {},
+        visitor: {},
+      },
+      showContact: false,
+      showCelebrity: false,
+      showAddress: false,
+      data: {
+        contact: {
+          person: "",
+          wechat: "",
+          wechat_links: "",
+          mobile: "",
+          is_wechat: 1,
+          is_mobile: 1,
+        },
+        celebrity: {
+          nickname: "",
+          fans_number: "",
+        },
+        address: {
+          detail_address: "",
+          mobile: "",
+          name: "",
+        },
       },
     };
   },
@@ -153,6 +242,118 @@ export default {
         },
       });
     },
+    noConformance() {
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定标记该报名为不符吗？",
+        success: function (res) {
+          if (res.confirm) {
+            _this.applyManage({
+              even_type: 420,
+              sid: _this.sid,
+            });
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
+    completeCooperation() {
+      this.applyManage({
+        even_type: 440,
+        sid: this.sid,
+      });
+    },
+    abandonCooperation() {
+      this.applyManage({
+        even_type: 430,
+        sid: this.sid,
+      });
+    },
+    Delete() {
+      this.applyManage({
+        even_type: 111,
+        sid: this.sid,
+      });
+    },
+    recoveryPending() {
+      this.applyManage({
+        even_type: 450,
+        sid: this.sid,
+      });
+    },
+    restoreAppropriately() {
+      this.applyManage({
+        even_type: 460,
+        sid: this.sid,
+      });
+    },
+    copy(txt) {
+      wx.setClipboardData({
+        data: txt, //这个是要复制的数据
+        success(res) {
+          wx.getClipboardData({
+            success(res) {
+              console.log(res.data); // data
+              if (res.data) {
+                errortip("复制成功");
+              }
+            },
+          });
+        },
+      });
+    },
+    complaint() {
+      openPage(
+        "/packageMsg/pages/complaint/index?visitor_id=" +
+          this.tgregreceiveInfo.visitor_id +
+          "&avatar=" +
+          this.tgregreceiveInfo.visitor.avatar +
+          "&nickname=" +
+          this.tgregreceiveInfo.visitor.nickname +
+          "&province_name=" +
+          this.tgregreceiveInfo.visitor.province_name +
+          "&career=" +
+          this.tgregreceiveInfo.visitor.career_list[0]
+      );
+    },
+    async applyInfo(params) {
+      try {
+        let res = await applyInfo(params);
+        this.tgregreceiveInfo = res.data.data;
+        this.showContact = res.data.data.contact.is_enable;
+        this.showCelebrity = res.data.data.celebrity.is_enable;
+        this.showAddress = res.data.data.address.is_enable;
+
+        this.data.contact = res.data.data.contact.body;
+        this.data.celebrity = res.data.data.celebrity.body;
+        this.data.address = res.data.data.address.body;
+      } catch (error) {}
+    },
+    async applyManage(params) {
+      try {
+        let res = await applyManage(params);
+        errortip("更新成功");
+        let pages = getCurrentPages();
+        let prevPage = pages[pages.length - 2];
+        prevPage.setData({
+          refresh: true,
+        });
+        wx.navigateBack({
+          delta: 1,
+        });
+      } catch (error) {}
+    },
+  },
+  onLoad: function (options) {
+    this.sid = options.sid;
+    this.visited_status = options.visited_status;
+    if (this.sid) {
+      this.applyInfo({
+        sid: this.sid,
+      });
+    }
   },
 };
 </script>

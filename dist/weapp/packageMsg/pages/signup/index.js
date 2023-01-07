@@ -645,6 +645,48 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -689,8 +731,11 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
     close: function close() {
       this.visible = false;
     },
-    signupDetail: function signupDetail(oid) {
+    signupAllDetail: function signupAllDetail(oid) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
+    },
+    signupDetail: function signupDetail(sid, visited_status) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -699,13 +744,12 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
         remark: this.remarks
       });
     },
-    moreClick: function moreClick(sid) {
+    moreClick: function moreClick(sid, row) {
       wx.showActionSheet({
         itemList: ["删除", "投诉"],
         success: function success(res) {
           switch (res.tapIndex) {
             case 0:
-              console.log("删除");
               this.Delete({
                 even_type: 111,
                 sid: sid
@@ -714,6 +758,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
             case 1:
               console.log("投诉");
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
               break;
           }
         },
@@ -881,11 +926,15 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       }))();
     }
   },
-  //   onShow() {
-  //     this.pageNum = 1;
-  //     this.list = [];
-  //     this.query();
-  //   },
+  onShow: function onShow() {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+
+    if (currPage.data.refresh) {
+      this.list = [];
+      this.query();
+    }
+  },
   onLoad: function onLoad(options) {
     var that = this; // 获取系统信息
 
@@ -1064,7 +1113,7 @@ var render = function () {
                               staticClass: "notice-btn",
                               on: {
                                 tap: function ($event) {
-                                  return _vm.signupDetail(item.oid)
+                                  return _vm.signupAllDetail(item.oid)
                                 },
                               },
                             },
@@ -1080,9 +1129,21 @@ var render = function () {
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1092,7 +1153,7 @@ var render = function () {
                                 staticClass: "more",
                                 on: {
                                   tap: function ($event) {
-                                    return _vm.moreClick(item.sid)
+                                    return _vm.moreClick(item.sid, item)
                                   },
                                 },
                               },
@@ -1308,20 +1369,37 @@ var render = function () {
                               staticClass: "notice-btn",
                               on: {
                                 tap: function ($event) {
-                                  return _vm.signupDetail(item.oid)
+                                  return _vm.signupAllDetail(item.oid)
                                 },
                               },
                             },
                             [_vm._v("查看全部报名")]
                           ),
                         ]),
+                        item.remark
+                          ? _c("view", { staticClass: "remark" }, [
+                              _vm._v(" 备注：" + _vm._s(item.remark)),
+                            ])
+                          : _vm._e(),
                         _c("view", { staticClass: "signup-cotent" }, [
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1331,7 +1409,7 @@ var render = function () {
                                 staticClass: "more",
                                 on: {
                                   tap: function ($event) {
-                                    return _vm.moreClick(item.sid)
+                                    return _vm.moreClick(item.sid, item)
                                   },
                                 },
                               },
@@ -1547,20 +1625,37 @@ var render = function () {
                               staticClass: "notice-btn",
                               on: {
                                 tap: function ($event) {
-                                  return _vm.signupDetail(item.oid)
+                                  return _vm.signupAllDetail(item.oid)
                                 },
                               },
                             },
                             [_vm._v("查看全部报名")]
                           ),
                         ]),
+                        item.remark
+                          ? _c("view", { staticClass: "remark" }, [
+                              _vm._v(" 备注：" + _vm._s(item.remark)),
+                            ])
+                          : _vm._e(),
                         _c("view", { staticClass: "signup-cotent" }, [
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1570,7 +1665,7 @@ var render = function () {
                                 staticClass: "more",
                                 on: {
                                   tap: function ($event) {
-                                    return _vm.moreClick(item.sid)
+                                    return _vm.moreClick(item.sid, item)
                                   },
                                 },
                               },
@@ -1786,20 +1881,37 @@ var render = function () {
                               staticClass: "notice-btn",
                               on: {
                                 tap: function ($event) {
-                                  return _vm.signupDetail(item.oid)
+                                  return _vm.signupAllDetail(item.oid)
                                 },
                               },
                             },
                             [_vm._v("查看全部报名")]
                           ),
                         ]),
+                        item.remark
+                          ? _c("view", { staticClass: "remark" }, [
+                              _vm._v(" 备注：" + _vm._s(item.remark)),
+                            ])
+                          : _vm._e(),
                         _c("view", { staticClass: "signup-cotent" }, [
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1809,7 +1921,7 @@ var render = function () {
                                 staticClass: "more",
                                 on: {
                                   tap: function ($event) {
-                                    return _vm.moreClick(item.sid)
+                                    return _vm.moreClick(item.sid, item)
                                   },
                                 },
                               },
@@ -2025,20 +2137,37 @@ var render = function () {
                               staticClass: "notice-btn",
                               on: {
                                 tap: function ($event) {
-                                  return _vm.signupDetail(item.oid)
+                                  return _vm.signupAllDetail(item.oid)
                                 },
                               },
                             },
                             [_vm._v("查看全部报名")]
                           ),
                         ]),
+                        item.remark
+                          ? _c("view", { staticClass: "remark" }, [
+                              _vm._v(" 备注：" + _vm._s(item.remark)),
+                            ])
+                          : _vm._e(),
                         _c("view", { staticClass: "signup-cotent" }, [
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -2048,7 +2177,7 @@ var render = function () {
                                 staticClass: "more",
                                 on: {
                                   tap: function ($event) {
-                                    return _vm.moreClick(item.sid)
+                                    return _vm.moreClick(item.sid, item)
                                   },
                                 },
                               },

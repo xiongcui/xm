@@ -308,7 +308,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="pledgecash" class="item ub" v-if="infor.ispledge != 1">
+        <view @tap="pledgecash" class="item ub" v-if="infor.ispledge != 1">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -505,6 +505,9 @@ export default {
     },
     goCollection() {
       openPage("/packageAdd/pages/user/collection/index");
+    },
+    pledgecash() {
+      openPage("/packageMsg/pages/creditGuarantee/index");
     },
     myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH

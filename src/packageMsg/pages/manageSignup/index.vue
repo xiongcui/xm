@@ -80,7 +80,11 @@
               >
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
@@ -178,7 +182,11 @@
               </view>
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
@@ -276,7 +284,11 @@
               </view>
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
@@ -374,7 +386,11 @@
               </view>
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
@@ -472,7 +488,11 @@
               </view>
               <view class="signup-cotent">
                 <text class="signup-desc">{{ item.content }}</text>
-                <text class="signup-detail">查看详情</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
               </view>
               <view class="signup-btns">
                 <view class="signup-btn-left">
@@ -715,6 +735,14 @@ export default {
       this.pageNum++;
       this.query();
     },
+    signupDetail(sid, visited_status) {
+      openPage(
+        "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+          sid +
+          "&visited_status=" +
+          visited_status
+      );
+    },
     async applyList(params) {
       try {
         let res = await applyList(params);
@@ -736,11 +764,14 @@ export default {
       } catch (error) {}
     },
   },
-  //   onShow() {
-  //     this.pageNum = 1;
-  //     this.list = [];
-  //     this.query();
-  //   },
+  onShow() {
+    let pages = getCurrentPages();
+    let currPage = pages[pages.length - 1]; //当前页面
+    if (currPage.data.refresh) {
+      this.list = [];
+      this.query();
+    }
+  },
   onLoad: function (options) {
     var that = this;
     // 获取系统信息

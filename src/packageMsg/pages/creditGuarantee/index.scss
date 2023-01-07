@@ -1,0 +1,101 @@
+.credit-guarantee {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .credit-top {
+    display: flex;
+    justify-content: center;
+    background: #ea6a6b;
+    color: #fffefb;
+    height: 200px;
+    font-size: 40px;
+    align-items: center;
+    position: relative;
+    margin-bottom: 160px;
+    .security {
+      width: 70px;
+      height: 70px;
+      margin: 0 16px;
+    }
+  }
+  .credit-info {
+    position: absolute;
+    background: #ffffff;
+    color: #ea6a6b;
+    margin: 0px 16px 16px 16px;
+    bottom: -120px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 -1px 8px 0 rgb(0 0 0 / 24%);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    .credit-item {
+      width: 50%;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      line-height: 50px;
+      justify-content: center;
+      image {
+        width: 32px;
+        height: 32px;
+        margin-right: 16px;
+      }
+    }
+  }
+  .price {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 60px;
+    color: #333333;
+    font-weight: 700;
+  }
+  .submit-red {
+    width: 400px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 8px;
+    background: #ea6a6b;
+    margin: 16px auto;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+  }
+  .submit-yellow {
+    width: 400px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 8px;
+    background: #f98b14;
+    margin: 16px auto;
+    color: #ffffff;
+    text-align: center;
+    font-size: 30px;
+  }
+  .or {
+    font-size: 32px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  .credit-tips {
+    color: red;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .credit-content {
+    margin-top: 40px;
+    padding: 16px;
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .credit-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 6px;
+  }
+}

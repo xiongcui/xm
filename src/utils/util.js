@@ -112,7 +112,7 @@ export const requestUpload = (path, params) => {
   });
   return new Promise((resolve, reject) => {
     wx.uploadFile({
-      url: "https://tapi.cupz.cn/v1/file/upload",
+      url: "https://pai.qubeitech.com/v1/file/upload",
       filePath: path,
       formData,
       name: "file",

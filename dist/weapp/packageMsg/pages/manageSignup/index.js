@@ -47,14 +47,39 @@ component.options.__file = "src/packageMsg/pages/manageSignup/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/manageSignup/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/manageSignup/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
 
 
+
+
+var _methods;
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -636,7 +661,7 @@ component.options.__file = "src/packageMsg/pages/manageSignup/index.vue"
       oid: ""
     };
   },
-  methods: {
+  methods: (_methods = {
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -661,7 +686,7 @@ component.options.__file = "src/packageMsg/pages/manageSignup/index.vue"
       this.visible = false;
     },
     signupDetail: function signupDetail(sid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/manageSignup/index?sid=" + sid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/manageSignup/index?sid=" + sid);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -773,91 +798,95 @@ component.options.__file = "src/packageMsg/pages/manageSignup/index.vue"
     scrollToLower: function scrollToLower() {
       this.pageNum++;
       this.query();
-    },
-    applyList: function applyList(params) {
-      var _this2 = this;
+    }
+  }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "signupDetail", function signupDetail(sid, visited_status) {
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "applyList", function applyList(params) {
+    var _this2 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, data;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyList */ "d"])(params);
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee() {
+      var res, data;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyList */ "d"])(params);
 
-              case 3:
-                res = _context.sent;
-                _this2.loading = true;
+            case 3:
+              res = _context.sent;
+              _this2.loading = true;
 
-                if (!(!res.data.data || !res.data.data.items.length)) {
-                  _context.next = 8;
-                  break;
-                }
-
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("没有更多数据了～");
-                return _context.abrupt("return", false);
-
-              case 8:
-                data = res.data.data.items;
-                _this2.list = _this2.list.concat(data);
-                _context.next = 14;
+              if (!(!res.data.data || !res.data.data.items.length)) {
+                _context.next = 8;
                 break;
+              }
 
-              case 12:
-                _context.prev = 12;
-                _context.t0 = _context["catch"](0);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+              return _context.abrupt("return", false);
 
-              case 14:
-              case "end":
-                return _context.stop();
-            }
+            case 8:
+              data = res.data.data.items;
+              _this2.list = _this2.list.concat(data);
+              _context.next = 14;
+              break;
+
+            case 12:
+              _context.prev = 12;
+              _context.t0 = _context["catch"](0);
+
+            case 14:
+            case "end":
+              return _context.stop();
           }
-        }, _callee, null, [[0, 12]]);
-      }))();
-    },
-    applyManage: function applyManage(params) {
-      var _this3 = this;
+        }
+      }, _callee, null, [[0, 12]]);
+    }))();
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "applyManage", function applyManage(params) {
+    var _this3 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyManage */ "e"])(params);
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee2() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyManage */ "e"])(params);
 
-              case 3:
-                res = _context2.sent;
-                _this3.visible = false;
-                _this3.list = [];
+            case 3:
+              res = _context2.sent;
+              _this3.visible = false;
+              _this3.list = [];
 
-                _this3.query();
+              _this3.query();
 
-                _context2.next = 11;
-                break;
+              _context2.next = 11;
+              break;
 
-              case 9:
-                _context2.prev = 9;
-                _context2.t0 = _context2["catch"](0);
+            case 9:
+              _context2.prev = 9;
+              _context2.t0 = _context2["catch"](0);
 
-              case 11:
-              case "end":
-                return _context2.stop();
-            }
+            case 11:
+            case "end":
+              return _context2.stop();
           }
-        }, _callee2, null, [[0, 9]]);
-      }))();
+        }
+      }, _callee2, null, [[0, 9]]);
+    }))();
+  }), _methods),
+  onShow: function onShow() {
+    var pages = getCurrentPages();
+    var currPage = pages[pages.length - 1]; //当前页面
+
+    if (currPage.data.refresh) {
+      this.list = [];
+      this.query();
     }
   },
-  //   onShow() {
-  //     this.pageNum = 1;
-  //     this.list = [];
-  //     this.query();
-  //   },
   onLoad: function onLoad(options) {
     var that = this; // 获取系统信息
 
@@ -1041,9 +1070,21 @@ var render = function () {
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1265,9 +1306,21 @@ var render = function () {
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1489,9 +1542,21 @@ var render = function () {
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1713,9 +1778,21 @@ var render = function () {
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [
@@ -1937,9 +2014,21 @@ var render = function () {
                           _c("text", { staticClass: "signup-desc" }, [
                             _vm._v(_vm._s(item.content)),
                           ]),
-                          _c("text", { staticClass: "signup-detail" }, [
-                            _vm._v("查看详情"),
-                          ]),
+                          _c(
+                            "text",
+                            {
+                              staticClass: "signup-detail",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.signupDetail(
+                                    item.sid,
+                                    item.visited_status
+                                  )
+                                },
+                              },
+                            },
+                            [_vm._v("查看详情")]
+                          ),
                         ]),
                         _c("view", { staticClass: "signup-btns" }, [
                           _c("view", { staticClass: "signup-btn-left" }, [

@@ -78,6 +78,7 @@ page {
 .tgregreceiveshow .tgregreceive_right .time {
   color: rgba(0, 0, 0, 0.4);
   font-size: 24rpx;
+  text-align: right;
 }
 
 .tgregreceiveshow .tgregreceive_right .complaint {
@@ -104,27 +105,26 @@ page {
   font-weight: 600;
 }
 
-.tgregreceiveshow .tgregreceive_info {
-  margin-top: 16rpx;
+.tgregreceiveshow .tgregreceive_infos {
   background: #ffffff;
   border-radius: 8rpx;
   margin: 16rpx;
   padding: 16rpx;
 }
 
-.tgregreceiveshow .tgregreceive_info .tgregreceive_remark {
+.tgregreceiveshow .tgregreceive_infos .tgregreceive_remark {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-size: 30rpx;
 }
 
-.tgregreceiveshow .tgregreceive_info .tgregreceive_remark .tgregreceive_remark_label {
+.tgregreceiveshow .tgregreceive_infos .tgregreceive_remark .tgregreceive_remark_label {
   color: rgba(0, 0, 0, 0.5);
   width: 160rpx;
 }
 
-.tgregreceiveshow .tgregreceive_info .tgregreceive_remark .tgregreceive_remark_ct {
+.tgregreceiveshow .tgregreceive_infos .tgregreceive_remark .tgregreceive_remark_ct {
   color: #333333;
   width: 520rpx;
 }
@@ -156,6 +156,7 @@ page {
 
 .tgregreceiveshow .tgregreceive_contact .copy {
   color: #6493d7;
+  min-width: 60rpx;
 }
 
 .tgregreceiveshow .tgregreceive_bottom {

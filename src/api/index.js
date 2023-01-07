@@ -1,5 +1,5 @@
 import { request, requestUpload } from "../utils/util";
-const baseUrl = "https://tapi.cupz.cn";
+const baseUrl = "https://pai.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({
@@ -492,6 +492,33 @@ export const applyManage = (data) => {
     url: baseUrl + "/v1/record/apply/manage",
     method: "post",
     data,
+  });
+};
+
+// 投诉
+export const publicComplain = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/complain",
+    method: "post",
+    data,
+  });
+};
+
+// 存保证金
+export const securityOpen = (data) => {
+  return request({
+    url: baseUrl + "/v1/security/open",
+    method: "post",
+    data,
+  });
+};
+
+// 查询用户保障金或会员
+export const securityInfo = (params) => {
+  return request({
+    url: baseUrl + "/v1/security/info",
+    method: "get",
+    params,
   });
 };
 

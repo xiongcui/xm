@@ -231,7 +231,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
           scr_type: "album"
@@ -280,7 +280,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
         mask: true
       });
       wx.uploadFile({
-        url: "https://tapi.cupz.cn/v1/file/upload",
+        url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: path,
         formData: {
           scr_type: "album"
@@ -322,7 +322,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "X"])(params);
 
               case 3:
                 res = _context.sent;
@@ -356,7 +356,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "Y"])(params);
 
               case 3:
                 res = _context2.sent;

@@ -228,7 +228,7 @@ export default {
   name: "invite-detail",
   data() {
     return {
-      oid: "",
+      sid: "",
       showModel: false,
       isIphoneX: false,
       yuepaiInfo: {
@@ -382,10 +382,10 @@ export default {
     this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function (options) {
-    this.oid = options.oid;
-    if (this.oid) {
+    this.sid = options.sid;
+    if (this.sid) {
       this.applyInfo({
-        oid: this.oid,
+        sid: this.sid,
       });
     }
   },

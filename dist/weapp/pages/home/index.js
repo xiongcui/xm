@@ -684,7 +684,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "K"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1305,7 +1305,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "K"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1493,11 +1493,6 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2264,7 +2259,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "K"])(params);
 
               case 3:
                 res = _context.sent;
