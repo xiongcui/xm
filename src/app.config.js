@@ -102,6 +102,7 @@ export default defineAppConfig({
         "pages/shop/index",
         "pages/brand/index",
         "pages/detail/index",
+        "pages/tonggao_manage/index",
       ],
     },
     {

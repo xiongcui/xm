@@ -398,7 +398,7 @@ var inviteInfo = function inviteInfo(data) {
 var userInfo = function userInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/info",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 地理位置
@@ -824,7 +824,7 @@ var securityOpen = function securityOpen(data) {
 var securityInfo = function securityInfo(params) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/security/info",
-    method: "get",
+    method: "post",
     params: params
   });
 }; // https://brain.baidu.com/face/print/?token=xxx

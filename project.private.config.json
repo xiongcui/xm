@@ -23,8 +23,8 @@
                     "scene": null
                 },
                 {
-                    "name": "管理报名",
-                    "pathName": "packageMsg/pages/manageSignup/index",
+                    "name": "通告管理",
+                    "pathName": "packageTonggao/pages/tonggao_manage/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

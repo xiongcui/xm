@@ -167,6 +167,7 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
 
               case 3:
                 res = _context.sent;
+                console.log(res, "");
                 data = res.data.data;
                 _this = _this2;
                 wx.requestPayment({
@@ -184,19 +185,19 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
                   fail: function fail(res) {},
                   complete: function complete(res) {}
                 });
-                _context.next = 11;
+                _context.next = 12;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
     securityInfo: function securityInfo(params) {

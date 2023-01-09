@@ -98,6 +98,7 @@ export default {
     async securityOpen(params) {
       try {
         let res = await securityOpen(params);
+        console.log(res, "");
         let data = res.data.data;
         let _this = this;
         wx.requestPayment({

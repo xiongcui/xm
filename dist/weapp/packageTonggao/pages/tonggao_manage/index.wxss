@@ -1,0 +1,78 @@
+page {
+  background: #f7f7f7;
+}
+
+.tonggao-manage .tab {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #ffffff;
+  position: fixed;
+  z-index: 9999;
+}
+
+.tonggao-manage .tab-item {
+  color: #333333;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #ffffff;
+  margin: 0 30rpx;
+}
+
+.tonggao-manage .content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100vh;
+}
+
+.tonggao-manage .content > swiper {
+  height: 100%;
+}
+
+.tonggao-manage .tab-item.on {
+  color: #333333;
+  font-weight: bold;
+  border-bottom-color: #ff1e3e;
+}
+
+.tonggao-manage .swiper-box {
+  height: 100%;
+}
+
+.tonggao-manage .tonggao-manage-list {
+  color: #2f2f2f;
+  font-size: 30rpx;
+  margin: 16rpx 0;
+  background: #ffffff;
+  padding: 30rpx;
+  border-radius: 8rpx;
+}
+
+.tonggao-manage .tonggao-manage-list .list-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  padding-right: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.tonggao-manage .tonggao-manage-list .list_title {
+  font-size: 32rpx;
+}
+
+.tonggao-manage .tonggao-manage-list:first-child {
+  margin-top: 104rpx;
+}

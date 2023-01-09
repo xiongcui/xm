@@ -1,0 +1,60 @@
+page {
+  background: #f7f7f7;
+}
+.tonggao-manage {
+  .tab {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+    position: fixed;
+    z-index: 9999;
+  }
+  .tab-item {
+    color: #333333;
+    flex: 1;
+    font-size: 30px;
+    text-align: center;
+    line-height: 80rpx;
+    border-bottom: 6rpx solid #ffffff;
+    margin: 0px 30px;
+  }
+  .content {
+    flex: 1;
+    height: 100vh;
+  }
+  .content > swiper {
+    height: 100%;
+  }
+  .tab-item.on {
+    color: #333333;
+    font-weight: bold;
+    border-bottom-color: #ff1e3e;
+  }
+
+  .swiper-box {
+    height: 100%;
+  }
+
+  .tonggao-manage-list {
+    color: #2f2f2f;
+    font-size: 30px;
+    margin: 16px 0px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    .list-content {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      padding-right: 60px;
+      margin-bottom: 10px;
+    }
+    .list_title {
+      font-size: 32px;
+    }
+  }
+  .tonggao-manage-list:first-child {
+    margin-top: 104px;
+  }
+}

@@ -85,7 +85,7 @@ export const inviteInfo = (data) => {
 export const userInfo = (data) => {
   return request({
     url: baseUrl + "/v1/user/info",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -517,7 +517,7 @@ export const securityOpen = (data) => {
 export const securityInfo = (params) => {
   return request({
     url: baseUrl + "/v1/security/info",
-    method: "get",
+    method: "post",
     params,
   });
 };
