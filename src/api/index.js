@@ -517,7 +517,7 @@ export const securityOpen = (data) => {
 export const securityInfo = (params) => {
   return request({
     url: baseUrl + "/v1/security/info",
-    method: "post",
+    method: "get",
     params,
   });
 };

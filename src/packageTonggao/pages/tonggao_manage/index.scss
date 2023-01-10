@@ -41,17 +41,136 @@ page {
     font-size: 30px;
     margin: 16px 0px;
     background: #ffffff;
-    padding: 30px;
+    padding: 30px 30px 16px 30px;
     border-radius: 8px;
     .list-content {
       display: flex;
       justify-content: space-between;
       position: relative;
-      padding-right: 60px;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
     }
     .list_title {
       font-size: 32px;
+      margin-top: 16px;
+    }
+    .list_desc {
+      font-size: 26px;
+      color: #6b6b6b;
+      line-height: 36px;
+      margin-bottom: 6px;
+    }
+    .list_info {
+      font-size: 26px;
+      color: #333333;
+      line-height: 36px;
+      display: flex;
+      align-items: center;
+      image {
+        width: 30px;
+        height: 30px;
+        margin-right: 6px;
+      }
+    }
+    .list_rt {
+      display: flex;
+      align-items: center;
+    }
+    .list_rt image {
+      width: 200px;
+      height: 200px;
+    }
+    .list_bottom,
+    .list_num {
+      display: flex;
+      justify-content: space-between;
+      color: #6b6b6b;
+    }
+    .list_num {
+      margin-bottom: 16px;
+    }
+    .list_time {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 4px;
+      }
+    }
+    .list_yuepai {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 4px;
+      }
+    }
+    .list_read {
+      display: flex;
+      align-items: center;
+      font-size: 26px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 4px;
+      }
+    }
+    .list_status {
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 0px 12px;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+    }
+    .list_status_sucess {
+      background: #4395ff;
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 0px 12px;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+    }
+    .list_status_fail {
+      background: #ff1e3e;
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 0px 12px;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+    }
+    .list_tag {
+      background: #f9942a;
+      font-size: 22px;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 0px 0px 12px 0px;
+      position: absolute;
+      left: 0px;
+      top: -30px;
+    }
+    .btn-grey {
+      background: rgba(0, 0, 0, 0.4);
+      font-size: 22px;
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 8px;
+    }
+    .btn-red {
+      background: #ff1e3e;
+      font-size: 22px;
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 8px;
     }
   }
   .tonggao-manage-list:first-child {

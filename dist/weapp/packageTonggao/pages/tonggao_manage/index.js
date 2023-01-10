@@ -102,6 +102,56 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "tonggao_manage",
@@ -141,7 +191,25 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
     scrollToLower: function scrollToLower() {
       this.pageNum++;
       this.query();
-    }
+    },
+    deleteTonggao: function deleteTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定删除该通告吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
+    openTonggao: function openTonggao() {},
+    overTonggao: function overTonggao() {},
+    refreshTonggao: function refreshTonggao() {},
+    manageTonggao: function manageTonggao() {},
+    reopenTonggao: function reopenTonggao() {}
   },
   onLoad: function onLoad(options) {
     var that = this; // 获取系统信息
@@ -252,8 +320,100 @@ var render = function () {
                   [
                     _c("view", { staticClass: "tonggao-manage-list" }, [
                       _c("view", { staticClass: "list-content" }, [
-                        _c("view", { staticClass: "list_title" }, [
-                          _vm._v(" 标题 "),
+                        _c("view", { staticClass: "list_left" }, [
+                          _c("view", { staticClass: "list_title" }, [
+                            _vm._v(" 标题标题 "),
+                          ]),
+                          _c("view", { staticClass: "list_desc" }, [
+                            _vm._v(
+                              " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
+                            ),
+                          ]),
+                          _c("view", { staticClass: "list_info" }, [
+                            _c("image", {
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../assets/images/position.png */ "./src/assets/images/position.png"),
+                              },
+                            }),
+                            _vm._v(" 面向地区：北京市 "),
+                          ]),
+                          _c("view", { staticClass: "list_info" }, [
+                            _c("image", {
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../assets/images/sex1.png */ "./src/assets/images/sex1.png"),
+                              },
+                            }),
+                            _vm._v("性别要求：女"),
+                          ]),
+                        ]),
+                        _c("view", { staticClass: "list_rt" }, [
+                          _c("image", {
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/invite/upVg5cIs/2c12e84c-8e8c-11ed-ae45-473a871aac32.jpg",
+                            },
+                          }),
+                        ]),
+                        _c("view", { staticClass: "list_status" }, [
+                          _vm._v("已结束"),
+                        ]),
+                        _c("view", { staticClass: "list_tag" }, [
+                          _vm._v("人像创作"),
+                        ]),
+                      ]),
+                      _c("view", { staticClass: "list_num" }, [
+                        _c("view", { staticClass: "list_time" }, [
+                          _c("image", {
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
+                            },
+                          }),
+                          _vm._v(" 222 "),
+                        ]),
+                        _c("view", { staticClass: "list_yuepai" }, [
+                          _c("image", {
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                            },
+                          }),
+                          _vm._v(" 收到约拍 34 "),
+                        ]),
+                        _c("view", { staticClass: "list_read" }, [
+                          _c("image", {
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
+                            },
+                          }),
+                          _vm._v(" 阅读 32 "),
+                        ]),
+                      ]),
+                      _c("view", { staticClass: "list_bottom" }, [
+                        _c("view", { staticClass: "list_bt_left" }, [
+                          _c(
+                            "view",
+                            {
+                              staticClass: "btn-grey",
+                              on: { tap: _vm.overTonggao },
+                            },
+                            [_vm._v("结束通告")]
+                          ),
+                        ]),
+                        _c("view", { staticClass: "list_bt_rt" }, [
+                          _c(
+                            "view",
+                            {
+                              staticClass: "btn-red",
+                              on: { tap: _vm.refreshTonggao },
+                            },
+                            [_vm._v("刷新排名")]
+                          ),
+                          _c(
+                            "view",
+                            {
+                              staticClass: "btn-red",
+                              on: { tap: _vm.reopenTonggao },
+                            },
+                            [_vm._v("重新打开")]
+                          ),
                         ]),
                       ]),
                     ]),
@@ -274,6 +434,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/sex1.png":
+/*!************************************!*\
+  !*** ./src/assets/images/sex1.png ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/sex1.png";
 
 /***/ }),
 
@@ -344,5 +516,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageTonggao/pages/tonggao_manage/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageTonggao/pages/tonggao_manage/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map
