@@ -36,7 +36,7 @@ export const updateUser = (data) => {
 export const getCareer = (data) => {
   return request({
     url: baseUrl + "/v1/user/career",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -109,7 +109,7 @@ export const userResume = (data) => {
 export const userProfile = (data) => {
   return request({
     url: baseUrl + "/v1/user/profile",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -145,7 +145,7 @@ export const uploadImagePhoto = (path, params) => {
 export const userShapeDetail = (data) => {
   return request({
     url: baseUrl + "/v1/user/shape",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -153,7 +153,7 @@ export const userShapeDetail = (data) => {
 export const userAlbumDetail = (data) => {
   return request({
     url: baseUrl + "/v1/user/album",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -161,7 +161,7 @@ export const userAlbumDetail = (data) => {
 export const userSticker = (data) => {
   return request({
     url: baseUrl + "/v1/user/sticker",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -217,7 +217,7 @@ export const submitNotice = (data) => {
 export const noticeFilter = (data) => {
   return request({
     url: baseUrl + "/v1/note/notice/filter",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -265,7 +265,7 @@ export const inviteApply = (data) => {
 export const celebrityList = (data) => {
   return request({
     url: baseUrl + "/v1/user/celebrity/list",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -281,7 +281,7 @@ export const userCelebrity = (data) => {
 export const celebrityInfo = (data) => {
   return request({
     url: baseUrl + "/v1/user/celebrity/info",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -289,7 +289,7 @@ export const celebrityInfo = (data) => {
 export const addressList = (data) => {
   return request({
     url: baseUrl + "/v1/user/address/list",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -313,7 +313,7 @@ export const addressInfo = (data) => {
 export const userContact = (data) => {
   return request({
     url: baseUrl + "/v1/user/contact",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -425,7 +425,7 @@ export const memberOpen = (data) => {
 export const memberInfo = (data) => {
   return request({
     url: baseUrl + "/v1/member/info",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -449,7 +449,7 @@ export const coinItemList = (data) => {
 export const coinAcct = (data) => {
   return request({
     url: baseUrl + "/v1/coin/acct",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -465,7 +465,7 @@ export const coinStore = (data) => {
 export const notifyNumber = (data) => {
   return request({
     url: baseUrl + "/v1/notify/number/warn",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -473,7 +473,7 @@ export const notifyNumber = (data) => {
 export const faceToken = (data) => {
   return request({
     url: baseUrl + "/v1/identify/face/token",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -481,7 +481,7 @@ export const faceToken = (data) => {
 export const facePrint = (data) => {
   return request({
     url: "https://brain.baidu.com/face/print",
-    method: "get",
+    method: "post",
     data,
   });
 };
@@ -514,11 +514,11 @@ export const securityOpen = (data) => {
 };
 
 // 查询用户保障金或会员
-export const securityInfo = (params) => {
+export const securityInfo = (data) => {
   return request({
     url: baseUrl + "/v1/security/info",
-    method: "get",
-    params,
+    method: "post",
+    data,
   });
 };
 

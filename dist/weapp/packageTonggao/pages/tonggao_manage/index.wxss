@@ -238,3 +238,13 @@ page {
 .tonggao-manage .tonggao-manage-list:first-child {
   margin-top: 104rpx;
 }
+
+.tonggao-manage .list_bt_rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.tonggao-manage .list_bt_rt .btn-red {
+  margin-left: 16rpx;
+}

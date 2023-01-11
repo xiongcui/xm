@@ -350,7 +350,7 @@ var updateUser = function updateUser(data) {
 var getCareer = function getCareer(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/career",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 创建身份
@@ -422,7 +422,7 @@ var userResume = function userResume(data) {
 var userProfile = function userProfile(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/profile",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 更新头像
@@ -458,7 +458,7 @@ var uploadImagePhoto = function uploadImagePhoto(path, params) {
 var userShapeDetail = function userShapeDetail(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/shape",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 获取相册和视频
@@ -466,7 +466,7 @@ var userShapeDetail = function userShapeDetail(data) {
 var userAlbumDetail = function userAlbumDetail(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/album",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 获取标签
@@ -474,7 +474,7 @@ var userAlbumDetail = function userAlbumDetail(data) {
 var userSticker = function userSticker(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/sticker",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 提交标签
@@ -530,7 +530,7 @@ var submitNotice = function submitNotice(data) {
 var noticeFilter = function noticeFilter(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/note/notice/filter",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 通告列表
@@ -578,7 +578,7 @@ var inviteApply = function inviteApply(data) {
 var celebrityList = function celebrityList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/celebrity/list",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 创建|更新红人账号
@@ -594,7 +594,7 @@ var userCelebrity = function userCelebrity(data) {
 var celebrityInfo = function celebrityInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/celebrity/info",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 获取地址列表
@@ -602,7 +602,7 @@ var celebrityInfo = function celebrityInfo(data) {
 var addressList = function addressList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/address/list",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 创建｜更新地址
@@ -626,7 +626,7 @@ var addressInfo = function addressInfo(data) {
 var userContact = function userContact(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/user/contact",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 提交我的联系方式
@@ -738,7 +738,7 @@ var memberOpen = function memberOpen(data) {
 var memberInfo = function memberInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/member/info",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 金币用途、赚取金币
@@ -762,7 +762,7 @@ var coinItemList = function coinItemList(data) {
 var coinAcct = function coinAcct(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/coin/acct",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 金币充值
@@ -778,21 +778,21 @@ var coinStore = function coinStore(data) {
 var notifyNumber = function notifyNumber(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/notify/number/warn",
-    method: "get",
+    method: "post",
     data: data
   });
 };
 var faceToken = function faceToken(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/identify/face/token",
-    method: "get",
+    method: "post",
     data: data
   });
 };
 var facePrint = function facePrint(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: "https://brain.baidu.com/face/print",
-    method: "get",
+    method: "post",
     data: data
   });
 }; // 收到操作
@@ -821,11 +821,11 @@ var securityOpen = function securityOpen(data) {
   });
 }; // 查询用户保障金或会员
 
-var securityInfo = function securityInfo(params) {
+var securityInfo = function securityInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
     url: baseUrl + "/v1/security/info",
-    method: "get",
-    params: params
+    method: "post",
+    data: data
   });
 }; // https://brain.baidu.com/face/print/?token=xxx
 // 金币支付：[POST] -> /v1/coin/apply/pay

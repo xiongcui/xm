@@ -84,7 +84,7 @@
               <view class="list_bottom">
                 <view class="list_bt_left">
                   <!-- <view class="btn-grey" @tap="deleteTonggao">删除通告</view> -->
-                  <view class="btn-grey" @tap="overTonggao">结束通告</view>
+                  <view class="btn-grey" @tap="overTonggao">结束报名</view>
                 </view>
                 <view class="list_bt_rt">
                   <!-- <view class="btn-red" @tap="openTonggao">开放招募</view> -->
@@ -156,10 +156,46 @@ export default {
       });
     },
     openTonggao() {},
-    overTonggao() {},
-    refreshTonggao() {},
+    overTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定结束该通告，不再接收报名么？",
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
+    refreshTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "刷新当前通告需消耗5金币，确定刷新吗？",
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
     manageTonggao() {},
-    reopenTonggao() {},
+    reopenTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定重新打开该通告吗？",
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
   },
   onLoad: function (options) {
     var that = this;

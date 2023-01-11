@@ -176,4 +176,10 @@ page {
   .tonggao-manage-list:first-child {
     margin-top: 104px;
   }
+  .list_bt_rt {
+    display: flex;
+    .btn-red {
+      margin-left: 16px;
+    }
+  }
 }

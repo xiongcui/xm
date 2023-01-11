@@ -206,10 +206,46 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
       });
     },
     openTonggao: function openTonggao() {},
-    overTonggao: function overTonggao() {},
-    refreshTonggao: function refreshTonggao() {},
+    overTonggao: function overTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定结束该通告，不再接收报名么？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
+    refreshTonggao: function refreshTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "刷新当前通告需消耗5金币，确定刷新吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
     manageTonggao: function manageTonggao() {},
-    reopenTonggao: function reopenTonggao() {}
+    reopenTonggao: function reopenTonggao() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定重新打开该通告吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    }
   },
   onLoad: function onLoad(options) {
     var that = this; // 获取系统信息
@@ -394,7 +430,7 @@ var render = function () {
                               staticClass: "btn-grey",
                               on: { tap: _vm.overTonggao },
                             },
-                            [_vm._v("结束通告")]
+                            [_vm._v("结束报名")]
                           ),
                         ]),
                         _c("view", { staticClass: "list_bt_rt" }, [

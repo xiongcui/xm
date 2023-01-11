@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "开通会员",
-                    "pathName": "packageVip/pages/vip/index",
+                    "name": "开放招募",
+                    "pathName": "packageTonggao/pages/open_recruitment/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

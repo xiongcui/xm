@@ -1,0 +1,75 @@
+.open-box {
+  padding: 0px 30px;
+  height: 100vh;
+  position: relative;
+  .open-title {
+    color: #333333;
+    font-size: 40px;
+    font-weight: 600;
+    margin-top: 50px;
+    margin-bottom: 16px;
+  }
+  .open-desc {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+  }
+  .open-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+    .open-item {
+      width: 325px;
+      background: #f7f8fa;
+      border-radius: 8px;
+      text-align: center;
+      margin: 16px 0px;
+      padding: 30px 0px;
+      color: #96999a;
+      font-size: 30px;
+    }
+    .day {
+      color: #333333;
+      font-size: 36px;
+    }
+    .active {
+      border: 1px solid #ff5355;
+      border-radius: 8px;
+      background: none;
+    }
+  }
+  .open-tips {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    margin-top: 16px;
+  }
+  .open-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 60px);
+  }
+  .open-bottom-left {
+    display: flex;
+    flex-direction: column;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+    .coin {
+      color: #333333;
+      font-size: 34px;
+      margin-bottom: 6px;
+    }
+  }
+  .open-btn {
+    width: 150px;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    background: #ff5355;
+    color: #ffffff;
+    font-size: 30px;
+    border-radius: 8px;
+  }
+}

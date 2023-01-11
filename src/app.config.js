@@ -103,6 +103,7 @@ export default defineAppConfig({
         "pages/brand/index",
         "pages/detail/index",
         "pages/tonggao_manage/index",
+        "pages/open_recruitment/index",
       ],
     },
     {
