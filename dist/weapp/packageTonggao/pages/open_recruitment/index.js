@@ -80,15 +80,35 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "open_recruitment"
+  name: "open_recruitment",
+  data: function data() {
+    return {
+      active: 0,
+      coin: 70,
+      balanceCoin: 0,
+      list: [{
+        day: 7,
+        coin: 70
+      }, {
+        day: 15,
+        coin: 130
+      }, {
+        day: 30,
+        coin: 250
+      }, {
+        day: 60,
+        coin: 450
+      }]
+    };
+  },
+  methods: {
+    select: function select(row, index) {
+      this.coin = row.coin;
+      this.active = index;
+    }
+  }
 });
 
 /***/ }),
@@ -113,31 +133,41 @@ var render = function () {
     _c("view", { staticClass: "open-desc" }, [
       _vm._v("该通告竞争激烈，需要支付费用才可展示"),
     ]),
-    _c("view", { staticClass: "open-list" }, [
-      _c("view", { staticClass: "open-item active" }, [
-        _c("view", { staticClass: "day" }, [_vm._v("7天")]),
-        _c("view", [_vm._v("70金币/通告")]),
-      ]),
-      _c("view", { staticClass: "open-item" }, [
-        _c("view", { staticClass: "day" }, [_vm._v("7天")]),
-        _c("view", [_vm._v("70金币/通告")]),
-      ]),
-      _c("view", { staticClass: "open-item" }, [
-        _c("view", { staticClass: "day" }, [_vm._v("7天")]),
-        _c("view", [_vm._v("70金币/通告")]),
-      ]),
-      _c("view", { staticClass: "open-item" }, [
-        _c("view", { staticClass: "day" }, [_vm._v("7天")]),
-        _c("view", [_vm._v("70金币/通告")]),
-      ]),
-    ]),
+    _c(
+      "view",
+      { staticClass: "open-list" },
+      _vm._l(_vm.list, function (item, index) {
+        return _c(
+          "view",
+          {
+            key: index,
+            staticClass: "open-item",
+            class: _vm.active == index ? "active" : "",
+            on: {
+              tap: function ($event) {
+                return _vm.select(item, index)
+              },
+            },
+          },
+          [
+            _c("view", { staticClass: "day" }, [
+              _vm._v(_vm._s(item.day) + "天"),
+            ]),
+            _c("view", [_vm._v(_vm._s(item.coin) + "金币/通告")]),
+          ]
+        )
+      }),
+      0
+    ),
     _c("view", { staticClass: "open-tips" }, [
       _vm._v(" 温馨提示：通告发布价格根据地区、职类、平台差异有所不同 "),
     ]),
     _c("view", { staticClass: "open-bottom" }, [
       _c("view", { staticClass: "open-bottom-left" }, [
-        _c("view", { staticClass: "coin" }, [_vm._v("70 金币")]),
-        _c("view", [_vm._v("剩余：100金币")]),
+        _c("view", { staticClass: "coin" }, [
+          _vm._v(" " + _vm._s(_vm.coin) + "金币"),
+        ]),
+        _c("view", [_vm._v("剩余：" + _vm._s(_vm.balanceCoin) + "金币")]),
       ]),
       _c("view", { staticClass: "open-bottom-rt" }, [
         _c("view", { staticClass: "open-btn" }, [_vm._v("立即开放")]),

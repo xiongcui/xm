@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "收到报名",
-                    "pathName": "packageMsg/pages/signup/index",
+                    "name": "管理报名",
+                    "pathName": "packageMsg/pages/manageSignup/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

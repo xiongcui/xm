@@ -522,6 +522,24 @@ export const securityInfo = (data) => {
   });
 };
 
+// 通告列表
+export const manageList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/list",
+    method: "post",
+    data,
+  });
+};
+
+// 通告管理-操作
+export const manageOperation = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/event",
+    method: "post",
+    data,
+  });
+};
+
 // https://brain.baidu.com/face/print/?token=xxx
 
 // 金币支付：[POST] -> /v1/coin/apply/pay

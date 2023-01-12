@@ -47,8 +47,14 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/tonggao_manage/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/tonggao_manage/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
 //
 //
 //
@@ -152,6 +158,55 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "tonggao_manage",
@@ -173,6 +228,17 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
     };
   },
   methods: {
+    formatSex: function formatSex(sex) {
+      if (sex == 1) {
+        return "男";
+      }
+
+      if (sex == 0) {
+        return "女";
+      }
+
+      return "不限";
+    },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -192,13 +258,20 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
       this.pageNum++;
       this.query();
     },
-    deleteTonggao: function deleteTonggao() {
+    deleteTonggao: function deleteTonggao(oid) {
+      var _this = this;
+
       wx.showModal({
         title: "温馨提示",
         content: "确定删除该通告吗？",
         success: function success(res) {
           if (res.confirm) {
             console.log("用户点击确定");
+
+            _this.manageOperation({
+              oid: oid,
+              even_type: 400
+            });
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
@@ -206,45 +279,154 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
       });
     },
     openTonggao: function openTonggao() {},
-    overTonggao: function overTonggao() {
+    overTonggao: function overTonggao(oid) {
+      var _this = this;
+
       wx.showModal({
         title: "温馨提示",
         content: "确定结束该通告，不再接收报名么？",
         success: function success(res) {
           if (res.confirm) {
             console.log("用户点击确定");
+
+            _this.manageOperation({
+              oid: oid,
+              even_type: 300
+            });
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         }
       });
     },
-    refreshTonggao: function refreshTonggao() {
+    refreshTonggao: function refreshTonggao(oid) {
+      var _this = this;
+
       wx.showModal({
         title: "温馨提示",
         content: "刷新当前通告需消耗5金币，确定刷新吗？",
         success: function success(res) {
           if (res.confirm) {
             console.log("用户点击确定");
+
+            _this.manageOperation({
+              oid: oid,
+              even_type: 700
+            });
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         }
       });
     },
-    manageTonggao: function manageTonggao() {},
+    manageTonggao: function manageTonggao(oid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/manageSignup/index?oid=" + oid);
+    },
     reopenTonggao: function reopenTonggao() {
+      var _this = this;
+
       wx.showModal({
         title: "温馨提示",
         content: "确定重新打开该通告吗？",
         success: function success(res) {
           if (res.confirm) {
             console.log("用户点击确定");
+
+            _this.manageOperation({
+              oid: oid,
+              even_type: 200
+            });
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
         }
       });
+    },
+    query: function query() {
+      var params = {
+        type: "NT",
+        publish_status: this.status,
+        page: this.pageNum,
+        per_page: this.pageSize
+      };
+      this.manageList(params);
+    },
+    manageList: function manageList(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageList */ "x"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this2.loading = true;
+
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context.next = 8;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                return _context.abrupt("return", false);
+
+              case 8:
+                data = res.data.data.items;
+                _this2.list = _this2.list.concat(data);
+                _context.next = 14;
+                break;
+
+              case 12:
+                _context.prev = 12;
+                _context.t0 = _context["catch"](0);
+
+              case 14:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 12]]);
+      }))();
+    },
+    manageOperation: function manageOperation(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageOperation */ "y"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this3.list = [];
+
+                _this3.query();
+
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
     }
   },
   onLoad: function onLoad(options) {
@@ -255,7 +437,8 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
         that.winWidth = res.windowWidth;
         that.winHeight = res.windowHeight;
       }
-    }); // this.query();
+    });
+    this.query();
   }
 });
 
@@ -353,107 +536,193 @@ var render = function () {
                     attrs: { "scroll-y": true },
                     on: { scrolltolower: _vm.scrollToLower },
                   },
-                  [
-                    _c("view", { staticClass: "tonggao-manage-list" }, [
-                      _c("view", { staticClass: "list-content" }, [
-                        _c("view", { staticClass: "list_left" }, [
-                          _c("view", { staticClass: "list_title" }, [
-                            _vm._v(" 标题标题 "),
+                  _vm._l(_vm.list, function (item, index) {
+                    return _c(
+                      "view",
+                      { key: index, staticClass: "tonggao-manage-list" },
+                      [
+                        _c("view", { staticClass: "list-content" }, [
+                          _c("view", { staticClass: "list_left" }, [
+                            _c("view", { staticClass: "list_title" }, [
+                              _vm._v(" " + _vm._s(item.major_subject) + " "),
+                            ]),
+                            _c("view", { staticClass: "list_desc" }, [
+                              _vm._v(" " + _vm._s(item.summary) + " "),
+                            ]),
+                            _c("view", { staticClass: "list_info" }, [
+                              _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../../assets/images/position.png */ "./src/assets/images/position.png"),
+                                },
+                              }),
+                              _vm._v(
+                                " 面向地区：" +
+                                  _vm._s(item.author.province_name) +
+                                  " "
+                              ),
+                            ]),
+                            _c("view", { staticClass: "list_info" }, [
+                              _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../../assets/images/sex1.png */ "./src/assets/images/sex1.png"),
+                                },
+                              }),
+                              _vm._v(
+                                "性别要求：" +
+                                  _vm._s(_vm.formatSex(item.author.sex))
+                              ),
+                            ]),
                           ]),
-                          _c("view", { staticClass: "list_desc" }, [
+                          _c("view", { staticClass: "list_rt" }, [
+                            _c("image", {
+                              attrs: { src: item.cover[0], mode: "aspectFill" },
+                            }),
+                          ]),
+                          item.publish_status == 200
+                            ? _c(
+                                "view",
+                                { staticClass: "list_status_sucess" },
+                                [_vm._v(_vm._s(item.publish_status_name))]
+                              )
+                            : _c("view", { staticClass: "list_status" }, [
+                                _vm._v(_vm._s(item.publish_status_name)),
+                              ]),
+                          _c("view", { staticClass: "list_tag" }, [
+                            _vm._v(_vm._s(item.second_name)),
+                          ]),
+                        ]),
+                        _c("view", { staticClass: "list_num" }, [
+                          _c("view", { staticClass: "list_time" }, [
+                            _c("image", {
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
+                              },
+                            }),
+                            _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                          ]),
+                          _c("view", { staticClass: "list_yuepai" }, [
+                            _c("image", {
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                              },
+                            }),
                             _vm._v(
-                              " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
+                              " 收到约拍 " +
+                                _vm._s(item.statistic.invite_cnt) +
+                                " "
                             ),
                           ]),
-                          _c("view", { staticClass: "list_info" }, [
+                          _c("view", { staticClass: "list_read" }, [
                             _c("image", {
                               attrs: {
-                                src: __webpack_require__(/*! ../../../assets/images/position.png */ "./src/assets/images/position.png"),
+                                src: __webpack_require__(/*! ../../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
                               },
                             }),
-                            _vm._v(" 面向地区：北京市 "),
-                          ]),
-                          _c("view", { staticClass: "list_info" }, [
-                            _c("image", {
-                              attrs: {
-                                src: __webpack_require__(/*! ../../../assets/images/sex1.png */ "./src/assets/images/sex1.png"),
-                              },
-                            }),
-                            _vm._v("性别要求：女"),
+                            _vm._v(
+                              " 阅读 " + _vm._s(item.statistic.read_cnt) + " "
+                            ),
                           ]),
                         ]),
-                        _c("view", { staticClass: "list_rt" }, [
-                          _c("image", {
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/invite/upVg5cIs/2c12e84c-8e8c-11ed-ae45-473a871aac32.jpg",
-                            },
-                          }),
+                        _c("view", { staticClass: "list_bottom" }, [
+                          _c("view", { staticClass: "list_bt_left" }, [
+                            item.publish_status == 100 ||
+                            item.publish_status == 120 ||
+                            item.publish_status == 400 ||
+                            item.publish_status == 300 ||
+                            item.publish_status == 600
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "btn-grey",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.deleteTonggao(item.oid)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("删除通告")]
+                                )
+                              : _vm._e(),
+                            item.publish_status == 200
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "btn-grey",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.overTonggao(item.oid)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("结束报名")]
+                                )
+                              : _vm._e(),
+                          ]),
+                          _c("view", { staticClass: "list_bt_rt" }, [
+                            item.publish_status == 120
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "btn-red",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.openTonggao(item.oid)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("开放招募")]
+                                )
+                              : _vm._e(),
+                            item.publish_status == 200 ||
+                            item.publish_status == 700
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "btn-red",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.refreshTonggao(item.oid)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("刷新排名")]
+                                )
+                              : _vm._e(),
+                            item.publish_status == 300
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "btn-red",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.reopenTonggao(item.oid)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("重新打开")]
+                                )
+                              : _vm._e(),
+                            item.publish_status == 200 ||
+                            item.publish_status == 300
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "btn-red",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.manageTonggao(item.oid)
+                                      },
+                                    },
+                                  },
+                                  [_vm._v("管理报名")]
+                                )
+                              : _vm._e(),
+                          ]),
                         ]),
-                        _c("view", { staticClass: "list_status" }, [
-                          _vm._v("已结束"),
-                        ]),
-                        _c("view", { staticClass: "list_tag" }, [
-                          _vm._v("人像创作"),
-                        ]),
-                      ]),
-                      _c("view", { staticClass: "list_num" }, [
-                        _c("view", { staticClass: "list_time" }, [
-                          _c("image", {
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/common/time.png */ "./src/assets/images/common/time.png"),
-                            },
-                          }),
-                          _vm._v(" 222 "),
-                        ]),
-                        _c("view", { staticClass: "list_yuepai" }, [
-                          _c("image", {
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
-                            },
-                          }),
-                          _vm._v(" 收到约拍 34 "),
-                        ]),
-                        _c("view", { staticClass: "list_read" }, [
-                          _c("image", {
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
-                            },
-                          }),
-                          _vm._v(" 阅读 32 "),
-                        ]),
-                      ]),
-                      _c("view", { staticClass: "list_bottom" }, [
-                        _c("view", { staticClass: "list_bt_left" }, [
-                          _c(
-                            "view",
-                            {
-                              staticClass: "btn-grey",
-                              on: { tap: _vm.overTonggao },
-                            },
-                            [_vm._v("结束报名")]
-                          ),
-                        ]),
-                        _c("view", { staticClass: "list_bt_rt" }, [
-                          _c(
-                            "view",
-                            {
-                              staticClass: "btn-red",
-                              on: { tap: _vm.refreshTonggao },
-                            },
-                            [_vm._v("刷新排名")]
-                          ),
-                          _c(
-                            "view",
-                            {
-                              staticClass: "btn-red",
-                              on: { tap: _vm.reopenTonggao },
-                            },
-                            [_vm._v("重新打开")]
-                          ),
-                        ]),
-                      ]),
-                    ]),
-                  ]
+                      ]
+                    )
+                  }),
+                  0
                 ),
               ],
               1
