@@ -827,6 +827,7 @@ export default {
       try {
         let res = await applyManage(params);
         this.visible = false;
+        this.pageNum = 1;
         this.list = [];
         this.query();
       } catch (error) {}
@@ -836,6 +837,7 @@ export default {
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1]; //当前页面
     if (currPage.data.refresh) {
+      this.pageNum = 1;
       this.list = [];
       this.query();
     }

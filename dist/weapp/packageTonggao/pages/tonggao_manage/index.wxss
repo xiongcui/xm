@@ -24,7 +24,6 @@ page {
   text-align: center;
   line-height: 80rpx;
   border-bottom: 6rpx solid #ffffff;
-  margin: 0 30rpx;
 }
 
 .tonggao-manage .content {
@@ -247,4 +246,27 @@ page {
 
 .tonggao-manage .list_bt_rt .btn-red {
   margin-left: 16rpx;
+}
+
+.tonggao-manage .none-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 180rpx;
+  color: #333;
+}
+
+.tonggao-manage .none-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
 }

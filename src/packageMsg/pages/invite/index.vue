@@ -361,9 +361,6 @@ export default {
       } catch (error) {}
     },
   },
-  //   created() {
-  //     this.query();
-  //   },
   onShow() {
     this.pageNum = 1;
     this.list = [];

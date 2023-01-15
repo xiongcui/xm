@@ -168,16 +168,11 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 var App = {
   onLaunch: function onLaunch() {
     // 微信登陆
-    var _this = App;
-    var token = wx.getStorageSync("token");
-
-    if (!token) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/login/index");
-    } else {// wx.switchTab({
-      //   url: "/pages/home/index",
-      // });
-    } // 判断是否为iphoneX
-
+    var _this = App; // let token = wx.getStorageSync("token");
+    // if (!token) {
+    //   openPage("/pages/login/index");
+    // }
+    // 判断是否为iphoneX
 
     vue__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].prototype.globalData = _this.globalData;
     wx.getSystemInfo({
@@ -226,7 +221,7 @@ var App = {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "lb"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
 
             case 3:
               res = _context.sent;

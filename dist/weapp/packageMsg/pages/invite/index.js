@@ -448,9 +448,6 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
       }))();
     }
   },
-  //   created() {
-  //     this.query();
-  //   },
   onShow: function onShow() {
     this.pageNum = 1;
     this.list = [];

@@ -859,23 +859,24 @@ var _methods;
             case 3:
               res = _context2.sent;
               _this3.visible = false;
+              _this3.pageNum = 1;
               _this3.list = [];
 
               _this3.query();
 
-              _context2.next = 11;
+              _context2.next = 12;
               break;
 
-            case 9:
-              _context2.prev = 9;
+            case 10:
+              _context2.prev = 10;
               _context2.t0 = _context2["catch"](0);
 
-            case 11:
+            case 12:
             case "end":
               return _context2.stop();
           }
         }
-      }, _callee2, null, [[0, 9]]);
+      }, _callee2, null, [[0, 10]]);
     }))();
   }), _methods),
   onShow: function onShow() {
@@ -883,6 +884,7 @@ var _methods;
     var currPage = pages[pages.length - 1]; //当前页面
 
     if (currPage.data.refresh) {
+      this.pageNum = 1;
       this.list = [];
       this.query();
     }

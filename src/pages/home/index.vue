@@ -30,9 +30,9 @@
     <view :style="{ height: globalData.navHeight + 'px' }"></view>
     <block v-if="headCurrent == 0">
       <TonggaoList
+        ref="tonggao"
         :base_data="allCity"
         :multi_array="multiArray"
-        :more="tonggaoMore"
         :refresh="tonggaoRefresh"
         @closeMore="closeMore"
         @closeRefresh="closeRefresh"
@@ -361,9 +361,9 @@
     </block>
     <block v-if="headCurrent == 2">
       <ZuopinList
+        ref="zuopin"
         :base_data="allCity"
         :multi_array="multiArray"
-        :more="zuopinMore"
         :refresh="zuopinRefresh"
         @closeMore="closeMore"
         @closeRefresh="closeRefresh"
@@ -376,12 +376,30 @@
       v-show="showtoTop"
     ></image>
     <loading :showLoading="showLoading"></loading>
+    <view class="login-mask" v-if="visible">
+      <view class="mask-box">
+        <view class="mask-title">
+          授权登录
+          <view class="close" @tap="modelClose"></view>
+        </view>
+        <view class="mask-ct">
+          <view class="mask-login-tips">授权登录后查看更多优质模特图</view>
+          <view class="mask-login-btn" @tap="getUserProfile">授权登录</view>
+          <view class="mask-login-cancel" @tap="modelClose">再看看</view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
-import { inviteList, publicConfig, notifyNumber } from "../../api/index";
+import {
+  inviteList,
+  publicConfig,
+  notifyNumber,
+  wxlogin,
+} from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
 import ZuopinList from "../../components/zuopinList/index.vue";
@@ -391,12 +409,12 @@ export default {
   name: "home",
   data() {
     return {
+      msg: "",
+      visible: false,
       showLoading: true,
       showtoTop: false,
       headCurrent: 1,
-      tonggaoMore: false,
       tonggaoRefresh: false,
-      zuopinMore: false,
       zuopinRefresh: false,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
@@ -476,6 +494,9 @@ export default {
     loading,
   },
   methods: {
+    modelClose() {
+      this.visible = false;
+    },
     totop() {
       if (wx.pageScrollTo) {
         wx.pageScrollTo({
@@ -671,11 +692,11 @@ export default {
       });
       this.loading = false;
       if (this.headCurrent == 0) {
-        this.tonggaoMore = true;
+        this.$refs.tonggao.onMore();
       } else if (this.headCurrent == 1) {
         this.query("more");
       } else if (this.headCurrent == 2) {
-        this.zuopinMore = true;
+        this.$refs.zuopin.onMore();
       }
     },
     previewImage(src, urls) {
@@ -700,6 +721,33 @@ export default {
       this.chargeData = this.chargeData.map((item, index) => {
         item.ispick = index != 0 ? false : true;
         return item;
+      });
+    },
+    getUserProfile() {
+      let _this = this;
+      wx.getUserProfile({
+        desc: "用于完善会员资料",
+        success: (res) => {
+          let avatar = res.userInfo.avatarUrl;
+          let nickname = res.userInfo.nickName;
+          wx.login({
+            success(res) {
+              _this.getWxLogin({
+                avatar: avatar,
+                nickname: nickname,
+                account: res.code,
+                secret: "",
+                type: 200,
+              });
+            },
+            fail(err) {
+              console.log(err);
+            },
+          });
+        },
+        fail: (res) => {
+          console.log(res);
+        },
       });
     },
     submit() {
@@ -741,6 +789,35 @@ export default {
       this.showModal = false;
       this.pageNum = 1;
       this.query("init");
+    },
+    async getWxLogin(params) {
+      try {
+        let res = await wxlogin(params);
+        const token = res.data.data.token;
+        wx.setStorageSync("token", token);
+        wx.setStorageSync("userInfo", {
+          avatar: params.avatar,
+          nickname: params.nickname,
+        });
+        if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+          this.pageshow = "bindphone";
+        } else if (
+          res.data.data.login_type == 2 &&
+          res.data.data.is_bind_phone == 1
+        ) {
+          this.visible = false;
+          this.pageNum = 1;
+          this.list = [];
+          this.loading = true;
+          this.showLoading = true;
+          this.query("init");
+        } else {
+          // 未注册
+          openPage("/pages/register/index");
+        }
+      } catch (error) {
+        console.log("失败");
+      }
     },
     async publicConfig(params) {
       try {
@@ -796,7 +873,12 @@ export default {
           this.list = this.list.concat(data);
           this.loading = true;
         }
-      } catch (error) {}
+      } catch (error) {
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          console.log(error, "error");
+        }
+      }
     },
     async notifyNumber(params) {
       try {
@@ -855,10 +937,8 @@ export default {
     // 消息通知红点
     this.notifyNumber("");
   },
-  // onShow: function onShow() {
-  //   this.publicConfig({
-  //     type: ["invite_filter", "payment_type"],
-  //   });
-  // },
+  onLoad: function (options) {
+    console.log(options);
+  },
 };
 </script>

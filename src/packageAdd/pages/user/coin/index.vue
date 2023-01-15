@@ -217,6 +217,7 @@ export default {
         if (res.data.data) {
           this.list = res.data.data;
         } else {
+          this.pageNum = 1;
           this.list = [];
         }
       } catch (error) {}

@@ -529,6 +529,7 @@ component.options.__file = "src/pages/my/index.vue"
       show_my_ad: false,
       showModelSign: false,
       infor: {
+        age: 0,
         avatar: "",
         realname: "",
         ispledge: "",
@@ -537,7 +538,8 @@ component.options.__file = "src/pages/my/index.vue"
           follower_cnt: 0,
           invite_cnt: 0,
           read_cnt: 0,
-          track_cnt: 0
+          track_cnt: 0,
+          visitor_cnt: 0
         }
       },
       coin: 0
@@ -575,6 +577,12 @@ component.options.__file = "src/pages/my/index.vue"
     goCoin: function goCoin() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/coin/index");
     },
+    onMyAd: function onMyAd() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/tonggao_manage/index");
+    },
+    invitego: function invitego() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/invite/index");
+    },
     customerService: function customerService() {
       wx.openCustomerServiceChat({
         extInfo: {
@@ -595,7 +603,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "hb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -623,6 +631,9 @@ component.options.__file = "src/pages/my/index.vue"
   },
   onShow: function onShow() {
     this.userInfo("");
+  },
+  onLoad: function onLoad(options) {
+    console.log(options);
   }
 });
 
@@ -847,7 +858,7 @@ var render = function () {
           ]),
           _c("view", { staticClass: "my-count-box" }, [
             _c("text", { staticClass: "num" }, [
-              _vm._v(_vm._s(_vm.infor.statistic.read_cnt)),
+              _vm._v(_vm._s(_vm.infor.statistic.visitor_cnt)),
             ]),
             _c("text", [_vm._v("访客")]),
           ]),
@@ -941,31 +952,27 @@ var render = function () {
         ),
       ]),
       _c("view", { staticClass: "items" }, [
-        _c(
-          "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "onMyAd" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/ad.png */ "./src/assets/images/user/index/ad.png"),
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("通告管理")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-                },
-              }),
-            ]),
-          ]
-        ),
+        _c("view", { staticClass: "item ub line-t", on: { tap: _vm.onMyAd } }, [
+          _c("view", { staticClass: "item_icon" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/ad.png */ "./src/assets/images/user/index/ad.png"),
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "ub-f1" }, [
+            _c("view", { staticClass: "item_text" }, [_vm._v("通告管理")]),
+          ]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]),
         _c("view", { staticClass: "item ub", on: { tap: _vm.myYuepai } }, [
           _c("view", { staticClass: "item_icon" }, [
             _c("image", {
@@ -1156,32 +1163,28 @@ var render = function () {
               ]
             )
           : _vm._e(),
-        _c(
-          "view",
-          { staticClass: "item ub", attrs: { catchtap: "invitego" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/invite.png */ "./src/assets/images/user/index/invite.png"),
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("邀请好友")]),
-            ]),
-            _c("view", { staticClass: "item_tip" }, [_vm._v("赚麻豆")]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-                },
-              }),
-            ]),
-          ]
-        ),
+        _c("view", { staticClass: "item ub", on: { tap: _vm.invitego } }, [
+          _c("view", { staticClass: "item_icon" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/invite.png */ "./src/assets/images/user/index/invite.png"),
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "ub-f1" }, [
+            _c("view", { staticClass: "item_text" }, [_vm._v("邀请好友")]),
+          ]),
+          _c("view", { staticClass: "item_tip" }, [_vm._v("赚金豆")]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]),
         _c(
           "view",
           { staticClass: "item ub line-t", on: { tap: _vm.customerService } },

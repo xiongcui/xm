@@ -123,7 +123,7 @@
             <text>约拍</text>
           </view>
           <view class="my-count-box">
-            <text class="num">{{ infor.statistic.read_cnt }}</text>
+            <text class="num">{{ infor.statistic.visitor_cnt }}</text>
             <text>访客</text>
           </view>
           <view class="my-count-box">
@@ -186,7 +186,7 @@
         </view>
       </view>
       <view class="items">
-        <view catchtap="onMyAd" class="item ub line-t">
+        <view @tap="onMyAd" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -327,7 +327,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="invitego" class="item ub">
+        <view @tap="invitego" class="item ub">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -337,7 +337,7 @@
           <view class="ub-f1">
             <view class="item_text">邀请好友</view>
           </view>
-          <view class="item_tip">赚麻豆</view>
+          <view class="item_tip">赚金豆</view>
           <view class="arrow">
             <image
               mode="aspectFit"
@@ -476,6 +476,7 @@ export default {
       show_my_ad: false,
       showModelSign: false,
       infor: {
+        age: 0,
         avatar: "",
         realname: "",
         ispledge: "",
@@ -485,6 +486,7 @@ export default {
           invite_cnt: 0,
           read_cnt: 0,
           track_cnt: 0,
+          visitor_cnt: 0,
         },
       },
       coin: 0,
@@ -522,6 +524,12 @@ export default {
     goCoin() {
       openPage("/packageAdd/pages/user/coin/index");
     },
+    onMyAd() {
+      openPage("/packageTonggao/pages/tonggao_manage/index");
+    },
+    invitego() {
+      openPage("/packageAdd/pages/user/invite/index");
+    },
     customerService() {
       wx.openCustomerServiceChat({
         extInfo: { url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6" },
@@ -543,6 +551,9 @@ export default {
   },
   onShow() {
     this.userInfo("");
+  },
+  onLoad: function (options) {
+    console.log(options);
   },
 };
 </script>

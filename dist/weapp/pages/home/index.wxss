@@ -182,7 +182,6 @@
   position: absolute;
   top: 19rpx;
   width: 30rpx;
-  z-index: 91;
 }
 
 .gradient2 {
@@ -609,6 +608,84 @@
   bottom: 16rpx;
   width: 114rpx;
   height: 114rpx;
+}
+
+.login-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.login-mask .mask-box {
+  background: #ffffff;
+  padding: 30rpx;
+  position: absolute;
+  width: calc(100% - 200rpx);
+  border-radius: 16rpx;
+}
+
+.login-mask .mask-box .mask-title {
+  margin-bottom: 30rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.login-mask .mask-box .mask-ct {
+  position: relative;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.login-mask .mask-box .close {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 10rpx;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC") no-repeat;
+  background-size: 38rpx;
+}
+
+.login-mask .mask-box .mask-login-tips {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.login-mask .mask-box .mask-login-btn {
+  margin: 16rpx 0;
+  background-color: #ff5355;
+  color: #ffffff;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+
+.login-mask .mask-box .mask-login-cancel {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30rpx;
+  text-align: center;
 }
 .zuppin_list {
   background: #f7f7f7;
@@ -1442,4 +1519,74 @@
   width: 150rpx;
   height: 150rpx;
   margin-bottom: 16rpx;
+}
+.tonggao_list .login-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.tonggao_list .login-mask .mask-box {
+  background: #ffffff;
+  padding: 30rpx;
+  position: absolute;
+  width: calc(100% - 200rpx);
+  border-radius: 16rpx;
+}
+.tonggao_list .login-mask .mask-box .mask-title {
+  margin-bottom: 30rpx;
+  text-align: center;
+  font-weight: bold;
+}
+.tonggao_list .login-mask .mask-box .mask-ct {
+  position: relative;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.tonggao_list .login-mask .mask-box .close {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 10rpx;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC") no-repeat;
+  background-size: 38rpx;
+}
+.tonggao_list .login-mask .mask-box .mask-login-tips {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30rpx;
+  margin-bottom: 16rpx;
+}
+.tonggao_list .login-mask .mask-box .mask-login-btn {
+  margin: 16rpx 0;
+  background-color: #ff5355;
+  color: #ffffff;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  text-align: center;
+}
+.tonggao_list .login-mask .mask-box .mask-login-cancel {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30rpx;
+  text-align: center;
 }

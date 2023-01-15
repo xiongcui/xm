@@ -167,12 +167,25 @@
       </view>
     </view>
     <loading :showLoading="showLoading"></loading>
+    <view class="login-mask" v-if="visible">
+      <view class="mask-box">
+        <view class="mask-title">
+          授权登录
+          <view class="close" @tap="modelClose"></view>
+        </view>
+        <view class="mask-ct">
+          <view class="mask-login-tips">授权登录后查看更多优质模特图</view>
+          <view class="mask-login-btn" @tap="getUserProfile">授权登录</view>
+          <view class="mask-login-cancel" @tap="modelClose">再看看</view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
-import { publicConfig, photoList, getCareer } from "../../api/index";
+import { publicConfig, photoList, getCareer, wxlogin } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import loading from "../../components/loading/index.vue";
 export default {
@@ -210,17 +223,17 @@ export default {
       deep: true,
       immediate: true,
     },
-    more: {
-      handler(newVal, oldVal) {
-        this.zuopinMore = newVal;
-        if (this.zuopinMore) {
-          this.pageNum++;
-          this.onMore();
-        }
-      },
-      deep: true,
-      immediate: true,
-    },
+    // more: {
+    //   handler(newVal, oldVal) {
+    //     this.zuopinMore = newVal;
+    //     if (this.zuopinMore) {
+    //       this.pageNum++;
+    //       this.onMore();
+    //     }
+    //   },
+    //   deep: true,
+    //   immediate: true,
+    // },
     refresh: {
       handler(newVal, oldVal) {
         this.zuopinRefresh = newVal;
@@ -237,6 +250,7 @@ export default {
   },
   data() {
     return {
+      visible: false,
       showLoading: true,
       showModal: false,
       zuopinMore: false,
@@ -465,6 +479,7 @@ export default {
       wx.showLoading({
         title: "数据加载中...",
       });
+      this.pageNum++;
       this.query("more");
     },
     query(type) {
@@ -478,6 +493,65 @@ export default {
         per_page: this.pageSize,
       };
       this.photoList(params, type);
+    },
+    modelClose() {
+      this.visible = false;
+    },
+    getUserProfile() {
+      let _this = this;
+      wx.getUserProfile({
+        desc: "用于完善会员资料",
+        success: (res) => {
+          let avatar = res.userInfo.avatarUrl;
+          let nickname = res.userInfo.nickName;
+          wx.login({
+            success(res) {
+              _this.getWxLogin({
+                avatar: avatar,
+                nickname: nickname,
+                account: res.code,
+                secret: "",
+                type: 200,
+              });
+            },
+            fail(err) {
+              console.log(err);
+            },
+          });
+        },
+        fail: (res) => {
+          console.log(res);
+        },
+      });
+    },
+    async getWxLogin(params) {
+      try {
+        let res = await wxlogin(params);
+        const token = res.data.data.token;
+        wx.setStorageSync("token", token);
+        wx.setStorageSync("userInfo", {
+          avatar: params.avatar,
+          nickname: params.nickname,
+        });
+        if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+          this.pageshow = "bindphone";
+        } else if (
+          res.data.data.login_type == 2 &&
+          res.data.data.is_bind_phone == 1
+        ) {
+          this.visible = false;
+          this.pageNum = 1;
+          this.list = [];
+          this.loading = true;
+          this.showLoading = true;
+          this.query("init");
+        } else {
+          // 未注册
+          openPage("/pages/register/index");
+        }
+      } catch (error) {
+        console.log("失败");
+      }
     },
     async publicConfig(params) {
       try {
@@ -524,7 +598,12 @@ export default {
           this.list = this.list.concat(data);
           this.$emit("closeMore");
         }
-      } catch (error) {}
+      } catch (error) {
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          console.log(error, "error");
+        }
+      }
     },
     async getCareer(params) {
       try {

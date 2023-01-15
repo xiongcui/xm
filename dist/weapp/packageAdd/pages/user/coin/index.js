@@ -287,6 +287,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
                 if (res.data.data) {
                   _this.list = res.data.data;
                 } else {
+                  _this.pageNum = 1;
                   _this.list = [];
                 }
 

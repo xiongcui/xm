@@ -17,7 +17,6 @@ page {
     text-align: center;
     line-height: 80rpx;
     border-bottom: 6rpx solid #ffffff;
-    margin: 0px 30px;
   }
   .content {
     flex: 1;
@@ -181,5 +180,18 @@ page {
     .btn-red {
       margin-left: 16px;
     }
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
   }
 }

@@ -540,6 +540,42 @@ export const manageOperation = (data) => {
   });
 };
 
+// 开放招募-详情
+export const pushInit = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/event/push/init",
+    method: "post",
+    data,
+  });
+};
+
+// 开放招募-提交
+export const subOpenRecruitment = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/event/push",
+    method: "post",
+    data,
+  });
+};
+
+// 生成海报
+export const inviteImage = (data) => {
+  return request({
+    url: baseUrl + "/v1/share/invite/image",
+    method: "post",
+    data,
+  });
+};
+
+// 转发
+export const shareInvite = (data) => {
+  return request({
+    url: baseUrl + "/v1/share/invite/mina",
+    method: "post",
+    data,
+  });
+};
+
 // https://brain.baidu.com/face/print/?token=xxx
 
 // 金币支付：[POST] -> /v1/coin/apply/pay

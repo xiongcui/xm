@@ -10,7 +10,7 @@
         :key="index"
         @tap="select(item, index)"
       >
-        <view class="day">{{ item.day }}天</view>
+        <view class="day">{{ item.valid_time }}天</view>
         <view>{{ item.coin }}金币/通告</view>
       </view>
     </view>
@@ -23,7 +23,7 @@
         <view>剩余：{{ balanceCoin }}金币</view>
       </view>
       <view class="open-bottom-rt">
-        <view class="open-btn">立即开放</view>
+        <view class="open-btn" @tap="submit">立即开放</view>
       </view>
     </view>
   </view>
@@ -31,6 +31,8 @@
 
 <script>
 import "./index.scss";
+import { pushInit, subOpenRecruitment } from "../../../api/index";
+import { errortip } from "../../../utils/util";
 export default {
   name: "open_recruitment",
   data() {
@@ -38,24 +40,8 @@ export default {
       active: 0,
       coin: 70,
       balanceCoin: 0,
-      list: [
-        {
-          day: 7,
-          coin: 70,
-        },
-        {
-          day: 15,
-          coin: 130,
-        },
-        {
-          day: 30,
-          coin: 250,
-        },
-        {
-          day: 60,
-          coin: 450,
-        },
-      ],
+      oid: "",
+      list: [],
     };
   },
   methods: {
@@ -63,6 +49,47 @@ export default {
       this.coin = row.coin;
       this.active = index;
     },
+    submit() {
+      if (this.balanceCoin < this.coin) {
+        errortip("余额不足");
+        return false;
+      }
+      let params = {
+        coin: this.coin,
+        oid: this.oid,
+        rule_code: this.list[this.active].code,
+        valid_time: this.list[this.active].valid_time,
+      };
+      this.subOpenRecruitment(params);
+      console.log(params);
+    },
+    async pushInit(params) {
+      try {
+        let res = await pushInit(params);
+        this.balanceCoin = res.data.data.balance_coin;
+        this.list = res.data.data.rules;
+      } catch (error) {}
+    },
+    async subOpenRecruitment(params) {
+      try {
+        let res = await subOpenRecruitment(params);
+        errortip("开放招募成功");
+        let pages = getCurrentPages();
+        let prevPage = pages[pages.length - 2];
+        prevPage.setData({
+          refresh: true,
+        });
+        wx.navigateBack({
+          delta: 1,
+        });
+      } catch (error) {}
+    },
+  },
+  created() {
+    this.pushInit({});
+  },
+  onLoad: function (options) {
+    this.oid = options.oid;
   },
 };
 </script>

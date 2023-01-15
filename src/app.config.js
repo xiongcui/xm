@@ -10,7 +10,6 @@ export default defineAppConfig({
     "pages/release/appointment/index",
     "pages/release/field/index",
     "pages/index/index",
-    // "pages/we-cropper/index",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -75,6 +74,7 @@ export default defineAppConfig({
         "pages/user/coin/index",
         "pages/user/rechargecoin/index",
         "pages/user/we-cropper/index",
+        "pages/user/invite/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/yuedan/yuedan_manage/index",

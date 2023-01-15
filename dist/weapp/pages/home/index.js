@@ -296,6 +296,19 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -335,18 +348,17 @@ component.options.__file = "src/pages/home/index.vue"
       deep: true,
       immediate: true
     },
-    more: {
-      handler: function handler(newVal, oldVal) {
-        this.tonggaoMore = newVal;
-
-        if (this.tonggaoMore) {
-          this.pageNum++;
-          this.onMore();
-        }
-      },
-      deep: true,
-      immediate: true
-    },
+    // more: {
+    //   handler(newVal, oldVal) {
+    //     this.tonggaoMore = newVal;
+    //     if (this.tonggaoMore) {
+    //       this.pageNum++;
+    //       this.onMore();
+    //     }
+    //   },
+    //   deep: true,
+    //   immediate: true,
+    // },
     refresh: {
       handler: function handler(newVal, oldVal) {
         this.tonggaoRefresh = newVal;
@@ -361,6 +373,7 @@ component.options.__file = "src/pages/home/index.vue"
   },
   data: function data() {
     return {
+      visible: false,
       showLoading: true,
       height: 0,
       tonggaoMore: false,
@@ -594,12 +607,10 @@ component.options.__file = "src/pages/home/index.vue"
       wx.showLoading({
         title: "数据加载中..."
       });
+      this.pageNum++;
       this.query("more");
     },
     query: function query(type) {
-      //   wx.showLoading({
-      //     title: "加载中...",
-      //   });
       var params = {
         filter: this.filter,
         quick_filter: this.navList[this.navActive].key,
@@ -608,21 +619,105 @@ component.options.__file = "src/pages/home/index.vue"
       };
       this.noticeList(params, type);
     },
-    noticeFilter: function noticeFilter(params) {
+    modelClose: function modelClose() {
+      this.visible = false;
+    },
+    getUserProfile: function getUserProfile() {
       var _this = this;
 
+      wx.getUserProfile({
+        desc: "用于完善会员资料",
+        success: function success(res) {
+          var avatar = res.userInfo.avatarUrl;
+          var nickname = res.userInfo.nickName;
+          wx.login({
+            success: function success(res) {
+              _this.getWxLogin({
+                avatar: avatar,
+                nickname: nickname,
+                account: res.code,
+                secret: "",
+                type: 200
+              });
+            },
+            fail: function fail(err) {
+              console.log(err);
+            }
+          });
+        },
+        fail: function fail(res) {
+          console.log(res);
+        }
+      });
+    },
+    getWxLogin: function getWxLogin(params) {
+      var _this2 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, data, arr, arr1, arr2;
+        var res, token;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "C"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
 
               case 3:
                 res = _context.sent;
+                token = res.data.data.token;
+                wx.setStorageSync("token", token);
+                wx.setStorageSync("userInfo", {
+                  avatar: params.avatar,
+                  nickname: params.nickname
+                });
+
+                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                  _this2.pageshow = "bindphone";
+                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                  _this2.visible = false;
+                  _this2.pageNum = 1;
+                  _this2.list = [];
+                  _this2.loading = true;
+                  _this2.showLoading = true;
+
+                  _this2.query("init");
+                } else {
+                  // 未注册
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                }
+
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](0);
+                console.log("失败");
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 10]]);
+      }))();
+    },
+    noticeFilter: function noticeFilter(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, data, arr, arr1, arr2;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "D"])(params);
+
+              case 3:
+                res = _context2.sent;
                 data = res.data.data;
                 arr = [];
                 arr1 = [];
@@ -655,41 +750,41 @@ component.options.__file = "src/pages/home/index.vue"
                   value: "全部",
                   ispick: true
                 });
-                _this.identity_data = arr;
-                _this.notice_data = arr1;
-                _this.charge_data = arr2;
-                _context.next = 21;
+                _this3.identity_data = arr;
+                _this3.notice_data = arr1;
+                _this3.charge_data = arr2;
+                _context2.next = 21;
                 break;
 
               case 19:
-                _context.prev = 19;
-                _context.t0 = _context["catch"](0);
+                _context2.prev = 19;
+                _context2.t0 = _context2["catch"](0);
 
               case 21:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, null, [[0, 19]]);
+        }, _callee2, null, [[0, 19]]);
       }))();
     },
     publicConfig: function publicConfig(params) {
-      var _this2 = this;
+      var _this4 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "M"])(params);
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "N"])(params);
 
               case 3:
-                res = _context2.sent;
-                _this2.navList = res.data.data;
-                _this2.filter = {
+                res = _context3.sent;
+                _this4.navList = res.data.data;
+                _this4.filter = {
                   first_code: "",
                   payment_type: 0,
                   career_cid: 0,
@@ -697,40 +792,40 @@ component.options.__file = "src/pages/home/index.vue"
                   face_province_id: 0
                 };
 
-                _this2.query("init");
+                _this4.query("init");
 
-                _context2.next = 11;
+                _context3.next = 11;
                 break;
 
               case 9:
-                _context2.prev = 9;
-                _context2.t0 = _context2["catch"](0);
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
 
               case 11:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee3, null, [[0, 9]]);
       }))();
     },
     noticeList: function noticeList(params, type) {
-      var _this3 = this;
+      var _this5 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res, data;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "E"])(params);
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "F"])(params);
 
               case 3:
-                res = _context3.sent;
+                res = _context4.sent;
                 //隐藏loading 提示框
-                _this3.showLoading = false;
+                _this5.showLoading = false;
                 wx.hideLoading(); //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
@@ -738,54 +833,59 @@ component.options.__file = "src/pages/home/index.vue"
                 wx.stopPullDownRefresh();
 
                 if (!(type == "init")) {
-                  _context3.next = 13;
+                  _context4.next = 13;
                   break;
                 }
 
-                _this3.list = res.data.data.items;
+                _this5.list = res.data.data.items;
 
-                _this3.$emit("closeRefresh");
+                _this5.$emit("closeRefresh");
 
-                _context3.next = 21;
+                _context4.next = 21;
                 break;
 
               case 13:
                 if (!(type == "more")) {
-                  _context3.next = 21;
+                  _context4.next = 21;
                   break;
                 }
 
                 if (!(!res.data.data || !res.data.data.items.length)) {
-                  _context3.next = 18;
+                  _context4.next = 18;
                   break;
                 }
 
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
 
-                _this3.$emit("closeMore");
+                _this5.$emit("closeMore");
 
-                return _context3.abrupt("return", false);
+                return _context4.abrupt("return", false);
 
               case 18:
                 data = res.data.data.items;
-                _this3.list = _this3.list.concat(data);
+                _this5.list = _this5.list.concat(data);
 
-                _this3.$emit("closeMore");
+                _this5.$emit("closeMore");
 
               case 21:
-                _context3.next = 25;
+                _context4.next = 26;
                 break;
 
               case 23:
-                _context3.prev = 23;
-                _context3.t0 = _context3["catch"](0);
+                _context4.prev = 23;
+                _context4.t0 = _context4["catch"](0);
 
-              case 25:
+                if (_context4.t0.data.error_code == 11020) {
+                  _this5.visible = true;
+                  console.log(_context4.t0, "error");
+                }
+
+              case 26:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, null, [[0, 23]]);
+        }, _callee4, null, [[0, 23]]);
       }))();
     }
   },
@@ -818,6 +918,19 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1029,18 +1142,17 @@ component.options.__file = "src/pages/home/index.vue"
       deep: true,
       immediate: true
     },
-    more: {
-      handler: function handler(newVal, oldVal) {
-        this.zuopinMore = newVal;
-
-        if (this.zuopinMore) {
-          this.pageNum++;
-          this.onMore();
-        }
-      },
-      deep: true,
-      immediate: true
-    },
+    // more: {
+    //   handler(newVal, oldVal) {
+    //     this.zuopinMore = newVal;
+    //     if (this.zuopinMore) {
+    //       this.pageNum++;
+    //       this.onMore();
+    //     }
+    //   },
+    //   deep: true,
+    //   immediate: true,
+    // },
     refresh: {
       handler: function handler(newVal, oldVal) {
         this.zuopinRefresh = newVal;
@@ -1058,6 +1170,7 @@ component.options.__file = "src/pages/home/index.vue"
   },
   data: function data() {
     return {
+      visible: false,
       showLoading: true,
       showModal: false,
       zuopinMore: false,
@@ -1280,6 +1393,7 @@ component.options.__file = "src/pages/home/index.vue"
       wx.showLoading({
         title: "数据加载中..."
       });
+      this.pageNum++;
       this.query("more");
     },
     query: function query(type) {
@@ -1294,21 +1408,105 @@ component.options.__file = "src/pages/home/index.vue"
       };
       this.photoList(params, type);
     },
-    publicConfig: function publicConfig(params) {
+    modelClose: function modelClose() {
+      this.visible = false;
+    },
+    getUserProfile: function getUserProfile() {
       var _this = this;
 
+      wx.getUserProfile({
+        desc: "用于完善会员资料",
+        success: function success(res) {
+          var avatar = res.userInfo.avatarUrl;
+          var nickname = res.userInfo.nickName;
+          wx.login({
+            success: function success(res) {
+              _this.getWxLogin({
+                avatar: avatar,
+                nickname: nickname,
+                account: res.code,
+                secret: "",
+                type: 200
+              });
+            },
+            fail: function fail(err) {
+              console.log(err);
+            }
+          });
+        },
+        fail: function fail(res) {
+          console.log(res);
+        }
+      });
+    },
+    getWxLogin: function getWxLogin(params) {
+      var _this2 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, arr;
+        var res, token;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
 
               case 3:
                 res = _context.sent;
+                token = res.data.data.token;
+                wx.setStorageSync("token", token);
+                wx.setStorageSync("userInfo", {
+                  avatar: params.avatar,
+                  nickname: params.nickname
+                });
+
+                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                  _this2.pageshow = "bindphone";
+                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                  _this2.visible = false;
+                  _this2.pageNum = 1;
+                  _this2.list = [];
+                  _this2.loading = true;
+                  _this2.showLoading = true;
+
+                  _this2.query("init");
+                } else {
+                  // 未注册
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                }
+
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](0);
+                console.log("失败");
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 10]]);
+      }))();
+    },
+    publicConfig: function publicConfig(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "N"])(params);
+
+              case 3:
+                res = _context2.sent;
                 arr = [];
                 res.data.data.map(function (item, index) {
                   if (item.type == "photo_filter") {
@@ -1318,48 +1516,48 @@ component.options.__file = "src/pages/home/index.vue"
                     arr2.push(item);
                   }
                 });
-                _this.navList = arr;
-                _this.filter = {
+                _this3.navList = arr;
+                _this3.filter = {
                   face_province_id: 0,
                   face_cid: 0,
                   career_cid: 0,
                   sex: 10
                 };
 
-                _this.query("init");
+                _this3.query("init");
 
-                _context.next = 13;
+                _context2.next = 13;
                 break;
 
               case 11:
-                _context.prev = 11;
-                _context.t0 = _context["catch"](0);
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](0);
 
               case 13:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee2, null, [[0, 11]]);
       }))();
     },
     photoList: function photoList(params, type) {
-      var _this2 = this;
+      var _this4 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res, data;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "J"])(params);
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "K"])(params);
 
               case 3:
-                res = _context2.sent;
+                res = _context3.sent;
                 //隐藏loading 提示框
-                _this2.showLoading = false;
+                _this4.showLoading = false;
                 wx.hideLoading(); //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
@@ -1367,71 +1565,76 @@ component.options.__file = "src/pages/home/index.vue"
                 wx.stopPullDownRefresh();
 
                 if (!(type == "init")) {
-                  _context2.next = 13;
+                  _context3.next = 13;
                   break;
                 }
 
-                _this2.list = res.data.data.items;
+                _this4.list = res.data.data.items;
 
-                _this2.$emit("closeRefresh");
+                _this4.$emit("closeRefresh");
 
-                _context2.next = 21;
+                _context3.next = 21;
                 break;
 
               case 13:
                 if (!(type == "more")) {
-                  _context2.next = 21;
+                  _context3.next = 21;
                   break;
                 }
 
                 if (!(!res.data.data || !res.data.data.items.length)) {
-                  _context2.next = 18;
+                  _context3.next = 18;
                   break;
                 }
 
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
 
-                _this2.$emit("closeMore");
+                _this4.$emit("closeMore");
 
-                return _context2.abrupt("return", false);
+                return _context3.abrupt("return", false);
 
               case 18:
                 data = res.data.data.items;
-                _this2.list = _this2.list.concat(data);
+                _this4.list = _this4.list.concat(data);
 
-                _this2.$emit("closeMore");
+                _this4.$emit("closeMore");
 
               case 21:
-                _context2.next = 25;
+                _context3.next = 26;
                 break;
 
               case 23:
-                _context2.prev = 23;
-                _context2.t0 = _context2["catch"](0);
+                _context3.prev = 23;
+                _context3.t0 = _context3["catch"](0);
 
-              case 25:
+                if (_context3.t0.data.error_code == 11020) {
+                  _this4.visible = true;
+                  console.log(_context3.t0, "error");
+                }
+
+              case 26:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, null, [[0, 23]]);
+        }, _callee3, null, [[0, 23]]);
       }))();
     },
     getCareer: function getCareer(params) {
-      var _this3 = this;
+      var _this5 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res, data, arr;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
+                _context4.prev = 0;
+                _context4.next = 3;
                 return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "q"])(params);
 
               case 3:
-                res = _context3.sent;
+                res = _context4.sent;
                 data = res.data.data;
                 arr = [];
                 arr = data.career_list.map(function (item) {
@@ -1444,20 +1647,20 @@ component.options.__file = "src/pages/home/index.vue"
                   value: "全部",
                   ispick: true
                 });
-                _this3.identity_data = arr;
-                _context3.next = 13;
+                _this5.identity_data = arr;
+                _context4.next = 13;
                 break;
 
               case 11:
-                _context3.prev = 11;
-                _context3.t0 = _context3["catch"](0);
+                _context4.prev = 11;
+                _context4.t0 = _context4["catch"](0);
 
               case 13:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, null, [[0, 11]]);
+        }, _callee4, null, [[0, 11]]);
       }))();
     }
   },
@@ -1874,6 +2077,19 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1885,12 +2101,12 @@ component.options.__file = "src/pages/home/index.vue"
   name: "home",
   data: function data() {
     return {
+      msg: "",
+      visible: false,
       showLoading: true,
       showtoTop: false,
       headCurrent: 1,
-      tonggaoMore: false,
       tonggaoRefresh: false,
-      zuopinMore: false,
       zuopinRefresh: false,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
@@ -1982,6 +2198,9 @@ component.options.__file = "src/pages/home/index.vue"
     loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]
   },
   methods: {
+    modelClose: function modelClose() {
+      this.visible = false;
+    },
     totop: function totop() {
       if (wx.pageScrollTo) {
         wx.pageScrollTo({
@@ -2173,11 +2392,11 @@ component.options.__file = "src/pages/home/index.vue"
       this.loading = false;
 
       if (this.headCurrent == 0) {
-        this.tonggaoMore = true;
+        this.$refs.tonggao.onMore();
       } else if (this.headCurrent == 1) {
         this.query("more");
       } else if (this.headCurrent == 2) {
-        this.zuopinMore = true;
+        this.$refs.zuopin.onMore();
       }
     },
     previewImage: function previewImage(src, urls) {
@@ -2204,6 +2423,34 @@ component.options.__file = "src/pages/home/index.vue"
       this.chargeData = this.chargeData.map(function (item, index) {
         item.ispick = index != 0 ? false : true;
         return item;
+      });
+    },
+    getUserProfile: function getUserProfile() {
+      var _this = this;
+
+      wx.getUserProfile({
+        desc: "用于完善会员资料",
+        success: function success(res) {
+          var avatar = res.userInfo.avatarUrl;
+          var nickname = res.userInfo.nickName;
+          wx.login({
+            success: function success(res) {
+              _this.getWxLogin({
+                avatar: avatar,
+                nickname: nickname,
+                account: res.code,
+                secret: "",
+                type: 200
+              });
+            },
+            fail: function fail(err) {
+              console.log(err);
+            }
+          });
+        },
+        fail: function fail(res) {
+          console.log(res);
+        }
       });
     },
     submit: function submit() {
@@ -2248,21 +2495,74 @@ component.options.__file = "src/pages/home/index.vue"
       this.pageNum = 1;
       this.query("init");
     },
-    publicConfig: function publicConfig(params) {
-      var _this = this;
+    getWxLogin: function getWxLogin(params) {
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, arr, arr2;
+        var res, token;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
 
               case 3:
                 res = _context.sent;
+                token = res.data.data.token;
+                wx.setStorageSync("token", token);
+                wx.setStorageSync("userInfo", {
+                  avatar: params.avatar,
+                  nickname: params.nickname
+                });
+
+                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                  _this2.pageshow = "bindphone";
+                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                  _this2.visible = false;
+                  _this2.pageNum = 1;
+                  _this2.list = [];
+                  _this2.loading = true;
+                  _this2.showLoading = true;
+
+                  _this2.query("init");
+                } else {
+                  // 未注册
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                }
+
+                _context.next = 13;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context["catch"](0);
+                console.log("失败");
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 10]]);
+      }))();
+    },
+    publicConfig: function publicConfig(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, arr, arr2;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "N"])(params);
+
+              case 3:
+                res = _context2.sent;
                 arr = [];
                 arr2 = [];
                 res.data.data.map(function (item, index) {
@@ -2273,15 +2573,15 @@ component.options.__file = "src/pages/home/index.vue"
                     arr2.push(item);
                   }
                 });
-                _this.navList = arr;
+                _this3.navList = arr;
                 arr2.unshift({
                   key: "all",
                   name: "全部",
                   value: "全部",
                   ispick: true
                 });
-                _this.chargeData = arr2;
-                _this.filter = {
+                _this3.chargeData = arr2;
+                _this3.filter = {
                   face_province_id: 0,
                   face_city_id: 0,
                   face_cid: 0,
@@ -2289,40 +2589,40 @@ component.options.__file = "src/pages/home/index.vue"
                   payment_type: 0
                 };
 
-                _this.query("init");
+                _this3.query("init");
 
-                _context.next = 16;
+                _context2.next = 16;
                 break;
 
               case 14:
-                _context.prev = 14;
-                _context.t0 = _context["catch"](0);
+                _context2.prev = 14;
+                _context2.t0 = _context2["catch"](0);
 
               case 16:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, null, [[0, 14]]);
+        }, _callee2, null, [[0, 14]]);
       }))();
     },
     inviteList: function inviteList(params, type) {
-      var _this2 = this;
+      var _this4 = this;
 
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res, data;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context2.prev = 0;
-                _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "u"])(params);
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteList */ "v"])(params);
 
               case 3:
-                res = _context2.sent;
+                res = _context3.sent;
                 //隐藏loading 提示框
-                _this2.showLoading = false;
+                _this4.showLoading = false;
                 wx.hideLoading(); //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
@@ -2330,63 +2630,68 @@ component.options.__file = "src/pages/home/index.vue"
                 wx.stopPullDownRefresh();
 
                 if (!(type == "init")) {
-                  _context2.next = 12;
+                  _context3.next = 12;
                   break;
                 }
 
-                _this2.list = res.data.data.items;
-                _context2.next = 20;
+                _this4.list = res.data.data.items;
+                _context3.next = 20;
                 break;
 
               case 12:
                 if (!(type == "more")) {
-                  _context2.next = 20;
+                  _context3.next = 20;
                   break;
                 }
 
                 if (!(!res.data.data || !res.data.data.items.length)) {
-                  _context2.next = 17;
+                  _context3.next = 17;
                   break;
                 }
 
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
-                _this2.loading = true;
-                return _context2.abrupt("return", false);
+                _this4.loading = true;
+                return _context3.abrupt("return", false);
 
               case 17:
                 data = res.data.data.items;
-                _this2.list = _this2.list.concat(data);
-                _this2.loading = true;
+                _this4.list = _this4.list.concat(data);
+                _this4.loading = true;
 
               case 20:
-                _context2.next = 24;
+                _context3.next = 25;
                 break;
 
               case 22:
-                _context2.prev = 22;
-                _context2.t0 = _context2["catch"](0);
+                _context3.prev = 22;
+                _context3.t0 = _context3["catch"](0);
 
-              case 24:
+                if (_context3.t0.data.error_code == 11020) {
+                  _this4.visible = true;
+                  console.log(_context3.t0, "error");
+                }
+
+              case 25:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, null, [[0, 22]]);
+        }, _callee3, null, [[0, 22]]);
       }))();
     },
     notifyNumber: function notifyNumber(params) {
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "G"])(params);
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "H"])(params);
 
               case 3:
-                res = _context3.sent;
+                res = _context4.sent;
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
@@ -2398,19 +2703,19 @@ component.options.__file = "src/pages/home/index.vue"
                   });
                 }
 
-                _context3.next = 9;
+                _context4.next = 9;
                 break;
 
               case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](0);
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
 
               case 9:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee4, null, [[0, 7]]);
       }))();
     }
   },
@@ -2464,12 +2769,10 @@ component.options.__file = "src/pages/home/index.vue"
     }); // 消息通知红点
 
     this.notifyNumber("");
-  } // onShow: function onShow() {
-  //   this.publicConfig({
-  //     type: ["invite_filter", "payment_type"],
-  //   });
-  // },
-
+  },
+  onLoad: function onLoad(options) {
+    console.log(options);
+  }
 });
 
 /***/ }),
@@ -2924,6 +3227,40 @@ var render = function () {
         ]
       ),
       _c("loading", { attrs: { showLoading: _vm.showLoading } }),
+      _vm.visible
+        ? _c("view", { staticClass: "login-mask" }, [
+            _c("view", { staticClass: "mask-box" }, [
+              _c("view", { staticClass: "mask-title" }, [
+                _vm._v(" 授权登录 "),
+                _c("view", {
+                  staticClass: "close",
+                  on: { tap: _vm.modelClose },
+                }),
+              ]),
+              _c("view", { staticClass: "mask-ct" }, [
+                _c("view", { staticClass: "mask-login-tips" }, [
+                  _vm._v("授权登录后查看更多优质模特图"),
+                ]),
+                _c(
+                  "view",
+                  {
+                    staticClass: "mask-login-btn",
+                    on: { tap: _vm.getUserProfile },
+                  },
+                  [_vm._v("授权登录")]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticClass: "mask-login-cancel",
+                    on: { tap: _vm.modelClose },
+                  },
+                  [_vm._v("再看看")]
+                ),
+              ]),
+            ]),
+          ])
+        : _vm._e(),
     ],
     1
   )
@@ -3294,6 +3631,40 @@ var render = function () {
         ]
       ),
       _c("loading", { attrs: { showLoading: _vm.showLoading } }),
+      _vm.visible
+        ? _c("view", { staticClass: "login-mask" }, [
+            _c("view", { staticClass: "mask-box" }, [
+              _c("view", { staticClass: "mask-title" }, [
+                _vm._v(" 授权登录 "),
+                _c("view", {
+                  staticClass: "close",
+                  on: { tap: _vm.modelClose },
+                }),
+              ]),
+              _c("view", { staticClass: "mask-ct" }, [
+                _c("view", { staticClass: "mask-login-tips" }, [
+                  _vm._v("授权登录后查看更多优质模特图"),
+                ]),
+                _c(
+                  "view",
+                  {
+                    staticClass: "mask-login-btn",
+                    on: { tap: _vm.getUserProfile },
+                  },
+                  [_vm._v("授权登录")]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticClass: "mask-login-cancel",
+                    on: { tap: _vm.modelClose },
+                  },
+                  [_vm._v("再看看")]
+                ),
+              ]),
+            ]),
+          ])
+        : _vm._e(),
     ],
     1
   )
@@ -3382,10 +3753,10 @@ var render = function () {
             "block",
             [
               _c("TonggaoList", {
+                ref: "tonggao",
                 attrs: {
                   base_data: _vm.allCity,
                   multi_array: _vm.multiArray,
-                  more: _vm.tonggaoMore,
                   refresh: _vm.tonggaoRefresh,
                 },
                 on: {
@@ -4020,10 +4391,10 @@ var render = function () {
             "block",
             [
               _c("ZuopinList", {
+                ref: "zuopin",
                 attrs: {
                   base_data: _vm.allCity,
                   multi_array: _vm.multiArray,
-                  more: _vm.zuopinMore,
                   refresh: _vm.zuopinRefresh,
                 },
                 on: {
@@ -4049,6 +4420,40 @@ var render = function () {
         on: { tap: _vm.totop },
       }),
       _c("loading", { attrs: { showLoading: _vm.showLoading } }),
+      _vm.visible
+        ? _c("view", { staticClass: "login-mask" }, [
+            _c("view", { staticClass: "mask-box" }, [
+              _c("view", { staticClass: "mask-title" }, [
+                _vm._v(" 授权登录 "),
+                _c("view", {
+                  staticClass: "close",
+                  on: { tap: _vm.modelClose },
+                }),
+              ]),
+              _c("view", { staticClass: "mask-ct" }, [
+                _c("view", { staticClass: "mask-login-tips" }, [
+                  _vm._v("授权登录后查看更多优质模特图"),
+                ]),
+                _c(
+                  "view",
+                  {
+                    staticClass: "mask-login-btn",
+                    on: { tap: _vm.getUserProfile },
+                  },
+                  [_vm._v("授权登录")]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticClass: "mask-login-cancel",
+                    on: { tap: _vm.modelClose },
+                  },
+                  [_vm._v("再看看")]
+                ),
+              ]),
+            ]),
+          ])
+        : _vm._e(),
     ],
     1
   )

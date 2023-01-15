@@ -8,14 +8,10 @@ const App = {
   onLaunch: () => {
     // 微信登陆
     let _this = App;
-    let token = wx.getStorageSync("token");
-    if (!token) {
-      openPage("/pages/login/index");
-    } else {
-      // wx.switchTab({
-      //   url: "/pages/home/index",
-      // });
-    }
+    // let token = wx.getStorageSync("token");
+    // if (!token) {
+    //   openPage("/pages/login/index");
+    // }
     // 判断是否为iphoneX
     Vue.prototype.globalData = _this.globalData;
     wx.getSystemInfo({

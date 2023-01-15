@@ -47,8 +47,14 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/open_recruitment/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/open_recruitment/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
 //
 //
 //
@@ -81,6 +87,8 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "open_recruitment",
   data: function data() {
@@ -88,26 +96,105 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
       active: 0,
       coin: 70,
       balanceCoin: 0,
-      list: [{
-        day: 7,
-        coin: 70
-      }, {
-        day: 15,
-        coin: 130
-      }, {
-        day: 30,
-        coin: 250
-      }, {
-        day: 60,
-        coin: 450
-      }]
+      oid: "",
+      list: []
     };
   },
   methods: {
     select: function select(row, index) {
       this.coin = row.coin;
       this.active = index;
+    },
+    submit: function submit() {
+      if (this.balanceCoin < this.coin) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("余额不足");
+        return false;
+      }
+
+      var params = {
+        coin: this.coin,
+        oid: this.oid,
+        rule_code: this.list[this.active].code,
+        valid_time: this.list[this.active].valid_time
+      };
+      this.subOpenRecruitment(params);
+      console.log(params);
+    },
+    pushInit: function pushInit(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* pushInit */ "O"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.balanceCoin = res.data.data.balance_coin;
+                _this.list = res.data.data.rules;
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    subOpenRecruitment: function subOpenRecruitment(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, pages, prevPage;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subOpenRecruitment */ "W"])(params);
+
+              case 3:
+                res = _context2.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("开放招募成功");
+                pages = getCurrentPages();
+                prevPage = pages[pages.length - 2];
+                prevPage.setData({
+                  refresh: true
+                });
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context2.next = 13;
+                break;
+
+              case 11:
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](0);
+
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 11]]);
+      }))();
     }
+  },
+  created: function created() {
+    this.pushInit({});
+  },
+  onLoad: function onLoad(options) {
+    this.oid = options.oid;
   }
 });
 
@@ -151,7 +238,7 @@ var render = function () {
           },
           [
             _c("view", { staticClass: "day" }, [
-              _vm._v(_vm._s(item.day) + "天"),
+              _vm._v(_vm._s(item.valid_time) + "天"),
             ]),
             _c("view", [_vm._v(_vm._s(item.coin) + "金币/通告")]),
           ]
@@ -170,7 +257,9 @@ var render = function () {
         _c("view", [_vm._v("剩余：" + _vm._s(_vm.balanceCoin) + "金币")]),
       ]),
       _c("view", { staticClass: "open-bottom-rt" }, [
-        _c("view", { staticClass: "open-btn" }, [_vm._v("立即开放")]),
+        _c("view", { staticClass: "open-btn", on: { tap: _vm.submit } }, [
+          _vm._v("立即开放"),
+        ]),
       ]),
     ]),
   ])
@@ -249,5 +338,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageTonggao/pages/open_recruitment/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageTonggao/pages/open_recruitment/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map
