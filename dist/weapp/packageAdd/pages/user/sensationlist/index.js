@@ -124,6 +124,8 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -159,7 +161,7 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
     goChooseMedia: function goChooseMedia() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
     },
-    editMedia: function editMedia(oid) {
+    editMedia: function editMedia(oid, platform_code, platform_name) {
       var _this = this;
 
       wx.showActionSheet({
@@ -167,7 +169,12 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
         success: function success(res) {
           switch (res.tapIndex) {
             case 0:
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + _this.platform_code + "&platform_name=" + _this.platform_name + "&oid=" + oid);
+              if (_this.platform_code) {
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + _this.platform_code + "&platform_name=" + _this.platform_name + "&oid=" + oid);
+              } else {
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + platform_code + "&platform_name=" + platform_name + "&oid=" + oid);
+              }
+
               break;
 
             case 1:
@@ -276,8 +283,18 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
   },
   onShow: function onShow() {
     if (this.platform_code) {
+      wx.setNavigationBarTitle({
+        title: "选择红人账号"
+      });
       this.celebrityList({
         platform_code: this.platform_code
+      });
+    } else {
+      wx.setNavigationBarTitle({
+        title: "红人账号"
+      });
+      this.celebrityList({
+        platform_code: null
       });
     }
   }
@@ -362,7 +379,11 @@ var render = function () {
                     on: {
                       tap: function ($event) {
                         $event.stopPropagation()
-                        return _vm.editMedia(item.oid)
+                        return _vm.editMedia(
+                          item.oid,
+                          item.platform_code,
+                          item.platform_name
+                        )
                       },
                     },
                   }),

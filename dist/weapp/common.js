@@ -631,7 +631,7 @@ var addressInfo = function addressInfo(data) {
 
 var userContact = function userContact(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
-    url: baseUrl + "/v1/user/contact",
+    url: baseUrl + "/v1/user/contact/list",
     method: "post",
     data: data
   });
@@ -1160,6 +1160,18 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABa
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/eyes.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/logo.png":
+/*!************************************!*\
+  !*** ./src/assets/images/logo.png ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/logo.png";
 
 /***/ }),
 

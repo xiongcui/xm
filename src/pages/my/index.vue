@@ -10,8 +10,9 @@
         }"
       >
         <view class="pagetop ub">
-          <view catchtap="open_settings" class="page_settings">
+          <view class="page_settings">
             <image
+              @tap="open_settings"
               src="../../assets/images/user/index/icon_settings.png"
             ></image>
           </view>
@@ -46,7 +47,7 @@
           mode="aspectFit"
         ></image>
       </view>
-      <view class="my-head-ct">
+      <view class="my-head-ct" v-if="infor.uuid">
         <view>
           <text class="my-head-name">{{ infor.nickname }}</text>
         </view>
@@ -78,12 +79,18 @@
           </view>
         </view>
       </view>
+      <view class="my-head-ct" v-else @tap="login">
+        <view>
+          <text class="my-head-name">立即登录</text>
+        </view>
+        <view class="my-account">点击登录</view>
+      </view>
     </view>
     <view class="my-head-ct">
-      <view class="my-desc">
+      <view class="my-desc" v-if="infor.resume">
         {{ infor.resume }}
       </view>
-      <view class="my_tags">
+      <view class="my_tags" v-if="infor.age">
         <view class="tag">
           <image
             src="../../assets/images/nan.png"
@@ -493,6 +500,10 @@ export default {
     };
   },
   methods: {
+    open_settings() {
+      console.log(111);
+      openPage("/packageSet/pages/index/index");
+    },
     close() {
       this.showModelSign = false;
     },
@@ -537,9 +548,31 @@ export default {
         success(res) {},
       });
     },
+    login() {
+      openPage("/pages/login/index");
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
+        if (!res.data.data) {
+          this.infor = {
+            age: 0,
+            avatar: "",
+            realname: "",
+            ispledge: "",
+            statistic: {
+              followed_cnt: 0,
+              follower_cnt: 0,
+              invite_cnt: 0,
+              read_cnt: 0,
+              track_cnt: 0,
+              visitor_cnt: 0,
+            },
+          };
+          this.coin = 0;
+          return false;
+        }
+
         this.infor = res.data.data;
         this.coin = res.data.data.acct.coin;
       } catch (error) {}

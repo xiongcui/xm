@@ -516,6 +516,13 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -546,6 +553,10 @@ component.options.__file = "src/pages/my/index.vue"
     };
   },
   methods: {
+    open_settings: function open_settings() {
+      console.log(111);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageSet/pages/index/index");
+    },
     close: function close() {
       this.showModelSign = false;
     },
@@ -592,6 +603,9 @@ component.options.__file = "src/pages/my/index.vue"
         success: function success(res) {}
       });
     },
+    login: function login() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/login/index");
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -607,21 +621,45 @@ component.options.__file = "src/pages/my/index.vue"
 
               case 3:
                 res = _context.sent;
-                _this.infor = res.data.data;
-                _this.coin = res.data.data.acct.coin;
-                _context.next = 10;
-                break;
+
+                if (res.data.data) {
+                  _context.next = 8;
+                  break;
+                }
+
+                _this.infor = {
+                  age: 0,
+                  avatar: "",
+                  realname: "",
+                  ispledge: "",
+                  statistic: {
+                    followed_cnt: 0,
+                    follower_cnt: 0,
+                    invite_cnt: 0,
+                    read_cnt: 0,
+                    track_cnt: 0,
+                    visitor_cnt: 0
+                  }
+                };
+                _this.coin = 0;
+                return _context.abrupt("return", false);
 
               case 8:
-                _context.prev = 8;
+                _this.infor = res.data.data;
+                _this.coin = res.data.data.acct.coin;
+                _context.next = 14;
+                break;
+
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
 
-              case 10:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 12]]);
       }))();
     }
   },
@@ -677,20 +715,14 @@ var render = function () {
               "view",
               { staticClass: "pagetop ub" },
               [
-                _c(
-                  "view",
-                  {
-                    staticClass: "page_settings",
-                    attrs: { catchtap: "open_settings" },
-                  },
-                  [
-                    _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/user/index/icon_settings.png */ "./src/assets/images/user/index/icon_settings.png"),
-                      },
-                    }),
-                  ]
-                ),
+                _c("view", { staticClass: "page_settings" }, [
+                  _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../assets/images/user/index/icon_settings.png */ "./src/assets/images/user/index/icon_settings.png"),
+                    },
+                    on: { tap: _vm.open_settings },
+                  }),
+                ]),
                 _vm.s_id
                   ? _c("block", [
                       _vm.isSign
@@ -753,89 +785,100 @@ var render = function () {
           },
         }),
       ]),
-      _c("view", { staticClass: "my-head-ct" }, [
-        _c("view", [
-          _c("text", { staticClass: "my-head-name" }, [
-            _vm._v(_vm._s(_vm.infor.nickname)),
+      _vm.infor.uuid
+        ? _c("view", { staticClass: "my-head-ct" }, [
+            _c("view", [
+              _c("text", { staticClass: "my-head-name" }, [
+                _vm._v(_vm._s(_vm.infor.nickname)),
+              ]),
+            ]),
+            _c("view", { staticClass: "my-account" }, [
+              _vm._v("账号：" + _vm._s(_vm.infor.uuid)),
+            ]),
+            _c("view", { staticClass: "my-info" }, [
+              _c("text", [_vm._v("IP归属：")]),
+              _c("text", [_vm._v(_vm._s(_vm.infor.province_name))]),
+              _c("view", { staticClass: "head-tag-box" }, [
+                _vm.infor.is_certify
+                  ? _c("image", {
+                      staticClass: "head-tag-img",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                      },
+                    })
+                  : _c("image", {
+                      staticClass: "head-tag-img",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                      },
+                    }),
+                _vm.infor.is_security
+                  ? _c("image", {
+                      staticClass: "head-tag-img",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                      },
+                    })
+                  : _c("image", {
+                      staticClass: "head-tag-img",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                      },
+                    }),
+              ]),
+            ]),
+          ])
+        : _c("view", { staticClass: "my-head-ct", on: { tap: _vm.login } }, [
+            _c("view", [
+              _c("text", { staticClass: "my-head-name" }, [_vm._v("立即登录")]),
+            ]),
+            _c("view", { staticClass: "my-account" }, [_vm._v("点击登录")]),
           ]),
-        ]),
-        _c("view", { staticClass: "my-account" }, [
-          _vm._v("账号：" + _vm._s(_vm.infor.uuid)),
-        ]),
-        _c("view", { staticClass: "my-info" }, [
-          _c("text", [_vm._v("IP归属：")]),
-          _c("text", [_vm._v(_vm._s(_vm.infor.province_name))]),
-          _c("view", { staticClass: "head-tag-box" }, [
-            _vm.infor.is_certify
-              ? _c("image", {
-                  staticClass: "head-tag-img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
-                  },
-                })
-              : _c("image", {
-                  staticClass: "head-tag-img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
-                  },
-                }),
-            _vm.infor.is_security
-              ? _c("image", {
-                  staticClass: "head-tag-img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
-                  },
-                })
-              : _c("image", {
-                  staticClass: "head-tag-img",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
-                  },
-                }),
-          ]),
-        ]),
-      ]),
     ]),
     _c("view", { staticClass: "my-head-ct" }, [
-      _c("view", { staticClass: "my-desc" }, [
-        _vm._v(" " + _vm._s(_vm.infor.resume) + " "),
-      ]),
-      _c(
-        "view",
-        { staticClass: "my_tags" },
-        [
-          _c("view", { staticClass: "tag" }, [
-            _vm.infor.sex == 1
-              ? _c("image", {
-                  staticClass: "sex",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
-                    mode: "aspectFit",
-                  },
-                })
-              : _vm._e(),
-            _vm.infor.sex == 0
-              ? _c("image", {
-                  staticClass: "sex",
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
-                    mode: "aspectFit",
-                  },
-                })
-              : _vm._e(),
-            _vm._v(" " + _vm._s(_vm.infor.age) + "岁 "),
-          ]),
-          _c("view", { staticClass: "tag" }, [
-            _vm._v(" " + _vm._s(_vm.infor.province_name) + " "),
-          ]),
-          _vm._l(_vm.infor.career_list, function (item, index) {
-            return _c("view", { key: index, staticClass: "tag" }, [
-              _vm._v(" " + _vm._s(item) + " "),
-            ])
-          }),
-        ],
-        2
-      ),
+      _vm.infor.resume
+        ? _c("view", { staticClass: "my-desc" }, [
+            _vm._v(" " + _vm._s(_vm.infor.resume) + " "),
+          ])
+        : _vm._e(),
+      _vm.infor.age
+        ? _c(
+            "view",
+            { staticClass: "my_tags" },
+            [
+              _c("view", { staticClass: "tag" }, [
+                _vm.infor.sex == 1
+                  ? _c("image", {
+                      staticClass: "sex",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        mode: "aspectFit",
+                      },
+                    })
+                  : _vm._e(),
+                _vm.infor.sex == 0
+                  ? _c("image", {
+                      staticClass: "sex",
+                      attrs: {
+                        src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                        mode: "aspectFit",
+                      },
+                    })
+                  : _vm._e(),
+                _vm._v(" " + _vm._s(_vm.infor.age) + "岁 "),
+              ]),
+              _c("view", { staticClass: "tag" }, [
+                _vm._v(" " + _vm._s(_vm.infor.province_name) + " "),
+              ]),
+              _vm._l(_vm.infor.career_list, function (item, index) {
+                return _c("view", { key: index, staticClass: "tag" }, [
+                  _vm._v(" " + _vm._s(item) + " "),
+                ])
+              }),
+            ],
+            2
+          )
+        : _vm._e(),
       _c("view", { staticClass: "my-count" }, [
         _c("view", { staticClass: "my-conunt-left" }, [
           _c("view", { staticClass: "my-count-box" }, [

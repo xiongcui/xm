@@ -175,6 +175,11 @@ component.options.__file = "src/pages/login/index.vue"
         this.pageshow = "login";
       }
     },
+    cancelLogin: function cancelLogin() {
+      wx.navigateBack({
+        delta: 1
+      });
+    },
     getWxLogin: function getWxLogin(params) {
       var _this3 = this;
 
@@ -306,9 +311,11 @@ var render = function () {
                 { staticClass: "login-btn", on: { tap: _vm.getUserProfile } },
                 [_c("text", [_vm._v("微信登录")])]
               ),
-              _c("view", { staticClass: "cancel-btn" }, [
-                _c("text", [_vm._v("取消登录")]),
-              ]),
+              _c(
+                "view",
+                { staticClass: "cancel-btn", on: { tap: _vm.cancelLogin } },
+                [_c("text", [_vm._v("取消登录")])]
+              ),
               _c("view", { staticClass: "login-tips" }, [
                 _c("text", [_vm._v("登录即代表同意虾米约拍")]),
                 _c("text", { staticClass: "user-xy" }, [
@@ -363,18 +370,6 @@ render._withStripped = true
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/logo.png":
-/*!************************************!*\
-  !*** ./src/assets/images/logo.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/logo.png";
 
 /***/ }),
 

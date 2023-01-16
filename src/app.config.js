@@ -126,6 +126,11 @@ export default defineAppConfig({
       name: "packagevip",
       pages: ["pages/vip/index"],
     },
+    {
+      root: "packageSet/",
+      name: "packageset",
+      pages: ["pages/index/index", "pages/about/index"],
+    },
   ],
   permission: {
     "scope.userLocation": {

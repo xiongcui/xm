@@ -4,8 +4,8 @@
       <view class="side_gap"></view>
       <view class="ub-f1">
         <textarea
-          autoHeight="true"
-          class="intro_content"
+          :autoHeight="true"
+          class="intro_content2"
           maxlength="800"
           name="intro"
           placeholder="请填写自我简介（请勿填写任何联系方式，否则审核不通过）"

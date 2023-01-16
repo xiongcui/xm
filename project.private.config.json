@@ -16,15 +16,15 @@
                     "scene": null
                 },
                 {
-                    "name": "信用担保",
-                    "pathName": "packageMsg/pages/creditGuarantee/index",
+                    "name": "设置",
+                    "pathName": "packageSet/pages/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "通告管理",
-                    "pathName": "packageTonggao/pages/tonggao_manage/index",
+                    "name": "关于",
+                    "pathName": "packageSet/pages/about/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

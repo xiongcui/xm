@@ -18,7 +18,7 @@
         <view class="login-btn" @tap="getUserProfile">
           <text>微信登录</text>
         </view>
-        <view class="cancel-btn">
+        <view class="cancel-btn" @tap="cancelLogin">
           <text>取消登录</text>
         </view>
         <view class="login-tips">
@@ -114,6 +114,11 @@ export default {
       } else {
         this.pageshow = "login";
       }
+    },
+    cancelLogin() {
+      wx.navigateBack({
+        delta: 1,
+      });
     },
     async getWxLogin(params) {
       try {

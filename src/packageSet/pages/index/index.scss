@@ -1,0 +1,40 @@
+page {
+  background-color: #f7f7f7;
+}
+.set {
+  .set-top,
+  .set-content,
+  .set-bt,
+  .set-logout {
+    background: #ffffff;
+    margin: 16px 0px;
+  }
+  .set-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 80px;
+    border-bottom: 2px solid #f5f5f5;
+    font-size: 30px;
+    padding: 0px 30px;
+    color: #333333;
+  }
+  .phone {
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 16px;
+  }
+  .arrow image {
+    width: 26px;
+    height: 26px;
+  }
+  .arrow {
+    float: right;
+    position: absolute;
+    right: 30px;
+  }
+  .logout {
+    display: flex;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.5);
+  }
+}

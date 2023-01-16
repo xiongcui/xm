@@ -1,0 +1,14 @@
+.about-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.about-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 16rpx auto;
+}

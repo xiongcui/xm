@@ -24,7 +24,9 @@
         <image
           src="../../../../assets/images/common/editbtn.png"
           class="editbtn"
-          @tap.stop="editMedia(item.oid)"
+          @tap.stop="
+            editMedia(item.oid, item.platform_code, item.platform_name)
+          "
         ></image>
       </view>
       <view class="item_tags ub">
@@ -108,21 +110,32 @@ export default {
           this.platform_name
       );
     },
-    editMedia(oid) {
+    editMedia(oid, platform_code, platform_name) {
       let _this = this;
       wx.showActionSheet({
         itemList: ["重新编辑", "删除"],
         success(res) {
           switch (res.tapIndex) {
             case 0:
-              openPage(
-                "/packageAdd/pages/user/addfans/index?platform_code=" +
-                  _this.platform_code +
-                  "&platform_name=" +
-                  _this.platform_name +
-                  "&oid=" +
-                  oid
-              );
+              if (_this.platform_code) {
+                openPage(
+                  "/packageAdd/pages/user/addfans/index?platform_code=" +
+                    _this.platform_code +
+                    "&platform_name=" +
+                    _this.platform_name +
+                    "&oid=" +
+                    oid
+                );
+              } else {
+                openPage(
+                  "/packageAdd/pages/user/addfans/index?platform_code=" +
+                    platform_code +
+                    "&platform_name=" +
+                    platform_name +
+                    "&oid=" +
+                    oid
+                );
+              }
               break;
             case 1:
               _this.rowoid = oid;
@@ -175,8 +188,18 @@ export default {
   },
   onShow() {
     if (this.platform_code) {
+      wx.setNavigationBarTitle({
+        title: "选择红人账号",
+      });
       this.celebrityList({
         platform_code: this.platform_code,
+      });
+    } else {
+      wx.setNavigationBarTitle({
+        title: "红人账号",
+      });
+      this.celebrityList({
+        platform_code: null,
       });
     }
   },

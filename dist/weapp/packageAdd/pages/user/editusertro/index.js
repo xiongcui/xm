@@ -177,9 +177,9 @@ var render = function () {
               expression: "infor.intro",
             },
           ],
-          staticClass: "intro_content",
+          staticClass: "intro_content2",
           attrs: {
-            autoHeight: "true",
+            autoHeight: true,
             maxlength: "800",
             name: "intro",
             placeholder:

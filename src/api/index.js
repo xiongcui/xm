@@ -312,7 +312,7 @@ export const addressInfo = (data) => {
 // 获取我的联系方式
 export const userContact = (data) => {
   return request({
-    url: baseUrl + "/v1/user/contact",
+    url: baseUrl + "/v1/user/contact/list",
     method: "post",
     data,
   });

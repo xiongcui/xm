@@ -19,6 +19,10 @@
 
     .my-head-ct {
       width: 64%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      // align-items: center;
     }
     .my-account {
       color: #999999;

@@ -22,6 +22,15 @@
 }
 .my .my-head .my-head-ct {
   width: 64%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .my .my-head .my-account {
   color: #999999;
