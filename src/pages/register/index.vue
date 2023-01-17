@@ -120,6 +120,7 @@ export default {
     return {
       avatar: "",
       nickname: "",
+      invited_uuid: "",
       visible: false,
       sex: "",
       date: "",
@@ -174,6 +175,7 @@ export default {
         return false;
       }
       let params = {
+        invited_uuid: this.invited_uuid,
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
@@ -182,6 +184,7 @@ export default {
         avatar: this.avatar,
         career_label: this.identityList,
       };
+      console.log(params);
       this.updateUser(params);
     },
     async updateUser(params) {
@@ -212,6 +215,7 @@ export default {
   },
   created() {
     let userInfo = wx.getStorageSync("userInfo");
+    this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
   },

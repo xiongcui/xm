@@ -61,6 +61,9 @@ export default {
       visible: false,
       imgVisible: false,
       imageUrl: "",
+      shareTitle: "",
+      shareImg: "",
+      sharePath: "",
     };
   },
   methods: {
@@ -147,6 +150,7 @@ export default {
         let res = await shareInvite(params);
         this.shareTitle = res.data.data.title;
         this.shareImg = res.data.data.imageUrl;
+        this.sharePath = es.data.data.path;
       } catch (error) {}
     },
   },
@@ -160,7 +164,7 @@ export default {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
-      path: "/pages/home/index?id=123", // 路径，传递参数到指定页面。
+      path: this.sharePath, // 路径，传递参数到指定页面。
     };
   },
 };

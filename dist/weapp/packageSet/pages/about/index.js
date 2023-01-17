@@ -57,9 +57,99 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "about"
+  name: "about",
+  methods: {
+    customerService: function customerService() {
+      wx.openCustomerServiceChat({
+        extInfo: {
+          url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6"
+        },
+        corpId: "ww9ad8086390afbfaa",
+        success: function success(res) {}
+      });
+    },
+    officialAccount: function officialAccount() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "微信搜索公众号 虾米约拍 点击关注即可！",
+        showCancel: false,
+        success: function success(res) {
+          if (res.confirm) {} else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -85,6 +175,95 @@ var render = function () {
         staticClass: "about-img",
         attrs: { src: __webpack_require__(/*! ../../../assets/images/logo.png */ "./src/assets/images/logo.png") },
       }),
+    ]),
+    _c("view", { staticClass: "about-service" }, [
+      _c(
+        "view",
+        { staticClass: "about-item", on: { tap: _vm.customerService } },
+        [
+          _c("text", [_vm._v("联系客服")]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]
+      ),
+      _c(
+        "view",
+        { staticClass: "about-item", on: { tap: _vm.officialAccount } },
+        [
+          _c("text", [_vm._v("关注公众号")]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]
+      ),
+    ]),
+    _c("view", { staticClass: "about-service" }, [
+      _c("view", { staticClass: "about-item" }, [
+        _c("text", [_vm._v("用户协议")]),
+        _c("view", { staticClass: "arrow" }, [
+          _c("image", {
+            attrs: {
+              mode: "aspectFit",
+              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+            },
+          }),
+        ]),
+      ]),
+      _c("view", { staticClass: "about-item" }, [
+        _c("text", [_vm._v("隐私政策")]),
+        _c("view", { staticClass: "arrow" }, [
+          _c("image", {
+            attrs: {
+              mode: "aspectFit",
+              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+            },
+          }),
+        ]),
+      ]),
+      _c("view", { staticClass: "about-item" }, [
+        _c("text", [_vm._v("防骗指南")]),
+        _c("view", { staticClass: "arrow" }, [
+          _c("image", {
+            attrs: {
+              mode: "aspectFit",
+              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+            },
+          }),
+        ]),
+      ]),
+      _c("view", { staticClass: "about-item" }, [
+        _c("text", [_vm._v("营业执照")]),
+        _c("view", { staticClass: "arrow" }, [
+          _c("image", {
+            attrs: {
+              mode: "aspectFit",
+              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+            },
+          }),
+        ]),
+      ]),
+      _c("view", { staticClass: "about-item" }, [
+        _c("text", [_vm._v("当前版本")]),
+        _c("view", { staticClass: "arrow" }, [
+          _c("image", {
+            attrs: {
+              mode: "aspectFit",
+              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+            },
+          }),
+        ]),
+      ]),
     ]),
   ])
 }

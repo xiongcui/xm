@@ -2090,6 +2090,8 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -2771,7 +2773,11 @@ component.options.__file = "src/pages/home/index.vue"
     this.notifyNumber("");
   },
   onLoad: function onLoad(options) {
-    console.log(options);
+    console.log(options.scene);
+
+    if (options.scene) {
+      wx.setStorageSync("invited_uuid", options.scene);
+    }
   }
 });
 
@@ -3714,14 +3720,9 @@ var render = function () {
               },
             },
             [
-              _c("view", { staticClass: "head_sign" }, [
-                _c("image", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/common/icon_sign.png */ "./src/assets/images/common/icon_sign.png"),
-                  },
-                }),
-                _c("text", [_vm._v("签到")]),
-              ]),
+              false
+                ? undefined
+                : _vm._e(),
               _c(
                 "view",
                 { staticClass: "head_nav" },
@@ -3997,7 +3998,10 @@ var render = function () {
                                     _c("text", [
                                       _vm._v(
                                         " " +
-                                          _vm._s(item.author.career_list[0]) +
+                                          _vm._s(
+                                            item.author.career_list &&
+                                              item.author.career_list[0]
+                                          ) +
                                           " | " +
                                           _vm._s(item.author.province_name)
                                       ),
@@ -4462,18 +4466,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/icon_sign.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/icon_sign.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAe1BMVEUAAAD/VVf/VVf/V1f/TE3/VFf/VFj/VVn/VVj/Ulb+VFf/VVf/VFf9U1f/U1b/UGD/Rk//VFf/VFj/U1f/VFf/VFf/VFj+U1f/VFf/U1b/VFf/U1f/U1j/VVj/VFb/U1b/UVj/Ulb/VVf/VFf/VFb/VVf/VVn/VVX/VFcV8O5qAAAAKHRSTlMAbKwsB3jqRZw7+rj5n18QA/MZ1NDAqNrYHPjchk0/ZiQWx498aTkSX9hYKQAAATlJREFUOMu9lNlugzAQRU2KbZZASCB70iRdz/9/Ye0SZVphLPrS84Bs6YxsRp6rfpBe6kYJ5+RTBdnAq+zeoQt7BlrZzYDbwFnYOjmASR60QGIXv6y8LAhTlLncPyNGlt61NWAqHTj3VBlg3YsZzLVfLmGrHpTASqV6Dtn33ZxmlefoSsVz5YWvtk7M+zp9b6w5foh37cxFeTSUriEFJlUxUkOxUBYqFacCq2p/bBwNtUrg9BTnBInzJvA3r5vF6XrPfeIk/+k12WEzwWs2wDXmibZLR7zVmxWN437s3Jf7upkBW6eNeDvcRrRR73npxV5bqbAnYud/wWlhT0TRIv3LvdiKNvREbG9q4A3f/f6cBt791DmaOpcy57FxKyU3wkhuSA4FkRySXBuiJdcm5uT03JUcH1I/cvwLSfZGI9VzynUAAAAASUVORK5CYII="
 
 /***/ }),
 

@@ -176,6 +176,7 @@ component.options.__file = "src/pages/register/index.vue"
     return {
       avatar: "",
       nickname: "",
+      invited_uuid: "",
       visible: false,
       sex: "",
       date: "",
@@ -236,6 +237,7 @@ component.options.__file = "src/pages/register/index.vue"
       }
 
       var params = {
+        invited_uuid: this.invited_uuid,
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
@@ -244,6 +246,7 @@ component.options.__file = "src/pages/register/index.vue"
         avatar: this.avatar,
         career_label: this.identityList
       };
+      console.log(params);
       this.updateUser(params);
     },
     updateUser: function updateUser(params) {
@@ -324,6 +327,7 @@ component.options.__file = "src/pages/register/index.vue"
   },
   created: function created() {
     var userInfo = wx.getStorageSync("userInfo");
+    this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
   },

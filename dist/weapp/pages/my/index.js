@@ -530,7 +530,7 @@ component.options.__file = "src/pages/my/index.vue"
   name: "my",
   data: function data() {
     return {
-      s_id: "1",
+      s_id: "",
       isSign: "",
       sex: 1,
       show_my_ad: false,

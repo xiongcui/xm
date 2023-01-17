@@ -152,7 +152,7 @@ export const userShapeDetail = (data) => {
 // 获取相册和视频
 export const userAlbumDetail = (data) => {
   return request({
-    url: baseUrl + "/v1/user/album",
+    url: baseUrl + "/v1/user/album/list",
     method: "post",
     data,
   });

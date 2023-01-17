@@ -1,14 +1,52 @@
-.about-top {
+page {
+  background-color: #f7f7f7;
+}
+
+.about .about-top {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background: #ffffff;
+  padding: 30rpx;
+  margin: 16rpx 0;
 }
 
-.about-img {
+.about .about-img {
   width: 150rpx;
   height: 150rpx;
   margin: 16rpx auto;
+}
+
+.about .about-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 80rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+  font-size: 30rpx;
+  padding: 0 30rpx;
+  color: #333333;
+}
+
+.about .arrow image {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.about .arrow {
+  float: right;
+  position: absolute;
+  right: 30rpx;
+}
+
+.about .about-service {
+  background: #ffffff;
+  margin: 16rpx 0;
 }

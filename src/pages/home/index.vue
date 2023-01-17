@@ -10,7 +10,7 @@
           'padding-right': globalData.navObjWid + 5 + 'px',
         }"
       >
-        <view class="head_sign">
+        <view class="head_sign" v-if="false">
           <image src="../../assets/images/common/icon_sign.png"></image>
           <text>签到</text>
         </view>
@@ -167,8 +167,10 @@
                   </view>
                   <view class="list_p">
                     <text>
-                      {{ item.author.career_list[0] }} |
-                      {{ item.author.province_name }}</text
+                      {{
+                        item.author.career_list && item.author.career_list[0]
+                      }}
+                      | {{ item.author.province_name }}</text
                     >
                     <image
                       src="../../assets/images/common/icon_real.png"
@@ -938,7 +940,10 @@ export default {
     this.notifyNumber("");
   },
   onLoad: function (options) {
-    console.log(options);
+    console.log(options.scene);
+    if (options.scene) {
+      wx.setStorageSync("invited_uuid", options.scene);
+    }
   },
 };
 </script>

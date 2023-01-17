@@ -471,7 +471,7 @@ var userShapeDetail = function userShapeDetail(data) {
 
 var userAlbumDetail = function userAlbumDetail(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
-    url: baseUrl + "/v1/user/album",
+    url: baseUrl + "/v1/user/album/list",
     method: "post",
     data: data
   });

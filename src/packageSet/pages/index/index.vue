@@ -51,7 +51,7 @@
       </view>
     </view>
     <view class="set-bt">
-      <view class="set-item">
+      <view class="set-item" @tap="goAbout">
         <text>关于虾米约拍</text>
         <view class="arrow">
           <image
@@ -99,6 +99,9 @@ export default {
     },
     goContact() {
       openPage("/packageAdd/pages/user/contact/index");
+    },
+    goAbout() {
+      openPage("/packageSet/pages/about/index");
     },
   },
 };

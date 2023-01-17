@@ -150,6 +150,9 @@ component.options.__file = "src/packageSet/pages/index/index.vue"
     },
     goContact: function goContact() {
       Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageAdd/pages/user/contact/index");
+    },
+    goAbout: function goAbout() {
+      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageSet/pages/about/index");
     }
   }
 });
@@ -237,7 +240,7 @@ var render = function () {
       ]),
     ]),
     _c("view", { staticClass: "set-bt" }, [
-      _c("view", { staticClass: "set-item" }, [
+      _c("view", { staticClass: "set-item", on: { tap: _vm.goAbout } }, [
         _c("text", [_vm._v("关于虾米约拍")]),
         _c("view", { staticClass: "arrow" }, [
           _c("image", {

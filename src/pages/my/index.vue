@@ -477,7 +477,7 @@ export default {
   name: "my",
   data() {
     return {
-      s_id: "1",
+      s_id: "",
       isSign: "",
       sex: 1,
       show_my_ad: false,

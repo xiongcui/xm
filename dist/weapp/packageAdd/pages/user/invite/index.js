@@ -115,7 +115,10 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
     return {
       visible: false,
       imgVisible: false,
-      imageUrl: ""
+      imageUrl: "",
+      shareTitle: "",
+      shareImg: "",
+      sharePath: ""
     };
   },
   methods: {
@@ -241,19 +244,20 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
                 res = _context2.sent;
                 _this3.shareTitle = res.data.data.title;
                 _this3.shareImg = res.data.data.imageUrl;
-                _context2.next = 10;
+                _this3.sharePath = es.data.data.path;
+                _context2.next = 11;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 9]]);
       }))();
     }
   },
@@ -267,7 +271,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
-      path: "/pages/home/index?id=123" // 路径，传递参数到指定页面。
+      path: this.sharePath // 路径，传递参数到指定页面。
 
     };
   }
@@ -435,7 +439,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageAdd/pages/user/invite/index.vue");
 
 
-var config = {};
+var config = {"navigationBarTitleText":"邀请好友"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageAdd/pages/user/invite/index', {root:{cn:[]}}, config || {}))
