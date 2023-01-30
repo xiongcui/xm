@@ -131,7 +131,11 @@
 
 <script>
 import { openPage, errortip } from "../../../../utils/util";
-import { userProfile, updateUser, updateAvatar } from "../../../../api/index";
+import {
+  userProfile,
+  profileUpdate,
+  updateAvatar,
+} from "../../../../api/index";
 import { Base64 } from "js-Base64";
 import "./index.scss";
 export default {
@@ -207,11 +211,11 @@ export default {
         address: this.regionList.join("-"),
         avatar: this.infor.avatar,
       };
-      this.updateUser(params);
+      this.profileUpdate(params);
     },
-    async updateUser(params, type) {
+    async profileUpdate(params, type) {
       try {
-        let res = await updateUser(params);
+        let res = await profileUpdate(params);
         wx.navigateBack({
           delta: 1,
         });

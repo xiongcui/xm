@@ -533,12 +533,9 @@ export default {
           avatar: params.avatar,
           nickname: params.nickname,
         });
-        if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+        if (res.data.data.is_bind_phone == 0) {
           this.pageshow = "bindphone";
-        } else if (
-          res.data.data.login_type == 2 &&
-          res.data.data.is_bind_phone == 1
-        ) {
+        } else if (res.data.data.login_type == 2) {
           this.visible = false;
           this.pageNum = 1;
           this.list = [];

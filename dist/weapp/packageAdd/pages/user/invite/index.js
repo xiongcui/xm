@@ -238,13 +238,13 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "U"])(params);
 
               case 3:
                 res = _context2.sent;
                 _this3.shareTitle = res.data.data.title;
                 _this3.shareImg = res.data.data.imageUrl;
-                _this3.sharePath = es.data.data.path;
+                _this3.sharePath = res.data.data.path;
                 _context2.next = 11;
                 break;
 

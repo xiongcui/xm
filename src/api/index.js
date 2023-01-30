@@ -25,17 +25,35 @@ export const uploadFile = (data) => {
   });
 };
 // 更新个人资料
-export const updateUser = (data) => {
+// export const updateUser = (data) => {
+//   return request({
+//     url: baseUrl + "/v1/user",
+//     method: "PUT",
+//     data,
+//   });
+// };
+
+// 注册
+export const userRegister = (data) => {
   return request({
-    url: baseUrl + "/v1/user",
-    method: "PUT",
+    url: baseUrl + "/v1/user/register",
+    method: "post",
     data,
   });
 };
+// 更新个人资料
+export const profileUpdate = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/profile/update",
+    method: "post",
+    data,
+  });
+};
+
 // 获得身份
 export const getCareer = (data) => {
   return request({
-    url: baseUrl + "/v1/user/career",
+    url: baseUrl + "/v1/user/career/list",
     method: "post",
     data,
   });
@@ -571,6 +589,22 @@ export const inviteImage = (data) => {
 export const shareInvite = (data) => {
   return request({
     url: baseUrl + "/v1/share/invite/mina",
+    method: "post",
+    data,
+  });
+};
+// 是否签到
+export const isSign = (data) => {
+  return request({
+    url: baseUrl + "/v1/sign/check/logs",
+    method: "post",
+    data,
+  });
+};
+// 提交签到
+export const submitSign = (data) => {
+  return request({
+    url: baseUrl + "/v1/sign/event/logs",
     method: "post",
     data,
   });

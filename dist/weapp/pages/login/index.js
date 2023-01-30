@@ -191,7 +191,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -202,9 +202,10 @@ component.options.__file = "src/pages/login/index.vue"
                   nickname: params.nickname
                 });
 
-                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                if (res.data.data.is_bind_phone == 0) {
+                  // 绑定手机号
                   _this3.pageshow = "bindphone";
-                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                } else if (res.data.data.login_type == 2) {
                   // 跳转首页
                   wx.switchTab({
                     url: "/pages/home/index",

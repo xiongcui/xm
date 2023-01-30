@@ -129,12 +129,10 @@ export default {
           avatar: params.avatar,
           nickname: params.nickname,
         });
-        if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+        if (res.data.data.is_bind_phone == 0) {
+          // 绑定手机号
           this.pageshow = "bindphone";
-        } else if (
-          res.data.data.login_type == 2 &&
-          res.data.data.is_bind_phone == 1
-        ) {
+        } else if (res.data.data.login_type == 2) {
           // 跳转首页
           wx.switchTab({
             url: "/pages/home/index",

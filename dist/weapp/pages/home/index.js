@@ -661,7 +661,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -672,9 +672,9 @@ component.options.__file = "src/pages/home/index.vue"
                   nickname: params.nickname
                 });
 
-                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                if (res.data.data.is_bind_phone == 0) {
                   _this2.pageshow = "bindphone";
-                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                } else if (res.data.data.login_type == 2) {
                   _this2.visible = false;
                   _this2.pageNum = 1;
                   _this2.list = [];
@@ -714,7 +714,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "D"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "E"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -779,7 +779,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "P"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -820,7 +820,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "F"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "G"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1450,7 +1450,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1461,9 +1461,9 @@ component.options.__file = "src/pages/home/index.vue"
                   nickname: params.nickname
                 });
 
-                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                if (res.data.data.is_bind_phone == 0) {
                   _this2.pageshow = "bindphone";
-                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                } else if (res.data.data.login_type == 2) {
                   _this2.visible = false;
                   _this2.pageNum = 1;
                   _this2.list = [];
@@ -1503,7 +1503,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "P"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1552,7 +1552,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "L"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -2092,6 +2092,33 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2105,11 +2132,13 @@ component.options.__file = "src/pages/home/index.vue"
     return {
       msg: "",
       visible: false,
+      showModelSign: false,
       showLoading: true,
       showtoTop: false,
       headCurrent: 1,
       tonggaoRefresh: false,
       zuopinRefresh: false,
+      is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
@@ -2191,7 +2220,11 @@ component.options.__file = "src/pages/home/index.vue"
       multiArray: [[], []],
       multiIndex: [0, 0],
       allCity: [],
-      sizerSelect: []
+      sizerSelect: [],
+      hyper_desc: "",
+      shareTitle: "",
+      sharePath: "",
+      shareImg: ""
     };
   },
   components: {
@@ -2200,6 +2233,12 @@ component.options.__file = "src/pages/home/index.vue"
     loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]
   },
   methods: {
+    showSign: function showSign() {
+      this.submitSign("");
+    },
+    signClose: function signClose() {
+      this.showModelSign = false;
+    },
     modelClose: function modelClose() {
       this.visible = false;
     },
@@ -2508,7 +2547,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2519,9 +2558,9 @@ component.options.__file = "src/pages/home/index.vue"
                   nickname: params.nickname
                 });
 
-                if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+                if (res.data.data.is_bind_phone == 0) {
                   _this2.pageshow = "bindphone";
-                } else if (res.data.data.login_type == 2 && res.data.data.is_bind_phone == 1) {
+                } else if (res.data.data.login_type == 2) {
                   _this2.visible = false;
                   _this2.pageNum = 1;
                   _this2.list = [];
@@ -2561,7 +2600,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "P"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -2690,7 +2729,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "H"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "I"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -2718,6 +2757,105 @@ component.options.__file = "src/pages/home/index.vue"
             }
           }
         }, _callee4, null, [[0, 7]]);
+      }))();
+    },
+    isSign: function isSign(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "x"])(params);
+
+              case 3:
+                res = _context5.sent;
+                _this5.is_today_sign = res.data.data.is_today_sign;
+                _context5.next = 9;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 7]]);
+      }))();
+    },
+    submitSign: function submitSign(params) {
+      var _this6 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "cb"])(params);
+
+              case 3:
+                res = _context6.sent;
+                _this6.showModelSign = true;
+                _this6.hyper_desc = res.data.data.hyper_desc;
+
+                _this6.isSign("");
+
+                _context6.next = 11;
+                break;
+
+              case 9:
+                _context6.prev = 9;
+                _context6.t0 = _context6["catch"](0);
+
+              case 11:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 9]]);
+      }))();
+    },
+    shareInvite: function shareInvite(params) {
+      var _this7 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "U"])(params);
+
+              case 3:
+                res = _context7.sent;
+                _this7.shareTitle = res.data.data.title;
+                _this7.shareImg = res.data.data.imageUrl;
+                _this7.sharePath = res.data.data.path;
+                _context7.next = 11;
+                break;
+
+              case 9:
+                _context7.prev = 9;
+                _context7.t0 = _context7["catch"](0);
+
+              case 11:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, null, [[0, 9]]);
       }))();
     }
   },
@@ -2770,14 +2908,26 @@ component.options.__file = "src/pages/home/index.vue"
       type: ["invite_filter", "payment_type"]
     }); // 消息通知红点
 
-    this.notifyNumber("");
+    this.notifyNumber(""); // 是否签到
+
+    this.isSign("");
   },
   onLoad: function onLoad(options) {
-    console.log(options.scene);
-
     if (options.scene) {
       wx.setStorageSync("invited_uuid", options.scene);
     }
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat"
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
   }
 });
 
@@ -3720,9 +3870,20 @@ var render = function () {
               },
             },
             [
-              false
-                ? undefined
-                : _vm._e(),
+              _c(
+                "view",
+                { staticClass: "head_sign", on: { tap: _vm.showSign } },
+                [
+                  _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../assets/images/common/icon_sign.png */ "./src/assets/images/common/icon_sign.png"),
+                    },
+                  }),
+                  _c("text", [
+                    _vm._v(_vm._s(_vm.is_today_sign ? "已签到" : "签到")),
+                  ]),
+                ]
+              ),
               _c(
                 "view",
                 { staticClass: "head_nav" },
@@ -4458,6 +4619,48 @@ var render = function () {
             ]),
           ])
         : _vm._e(),
+      _vm.showModelSign
+        ? _c("view", { staticClass: "modal-bg", on: { tap: _vm.signClose } })
+        : _vm._e(),
+      _vm.showModelSign
+        ? _c("view", { staticClass: "modal_box sign_modal" }, [
+            _c("view", { staticClass: "sign_md_close_btn" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/common/tipclose.png */ "./src/assets/images/common/tipclose.png"),
+                },
+                on: { tap: _vm.signClose },
+              }),
+            ]),
+            _c("view", { staticClass: "sign_modal_main" }, [
+              _c("form", { staticClass: "main" }, [
+                _c("view", { staticClass: "sign_md_top" }, [
+                  _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../assets/images/user/sign/addcoin.png */ "./src/assets/images/user/sign/addcoin.png"),
+                    },
+                  }),
+                ]),
+                _c("view", { staticClass: "sign_md_title" }, [
+                  _c("view", [_vm._v("签到成功")]),
+                ]),
+                _c("view", { staticClass: "sign_md_content" }, [
+                  _c("view", [_vm._v(_vm._s(_vm.hyper_desc))]),
+                ]),
+                _c("view", { staticClass: "sign_md_bottom" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "share-btn",
+                      attrs: { "open-type": "share" },
+                    },
+                    [_vm._v("马上邀请")]
+                  ),
+                ]),
+              ]),
+            ]),
+          ])
+        : _vm._e(),
     ],
     1
   )
@@ -4466,6 +4669,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/common/icon_sign.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/common/icon_sign.png ***!
+  \************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAe1BMVEUAAAD/VVf/VVf/V1f/TE3/VFf/VFj/VVn/VVj/Ulb+VFf/VVf/VFf9U1f/U1b/UGD/Rk//VFf/VFj/U1f/VFf/VFf/VFj+U1f/VFf/U1b/VFf/U1f/U1j/VVj/VFb/U1b/UVj/Ulb/VVf/VFf/VFb/VVf/VVn/VVX/VFcV8O5qAAAAKHRSTlMAbKwsB3jqRZw7+rj5n18QA/MZ1NDAqNrYHPjchk0/ZiQWx498aTkSX9hYKQAAATlJREFUOMu9lNlugzAQRU2KbZZASCB70iRdz/9/Ye0SZVphLPrS84Bs6YxsRp6rfpBe6kYJ5+RTBdnAq+zeoQt7BlrZzYDbwFnYOjmASR60QGIXv6y8LAhTlLncPyNGlt61NWAqHTj3VBlg3YsZzLVfLmGrHpTASqV6Dtn33ZxmlefoSsVz5YWvtk7M+zp9b6w5foh37cxFeTSUriEFJlUxUkOxUBYqFacCq2p/bBwNtUrg9BTnBInzJvA3r5vF6XrPfeIk/+k12WEzwWs2wDXmibZLR7zVmxWN437s3Jf7upkBW6eNeDvcRrRR73npxV5bqbAnYud/wWlhT0TRIv3LvdiKNvREbG9q4A3f/f6cBt791DmaOpcy57FxKyU3wkhuSA4FkRySXBuiJdcm5uT03JUcH1I/cvwLSfZGI9VzynUAAAAASUVORK5CYII="
 
 /***/ }),
 

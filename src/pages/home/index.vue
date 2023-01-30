@@ -10,9 +10,9 @@
           'padding-right': globalData.navObjWid + 5 + 'px',
         }"
       >
-        <view class="head_sign" v-if="false">
+        <view class="head_sign" @tap="showSign">
           <image src="../../assets/images/common/icon_sign.png"></image>
-          <text>签到</text>
+          <text>{{ is_today_sign ? "已签到" : "签到" }}</text>
         </view>
         <view class="head_nav">
           <text
@@ -391,6 +391,33 @@
         </view>
       </view>
     </view>
+    <!--签到-->
+    <view @tap="signClose" class="modal-bg" v-if="showModelSign"></view>
+    <view class="modal_box sign_modal" v-if="showModelSign">
+      <view class="sign_md_close_btn">
+        <image
+          @tap="signClose"
+          src="../../assets/images/common/tipclose.png"
+        ></image>
+      </view>
+      <view class="sign_modal_main">
+        <form class="main">
+          <view class="sign_md_top">
+            <image src="../../assets/images/user/sign/addcoin.png"></image>
+          </view>
+          <view class="sign_md_title">
+            <view>签到成功</view>
+          </view>
+          <view class="sign_md_content">
+            <view>{{ hyper_desc }}</view>
+          </view>
+          <view class="sign_md_bottom">
+            <button open-type="share" class="share-btn">马上邀请</button>
+          </view>
+        </form>
+      </view>
+    </view>
+    <!--签到-->
   </view>
 </template>
 
@@ -401,6 +428,9 @@ import {
   publicConfig,
   notifyNumber,
   wxlogin,
+  isSign,
+  submitSign,
+  shareInvite,
 } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
@@ -413,11 +443,13 @@ export default {
     return {
       msg: "",
       visible: false,
+      showModelSign: false,
       showLoading: true,
       showtoTop: false,
       headCurrent: 1,
       tonggaoRefresh: false,
       zuopinRefresh: false,
+      is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       vertical: false,
@@ -488,6 +520,10 @@ export default {
       multiIndex: [0, 0],
       allCity: [],
       sizerSelect: [],
+      hyper_desc: "",
+      shareTitle: "",
+      sharePath: "",
+      shareImg: "",
     };
   },
   components: {
@@ -496,6 +532,12 @@ export default {
     loading,
   },
   methods: {
+    showSign() {
+      this.submitSign("");
+    },
+    signClose() {
+      this.showModelSign = false;
+    },
     modelClose() {
       this.visible = false;
     },
@@ -801,12 +843,9 @@ export default {
           avatar: params.avatar,
           nickname: params.nickname,
         });
-        if (res.data.data.login_type == 1 && res.data.data.is_bind_phone == 0) {
+        if (res.data.data.is_bind_phone == 0) {
           this.pageshow = "bindphone";
-        } else if (
-          res.data.data.login_type == 2 &&
-          res.data.data.is_bind_phone == 1
-        ) {
+        } else if (res.data.data.login_type == 2) {
           this.visible = false;
           this.pageNum = 1;
           this.list = [];
@@ -896,6 +935,28 @@ export default {
         }
       } catch (error) {}
     },
+    async isSign(params) {
+      try {
+        let res = await isSign(params);
+        this.is_today_sign = res.data.data.is_today_sign;
+      } catch (error) {}
+    },
+    async submitSign(params) {
+      try {
+        let res = await submitSign(params);
+        this.showModelSign = true;
+        this.hyper_desc = res.data.data.hyper_desc;
+        this.isSign("");
+      } catch (error) {}
+    },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
   },
   // 获取滚动条当前位置
   onPageScroll: function (e) {
@@ -938,12 +999,24 @@ export default {
     });
     // 消息通知红点
     this.notifyNumber("");
+    // 是否签到
+    this.isSign("");
   },
   onLoad: function (options) {
-    console.log(options.scene);
     if (options.scene) {
       wx.setStorageSync("invited_uuid", options.scene);
     }
+  },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat",
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
   },
 };
 </script>

@@ -523,6 +523,9 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -530,8 +533,7 @@ component.options.__file = "src/pages/my/index.vue"
   name: "my",
   data: function data() {
     return {
-      s_id: "",
-      isSign: "",
+      is_today_sign: 0,
       sex: 1,
       show_my_ad: false,
       showModelSign: false,
@@ -549,12 +551,18 @@ component.options.__file = "src/pages/my/index.vue"
           visitor_cnt: 0
         }
       },
-      coin: 0
+      coin: 0,
+      hyper_desc: "",
+      shareTitle: "",
+      sharePath: "",
+      shareImg: ""
     };
   },
   methods: {
+    showSign: function showSign() {
+      this.submitSign("");
+    },
     open_settings: function open_settings() {
-      console.log(111);
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageSet/pages/index/index");
     },
     close: function close() {
@@ -617,7 +625,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "jb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -661,17 +669,130 @@ component.options.__file = "src/pages/my/index.vue"
           }
         }, _callee, null, [[0, 12]]);
       }))();
+    },
+    isSign: function isSign(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "x"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this2.is_today_sign = res.data.data.is_today_sign;
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    shareInvite: function shareInvite(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "U"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this3.shareTitle = res.data.data.title;
+                _this3.shareImg = res.data.data.imageUrl;
+                _this3.sharePath = res.data.data.path;
+                _context3.next = 11;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 9]]);
+      }))();
+    },
+    submitSign: function submitSign(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "cb"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _this4.showModelSign = true;
+                _this4.hyper_desc = res.data.data.hyper_desc;
+
+                _this4.isSign("");
+
+                _context4.next = 11;
+                break;
+
+              case 9:
+                _context4.prev = 9;
+                _context4.t0 = _context4["catch"](0);
+
+              case 11:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 9]]);
+      }))();
     }
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.userInfo("");
+    this.userInfo(""); // 是否签到
+
+    this.isSign("");
   },
   onShow: function onShow() {
     this.userInfo("");
   },
   onLoad: function onLoad(options) {
     console.log(options);
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat"
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
   }
 });
 
@@ -723,45 +844,36 @@ var render = function () {
                     on: { tap: _vm.open_settings },
                   }),
                 ]),
-                _vm.s_id
-                  ? _c("block", [
-                      _vm.isSign
-                        ? _c(
-                            "view",
-                            {
-                              staticClass: "sign_block fl",
-                              attrs: { catchtap: "onIsSign" },
+                _c("block", [
+                  _vm.is_today_sign
+                    ? _c("view", { staticClass: "sign_block fl" }, [
+                        _c("image", {
+                          staticClass: "icon_sign",
+                          attrs: {
+                            src: __webpack_require__(/*! ../../assets/images/user/index/icon_signed.png */ "./src/assets/images/user/index/icon_signed.png"),
+                          },
+                        }),
+                        _c("view", { staticClass: "is_sign" }, [
+                          _vm._v("已签到"),
+                        ]),
+                      ])
+                    : _c(
+                        "view",
+                        {
+                          staticClass: "sign_block fl",
+                          on: { tap: _vm.showSign },
+                        },
+                        [
+                          _c("image", {
+                            staticClass: "icon_sign",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../assets/images/user/index/icon_sign.png */ "./src/assets/images/user/index/icon_sign.png"),
                             },
-                            [
-                              _c("image", {
-                                staticClass: "icon_sign",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/user/index/icon_signed.png */ "./src/assets/images/user/index/icon_signed.png"),
-                                },
-                              }),
-                              _c("view", { staticClass: "is_sign" }, [
-                                _vm._v("已签到"),
-                              ]),
-                            ]
-                          )
-                        : _c(
-                            "view",
-                            {
-                              staticClass: "sign_block fl",
-                              attrs: { catchtap: "onSign" },
-                            },
-                            [
-                              _c("image", {
-                                staticClass: "icon_sign",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../assets/images/user/index/icon_sign.png */ "./src/assets/images/user/index/icon_sign.png"),
-                                },
-                              }),
-                              _c("view", [_vm._v("签到")]),
-                            ]
-                          ),
-                    ])
-                  : _vm._e(),
+                          }),
+                          _c("view", [_vm._v("签到")]),
+                        ]
+                      ),
+                ]),
               ],
               1
             ),
@@ -1379,17 +1491,19 @@ var render = function () {
                 _c("view", [_vm._v("签到成功")]),
               ]),
               _c("view", { staticClass: "sign_md_content" }, [
-                _c("view", [_vm._v("邀请好友，可获得更多麻豆")]),
+                _c("view", [_vm._v(_vm._s(_vm.hyper_desc))]),
               ]),
               _c("view", { staticClass: "sign_md_bottom" }, [
-                _c(
-                  "view",
-                  {
-                    staticClass: "sign_md_btn",
-                    attrs: { catchtap: "invitego" },
-                  },
-                  [_vm._v("马上邀请")]
-                ),
+                _c("view", { staticClass: "sign_md_bottom" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "share-btn",
+                      attrs: { "open-type": "share" },
+                    },
+                    [_vm._v("马上邀请")]
+                  ),
+                ]),
               ]),
             ]),
           ]),
@@ -1425,18 +1539,6 @@ module.exports = __webpack_require__.p + "assets/images/album.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/collection.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/tipclose.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/common/tipclose.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/tipclose.png";
 
 /***/ }),
 
@@ -1629,18 +1731,6 @@ module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAAN
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/user/index/zuopin1.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/sign/addcoin.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/sign/addcoin.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/sign/addcoin.png";
 
 /***/ }),
 

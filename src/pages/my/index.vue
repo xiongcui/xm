@@ -16,15 +16,15 @@
               src="../../assets/images/user/index/icon_settings.png"
             ></image>
           </view>
-          <block v-if="s_id">
-            <view catchtap="onIsSign" class="sign_block fl" v-if="isSign">
+          <block>
+            <view class="sign_block fl" v-if="is_today_sign">
               <image
                 class="icon_sign"
                 src="../../assets/images/user/index/icon_signed.png"
               ></image>
               <view class="is_sign">已签到</view>
             </view>
-            <view catchtap="onSign" class="sign_block fl" v-else>
+            <view @tap="showSign" class="sign_block fl" v-else>
               <image
                 class="icon_sign"
                 src="../../assets/images/user/index/icon_sign.png"
@@ -458,10 +458,13 @@
             <view>签到成功</view>
           </view>
           <view class="sign_md_content">
-            <view>邀请好友，可获得更多麻豆</view>
+            <view>{{ hyper_desc }}</view>
           </view>
           <view class="sign_md_bottom">
-            <view catchtap="invitego" class="sign_md_btn">马上邀请</view>
+            <view class="sign_md_bottom">
+              <button open-type="share" class="share-btn">马上邀请</button>
+            </view>
+            <!-- <view catchtap="invitego" class="sign_md_btn">马上邀请</view> -->
           </view>
         </form>
       </view>
@@ -471,14 +474,13 @@
 
 <script>
 import "./index.scss";
-import { userInfo } from "../../api/index";
+import { userInfo, isSign, shareInvite, submitSign } from "../../api/index";
 import { openPage } from "../../utils/util";
 export default {
   name: "my",
   data() {
     return {
-      s_id: "",
-      isSign: "",
+      is_today_sign: 0,
       sex: 1,
       show_my_ad: false,
       showModelSign: false,
@@ -497,11 +499,17 @@ export default {
         },
       },
       coin: 0,
+      hyper_desc: "",
+      shareTitle: "",
+      sharePath: "",
+      shareImg: "",
     };
   },
   methods: {
+    showSign() {
+      this.submitSign("");
+    },
     open_settings() {
-      console.log(111);
       openPage("/packageSet/pages/index/index");
     },
     close() {
@@ -577,16 +585,51 @@ export default {
         this.coin = res.data.data.acct.coin;
       } catch (error) {}
     },
+    async isSign(params) {
+      try {
+        let res = await isSign(params);
+        this.is_today_sign = res.data.data.is_today_sign;
+      } catch (error) {}
+    },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
+    async submitSign(params) {
+      try {
+        let res = await submitSign(params);
+        this.showModelSign = true;
+        this.hyper_desc = res.data.data.hyper_desc;
+        this.isSign("");
+      } catch (error) {}
+    },
   },
   created() {
     this.globalData = this.globalData;
     this.userInfo("");
+    // 是否签到
+    this.isSign("");
   },
   onShow() {
     this.userInfo("");
   },
   onLoad: function (options) {
     console.log(options);
+  },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat",
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
   },
 };
 </script>

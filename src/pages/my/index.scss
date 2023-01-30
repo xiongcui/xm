@@ -273,6 +273,7 @@
     flex-direction: column;
     border-radius: 10px;
     padding: 16px;
+    width: 300px;
   }
   .sign_md_top image {
     width: 89px;
@@ -303,7 +304,7 @@
     margin-bottom: 16px;
   }
   .sign_md_bottom {
-    width: 80%;
+    width: 200px;
     font-size: 26px;
     height: 50px;
     line-height: 50px;
@@ -317,6 +318,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 16px;
+    padding-top: 16px;
     .tag {
       padding: 4px 10px;
       background: rgba(245, 50, 24, 0.08);
@@ -332,5 +334,9 @@
       width: 32px;
       height: 32px;
     }
+  }
+  .share-btn {
+    background-color: transparent;
+    line-height: normal;
   }
 }

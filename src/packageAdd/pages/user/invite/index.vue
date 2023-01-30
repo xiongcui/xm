@@ -150,7 +150,7 @@ export default {
         let res = await shareInvite(params);
         this.shareTitle = res.data.data.title;
         this.shareImg = res.data.data.imageUrl;
-        this.sharePath = es.data.data.path;
+        this.sharePath = res.data.data.path;
       } catch (error) {}
     },
   },

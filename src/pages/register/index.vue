@@ -112,7 +112,7 @@
 <script>
 import "./index.scss";
 // import weCropper from "../we-cropper/index.vue";
-import { getCareer, updateUser } from "../../api/index";
+import { getCareer, userRegister } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 export default {
   name: "register",
@@ -185,11 +185,11 @@ export default {
         career_label: this.identityList,
       };
       console.log(params);
-      this.updateUser(params);
+      this.userRegister(params);
     },
-    async updateUser(params) {
+    async userRegister(params) {
       try {
-        let res = await updateUser(params);
+        let res = await userRegister(params);
         // 跳转首页
         wx.switchTab({
           url: "/pages/home/index",

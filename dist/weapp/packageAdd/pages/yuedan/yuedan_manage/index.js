@@ -794,7 +794,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noteManageList */ "C"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noteManageList */ "D"])(params);
 
               case 3:
                 res = _context.sent;
@@ -836,7 +836,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageEvent */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageEvent */ "y"])(params);
 
               case 3:
                 res = _context2.sent;
