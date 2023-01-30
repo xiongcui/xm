@@ -829,7 +829,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "ib"])(params);
 
               case 3:
                 res = _context2.sent;

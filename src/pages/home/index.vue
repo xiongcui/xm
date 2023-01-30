@@ -431,6 +431,7 @@ import {
   isSign,
   submitSign,
   shareInvite,
+  shareInviteInfo,
 } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 import { city } from "../../utils/city";
@@ -952,6 +953,14 @@ export default {
     async shareInvite(params) {
       try {
         let res = await shareInvite(params);
+        // this.shareTitle = res.data.data.title;
+        // this.shareImg = res.data.data.imageUrl;
+        // this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
         this.shareTitle = res.data.data.title;
         this.shareImg = res.data.data.imageUrl;
         this.sharePath = res.data.data.path;
@@ -1001,6 +1010,11 @@ export default {
     this.notifyNumber("");
     // 是否签到
     this.isSign("");
+
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
   },
   onLoad: function (options) {
     if (options.scene) {

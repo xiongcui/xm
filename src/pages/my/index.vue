@@ -474,7 +474,13 @@
 
 <script>
 import "./index.scss";
-import { userInfo, isSign, shareInvite, submitSign } from "../../api/index";
+import {
+  userInfo,
+  isSign,
+  shareInvite,
+  shareInviteInfo,
+  submitSign,
+} from "../../api/index";
 import { openPage } from "../../utils/util";
 export default {
   name: "my",
@@ -594,6 +600,14 @@ export default {
     async shareInvite(params) {
       try {
         let res = await shareInvite(params);
+        // this.shareTitle = res.data.data.title;
+        // this.shareImg = res.data.data.imageUrl;
+        // this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
         this.shareTitle = res.data.data.title;
         this.shareImg = res.data.data.imageUrl;
         this.sharePath = res.data.data.path;
@@ -613,6 +627,10 @@ export default {
     this.userInfo("");
     // 是否签到
     this.isSign("");
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
   },
   onShow() {
     this.userInfo("");

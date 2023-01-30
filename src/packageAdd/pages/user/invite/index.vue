@@ -53,7 +53,11 @@
 
 <script>
 import "./index.scss";
-import { inviteImage, shareInvite } from "../../../../api/index";
+import {
+  inviteImage,
+  shareInvite,
+  shareInviteInfo,
+} from "../../../../api/index";
 export default {
   name: "invite",
   data() {
@@ -148,24 +152,33 @@ export default {
     async shareInvite(params) {
       try {
         let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
         this.shareTitle = res.data.data.title;
         this.shareImg = res.data.data.imageUrl;
         this.sharePath = res.data.data.path;
       } catch (error) {}
     },
   },
-  mounted() {
+  onShareAppMessage() {
     this.shareInvite({
       source: "share_friend",
       type: "wechat",
     });
-  },
-  onShareAppMessage() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
       path: this.sharePath, // 路径，传递参数到指定页面。
     };
+  },
+  mounted() {
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
   },
 };
 </script>

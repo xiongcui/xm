@@ -228,8 +228,6 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
       }))();
     },
     shareInvite: function shareInvite(params) {
-      var _this3 = this;
-
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
@@ -242,38 +240,72 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
 
               case 3:
                 res = _context2.sent;
-                _this3.shareTitle = res.data.data.title;
-                _this3.shareImg = res.data.data.imageUrl;
-                _this3.sharePath = res.data.data.path;
-                _context2.next = 11;
+                _context2.next = 8;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 6:
+                _context2.prev = 6;
                 _context2.t0 = _context2["catch"](0);
 
-              case 11:
+              case 8:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 6]]);
+      }))();
+    },
+    shareInviteInfo: function shareInviteInfo(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "V"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this3.shareTitle = res.data.data.title;
+                _this3.shareImg = res.data.data.imageUrl;
+                _this3.sharePath = res.data.data.path;
+                _context3.next = 11;
+                break;
+
+              case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](0);
+
+              case 11:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 9]]);
       }))();
     }
   },
-  mounted: function mounted() {
+  onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
       source: "share_friend",
       type: "wechat"
     });
-  },
-  onShareAppMessage: function onShareAppMessage() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
       path: this.sharePath // 路径，传递参数到指定页面。
 
     };
+  },
+  mounted: function mounted() {
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat"
+    });
   }
 });
 

@@ -593,6 +593,15 @@ export const shareInvite = (data) => {
     data,
   });
 };
+// 转发详情
+export const shareInviteInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/share/invite/mina/info",
+    method: "post",
+    data,
+  });
+};
+
 // 是否签到
 export const isSign = (data) => {
   return request({

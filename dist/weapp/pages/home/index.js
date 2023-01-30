@@ -661,7 +661,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "tb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1450,7 +1450,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "tb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2547,7 +2547,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "tb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2801,7 +2801,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "cb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "db"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -2826,8 +2826,6 @@ component.options.__file = "src/pages/home/index.vue"
       }))();
     },
     shareInvite: function shareInvite(params) {
-      var _this7 = this;
-
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee7$(_context7) {
@@ -2840,22 +2838,52 @@ component.options.__file = "src/pages/home/index.vue"
 
               case 3:
                 res = _context7.sent;
-                _this7.shareTitle = res.data.data.title;
-                _this7.shareImg = res.data.data.imageUrl;
-                _this7.sharePath = res.data.data.path;
-                _context7.next = 11;
+                _context7.next = 8;
                 break;
 
-              case 9:
-                _context7.prev = 9;
+              case 6:
+                _context7.prev = 6;
                 _context7.t0 = _context7["catch"](0);
 
-              case 11:
+              case 8:
               case "end":
                 return _context7.stop();
             }
           }
-        }, _callee7, null, [[0, 9]]);
+        }, _callee7, null, [[0, 6]]);
+      }))();
+    },
+    shareInviteInfo: function shareInviteInfo(params) {
+      var _this7 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "V"])(params);
+
+              case 3:
+                res = _context8.sent;
+                _this7.shareTitle = res.data.data.title;
+                _this7.shareImg = res.data.data.imageUrl;
+                _this7.sharePath = res.data.data.path;
+                _context8.next = 11;
+                break;
+
+              case 9:
+                _context8.prev = 9;
+                _context8.t0 = _context8["catch"](0);
+
+              case 11:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, null, [[0, 9]]);
       }))();
     }
   },
@@ -2911,6 +2939,10 @@ component.options.__file = "src/pages/home/index.vue"
     this.notifyNumber(""); // 是否签到
 
     this.isSign("");
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat"
+    });
   },
   onLoad: function onLoad(options) {
     if (options.scene) {
