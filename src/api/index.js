@@ -618,6 +618,22 @@ export const submitSign = (data) => {
     data,
   });
 };
+// 关注公众号
+export const followRedirect = (data) => {
+  return request({
+    url: baseUrl + "/v1/wechat/follow/redirect",
+    method: "post",
+    data,
+  });
+};
+// 邀请好友列表
+export const shareInviteList = (data) => {
+  return request({
+    url: baseUrl + "/v1/share/invite/list",
+    method: "post",
+    data,
+  });
+};
 
 // https://brain.baidu.com/face/print/?token=xxx
 

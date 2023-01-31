@@ -138,16 +138,7 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
       });
     },
     officialAccount: function officialAccount() {
-      wx.showModal({
-        title: "温馨提示",
-        content: "微信搜索公众号 虾米约拍 点击关注即可！",
-        showCancel: false,
-        success: function success(res) {
-          if (res.confirm) {} else if (res.cancel) {
-            console.log("用户点击取消");
-          }
-        }
-      });
+      openPage("/packageAdd/pages/user/follow/index");
     }
   }
 });

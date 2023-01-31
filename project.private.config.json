@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "设置",
-                    "pathName": "packageSet/pages/index/index",
+                    "name": "关注宫公众号",
+                    "pathName": "packageAdd/pages/user/follow/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

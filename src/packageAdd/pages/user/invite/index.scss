@@ -99,4 +99,28 @@
       padding: 0;
     }
   }
+  .invite-list {
+    background: #f7f7f7;
+    margin: 0 16px;
+    border-radius: 8px;
+  }
+  .invite-list-title {
+    margin: 16px auto;
+    font-size: 32px;
+    color: #333333;
+  }
+  .invite-item {
+    padding: 16px 30px;
+    display: flex;
+    justify-content: space-between;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .invite-num {
+    background: #ff5355;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 30px;
+    font-size: 30px;
+    margin-right: 16px;
+  }
 }

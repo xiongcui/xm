@@ -1,5 +1,9 @@
 <template>
   <view class="msg-box">
+    <view class="msg-tips" v-if="is_follow_gzh == 0">
+      <view class="msg-tips-left"> 开启推送通知，及时接收约拍通知 </view>
+      <view class="msg-tips-rt" @tap="toopen"> 去开启 > </view>
+    </view>
     <view class="msg-icon">
       <view class="msg-icon-item" @tap="openUrl(1)">
         <image src="../../assets/images/msg/fabulous.png"></image>
@@ -50,6 +54,7 @@ export default {
       invite_cnt: 0,
       notice_cnt: 0,
       vote_visitor_cnt: 0,
+      is_follow_gzh: 0,
     };
   },
   methods: {
@@ -69,13 +74,27 @@ export default {
           break;
       }
     },
+    toopen() {
+      wx.showModal({
+        title: "温馨提示",
+        content:
+          "微信关注【虾米约拍】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
+        success: function (res) {
+          if (res.confirm) {
+            openPage("/packageAdd/pages/user/follow/index");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
     async notifyNumber(params) {
       try {
         let res = await notifyNumber(params);
         this.invite_cnt = res.data.data.invite_cnt;
         this.notice_cnt = res.data.data.notice_cnt;
         this.vote_visitor_cnt = res.data.data.vote_visitor_cnt;
-        console.log(this.invite_cnt, "11");
+        this.is_follow_gzh = res.data.data.is_follow_gzh;
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
             index: 3,

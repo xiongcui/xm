@@ -75,6 +75,7 @@ export default defineAppConfig({
         "pages/user/rechargecoin/index",
         "pages/user/we-cropper/index",
         "pages/user/invite/index",
+        "pages/user/follow/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/yuedan/yuedan_manage/index",

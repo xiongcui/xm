@@ -369,7 +369,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="coin" class="item ub line-t">
+        <view @tap="follow" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -561,6 +561,9 @@ export default {
         corpId: "ww9ad8086390afbfaa",
         success(res) {},
       });
+    },
+    follow() {
+      openPage("/packageAdd/pages/user/follow/index");
     },
     login() {
       openPage("/pages/login/index");

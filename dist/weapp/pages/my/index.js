@@ -611,6 +611,9 @@ component.options.__file = "src/pages/my/index.vue"
         success: function success(res) {}
       });
     },
+    follow: function follow() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
+    },
     login: function login() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/login/index");
     },
@@ -625,7 +628,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "mb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -681,7 +684,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "y"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -710,7 +713,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "V"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -740,7 +743,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "W"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -773,7 +776,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "fb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1397,31 +1400,27 @@ var render = function () {
             ]),
           ]
         ),
-        _c(
-          "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/gongzhonghao.png */ "./src/assets/images/user/index/gongzhonghao.png"),
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("关注公众号")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-                },
-              }),
-            ]),
-          ]
-        ),
+        _c("view", { staticClass: "item ub line-t", on: { tap: _vm.follow } }, [
+          _c("view", { staticClass: "item_icon" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/gongzhonghao.png */ "./src/assets/images/user/index/gongzhonghao.png"),
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "ub-f1" }, [
+            _c("view", { staticClass: "item_text" }, [_vm._v("关注公众号")]),
+          ]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]),
       ]),
       _c("view", { staticClass: "items" }, [
         _c("view", { staticClass: "item ub", attrs: { catchtap: "help" } }, [

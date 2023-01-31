@@ -8,8 +8,23 @@
     </view>
     <view class="invite-btn" @tap="invite">邀请好友</view>
     <view class="cumulative">
-      已累计邀请<text class="red">5</text>人，总获得<text class="red">15</text
+      已累计邀请<text class="red">{{ user_cnt }}</text
+      >人，总获得<text class="red">{{ coin_sum }}</text
       >金币
+    </view>
+    <view class="invite-list-title"> --好友邀请排行-- </view>
+    <view class="invite-list">
+      <view class="invite-item">
+        <view class="invite-left"> 排名 </view>
+        <view class="invite-rt"> 奖励金币 </view>
+      </view>
+      <view class="invite-item" v-for="(item, index) in list" :key="index">
+        <view class="invite-left">
+          <text class="invite-num">NO.{{ index + 1 }}</text
+          >{{ item.invited_uuid }}
+        </view>
+        <view class="invite-rt"> {{ item.coin }} </view>
+      </view>
     </view>
     <view class="invite-mask" v-if="visible">
       <view class="mask-box">
@@ -57,6 +72,7 @@ import {
   inviteImage,
   shareInvite,
   shareInviteInfo,
+  shareInviteList,
 } from "../../../../api/index";
 export default {
   name: "invite",
@@ -68,6 +84,9 @@ export default {
       shareTitle: "",
       shareImg: "",
       sharePath: "",
+      list: [],
+      user_cnt: 0,
+      coin_sum: 0,
     };
   },
   methods: {
@@ -162,6 +181,15 @@ export default {
         this.sharePath = res.data.data.path;
       } catch (error) {}
     },
+    async shareInviteList(params) {
+      try {
+        let res = await shareInviteList(params);
+        this.list = res.data.data.items;
+        this.user_cnt = res.data.data.total.user_cnt;
+        this.coin_sum = res.data.data.total.coin_sum;
+        console.log(res);
+      } catch (error) {}
+    },
   },
   onShareAppMessage() {
     this.shareInvite({
@@ -179,6 +207,7 @@ export default {
       source: "share_friend",
       type: "wechat",
     });
+    this.shareInviteList("");
   },
 };
 </script>

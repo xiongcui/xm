@@ -108,3 +108,31 @@
   line-height: normal;
   padding: 0;
 }
+.invite .invite-list {
+  background: #f7f7f7;
+  margin: 0 16rpx;
+  border-radius: 8rpx;
+}
+.invite .invite-list-title {
+  margin: 16rpx auto;
+  font-size: 32rpx;
+  color: #333333;
+}
+.invite .invite-item {
+  padding: 16rpx 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: rgba(0, 0, 0, 0.5);
+}
+.invite .invite-num {
+  background: #ff5355;
+  color: #ffffff;
+  padding: 2rpx 6rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  margin-right: 16rpx;
+}

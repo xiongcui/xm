@@ -107,6 +107,21 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -118,7 +133,10 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
       imageUrl: "",
       shareTitle: "",
       shareImg: "",
-      sharePath: ""
+      sharePath: "",
+      list: [],
+      user_cnt: 0,
+      coin_sum: 0
     };
   },
   methods: {
@@ -205,7 +223,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteImage */ "t"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteImage */ "u"])(params);
 
               case 3:
                 res = _context.sent;
@@ -236,7 +254,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "V"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -266,7 +284,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "W"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -287,6 +305,40 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
           }
         }, _callee3, null, [[0, 9]]);
       }))();
+    },
+    shareInviteList: function shareInviteList(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "X"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _this4.list = res.data.data.items;
+                _this4.user_cnt = res.data.data.total.user_cnt;
+                _this4.coin_sum = res.data.data.total.coin_sum;
+                console.log(res);
+                _context4.next = 12;
+                break;
+
+              case 10:
+                _context4.prev = 10;
+                _context4.t0 = _context4["catch"](0);
+
+              case 12:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 10]]);
+      }))();
     }
   },
   onShareAppMessage: function onShareAppMessage() {
@@ -306,6 +358,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
       source: "share_friend",
       type: "wechat"
     });
+    this.shareInviteList("");
   }
 });
 
@@ -340,11 +393,38 @@ var render = function () {
     ]),
     _c("view", { staticClass: "cumulative" }, [
       _vm._v(" 已累计邀请"),
-      _c("text", { staticClass: "red" }, [_vm._v("5")]),
+      _c("text", { staticClass: "red" }, [_vm._v(_vm._s(_vm.user_cnt))]),
       _vm._v("人，总获得"),
-      _c("text", { staticClass: "red" }, [_vm._v("15")]),
+      _c("text", { staticClass: "red" }, [_vm._v(_vm._s(_vm.coin_sum))]),
       _vm._v("金币 "),
     ]),
+    _c("view", { staticClass: "invite-list-title" }, [
+      _vm._v(" --好友邀请排行-- "),
+    ]),
+    _c(
+      "view",
+      { staticClass: "invite-list" },
+      [
+        _c("view", { staticClass: "invite-item" }, [
+          _c("view", { staticClass: "invite-left" }, [_vm._v(" 排名 ")]),
+          _c("view", { staticClass: "invite-rt" }, [_vm._v(" 奖励金币 ")]),
+        ]),
+        _vm._l(_vm.list, function (item, index) {
+          return _c("view", { key: index, staticClass: "invite-item" }, [
+            _c("view", { staticClass: "invite-left" }, [
+              _c("text", { staticClass: "invite-num" }, [
+                _vm._v("NO." + _vm._s(index + 1)),
+              ]),
+              _vm._v(_vm._s(item.invited_uuid) + " "),
+            ]),
+            _c("view", { staticClass: "invite-rt" }, [
+              _vm._v(" " + _vm._s(item.coin) + " "),
+            ]),
+          ])
+        }),
+      ],
+      2
+    ),
     _vm.visible
       ? _c("view", { staticClass: "invite-mask" }, [
           _c("view", { staticClass: "mask-box" }, [

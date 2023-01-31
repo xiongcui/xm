@@ -96,6 +96,10 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -105,7 +109,8 @@ component.options.__file = "src/pages/msg/index.vue"
     return {
       invite_cnt: 0,
       notice_cnt: 0,
-      vote_visitor_cnt: 0
+      vote_visitor_cnt: 0,
+      is_follow_gzh: 0
     };
   },
   methods: {
@@ -128,6 +133,19 @@ component.options.__file = "src/pages/msg/index.vue"
           break;
       }
     },
+    toopen: function toopen() {
+      wx.showModal({
+        title: "温馨提示",
+        content: "微信关注【虾米约拍】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
+        success: function success(res) {
+          if (res.confirm) {
+            Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
     notifyNumber: function notifyNumber(params) {
       var _this = this;
 
@@ -139,14 +157,14 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "J"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.invite_cnt = res.data.data.invite_cnt;
                 _this.notice_cnt = res.data.data.notice_cnt;
                 _this.vote_visitor_cnt = res.data.data.vote_visitor_cnt;
-                console.log(_this.invite_cnt, "11");
+                _this.is_follow_gzh = res.data.data.is_follow_gzh;
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
@@ -197,6 +215,16 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "msg-box" }, [
+    _vm.is_follow_gzh == 0
+      ? _c("view", { staticClass: "msg-tips" }, [
+          _c("view", { staticClass: "msg-tips-left" }, [
+            _vm._v(" 开启推送通知，及时接收约拍通知 "),
+          ]),
+          _c("view", { staticClass: "msg-tips-rt", on: { tap: _vm.toopen } }, [
+            _vm._v(" 去开启 > "),
+          ]),
+        ])
+      : _vm._e(),
     _c("view", { staticClass: "msg-icon" }, [
       _c(
         "view",
