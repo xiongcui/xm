@@ -76,6 +76,7 @@ export default defineAppConfig({
         "pages/user/we-cropper/index",
         "pages/user/invite/index",
         "pages/user/follow/index",
+        "pages/user/platform/index",
         "pages/yuedan/add_yuedan/index",
         "pages/yuedan/yuedan_detail/index",
         "pages/yuedan/yuedan_manage/index",
@@ -130,7 +131,11 @@ export default defineAppConfig({
     {
       root: "packageSet/",
       name: "packageset",
-      pages: ["pages/index/index", "pages/about/index"],
+      pages: [
+        "pages/index/index",
+        "pages/about/index",
+        "pages/serviceAgreement/index",
+      ],
     },
   ],
   permission: {

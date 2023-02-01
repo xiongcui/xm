@@ -159,7 +159,11 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
       });
     },
     goChooseMedia: function goChooseMedia() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
+      if (this.platform_code) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
+      } else {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/platform/index");
+      }
     },
     editMedia: function editMedia(oid, platform_code, platform_name) {
       var _this = this;
@@ -318,7 +322,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.noneData
-    ? _c("view", { staticClass: "main ub ub-ver none_main" }, [
+    ? _c("view", { staticClass: "main ub ub-ver" }, [
         _c(
           "view",
           {

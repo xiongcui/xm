@@ -526,6 +526,23 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1388,7 +1405,32 @@ var render = function () {
               }),
             ]),
             _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("联系客服")]),
+              _c("view", { staticClass: "item_text" }, [_vm._v("我的客服")]),
+            ]),
+            _c("view", { staticClass: "arrow" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                },
+              }),
+            ]),
+          ]
+        ),
+        _c(
+          "view",
+          { staticClass: "item ub line-t", on: { tap: _vm.customerService } },
+          [
+            _c("view", { staticClass: "item_icon" }, [
+              _c("image", {
+                attrs: {
+                  mode: "aspectFit",
+                  src: __webpack_require__(/*! ../../assets/images/user/index/kefu1.png */ "./src/assets/images/user/index/kefu1.png"),
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "ub-f1" }, [
+              _c("view", { staticClass: "item_text" }, [_vm._v("客服中心")]),
             ]),
             _c("view", { staticClass: "arrow" }, [
               _c("image", {

@@ -360,7 +360,24 @@
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">联系客服</view>
+            <view class="item_text">我的客服</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view @tap="customerService" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/user/index/kefu1.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">客服中心</view>
           </view>
           <view class="arrow">
             <image

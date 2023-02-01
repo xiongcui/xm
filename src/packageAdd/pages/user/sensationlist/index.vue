@@ -1,5 +1,5 @@
 <template>
-  <view class="main ub ub-ver none_main" v-if="noneData">
+  <view class="main ub ub-ver" v-if="noneData">
     <view @tap="goChooseMedia" class="item_add" data-id="">
       <image src="../../../../assets/images/common/add_black.png"></image
       >添加账号
@@ -103,12 +103,16 @@ export default {
       });
     },
     goChooseMedia() {
-      openPage(
-        "/packageAdd/pages/user/addfans/index?platform_code=" +
-          this.platform_code +
-          "&platform_name=" +
-          this.platform_name
-      );
+      if (this.platform_code) {
+        openPage(
+          "/packageAdd/pages/user/addfans/index?platform_code=" +
+            this.platform_code +
+            "&platform_name=" +
+            this.platform_name
+        );
+      } else {
+        openPage("/packageAdd/pages/user/platform/index");
+      }
     },
     editMedia(oid, platform_code, platform_name) {
       let _this = this;

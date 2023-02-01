@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import { openPage } from "../../../utils/util";
 import "./index.scss";
 export default {
   name: "about",

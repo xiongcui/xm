@@ -1,0 +1,12 @@
+.service {
+  padding: 30rpx;
+  color: #333333;
+}
+.service .service-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin: 16rpx 0;
+}
+.service .service-p {
+  margin-bottom: 16rpx;
+}

@@ -47,8 +47,9 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageSet/pages/about/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/packageSet/pages/about/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -125,6 +126,7 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "about",
   methods: {
@@ -138,7 +140,7 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
       });
     },
     officialAccount: function officialAccount() {
-      openPage("/packageAdd/pages/user/follow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
     }
   }
 });

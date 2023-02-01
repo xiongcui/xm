@@ -30,8 +30,8 @@
                     "scene": null
                 },
                 {
-                    "name": "管理报名",
-                    "pathName": "packageMsg/pages/manageSignup/index",
+                    "name": "服务协议",
+                    "pathName": "packageSet/pages/serviceAgreement/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

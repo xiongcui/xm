@@ -1,0 +1,29 @@
+page {
+  background-color: #f7f8fa;
+}
+.platform-list {
+  display: flex;
+  flex-flow: wrap;
+  padding: 16px;
+}
+.platform-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  width: 310px;
+  padding: 16px;
+  font-size: 32px;
+  color: #333333;
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+.platform-img {
+  width: 80px;
+  height: 80px;
+}
+.platform-icon-right {
+  width: 15px;
+  height: 26px;
+}

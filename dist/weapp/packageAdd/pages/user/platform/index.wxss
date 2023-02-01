@@ -1,0 +1,43 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.platform-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: wrap;
+      -ms-flex-flow: wrap;
+          flex-flow: wrap;
+  padding: 16rpx;
+}
+
+.platform-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ffffff;
+  border-radius: 8rpx;
+  width: 310rpx;
+  padding: 16rpx;
+  font-size: 32rpx;
+  color: #333333;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.platform-img {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.platform-icon-right {
+  width: 15rpx;
+  height: 26rpx;
+}
