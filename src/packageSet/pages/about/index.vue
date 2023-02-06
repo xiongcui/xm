@@ -24,7 +24,7 @@
       </view>
     </view>
     <view class="about-service">
-      <view class="about-item">
+      <view class="about-item" @tap="userAgreement">
         <text>用户协议</text>
         <view class="arrow">
           <image
@@ -42,7 +42,7 @@
           ></image>
         </view>
       </view>
-      <view class="about-item">
+      <view class="about-item" @tap="cheatPrevention">
         <text>防骗指南</text>
         <view class="arrow">
           <image
@@ -88,6 +88,12 @@ export default {
     },
     officialAccount() {
       openPage("/packageAdd/pages/user/follow/index");
+    },
+    userAgreement() {
+      openPage("/packageSet/pages/serviceAgreement/index");
+    },
+    cheatPrevention() {
+      openPage("/packageSet/pages/cheatPrevention/index");
     },
   },
 };

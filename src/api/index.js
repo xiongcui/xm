@@ -634,6 +634,22 @@ export const shareInviteList = (data) => {
     data,
   });
 };
+// 客服中心
+export const categoryList = (data) => {
+  return request({
+    url: baseUrl + "/v1/clientele/category/list",
+    method: "post",
+    data,
+  });
+};
+// 意见反馈
+export const feedback = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/feedback",
+    method: "post",
+    data,
+  });
+};
 
 // https://brain.baidu.com/face/print/?token=xxx
 

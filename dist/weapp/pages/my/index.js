@@ -526,23 +526,6 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -628,11 +611,17 @@ component.options.__file = "src/pages/my/index.vue"
         success: function success(res) {}
       });
     },
+    customerCenter: function customerCenter() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageSet/pages/customerCenter/index");
+    },
     follow: function follow() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
     },
     login: function login() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/login/index");
+    },
+    goAbout: function goAbout() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageSet/pages/about/index");
     },
     userInfo: function userInfo(params) {
       var _this = this;
@@ -645,7 +634,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "ob"])(params);
 
               case 3:
                 res = _context.sent;
@@ -701,7 +690,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "A"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -730,7 +719,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "X"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -760,7 +749,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "W"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Y"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -793,7 +782,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "hb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1419,13 +1408,13 @@ var render = function () {
         ),
         _c(
           "view",
-          { staticClass: "item ub line-t", on: { tap: _vm.customerService } },
+          { staticClass: "item ub line-t", on: { tap: _vm.customerCenter } },
           [
             _c("view", { staticClass: "item_icon" }, [
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/kefu1.png */ "./src/assets/images/user/index/kefu1.png"),
+                  src: __webpack_require__(/*! ../../assets/images/user/index/helpcenter.png */ "./src/assets/images/user/index/helpcenter.png"),
                 },
               }),
             ]),
@@ -1465,30 +1454,9 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "items" }, [
-        _c("view", { staticClass: "item ub", attrs: { catchtap: "help" } }, [
-          _c("view", { staticClass: "item_icon" }, [
-            _c("image", {
-              attrs: {
-                mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/helpcenter.png */ "./src/assets/images/user/index/helpcenter.png"),
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "ub-f1" }, [
-            _c("view", { staticClass: "item_text" }, [_vm._v("帮助中心")]),
-          ]),
-          _c("view", { staticClass: "arrow" }, [
-            _c("image", {
-              attrs: {
-                mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-              },
-            }),
-          ]),
-        ]),
         _c(
           "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "aboutUs" } },
+          { staticClass: "item ub line-t", on: { tap: _vm.goAbout } },
           [
             _c("view", { staticClass: "item_icon" }, [
               _c("image", {

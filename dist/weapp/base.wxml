@@ -93,12 +93,36 @@
   <input value="{{i.value}}" type="{{xs.b(i.type,'')}}" password="{{xs.b(i.password,false)}}" placeholder="{{i.placeholder}}" placeholder-style="{{i.placeholderStyle}}" placeholder-class="{{xs.b(i.placeholderClass,'input-placeholder')}}" disabled="{{i.disabled}}" maxlength="{{xs.b(i.maxlength,140)}}" cursor-spacing="{{xs.b(i.cursorSpacing,0)}}" confirm-type="{{xs.b(i.confirmType,'done')}}" confirm-hold="{{xs.b(i.confirmHold,false)}}" cursor="{{xs.b(i.cursor,i.value.length)}}" selection-start="{{xs.b(i.selectionStart,-1)}}" selection-end="{{xs.b(i.selectionEnd,-1)}}" bindinput="eh" bindfocus="eh" bindblur="eh" bindconfirm="eh" name="{{i.name}}" always-embed="{{xs.b(i.alwaysEmbed,false)}}" adjust-position="{{xs.b(i.adjustPosition,true)}}" hold-keyboard="{{xs.b(i.holdKeyboard,false)}}" safe-password-cert-path="{{i.safePasswordCertPath}}" safe-password-length="{{i.safePasswordLength}}" safe-password-time-stamp="{{i.safePasswordTimeStamp}}" safe-password-nonce="{{i.safePasswordNonce}}" safe-password-salt="{{i.safePasswordSalt}}" safe-password-custom-hash="{{i.safePasswordCustomHash}}" bindkeyboardheightchange="eh" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}"></input>
 </template>
 
+<template name="tmpl_0_label">
+  <label for="{{i.for}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </label>
+</template>
+
 <template name="tmpl_0_picker">
   <picker mode="{{xs.b(i.mode,'selector')}}" disabled="{{i.disabled}}" range="{{i.range}}" range-key="{{i.rangeKey}}" value="{{i.value}}" start="{{i.start}}" end="{{i.end}}" fields="{{xs.b(i.fields,'day')}}" custom-item="{{i.customItem}}" name="{{i.name}}" bindcancel="eh" bindchange="eh" bindcolumnchange="eh" header-text="{{i.headerText}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </picker>
+</template>
+
+<template name="tmpl_0_radio">
+  <radio value="{{i.value}}" checked="{{xs.b(i.checked,false)}}" disabled="{{i.disabled}}" color="{{xs.b(i.color,'#09BB07')}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </radio>
+</template>
+
+<template name="tmpl_0_radio-group">
+  <radio-group bindchange="eh" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </radio-group>
 </template>
 
 <template name="tmpl_0_switch">
@@ -261,6 +285,14 @@
   </form>
 </template>
 
+<template name="tmpl_1_label">
+  <label for="{{i.for}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </label>
+</template>
+
 <template name="tmpl_1_cover-view">
   <cover-view scroll-top="{{xs.b(i.scrollTop,false)}}" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongpress="eh" marker-id="{{i.markerId}}" slot="{{i.slot}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
@@ -359,6 +391,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </form>
+</template>
+
+<template name="tmpl_2_label">
+  <label for="{{i.for}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </label>
 </template>
 
 <template name="tmpl_2_cover-view">
@@ -461,6 +501,14 @@
   </form>
 </template>
 
+<template name="tmpl_3_label">
+  <label for="{{i.for}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </label>
+</template>
+
 <template name="tmpl_3_cover-view">
   <cover-view scroll-top="{{xs.b(i.scrollTop,false)}}" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongpress="eh" marker-id="{{i.markerId}}" slot="{{i.slot}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
@@ -553,6 +601,14 @@
   </text>
 </template>
 
+<template name="tmpl_4_label">
+  <label for="{{i.for}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </label>
+</template>
+
 <template name="tmpl_4_cover-view">
   <cover-view scroll-top="{{xs.b(i.scrollTop,false)}}" bindtouchstart="eh" bindtouchmove="eh" bindtouchend="eh" bindtouchcancel="eh" bindlongpress="eh" marker-id="{{i.markerId}}" slot="{{i.slot}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
@@ -619,6 +675,14 @@
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
   </text>
+</template>
+
+<template name="tmpl_5_label">
+  <label for="{{i.for}}" name="{{i.name}}" style="{{i.st}}" class="{{i.cl}}" bindtap="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+    <block wx:for="{{i.cn}}" wx:key="sid">
+      <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
+    </block>
+  </label>
 </template>
 
 <template name="tmpl_5_cover-view">

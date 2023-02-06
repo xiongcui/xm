@@ -141,6 +141,12 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
     },
     officialAccount: function officialAccount() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
+    },
+    userAgreement: function userAgreement() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageSet/pages/serviceAgreement/index");
+    },
+    cheatPrevention: function cheatPrevention() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageSet/pages/cheatPrevention/index");
     }
   }
 });
@@ -202,17 +208,21 @@ var render = function () {
       ),
     ]),
     _c("view", { staticClass: "about-service" }, [
-      _c("view", { staticClass: "about-item" }, [
-        _c("text", [_vm._v("用户协议")]),
-        _c("view", { staticClass: "arrow" }, [
-          _c("image", {
-            attrs: {
-              mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-            },
-          }),
-        ]),
-      ]),
+      _c(
+        "view",
+        { staticClass: "about-item", on: { tap: _vm.userAgreement } },
+        [
+          _c("text", [_vm._v("用户协议")]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]
+      ),
       _c("view", { staticClass: "about-item" }, [
         _c("text", [_vm._v("隐私政策")]),
         _c("view", { staticClass: "arrow" }, [
@@ -224,17 +234,21 @@ var render = function () {
           }),
         ]),
       ]),
-      _c("view", { staticClass: "about-item" }, [
-        _c("text", [_vm._v("防骗指南")]),
-        _c("view", { staticClass: "arrow" }, [
-          _c("image", {
-            attrs: {
-              mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
-            },
-          }),
-        ]),
-      ]),
+      _c(
+        "view",
+        { staticClass: "about-item", on: { tap: _vm.cheatPrevention } },
+        [
+          _c("text", [_vm._v("防骗指南")]),
+          _c("view", { staticClass: "arrow" }, [
+            _c("image", {
+              attrs: {
+                mode: "aspectFit",
+                src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              },
+            }),
+          ]),
+        ]
+      ),
       _c("view", { staticClass: "about-item" }, [
         _c("text", [_vm._v("营业执照")]),
         _c("view", { staticClass: "arrow" }, [

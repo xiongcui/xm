@@ -9,15 +9,15 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "邀请好友",
-                    "pathName": "packageAdd/pages/user/invite/index",
+                    "name": "客服中心",
+                    "pathName": "packageSet/pages/customerCenter/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "关注宫公众号",
-                    "pathName": "packageAdd/pages/user/follow/index",
+                    "name": "防骗指南",
+                    "pathName": "packageSet/pages/cheatPrevention/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

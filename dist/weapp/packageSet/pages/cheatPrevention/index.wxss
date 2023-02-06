@@ -1,0 +1,49 @@
+page {
+  background: #0099fc;
+}
+
+.cheat-prevention-img {
+  width: 100%;
+  height: 300rpx;
+}
+
+.cheat-prevention-box {
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin: 16rpx 30rpx 40rpx 30rpx;
+  position: relative;
+  font-size: 30rpx;
+  line-height: 40rpx;
+  color: #333333;
+  padding: 16rpx 30rpx;
+}
+
+.cheat-prevention-box .cheat-prevention-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.cheat-prevention-box .cheat-prevention-title text {
+  background: #b5d8fe;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  margin-top: -36rpx;
+}
+
+.cheat-prevention-tips {
+  color: #ffffff;
+  padding: 30rpx;
+  font-size: 30rpx;
+}
+
+.cheat-prevention-wxtip {
+  text-align: center;
+}

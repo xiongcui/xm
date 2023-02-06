@@ -369,11 +369,11 @@
             ></image>
           </view>
         </view>
-        <view @tap="customerService" class="item ub line-t">
+        <view @tap="customerCenter" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/kefu1.png"
+              src="../../assets/images/user/index/helpcenter.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -405,24 +405,7 @@
         </view>
       </view>
       <view class="items">
-        <view catchtap="help" class="item ub">
-          <view class="item_icon">
-            <image
-              mode="aspectFit"
-              src="../../assets/images/user/index/helpcenter.png"
-            ></image>
-          </view>
-          <view class="ub-f1">
-            <view class="item_text">帮助中心</view>
-          </view>
-          <view class="arrow">
-            <image
-              mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
-            ></image>
-          </view>
-        </view>
-        <view catchtap="aboutUs" class="item ub line-t">
+        <view @tap="goAbout" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -579,11 +562,17 @@ export default {
         success(res) {},
       });
     },
+    customerCenter() {
+      openPage("/packageSet/pages/customerCenter/index");
+    },
     follow() {
       openPage("/packageAdd/pages/user/follow/index");
     },
     login() {
       openPage("/pages/login/index");
+    },
+    goAbout() {
+      openPage("/packageSet/pages/about/index");
     },
     async userInfo(params) {
       try {
