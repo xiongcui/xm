@@ -651,6 +651,42 @@ export const feedback = (data) => {
   });
 };
 
+// 添加用户
+export const addImUser = (data) => {
+  return request({
+    url: baseUrl + "/v1/im/msg/info",
+    method: "post",
+    data,
+  });
+};
+
+// 发送消息
+export const sendMsg = (data) => {
+  return request({
+    url: baseUrl + "/v1/im/send/msg",
+    method: "post",
+    data,
+  });
+};
+
+// 消息列表
+export const msgList = (data) => {
+  return request({
+    url: baseUrl + "/v1/i",
+    method: "post",
+    data,
+  });
+};
+
+// 消息详情
+export const msgInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/im/msg/info",
+    method: "post",
+    data,
+  });
+};
+
 // https://brain.baidu.com/face/print/?token=xxx
 
 // 金币支付：[POST] -> /v1/coin/apply/pay

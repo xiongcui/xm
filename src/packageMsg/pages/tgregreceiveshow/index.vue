@@ -124,7 +124,7 @@
         >
       </view>
       <view class="tgregreceive_bottom_rt">
-        <view class="communicate">发起沟通</view>
+        <view class="communicate" @tap="communicate">发起沟通</view>
       </view>
     </view>
     <view class="modal_box" v-if="showModel">
@@ -242,6 +242,23 @@ export default {
         },
       });
     },
+    appropriate() {
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定标记该报名为合适吗？",
+        success: function (res) {
+          if (res.confirm) {
+            _this.applyManage({
+              even_type: 410,
+              sid: _this.sid,
+            });
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
     noConformance() {
       let _this = this;
       wx.showModal({
@@ -317,6 +334,9 @@ export default {
           "&career=" +
           this.tgregreceiveInfo.visitor.career_list[0]
       );
+    },
+    communicate() {
+      openPage("/packageMsg/pages/chat/index");
     },
     async applyInfo(params) {
       try {

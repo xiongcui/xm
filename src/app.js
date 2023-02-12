@@ -1,6 +1,5 @@
 import Vue from "vue";
 import { wxlogin } from "./api/index";
-import { openPage } from "./utils/util";
 
 import "./app.scss";
 
@@ -69,6 +68,9 @@ const App = {
   },
   globalData: {
     isIphoneX: false,
+    globalData_TIM: {
+      isInit: false,
+    },
   },
 };
 

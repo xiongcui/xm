@@ -300,6 +300,24 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
         }
       });
     },
+    appropriate: function appropriate() {
+      var _this = this;
+
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定标记该报名为合适吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            _this.applyManage({
+              even_type: 410,
+              sid: _this.sid
+            });
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
     noConformance: function noConformance() {
       var _this = this;
 
@@ -367,6 +385,9 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
     },
     complaint: function complaint() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/complaint/index?visitor_id=" + this.tgregreceiveInfo.visitor_id + "&avatar=" + this.tgregreceiveInfo.visitor.avatar + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&province_name=" + this.tgregreceiveInfo.visitor.province_name + "&career=" + this.tgregreceiveInfo.visitor.career_list[0]);
+    },
+    communicate: function communicate() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/chat/index");
     },
     applyInfo: function applyInfo(params) {
       var _this3 = this;
@@ -696,7 +717,11 @@ var render = function () {
           : _vm._e(),
       ]),
       _c("view", { staticClass: "tgregreceive_bottom_rt" }, [
-        _c("view", { staticClass: "communicate" }, [_vm._v("发起沟通")]),
+        _c(
+          "view",
+          { staticClass: "communicate", on: { tap: _vm.communicate } },
+          [_vm._v("发起沟通")]
+        ),
       ]),
     ]),
     _vm.showModel

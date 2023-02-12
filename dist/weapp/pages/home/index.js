@@ -309,6 +309,8 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -3140,9 +3142,11 @@ var render = function () {
                         _vm._s(item.major_subject) + _vm._s(item.payment_format)
                       ),
                     ]),
-                    _c("view", { staticClass: "list_loction" }, [
-                      _vm._v(" " + _vm._s(item.author.province_name) + " "),
-                    ]),
+                    item.author
+                      ? _c("view", { staticClass: "list_loction" }, [
+                          _vm._v(" " + _vm._s(item.author.province_name) + " "),
+                        ])
+                      : _vm._e(),
                   ]),
                   _c("view", { staticClass: "tonggao_ct" }, [
                     _c("view", { staticClass: "tonggao_left" }, [
@@ -3172,13 +3176,18 @@ var render = function () {
                         _c("image", {
                           staticClass: "head-img",
                           attrs: {
-                            src: item.author.avatar
-                              ? item.author.avatar
-                              : "../../assets/images/avatar_default.png",
+                            src:
+                              item.author && item.author.avatar
+                                ? item.author.avatar
+                                : "../../assets/images/avatar_default.png",
                           },
                         }),
-                        _vm._v(" " + _vm._s(item.author.nickname) + " "),
-                        item.author.is_security
+                        _vm._v(
+                          " " +
+                            _vm._s(item.author && item.author.nickname) +
+                            " "
+                        ),
+                        item.author && item.author.is_security
                           ? _c("image", {
                               staticClass: "pledge-img",
                               attrs: {

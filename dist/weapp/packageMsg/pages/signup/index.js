@@ -687,6 +687,12 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -704,6 +710,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       pageSize: 10,
       remarks: "",
       visible: false,
+      contactVisible: false,
       loading: true
     };
   },
@@ -846,6 +853,25 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
     scrollToLower: function scrollToLower() {
       this.pageNum++;
       this.query();
+    },
+    contactNow: function contactNow() {
+      wx.showActionSheet({
+        itemList: ["立即沟通", "查看联系方式", "取消"],
+        success: function success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              console.log("立即沟通");
+              break;
+
+            case 1:
+              console.log("查看联系方式");
+              break;
+          }
+        },
+        fail: function fail(res) {
+          console.log(res.errMsg);
+        }
+      });
     },
     applyList: function applyList(params) {
       var _this2 = this;
@@ -1099,9 +1125,14 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: { tap: _vm.contactNow },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -2376,6 +2407,13 @@ var render = function () {
             _c("view", { staticClass: "save", on: { tap: _vm.clickSave } }, [
               _vm._v("保存"),
             ]),
+          ]),
+        ])
+      : _vm._e(),
+    _vm.contactVisible
+      ? _c("view", { staticClass: "modal_box" }, [
+          _c("view", { staticClass: "modal_content" }, [
+            _c("view", [_vm._v(" 联系方式 ")]),
           ]),
         ])
       : _vm._e(),

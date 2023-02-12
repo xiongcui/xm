@@ -44,7 +44,9 @@
           <text class="list_title"
             >{{ item.major_subject }}{{ item.payment_format }}</text
           >
-          <view class="list_loction"> {{ item.author.province_name }} </view>
+          <view class="list_loction" v-if="item.author">
+            {{ item.author.province_name }}
+          </view>
         </view>
         <view class="tonggao_ct">
           <view class="tonggao_left">
@@ -70,15 +72,15 @@
             <view class="tonggao_info">
               <image
                 :src="
-                  item.author.avatar
+                  item.author && item.author.avatar
                     ? item.author.avatar
                     : '../../assets/images/avatar_default.png'
                 "
                 class="head-img"
               ></image>
-              {{ item.author.nickname }}
+              {{ item.author && item.author.nickname }}
               <image
-                v-if="item.author.is_security"
+                v-if="item.author && item.author.is_security"
                 src="../../assets/images/common/icon_pledge.png"
                 class="pledge-img"
               ></image>

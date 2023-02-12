@@ -121,28 +121,6 @@ module.exports = _objectSpread2, module.exports.__esModule = true, module.export
 
 /***/ }),
 
-/***/ "./node_modules/@babel/runtime/helpers/typeof.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/@babel/runtime/helpers/typeof.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/*! exports used: default */
-/***/ (function(module, exports) {
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
-}
-
-module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js!./src/app.js":
 /*!****************************************************!*\
   !*** ./node_modules/babel-loader/lib!./src/app.js ***!
@@ -156,10 +134,8 @@ module.exports = _typeof, module.exports.__esModule = true, module.exports["defa
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/util */ "./src/utils/util.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_5__);
-
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_4__);
 
 
 
@@ -249,7 +225,10 @@ var App = {
     return h("block", this.$slots.default);
   },
   globalData: {
-    isIphoneX: false
+    isIphoneX: false,
+    globalData_TIM: {
+      isInit: false
+    }
   }
 };
 /* harmony default export */ __webpack_exports__["a"] = (App);
@@ -9249,7 +9228,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var config = {"pages":["pages/home/index","pages/login/index","pages/register/index","pages/my/index","pages/release/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/index/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"subPackages":[{"root":"packageAdd/","name":"packadd","pages":["pages/user/identity/index","pages/user/editinfor/index","pages/user/editusertro/index","pages/user/editlabel/index","pages/user/addresslist/index","pages/user/addressedit/index","pages/user/launchyuepai/index","pages/user/sensationlist/index","pages/user/addfans/index","pages/user/contact/index","pages/user/collection/index","pages/user/coin/index","pages/user/rechargecoin/index","pages/user/we-cropper/index","pages/yuedan/add_yuedan/index","pages/yuedan/yuedan_detail/index","pages/yuedan/yuedan_manage/index","pages/zuopin/add_zuopin/index","pages/zuopin/zuopin_detail/index","pages/zuopin/zuopin_list/index"]},{"root":"packageMoka/","name":"packmoka","pages":["pages/moka/editshow/index","pages/moka/editpersondata/index","pages/moka/editpersonimg/index","pages/moka/editvideo/index"]},{"root":"packageTonggao/","name":"packtonggao","pages":["pages/index/index","pages/add/index","pages/shop/index","pages/brand/index","pages/detail/index"]},{"root":"packageMsg/","name":"packagemsg","pages":["pages/msgList/index","pages/livevisitor/index","pages/invite/index","pages/inviteDetail/index","pages/signup/index","pages/manageSignup/index","pages/tgregreceiveshow/index","pages/complaint/index","pages/creditGuarantee/index"]},{"root":"packageVip/","name":"packagevip","pages":["pages/vip/index"]}],"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}},"requiredPrivateInfos":["chooseAddress","chooseLocation","choosePoi","getLocation","onLocationChange","startLocationUpdateBackground","startLocationUpdate"]};
+var config = {"pages":["pages/home/index","pages/login/index","pages/register/index","pages/my/index","pages/release/index","pages/position/index","pages/msg/index","pages/release/appointment/index","pages/release/field/index","pages/index/index"],"window":{"backgroundTextStyle":"light","navigationBarBackgroundColor":"#fff","navigationBarTitleText":"虾米约拍","navigationBarTextStyle":"black"},"tabBar":{"color":"#343434","selectedColor":"#fe5457","borderStyle":"white","backgroundColor":"#FFFFFF","list":[{"pagePath":"pages/home/index","iconPath":"assets/images/home.png","selectedIconPath":"assets/images/home-sel.png","text":"首页"},{"pagePath":"pages/position/index","iconPath":"assets/images/position.png","selectedIconPath":"assets/images/position-sel.png","text":"同城"},{"pagePath":"pages/release/index","iconPath":"assets/images/release.png","selectedIconPath":"assets/images/release-sel.png","text":"发布"},{"pagePath":"pages/msg/index","iconPath":"assets/images/msg.png","selectedIconPath":"assets/images/msg-sel.png","text":"消息"},{"pagePath":"pages/my/index","iconPath":"assets/images/wode.png","selectedIconPath":"assets/images/wode-sel.png","text":"我的"}]},"subPackages":[{"root":"packageAdd/","name":"packadd","pages":["pages/user/identity/index","pages/user/editinfor/index","pages/user/editusertro/index","pages/user/editlabel/index","pages/user/addresslist/index","pages/user/addressedit/index","pages/user/launchyuepai/index","pages/user/sensationlist/index","pages/user/addfans/index","pages/user/contact/index","pages/user/collection/index","pages/user/coin/index","pages/user/rechargecoin/index","pages/user/we-cropper/index","pages/user/invite/index","pages/user/follow/index","pages/user/platform/index","pages/yuedan/add_yuedan/index","pages/yuedan/yuedan_detail/index","pages/yuedan/yuedan_manage/index","pages/zuopin/add_zuopin/index","pages/zuopin/zuopin_detail/index","pages/zuopin/zuopin_list/index"]},{"root":"packageMoka/","name":"packmoka","pages":["pages/moka/editshow/index","pages/moka/editpersondata/index","pages/moka/editpersonimg/index","pages/moka/editvideo/index"]},{"root":"packageTonggao/","name":"packtonggao","pages":["pages/index/index","pages/add/index","pages/shop/index","pages/brand/index","pages/detail/index","pages/tonggao_manage/index","pages/open_recruitment/index"]},{"root":"packageMsg/","name":"packagemsg","pages":["pages/msgList/index","pages/livevisitor/index","pages/invite/index","pages/inviteDetail/index","pages/signup/index","pages/manageSignup/index","pages/tgregreceiveshow/index","pages/complaint/index","pages/creditGuarantee/index"]},{"root":"packageVip/","name":"packagevip","pages":["pages/vip/index"]},{"root":"packageSet/","name":"packageset","pages":["pages/index/index","pages/about/index","pages/serviceAgreement/index","pages/customerCenter/index","pages/feedback/index","pages/cheatPrevention/index"]}],"permission":{"scope.userLocation":{"desc":"你的位置信息将用于小程序位置接口的效果展示"}},"requiredPrivateInfos":["chooseAddress","chooseLocation","choosePoi","getLocation","onLocationChange","startLocationUpdateBackground","startLocationUpdate"]};
 _tarojs_runtime__WEBPACK_IMPORTED_MODULE_1__["window"].__taroAppConfig = config
 var inst = App(Object(_tarojs_plugin_framework_vue2_dist_runtime__WEBPACK_IMPORTED_MODULE_2__[/* createVueApp */ "a"])(_node_modules_babel_loader_lib_index_js_app_js__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"], vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"], config))
 

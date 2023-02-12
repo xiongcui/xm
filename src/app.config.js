@@ -121,6 +121,7 @@ export default defineAppConfig({
         "pages/tgregreceiveshow/index",
         "pages/complaint/index",
         "pages/creditGuarantee/index",
+        "pages/chat/index",
       ],
     },
     {

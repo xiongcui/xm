@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "客服中心",
-                    "pathName": "packageSet/pages/customerCenter/index",
+                    "name": "聊天",
+                    "pathName": "packageMsg/pages/chat/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

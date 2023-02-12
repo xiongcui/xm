@@ -71,7 +71,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -627,6 +627,12 @@
         <view class="save" @tap="clickSave">保存</view>
       </view>
     </view>
+    <!--联系方式-->
+    <view class="modal_box" v-if="contactVisible">
+      <view class="modal_content">
+        <view> 联系方式 </view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -648,6 +654,7 @@ export default {
       pageSize: 10,
       remarks: "",
       visible: false,
+      contactVisible: false,
       loading: true,
     };
   },
@@ -810,6 +817,24 @@ export default {
     scrollToLower() {
       this.pageNum++;
       this.query();
+    },
+    contactNow() {
+      wx.showActionSheet({
+        itemList: ["立即沟通", "查看联系方式", "取消"],
+        success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              console.log("立即沟通");
+              break;
+            case 1:
+              console.log("查看联系方式");
+              break;
+          }
+        },
+        fail(res) {
+          console.log(res.errMsg);
+        },
+      });
     },
     async applyList(params) {
       try {

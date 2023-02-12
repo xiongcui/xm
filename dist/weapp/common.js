@@ -241,7 +241,7 @@ render._withStripped = true
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback */
+/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo */
 /*! exports used: addressInfo, addressList, applyInfo, applyList, applyManage, categoryList, celebrityInfo, celebrityList, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, facePrint, faceToken, feedback, followRedirect, getCareer, getPhone, giveUp, inviteImage, inviteInfo, inviteList, inviteTemplate, isSign, manageEvent, manageList, manageOperation, memberInfo, memberOpen, noteManageList, noticeFilter, noticeInfo, noticeList, noticeTemplate, notifyNumber, paymina, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, pushInit, recordCollect, securityInfo, securityOpen, shareInvite, shareInviteInfo, shareInviteList, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, updateAvatar, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userInfo, userProfile, userRegister, userResume, userShape, userShapeDetail, userSticker, visitorList, voteList, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -325,6 +325,10 @@ render._withStripped = true
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return shareInviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return categoryList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return feedback; });
+/* unused harmony export addImUser */
+/* unused harmony export sendMsg */
+/* unused harmony export msgList */
+/* unused harmony export msgInfo */
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://pai.qubeitech.com"; // WX登录,拿code换登录
@@ -961,9 +965,53 @@ var feedback = function feedback(data) {
     method: "post",
     data: data
   });
+}; // 添加用户
+
+var addImUser = function addImUser(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/im/msg/info",
+    method: "post",
+    data: data
+  });
+}; // 发送消息
+
+var sendMsg = function sendMsg(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/im/send/msg",
+    method: "post",
+    data: data
+  });
+}; // 消息列表
+
+var msgList = function msgList(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/i",
+    method: "post",
+    data: data
+  });
+}; // 消息详情
+
+var msgInfo = function msgInfo(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "c"])({
+    url: baseUrl + "/v1/im/msg/info",
+    method: "post",
+    data: data
+  });
 }; // https://brain.baidu.com/face/print/?token=xxx
 // 金币支付：[POST] -> /v1/coin/apply/pay
 // {"oid": 'NE221210223505487819987', 'rule_code': 'apply_invite'}
+
+/***/ }),
+
+/***/ "./src/assets/images/avatar_default.png":
+/*!**********************************************!*\
+  !*** ./src/assets/images/avatar_default.png ***!
+  \**********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 
 /***/ }),
 

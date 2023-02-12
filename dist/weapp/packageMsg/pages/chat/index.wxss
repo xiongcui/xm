@@ -1,0 +1,86 @@
+page {
+  background: #f7f8fa;
+}
+
+.chat {
+  padding-bottom: 150rpx;
+}
+
+.chat .chat-list {
+  padding: 0 30rpx;
+}
+
+.chat .chat-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.chat .chat-box image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.chat .chat-box .chat-txt {
+  width: 590rpx;
+  color: #333333;
+  font-size: 30rpx;
+  padding: 10rpx 16rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin-left: 16rpx;
+  line-height: 40rpx;
+}
+
+.chat .chat-right {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.chat .chat-right .chat-txt {
+  margin-left: 0;
+  margin-right: 16rpx;
+  background: #ff5457;
+  color: #ffffff;
+}
+
+.chat .chat-send {
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  padding: 16rpx 30rpx;
+  width: 690rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.chat .chat-send .send-input {
+  width: 560rpx;
+  height: 60rpx;
+  background: #fafafa;
+  border-radius: 8rpx;
+}
+
+.chat .chat-send .send-btn {
+  background: #ff5457;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100rpx;
+  text-align: center;
+}
