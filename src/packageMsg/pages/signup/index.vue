@@ -71,7 +71,9 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact" @tap="contactNow">立即联系</view>
+                  <view class="contact" @tap="contactNow(item.sid)"
+                    >立即联系</view
+                  >
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -630,14 +632,25 @@
     <!--联系方式-->
     <view class="modal_box" v-if="contactVisible">
       <view class="modal_content">
-        <view> 联系方式 </view>
+        <view class="modal_title">
+          <view> 联系方式 </view>
+          <image
+            src="../../../assets/images/common/x_icon.png"
+            class="close-img"
+            @tap="contactClose"
+          ></image>
+        </view>
+        <view class="modal_wechat">
+          <view> 微信号：{{ contact.wechat }} </view>
+          <view class="copy" @tap="copy(contact.wechat)">复制</view>
+        </view>
       </view>
     </view>
   </view>
 </template>
 
 <script>
-import { applyList, applyManage } from "../../../api/index";
+import { applyList, applyManage, applyInfo } from "../../../api/index";
 import { errortip, openPage } from "../../../utils/util";
 import "./index.scss";
 export default {
@@ -656,9 +669,28 @@ export default {
       visible: false,
       contactVisible: false,
       loading: true,
+      contact: {},
     };
   },
   methods: {
+    copy(txt) {
+      wx.setClipboardData({
+        data: txt, //这个是要复制的数据
+        success(res) {
+          wx.getClipboardData({
+            success(res) {
+              console.log(res.data); // data
+              if (res.data) {
+                errortip("复制成功");
+              }
+            },
+          });
+        },
+      });
+    },
+    contactClose() {
+      this.contactVisible = false;
+    },
     // 点击tab切换
     changeItem(index, type) {
       if (this.currentTab === index) {
@@ -818,9 +850,10 @@ export default {
       this.pageNum++;
       this.query();
     },
-    contactNow() {
+    contactNow(sid) {
+      let _this = this;
       wx.showActionSheet({
-        itemList: ["立即沟通", "查看联系方式", "取消"],
+        itemList: ["立即沟通", "查看联系方式"],
         success(res) {
           switch (res.tapIndex) {
             case 0:
@@ -828,6 +861,10 @@ export default {
               break;
             case 1:
               console.log("查看联系方式");
+              _this.contactVisible = true;
+              _this.applyInfo({
+                sid: sid,
+              });
               break;
           }
         },
@@ -855,6 +892,12 @@ export default {
         this.pageNum = 1;
         this.list = [];
         this.query();
+      } catch (error) {}
+    },
+    async applyInfo(params) {
+      try {
+        let res = await applyInfo(params);
+        this.contact = res.data.data.contact.body;
       } catch (error) {}
     },
   },

@@ -693,6 +693,19 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -711,10 +724,31 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       remarks: "",
       visible: false,
       contactVisible: false,
-      loading: true
+      loading: true,
+      contact: {}
     };
   },
   methods: {
+    copy: function copy(txt) {
+      wx.setClipboardData({
+        data: txt,
+        //这个是要复制的数据
+        success: function success(res) {
+          wx.getClipboardData({
+            success: function success(res) {
+              console.log(res.data); // data
+
+              if (res.data) {
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("复制成功");
+              }
+            }
+          });
+        }
+      });
+    },
+    contactClose: function contactClose() {
+      this.contactVisible = false;
+    },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -854,9 +888,11 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       this.pageNum++;
       this.query();
     },
-    contactNow: function contactNow() {
+    contactNow: function contactNow(sid) {
+      var _this = this;
+
       wx.showActionSheet({
-        itemList: ["立即沟通", "查看联系方式", "取消"],
+        itemList: ["立即沟通", "查看联系方式"],
         success: function success(res) {
           switch (res.tapIndex) {
             case 0:
@@ -865,6 +901,12 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
             case 1:
               console.log("查看联系方式");
+              _this.contactVisible = true;
+
+              _this.applyInfo({
+                sid: sid
+              });
+
               break;
           }
         },
@@ -950,6 +992,37 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
             }
           }
         }, _callee2, null, [[0, 10]]);
+      }))();
+    },
+    applyInfo: function applyInfo(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "c"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this4.contact = res.data.data.contact.body;
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
       }))();
     }
   },
@@ -1129,7 +1202,11 @@ var render = function () {
                               "view",
                               {
                                 staticClass: "contact",
-                                on: { tap: _vm.contactNow },
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item.sid)
+                                  },
+                                },
                               },
                               [_vm._v("立即联系")]
                             ),
@@ -2413,7 +2490,33 @@ var render = function () {
     _vm.contactVisible
       ? _c("view", { staticClass: "modal_box" }, [
           _c("view", { staticClass: "modal_content" }, [
-            _c("view", [_vm._v(" 联系方式 ")]),
+            _c("view", { staticClass: "modal_title" }, [
+              _c("view", [_vm._v(" 联系方式 ")]),
+              _c("image", {
+                staticClass: "close-img",
+                attrs: {
+                  src: __webpack_require__(/*! ../../../assets/images/common/x_icon.png */ "./src/assets/images/common/x_icon.png"),
+                },
+                on: { tap: _vm.contactClose },
+              }),
+            ]),
+            _c("view", { staticClass: "modal_wechat" }, [
+              _c("view", [
+                _vm._v(" 微信号：" + _vm._s(_vm.contact.wechat) + " "),
+              ]),
+              _c(
+                "view",
+                {
+                  staticClass: "copy",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.copy(_vm.contact.wechat)
+                    },
+                  },
+                },
+                [_vm._v("复制")]
+              ),
+            ]),
           ]),
         ])
       : _vm._e(),
