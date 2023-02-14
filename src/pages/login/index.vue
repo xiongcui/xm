@@ -128,6 +128,7 @@ export default {
         wx.setStorageSync("userInfo", {
           avatar: params.avatar,
           nickname: params.nickname,
+          uuid: res.data.data.uuid,
         });
         if (res.data.data.is_bind_phone == 0) {
           // 绑定手机号

@@ -1,22 +1,27 @@
 <template>
   <view class="chat">
     <view class="chat-list">
-      <view class="chat-box">
+      <view
+        class="chat-box"
+        v-for="(item, index) in list"
+        :key="index"
+        :class="item.from_account == userInfo.uuid ? 'chat-right' : ''"
+      >
+        <image :src="item.from_account_profile.face_url"></image>
+        <view class="chat-txt">
+          {{ item.msg_content }}
+        </view>
+      </view>
+      <!-- <view class="chat-box chat-right">
         <image src="../../../assets/images/avatar_default.png"></image>
         <view class="chat-txt">
           你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</view
         >
-      </view>
-      <view class="chat-box chat-right">
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <view class="chat-txt">
-          你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</view
-        >
-      </view>
+      </view> -->
     </view>
     <view class="chat-send">
       <input v-model="msg" class="send-input" />
-      <text class="send-btn" @tap="sendMsg">发送</text>
+      <text class="send-btn" @tap="sendMessage">发送</text>
     </view>
   </view>
 </template>
@@ -25,22 +30,27 @@
 import "./index.scss";
 import TIM from "../../../../TUIKit/lib/tim-wx-sdk";
 import { genTestUserSig } from "../../../../TUIKit/debug/GenerateTestUserSig";
-import { sendMsg } from "../../../api/index";
+import { sendMsg, addImUser, msgInfo } from "../../../api/index";
 export default {
   name: "chat",
   data() {
     return {
+      userInfo: {},
+      userArr: [],
       msg: "",
       $TUIKit: null,
       msgList: [],
-      userID: "113553",
+      userID: "",
+      list: [],
       config: {
-        userID: "113553", //User ID
+        userID: "", //User ID
         SDKAPPID: 1400783847, // Your SDKAppID
         SECRETKEY:
           "3ba3f99ba20d5218ed211c641679a7ce2f6fc2091e285b6e77bc9c48fa2ff862", // Your secretKey
         EXPIRETIME: 604800,
       },
+      pageNum: 1,
+      pageSize: 10,
     };
   },
   methods: {
@@ -165,25 +175,6 @@ export default {
         console.log(msgarr, "msgarr");
       });
     },
-    // 调用函数登录 IM
-    async imLogin() {
-      // 页面加载就登陆 IM 即时通讯
-      // 这里的 userID 和 userSig 后期是由服务器接口返还的
-      const userID = "113553"; // 这里测试于是就随便写了一个
-      // const userSig = genTestUserSig(userID).userSig;
-      const userSig = genTestUserSig(this.config).userSig;
-
-      const promise = await this.$TUIKit.login({
-        userID: userID,
-        userSig: userSig,
-      });
-      if (promise.code) return false;
-      console.log("IM登陆成功", promise);
-      // 设置 SDK 日志输出级别，详细分级请参见 setLogLevel 接口的说明
-      // tim.setLogLevel(0); // 普通级别，日志量较多，接入时建议使用
-      this.$TUIKit.setLogLevel(1); // release级别，SDK 输出关键信息，生产环境时建议使用
-      return true;
-    },
     logout_TIM() {
       let promise = this.$TUIKit.logout();
       promise
@@ -194,11 +185,66 @@ export default {
           console.warn("logout error:", imError);
         });
     },
-    sendMsg() {},
+    sendMessage() {
+      this.sendMsg({
+        from_account: this.userArr[1].uuid,
+        to_account: this.userArr[0].uuid,
+        text_messages: this.msg,
+      });
+    },
+    async sendMsg(params) {
+      try {
+        let res = await sendMsg(params);
+        this.msg = "";
+        let from_account_profile = {
+          uuid: this.userInfo.uuid,
+          nick_name: this.userInfo.nickname,
+          face_url: this.userInfo.avatar,
+        };
+        this.list.push({
+          from_account_profile: from_account_profile,
+          from_account: params.from_account,
+          to_account: params.to_account,
+          msg_content: params.text_messages,
+        });
+      } catch (error) {}
+    },
+    async addImUser(params) {
+      try {
+        let res = await addImUser(params);
+        this.login_TIM(params[1].uuid);
+        this.msgInfo({ page: this.pageNum, per_page: this.pageSize });
+      } catch (error) {}
+    },
+    async msgInfo(params) {
+      try {
+        let res = await msgInfo(params);
+        this.list = res.data.data.items;
+      } catch (error) {}
+    },
   },
-  onLoad() {
+  onLoad(options) {
     this.init_TIM(); //在需要的页面初始化
-    this.login_TIM(this.config.userID);
+    // this.login_TIM(this.config.userID);
+    if (options.uuid) {
+      let userInfo = wx.getStorageSync("userInfo");
+      this.userInfo = userInfo;
+      let meObj = {
+        uuid: userInfo.uuid,
+        nick_name: userInfo.nickname,
+        face_url: userInfo.avatar,
+      };
+      let arr = [
+        {
+          uuid: options.uuid,
+          nick_name: options.nickname,
+          face_url: options.avatar,
+        },
+        meObj,
+      ];
+      this.userArr = arr;
+      this.addImUser(arr);
+    }
   },
 };
 </script>

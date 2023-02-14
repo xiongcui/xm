@@ -704,8 +704,6 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
-//
-//
 
 
 
@@ -888,7 +886,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       this.pageNum++;
       this.query();
     },
-    contactNow: function contactNow(sid) {
+    contactNow: function contactNow(row) {
       var _this = this;
 
       wx.showActionSheet({
@@ -897,6 +895,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
           switch (res.tapIndex) {
             case 0:
               console.log("立即沟通");
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
               break;
 
             case 1:
@@ -904,7 +903,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               _this.contactVisible = true;
 
               _this.applyInfo({
-                sid: sid
+                sid: row.sid
               });
 
               break;
@@ -926,7 +925,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyList */ "d"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyList */ "e"])(params);
 
               case 3:
                 res = _context.sent;
@@ -969,7 +968,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyManage */ "e"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyManage */ "f"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1005,7 +1004,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "c"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "d"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1204,7 +1203,7 @@ var render = function () {
                                 staticClass: "contact",
                                 on: {
                                   tap: function ($event) {
-                                    return _vm.contactNow(item.sid)
+                                    return _vm.contactNow(item)
                                   },
                                 },
                               },
@@ -1463,9 +1462,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -1719,9 +1727,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -1975,9 +1992,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -2231,9 +2257,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),

@@ -191,7 +191,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Ab"])(params);
 
               case 3:
                 res = _context.sent;
@@ -199,7 +199,8 @@ component.options.__file = "src/pages/login/index.vue"
                 wx.setStorageSync("token", token);
                 wx.setStorageSync("userInfo", {
                   avatar: params.avatar,
-                  nickname: params.nickname
+                  nickname: params.nickname,
+                  uuid: res.data.data.uuid
                 });
 
                 if (res.data.data.is_bind_phone == 0) {
@@ -245,7 +246,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "v"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -359,6 +360,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/avatar_default.png":
+/*!**********************************************!*\
+  !*** ./src/assets/images/avatar_default.png ***!
+  \**********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 
 /***/ }),
 

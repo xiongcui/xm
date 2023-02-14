@@ -9,14 +9,14 @@ page {
   .chat-box {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 20px 0px;
     image {
       width: 70px;
       height: 70px;
       border-radius: 50%;
     }
     .chat-txt {
-      width: 590px;
+      max-width: 590px;
       color: #333333;
       font-size: 30px;
       padding: 10px 16px;

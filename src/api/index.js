@@ -654,7 +654,7 @@ export const feedback = (data) => {
 // 添加用户
 export const addImUser = (data) => {
   return request({
-    url: baseUrl + "/v1/im/msg/info",
+    url: baseUrl + "/v1/im/add/user",
     method: "post",
     data,
   });

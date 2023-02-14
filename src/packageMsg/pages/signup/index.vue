@@ -71,9 +71,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact" @tap="contactNow(item.sid)"
-                    >立即联系</view
-                  >
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -186,7 +184,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -299,7 +297,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -412,7 +410,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -525,7 +523,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -850,7 +848,7 @@ export default {
       this.pageNum++;
       this.query();
     },
-    contactNow(sid) {
+    contactNow(row) {
       let _this = this;
       wx.showActionSheet({
         itemList: ["立即沟通", "查看联系方式"],
@@ -858,12 +856,20 @@ export default {
           switch (res.tapIndex) {
             case 0:
               console.log("立即沟通");
+              openPage(
+                "/packageMsg/pages/chat/index?uuid=" +
+                  row.visitor.uuid +
+                  "&nickname=" +
+                  row.visitor.nickname +
+                  "&avatar=" +
+                  row.visitor.avatar
+              );
               break;
             case 1:
               console.log("查看联系方式");
               _this.contactVisible = true;
               _this.applyInfo({
-                sid: sid,
+                sid: row.sid,
               });
               break;
           }

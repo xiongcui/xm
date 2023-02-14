@@ -6809,6 +6809,11 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -6817,19 +6822,24 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
   name: "chat",
   data: function data() {
     return {
+      userInfo: {},
+      userArr: [],
       msg: "",
       $TUIKit: null,
       msgList: [],
-      userID: "113553",
+      userID: "",
+      list: [],
       config: {
-        userID: "113553",
+        userID: "",
         //User ID
         SDKAPPID: 1400783847,
         // Your SDKAppID
         SECRETKEY: "3ba3f99ba20d5218ed211c641679a7ce2f6fc2091e285b6e77bc9c48fa2ff862",
         // Your secretKey
         EXPIRETIME: 604800
-      }
+      },
+      pageNum: 1,
+      pageSize: 10
     };
   },
   methods: {
@@ -6945,55 +6955,6 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
         console.log(msgarr, "msgarr");
       });
     },
-    // 调用函数登录 IM
-    imLogin: function imLogin() {
-      var _this = this;
-
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var userID, userSig, promise;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                // 页面加载就登陆 IM 即时通讯
-                // 这里的 userID 和 userSig 后期是由服务器接口返还的
-                userID = "113553"; // 这里测试于是就随便写了一个
-                // const userSig = genTestUserSig(userID).userSig;
-
-                userSig = Object(_TUIKit_debug_GenerateTestUserSig__WEBPACK_IMPORTED_MODULE_4__[/* genTestUserSig */ "a"])(_this.config).userSig;
-                _context.next = 4;
-                return _this.$TUIKit.login({
-                  userID: userID,
-                  userSig: userSig
-                });
-
-              case 4:
-                promise = _context.sent;
-
-                if (!promise.code) {
-                  _context.next = 7;
-                  break;
-                }
-
-                return _context.abrupt("return", false);
-
-              case 7:
-                console.log("IM登陆成功", promise); // 设置 SDK 日志输出级别，详细分级请参见 setLogLevel 接口的说明
-                // tim.setLogLevel(0); // 普通级别，日志量较多，接入时建议使用
-
-                _this.$TUIKit.setLogLevel(1); // release级别，SDK 输出关键信息，生产环境时建议使用
-
-
-                return _context.abrupt("return", true);
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
     logout_TIM: function logout_TIM() {
       var promise = this.$TUIKit.logout();
       promise.then(function (imResponse) {
@@ -7002,12 +6963,147 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
         console.warn("logout error:", imError);
       });
     },
-    sendMsg: function sendMsg() {}
-  },
-  onLoad: function onLoad() {
-    this.init_TIM(); //在需要的页面初始化
+    sendMessage: function sendMessage() {
+      this.sendMsg({
+        from_account: this.userArr[1].uuid,
+        to_account: this.userArr[0].uuid,
+        text_messages: this.msg
+      });
+    },
+    sendMsg: function sendMsg(params) {
+      var _this = this;
 
-    this.login_TIM(this.config.userID);
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, from_account_profile;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "Z"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.msg = "";
+                from_account_profile = {
+                  uuid: _this.userInfo.uuid,
+                  nick_name: _this.userInfo.nickname,
+                  face_url: _this.userInfo.avatar
+                };
+
+                _this.list.push({
+                  from_account_profile: from_account_profile,
+                  from_account: params.from_account,
+                  to_account: params.to_account,
+                  msg_content: params.text_messages
+                });
+
+                _context.next = 11;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
+    },
+    addImUser: function addImUser(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* addImUser */ "a"])(params);
+
+              case 3:
+                res = _context2.sent;
+
+                _this2.login_TIM(params[1].uuid);
+
+                _this2.msgInfo({
+                  page: _this2.pageNum,
+                  per_page: _this2.pageSize
+                });
+
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
+    },
+    msgInfo: function msgInfo(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "H"])(params);
+
+              case 3:
+                res = _context3.sent;
+                _this3.list = res.data.data.items;
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
+      }))();
+    }
+  },
+  onLoad: function onLoad(options) {
+    this.init_TIM(); //在需要的页面初始化
+    // this.login_TIM(this.config.userID);
+
+    if (options.uuid) {
+      var userInfo = wx.getStorageSync("userInfo");
+      this.userInfo = userInfo;
+      var meObj = {
+        uuid: userInfo.uuid,
+        nick_name: userInfo.nickname,
+        face_url: userInfo.avatar
+      };
+      var arr = [{
+        uuid: options.uuid,
+        nick_name: options.nickname,
+        face_url: options.avatar
+      }, meObj];
+      this.userArr = arr;
+      this.addImUser(arr);
+    }
   }
 });
 
@@ -7029,28 +7125,27 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "chat" }, [
-    _c("view", { staticClass: "chat-list" }, [
-      _c("view", { staticClass: "chat-box" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png") },
-        }),
-        _c("view", { staticClass: "chat-txt" }, [
-          _vm._v(
-            " 你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好"
-          ),
-        ]),
-      ]),
-      _c("view", { staticClass: "chat-box chat-right" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png") },
-        }),
-        _c("view", { staticClass: "chat-txt" }, [
-          _vm._v(
-            " 你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好"
-          ),
-        ]),
-      ]),
-    ]),
+    _c(
+      "view",
+      { staticClass: "chat-list" },
+      _vm._l(_vm.list, function (item, index) {
+        return _c(
+          "view",
+          {
+            key: index,
+            staticClass: "chat-box",
+            class: item.from_account == _vm.userInfo.uuid ? "chat-right" : "",
+          },
+          [
+            _c("image", { attrs: { src: item.from_account_profile.face_url } }),
+            _c("view", { staticClass: "chat-txt" }, [
+              _vm._v(" " + _vm._s(item.msg_content) + " "),
+            ]),
+          ]
+        )
+      }),
+      0
+    ),
     _c("view", { staticClass: "chat-send" }, [
       _c("input", {
         directives: [
@@ -7072,7 +7167,7 @@ var render = function () {
           },
         },
       }),
-      _c("text", { staticClass: "send-btn", on: { tap: _vm.sendMsg } }, [
+      _c("text", { staticClass: "send-btn", on: { tap: _vm.sendMessage } }, [
         _vm._v("发送"),
       ]),
     ]),
