@@ -1,24 +1,28 @@
 <template>
   <view class="chat">
-    <view class="chat-list">
-      <view
-        class="chat-box"
-        v-for="(item, index) in list"
-        :key="index"
-        :class="item.from_account == userInfo.uuid ? 'chat-right' : ''"
-      >
-        <image :src="item.from_account_profile.face_url"></image>
-        <view class="chat-txt">
-          {{ item.msg_content }}
+    <scroll-view
+      :scroll-y="true"
+      :refresher-enabled="true"
+      :refresher-triggered="triggered"
+      @refresherpulling="onPulling"
+      @refresherrefresh="onRefresh"
+      @refresherrestore="onRestore"
+      @refresherabort="onAbort"
+    >
+      <view class="chat-list">
+        <view
+          class="chat-box"
+          v-for="(item, index) in list"
+          :key="index"
+          :class="item.from_account == userInfo.uuid ? 'chat-right' : ''"
+        >
+          <image :src="item.from_account_profile.face_url"></image>
+          <view class="chat-txt">
+            {{ item.msg_content }}
+          </view>
         </view>
       </view>
-      <!-- <view class="chat-box chat-right">
-        <image src="../../../assets/images/avatar_default.png"></image>
-        <view class="chat-txt">
-          你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好</view
-        >
-      </view> -->
-    </view>
+    </scroll-view>
     <view class="chat-send">
       <input v-model="msg" class="send-input" />
       <text class="send-btn" @tap="sendMessage">发送</text>
@@ -31,10 +35,12 @@ import "./index.scss";
 import TIM from "../../../../TUIKit/lib/tim-wx-sdk";
 import { genTestUserSig } from "../../../../TUIKit/debug/GenerateTestUserSig";
 import { sendMsg, addImUser, msgInfo } from "../../../api/index";
+import { errortip } from "../../../utils/util";
 export default {
   name: "chat",
   data() {
     return {
+      triggered: false,
       userInfo: {},
       userArr: [],
       msg: "",
@@ -54,6 +60,32 @@ export default {
     };
   },
   methods: {
+    // 下拉 但是没松手！！！
+    onPulling() {
+      console.log("自定义下拉刷新被触发");
+    },
+
+    // 回弹复位
+    onRestore(event, ownerInstance) {
+      console.log("onRestore 自定义下拉刷新被复位");
+    },
+
+    // 被中止
+    onAbort() {
+      console.log("onAbort 自定义下拉刷新被中止");
+    },
+
+    // 下拉 松手了！！！
+    onRefresh() {
+      console.log("onRefresh 下拉松手 请求数据");
+      this.triggered = true;
+      this.pageNum++;
+      this.addMsgInfo({
+        page: this.pageNum,
+        per_page: this.pageSize,
+        to_account: this.userArr[0].uuid,
+      });
+    },
     init_TIM() {
       //初始化im实时聊天
       if (this.globalData.globalData_TIM.isInit) {
@@ -82,7 +114,18 @@ export default {
 
       this.$TUIKit.on(TIM.EVENT.MESSAGE_RECEIVED, function (event) {
         console.log("收到消息");
-        console.log(event.data);
+        let data = event.data[0];
+        console.log(data);
+        that.list.push({
+          from_account_profile: {
+            uuid: that.userInfo.uuid,
+            nick_name: data.nick,
+            face_url: data.avatar,
+          },
+          from_account: data.from,
+          to_account: data.to,
+          msg_content: data.payload.text,
+        });
         // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
         // event.name - TIM.EVENT.MESSAGE_RECEIVED
         // event.data - 存储 Message 对象的数组 - [Message]
@@ -196,24 +239,17 @@ export default {
       try {
         let res = await sendMsg(params);
         this.msg = "";
-        let from_account_profile = {
-          uuid: this.userInfo.uuid,
-          nick_name: this.userInfo.nickname,
-          face_url: this.userInfo.avatar,
-        };
-        this.list.push({
-          from_account_profile: from_account_profile,
-          from_account: params.from_account,
-          to_account: params.to_account,
-          msg_content: params.text_messages,
-        });
       } catch (error) {}
     },
     async addImUser(params) {
       try {
         let res = await addImUser(params);
-        this.login_TIM(params[1].uuid);
-        this.msgInfo({ page: this.pageNum, per_page: this.pageSize });
+        this.login_TIM(this.config.userID);
+        this.msgInfo({
+          page: this.pageNum,
+          per_page: this.pageSize,
+          to_account: params[0].uuid,
+        });
       } catch (error) {}
     },
     async msgInfo(params) {
@@ -221,6 +257,16 @@ export default {
         let res = await msgInfo(params);
         this.list = res.data.data.items;
       } catch (error) {}
+    },
+    async addMsgInfo(params) {
+      try {
+        let res = await msgInfo(params);
+        this.list = res.data.data.items.concat(this.list);
+        this.triggered = false;
+      } catch (error) {
+        this.triggered = false;
+        errortip("没有更多数据了～");
+      }
     },
   },
   onLoad(options) {
@@ -242,7 +288,12 @@ export default {
         },
         meObj,
       ];
+      this.config.userID = meObj.uuid;
       this.userArr = arr;
+      wx.setNavigationBarTitle({
+        title: options.nickname,
+      }); // 查询账号领域
+
       this.addImUser(arr);
     }
   },

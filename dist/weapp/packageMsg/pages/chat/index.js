@@ -6784,6 +6784,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
 /* harmony import */ var _TUIKit_lib_tim_wx_sdk__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_TUIKit_lib_tim_wx_sdk__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _TUIKit_debug_GenerateTestUserSig__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../TUIKit/debug/GenerateTestUserSig */ "./TUIKit/debug/GenerateTestUserSig.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -6814,6 +6815,11 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -6822,6 +6828,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
   name: "chat",
   data: function data() {
     return {
+      triggered: false,
       userInfo: {},
       userArr: [],
       msg: "",
@@ -6843,6 +6850,29 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
     };
   },
   methods: {
+    // 下拉 但是没松手！！！
+    onPulling: function onPulling() {
+      console.log("自定义下拉刷新被触发");
+    },
+    // 回弹复位
+    onRestore: function onRestore(event, ownerInstance) {
+      console.log("onRestore 自定义下拉刷新被复位");
+    },
+    // 被中止
+    onAbort: function onAbort() {
+      console.log("onAbort 自定义下拉刷新被中止");
+    },
+    // 下拉 松手了！！！
+    onRefresh: function onRefresh() {
+      console.log("onRefresh 下拉松手 请求数据");
+      this.triggered = true;
+      this.pageNum++;
+      this.addMsgInfo({
+        page: this.pageNum,
+        per_page: this.pageSize,
+        to_account: this.userArr[0].uuid
+      });
+    },
     init_TIM: function init_TIM() {
       //初始化im实时聊天
       if (this.globalData.globalData_TIM.isInit) {
@@ -6871,7 +6901,18 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
       });
       this.$TUIKit.on(_TUIKit_lib_tim_wx_sdk__WEBPACK_IMPORTED_MODULE_3___default.a.EVENT.MESSAGE_RECEIVED, function (event) {
         console.log("收到消息");
-        console.log(event.data); // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
+        var data = event.data[0];
+        console.log(data);
+        that.list.push({
+          from_account_profile: {
+            uuid: that.userInfo.uuid,
+            nick_name: data.nick,
+            face_url: data.avatar
+          },
+          from_account: data.from,
+          to_account: data.to,
+          msg_content: data.payload.text
+        }); // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
         // event.name - TIM.EVENT.MESSAGE_RECEIVED
         // event.data - 存储 Message 对象的数组 - [Message]
       });
@@ -6974,7 +7015,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, from_account_profile;
+        var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -6986,32 +7027,19 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 3:
                 res = _context.sent;
                 _this.msg = "";
-                from_account_profile = {
-                  uuid: _this.userInfo.uuid,
-                  nick_name: _this.userInfo.nickname,
-                  face_url: _this.userInfo.avatar
-                };
-
-                _this.list.push({
-                  from_account_profile: from_account_profile,
-                  from_account: params.from_account,
-                  to_account: params.to_account,
-                  msg_content: params.text_messages
-                });
-
-                _context.next = 11;
+                _context.next = 9;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
-              case 11:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     },
     addImUser: function addImUser(params) {
@@ -7030,11 +7058,12 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 3:
                 res = _context2.sent;
 
-                _this2.login_TIM(params[1].uuid);
+                _this2.login_TIM(_this2.config.userID);
 
                 _this2.msgInfo({
                   page: _this2.pageNum,
-                  per_page: _this2.pageSize
+                  per_page: _this2.pageSize,
+                  to_account: params[0].uuid
                 });
 
                 _context2.next = 10;
@@ -7082,6 +7111,40 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
           }
         }, _callee3, null, [[0, 7]]);
       }))();
+    },
+    addMsgInfo: function addMsgInfo(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "H"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _this4.list = res.data.data.items.concat(_this4.list);
+                _this4.triggered = false;
+                _context4.next = 12;
+                break;
+
+              case 8:
+                _context4.prev = 8;
+                _context4.t0 = _context4["catch"](0);
+                _this4.triggered = false;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("没有更多数据了～");
+
+              case 12:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 8]]);
+      }))();
     }
   },
   onLoad: function onLoad(options) {
@@ -7101,7 +7164,12 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
         nick_name: options.nickname,
         face_url: options.avatar
       }, meObj];
+      this.config.userID = meObj.uuid;
       this.userArr = arr;
+      wx.setNavigationBarTitle({
+        title: options.nickname
+      }); // 查询账号领域
+
       this.addImUser(arr);
     }
   }
@@ -7124,54 +7192,80 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "chat" }, [
-    _c(
-      "view",
-      { staticClass: "chat-list" },
-      _vm._l(_vm.list, function (item, index) {
-        return _c(
-          "view",
-          {
-            key: index,
-            staticClass: "chat-box",
-            class: item.from_account == _vm.userInfo.uuid ? "chat-right" : "",
+  return _c(
+    "view",
+    { staticClass: "chat" },
+    [
+      _c(
+        "scroll-view",
+        {
+          attrs: {
+            "scroll-y": true,
+            "refresher-enabled": true,
+            "refresher-triggered": _vm.triggered,
           },
-          [
-            _c("image", { attrs: { src: item.from_account_profile.face_url } }),
-            _c("view", { staticClass: "chat-txt" }, [
-              _vm._v(" " + _vm._s(item.msg_content) + " "),
-            ]),
-          ]
-        )
-      }),
-      0
-    ),
-    _c("view", { staticClass: "chat-send" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.msg,
-            expression: "msg",
-          },
-        ],
-        staticClass: "send-input",
-        domProps: { value: _vm.msg },
-        on: {
-          input: function ($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.msg = $event.target.value
+          on: {
+            refresherpulling: _vm.onPulling,
+            refresherrefresh: _vm.onRefresh,
+            refresherrestore: _vm.onRestore,
+            refresherabort: _vm.onAbort,
           },
         },
-      }),
-      _c("text", { staticClass: "send-btn", on: { tap: _vm.sendMessage } }, [
-        _vm._v("发送"),
+        [
+          _c(
+            "view",
+            { staticClass: "chat-list" },
+            _vm._l(_vm.list, function (item, index) {
+              return _c(
+                "view",
+                {
+                  key: index,
+                  staticClass: "chat-box",
+                  class:
+                    item.from_account == _vm.userInfo.uuid ? "chat-right" : "",
+                },
+                [
+                  _c("image", {
+                    attrs: { src: item.from_account_profile.face_url },
+                  }),
+                  _c("view", { staticClass: "chat-txt" }, [
+                    _vm._v(" " + _vm._s(item.msg_content) + " "),
+                  ]),
+                ]
+              )
+            }),
+            0
+          ),
+        ]
+      ),
+      _c("view", { staticClass: "chat-send" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.msg,
+              expression: "msg",
+            },
+          ],
+          staticClass: "send-input",
+          domProps: { value: _vm.msg },
+          on: {
+            input: function ($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.msg = $event.target.value
+            },
+          },
+        }),
+        _c("text", { staticClass: "send-btn", on: { tap: _vm.sendMessage } }, [
+          _vm._v("发送"),
+        ]),
       ]),
-    ]),
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
