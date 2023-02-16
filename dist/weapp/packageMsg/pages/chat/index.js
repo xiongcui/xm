@@ -6819,6 +6819,12 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -6828,6 +6834,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
   name: "chat",
   data: function data() {
     return {
+      bottomVal: 0,
       triggered: false,
       userInfo: {},
       userArr: [],
@@ -6873,6 +6880,17 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
         to_account: this.userArr[0].uuid
       });
     },
+    inputBindFocus: function inputBindFocus(e) {
+      // 获取手机键盘的高度，赋值给input 所在盒子的 bottom 值
+      // 注意!!! 这里的 px 至关重要!!! 我搜到的很多解决方案都没有说这里要添加 px
+      // this.$emit("changeBottomVal", e.detail.height + "px");
+      this.bottomVal = e.detail.height + "px";
+    },
+    inputBindBlur: function inputBindBlur() {
+      // input 失去焦点，键盘隐藏，设置 input 所在盒子的 bottom 值为0
+      // this.$emit("changeBottomVal", 0);
+      this.bottomVal = 0;
+    },
     init_TIM: function init_TIM() {
       //初始化im实时聊天
       if (this.globalData.globalData_TIM.isInit) {
@@ -6902,7 +6920,8 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
       this.$TUIKit.on(_TUIKit_lib_tim_wx_sdk__WEBPACK_IMPORTED_MODULE_3___default.a.EVENT.MESSAGE_RECEIVED, function (event) {
         console.log("收到消息");
         var data = event.data[0];
-        console.log(data);
+        console.log(data); // if (data.from != this.config.userID) {
+
         that.list.push({
           from_account_profile: {
             uuid: that.userInfo.uuid,
@@ -6912,7 +6931,8 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
           from_account: data.from,
           to_account: data.to,
           msg_content: data.payload.text
-        }); // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
+        }); // }
+        // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
         // event.name - TIM.EVENT.MESSAGE_RECEIVED
         // event.data - 存储 Message 对象的数组 - [Message]
       });
@@ -7022,11 +7042,21 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "ab"])(params);
 
               case 3:
                 res = _context.sent;
-                _this.msg = "";
+                _this.msg = ""; // this.list.push({
+                //   from_account_profile: {
+                //     uuid: this.userInfo.uuid,
+                //     nick_name: this.userInfo.nickname,
+                //     face_url: this.userInfo.avatar,
+                //   },
+                //   from_account: params.from_account,
+                //   to_account: params.to_account,
+                //   msg_content: params.text_messages,
+                // });
+
                 _context.next = 9;
                 break;
 
@@ -7167,9 +7197,8 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
       this.config.userID = meObj.uuid;
       this.userArr = arr;
       wx.setNavigationBarTitle({
-        title: options.nickname
-      }); // 查询账号领域
-
+        title: this.userArr[0].nick_name
+      });
       this.addImUser(arr);
     }
   }
@@ -7238,31 +7267,40 @@ var render = function () {
           ),
         ]
       ),
-      _c("view", { staticClass: "chat-send" }, [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.msg,
-              expression: "msg",
+      _c(
+        "view",
+        { staticClass: "chat-send", style: { bottom: _vm.bottomVal } },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.msg,
+                expression: "msg",
+              },
+            ],
+            staticClass: "send-input",
+            attrs: { "adjust-position": false },
+            domProps: { value: _vm.msg },
+            on: {
+              focus: _vm.inputBindFocus,
+              blur: _vm.inputBindBlur,
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.msg = $event.target.value
+              },
             },
-          ],
-          staticClass: "send-input",
-          domProps: { value: _vm.msg },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.msg = $event.target.value
-            },
-          },
-        }),
-        _c("text", { staticClass: "send-btn", on: { tap: _vm.sendMessage } }, [
-          _vm._v("发送"),
-        ]),
-      ]),
+          }),
+          _c(
+            "text",
+            { staticClass: "send-btn", on: { tap: _vm.sendMessage } },
+            [_vm._v("发送")]
+          ),
+        ]
+      ),
     ],
     1
   )

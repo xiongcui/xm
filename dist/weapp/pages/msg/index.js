@@ -100,6 +100,24 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -110,7 +128,8 @@ component.options.__file = "src/pages/msg/index.vue"
       invite_cnt: 0,
       notice_cnt: 0,
       vote_visitor_cnt: 0,
-      is_follow_gzh: 0
+      is_follow_gzh: 0,
+      list: []
     };
   },
   methods: {
@@ -146,6 +165,9 @@ component.options.__file = "src/pages/msg/index.vue"
         }
       });
     },
+    gochat: function gochat(row) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageMsg/pages/chat/index?uuid=" + row.from_account_profile.uuid + "&nickname=" + row.from_account_profile.nick_name + "&avatar=" + row.from_account_profile.face_url);
+    },
     notifyNumber: function notifyNumber(params) {
       var _this = this;
 
@@ -157,7 +179,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "O"])(params);
 
               case 3:
                 res = _context.sent;
@@ -190,10 +212,43 @@ component.options.__file = "src/pages/msg/index.vue"
           }
         }, _callee, null, [[0, 11]]);
       }))();
+    },
+    msgList: function msgList(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "I"])(params);
+
+              case 3:
+                res = _context2.sent;
+                console.log(res);
+                _this2.list = res.data.data.items;
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](0);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 8]]);
+      }))();
     }
   },
   onShow: function onShow() {
     this.notifyNumber("");
+    this.msgList("");
   }
 });
 
@@ -214,119 +269,162 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "msg-box" }, [
-    _vm.is_follow_gzh == 0
-      ? _c("view", { staticClass: "msg-tips" }, [
-          _c("view", { staticClass: "msg-tips-left" }, [
-            _vm._v(" 开启推送通知，及时接收约拍通知 "),
-          ]),
-          _c("view", { staticClass: "msg-tips-rt", on: { tap: _vm.toopen } }, [
-            _vm._v(" 去开启 > "),
-          ]),
-        ])
-      : _vm._e(),
-    _c("view", { staticClass: "msg-icon" }, [
-      _c(
-        "view",
-        {
-          staticClass: "msg-icon-item",
-          on: {
-            tap: function ($event) {
-              return _vm.openUrl(1)
+  return _c(
+    "view",
+    { staticClass: "msg-box" },
+    [
+      _vm.is_follow_gzh == 0
+        ? _c("view", { staticClass: "msg-tips" }, [
+            _c("view", { staticClass: "msg-tips-left" }, [
+              _vm._v(" 开启推送通知，及时接收约拍通知 "),
+            ]),
+            _c(
+              "view",
+              { staticClass: "msg-tips-rt", on: { tap: _vm.toopen } },
+              [_vm._v(" 去开启 > ")]
+            ),
+          ])
+        : _vm._e(),
+      _c("view", { staticClass: "msg-icon" }, [
+        _c(
+          "view",
+          {
+            staticClass: "msg-icon-item",
+            on: {
+              tap: function ($event) {
+                return _vm.openUrl(1)
+              },
             },
           },
-        },
-        [
-          _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/fabulous.png */ "./src/assets/images/msg/fabulous.png") },
-          }),
-          _c("text", [_vm._v("赞与访客")]),
-          _vm.vote_visitor_cnt > 0
-            ? _c("view", { staticClass: "msg-num" }, [
-                _vm._v(_vm._s(_vm.vote_visitor_cnt)),
-              ])
-            : _vm._e(),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "msg-icon-item",
-          on: {
-            tap: function ($event) {
-              return _vm.openUrl(2)
+          [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/fabulous.png */ "./src/assets/images/msg/fabulous.png") },
+            }),
+            _c("text", [_vm._v("赞与访客")]),
+            _vm.vote_visitor_cnt > 0
+              ? _c("view", { staticClass: "msg-num" }, [
+                  _vm._v(_vm._s(_vm.vote_visitor_cnt)),
+                ])
+              : _vm._e(),
+          ]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: "msg-icon-item",
+            on: {
+              tap: function ($event) {
+                return _vm.openUrl(2)
+              },
             },
           },
-        },
-        [
-          _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/yuepai.png */ "./src/assets/images/msg/yuepai.png") },
-          }),
-          _c("text", [_vm._v("收到约拍")]),
-          _vm.invite_cnt > 0
-            ? _c("view", { staticClass: "msg-num" }, [
-                _vm._v(_vm._s(_vm.invite_cnt)),
-              ])
-            : _vm._e(),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "msg-icon-item",
-          on: {
-            tap: function ($event) {
-              return _vm.openUrl(3)
+          [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/yuepai.png */ "./src/assets/images/msg/yuepai.png") },
+            }),
+            _c("text", [_vm._v("收到约拍")]),
+            _vm.invite_cnt > 0
+              ? _c("view", { staticClass: "msg-num" }, [
+                  _vm._v(_vm._s(_vm.invite_cnt)),
+                ])
+              : _vm._e(),
+          ]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: "msg-icon-item",
+            on: {
+              tap: function ($event) {
+                return _vm.openUrl(3)
+              },
             },
           },
-        },
-        [
+          [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
+            }),
+            _c("text", [_vm._v("收到报名")]),
+            _vm.notice_cnt > 0
+              ? _c("view", { staticClass: "msg-num" }, [
+                  _vm._v(_vm._s(_vm.notice_cnt)),
+                ])
+              : _vm._e(),
+          ]
+        ),
+        _c("view", { staticClass: "msg-icon-item" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
+            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/contact.png */ "./src/assets/images/msg/contact.png") },
           }),
-          _c("text", [_vm._v("收到报名")]),
-          _vm.notice_cnt > 0
-            ? _c("view", { staticClass: "msg-num" }, [
-                _vm._v(_vm._s(_vm.notice_cnt)),
-              ])
-            : _vm._e(),
-        ]
-      ),
-      _c("view", { staticClass: "msg-icon-item" }, [
-        _c("image", {
-          attrs: { src: __webpack_require__(/*! ../../assets/images/msg/contact.png */ "./src/assets/images/msg/contact.png") },
-        }),
-        _c("text", [_vm._v("收到联系")]),
+          _c("text", [_vm._v("收到联系")]),
+        ]),
       ]),
-    ]),
-    _c(
-      "view",
-      {
-        staticClass: "msg-notification",
-        on: {
-          tap: function ($event) {
-            return _vm.openUrl(5)
+      _c(
+        "view",
+        {
+          staticClass: "msg-notification",
+          on: {
+            tap: function ($event) {
+              return _vm.openUrl(5)
+            },
           },
         },
-      },
-      [
-        _c("view", { staticClass: "notification-left" }, [
-          _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/xiaoxi.png */ "./src/assets/images/msg/xiaoxi.png") },
-          }),
-        ]),
-        _c("view", { staticClass: "notification-rt" }, [
-          _c("view", { staticClass: "notification-title" }, [
-            _c("text", [_vm._v("消息通知")]),
-            _c("text", { staticClass: "notification-time" }, [_vm._v("昨天")]),
+        [
+          _c("view", { staticClass: "notification-left" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/xiaoxi.png */ "./src/assets/images/msg/xiaoxi.png") },
+            }),
           ]),
-          _c("view", { staticClass: "notification-txt" }, [
-            _vm._v("您有一条审核通知"),
+          _c("view", { staticClass: "notification-rt" }, [
+            _c("view", { staticClass: "notification-title" }, [
+              _c("text", [_vm._v("消息通知")]),
+              _c("text", { staticClass: "notification-time" }, [
+                _vm._v("昨天"),
+              ]),
+            ]),
+            _c("view", { staticClass: "notification-txt" }, [
+              _vm._v("您有一条审核通知"),
+            ]),
           ]),
-        ]),
-      ]
-    ),
-  ])
+        ]
+      ),
+      _vm._l(_vm.list, function (item, index) {
+        return _c(
+          "view",
+          {
+            key: index,
+            staticClass: "msg-notification",
+            on: {
+              tap: function ($event) {
+                return _vm.gochat(item)
+              },
+            },
+          },
+          [
+            _c("view", { staticClass: "notification-left" }, [
+              _c("image", {
+                attrs: { src: item.from_account_profile.face_url },
+              }),
+            ]),
+            _c("view", { staticClass: "notification-rt" }, [
+              _c("view", { staticClass: "notification-title" }, [
+                _c("text", [
+                  _vm._v(_vm._s(item.from_account_profile.nick_name)),
+                ]),
+                _c("text", { staticClass: "notification-time" }, [
+                  _vm._v(_vm._s(item.msg_time_humanize)),
+                ]),
+              ]),
+              _c("view", { staticClass: "notification-txt" }, [
+                _vm._v(_vm._s(item.msg_content)),
+              ]),
+            ]),
+          ]
+        )
+      }),
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

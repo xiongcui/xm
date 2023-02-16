@@ -672,7 +672,7 @@ export const sendMsg = (data) => {
 // 消息列表
 export const msgList = (data) => {
   return request({
-    url: baseUrl + "/v1/i",
+    url: baseUrl + "/v1/im/msg/list",
     method: "post",
     data,
   });

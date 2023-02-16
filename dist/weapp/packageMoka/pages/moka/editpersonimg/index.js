@@ -227,7 +227,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "ob"])(params);
 
               case 3:
                 res = _context.sent;
@@ -261,7 +261,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "mb"])(path, params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "nb"])(path, params);
 
               case 3:
                 res = _context2.sent;
@@ -292,7 +292,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "pb"])(params);
 
               case 3:
                 res = _context3.sent;

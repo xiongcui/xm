@@ -69,7 +69,7 @@ page {
 
 .chat .chat-send .send-input {
   width: 560rpx;
-  height: 60rpx;
+  height: 70rpx;
   background: #fafafa;
   border-radius: 8rpx;
 }

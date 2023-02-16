@@ -40,12 +40,30 @@
         <view class="notification-txt">您有一条审核通知</view>
       </view>
     </view>
+
+    <view
+      class="msg-notification"
+      v-for="(item, index) in list"
+      :key="index"
+      @tap="gochat(item)"
+    >
+      <view class="notification-left">
+        <image :src="item.from_account_profile.face_url"></image>
+      </view>
+      <view class="notification-rt">
+        <view class="notification-title">
+          <text>{{ item.from_account_profile.nick_name }}</text>
+          <text class="notification-time">{{ item.msg_time_humanize }}</text>
+        </view>
+        <view class="notification-txt">{{ item.msg_content }}</view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 import { openPage } from "../../utils/util";
-import { notifyNumber } from "../../api/index";
+import { notifyNumber, msgList } from "../../api/index";
 import "./index.scss";
 export default {
   name: "msg",
@@ -55,6 +73,7 @@ export default {
       notice_cnt: 0,
       vote_visitor_cnt: 0,
       is_follow_gzh: 0,
+      list: [],
     };
   },
   methods: {
@@ -88,6 +107,16 @@ export default {
         },
       });
     },
+    gochat(row) {
+      openPage(
+        "/packageMsg/pages/chat/index?uuid=" +
+          row.from_account_profile.uuid +
+          "&nickname=" +
+          row.from_account_profile.nick_name +
+          "&avatar=" +
+          row.from_account_profile.face_url
+      );
+    },
     async notifyNumber(params) {
       try {
         let res = await notifyNumber(params);
@@ -106,9 +135,17 @@ export default {
         }
       } catch (error) {}
     },
+    async msgList(params) {
+      try {
+        let res = await msgList(params);
+        console.log(res);
+        this.list = res.data.data.items;
+      } catch (error) {}
+    },
   },
   onShow() {
     this.notifyNumber("");
+    this.msgList("");
   },
 };
 </script>

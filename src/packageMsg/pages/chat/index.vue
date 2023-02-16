@@ -23,8 +23,14 @@
         </view>
       </view>
     </scroll-view>
-    <view class="chat-send">
-      <input v-model="msg" class="send-input" />
+    <view class="chat-send" :style="{ bottom: bottomVal }">
+      <input
+        v-model="msg"
+        class="send-input"
+        :adjust-position="false"
+        @focus="inputBindFocus"
+        @blur="inputBindBlur"
+      />
       <text class="send-btn" @tap="sendMessage">发送</text>
     </view>
   </view>
@@ -40,6 +46,7 @@ export default {
   name: "chat",
   data() {
     return {
+      bottomVal: 0,
       triggered: false,
       userInfo: {},
       userArr: [],
@@ -86,6 +93,18 @@ export default {
         to_account: this.userArr[0].uuid,
       });
     },
+    inputBindFocus(e) {
+      // 获取手机键盘的高度，赋值给input 所在盒子的 bottom 值
+      // 注意!!! 这里的 px 至关重要!!! 我搜到的很多解决方案都没有说这里要添加 px
+      // this.$emit("changeBottomVal", e.detail.height + "px");
+      this.bottomVal = e.detail.height + "px";
+    },
+
+    inputBindBlur() {
+      // input 失去焦点，键盘隐藏，设置 input 所在盒子的 bottom 值为0
+      // this.$emit("changeBottomVal", 0);
+      this.bottomVal = 0;
+    },
     init_TIM() {
       //初始化im实时聊天
       if (this.globalData.globalData_TIM.isInit) {
@@ -116,6 +135,7 @@ export default {
         console.log("收到消息");
         let data = event.data[0];
         console.log(data);
+        // if (data.from != this.config.userID) {
         that.list.push({
           from_account_profile: {
             uuid: that.userInfo.uuid,
@@ -126,6 +146,8 @@ export default {
           to_account: data.to,
           msg_content: data.payload.text,
         });
+        // }
+
         // 收到推送的单聊、群聊、群提示、群系统通知的新消息，可通过遍历 event.data 获取消息列表数据并渲染到页面
         // event.name - TIM.EVENT.MESSAGE_RECEIVED
         // event.data - 存储 Message 对象的数组 - [Message]
@@ -239,6 +261,17 @@ export default {
       try {
         let res = await sendMsg(params);
         this.msg = "";
+
+        // this.list.push({
+        //   from_account_profile: {
+        //     uuid: this.userInfo.uuid,
+        //     nick_name: this.userInfo.nickname,
+        //     face_url: this.userInfo.avatar,
+        //   },
+        //   from_account: params.from_account,
+        //   to_account: params.to_account,
+        //   msg_content: params.text_messages,
+        // });
       } catch (error) {}
     },
     async addImUser(params) {
@@ -291,9 +324,8 @@ export default {
       this.config.userID = meObj.uuid;
       this.userArr = arr;
       wx.setNavigationBarTitle({
-        title: options.nickname,
-      }); // 查询账号领域
-
+        title: this.userArr[0].nick_name,
+      });
       this.addImUser(arr);
     }
   },

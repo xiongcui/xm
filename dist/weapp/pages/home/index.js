@@ -663,7 +663,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Bb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -716,7 +716,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeFilter */ "K"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -781,7 +781,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "V"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -822,7 +822,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "L"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* noticeList */ "M"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1452,7 +1452,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Bb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1505,7 +1505,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "V"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1554,7 +1554,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "Q"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoList */ "R"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -2549,7 +2549,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Bb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2602,7 +2602,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "V"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -2731,7 +2731,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "O"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -2803,7 +2803,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "lb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -2836,7 +2836,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -2866,7 +2866,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "bb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cb"])(params);
 
               case 3:
                 res = _context8.sent;
