@@ -498,3 +498,22 @@ page {
     }
   }
 }
+.comment_content {
+  padding: 16px 30px;
+}
+.commentbox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+.comment_cancel {
+  width: 50%;
+  line-height: 60px;
+  text-align: center;
+}
+.comment_confirm {
+  width: 50%;
+  line-height: 60px;
+  text-align: center;
+}

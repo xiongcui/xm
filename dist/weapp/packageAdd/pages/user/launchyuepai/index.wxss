@@ -570,3 +570,30 @@ page {
   right: 16rpx;
   top: 16rpx;
 }
+
+.comment_content {
+  padding: 16rpx 30rpx;
+}
+
+.commentbox {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 16rpx;
+}
+
+.comment_cancel {
+  width: 50%;
+  line-height: 60rpx;
+  text-align: center;
+}
+
+.comment_confirm {
+  width: 50%;
+  line-height: 60rpx;
+  text-align: center;
+}

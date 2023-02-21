@@ -687,6 +687,24 @@ export const msgInfo = (data) => {
   });
 };
 
+// 公众号
+export const checkFollow = (data) => {
+  return request({
+    url: baseUrl + "/v1/notify/check/follow/gzh",
+    method: "post",
+    data,
+  });
+};
+
+// 金币支付
+export const applyPay = (data) => {
+  return request({
+    url: baseUrl + "/v1/record/apply/pay",
+    method: "post",
+    data,
+  });
+};
+
 // https://brain.baidu.com/face/print/?token=xxx
 
 // 金币支付：[POST] -> /v1/coin/apply/pay

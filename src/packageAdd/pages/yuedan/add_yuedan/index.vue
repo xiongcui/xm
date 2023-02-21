@@ -268,7 +268,7 @@
 
 <script>
 import "./index.scss";
-import { errortip } from "../../../../utils/util";
+import { errortip, openPage } from "../../../../utils/util";
 import { publicConfig, creatInvite } from "../../../../api/index";
 import { Base64 } from "js-Base64";
 export default {
@@ -694,15 +694,18 @@ export default {
       try {
         let res = await creatInvite(params);
         // 跳转首页
-        wx.switchTab({
-          url: "/pages/home/index",
-          success: function (e) {
-            var page = getCurrentPages().pop();
-            if (page == undefined || page == null) return;
-            page.onLoad();
-          },
-        });
-      } catch (error) {}
+        // wx.switchTab({
+        //   url: "/pages/home/index",
+        //   success: function (e) {
+        //     var page = getCurrentPages().pop();
+        //     if (page == undefined || page == null) return;
+        //     page.onLoad();
+        //   },
+        // });
+        openPage("/packageAdd/pages/tips/index?type=1");
+      } catch (error) {
+        openPage("/packageAdd/pages/tips/index?type=0");
+      }
     },
   },
   created() {

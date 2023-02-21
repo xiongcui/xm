@@ -742,7 +742,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "X"])(params);
 
               case 3:
                 res = _context.sent;
@@ -806,27 +806,29 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "p"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "r"])(params);
 
               case 3:
                 res = _context2.sent;
                 // 跳转首页
-                wx.switchTab({
-                  url: "/pages/home/index",
-                  success: function success(e) {
-                    var page = getCurrentPages().pop();
-                    if (page == undefined || page == null) return;
-                    page.onLoad();
-                  }
-                });
-                _context2.next = 9;
+                // wx.switchTab({
+                //   url: "/pages/home/index",
+                //   success: function (e) {
+                //     var page = getCurrentPages().pop();
+                //     if (page == undefined || page == null) return;
+                //     page.onLoad();
+                //   },
+                // });
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/tips/index?type=1");
+                _context2.next = 10;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/tips/index?type=0");
 
-              case 9:
+              case 10:
               case "end":
                 return _context2.stop();
             }

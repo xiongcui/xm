@@ -366,9 +366,6 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 //
 //
 //
-//
-//
-//
 
 
 
@@ -384,6 +381,10 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
       showTipModel: false,
       pay_coin: 0,
       balance_coin: 0,
+      is_member: 0,
+      visible: false,
+      sid: "",
+      rule_code: "",
       yuepaiInfo: {
         title: "",
         content: "",
@@ -425,6 +426,9 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
     };
   },
   methods: {
+    closecomment: function closecomment() {
+      this.visible = false;
+    },
     showQRcode: function showQRcode() {
       this.showModel = true;
     },
@@ -467,6 +471,13 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
         visitor_coin: this.pay_coin
       };
       this.subApply(params);
+    },
+    paysubmit: function paysubmit() {
+      var params = {
+        sid: this.sid,
+        rule_code: this.rule_code
+      };
+      this.applyPay(params);
     },
     clickSaveImg: function clickSaveImg() {
       var _this = this;
@@ -536,7 +547,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "A"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "C"])(params);
 
               case 3:
                 res = _context.sent;
@@ -555,22 +566,25 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
                 _this2.pay_coin = res.data.data.visitor.pay_coin;
                 _this2.balance_coin = res.data.data.visitor.balance_coin;
                 _this2.visited_id = res.data.data.visited_id;
-                _context.next = 23;
+                _this2.is_member = res.data.data.visitor.is_member;
+                _context.next = 24;
                 break;
 
-              case 21:
-                _context.prev = 21;
+              case 22:
+                _context.prev = 22;
                 _context.t0 = _context["catch"](0);
 
-              case 23:
+              case 24:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 21]]);
+        }, _callee, null, [[0, 22]]);
       }))();
     },
     subApply: function subApply(params) {
+      var _this3 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
@@ -579,26 +593,57 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "gb"])(params);
 
               case 3:
                 res = _context2.sent;
-                wx.navigateBack({
-                  delta: 1
-                });
-                _context2.next = 9;
+                _this3.visible = true;
+                _this3.sid = res.data.data.sid;
+                _this3.rule_code = res.data.data.rule_code;
+                _context2.next = 11;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](0);
 
-              case 9:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    },
+    applyPay: function applyPay(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyPay */ "g"])(params);
+
+              case 3:
+                res = _context3.sent;
+                wx.navigateBack({
+                  delta: 1
+                });
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
       }))();
     }
   },
@@ -1158,9 +1203,11 @@ var render = function () {
                         _c("text", [
                           _vm._v(" " + _vm._s(_vm.pay_coin) + " 金豆 "),
                         ]),
-                        _c("text", { staticClass: "vip-tips" }, [
-                          _vm._v(" 开通会员仅需2金豆 >> "),
-                        ]),
+                        !_vm.is_member
+                          ? _c("text", { staticClass: "vip-tips" }, [
+                              _vm._v(" 开通会员仅需2金豆 >> "),
+                            ])
+                          : _vm._e(),
                       ]),
                       _c("view", { staticClass: "surplus_coin" }, [
                         _vm._v("剩余：" + _vm._s(_vm.balance_coin) + " 金豆"),
@@ -1187,8 +1234,31 @@ var render = function () {
           ),
         ])
       : _vm._e(),
-    false
-      ? undefined
+    _vm.visible
+      ? _c("view", { staticClass: "modal_box" }, [
+          _c("view", [
+            _c("view", { staticClass: "modal_title" }, [_vm._v("温馨提示")]),
+            _c("view", { staticClass: "modal_content" }, [
+              _c("view", { staticClass: "comment_content" }, [
+                _vm._v(
+                  " 提交约拍请求需要消耗" +
+                    _vm._s(_vm.is_member ? 2 : 5) +
+                    "积分，确定发送吗？ "
+                ),
+              ]),
+              _c("view", { staticClass: "ub commentbox" }, [
+                _c("view", { staticClass: "comment_cancel ub-f1" }, [
+                  _c("view", { on: { tap: _vm.closecomment } }, [
+                    _vm._v("取消"),
+                  ]),
+                ]),
+                _c("view", { staticClass: "comment_confirm ub-f1" }, [
+                  _c("view", { on: { tap: _vm.paysubmit } }, [_vm._v("确认")]),
+                ]),
+              ]),
+            ]),
+          ]),
+        ])
       : _vm._e(),
     _vm.showModel
       ? _c("view", { staticClass: "modal_box" }, [
@@ -1229,18 +1299,6 @@ render._withStripped = true
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/common/tip_success.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/tongzhi3.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/common/tongzhi3.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/tongzhi3.png";
 
 /***/ }),
 

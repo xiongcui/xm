@@ -1,0 +1,78 @@
+.tips {
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: #333333;
+  .tips-sucess,
+  .tips-fail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .tips-img {
+    width: 200px;
+    height: 200px;
+  }
+  .tips-title {
+    font-weight: bold;
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+  .tips-btn {
+    background: #26b248;
+    padding: 10px 20px;
+    font-size: 30px;
+    width: 100px;
+    color: #ffffff;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  .toptip {
+    background-color: #fff9ed;
+    padding: 18rpx 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+  }
+
+  .toptip_icon {
+    height: 36rpx;
+    margin: 0 16rpx 0 23rpx;
+    width: 36rpx;
+  }
+
+  .toptip_text {
+    color: #ff1e3e;
+    display: -webkit-box;
+    font-size: 24rpx;
+    line-height: 40rpx;
+    padding-right: 16px;
+  }
+  .warning {
+    width: 72px;
+    height: 62px;
+    margin: 0px 10px;
+  }
+
+  .toptip_btn {
+    border: 2rpx solid #ff6010;
+    border-radius: 20rpx;
+    color: #ff6010;
+    font-size: 24rpx;
+    height: 38rpx;
+    line-height: 38rpx;
+    margin-right: 32rpx;
+    text-align: center;
+    width: 102rpx;
+    position: absolute;
+    right: 0px;
+  }
+}

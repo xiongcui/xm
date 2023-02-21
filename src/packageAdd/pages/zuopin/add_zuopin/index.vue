@@ -170,7 +170,7 @@
 
 <script>
 import "./index.scss";
-import { errortip } from "../../../../utils/util";
+import { errortip, openPage } from "../../../../utils/util";
 import { publicConfig, subNotePhoto } from "../../../../api/index";
 import { Base64 } from "js-Base64";
 export default {
@@ -450,7 +450,6 @@ export default {
       });
       params.style_label = style_label;
       params.photo_label = photo_label;
-      console.log(params);
       this.subNotePhoto(params);
     },
     async publicConfig(params) {
@@ -476,15 +475,18 @@ export default {
       try {
         let res = await subNotePhoto(params);
         // 跳转首页
-        wx.switchTab({
-          url: "/pages/home/index",
-          success: function (e) {
-            var page = getCurrentPages().pop();
-            if (page == undefined || page == null) return;
-            page.onLoad();
-          },
-        });
-      } catch (error) {}
+        // wx.switchTab({
+        //   url: "/pages/home/index",
+        //   success: function (e) {
+        //     var page = getCurrentPages().pop();
+        //     if (page == undefined || page == null) return;
+        //     page.onLoad();
+        //   },
+        // });
+        openPage("/packageAdd/pages/tips/index?type=1");
+      } catch (error) {
+        openPage("/packageAdd/pages/tips/index?type=0");
+      }
     },
   },
   created() {

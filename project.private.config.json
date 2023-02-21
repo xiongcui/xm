@@ -16,8 +16,8 @@
                     "scene": null
                 },
                 {
-                    "name": "防骗指南",
-                    "pathName": "packageSet/pages/cheatPrevention/index",
+                    "name": "发布",
+                    "pathName": "packageAdd/pages/tips/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

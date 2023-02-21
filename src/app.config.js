@@ -83,6 +83,7 @@ export default defineAppConfig({
         "pages/zuopin/add_zuopin/index",
         "pages/zuopin/zuopin_detail/index",
         "pages/zuopin/zuopin_list/index",
+        "pages/tips/index",
       ],
     },
     {

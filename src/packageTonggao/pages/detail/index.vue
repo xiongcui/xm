@@ -244,7 +244,13 @@
 
 <script>
 import "./index.scss";
-import { noticeInfo, recordCollect } from "../../../api/index";
+import {
+  noticeInfo,
+  recordCollect,
+  shareInvite,
+  shareInviteInfo,
+  applyPay,
+} from "../../../api/index";
 import { openPage } from "../../../utils/util";
 export default {
   name: "tonggaoDetail",
@@ -254,6 +260,9 @@ export default {
       oid: "",
       author_id: "",
       is_collect: 0,
+      shareTitle: "",
+      shareImg: "",
+      sharePath: "",
       tonggaoInfo: {
         author: {
           sex: 0,
@@ -302,9 +311,37 @@ export default {
         this.tonggaoInfo.statistic.collect_cnt = res.data.data.collect_cnt;
       } catch (error) {}
     },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
+  },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat",
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
   },
   onLoad: function (options) {
     this.oid = options.oid;

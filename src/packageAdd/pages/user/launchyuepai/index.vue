@@ -260,7 +260,9 @@
           <view class="bottom_coin">
             <view class="needcoin">
               <text> {{ pay_coin }} 金豆 </text>
-              <text class="vip-tips"> 开通会员仅需2金豆 >> </text>
+              <text class="vip-tips" v-if="!is_member">
+                开通会员仅需2金豆 >>
+              </text>
             </view>
             <view class="surplus_coin">剩余：{{ balance_coin }} 金豆</view>
           </view>
@@ -274,28 +276,23 @@
         </view>
       </view>
     </view>
-    <view class="modal_box" v-if="false">
-      <form
-        bindreset="reset"
-        bindsubmit="subcomment"
-        class="main"
-        reportSubmit="true"
-      >
+    <view class="modal_box" v-if="visible">
+      <view>
         <view class="modal_title">温馨提示</view>
         <view class="modal_content">
           <view class="comment_content">
-            提交约拍请求需要消耗5积分，当前剩余8积分！
+            提交约拍请求需要消耗{{ is_member ? 2 : 5 }}积分，确定发送吗？
+          </view>
+          <view class="ub commentbox">
+            <view class="comment_cancel ub-f1">
+              <view @tap="closecomment">取消</view>
+            </view>
+            <view class="comment_confirm ub-f1">
+              <view @tap="paysubmit">确认</view>
+            </view>
           </view>
         </view>
-        <view class="ub">
-          <view class="comment_cancel ub-f1">
-            <button bindtap="closecomment" size="default">取消</button>
-          </view>
-          <view class="comment_confirm ub-f1">
-            <button formType="submit" size="default">确认</button>
-          </view>
-        </view>
-      </form>
+      </view>
     </view>
     <view class="modal_box" v-if="showModel">
       <view class="modal_content">
@@ -314,7 +311,7 @@
 
 <script>
 import "./index.scss";
-import { inviteTemplate, subApply } from "../../../../api/index";
+import { inviteTemplate, subApply, applyPay } from "../../../../api/index";
 import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "launchyuepai",
@@ -328,6 +325,10 @@ export default {
       showTipModel: false,
       pay_coin: 0,
       balance_coin: 0,
+      is_member: 0,
+      visible: false,
+      sid: "",
+      rule_code: "",
       yuepaiInfo: {
         title: "",
         content: "",
@@ -369,6 +370,9 @@ export default {
     };
   },
   methods: {
+    closecomment() {
+      this.visible = false;
+    },
     showQRcode() {
       this.showModel = true;
     },
@@ -417,6 +421,13 @@ export default {
         visitor_coin: this.pay_coin,
       };
       this.subApply(params);
+    },
+    paysubmit() {
+      let params = {
+        sid: this.sid,
+        rule_code: this.rule_code,
+      };
+      this.applyPay(params);
     },
     clickSaveImg() {
       //先授权相册
@@ -494,11 +505,20 @@ export default {
         this.balance_coin = res.data.data.visitor.balance_coin;
 
         this.visited_id = res.data.data.visited_id;
+        this.is_member = res.data.data.visitor.is_member;
       } catch (error) {}
     },
     async subApply(params) {
       try {
         let res = await subApply(params);
+        this.visible = true;
+        this.sid = res.data.data.sid;
+        this.rule_code = res.data.data.rule_code;
+      } catch (error) {}
+    },
+    async applyPay(params) {
+      try {
+        let res = await applyPay(params);
         wx.navigateBack({
           delta: 1,
         });
