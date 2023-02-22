@@ -628,17 +628,16 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 
               case 3:
                 res = _context3.sent;
-                wx.navigateBack({
-                  delta: 1
-                });
-                _context3.next = 9;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/tips/index?type=2");
+                _context3.next = 10;
                 break;
 
               case 7:
                 _context3.prev = 7;
                 _context3.t0 = _context3["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/tips/index?type=3");
 
-              case 9:
+              case 10:
               case "end":
                 return _context3.stop();
             }

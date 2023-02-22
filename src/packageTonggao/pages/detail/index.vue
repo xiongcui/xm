@@ -56,10 +56,12 @@
           class="follow"
           src="../../../assets/images/common/follow_red.png"
         ></image>
-        <image
-          class="share"
-          src="../../../assets/images/common/icon_share.png"
-        ></image>
+        <button open-type="share" class="share-btn">
+          <image
+            class="share"
+            src="../../../assets/images/common/icon_share.png"
+          ></image>
+        </button>
       </view>
     </view>
     <view class="tonggao_box">
@@ -249,7 +251,6 @@ import {
   recordCollect,
   shareInvite,
   shareInviteInfo,
-  applyPay,
 } from "../../../api/index";
 import { openPage } from "../../../utils/util";
 export default {
@@ -327,10 +328,6 @@ export default {
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
-    this.shareInviteInfo({
-      source: "share_friend",
-      type: "wechat",
-    });
   },
   onShareAppMessage() {
     this.shareInvite({
@@ -346,12 +343,32 @@ export default {
   onLoad: function (options) {
     this.oid = options.oid;
     this.author_id = options.author_id;
+    console.log(options.scene);
+    console.log("scene========");
+    if (options.scene) {
+      // 分享出去-查看详情
+      let params = {
+        oid: options.scene,
+        author_id: options.author_id,
+      };
+      this.noticeInfo(params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: options.scene,
+      });
+    }
     if (this.oid && this.author_id) {
       let params = {
         oid: this.oid,
         author_id: this.author_id,
       };
       this.noticeInfo(params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: this.oid,
+      });
     }
   },
 };

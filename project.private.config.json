@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "聊天",
-                    "pathName": "packageMsg/pages/chat/index",
+                    "name": "提示",
+                    "pathName": "packageAdd/pages/tips/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

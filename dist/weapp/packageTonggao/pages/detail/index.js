@@ -299,6 +299,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -476,10 +478,6 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
   },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
-    this.shareInviteInfo({
-      source: "share_friend",
-      type: "wechat"
-    });
   },
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
@@ -496,13 +494,34 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
   onLoad: function onLoad(options) {
     this.oid = options.oid;
     this.author_id = options.author_id;
+    console.log(options.scene);
+    console.log("scene========");
+
+    if (options.scene) {
+      // 分享出去-查看详情
+      var params = {
+        oid: options.scene,
+        author_id: options.author_id
+      };
+      this.noticeInfo(params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: options.scene
+      });
+    }
 
     if (this.oid && this.author_id) {
-      var params = {
+      var _params = {
         oid: this.oid,
         author_id: this.author_id
       };
-      this.noticeInfo(params);
+      this.noticeInfo(_params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: this.oid
+      });
     }
   }
 });
@@ -609,12 +628,18 @@ var render = function () {
             src: __webpack_require__(/*! ../../../assets/images/common/follow_red.png */ "./src/assets/images/common/follow_red.png"),
           },
         }),
-        _c("image", {
-          staticClass: "share",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/common/icon_share.png */ "./src/assets/images/common/icon_share.png"),
-          },
-        }),
+        _c(
+          "button",
+          { staticClass: "share-btn", attrs: { "open-type": "share" } },
+          [
+            _c("image", {
+              staticClass: "share",
+              attrs: {
+                src: __webpack_require__(/*! ../../../assets/images/common/icon_share.png */ "./src/assets/images/common/icon_share.png"),
+              },
+            }),
+          ]
+        ),
       ]),
     ]),
     _c(

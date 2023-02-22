@@ -953,9 +953,6 @@ export default {
     async shareInvite(params) {
       try {
         let res = await shareInvite(params);
-        // this.shareTitle = res.data.data.title;
-        // this.shareImg = res.data.data.imageUrl;
-        // this.sharePath = res.data.data.path;
       } catch (error) {}
     },
     async shareInviteInfo(params) {

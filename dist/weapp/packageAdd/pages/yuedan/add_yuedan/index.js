@@ -810,15 +810,6 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
               case 3:
                 res = _context2.sent;
-                // 跳转首页
-                // wx.switchTab({
-                //   url: "/pages/home/index",
-                //   success: function (e) {
-                //     var page = getCurrentPages().pop();
-                //     if (page == undefined || page == null) return;
-                //     page.onLoad();
-                //   },
-                // });
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/tips/index?type=1");
                 _context2.next = 10;
                 break;

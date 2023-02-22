@@ -1668,7 +1668,10 @@ var request = function request(params) {
         if (res.data.code == 200) {
           resolve(res);
         } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
-          openPage("/pages/login/index");
+          // openPage("/pages/login/index");
+          wx.redirectTo({
+            url: "pages/login/index"
+          });
         } else {
           errortip(res.data.msg);
           reject(res);

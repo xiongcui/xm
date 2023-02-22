@@ -80,6 +80,18 @@ component.options.__file = "src/packageAdd/pages/tips/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -197,7 +209,8 @@ var render = function () {
             _vm._v("返回"),
           ]),
         ])
-      : _c("view", { staticClass: "tips-fail" }, [
+      : _vm.type == 0
+      ? _c("view", { staticClass: "tips-fail" }, [
           _c("image", {
             staticClass: "tips-img",
             attrs: { src: __webpack_require__(/*! ../../../assets/images/fail.png */ "./src/assets/images/fail.png") },
@@ -207,7 +220,32 @@ var render = function () {
           _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
             _vm._v("返回"),
           ]),
-        ]),
+        ])
+      : _vm.type == 2
+      ? _c("view", { staticClass: "tips-sucess" }, [
+          _c("image", {
+            staticClass: "tips-img",
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/sucess.png */ "./src/assets/images/sucess.png") },
+          }),
+          _c("view", { staticClass: "tips-title" }, [_vm._v("报名成功")]),
+          _c("view", [_vm._v("您的报名请求发送成功，等待对方联系您！")]),
+          _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
+            _vm._v("返回"),
+          ]),
+        ])
+      : _vm.type == 3
+      ? _c("view", { staticClass: "tips-fail" }, [
+          _c("image", {
+            staticClass: "tips-img",
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/fail.png */ "./src/assets/images/fail.png") },
+          }),
+          _c("view", { staticClass: "tips-title" }, [_vm._v("报名失败")]),
+          _c("view", [_vm._v("请稍后重新报名！")]),
+          _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
+            _vm._v("返回"),
+          ]),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []
@@ -266,7 +304,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageAdd/pages/tips/index.vue");
 
 
-var config = {"navigationBarTitleText":"发布"};
+var config = {};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageAdd/pages/tips/index', {root:{cn:[]}}, config || {}))

@@ -474,15 +474,6 @@ export default {
     async subNotePhoto(params) {
       try {
         let res = await subNotePhoto(params);
-        // 跳转首页
-        // wx.switchTab({
-        //   url: "/pages/home/index",
-        //   success: function (e) {
-        //     var page = getCurrentPages().pop();
-        //     if (page == undefined || page == null) return;
-        //     page.onLoad();
-        //   },
-        // });
         openPage("/packageAdd/pages/tips/index?type=1");
       } catch (error) {
         openPage("/packageAdd/pages/tips/index?type=0");

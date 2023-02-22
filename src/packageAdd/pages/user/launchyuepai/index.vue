@@ -519,10 +519,10 @@ export default {
     async applyPay(params) {
       try {
         let res = await applyPay(params);
-        wx.navigateBack({
-          delta: 1,
-        });
-      } catch (error) {}
+        openPage("/packageAdd/pages/tips/index?type=2");
+      } catch (error) {
+        openPage("/packageAdd/pages/tips/index?type=3");
+      }
     },
   },
   created() {
