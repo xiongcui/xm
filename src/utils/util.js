@@ -90,7 +90,7 @@ export const request = (params) => {
         } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
           // openPage("/pages/login/index");
           wx.redirectTo({
-            url: "pages/login/index",
+            url: "/pages/login/index",
           });
         } else {
           errortip(res.data.msg);

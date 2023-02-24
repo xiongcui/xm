@@ -705,7 +705,20 @@ export const applyPay = (data) => {
   });
 };
 
-// https://brain.baidu.com/face/print/?token=xxx
+// 关注
+export const userFollow = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/follow",
+    method: "post",
+    data,
+  });
+};
 
-// 金币支付：[POST] -> /v1/coin/apply/pay
-// {"oid": 'NE221210223505487819987', 'rule_code': 'apply_invite'}
+// 取关
+export const userUnfollow = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/unfollow",
+    method: "post",
+    data,
+  });
+};

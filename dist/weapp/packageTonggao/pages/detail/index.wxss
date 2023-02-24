@@ -234,3 +234,9 @@
   font-size: 30rpx;
   border-radius: 10rpx;
 }
+.tonggao_detail .share-btn {
+  background-color: transparent;
+  text-align: left;
+  line-height: normal;
+  padding: 0;
+}

@@ -51,11 +51,21 @@
         <image
           class="follow"
           src="../../../../assets/images/common/follow_red.png"
+          @tap="follow"
+          v-if="is_follow == 0"
         ></image>
         <image
-          class="share"
-          src="../../../../assets/images/common/icon_share.png"
+          class="follow"
+          src="../../../../assets/images/common/followed_gray.png"
+          @tap="unfollow"
+          v-if="is_follow == 1"
         ></image>
+        <button open-type="share" class="share-btn">
+          <image
+            class="share"
+            src="../../../../assets/images/common/icon_share.png"
+          ></image>
+        </button>
       </view>
     </view>
     <view class="yuedan_icon">
@@ -192,7 +202,15 @@
 </template>
 
 <script>
-import { inviteInfo, giveUp, recordCollect } from "../../../../api/index";
+import {
+  inviteInfo,
+  giveUp,
+  recordCollect,
+  shareInvite,
+  shareInviteInfo,
+  userFollow,
+  userUnfollow,
+} from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
@@ -216,12 +234,16 @@ export default {
       author_id: "",
       is_vote: 0,
       is_collect: 0,
+      is_follow: 0,
       yuepaiInfo: {
         author: {
           career_list: [],
         },
         statistic: {},
       },
+      shareTitle: "",
+      shareImg: "",
+      sharePath: "",
     };
   },
   methods: {
@@ -265,6 +287,16 @@ export default {
       };
       this.recordCollect(params);
     },
+    follow() {
+      this.userFollow({
+        follow_uuid: this.yuepaiInfo.author_id,
+      });
+    },
+    unfollow() {
+      this.userUnfollow({
+        follow_uuid: this.yuepaiInfo.author_id,
+      });
+    },
     async inviteInfo(params) {
       try {
         let res = await inviteInfo(params);
@@ -284,22 +316,78 @@ export default {
       try {
         let res = await recordCollect(params);
         this.is_collect = res.data.data.is_collect;
+        this.is_follow = res.data.data.is_follow;
         this.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
+      } catch (error) {}
+    },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
+    async userFollow(params) {
+      try {
+        let res = await userFollow(params);
+        this.is_follow = 1;
+      } catch (error) {}
+    },
+    async userUnfollow(params) {
+      try {
+        let res = await userUnfollow(params);
+        this.is_follow = 0;
       } catch (error) {}
     },
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
   },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_details",
+      type: "wechat",
+      oid: this.oid,
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
   onLoad: function (options) {
     this.oid = options.oid;
     this.author_id = options.author_id;
+    if (options.scene) {
+      // 分享出去-查看详情
+      let params = {
+        oid: options.scene,
+        author_id: options.author_id,
+      };
+      this.inviteInfo(params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: options.scene,
+      });
+    }
     if (this.oid && this.author_id) {
       let params = {
         oid: this.oid,
         author_id: this.author_id,
       };
       this.inviteInfo(params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: this.oid,
+      });
     }
   },
 };

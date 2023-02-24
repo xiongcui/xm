@@ -55,6 +55,14 @@
         <image
           class="follow"
           src="../../../assets/images/common/follow_red.png"
+          @tap="follow"
+          v-if="is_follow == 0"
+        ></image>
+        <image
+          class="follow"
+          src="../../../assets/images/common/followed_gray.png"
+          @tap="unfollow"
+          v-if="is_follow == 1"
         ></image>
         <button open-type="share" class="share-btn">
           <image
@@ -251,6 +259,8 @@ import {
   recordCollect,
   shareInvite,
   shareInviteInfo,
+  userFollow,
+  userUnfollow,
 } from "../../../api/index";
 import { openPage } from "../../../utils/util";
 export default {
@@ -261,6 +271,7 @@ export default {
       oid: "",
       author_id: "",
       is_collect: 0,
+      is_follow: 0,
       shareTitle: "",
       shareImg: "",
       sharePath: "",
@@ -298,11 +309,22 @@ export default {
       };
       this.recordCollect(params);
     },
+    follow() {
+      this.userFollow({
+        follow_uuid: this.tonggaoInfo.author_id,
+      });
+    },
+    unfollow() {
+      this.userUnfollow({
+        follow_uuid: this.tonggaoInfo.author_id,
+      });
+    },
     async noticeInfo(params) {
       try {
         let res = await noticeInfo(params);
         this.tonggaoInfo = res.data.data;
         this.is_collect = res.data.data.action.is_collect;
+        this.is_follow = res.data.data.action.is_follow;
       } catch (error) {}
     },
     async recordCollect(params) {
@@ -325,14 +347,27 @@ export default {
         this.sharePath = res.data.data.path;
       } catch (error) {}
     },
+    async userFollow(params) {
+      try {
+        let res = await userFollow(params);
+        this.is_follow = 1;
+      } catch (error) {}
+    },
+    async userUnfollow(params) {
+      try {
+        let res = await userUnfollow(params);
+        this.is_follow = 0;
+      } catch (error) {}
+    },
   },
   created() {
     this.isIphoneX = this.globalData.isIphoneX;
   },
   onShareAppMessage() {
     this.shareInvite({
-      source: "share_friend",
+      source: "share_details",
       type: "wechat",
+      oid: this.oid,
     });
     return {
       title: this.shareTitle,
@@ -343,8 +378,6 @@ export default {
   onLoad: function (options) {
     this.oid = options.oid;
     this.author_id = options.author_id;
-    console.log(options.scene);
-    console.log("scene========");
     if (options.scene) {
       // 分享出去-查看详情
       let params = {

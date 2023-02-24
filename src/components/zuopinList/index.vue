@@ -83,7 +83,7 @@
             </view>
             <view class="list_p">
               <text>
-                {{ item.author.career_list[0] }} |{{
+                {{ item.author.career_list && item.author.career_list[0] }} |{{
                   item.author.province_name
                 }}</text
               >

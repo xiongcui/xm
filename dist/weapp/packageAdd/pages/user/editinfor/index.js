@@ -345,7 +345,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "wb"])(params);
 
               case 3:
                 res = _context3.sent;

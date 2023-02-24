@@ -301,6 +301,14 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -312,6 +320,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       oid: "",
       author_id: "",
       is_collect: 0,
+      is_follow: 0,
       shareTitle: "",
       shareImg: "",
       sharePath: "",
@@ -350,6 +359,16 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       };
       this.recordCollect(params);
     },
+    follow: function follow() {
+      this.userFollow({
+        follow_uuid: this.tonggaoInfo.author_id
+      });
+    },
+    unfollow: function unfollow() {
+      this.userUnfollow({
+        follow_uuid: this.tonggaoInfo.author_id
+      });
+    },
     noticeInfo: function noticeInfo(params) {
       var _this = this;
 
@@ -367,19 +386,20 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
                 res = _context.sent;
                 _this.tonggaoInfo = res.data.data;
                 _this.is_collect = res.data.data.action.is_collect;
-                _context.next = 10;
+                _this.is_follow = res.data.data.action.is_follow;
+                _context.next = 11;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     recordCollect: function recordCollect(params) {
@@ -474,6 +494,68 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
           }
         }, _callee4, null, [[0, 9]]);
       }))();
+    },
+    userFollow: function userFollow(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "ub"])(params);
+
+              case 3:
+                res = _context5.sent;
+                _this4.is_follow = 1;
+                _context5.next = 9;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 7]]);
+      }))();
+    },
+    userUnfollow: function userUnfollow(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Cb"])(params);
+
+              case 3:
+                res = _context6.sent;
+                _this5.is_follow = 0;
+                _context6.next = 9;
+                break;
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 7]]);
+      }))();
     }
   },
   created: function created() {
@@ -481,8 +563,9 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
   },
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
-      source: "share_friend",
-      type: "wechat"
+      source: "share_details",
+      type: "wechat",
+      oid: this.oid
     });
     return {
       title: this.shareTitle,
@@ -494,8 +577,6 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
   onLoad: function onLoad(options) {
     this.oid = options.oid;
     this.author_id = options.author_id;
-    console.log(options.scene);
-    console.log("scene========");
 
     if (options.scene) {
       // 分享出去-查看详情
@@ -622,12 +703,24 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "tonggao_right" }, [
-        _c("image", {
-          staticClass: "follow",
-          attrs: {
-            src: __webpack_require__(/*! ../../../assets/images/common/follow_red.png */ "./src/assets/images/common/follow_red.png"),
-          },
-        }),
+        _vm.is_follow == 0
+          ? _c("image", {
+              staticClass: "follow",
+              attrs: {
+                src: __webpack_require__(/*! ../../../assets/images/common/follow_red.png */ "./src/assets/images/common/follow_red.png"),
+              },
+              on: { tap: _vm.follow },
+            })
+          : _vm._e(),
+        _vm.is_follow == 1
+          ? _c("image", {
+              staticClass: "follow",
+              attrs: {
+                src: __webpack_require__(/*! ../../../assets/images/common/followed_gray.png */ "./src/assets/images/common/followed_gray.png"),
+              },
+              on: { tap: _vm.unfollow },
+            })
+          : _vm._e(),
         _c(
           "button",
           { staticClass: "share-btn", attrs: { "open-type": "share" } },

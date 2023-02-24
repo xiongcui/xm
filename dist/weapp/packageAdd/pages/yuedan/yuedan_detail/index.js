@@ -248,6 +248,16 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -272,12 +282,16 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       author_id: "",
       is_vote: 0,
       is_collect: 0,
+      is_follow: 0,
       yuepaiInfo: {
         author: {
           career_list: []
         },
         statistic: {}
-      }
+      },
+      shareTitle: "",
+      shareImg: "",
+      sharePath: ""
     };
   },
   methods: {
@@ -322,6 +336,16 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 
       };
       this.recordCollect(params);
+    },
+    follow: function follow() {
+      this.userFollow({
+        follow_uuid: this.yuepaiInfo.author_id
+      });
+    },
+    unfollow: function unfollow() {
+      this.userUnfollow({
+        follow_uuid: this.yuepaiInfo.author_id
+      });
     },
     inviteInfo: function inviteInfo(params) {
       var _this = this;
@@ -404,36 +428,192 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 3:
                 res = _context3.sent;
                 _this3.is_collect = res.data.data.is_collect;
+                _this3.is_follow = res.data.data.is_follow;
                 _this3.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
-                _context3.next = 10;
+                _context3.next = 11;
                 break;
 
-              case 8:
-                _context3.prev = 8;
+              case 9:
+                _context3.prev = 9;
                 _context3.t0 = _context3["catch"](0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 8]]);
+        }, _callee3, null, [[0, 9]]);
+      }))();
+    },
+    shareInvite: function shareInvite(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "db"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _context4.next = 8;
+                break;
+
+              case 6:
+                _context4.prev = 6;
+                _context4.t0 = _context4["catch"](0);
+
+              case 8:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 6]]);
+      }))();
+    },
+    shareInviteInfo: function shareInviteInfo(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "eb"])(params);
+
+              case 3:
+                res = _context5.sent;
+                _this4.shareTitle = res.data.data.title;
+                _this4.shareImg = res.data.data.imageUrl;
+                _this4.sharePath = res.data.data.path;
+                _context5.next = 11;
+                break;
+
+              case 9:
+                _context5.prev = 9;
+                _context5.t0 = _context5["catch"](0);
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 9]]);
+      }))();
+    },
+    userFollow: function userFollow(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "ub"])(params);
+
+              case 3:
+                res = _context6.sent;
+                _this5.is_follow = 1;
+                _context6.next = 9;
+                break;
+
+              case 7:
+                _context6.prev = 7;
+                _context6.t0 = _context6["catch"](0);
+
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 7]]);
+      }))();
+    },
+    userUnfollow: function userUnfollow(params) {
+      var _this6 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Cb"])(params);
+
+              case 3:
+                res = _context7.sent;
+                _this6.is_follow = 0;
+                _context7.next = 9;
+                break;
+
+              case 7:
+                _context7.prev = 7;
+                _context7.t0 = _context7["catch"](0);
+
+              case 9:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, null, [[0, 7]]);
       }))();
     }
   },
   created: function created() {
     this.isIphoneX = this.globalData.isIphoneX;
   },
+  onShareAppMessage: function onShareAppMessage() {
+    this.shareInvite({
+      source: "share_details",
+      type: "wechat",
+      oid: this.oid
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
+  },
   onLoad: function onLoad(options) {
     this.oid = options.oid;
     this.author_id = options.author_id;
 
-    if (this.oid && this.author_id) {
+    if (options.scene) {
+      // 分享出去-查看详情
       var params = {
+        oid: options.scene,
+        author_id: options.author_id
+      };
+      this.inviteInfo(params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: options.scene
+      });
+    }
+
+    if (this.oid && this.author_id) {
+      var _params = {
         oid: this.oid,
         author_id: this.author_id
       };
-      this.inviteInfo(params);
+      this.inviteInfo(_params);
+      this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: this.oid
+      });
     }
   }
 });
@@ -531,18 +711,36 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "yuedan_right" }, [
-        _c("image", {
-          staticClass: "follow",
-          attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/common/follow_red.png */ "./src/assets/images/common/follow_red.png"),
-          },
-        }),
-        _c("image", {
-          staticClass: "share",
-          attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/common/icon_share.png */ "./src/assets/images/common/icon_share.png"),
-          },
-        }),
+        _vm.is_follow == 0
+          ? _c("image", {
+              staticClass: "follow",
+              attrs: {
+                src: __webpack_require__(/*! ../../../../assets/images/common/follow_red.png */ "./src/assets/images/common/follow_red.png"),
+              },
+              on: { tap: _vm.follow },
+            })
+          : _vm._e(),
+        _vm.is_follow == 1
+          ? _c("image", {
+              staticClass: "follow",
+              attrs: {
+                src: __webpack_require__(/*! ../../../../assets/images/common/followed_gray.png */ "./src/assets/images/common/followed_gray.png"),
+              },
+              on: { tap: _vm.unfollow },
+            })
+          : _vm._e(),
+        _c(
+          "button",
+          { staticClass: "share-btn", attrs: { "open-type": "share" } },
+          [
+            _c("image", {
+              staticClass: "share",
+              attrs: {
+                src: __webpack_require__(/*! ../../../../assets/images/common/icon_share.png */ "./src/assets/images/common/icon_share.png"),
+              },
+            }),
+          ]
+        ),
       ]),
     ]),
     _c("view", { staticClass: "yuedan_icon" }, [

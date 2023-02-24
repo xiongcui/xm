@@ -663,7 +663,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Fb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1452,7 +1452,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Fb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2549,7 +2549,7 @@ component.options.__file = "src/pages/home/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Fb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -3649,7 +3649,10 @@ var render = function () {
                         _c("text", [
                           _vm._v(
                             " " +
-                              _vm._s(item.author.career_list[0]) +
+                              _vm._s(
+                                item.author.career_list &&
+                                  item.author.career_list[0]
+                              ) +
                               " |" +
                               _vm._s(item.author.province_name)
                           ),

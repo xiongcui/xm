@@ -312,3 +312,10 @@ page {
   font-size: 30rpx;
   border-radius: 10rpx;
 }
+
+.zuopin_detail .share-btn {
+  background-color: transparent;
+  text-align: left;
+  line-height: normal;
+  padding: 0;
+}
