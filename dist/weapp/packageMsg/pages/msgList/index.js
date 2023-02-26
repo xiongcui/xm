@@ -47,8 +47,15 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/msgList/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMsg/pages/msgList/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
+//
 //
 //
 //
@@ -79,8 +86,62 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: "msgList"
+  name: "msgList",
+  data: function data() {
+    return {
+      list: []
+    };
+  },
+  methods: {
+    systemList: function systemList(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* systemList */ "qb"])(params);
+
+              case 3:
+                res = _context.sent;
+
+                if (!(!res.data.data.items || !res.data.data.items.length)) {
+                  _context.next = 7;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                return _context.abrupt("return", false);
+
+              case 7:
+                data = res.data.data.items;
+                _this.list = _this.list.concat(data);
+                _context.next = 13;
+                break;
+
+              case 11:
+                _context.prev = 11;
+                _context.t0 = _context["catch"](0);
+
+              case 13:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 11]]);
+      }))();
+    }
+  },
+  created: function created() {
+    this.systemList("");
+  }
 });
 
 /***/ }),
@@ -100,36 +161,30 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "msg-list" }, [
-    _c("view", { staticClass: "msg-box" }, [
-      _c("view", { staticClass: "msg-title" }, [
-        _c("text", [_vm._v("通告审核")]),
-        _c("text", { staticClass: "success" }, [_vm._v("审核通过")]),
-      ]),
-      _c("view", { staticClass: "msg-content" }, [
-        _vm._v(
-          " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容 "
-        ),
-      ]),
-      _c("view", { staticClass: "msg-bt" }, [
-        _c("text", [_vm._v("1小时前")]),
-        _c("text", [_vm._v("点击查看 >")]),
-      ]),
-    ]),
-    _c("view", { staticClass: "msg-box" }, [
-      _c("view", { staticClass: "msg-title" }, [
-        _c("text", [_vm._v("通告审核")]),
-        _c("text", { staticClass: "fail" }, [_vm._v("审核失败")]),
-      ]),
-      _c("view", { staticClass: "msg-content" }, [
-        _vm._v(" 内容内容内容内容内容内容内容内容 "),
-      ]),
-      _c("view", { staticClass: "msg-bt" }, [
-        _c("text", [_vm._v("1小时前")]),
-        _c("text", [_vm._v("点击查看 >")]),
-      ]),
-    ]),
-  ])
+  return _c(
+    "view",
+    { staticClass: "msg-list" },
+    _vm._l(_vm.list, function (item, index) {
+      return _c("view", { key: index, staticClass: "msg-box" }, [
+        _c("view", { staticClass: "msg-title" }, [
+          _c("text", [_vm._v(_vm._s(item.title))]),
+          item.result == "审核失败"
+            ? _c("text", { staticClass: "fail" }, [_vm._v("审核失败")])
+            : _c("text", { staticClass: "success" }, [
+                _vm._v(_vm._s(item.result)),
+              ]),
+        ]),
+        _c("view", { staticClass: "msg-content" }, [
+          _vm._v(" " + _vm._s(item.content) + " "),
+        ]),
+        _c("view", { staticClass: "msg-bt" }, [
+          _c("text", [_vm._v(_vm._s(item.date_humanize))]),
+          _c("text", [_vm._v(_vm._s(item.hyper_tips))]),
+        ]),
+      ])
+    }),
+    0
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -205,5 +260,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageMsg/pages/msgList/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageMsg/pages/msgList/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

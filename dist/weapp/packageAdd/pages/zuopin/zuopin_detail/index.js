@@ -294,7 +294,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
     },
     unfollow: function unfollow() {
       this.userUnfollow({
-        follow_uuid: this.zuopinInfo.author_id
+        unfollow_uuid: this.zuopinInfo.author_id
       });
     },
     photoInfo: function photoInfo(params) {
@@ -308,26 +308,27 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "U"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.zuopinInfo = res.data.data;
                 _this.is_vote = res.data.data.action.is_vote;
                 _this.is_collect = res.data.data.action.is_collect;
-                _context.next = 11;
+                _this.is_follow = res.data.data.action.is_follow;
+                _context.next = 12;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
-              case 11:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
     giveUp: function giveUp(params) {
@@ -341,7 +342,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* giveUp */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* giveUp */ "A"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -373,7 +374,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "bb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -403,7 +404,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "fb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -433,7 +434,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "gb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -466,7 +467,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "xb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -497,7 +498,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Cb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Fb"])(params);
 
               case 3:
                 res = _context7.sent;

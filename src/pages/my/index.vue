@@ -117,12 +117,12 @@
       </view>
       <view class="my-count">
         <view class="my-conunt-left">
-          <view class="my-count-box">
-            <text class="num">{{ infor.statistic.followed_cnt }}</text>
+          <view class="my-count-box" @tap="goFollowAndfans('fans')">
+            <text class="num">{{ infor.statistic.follower_cnt }}</text>
             <text>粉丝</text>
           </view>
-          <view class="my-count-box">
-            <text class="num">{{ infor.statistic.follower_cnt }}</text>
+          <view class="my-count-box" @tap="goFollowAndfans('follow')">
+            <text class="num">{{ infor.statistic.followed_cnt }}</text>
             <text>关注</text>
           </view>
           <view class="my-count-box">
@@ -573,6 +573,9 @@ export default {
     },
     goAbout() {
       openPage("/packageSet/pages/about/index");
+    },
+    goFollowAndfans(type) {
+      openPage("/packageAdd/pages/user/followAndfans/index?type=" + type);
     },
     async userInfo(params) {
       try {

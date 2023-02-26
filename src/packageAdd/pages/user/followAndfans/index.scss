@@ -1,0 +1,101 @@
+page {
+  background: #f7f7f7;
+}
+.followAndfans {
+  .tab {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+    position: fixed;
+    z-index: 9999;
+  }
+  .tab-item {
+    color: #333333;
+    flex: 1;
+    font-size: 30px;
+    text-align: center;
+    line-height: 80rpx;
+    border-bottom: 6rpx solid #ffffff;
+    margin: 0px 30px;
+  }
+  .content {
+    flex: 1;
+    height: 100vh;
+  }
+  .content > swiper {
+    height: 100%;
+  }
+  .tab-item.on {
+    color: #333333;
+    font-weight: bold;
+    border-bottom-color: #ff1e3e;
+  }
+
+  .swiper-box {
+    height: 100%;
+  }
+  .follow_and_fans_box:first-child {
+    margin-top: 104px;
+  }
+  .follow_and_fans_box {
+    background: #ffffff;
+    margin: 0px 16px 16px 16px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .follow_and_fans_left {
+      display: flex;
+      align-items: center;
+    }
+    .follow_and_fans_info {
+      display: flex;
+      flex-direction: column;
+      margin-left: 16px;
+    }
+    .follow_and_fans_nickname {
+      color: #333333;
+      font-size: 32px;
+    }
+    .follow_and_fans_identity {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 28px;
+    }
+    .follow_and_fans_rt {
+      display: flex;
+      align-items: center;
+    }
+    .followed_btn {
+      padding: 4px 10px;
+      border: 1px solid #cecece;
+      color: #979797;
+      border-radius: 8px;
+      font-size: 28px;
+    }
+    .followed_btn_red {
+      padding: 4px 10px;
+      border: 1px solid #ff465f;
+      color: #ff465f;
+      border-radius: 8px;
+      font-size: 28px;
+    }
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+}

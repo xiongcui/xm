@@ -316,7 +316,7 @@ export default {
     },
     unfollow() {
       this.userUnfollow({
-        follow_uuid: this.tonggaoInfo.author_id,
+        unfollow_uuid: this.tonggaoInfo.author_id,
       });
     },
     async noticeInfo(params) {

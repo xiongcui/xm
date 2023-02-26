@@ -244,7 +244,7 @@ export default {
     },
     unfollow() {
       this.userUnfollow({
-        follow_uuid: this.zuopinInfo.author_id,
+        unfollow_uuid: this.zuopinInfo.author_id,
       });
     },
     async photoInfo(params) {
@@ -253,6 +253,7 @@ export default {
         this.zuopinInfo = res.data.data;
         this.is_vote = res.data.data.action.is_vote;
         this.is_collect = res.data.data.action.is_collect;
+        this.is_follow = res.data.data.action.is_follow;
       } catch (error) {}
     },
     async giveUp(params) {

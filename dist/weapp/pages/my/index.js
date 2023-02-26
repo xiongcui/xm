@@ -623,6 +623,9 @@ component.options.__file = "src/pages/my/index.vue"
     goAbout: function goAbout() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageSet/pages/about/index");
     },
+    goFollowAndfans: function goFollowAndfans(type) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/followAndfans/index?type=" + type);
+    },
     userInfo: function userInfo(params) {
       var _this = this;
 
@@ -634,7 +637,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "yb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -690,7 +693,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "D"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "F"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -719,7 +722,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "fb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -749,7 +752,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "gb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -782,7 +785,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "pb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1034,18 +1037,40 @@ var render = function () {
         : _vm._e(),
       _c("view", { staticClass: "my-count" }, [
         _c("view", { staticClass: "my-conunt-left" }, [
-          _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [
-              _vm._v(_vm._s(_vm.infor.statistic.followed_cnt)),
-            ]),
-            _c("text", [_vm._v("粉丝")]),
-          ]),
-          _c("view", { staticClass: "my-count-box" }, [
-            _c("text", { staticClass: "num" }, [
-              _vm._v(_vm._s(_vm.infor.statistic.follower_cnt)),
-            ]),
-            _c("text", [_vm._v("关注")]),
-          ]),
+          _c(
+            "view",
+            {
+              staticClass: "my-count-box",
+              on: {
+                tap: function ($event) {
+                  return _vm.goFollowAndfans("fans")
+                },
+              },
+            },
+            [
+              _c("text", { staticClass: "num" }, [
+                _vm._v(_vm._s(_vm.infor.statistic.follower_cnt)),
+              ]),
+              _c("text", [_vm._v("粉丝")]),
+            ]
+          ),
+          _c(
+            "view",
+            {
+              staticClass: "my-count-box",
+              on: {
+                tap: function ($event) {
+                  return _vm.goFollowAndfans("follow")
+                },
+              },
+            },
+            [
+              _c("text", { staticClass: "num" }, [
+                _vm._v(_vm._s(_vm.infor.statistic.followed_cnt)),
+              ]),
+              _c("text", [_vm._v("关注")]),
+            ]
+          ),
           _c("view", { staticClass: "my-count-box" }, [
             _c("text", { staticClass: "num" }, [
               _vm._v(_vm._s(_vm.infor.statistic.invite_cnt)),

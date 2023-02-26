@@ -294,7 +294,7 @@ export default {
     },
     unfollow() {
       this.userUnfollow({
-        follow_uuid: this.yuepaiInfo.author_id,
+        unfollow_uuid: this.yuepaiInfo.author_id,
       });
     },
     async inviteInfo(params) {
@@ -303,6 +303,7 @@ export default {
         this.yuepaiInfo = res.data.data;
         this.is_vote = res.data.data.action.is_vote;
         this.is_collect = res.data.data.action.is_collect;
+        this.is_follow = res.data.data.action.is_follow;
       } catch (error) {}
     },
     async giveUp(params) {
@@ -315,8 +316,7 @@ export default {
     async recordCollect(params) {
       try {
         let res = await recordCollect(params);
-        this.is_collect = res.data.data.is_collect;
-        this.is_follow = res.data.data.is_follow;
+        this.is_collect = res.data.data.action.is_collect;
         this.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
       } catch (error) {}
     },

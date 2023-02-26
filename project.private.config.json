@@ -9,8 +9,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "提示",
-                    "pathName": "packageAdd/pages/tips/index",
+                    "name": "关注and粉丝",
+                    "pathName": "packageAdd/pages/user/followAndfans/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

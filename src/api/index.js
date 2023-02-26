@@ -722,3 +722,30 @@ export const userUnfollow = (data) => {
     data,
   });
 };
+
+// 关注列表
+export const followerList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/follower/list",
+    method: "post",
+    data,
+  });
+};
+
+// 粉丝列表
+export const followedList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/followed/list",
+    method: "post",
+    data,
+  });
+};
+
+// 消息通知列表
+export const systemList = (data) => {
+  return request({
+    url: baseUrl + "/v1/notify/system/list",
+    method: "post",
+    data,
+  });
+};

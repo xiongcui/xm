@@ -1,0 +1,148 @@
+page {
+  background: #f7f7f7;
+}
+
+.followAndfans .tab {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #ffffff;
+  position: fixed;
+  z-index: 9999;
+}
+
+.followAndfans .tab-item {
+  color: #333333;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #ffffff;
+  margin: 0 30rpx;
+}
+
+.followAndfans .content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100vh;
+}
+
+.followAndfans .content > swiper {
+  height: 100%;
+}
+
+.followAndfans .tab-item.on {
+  color: #333333;
+  font-weight: bold;
+  border-bottom-color: #ff1e3e;
+}
+
+.followAndfans .swiper-box {
+  height: 100%;
+}
+
+.followAndfans .follow_and_fans_box:first-child {
+  margin-top: 104rpx;
+}
+
+.followAndfans .follow_and_fans_box {
+  background: #ffffff;
+  margin: 0 16rpx 16rpx 16rpx;
+  padding: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.followAndfans .follow_and_fans_box .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.followAndfans .follow_and_fans_box .follow_and_fans_left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.followAndfans .follow_and_fans_box .follow_and_fans_info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 16rpx;
+}
+
+.followAndfans .follow_and_fans_box .follow_and_fans_nickname {
+  color: #333333;
+  font-size: 32rpx;
+}
+
+.followAndfans .follow_and_fans_box .follow_and_fans_identity {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+}
+
+.followAndfans .follow_and_fans_box .follow_and_fans_rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.followAndfans .follow_and_fans_box .followed_btn {
+  padding: 4rpx 10rpx;
+  border: 1rpx solid #cecece;
+  color: #979797;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.followAndfans .follow_and_fans_box .followed_btn_red {
+  padding: 4rpx 10rpx;
+  border: 1rpx solid #ff465f;
+  color: #ff465f;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.followAndfans .none-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 180rpx;
+  color: #333;
+}
+
+.followAndfans .none-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
+}

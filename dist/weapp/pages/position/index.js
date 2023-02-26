@@ -107,7 +107,7 @@ component.options.__file = "src/pages/position/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* paymina */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* paymina */ "T"])(params);
 
               case 3:
                 res = _context.sent;
