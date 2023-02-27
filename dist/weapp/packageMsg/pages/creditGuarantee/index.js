@@ -144,7 +144,7 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
   },
   methods: {
     goVip: function goVip() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "b"])("/packageVip/pages/vip/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageVip/pages/vip/index");
     },
     submitSecurity: function submitSecurity() {
       this.securityOpen({

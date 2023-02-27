@@ -11,35 +11,37 @@
       </view>
       <view class="msg-bt">
         <text>{{ item.date_humanize }}</text>
-        <text>{{ item.hyper_tips }}</text>
+        <text @tap="hyper_link(item.hyper_link)">{{ item.hyper_tips }}</text>
       </view>
     </view>
-    <!-- <view class="msg-box">
-      <view class="msg-title">
-        <text>通告审核</text>
-        <text class="fail">审核失败</text>
-      </view>
-      <view class="msg-content"> 内容内容内容内容内容内容内容内容 </view>
-      <view class="msg-bt">
-        <text>1小时前</text>
-        <text>点击查看 ></text>
-      </view>
-    </view> -->
   </view>
 </template>
 
 <script>
 import "./index.scss";
 import { systemList } from "../../../api/index";
-import { errortip } from "../../../utils/util";
+import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "msgList",
   data() {
     return {
+      loading: true,
+      pageNum: 1,
+      pageSize: 10,
       list: [],
     };
   },
   methods: {
+    hyper_link(url) {
+      openPage(url);
+    },
+    query() {
+      this.loading = false;
+      this.systemList({
+        page: this.pageNum,
+        per_page: this.pageSize,
+      });
+    },
     async systemList(params) {
       try {
         let res = await systemList(params);
@@ -49,11 +51,21 @@ export default {
         }
         let data = res.data.data.items;
         this.list = this.list.concat(data);
+        this.loading = true;
       } catch (error) {}
     },
   },
   created() {
-    this.systemList("");
+    this.systemList({
+      page: this.pageNum,
+      per_page: this.pageSize,
+    });
+  },
+  onReachBottom() {
+    if (this.loading) {
+      this.pageNum++;
+      this.query();
+    }
   },
 };
 </script>

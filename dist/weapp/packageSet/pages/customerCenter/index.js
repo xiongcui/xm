@@ -124,7 +124,7 @@ component.options.__file = "src/packageSet/pages/customerCenter/index.vue"
   },
   methods: {
     gofeedback: function gofeedback() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageSet/pages/feedback/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/feedback/index");
     },
     customerService: function customerService() {
       wx.openCustomerServiceChat({

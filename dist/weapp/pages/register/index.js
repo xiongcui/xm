@@ -208,7 +208,7 @@ component.options.__file = "src/pages/register/index.vue"
       this.regionList = e.detail.code;
     },
     identityFocus: function identityFocus() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/identity/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
     },
     submit: function submit() {
       if (!this.nickname) {

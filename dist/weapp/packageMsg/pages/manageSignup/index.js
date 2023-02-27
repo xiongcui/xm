@@ -686,7 +686,7 @@ var _methods;
       this.visible = false;
     },
     signupDetail: function signupDetail(sid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/manageSignup/index?sid=" + sid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?sid=" + sid);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -800,7 +800,7 @@ var _methods;
       this.query();
     }
   }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "signupDetail", function signupDetail(sid, visited_status) {
-    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "applyList", function applyList(params) {
     var _this2 = this;
 

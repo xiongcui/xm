@@ -426,7 +426,7 @@ component.options.__file = "src/pages/home/index.vue"
       this.query("init");
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     //获取用户地理位置权限
     getPermission: function getPermission() {
@@ -686,7 +686,7 @@ component.options.__file = "src/pages/home/index.vue"
                   _this2.query("init");
                 } else {
                   // 未注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
                 }
 
                 _context.next = 13;
@@ -1218,7 +1218,7 @@ component.options.__file = "src/pages/home/index.vue"
   },
   methods: {
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     navClick: function navClick(index) {
       this.navActive = index;
@@ -1475,7 +1475,7 @@ component.options.__file = "src/pages/home/index.vue"
                   _this2.query("init");
                 } else {
                   // 未注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
                 }
 
                 _context.next = 13;
@@ -2329,7 +2329,7 @@ component.options.__file = "src/pages/home/index.vue"
       });
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     screen: function screen() {
       this.showModal = true;
@@ -2572,7 +2572,7 @@ component.options.__file = "src/pages/home/index.vue"
                   _this2.query("init");
                 } else {
                   // 未注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
                 }
 
                 _context.next = 13;

@@ -211,7 +211,7 @@ import {
   userFollow,
   userUnfollow,
 } from "../../../../api/index";
-import { openPage } from "../../../../utils/util";
+import { isLogin, openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
   name: "yuedanDetail",
@@ -265,7 +265,13 @@ export default {
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai() {
-      openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      if (isLogin) {
+        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+      }
     },
     subGiveUp() {
       let params = {

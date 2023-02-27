@@ -160,9 +160,9 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
     },
     goChooseMedia: function goChooseMedia() {
       if (this.platform_code) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/addfans/index?platform_code=" + this.platform_code + "&platform_name=" + this.platform_name);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/platform/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/platform/index");
       }
     },
     editMedia: function editMedia(oid, platform_code, platform_name) {
@@ -174,9 +174,9 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
           switch (res.tapIndex) {
             case 0:
               if (_this.platform_code) {
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + _this.platform_code + "&platform_name=" + _this.platform_name + "&oid=" + oid);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/addfans/index?platform_code=" + _this.platform_code + "&platform_name=" + _this.platform_name + "&oid=" + oid);
               } else {
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addfans/index?platform_code=" + platform_code + "&platform_name=" + platform_name + "&oid=" + oid);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/addfans/index?platform_code=" + platform_code + "&platform_name=" + platform_name + "&oid=" + oid);
               }
 
               break;

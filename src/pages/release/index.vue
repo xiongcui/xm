@@ -81,6 +81,12 @@ export default {
   name: "release",
   methods: {
     releaseUrl(type) {
+      if (!isLogin) {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+        return false;
+      }
       let url = "";
       switch (type) {
         case 1:

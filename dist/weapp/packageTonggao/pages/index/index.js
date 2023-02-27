@@ -151,23 +151,23 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
     },
     goRelease: function goRelease(type) {
       if (type == 1) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/brand/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
       }
 
       if (type == 2) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/shop/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
       }
 
       if (type == 3) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
       }
 
       if (type == 4) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
       }
     },
     maskClick: function maskClick(row) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageTonggao/pages/add/index?code=" + this.code + "&type=" + row.value + "&key=" + row.key);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + this.code + "&type=" + row.value + "&key=" + row.key);
     },
     publicConfig: function publicConfig(params) {
       var _this = this;

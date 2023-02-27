@@ -119,7 +119,7 @@ component.options.__file = "src/packageAdd/pages/tips/index.vue"
       });
     },
     officialAccount: function officialAccount() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
     },
     checkFollow: function checkFollow(params) {
       var _this = this;

@@ -140,13 +140,13 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
       });
     },
     officialAccount: function officialAccount() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageAdd/pages/user/follow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
     },
     userAgreement: function userAgreement() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageSet/pages/serviceAgreement/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/serviceAgreement/index");
     },
     cheatPrevention: function cheatPrevention() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "b"])("/packageSet/pages/cheatPrevention/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/cheatPrevention/index");
     }
   }
 });

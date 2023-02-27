@@ -128,6 +128,13 @@ component.options.__file = "src/pages/release/index.vue"
   name: "release",
   methods: {
     releaseUrl: function releaseUrl(type) {
+      if (!isLogin) {
+        wx.redirectTo({
+          url: "/pages/login/index"
+        });
+        return false;
+      }
+
       var url = "";
 
       switch (type) {

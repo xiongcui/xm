@@ -88,7 +88,6 @@ export const request = (params) => {
         if (res.data.code == 200) {
           resolve(res);
         } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
-          // openPage("/pages/login/index");
           wx.redirectTo({
             url: "/pages/login/index",
           });
@@ -151,4 +150,10 @@ export const errortip = (txt) => {
     icon: "none",
     duration: 3000,
   });
+};
+
+export const isLogin = () => {
+  let token = wx.getStorageSync("token");
+  if (token) return true;
+  return false;
 };

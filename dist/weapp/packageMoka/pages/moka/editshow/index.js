@@ -478,7 +478,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
   },
   methods: {
     personDetail: function personDetail() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/editinfor/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
     },
     goback: function goback() {
       wx.navigateBack({
@@ -486,16 +486,16 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       });
     },
     editpersondata: function editpersondata() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editpersondata/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
     },
     editpersonimg: function editpersonimg() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editpersonimg/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersonimg/index");
     },
     editvideo: function editvideo() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMoka/pages/moka/editvideo/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editvideo/index");
     },
     editzytag: function editzytag() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/editlabel/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editlabel/index");
     },
     swichTab: function swichTab(index) {
       this.select_tab = this.tabList[index].tab_id;

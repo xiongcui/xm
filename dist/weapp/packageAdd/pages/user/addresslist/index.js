@@ -114,10 +114,10 @@ component.options.__file = "src/packageAdd/pages/user/addresslist/index.vue"
   },
   methods: {
     edit_address: function edit_address(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addressedit/index?oid=" + oid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/addressedit/index?oid=" + oid);
     },
     add_address: function add_address() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/addressedit/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/addressedit/index");
     },
     chooseAddress: function chooseAddress(row) {
       var pages = getCurrentPages(); //获取当前页面js里面的pages里的所有信息。

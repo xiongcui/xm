@@ -771,10 +771,10 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       this.visible = false;
     },
     signupAllDetail: function signupAllDetail(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
     },
     signupDetail: function signupDetail(sid, visited_status) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -797,7 +797,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
             case 1:
               console.log("投诉");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
               break;
           }
         },
@@ -895,7 +895,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
           switch (res.tapIndex) {
             case 0:
               console.log("立即沟通");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
               break;
 
             case 1:

@@ -188,7 +188,7 @@ import {
   userFollow,
   userUnfollow,
 } from "../../../../api/index";
-import { openPage } from "../../../../utils/util";
+import { isLogin, openPage } from "../../../../utils/util";
 export default {
   name: "zuopin_detail",
   data() {
@@ -215,7 +215,13 @@ export default {
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai() {
-      openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      if (isLogin) {
+        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+      }
     },
     subGiveUp() {
       let params = {

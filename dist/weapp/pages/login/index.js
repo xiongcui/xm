@@ -218,7 +218,7 @@ component.options.__file = "src/pages/login/index.vue"
                   });
                 } else {
                   // 未注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
                 }
 
                 _context.next = 13;
@@ -250,7 +250,7 @@ component.options.__file = "src/pages/login/index.vue"
 
               case 3:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/pages/register/index");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
                 _context2.next = 9;
                 break;
 

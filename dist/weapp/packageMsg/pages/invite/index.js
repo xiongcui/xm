@@ -403,7 +403,7 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
       this.applyList(params);
     },
     goDetail: function goDetail(sid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageMsg/pages/inviteDetail/index?sid=" + sid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid);
     },
     applyList: function applyList(params) {
       var _this = this;

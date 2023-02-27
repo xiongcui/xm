@@ -313,7 +313,13 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai: function launchYuepai() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "b"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      if (_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"]) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index"
+        });
+      }
     },
     subGiveUp: function subGiveUp() {
       var params = {

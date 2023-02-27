@@ -266,7 +266,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       });
     },
     goPay: function goPay() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "b"])("/packageAdd/pages/user/rechargecoin/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargecoin/index");
     },
     coinList: function coinList(params) {
       var _this = this;
@@ -406,8 +406,6 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
   },
   onReachBottom: function onReachBottom() {
     if (this.currentTab == 2) {
-      console.log(111);
-
       if (this.loading) {
         this.pageNum++;
         this.query();

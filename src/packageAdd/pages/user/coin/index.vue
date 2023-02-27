@@ -267,7 +267,6 @@ export default {
   },
   onReachBottom() {
     if (this.currentTab == 2) {
-      console.log(111);
       if (this.loading) {
         this.pageNum++;
         this.query();

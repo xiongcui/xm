@@ -74,17 +74,6 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -92,10 +81,23 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
   name: "msgList",
   data: function data() {
     return {
+      loading: true,
+      pageNum: 1,
+      pageSize: 10,
       list: []
     };
   },
   methods: {
+    hyper_link: function hyper_link(url) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])(url);
+    },
+    query: function query() {
+      this.loading = false;
+      this.systemList({
+        page: this.pageNum,
+        per_page: this.pageSize
+      });
+    },
     systemList: function systemList(params) {
       var _this = this;
 
@@ -123,24 +125,34 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
               case 7:
                 data = res.data.data.items;
                 _this.list = _this.list.concat(data);
-                _context.next = 13;
+                _this.loading = true;
+                _context.next = 14;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 12:
+                _context.prev = 12;
                 _context.t0 = _context["catch"](0);
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 12]]);
       }))();
     }
   },
   created: function created() {
-    this.systemList("");
+    this.systemList({
+      page: this.pageNum,
+      per_page: this.pageSize
+    });
+  },
+  onReachBottom: function onReachBottom() {
+    if (this.loading) {
+      this.pageNum++;
+      this.query();
+    }
   }
 });
 
@@ -179,7 +191,17 @@ var render = function () {
         ]),
         _c("view", { staticClass: "msg-bt" }, [
           _c("text", [_vm._v(_vm._s(item.date_humanize))]),
-          _c("text", [_vm._v(_vm._s(item.hyper_tips))]),
+          _c(
+            "text",
+            {
+              on: {
+                tap: function ($event) {
+                  return _vm.hyper_link(item.hyper_link)
+                },
+              },
+            },
+            [_vm._v(_vm._s(item.hyper_tips))]
+          ),
         ]),
       ])
     }),
