@@ -265,7 +265,7 @@ export default {
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai() {
-      if (isLogin) {
+      if (isLogin()) {
         openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
       } else {
         wx.redirectTo({

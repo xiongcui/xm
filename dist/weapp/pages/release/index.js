@@ -46,6 +46,7 @@ component.options.__file = "src/pages/release/index.vue"
 "use strict";
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/release/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 //
 //
 //
@@ -124,11 +125,12 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "release",
   methods: {
     releaseUrl: function releaseUrl(type) {
-      if (!isLogin) {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* isLogin */ "b"])()) {
         wx.redirectTo({
           url: "/pages/login/index"
         });
@@ -428,5 +430,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/pages/release/index.vue","runtime","taro","vendors"]]]);
+},[["./src/pages/release/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

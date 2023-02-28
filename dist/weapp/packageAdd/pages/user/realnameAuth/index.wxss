@@ -1,0 +1,52 @@
+.realname {
+  padding: 30rpx;
+}
+.realname .realname_info {
+  margin-bottom: 16rpx;
+}
+.realname .realname_title {
+  font-size: 32rpx;
+  color: #333333;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16rpx;
+}
+.realname .realname_title image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 16rpx;
+}
+.realname .realname_form {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx 0;
+}
+.realname .realname_form .label {
+  font-size: 30rpx;
+  color: #333333;
+}
+.realname .realname_form .realname-input {
+  text-align: right;
+  width: 70%;
+}
+.realname .realname_tips {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+}
+.realname .realname_tips image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}
+.realname .card_identity image {
+  width: 100%;
+  margin: 16rpx 0;
+}

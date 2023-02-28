@@ -154,6 +154,7 @@ export const errortip = (txt) => {
 
 export const isLogin = () => {
   let token = wx.getStorageSync("token");
+  console.log(token);
   if (token) return true;
   return false;
 };

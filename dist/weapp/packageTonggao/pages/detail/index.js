@@ -346,7 +346,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       }
     },
     launchYuepai: function launchYuepai() {
-      if (_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"]) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
       } else {
         wx.redirectTo({

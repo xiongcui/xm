@@ -77,11 +77,12 @@
 
 <script>
 import "./index.scss";
+import { isLogin } from "../../utils/util";
 export default {
   name: "release",
   methods: {
     releaseUrl(type) {
-      if (!isLogin) {
+      if (!isLogin()) {
         wx.redirectTo({
           url: "/pages/login/index",
         });

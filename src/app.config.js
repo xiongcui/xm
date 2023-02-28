@@ -85,6 +85,7 @@ export default defineAppConfig({
         "pages/zuopin/zuopin_list/index",
         "pages/tips/index",
         "pages/user/followAndfans/index",
+        "pages/user/realnameAuth/index",
       ],
     },
     {
