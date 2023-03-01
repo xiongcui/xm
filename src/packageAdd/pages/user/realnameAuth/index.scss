@@ -1,5 +1,5 @@
 .realname {
-  padding: 30px;
+  padding: 30px 40px;
   .realname_info {
     margin-bottom: 16px;
   }
@@ -43,5 +43,27 @@
       width: 100%;
       margin: 16px 0px;
     }
+  }
+  .realname_txt {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    color: #333333;
+    margin: 16px 0px;
+    image {
+      width: 28px;
+      height: 32px;
+      margin-right: 16px;
+    }
+  }
+  .realname_btn {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background: #ff5457;
+    border-radius: 8px;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 30px;
   }
 }

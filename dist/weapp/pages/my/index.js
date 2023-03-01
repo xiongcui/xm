@@ -526,6 +526,11 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -583,6 +588,9 @@ component.options.__file = "src/pages/my/index.vue"
     pledgecash: function pledgecash() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/creditGuarantee/index");
     },
+    myCertification: function myCertification() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+    },
     myYuepai: function myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
@@ -637,7 +645,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "zb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -722,7 +730,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "gb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -752,7 +760,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "hb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -785,7 +793,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "qb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1320,7 +1328,11 @@ var render = function () {
         !_vm.infor.realname
           ? _c(
               "view",
-              { staticClass: "item ub", attrs: { catchtap: "realName" } },
+              {
+                staticClass: "item ub",
+                attrs: { catchtap: "realName" },
+                on: { tap: _vm.myCertification },
+              },
               [
                 _c("view", { staticClass: "item_icon" }, [
                   _c("image", {

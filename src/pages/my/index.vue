@@ -297,7 +297,12 @@
             ></image>
           </view>
         </view>
-        <view catchtap="realName" class="item ub" v-if="!infor.realname">
+        <view
+          catchtap="realName"
+          class="item ub"
+          v-if="!infor.realname"
+          @tap="myCertification"
+        >
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -535,6 +540,9 @@ export default {
     },
     pledgecash() {
       openPage("/packageMsg/pages/creditGuarantee/index");
+    },
+    myCertification() {
+      openPage("/packageAdd/pages/user/realnameAuth/index");
     },
     myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH

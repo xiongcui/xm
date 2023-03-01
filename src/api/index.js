@@ -749,3 +749,21 @@ export const systemList = (data) => {
     data,
   });
 };
+
+// OCR识别接口
+export const ocrCard = (data) => {
+  return request({
+    url: baseUrl + "/v1/identify/ocr/id_card",
+    method: "post",
+    data,
+  });
+};
+
+// 信息上报接口
+export const submitCard = (data) => {
+  return request({
+    url: baseUrl + "/v1/identify/submit/id_card",
+    method: "post",
+    data,
+  });
+};
