@@ -7,7 +7,7 @@
           <image class="no_avatar" mode="aspectFit" v-else></image>
         </view>
         <!-- <view class="avatar_select">
-              <image @tap="chooesImage" src="../../assets/images/avatar_select.png"></image>
+              <image @tap="chooesImage" src="https://yuepai-oss.qubeitech.com/static/images/avatar_select.png"></image>
           </view> -->
       </view>
       <view class="infor">
@@ -31,28 +31,28 @@
               @tap="sexChange(1)"
               class="select_sex"
               data-sex="1"
-              src="../../assets/images/six1ed.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/six1ed.png"
               v-if="sex === 1"
             ></image>
             <image
               @tap="sexChange(1)"
               class="select_sex"
               data-sex="1"
-              src="../../assets/images/six1.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/six1.png"
               v-else
             ></image>
             <image
               @tap="sexChange(0)"
               class="select_sex"
               data-sex="2"
-              src="../../assets/images/six2ed.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/six2ed.png"
               v-if="sex === 0"
             ></image>
             <image
               @tap="sexChange(0)"
               class="select_sex"
               data-sex="2"
-              src="../../assets/images/six2.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/six2.png"
               v-else
             ></image>
           </view>
@@ -111,7 +111,6 @@
 
 <script>
 import "./index.scss";
-// import weCropper from "../we-cropper/index.vue";
 import { getCareer, userRegister } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
 export default {

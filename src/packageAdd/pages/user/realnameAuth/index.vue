@@ -1,12 +1,16 @@
 <template>
   <view class="realname">
-    <view class="realname_info">
+    <view class="realname_info" v-show="pageShow == 'uploadimg'">
       <view class="realname_title">
-        <image src="../../../../assets/images/user/realname/sfz.jpg"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/realname/sfz.jpg"
+        ></image>
         请上传身份证的正反面
       </view>
       <view class="realname_tips">
-        <image src="../../../../assets/images/common/warn_icon.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
+        ></image>
         请确保二代身份证有效、并且头像文字清晰，四角对齐，无反光、无遮挡。
       </view>
       <view class="card_identity">
@@ -18,7 +22,7 @@
         <image
           v-else
           @tap="chooseImage(0)"
-          src="../../../../assets/images/user/realname/card_tx.jpg"
+          src="https://yuepai-oss.qubeitech.com/static/images/user/realname/card_tx.jpg"
         ></image>
       </view>
       <view class="card_identity">
@@ -30,12 +34,14 @@
         <image
           v-else
           @tap="chooseImage(1)"
-          src="../../../../assets/images/user/realname/card_gh.jpg"
+          src="https://yuepai-oss.qubeitech.com/static/images/user/realname/card_gh.jpg"
         ></image>
       </view>
-      <view class="realname_title">
-        <image src="../../../../assets/images/user/realname/sfz.jpg"></image>
-        请完善您的个人信息
+      <view class="realname_btn" @tap="next">下一步</view>
+    </view>
+    <view class="realname_info" v-show="pageShow == 'info'">
+      <view class="realname_title realname_info">
+        识别到以下信息，点击可进行修改
       </view>
       <view class="realname_form">
         <view class="label"> 真实姓名 </view>
@@ -54,18 +60,25 @@
         />
       </view>
       <view class="realname_txt">
-        <image src="../../../../assets/images/user/realname/safety.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/realname/safety.png"
+        ></image>
         认证信息已加密 仅用于匹配认证信息
       </view>
-      <view class="realname_btn">确认提交</view>
+      <view class="realname_box_btn">
+        <view class="re_upload" @tap="reupload">重新上传</view>
+        <view class="realname_btn" @tap="submit">确认提交</view>
+      </view>
+      <!-- <view class="realname_btn">确认提交</view> -->
     </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
-import { ocrCard } from "../../../../api/index";
+import { ocrCard, idcardInfo, ocrIdcard } from "../../../../api/index";
 import { Base64 } from "js-Base64";
+import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "realnameAuth",
   data() {
@@ -76,6 +89,7 @@ export default {
       card: "",
       frontfileName: "",
       backfileName: "",
+      pageShow: "uploadimg",
     };
   },
   methods: {
@@ -183,16 +197,51 @@ export default {
         },
       });
     },
-    async ocrCard(params, type) {
+    next() {
+      if (this.realname_rx && this.realname_gh) {
+        this.pageShow = "info";
+        this.idcardInfo("");
+      } else {
+        errortip("请先上传身份证");
+      }
+    },
+    reupload() {
+      this.pageShow = "uploadimg";
+    },
+    submit() {
+      this.ocrIdcard({
+        id_name: this.realname,
+        id_no: this.card,
+      });
+    },
+    async ocrCard(params) {
       try {
         let res = await ocrCard(params);
         if (res.data.data.id_card_front) {
-          if (type == "front") {
-            this.realname = res.data.data.id_name;
-          } else {
-            this.card = res.data.data.id_no;
-          }
+          this.realname = res.data.data.id_name;
+          this.card = res.data.data.id_no;
         }
+      } catch (error) {}
+    },
+    async idcardInfo(params) {
+      try {
+        let res = await idcardInfo(params);
+        if (res.data.data.id_card_front) {
+          this.realname = res.data.data.id_name;
+          this.card = res.data.data.id_no;
+        }
+      } catch (error) {}
+    },
+    async ocrIdcard(params) {
+      try {
+        let res = await ocrIdcard(params);
+        let userInfo = wx.getStorageSync("userInfo");
+        openPage(
+          "/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" +
+            res.data.data.verify_token +
+            "&uuid=" +
+            userInfo.uuid
+        );
       } catch (error) {}
     },
   },

@@ -279,7 +279,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followerList */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followerList */ "v"])(params);
 
               case 3:
                 res = _context.sent;
@@ -321,7 +321,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followedList */ "w"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followedList */ "u"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -363,7 +363,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "xb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -397,7 +397,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Fb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -533,7 +533,7 @@ var render = function () {
                                       attrs: {
                                         src: item.avatar
                                           ? item.avatar
-                                          : "../../../../assets/images/avatar_default.png",
+                                          : "https://yuepai-oss.qubeitech.com/static/avatar_default.png",
                                       },
                                     }),
                                     _c(
@@ -607,7 +607,7 @@ var render = function () {
                           _c("image", {
                             staticClass: "none-img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
                               mode: "aspectFill",
                             },
                           }),
@@ -650,7 +650,7 @@ var render = function () {
                                       attrs: {
                                         src: item.avatar
                                           ? item.avatar
-                                          : "../../../../assets/images/avatar_default.png",
+                                          : "https://yuepai-oss.qubeitech.com/static/avatar_default.png",
                                       },
                                     }),
                                     _c(
@@ -724,7 +724,7 @@ var render = function () {
                           _c("image", {
                             staticClass: "none-img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
                               mode: "aspectFill",
                             },
                           }),

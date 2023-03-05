@@ -742,7 +742,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "Z"])(params);
 
               case 3:
                 res = _context.sent;
@@ -996,7 +996,7 @@ var render = function () {
                     _c("image", {
                       staticClass: "upload-img",
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/upload-img.png */ "./src/assets/images/upload-img.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/upload-img.png",
                         mode: "aspectFit",
                       },
                     }),
@@ -1019,7 +1019,7 @@ var render = function () {
                     _c("image", {
                       staticClass: "upload-video",
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/upload-video.png */ "./src/assets/images/upload-video.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/upload-video.png",
                         mode: "aspectFit",
                       },
                     }),

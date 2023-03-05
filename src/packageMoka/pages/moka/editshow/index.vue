@@ -8,7 +8,7 @@
         class="back"
       >
         <image
-          src="../../../../assets/images/common/goback.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/goback.png"
           :style="{
             top: globalData.navTop + 'px',
           }"
@@ -31,7 +31,7 @@
               :src="
                 infor.avatar
                   ? infor.avatar
-                  : require('../../../../assets/images/head.png')
+                  : 'https://yuepai-oss.qubeitech.com/static/images/head.png'
               "
               class="head-img"
               mode="aspectFit"
@@ -47,22 +47,22 @@
               <text>{{ infor.province_name }}</text>
               <view class="head-tag-box">
                 <image
-                  src="../../../../assets/images/common/icon_real.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
                   class="head-tag-img"
                   v-if="infor.is_certify"
                 ></image>
                 <image
-                  src="../../../../assets/images/common/icon_pledge_none.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
                   class="head-tag-img"
                   v-else
                 ></image>
                 <image
-                  src="../../../../assets/images/common/icon_pledge.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
                   class="head-tag-img"
                   v-if="infor.is_security"
                 ></image>
                 <image
-                  src="../../../../assets/images/common/icon_real_none.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
                   class="head-tag-img"
                   v-else
                 ></image>
@@ -77,12 +77,12 @@
           <view class="my_tags">
             <view class="tag">
               <image
-                src="../../../../assets/images/user/show/sex1.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/show/sex1.png"
                 class="sex"
                 v-if="infor.sex == 1"
               ></image>
               <image
-                src="../../../../assets/images/user/show/sex2.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/show/sex2.png"
                 class="sex"
                 v-if="infor.sex == 0"
               ></image>
@@ -122,7 +122,7 @@
             </view>
             <view class="my-conunt-rt" @tap="personDetail">
               <image
-                src="../../../../assets/images/user/show/btn_edit.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/show/btn_edit.png"
               ></image>
             </view>
           </view>
@@ -148,7 +148,7 @@
           <view class="none_tipimg">
             <image
               mode="widthFix"
-              src="../../../../assets/images/common/none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
             ></image>
           </view>
           <view class="none_tiptext">暂无信息哦～</view>
@@ -222,17 +222,17 @@
             <view class="home_item_main ub" v-else>
               <view catchtap="editpersonimg" class="home_img_add">
                 <image
-                  src="../../../../assets/images/common/add_icon.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
               <view catchtap="editpersonimg" class="home_img_add">
                 <image
-                  src="../../../../assets/images/common/add_icon.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
               <view catchtap="editpersonimg" class="home_img_add">
                 <image
-                  src="../../../../assets/images/common/add_icon.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
             </view>
@@ -264,7 +264,7 @@
             <view class="home_item_main" v-else>
               <view @tap="editvideo" class="home_video_add">
                 <image
-                  src="../../../../assets/images/common/add_icon.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
             </view>
@@ -311,7 +311,7 @@
           <view class="none_tipimg">
             <image
               mode="widthFix"
-              src="../../../../assets/images/common/none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
             ></image>
           </view>
           <view class="none_tiptext">还没有制作过模卡哦～</view>
@@ -342,7 +342,7 @@
           <view class="loadingmore" v-if="datamore_moka">
             <image
               mode="widthFix"
-              src="../../../../assets/images/common/loading.gif"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/loading.gif"
             ></image>
           </view>
           <view class="bottom_gap"></view>

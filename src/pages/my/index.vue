@@ -13,21 +13,21 @@
           <view class="page_settings">
             <image
               @tap="open_settings"
-              src="../../assets/images/user/index/icon_settings.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_settings.png"
             ></image>
           </view>
           <block>
             <view class="sign_block fl" v-if="is_today_sign">
               <image
                 class="icon_sign"
-                src="../../assets/images/user/index/icon_signed.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_signed.png"
               ></image>
               <view class="is_sign">已签到</view>
             </view>
             <view @tap="showSign" class="sign_block fl" v-else>
               <image
                 class="icon_sign"
-                src="../../assets/images/user/index/icon_sign.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_sign.png"
               ></image>
               <view>签到</view>
             </view>
@@ -42,7 +42,11 @@
     <view class="my-head">
       <view class="my-head-left">
         <image
-          :src="infor.avatar ? infor.avatar : '../../assets/images/head.png'"
+          :src="
+            infor.avatar
+              ? infor.avatar
+              : 'https://yuepai-oss.qubeitech.com/static/images/head.png'
+          "
           class="head-img"
           mode="aspectFit"
         ></image>
@@ -57,22 +61,22 @@
           <text>{{ infor.province_name }}</text>
           <view class="head-tag-box">
             <image
-              src="../../assets/images/common/icon_real.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
               class="head-tag-img"
               v-if="infor.is_certify"
             ></image>
             <image
-              src="../../assets/images/common/icon_pledge_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
               class="head-tag-img"
               v-else
             ></image>
             <image
-              src="../../assets/images/common/icon_pledge.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="head-tag-img"
               v-if="infor.is_security"
             ></image>
             <image
-              src="../../assets/images/common/icon_real_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
               class="head-tag-img"
               v-else
             ></image>
@@ -93,13 +97,13 @@
       <view class="my_tags" v-if="infor.age">
         <view class="tag">
           <image
-            src="../../assets/images/nan.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
             mode="aspectFit"
             class="sex"
             v-if="infor.sex == 1"
           ></image>
           <image
-            src="../../assets/images/nv.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
             mode="aspectFit"
             class="sex"
             v-if="infor.sex == 0"
@@ -145,7 +149,7 @@
       <view class="my-vip">
         <view class="my-vip-left" @tap="goCoin">
           <image
-            src="../../assets/images/money.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/money.png"
             class="my-vip-img"
             mode="aspectFit"
           ></image>
@@ -156,7 +160,7 @@
         </view>
         <view class="my-vip-rt" @tap="goVip">
           <image
-            src="../../assets/images/vip.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/vip.png"
             class="my-vip-img"
             mode="aspectFit"
           ></image>
@@ -169,7 +173,7 @@
       <view class="my-column">
         <view class="my-column-item" @tap="goZhuye">
           <image
-            src="../../assets/images/zhuye.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/zhuye.png"
             class="my-column-img"
             mode="aspectFill"
           ></image>
@@ -177,7 +181,7 @@
         </view>
         <view class="my-column-item" @tap="goZuopin">
           <image
-            src="../../assets/images/album.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/album.png"
             class="my-column-img"
             mode="aspectFill"
           ></image>
@@ -185,7 +189,7 @@
         </view>
         <view class="my-column-item" @tap="goCollection">
           <image
-            src="../../assets/images/collection.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/collection.png"
             class="my-column-img"
             mode="aspectFill"
           ></image>
@@ -197,7 +201,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/ad.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/ad.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -206,7 +210,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -214,7 +218,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/yuepai.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -223,7 +227,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -231,7 +235,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/huodong.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/huodong.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -240,7 +244,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -248,7 +252,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/zuopin1.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/zuopin1.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -257,7 +261,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -265,7 +269,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/moka.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -274,7 +278,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -284,7 +288,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/dengji.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/dengji.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -293,7 +297,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -306,7 +310,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/realname.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/realname.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -316,7 +320,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -324,7 +328,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/pledgecash.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/pledgecash.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -335,7 +339,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -343,7 +347,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/invite.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/invite.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -353,7 +357,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -361,7 +365,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/kefu1.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/kefu1.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -370,7 +374,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -378,7 +382,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/helpcenter.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/helpcenter.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -387,7 +391,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -395,7 +399,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/gongzhonghao.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/gongzhonghao.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -404,7 +408,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -414,7 +418,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/about.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/about.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -423,7 +427,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -431,7 +435,7 @@
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/invoice.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png"
             ></image>
           </view>
           <view class="ub-f1">
@@ -440,7 +444,7 @@
           <view class="arrow">
             <image
               mode="aspectFit"
-              src="../../assets/images/user/index/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
         </view>
@@ -451,13 +455,15 @@
       <view class="sign_md_close_btn">
         <image
           @tap="close"
-          src="../../assets/images/common/tipclose.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png"
         ></image>
       </view>
       <view class="sign_modal_main">
         <form class="main">
           <view class="sign_md_top">
-            <image src="../../assets/images/user/sign/addcoin.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png"
+            ></image>
           </view>
           <view class="sign_md_title">
             <view>签到成功</view>

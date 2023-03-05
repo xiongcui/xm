@@ -46,7 +46,9 @@
             </picker>
           </view>
           <view class="gap_line">
-            <image src="../../../../assets/images/user/index/right.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/user/index/right.png"
+            ></image>
           </view>
         </view>
         <view class="info_contact item_child ub">

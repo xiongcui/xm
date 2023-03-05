@@ -41,7 +41,7 @@
             v-if="!videolist.length"
           >
             <image
-              src="../../../../assets/images/upload-img.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/upload-img.png"
               class="upload-img"
               mode="aspectFit"
             ></image>
@@ -55,7 +55,7 @@
             v-if="!imgList.length && !videolist.length"
           >
             <image
-              src="../../../../assets/images/upload-video.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/upload-video.png"
               class="upload-video"
               mode="aspectFit"
             ></image>
@@ -84,7 +84,7 @@
         <view class="zuopin-item-left">
           <image
             class="zuopin-icon"
-            src="../../../../assets/images/position.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
           >
           </image>
           <text v-if="localtion"> {{ localtion }}</text>
@@ -93,13 +93,16 @@
         <view class="zuopin-item-right">
           <image
             mode="aspectFit"
-            src="../../../../assets/images/common/icon_right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_right.png"
           ></image>
         </view>
       </view>
       <view class="zuopin-localtion">
         <view class="zuopin-item-left">
-          <image class="zuopin-icon" src="../../../../assets/images/time.png">
+          <image
+            class="zuopin-icon"
+            src="https://yuepai-oss.qubeitech.com/static/images/time.png"
+          >
           </image>
           <text>约拍返片</text>
         </view>
@@ -111,7 +114,7 @@
         <view class="zuopin-item-left">
           <image
             class="zuopin-icon"
-            src="../../../../assets/images/user/index/yuepai.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
           >
           </image>
           <text>拍摄设备</text>

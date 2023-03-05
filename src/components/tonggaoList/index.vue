@@ -25,10 +25,13 @@
           </view>
           <view class="sizer_img">
             <image
-              src="../../assets/images/common/sizered.png"
+              src="https://yuepai-oss.qubeitech.com/static/common/sizered.png"
               v-if="sizer_num.length"
             ></image>
-            <image src="../../assets/images/common/sizer.png" v-else></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/common/sizer.png"
+              v-else
+            ></image>
           </view>
         </view>
       </view>
@@ -74,14 +77,14 @@
                 :src="
                   item.author && item.author.avatar
                     ? item.author.avatar
-                    : '../../assets/images/avatar_default.png'
+                    : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                 "
                 class="head-img"
               ></image>
               {{ item.author && item.author.nickname }}
               <image
                 v-if="item.author && item.author.is_security"
-                src="../../assets/images/common/icon_pledge.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge.png"
                 class="pledge-img"
               ></image>
             </view>
@@ -92,16 +95,22 @@
         </view>
         <view class="tonggao_bottom">
           <view class="tonggao_time">
-            <image src="../../assets/images/common/time.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/common/time.png"
+            ></image>
             {{ item.date_humanize }}
           </view>
           <view class="tonggao_bottom_rt">
             <view class="tonggao_yuepai">
-              <image src="../../assets/images/user/index/yuepai.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/user/index/yuepai.png"
+              ></image>
               {{ item.statistic.invite_cnt }}
             </view>
             <view class="tonggao_read">
-              <image src="../../assets/images/eyes.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/eyes.png"
+              ></image>
               {{ item.statistic.read_cnt }}
             </view>
           </view>
@@ -110,7 +119,7 @@
     </view>
     <view v-else class="none-data">
       <image
-        src="../../assets/images/common/none.png"
+        src="https://yuepai-oss.qubeitech.com/static/common/none.png"
         mode="aspectFill"
         class="none-img"
       ></image>

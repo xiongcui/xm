@@ -24,12 +24,16 @@
       </view>
       <view @tap.stop="edit_address(item.oid)" class="edit_btn ub ub-ver">
         <view class="ub-f1"></view>
-        <image src="../../../../assets/images/common/editbtn.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/common/editbtn.png"
+        ></image>
         <view class="ub-f1"></view>
       </view>
     </view>
     <view @tap="add_address" class="add_address">
-      <image src="../../../../assets/images/common/add_black.png"></image
+      <image
+        src="https://yuepai-oss.qubeitech.com/static/common/add_black.png"
+      ></image
       >添加新地址
     </view>
     <!-- <view class="loadingmore">

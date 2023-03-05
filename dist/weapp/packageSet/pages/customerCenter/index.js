@@ -111,6 +111,10 @@ component.options.__file = "src/packageSet/pages/customerCenter/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -221,7 +225,7 @@ var render = function () {
         [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/user/customer/kefu.png */ "./src/assets/images/user/customer/kefu.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/customer/kefu.png",
             },
           }),
           _c("view", [_vm._v("在线客服")]),
@@ -233,7 +237,7 @@ var render = function () {
         [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/user/customer/yijian.png */ "./src/assets/images/user/customer/yijian.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/customer/yijian.png",
             },
           }),
           _c("view", [_vm._v("意见反馈")]),
@@ -299,7 +303,9 @@ var render = function () {
               _c("image", {
                 staticClass: "customer-img",
                 class: { "customer-rotate": item.show },
-                attrs: { src: __webpack_require__(/*! ../../../assets/images/right.png */ "./src/assets/images/right.png") },
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
+                },
               }),
               _c(
                 "view",
@@ -328,30 +334,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/user/customer/kefu.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/user/customer/kefu.png ***!
-  \**************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/customer/kefu.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/customer/yijian.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/user/customer/yijian.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/customer/yijian.png";
 
 /***/ }),
 

@@ -101,7 +101,7 @@ page {
 
 .msg-box .msg-tips {
   padding: 16rpx 16rpx 16rpx 50rpx;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAlCAMAAAAdgrsPAAAAjVBMVEUAAAD/VFf9VFb/VFj/W27/VFf/VFf/U1b/VFf/VFf/VFf+VFf/U1j/U1f/VVz/VFf/VFf/U1f/VFf/VFf/VFT/U1r/UlX/S0v/VFf/VVf9U1f/VFf/VFb/VFf/VFf/VFf/VVf/VFj/U1f/U1f/VFf+VFf/VVj/VFf/VVb+VFf+U1f9VFf/VFj/VFf/VFe/81y+AAAALnRSTlMAwpXsAvs9C+a+t3prYwb13V1aMhsWEQPJraJKItO0gm9mLcaNc1RRQ9fTpKOe6FXvjwAAATBJREFUOMvd09luglAURuGfeVIEHNA6a612Wu//eFX0SFOQ3rtuyEm+wE7ORs/TJB//R9KDw0xV7jBtJW6RAZaqDkRtyp8CjkF9mLl/yW4F7H3bIL1ConunzziOIw+yN6lG7gpvZ0zCNWeT6obceDqSJiHRzSw8li/nkkAyKPB4H0s5+GbAQSCT+VzhEUtlxreqejhqIG3gPOCasAu508s8Piw6kHK8sSYw70KjaugBeRdK4Sg59KpTQdb1pn51KrfDNlSAmcnURNbleYJFB9pCcbnjUI/R0SOSyhC7XrbEtu3N77sbkI2qlarn9bkU9l2DSutjUW1BrHvBl2VNgeX8im7NzD7VDSMgGtZoDWs1mi/BcwzKYeWqWdkPwaCEfaDWgmRw/+/8VI8ab0d6ln4AEfgiOvfOfDUAAAAASUVORK5CYII=) 10rpx center no-repeat #fff1ef;
+  background: url(https://yuepai-oss.qubeitech.com/static/images/common/icon_tongzhi.png) 10rpx center no-repeat #fff1ef;
   font-size: 28rpx;
   display: -webkit-flex;
   display: -ms-flexbox;

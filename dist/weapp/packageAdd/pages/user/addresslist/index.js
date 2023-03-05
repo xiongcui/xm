@@ -100,6 +100,10 @@ component.options.__file = "src/packageAdd/pages/user/addresslist/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -251,7 +255,7 @@ var render = function () {
                 _c("view", { staticClass: "ub-f1" }),
                 _c("image", {
                   attrs: {
-                    src: __webpack_require__(/*! ../../../../assets/images/common/editbtn.png */ "./src/assets/images/common/editbtn.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/common/editbtn.png",
                   },
                 }),
                 _c("view", { staticClass: "ub-f1" }),
@@ -263,7 +267,7 @@ var render = function () {
       _c("view", { staticClass: "add_address", on: { tap: _vm.add_address } }, [
         _c("image", {
           attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/common/add_black.png */ "./src/assets/images/common/add_black.png"),
+            src: "https://yuepai-oss.qubeitech.com/static/common/add_black.png",
           },
         }),
         _vm._v("添加新地址 "),

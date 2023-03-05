@@ -228,6 +228,9 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -548,7 +551,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "Z"])(params);
 
               case 3:
                 res = _context.sent;
@@ -591,7 +594,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* subNotePhoto */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* subNotePhoto */ "kb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -719,7 +722,7 @@ var render = function () {
                       _c("image", {
                         staticClass: "upload-img",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/upload-img.png */ "./src/assets/images/upload-img.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/upload-img.png",
                           mode: "aspectFit",
                         },
                       }),
@@ -742,7 +745,7 @@ var render = function () {
                       _c("image", {
                         staticClass: "upload-video",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/upload-video.png */ "./src/assets/images/upload-video.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/upload-video.png",
                           mode: "aspectFit",
                         },
                       }),
@@ -819,7 +822,7 @@ var render = function () {
               _c("image", {
                 staticClass: "zuopin-icon",
                 attrs: {
-                  src: __webpack_require__(/*! ../../../../assets/images/position.png */ "./src/assets/images/position.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
                 },
               }),
               _vm.localtion
@@ -830,7 +833,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_right.png",
                 },
               }),
             ]),
@@ -840,7 +843,9 @@ var render = function () {
           _c("view", { staticClass: "zuopin-item-left" }, [
             _c("image", {
               staticClass: "zuopin-icon",
-              attrs: { src: __webpack_require__(/*! ../../../../assets/images/time.png */ "./src/assets/images/time.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/time.png",
+              },
             }),
             _c("text", [_vm._v("约拍返片")]),
           ]),
@@ -856,7 +861,7 @@ var render = function () {
             _c("image", {
               staticClass: "zuopin-icon",
               attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
               },
             }),
             _c("text", [_vm._v("拍摄设备")]),
@@ -957,18 +962,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/time.png":
-/*!************************************!*\
-  !*** ./src/assets/images/time.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/time.png";
 
 /***/ }),
 

@@ -56,7 +56,7 @@
           </view>
           <view class="complaint-upload-img" @tap="chooseImage">
             <image
-              src="../../../assets/images/upload-img.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/upload-img.png"
               class="upload-img"
               mode="aspectFit"
             ></image>

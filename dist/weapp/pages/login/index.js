@@ -112,7 +112,7 @@ component.options.__file = "src/pages/login/index.vue"
   data: function data() {
     return {
       userInfo: {
-        avatar: __webpack_require__(/*! ../../assets/images/avatar_default.png */ "./src/assets/images/avatar_default.png"),
+        avatar: "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
         nickname: "",
         phone: ""
       },
@@ -191,7 +191,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Ib"])(params);
 
               case 3:
                 res = _context.sent;
@@ -246,7 +246,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "x"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -296,7 +296,7 @@ var render = function () {
               _c("image", {
                 staticClass: "logo-img",
                 attrs: {
-                  src: __webpack_require__(/*! ../../assets/images/logo.png */ "./src/assets/images/logo.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/logo.png",
                   mode: "aspectFit",
                 },
               }),
@@ -360,18 +360,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/avatar_default.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/avatar_default.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/avatar_default.png";
 
 /***/ }),
 

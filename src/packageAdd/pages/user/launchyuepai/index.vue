@@ -4,7 +4,7 @@
       <view class="none_tipimg">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/none.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         ></image>
       </view>
       <view class="none_tiptext">{{ result.message }}</view>
@@ -14,7 +14,7 @@
       <view class="none_tipimg">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/none.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         ></image>
       </view>
       <view class="none_tiptext">对方需要你实名才能报名～</view>
@@ -24,7 +24,7 @@
       <view class="none_tipimg">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/none.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         ></image>
       </view>
       <view class="none_tiptext">对方需要你交纳保证金才能报名～</view>
@@ -34,7 +34,7 @@
       <view class="none_tipimg">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/none.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         ></image>
       </view>
       <view class="none_tiptext">对方需要会员才能报名</view>
@@ -44,7 +44,7 @@
       <view class="none_tipimg">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/none.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         ></image>
       </view>
       <view class="none_tiptext">金豆不足！</view>
@@ -54,7 +54,7 @@
       <view class="none_tipimg">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/tip_success.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/tip_success.png"
         ></image>
       </view>
       <view class="none_tiptext">您已经报过名了</view>
@@ -63,7 +63,7 @@
       <view catchtap="tipSub" class="toptip fl">
         <image
           class="toptip_icon"
-          src="../../../../assets/images/common/tongzhi3.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/tongzhi3.png"
         ></image>
         <view class="toptip_text fl-g1">关注公众号及时接收消息通知</view>
         <view class="toptip_btn">关注</view>
@@ -71,7 +71,7 @@
       <view class="subtip_img">
         <image
           mode="widthFix"
-          src="../../../../assets/images/common/tip_success.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/tip_success.png"
         ></image>
       </view>
       <view class="subtip_title">报名成功</view>
@@ -81,7 +81,7 @@
     <view v-if="pageshow == 'normal'">
       <view catchtap="" class="toptip ub">
         <image
-          src="../../../../assets/images/common/icon_tongzhi.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/icon_tongzhi.png"
           class="warning"
         ></image>
         <view class="toptip_text ub-f1"
@@ -96,12 +96,12 @@
               {{ yuepaiInfo.author.nickname }}
               <block v-if="yuepaiInfo.author.sex !== null">
                 <image
-                  src="../../../../assets/images/nan.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                   class="yuepai_sex"
                   v-if="yuepaiInfo.author.sex == 1"
                 ></image>
                 <image
-                  src="../../../../assets/images/nv.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                   class="yuepai_sex"
                   v-if="yuepaiInfo.author.sex == 0"
                 ></image>
@@ -144,7 +144,7 @@
             <view class="type_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/tonggao/user.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png"
               ></image>
             </view>
             <view class="type_text">我的联系信息</view>
@@ -173,7 +173,9 @@
             <view class="ub-f1"></view>
           </view>
           <view class="info_btn">
-            <image src="../../../../assets/images/right.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
+            ></image>
           </view>
         </view>
         <view
@@ -187,7 +189,7 @@
             <view class="type_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/tonggao/reg_hongren.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/tonggao/reg_hongren.png"
               ></image>
             </view>
             <view class="type_text">红人账号</view>
@@ -208,13 +210,15 @@
           <view class="info_content_none ub ub-f1" v-else>
             <view class="add_icon">
               <image
-                src="../../../../assets/images/common/add_icon.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
               ></image>
             </view>
             <view class="add_text">选择账号</view>
           </view>
           <view class="info_btn">
-            <image src="../../../../assets/images/right.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
+            ></image>
           </view>
         </view>
         <view @tap="chooseAddress" class="info_item ub" v-if="showAddress">
@@ -222,7 +226,7 @@
             <view class="type_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/tonggao/reg_address.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/tonggao/reg_address.png"
               ></image>
             </view>
             <view class="type_text">收货地址</view>
@@ -239,13 +243,15 @@
           <view class="info_content_none ub ub-f1" v-else>
             <view class="add_icon">
               <image
-                src="../../../../assets/images/common/add_icon.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
               ></image>
             </view>
             <view class="add_text">选择地址</view>
           </view>
           <view class="info_btn">
-            <image src="../../../../assets/images/right.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
+            ></image>
           </view>
         </view>
       </view>
@@ -299,7 +305,7 @@
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>
         <image
-          src="../../../../assets/images/common/x_icon.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
           class="close-img"
           @tap="closeQRcode"
         ></image>

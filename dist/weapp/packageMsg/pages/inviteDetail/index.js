@@ -495,7 +495,7 @@ var render = function () {
       _c("image", {
         staticClass: "warning",
         attrs: {
-          src: __webpack_require__(/*! ../../../assets/images/common/icon_tongzhi.png */ "./src/assets/images/common/icon_tongzhi.png"),
+          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_tongzhi.png",
         },
       }),
       _c("view", { staticClass: "toptip_text ub-f1" }, [
@@ -522,7 +522,7 @@ var render = function () {
                       ? _c("image", {
                           staticClass: "yuepai_sex",
                           attrs: {
-                            src: __webpack_require__(/*! ../../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
                           },
                         })
                       : _vm._e(),
@@ -530,7 +530,7 @@ var render = function () {
                       ? _c("image", {
                           staticClass: "yuepai_sex",
                           attrs: {
-                            src: __webpack_require__(/*! ../../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
                           },
                         })
                       : _vm._e(),
@@ -600,7 +600,7 @@ var render = function () {
                 _c("image", {
                   attrs: {
                     mode: "widthFix",
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/user.png */ "./src/assets/images/tonggao/user.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png",
                   },
                 }),
               ]),
@@ -723,7 +723,7 @@ var render = function () {
                 _c("image", {
                   attrs: {
                     mode: "widthFix",
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/reg_hongren.png */ "./src/assets/images/tonggao/reg_hongren.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/tonggao/reg_hongren.png",
                   },
                 }),
               ]),
@@ -782,7 +782,7 @@ var render = function () {
                 _c("image", {
                   attrs: {
                     mode: "widthFix",
-                    src: __webpack_require__(/*! ../../../assets/images/tonggao/reg_address.png */ "./src/assets/images/tonggao/reg_address.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/tonggao/reg_address.png",
                   },
                 }),
               ]),
@@ -887,7 +887,7 @@ var render = function () {
             _c("image", {
               staticClass: "close-img",
               attrs: {
-                src: __webpack_require__(/*! ../../../assets/images/common/x_icon.png */ "./src/assets/images/common/x_icon.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png",
               },
               on: { tap: _vm.closeQRcode },
             }),

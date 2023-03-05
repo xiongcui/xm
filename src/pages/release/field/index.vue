@@ -2,7 +2,7 @@
   <view class="field">
     <view class="field-top">
       <image
-        src="../../../assets/images/field.png"
+        src="https://yuepai-oss.qubeitech.com/static/images/field.png"
         mode="aspectFit"
         class="field-image"
       ></image>

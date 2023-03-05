@@ -2,7 +2,7 @@
   <view class="cheat-prevention">
     <image
       class="cheat-prevention-img"
-      src="../../../assets/images/cheatPrevention.png"
+      src="https://yuepai-oss.qubeitech.com/static/images/cheatPrevention.png"
     ></image>
     <view class="cheat-prevention-box">
       <view class="cheat-prevention-title"> <text>刷单骗局</text> </view>

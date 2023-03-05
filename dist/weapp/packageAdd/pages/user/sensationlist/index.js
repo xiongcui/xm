@@ -126,6 +126,10 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -141,10 +145,10 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
       platform_name: "",
       fans_data: [],
       icon: {
-        201: __webpack_require__(/*! ../../../../assets/images/common/redbook.png */ "./src/assets/images/common/redbook.png"),
-        202: __webpack_require__(/*! ../../../../assets/images/common/douyin.png */ "./src/assets/images/common/douyin.png"),
-        203: __webpack_require__(/*! ../../../../assets/images/common/kuaishou.png */ "./src/assets/images/common/kuaishou.png"),
-        204: __webpack_require__(/*! ../../../../assets/images/common/weibo.png */ "./src/assets/images/common/weibo.png")
+        201: "https://yuepai-oss.qubeitech.com/static/images/common/redbook.png",
+        202: "https://yuepai-oss.qubeitech.com/static/images/common/douyin.png",
+        203: "https://yuepai-oss.qubeitech.com/static/images/common/kuaishou.png",
+        204: "https://yuepai-oss.qubeitech.com/static/images/common/weibo.png"
       }
     };
   },
@@ -253,7 +257,7 @@ component.options.__file = "src/packageAdd/pages/user/sensationlist/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "vb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -333,7 +337,7 @@ var render = function () {
           [
             _c("image", {
               attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/common/add_black.png */ "./src/assets/images/common/add_black.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/add_black.png",
               },
             }),
             _vm._v("添加账号 "),
@@ -378,7 +382,7 @@ var render = function () {
                   _c("image", {
                     staticClass: "editbtn",
                     attrs: {
-                      src: __webpack_require__(/*! ../../../../assets/images/common/editbtn.png */ "./src/assets/images/common/editbtn.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/common/editbtn.png",
                     },
                     on: {
                       tap: function ($event) {
@@ -428,7 +432,7 @@ var render = function () {
             [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../../assets/images/common/add_black.png */ "./src/assets/images/common/add_black.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/add_black.png",
                 },
               }),
               _vm._v("添加账号 "),

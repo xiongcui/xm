@@ -1,7 +1,9 @@
 <template>
   <view class="identity">
     <view class="identity-tips">
-      <image src="../../../assets/images/common/warning2.png"></image>
+      <image
+        src="https://yuepai-oss.qubeitech.com/static/images/common/warning2.png"
+      ></image>
       身份一年只能修改{{ total_modify_career_cnt }}次，当前剩余{{
         cur_modify_career_cnt
       }}次，请谨慎选择

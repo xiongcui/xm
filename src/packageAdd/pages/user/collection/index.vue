@@ -74,14 +74,14 @@
                         :src="
                           item.author.avatar
                             ? item.author.avatar
-                            : '../../../../assets/images/avatar_default.png'
+                            : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                         "
                         class="head-img"
                       ></image>
                       {{ item.author.nickname }}
                       <image
                         v-if="item.author.is_security"
-                        src="../../../../assets/images/common/icon_pledge.png"
+                        src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge.png"
                         class="pledge-img"
                       ></image>
                     </view>
@@ -93,19 +93,21 @@
                 <view class="tonggao_bottom">
                   <view class="tonggao_time">
                     <image
-                      src="../../../../assets/images/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/common/time.png"
                     ></image>
                     {{ item.date_humanize }}
                   </view>
                   <view class="tonggao_bottom_rt">
                     <view class="tonggao_yuepai">
                       <image
-                        src="../../../../assets/images/user/index/yuepai.png"
+                        src="https://yuepai-oss.qubeitech.com/static/user/index/yuepai.png"
                       ></image>
                       {{ item.statistic.invite_cnt }}
                     </view>
                     <view class="tonggao_read">
-                      <image src="../../../../assets/images/eyes.png"></image>
+                      <image
+                        src="https://yuepai-oss.qubeitech.com/static/eyes.png"
+                      ></image>
                       {{ item.statistic.read_cnt }}
                     </view>
                   </view>
@@ -114,7 +116,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -137,7 +139,7 @@
                       :src="
                         item.author.avatar
                           ? item.author.avatar
-                          : '../../../../assets/images/avatar_default.png'
+                          : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                       "
                       class="avatar"
                     ></image>
@@ -146,12 +148,12 @@
                         {{ item.author.nickname }}
                         <block v-if="item.author.sex !== null">
                           <image
-                            src="../../../../assets/images/nan.png"
+                            src="https://yuepai-oss.qubeitech.com/static/nan.png"
                             class="list_sex"
                             v-if="item.author.sex == 1"
                           ></image>
                           <image
-                            src="../../../../assets/images/nv.png"
+                            src="https://yuepai-oss.qubeitech.com/static/nv.png"
                             class="list_sex"
                             v-if="item.author.sex == 0"
                           ></image>
@@ -163,22 +165,22 @@
                           {{ item.author.province_name }}</text
                         >
                         <image
-                          src="../../../../assets/images/common/icon_real.png"
+                          src="https://yuepai-oss.qubeitech.com/static/common/icon_real.png"
                           class="list_p_img"
                           v-if="item.author.is_certify"
                         ></image>
                         <image
-                          src="../../../../assets/images/common/icon_pledge_none.png"
+                          src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge_none.png"
                           class="list_p_img"
                           v-else
                         ></image>
                         <image
-                          src="../../../../assets/images/common/icon_pledge.png"
+                          src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge.png"
                           class="list_p_img"
                           v-if="item.author.is_security"
                         ></image>
                         <image
-                          src="../../../../assets/images/common/icon_real_none.png"
+                          src="https://yuepai-oss.qubeitech.com/static/common/icon_real_none.png"
                           class="list_p_img"
                           v-else
                         ></image>
@@ -187,7 +189,7 @@
                   </view>
                   <!-- <view class="list_collection">
                     <image
-                      src="../../../../assets/images/common/icon_favorite.png"
+                      src="https://yuepai-oss.qubeitech.com/static/common/icon_favorite.png"
                     ></image>
                   </view> -->
                 </view>
@@ -251,18 +253,20 @@
                 <view class="list_bottom">
                   <view class="list_time">
                     <image
-                      src="../../../../assets/images/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/common/time.png"
                     ></image>
                     {{ item.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
-                      src="../../../../assets/images/user/index/yuepai.png"
+                      src="https://yuepai-oss.qubeitech.com/static/user/index/yuepai.png"
                     ></image>
                     收到约拍 {{ item.statistic.invite_cnt }}
                   </view>
                   <view class="list_read">
-                    <image src="../../../../assets/images/eyes.png"></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/eyes.png"
+                    ></image>
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
@@ -270,7 +274,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -312,7 +316,7 @@
                       :src="
                         item.author.avatar
                           ? item.author.avatar
-                          : '../../../../assets/images/avatar_default.png'
+                          : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                       "
                       mode="aspectFill"
                     ></image>
@@ -324,12 +328,12 @@
                         }}</text>
                         <block>
                           <image
-                            src="../../../../assets/images/nan.png"
+                            src="https://yuepai-oss.qubeitech.com/static/nan.png"
                             class="list_sex"
                             v-if="item.author.sex == 1"
                           ></image>
                           <image
-                            src="../../../../assets/images/nv.png"
+                            src="https://yuepai-oss.qubeitech.com/static/nv.png"
                             class="list_sex"
                             v-if="item.author.sex == 0"
                           ></image>
@@ -350,7 +354,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>

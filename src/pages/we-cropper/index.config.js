@@ -3,5 +3,7 @@ export default definePageConfig({
   navigationBarBackgroundColor: "#15161D",
   navigationBarTextStyle: "white",
   disableScroll: true,
-  usingComponents: {},
+  usingComponents: {
+    WeCropper: "we-cropper",
+  },
 });

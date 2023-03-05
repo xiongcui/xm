@@ -215,6 +215,34 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -267,7 +295,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "J"])(params);
 
               case 3:
                 res = _context.sent;
@@ -314,7 +342,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "I"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -399,7 +427,7 @@ var render = function () {
         _c("view", { staticClass: "card-rt" }, [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/user/vip/vip-card.png */ "./src/assets/images/user/vip/vip-card.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/vip-card.png",
             },
           }),
           _c("text", [_vm._v("会员权限设置")]),
@@ -408,14 +436,16 @@ var render = function () {
       _c("view", { staticClass: "vip-icon-list" }, [
         _c("view", { staticClass: "vip-icon" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/user/vip/user.png */ "./src/assets/images/user/vip/user.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/user.png",
+            },
           }),
           _c("text", [_vm._v("查看访客")]),
         ]),
         _c("view", { staticClass: "vip-icon" }, [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/user/vip/qiandao.png */ "./src/assets/images/user/vip/qiandao.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/qiandao.png",
             },
           }),
           _c("text", [_vm._v("无限签到")]),
@@ -423,7 +453,7 @@ var render = function () {
         _c("view", { staticClass: "vip-icon" }, [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/user/vip/baojing.png */ "./src/assets/images/user/vip/baojing.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/baojing.png",
             },
           }),
           _c("text", [_vm._v("免担保金")]),
@@ -431,14 +461,16 @@ var render = function () {
         _c("view", { staticClass: "vip-icon" }, [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/user/vip/tuijian.png */ "./src/assets/images/user/vip/tuijian.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/tuijian.png",
             },
           }),
           _c("text", [_vm._v("优先推荐")]),
         ]),
         _c("view", { staticClass: "vip-icon" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/user/vip/fuli.png */ "./src/assets/images/user/vip/fuli.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/fuli.png",
+            },
           }),
           _c("text", [_vm._v("会员福利")]),
         ]),
@@ -533,14 +565,14 @@ var render = function () {
             _c("view", { staticClass: "vip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/sucess.png */ "./src/assets/images/common/sucess.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
                 },
               }),
             ]),
             _c("view", { staticClass: "novip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/tip_fail.png */ "./src/assets/images/common/tip_fail.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
                 },
               }),
             ]),
@@ -550,14 +582,14 @@ var render = function () {
             _c("view", { staticClass: "vip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/sucess.png */ "./src/assets/images/common/sucess.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
                 },
               }),
             ]),
             _c("view", { staticClass: "novip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/tip_fail.png */ "./src/assets/images/common/tip_fail.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
                 },
               }),
             ]),
@@ -567,14 +599,14 @@ var render = function () {
             _c("view", { staticClass: "vip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/sucess.png */ "./src/assets/images/common/sucess.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
                 },
               }),
             ]),
             _c("view", { staticClass: "novip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/tip_fail.png */ "./src/assets/images/common/tip_fail.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
                 },
               }),
             ]),
@@ -584,14 +616,14 @@ var render = function () {
             _c("view", { staticClass: "vip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/sucess.png */ "./src/assets/images/common/sucess.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
                 },
               }),
             ]),
             _c("view", { staticClass: "novip" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/common/tip_fail.png */ "./src/assets/images/common/tip_fail.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
                 },
               }),
             ]),
@@ -652,102 +684,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/sucess.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/common/sucess.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/sucess.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/tip_fail.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/common/tip_fail.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/tip_fail.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/vip/baojing.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/vip/baojing.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/vip/baojing.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/vip/fuli.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/user/vip/fuli.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/vip/fuli.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/vip/qiandao.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/vip/qiandao.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/vip/qiandao.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/vip/tuijian.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/vip/tuijian.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/vip/tuijian.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/vip/user.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/user/vip/user.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/vip/user.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/vip/vip-card.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/vip/vip-card.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/vip/vip-card.png";
 
 /***/ }),
 

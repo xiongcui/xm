@@ -149,7 +149,7 @@
 .zuopin .upload-close {
   width: 38rpx;
   height: 38rpx;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC") no-repeat rgba(0, 0, 0, 0.55);
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png") no-repeat rgba(0, 0, 0, 0.55);
   background-size: 38rpx;
   position: absolute;
   right: 0;

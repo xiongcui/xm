@@ -270,7 +270,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* profileUpdate */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* profileUpdate */ "X"])(params);
 
               case 3:
                 res = _context.sent;
@@ -311,7 +311,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "rb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -345,7 +345,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "zb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -467,7 +467,7 @@ var render = function () {
                 _c("image", {
                   attrs: {
                     mode: "aspectFit",
-                    src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/common/icon_right.png",
                   },
                 }),
               ]),
@@ -530,7 +530,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/common/icon_right.png",
                     },
                   }),
                 ]),
@@ -561,7 +561,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/common/icon_right.png",
                     },
                   }),
                 ]),
@@ -598,7 +598,7 @@ var render = function () {
                 _c("image", {
                   attrs: {
                     mode: "aspectFit",
-                    src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/common/icon_right.png",
                   },
                 }),
               ]),
@@ -643,7 +643,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/common/icon_right.png",
                 },
               }),
             ]),

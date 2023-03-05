@@ -131,6 +131,14 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -163,7 +171,7 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityOpen */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityOpen */ "db"])(params);
 
               case 3:
                 res = _context.sent;
@@ -211,7 +219,7 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityInfo */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityInfo */ "cb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -260,31 +268,41 @@ var render = function () {
       _c("view", [_vm._v("缴纳保证金")]),
       _c("image", {
         staticClass: "security",
-        attrs: { src: __webpack_require__(/*! ../../../assets/images/common/security.png */ "./src/assets/images/common/security.png") },
+        attrs: {
+          src: "https://yuepai-oss.qubeitech.com/static/images/common/security.png",
+        },
       }),
       _c("view", [_vm._v("享专属特权")]),
       _c("view", { staticClass: "credit-info" }, [
         _c("view", { staticClass: "credit-item" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/securityRed.png */ "./src/assets/images/securityRed.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/securityRed.png",
+            },
           }),
           _vm._v(" 信用标识提醒 "),
         ]),
         _c("view", { staticClass: "credit-item" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/userRed.png */ "./src/assets/images/userRed.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/userRed.png",
+            },
           }),
           _vm._v(" 约拍优质模特 "),
         ]),
         _c("view", { staticClass: "credit-item" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/guaranteeRed.png */ "./src/assets/images/guaranteeRed.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/guaranteeRed.png",
+            },
           }),
           _vm._v(" 约拍信用担保 "),
         ]),
         _c("view", { staticClass: "credit-item" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/giftRed.png */ "./src/assets/images/giftRed.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/giftRed.png",
+            },
           }),
           _vm._v(" 尊享福利特权 "),
         ]),
@@ -312,7 +330,9 @@ var render = function () {
           _c("view", { staticClass: "credit-tips" }, [
             _c("image", {
               staticClass: "credit-icon",
-              attrs: { src: __webpack_require__(/*! ../../../assets/images/guaranteed.png */ "./src/assets/images/guaranteed.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/guaranteed.png",
+              },
             }),
             _vm._v(" 您已存入保障金，已享受担保权益 "),
           ]),
@@ -324,7 +344,9 @@ var render = function () {
           _c("view", { staticClass: "credit-tips" }, [
             _c("image", {
               staticClass: "credit-icon",
-              attrs: { src: __webpack_require__(/*! ../../../assets/images/guaranteed.png */ "./src/assets/images/guaranteed.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/guaranteed.png",
+              },
             }),
             _vm._v(" 您已存入保障金，已享受担保权益 "),
           ]),
@@ -372,78 +394,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/security.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/common/security.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/security.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/giftRed.png":
-/*!***************************************!*\
-  !*** ./src/assets/images/giftRed.png ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/giftRed.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/guaranteeRed.png":
-/*!********************************************!*\
-  !*** ./src/assets/images/guaranteeRed.png ***!
-  \********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/guaranteeRed.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/guaranteed.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/guaranteed.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/guaranteed.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/securityRed.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/securityRed.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/securityRed.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/userRed.png":
-/*!***************************************!*\
-  !*** ./src/assets/images/userRed.png ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/userRed.png";
 
 /***/ }),
 

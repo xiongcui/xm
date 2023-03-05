@@ -56,124 +56,11 @@
                     {{ item.visitor.nickname }}
                     <image
                       v-if="item.visitor.sex == 1"
-                      src="../../../assets/images/nan.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                       class="list_sex"
                     ></image>
                     <image
-                      src="../../../assets/images/nv.png"
-                      class="list_sex"
-                      v-if="item.visitor.sex == 0"
-                    ></image>
-                  </view>
-                  <view class="identity"
-                    >{{ item.visitor.career_list[0] }} ｜
-                    {{ item.visitor.province_name }}</view
-                  >
-                </view>
-                <view class="signup-rt">
-                  <view class="contact" @tap="contactNow(item)">立即联系</view>
-                  <view class="time">{{ item.date_humanize }}报名</view>
-                </view>
-              </view>
-              <view class="notice">
-                来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
-                  >查看全部报名</text
-                ></view
-              >
-              <view class="remark" v-if="item.remark">
-                备注：{{ item.remark }}</view
-              >
-              <view class="signup-cotent">
-                <text class="signup-desc">{{ item.content }}</text>
-                <text
-                  class="signup-detail"
-                  @tap="signupDetail(item.sid, item.visited_status)"
-                  >查看详情</text
-                >
-              </view>
-              <view class="signup-btns">
-                <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid, item)"
-                    >更多</text
-                  >
-                  <text class="remarks" @tap="saveRemarks(item)">备注</text>
-                </view>
-                <view class="signup-btn-rt">
-                  <view
-                    class="btn-yellow"
-                    @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
-                    ><icon type="cancel" size="12" color="#ffffff"></icon
-                    >不符</view
-                  >
-                  <view
-                    class="btn-red"
-                    @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
-                    ><icon
-                      type="success_no_circle"
-                      size="12"
-                      color="#ffffff"
-                    ></icon
-                    >合适</view
-                  >
-                  <view
-                    class="btn-yellow"
-                    v-if="item.visited_status == 410"
-                    @tap="abandonCooperation(item.sid)"
-                    >放弃合作</view
-                  >
-                  <view
-                    class="btn-red"
-                    v-if="item.visited_status == 410"
-                    @tap="completeCooperation(item.sid)"
-                    >完成合作</view
-                  >
-                  <view
-                    class="btn-blue"
-                    v-if="item.visited_status == 420"
-                    @tap="recoveryPending(item.sid)"
-                    >恢复待定</view
-                  >
-                  <view
-                    class="btn-yellow"
-                    v-if="item.visited_status == 430"
-                    @tap="restoreAppropriately(item.sid)"
-                    >恢复合适</view
-                  >
-                  <view
-                    class="btn-del"
-                    v-if="item.visited_status == 440"
-                    @tap="Delete(item.sid)"
-                    >删除</view
-                  >
-                </view>
-              </view>
-            </view>
-          </scroll-view>
-        </swiper-item>
-        <swiper-item>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <view class="signup-box" v-for="(item, index) in list" :key="index">
-              <view class="signup-top">
-                <view class="signup-img">
-                  <image :src="item.visitor.avatar"></image>
-                </view>
-                <view class="signup-info">
-                  <view class="signup-name">
-                    {{ item.visitor.nickname }}
-                    <image
-                      v-if="item.visitor.sex == 1"
-                      src="../../../assets/images/nan.png"
-                      class="list_sex"
-                    ></image>
-                    <image
-                      src="../../../assets/images/nv.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 0"
                     ></image>
@@ -282,124 +169,11 @@
                     {{ item.visitor.nickname }}
                     <image
                       v-if="item.visitor.sex == 1"
-                      src="../../../assets/images/nan.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                       class="list_sex"
                     ></image>
                     <image
-                      src="../../../assets/images/nv.png"
-                      class="list_sex"
-                      v-if="item.visitor.sex == 0"
-                    ></image>
-                  </view>
-                  <view class="identity"
-                    >{{ item.visitor.career_list[0] }} ｜
-                    {{ item.visitor.province_name }}</view
-                  >
-                </view>
-                <view class="signup-rt">
-                  <view class="contact" @tap="contactNow(item)">立即联系</view>
-                  <view class="time">{{ item.date_humanize }}报名</view>
-                </view>
-              </view>
-              <view class="notice">
-                来自通告：{{ item.summary }}
-                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
-                  >查看全部报名</text
-                ></view
-              >
-              <view class="remark" v-if="item.remark">
-                备注：{{ item.remark }}</view
-              >
-              <view class="signup-cotent">
-                <text class="signup-desc">{{ item.content }}</text>
-                <text
-                  class="signup-detail"
-                  @tap="signupDetail(item.sid, item.visited_status)"
-                  >查看详情</text
-                >
-              </view>
-              <view class="signup-btns">
-                <view class="signup-btn-left">
-                  <text class="more" @tap="moreClick(item.sid, item)"
-                    >更多</text
-                  >
-                  <text class="remarks" @tap="saveRemarks(item)">备注</text>
-                </view>
-                <view class="signup-btn-rt">
-                  <view
-                    class="btn-yellow"
-                    @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
-                    ><icon type="cancel" size="12" color="#ffffff"></icon
-                    >不符</view
-                  >
-                  <view
-                    class="btn-red"
-                    @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
-                    ><icon
-                      type="success_no_circle"
-                      size="12"
-                      color="#ffffff"
-                    ></icon
-                    >合适</view
-                  >
-                  <view
-                    class="btn-yellow"
-                    v-if="item.visited_status == 410"
-                    @tap="abandonCooperation(item.sid)"
-                    >放弃合作</view
-                  >
-                  <view
-                    class="btn-red"
-                    v-if="item.visited_status == 410"
-                    @tap="completeCooperation(item.sid)"
-                    >完成合作</view
-                  >
-                  <view
-                    class="btn-blue"
-                    v-if="item.visited_status == 420"
-                    @tap="recoveryPending(item.sid)"
-                    >恢复待定</view
-                  >
-                  <view
-                    class="btn-yellow"
-                    v-if="item.visited_status == 430"
-                    @tap="restoreAppropriately(item.sid)"
-                    >恢复合适</view
-                  >
-                  <view
-                    class="btn-del"
-                    v-if="item.visited_status == 440"
-                    @tap="Delete(item.sid)"
-                    >删除</view
-                  >
-                </view>
-              </view>
-            </view>
-          </scroll-view>
-        </swiper-item>
-        <swiper-item>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <view class="signup-box" v-for="(item, index) in list" :key="index">
-              <view class="signup-top">
-                <view class="signup-img">
-                  <image :src="item.visitor.avatar"></image>
-                </view>
-                <view class="signup-info">
-                  <view class="signup-name">
-                    {{ item.visitor.nickname }}
-                    <image
-                      v-if="item.visitor.sex == 1"
-                      src="../../../assets/images/nan.png"
-                      class="list_sex"
-                    ></image>
-                    <image
-                      src="../../../assets/images/nv.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 0"
                     ></image>
@@ -508,11 +282,237 @@
                     {{ item.visitor.nickname }}
                     <image
                       v-if="item.visitor.sex == 1"
-                      src="../../../assets/images/nan.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                       class="list_sex"
                     ></image>
                     <image
-                      src="../../../assets/images/nv.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image>
+                  </view>
+                  <view class="identity"
+                    >{{ item.visitor.career_list[0] }} ｜
+                    {{ item.visitor.province_name }}</view
+                  >
+                </view>
+                <view class="signup-rt">
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
+                  <view class="time">{{ item.date_humanize }}报名</view>
+                </view>
+              </view>
+              <view class="notice">
+                来自通告：{{ item.summary }}
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
+                  >查看全部报名</text
+                ></view
+              >
+              <view class="remark" v-if="item.remark">
+                备注：{{ item.remark }}</view
+              >
+              <view class="signup-cotent">
+                <text class="signup-desc">{{ item.content }}</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
+              </view>
+              <view class="signup-btns">
+                <view class="signup-btn-left">
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
+                  <text class="remarks" @tap="saveRemarks(item)">备注</text>
+                </view>
+                <view class="signup-btn-rt">
+                  <view
+                    class="btn-yellow"
+                    @tap="noConformance(item.sid)"
+                    v-if="item.visited_status == 200"
+                    ><icon type="cancel" size="12" color="#ffffff"></icon
+                    >不符</view
+                  >
+                  <view
+                    class="btn-red"
+                    @tap="appropriate(item.sid)"
+                    v-if="item.visited_status == 200"
+                    ><icon
+                      type="success_no_circle"
+                      size="12"
+                      color="#ffffff"
+                    ></icon
+                    >合适</view
+                  >
+                  <view
+                    class="btn-yellow"
+                    v-if="item.visited_status == 410"
+                    @tap="abandonCooperation(item.sid)"
+                    >放弃合作</view
+                  >
+                  <view
+                    class="btn-red"
+                    v-if="item.visited_status == 410"
+                    @tap="completeCooperation(item.sid)"
+                    >完成合作</view
+                  >
+                  <view
+                    class="btn-blue"
+                    v-if="item.visited_status == 420"
+                    @tap="recoveryPending(item.sid)"
+                    >恢复待定</view
+                  >
+                  <view
+                    class="btn-yellow"
+                    v-if="item.visited_status == 430"
+                    @tap="restoreAppropriately(item.sid)"
+                    >恢复合适</view
+                  >
+                  <view
+                    class="btn-del"
+                    v-if="item.visited_status == 440"
+                    @tap="Delete(item.sid)"
+                    >删除</view
+                  >
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <view class="signup-box" v-for="(item, index) in list" :key="index">
+              <view class="signup-top">
+                <view class="signup-img">
+                  <image :src="item.visitor.avatar"></image>
+                </view>
+                <view class="signup-info">
+                  <view class="signup-name">
+                    {{ item.visitor.nickname }}
+                    <image
+                      v-if="item.visitor.sex == 1"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                      class="list_sex"
+                    ></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                      class="list_sex"
+                      v-if="item.visitor.sex == 0"
+                    ></image>
+                  </view>
+                  <view class="identity"
+                    >{{ item.visitor.career_list[0] }} ｜
+                    {{ item.visitor.province_name }}</view
+                  >
+                </view>
+                <view class="signup-rt">
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
+                  <view class="time">{{ item.date_humanize }}报名</view>
+                </view>
+              </view>
+              <view class="notice">
+                来自通告：{{ item.summary }}
+                <text class="notice-btn" @tap="signupAllDetail(item.oid)"
+                  >查看全部报名</text
+                ></view
+              >
+              <view class="remark" v-if="item.remark">
+                备注：{{ item.remark }}</view
+              >
+              <view class="signup-cotent">
+                <text class="signup-desc">{{ item.content }}</text>
+                <text
+                  class="signup-detail"
+                  @tap="signupDetail(item.sid, item.visited_status)"
+                  >查看详情</text
+                >
+              </view>
+              <view class="signup-btns">
+                <view class="signup-btn-left">
+                  <text class="more" @tap="moreClick(item.sid, item)"
+                    >更多</text
+                  >
+                  <text class="remarks" @tap="saveRemarks(item)">备注</text>
+                </view>
+                <view class="signup-btn-rt">
+                  <view
+                    class="btn-yellow"
+                    @tap="noConformance(item.sid)"
+                    v-if="item.visited_status == 200"
+                    ><icon type="cancel" size="12" color="#ffffff"></icon
+                    >不符</view
+                  >
+                  <view
+                    class="btn-red"
+                    @tap="appropriate(item.sid)"
+                    v-if="item.visited_status == 200"
+                    ><icon
+                      type="success_no_circle"
+                      size="12"
+                      color="#ffffff"
+                    ></icon
+                    >合适</view
+                  >
+                  <view
+                    class="btn-yellow"
+                    v-if="item.visited_status == 410"
+                    @tap="abandonCooperation(item.sid)"
+                    >放弃合作</view
+                  >
+                  <view
+                    class="btn-red"
+                    v-if="item.visited_status == 410"
+                    @tap="completeCooperation(item.sid)"
+                    >完成合作</view
+                  >
+                  <view
+                    class="btn-blue"
+                    v-if="item.visited_status == 420"
+                    @tap="recoveryPending(item.sid)"
+                    >恢复待定</view
+                  >
+                  <view
+                    class="btn-yellow"
+                    v-if="item.visited_status == 430"
+                    @tap="restoreAppropriately(item.sid)"
+                    >恢复合适</view
+                  >
+                  <view
+                    class="btn-del"
+                    v-if="item.visited_status == 440"
+                    @tap="Delete(item.sid)"
+                    >删除</view
+                  >
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <view class="signup-box" v-for="(item, index) in list" :key="index">
+              <view class="signup-top">
+                <view class="signup-img">
+                  <image :src="item.visitor.avatar"></image>
+                </view>
+                <view class="signup-info">
+                  <view class="signup-name">
+                    {{ item.visitor.nickname }}
+                    <image
+                      v-if="item.visitor.sex == 1"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                      class="list_sex"
+                    ></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 0"
                     ></image>
@@ -620,7 +620,7 @@
           v-model="remarks"
         ></textarea>
         <image
-          src="../../../assets/images/common/x_icon.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
           class="close-img"
           @tap="close"
         ></image>
@@ -633,7 +633,7 @@
         <view class="modal_title">
           <view> 联系方式 </view>
           <image
-            src="../../../assets/images/common/x_icon.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
             class="close-img"
             @tap="contactClose"
           ></image>

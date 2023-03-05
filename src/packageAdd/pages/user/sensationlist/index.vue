@@ -1,7 +1,9 @@
 <template>
   <view class="main ub ub-ver" v-if="noneData">
     <view @tap="goChooseMedia" class="item_add" data-id="">
-      <image src="../../../../assets/images/common/add_black.png"></image
+      <image
+        src="https://yuepai-oss.qubeitech.com/static/images/common/add_black.png"
+      ></image
       >添加账号
     </view>
   </view>
@@ -22,7 +24,7 @@
           <view class="item_fanscount">粉丝：{{ item.fans_number }}</view>
         </view>
         <image
-          src="../../../../assets/images/common/editbtn.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/editbtn.png"
           class="editbtn"
           @tap.stop="
             editMedia(item.oid, item.platform_code, item.platform_name)
@@ -46,7 +48,9 @@
       </view>
     </view>
     <view @tap="goChooseMedia" class="item_add" data-id="">
-      <image src="../../../../assets/images/common/add_black.png"></image
+      <image
+        src="https://yuepai-oss.qubeitech.com/static/images/common/add_black.png"
+      ></image
       >添加账号
     </view>
     <view @tap="closeModel_del" class="modal-bg" v-if="showModel_del"></view>
@@ -85,10 +89,10 @@ export default {
       platform_name: "",
       fans_data: [],
       icon: {
-        201: require("../../../../assets/images/common/redbook.png"),
-        202: require("../../../../assets/images/common/douyin.png"),
-        203: require("../../../../assets/images/common/kuaishou.png"),
-        204: require("../../../../assets/images/common/weibo.png"),
+        201: "https://yuepai-oss.qubeitech.com/static/images/common/redbook.png",
+        202: "https://yuepai-oss.qubeitech.com/static/images/common/douyin.png",
+        203: "https://yuepai-oss.qubeitech.com/static/images/common/kuaishou.png",
+        204: "https://yuepai-oss.qubeitech.com/static/images/common/weibo.png",
       },
     };
   },

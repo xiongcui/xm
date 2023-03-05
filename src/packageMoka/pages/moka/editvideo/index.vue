@@ -24,7 +24,9 @@
         </view>
       </block>
       <view @tap="chooesVideo" class="video_none" v-if="videoData.length < 6">
-        <image src="../../../../assets/images/common/add_icon.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
+        ></image>
         <view>添加形象视频</view>
       </view>
     </view>

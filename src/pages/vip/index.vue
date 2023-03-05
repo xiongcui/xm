@@ -17,7 +17,7 @@
         <view class="vipcard_icon_vipbg">
           <image
             mode="widthFix"
-            src="../../assets/images/user/vip/vip_bg.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/vip/vip_bg.png"
           ></image>
         </view>
         <view class="vipcard_user ub">
@@ -94,7 +94,7 @@
             <view class="right_tag_icon">
               <image
                 mode="widthFix"
-                src="../../assets/images/user/vip/right_tag1.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/vip/right_tag1.png"
               ></image>
             </view>
             <view class="right_tag_text">会员福利</view>
@@ -104,7 +104,7 @@
             <view class="right_tag_icon">
               <image
                 mode="widthFix"
-                src="../../assets/images/user/vip/right_tag2.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/vip/right_tag2.png"
               ></image>
             </view>
             <view class="right_tag_text">免担保金</view>
@@ -114,7 +114,7 @@
             <view class="right_tag_icon">
               <image
                 mode="widthFix"
-                src="../../assets/images/user/vip/right_tag3.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/vip/right_tag3.png"
               ></image>
             </view>
             <view class="right_tag_text">每日可签到</view>
@@ -124,7 +124,7 @@
             <view class="right_tag_icon">
               <image
                 mode="widthFix"
-                src="../../assets/images/user/vip/right_tag4.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/user/vip/right_tag4.png"
               ></image>
             </view>
             <view class="right_tag_text">会员标识</view>

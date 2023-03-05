@@ -79,19 +79,19 @@ component.options.__file = "src/packageAdd/pages/user/platform/index.vue"
       list: [{
         platform_code: 201,
         platform_name: "红薯",
-        icon: "../../../../assets/images/common/redbook.png"
+        icon: "https://yuepai-oss.qubeitech.com/static/images/common/redbook.png"
       }, {
         platform_code: 202,
         platform_name: "抖音",
-        icon: "../../../../assets/images/common/douyin.png"
+        icon: "https://yuepai-oss.qubeitech.com/static/images/common/douyin.png"
       }, {
         platform_code: 203,
         platform_name: "快手",
-        icon: "../../../../assets/images/common/kuaishou.png"
+        icon: "https://yuepai-oss.qubeitech.com/static/images/common/kuaishou.png"
       }, {
         platform_code: 204,
         platform_name: "微博",
-        icon: "../../../../assets/images/common/weibo.png"
+        icon: "https://yuepai-oss.qubeitech.com/static/images/common/weibo.png"
       }]
     };
   },
@@ -144,7 +144,7 @@ var render = function () {
             _c("image", {
               staticClass: "platform-icon-right",
               attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_right.png",
               },
             }),
           ]

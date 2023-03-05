@@ -41,12 +41,12 @@
                   <view class="livevisitor-name">
                     {{ item.visitor.nickname }}
                     <image
-                      src="../../../assets/images/nan.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 1"
                     ></image>
                     <image
-                      src="../../../assets/images/nv.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 0"
                     ></image>
@@ -67,7 +67,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -95,12 +95,12 @@
                   <view class="livevisitor-name">
                     {{ item.visitor.nickname }}
                     <image
-                      src="../../../assets/images/nan.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 1"
                     ></image>
                     <image
-                      src="../../../assets/images/nv.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                       class="list_sex"
                       v-if="item.visitor.sex == 0"
                     ></image>
@@ -116,7 +116,7 @@
 
             <view v-else class="none-data">
               <image
-                src="../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>

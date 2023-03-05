@@ -68,7 +68,7 @@
             v-if="!videolist.length"
           >
             <image
-              src="../../../../assets/images/upload-img.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/upload-img.png"
               class="upload-img"
               mode="aspectFit"
             ></image>
@@ -82,7 +82,7 @@
             v-if="!imgList.length && !videolist.length"
           >
             <image
-              src="../../../../assets/images/upload-video.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/upload-video.png"
               class="upload-video"
               mode="aspectFit"
             ></image>

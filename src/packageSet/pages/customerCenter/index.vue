@@ -6,11 +6,15 @@
     </view>
     <view class="customer-btn">
       <view class="customer-btn-box" @tap="customerService">
-        <image src="../../../assets/images/user/customer/kefu.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/customer/kefu.png"
+        ></image>
         <view>在线客服</view>
       </view>
       <view class="customer-btn-box" @tap="gofeedback">
-        <image src="../../../assets/images/user/customer/yijian.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/customer/yijian.png"
+        ></image>
         <view>意见反馈</view>
       </view>
     </view>
@@ -41,7 +45,7 @@
         >
           {{ item.question }}
           <image
-            src="../../../assets/images/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             class="customer-img"
             :class="{ 'customer-rotate': item.show }"
           ></image>

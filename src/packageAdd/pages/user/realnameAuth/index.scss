@@ -66,4 +66,24 @@
     text-align: center;
     margin-top: 30px;
   }
+  .realname_box_btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .re_upload {
+      width: 49%;
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+      border: 1px solid #e5e5e5;
+      margin-top: 30px;
+    }
+    .realname_btn {
+      width: 49%;
+    }
+  }
+
+  .realname_info {
+    color: rgba(0, 0, 0, 0.5);
+  }
 }

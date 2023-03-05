@@ -123,6 +123,8 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -227,7 +229,7 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "w"])(params);
 
               case 3:
                 res = _context.sent;
@@ -335,7 +337,7 @@ var render = function () {
       _c("view", { staticClass: "identity-tips" }, [
         _c("image", {
           attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/common/warning2.png */ "./src/assets/images/common/warning2.png"),
+            src: "https://yuepai-oss.qubeitech.com/static/common/warning2.png",
           },
         }),
         _vm._v(
@@ -475,18 +477,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/warning2.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/common/warning2.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACMAAAAeCAMAAACR41cYAAAAllBMVEUAAAD/YRD/YA//YA//YBD/YA//Xw3/YA//YA//YBD/YBD/YA//YA//YBD/YBH/SwD/MwD/YA//YBD/YBD/YA//Xw7/YQ//YQ7/Xw//VQD/YBD/YA//YA//YA//YBD/YBD/YBD/YBH/Xw//YRD/WxD/YBD/YBD/YA//YBD/YBD/YA//VQD/YBD/YBD/YRH/YhD/XAv/YBBlM2nlAAAAMXRSTlMAkcf78uoSqmRd0rV5cRoDAffAmUI5NiggBvTn2LqxnItKMi4P7t7NxaKFCeGfbFEMzEqK1gAAASxJREFUOMt9ktmygkAMRCMDguwouyAi7t6t///nLiNSziDQLwlVh6mkOzSQYQamQbOywbWfQxqG4lsFwmnEv+LkUg0U2SRjAD9t0QF7CllquHhtdVXk6QRTgUXPxgF240jEUHWddwHqMcQzcVq++pjh/BhhHOBt3ga4k6xuUMVva6iH3fhB8sHoYDGva6x5WQHlEAmBzbNRoFDHYiUjWQFtKTEJw/Y4zNIgiaE7sBCRNOADy8zjDHYQGIt/DhiqwX/s9ds/KzGkC479fUE7CoxgmdY7vxfXvOEmWl9Rv+XVf7sQZ2KEiF5usUZY0UmlUzC9zvWFtKJFJGbr8PRkP+3clk9TdbuBp7XiOW6h0JwUaJRDn2V2UKkE0xfTsvj5xwHmpSZEh1KdI6yG/gGX7inEAUWONQAAAABJRU5ErkJggg=="
 
 /***/ }),
 

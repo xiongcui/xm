@@ -93,6 +93,8 @@ component.options.__file = "src/packageAdd/pages/user/rechargecoin/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -252,7 +254,7 @@ var render = function () {
         _c("view", { staticClass: "card-rt" }, [
           _c("image", {
             attrs: {
-              src: __webpack_require__(/*! ../../../../assets/images/user/coin/coin-1.png */ "./src/assets/images/user/coin/coin-1.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/coin/coin-1.png",
             },
           }),
         ]),
@@ -307,18 +309,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/user/coin/coin-1.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/coin/coin-1.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/coin/coin-1.png";
 
 /***/ }),
 

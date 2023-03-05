@@ -195,7 +195,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/camera.png */ "./src/assets/images/camera.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/camera.png",
                 mode: "aspectFit",
               },
             }),
@@ -229,7 +229,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/publishLocation.png */ "./src/assets/images/publishLocation.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/publishLocation.png",
                 mode: "aspectFit",
               },
             }),
@@ -263,7 +263,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/works.png */ "./src/assets/images/works.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/works.png",
                 mode: "aspectFit",
               },
             }),
@@ -287,7 +287,7 @@ var render = function () {
           _c("image", {
             staticClass: "release-image",
             attrs: {
-              src: __webpack_require__(/*! ../../assets/images/card.png */ "./src/assets/images/card.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/card.png",
               mode: "aspectFit",
             },
           }),
@@ -312,54 +312,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/camera.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/camera.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/camera.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/card.png":
-/*!************************************!*\
-  !*** ./src/assets/images/card.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/card.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/publishLocation.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/publishLocation.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/publishLocation.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/works.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/works.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/works.png";
 
 /***/ }),
 

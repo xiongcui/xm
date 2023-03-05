@@ -155,7 +155,7 @@ var render = function () {
           _c("image", {
             staticClass: "appointment-image",
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/cameraman.png */ "./src/assets/images/cameraman.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/cameraman.png",
               mode: "aspectFit",
             },
           }),
@@ -176,7 +176,7 @@ var render = function () {
           _c("image", {
             staticClass: "appointment-image",
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/cameraman1.png */ "./src/assets/images/cameraman1.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/cameraman1.png",
               mode: "aspectFit",
             },
           }),
@@ -197,7 +197,7 @@ var render = function () {
           _c("image", {
             staticClass: "appointment-image",
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/makeup.png",
               mode: "aspectFit",
             },
           }),
@@ -218,7 +218,7 @@ var render = function () {
           _c("image", {
             staticClass: "appointment-image",
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/model.png */ "./src/assets/images/model.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/model.png",
               mode: "aspectFit",
             },
           }),
@@ -239,7 +239,7 @@ var render = function () {
           _c("image", {
             staticClass: "appointment-image",
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/ps.png */ "./src/assets/images/ps.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/ps.png",
               mode: "aspectFit",
             },
           }),
@@ -260,7 +260,7 @@ var render = function () {
           _c("image", {
             staticClass: "appointment-image",
             attrs: {
-              src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/business.png",
               mode: "aspectFit",
             },
           }),
@@ -274,78 +274,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/business.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/business.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/business.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/cameraman.png":
-/*!*****************************************!*\
-  !*** ./src/assets/images/cameraman.png ***!
-  \*****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/cameraman.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/cameraman1.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/cameraman1.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/cameraman1.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/makeup.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/makeup.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/makeup.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/model.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/model.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/model.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/ps.png":
-/*!**********************************!*\
-  !*** ./src/assets/images/ps.png ***!
-  \**********************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/ps.png";
 
 /***/ }),
 

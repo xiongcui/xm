@@ -6,31 +6,41 @@
     </view>
     <view class="msg-icon">
       <view class="msg-icon-item" @tap="openUrl(1)">
-        <image src="../../assets/images/msg/fabulous.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/msg/fabulous.png"
+        ></image>
         <text>赞与访客</text>
         <view class="msg-num" v-if="vote_visitor_cnt > 0">{{
           vote_visitor_cnt
         }}</view>
       </view>
       <view class="msg-icon-item" @tap="openUrl(2)">
-        <image src="../../assets/images/msg/yuepai.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/msg/yuepai.png"
+        ></image>
         <text>收到约拍</text>
         <view class="msg-num" v-if="invite_cnt > 0">{{ invite_cnt }}</view>
       </view>
       <view class="msg-icon-item" @tap="openUrl(3)">
-        <image src="../../assets/images/msg/baoming.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/msg/baoming.png"
+        ></image>
         <text>收到报名</text>
         <view class="msg-num" v-if="notice_cnt > 0">{{ notice_cnt }}</view>
       </view>
       <view class="msg-icon-item">
-        <image src="../../assets/images/msg/contact.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/msg/contact.png"
+        ></image>
         <text>收到联系</text>
         <!-- <view class="msg-num"></view> -->
       </view>
     </view>
     <view class="msg-notification" @tap="openUrl(5)">
       <view class="notification-left">
-        <image src="../../assets/images/msg/xiaoxi.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/msg/xiaoxi.png"
+        ></image>
       </view>
       <view class="notification-rt">
         <view class="notification-title">

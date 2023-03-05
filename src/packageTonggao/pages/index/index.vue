@@ -58,32 +58,32 @@ export default {
         {
           name: "作品创作",
           value: "creation_content",
-          icon: require("../../../assets/images/tonggao/xiangce.png"),
+          icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/xiangce.png",
         },
         {
           name: "合作招募",
           value: "recruit_cooperate",
-          icon: require("../../../assets/images/tonggao/hezuo.png"),
+          icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/hezuo.png",
         },
         {
           name: "电商拍摄",
           value: "business_capture",
-          icon: require("../../../assets/images/tonggao/dianshang.png"),
+          icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/dianshang.png",
         },
         {
           name: "广告宣传",
           value: "advert_spread",
-          icon: require("../../../assets/images/tonggao/guanggao.png"),
+          icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/guanggao.png",
         },
         {
           name: "影视视频",
           value: "film_video",
-          icon: require("../../../assets/images/tonggao/yingshi.png"),
+          icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/yingshi.png",
         },
         {
           name: "商业活动",
           value: "business_activity",
-          icon: require("../../../assets/images/tonggao/shangye.png"),
+          icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/shangye.png",
         },
       ],
       maskData: [],

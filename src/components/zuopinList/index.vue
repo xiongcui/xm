@@ -25,10 +25,13 @@
           </view>
           <view class="sizer_img">
             <image
-              src="../../assets/images/common/sizered.png"
+              src="https://yuepai-oss.qubeitech.com/static/common/sizered.png"
               v-if="sizer_num.length"
             ></image>
-            <image src="../../assets/images/common/sizer.png" v-else></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/common/sizer.png"
+              v-else
+            ></image>
           </view>
         </view>
       </view>
@@ -60,7 +63,7 @@
             :src="
               item.author.avatar
                 ? item.author.avatar
-                : '../../assets/images/avatar_default.png'
+                : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
             "
             mode="aspectFill"
           ></image>
@@ -70,12 +73,12 @@
               <text class="list_name">{{ item.author.nickname }}</text>
               <block>
                 <image
-                  src="../../assets/images/nan.png"
+                  src="https://yuepai-oss.qubeitech.com/static/nan.png"
                   class="list_sex"
                   v-if="item.author.sex == 1"
                 ></image>
                 <image
-                  src="../../assets/images/nv.png"
+                  src="https://yuepai-oss.qubeitech.com/static/nv.png"
                   class="list_sex"
                   v-if="item.author.sex == 0"
                 ></image>
@@ -95,7 +98,7 @@
     </view>
     <view v-else class="none-data">
       <image
-        src="../../assets/images/common/none.png"
+        src="https://yuepai-oss.qubeitech.com/static/common/none.png"
         mode="aspectFill"
         class="none-img"
       ></image>

@@ -9,7 +9,9 @@
         </view>
       </view>
       <view class="card-rt">
-        <image src="../../../../assets/images/user/coin/coin-1.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/coin/coin-1.png"
+        ></image>
       </view>
     </view>
     <view class="coin-list">

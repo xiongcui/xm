@@ -606,7 +606,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "ab"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Z"])(params);
 
               case 3:
                 res = _context.sent;
@@ -635,18 +635,18 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "pb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "ob"])(params);
 
               case 3:
                 res = _context2.sent;
-                openPage("/packageAdd/pages/tips/index?type=1");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1");
                 _context2.next = 10;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                openPage("/packageAdd/pages/tips/index?type=0");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0");
 
               case 10:
               case "end":
@@ -1295,7 +1295,7 @@ var render = function () {
                     _c("image", {
                       staticClass: "upload-img",
                       attrs: {
-                        src: __webpack_require__(/*! ../../../assets/images/upload-img.png */ "./src/assets/images/upload-img.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/upload-img.png",
                         mode: "aspectFit",
                       },
                     }),

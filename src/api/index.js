@@ -767,3 +767,44 @@ export const submitCard = (data) => {
     data,
   });
 };
+
+// 识别结果接口
+export const idcardInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/identify/ocr/id_card/info",
+    method: "post",
+    data,
+  });
+};
+
+// 击提交后调用信息上报接口
+export const ocrIdcard = (data) => {
+  return request({
+    url: baseUrl + "/v1/identify/submit/id_card",
+    method: "post",
+    data,
+  });
+};
+
+// 身份证上传，用户点击上传身份证时
+
+// 第一步：调用文件上传接口：file/upload， scr_type="idcard"
+// 第二步：文件上传接口返回信息中取file_name字段的信息，传入OCR识别接口：
+// [POST] -> [/v1/identify/ocr/id_card]
+// 参数：
+// {
+//     "id_card_filename": "photo/upVg5cIs/347e2a54-b778-11ed-bb15-cb54351c6bd7.jpg",  # file_name字段
+//     "id_card_side": "back" # 身份证正面（front）身份证正面（back）
+// }
+
+// 接口返回字段中判断 id_card_front = 'true' 时，说明已经OCR成功识别用户身份证和姓名，在身份证和姓名栏中回显：id_name和id_no
+
+// 第四步：点击提交后调用信息上报接口
+// [POST] -> [/v1/identify/submit/id_card]
+// 参数
+// {
+//     "id_name": "XXX",
+//     "id_no": "XXXXXXXXXXXXXXXX"
+// }
+
+// 第五步：进行扫脸，扫脸结束后，调用接口：[/v1/identify/verify/result]

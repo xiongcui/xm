@@ -3,7 +3,7 @@
     <view class="appointment-list">
       <view class="appointment-item" @tap="goyuedan('20001', '摄影师')">
         <image
-          src="../../../assets/images/cameraman.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/cameraman.png"
           mode="aspectFit"
           class="appointment-image"
         >
@@ -12,7 +12,7 @@
       </view>
       <view class="appointment-item" @tap="goyuedan('20002', '摄像师')">
         <image
-          src="../../../assets/images/cameraman1.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/cameraman1.png"
           mode="aspectFit"
           class="appointment-image"
         >
@@ -21,7 +21,7 @@
       </view>
       <view class="appointment-item" @tap="goyuedan('20003', '造型师')">
         <image
-          src="../../../assets/images/makeup.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/makeup.png"
           mode="aspectFit"
           class="appointment-image"
         >
@@ -30,7 +30,7 @@
       </view>
       <view class="appointment-item" @tap="goyuedan('20007', '经纪人')">
         <image
-          src="../../../assets/images/model.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/model.png"
           mode="aspectFit"
           class="appointment-image"
         >
@@ -39,7 +39,7 @@
       </view>
       <view class="appointment-item" @tap="goyuedan('20011', '导演')">
         <image
-          src="../../../assets/images/ps.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/ps.png"
           mode="aspectFit"
           class="appointment-image"
         >
@@ -48,7 +48,7 @@
       </view>
       <view class="appointment-item" @tap="goyuedan('20012', '商家')">
         <image
-          src="../../../assets/images/business.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/business.png"
           mode="aspectFit"
           class="appointment-image"
         >

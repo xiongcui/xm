@@ -17,29 +17,41 @@
         </view>
       </view>
       <view class="card-rt">
-        <image src="../../../assets/images/user/vip/vip-card.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/vip-card.png"
+        ></image>
         <text>会员权限设置</text>
       </view>
     </view>
     <view class="vip-icon-list">
       <view class="vip-icon">
-        <image src="../../../assets/images/user/vip/user.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/user.png"
+        ></image>
         <text>查看访客</text>
       </view>
       <view class="vip-icon">
-        <image src="../../../assets/images/user/vip/qiandao.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/qiandao.png"
+        ></image>
         <text>无限签到</text>
       </view>
       <view class="vip-icon">
-        <image src="../../../assets/images/user/vip/baojing.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/baojing.png"
+        ></image>
         <text>免担保金</text>
       </view>
       <view class="vip-icon">
-        <image src="../../../assets/images/user/vip/tuijian.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/tuijian.png"
+        ></image>
         <text>优先推荐</text>
       </view>
       <view class="vip-icon">
-        <image src="../../../assets/images/user/vip/fuli.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/fuli.png"
+        ></image>
         <text>会员福利</text>
       </view>
     </view>
@@ -92,37 +104,53 @@
         <view class="privilege-box">
           <view class="service">查看访客记录</view>
           <view class="vip">
-            <image src="../../../assets/images/common/sucess.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
+            ></image>
           </view>
           <view class="novip"
-            ><image src="../../../assets/images/common/tip_fail.png"></image
+            ><image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
+            ></image
           ></view>
         </view>
         <view class="privilege-box">
           <view class="service">免信用担保金</view>
           <view class="vip">
-            <image src="../../../assets/images/common/sucess.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
+            ></image>
           </view>
           <view class="novip"
-            ><image src="../../../assets/images/common/tip_fail.png"></image
+            ><image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
+            ></image
           ></view>
         </view>
         <view class="privilege-box">
           <view class="service">发起沟通特权</view>
           <view class="vip">
-            <image src="../../../assets/images/common/sucess.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
+            ></image>
           </view>
           <view class="novip"
-            ><image src="../../../assets/images/common/tip_fail.png"></image
+            ><image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
+            ></image
           ></view>
         </view>
         <view class="privilege-box">
           <view class="service">优先推荐特权</view>
           <view class="vip">
-            <image src="../../../assets/images/common/sucess.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
+            ></image>
           </view>
           <view class="novip"
-            ><image src="../../../assets/images/common/tip_fail.png"></image
+            ><image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
+            ></image
           ></view>
         </view>
         <view class="privilege-box">

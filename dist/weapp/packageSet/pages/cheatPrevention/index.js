@@ -140,7 +140,9 @@ var render = function () {
   return _c("view", { staticClass: "cheat-prevention" }, [
     _c("image", {
       staticClass: "cheat-prevention-img",
-      attrs: { src: __webpack_require__(/*! ../../../assets/images/cheatPrevention.png */ "./src/assets/images/cheatPrevention.png") },
+      attrs: {
+        src: "https://yuepai-oss.qubeitech.com/static/images/cheatPrevention.png",
+      },
     }),
     _c("view", { staticClass: "cheat-prevention-box" }, [
       _c("view", { staticClass: "cheat-prevention-title" }, [
@@ -229,18 +231,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/cheatPrevention.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/cheatPrevention.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/cheatPrevention.png";
 
 /***/ }),
 

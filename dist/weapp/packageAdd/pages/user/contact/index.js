@@ -330,7 +330,7 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userContact */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userContact */ "wb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -361,7 +361,7 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subContact */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subContact */ "jb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -589,7 +589,7 @@ var render = function () {
                           _c("image", {
                             attrs: {
                               mode: "scaleToFill",
-                              src: __webpack_require__(/*! ../../../../assets/images/common/icon_sizer_close.png */ "./src/assets/images/common/icon_sizer_close.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/common/icon_sizer_close.png",
                             },
                           }),
                         ]
@@ -602,7 +602,7 @@ var render = function () {
                     [
                       _c("image", {
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/common/img_add.png */ "./src/assets/images/common/img_add.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/common/img_add.png",
                         },
                       }),
                     ]
@@ -654,30 +654,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/icon_sizer_close.png":
-/*!*******************************************************!*\
-  !*** ./src/assets/images/common/icon_sizer_close.png ***!
-  \*******************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAM1BMVEX///8yMjI4ODg5OTkzMzM4ODgzMzNMTEwzMzNCQkJCQkI0NDQzMzM1NTUzMzM5OTkzMzMGQPbIAAAAEHRSTlMD70E+7kP1EOAjIZ3imppHjVWRJAAAAKxJREFUOMvF1M0OAyEIBGAVRNvtD+//tE036c5hSrGn5WTwy1xEytl1HfHduOD8sNszcqK2HXnmrv27a9XdPpljOiQ7n+OIr2/ZAldxEUmBo9ZqM3VocyOR5AIpSo5k5iATBym7U3IkFS6RicPzwiWRq4GQiauK+fzltMnOSdJY4pA4jHbiEgnHkl2nj5U5luwglSQ7zmTHD1CWV8q/S6rcTaUE1adty4v05HoBRqEN0i7N8xwAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./src/assets/images/common/img_add.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/common/img_add.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKYAAACmBAMAAACipulEAAAAKlBMVEUAAADV1dXz8/Pz8/Pz8/Pz8/Pz8/Py8vLy8vLY2NjZ2dnk5OTx8fHy8vKjpwXtAAAACXRSTlMABiuPk7zU8vxOVFVLAAAA40lEQVRo3u3bvQkCURBF4StYgIEdmBibL2ghxkamZpuYW8BoBSoWoGgFYrToivp6sQIXXGbwh3MK+GB5bDJwJXVGya9JT5Las+TZdSA1hsm3c0vN5F1fXXdzqszdLDR2Ny/K3c1SyT9MTExMTExMTExMTExMzI+ax9Xe3dzawt1c2tzdNDNMTExMTEzMnzcfO3vd+lTLvFtVh1rmrdLcfI0Z8e0Rb8R/hImJiYmJ+e9mxC0o4mYVcVt7I0xMTExMTExMTExMTEzMEDN3J8uQzUjmbhYhG5yIrVDEpiliexWwEXsCHiYBuXbKag4AAAAASUVORK5CYII="
 
 /***/ }),
 

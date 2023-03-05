@@ -8,12 +8,12 @@
             nickname
             <block v-if="tgregreceiveInfo.visitor.sex !== null">
               <image
-                src="../../../assets/images/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="tgregreceive_sex"
                 v-if="tgregreceiveInfo.visitor.sex == 1"
               ></image>
               <image
-                src="../../../assets/images/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="tgregreceive_sex"
                 v-if="tgregreceiveInfo.visitor.sex == 0"
               ></image>
@@ -132,7 +132,7 @@
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>
         <image
-          src="../../../assets/images/common/x_icon.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
           class="close-img"
           @tap="closeQRcode"
         ></image>

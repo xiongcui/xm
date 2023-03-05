@@ -86,7 +86,7 @@
   position: absolute;
   top: 16rpx;
   right: 10rpx;
-  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAFVBMVEUAAAD///+ZmZmZmZmampqampqZmZnYuwvgAAAABnRSTlMAAQ9uiJxDDxVxAAAAaUlEQVQoz2NgGKKAyVkATDOaKMDFWNICwbRomgNcjDktFaSQMSzNAC4G5ASClaUKIAwE86AyKApRlYEVCqIqAysMRVMGUpiGpgysEF0ZVjEserHZgcUt2NyMxW/YwgBbWGELU2xhP8QAAEdpITWV6LIFAAAAAElFTkSuQmCC") no-repeat;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png") no-repeat;
   background-size: 38rpx;
 }
 .invite .invite-mask .mask-img {

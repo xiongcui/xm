@@ -182,7 +182,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
             },
           }),
         ]),
@@ -193,7 +193,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
             },
           }),
         ]),
@@ -204,7 +204,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
             },
           }),
         ]),
@@ -218,7 +218,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
               },
             }),
           ]),
@@ -233,7 +233,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
             },
           }),
         ]),
@@ -246,7 +246,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "aspectFit",
-              src: __webpack_require__(/*! ../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
             },
           }),
         ]),

@@ -133,11 +133,9 @@
               data-status="1"
             >
               是<image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    is_open_store == 1 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  is_open_store == 1 ? 1 : 0
+                }.png`"
               ></image>
             </view>
             <view
@@ -147,11 +145,9 @@
               data-status="2"
             >
               否<image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    is_open_store == 0 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  is_open_store == 0 ? 1 : 0
+                }.png`"
               ></image>
             </view>
           </view>
@@ -172,11 +168,9 @@
             >
               是
               <image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    is_brand_partner == 1 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  is_brand_partner == 1 ? 1 : 0
+                }.png`"
               ></image>
             </view>
             <view
@@ -187,11 +181,9 @@
             >
               否
               <image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    is_brand_partner == 0 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  is_brand_partner == 0 ? 1 : 0
+                }.png`"
               ></image>
             </view>
           </view>
@@ -225,11 +217,9 @@
             >
               议价
               <image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    bargin_pub_price == 1 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  bargin_pub_price == 1 ? 1 : 0
+                }.png`"
               ></image>
             </view>
           </view>
@@ -263,11 +253,9 @@
             >
               议价
               <image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    bargin_share_price == 1 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  bargin_share_price == 1 ? 1 : 0
+                }.png`"
               ></image>
             </view>
           </view>
@@ -304,11 +292,9 @@
             >
               议价
               <image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    bargin_video_price == 1 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  bargin_video_price == 1 ? 1 : 0
+                }.png`"
               ></image>
             </view>
           </view>
@@ -345,11 +331,9 @@
             >
               议价
               <image
-                :src="
-                  require(`../../../../assets/images/common/select_${
-                    bargin_live_price == 1 ? 1 : 0
-                  }.png`)
-                "
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select_${
+                  bargin_live_price == 1 ? 1 : 0
+                }.png`"
               ></image>
             </view>
           </view>
@@ -388,9 +372,9 @@
               议价
               <image
                 :src="
-                  require('../../../../assets/images/common/select_' +
-                    bargin_ad_price +
-                    '.png')
+                  'https://yuepai-oss.qubeitech.com/static/images/common/select_' +
+                  bargin_ad_price +
+                  '.png'
                 "
               ></image>
             </view>
@@ -510,10 +494,14 @@ export default {
         204: "打开微博APP个人主页，点击「分享」后「复制链接」后粘贴",
       },
       icon: {
-        douyin: require("../../../../assets/images/common/douyin.png"),
-        redbook: require("../../../../assets/images/common/redbook.png"),
-        weibo: require("../../../../assets/images/common/weibo.png"),
-        kuaishou: require("../../../../assets/images/common/kuaishou.png"),
+        douyin:
+          "https://yuepai-oss.qubeitech.com/static/images/common/douyin.png",
+        redbook:
+          "https://yuepai-oss.qubeitech.com/static/images/common/redbook.png",
+        weibo:
+          "https://yuepai-oss.qubeitech.com/static/images/common/weibo.png",
+        kuaishou:
+          "https://yuepai-oss.qubeitech.com/static/images/common/kuaishou.png",
       },
       media: {
         logo_show: "",

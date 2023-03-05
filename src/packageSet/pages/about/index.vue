@@ -1,7 +1,10 @@
 <template>
   <view class="about">
     <view class="about-top">
-      <image src="../../../assets/images/logo.png" class="about-img"></image>
+      <image
+        src="https://yuepai-oss.qubeitech.com/static/images/logo.png"
+        class="about-img"
+      ></image>
     </view>
     <view class="about-service">
       <view class="about-item" @tap="customerService">
@@ -9,7 +12,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>
@@ -18,7 +21,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>
@@ -29,7 +32,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>
@@ -38,7 +41,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>
@@ -47,7 +50,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>
@@ -56,7 +59,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>
@@ -65,7 +68,7 @@
         <view class="arrow">
           <image
             mode="aspectFit"
-            src="../../../assets/images/user/index/right.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
           ></image>
         </view>
       </view>

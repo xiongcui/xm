@@ -223,7 +223,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteImage */ "B"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteImage */ "A"])(params);
 
               case 3:
                 res = _context.sent;
@@ -254,7 +254,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "fb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -284,7 +284,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "gb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -317,7 +317,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "hb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -435,7 +435,7 @@ var render = function () {
               _c("view", { staticClass: "mask-item" }, [
                 _c("image", {
                   attrs: {
-                    src: __webpack_require__(/*! ../../../../assets/images/wchat.png */ "./src/assets/images/wchat.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/wchat.png",
                     mode: "aspectFill",
                   },
                 }),
@@ -460,7 +460,7 @@ var render = function () {
                 [
                   _c("image", {
                     attrs: {
-                      src: __webpack_require__(/*! ../../../../assets/images/tupian.png */ "./src/assets/images/tupian.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/tupian.png",
                       mode: "aspectFill",
                     },
                   }),
@@ -499,30 +499,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/tupian.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/tupian.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tupian.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/wchat.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/wchat.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/wchat.png";
 
 /***/ }),
 

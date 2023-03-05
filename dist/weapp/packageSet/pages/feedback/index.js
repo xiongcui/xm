@@ -258,7 +258,7 @@ component.options.__file = "src/packageSet/pages/feedback/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* feedback */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* feedback */ "s"])(params);
 
               case 3:
                 res = _context.sent;
@@ -417,7 +417,7 @@ var render = function () {
               _c("image", {
                 staticClass: "upload-img",
                 attrs: {
-                  src: __webpack_require__(/*! ../../../assets/images/upload-img.png */ "./src/assets/images/upload-img.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/upload-img.png",
                   mode: "aspectFit",
                 },
               }),

@@ -624,7 +624,7 @@ var render = function () {
                         _c("image", {
                           staticClass: "none-img",
                           attrs: {
-                            src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
                             mode: "aspectFill",
                           },
                         }),
@@ -668,7 +668,7 @@ var render = function () {
                         _c("image", {
                           staticClass: "none-img",
                           attrs: {
-                            src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
                             mode: "aspectFill",
                           },
                         }),

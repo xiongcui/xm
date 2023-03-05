@@ -53,6 +53,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
 /* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -119,6 +120,19 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -131,7 +145,8 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
       realname_gh: "",
       card: "",
       frontfileName: "",
-      backfileName: ""
+      backfileName: "",
+      pageShow: "uploadimg"
     };
   },
   methods: {
@@ -243,7 +258,24 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
         }
       });
     },
-    ocrCard: function ocrCard(params, type) {
+    next: function next() {
+      if (this.realname_rx && this.realname_gh) {
+        this.pageShow = "info";
+        this.idcardInfo("");
+      } else {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请先上传身份证");
+      }
+    },
+    reupload: function reupload() {
+      this.pageShow = "uploadimg";
+    },
+    submit: function submit() {
+      this.ocrIdcard({
+        id_name: this.realname,
+        id_no: this.card
+      });
+    },
+    ocrCard: function ocrCard(params) {
       var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
@@ -254,17 +286,14 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrCard */ "T"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrCard */ "S"])(params);
 
               case 3:
                 res = _context.sent;
 
                 if (res.data.data.id_card_front) {
-                  if (type == "front") {
-                    _this4.realname = res.data.data.id_name;
-                  } else {
-                    _this4.card = res.data.data.id_no;
-                  }
+                  _this4.realname = res.data.data.id_name;
+                  _this4.card = res.data.data.id_no;
                 }
 
                 _context.next = 9;
@@ -280,6 +309,72 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
             }
           }
         }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    idcardInfo: function idcardInfo(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "z"])(params);
+
+              case 3:
+                res = _context2.sent;
+
+                if (res.data.data.id_card_front) {
+                  _this5.realname = res.data.data.id_name;
+                  _this5.card = res.data.data.id_no;
+                }
+
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    ocrIdcard: function ocrIdcard(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res, userInfo;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrIdcard */ "T"])(params);
+
+              case 3:
+                res = _context3.sent;
+                userInfo = wx.getStorageSync("userInfo");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" + res.data.data.verify_token + "&uuid=" + userInfo.uuid);
+                _context3.next = 10;
+                break;
+
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](0);
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 8]]);
       }))();
     }
   }
@@ -303,187 +398,174 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "realname" }, [
-    _c("view", { staticClass: "realname_info" }, [
-      _c("view", { staticClass: "realname_title" }, [
-        _c("image", {
-          attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/user/realname/sfz.jpg */ "./src/assets/images/user/realname/sfz.jpg"),
+    _c(
+      "view",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.pageShow == "uploadimg",
+            expression: "pageShow == 'uploadimg'",
           },
-        }),
-        _vm._v(" 请上传身份证的正反面 "),
-      ]),
-      _c("view", { staticClass: "realname_tips" }, [
-        _c("image", {
-          attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/common/warn_icon.png */ "./src/assets/images/common/warn_icon.png"),
-          },
-        }),
-        _vm._v(
-          " 请确保二代身份证有效、并且头像文字清晰，四角对齐，无反光、无遮挡。 "
-        ),
-      ]),
-      _c("view", { staticClass: "card_identity" }, [
-        _vm.realname_rx
-          ? _c("image", {
-              attrs: { src: _vm.realname_rx },
-              on: {
-                tap: function ($event) {
-                  return _vm.chooseImage(0)
-                },
-              },
-            })
-          : _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/user/realname/card_tx.jpg */ "./src/assets/images/user/realname/card_tx.jpg"),
-              },
-              on: {
-                tap: function ($event) {
-                  return _vm.chooseImage(0)
-                },
-              },
-            }),
-      ]),
-      _c("view", { staticClass: "card_identity" }, [
-        _vm.realname_gh
-          ? _c("image", {
-              attrs: { src: _vm.realname_gh },
-              on: {
-                tap: function ($event) {
-                  return _vm.chooseImage(1)
-                },
-              },
-            })
-          : _c("image", {
-              attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/user/realname/card_gh.jpg */ "./src/assets/images/user/realname/card_gh.jpg"),
-              },
-              on: {
-                tap: function ($event) {
-                  return _vm.chooseImage(1)
-                },
-              },
-            }),
-      ]),
-      _c("view", { staticClass: "realname_title" }, [
-        _c("image", {
-          attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/user/realname/sfz.jpg */ "./src/assets/images/user/realname/sfz.jpg"),
-          },
-        }),
-        _vm._v(" 请完善您的个人信息 "),
-      ]),
-      _c("view", { staticClass: "realname_form" }, [
-        _c("view", { staticClass: "label" }, [_vm._v(" 真实姓名 ")]),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.realname,
-              expression: "realname",
+        ],
+        staticClass: "realname_info",
+      },
+      [
+        _c("view", { staticClass: "realname_title" }, [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/realname/sfz.jpg",
             },
-          ],
-          staticClass: "realname-input",
-          attrs: { placeholder: "请输入真实姓名" },
-          domProps: { value: _vm.realname },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.realname = $event.target.value
+          }),
+          _vm._v(" 请上传身份证的正反面 "),
+        ]),
+        _c("view", { staticClass: "realname_tips" }, [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
             },
+          }),
+          _vm._v(
+            " 请确保二代身份证有效、并且头像文字清晰，四角对齐，无反光、无遮挡。 "
+          ),
+        ]),
+        _c("view", { staticClass: "card_identity" }, [
+          _vm.realname_rx
+            ? _c("image", {
+                attrs: { src: _vm.realname_rx },
+                on: {
+                  tap: function ($event) {
+                    return _vm.chooseImage(0)
+                  },
+                },
+              })
+            : _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/realname/card_tx.jpg",
+                },
+                on: {
+                  tap: function ($event) {
+                    return _vm.chooseImage(0)
+                  },
+                },
+              }),
+        ]),
+        _c("view", { staticClass: "card_identity" }, [
+          _vm.realname_gh
+            ? _c("image", {
+                attrs: { src: _vm.realname_gh },
+                on: {
+                  tap: function ($event) {
+                    return _vm.chooseImage(1)
+                  },
+                },
+              })
+            : _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/realname/card_gh.jpg",
+                },
+                on: {
+                  tap: function ($event) {
+                    return _vm.chooseImage(1)
+                  },
+                },
+              }),
+        ]),
+        _c("view", { staticClass: "realname_btn", on: { tap: _vm.next } }, [
+          _vm._v("下一步"),
+        ]),
+      ]
+    ),
+    _c(
+      "view",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.pageShow == "info",
+            expression: "pageShow == 'info'",
           },
-        }),
-      ]),
-      _c("view", { staticClass: "realname_form" }, [
-        _c("view", { staticClass: "label" }, [_vm._v(" 身份证号 ")]),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.card,
-              expression: "card",
+        ],
+        staticClass: "realname_info",
+      },
+      [
+        _c("view", { staticClass: "realname_title realname_info" }, [
+          _vm._v(" 识别到以下信息，点击可进行修改 "),
+        ]),
+        _c("view", { staticClass: "realname_form" }, [
+          _c("view", { staticClass: "label" }, [_vm._v(" 真实姓名 ")]),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.realname,
+                expression: "realname",
+              },
+            ],
+            staticClass: "realname-input",
+            attrs: { placeholder: "请输入真实姓名" },
+            domProps: { value: _vm.realname },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.realname = $event.target.value
+              },
             },
-          ],
-          staticClass: "realname-input",
-          attrs: { placeholder: "请输入身份证号" },
-          domProps: { value: _vm.card },
-          on: {
-            input: function ($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.card = $event.target.value
+          }),
+        ]),
+        _c("view", { staticClass: "realname_form" }, [
+          _c("view", { staticClass: "label" }, [_vm._v(" 身份证号 ")]),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.card,
+                expression: "card",
+              },
+            ],
+            staticClass: "realname-input",
+            attrs: { placeholder: "请输入身份证号" },
+            domProps: { value: _vm.card },
+            on: {
+              input: function ($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.card = $event.target.value
+              },
             },
-          },
-        }),
-      ]),
-      _c("view", { staticClass: "realname_txt" }, [
-        _c("image", {
-          attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/user/realname/safety.png */ "./src/assets/images/user/realname/safety.png"),
-          },
-        }),
-        _vm._v(" 认证信息已加密 仅用于匹配认证信息 "),
-      ]),
-      _c("view", { staticClass: "realname_btn" }, [_vm._v("确认提交")]),
-    ]),
+          }),
+        ]),
+        _c("view", { staticClass: "realname_txt" }, [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/user/realname/safety.png",
+            },
+          }),
+          _vm._v(" 认证信息已加密 仅用于匹配认证信息 "),
+        ]),
+        _c("view", { staticClass: "realname_box_btn" }, [
+          _c("view", { staticClass: "re_upload", on: { tap: _vm.reupload } }, [
+            _vm._v("重新上传"),
+          ]),
+          _c("view", { staticClass: "realname_btn", on: { tap: _vm.submit } }, [
+            _vm._v("确认提交"),
+          ]),
+        ]),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/user/realname/card_gh.jpg":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/user/realname/card_gh.jpg ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/realname/card_gh.jpg";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/realname/card_tx.jpg":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/user/realname/card_tx.jpg ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/realname/card_tx.jpg";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/realname/safety.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/user/realname/safety.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAgCAMAAAA2a+hwAAAAwFBMVEUAAAD/VFf/VFj/VFf/Tk7+VFj/TEz/U1f/VFb/V1n/VFf/VVf/VVf/VFb/VFf/VFf/U1b/VFf/VFf/VFf/VFf+VFf+VFf/VFf/VFf/VFf/U1f/VFf/VFf/VFf/Ulb/VVX+VFf/VFf/VFf/VFb/VVj/UVn/VFf+VFb/VFj+VFf/VFf/VVf/Ulb/TVn/VFf/VVj/WFj/VFf////+xcb+d3n+t7n+hYf+6Oj+enz+bnH+YGP+WVz+1db+rK3+n6H+np/k3FXjAAAAMXRSTlMA/FT3BpwDbT0R+TEO9O83HeDWzL6jgn546NLGqWArFeSwh3RcGtq2lJBPSSUKq0sg7MMaOQAAAXdJREFUKM+tzdduo0AAheEzgMeY3kyzwT19y3EW0nY37/9WGYGIQhzf5RNCGv0cBoPf02XpCTdMUhNjUksESeEKKmG2wrtZHpLeRLuTwMrMSlKf2H2qJy4Z7w0AxsqB4s91MtEkcCkolqYK2nJN0kvyQO2zggxt6GKrToe04KD/dh9SUxHqPxZH4srApI8znpqexqeX8/Hp2JyPf4733xVdIR0qL/+a5v740DTNYx/nKnqcwepWg26t4ZK3iFhjTeWxbV+Pf9u2faZiYkEbG95gc3KncKRHBxmvMT2JC9iMAF+9Autz3CHnFYCQPubsPD/8Z8d15AVNFXf8idriSIobxlBmrrCRjlpkyJgVoGSMpbH40FwbOUuji0bJFKuIA3GLWhc+er4lKhyGrfcLwZpbDPbC0mBcCSrxHYKIG4l3O4oUsDdWWUmYBRc/8EGlM6kBRz1bi8tRU/euKeYmgrygyPGZc62ThSATG184ZBf01PqcwBgd3wChbVrSVgbnLwAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ "./src/assets/images/user/realname/sfz.jpg":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/realname/sfz.jpg ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/realname/sfz.jpg";
 
 /***/ }),
 
@@ -512,7 +594,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageAdd/pages/user/realnameAuth/index.vue");
 
 
-var config = {};
+var config = {"navigationBarTitleText":"实名认证"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageAdd/pages/user/realnameAuth/index', {root:{cn:[]}}, config || {}))

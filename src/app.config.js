@@ -5,11 +5,10 @@ export default defineAppConfig({
     "pages/register/index",
     "pages/my/index",
     "pages/release/index",
-    "pages/position/index",
+    // "pages/position/index",
     "pages/msg/index",
     "pages/release/appointment/index",
     "pages/release/field/index",
-    "pages/index/index",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -29,12 +28,12 @@ export default defineAppConfig({
         selectedIconPath: "assets/images/home-sel.png",
         text: "首页",
       },
-      {
-        pagePath: "pages/position/index",
-        iconPath: "assets/images/position.png",
-        selectedIconPath: "assets/images/position-sel.png",
-        text: "同城",
-      },
+      // {
+      //   pagePath: "pages/position/index",
+      //   iconPath: "assets/images/position.png",
+      //   selectedIconPath: "assets/images/position-sel.png",
+      //   text: "同城",
+      // },
       {
         pagePath: "pages/release/index",
         iconPath: "assets/images/release.png",
@@ -86,6 +85,7 @@ export default defineAppConfig({
         "pages/tips/index",
         "pages/user/followAndfans/index",
         "pages/user/realnameAuth/index",
+        "pages/user/baiduRealnameAuth/index",
       ],
     },
     {
@@ -159,4 +159,5 @@ export default defineAppConfig({
     "startLocationUpdateBackground",
     "startLocationUpdate",
   ],
+  lazyCodeLoading: "requiredComponents",
 });

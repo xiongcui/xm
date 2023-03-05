@@ -524,7 +524,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "yb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -568,7 +568,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Db"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -602,7 +602,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "ub"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -632,7 +632,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Eb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -665,7 +665,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "X"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "W"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -775,7 +775,7 @@ var render = function () {
               top: _vm.globalData.navTop + "px",
             },
             attrs: {
-              src: __webpack_require__(/*! ../../../../assets/images/common/goback.png */ "./src/assets/images/common/goback.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/common/goback.png",
             },
             on: { tap: _vm.goback },
           }),
@@ -801,7 +801,7 @@ var render = function () {
                 attrs: {
                   src: _vm.infor.avatar
                     ? _vm.infor.avatar
-                    : __webpack_require__(/*! ../../../../assets/images/head.png */ "./src/assets/images/head.png"),
+                    : "https://yuepai-oss.qubeitech.com/static/images/head.png",
                   mode: "aspectFit",
                 },
               }),
@@ -823,26 +823,26 @@ var render = function () {
                     ? _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png",
                         },
                       })
                     : _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
                         },
                       }),
                   _vm.infor.is_security
                     ? _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png",
                         },
                       })
                     : _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
                         },
                       }),
                 ]),
@@ -862,7 +862,7 @@ var render = function () {
                     ? _c("image", {
                         staticClass: "sex",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/user/show/sex1.png */ "./src/assets/images/user/show/sex1.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/user/show/sex1.png",
                         },
                       })
                     : _vm._e(),
@@ -870,7 +870,7 @@ var render = function () {
                     ? _c("image", {
                         staticClass: "sex",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/user/show/sex2.png */ "./src/assets/images/user/show/sex2.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/user/show/sex2.png",
                         },
                       })
                     : _vm._e(),
@@ -926,7 +926,7 @@ var render = function () {
                 [
                   _c("image", {
                     attrs: {
-                      src: __webpack_require__(/*! ../../../../assets/images/user/show/btn_edit.png */ "./src/assets/images/user/show/btn_edit.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/show/btn_edit.png",
                     },
                   }),
                 ]
@@ -980,7 +980,7 @@ var render = function () {
                         _c("image", {
                           attrs: {
                             mode: "widthFix",
-                            src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
                           },
                         }),
                       ]),
@@ -1172,7 +1172,7 @@ var render = function () {
                                 [
                                   _c("image", {
                                     attrs: {
-                                      src: __webpack_require__(/*! ../../../../assets/images/common/add_icon.png */ "./src/assets/images/common/add_icon.png"),
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
                                     },
                                   }),
                                 ]
@@ -1186,7 +1186,7 @@ var render = function () {
                                 [
                                   _c("image", {
                                     attrs: {
-                                      src: __webpack_require__(/*! ../../../../assets/images/common/add_icon.png */ "./src/assets/images/common/add_icon.png"),
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
                                     },
                                   }),
                                 ]
@@ -1200,7 +1200,7 @@ var render = function () {
                                 [
                                   _c("image", {
                                     attrs: {
-                                      src: __webpack_require__(/*! ../../../../assets/images/common/add_icon.png */ "./src/assets/images/common/add_icon.png"),
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
                                     },
                                   }),
                                 ]
@@ -1281,7 +1281,7 @@ var render = function () {
                                 [
                                   _c("image", {
                                     attrs: {
-                                      src: __webpack_require__(/*! ../../../../assets/images/common/add_icon.png */ "./src/assets/images/common/add_icon.png"),
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
                                     },
                                   }),
                                 ]
@@ -1387,7 +1387,7 @@ var render = function () {
                       _c("image", {
                         attrs: {
                           mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/common/none.png */ "./src/assets/images/common/none.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
                         },
                       }),
                     ]),
@@ -1446,7 +1446,7 @@ var render = function () {
                             _c("image", {
                               attrs: {
                                 mode: "widthFix",
-                                src: __webpack_require__(/*! ../../../../assets/images/common/loading.gif */ "./src/assets/images/common/loading.gif"),
+                                src: "https://yuepai-oss.qubeitech.com/static/images/common/loading.gif",
                               },
                             }),
                           ])
@@ -1473,78 +1473,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/goback.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/common/goback.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/goback.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/loading.gif":
-/*!**********************************************!*\
-  !*** ./src/assets/images/common/loading.gif ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/loading.gif";
-
-/***/ }),
-
-/***/ "./src/assets/images/head.png":
-/*!************************************!*\
-  !*** ./src/assets/images/head.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/head.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/show/btn_edit.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/user/show/btn_edit.png ***!
-  \**************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/show/btn_edit.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/show/sex1.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/user/show/sex1.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAkFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+WABnwAAAAL3RSTlMA+QPz03oj9ernxa0sy4thFgnkoJaRc0Q0HdfMvIeBbF1ZUk4+ORAB8N+1ZCkaEY2IjxgAAADcSURBVBjTXZDpkoMgEIRHQQTx1qi5783u5uj3f7uAkVRI/2iGr2pmuoZ8pQxWyTeuGYuBYPqGfZRvrsKWJXf4kf9i1PJg6TIY8UkCyXobNQrQHNlPbPExwP/tNaqQMJQMtss35DTn0ERKEq3QWuC4xIGEoBNURR8qkNlnhshLHkrYnAuk5KnBzniMysfR2B4g9HGHtfEacx/P0BnXKHzMcTa++7riAGWnVjX2n/mSKfAebHjTS4u/yu2Ii8urLDVY6vpygHdDKfqWQZ3preMCk5q7d4g+X2WJ3goHnjifFMPqrMH+AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/user/show/sex2.png":
-/*!**********************************************!*\
-  !*** ./src/assets/images/user/show/sex2.png ***!
-  \**********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAACx0lEQVRIS53WX+iecxjH8dePjYmQg5lItpWENhlyICc/a+pX1GjR/EmbpqXkT4kcUA4k7A9bKTGK2aK2EjvYikb+nIzRckBRw4G0mj+zhZ8+dd26d3f/Hs/z3CfP031f1/W+r+v6fK/rnpienj7RaNdpWIh5+BM/4Rv8MyjMxJCgCdyCO3EtTuoE/RnvYj2+7AMOA1qEV7C4FWAagbev3EtWr+E+/NF++H+gG8rx1HJKsE/xPn7EHCzAFM5vBf4C8f2huTcIdDX24GQEsBsP4sAMvViBp3Fe2e+vMv8e+5lAp1fANDyQZ/FI/R/U87OxE1eU0RasHgR6Ao9WH14vEQyrzcBS3mT2N67E/r6MoqhI9gwcwoX1OywodinjG1WBiGNVH+g67KqoKdnDoxDKNor8tgQS6Z/bB3oMj5fDJD4YAxSXF3BP+V7cB9qENWVwAQ6OCXqgVBj3yT7Qy7ijgqexv4wJWouN5TvVB3oKD5XB5VHMmKAnq7/p15I+0G2I/nN+AtwwJuhD5NAfw9w+0Dn4HidUNkuGOKjdd7kE+ypGJsr1DWh+jZqvy+Mt3FgHNsp5aYSsUqr3IoDyX4ltAV2EzzGr5JhJfRk+xuzaOcvw0ZCwzLv7yzZxr0pFAspc+qzoGfORdmBv4qZyOFrOySy967vOqn10a8X6Ddfgq/asy/54pgXbVosuZWjvnijw1VoTWQGn1LbNmrgLZ5Z9XiyL8p3mjdpiaMOa54Fsx/IqbRfczSz2mZM3V5X+e95VXRO0MdiK25Etm9EUgeQbo51l8z8DOGPnOfzafYM2KOp6vrOi07Oc8EZ1c0tNl+Zs4Ehl8An24q+ZBNOA7sbmguQN3y4hpFRd2JDiO94soOyfw62VfS9eRH7XtQSS8jXnbGRYk9EOLK2vl/bhbGAZIznt341MKId2j9LkrN7ulUzygZFFNvb1L/pe4wSjtmI2AAAAAElFTkSuQmCC"
 
 /***/ }),
 

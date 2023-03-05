@@ -8,12 +8,12 @@
             {{ yuepaiInfo.author.nickname }}
             <block v-if="yuepaiInfo.author.sex !== null">
               <image
-                src="../../../../assets/images/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="yuedan_sex"
                 v-if="yuepaiInfo.author.sex == 1"
               ></image>
               <image
-                src="../../../../assets/images/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="yuedan_sex"
                 v-if="yuepaiInfo.author.sex == 0"
               ></image>
@@ -25,22 +25,22 @@
               {{ yuepaiInfo.author.province_name }}
             </text>
             <image
-              src="../../../../assets/images/common/icon_real.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
               class="yuedan_p_img"
               v-if="yuepaiInfo.author.is_certify"
             ></image>
             <image
-              src="../../../../assets/images/common/icon_pledge_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
               class="yuedan_p_img"
               v-else
             ></image>
             <image
-              src="../../../../assets/images/common/icon_pledge.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="yuedan_p_img"
               v-if="yuepaiInfo.author.is_security"
             ></image>
             <image
-              src="../../../../assets/images/common/icon_real_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
               class="yuedan_p_img"
               v-else
             ></image>
@@ -50,35 +50,41 @@
       <view class="yuedan_right">
         <image
           class="follow"
-          src="../../../../assets/images/common/follow_red.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png"
           @tap="follow"
           v-if="is_follow == 0"
         ></image>
         <image
           class="follow"
-          src="../../../../assets/images/common/followed_gray.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png"
           @tap="unfollow"
           v-if="is_follow == 1"
         ></image>
         <button open-type="share" class="share-btn">
           <image
             class="share"
-            src="../../../../assets/images/common/icon_share.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
           ></image>
         </button>
       </view>
     </view>
     <view class="yuedan_icon">
       <view class="yuedan_icon_box">
-        <image src="../../../../assets/images/yuedan/show_type.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/yuedan/show_type.png"
+        ></image>
         <text>约{{ yuepaiInfo.face_career }}</text>
       </view>
       <view class="yuedan_icon_box">
-        <image src="../../../../assets/images/yuedan/show_city.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/yuedan/show_city.png"
+        ></image>
         <text>面向{{ yuepaiInfo.face_province_name }}</text>
       </view>
       <view class="yuedan_icon_box">
-        <image src="../../../../assets/images/yuedan/show_money.png"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/yuedan/show_money.png"
+        ></image>
         <text>{{ yuepaiInfo.payment_format }}</text>
       </view>
     </view>
@@ -143,11 +149,15 @@
       </view>
       <view class="yuepai_bottom">
         <view class="yuepai_bottom_time">
-          <image src="../../../../assets/images/common/time.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+          ></image>
           {{ yuepaiInfo.date_humanize }}
         </view>
         <view class="yuepai_bottom_read">
-          <image src="../../../../assets/images/user/index/invoice.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png"
+          ></image>
           阅读 {{ yuepaiInfo.statistic.read_cnt }}
         </view>
       </view>
@@ -170,16 +180,18 @@
     >
       <view class="yuepai_fixed_left">
         <view class="yuepai_fixed_item">
-          <image src="../../../../assets/images/user/index/yuepai.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+          ></image>
           {{ yuepaiInfo.statistic.invite_cnt }}
         </view>
         <view class="yuepai_fixed_item" @tap="subGiveUp">
           <image
-            src="../../../../assets/images/common/icon_likeed.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png"
             v-if="is_vote"
           ></image>
           <image
-            src="../../../../assets/images/common/icon_like.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png"
             v-else
           ></image>
           {{ yuepaiInfo.statistic.vote_cnt }}
@@ -187,11 +199,11 @@
         <view class="yuepai_fixed_item" @tap="subRecordCollect">
           <image
             v-if="is_collect"
-            src="../../../../assets/images/common/icon_favoriteed.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png"
           ></image>
           <image
             v-else
-            src="../../../../assets/images/common/icon_favorite.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
           {{ yuepaiInfo.statistic.collect_cnt }}
         </view>

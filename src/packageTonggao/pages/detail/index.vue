@@ -8,12 +8,12 @@
             {{ tonggaoInfo.author.nickname }}
             <block v-if="tonggaoInfo.author.sex !== null">
               <image
-                src="../../../assets/images/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="tonggao_sex"
                 v-if="tonggaoInfo.author.sex == 1"
               ></image>
               <image
-                src="../../../assets/images/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="tonggao_sex"
                 v-if="tonggaoInfo.author.sex == 0"
               ></image>
@@ -29,22 +29,22 @@
               {{ tonggaoInfo.author.province_name }}
             </text>
             <image
-              src="../../../assets/images/common/icon_real.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
               class="tonggao_p_img"
               v-if="tonggaoInfo.author.is_certify"
             ></image>
             <image
-              src="../../../assets/images/common/icon_pledge_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
               class="tonggao_p_img"
               v-else
             ></image>
             <image
-              src="../../../assets/images/common/icon_pledge.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="tonggao_p_img"
               v-if="tonggaoInfo.author.is_security"
             ></image>
             <image
-              src="../../../assets/images/common/icon_real_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
               class="tonggao_p_img"
               v-else
             ></image>
@@ -54,20 +54,20 @@
       <view class="tonggao_right">
         <image
           class="follow"
-          src="../../../assets/images/common/follow_red.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png"
           @tap="follow"
           v-if="is_follow == 0"
         ></image>
         <image
           class="follow"
-          src="../../../assets/images/common/followed_gray.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png"
           @tap="unfollow"
           v-if="is_follow == 1"
         ></image>
         <button open-type="share" class="share-btn">
           <image
             class="share"
-            src="../../../assets/images/common/icon_share.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
           ></image>
         </button>
       </view>
@@ -79,7 +79,9 @@
       </view>
       <block v-if="tonggaoInfo.second_code == 'CS8001'">
         <view class="tonggao_p">
-          <image src="../../../assets/images/position.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+          ></image>
           面向地区：{{ tonggaoInfo.face_province_name }}
         </view>
         <view
@@ -89,7 +91,9 @@
             tonggaoInfo.task_reward_type == 300
           "
         >
-          <image src="../../../assets/images/tonggao/zhifu.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/zhifu.png"
+          ></image>
           支付稿费：{{ tonggaoInfo.payment_format }}
         </view>
         <view
@@ -99,36 +103,52 @@
             tonggaoInfo.task_reward_type == 300
           "
         >
-          <image src="../../../assets/images/tonggao/product.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/product.png"
+          ></image>
           赠送产品：{{ tonggaoInfo.reward_good }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/pinpai.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/pinpai.png"
+          ></image>
           店铺名称：{{ tonggaoInfo.store_name }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/position.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+          ></image>
           店铺地址：{{ tonggaoInfo.store_address }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/renshu.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/renshu.png"
+          ></image>
           招募人数：{{ tonggaoInfo.recruit_number }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/fensi.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/fensi.png"
+          ></image>
           粉丝要求：{{ tonggaoInfo.fans_number }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/time.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/time.png"
+          ></image>
           报名截止：{{ tonggaoInfo.deadline_date }}
         </view>
         <view class="tonggao_p_bottom">
           <view class="list_time">
-            <image src="../../../assets/images/common/time.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+            ></image>
             {{ tonggaoInfo.date_humanize }}
           </view>
           <view class="list_read">
-            <image src="../../../assets/images/eyes.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+            ></image>
             阅读 {{ tonggaoInfo.statistic.read_cnt }}
           </view>
         </view>
@@ -136,7 +156,9 @@
       <!--品牌种草-->
       <block v-if="tonggaoInfo.second_code == 'CS8002'">
         <view class="tonggao_p">
-          <image src="../../../assets/images/position.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+          ></image>
           面向地区：{{ tonggaoInfo.face_province_name }}
         </view>
         <view
@@ -146,7 +168,9 @@
             tonggaoInfo.task_reward_type == 300
           "
         >
-          <image src="../../../assets/images/tonggao/zhifu.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/zhifu.png"
+          ></image>
           支付稿费：{{ tonggaoInfo.payment_format }}
         </view>
         <view
@@ -156,23 +180,33 @@
             tonggaoInfo.task_reward_type == 300
           "
         >
-          <image src="../../../assets/images/tonggao/product.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/product.png"
+          ></image>
           赠送产品：{{ tonggaoInfo.reward_good }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/pinpai.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/pinpai.png"
+          ></image>
           产品品牌：{{ tonggaoInfo.product_brand }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/renshu.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/renshu.png"
+          ></image>
           招募人数：{{ tonggaoInfo.recruit_number }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/fensi.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/fensi.png"
+          ></image>
           粉丝要求：{{ tonggaoInfo.fans_number }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/time.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/time.png"
+          ></image>
           报名截止：{{ tonggaoInfo.deadline_date }}
         </view>
       </block>
@@ -183,19 +217,27 @@
         "
       >
         <view class="tonggao_p">
-          <image src="../../../assets/images/position.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+          ></image>
           面向地区：{{ tonggaoInfo.face_province_name }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/user.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png"
+          ></image>
           性别要求：{{ formatSex(tonggaoInfo.face_sex) }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/time.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/time.png"
+          ></image>
           报名截止：{{ tonggaoInfo.deadline_date }}
         </view>
         <view class="tonggao_p">
-          <image src="../../../assets/images/tonggao/renshu.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/renshu.png"
+          ></image>
           招募人数：{{ tonggaoInfo.recruit_number }}
         </view>
       </block>
@@ -238,11 +280,11 @@
         <view class="tonggao_fixed_item" @tap="subRecordCollect">
           <image
             v-if="is_collect"
-            src="../../../assets/images/common/icon_favoriteed.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png"
           ></image>
           <image
             v-else
-            src="../../../assets/images/common/icon_favorite.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
           {{ tonggaoInfo.statistic.collect_cnt }}
         </view>

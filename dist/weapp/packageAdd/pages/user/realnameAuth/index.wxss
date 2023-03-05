@@ -76,3 +76,28 @@
   text-align: center;
   margin-top: 30rpx;
 }
+.realname .realname_box_btn {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.realname .realname_box_btn .re_upload {
+  width: 49%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border: 1rpx solid #e5e5e5;
+  margin-top: 30rpx;
+}
+.realname .realname_box_btn .realname_btn {
+  width: 49%;
+}
+.realname .realname_info {
+  color: rgba(0, 0, 0, 0.5);
+}

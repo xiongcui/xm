@@ -531,6 +531,12 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -645,7 +651,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "yb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -701,7 +707,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "F"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "E"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -730,7 +736,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "fb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -760,7 +766,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "gb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -793,7 +799,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "pb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -891,7 +897,7 @@ var render = function () {
                 _c("view", { staticClass: "page_settings" }, [
                   _c("image", {
                     attrs: {
-                      src: __webpack_require__(/*! ../../assets/images/user/index/icon_settings.png */ "./src/assets/images/user/index/icon_settings.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_settings.png",
                     },
                     on: { tap: _vm.open_settings },
                   }),
@@ -902,7 +908,7 @@ var render = function () {
                         _c("image", {
                           staticClass: "icon_sign",
                           attrs: {
-                            src: __webpack_require__(/*! ../../assets/images/user/index/icon_signed.png */ "./src/assets/images/user/index/icon_signed.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_signed.png",
                           },
                         }),
                         _c("view", { staticClass: "is_sign" }, [
@@ -919,7 +925,7 @@ var render = function () {
                           _c("image", {
                             staticClass: "icon_sign",
                             attrs: {
-                              src: __webpack_require__(/*! ../../assets/images/user/index/icon_sign.png */ "./src/assets/images/user/index/icon_sign.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_sign.png",
                             },
                           }),
                           _c("view", [_vm._v("签到")]),
@@ -944,7 +950,7 @@ var render = function () {
           attrs: {
             src: _vm.infor.avatar
               ? _vm.infor.avatar
-              : "../../assets/images/head.png",
+              : "https://yuepai-oss.qubeitech.com/static/images/head.png",
             mode: "aspectFit",
           },
         }),
@@ -967,26 +973,26 @@ var render = function () {
                   ? _c("image", {
                       staticClass: "head-tag-img",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/icon_real.png */ "./src/assets/images/common/icon_real.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png",
                       },
                     })
                   : _c("image", {
                       staticClass: "head-tag-img",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/icon_pledge_none.png */ "./src/assets/images/common/icon_pledge_none.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
                       },
                     }),
                 _vm.infor.is_security
                   ? _c("image", {
                       staticClass: "head-tag-img",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/icon_pledge.png */ "./src/assets/images/common/icon_pledge.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png",
                       },
                     })
                   : _c("image", {
                       staticClass: "head-tag-img",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/icon_real_none.png */ "./src/assets/images/common/icon_real_none.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
                       },
                     }),
               ]),
@@ -1015,7 +1021,7 @@ var render = function () {
                   ? _c("image", {
                       staticClass: "sex",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/nan.png */ "./src/assets/images/nan.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
                         mode: "aspectFit",
                       },
                     })
@@ -1024,7 +1030,7 @@ var render = function () {
                   ? _c("image", {
                       staticClass: "sex",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/nv.png */ "./src/assets/images/nv.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
                         mode: "aspectFit",
                       },
                     })
@@ -1111,7 +1117,7 @@ var render = function () {
           _c("image", {
             staticClass: "my-vip-img",
             attrs: {
-              src: __webpack_require__(/*! ../../assets/images/money.png */ "./src/assets/images/money.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/money.png",
               mode: "aspectFit",
             },
           }),
@@ -1124,7 +1130,7 @@ var render = function () {
           _c("image", {
             staticClass: "my-vip-img",
             attrs: {
-              src: __webpack_require__(/*! ../../assets/images/vip.png */ "./src/assets/images/vip.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/vip.png",
               mode: "aspectFit",
             },
           }),
@@ -1144,7 +1150,7 @@ var render = function () {
             _c("image", {
               staticClass: "my-column-img",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/zhuye.png */ "./src/assets/images/zhuye.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/zhuye.png",
                 mode: "aspectFill",
               },
             }),
@@ -1158,7 +1164,7 @@ var render = function () {
             _c("image", {
               staticClass: "my-column-img",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/album.png */ "./src/assets/images/album.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/album.png",
                 mode: "aspectFill",
               },
             }),
@@ -1172,7 +1178,7 @@ var render = function () {
             _c("image", {
               staticClass: "my-column-img",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/collection.png */ "./src/assets/images/collection.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/collection.png",
                 mode: "aspectFill",
               },
             }),
@@ -1186,7 +1192,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/ad.png */ "./src/assets/images/user/index/ad.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/ad.png",
               },
             }),
           ]),
@@ -1197,7 +1203,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
               },
             }),
           ]),
@@ -1207,7 +1213,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
               },
             }),
           ]),
@@ -1218,7 +1224,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
               },
             }),
           ]),
@@ -1231,7 +1237,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/huodong.png */ "./src/assets/images/user/index/huodong.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/huodong.png",
                 },
               }),
             ]),
@@ -1242,7 +1248,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1256,7 +1262,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/zuopin1.png */ "./src/assets/images/user/index/zuopin1.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/zuopin1.png",
                 },
               }),
             ]),
@@ -1267,7 +1273,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1281,7 +1287,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/moka.png */ "./src/assets/images/user/index/moka.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png",
                 },
               }),
             ]),
@@ -1292,7 +1298,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1308,7 +1314,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/dengji.png */ "./src/assets/images/user/index/dengji.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/dengji.png",
                 },
               }),
             ]),
@@ -1319,7 +1325,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1338,7 +1344,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../assets/images/user/index/realname.png */ "./src/assets/images/user/index/realname.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/index/realname.png",
                     },
                   }),
                 ]),
@@ -1354,7 +1360,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                     },
                   }),
                 ]),
@@ -1370,7 +1376,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../assets/images/user/index/pledgecash.png */ "./src/assets/images/user/index/pledgecash.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/index/pledgecash.png",
                     },
                   }),
                 ]),
@@ -1389,7 +1395,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                     },
                   }),
                 ]),
@@ -1401,7 +1407,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/invite.png */ "./src/assets/images/user/index/invite.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/invite.png",
               },
             }),
           ]),
@@ -1413,7 +1419,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
               },
             }),
           ]),
@@ -1426,7 +1432,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/kefu1.png */ "./src/assets/images/user/index/kefu1.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/kefu1.png",
                 },
               }),
             ]),
@@ -1437,7 +1443,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1451,7 +1457,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/helpcenter.png */ "./src/assets/images/user/index/helpcenter.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/helpcenter.png",
                 },
               }),
             ]),
@@ -1462,7 +1468,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1473,7 +1479,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/gongzhonghao.png */ "./src/assets/images/user/index/gongzhonghao.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/gongzhonghao.png",
               },
             }),
           ]),
@@ -1484,7 +1490,7 @@ var render = function () {
             _c("image", {
               attrs: {
                 mode: "aspectFit",
-                src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
               },
             }),
           ]),
@@ -1499,7 +1505,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/about.png */ "./src/assets/images/user/index/about.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/about.png",
                 },
               }),
             ]),
@@ -1510,7 +1516,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1524,7 +1530,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/invoice.png */ "./src/assets/images/user/index/invoice.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png",
                 },
               }),
             ]),
@@ -1535,7 +1541,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
                 },
               }),
             ]),
@@ -1551,7 +1557,7 @@ var render = function () {
           _c("view", { staticClass: "sign_md_close_btn" }, [
             _c("image", {
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/common/tipclose.png */ "./src/assets/images/common/tipclose.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png",
               },
               on: { tap: _vm.close },
             }),
@@ -1561,7 +1567,7 @@ var render = function () {
               _c("view", { staticClass: "sign_md_top" }, [
                 _c("image", {
                   attrs: {
-                    src: __webpack_require__(/*! ../../assets/images/user/sign/addcoin.png */ "./src/assets/images/user/sign/addcoin.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png",
                   },
                 }),
               ]),
@@ -1593,246 +1599,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/album.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/album.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/album.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/collection.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/collection.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/collection.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/money.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/money.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/money.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/about.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/index/about.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAAAjVBMVEUAAAA0NDQ1NTUyMjI0NDQzMzM0NDQ0NDQxMTE0NDQrKys0NDQ0NDQzMzMzMzM0NDQ0NDQ0NDQ0NDQzMzM1NTU0NDQyMjI0NDQ0NDQ0NDQ0NDQ0NDQzMzMzMzM0NDQ0NDQ0NDQ0NDQzMzM0NDQzMzM0NDQ0NDQzMzMzMzM0NDQzMzMzMzMzMzMzMzM0NDTi1gCGAAAALnRSTlMA+kwVsvTwJQ/iB93FRS106721Uz0eC9jLbVnt0qmimpWKaF45KRnmrn97kGMyP7yaVgAAAZxJREFUSMftldt2ozAMRTHEBkNCgKS5kPuladJO9/9/3qyZ6TIyCaSP81A9YXv7WLIkE/znlkSz74HRcTNXgF7sJ+kT9jxQNGY+XnrYlysA6Gxu1b+vW6f+xAB6U/8VTPPlEGAdP4bHgDpEYuazAsz0EfwuheRx+nwP18AguZvOMyjuYo0NXN1oenIOXSwM23QF65mI4M3hnxqWPjwC3Zy3ACZu9AtWvosl3JrRHlQcyM1jz2swYvvsth2J1RDmrdvbBd1mIfcdGcnl0yGXw70f5wolS3QJJpI5gq2oUsik1hX/rFfvyuNWAgZAKJvDCzOHso9OwX5fO/K0E7B9dO6rFZD00LWfjgrCHnoHR79ttt10WkAs2xd01EnXsGiX96GLTtdw9OgpqKY0Nl+5bHrDvRMOyCJRF9nMNYqCU+DbpYDSKeR14jK3gsphUmLo1BsXC7DNtGw/bPulWSooXoMHdlLAVi6FC8B6sDj1DWA4Pid/AhkdMoDy0vnI7xUAaPP1sToGPRbvDI1l42e/iDT8KK1WJqvez8GPPbff2dg55Ty7zSAAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/ad.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/user/index/ad.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAMAAAAPdrEwAAAAhFBMVEUAAAAzMzMzMzM2NjY1NTUzMzMzMzM2NjY0NDQ/Pz8zMzM0NDQ2NjY9PT0zMzMzMzM0NDQyMjIyMjIzMzM0NDQ0NDQ1NTU3NzdqamozMzMzMzMzMzM0NDQzMzMzMzM1NTU0NDQ1NTU+Pj4zMzMzMzMzMzM0NDQzMzM0NDQ4ODgzMzMzMzNU8Rh/AAAAK3RSTlMAs/pMTev8GoAM2EceEPG7eubgxnRrKhUCz6uNUvWUZDoyCKWgXEAFmCOK7847bgAAAjZJREFUWMPt18mOqzAQheGiEpwwT4GQkHnsdL3/+11shzu5pTZSedES/4oF+YTwkSJgampqalTBYZvH4KJziQL3O+BvhUh9e/bnXmekw5xZjnwkndiyws+OBA15nPJro0xBFTd936Mk0Y/mvHRwfb+MbA289LlUMOIK4E3zjlmUZzBojjELugZg0Bxjxv0dgJV+fr7Pb/OCEfQzPs2+aTeMuXuCNd3kG7JoGDOALX3OCMkuPWZbOrjZw3rMtnS8ETSiB1jTjV5Tzxcb74t86qvUpbpxYU0nJSo4rNVvzDzqm4HMH0W3mZRxf2wBmOk7SblsALjpSyGIRPoCfroW+tAd0BUR4RYc0Gv10A0TbR5iCC7oHImwc0If5KhrJ/RWvuudE/qGRHR0Qn/2NOZO6Fr0tOeEPlMfBuz0cLNYcdHm+tLEBR3L9WHWMtHm/MRH64Be+0LaWcJPQ0QyTFcBOw01qQR6+XE+M6uob6kuU3t6sIXCEckiG9r8SLOrikfQsL4JexzTnSWtizvf2hb0cbGldSfqQ08XIhGGnpFAhYfNKHpBfT7olpJegtGpUDZizU5DsiWdl3DSuqMeKRYPdhqaUKgXLpYtNw2XA2m8iplpyaX4njg7DYvq98S5aWiXw8RzLtqcOPHR5sT5aT1xFXbMtJ64KuKhzYmLK/DSul1KRd46oSFIQMZK25cYfwUr4Kqg/4rY6A7/lf2AjQ7Kv22kOfCVXMUfunwAa8FppotimJqa+tH9AtR9046SmCa7AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/dengji.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/index/dengji.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/dengji.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/gongzhonghao.png":
-/*!*******************************************************!*\
-  !*** ./src/assets/images/user/index/gongzhonghao.png ***!
-  \*******************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/gongzhonghao.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/helpcenter.png":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/user/index/helpcenter.png ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAuCAMAAACLUGAGAAAAjVBMVEUAAAAyMjI0NDQzMzM0NDQzMzM1NTU0NDQ0NDQ0NDQzMzMxMTEwMDA0NDQ0NDQ0NDQ0NDQ0NDQxMTEzMzM0NDQ0NDQ0NDQ0NDQ0NDQzMzM0NDQzMzM0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQzMzM1NTU0NDQ0NDQzMzMzMzM1NTU0NDSFlWmcAAAALnRSTlMABft8cyoO8dKVjRUK9baIXFcfG+bKoE8+Muzg2rxsYUhD3s7Eq6d3JriwnTg1z/osOwAAAdVJREFUSMftk9m2ojAQRUMAGQRFRcV51la79/9/XocFwQSudj/fdfcLqXBSdYoK4vvgj9w4Gnrz/r+liyhHE976n7V3LNLovd6JJYr108tGO/eyRLEcvRFPpmW22G8O7x8oIucr8fgIzOzKf07A5Qt5fw1y1zE3K1N01QMIfjemFn5SL2/Ati3egtzXVeIcFW2KKozU+lfLRwBePZwVFbJK6WxgYKuHcK5WifK/Gm6H5ZnK2TitVxpnCXVhD9Y99eyFcGlSXU31HKb18gyZKBlBXvcsSXuG+vnqO4BJdQsgrffuMDfUyqtuO45joXOvROMuNmxLgs5cwtdYCuurjOHUFj9A+npYEBr3Hza2ONkoceO1p0x9UDvlPTgIQ320nISW2lXihf3e6jJtD8u8jgd4GGEIvrCcBY5damiEEXhGWLScnWFvhPvW6yRxhGU7SEyjuX26yPp25acwuUH4SudB/pL7Unel6eVmI1Ng1LhS0UXYZNQ3tfNzXSGY6MDYTOc6nTtrBhnrOraXsrzb2R1QWuzSPwF3+++eH4FIR9088npwdLwry0lXvMFLUQSD+Oa50VmiOB7EW8YzicnSTcQnJu6JmnSQdbVd/8XOc71s4Ygf/oO/YZw+4tXipE8AAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/huodong.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/user/index/huodong.png ***!
-  \**************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/huodong.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/icon_settings.png":
-/*!********************************************************!*\
-  !*** ./src/assets/images/user/index/icon_settings.png ***!
-  \********************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/icon_settings.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/icon_sign.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/user/index/icon_sign.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAe1BMVEUAAAD/VVf/VVf/V1f/TE3/VFf/VFj/VVn/VVj/Ulb+VFf/VVf/VFf9U1f/U1b/UGD/Rk//VFf/VFj/U1f/VFf/VFf/VFj+U1f/VFf/U1b/VFf/U1f/U1j/VVj/VFb/U1b/UVj/Ulb/VVf/VFf/VFb/VVf/VVn/VVX/VFcV8O5qAAAAKHRSTlMAbKwsB3jqRZw7+rj5n18QA/MZ1NDAqNrYHPjchk0/ZiQWx498aTkSX9hYKQAAATlJREFUOMu9lNlugzAQRU2KbZZASCB70iRdz/9/Ye0SZVphLPrS84Bs6YxsRp6rfpBe6kYJ5+RTBdnAq+zeoQt7BlrZzYDbwFnYOjmASR60QGIXv6y8LAhTlLncPyNGlt61NWAqHTj3VBlg3YsZzLVfLmGrHpTASqV6Dtn33ZxmlefoSsVz5YWvtk7M+zp9b6w5foh37cxFeTSUriEFJlUxUkOxUBYqFacCq2p/bBwNtUrg9BTnBInzJvA3r5vF6XrPfeIk/+k12WEzwWs2wDXmibZLR7zVmxWN437s3Jf7upkBW6eNeDvcRrRR73npxV5bqbAnYud/wWlhT0TRIv3LvdiKNvREbG9q4A3f/f6cBt791DmaOpcy57FxKyU3wkhuSA4FkRySXBuiJdcm5uT03JUcH1I/cvwLSfZGI9VzynUAAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/icon_signed.png":
-/*!******************************************************!*\
-  !*** ./src/assets/images/user/index/icon_signed.png ***!
-  \******************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAApCAMAAACBd8B3AAAAb1BMVEUAAAC9vb27u7u/v7+5ubm7u7u8vLy7u7u8vLy7u7u+vr68vLy+vr67u7u8vLy1tbW7u7u8vLy7u7u8vLy8vLy8vLy8vLy7u7u7u7u8vLy7u7u8vLy8vLy9vb28vLy8vLy7u7u4uLi5ubm5ubm7u7uS3/8WAAAAJHRSTlMAbKwsBvqeeEXpOxoQuF8D88Dc1aZu2M4++NOGZ03usJMkFguOA501AAABMklEQVQ4y73U3W6CMBiA4eJKW0BQRGX+Tt17/9c46ozfTEvHTvYeGEke0kLop36kj81CSafNXEVbw0WujtDH3Rk6ufoAboGZuybbQZE92wMb97p0WefEy+tS9m9IZfSDtUBhbGTdgymA9hsayK3/u4Tt63NUStsczH1vA3PKt4JWnL/d3+0G6PdYg3282GJVirv256PyWaiHF5JTaJVKF+Rz5fzy6Qw41fhl01loVAaHt3QHyAb3e390/Sxdf3f+J132n25x2a0nuMUauKacsE6PuMo6YayqsXVb2NzZTFjMbRmgsFH3vvRQe7atVNwJ3AsLnUBfJyxwAoUFTiqXdDcVuPC7r06fke9+6jmaei7lnKeOWy1zI57MDZlD0WQOyVwLszLXJs7J6XNX5nhY85zjX2jwP9fMmkpWAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/invite.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/index/invite.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/invite.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/kefu1.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/user/index/kefu1.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/kefu1.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/moka.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/user/index/moka.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/moka.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/pledgecash.png":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/user/index/pledgecash.png ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/pledgecash.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/realname.png":
-/*!***************************************************!*\
-  !*** ./src/assets/images/user/index/realname.png ***!
-  \***************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAABgFBMVEUAAAAAAAAAAAAAAAAzMzMkJCRAQEA5OTkzMzMuLi4rKysnJyc3Nzc5OTk2NjYzMzMxMTE1NTUxMTEwMDA1NTUzMzMwMDA3Nzc2NjY0NDQxMTEyMjI2NjYzMzM2NjY1NTUzMzM1NTU1NTU0NDQzMzMxMTEyMjI0NDQ0NDQzMzMyMjI0NDQyMjIzMzM1NTU1NTU0NDQzMzM0NDQzMzMzMzM0NDQ0NDQzMzM0NDQzMzMzMzM1NTU0NDQ0NDQzMzM1NTU0NDQ1NTU0NDQ0NDQ0NDQzMzM0NDQ0NDQzMzM1NTU0NDQ0NDQ1NTU1NTU0NDQ0NDQzMzM0NDQ0NDQ0NDQ0NDQ0NDQ1NTU0NDQ1NTU0NDQ1NTU0NDQzMzM0NDQ0NDQ0NDQ1NTUzMzM0NDQ0NDQzMzM0NDQ0NDQzMzMzMzM0NDQzMzM0NDQ0NDQzMzM0NDQ0NDQ0NDQ0NDQ0NDQ0NDQzMzM0NDQzMzM0NDQ0NDQ0NDQ0NDQzMzM0NDQzMzM0NDQ0NDQa3GCjAAAAf3RSTlMAAQIDBQcICQoLDA0OEhMUFRgaICIjJSUmJyouLzI0NTc6P0BBQ0dJSktRVFZaW1xeamxtc3V2d3p8fn6JiouMjZGSk5SVl5iampydn6ChqKmrsbe5u72+wMHBxcfIysvLzM7P0NHU1dri5efo6ers8fP09vj4+fn6+/z9/f7+5ufKqwAAAXRJREFUSMftlVdTAjEUhY9ib1gRxd57V+y994aKBXvvqEAW3fPXfWABZ1zDOvLo95a5Xya5yeQE+CcqWCrlWL645k2vShmq15ERsrcYGUdQtnp42tkh5YyeAs2uUNkVoa8uqpVBmwZs/tUunTl2TdqM2aYFQZJizJA976e4vVfoHzZgF/t5VwPUP/M1H0gdmdAYLdKzBynqAKBN4QAwGL6YUz17jT4TACQJzgLVbqHh69Gzl+lLB4AcL8cBJCRqxOnuu13lFACsUGmN3GXyA5XVxqadD17HGTjBqvdAV/4SAMi1aRTq2nn7SsBWdrOBFvGmIZZ0bPMV+TTXbV90kxdp6Au/j43vdsw2352ZAJDtUrkOU3+vhj3ru12jcC8+ME45p1Im73KavvJgrVZwSG5f8DFUi32hU27f8CBcvOKl3G4+rA0XG44aov7SDNm/Sgirh2fy8Ok8occanOkwkGxboXUyHBFTc9P8NZEr5Fj+P62f+ASRZfUG4jhUsgAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/zuopin1.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/user/index/zuopin1.png ***!
-  \**************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/user/index/zuopin1.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/vip.png":
-/*!***********************************!*\
-  !*** ./src/assets/images/vip.png ***!
-  \***********************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/vip.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/zhuye.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/zhuye.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/zhuye.png";
 
 /***/ }),
 

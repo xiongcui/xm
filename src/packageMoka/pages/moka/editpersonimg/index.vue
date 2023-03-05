@@ -27,7 +27,7 @@
             >
               <view class="pick_img_btn">
                 <image
-                  src="../../../../assets/images/common/add_icon.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
               <view class="upload-text">

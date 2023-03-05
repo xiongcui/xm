@@ -118,6 +118,16 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -179,7 +189,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "R"])(params);
 
               case 3:
                 res = _context.sent;
@@ -224,7 +234,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "L"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -298,7 +308,9 @@ var render = function () {
           },
           [
             _c("image", {
-              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/fabulous.png */ "./src/assets/images/msg/fabulous.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/msg/fabulous.png",
+              },
             }),
             _c("text", [_vm._v("赞与访客")]),
             _vm.vote_visitor_cnt > 0
@@ -320,7 +332,9 @@ var render = function () {
           },
           [
             _c("image", {
-              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/yuepai.png */ "./src/assets/images/msg/yuepai.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/msg/yuepai.png",
+              },
             }),
             _c("text", [_vm._v("收到约拍")]),
             _vm.invite_cnt > 0
@@ -342,7 +356,9 @@ var render = function () {
           },
           [
             _c("image", {
-              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/baoming.png */ "./src/assets/images/msg/baoming.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/msg/baoming.png",
+              },
             }),
             _c("text", [_vm._v("收到报名")]),
             _vm.notice_cnt > 0
@@ -354,7 +370,9 @@ var render = function () {
         ),
         _c("view", { staticClass: "msg-icon-item" }, [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../assets/images/msg/contact.png */ "./src/assets/images/msg/contact.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/msg/contact.png",
+            },
           }),
           _c("text", [_vm._v("收到联系")]),
         ]),
@@ -372,7 +390,9 @@ var render = function () {
         [
           _c("view", { staticClass: "notification-left" }, [
             _c("image", {
-              attrs: { src: __webpack_require__(/*! ../../assets/images/msg/xiaoxi.png */ "./src/assets/images/msg/xiaoxi.png") },
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/msg/xiaoxi.png",
+              },
             }),
           ]),
           _c("view", { staticClass: "notification-rt" }, [
@@ -430,66 +450,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/msg/baoming.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/msg/baoming.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/msg/baoming.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/msg/contact.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/msg/contact.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/msg/contact.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/msg/fabulous.png":
-/*!********************************************!*\
-  !*** ./src/assets/images/msg/fabulous.png ***!
-  \********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/msg/fabulous.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/msg/xiaoxi.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/msg/xiaoxi.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/msg/xiaoxi.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/msg/yuepai.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/msg/yuepai.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/msg/yuepai.png";
 
 /***/ }),
 

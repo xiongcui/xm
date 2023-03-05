@@ -39,7 +39,7 @@
                     :src="
                       item.avatar
                         ? item.avatar
-                        : '../../../../assets/images/avatar_default.png'
+                        : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                     "
                     class="avatar"
                   ></image>
@@ -70,7 +70,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -96,7 +96,7 @@
                     :src="
                       item.avatar
                         ? item.avatar
-                        : '../../../../assets/images/avatar_default.png'
+                        : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                     "
                     class="avatar"
                   ></image>
@@ -127,7 +127,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>

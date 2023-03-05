@@ -41,14 +41,17 @@
       <view class="shop-item">
         <view class="shop-left"> 店铺地址 </view>
         <view class="shop-rt" @tap="onChooseLocation">
-          <image class="shop-icon" src="../../../assets/images/position.png">
+          <image
+            class="shop-icon"
+            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+          >
           </image>
           <text v-if="localtion"> {{ localtion }}</text>
           <text v-else> 请选择店铺地址</text>
           <view class="shop-item-right">
             <image
               mode="aspectFit"
-              src="../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>
@@ -243,7 +246,7 @@
             </block>
             <view class="tonggao-upload-img" @tap="chooseImage">
               <image
-                src="../../../assets/images/upload-img.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/upload-img.png"
                 class="upload-img"
                 mode="aspectFit"
               ></image>
@@ -268,7 +271,7 @@
 
 <script>
 import { Base64 } from "js-Base64";
-import { errortip } from "../../../utils/util";
+import { errortip, openPage } from "../../../utils/util";
 import { publicConfig, submitNotice } from "../../../api/index.js";
 import "./index.scss";
 export default {

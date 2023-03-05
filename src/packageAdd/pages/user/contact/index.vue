@@ -93,13 +93,13 @@
                 <view @tap.stop="delete_preview" class="preview_delet">
                   <image
                     mode="scaleToFill"
-                    src="../../../../assets/images/common/icon_sizer_close.png"
+                    src="https://yuepai-oss.qubeitech.com/static/common/icon_sizer_close.png"
                   ></image>
                 </view>
               </view>
               <view @tap="chooseImage" class="pick_img" v-else>
                 <image
-                  src="../../../../assets/images/common/img_add.png"
+                  src="https://yuepai-oss.qubeitech.com/static/common/img_add.png"
                 ></image>
               </view>
             </view>

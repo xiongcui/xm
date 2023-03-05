@@ -80,8 +80,8 @@ page {
     .contact {
       width: 110px;
       padding: 4px 0px;
-      background: url("../../../assets/images/msg/contact_icon.png") no-repeat
-        6px center #ff1e3e;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/msg/contact_icon.png")
+        no-repeat 6px center #ff1e3e;
       background-size: 26px;
       color: #ffffff;
       font-size: 24px;
@@ -91,15 +91,16 @@ page {
     .time {
       color: #6b6b6b;
       font-size: 26px;
-      background: url("../../../assets/images/time.png") no-repeat 6px center;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/time.png")
+        no-repeat 6px center;
       background-size: 26px;
       padding-left: 40px;
       margin-top: 16px;
     }
   }
   .notice {
-    background: url("../../../assets/images/msg/push.png") no-repeat 6px center
-      #efefef;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/msg/push.png")
+      no-repeat 6px center #efefef;
     background-size: 30px;
     border-radius: 8px;
     font-size: 26px;
@@ -126,7 +127,8 @@ page {
     color: #333333;
     .signup-desc {
       width: 78%;
-      background: url("../../../assets/images/msg/email.png") 0px 4px no-repeat;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/msg/email.png")
+        0px 4px no-repeat;
       background-size: 30px;
       padding-left: 40px;
     }
@@ -141,16 +143,16 @@ page {
     justify-content: space-between;
   }
   .more {
-    background: url("../../../assets/images/common/icon_more.png") left center
-      no-repeat;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_more.png")
+      left center no-repeat;
     background-size: 28px;
     font-size: 26px;
     padding-left: 40px;
     color: #6b6b6b;
   }
   .remarks {
-    background: url("../../../assets/images/common/editbtn.png") left center
-      no-repeat;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/common/editbtn.png")
+      left center no-repeat;
     background-size: 32px;
     font-size: 26px;
     padding-left: 40px;

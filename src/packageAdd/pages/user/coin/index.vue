@@ -94,7 +94,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -121,7 +121,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>

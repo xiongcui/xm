@@ -92,6 +92,18 @@ component.options.__file = "src/packageAdd/pages/tips/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -187,7 +199,7 @@ var render = function () {
             _c("image", {
               staticClass: "toptip_icon",
               attrs: {
-                src: __webpack_require__(/*! ../../../assets/images/common/tongzhi3.png */ "./src/assets/images/common/tongzhi3.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/common/tongzhi3.png",
               },
             }),
             _c("view", { staticClass: "toptip_text fl-g1" }, [
@@ -201,7 +213,9 @@ var render = function () {
       ? _c("view", { staticClass: "tips-sucess" }, [
           _c("image", {
             staticClass: "tips-img",
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/sucess.png */ "./src/assets/images/sucess.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/sucess.png",
+            },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("发布成功")]),
           _c("view", [_vm._v("正在审核，请耐心等等...")]),
@@ -213,7 +227,7 @@ var render = function () {
       ? _c("view", { staticClass: "tips-fail" }, [
           _c("image", {
             staticClass: "tips-img",
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/fail.png */ "./src/assets/images/fail.png") },
+            attrs: { src: "https://yuepai-oss.qubeitech.com/static/fail.png" },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("发布失败")]),
           _c("view", [_vm._v("请稍后重新发布！")]),
@@ -225,7 +239,9 @@ var render = function () {
       ? _c("view", { staticClass: "tips-sucess" }, [
           _c("image", {
             staticClass: "tips-img",
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/sucess.png */ "./src/assets/images/sucess.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/sucess.png",
+            },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("报名成功")]),
           _c("view", [_vm._v("您的报名请求发送成功，等待对方联系您！")]),
@@ -237,7 +253,7 @@ var render = function () {
       ? _c("view", { staticClass: "tips-fail" }, [
           _c("image", {
             staticClass: "tips-img",
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/fail.png */ "./src/assets/images/fail.png") },
+            attrs: { src: "https://yuepai-oss.qubeitech.com/static/fail.png" },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("报名失败")]),
           _c("view", [_vm._v("请稍后重新报名！")]),
@@ -252,30 +268,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/fail.png":
-/*!************************************!*\
-  !*** ./src/assets/images/fail.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/fail.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/sucess.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/sucess.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/sucess.png";
 
 /***/ }),
 

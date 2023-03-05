@@ -104,7 +104,7 @@ var render = function () {
       _c("image", {
         staticClass: "field-image",
         attrs: {
-          src: __webpack_require__(/*! ../../../assets/images/field.png */ "./src/assets/images/field.png"),
+          src: "https://yuepai-oss.qubeitech.com/static/images/field.png",
           mode: "aspectFit",
         },
       }),
@@ -135,18 +135,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/field.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/field.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/field.png";
 
 /***/ }),
 

@@ -5,7 +5,7 @@
       <view class="release-item" @tap="releaseUrl(1)">
         <view class="release-left">
           <image
-            src="../../assets/images/camera.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/camera.png"
             mode="aspectFit"
             class="release-image"
           ></image>
@@ -22,7 +22,7 @@
       <view class="release-item" @tap="releaseUrl(2)">
         <view class="release-left">
           <image
-            src="../../assets/images/publishLocation.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/publishLocation.png"
             mode="aspectFit"
             class="release-image"
           ></image>
@@ -39,7 +39,7 @@
       <view class="release-item" @tap="releaseUrl(3)">
         <view class="release-left">
           <image
-            src="../../assets/images/works.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/works.png"
             mode="aspectFit"
             class="release-image"
           ></image>
@@ -57,7 +57,7 @@
       <view class="release-item">
         <view class="release-left">
           <image
-            src="../../assets/images/card.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/card.png"
             mode="aspectFit"
             class="release-image"
           ></image>

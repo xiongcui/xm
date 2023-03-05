@@ -183,6 +183,8 @@ component.options.__file = "src/packageAdd/pages/user/addressedit/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -292,7 +294,7 @@ component.options.__file = "src/packageAdd/pages/user/addressedit/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitAddress */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitAddress */ "nb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -369,7 +371,7 @@ component.options.__file = "src/packageAdd/pages/user/addressedit/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitAddress */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitAddress */ "nb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -522,7 +524,7 @@ var render = function () {
           _c("view", { staticClass: "gap_line" }, [
             _c("image", {
               attrs: {
-                src: __webpack_require__(/*! ../../../../assets/images/user/index/right.png */ "./src/assets/images/user/index/right.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/user/index/right.png",
               },
             }),
           ]),

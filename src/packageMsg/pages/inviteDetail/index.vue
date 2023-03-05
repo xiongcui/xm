@@ -2,7 +2,7 @@
   <view>
     <view class="toptip ub">
       <image
-        src="../../../assets/images/common/icon_tongzhi.png"
+        src="https://yuepai-oss.qubeitech.com/static/images/common/icon_tongzhi.png"
         class="warning"
       ></image>
       <view class="toptip_text ub-f1"
@@ -17,12 +17,12 @@
             {{ yuepaiInfo.author.nickname }}
             <block v-if="yuepaiInfo.author.sex !== null">
               <image
-                src="../../../assets/images/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="yuepai_sex"
                 v-if="yuepaiInfo.author.sex == 1"
               ></image>
               <image
-                src="../../../assets/images/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="yuepai_sex"
                 v-if="yuepaiInfo.author.sex == 0"
               ></image>
@@ -60,7 +60,7 @@
           <view class="type_icon">
             <image
               mode="widthFix"
-              src="../../../assets/images/tonggao/user.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png"
             ></image>
           </view>
           <view class="type_text">我的联系信息</view>
@@ -113,7 +113,7 @@
           <view class="type_icon">
             <image
               mode="widthFix"
-              src="../../../assets/images/tonggao/reg_hongren.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/tonggao/reg_hongren.png"
             ></image>
           </view>
           <view class="type_text">红人账号</view>
@@ -149,7 +149,7 @@
           <view class="type_icon">
             <image
               mode="widthFix"
-              src="../../../assets/images/tonggao/reg_address.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/tonggao/reg_address.png"
             ></image>
           </view>
           <view class="type_text">收货地址</view>
@@ -210,7 +210,7 @@
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>
         <image
-          src="../../../assets/images/common/x_icon.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
           class="close-img"
           @tap="closeQRcode"
         ></image>

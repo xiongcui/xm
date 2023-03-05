@@ -113,27 +113,27 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
       classificationList: [{
         name: "作品创作",
         value: "creation_content",
-        icon: __webpack_require__(/*! ../../../assets/images/tonggao/xiangce.png */ "./src/assets/images/tonggao/xiangce.png")
+        icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/xiangce.png"
       }, {
         name: "合作招募",
         value: "recruit_cooperate",
-        icon: __webpack_require__(/*! ../../../assets/images/tonggao/hezuo.png */ "./src/assets/images/tonggao/hezuo.png")
+        icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/hezuo.png"
       }, {
         name: "电商拍摄",
         value: "business_capture",
-        icon: __webpack_require__(/*! ../../../assets/images/tonggao/dianshang.png */ "./src/assets/images/tonggao/dianshang.png")
+        icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/dianshang.png"
       }, {
         name: "广告宣传",
         value: "advert_spread",
-        icon: __webpack_require__(/*! ../../../assets/images/tonggao/guanggao.png */ "./src/assets/images/tonggao/guanggao.png")
+        icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/guanggao.png"
       }, {
         name: "影视视频",
         value: "film_video",
-        icon: __webpack_require__(/*! ../../../assets/images/tonggao/yingshi.png */ "./src/assets/images/tonggao/yingshi.png")
+        icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/yingshi.png"
       }, {
         name: "商业活动",
         value: "business_activity",
-        icon: __webpack_require__(/*! ../../../assets/images/tonggao/shangye.png */ "./src/assets/images/tonggao/shangye.png")
+        icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/shangye.png"
       }],
       maskData: []
     };
@@ -180,7 +180,7 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "Z"])(params);
 
               case 3:
                 res = _context.sent;
@@ -337,78 +337,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/tonggao/dianshang.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/tonggao/dianshang.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/dianshang.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/tonggao/guanggao.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/tonggao/guanggao.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/guanggao.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/tonggao/hezuo.png":
-/*!*********************************************!*\
-  !*** ./src/assets/images/tonggao/hezuo.png ***!
-  \*********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/hezuo.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/tonggao/shangye.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/tonggao/shangye.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/shangye.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/tonggao/xiangce.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/tonggao/xiangce.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/xiangce.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/tonggao/yingshi.png":
-/*!***********************************************!*\
-  !*** ./src/assets/images/tonggao/yingshi.png ***!
-  \***********************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/tonggao/yingshi.png";
 
 /***/ }),
 

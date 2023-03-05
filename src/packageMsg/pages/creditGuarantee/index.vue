@@ -3,25 +3,33 @@
     <view class="credit-top">
       <view>缴纳保证金</view>
       <image
-        src="../../../assets/images/common/security.png"
+        src="https://yuepai-oss.qubeitech.com/static/images/common/security.png"
         class="security"
       ></image>
       <view>享专属特权</view>
       <view class="credit-info">
         <view class="credit-item">
-          <image src="../../../assets/images/securityRed.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/securityRed.png"
+          ></image>
           信用标识提醒
         </view>
         <view class="credit-item">
-          <image src="../../../assets/images/userRed.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/userRed.png"
+          ></image>
           约拍优质模特
         </view>
         <view class="credit-item">
-          <image src="../../../assets/images/guaranteeRed.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/guaranteeRed.png"
+          ></image>
           约拍信用担保
         </view>
         <view class="credit-item">
-          <image src="../../../assets/images/giftRed.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/giftRed.png"
+          ></image>
           尊享福利特权
         </view>
       </view>
@@ -36,7 +44,7 @@
     <view v-if="is_security === 1 && is_member == 1">
       <view class="credit-tips">
         <image
-          src="../../../assets/images/guaranteed.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/guaranteed.png"
           class="credit-icon"
         ></image>
         您已存入保障金，已享受担保权益
@@ -46,7 +54,7 @@
     <view v-if="is_security === 1 && is_member == 0">
       <view class="credit-tips">
         <image
-          src="../../../assets/images/guaranteed.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/guaranteed.png"
           class="credit-icon"
         ></image>
         您已存入保障金，已享受担保权益

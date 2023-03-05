@@ -8,12 +8,12 @@
             {{ zuopinInfo.author.nickname }}
             <block v-if="zuopinInfo.author.sex !== null">
               <image
-                src="../../../../assets/images/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="zuopin_sex"
                 v-if="zuopinInfo.author.sex == 1"
               ></image>
               <image
-                src="../../../../assets/images/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="zuopin_sex"
                 v-if="zuopinInfo.author.sex == 0"
               ></image>
@@ -25,22 +25,22 @@
               {{ zuopinInfo.author.province_name }}
             </text>
             <image
-              src="../../../../assets/images/common/icon_real.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
               class="zuopin_p_img"
               v-if="zuopinInfo.author.is_certify"
             ></image>
             <image
-              src="../../../../assets/images/common/icon_pledge_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
               class="zuopin_p_img"
               v-else
             ></image>
             <image
-              src="../../../../assets/images/common/icon_pledge.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="zuopin_p_img"
               v-if="zuopinInfo.author.is_security"
             ></image>
             <image
-              src="../../../../assets/images/common/icon_real_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
               class="zuopin_p_img"
               v-else
             ></image>
@@ -50,20 +50,20 @@
       <view class="zuopin_right">
         <image
           class="follow"
-          src="../../../../assets/images/common/follow_red.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png"
           @tap="follow"
           v-if="is_follow == 0"
         ></image>
         <image
           class="follow"
-          src="../../../../assets/images/common/followed_gray.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png"
           @tap="unfollow"
           v-if="is_follow == 1"
         ></image>
         <button open-type="share" class="share-btn">
           <image
             class="share"
-            src="../../../../assets/images/common/icon_share.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
           ></image>
         </button>
       </view>
@@ -131,15 +131,21 @@
       </view>
       <view class="zuopin_bottom">
         <view class="zuopin_bottom_time">
-          <image src="../../../../assets/images/common/time.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+          ></image>
           {{ zuopinInfo.date_humanize }}
         </view>
         <view class="zuopin_bottom_read">
-          <image src="../../../../assets/images/user/index/invoice.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png"
+          ></image>
           阅读 {{ zuopinInfo.statistic.read_cnt }}
         </view>
         <view class="zuopin_bottom_dianzan">
-          <image src="../../../../assets/images/common/icon_like.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png"
+          ></image>
           点赞 {{ zuopinInfo.statistic.vote_cnt }}
         </view>
       </view>
@@ -151,11 +157,11 @@
       <view class="zuopin_fixed_left">
         <view class="zuopin_fixed_item" @tap="subGiveUp">
           <image
-            src="../../../../assets/images/common/icon_likeed.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png"
             v-if="is_vote"
           ></image>
           <image
-            src="../../../../assets/images/common/icon_like.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png"
             v-else
           ></image>
           {{ zuopinInfo.statistic.vote_cnt }}
@@ -163,11 +169,11 @@
         <view class="zuopin_fixed_item" @tap="subRecordCollect">
           <image
             v-if="is_collect"
-            src="../../../../assets/images/common/icon_favoriteed.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png"
           ></image>
           <image
             v-else
-            src="../../../../assets/images/common/icon_favorite.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
           {{ zuopinInfo.statistic.collect_cnt }}
         </view>

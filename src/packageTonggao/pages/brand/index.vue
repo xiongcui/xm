@@ -243,7 +243,7 @@
             </block>
             <view class="tonggao-upload-img" @tap="chooseImage">
               <image
-                src="../../../assets/images/upload-img.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/upload-img.png"
                 class="upload-img"
                 mode="aspectFit"
               ></image>
@@ -270,7 +270,7 @@
 import "./index.scss";
 import { Base64 } from "js-Base64";
 import { publicConfig, submitNotice } from "../../../api/index.js";
-import { errortip } from "../../../utils/util";
+import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "brand",
   data() {

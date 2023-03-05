@@ -1,7 +1,10 @@
 <template>
   <view class="main ub ub-ver none_main" v-if="!list.length">
     <view class="none_tipimg">
-      <image mode="widthFix" src="../../assets/images/common/none.png"></image>
+      <image
+        mode="widthFix"
+        src="https://yuepai-oss.qubeitech.com/static//common/none.png"
+      ></image>
     </view>
     <view class="none_tiptext">还没有发布过作品动态哦～</view>
     <view @tap="goAddZuopin" class="none_now_make">马上发布</view>
@@ -41,12 +44,16 @@
       </view>
       <view class="list_bottom">
         <view class="list_time">
-          <image src="../../assets/images/common/time.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static//common/time.png"
+          ></image>
           {{ item.date_humanize }}
         </view>
 
         <view class="list_read">
-          <image src="../../assets/images/eyes.png"></image>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static//eyes.png"
+          ></image>
           阅读 {{ item.statistic.read_cnt }}
         </view>
       </view>

@@ -98,18 +98,20 @@
                 <view class="list_bottom">
                   <view class="list_time">
                     <image
-                      src="../../../../assets/images/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                     ></image>
                     {{ item.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
-                      src="../../../../assets/images/user/index/yuepai.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
                     收到约拍 {{ item.statistic.invite_cnt }}
                   </view>
                   <view class="list_read">
-                    <image src="../../../../assets/images/eyes.png"></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
@@ -119,7 +121,7 @@
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security, item.oid)"
+                    @tap="refreshClick(item.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -143,7 +145,7 @@
                   <view class="list_tips">
                     <image
                       class="warn_icon"
-                      src="../../../../assets/images/common/warn_icon.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
                     ></image>
                     {{ item.audit_reason }}
                   </view>
@@ -155,7 +157,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -228,18 +230,20 @@
                 <view class="list_bottom">
                   <view class="list_time">
                     <image
-                      src="../../../../assets/images/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                     ></image>
                     {{ item.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
-                      src="../../../../assets/images/user/index/yuepai.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
                     收到约拍 {{ item.statistic.invite_cnt }}
                   </view>
                   <view class="list_read">
-                    <image src="../../../../assets/images/eyes.png"></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
@@ -249,7 +253,7 @@
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security, item.oid)"
+                    @tap="refreshClick(item.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -273,7 +277,7 @@
                   <view class="list_tips">
                     <image
                       class="warn_icon"
-                      src="../../../../assets/images/common/warn_icon.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
                     ></image>
                     {{ item.audit_reason }}
                   </view>
@@ -285,7 +289,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -358,18 +362,20 @@
                 <view class="list_bottom">
                   <view class="list_time">
                     <image
-                      src="../../../../assets/images/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                     ></image>
                     {{ item.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
-                      src="../../../../assets/images/user/index/yuepai.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
                     收到约拍 {{ item.statistic.invite_cnt }}
                   </view>
                   <view class="list_read">
-                    <image src="../../../../assets/images/eyes.png"></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
@@ -379,7 +385,7 @@
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security, item.oid)"
+                    @tap="refreshClick(item.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -403,7 +409,7 @@
                   <view class="list_tips">
                     <image
                       class="warn_icon"
-                      src="../../../../assets/images/common/warn_icon.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
                     ></image>
                     {{ item.audit_reason }}
                   </view>
@@ -415,7 +421,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -488,18 +494,20 @@
                 <view class="list_bottom">
                   <view class="list_time">
                     <image
-                      src="../../../../assets/images/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                     ></image>
                     {{ item.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
-                      src="../../../../assets/images/user/index/yuepai.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
                     收到约拍 {{ item.statistic.invite_cnt }}
                   </view>
                   <view class="list_read">
-                    <image src="../../../../assets/images/eyes.png"></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
@@ -509,7 +517,7 @@
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_security, item.oid)"
+                    @tap="refreshClick(item.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
@@ -533,7 +541,7 @@
                   <view class="list_tips">
                     <image
                       class="warn_icon"
-                      src="../../../../assets/images/common/warn_icon.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
                     ></image>
                     {{ item.audit_reason }}
                   </view>
@@ -545,7 +553,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="../../../../assets/images/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>
@@ -561,7 +569,7 @@
 <script>
 import "./index.scss";
 import { noteManageList, manageEvent } from "../../../../api/index";
-import { errortip } from "../../../../utils/util";
+import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "yuedan_manage",
   data() {
@@ -674,8 +682,8 @@ export default {
         },
       });
     },
-    refreshClick(is_security, oid) {
-      if (!is_security) {
+    refreshClick(is_certify, oid) {
+      if (!is_certify) {
         let _this = this;
         wx.showModal({
           confirmText: "去实名",
@@ -686,13 +694,17 @@ export default {
           success: function (res) {
             if (res.confirm) {
               console.log("用户点击确定");
-              let params = { oid: oid, even_type: 700 };
-              _this.manageEvent(params);
+              // let params = { oid: oid, even_type: 700 };
+              // _this.manageEvent(params);
+              openPage("/packageAdd/pages/user/realnameAuth/index");
             } else if (res.cancel) {
               console.log("用户点击取消");
             }
           },
         });
+      } else {
+        let params = { oid: oid, even_type: 700 };
+        this.manageEvent(params);
       }
     },
     scrollToLower() {

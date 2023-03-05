@@ -54,7 +54,7 @@
   }
 }
 // .search {
-//   background: url(../../assets/images/search_icon.png) no-repeat 16px center
+//   background: url(https://yuepai-oss.qubeitech.com/static/images/search_icon.png) no-repeat 16px center
 //     #feadb4;
 //   background-size: 30px;
 //   border-radius: 50px;
@@ -269,8 +269,8 @@
     font-size: 38px;
   }
   .list_loction {
-    background: url("../../assets/images/common/local.png") left center
-      no-repeat;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png")
+      left center no-repeat;
     background-size: 36px;
     padding-left: 36px;
     font-size: 36px;
@@ -373,8 +373,8 @@
     font-size: 28px;
   }
   .location_address {
-    background: url("../../assets/images/common/icon_location02.png") 0 center
-      no-repeat;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_location02.png")
+      0 center no-repeat;
     background-size: 23px 29px;
     padding-left: 33px;
     color: #333333;
@@ -393,7 +393,8 @@
     color: #333333;
   }
   .pick-city {
-    background: url("../../assets/images/right.png") right center no-repeat;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/right.png")
+      right center no-repeat;
     background-size: 12px 22px;
     padding-right: 32px;
   }
@@ -512,7 +513,8 @@
       position: absolute;
       top: 16px;
       right: 10px;
-      background: url("../../assets/images/common/x_icon.png") no-repeat;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png")
+        no-repeat;
       background-size: 38px;
     }
     .mask-login-tips {

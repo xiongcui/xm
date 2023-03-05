@@ -34,7 +34,7 @@
         <view class="mask-ct">
           <view class="mask-item">
             <image
-              src="../../../../assets/images/wchat.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/wchat.png"
               mode="aspectFill"
             ></image>
             <button open-type="share" class="share-btn">
@@ -46,7 +46,7 @@
           </view>
           <view class="mask-item" @tap="generatePoster">
             <image
-              src="../../../../assets/images/tupian.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/tupian.png"
               mode="aspectFill"
             ></image>
             <view class="mask-rt">

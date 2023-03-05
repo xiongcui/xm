@@ -3,7 +3,7 @@
     <block class="login" v-if="pageshow == 'login'">
       <view class="login-top">
         <image
-          src="../../assets/images/logo.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/logo.png"
           mode="aspectFit"
           class="logo-img"
         ></image>
@@ -57,7 +57,8 @@ export default {
   data() {
     return {
       userInfo: {
-        avatar: require("../../assets/images/avatar_default.png"),
+        avatar:
+          "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
         nickname: "",
         phone: "",
       },

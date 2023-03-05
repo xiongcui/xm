@@ -92,6 +92,8 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -322,7 +324,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "tb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -356,7 +358,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "ub"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -478,7 +480,7 @@ var render = function () {
               [
                 _c("image", {
                   attrs: {
-                    src: __webpack_require__(/*! ../../../../assets/images/common/add_icon.png */ "./src/assets/images/common/add_icon.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
                   },
                 }),
                 _c("view", [_vm._v("添加形象视频")]),
