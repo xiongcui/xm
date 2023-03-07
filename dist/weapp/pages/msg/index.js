@@ -200,11 +200,11 @@ component.options.__file = "src/pages/msg/index.vue"
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 } else {
                   wx.hideTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 }
 

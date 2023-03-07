@@ -145,9 +145,14 @@ export default defineAppConfig({
       ],
     },
   ],
+  // permission: {
+  //   "scope.userLocation": {
+  //     desc: "你的位置信息将用于小程序位置接口的效果展示", // 高速公路行驶持续后台定位
+  //   },
+  // },
   permission: {
-    "scope.userLocation": {
-      desc: "你的位置信息将用于小程序位置接口的效果展示", // 高速公路行驶持续后台定位
+    "scope.userFuzzyLocation": {
+      desc: "你的位置信息将用于小程序定位",
     },
   },
   requiredPrivateInfos: [
@@ -160,4 +165,14 @@ export default defineAppConfig({
     "startLocationUpdate",
   ],
   lazyCodeLoading: "requiredComponents",
+  plugins: {
+    chooseLocation: {
+      version: "1.0.9",
+      provider: "wx76a9a06e5b4e693e",
+    },
+    citySelector: {
+      version: "1.0.2",
+      provider: "wx63ffb7b7894e99ae",
+    },
+  },
 });

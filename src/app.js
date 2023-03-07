@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { wxlogin } from "./api/index";
+// import { wxlogin } from "./api/index";
 
 import "./app.scss";
 
@@ -53,15 +53,15 @@ const App = {
     });
   },
   onShow(options) {},
-  async getWxLogin(params) {
-    try {
-      let res = await wxlogin(params);
-      console.log("成功！", res);
-      const token = res.data.data.token;
-      wx.setStorageSync("token", token);
-      this.pageshow = "bindphone";
-    } catch (error) {}
-  },
+  // async getWxLogin(params) {
+  //   try {
+  //     let res = await wxlogin(params);
+  //     console.log("成功！", res);
+  //     const token = res.data.data.token;
+  //     wx.setStorageSync("token", token);
+  //     this.pageshow = "bindphone";
+  //   } catch (error) {}
+  // },
   render(h) {
     // this.$slots.default 是将要会渲染的页面
     return h("block", this.$slots.default);

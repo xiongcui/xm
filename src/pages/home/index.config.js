@@ -8,5 +8,7 @@ export default definePageConfig({
   backgroundColorTop: "#FE5457",
   backgroundColorBottom: "#f7f7f7",
   backgroundTextStyle: "dark",
-  usingComponents: {},
+  usingComponents: {
+    "selector-component": "plugin://citySelector/selector-component",
+  },
 });

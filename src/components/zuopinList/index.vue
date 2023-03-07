@@ -107,7 +107,7 @@
     <view class="select_block" v-show="showModal" @tap="close">
       <view class="select_bg" @tap.stop="">
         <view class="statusbar" :style="{ height: height + 'px' }"></view>
-        <view class="location">
+        <!-- <view class="location">
           <view class="location_address">当前定位：北京</view>
           <text class="reposition">重新定位</text>
         </view>
@@ -134,7 +134,7 @@
               </view>
             </view>
           </view>
-        </view>
+        </view>-->
         <view class="select_item">
           <view class="select_item_title">发布人身份</view>
           <view>
@@ -378,7 +378,7 @@ export default {
     screen() {
       this.showModal = true;
       this.sizer_num = [];
-      this.getPermission();
+      // this.getPermission();
     },
     close() {
       this.showModal = false;

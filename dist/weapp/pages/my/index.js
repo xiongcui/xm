@@ -979,7 +979,7 @@ var render = function () {
                   : _c("image", {
                       staticClass: "head-tag-img",
                       attrs: {
-                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
                       },
                     }),
                 _vm.infor.is_security
@@ -992,7 +992,7 @@ var render = function () {
                   : _c("image", {
                       staticClass: "head-tag-img",
                       attrs: {
-                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
                       },
                     }),
               ]),

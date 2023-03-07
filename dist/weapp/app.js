@@ -130,15 +130,10 @@ module.exports = _objectSpread2, module.exports.__esModule = true, module.export
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./api/index */ "./src/api/index.js");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
-/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_4__);
-
-
-
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.runtime.esm.js");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app.scss */ "./src/app.scss");
+/* harmony import */ var _app_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_app_scss__WEBPACK_IMPORTED_MODULE_1__);
+ // import { wxlogin } from "./api/index";
 
 
 var App = {
@@ -150,7 +145,7 @@ var App = {
     // }
     // 判断是否为iphoneX
 
-    vue__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].prototype.globalData = _this.globalData;
+    vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].prototype.globalData = _this.globalData;
     wx.getSystemInfo({
       success: function success(res) {
         var model = res.model;
@@ -186,40 +181,15 @@ var App = {
     });
   },
   onShow: function onShow(options) {},
-  getWxLogin: function getWxLogin(params) {
-    var _this2 = this;
-
-    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-      var res, token;
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              _context.prev = 0;
-              _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Ib"])(params);
-
-            case 3:
-              res = _context.sent;
-              console.log("成功！", res);
-              token = res.data.data.token;
-              wx.setStorageSync("token", token);
-              _this2.pageshow = "bindphone";
-              _context.next = 12;
-              break;
-
-            case 10:
-              _context.prev = 10;
-              _context.t0 = _context["catch"](0);
-
-            case 12:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, null, [[0, 10]]);
-    }))();
-  },
+  // async getWxLogin(params) {
+  //   try {
+  //     let res = await wxlogin(params);
+  //     console.log("成功！", res);
+  //     const token = res.data.data.token;
+  //     wx.setStorageSync("token", token);
+  //     this.pageshow = "bindphone";
+  //   } catch (error) {}
+  // },
   render: function render(h) {
     // this.$slots.default 是将要会渲染的页面
     return h("block", this.$slots.default);
@@ -9251,5 +9221,5 @@ Object(_tarojs_taro__WEBPACK_IMPORTED_MODULE_3__["initPxTransform"])({
 
 /***/ })
 
-},[["./src/app.js","runtime","taro","vendors","common"]]]);;
+},[["./src/app.js","runtime","taro","vendors"]]]);;
 //# sourceMappingURL=app.js.map

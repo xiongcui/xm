@@ -491,8 +491,7 @@ component.options.__file = "src/pages/home/index.vue"
     },
     screen: function screen() {
       this.showModal = true;
-      this.sizer_num = [];
-      this.getPermission();
+      this.sizer_num = []; // this.getPermission();
     },
     close: function close() {
       this.showModal = false;
@@ -1298,8 +1297,7 @@ component.options.__file = "src/pages/home/index.vue"
     },
     screen: function screen() {
       this.showModal = true;
-      this.sizer_num = [];
-      this.getPermission();
+      this.sizer_num = []; // this.getPermission();
     },
     close: function close() {
       this.showModal = false;
@@ -2146,6 +2144,15 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+var citySelector = requirePlugin("citySelector");
 
 
 
@@ -2158,6 +2165,9 @@ component.options.__file = "src/pages/home/index.vue"
   data: function data() {
     return {
       msg: "",
+      selectorVisible: true,
+      selectedProvince: null,
+      selectedCity: null,
       visible: false,
       showModelSign: false,
       showLoading: true,
@@ -2301,6 +2311,19 @@ component.options.__file = "src/pages/home/index.vue"
         this.query("init");
       }
     },
+    // 显示组件
+    showSelector: function showSelector() {
+      this.selectorVisible = true;
+    },
+    // 当用户选择了组件中的城市之后的回调函数
+    onSelectCity: function onSelectCity(e) {
+      console.log(e);
+      var _e$detail = e.detail,
+          province = _e$detail.province,
+          city = _e$detail.city;
+      this.selectedProvince = province;
+      this.selectedCity = city;
+    },
     //获取用户地理位置权限
     getPermission: function getPermission() {
       //获取用户地理位置
@@ -2358,8 +2381,7 @@ component.options.__file = "src/pages/home/index.vue"
     },
     screen: function screen() {
       this.showModal = true;
-      this.sizer_num = [];
-      this.getPermission();
+      this.sizer_num = []; // this.getPermission();
     },
     close: function close() {
       this.showModal = false;
@@ -2763,11 +2785,11 @@ component.options.__file = "src/pages/home/index.vue"
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 } else {
                   wx.hideTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 }
 
@@ -2942,6 +2964,17 @@ component.options.__file = "src/pages/home/index.vue"
       this.onMore();
     }
   },
+  // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
+  onShow: function onShow() {
+    console.log(111, citySelector);
+    var selectedCity = citySelector.getCity(); // 选择城市后返回城市信息对象，若未选择返回null
+
+    console.log(selectedCity);
+  },
+  onUnload: function onUnload() {
+    // 页面卸载时清空插件数据，防止再次进入页面，getCity返回的是上次的结果
+    citySelector.clearCity();
+  },
   created: function created() {
     this.globalData = this.globalData;
     var arr = [[], []];
@@ -2970,6 +3003,14 @@ component.options.__file = "src/pages/home/index.vue"
       source: "share_friend",
       type: "wechat"
     });
+    var key = "XJCBZ-ZUJNV-VRLP7-UCFUN-LNGNT-FVFZ2"; // 使用在腾讯位置服务申请的key
+
+    var referer = "虾米约拍"; // 调用插件的app的名称
+
+    var hotCitys = ""; // 用户自定义的的热门城市
+    // wx.navigateTo({
+    //   url: `plugin://citySelector/index?key=${key}&referer=${referer}&hotCitys=${hotCitys}`,
+    // });
   },
   onLoad: function onLoad(options) {
     if (options.scene) {
@@ -3301,64 +3342,6 @@ var render = function () {
                 staticClass: "statusbar",
                 style: { height: _vm.height + "px" },
               }),
-              _c("view", { staticClass: "location" }, [
-                _c("view", { staticClass: "location_address" }, [
-                  _vm._v("当前定位：北京"),
-                ]),
-                _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
-              ]),
-              _c("view", { staticClass: "address_box" }, [
-                _c("view", { staticClass: "address_label" }, [
-                  _vm._v("选择地区"),
-                ]),
-                _c("view", { staticClass: "address_input" }, [
-                  _c("view", { staticClass: "pickers" }, [
-                    _c(
-                      "view",
-                      { staticClass: "ub-f1" },
-                      [
-                        _c(
-                          "picker",
-                          {
-                            attrs: {
-                              mode: "multiSelector",
-                              value: _vm.multiIndex,
-                              range: _vm.multiArray,
-                              "range-key": "name",
-                            },
-                            on: {
-                              change: _vm.sizerBindRegionChange,
-                              columnchange: _vm.onBindcolumnchange,
-                            },
-                          },
-                          [
-                            _c(
-                              "view",
-                              { staticClass: "sizer_select_local bd_b fl" },
-                              [
-                                _vm.sizer_city
-                                  ? _c(
-                                      "view",
-                                      {
-                                        staticClass: "pickers pick-city picked",
-                                      },
-                                      [_vm._v(_vm._s(_vm.sizer_city))]
-                                    )
-                                  : _c(
-                                      "view",
-                                      { staticClass: "pickers pick-city" },
-                                      [_vm._v("全部")]
-                                    ),
-                              ]
-                            ),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]),
-              ]),
               _c("view", { staticClass: "select_item" }, [
                 _c("view", { staticClass: "select_item_title" }, [
                   _vm._v("招募身份"),
@@ -3733,64 +3716,6 @@ var render = function () {
                 staticClass: "statusbar",
                 style: { height: _vm.height + "px" },
               }),
-              _c("view", { staticClass: "location" }, [
-                _c("view", { staticClass: "location_address" }, [
-                  _vm._v("当前定位：北京"),
-                ]),
-                _c("text", { staticClass: "reposition" }, [_vm._v("重新定位")]),
-              ]),
-              _c("view", { staticClass: "address_box" }, [
-                _c("view", { staticClass: "address_label" }, [
-                  _vm._v("选择地区"),
-                ]),
-                _c("view", { staticClass: "address_input" }, [
-                  _c("view", { staticClass: "pickers" }, [
-                    _c(
-                      "view",
-                      { staticClass: "ub-f1" },
-                      [
-                        _c(
-                          "picker",
-                          {
-                            attrs: {
-                              mode: "multiSelector",
-                              value: _vm.multiIndex,
-                              range: _vm.multiArray,
-                              "range-key": "name",
-                            },
-                            on: {
-                              change: _vm.sizerBindRegionChange,
-                              columnchange: _vm.onBindcolumnchange,
-                            },
-                          },
-                          [
-                            _c(
-                              "view",
-                              { staticClass: "sizer_select_local bd_b fl" },
-                              [
-                                _vm.sizer_city
-                                  ? _c(
-                                      "view",
-                                      {
-                                        staticClass: "pickers pick-city picked",
-                                      },
-                                      [_vm._v(_vm._s(_vm.sizer_city))]
-                                    )
-                                  : _c(
-                                      "view",
-                                      { staticClass: "pickers pick-city" },
-                                      [_vm._v("全部")]
-                                    ),
-                              ]
-                            ),
-                          ]
-                        ),
-                      ],
-                      1
-                    ),
-                  ]),
-                ]),
-              ]),
               _c("view", { staticClass: "select_item" }, [
                 _c("view", { staticClass: "select_item_title" }, [
                   _vm._v("发布人身份"),
@@ -4470,71 +4395,6 @@ var render = function () {
                       staticClass: "statusbar",
                       style: { height: _vm.globalData.navHeight + "px" },
                     }),
-                    _c("view", { staticClass: "location" }, [
-                      _c("view", { staticClass: "location_address" }, [
-                        _vm._v("当前定位：北京"),
-                      ]),
-                      _c("text", { staticClass: "reposition" }, [
-                        _vm._v("重新定位"),
-                      ]),
-                    ]),
-                    _c("view", { staticClass: "address_box" }, [
-                      _c("view", { staticClass: "address_label" }, [
-                        _vm._v("选择地区"),
-                      ]),
-                      _c("view", { staticClass: "address_input" }, [
-                        _c("view", { staticClass: "pickers" }, [
-                          _c(
-                            "view",
-                            { staticClass: "ub-f1" },
-                            [
-                              _c(
-                                "picker",
-                                {
-                                  attrs: {
-                                    mode: "multiSelector",
-                                    value: _vm.multiIndex,
-                                    range: _vm.multiArray,
-                                    "range-key": "name",
-                                  },
-                                  on: {
-                                    change: _vm.sizerBindRegionChange,
-                                    columnchange: _vm.onBindcolumnchange,
-                                  },
-                                },
-                                [
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "sizer_select_local bd_b fl",
-                                    },
-                                    [
-                                      _vm.sizer_city
-                                        ? _c(
-                                            "view",
-                                            {
-                                              staticClass:
-                                                "pickers pick-city picked",
-                                            },
-                                            [_vm._v(_vm._s(_vm.sizer_city))]
-                                          )
-                                        : _c(
-                                            "view",
-                                            {
-                                              staticClass: "pickers pick-city",
-                                            },
-                                            [_vm._v("全部")]
-                                          ),
-                                    ]
-                                  ),
-                                ]
-                              ),
-                            ],
-                            1
-                          ),
-                        ]),
-                      ]),
-                    ]),
                     _c("view", { staticClass: "select_item" }, [
                       _c("view", { staticClass: "select_item_title" }, [
                         _vm._v("约拍对象"),
@@ -5019,7 +4879,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/pages/home/index.vue");
 
 
-var config = {"navigationBarTitleText":"虾米约拍","enablePullDownRefresh":true,"navigationStyle":"custom","navigationBarBackgroundColor":"#FE5457","navigationBarTextStyle":"white","backgroundColor":"#FE5457","backgroundColorTop":"#FE5457","backgroundColorBottom":"#f7f7f7","backgroundTextStyle":"dark","usingComponents":{}};
+var config = {"navigationBarTitleText":"虾米约拍","enablePullDownRefresh":true,"navigationStyle":"custom","navigationBarBackgroundColor":"#FE5457","navigationBarTextStyle":"white","backgroundColor":"#FE5457","backgroundColorTop":"#FE5457","backgroundColorBottom":"#f7f7f7","backgroundTextStyle":"dark","usingComponents":{"selector-component":"plugin://citySelector/selector-component"}};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'pages/home/index', {root:{cn:[]}}, config || {}))

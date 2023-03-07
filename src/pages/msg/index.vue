@@ -136,11 +136,11 @@ export default {
         this.is_follow_gzh = res.data.data.is_follow_gzh;
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         } else {
           wx.hideTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         }
       } catch (error) {}

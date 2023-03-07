@@ -66,7 +66,7 @@
               v-if="infor.is_certify"
             ></image>
             <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
               class="head-tag-img"
               v-else
             ></image>
@@ -76,7 +76,7 @@
               v-if="infor.is_security"
             ></image>
             <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
               class="head-tag-img"
               v-else
             ></image>

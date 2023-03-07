@@ -293,11 +293,11 @@
             class="statusbar"
             :style="{ height: globalData.navHeight + 'px' }"
           ></view>
-          <view class="location">
+          <!-- <view class="location">
             <view class="location_address">当前定位：北京</view>
             <text class="reposition">重新定位</text>
-          </view>
-          <view class="address_box">
+          </view> -->
+          <!-- <view class="address_box">
             <view class="address_label">选择地区</view>
             <view class="address_input">
               <view class="pickers">
@@ -322,7 +322,7 @@
                 </view>
               </view>
             </view>
-          </view>
+          </view> -->
           <view class="select_item">
             <view class="select_item_title">约拍对象</view>
             <view>
@@ -431,10 +431,19 @@
       </view>
     </view>
     <!--签到-->
+
+    <!-- <selector-component
+      :show="selectorVisible"
+      :key="XJCBZ - ZUJNV - VRLP7 - UCFUN - LNGNT - FVFZ2"
+      :referer="虾米约拍"
+      :hotCitys="(北京, 天津)"
+      @select="onSelectCity"
+    ></selector-component> -->
   </view>
 </template>
 
 <script>
+const citySelector = requirePlugin("citySelector");
 import "./index.scss";
 import {
   inviteList,
@@ -456,6 +465,9 @@ export default {
   data() {
     return {
       msg: "",
+      selectorVisible: true,
+      selectedProvince: null,
+      selectedCity: null,
       visible: false,
       showModelSign: false,
       showLoading: true,
@@ -587,6 +599,18 @@ export default {
         this.query("init");
       }
     },
+    // 显示组件
+    showSelector() {
+      this.selectorVisible = true;
+    },
+
+    // 当用户选择了组件中的城市之后的回调函数
+    onSelectCity(e) {
+      console.log(e);
+      const { province, city } = e.detail;
+      this.selectedProvince = province;
+      this.selectedCity = city;
+    },
     //获取用户地理位置权限
     getPermission() {
       //获取用户地理位置
@@ -650,7 +674,7 @@ export default {
     screen() {
       this.showModal = true;
       this.sizer_num = [];
-      this.getPermission();
+      // this.getPermission();
     },
     close() {
       this.showModal = false;
@@ -940,11 +964,11 @@ export default {
         let res = await notifyNumber(params);
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         } else {
           wx.hideTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         }
       } catch (error) {}
@@ -1002,6 +1026,16 @@ export default {
       this.onMore();
     }
   },
+  // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
+  onShow() {
+    console.log(111, citySelector);
+    const selectedCity = citySelector.getCity(); // 选择城市后返回城市信息对象，若未选择返回null
+    console.log(selectedCity);
+  },
+  onUnload() {
+    // 页面卸载时清空插件数据，防止再次进入页面，getCity返回的是上次的结果
+    citySelector.clearCity();
+  },
   created() {
     this.globalData = this.globalData;
     let arr = [[], []];
@@ -1025,6 +1059,14 @@ export default {
       source: "share_friend",
       type: "wechat",
     });
+
+    const key = "XJCBZ-ZUJNV-VRLP7-UCFUN-LNGNT-FVFZ2"; // 使用在腾讯位置服务申请的key
+    const referer = "虾米约拍"; // 调用插件的app的名称
+    const hotCitys = ""; // 用户自定义的的热门城市
+
+    // wx.navigateTo({
+    //   url: `plugin://citySelector/index?key=${key}&referer=${referer}&hotCitys=${hotCitys}`,
+    // });
   },
   onLoad: function (options) {
     if (options.scene) {
