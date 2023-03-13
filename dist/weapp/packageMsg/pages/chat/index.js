@@ -7042,7 +7042,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "ab"])(params);
 
               case 3:
                 res = _context.sent;
@@ -7122,7 +7122,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "J"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -7153,7 +7153,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "J"])(params);
 
               case 3:
                 res = _context4.sent;
