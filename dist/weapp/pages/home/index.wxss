@@ -1,5 +1,5 @@
 .home {
-  background-color: #f6f6f6;
+  background-color: #f4f4f4;
 }
 .home .custom_head {
   width: 750rpx;
@@ -92,4 +92,72 @@
   width: 100%;
   height: 100%;
   border-radius: 20rpx;
+}
+.home .news {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 16rpx 16rpx 16rpx;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .news .news-title {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAlCAMAAAAdgrsPAAAAjVBMVEUAAAD/VFf9VFb/VFj/W27/VFf/VFf/U1b/VFf/VFf/VFf+VFf/U1j/U1f/VVz/VFf/VFf/U1f/VFf/VFf/VFT/U1r/UlX/S0v/VFf/VVf9U1f/VFf/VFb/VFf/VFf/VFf/VVf/VFj/U1f/U1f/VFf+VFf/VVj/VFf/VVb+VFf+U1f9VFf/VFj/VFf/VFe/81y+AAAALnRSTlMAwpXsAvs9C+a+t3prYwb13V1aMhsWEQPJraJKItO0gm9mLcaNc1RRQ9fTpKOe6FXvjwAAATBJREFUOMvd09luglAURuGfeVIEHNA6a612Wu//eFX0SFOQ3rtuyEm+wE7ORs/TJB//R9KDw0xV7jBtJW6RAZaqDkRtyp8CjkF9mLl/yW4F7H3bIL1ConunzziOIw+yN6lG7gpvZ0zCNWeT6obceDqSJiHRzSw8li/nkkAyKPB4H0s5+GbAQSCT+VzhEUtlxreqejhqIG3gPOCasAu508s8Piw6kHK8sSYw70KjaugBeRdK4Sg59KpTQdb1pn51KrfDNlSAmcnURNbleYJFB9pCcbnjUI/R0SOSyhC7XrbEtu3N77sbkI2qlarn9bkU9l2DSutjUW1BrHvBl2VNgeX8im7NzD7VDSMgGtZoDWs1mi/BcwzKYeWqWdkPwaCEfaDWgmRw/+/8VI8ab0d6ln4AEfgiOvfOfDUAAAAASUVORK5CYII=) no-repeat 0 center;
+  background-size: 36rpx;
+  padding-left: 46rpx;
+  font-size: 30rpx;
+  font-size: #333333;
+}
+.home .news .news-line {
+  margin: 0 16rpx;
+  color: #bbbbbb;
+}
+.home .news .news-txt {
+  color: #808080;
+}
+.home .news .news-btn {
+  margin-left: 16rpx;
+  color: #f2270c;
+  border: 1rpx solid #f2270c;
+  border-radius: 8rpx;
+  padding: 4rpx 6rpx;
+  font-size: 26rpx;
+}
+.home .page-nav {
+  background: #ffffff;
+  border-radius: 12rpx;
+  margin: 0 16rpx 16rpx 16rpx;
+  padding: 16rpx;
+}
+.home .page-nav-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.home .page-nav-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .page-nav-img {
+  width: 100rpx;
+  height: 100rpx;
+}
+.home .page-nav-text {
+  color: #333333;
+  font-size: 28rpx;
+  margin-top: 6rpx;
 }

@@ -1,5 +1,5 @@
 .home {
-  background-color: #f6f6f6;
+  background-color: #f4f4f4;
   .custom_head {
     width: 750px;
     background: #fe5457;
@@ -66,5 +66,58 @@
     width: 100%;
     height: 100%;
     border-radius: 20px;
+  }
+  .news {
+    display: flex;
+    padding: 0px 16px 16px 16px;
+    align-items: center;
+    .news-title {
+      background: url(../../assets/images/common/icon_tongzhi.png) no-repeat 0px
+        center;
+      background-size: 36px;
+      padding-left: 46px;
+      font-size: 30px;
+      font-size: #333333;
+    }
+    .news-line {
+      margin: 0px 16px;
+      color: #bbbbbb;
+    }
+    .news-txt {
+      color: #808080;
+    }
+    .news-btn {
+      margin-left: 16px;
+      color: #f2270c;
+      border: 1px solid #f2270c;
+      border-radius: 8px;
+      padding: 4px 6px;
+      font-size: 26px;
+    }
+  }
+  .page-nav {
+    background: #ffffff;
+    border-radius: 12px;
+    margin: 0px 16px 16px 16px;
+    padding: 16px;
+  }
+  .page-nav-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  .page-nav-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .page-nav-img {
+    width: 100px;
+    height: 100px;
+  }
+  .page-nav-text {
+    color: #333333;
+    font-size: 28px;
+    margin-top: 6px;
   }
 }

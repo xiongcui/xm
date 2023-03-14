@@ -107,6 +107,44 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
@@ -244,6 +282,46 @@ var render = function () {
           1
         ),
       ]),
+      _c("view", { staticClass: "news" }, [
+        _c("view", { staticClass: "news-title" }, [_vm._v("消息")]),
+        _c("view", { staticClass: "news-line" }, [_vm._v("|")]),
+        _c("view", { staticClass: "news-txt" }, [
+          _vm._v("看大佬如何用手机拍出黑白大片"),
+        ]),
+        _c("view", { staticClass: "news-btn" }, [_vm._v("去看看")]),
+      ]),
+      _c("view", { staticClass: "page-nav" }, [
+        _c("view", { staticClass: "page-nav-top" }, [
+          _c("view", { staticClass: "page-nav-item" }, [
+            _c("image", {
+              staticClass: "page-nav-img",
+              attrs: { src: __webpack_require__(/*! ../../assets/images/icon_model.png */ "./src/assets/images/icon_model.png") },
+            }),
+            _c("text", { staticClass: "page-nav-text" }, [_vm._v("模特")]),
+          ]),
+          _c("view", { staticClass: "page-nav-item" }, [
+            _c("image", {
+              staticClass: "page-nav-img",
+              attrs: { src: __webpack_require__(/*! ../../assets/images/take.png */ "./src/assets/images/take.png") },
+            }),
+            _c("text", { staticClass: "page-nav-text" }, [_vm._v("摄影")]),
+          ]),
+          _c("view", { staticClass: "page-nav-item" }, [
+            _c("image", {
+              staticClass: "page-nav-img",
+              attrs: { src: __webpack_require__(/*! ../../assets/images/more1.png */ "./src/assets/images/more1.png") },
+            }),
+            _c("text", { staticClass: "page-nav-text" }, [_vm._v("作品")]),
+          ]),
+          _c("view", { staticClass: "page-nav-item" }, [
+            _c("image", {
+              staticClass: "page-nav-img",
+              attrs: { src: __webpack_require__(/*! ../../assets/images/moka.png */ "./src/assets/images/moka.png") },
+            }),
+            _c("text", { staticClass: "page-nav-text" }, [_vm._v("模卡")]),
+          ]),
+        ]),
+      ]),
     ],
     1
   )
@@ -264,6 +342,18 @@ render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAmCAMAAADtLHsqAAABaFBMVEUAAAD///+AgIBVVVVAQECAgIBmZmZVVVVJSUltbW2SkpJgYGBVVVWOjo5NTU1mZmZdXV1VVVVqampiYmJVVVVQUFBgYGBVVVVjY2NeXl5ZWVlzc3NdXV1ZWVlVVVVcXFxYWFhVVVVeXl5bW1ttbW1YWFhYWFhdXV1aWlpXV1dfX1/s7Ozp6ens7Ozs7Ozw8PDb29vt7e3w8PDx8fHx8fHNzc309PTLy8vMzMzS0tLs7Oz8/PzQ0NDT09PU1NTj4+P39/fS0tLV1dX19fXb29vW1tb19fX29vb29vb29vbg4OD29vb29vbf39/29vbg4OD39/fe3t739/fh4eHj4+P39/fj4+P39/f5+fni4uLk5OT19fXl5eXl5eXt7e3l5eXp6en9/f36+vr9/f36+vrz8/P29vb+/v7////+/v7////+/v7////+/v7////+/v7////+/v7////////+/v7////////////End8tAAAAd3RSTlMAAQIDBAQFBgcHBwgJCQoKCwwMDQ8QEBISExQUFhcYGRobGxwcHSAhIiMjT1BQUlNVVldZW1xcXl9gYGBiY2VlZWdoaGlqa21vcnN0dnh4enp8fX5/f4GBg4SGhoiKioyMoaamp6ut9vb39/j4+fn6+vv7/P39/r6hmUUAAAFhSURBVDjLjdNnT8MwEAbgODYOoaGEUtqmrNDSwd5777333qusMvP38TkSNK6FOCmfHulytt9TlH8XYqWyTyaYDJ4XYTXPkIrp2LtzWUxEQyrRJz8dx7nQMMqTGZC3AYMgUWZBXkfDfooEmftikp2yvQQyD/IynawK+nL+BbII8jyRsiMm/Z0QZAnkaTxlW6WF+OfQICsgjyMgulfWQB6GJbLBwMkMSbptg9z3swlE2QW57RNEQVjb49KbrvV0Y0SMQ07diWhAzxUFUb91wq0tZBR4HgMocQZ21yQSMUI16VM+YqPQEGumFW84hiNnmr1jsOHLovH6I34dLVI74JfYKrV9/ijtUtvh1qHLbIsHoFNqmxCbbJekZyy9zsPWQ1UhNmCrYFc+LIYNbPnDuanw5tA1y04uXNcJEXUtEKmO2ZVBIdiumeXhcNAU18FdIp+/xNCIZMHY6lFKJKv318Lm1jeYfF17kRSejgAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ "./src/assets/images/icon_model.png":
+/*!******************************************!*\
+  !*** ./src/assets/images/icon_model.png ***!
+  \******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/icon_model.png";
 
 /***/ }),
 
@@ -288,6 +378,42 @@ module.exports = __webpack_require__.p + "assets/images/icon_sign.jpg";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/icon_signed.jpg";
+
+/***/ }),
+
+/***/ "./src/assets/images/moka.png":
+/*!************************************!*\
+  !*** ./src/assets/images/moka.png ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/moka.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/more1.png":
+/*!*************************************!*\
+  !*** ./src/assets/images/more1.png ***!
+  \*************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/more1.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/take.png":
+/*!************************************!*\
+  !*** ./src/assets/images/take.png ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/take.png";
 
 /***/ }),
 

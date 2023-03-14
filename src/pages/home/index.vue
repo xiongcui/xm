@@ -53,6 +53,44 @@
         </swiper>
       </view>
     </block>
+    <view class="news">
+      <view class="news-title">消息</view>
+      <view class="news-line">|</view>
+      <view class="news-txt">看大佬如何用手机拍出黑白大片</view>
+      <view class="news-btn">去看看</view>
+    </view>
+    <view class="page-nav">
+      <view class="page-nav-top">
+        <view class="page-nav-item">
+          <image
+            src="../../assets/images/icon_model.png"
+            class="page-nav-img"
+          ></image>
+          <text class="page-nav-text">模特</text>
+        </view>
+        <view class="page-nav-item">
+          <image
+            src="../../assets/images/take.png"
+            class="page-nav-img"
+          ></image>
+          <text class="page-nav-text">摄影</text>
+        </view>
+        <view class="page-nav-item">
+          <image
+            src="../../assets/images/more1.png"
+            class="page-nav-img"
+          ></image>
+          <text class="page-nav-text">作品</text>
+        </view>
+        <view class="page-nav-item">
+          <image
+            src="../../assets/images/moka.png"
+            class="page-nav-img"
+          ></image>
+          <text class="page-nav-text">模卡</text>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
