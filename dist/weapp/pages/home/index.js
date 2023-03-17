@@ -145,6 +145,78 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
@@ -321,6 +393,116 @@ var render = function () {
             _c("text", { staticClass: "page-nav-text" }, [_vm._v("模卡")]),
           ]),
         ]),
+        _c("view", { staticClass: "page-nav-bottom" }, [
+          _c("view", { staticClass: "page-nav-box nav_bg1" }, [
+            _c("view", { staticClass: "page-nav-left" }, [
+              _c("view", { staticClass: "page-nav-title" }, [_vm._v("约拍")]),
+              _c("view", { staticClass: "page-nav-desc" }, [
+                _vm._v("你约我拍"),
+              ]),
+            ]),
+            _c("view", { staticClass: "page-nav-rt" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/common/photo_white.png */ "./src/assets/images/common/photo_white.png"),
+                },
+              }),
+            ]),
+          ]),
+          _c("view", { staticClass: "page-nav-box nav_bg2" }, [
+            _c("view", { staticClass: "page-nav-left" }, [
+              _c("view", { staticClass: "page-nav-title" }, [_vm._v("通告")]),
+              _c("view", { staticClass: "page-nav-desc" }, [
+                _vm._v("招募公告"),
+              ]),
+            ]),
+            _c("view", { staticClass: "page-nav-rt" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/common/tonggao_white.png */ "./src/assets/images/common/tonggao_white.png"),
+                },
+              }),
+            ]),
+          ]),
+        ]),
+      ]),
+      _c("view", { staticClass: "recommend" }, [
+        _c("view", { staticClass: "recommend-title" }, [
+          _c("view", { staticClass: "recommend-name" }, [_vm._v(" 通告推荐 ")]),
+          _c("view", { staticClass: "recommend-tips" }, [
+            _vm._v(" 1分钟前***发布了人像创作"),
+          ]),
+          _c("view", { staticClass: "recommend-more" }, [_vm._v("更多")]),
+        ]),
+        _c("view", { staticClass: "recommend-ct" }, [
+          _c("view", { staticClass: "recommend-box" }, [
+            _c("view", { staticClass: "tonggao-recommend" }, [
+              _c("view", { staticClass: "tonggao-recommend-top" }, [
+                _c("view", { staticClass: "tonggao-recommend-img" }, [
+                  _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../assets/images/activity.png */ "./src/assets/images/activity.png"),
+                      mode: "aspectFill",
+                    },
+                  }),
+                ]),
+                _c("view", { staticClass: "tonggao-recommend-info" }, [
+                  _c("view", { staticClass: "tonggao-info-title" }, [
+                    _c("view", { staticClass: "recommend-label" }, [
+                      _vm._v(" 人像创作 "),
+                    ]),
+                    _c("view", { staticClass: "tonggao-txt" }, [
+                      _vm._v("面向全国招聘优质模特"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "tonggao-info-desc" }, [
+                    _vm._v(
+                      " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
+                    ),
+                  ]),
+                  _c("view", { staticClass: "tonggao-tags" }, [
+                    _c("view", { staticClass: "tag-item" }, [
+                      _vm._v("面向地区：2"),
+                    ]),
+                    _c("view", { staticClass: "tag-item" }, [
+                      _vm._v("性别要求：3"),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "tonggao-recommend-price" }, [
+                    _c("view", { staticClass: "pirce" }, [_vm._v(" ¥200/时 ")]),
+                    _c("view", { staticClass: "recommend-btn" }, [
+                      _vm._v("立即报名"),
+                    ]),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _c("view", { staticClass: "tonggao-bottom" }, [
+              _c("view", { staticClass: "tonggao-head" }, [
+                _c("image", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/arrow-right.png */ "./src/assets/images/arrow-right.png"),
+                  },
+                }),
+                _vm._v(" Anne "),
+              ]),
+              _c("view", { staticClass: "tonggao-yuepai" }, [
+                _c("image", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                  },
+                }),
+                _vm._v(" " + _vm._s(2) + " "),
+              ]),
+              _c("view", { staticClass: "tonggao-read" }, [
+                _c("image", {
+                  attrs: { src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png") },
+                }),
+                _vm._v(" " + _vm._s(3) + " "),
+              ]),
+            ]),
+          ]),
+        ]),
       ]),
     ],
     1
@@ -333,6 +515,30 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./src/assets/images/activity.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/activity.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/activity.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/arrow-right.png":
+/*!*******************************************!*\
+  !*** ./src/assets/images/arrow-right.png ***!
+  \*******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/arrow-right.png";
+
+/***/ }),
+
 /***/ "./src/assets/images/common/back.png":
 /*!*******************************************!*\
   !*** ./src/assets/images/common/back.png ***!
@@ -342,6 +548,42 @@ render._withStripped = true
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAmCAMAAADtLHsqAAABaFBMVEUAAAD///+AgIBVVVVAQECAgIBmZmZVVVVJSUltbW2SkpJgYGBVVVWOjo5NTU1mZmZdXV1VVVVqampiYmJVVVVQUFBgYGBVVVVjY2NeXl5ZWVlzc3NdXV1ZWVlVVVVcXFxYWFhVVVVeXl5bW1ttbW1YWFhYWFhdXV1aWlpXV1dfX1/s7Ozp6ens7Ozs7Ozw8PDb29vt7e3w8PDx8fHx8fHNzc309PTLy8vMzMzS0tLs7Oz8/PzQ0NDT09PU1NTj4+P39/fS0tLV1dX19fXb29vW1tb19fX29vb29vb29vbg4OD29vb29vbf39/29vbg4OD39/fe3t739/fh4eHj4+P39/fj4+P39/f5+fni4uLk5OT19fXl5eXl5eXt7e3l5eXp6en9/f36+vr9/f36+vrz8/P29vb+/v7////+/v7////+/v7////+/v7////+/v7////+/v7////////+/v7////////////End8tAAAAd3RSTlMAAQIDBAQFBgcHBwgJCQoKCwwMDQ8QEBISExQUFhcYGRobGxwcHSAhIiMjT1BQUlNVVldZW1xcXl9gYGBiY2VlZWdoaGlqa21vcnN0dnh4enp8fX5/f4GBg4SGhoiKioyMoaamp6ut9vb39/j4+fn6+vv7/P39/r6hmUUAAAFhSURBVDjLjdNnT8MwEAbgODYOoaGEUtqmrNDSwd5777333qusMvP38TkSNK6FOCmfHulytt9TlH8XYqWyTyaYDJ4XYTXPkIrp2LtzWUxEQyrRJz8dx7nQMMqTGZC3AYMgUWZBXkfDfooEmftikp2yvQQyD/IynawK+nL+BbII8jyRsiMm/Z0QZAnkaTxlW6WF+OfQICsgjyMgulfWQB6GJbLBwMkMSbptg9z3swlE2QW57RNEQVjb49KbrvV0Y0SMQ07diWhAzxUFUb91wq0tZBR4HgMocQZ21yQSMUI16VM+YqPQEGumFW84hiNnmr1jsOHLovH6I34dLVI74JfYKrV9/ijtUtvh1qHLbIsHoFNqmxCbbJekZyy9zsPWQ1UhNmCrYFc+LIYNbPnDuanw5tA1y04uXNcJEXUtEKmO2ZVBIdiumeXhcNAU18FdIp+/xNCIZMHY6lFKJKv318Lm1jeYfF17kRSejgAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ "./src/assets/images/common/photo_white.png":
+/*!**************************************************!*\
+  !*** ./src/assets/images/common/photo_white.png ***!
+  \**************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/photo_white.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/common/tonggao_white.png":
+/*!****************************************************!*\
+  !*** ./src/assets/images/common/tonggao_white.png ***!
+  \****************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/common/tonggao_white.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/eyes.png":
+/*!************************************!*\
+  !*** ./src/assets/images/eyes.png ***!
+  \************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/eyes.png";
 
 /***/ }),
 
@@ -414,6 +656,18 @@ module.exports = __webpack_require__.p + "assets/images/more1.png";
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/images/take.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/user/index/yuepai.png":
+/*!*************************************************!*\
+  !*** ./src/assets/images/user/index/yuepai.png ***!
+  \*************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAABelBMVEUAAAAAAAAAAAAAAABAQEAzMzMrKyskJCQuLi4nJyc3NzcwMDA2NjYzMzMuLi41NTUzMzM3Nzc1NTUzMzMwMDAzMzMyMjI0NDQ0NDQzMzMyMjIwMDA0NDQyMjIwMDAzMzMyMjI0NDQxMTEzMzMyMjIyMjIzMzM0NDQzMzMyMjIyMjIyMjIzMzMzMzM0NDQ0NDQzMzMzMzMzMzMzMzMyMjIzMzMzMzMyMjIyMjIyMjIzMzMzMzMzMzMyMjIyMjIzMzMzMzMzMzMyMjI0NDQzMzMyMjIyMjIzMzMzMzMyMjIzMzMzMzMyMjI0NDQzMzMzMzMyMjIzMzMyMjI0NDQzMzMzMzMyMjIyMjIzMzMzMzMyMjIzMzMyMjIzMzMzMzMzMzMzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzPqmi6JAAAAfXRSTlMAAQIDBAUGBwsNDhATFBYYGRwdHiAjJCcsMjM1Njg6PD1AREZHTVBUVVtcZmpucXZ3gYOIiYuMjpOUlZebnZ6goaWnqKusra6wsrO0tre4ubu/wMHCxMXGx8jKztDR0tPb3N3e39/h4uPk5ebo6err7O3v8vP09fb3+Pr8/hfJ7skAAAF7SURBVEjH7ZVXTwJBFEZHulhQECv2XsCKBbAXUFQUUVERGyB2FAVEvv8uG1h3je6MiTxynu79crIzNzOZJaRIgWncjiNPYreVIZuSEJHupNsnwKYjz3oGERVN7gZmhW4GGKTZx3g3CJ0uiSvFL1bVdPAiSxiwieMp4JrLg/ZqUWq45edKiWOiS/D5g1FIF4HABoer7/uavW4PxxngFMIYfNKzqGpJiRdvQpCGQ9r2YIjYAYWU3TaxumZt5zs/Rii20ZcbzF+X68s7ZNJ2fQzI3EQzwEvDVyhlq8+BhRpC9A4gomHZZmAyV40hu2GG7cedOlcpwwiw7CTm+NKGDzndVmZg5dNRQMv49jNcfLmEBGsnTqTyd1b3ii2W3ZU9ljKuKN0Delg2WcneaYupyRwC3MzTIZod/k57tWybyC33nPs0rCR/sAmRNfcPtMjFCc3+yT/sRxzJabLsAHGhmweu9ilcAsui5yQEBlG9aKmK8cNTCn5rZfHvUxA+AWWctuD+3T7EAAAAAElFTkSuQmCC"
 
 /***/ }),
 

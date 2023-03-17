@@ -120,4 +120,205 @@
     font-size: 28px;
     margin-top: 6px;
   }
+  .page-nav-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+    margin-top: 16px;
+  }
+  .page-nav-box {
+    flex: 1;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav_bg1 {
+    background: #e9faed;
+    padding: 30px;
+    margin-right: 30px;
+  }
+  .nav_bg2 {
+    background: #fef4f3;
+    padding: 30px;
+  }
+  .page-nav-title {
+    color: #333333;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .page-nav-desc {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 30px;
+  }
+  .page-nav-rt {
+    width: 80px;
+    height: 80px;
+    background: #52c1b2;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px;
+    image {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  .nav_bg2 .page-nav-rt {
+    background: #ff9168;
+  }
+  .recommend {
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 16px;
+  }
+  .recommend-title {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .recommend-name {
+      font-size: 34px;
+      font-weight: bold;
+      margin-right: 16px;
+    }
+    .recommend-tips {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 28px;
+      width: 60%;
+    }
+    .recommend-more {
+      padding-right: 22px;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 32px;
+      background: url("../../assets/images/right.png") no-repeat center right;
+      background-size: 12px 22px;
+    }
+  }
+  .recommend-ct {
+    background: #fff0da;
+    border-radius: 10px;
+    padding: 10px;
+    .recommend-box {
+      background: #fff5ee;
+      padding: 16px;
+    }
+    .tonggao-recommend-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .tonggao-recommend-img image {
+        width: 180px;
+        height: 270px;
+        margin-right: 16px;
+      }
+      .recommend-label {
+        padding: 2px 4px;
+        background: #f2280c;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 28px;
+        margin-right: 16px;
+      }
+      .tonggao-info-title {
+        display: flex;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      .tonggao-txt {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 68%;
+      }
+      .tonggao-info-desc {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 28px;
+        line-height: 36px;
+        margin-top: 16px;
+        /* 主要控制父元素容器里面子元素的排列方式 */
+        display: -webkit-box;
+        display: -moz-box;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
+        -webkit-line-clamp: 2;
+      }
+      .tonggao-tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 16px;
+        .tag-item {
+          padding: 4px 10px;
+          background: rgba(245, 50, 24, 0.08);
+          color: #ff1e3e;
+          font-size: 26px;
+          border-radius: 8px;
+          margin-right: 10px;
+          margin-bottom: 16px;
+        }
+      }
+      .tonggao-recommend-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .pirce {
+          color: #ff1e3e;
+          font-size: 34px;
+          font-weight: bold;
+        }
+        .recommend-btn {
+          border: 1px solid #ff1e3e;
+          border-radius: 8px;
+          padding: 4px 10px;
+          font-size: 26px;
+          color: #ff1e3e;
+        }
+      }
+    }
+  }
+  .tonggao-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6b6b;
+    border-top: 1px solid #ebebeb;
+    padding-top: 16px;
+  }
+  .tonggao-head {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 50px;
+      height: 50px;
+      margin-right: 4px;
+      border-radius: 50%;
+    }
+  }
+  .tonggao-yuepai {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .tonggao-read {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
 }

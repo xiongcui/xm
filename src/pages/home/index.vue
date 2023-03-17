@@ -90,6 +90,78 @@
           <text class="page-nav-text">模卡</text>
         </view>
       </view>
+      <view class="page-nav-bottom">
+        <view class="page-nav-box nav_bg1">
+          <view class="page-nav-left">
+            <view class="page-nav-title">约拍</view>
+            <view class="page-nav-desc">你约我拍</view>
+          </view>
+          <view class="page-nav-rt">
+            <image src="../../assets/images/common/photo_white.png"></image>
+          </view>
+        </view>
+        <view class="page-nav-box nav_bg2">
+          <view class="page-nav-left">
+            <view class="page-nav-title">通告</view>
+            <view class="page-nav-desc">招募公告</view>
+          </view>
+          <view class="page-nav-rt">
+            <image src="../../assets/images/common/tonggao_white.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="recommend">
+      <view class="recommend-title">
+        <view class="recommend-name"> 通告推荐 </view>
+        <view class="recommend-tips"> 1分钟前***发布了人像创作</view>
+        <view class="recommend-more">更多</view>
+      </view>
+      <view class="recommend-ct">
+        <view class="recommend-box">
+          <view class="tonggao-recommend">
+            <view class="tonggao-recommend-top">
+              <view class="tonggao-recommend-img">
+                <image
+                  src="../../assets/images/activity.png"
+                  mode="aspectFill"
+                ></image>
+              </view>
+              <view class="tonggao-recommend-info">
+                <view class="tonggao-info-title">
+                  <view class="recommend-label"> 人像创作 </view>
+                  <view class="tonggao-txt">面向全国招聘优质模特</view>
+                </view>
+                <view class="tonggao-info-desc">
+                  内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view
+                >
+                <view class="tonggao-tags">
+                  <view class="tag-item">面向地区：2</view>
+                  <view class="tag-item">性别要求：3</view>
+                </view>
+                <view class="tonggao-recommend-price">
+                  <view class="pirce"> ¥200/时 </view>
+                  <view class="recommend-btn">立即报名</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="tonggao-bottom">
+            <view class="tonggao-head">
+              <image src="../../assets/images/arrow-right.png"></image>
+              Anne
+            </view>
+            <view class="tonggao-yuepai">
+              <image src="../../assets/images/user/index/yuepai.png"></image>
+              {{ 2 }}
+            </view>
+            <view class="tonggao-read">
+              <image src="../../assets/images/eyes.png"></image>
+              {{ 3 }}
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </template>

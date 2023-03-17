@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .home {
   background-color: #f4f4f4;
 }
@@ -160,4 +161,265 @@
   color: #333333;
   font-size: 28rpx;
   margin-top: 6rpx;
+}
+.home .page-nav-bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx;
+  margin-top: 16rpx;
+}
+.home .page-nav-box {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  border-radius: 20rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .nav_bg1 {
+  background: #e9faed;
+  padding: 30rpx;
+  margin-right: 30rpx;
+}
+.home .nav_bg2 {
+  background: #fef4f3;
+  padding: 30rpx;
+}
+.home .page-nav-title {
+  color: #333333;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.home .page-nav-desc {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30rpx;
+}
+.home .page-nav-rt {
+  width: 80rpx;
+  height: 80rpx;
+  background: #52c1b2;
+  border-radius: 10rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 6rpx;
+}
+.home .page-nav-rt image {
+  width: 60rpx;
+  height: 60rpx;
+}
+.home .nav_bg2 .page-nav-rt {
+  background: #ff9168;
+}
+.home .recommend {
+  padding: 16rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin: 16rpx;
+}
+.home .recommend-title {
+  padding: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .recommend-title .recommend-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-right: 16rpx;
+}
+.home .recommend-title .recommend-tips {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  width: 60%;
+}
+.home .recommend-title .recommend-more {
+  padding-right: 22rpx;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 32rpx;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII=") no-repeat center right;
+  background-size: 12rpx 22rpx;
+}
+.home .recommend-ct {
+  background: #fff0da;
+  border-radius: 10rpx;
+  padding: 10rpx;
+}
+.home .recommend-ct .recommend-box {
+  background: #fff5ee;
+  padding: 16rpx;
+}
+.home .recommend-ct .tonggao-recommend-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-img image {
+  width: 180rpx;
+  height: 270rpx;
+  margin-right: 16rpx;
+}
+.home .recommend-ct .tonggao-recommend-top .recommend-label {
+  padding: 2rpx 4rpx;
+  background: #f2280c;
+  border-radius: 8rpx;
+  color: #ffffff;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-info-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-txt {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  width: 68%;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-info-desc {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  line-height: 36rpx;
+  margin-top: 16rpx;
+  /* 主要控制父元素容器里面子元素的排列方式 */
+  display: -webkit-box;
+  display: -moz-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
+  -webkit-line-clamp: 2;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-tags .tag-item {
+  padding: 4rpx 10rpx;
+  background: rgba(245, 50, 24, 0.08);
+  color: #ff1e3e;
+  font-size: 26rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+  margin-bottom: 16rpx;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-price {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-price .pirce {
+  color: #ff1e3e;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-price .recommend-btn {
+  border: 1rpx solid #ff1e3e;
+  border-radius: 8rpx;
+  padding: 4rpx 10rpx;
+  font-size: 26rpx;
+  color: #ff1e3e;
+}
+.home .tonggao-bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+  border-top: 1rpx solid #ebebeb;
+  padding-top: 16rpx;
+}
+.home .tonggao-head {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.home .tonggao-head image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 4rpx;
+  border-radius: 50%;
+}
+.home .tonggao-yuepai {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.home .tonggao-yuepai image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.home .tonggao-read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.home .tonggao-read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
 }
