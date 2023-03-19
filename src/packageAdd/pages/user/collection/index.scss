@@ -256,7 +256,7 @@ page {
       margin-left: 16px;
       justify-content: center;
       .list_name {
-        margin-bottom: 5px;
+        // margin-bottom: 5px;
         color: #111111;
         font-size: 34px;
       }
@@ -281,7 +281,7 @@ page {
       justify-content: space-between;
       color: #2f2f2f;
       font-size: 30px;
-      margin: 10px 0px;
+      margin: 16px 0px;
       .list_title {
         font-size: 38px;
       }
@@ -338,7 +338,7 @@ page {
     .list_time {
       display: flex;
       align-items: center;
-      font-size: 26px;
+      font-size: 24px;
       image {
         width: 26px;
         height: 26px;
@@ -348,7 +348,7 @@ page {
     .list_yuepai {
       display: flex;
       align-items: center;
-      font-size: 26px;
+      font-size: 24px;
       image {
         width: 26px;
         height: 26px;
@@ -358,7 +358,7 @@ page {
     .list_read {
       display: flex;
       align-items: center;
-      font-size: 26px;
+      font-size: 24px;
       image {
         width: 26px;
         height: 26px;
