@@ -359,6 +359,10 @@
     </view> -->
     <Pagenav
       :pageActive="componetActive"
+      :navList="navList"
+      :chargeList="chargeData"
+      :identityList="identityData"
+      :noticeList="noticeData"
       :style="{ marginTop: globalData.navHeight + 'px' }"
       v-show="navShow"
     ></Pagenav>
@@ -374,6 +378,15 @@ import TonggaoList from "../../components/tonggaoList/index.vue";
 import YuepaiList from "../../components/yuepaiList/index.vue";
 import ZuopinList from "../../components/zuopinList/index.vue";
 import Pagenav from "../../components/pagenav/index.vue";
+import {
+  inviteAdviseList,
+  noticeAdviseList,
+  notifyNumber,
+  isSign,
+  publicConfig,
+  noticeFilter,
+  getCareer,
+} from "../../api/index";
 export default {
   name: "home",
   data() {
@@ -393,7 +406,13 @@ export default {
       pageNum: 1,
       pageSize: 10,
       showSign: false,
-      navShow: true,
+      navShow: false,
+      inviteRecommendList: [],
+      noticeRecommendList: [],
+      navList: [],
+      chargeData: [],
+      identityData: [],
+      noticeData: [],
       cover: [
         "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
         "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
@@ -427,6 +446,173 @@ export default {
         this.componetActive = index;
       }
     },
+    async inviteAdviseList(params) {
+      try {
+        let res = await inviteAdviseList(params);
+        this.inviteRecommendList = res.data.data;
+      } catch (error) {
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          console.log(error, "error");
+        }
+      }
+    },
+    async noticeAdviseList(params) {
+      try {
+        let res = await noticeAdviseList(params);
+        this.noticeRecommendList = res.data.data;
+      } catch (error) {
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          console.log(error, "error");
+        }
+      }
+    },
+    async notifyNumber(params) {
+      try {
+        let res = await notifyNumber(params);
+        if (res.data.data.is_notify_warn) {
+          wx.showTabBarRedDot({
+            index: 2,
+          });
+        } else {
+          wx.hideTabBarRedDot({
+            index: 2,
+          });
+        }
+      } catch (error) {}
+    },
+    async isSign(params) {
+      try {
+        let res = await isSign(params);
+        this.is_today_sign = res.data.data.is_today_sign;
+      } catch (error) {}
+    },
+    async publicConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        let arr = [];
+        let arr2 = [];
+        res.data.data.map((item, index) => {
+          if (item.type == "invite_filter") {
+            arr.push(item);
+          } else if (item.type == "payment_type") {
+            item.ispick = false;
+            arr2.push(item);
+          }
+        });
+        this.navList = arr;
+        arr2.unshift({
+          key: "all",
+          name: "全部",
+          value: "全部",
+          ispick: true,
+        });
+        this.chargeData = arr2;
+        this.filter = {
+          face_province_id: 0,
+          face_city_id: 0,
+          face_cid: 0,
+          sex: 10,
+          payment_type: 0,
+        };
+        // this.query("init");
+      } catch (error) {}
+    },
+    async publicNoticeConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        this.navList = res.data.data;
+        this.filter = {
+          first_code: "",
+          payment_type: 0,
+          career_cid: 0,
+          face_cid: 0,
+          face_province_id: 0,
+        };
+        // this.query("init");
+      } catch (error) {}
+    },
+    async noticeFilter(params) {
+      try {
+        let res = await noticeFilter(params);
+        let data = res.data.data;
+        let arr = [];
+        let arr1 = [];
+        let arr2 = [];
+        arr = data.career.map((item) => {
+          item.ispick = false;
+          return item;
+        });
+        arr1 = data.first_code.map((item) => {
+          item.ispick = false;
+          return item;
+        });
+        arr2 = data.payment_type.map((item) => {
+          item.ispick = false;
+          return item;
+        });
+        arr.unshift({
+          cid: "all",
+          name: "全部",
+          value: "全部",
+          ispick: true,
+        });
+        arr1.unshift({
+          key: "all",
+          value: "全部",
+          ispick: true,
+        });
+        arr2.unshift({
+          key: "all",
+          value: "全部",
+          ispick: true,
+        });
+        this.identityData = arr;
+        this.noticeData = arr1;
+        this.chargeData = arr2;
+      } catch (error) {}
+    },
+    async publicPhotoConfig(params) {
+      try {
+        let res = await publicConfig(params);
+        let arr = [];
+        res.data.data.map((item, index) => {
+          if (item.type == "photo_filter") {
+            arr.push(item);
+          } else if (item.type == "payment_type") {
+            item.ispick = false;
+            arr2.push(item);
+          }
+        });
+        this.navList = arr;
+        this.filter = {
+          face_province_id: 0,
+          face_cid: 0,
+          career_cid: 0,
+          sex: 10,
+        };
+        // this.query("init");
+      } catch (error) {}
+    },
+    async getCareer(params) {
+      try {
+        let res = await getCareer(params);
+        let data = res.data.data;
+        let arr = [];
+        arr = data.career_list.map((item) => {
+          item.ispick = false;
+          return item;
+        });
+        arr.unshift({
+          cid: "all",
+          role: "全部",
+          value: "全部",
+          ispick: true,
+        });
+        this.identityData = arr;
+      } catch (error) {}
+    },
   },
   onPageScroll: function (e) {
     this.scrollTop = e.scrollTop;
@@ -452,6 +638,28 @@ export default {
   },
   created() {
     this.globalData = this.globalData;
+    // 约拍推荐
+    this.inviteAdviseList({});
+    // 通告推荐
+    this.noticeAdviseList({});
+    // 消息通知红点
+    this.notifyNumber("");
+    // 是否签到
+    this.isSign("");
+
+    this.publicConfig({
+      type: ["invite_filter", "payment_type"],
+    });
+
+    // this.publicNoticeConfig({
+    //   type: ["notice_filter"],
+    // });
+    // this.noticeFilter("");
+
+    // this.publicPhotoConfig({
+    //   type: ["photo_filter"],
+    // });
+    // this.getCareer("");
   },
 };
 </script>

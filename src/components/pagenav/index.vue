@@ -17,7 +17,7 @@
           <view class="nav_list_ct">
             <text
               class="nav_item"
-              v-for="(item, index) in navList"
+              v-for="(item, index) in navData"
               :key="index"
               :class="navActive == index ? 'nav_active' : ''"
               @tap="navClick(index)"
@@ -115,7 +115,7 @@
               @tap="select_identity_tag(item)"
               class="tag_item"
               :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in identity_data"
+              v-for="(item, index) in identityData"
               :key="index"
             >
               {{ item.name }}
@@ -129,7 +129,7 @@
               @tap="select_notice_tag(item)"
               class="tag_item"
               :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in notice_data"
+              v-for="(item, index) in noticeData"
               :key="index"
             >
               {{ item.value }}
@@ -143,7 +143,7 @@
               @tap="select_charge_tag(item)"
               class="tag_item"
               :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in charge_data"
+              v-for="(item, index) in chargeData"
               :key="index"
             >
               {{ item.value }}
@@ -171,7 +171,7 @@
               @tap="select_identity_tag(item)"
               class="tag_item"
               :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in identity_data"
+              v-for="(item, index) in identityData"
               :key="index"
             >
               {{ item.role }}
@@ -227,14 +227,15 @@ export default {
           value: 2,
         },
       ],
-      navList: [
-        {
-          value: "推荐",
-        },
-        {
-          value: "最新",
-        },
+      navData: [
+        // {
+        //   value: "推荐",
+        // },
+        // {
+        //   value: "最新",
+        // },
       ],
+      chargeData: [],
       sizer_num: [],
       appointmentData: [
         { cid: 0, name: "全部", ispick: true },
@@ -262,16 +263,64 @@ export default {
           ispick: false,
         },
       ],
-      chargeData: [],
-      identity_data: [],
-      notice_data: [],
-      charge_data: [],
+      identityData: [],
+      noticeData: [],
     };
   },
+  props: {
+    pageActive: {
+      type: Number,
+      default: 0,
+    },
+    navList: {
+      type: Array,
+      default: [],
+    },
+    chargeList: {
+      type: Array,
+      default: [],
+    },
+    identityList: {
+      type: Array,
+      default: [],
+    },
+    noticeList: {
+      type: Array,
+      default: [],
+    },
+  },
   watch: {
-    navHeight: {
+    pageActive: {
       handler(newVal, oldVal) {
-        this.height = newVal;
+        this.active = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    navList: {
+      handler(newVal, oldVal) {
+        this.navData = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    chargeList: {
+      handler(newVal, oldVal) {
+        this.chargeData = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    identityList: {
+      handler(newVal, oldVal) {
+        this.identityData = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    noticeList: {
+      handler(newVal, oldVal) {
+        this.noticeData = newVal;
       },
       deep: true,
       immediate: true,
@@ -285,10 +334,16 @@ export default {
       this.tonggaoShowModal = false;
     },
     zuopinClose() {
-      this.tonggaoShowModal = false;
+      this.zuopinShowModal = false;
     },
     screen() {
-      this.showModal = true;
+      if (this.headCurrent == 0) {
+        this.showModal = true;
+      } else if (this.headCurrent == 1) {
+        this.tonggaoShowModal = true;
+      } else if (this.headCurrent == 2) {
+        this.zuopinShowModal = true;
+      }
     },
     headNavClick(index) {
       this.pageNum = 1;
@@ -338,13 +393,13 @@ export default {
       row.ispick = true;
     },
     select_identity_tag(row) {
-      this.identity_data.map((item) => {
+      this.identityData.map((item) => {
         item.ispick = false;
       });
       row.ispick = true;
     },
     select_notice_tag(row) {
-      this.notice_data.map((item) => {
+      this.noticeData.map((item) => {
         item.ispick = false;
       });
       row.ispick = true;

@@ -273,11 +273,14 @@ component.options.__file = "src/pages/home/index.vue"
         name: "作品",
         value: 2
       }],
-      navList: [{
-        value: "推荐"
-      }, {
-        value: "最新"
-      }],
+      navData: [// {
+        //   value: "推荐",
+        // },
+        // {
+        //   value: "最新",
+        // },
+      ],
+      chargeData: [],
       sizer_num: [],
       appointmentData: [{
         cid: 0,
@@ -321,16 +324,64 @@ component.options.__file = "src/pages/home/index.vue"
         value: 0,
         ispick: false
       }],
-      chargeData: [],
-      identity_data: [],
-      notice_data: [],
-      charge_data: []
+      identityData: [],
+      noticeData: []
     };
   },
+  props: {
+    pageActive: {
+      type: Number,
+      default: 0
+    },
+    navList: {
+      type: Array,
+      default: []
+    },
+    chargeList: {
+      type: Array,
+      default: []
+    },
+    identityList: {
+      type: Array,
+      default: []
+    },
+    noticeList: {
+      type: Array,
+      default: []
+    }
+  },
   watch: {
-    navHeight: {
+    pageActive: {
       handler: function handler(newVal, oldVal) {
-        this.height = newVal;
+        this.active = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    navList: {
+      handler: function handler(newVal, oldVal) {
+        this.navData = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    chargeList: {
+      handler: function handler(newVal, oldVal) {
+        this.chargeData = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    identityList: {
+      handler: function handler(newVal, oldVal) {
+        this.identityData = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    noticeList: {
+      handler: function handler(newVal, oldVal) {
+        this.noticeData = newVal;
       },
       deep: true,
       immediate: true
@@ -344,10 +395,16 @@ component.options.__file = "src/pages/home/index.vue"
       this.tonggaoShowModal = false;
     },
     zuopinClose: function zuopinClose() {
-      this.tonggaoShowModal = false;
+      this.zuopinShowModal = false;
     },
     screen: function screen() {
-      this.showModal = true;
+      if (this.headCurrent == 0) {
+        this.showModal = true;
+      } else if (this.headCurrent == 1) {
+        this.tonggaoShowModal = true;
+      } else if (this.headCurrent == 2) {
+        this.zuopinShowModal = true;
+      }
     },
     headNavClick: function headNavClick(index) {
       this.pageNum = 1;
@@ -396,13 +453,13 @@ component.options.__file = "src/pages/home/index.vue"
       row.ispick = true;
     },
     select_identity_tag: function select_identity_tag(row) {
-      this.identity_data.map(function (item) {
+      this.identityData.map(function (item) {
         item.ispick = false;
       });
       row.ispick = true;
     },
     select_notice_tag: function select_notice_tag(row) {
-      this.notice_data.map(function (item) {
+      this.noticeData.map(function (item) {
         item.ispick = false;
       });
       row.ispick = true;
@@ -809,12 +866,17 @@ component.options.__file = "src/pages/home/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/pages/home/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/tonggaoList/index.vue */ "./src/components/tonggaoList/index.vue");
-/* harmony import */ var _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/yuepaiList/index.vue */ "./src/components/yuepaiList/index.vue");
-/* harmony import */ var _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/zuopinList/index.vue */ "./src/components/zuopinList/index.vue");
-/* harmony import */ var _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/pagenav/index.vue */ "./src/components/pagenav/index.vue");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/home/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/tonggaoList/index.vue */ "./src/components/tonggaoList/index.vue");
+/* harmony import */ var _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/yuepaiList/index.vue */ "./src/components/yuepaiList/index.vue");
+/* harmony import */ var _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/zuopinList/index.vue */ "./src/components/zuopinList/index.vue");
+/* harmony import */ var _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/pagenav/index.vue */ "./src/components/pagenav/index.vue");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+
+
 //
 //
 //
@@ -1185,6 +1247,11 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -1209,7 +1276,13 @@ component.options.__file = "src/pages/home/index.vue"
       pageNum: 1,
       pageSize: 10,
       showSign: false,
-      navShow: true,
+      navShow: false,
+      inviteRecommendList: [],
+      noticeRecommendList: [],
+      navList: [],
+      chargeData: [],
+      identityData: [],
+      noticeData: [],
       cover: ["https://yuepai-oss.qubeitech.com/static/images/avatar_default.png", "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png", "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png"],
       componetsNav: [{
         name: "约拍",
@@ -1224,20 +1297,419 @@ component.options.__file = "src/pages/home/index.vue"
     };
   },
   components: {
-    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
-    YuepaiList: _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"],
-    ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"],
-    Pagenav: _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]
+    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"],
+    YuepaiList: _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"],
+    ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"],
+    Pagenav: _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]
   },
   methods: {
     componetClick: function componetClick(index) {
       if (this.componetActive != index) {
         this.componetActive = index;
       }
+    },
+    inviteAdviseList: function inviteAdviseList(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* inviteAdviseList */ "A"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.inviteRecommendList = res.data.data;
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.data.error_code == 11020) {
+                  _this.visible = true;
+                  console.log(_context.t0, "error");
+                }
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    noticeAdviseList: function noticeAdviseList(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* noticeAdviseList */ "N"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this2.noticeRecommendList = res.data.data;
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+                if (_context2.t0.data.error_code == 11020) {
+                  _this2.visible = true;
+                  console.log(_context2.t0, "error");
+                }
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    },
+    notifyNumber: function notifyNumber(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* notifyNumber */ "R"])(params);
+
+              case 3:
+                res = _context3.sent;
+
+                if (res.data.data.is_notify_warn) {
+                  wx.showTabBarRedDot({
+                    index: 2
+                  });
+                } else {
+                  wx.hideTabBarRedDot({
+                    index: 2
+                  });
+                }
+
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
+      }))();
+    },
+    isSign: function isSign(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* isSign */ "E"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _this3.is_today_sign = res.data.data.is_today_sign;
+                _context4.next = 9;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 7]]);
+      }))();
+    },
+    publicConfig: function publicConfig(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res, arr, _arr;
+
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* publicConfig */ "Y"])(params);
+
+              case 3:
+                res = _context5.sent;
+                arr = [];
+                _arr = [];
+                res.data.data.map(function (item, index) {
+                  if (item.type == "invite_filter") {
+                    arr.push(item);
+                  } else if (item.type == "payment_type") {
+                    item.ispick = false;
+
+                    _arr.push(item);
+                  }
+                });
+                _this4.navList = arr;
+
+                _arr.unshift({
+                  key: "all",
+                  name: "全部",
+                  value: "全部",
+                  ispick: true
+                });
+
+                _this4.chargeData = _arr;
+                _this4.filter = {
+                  face_province_id: 0,
+                  face_city_id: 0,
+                  face_cid: 0,
+                  sex: 10,
+                  payment_type: 0
+                }; // this.query("init");
+
+                _context5.next = 15;
+                break;
+
+              case 13:
+                _context5.prev = 13;
+                _context5.t0 = _context5["catch"](0);
+
+              case 15:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 13]]);
+      }))();
+    },
+    publicNoticeConfig: function publicNoticeConfig(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* publicConfig */ "Y"])(params);
+
+              case 3:
+                res = _context6.sent;
+                _this5.navList = res.data.data;
+                _this5.filter = {
+                  first_code: "",
+                  payment_type: 0,
+                  career_cid: 0,
+                  face_cid: 0,
+                  face_province_id: 0
+                }; // this.query("init");
+
+                _context6.next = 10;
+                break;
+
+              case 8:
+                _context6.prev = 8;
+                _context6.t0 = _context6["catch"](0);
+
+              case 10:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 8]]);
+      }))();
+    },
+    noticeFilter: function noticeFilter(params) {
+      var _this6 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
+        var res, data, arr, arr1, _arr2;
+
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* noticeFilter */ "O"])(params);
+
+              case 3:
+                res = _context7.sent;
+                data = res.data.data;
+                arr = [];
+                arr1 = [];
+                _arr2 = [];
+                arr = data.career.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr1 = data.first_code.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                _arr2 = data.payment_type.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr.unshift({
+                  cid: "all",
+                  name: "全部",
+                  value: "全部",
+                  ispick: true
+                });
+                arr1.unshift({
+                  key: "all",
+                  value: "全部",
+                  ispick: true
+                });
+
+                _arr2.unshift({
+                  key: "all",
+                  value: "全部",
+                  ispick: true
+                });
+
+                _this6.identityData = arr;
+                _this6.noticeData = arr1;
+                _this6.chargeData = _arr2;
+                _context7.next = 21;
+                break;
+
+              case 19:
+                _context7.prev = 19;
+                _context7.t0 = _context7["catch"](0);
+
+              case 21:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, null, [[0, 19]]);
+      }))();
+    },
+    publicPhotoConfig: function publicPhotoConfig(params) {
+      var _this7 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
+        var res, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* publicConfig */ "Y"])(params);
+
+              case 3:
+                res = _context8.sent;
+                arr = [];
+                res.data.data.map(function (item, index) {
+                  if (item.type == "photo_filter") {
+                    arr.push(item);
+                  } else if (item.type == "payment_type") {
+                    item.ispick = false;
+                    arr2.push(item);
+                  }
+                });
+                _this7.navList = arr;
+                _this7.filter = {
+                  face_province_id: 0,
+                  face_cid: 0,
+                  career_cid: 0,
+                  sex: 10
+                }; // this.query("init");
+
+                _context8.next = 12;
+                break;
+
+              case 10:
+                _context8.prev = 10;
+                _context8.t0 = _context8["catch"](0);
+
+              case 12:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, null, [[0, 10]]);
+      }))();
+    },
+    getCareer: function getCareer(params) {
+      var _this8 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee9() {
+        var res, data, arr;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                _context9.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* getCareer */ "w"])(params);
+
+              case 3:
+                res = _context9.sent;
+                data = res.data.data;
+                arr = [];
+                arr = data.career_list.map(function (item) {
+                  item.ispick = false;
+                  return item;
+                });
+                arr.unshift({
+                  cid: "all",
+                  role: "全部",
+                  value: "全部",
+                  ispick: true
+                });
+                _this8.identityData = arr;
+                _context9.next = 13;
+                break;
+
+              case 11:
+                _context9.prev = 11;
+                _context9.t0 = _context9["catch"](0);
+
+              case 13:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, null, [[0, 11]]);
+      }))();
     }
   },
   onPageScroll: function onPageScroll(e) {
-    var _this = this;
+    var _this9 = this;
 
     this.scrollTop = e.scrollTop;
     var query = wx.createSelectorQuery();
@@ -1245,9 +1717,9 @@ component.options.__file = "src/pages/home/index.vue"
       var top = rect.top;
 
       if (top <= 50) {
-        _this.navShow = true;
+        _this9.navShow = true;
       } else {
-        _this.navShow = false;
+        _this9.navShow = false;
       }
     }).exec();
   },
@@ -1258,7 +1730,25 @@ component.options.__file = "src/pages/home/index.vue"
     // }
   },
   created: function created() {
-    this.globalData = this.globalData;
+    this.globalData = this.globalData; // 约拍推荐
+
+    this.inviteAdviseList({}); // 通告推荐
+
+    this.noticeAdviseList({}); // 消息通知红点
+
+    this.notifyNumber(""); // 是否签到
+
+    this.isSign("");
+    this.publicConfig({
+      type: ["invite_filter", "payment_type"]
+    }); // this.publicNoticeConfig({
+    //   type: ["notice_filter"],
+    // });
+    // this.noticeFilter("");
+    // this.publicPhotoConfig({
+    //   type: ["photo_filter"],
+    // });
+    // this.getCareer("");
   }
 });
 
@@ -1322,7 +1812,7 @@ var render = function () {
                 _c(
                   "view",
                   { staticClass: "nav_list_ct" },
-                  _vm._l(_vm.navList, function (item, index) {
+                  _vm._l(_vm.navData, function (item, index) {
                     return _c(
                       "text",
                       {
@@ -1532,7 +2022,7 @@ var render = function () {
               ]),
               _c(
                 "view",
-                _vm._l(_vm.identity_data, function (item, index) {
+                _vm._l(_vm.identityData, function (item, index) {
                   return _c(
                     "text",
                     {
@@ -1557,7 +2047,7 @@ var render = function () {
               ]),
               _c(
                 "view",
-                _vm._l(_vm.notice_data, function (item, index) {
+                _vm._l(_vm.noticeData, function (item, index) {
                   return _c(
                     "text",
                     {
@@ -1582,7 +2072,7 @@ var render = function () {
               ]),
               _c(
                 "view",
-                _vm._l(_vm.charge_data, function (item, index) {
+                _vm._l(_vm.chargeData, function (item, index) {
                   return _c(
                     "text",
                     {
@@ -1649,7 +2139,7 @@ var render = function () {
               ]),
               _c(
                 "view",
-                _vm._l(_vm.identity_data, function (item, index) {
+                _vm._l(_vm.identityData, function (item, index) {
                   return _c(
                     "text",
                     {
@@ -2667,7 +3157,13 @@ var render = function () {
           },
         ],
         style: { marginTop: _vm.globalData.navHeight + "px" },
-        attrs: { pageActive: _vm.componetActive },
+        attrs: {
+          pageActive: _vm.componetActive,
+          navList: _vm.navList,
+          chargeList: _vm.chargeData,
+          identityList: _vm.identityData,
+          noticeList: _vm.noticeData,
+        },
       }),
       _vm.componetActive == 0 ? _c("YuepaiList") : _vm._e(),
       _vm.componetActive == 1 ? _c("TonggaoList") : _vm._e(),
@@ -3230,5 +3726,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/pages/home/index.vue","runtime","taro","vendors"]]]);
+},[["./src/pages/home/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map
