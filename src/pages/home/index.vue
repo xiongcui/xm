@@ -125,7 +125,7 @@
           :duration="duration"
           class="yuepai-swiper"
         >
-          <block v-for="(item, index) in background" :key="index">
+          <block v-for="(item, index) in inviteRecommendList" :key="index">
             <swiper-item>
               <view class="recommend-box">
                 <view class="tonggao-recommend">
@@ -133,92 +133,129 @@
                     <view class="list_top">
                       <view class="list_top_left">
                         <image
-                          :src="'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'"
+                          :src="
+                            item.author.avatar
+                              ? item.author.avatar
+                              : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                          "
                           class="avatar"
                         ></image>
                         <view class="list_info">
                           <view class="list_name">
-                            Anne
-                            <image
-                              src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
-                              class="list_sex"
-                            ></image>
-                            <!-- <block v-if="item.author.sex !== null">
-                        <image
-                          src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
-                          class="list_sex"
-                          v-if="item.author.sex == 1"
-                        ></image>
-                        <image
-                          src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
-                          class="list_sex"
-                          v-if="item.author.sex == 0"
-                        ></image>
-                      </block> -->
+                            {{ item.author.nickname }}
+                            <block v-if="item.author.sex !== null">
+                              <image
+                                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                                class="list_sex"
+                                v-if="item.author.sex == 1"
+                              ></image>
+                              <image
+                                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                                class="list_sex"
+                                v-if="item.author.sex == 0"
+                              ></image>
+                            </block>
                           </view>
                           <view class="list_p">
-                            <text> 摄影</text>
-                            <view class="icon_real">已实名</view>
-                            <view class="icon_pledge">已担保</view>
+                            <text>
+                              {{
+                                item.author.career_list.length
+                                  ? item.author.career_list[0]
+                                  : null
+                              }}</text
+                            >
+                            <view
+                              class="icon_real"
+                              v-if="item.author.is_certify"
+                              >已实名</view
+                            >
+                            <view
+                              class="icon_pledge"
+                              v-if="item.author.is_security"
+                              >已担保</view
+                            >
                           </view>
                         </view>
                       </view>
                       <view class="list_top_rt">
-                        <view class="list_loction"> 北京 </view>
-                        <view class="list_date">1小时前来过</view>
+                        <view class="list_loction">
+                          {{ item.author.province_name }}
+                        </view>
+                        <view class="list_date">{{
+                          item.basic.date_humanize
+                        }}</view>
                       </view>
                     </view>
                     <view class="list_content">
                       <view class="list_title">
-                        <view class="recommend-label"> 约摄影师 </view>
-                        <view class="recommend-label2"> 愿意付费：200 </view>
+                        <view
+                          class="recommend-label"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                        >
+                          {{ tagitem }}
+                        </view>
+                        <view class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </view>
                       </view>
-                      <view class="list_title_desc"
-                        >故宫汉服需要模特故宫汉服需要模特</view
-                      >
+                      <view class="list_title_desc">{{
+                        item.topic.headline.title
+                      }}</view>
                     </view>
                     <view class="list_desc">
-                      内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                      {{ item.details.summary }}
                     </view>
-                    <view class="list_img">
+                    <view
+                      class="list_img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <scroll-view :enhanced="true" :scrollX="true">
                         <image
                           :src="url"
                           mode="aspectFill"
                           class="list_img_item"
-                          v-for="(url, coverIndex) in cover"
+                          v-for="(url, coverIndex) in item.details.media.cover"
                           :key="coverIndex"
-                          @tap.stop="previewImage(url, cover)"
+                          @tap.stop="
+                            previewImage(url, item.details.media.cover)
+                          "
                         ></image>
                       </scroll-view>
                     </view>
-                    <!-- <view class="list_video" v-if="item.file_type == 'video'">
-                <video
-                  objectFit="cover"
-                  :poster="item.cover[0]"
-                  :src="item.video_cover && item.video_cover[0]"
-                  class="list_video-width"
-                  @tap.stop=""
-                ></video>
-              </view> -->
+                    <view
+                      class="list_video"
+                      v-if="item.details.media.file_type == 'video'"
+                    >
+                      <video
+                        objectFit="cover"
+                        :poster="item.details.media.cover[0]"
+                        :src="
+                          item.details.media.video_cover &&
+                          item.details.media.video_cover[0]
+                        "
+                        class="list_video-width"
+                        @tap.stop=""
+                      ></video>
+                    </view>
                     <view class="list_bottom">
                       <view class="list_time">
                         <image
                           src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                         ></image>
-                        1
+                        {{ item.basic.date_humanize }}
                       </view>
                       <view class="list_yuepai">
                         <image
                           src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                         ></image>
-                        收到约拍 3
+                        收到约拍 {{ item.statistic.invite_cnt }}
                       </view>
                       <view class="list_read">
                         <image
                           src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                         ></image>
-                        阅读 2
+                        阅读 {{ item.statistic.read_cnt }}
                       </view>
                     </view>
                   </view>
@@ -256,7 +293,8 @@
                     </view>
                     <view class="tonggao-recommend-info">
                       <view class="tonggao-info-title">
-                        <view class="recommend-label"> 人像创作 </view>
+                        <view class="recommend-label"> 探店推广 </view>
+                        <view class="recommend-label"> 小红书 </view>
                         <view class="tonggao-txt">面向全国招聘优质模特</view>
                       </view>
                       <view class="tonggao-info-desc">
@@ -364,6 +402,8 @@
       :identityList="identityData"
       :noticeList="noticeData"
       :style="{ marginTop: globalData.navHeight + 'px' }"
+      @pageNavClick="pageNavClick"
+      @query="query"
       v-show="navShow"
     ></Pagenav>
     <YuepaiList v-if="componetActive == 0"></YuepaiList>
@@ -386,6 +426,7 @@ import {
   publicConfig,
   noticeFilter,
   getCareer,
+  inviteList,
 } from "../../api/index";
 export default {
   name: "home",
@@ -413,11 +454,11 @@ export default {
       chargeData: [],
       identityData: [],
       noticeData: [],
-      cover: [
-        "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-        "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-        "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      ],
+      //   cover: [
+      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+      //   ],
       componetsNav: [
         {
           name: "约拍",
@@ -441,15 +482,85 @@ export default {
     Pagenav,
   },
   methods: {
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
     componetClick(index) {
       if (this.componetActive != index) {
         this.componetActive = index;
       }
     },
+    pageNavClick(index) {
+      this.index = index;
+      switch (index) {
+        case 0:
+          this.publicConfig({
+            type: ["invite_filter", "payment_type"],
+          });
+          break;
+        case 1:
+          this.publicNoticeConfig({
+            type: ["notice_filter"],
+          });
+          this.noticeFilter("");
+          break;
+        case 2:
+          this.publicPhotoConfig({
+            type: ["photo_filter"],
+          });
+          this.getCareer("");
+          break;
+      }
+    },
+    query(type, navActive) {
+      this.inviteList(
+        {
+          filter: this.filter,
+          quick_filter: this.navList.length ? this.navList[navActive].key : "",
+          page: this.pageNum,
+          per_page: this.pageSize,
+        },
+        type
+      );
+    },
+    async inviteList(params, type) {
+      try {
+        let res = await inviteList(params);
+        //隐藏loading 提示框
+        this.showLoading = false;
+        wx.hideLoading();
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+
+        if (type == "init") {
+          this.list = res.data.data.items;
+        } else if (type == "more") {
+          if (!res.data.data || !res.data.data.items.length) {
+            errortip("没有更多数据了～");
+            this.loading = true;
+            return false;
+          }
+          let data = res.data.data.items;
+          this.list = this.list.concat(data);
+          this.loading = true;
+        }
+      } catch (error) {
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          console.log(error, "error");
+        }
+      }
+    },
     async inviteAdviseList(params) {
       try {
         let res = await inviteAdviseList(params);
-        this.inviteRecommendList = res.data.data;
+        this.inviteRecommendList = res.data.data.items;
       } catch (error) {
         if (error.data.error_code == 11020) {
           this.visible = true;
@@ -460,7 +571,7 @@ export default {
     async noticeAdviseList(params) {
       try {
         let res = await noticeAdviseList(params);
-        this.noticeRecommendList = res.data.data;
+        this.noticeRecommendList = res.data.data.items;
       } catch (error) {
         if (error.data.error_code == 11020) {
           this.visible = true;

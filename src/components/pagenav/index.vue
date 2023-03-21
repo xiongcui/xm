@@ -346,11 +346,9 @@ export default {
       }
     },
     headNavClick(index) {
-      this.pageNum = 1;
       this.headCurrent = index;
-      //   if (index == 1) {
-      //     this.query("init");
-      //   }
+      this.$emit("pageNavClick", index);
+      this.$emit("query", "init", this.navActive);
     },
     navClick(index) {
       this.navActive = index;
