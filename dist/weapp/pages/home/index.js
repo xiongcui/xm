@@ -1290,6 +1290,10 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -1300,6 +1304,7 @@ component.options.__file = "src/pages/home/index.vue"
   name: "home",
   data: function data() {
     return {
+      swiperheight: 0,
       city: "北京",
       is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
@@ -1322,11 +1327,6 @@ component.options.__file = "src/pages/home/index.vue"
       chargeData: [],
       identityData: [],
       noticeData: [],
-      //   cover: [
-      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      //   ],
       componetsNav: [{
         name: "约拍",
         desc: "你约我拍"
@@ -1392,6 +1392,21 @@ component.options.__file = "src/pages/home/index.vue"
         page: this.pageNum,
         per_page: this.pageSize
       }, type);
+    },
+    swiperChange: function swiperChange(e) {
+      console.log(e); //创建节点选择器,动态获取面板高度设置动画高度
+
+      var query = wx.createSelectorQuery();
+      var id = "#recommend-box" + e.detail.current;
+      var that = this;
+      console.log(query.select(id));
+      query.select(id).boundingClientRect();
+      query.exec(function (res) {
+        console.log(res, "res==="); //res[0].height 为获取的收缩栏面板展开部分的高度
+
+        var finalHeight = that.swiperheight + res[0].height;
+        that.swiperheight = finalHeight;
+      });
     },
     inviteList: function inviteList(params, type) {
       var _this = this;
@@ -2998,12 +3013,16 @@ var render = function () {
               "swiper",
               {
                 staticClass: "yuepai-swiper",
+                style: {
+                  height: _vm.swiperheight + "px",
+                },
                 attrs: {
                   "indicator-dots": _vm.indicatorDots2,
                   autoplay: _vm.autoplay,
                   interval: _vm.interval2,
                   duration: _vm.duration,
                 },
+                on: { change: _vm.swiperChange },
               },
               _vm._l(_vm.inviteRecommendList, function (item, index) {
                 return _c(
@@ -3011,229 +3030,240 @@ var render = function () {
                   { key: index },
                   [
                     _c("swiper-item", [
-                      _c("view", { staticClass: "recommend-box" }, [
-                        _c("view", { staticClass: "tonggao-recommend" }, [
-                          _c("view", { staticClass: "list_box" }, [
-                            _c("view", { staticClass: "list_top" }, [
-                              _c("view", { staticClass: "list_top_left" }, [
-                                _c("image", {
-                                  staticClass: "avatar",
-                                  attrs: {
-                                    src: item.author.avatar
-                                      ? item.author.avatar
-                                      : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-                                  },
-                                }),
-                                _c("view", { staticClass: "list_info" }, [
-                                  _c(
-                                    "view",
-                                    { staticClass: "list_name" },
-                                    [
-                                      _vm._v(
-                                        " " + _vm._s(item.author.nickname) + " "
-                                      ),
-                                      item.author.sex !== null
-                                        ? _c("block", [
-                                            item.author.sex == 1
-                                              ? _c("image", {
-                                                  staticClass: "list_sex",
-                                                  attrs: {
-                                                    src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                                  },
-                                                })
-                                              : _vm._e(),
-                                            item.author.sex == 0
-                                              ? _c("image", {
-                                                  staticClass: "list_sex",
-                                                  attrs: {
-                                                    src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                                  },
-                                                })
-                                              : _vm._e(),
-                                          ])
-                                        : _vm._e(),
-                                    ],
-                                    1
-                                  ),
-                                  _c("view", { staticClass: "list_p" }, [
-                                    _c("text", [
-                                      _vm._v(
-                                        " " +
-                                          _vm._s(
-                                            item.author.career_list.length
-                                              ? item.author.career_list[0]
-                                              : null
+                      _c(
+                        "view",
+                        {
+                          staticClass: "recommend-box",
+                          attrs: { id: "recommend-box" + index },
+                        },
+                        [
+                          _c("view", { staticClass: "tonggao-recommend" }, [
+                            _c("view", { staticClass: "list_box" }, [
+                              _c("view", { staticClass: "list_top" }, [
+                                _c("view", { staticClass: "list_top_left" }, [
+                                  _c("image", {
+                                    staticClass: "avatar",
+                                    attrs: {
+                                      src: item.author.avatar
+                                        ? item.author.avatar
+                                        : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                                    },
+                                  }),
+                                  _c("view", { staticClass: "list_info" }, [
+                                    _c(
+                                      "view",
+                                      { staticClass: "list_name" },
+                                      [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(item.author.nickname) +
+                                            " "
+                                        ),
+                                        item.author.sex !== null
+                                          ? _c("block", [
+                                              item.author.sex == 1
+                                                ? _c("image", {
+                                                    staticClass: "list_sex",
+                                                    attrs: {
+                                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                                    },
+                                                  })
+                                                : _vm._e(),
+                                              item.author.sex == 0
+                                                ? _c("image", {
+                                                    staticClass: "list_sex",
+                                                    attrs: {
+                                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                                    },
+                                                  })
+                                                : _vm._e(),
+                                            ])
+                                          : _vm._e(),
+                                      ],
+                                      1
+                                    ),
+                                    _c("view", { staticClass: "list_p" }, [
+                                      _c("text", [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(
+                                              item.author.career_list.length
+                                                ? item.author.career_list[0]
+                                                : null
+                                            )
+                                        ),
+                                      ]),
+                                      item.author.is_certify
+                                        ? _c(
+                                            "view",
+                                            { staticClass: "icon_real" },
+                                            [_vm._v("已实名")]
                                           )
-                                      ),
+                                        : _vm._e(),
+                                      item.author.is_security
+                                        ? _c(
+                                            "view",
+                                            { staticClass: "icon_pledge" },
+                                            [_vm._v("已担保")]
+                                          )
+                                        : _vm._e(),
                                     ]),
-                                    item.author.is_certify
-                                      ? _c(
-                                          "view",
-                                          { staticClass: "icon_real" },
-                                          [_vm._v("已实名")]
-                                        )
-                                      : _vm._e(),
-                                    item.author.is_security
-                                      ? _c(
-                                          "view",
-                                          { staticClass: "icon_pledge" },
-                                          [_vm._v("已担保")]
-                                        )
-                                      : _vm._e(),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_top_rt" }, [
+                                  _c("view", { staticClass: "list_loction" }, [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(item.author.province_name) +
+                                        " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_date" }, [
+                                    _vm._v(_vm._s(item.basic.date_humanize)),
                                   ]),
                                 ]),
                               ]),
-                              _c("view", { staticClass: "list_top_rt" }, [
-                                _c("view", { staticClass: "list_loction" }, [
+                              _c("view", { staticClass: "list_content" }, [
+                                _c(
+                                  "view",
+                                  { staticClass: "list_title" },
+                                  [
+                                    _vm._l(
+                                      item.topic.headline.tag,
+                                      function (tagitem, tagindex) {
+                                        return _c(
+                                          "view",
+                                          {
+                                            key: tagindex,
+                                            staticClass: "recommend-label",
+                                          },
+                                          [_vm._v(" " + _vm._s(tagitem) + " ")]
+                                        )
+                                      }
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "recommend-label2" },
+                                      [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(item.topic.payment.title) +
+                                            " "
+                                        ),
+                                      ]
+                                    ),
+                                  ],
+                                  2
+                                ),
+                                _c("view", { staticClass: "list_title_desc" }, [
+                                  _vm._v(_vm._s(item.topic.headline.title)),
+                                ]),
+                              ]),
+                              _c("view", { staticClass: "list_desc" }, [
+                                _vm._v(
+                                  " " + _vm._s(item.details.summary) + " "
+                                ),
+                              ]),
+                              item.details.media.file_type == "picture"
+                                ? _c(
+                                    "view",
+                                    { staticClass: "list_img" },
+                                    [
+                                      _c(
+                                        "scroll-view",
+                                        {
+                                          attrs: {
+                                            enhanced: true,
+                                            scrollX: true,
+                                          },
+                                        },
+                                        _vm._l(
+                                          item.details.media.cover,
+                                          function (url, coverIndex) {
+                                            return _c("image", {
+                                              key: coverIndex,
+                                              staticClass: "list_img_item",
+                                              attrs: {
+                                                src: url,
+                                                mode: "aspectFill",
+                                              },
+                                              on: {
+                                                tap: function ($event) {
+                                                  $event.stopPropagation()
+                                                  return _vm.previewImage(
+                                                    url,
+                                                    item.details.media.cover
+                                                  )
+                                                },
+                                              },
+                                            })
+                                          }
+                                        ),
+                                        0
+                                      ),
+                                    ],
+                                    1
+                                  )
+                                : _vm._e(),
+                              item.details.media.file_type == "video"
+                                ? _c("view", { staticClass: "list_video" }, [
+                                    _c("video", {
+                                      staticClass: "list_video-width",
+                                      attrs: {
+                                        objectFit: "cover",
+                                        poster: item.details.media.cover[0],
+                                        src:
+                                          item.details.media.video_cover &&
+                                          item.details.media.video_cover[0],
+                                      },
+                                      on: {
+                                        tap: function ($event) {
+                                          $event.stopPropagation()
+                                        },
+                                      },
+                                    }),
+                                  ])
+                                : _vm._e(),
+                              _c("view", { staticClass: "list_bottom" }, [
+                                _c("view", { staticClass: "list_time" }, [
+                                  _c("image", {
+                                    attrs: {
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                    },
+                                  }),
                                   _vm._v(
-                                    " " +
-                                      _vm._s(item.author.province_name) +
+                                    " " + _vm._s(item.basic.date_humanize) + " "
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "list_yuepai" }, [
+                                  _c("image", {
+                                    attrs: {
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                    },
+                                  }),
+                                  _vm._v(
+                                    " 收到约拍 " +
+                                      _vm._s(item.statistic.invite_cnt) +
                                       " "
                                   ),
                                 ]),
-                                _c("view", { staticClass: "list_date" }, [
-                                  _vm._v(_vm._s(item.basic.date_humanize)),
+                                _c("view", { staticClass: "list_read" }, [
+                                  _c("image", {
+                                    attrs: {
+                                      src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                    },
+                                  }),
+                                  _vm._v(
+                                    " 阅读 " +
+                                      _vm._s(item.statistic.read_cnt) +
+                                      " "
+                                  ),
                                 ]),
                               ]),
                             ]),
-                            _c("view", { staticClass: "list_content" }, [
-                              _c(
-                                "view",
-                                { staticClass: "list_title" },
-                                [
-                                  _vm._l(
-                                    item.topic.headline.tag,
-                                    function (tagitem, tagindex) {
-                                      return _c(
-                                        "view",
-                                        {
-                                          key: tagindex,
-                                          staticClass: "recommend-label",
-                                        },
-                                        [_vm._v(" " + _vm._s(tagitem) + " ")]
-                                      )
-                                    }
-                                  ),
-                                  _c(
-                                    "view",
-                                    { staticClass: "recommend-label2" },
-                                    [
-                                      _vm._v(
-                                        " " +
-                                          _vm._s(item.topic.payment.title) +
-                                          " "
-                                      ),
-                                    ]
-                                  ),
-                                ],
-                                2
-                              ),
-                              _c("view", { staticClass: "list_title_desc" }, [
-                                _vm._v(_vm._s(item.topic.headline.title)),
-                              ]),
-                            ]),
-                            _c("view", { staticClass: "list_desc" }, [
-                              _vm._v(" " + _vm._s(item.details.summary) + " "),
-                            ]),
-                            item.details.media.file_type == "picture"
-                              ? _c(
-                                  "view",
-                                  { staticClass: "list_img" },
-                                  [
-                                    _c(
-                                      "scroll-view",
-                                      {
-                                        attrs: {
-                                          enhanced: true,
-                                          scrollX: true,
-                                        },
-                                      },
-                                      _vm._l(
-                                        item.details.media.cover,
-                                        function (url, coverIndex) {
-                                          return _c("image", {
-                                            key: coverIndex,
-                                            staticClass: "list_img_item",
-                                            attrs: {
-                                              src: url,
-                                              mode: "aspectFill",
-                                            },
-                                            on: {
-                                              tap: function ($event) {
-                                                $event.stopPropagation()
-                                                return _vm.previewImage(
-                                                  url,
-                                                  item.details.media.cover
-                                                )
-                                              },
-                                            },
-                                          })
-                                        }
-                                      ),
-                                      0
-                                    ),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.details.media.file_type == "video"
-                              ? _c("view", { staticClass: "list_video" }, [
-                                  _c("video", {
-                                    staticClass: "list_video-width",
-                                    attrs: {
-                                      objectFit: "cover",
-                                      poster: item.details.media.cover[0],
-                                      src:
-                                        item.details.media.video_cover &&
-                                        item.details.media.video_cover[0],
-                                    },
-                                    on: {
-                                      tap: function ($event) {
-                                        $event.stopPropagation()
-                                      },
-                                    },
-                                  }),
-                                ])
-                              : _vm._e(),
-                            _c("view", { staticClass: "list_bottom" }, [
-                              _c("view", { staticClass: "list_time" }, [
-                                _c("image", {
-                                  attrs: {
-                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                  },
-                                }),
-                                _vm._v(
-                                  " " + _vm._s(item.basic.date_humanize) + " "
-                                ),
-                              ]),
-                              _c("view", { staticClass: "list_yuepai" }, [
-                                _c("image", {
-                                  attrs: {
-                                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                  },
-                                }),
-                                _vm._v(
-                                  " 收到约拍 " +
-                                    _vm._s(item.statistic.invite_cnt) +
-                                    " "
-                                ),
-                              ]),
-                              _c("view", { staticClass: "list_read" }, [
-                                _c("image", {
-                                  attrs: {
-                                    src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                  },
-                                }),
-                                _vm._v(
-                                  " 阅读 " +
-                                    _vm._s(item.statistic.read_cnt) +
-                                    " "
-                                ),
-                              ]),
-                            ]),
                           ]),
-                        ]),
-                      ]),
+                        ]
+                      ),
                     ]),
                   ],
                   1

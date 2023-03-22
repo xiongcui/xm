@@ -124,10 +124,14 @@
           :interval="interval2"
           :duration="duration"
           class="yuepai-swiper"
+          @change="swiperChange"
+          :style="{
+            height: swiperheight + 'px',
+          }"
         >
           <block v-for="(item, index) in inviteRecommendList" :key="index">
             <swiper-item>
-              <view class="recommend-box">
+              <view class="recommend-box" :id="'recommend-box' + index">
                 <view class="tonggao-recommend">
                   <view class="list_box">
                     <view class="list_top">
@@ -432,6 +436,7 @@ export default {
   name: "home",
   data() {
     return {
+      swiperheight: 0,
       city: "北京",
       is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
@@ -454,11 +459,6 @@ export default {
       chargeData: [],
       identityData: [],
       noticeData: [],
-      //   cover: [
-      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      //     "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-      //   ],
       componetsNav: [
         {
           name: "约拍",
@@ -526,6 +526,22 @@ export default {
         },
         type
       );
+    },
+    swiperChange(e) {
+      console.log(e);
+
+      //创建节点选择器,动态获取面板高度设置动画高度
+      var query = wx.createSelectorQuery();
+      var id = "#recommend-box" + e.detail.current;
+      var that = this;
+      console.log(query.select(id));
+      query.select(id).boundingClientRect();
+      query.exec(function (res) {
+        console.log(res, "res===");
+        //res[0].height 为获取的收缩栏面板展开部分的高度
+        var finalHeight = that.swiperheight + res[0].height;
+        that.swiperheight = finalHeight;
+      });
     },
     async inviteList(params, type) {
       try {
