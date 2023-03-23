@@ -283,33 +283,55 @@
           :interval="interval2"
           :duration="duration"
           class="tonggao-swiper"
+          @change="swiperChange"
+          :style="{
+            height: tonggaoSwiperHeight + 'px',
+          }"
         >
-          <block v-for="(item, index) in background" :key="index">
+          <block v-for="(item, index) in noticeRecommendList" :key="index">
             <swiper-item>
-              <view class="recommend-box">
+              <view class="recommend-box" :id="'tonggao-recommend-box' + index">
                 <view class="tonggao-recommend">
                   <view class="tonggao-recommend-top">
-                    <view class="tonggao-recommend-img">
+                    <view class="tonggao-info-title">
+                      <view
+                        class="recommend-label"
+                        v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                        :key="tagindex"
+                      >
+                        {{ tagitem }}
+                      </view>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
+                      >
+                    </view>
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        src="../../assets/images/activity.png"
+                        :src="item.details.media.cover[0]"
                         mode="aspectFill"
                       ></image>
                     </view>
                     <view class="tonggao-recommend-info">
-                      <view class="tonggao-info-title">
-                        <view class="recommend-label"> 探店推广 </view>
-                        <view class="recommend-label"> 小红书 </view>
-                        <view class="tonggao-txt">面向全国招聘优质模特</view>
-                      </view>
                       <view class="tonggao-info-desc">
-                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</view
+                        {{ item.details.summary }}</view
                       >
                       <view class="tonggao-tags">
-                        <view class="tag-item">面向地区：北京市</view>
-                        <view class="tag-item">性别要求：不限</view>
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
                       </view>
                       <view class="tonggao-recommend-price">
-                        <view class="pirce"> ¥200/时 </view>
+                        <view class="pirce">
+                          {{ item.topic.payment.title }}</view
+                        >
                         <view class="recommend-btn">立即报名</view>
                       </view>
                     </view>
@@ -437,13 +459,14 @@ export default {
   data() {
     return {
       swiperheight: 0,
+      tonggaoSwiperHeight: 0,
       city: "北京",
       is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       indicatorDots2: false,
       vertical: false,
-      autoplay: true,
+      autoplay: false,
       interval: 3000,
       interval2: 10000,
       duration: 500,
@@ -528,19 +551,14 @@ export default {
       );
     },
     swiperChange(e) {
-      console.log(e);
-
       //创建节点选择器,动态获取面板高度设置动画高度
       var query = wx.createSelectorQuery();
       var id = "#recommend-box" + e.detail.current;
       var that = this;
-      console.log(query.select(id));
       query.select(id).boundingClientRect();
       query.exec(function (res) {
-        console.log(res, "res===");
         //res[0].height 为获取的收缩栏面板展开部分的高度
-        var finalHeight = that.swiperheight + res[0].height;
-        that.swiperheight = finalHeight;
+        that.swiperheight = res[0].height;
       });
     },
     async inviteList(params, type) {
@@ -577,23 +595,31 @@ export default {
       try {
         let res = await inviteAdviseList(params);
         this.inviteRecommendList = res.data.data.items;
-      } catch (error) {
-        if (error.data.error_code == 11020) {
-          this.visible = true;
-          console.log(error, "error");
-        }
-      }
+
+        setTimeout(() => {
+          // 初始化高度
+          var query = wx.createSelectorQuery();
+          query.select("#recommend-box0").boundingClientRect();
+          query.exec((res) => {
+            this.swiperheight = res[0].height;
+          });
+        }, 100);
+      } catch (error) {}
     },
     async noticeAdviseList(params) {
       try {
         let res = await noticeAdviseList(params);
         this.noticeRecommendList = res.data.data.items;
-      } catch (error) {
-        if (error.data.error_code == 11020) {
-          this.visible = true;
-          console.log(error, "error");
-        }
-      }
+
+        setTimeout(() => {
+          // 初始化高度
+          var query = wx.createSelectorQuery();
+          query.select("#tonggao-recommend-box0").boundingClientRect();
+          query.exec((res) => {
+            this.tonggaoSwiperHeight = res[0].height;
+          });
+        }, 100);
+      } catch (error) {}
     },
     async notifyNumber(params) {
       try {

@@ -222,22 +222,22 @@
     background: linear-gradient(#fff0da 0%, #ffffff 40%);
     border-radius: 10px;
     padding: 10px;
-    .yuepai-swiper {
-      min-height: 580px;
-    }
-    .tonggao-swiper {
-      min-height: 350px;
-    }
+    // .yuepai-swiper {
+    //   min-height: 580px;
+    // }
+    // .tonggao-swiper {
+    //   min-height: 350px;
+    // }
     .recommend-box {
       padding: 16px 16px 6px 16px;
     }
-    .tonggao-recommend-top {
+    .tonggao-recommend-bt {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      //   justify-content: space-between;
+      //   align-items: center;
       .tonggao-recommend-img image {
         width: 180px;
-        height: 270px;
+        height: 220px;
         margin-right: 16px;
       }
       .tonggao-info-title {
@@ -249,13 +249,11 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        width: 62%;
       }
       .tonggao-info-desc {
         color: rgba(0, 0, 0, 0.5);
         font-size: 28px;
         line-height: 36px;
-        margin-top: 16px;
         /* 主要控制父元素容器里面子元素的排列方式 */
         display: -webkit-box;
         display: -moz-box;
@@ -297,6 +295,9 @@
           font-size: 26px;
           color: #ff1e3e;
         }
+      }
+      .tonggao-recommend-info {
+        width: 528px;
       }
     }
   }

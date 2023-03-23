@@ -296,50 +296,36 @@
   border-radius: 10rpx;
   padding: 10rpx;
 }
-.home .recommend-ct .yuepai-swiper {
-  min-height: 580rpx;
-}
-.home .recommend-ct .tonggao-swiper {
-  min-height: 350rpx;
-}
 .home .recommend-ct .recommend-box {
   padding: 16rpx 16rpx 6rpx 16rpx;
 }
-.home .recommend-ct .tonggao-recommend-top {
+.home .recommend-ct .tonggao-recommend-bt {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-img image {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-img image {
   width: 180rpx;
-  height: 270rpx;
+  height: 220rpx;
   margin-right: 16rpx;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-info-title {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-info-title {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   font-size: 30rpx;
   font-weight: bold;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-txt {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-txt {
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  width: 62%;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-info-desc {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-info-desc {
   color: rgba(0, 0, 0, 0.5);
   font-size: 28rpx;
   line-height: 36rpx;
-  margin-top: 16rpx;
   /* 主要控制父元素容器里面子元素的排列方式 */
   display: -webkit-box;
   display: -moz-box;
@@ -352,7 +338,7 @@
   /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
   -webkit-line-clamp: 2;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-tags {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-tags {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -361,7 +347,7 @@
           flex-wrap: wrap;
   margin-top: 16rpx;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-tags .tag-item {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-tags .tag-item {
   padding: 4rpx 10rpx;
   background: rgba(245, 50, 24, 0.08);
   color: #ff1e3e;
@@ -370,7 +356,7 @@
   margin-right: 10rpx;
   margin-bottom: 20rpx;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-price {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-price {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -381,17 +367,20 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-price .pirce {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-price .pirce {
   color: #ff1e3e;
   font-size: 36rpx;
   font-weight: bold;
 }
-.home .recommend-ct .tonggao-recommend-top .tonggao-recommend-price .recommend-btn {
+.home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-price .recommend-btn {
   border: 1rpx solid #ff1e3e;
   border-radius: 8rpx;
   padding: 4rpx 10rpx;
   font-size: 26rpx;
   color: #ff1e3e;
+}
+.home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-info {
+  width: 528rpx;
 }
 .home .recommend-label {
   padding: 2rpx 14rpx;
@@ -827,10 +816,11 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 16rpx;
 }
 .tonggao-recommend-top .tonggao-recommend-img image {
   width: 180rpx;
-  height: 270rpx;
+  height: 220rpx;
   margin-right: 16rpx;
 }
 .tonggao-recommend-top .tonggao-info-title {
@@ -845,13 +835,11 @@
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  width: 62%;
 }
 .tonggao-recommend-top .tonggao-info-desc {
   color: rgba(0, 0, 0, 0.5);
   font-size: 28rpx;
   line-height: 36rpx;
-  margin-top: 16rpx;
   /* 主要控制父元素容器里面子元素的排列方式 */
   display: -webkit-box;
   display: -moz-box;

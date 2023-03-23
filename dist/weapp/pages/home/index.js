@@ -1294,6 +1294,28 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1305,13 +1327,14 @@ component.options.__file = "src/pages/home/index.vue"
   data: function data() {
     return {
       swiperheight: 0,
+      tonggaoSwiperHeight: 0,
       city: "北京",
       is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
       indicatorDots2: false,
       vertical: false,
-      autoplay: true,
+      autoplay: false,
       interval: 3000,
       interval2: 10000,
       duration: 500,
@@ -1394,18 +1417,14 @@ component.options.__file = "src/pages/home/index.vue"
       }, type);
     },
     swiperChange: function swiperChange(e) {
-      console.log(e); //创建节点选择器,动态获取面板高度设置动画高度
-
+      //创建节点选择器,动态获取面板高度设置动画高度
       var query = wx.createSelectorQuery();
       var id = "#recommend-box" + e.detail.current;
       var that = this;
-      console.log(query.select(id));
       query.select(id).boundingClientRect();
       query.exec(function (res) {
-        console.log(res, "res==="); //res[0].height 为获取的收缩栏面板展开部分的高度
-
-        var finalHeight = that.swiperheight + res[0].height;
-        that.swiperheight = finalHeight;
+        //res[0].height 为获取的收缩栏面板展开部分的高度
+        that.swiperheight = res[0].height;
       });
     },
     inviteList: function inviteList(params, type) {
@@ -1497,24 +1516,27 @@ component.options.__file = "src/pages/home/index.vue"
               case 3:
                 res = _context2.sent;
                 _this2.inviteRecommendList = res.data.data.items;
+                setTimeout(function () {
+                  // 初始化高度
+                  var query = wx.createSelectorQuery();
+                  query.select("#recommend-box0").boundingClientRect();
+                  query.exec(function (res) {
+                    _this2.swiperheight = res[0].height;
+                  });
+                }, 100);
                 _context2.next = 10;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
-
-                if (_context2.t0.data.error_code == 11020) {
-                  _this2.visible = true;
-                  console.log(_context2.t0, "error");
-                }
 
               case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     noticeAdviseList: function noticeAdviseList(params) {
@@ -1533,24 +1555,27 @@ component.options.__file = "src/pages/home/index.vue"
               case 3:
                 res = _context3.sent;
                 _this3.noticeRecommendList = res.data.data.items;
+                setTimeout(function () {
+                  // 初始化高度
+                  var query = wx.createSelectorQuery();
+                  query.select("#tonggao-recommend-box0").boundingClientRect();
+                  query.exec(function (res) {
+                    _this3.tonggaoSwiperHeight = res[0].height;
+                  });
+                }, 100);
                 _context3.next = 10;
                 break;
 
-              case 7:
-                _context3.prev = 7;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
-
-                if (_context3.t0.data.error_code == 11020) {
-                  _this3.visible = true;
-                  console.log(_context3.t0, "error");
-                }
 
               case 10:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[0, 8]]);
       }))();
     },
     notifyNumber: function notifyNumber(params) {
@@ -3291,119 +3316,163 @@ var render = function () {
               "swiper",
               {
                 staticClass: "tonggao-swiper",
+                style: {
+                  height: _vm.tonggaoSwiperHeight + "px",
+                },
                 attrs: {
                   "indicator-dots": _vm.indicatorDots2,
                   autoplay: _vm.autoplay,
                   interval: _vm.interval2,
                   duration: _vm.duration,
                 },
+                on: { change: _vm.swiperChange },
               },
-              _vm._l(_vm.background, function (item, index) {
+              _vm._l(_vm.noticeRecommendList, function (item, index) {
                 return _c(
                   "block",
                   { key: index },
                   [
                     _c("swiper-item", [
-                      _c("view", { staticClass: "recommend-box" }, [
-                        _c("view", { staticClass: "tonggao-recommend" }, [
-                          _c("view", { staticClass: "tonggao-recommend-top" }, [
+                      _c(
+                        "view",
+                        {
+                          staticClass: "recommend-box",
+                          attrs: { id: "tonggao-recommend-box" + index },
+                        },
+                        [
+                          _c("view", { staticClass: "tonggao-recommend" }, [
                             _c(
                               "view",
-                              { staticClass: "tonggao-recommend-img" },
-                              [
-                                _c("image", {
-                                  attrs: {
-                                    src: __webpack_require__(/*! ../../assets/images/activity.png */ "./src/assets/images/activity.png"),
-                                    mode: "aspectFill",
-                                  },
-                                }),
-                              ]
-                            ),
-                            _c(
-                              "view",
-                              { staticClass: "tonggao-recommend-info" },
+                              { staticClass: "tonggao-recommend-top" },
                               [
                                 _c(
                                   "view",
                                   { staticClass: "tonggao-info-title" },
                                   [
-                                    _c(
-                                      "view",
-                                      { staticClass: "recommend-label" },
-                                      [_vm._v(" 探店推广 ")]
-                                    ),
-                                    _c(
-                                      "view",
-                                      { staticClass: "recommend-label" },
-                                      [_vm._v(" 小红书 ")]
+                                    _vm._l(
+                                      item.topic.headline.tag,
+                                      function (tagitem, tagindex) {
+                                        return _c(
+                                          "view",
+                                          {
+                                            key: tagindex,
+                                            staticClass: "recommend-label",
+                                          },
+                                          [_vm._v(" " + _vm._s(tagitem) + " ")]
+                                        )
+                                      }
                                     ),
                                     _c("view", { staticClass: "tonggao-txt" }, [
-                                      _vm._v("面向全国招聘优质模特"),
+                                      _vm._v(
+                                        " " + _vm._s(item.topic.headline.title)
+                                      ),
                                     ]),
-                                  ]
+                                  ],
+                                  2
                                 ),
+                              ]
+                            ),
+                            _c(
+                              "view",
+                              { staticClass: "tonggao-recommend-bt" },
+                              [
+                                item.details.media.file_type == "picture"
+                                  ? _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-img" },
+                                      [
+                                        _c("image", {
+                                          attrs: {
+                                            src: item.details.media.cover[0],
+                                            mode: "aspectFill",
+                                          },
+                                        }),
+                                      ]
+                                    )
+                                  : _vm._e(),
                                 _c(
                                   "view",
-                                  { staticClass: "tonggao-info-desc" },
+                                  { staticClass: "tonggao-recommend-info" },
                                   [
-                                    _vm._v(
-                                      " 内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
-                                    ),
-                                  ]
-                                ),
-                                _c("view", { staticClass: "tonggao-tags" }, [
-                                  _c("view", { staticClass: "tag-item" }, [
-                                    _vm._v("面向地区：北京市"),
-                                  ]),
-                                  _c("view", { staticClass: "tag-item" }, [
-                                    _vm._v("性别要求：不限"),
-                                  ]),
-                                ]),
-                                _c(
-                                  "view",
-                                  { staticClass: "tonggao-recommend-price" },
-                                  [
-                                    _c("view", { staticClass: "pirce" }, [
-                                      _vm._v(" ¥200/时 "),
-                                    ]),
                                     _c(
                                       "view",
-                                      { staticClass: "recommend-btn" },
-                                      [_vm._v("立即报名")]
+                                      { staticClass: "tonggao-info-desc" },
+                                      [
+                                        _vm._v(
+                                          " " + _vm._s(item.details.summary)
+                                        ),
+                                      ]
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-tags" },
+                                      _vm._l(
+                                        item.subtitle.first_label,
+                                        function (tag, tagIndex) {
+                                          return _c(
+                                            "view",
+                                            {
+                                              key: tagIndex,
+                                              staticClass: "tag-item",
+                                            },
+                                            [_vm._v(_vm._s(tag.name))]
+                                          )
+                                        }
+                                      ),
+                                      0
+                                    ),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "tonggao-recommend-price",
+                                      },
+                                      [
+                                        _c("view", { staticClass: "pirce" }, [
+                                          _vm._v(
+                                            " " +
+                                              _vm._s(item.topic.payment.title)
+                                          ),
+                                        ]),
+                                        _c(
+                                          "view",
+                                          { staticClass: "recommend-btn" },
+                                          [_vm._v("立即报名")]
+                                        ),
+                                      ]
                                     ),
                                   ]
                                 ),
                               ]
                             ),
                           ]),
-                        ]),
-                        _c("view", { staticClass: "tonggao-bottom" }, [
-                          _c("view", { staticClass: "tonggao-head" }, [
-                            _c("image", {
-                              attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/arrow-right.png */ "./src/assets/images/arrow-right.png"),
-                              },
-                            }),
-                            _vm._v(" Anne "),
+                          _c("view", { staticClass: "tonggao-bottom" }, [
+                            _c("view", { staticClass: "tonggao-head" }, [
+                              _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/arrow-right.png */ "./src/assets/images/arrow-right.png"),
+                                },
+                              }),
+                              _vm._v(" Anne "),
+                            ]),
+                            _c("view", { staticClass: "tonggao-yuepai" }, [
+                              _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                                },
+                              }),
+                              _vm._v(" " + _vm._s(2) + " "),
+                            ]),
+                            _c("view", { staticClass: "tonggao-read" }, [
+                              _c("image", {
+                                attrs: {
+                                  src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
+                                },
+                              }),
+                              _vm._v(" " + _vm._s(3) + " "),
+                            ]),
                           ]),
-                          _c("view", { staticClass: "tonggao-yuepai" }, [
-                            _c("image", {
-                              attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
-                              },
-                            }),
-                            _vm._v(" " + _vm._s(2) + " "),
-                          ]),
-                          _c("view", { staticClass: "tonggao-read" }, [
-                            _c("image", {
-                              attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
-                              },
-                            }),
-                            _vm._v(" " + _vm._s(3) + " "),
-                          ]),
-                        ]),
-                      ]),
+                        ]
+                      ),
                     ]),
                   ],
                   1

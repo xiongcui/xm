@@ -11,9 +11,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
   .tonggao-recommend-img image {
     width: 180px;
-    height: 270px;
+    height: 220px;
     margin-right: 16px;
   }
   .tonggao-info-title {
@@ -25,13 +26,11 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 62%;
   }
   .tonggao-info-desc {
     color: rgba(0, 0, 0, 0.5);
     font-size: 28px;
     line-height: 36px;
-    margin-top: 16px;
     /* 主要控制父元素容器里面子元素的排列方式 */
     display: -webkit-box;
     display: -moz-box;
