@@ -348,7 +348,9 @@ export default {
     headNavClick(index) {
       this.headCurrent = index;
       this.$emit("pageNavClick", index);
-      this.$emit("query", "init", this.navActive);
+      //   this.$emit("query", "init", this.navActive);
+      //   this.$emit("noticeQuery", "init", this.navActive);
+      //   this.$emit("zuopinQuery", "init", this.navActive);
     },
     navClick(index) {
       this.navActive = index;

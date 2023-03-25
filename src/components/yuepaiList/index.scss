@@ -171,3 +171,16 @@
     width: 50%;
   }
 }
+.none-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0px;
+  color: #333;
+}
+.none-img {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 16px;
+}

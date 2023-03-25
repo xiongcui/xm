@@ -641,7 +641,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Z"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "bb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -670,7 +670,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "ob"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "qb"])(params);
 
               case 3:
                 res = _context2.sent;

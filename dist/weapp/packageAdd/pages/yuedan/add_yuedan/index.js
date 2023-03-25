@@ -742,7 +742,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "bb"])(params);
 
               case 3:
                 res = _context.sent;

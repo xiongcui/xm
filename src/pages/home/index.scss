@@ -1,5 +1,9 @@
 .home {
   background-color: #f4f4f4;
+  #list {
+    min-height: calc(100vh - 170px);
+    position: relative;
+  }
   .custom_head {
     width: 750px;
     background: #fe5457;
@@ -47,6 +51,7 @@
     justify-content: space-between;
     background: #ffffff;
     border-bottom: 1px solid #ebebeb;
+    z-index: 999;
     .head_nav_item {
       color: #333333;
       padding: 0px 10px;
@@ -231,19 +236,23 @@
     .recommend-box {
       padding: 16px 16px 6px 16px;
     }
-    .tonggao-recommend-bt {
+    .tonggao-recommend-top {
       display: flex;
       //   justify-content: space-between;
       //   align-items: center;
-      .tonggao-recommend-img image {
-        width: 180px;
-        height: 220px;
-        margin-right: 16px;
-      }
+      margin-bottom: 16px;
       .tonggao-info-title {
         display: flex;
         font-size: 30px;
         font-weight: bold;
+      }
+    }
+    .tonggao-recommend-bt {
+      display: flex;
+      .tonggao-recommend-img image {
+        width: 180px;
+        height: 220px;
+        margin-right: 16px;
       }
       .tonggao-txt {
         white-space: nowrap;
@@ -561,6 +570,7 @@
     position: fixed;
     width: 100%;
     top: 0px;
+    z-index: 999;
   }
   .nav_list {
     background: #ffffff;
