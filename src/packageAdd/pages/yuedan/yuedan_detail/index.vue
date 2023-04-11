@@ -1,179 +1,208 @@
 <template>
   <view class="yuedan_detail">
-    <view class="yuedan_top">
-      <view class="yuedan_top_left">
-        <image :src="yuepaiInfo.author.avatar" class="avatar"></image>
-        <view class="yuedan_info">
-          <view class="yuedan_name">
-            {{ yuepaiInfo.author.nickname }}
-            <block v-if="yuepaiInfo.author.sex !== null">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
-                class="yuedan_sex"
-                v-if="yuepaiInfo.author.sex == 1"
-              ></image>
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
-                class="yuedan_sex"
-                v-if="yuepaiInfo.author.sex == 0"
-              ></image>
-            </block>
+    <view class="detail_top">
+      <view class="detail_bg">
+        <view class="detail_bg_mc"></view>
+        <image mode="aspectFill" :src="backdrop"></image>
+      </view>
+      <view class="detail_info">
+        <view class="detail_info_bg">
+          <view
+            v-for="(item, index) in yuepaiInfo.topic.payment.items"
+            :key="index"
+          >
+            <view class="cost" v-if="item.is_show_value == 1">
+              {{ item.value }}
+            </view>
+            <view class="cost" v-else>
+              {{ item.method }}<text class="price">{{ item.value }}</text>
+            </view>
           </view>
-          <view class="yuedan_p">
-            <text>
-              {{ yuepaiInfo.author.career_list[0] }} |
-              {{ yuepaiInfo.author.province_name }}
-            </text>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
-              class="yuedan_p_img"
-              v-if="yuepaiInfo.author.is_certify"
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
-              class="yuedan_p_img"
-              v-else
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
-              class="yuedan_p_img"
-              v-if="yuepaiInfo.author.is_security"
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
-              class="yuedan_p_img"
-              v-else
-            ></image>
+
+          <view class="detail_label">
+            {{ yuepaiInfo.topic.ticket.name }}
           </view>
         </view>
-      </view>
-      <view class="yuedan_right">
-        <image
-          class="follow"
-          src="https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png"
-          @tap="follow"
-          v-if="is_follow == 0"
-        ></image>
-        <image
-          class="follow"
-          src="https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png"
-          @tap="unfollow"
-          v-if="is_follow == 1"
-        ></image>
-        <button open-type="share" class="share-btn">
-          <image
-            class="share"
-            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
-          ></image>
-        </button>
-      </view>
-    </view>
-    <view class="yuedan_icon">
-      <view class="yuedan_icon_box">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/yuedan/show_type.png"
-        ></image>
-        <text>约{{ yuepaiInfo.face_career }}</text>
-      </view>
-      <view class="yuedan_icon_box">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/yuedan/show_city.png"
-        ></image>
-        <text>面向{{ yuepaiInfo.face_province_name }}</text>
-      </view>
-      <view class="yuedan_icon_box">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/yuedan/show_money.png"
-        ></image>
-        <text>{{ yuepaiInfo.payment_format }}</text>
-      </view>
-    </view>
-    <view v-if="yuepaiInfo.file_type == 'picture'">
-      <swiper
-        :indicator-dots="indicatorDots"
-        :autoplay="autoplay"
-        :interval="interval"
-        :duration="duration"
-        class="yuepai_swiper"
-        @change="bindchange"
-        :style="{
-          height: imgheights[current] + 'rpx',
-        }"
-      >
-        <block v-for="(item, index) in yuepaiInfo.cover" :key="index">
-          <swiper-item>
+        <view class="detail_info_title">
+          <view
+            class="recommend-label"
+            v-for="(item, index) in yuepaiInfo.topic.headline.tag"
+            :key="index"
+            >{{ item }}</view
+          >
+          <view class="title_desc">{{ yuepaiInfo.topic.headline.title }}</view>
+          <button open-type="share" class="share-btn">
+            <view class="share">
+              <image src="../../../../assets/images/share.png"></image>
+            </view>
+          </button>
+        </view>
+        <view class="split_line"></view>
+        <view class="list_top">
+          <view class="list_top_left">
             <image
-              :src="item"
-              @load="
-                (e) => {
-                  imageLoad(e, index);
-                }
+              :src="
+                yuepaiInfo.author.avatar
+                  ? yuepaiInfo.author.avatar
+                  : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
               "
+              class="avatar"
             ></image>
-          </swiper-item>
-        </block>
-      </swiper>
-    </view>
-    <view v-if="yuepaiInfo.file_type == 'video'">
-      <video
-        objectFit="cover"
-        :poster="yuepaiInfo.cover && yuepaiInfo.cover[0]"
-        :src="yuepaiInfo.video_cover && yuepaiInfo.video_cover[0]"
-        class="yuepai_video-width"
-        @ended="bindended"
-        id="video"
-      ></video>
-    </view>
-    <view class="yuepai_info">
-      <view class="yuepai_title"> {{ yuepaiInfo.title }} </view>
-      <view class="yuepai_content">
-        {{ yuepaiInfo.content }}
+            <view class="list_info">
+              <view class="list_name">
+                {{ yuepaiInfo.author.nickname }}
+                <block v-if="yuepaiInfo.author.sex !== null">
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                    class="list_sex"
+                    v-if="yuepaiInfo.author.sex == 1"
+                  ></image>
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                    class="list_sex"
+                    v-if="yuepaiInfo.author.sex == 0"
+                  ></image>
+                </block>
+              </view>
+              <view class="list_p">
+                <text>{{
+                  yuepaiInfo.author.career_list &&
+                  yuepaiInfo.author.career_list[0]
+                }}</text>
+                <view class="icon_real" v-if="yuepaiInfo.author.is_certify"
+                  >已实名</view
+                >
+                <view class="icon_pledge" v-if="yuepaiInfo.author.is_security"
+                  >已担保</view
+                >
+              </view>
+            </view>
+          </view>
+          <view class="list_top_rt">
+            <view @tap="follow" class="followed_btn_red" v-if="is_follow == 0"
+              >关注</view
+            >
+            <view class="followed_btn" @tap="unfollow" v-if="is_follow == 1"
+              >取消关注</view
+            >
+            <view class="list_date">1小时前来过</view>
+          </view>
+        </view>
+        <view class="split_line"></view>
+        <view class="list_bottom">
+          <view class="list_time">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+            ></image>
+            {{ yuepaiInfo.basic.date_humanize }}
+          </view>
+          <view class="list_read">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+            ></image>
+            阅读 {{ yuepaiInfo.statistic.read_cnt }}
+          </view>
+        </view>
       </view>
-      <view class="yuepai_time">
-        <view class="spot"></view>
-        <text class="yuepai_label"> 时间：</text>
-        <text>{{ yuepaiInfo.expect_time }} </text>
-      </view>
-      <view class="yuepai_address">
-        <view class="spot"></view>
-        <text class="yuepai_label"> 地点：</text>
-        <text>{{ yuepaiInfo.expect_locale }} </text>
-      </view>
-      <view class="yuepai_tags">
-        <view
-          class="tag"
-          v-for="(styleItem, styleIndex) in yuepaiInfo.style_label"
-          :key="styleIndex"
-          >{{ styleItem }}</view
+      <view class="enroll_box" v-if="yuepaiInfo.signup.length">
+        <view class="enroll_title_left">
+          已报名：<text class="enroll_num"
+            >({{ yuepaiInfo.signup.length }}人)</text
+          ></view
         >
-      </view>
-      <view class="yuepai_bottom">
-        <view class="yuepai_bottom_time">
+        <view class="yuepai_img">
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+            :src="item.avatar"
+            v-for="(item, index) in yuepaiInfo.signup"
+            :key="index"
           ></image>
-          {{ yuepaiInfo.date_humanize }}
         </view>
-        <view class="yuepai_bottom_read">
+      </view>
+      <view class="tonggao_box">
+        <view class="tonggao_title_left"> 约拍详情 </view>
+        <view class="tonggao_desc">
+          <view class="dian"></view>{{ yuepaiInfo.details.content }}
+        </view>
+        <view class="tonggao_desc">
+          <view class="dian"></view>时间：{{ yuepaiInfo.details.expect_time }}
+        </view>
+        <view class="tonggao_desc">
+          <view class="dian"></view>地点：{{ yuepaiInfo.details.expect_locale }}
+        </view>
+        <view class="yuepai_tag">
+          <text
+            class="tag"
+            v-for="(item, index) in yuepaiInfo.details.style_label"
+            >{{ item }}</text
+          >
+        </view>
+        <view
+          class="tonggao_imgbox"
+          v-if="yuepaiInfo.details.media.file_type == 'picture'"
+        >
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png"
+            v-for="(item, index) in yuepaiInfo.details.media.cover"
+            :key="index"
+            mode="widthFix"
+            :src="item"
           ></image>
-          阅读 {{ yuepaiInfo.statistic.read_cnt }}
+        </view>
+        <view
+          class="tonggao_imgbox"
+          v-if="yuepaiInfo.details.media.file_type == 'video'"
+        >
+          <video
+            objectFit="cover"
+            :poster="yuepaiInfo.details.media.cover[0]"
+            :src="
+              yuepaiInfo.details.media.video_cover &&
+              yuepaiInfo.details.media.video_cover[0]
+            "
+            class="list_video"
+            @tap.stop=""
+          ></video>
         </view>
       </view>
     </view>
-    <view class="yuepai_num">
-      <view class="yuepai_num_label">
-        收到约拍：{{ yuepaiInfo.statistic.invite_cnt }}</view
-      >
-      <view class="yuepai_img">
-        <image
-          :src="item"
-          v-for="(item, index) in yuepaiInfo.avatar"
+    <view class="recommend" v-if="photoAlbumList.length">
+      <view class="recommend-title">
+        <view class="recommend-name"> 他的作品 </view>
+        <view class="recommend-rt" @tap="goZhuye">查看主页</view>
+      </view>
+      <view class="home_item_main">
+        <view
+          class="personimg_item"
+          v-if="index <= 2"
+          v-for="(imgitem, index) in photoAlbumList"
           :key="index"
-        ></image>
+        >
+          <image
+            @tap="showbigPersonimg(imgitem, photoAlbumList)"
+            class="personimg"
+            :data-index="index"
+            mode="aspectFill"
+            :src="imgitem"
+          ></image>
+          <view class="icon_imgnum" v-if="index == 2">
+            <text>{{ photoAlbumList.length }}张</text>
+          </view>
+        </view>
       </view>
     </view>
+    <view class="more_title" v-if="yuepaiList.length">
+      <view class="more_dian">
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+      </view>
+      看了又看
+      <view class="more_dian">
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+      </view>
+    </view>
+    <YuepaiList :baseData="yuepaiList"></YuepaiList>
     <view
       class="yuepai_fixed_bottom"
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
@@ -222,8 +251,10 @@ import {
   shareInviteInfo,
   userFollow,
   userUnfollow,
+  inviteAdviseList,
 } from "../../../../api/index";
-import { isLogin, openPage } from "../../../../utils/util";
+import YuepaiList from "../../../../components/yuepaiList/index.vue";
+import { errortip, isLogin, openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
   name: "yuedanDetail",
@@ -236,7 +267,8 @@ export default {
       autoplay: false,
       interval: 2000,
       duration: 500,
-      imgList: ["11", "22", "33"],
+      backdrop: "",
+      imgList: [],
       imgheights: [],
       //图片宽度
       imgwidth: 750,
@@ -247,18 +279,50 @@ export default {
       is_vote: 0,
       is_collect: 0,
       is_follow: 0,
+      photoAlbumList: [],
       yuepaiInfo: {
+        signup: [],
+        basic: {},
         author: {
-          career_list: [],
+          sex: 0,
+          is_certify: false,
         },
-        statistic: {},
+        statistic: {
+          collect_cnt: 0,
+        },
+        topic: {
+          payment: {},
+          ticket: {},
+          headline: {},
+        },
+        subtitle: {
+          first_label: [],
+        },
+        details: {
+          media: {
+            cover: [],
+          },
+        },
       },
+      yuepaiList: [],
+      pageNum: 1,
+      pageSize: 10,
       shareTitle: "",
       shareImg: "",
       sharePath: "",
     };
   },
+  components: {
+    YuepaiList,
+  },
   methods: {
+    showbigPersonimg(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
     imageLoad(e) {
       //获取图片真实宽度
       var imgwidth = e.detail.width,
@@ -307,21 +371,86 @@ export default {
     },
     follow() {
       this.userFollow({
-        follow_uuid: this.yuepaiInfo.author_id,
+        follow_uuid: this.author_id,
       });
     },
     unfollow() {
       this.userUnfollow({
-        unfollow_uuid: this.yuepaiInfo.author_id,
+        unfollow_uuid: this.author_id,
       });
+    },
+    query(type) {
+      if (type == "init") this.pageNum = 1;
+      let params = {
+        page: this.pageNum,
+        per_page: this.pageSize,
+      };
+      this.inviteAdviseList(params, type);
+    },
+    // 加载更多
+    onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading();
+      //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+      wx.showLoading({
+        title: "数据加载中...",
+      });
+      this.loading = false;
+      this.query("more");
+    },
+    goZhuye() {
+      console.log(this.author_id, "this.yuepaiInfo.author_id");
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
+    },
+    async inviteAdviseList(params, type) {
+      try {
+        let res = await inviteAdviseList(params);
+        //隐藏loading 提示框
+        this.showLoading = false;
+        wx.hideLoading();
+
+        this.noMore = false;
+
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+        if (type == "init") {
+          this.yuepaiList = res.data.data.items;
+          this.loading = true;
+        } else if (type == "more") {
+          if (!res.data.data || !res.data.data.items.length) {
+            errortip("没有更多数据了～");
+            this.loading = true;
+            return false;
+          }
+          let data = res.data.data.items;
+          this.yuepaiList = this.yuepaiList.concat(data);
+          this.loading = true;
+        }
+      } catch (error) {
+        this.showLoading = false;
+        wx.hideNavigationBarLoading();
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          this.isclick = false;
+          console.log(error, "error");
+        }
+        if (error.data.error_code == 10100 && this.pageNum > 1) {
+          this.noMore = true;
+        }
+      }
     },
     async inviteInfo(params) {
       try {
         let res = await inviteInfo(params);
+        this.backdrop = res.data.data.basic.backdrop;
         this.yuepaiInfo = res.data.data;
         this.is_vote = res.data.data.action.is_vote;
         this.is_collect = res.data.data.action.is_collect;
         this.is_follow = res.data.data.action.is_follow;
+        this.photoAlbumList = res.data.data.myself_list.photo_album;
+        this.query("init");
       } catch (error) {}
     },
     async giveUp(params) {
@@ -334,7 +463,7 @@ export default {
     async recordCollect(params) {
       try {
         let res = await recordCollect(params);
-        this.is_collect = res.data.data.action.is_collect;
+        this.is_collect = res.data.data.is_collect;
         this.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
       } catch (error) {}
     },
@@ -406,6 +535,14 @@ export default {
         type: "wechat",
         oid: this.oid,
       });
+    }
+  },
+  //触底加载
+  onReachBottom: function () {
+    console.log("下拉加载更多", this.loading);
+    this.pageNum++;
+    if (this.loading) {
+      this.onMore();
     }
   },
 };

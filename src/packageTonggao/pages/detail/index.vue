@@ -1,149 +1,113 @@
 <template>
   <view class="tonggao_detail">
-    <view class="tonggao_top">
-      <view class="tonggao_top_left">
-        <image :src="tonggaoInfo.author.avatar" class="avatar"></image>
-        <view class="tonggao_info">
-          <view class="tonggao_name">
-            {{ tonggaoInfo.author.nickname }}
-            <block v-if="tonggaoInfo.author.sex !== null">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
-                class="tonggao_sex"
-                v-if="tonggaoInfo.author.sex == 1"
-              ></image>
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
-                class="tonggao_sex"
-                v-if="tonggaoInfo.author.sex == 0"
-              ></image>
-            </block>
+    <view class="detail_top">
+      <view class="detail_bg">
+        <view class="detail_bg_mc"></view>
+        <image mode="aspectFill" :src="backdrop"></image>
+      </view>
+      <view class="detail_info">
+        <view class="detail_info_bg">
+          <view
+            v-for="(item, index) in tonggaoInfo.topic.payment.items"
+            :key="index"
+          >
+            <view class="cost" v-if="item.is_show_value == 1">
+              {{ item.value }}
+            </view>
+            <view class="cost" v-else>
+              {{ item.method }}<text class="price">{{ item.value }}</text>
+            </view>
           </view>
-          <view class="tonggao_p">
-            <text>
-              {{
-                tonggaoInfo.author.career_list &&
-                tonggaoInfo.author.career_list[0]
-              }}
-              |
-              {{ tonggaoInfo.author.province_name }}
-            </text>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
-              class="tonggao_p_img"
-              v-if="tonggaoInfo.author.is_certify"
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
-              class="tonggao_p_img"
-              v-else
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
-              class="tonggao_p_img"
-              v-if="tonggaoInfo.author.is_security"
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
-              class="tonggao_p_img"
-              v-else
-            ></image>
+
+          <view class="detail_label">
+            {{ tonggaoInfo.topic.ticket.name }}
           </view>
         </view>
-      </view>
-      <view class="tonggao_right">
-        <image
-          class="follow"
-          src="https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png"
-          @tap="follow"
-          v-if="is_follow == 0"
-        ></image>
-        <image
-          class="follow"
-          src="https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png"
-          @tap="unfollow"
-          v-if="is_follow == 1"
-        ></image>
-        <button open-type="share" class="share-btn">
-          <image
-            class="share"
-            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
-          ></image>
-        </button>
-      </view>
-    </view>
-    <view class="tonggao_box">
-      <view class="tonggao_box_title">
-        {{ tonggaoInfo.major_subject }}
-        <view class="tonggao_price"> {{ tonggaoInfo.payment_format }}</view>
-      </view>
-      <block v-if="tonggaoInfo.second_code == 'CS8001'">
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-          ></image>
-          面向地区：{{ tonggaoInfo.face_province_name }}
+        <view class="detail_info_title">
+          <view
+            class="recommend-label"
+            v-for="(item, index) in tonggaoInfo.topic.headline.tag"
+            :key="index"
+            >{{ item }}</view
+          >
+          <view class="title_desc">{{ tonggaoInfo.topic.headline.title }}</view>
+          <button open-type="share" class="share-btn">
+            <view class="share">
+              <image src="../../../assets/images/share.png"></image>
+            </view>
+          </button>
         </view>
-        <view
-          class="tonggao_p"
-          v-if="
-            tonggaoInfo.task_reward_type == 100 ||
-            tonggaoInfo.task_reward_type == 300
-          "
-        >
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/zhifu.png"
-          ></image>
-          支付稿费：{{ tonggaoInfo.payment_format }}
+        <view class="split_line"></view>
+        <view class="detail_tag">
+          <view
+            class="detail_tag_item"
+            v-for="(item, index) in tonggaoInfo.subtitle.first_label"
+            :key="index"
+          >
+            <view class="detail_tag_box">
+              <image class="detail_tag_icon" :src="item.icon"></image>
+              <view>{{ item.name }}</view>
+            </view>
+          </view>
         </view>
-        <view
-          class="tonggao_p"
-          v-if="
-            tonggaoInfo.task_reward_type == 200 ||
-            tonggaoInfo.task_reward_type == 300
-          "
-        >
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/product.png"
-          ></image>
-          赠送产品：{{ tonggaoInfo.reward_good }}
+        <view class="split_line"></view>
+        <view class="list_top">
+          <view class="list_top_left">
+            <image
+              :src="
+                tonggaoInfo.author.avatar
+                  ? tonggaoInfo.author.avatar
+                  : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+              "
+              class="avatar"
+            ></image>
+            <view class="list_info">
+              <view class="list_name">
+                {{ tonggaoInfo.author.nickname }}
+                <block v-if="tonggaoInfo.author.sex !== null">
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                    class="list_sex"
+                    v-if="tonggaoInfo.author.sex == 1"
+                  ></image>
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                    class="list_sex"
+                    v-if="tonggaoInfo.author.sex == 0"
+                  ></image>
+                </block>
+              </view>
+              <view class="list_p">
+                <text>{{
+                  tonggaoInfo.author.career_list &&
+                  tonggaoInfo.author.career_list[0]
+                }}</text>
+                <view class="icon_real" v-if="tonggaoInfo.author.is_certify"
+                  >已实名</view
+                >
+                <view class="icon_pledge" v-if="tonggaoInfo.author.is_security"
+                  >已担保</view
+                >
+              </view>
+            </view>
+          </view>
+          <view class="list_top_rt">
+            <view @tap="follow" class="followed_btn_red" v-if="is_follow == 0"
+              >关注</view
+            >
+            <view class="followed_btn" @tap="unfollow" v-if="is_follow == 1"
+              >取消关注</view
+            >
+            <view class="list_date">1小时前来过</view>
+          </view>
         </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/pinpai.png"
-          ></image>
-          店铺名称：{{ tonggaoInfo.store_name }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-          ></image>
-          店铺地址：{{ tonggaoInfo.store_address }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/renshu.png"
-          ></image>
-          招募人数：{{ tonggaoInfo.recruit_number }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/fensi.png"
-          ></image>
-          粉丝要求：{{ tonggaoInfo.fans_number }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/time.png"
-          ></image>
-          报名截止：{{ tonggaoInfo.deadline_date }}
-        </view>
-        <view class="tonggao_p_bottom">
+        <view class="split_line"></view>
+        <view class="list_bottom">
           <view class="list_time">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
             ></image>
-            {{ tonggaoInfo.date_humanize }}
+            {{ tonggaoInfo.basic.date_humanize }}
           </view>
           <view class="list_read">
             <image
@@ -152,126 +116,175 @@
             阅读 {{ tonggaoInfo.statistic.read_cnt }}
           </view>
         </view>
-      </block>
-      <!--品牌种草-->
-      <block v-if="tonggaoInfo.second_code == 'CS8002'">
-        <view class="tonggao_p">
+      </view>
+      <view class="enroll_box" v-if="tonggaoInfo.signup.length">
+        <view class="enroll_title_left">
+          已报名：<text class="enroll_num"
+            >({{ tonggaoInfo.signup.length }}人)</text
+          ></view
+        >
+        <view class="yuepai_img">
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+            :src="item.avatar"
+            v-for="(item, index) in tonggaoInfo.signup"
+            :key="index"
           ></image>
-          面向地区：{{ tonggaoInfo.face_province_name }}
+        </view>
+      </view>
+      <view class="tonggao_box">
+        <view class="tonggao_title_left"> 通告详情 </view>
+        <view class="tonggao_desc">
+          <view class="dian"></view>{{ tonggaoInfo.details.content }}
+        </view>
+        <view class="tonggao_desc">
+          <view class="dian"></view>时间：{{ tonggaoInfo.details.expect_time }}
+        </view>
+        <view class="tonggao_desc">
+          <view class="dian"></view>地点：{{
+            tonggaoInfo.details.expect_locale
+          }}
         </view>
         <view
-          class="tonggao_p"
-          v-if="
-            tonggaoInfo.task_reward_type == 100 ||
-            tonggaoInfo.task_reward_type == 300
-          "
+          class="tonggao_imgbox"
+          v-if="tonggaoInfo.details.media.file_type == 'picture'"
         >
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/zhifu.png"
+            v-for="(item, index) in tonggaoInfo.details.media.cover"
+            :key="index"
+            mode="widthFix"
+            :src="item"
           ></image>
-          支付稿费：{{ tonggaoInfo.payment_format }}
         </view>
         <view
-          class="tonggao_p"
-          v-if="
-            tonggaoInfo.task_reward_type == 200 ||
-            tonggaoInfo.task_reward_type == 300
-          "
+          class="tonggao_imgbox"
+          v-if="tonggaoInfo.details.media.file_type == 'video'"
         >
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/product.png"
-          ></image>
-          赠送产品：{{ tonggaoInfo.reward_good }}
+          <video
+            objectFit="cover"
+            :poster="tonggaoInfo.details.media.cover[0]"
+            :src="
+              tonggaoInfo.details.media.video_cover &&
+              tonggaoInfo.details.media.video_cover[0]
+            "
+            class="list_video-width"
+            @tap.stop=""
+          ></video>
         </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/pinpai.png"
-          ></image>
-          产品品牌：{{ tonggaoInfo.product_brand }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/renshu.png"
-          ></image>
-          招募人数：{{ tonggaoInfo.recruit_number }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/fensi.png"
-          ></image>
-          粉丝要求：{{ tonggaoInfo.fans_number }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/time.png"
-          ></image>
-          报名截止：{{ tonggaoInfo.deadline_date }}
-        </view>
-      </block>
-      <block
-        v-if="
-          tonggaoInfo.second_code != 'CS8001' &&
-          tonggaoInfo.second_code != 'CS8002'
-        "
+      </view>
+    </view>
+    <view class="recommend">
+      <view class="recommend-title">
+        <view class="recommend-name"> 他的通告 </view>
+      </view>
+      <view
+        class="recommend-ct"
+        v-for="(item, index) in noticeRecommendList"
+        :key="index"
+        v-if="noticeRecommendList.length"
       >
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-          ></image>
-          面向地区：{{ tonggaoInfo.face_province_name }}
+        <view
+          class="recommend-box"
+          :id="'tonggao-recommend-box' + index"
+          @tap="godetail(item.basic.oid, item.author.uuid)"
+        >
+          <view class="tonggao-recommend">
+            <view class="tonggao-recommend-top">
+              <view class="tonggao-info-title">
+                <view
+                  class="recommend-label"
+                  v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                  :key="tagindex"
+                >
+                  {{ tagitem }}
+                </view>
+                <view class="tonggao-txt">
+                  {{ item.topic.headline.title }}</view
+                >
+              </view>
+            </view>
+            <view class="tonggao-recommend-bt">
+              <view
+                class="tonggao-recommend-img"
+                v-if="item.details.media.file_type == 'picture'"
+              >
+                <image
+                  :src="item.details.media.cover[0]"
+                  mode="aspectFill"
+                  @tap.stop="
+                    previewImage(
+                      item.details.media.cover[0],
+                      item.details.media.cover
+                    )
+                  "
+                ></image>
+              </view>
+              <view class="tonggao-recommend-info">
+                <view class="tonggao-info-desc">
+                  {{ item.details.summary }}</view
+                >
+                <view class="tonggao-tags">
+                  <view
+                    class="tag-item"
+                    v-for="(tag, tagIndex) in item.subtitle.first_label"
+                    :key="tagIndex"
+                    >{{ tag.name }}</view
+                  >
+                </view>
+                <view class="tonggao-recommend-price">
+                  <view class="pirce"> {{ item.topic.payment.title }}</view>
+                  <view class="recommend-btn" @tap="nowYuepai(item.basic.oid)"
+                    >立即报名</view
+                  >
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="tonggao-bottom">
+            <view class="tonggao-head">
+              <image
+                :src="
+                  item.author.avatar
+                    ? item.author.avatar
+                    : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                "
+              ></image>
+              {{ item.author.nickname }}
+            </view>
+            <view class="tonggao-yuepai">
+              <image src="../../../assets/images/user/index/yuepai.png"></image>
+              {{ item.statistic.invite_cnt }}
+            </view>
+            <view class="tonggao-read">
+              <image src="../../../assets/images/eyes.png"></image>
+              {{ item.statistic.read_cnt }}
+            </view>
+          </view>
         </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png"
-          ></image>
-          性别要求：{{ formatSex(tonggaoInfo.face_sex) }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/time.png"
-          ></image>
-          报名截止：{{ tonggaoInfo.deadline_date }}
-        </view>
-        <view class="tonggao_p">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/tonggao/renshu.png"
-          ></image>
-          招募人数：{{ tonggaoInfo.recruit_number }}
-        </view>
-      </block>
-    </view>
-    <view class="tonggao_box">
-      <view class="tonggao_title_left"> 通告详情 </view>
-      <view class="tonggao_desc">
-        {{ tonggaoInfo.content }}
       </view>
-      <view class="tonggao_imgbox">
+      <view v-else class="none-data">
         <image
-          v-for="(item, index) in tonggaoInfo.cover"
-          :key="index"
-          mode="widthFix"
-          :src="item"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+          mode="aspectFill"
+          class="none-img"
         ></image>
+        <view>当前暂无信息哦～</view>
       </view>
     </view>
-    <view class="tonggao_box">
-      <view class="tonggao_title_left"> 联系方式 </view>
-      <view class="tonggao_lianxi">报名后，等待对方联系方式</view>
-    </view>
-    <view class="tonggao_box">
-      <view class="tonggao_title_left">
-        已报名：{{ tonggaoInfo.statistic.invite_cnt }}</view
-      >
-      <view class="yuepai_img">
-        <image
-          :src="item"
-          v-for="(item, index) in tonggaoInfo.avatar"
-          :key="index"
-        ></image>
+    <view class="more_title" v-if="noticeList.length">
+      <view class="more_dian">
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+      </view>
+      看了又看
+      <view class="more_dian">
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
+        <text class="dian_item"></text>
       </view>
     </view>
+    <TonggaoList :baseData="noticeList"></TonggaoList>
+    <view class="nomore" v-if="noMore">没有更多了～</view>
     <view
       class="tonggao_fixed_bottom"
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
@@ -296,6 +309,7 @@
 
 <script>
 import "./index.scss";
+import TonggaoList from "../../../components/tonggaoList/index.vue";
 import {
   noticeInfo,
   recordCollect,
@@ -303,13 +317,16 @@ import {
   shareInviteInfo,
   userFollow,
   userUnfollow,
+  noticeAdviseList,
 } from "../../../api/index";
-import { isLogin, openPage } from "../../../utils/util";
+import { errortip, isLogin, openPage } from "../../../utils/util";
 export default {
   name: "tonggaoDetail",
   data() {
     return {
       isIphoneX: false,
+      loading: false,
+      noMore: false,
       oid: "",
       author_id: "",
       is_collect: 0,
@@ -317,7 +334,10 @@ export default {
       shareTitle: "",
       shareImg: "",
       sharePath: "",
+      backdrop: "",
       tonggaoInfo: {
+        signup: [],
+        basic: {},
         author: {
           sex: 0,
           is_certify: false,
@@ -325,10 +345,38 @@ export default {
         statistic: {
           collect_cnt: 0,
         },
+        topic: {
+          payment: {},
+          ticket: {},
+          headline: {},
+        },
+        subtitle: {
+          first_label: [],
+        },
+        details: {
+          media: {
+            cover: [],
+          },
+        },
       },
+      noticeRecommendList: [],
+      noticeList: [],
+      pageNum: 1,
+      pageSize: 10,
     };
   },
+  components: {
+    TonggaoList,
+  },
   methods: {
+    godetail(oid, author_id) {
+      openPage(
+        "/packageTonggao/pages/detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
     formatSex(sex) {
       if (sex == 1) {
         return "男";
@@ -336,6 +384,15 @@ export default {
         return "女";
       } else {
         return "不限";
+      }
+    },
+    nowYuepai(oid) {
+      if (isLogin()) {
+        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + oid);
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
       }
     },
     launchYuepai() {
@@ -359,20 +416,42 @@ export default {
     },
     follow() {
       this.userFollow({
-        follow_uuid: this.tonggaoInfo.author_id,
+        follow_uuid: this.tonggaoInfo.author.uuid,
       });
     },
     unfollow() {
       this.userUnfollow({
-        unfollow_uuid: this.tonggaoInfo.author_id,
+        unfollow_uuid: this.tonggaoInfo.author.uuid,
       });
+    },
+    noticeQuery(type) {
+      if (type == "init") this.pageNum = 1;
+      let params = {
+        page: this.pageNum,
+        per_page: this.pageSize,
+      };
+      this.noticeAdviseList(params, type);
+    },
+    // 加载更多
+    onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading();
+      //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+      wx.showLoading({
+        title: "数据加载中...",
+      });
+      this.loading = false;
+      this.noticeQuery("more");
     },
     async noticeInfo(params) {
       try {
         let res = await noticeInfo(params);
+        this.backdrop = res.data.data.basic.backdrop;
         this.tonggaoInfo = res.data.data;
         this.is_collect = res.data.data.action.is_collect;
         this.is_follow = res.data.data.action.is_follow;
+        this.noticeRecommendList = res.data.data.myself_list.items;
+        this.noticeQuery("init");
       } catch (error) {}
     },
     async recordCollect(params) {
@@ -406,6 +485,45 @@ export default {
         let res = await userUnfollow(params);
         this.is_follow = 0;
       } catch (error) {}
+    },
+    async noticeAdviseList(params, type) {
+      try {
+        let res = await noticeAdviseList(params);
+        //隐藏loading 提示框
+        this.showLoading = false;
+        wx.hideLoading();
+
+        this.noMore = false;
+
+        //隐藏导航条加载动画
+        wx.hideNavigationBarLoading();
+        //停止下拉刷新
+        wx.stopPullDownRefresh();
+        if (type == "init") {
+          this.noticeList = res.data.data.items;
+          this.loading = true;
+        } else if (type == "more") {
+          if (!res.data.data || !res.data.data.items.length) {
+            errortip("没有更多数据了～");
+            this.loading = true;
+            return false;
+          }
+          let data = res.data.data.items;
+          this.noticeList = this.noticeList.concat(data);
+          this.loading = true;
+        }
+      } catch (error) {
+        this.showLoading = false;
+        wx.hideNavigationBarLoading();
+        if (error.data.error_code == 11020) {
+          this.visible = true;
+          this.isclick = false;
+          console.log(error, "error");
+        }
+        if (error.data.error_code == 10100 && this.pageNum > 1) {
+          this.noMore = true;
+        }
+      }
     },
   },
   created() {
@@ -450,6 +568,14 @@ export default {
         type: "wechat",
         oid: this.oid,
       });
+    }
+  },
+  //触底加载
+  onReachBottom: function () {
+    console.log("下拉加载更多", this.loading);
+    this.pageNum++;
+    if (this.loading) {
+      this.onMore();
     }
   },
 };

@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import { openPage } from "../../utils/util";
 import "./index.scss";
 export default {
   name: "zuopinList",
@@ -93,6 +94,16 @@ export default {
     return {
       list: [],
     };
+  },
+  methods: {
+    godetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/zuopin/zuopin_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
   },
 };
 </script>

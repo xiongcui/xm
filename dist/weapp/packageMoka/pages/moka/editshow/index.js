@@ -413,6 +413,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -421,6 +428,8 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
   name: "editshow",
   data: function data() {
     return {
+      myself: true,
+      uuid: "",
       winWidth: 0,
       winHeight: 0,
       globalData: {
@@ -464,10 +473,11 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }, {
         tab_name: "作品",
         tab_id: "zuopin"
-      }, {
-        tab_name: "模卡",
-        tab_id: "moka"
-      }],
+      } // {
+      //   tab_name: "模卡",
+      //   tab_id: "moka",
+      // },
+      ],
       list: [],
       pageNum: 1,
       pageSize: 10
@@ -524,7 +534,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Db"])(params);
 
               case 3:
                 res = _context.sent;
@@ -533,9 +543,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
                 _this.homeInfor.video = [];
                 _this.homeInfor.personimg = res.data.data.album.photo_album;
                 _this.homeInfor.video = res.data.data.album.video_album;
-                _this.homeInfor.mode_sticker = res.data.data.mode_sticker;
-                _this.homeInfor.notice_sticker = res.data.data.notice_sticker;
-                _this.homeInfor.style_sticker = res.data.data.style_sticker;
+                _this.homeInfor.mode_sticker = res.data.data.sticker.mode_sticker;
+                _this.homeInfor.notice_sticker = res.data.data.sticker.notice_sticker;
+                _this.homeInfor.style_sticker = res.data.data.sticker.style_sticker;
                 _this.homeInfor.height = res.data.data.shape.height;
                 _this.homeInfor.weight = res.data.data.shape.weight;
                 _this.homeInfor.bwh_b = res.data.data.shape.bust;
@@ -568,7 +578,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Kb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -602,7 +612,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "yb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -632,7 +642,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Mb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -665,7 +675,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "ab"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -724,13 +734,28 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     });
   },
   onShow: function onShow() {
-    this.userInfo("");
+    if (this.uuid) {
+      var params = {
+        uuid: this.uuid
+      };
+      this.userInfo(params);
+    } else {
+      this.userInfo("");
+    }
   },
   onReachBottom: function onReachBottom() {
-    this.pageNum++;
-    this.queryZuopinList();
+    if (this.select_tab == "zuopin") {
+      this.pageNum++;
+      this.queryZuopinList();
+    }
   },
   onLoad: function onLoad(options) {
+    this.uuid = options.uuid;
+
+    if (this.uuid) {
+      this.myself = false;
+    }
+
     var that = this; // 获取系统信息
 
     wx.getSystemInfo({
@@ -909,7 +934,7 @@ var render = function () {
                 ]),
                 _c("view", { staticClass: "my-count-box" }, [
                   _c("text", { staticClass: "num" }, [
-                    _vm._v(_vm._s(_vm.infor.statistic.read_cnt)),
+                    _vm._v(_vm._s(_vm.infor.statistic.visitor_cnt)),
                   ]),
                   _c("text", [_vm._v("访客")]),
                 ]),
@@ -920,17 +945,22 @@ var render = function () {
                   _c("text", [_vm._v("足迹")]),
                 ]),
               ]),
-              _c(
-                "view",
-                { staticClass: "my-conunt-rt", on: { tap: _vm.personDetail } },
-                [
-                  _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/user/show/btn_edit.png",
+              _vm.myself
+                ? _c(
+                    "view",
+                    {
+                      staticClass: "my-conunt-rt",
+                      on: { tap: _vm.personDetail },
                     },
-                  }),
-                ]
-              ),
+                    [
+                      _c("image", {
+                        attrs: {
+                          src: "https://yuepai-oss.qubeitech.com/static/images/user/show/btn_edit.png",
+                        },
+                      }),
+                    ]
+                  )
+                : _vm._e(),
             ]),
           ]),
         ]
@@ -994,14 +1024,16 @@ var render = function () {
                           _c("view", { staticClass: "home_item_title_text" }, [
                             _vm._v("模卡信息"),
                           ]),
-                          _c(
-                            "view",
-                            {
-                              staticClass: "home_item_title_edit",
-                              on: { tap: _vm.editpersondata },
-                            },
-                            [_vm._v("编辑")]
-                          ),
+                          _vm.myself
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.editpersondata },
+                                },
+                                [_vm._v("编辑")]
+                              )
+                            : _vm._e(),
                         ]),
                         _c("view", { staticClass: "home_item_main" }, [
                           _c("view", { attrs: { catchtap: "myMoka" } }, [
@@ -1097,23 +1129,25 @@ var render = function () {
                             { staticClass: "home_item_title_text ub-f1" },
                             [_vm._v("照片相册")]
                           ),
-                          _c(
-                            "view",
-                            {
-                              staticClass: "home_item_title_edit",
-                              on: { tap: _vm.editpersonimg },
-                            },
-                            [
-                              _vm._v(
-                                " " +
-                                  _vm._s(
-                                    _vm.homeInfor.personimg.length
-                                      ? "编辑"
-                                      : "添加"
-                                  )
-                              ),
-                            ]
-                          ),
+                          _vm.myself
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.editpersonimg },
+                                },
+                                [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(
+                                        _vm.homeInfor.personimg.length
+                                          ? "编辑"
+                                          : "添加"
+                                      )
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
                         ]),
                         _vm.homeInfor.personimg.length
                           ? _c(
@@ -1167,7 +1201,7 @@ var render = function () {
                                 "view",
                                 {
                                   staticClass: "home_img_add",
-                                  attrs: { catchtap: "editpersonimg" },
+                                  on: { tap: _vm.editpersonimg },
                                 },
                                 [
                                   _c("image", {
@@ -1181,7 +1215,7 @@ var render = function () {
                                 "view",
                                 {
                                   staticClass: "home_img_add",
-                                  attrs: { catchtap: "editpersonimg" },
+                                  on: { tap: _vm.editpersonimg },
                                 },
                                 [
                                   _c("image", {
@@ -1195,7 +1229,7 @@ var render = function () {
                                 "view",
                                 {
                                   staticClass: "home_img_add",
-                                  attrs: { catchtap: "editpersonimg" },
+                                  on: { tap: _vm.editpersonimg },
                                 },
                                 [
                                   _c("image", {
@@ -1214,21 +1248,25 @@ var render = function () {
                             { staticClass: "home_item_title_text ub-f1" },
                             [_vm._v("视频相册")]
                           ),
-                          _c(
-                            "view",
-                            {
-                              staticClass: "home_item_title_edit",
-                              on: { tap: _vm.editvideo },
-                            },
-                            [
-                              _vm._v(
-                                " " +
-                                  _vm._s(
-                                    _vm.homeInfor.video.length ? "编辑" : "添加"
-                                  )
-                              ),
-                            ]
-                          ),
+                          _vm.myself
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.editvideo },
+                                },
+                                [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(
+                                        _vm.homeInfor.video.length
+                                          ? "编辑"
+                                          : "添加"
+                                      )
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
                         ]),
                         _vm.homeInfor.video.length
                           ? _c(
@@ -1272,20 +1310,22 @@ var render = function () {
                               1
                             )
                           : _c("view", { staticClass: "home_item_main" }, [
-                              _c(
-                                "view",
-                                {
-                                  staticClass: "home_video_add",
-                                  on: { tap: _vm.editvideo },
-                                },
-                                [
-                                  _c("image", {
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
+                              _vm.myself
+                                ? _c(
+                                    "view",
+                                    {
+                                      staticClass: "home_video_add",
+                                      on: { tap: _vm.editvideo },
                                     },
-                                  }),
-                                ]
-                              ),
+                                    [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
+                                        },
+                                      }),
+                                    ]
+                                  )
+                                : _vm._e(),
                             ]),
                       ]),
                       _c("view", { staticClass: "home_item" }, [
@@ -1295,23 +1335,25 @@ var render = function () {
                             { staticClass: "home_item_title_text ub-f1" },
                             [_vm._v("标签信息")]
                           ),
-                          _c(
-                            "view",
-                            {
-                              staticClass: "home_item_title_edit",
-                              on: { tap: _vm.editzytag },
-                            },
-                            [
-                              _vm._v(
-                                " " +
-                                  _vm._s(
-                                    _vm.homeInfor.mode_sticker.length
-                                      ? "编辑"
-                                      : "添加"
-                                  )
-                              ),
-                            ]
-                          ),
+                          _vm.myself
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.editzytag },
+                                },
+                                [
+                                  _vm._v(
+                                    " " +
+                                      _vm._s(
+                                        _vm.homeInfor.mode_sticker.length
+                                          ? "编辑"
+                                          : "添加"
+                                      )
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
                         ]),
                         _vm.homeInfor.mode_sticker.length
                           ? _c(

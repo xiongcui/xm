@@ -1,202 +1,299 @@
-.yuedan_detail {
+page {
   background: #f6f6f6;
-  padding: 16px 0px 200px 0px;
+}
+.yuedan_detail {
+  padding-bottom: 200px;
+  .detail_bg {
+    position: relative;
+    image {
+      width: 100%;
+      height: 280px;
+    }
+    .detail_bg_mc {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(0, 0, 0, 0.65) 0%, #ffffff 100%);
+      position: absolute;
+      top: 0px;
+    }
+  }
+  .detail_info {
+    background: #ffffff;
+    border-radius: 16px;
+    margin: -140px 16px 16px 16px;
+    position: relative;
+    z-index: 99;
+    .detail_info_bg {
+      background: #f2290d;
+      color: #ffffff;
+      border-radius: 16px 16px 0px 0px;
+      padding: 30px 30px 46px 30px;
+      position: relative;
+    }
+    .cost {
+      font-size: 30px;
+    }
+    .price {
+      margin-left: 16px;
+      font-size: 32px;
+      font-weight: bold;
+    }
+    .detail_label {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      background: #fff3eb;
+      color: #ff6800;
+      font-size: 26px;
+      padding: 4px 30px;
+      border-radius: 0px 16px 0px 16px;
+    }
+    .detail_info_title {
+      display: flex;
+      border-radius: 16px;
+      padding: 30px;
+      margin-top: -16px;
+      background: #ffffff;
+      position: relative;
+    }
+    .split_line {
+      margin: 0px 16px;
+      border-bottom: 1px dotted #cfcfcf;
+    }
+    .recommend-label {
+      padding: 2px 14px;
+      background: #f2280c;
+      border-radius: 8px;
+      color: #ffffff;
+      font-size: 28px;
+      margin-right: 16px;
+      min-width: 120px;
+      text-align: center;
+      max-height: 42px;
+    }
+    .title_desc {
+      font-size: 30px;
+      font-weight: bold;
+      color: #333333;
+      padding-right: 66px;
+    }
+    .share {
+      background: #fbedeb;
+      border-radius: 16px;
+      padding: 16px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 16px;
+      image {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+  .detail_tag {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    .detail_tag_icon {
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+    }
+    .detail_tag_item {
+      width: calc(50% - 32px);
+      margin: 0px 16px;
+    }
+    .detail_tag_box {
+      font-size: 26px;
+      color: #f2290d;
+      background: #fbedeb;
+      display: flex;
+      align-items: center;
+      padding: 6px 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+  }
   .avatar {
-    width: 110px;
-    height: 110px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
   }
-  .yuedan_top {
+  .list_sex {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+  }
+  .list_top {
     display: flex;
     justify-content: space-between;
     padding: 16px;
-    background: #ffffff;
-    margin: 0px 16px;
-    border-radius: 8px;
-    position: relative;
   }
-  .yuedan_top_left {
+  .list_top_left {
     display: flex;
+    align-items: center;
   }
-  .yuedan_info {
+  .list_top_rt {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  .list_info {
     display: flex;
     flex-direction: column;
     margin-left: 16px;
     justify-content: center;
-    .yuedan_name {
-      margin-bottom: 5px;
+    .list_name {
       color: #111111;
       font-size: 34px;
     }
-    .yuedan_p {
+    .list_p {
       color: #686868;
       font-size: 26px;
       display: flex;
       align-items: center;
     }
-    .yuedan_p_img {
+    .list_p_img {
       width: 100px;
       height: 30px;
       margin-left: 16px;
     }
-  }
-  .yuedan_right {
-    display: flex;
-    position: absolute;
-    right: 16px;
-    .follow {
-      width: 112px;
-      height: 53px;
+    .icon_pledge {
+      background: url("../../../../assets/images/pledge.png") #f0f6ff 10px
+        center no-repeat;
+      background-size: 26px;
+      color: #67a6ff;
+      font-size: 26px;
+      padding: 2px 10px;
+      border-radius: 8px;
+      padding-left: 40px;
+      margin-left: 16px;
     }
-    .share {
-      width: 50px;
-      height: 50px;
+    .icon_real {
+      background: url("../../../../assets/images/real.png") #fbede4 10px center
+        no-repeat;
+      background-size: 26px;
+      color: #ff9946;
+      font-size: 26px;
+      padding: 2px 10px;
+      border-radius: 8px;
+      padding-left: 40px;
       margin-left: 16px;
     }
   }
-  .yuedan_icon {
+  .list_loction {
+    background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png")
+      left center no-repeat;
+    background-size: 36px;
+    padding-left: 36px;
+    font-size: 36px;
+    color: #3a3a3a;
+  }
+  .list_date {
+    color: #686868;
+    font-size: 24px;
+  }
+  .list_bottom {
     display: flex;
     justify-content: space-between;
-    background: #ffffff;
-    border-radius: 8px;
-    margin: 16px;
-    padding: 16px;
-    .yuedan_icon_box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 200px;
-      image {
-        width: 72px;
-        height: 72px;
-      }
-      text {
-        font-size: 26px;
-        color: #333333;
-      }
-    }
-    // .yuedan_icon_box:last-child {
-    //   width: 340px;
-    // }
-  }
-  .yuepai_swiper {
-    margin: 0px 16px;
-  }
-  .yuepai_swiper image {
-    width: 100%;
-    height: 100%;
-  }
-  .yuepai_info {
-    background: #ffffff;
-    margin: 0px 16px;
-    padding: 16px;
-  }
-  .yuepai_title {
-    color: #2f2f2f;
-    font-size: 38px;
-    margin-bottom: 16px;
-  }
-  .yuepai_content {
-    font-size: 30px;
     color: #6b6b6b;
-    line-height: 38px;
-    margin-bottom: 16px;
+    padding: 16px;
   }
-  .spot {
-    width: 10px;
-    height: 10px;
-    background: #fe5457;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
-  .yuepai_time,
-  .yuepai_address {
+  .list_time {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
-    font-size: 30px;
-    color: #333333;
+    font-size: 24px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
   }
-  .yuepai_label {
-    color: #6b6b6b;
-  }
-  .yuepai_tags {
+  .list_read {
     display: flex;
-    flex-wrap: wrap;
-    margin-top: 16px;
-    .tag {
-      padding: 4px 10px;
-      background: rgba(245, 50, 24, 0.08);
-      color: #ff1e3e;
-      font-size: 22px;
-      border-radius: 8px;
-      margin-right: 10px;
+    align-items: center;
+    font-size: 24px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .enroll_box {
+    background: #ffffff;
+    margin: 16px;
+    border-radius: 16px;
+    padding: 16px;
+    .enroll_title_left {
+      border-left: 4px solid #fe5457;
+      padding-left: 16px;
+      font-size: 30px;
+      color: #333333;
       margin-bottom: 16px;
     }
-  }
-  .yuepai_bottom {
-    display: flex;
-    justify-content: space-between;
-    color: #6b6b6b;
-  }
-  .yuepai_bottom_time {
-    display: flex;
-    align-items: center;
-    font-size: 26px;
-    image {
-      width: 26px;
-      height: 26px;
-      margin-right: 4px;
+    .enroll_box_title {
+      display: flex;
+      justify-content: space-between;
+      color: #2f2f2f;
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+    .enroll_price {
+      color: #fe5457;
+    }
+    .yuepai_img {
+      margin: 16px 0px;
+      image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: -30px;
+      }
+    }
+    .enroll_num {
+      color: rgba(0, 0, 0, 0.5);
     }
   }
-  .yuepai_bottom_yuepai {
-    display: flex;
-    align-items: center;
-    font-size: 26px;
-    image {
-      width: 26px;
-      height: 26px;
-      margin-right: 4px;
-    }
-  }
-  .yuepai_bottom_read {
-    display: flex;
-    align-items: center;
-    font-size: 26px;
-    image {
-      width: 26px;
-      height: 26px;
-      margin-right: 4px;
-    }
-  }
-  .yuepai_num {
-    margin: 16px;
+  .tonggao_box {
     background: #ffffff;
+    margin: 16px;
+    border-radius: 16px;
     padding: 16px;
-  }
-  .yuepai_num_label {
-    border-left: 4px solid #fe5457;
-    padding-left: 16px;
-    font-size: 30px;
-    color: #333333;
-  }
-  .yuedan_sex {
-    width: 30px;
-    height: 30px;
-    margin-left: 4px;
-  }
-  .yuepai_img {
-    margin: 16px 0px;
-    image {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin-right: -30px;
+    .tonggao_title_left {
+      border-left: 4px solid #fe5457;
+      padding-left: 16px;
+      font-size: 30px;
+      color: #333333;
+      margin-bottom: 16px;
     }
-  }
-  .yuepai_video-width {
-    margin: 0px 16px;
-    width: calc(100% - 32px);
+    .tonggao_box_title {
+      display: flex;
+      justify-content: space-between;
+      color: #2f2f2f;
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+    .tonggao_price {
+      color: #fe5457;
+    }
+    .tonggao_desc {
+      font-size: 30px;
+      color: rgba(0, 0, 0, 0.5);
+      line-height: 38px;
+      margin-bottom: 16px;
+      display: flex;
+      padding: 0px 16px;
+    }
+    .dian {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff2844;
+      margin-right: 16px;
+      margin-top: 16px;
+    }
   }
   .yuepai_fixed_bottom {
     display: flex;
@@ -239,5 +336,265 @@
     text-align: left;
     line-height: normal;
     padding: 0;
+    margin: 0;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+  }
+  .recommend {
+    padding: 0px 16px 0px 16px;
+    background: #ffffff;
+    border-radius: 16px;
+    margin: 16px;
+  }
+  .recommend-title {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .recommend-name {
+      font-size: 30px;
+      font-weight: bold;
+      margin-right: 16px;
+      border-left: 4px solid #fe5457;
+      padding-left: 16px;
+      color: #333333;
+    }
+    .recommend-rt {
+      font-size: 28px;
+      color: rgba(0, 0, 0, 0.5);
+      padding-right: 22px;
+      background: url("../../../../assets/images/right.png") no-repeat right
+        center;
+      background-size: 12px 22px;
+    }
+    .recommend-tips {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 26px;
+      width: 60%;
+    }
+  }
+  .recommend-ct {
+    background: linear-gradient(#fff0da 0%, #ffffff 40%);
+    border-radius: 10px;
+    padding: 10px;
+    .recommend-box {
+      padding: 16px 16px 6px 16px;
+    }
+    .tonggao-recommend-top {
+      display: flex;
+      margin-bottom: 16px;
+      .tonggao-info-title {
+        display: flex;
+        font-size: 30px;
+        font-weight: bold;
+      }
+    }
+    .tonggao-recommend-bt {
+      display: flex;
+      .tonggao-recommend-img image {
+        width: 180px;
+        height: 220px;
+        margin-right: 16px;
+      }
+      .tonggao-txt {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .tonggao-info-desc {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 28px;
+        line-height: 36px;
+        /* 主要控制父元素容器里面子元素的排列方式 */
+        display: -webkit-box;
+        display: -moz-box;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
+        -webkit-line-clamp: 2;
+      }
+      .tonggao-tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 16px;
+        .tag-item {
+          padding: 4px 10px;
+          background: rgba(245, 50, 24, 0.08);
+          color: #ff1e3e;
+          font-size: 22px;
+          border-radius: 8px;
+          margin-right: 10px;
+          margin-bottom: 20px;
+        }
+      }
+      .tonggao-recommend-price {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .pirce {
+          color: #ff1e3e;
+          font-size: 36px;
+          font-weight: bold;
+        }
+        .recommend-btn {
+          border: 1px solid #ff1e3e;
+          border-radius: 8px;
+          padding: 4px 10px;
+          font-size: 26px;
+          color: #ff1e3e;
+        }
+      }
+      .tonggao-recommend-info {
+        width: 528px;
+      }
+    }
+  }
+  .recommend-label {
+    padding: 2px 14px;
+    background: #f2280c;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 28px;
+    margin-right: 16px;
+  }
+  .recommend-label2 {
+    padding: 2px 14px;
+    background: #00ba7f;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 28px;
+    margin-right: 16px;
+  }
+  .tonggao-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6b6b;
+    border-top: 1px solid #ebebeb;
+    padding-top: 6px;
+  }
+  .tonggao-head {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 40px;
+      height: 40px;
+      margin-right: 4px;
+      border-radius: 50%;
+    }
+  }
+  .tonggao-yuepai {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .tonggao-read {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .more_dian {
+    display: flex;
+    margin: 0px 16px;
+  }
+  .more_dian .dian_item {
+    width: 10px;
+    height: 10px;
+    background: #ff2844;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  .more_title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
+    padding: 16px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .followed_btn {
+    padding: 4px 10px;
+    border: 1px solid #cecece;
+    color: #979797;
+    border-radius: 8px;
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+  .followed_btn_red {
+    padding: 4px 10px;
+    border: 1px solid #ff465f;
+    color: #ff465f;
+    border-radius: 8px;
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+  .list_video {
+    width: 100%;
+  }
+  .list_video-width {
+    width: 50%;
+  }
+  .tonggao_imgbox {
+    image {
+      width: 100%;
+    }
+  }
+  .nomore {
+    padding: 0px 0px 16px 0px;
+    text-align: center;
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .yuepai_tag {
+    padding: 0px 16px 16px 16px;
+    .tag {
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: #e4f3e3;
+      color: #06a51c;
+      font-size: 28px;
+      margin-right: 16px;
+    }
+  }
+  .home_item_main {
+    display: flex;
+    justify-content: space-between;
+    padding: 26px 0px;
+    position: relative;
+  }
+  .personimg_item {
+    height: 300px;
+    width: 220px;
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .icon_imgnum {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 20rpx 0 0 0;
+    bottom: 0;
+    color: #ffffff;
+    font-size: 24rpx;
+    padding: 6rpx 0;
+    position: absolute;
+    right: 0;
+    width: 68rpx;
+    text-align: center;
   }
 }

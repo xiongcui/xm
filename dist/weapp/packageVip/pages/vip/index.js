@@ -295,7 +295,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "L"])(params);
 
               case 3:
                 res = _context.sent;
@@ -342,12 +342,12 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "K"])(params);
 
               case 3:
                 res = _context2.sent;
+                _this.avatar = res.data.data ? res.data.data.avatar : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png";
                 _this.nickname = res.data.data.nickname;
-                _this.avatar = res.data.data.avatar;
                 _this.ismember = res.data.data.is_member;
                 _this.endtime = res.data.data.end_time;
                 _context2.next = 12;

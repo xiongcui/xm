@@ -50,9 +50,10 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/yuedan/yuedan_detail/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../components/yuepaiList/index.vue */ "./src/components/yuepaiList/index.vue");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/yuedan/yuedan_detail/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
 
 
 //
@@ -270,6 +271,36 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -284,7 +315,8 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       autoplay: false,
       interval: 2000,
       duration: 500,
-      imgList: ["11", "22", "33"],
+      backdrop: "",
+      imgList: [],
       imgheights: [],
       //图片宽度
       imgwidth: 750,
@@ -295,18 +327,52 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       is_vote: 0,
       is_collect: 0,
       is_follow: 0,
+      photoAlbumList: [],
       yuepaiInfo: {
+        signup: [],
+        basic: {},
         author: {
-          career_list: []
+          sex: 0,
+          is_certify: false
         },
-        statistic: {}
+        statistic: {
+          collect_cnt: 0
+        },
+        topic: {
+          payment: {},
+          ticket: {},
+          headline: {}
+        },
+        subtitle: {
+          first_label: []
+        },
+        details: {
+          media: {
+            cover: []
+          }
+        }
       },
+      yuepaiList: [],
+      pageNum: 1,
+      pageSize: 10,
       shareTitle: "",
       shareImg: "",
       sharePath: ""
     };
   },
+  components: {
+    YuepaiList: _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]
+  },
   methods: {
+    showbigPersonimg: function showbigPersonimg(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src,
+        // 图片的地址url
+        urls: urls // 预览的地址url
+
+      });
+    },
     imageLoad: function imageLoad(e) {
       //获取图片真实宽度
       var imgwidth = e.detail.width,
@@ -325,8 +391,8 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai: function launchYuepai() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
       } else {
         wx.redirectTo({
           url: "/pages/login/index"
@@ -357,49 +423,120 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
     },
     follow: function follow() {
       this.userFollow({
-        follow_uuid: this.yuepaiInfo.author_id
+        follow_uuid: this.author_id
       });
     },
     unfollow: function unfollow() {
       this.userUnfollow({
-        unfollow_uuid: this.yuepaiInfo.author_id
+        unfollow_uuid: this.author_id
       });
     },
-    inviteInfo: function inviteInfo(params) {
+    query: function query(type) {
+      if (type == "init") this.pageNum = 1;
+      var params = {
+        page: this.pageNum,
+        per_page: this.pageSize
+      };
+      this.inviteAdviseList(params, type);
+    },
+    // 加载更多
+    onMore: function onMore() {
+      //在当前页面显示导航条加载动画
+      wx.showNavigationBarLoading(); //显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框
+
+      wx.showLoading({
+        title: "数据加载中..."
+      });
+      this.loading = false;
+      this.query("more");
+    },
+    goZhuye: function goZhuye() {
+      console.log(this.author_id, "this.yuepaiInfo.author_id");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
+    },
+    inviteAdviseList: function inviteAdviseList(params, type) {
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res;
+        var res, data;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteInfo */ "C"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteAdviseList */ "A"])(params);
 
               case 3:
                 res = _context.sent;
-                _this.yuepaiInfo = res.data.data;
-                _this.is_vote = res.data.data.action.is_vote;
-                _this.is_collect = res.data.data.action.is_collect;
-                _this.is_follow = res.data.data.action.is_follow;
-                _context.next = 12;
+                //隐藏loading 提示框
+                _this.showLoading = false;
+                wx.hideLoading();
+                _this.noMore = false; //隐藏导航条加载动画
+
+                wx.hideNavigationBarLoading(); //停止下拉刷新
+
+                wx.stopPullDownRefresh();
+
+                if (!(type == "init")) {
+                  _context.next = 14;
+                  break;
+                }
+
+                _this.yuepaiList = res.data.data.items;
+                _this.loading = true;
+                _context.next = 22;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context["catch"](0);
+              case 14:
+                if (!(type == "more")) {
+                  _context.next = 22;
+                  break;
+                }
 
-              case 12:
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context.next = 19;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                _this.loading = true;
+                return _context.abrupt("return", false);
+
+              case 19:
+                data = res.data.data.items;
+                _this.yuepaiList = _this.yuepaiList.concat(data);
+                _this.loading = true;
+
+              case 22:
+                _context.next = 30;
+                break;
+
+              case 24:
+                _context.prev = 24;
+                _context.t0 = _context["catch"](0);
+                _this.showLoading = false;
+                wx.hideNavigationBarLoading();
+
+                if (_context.t0.data.error_code == 11020) {
+                  _this.visible = true;
+                  _this.isclick = false;
+                  console.log(_context.t0, "error");
+                }
+
+                if (_context.t0.data.error_code == 10100 && _this.pageNum > 1) {
+                  _this.noMore = true;
+                }
+
+              case 30:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 24]]);
       }))();
     },
-    giveUp: function giveUp(params) {
+    inviteInfo: function inviteInfo(params) {
       var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
@@ -410,28 +547,35 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* giveUp */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteInfo */ "D"])(params);
 
               case 3:
                 res = _context2.sent;
-                _this2.is_vote = res.data.data.is_vote;
-                _this2.yuepaiInfo.statistic.vote_cnt = res.data.data.vote_cnt;
-                _context2.next = 10;
+                _this2.backdrop = res.data.data.basic.backdrop;
+                _this2.yuepaiInfo = res.data.data;
+                _this2.is_vote = res.data.data.action.is_vote;
+                _this2.is_collect = res.data.data.action.is_collect;
+                _this2.is_follow = res.data.data.action.is_follow;
+                _this2.photoAlbumList = res.data.data.myself_list.photo_album;
+
+                _this2.query("init");
+
+                _context2.next = 15;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 13:
+                _context2.prev = 13;
                 _context2.t0 = _context2["catch"](0);
 
-              case 10:
+              case 15:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 13]]);
       }))();
     },
-    recordCollect: function recordCollect(params) {
+    giveUp: function giveUp(params) {
       var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
@@ -442,12 +586,12 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* giveUp */ "y"])(params);
 
               case 3:
                 res = _context3.sent;
-                _this3.is_collect = res.data.data.action.is_collect;
-                _this3.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
+                _this3.is_vote = res.data.data.is_vote;
+                _this3.yuepaiInfo.statistic.vote_cnt = res.data.data.vote_cnt;
                 _context3.next = 10;
                 break;
 
@@ -463,7 +607,9 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
         }, _callee3, null, [[0, 8]]);
       }))();
     },
-    shareInvite: function shareInvite(params) {
+    recordCollect: function recordCollect(params) {
+      var _this4 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
@@ -472,28 +618,28 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "fb"])(params);
 
               case 3:
                 res = _context4.sent;
-                _context4.next = 8;
+                _this4.is_collect = res.data.data.is_collect;
+                _this4.yuepaiInfo.statistic.collect_cnt = res.data.data.collect_cnt;
+                _context4.next = 10;
                 break;
 
-              case 6:
-                _context4.prev = 6;
+              case 8:
+                _context4.prev = 8;
                 _context4.t0 = _context4["catch"](0);
 
-              case 8:
+              case 10:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 6]]);
+        }, _callee4, null, [[0, 8]]);
       }))();
     },
-    shareInviteInfo: function shareInviteInfo(params) {
-      var _this4 = this;
-
+    shareInvite: function shareInvite(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
@@ -502,29 +648,26 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "jb"])(params);
 
               case 3:
                 res = _context5.sent;
-                _this4.shareTitle = res.data.data.title;
-                _this4.shareImg = res.data.data.imageUrl;
-                _this4.sharePath = res.data.data.path;
-                _context5.next = 11;
+                _context5.next = 8;
                 break;
 
-              case 9:
-                _context5.prev = 9;
+              case 6:
+                _context5.prev = 6;
                 _context5.t0 = _context5["catch"](0);
 
-              case 11:
+              case 8:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 9]]);
+        }, _callee5, null, [[0, 6]]);
       }))();
     },
-    userFollow: function userFollow(params) {
+    shareInviteInfo: function shareInviteInfo(params) {
       var _this5 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
@@ -535,27 +678,29 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "kb"])(params);
 
               case 3:
                 res = _context6.sent;
-                _this5.is_follow = 1;
-                _context6.next = 9;
+                _this5.shareTitle = res.data.data.title;
+                _this5.shareImg = res.data.data.imageUrl;
+                _this5.sharePath = res.data.data.path;
+                _context6.next = 11;
                 break;
 
-              case 7:
-                _context6.prev = 7;
+              case 9:
+                _context6.prev = 9;
                 _context6.t0 = _context6["catch"](0);
 
-              case 9:
+              case 11:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6, null, [[0, 7]]);
+        }, _callee6, null, [[0, 9]]);
       }))();
     },
-    userUnfollow: function userUnfollow(params) {
+    userFollow: function userFollow(params) {
       var _this6 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
@@ -566,11 +711,11 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Cb"])(params);
 
               case 3:
                 res = _context7.sent;
-                _this6.is_follow = 0;
+                _this6.is_follow = 1;
                 _context7.next = 9;
                 break;
 
@@ -584,6 +729,37 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
             }
           }
         }, _callee7, null, [[0, 7]]);
+      }))();
+    },
+    userUnfollow: function userUnfollow(params) {
+      var _this7 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Nb"])(params);
+
+              case 3:
+                res = _context8.sent;
+                _this7.is_follow = 0;
+                _context8.next = 9;
+                break;
+
+              case 7:
+                _context8.prev = 7;
+                _context8.t0 = _context8["catch"](0);
+
+              case 9:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, null, [[0, 7]]);
       }))();
     }
   },
@@ -633,6 +809,15 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
         oid: this.oid
       });
     }
+  },
+  //触底加载
+  onReachBottom: function onReachBottom() {
+    console.log("下拉加载更多", this.loading);
+    this.pageNum++;
+
+    if (this.loading) {
+      this.onMore();
+    }
   }
 });
 
@@ -653,323 +838,394 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "yuedan_detail" }, [
-    _c("view", { staticClass: "yuedan_top" }, [
-      _c("view", { staticClass: "yuedan_top_left" }, [
-        _c("image", {
-          staticClass: "avatar",
-          attrs: { src: _vm.yuepaiInfo.author.avatar },
-        }),
-        _c("view", { staticClass: "yuedan_info" }, [
+  return _c(
+    "view",
+    { staticClass: "yuedan_detail" },
+    [
+      _c("view", { staticClass: "detail_top" }, [
+        _c("view", { staticClass: "detail_bg" }, [
+          _c("view", { staticClass: "detail_bg_mc" }),
+          _c("image", { attrs: { mode: "aspectFill", src: _vm.backdrop } }),
+        ]),
+        _c("view", { staticClass: "detail_info" }, [
           _c(
             "view",
-            { staticClass: "yuedan_name" },
+            { staticClass: "detail_info_bg" },
             [
-              _vm._v(" " + _vm._s(_vm.yuepaiInfo.author.nickname) + " "),
-              _vm.yuepaiInfo.author.sex !== null
-                ? _c("block", [
-                    _vm.yuepaiInfo.author.sex == 1
-                      ? _c("image", {
-                          staticClass: "yuedan_sex",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                          },
-                        })
-                      : _vm._e(),
-                    _vm.yuepaiInfo.author.sex == 0
-                      ? _c("image", {
-                          staticClass: "yuedan_sex",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                          },
-                        })
-                      : _vm._e(),
+              _vm._l(
+                _vm.yuepaiInfo.topic.payment.items,
+                function (item, index) {
+                  return _c("view", { key: index }, [
+                    item.is_show_value == 1
+                      ? _c("view", { staticClass: "cost" }, [
+                          _vm._v(" " + _vm._s(item.value) + " "),
+                        ])
+                      : _c("view", { staticClass: "cost" }, [
+                          _vm._v(" " + _vm._s(item.method)),
+                          _c("text", { staticClass: "price" }, [
+                            _vm._v(_vm._s(item.value)),
+                          ]),
+                        ]),
                   ])
-                : _vm._e(),
+                }
+              ),
+              _c("view", { staticClass: "detail_label" }, [
+                _vm._v(" " + _vm._s(_vm.yuepaiInfo.topic.ticket.name) + " "),
+              ]),
             ],
-            1
+            2
           ),
-          _c("view", { staticClass: "yuedan_p" }, [
-            _c("text", [
+          _c(
+            "view",
+            { staticClass: "detail_info_title" },
+            [
+              _vm._l(_vm.yuepaiInfo.topic.headline.tag, function (item, index) {
+                return _c(
+                  "view",
+                  { key: index, staticClass: "recommend-label" },
+                  [_vm._v(_vm._s(item))]
+                )
+              }),
+              _c("view", { staticClass: "title_desc" }, [
+                _vm._v(_vm._s(_vm.yuepaiInfo.topic.headline.title)),
+              ]),
+              _c(
+                "button",
+                { staticClass: "share-btn", attrs: { "open-type": "share" } },
+                [
+                  _c("view", { staticClass: "share" }, [
+                    _c("image", {
+                      attrs: {
+                        src: __webpack_require__(/*! ../../../../assets/images/share.png */ "./src/assets/images/share.png"),
+                      },
+                    }),
+                  ]),
+                ]
+              ),
+            ],
+            2
+          ),
+          _c("view", { staticClass: "split_line" }),
+          _c("view", { staticClass: "list_top" }, [
+            _c("view", { staticClass: "list_top_left" }, [
+              _c("image", {
+                staticClass: "avatar",
+                attrs: {
+                  src: _vm.yuepaiInfo.author.avatar
+                    ? _vm.yuepaiInfo.author.avatar
+                    : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                },
+              }),
+              _c("view", { staticClass: "list_info" }, [
+                _c(
+                  "view",
+                  { staticClass: "list_name" },
+                  [
+                    _vm._v(" " + _vm._s(_vm.yuepaiInfo.author.nickname) + " "),
+                    _vm.yuepaiInfo.author.sex !== null
+                      ? _c("block", [
+                          _vm.yuepaiInfo.author.sex == 1
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                },
+                              })
+                            : _vm._e(),
+                          _vm.yuepaiInfo.author.sex == 0
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                },
+                              })
+                            : _vm._e(),
+                        ])
+                      : _vm._e(),
+                  ],
+                  1
+                ),
+                _c("view", { staticClass: "list_p" }, [
+                  _c("text", [
+                    _vm._v(
+                      _vm._s(
+                        _vm.yuepaiInfo.author.career_list &&
+                          _vm.yuepaiInfo.author.career_list[0]
+                      )
+                    ),
+                  ]),
+                  _vm.yuepaiInfo.author.is_certify
+                    ? _c("view", { staticClass: "icon_real" }, [
+                        _vm._v("已实名"),
+                      ])
+                    : _vm._e(),
+                  _vm.yuepaiInfo.author.is_security
+                    ? _c("view", { staticClass: "icon_pledge" }, [
+                        _vm._v("已担保"),
+                      ])
+                    : _vm._e(),
+                ]),
+              ]),
+            ]),
+            _c("view", { staticClass: "list_top_rt" }, [
+              _vm.is_follow == 0
+                ? _c(
+                    "view",
+                    {
+                      staticClass: "followed_btn_red",
+                      on: { tap: _vm.follow },
+                    },
+                    [_vm._v("关注")]
+                  )
+                : _vm._e(),
+              _vm.is_follow == 1
+                ? _c(
+                    "view",
+                    { staticClass: "followed_btn", on: { tap: _vm.unfollow } },
+                    [_vm._v("取消关注")]
+                  )
+                : _vm._e(),
+              _c("view", { staticClass: "list_date" }, [_vm._v("1小时前来过")]),
+            ]),
+          ]),
+          _c("view", { staticClass: "split_line" }),
+          _c("view", { staticClass: "list_bottom" }, [
+            _c("view", { staticClass: "list_time" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                },
+              }),
+              _vm._v(" " + _vm._s(_vm.yuepaiInfo.basic.date_humanize) + " "),
+            ]),
+            _c("view", { staticClass: "list_read" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                },
+              }),
               _vm._v(
-                " " +
-                  _vm._s(_vm.yuepaiInfo.author.career_list[0]) +
-                  " | " +
-                  _vm._s(_vm.yuepaiInfo.author.province_name) +
-                  " "
+                " 阅读 " + _vm._s(_vm.yuepaiInfo.statistic.read_cnt) + " "
               ),
             ]),
-            _vm.yuepaiInfo.author.is_certify
-              ? _c("image", {
-                  staticClass: "yuedan_p_img",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png",
-                  },
-                })
-              : _c("image", {
-                  staticClass: "yuedan_p_img",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
-                  },
-                }),
-            _vm.yuepaiInfo.author.is_security
-              ? _c("image", {
-                  staticClass: "yuedan_p_img",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png",
-                  },
-                })
-              : _c("image", {
-                  staticClass: "yuedan_p_img",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
-                  },
-                }),
           ]),
         ]),
-      ]),
-      _c("view", { staticClass: "yuedan_right" }, [
-        _vm.is_follow == 0
-          ? _c("image", {
-              staticClass: "follow",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png",
-              },
-              on: { tap: _vm.follow },
-            })
+        _vm.yuepaiInfo.signup.length
+          ? _c("view", { staticClass: "enroll_box" }, [
+              _c("view", { staticClass: "enroll_title_left" }, [
+                _vm._v(" 已报名："),
+                _c("text", { staticClass: "enroll_num" }, [
+                  _vm._v("(" + _vm._s(_vm.yuepaiInfo.signup.length) + "人)"),
+                ]),
+              ]),
+              _c(
+                "view",
+                { staticClass: "yuepai_img" },
+                _vm._l(_vm.yuepaiInfo.signup, function (item, index) {
+                  return _c("image", {
+                    key: index,
+                    attrs: { src: item.avatar },
+                  })
+                }),
+                0
+              ),
+            ])
           : _vm._e(),
-        _vm.is_follow == 1
-          ? _c("image", {
-              staticClass: "follow",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png",
-              },
-              on: { tap: _vm.unfollow },
-            })
-          : _vm._e(),
-        _c(
-          "button",
-          { staticClass: "share-btn", attrs: { "open-type": "share" } },
-          [
-            _c("image", {
-              staticClass: "share",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png",
-              },
+        _c("view", { staticClass: "tonggao_box" }, [
+          _c("view", { staticClass: "tonggao_title_left" }, [
+            _vm._v(" 约拍详情 "),
+          ]),
+          _c("view", { staticClass: "tonggao_desc" }, [
+            _c("view", { staticClass: "dian" }),
+            _vm._v(_vm._s(_vm.yuepaiInfo.details.content) + " "),
+          ]),
+          _c("view", { staticClass: "tonggao_desc" }, [
+            _c("view", { staticClass: "dian" }),
+            _vm._v("时间：" + _vm._s(_vm.yuepaiInfo.details.expect_time) + " "),
+          ]),
+          _c("view", { staticClass: "tonggao_desc" }, [
+            _c("view", { staticClass: "dian" }),
+            _vm._v(
+              "地点：" + _vm._s(_vm.yuepaiInfo.details.expect_locale) + " "
+            ),
+          ]),
+          _c(
+            "view",
+            { staticClass: "yuepai_tag" },
+            _vm._l(_vm.yuepaiInfo.details.style_label, function (item, index) {
+              return _c("text", { staticClass: "tag" }, [_vm._v(_vm._s(item))])
             }),
-          ]
-        ),
-      ]),
-    ]),
-    _c("view", { staticClass: "yuedan_icon" }, [
-      _c("view", { staticClass: "yuedan_icon_box" }, [
-        _c("image", {
-          attrs: {
-            src: "https://yuepai-oss.qubeitech.com/static/images/yuedan/show_type.png",
-          },
-        }),
-        _c("text", [_vm._v("约" + _vm._s(_vm.yuepaiInfo.face_career))]),
-      ]),
-      _c("view", { staticClass: "yuedan_icon_box" }, [
-        _c("image", {
-          attrs: {
-            src: "https://yuepai-oss.qubeitech.com/static/images/yuedan/show_city.png",
-          },
-        }),
-        _c("text", [
-          _vm._v("面向" + _vm._s(_vm.yuepaiInfo.face_province_name)),
+            0
+          ),
+          _vm.yuepaiInfo.details.media.file_type == "picture"
+            ? _c(
+                "view",
+                { staticClass: "tonggao_imgbox" },
+                _vm._l(
+                  _vm.yuepaiInfo.details.media.cover,
+                  function (item, index) {
+                    return _c("image", {
+                      key: index,
+                      attrs: { mode: "widthFix", src: item },
+                    })
+                  }
+                ),
+                0
+              )
+            : _vm._e(),
+          _vm.yuepaiInfo.details.media.file_type == "video"
+            ? _c("view", { staticClass: "tonggao_imgbox" }, [
+                _c("video", {
+                  staticClass: "list_video",
+                  attrs: {
+                    objectFit: "cover",
+                    poster: _vm.yuepaiInfo.details.media.cover[0],
+                    src:
+                      _vm.yuepaiInfo.details.media.video_cover &&
+                      _vm.yuepaiInfo.details.media.video_cover[0],
+                  },
+                  on: {
+                    tap: function ($event) {
+                      $event.stopPropagation()
+                    },
+                  },
+                }),
+              ])
+            : _vm._e(),
         ]),
       ]),
-      _c("view", { staticClass: "yuedan_icon_box" }, [
-        _c("image", {
-          attrs: {
-            src: "https://yuepai-oss.qubeitech.com/static/images/yuedan/show_money.png",
-          },
-        }),
-        _c("text", [_vm._v(_vm._s(_vm.yuepaiInfo.payment_format))]),
-      ]),
-    ]),
-    _vm.yuepaiInfo.file_type == "picture"
-      ? _c(
-          "view",
-          [
+      _vm.photoAlbumList.length
+        ? _c("view", { staticClass: "recommend" }, [
+            _c("view", { staticClass: "recommend-title" }, [
+              _c("view", { staticClass: "recommend-name" }, [
+                _vm._v(" 他的作品 "),
+              ]),
+              _c(
+                "view",
+                { staticClass: "recommend-rt", on: { tap: _vm.goZhuye } },
+                [_vm._v("查看主页")]
+              ),
+            ]),
             _c(
-              "swiper",
-              {
-                staticClass: "yuepai_swiper",
-                style: {
-                  height: _vm.imgheights[_vm.current] + "rpx",
-                },
-                attrs: {
-                  "indicator-dots": _vm.indicatorDots,
-                  autoplay: _vm.autoplay,
-                  interval: _vm.interval,
-                  duration: _vm.duration,
-                },
-                on: { change: _vm.bindchange },
-              },
-              _vm._l(_vm.yuepaiInfo.cover, function (item, index) {
-                return _c(
-                  "block",
-                  { key: index },
-                  [
-                    _c("swiper-item", [
+              "view",
+              { staticClass: "home_item_main" },
+              _vm._l(_vm.photoAlbumList, function (imgitem, index) {
+                return index <= 2
+                  ? _c("view", { key: index, staticClass: "personimg_item" }, [
                       _c("image", {
-                        attrs: { src: item },
+                        staticClass: "personimg",
+                        attrs: {
+                          "data-index": index,
+                          mode: "aspectFill",
+                          src: imgitem,
+                        },
                         on: {
-                          load: function (e) {
-                            _vm.imageLoad(e, index)
+                          tap: function ($event) {
+                            return _vm.showbigPersonimg(
+                              imgitem,
+                              _vm.photoAlbumList
+                            )
                           },
                         },
                       }),
-                    ]),
-                  ],
-                  1
-                )
+                      index == 2
+                        ? _c("view", { staticClass: "icon_imgnum" }, [
+                            _c("text", [
+                              _vm._v(_vm._s(_vm.photoAlbumList.length) + "张"),
+                            ]),
+                          ])
+                        : _vm._e(),
+                    ])
+                  : _vm._e()
               }),
-              1
+              0
             ),
-          ],
-          1
-        )
-      : _vm._e(),
-    _vm.yuepaiInfo.file_type == "video"
-      ? _c("view", [
-          _c("video", {
-            staticClass: "yuepai_video-width",
-            attrs: {
-              objectFit: "cover",
-              poster: _vm.yuepaiInfo.cover && _vm.yuepaiInfo.cover[0],
-              src: _vm.yuepaiInfo.video_cover && _vm.yuepaiInfo.video_cover[0],
-              id: "video",
-            },
-            on: { ended: _vm.bindended },
-          }),
-        ])
-      : _vm._e(),
-    _c("view", { staticClass: "yuepai_info" }, [
-      _c("view", { staticClass: "yuepai_title" }, [
-        _vm._v(" " + _vm._s(_vm.yuepaiInfo.title) + " "),
-      ]),
-      _c("view", { staticClass: "yuepai_content" }, [
-        _vm._v(" " + _vm._s(_vm.yuepaiInfo.content) + " "),
-      ]),
-      _c("view", { staticClass: "yuepai_time" }, [
-        _c("view", { staticClass: "spot" }),
-        _c("text", { staticClass: "yuepai_label" }, [_vm._v(" 时间：")]),
-        _c("text", [_vm._v(_vm._s(_vm.yuepaiInfo.expect_time) + " ")]),
-      ]),
-      _c("view", { staticClass: "yuepai_address" }, [
-        _c("view", { staticClass: "spot" }),
-        _c("text", { staticClass: "yuepai_label" }, [_vm._v(" 地点：")]),
-        _c("text", [_vm._v(_vm._s(_vm.yuepaiInfo.expect_locale) + " ")]),
-      ]),
-      _c(
-        "view",
-        { staticClass: "yuepai_tags" },
-        _vm._l(_vm.yuepaiInfo.style_label, function (styleItem, styleIndex) {
-          return _c("view", { key: styleIndex, staticClass: "tag" }, [
-            _vm._v(_vm._s(styleItem)),
           ])
-        }),
-        0
-      ),
-      _c("view", { staticClass: "yuepai_bottom" }, [
-        _c("view", { staticClass: "yuepai_bottom_time" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-            },
-          }),
-          _vm._v(" " + _vm._s(_vm.yuepaiInfo.date_humanize) + " "),
-        ]),
-        _c("view", { staticClass: "yuepai_bottom_read" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png",
-            },
-          }),
-          _vm._v(" 阅读 " + _vm._s(_vm.yuepaiInfo.statistic.read_cnt) + " "),
-        ]),
-      ]),
-    ]),
-    _c("view", { staticClass: "yuepai_num" }, [
-      _c("view", { staticClass: "yuepai_num_label" }, [
-        _vm._v(" 收到约拍：" + _vm._s(_vm.yuepaiInfo.statistic.invite_cnt)),
-      ]),
+        : _vm._e(),
+      _vm.yuepaiList.length
+        ? _c("view", { staticClass: "more_title" }, [
+            _c("view", { staticClass: "more_dian" }, [
+              _c("text", { staticClass: "dian_item" }),
+              _c("text", { staticClass: "dian_item" }),
+              _c("text", { staticClass: "dian_item" }),
+            ]),
+            _vm._v(" 看了又看 "),
+            _c("view", { staticClass: "more_dian" }, [
+              _c("text", { staticClass: "dian_item" }),
+              _c("text", { staticClass: "dian_item" }),
+              _c("text", { staticClass: "dian_item" }),
+            ]),
+          ])
+        : _vm._e(),
+      _c("YuepaiList", { attrs: { baseData: _vm.yuepaiList } }),
       _c(
         "view",
-        { staticClass: "yuepai_img" },
-        _vm._l(_vm.yuepaiInfo.avatar, function (item, index) {
-          return _c("image", { key: index, attrs: { src: item } })
-        }),
-        0
-      ),
-    ]),
-    _c(
-      "view",
-      {
-        staticClass: "yuepai_fixed_bottom",
-        class: _vm.isIphoneX ? "fix-iphonex-button" : "",
-      },
-      [
-        _c("view", { staticClass: "yuepai_fixed_left" }, [
-          _c("view", { staticClass: "yuepai_fixed_item" }, [
-            _c("image", {
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+        {
+          staticClass: "yuepai_fixed_bottom",
+          class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+        },
+        [
+          _c("view", { staticClass: "yuepai_fixed_left" }, [
+            _c("view", { staticClass: "yuepai_fixed_item" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                },
+              }),
+              _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.invite_cnt) + " "),
+            ]),
+            _c(
+              "view",
+              { staticClass: "yuepai_fixed_item", on: { tap: _vm.subGiveUp } },
+              [
+                _vm.is_vote
+                  ? _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png",
+                      },
+                    })
+                  : _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
+                      },
+                    }),
+                _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.vote_cnt) + " "),
+              ]
+            ),
+            _c(
+              "view",
+              {
+                staticClass: "yuepai_fixed_item",
+                on: { tap: _vm.subRecordCollect },
               },
-            }),
-            _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.invite_cnt) + " "),
+              [
+                _vm.is_collect
+                  ? _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png",
+                      },
+                    })
+                  : _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png",
+                      },
+                    }),
+                _vm._v(
+                  " " + _vm._s(_vm.yuepaiInfo.statistic.collect_cnt) + " "
+                ),
+              ]
+            ),
           ]),
           _c(
             "view",
-            { staticClass: "yuepai_fixed_item", on: { tap: _vm.subGiveUp } },
-            [
-              _vm.is_vote
-                ? _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png",
-                    },
-                  })
-                : _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
-                    },
-                  }),
-              _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.vote_cnt) + " "),
-            ]
+            { staticClass: "yuepai_fixed_rt", on: { tap: _vm.launchYuepai } },
+            [_vm._v(" 约拍 ")]
           ),
-          _c(
-            "view",
-            {
-              staticClass: "yuepai_fixed_item",
-              on: { tap: _vm.subRecordCollect },
-            },
-            [
-              _vm.is_collect
-                ? _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png",
-                    },
-                  })
-                : _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png",
-                    },
-                  }),
-              _vm._v(" " + _vm._s(_vm.yuepaiInfo.statistic.collect_cnt) + " "),
-            ]
-          ),
-        ]),
-        _c(
-          "view",
-          { staticClass: "yuepai_fixed_rt", on: { tap: _vm.launchYuepai } },
-          [_vm._v(" 约拍 ")]
-        ),
-      ]
-    ),
-  ])
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -1003,7 +1259,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageAdd/pages/yuedan/yuedan_detail/index.vue");
 
 
-var config = {"navigationBarTitleText":"约拍详情"};
+var config = {"navigationBarTitleText":"约拍详情","enablePullDownRefresh":true};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageAdd/pages/yuedan/yuedan_detail/index', {root:{cn:[]}}, config || {}))

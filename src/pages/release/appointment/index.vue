@@ -1,6 +1,40 @@
 <template>
   <view class="appointment">
-    <view class="appointment-list">
+    <view class="select-list">
+      <view class="select-item" @tap="goyuedan('20001', '摄影师')">
+        <image src="../../../assets/images/cameraman.png"></image>
+        <text>约摄影师</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('10001', '模特')">
+        <image src="../../../assets/images/icon_model.png"></image>
+        <text>约模特</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('20003', '化妆师')">
+        <image src="../../../assets/images/makeup.png"></image>
+        <text>约化妆师</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('20004', '造型师')">
+        <image src="../../../assets/images/makeup.png"></image>
+        <text>约造型师</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('20002', '摄像师')">
+        <image src="../../../assets/images/take.png"></image>
+        <text>约摄像师</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('20005', '修图师')">
+        <image src="../../../assets/images/ps.png"></image>
+        <text>约修图师</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('20008', '经纪人')">
+        <image src="../../../assets/images/economicman.png"></image>
+        <text>约经纪人</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('20013', '商家')">
+        <image src="../../../assets/images/business.png"></image>
+        <text>约商家</text>
+      </view>
+    </view>
+    <!-- <view class="appointment-list">
       <view class="appointment-item" @tap="goyuedan('20001', '摄影师')">
         <image
           src="https://yuepai-oss.qubeitech.com/static/images/cameraman.png"
@@ -55,7 +89,7 @@
         </image>
         <text class="appointment-txt">商家</text>
       </view>
-    </view>
+    </view> -->
   </view>
 </template>
 

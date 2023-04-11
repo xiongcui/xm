@@ -537,6 +537,9 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -651,7 +654,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Db"])(params);
 
               case 3:
                 res = _context.sent;
@@ -707,7 +710,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "F"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "G"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -736,7 +739,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "jb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -766,7 +769,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "kb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -799,7 +802,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "tb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1186,7 +1189,8 @@ var render = function () {
           ]
         ),
       ]),
-      _c("view", { staticClass: "items" }, [
+      _c("view", { staticClass: "my-title" }, [_vm._v(" 我的发布 ")]),
+      _c("view", { staticClass: "items myblock" }, [
         _c("view", { staticClass: "item ub line-t", on: { tap: _vm.onMyAd } }, [
           _c("view", { staticClass: "item_icon" }, [
             _c("image", {
@@ -1231,31 +1235,6 @@ var render = function () {
         ]),
         _c(
           "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/huodong.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("活动管理")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
-                },
-              }),
-            ]),
-          ]
-        ),
-        _c(
-          "view",
           { staticClass: "item ub line-t", on: { tap: _vm.myZuopin } },
           [
             _c("view", { staticClass: "item_icon" }, [
@@ -1279,58 +1258,9 @@ var render = function () {
             ]),
           ]
         ),
-        _c(
-          "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("模卡管理")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
-                },
-              }),
-            ]),
-          ]
-        ),
       ]),
-      _c("view", { staticClass: "items" }, [
-        _c(
-          "view",
-          { staticClass: "item ub line-t", attrs: { catchtap: "coin" } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/dengji.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("我的等级")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
-                },
-              }),
-            ]),
-          ]
-        ),
+      _c("view", { staticClass: "my-title" }, [_vm._v(" 我的服务 ")]),
+      _c("view", { staticClass: "items myblock" }, [
         !_vm.infor.realname
           ? _c(
               "view",
@@ -1426,31 +1356,6 @@ var render = function () {
         ]),
         _c(
           "view",
-          { staticClass: "item ub line-t", on: { tap: _vm.customerService } },
-          [
-            _c("view", { staticClass: "item_icon" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/kefu1.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "ub-f1" }, [
-              _c("view", { staticClass: "item_text" }, [_vm._v("我的客服")]),
-            ]),
-            _c("view", { staticClass: "arrow" }, [
-              _c("image", {
-                attrs: {
-                  mode: "aspectFit",
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
-                },
-              }),
-            ]),
-          ]
-        ),
-        _c(
-          "view",
           { staticClass: "item ub line-t", on: { tap: _vm.customerCenter } },
           [
             _c("view", { staticClass: "item_icon" }, [
@@ -1496,7 +1401,8 @@ var render = function () {
           ]),
         ]),
       ]),
-      _c("view", { staticClass: "items" }, [
+      _c("view", { staticClass: "my-title" }, [_vm._v(" 其他服务 ")]),
+      _c("view", { staticClass: "items myblock" }, [
         _c(
           "view",
           { staticClass: "item ub line-t", on: { tap: _vm.goAbout } },

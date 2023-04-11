@@ -1,6 +1,9 @@
 <template>
   <view class="pagenav">
-    <view class="nav_fixed" :style="{ marginTop: globalData.navHeight + 'px' }">
+    <view
+      class="nav_fixed"
+      :style="{ marginTop: isMargin ? globalData.navHeight + 'px' : '0px' }"
+    >
       <view class="head_nav">
         <text
           class="head_nav_item"
@@ -50,22 +53,8 @@
       <view class="select_bg" @tap.stop="">
         <view
           class="statusbar"
-          :style="{ height: globalData.navHeight + 'px' }"
+          :style="{ height: isMargin ? globalData.navHeight + 'px' : '0px' }"
         ></view>
-        <view class="select_item">
-          <view class="select_item_title">约拍对象</view>
-          <view>
-            <text
-              @tap="select_tag(item)"
-              class="tag_item"
-              :class="item.ispick ? 'tag_itemed' : ''"
-              v-for="(item, index) in appointmentData"
-              :key="index"
-            >
-              {{ item.name }}
-            </text>
-          </view>
-        </view>
         <view class="select_item">
           <view class="select_item_title">发起人性别</view>
           <view>
@@ -81,7 +70,35 @@
           </view>
         </view>
         <view class="select_item">
-          <view class="select_item_title">收费模式</view>
+          <view class="select_item_title">发起人身份</view>
+          <view>
+            <text
+              @tap="select_tag(item)"
+              class="tag_item"
+              :class="item.ispick ? 'tag_itemed' : ''"
+              v-for="(item, index) in appointmentData"
+              :key="index"
+            >
+              {{ item.value }}
+            </text>
+          </view>
+        </view>
+        <view class="select_item">
+          <view class="select_item_title">发起人目的</view>
+          <view>
+            <text
+              @tap="select_purpose_tag(item)"
+              class="tag_item"
+              :class="item.ispick ? 'tag_itemed' : ''"
+              v-for="(item, index) in purposeData"
+              :key="index"
+            >
+              {{ item.value }}
+            </text>
+          </view>
+        </view>
+        <view class="select_item">
+          <view class="select_item_title">费用模式</view>
           <view>
             <text
               @tap="select_charge_tag(item)"
@@ -106,7 +123,7 @@
       <view class="select_bg" @tap.stop="">
         <view
           class="statusbar"
-          :style="{ height: globalData.navHeight + 'px' }"
+          :style="{ height: isMargin ? globalData.navHeight + 'px' : '0px' }"
         ></view>
         <view class="select_item">
           <view class="select_item_title">招募身份</view>
@@ -118,7 +135,7 @@
               v-for="(item, index) in identityData"
               :key="index"
             >
-              {{ item.name }}
+              {{ item.value }}
             </text>
           </view>
         </view>
@@ -152,7 +169,7 @@
         </view>
         <view class="select_button">
           <text class="clear" @tap="clear">清除</text>
-          <text class="confirm" @tap="submit">确认</text>
+          <text class="confirm" @tap="tonggaoSubmit">确认</text>
         </view>
       </view>
     </view>
@@ -162,7 +179,7 @@
       <view class="select_bg" @tap.stop="">
         <view
           class="statusbar"
-          :style="{ height: globalData.navHeight + 'px' }"
+          :style="{ height: isMargin ? globalData.navHeight + 'px' : '0px' }"
         ></view>
         <view class="select_item">
           <view class="select_item_title">发布人身份</view>
@@ -174,7 +191,7 @@
               v-for="(item, index) in identityData"
               :key="index"
             >
-              {{ item.role }}
+              {{ item.value }}
             </text>
           </view>
         </view>
@@ -194,7 +211,7 @@
         </view>
         <view class="select_button">
           <text class="clear" @tap="clear">清除</text>
-          <text class="confirm" @tap="submit">确认</text>
+          <text class="confirm" @tap="zuopinSubmit">确认</text>
         </view>
       </view>
     </view>
@@ -236,16 +253,9 @@ export default {
         // },
       ],
       chargeData: [],
+      purposeData: [],
       sizer_num: [],
-      appointmentData: [
-        { cid: 0, name: "全部", ispick: true },
-        { cid: 20001, name: "摄影师", ispick: false },
-        { cid: 20002, name: "摄像师", ispick: false },
-        { cid: 20003, name: "造型师", ispick: false },
-        { cid: 20007, name: "经纪人", ispick: false },
-        { cid: 20011, name: "导演", ispick: false },
-        { cid: 20012, name: "商家", ispick: false },
-      ],
+      appointmentData: [],
       sexData: [
         {
           name: "全部",
@@ -272,11 +282,27 @@ export default {
       type: Number,
       default: 0,
     },
+    isMargin: {
+      type: Boolean,
+      default: false,
+    },
+    active: {
+      type: Number,
+      default: 0,
+    },
     navList: {
       type: Array,
       default: [],
     },
     chargeList: {
+      type: Array,
+      default: [],
+    },
+    purposeList: {
+      type: Array,
+      default: [],
+    },
+    appointmentList: {
       type: Array,
       default: [],
     },
@@ -292,7 +318,14 @@ export default {
   watch: {
     pageActive: {
       handler(newVal, oldVal) {
-        this.active = newVal;
+        this.headCurrent = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    active: {
+      handler(newVal, oldVal) {
+        this.navActive = newVal;
       },
       deep: true,
       immediate: true,
@@ -307,6 +340,20 @@ export default {
     chargeList: {
       handler(newVal, oldVal) {
         this.chargeData = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    purposeList: {
+      handler(newVal, oldVal) {
+        this.purposeData = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    appointmentList: {
+      handler(newVal, oldVal) {
+        this.appointmentData = newVal;
       },
       deep: true,
       immediate: true,
@@ -348,19 +395,14 @@ export default {
     headNavClick(index) {
       this.headCurrent = index;
       this.$emit("pageNavClick", index);
-      //   this.$emit("query", "init", this.navActive);
-      //   this.$emit("noticeQuery", "init", this.navActive);
-      //   this.$emit("zuopinQuery", "init", this.navActive);
     },
     navClick(index) {
       this.navActive = index;
       this.pageNum = 1;
       this.showLoading = true;
-      this.query("init");
+      this.$emit("navClick", this.headCurrent, index);
     },
     clear() {
-      this.sizer_city = "";
-      this.sizerSelect = [];
       this.appointmentData = this.appointmentData.map((item, index) => {
         item.ispick = index != 0 ? false : true;
         return item;
@@ -373,9 +415,28 @@ export default {
         item.ispick = index != 0 ? false : true;
         return item;
       });
+
+      this.identity_data = this.identityData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.notice_data = this.noticeData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
+      this.charge_data = this.chargeData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
     },
     select_tag(row) {
       this.appointmentData.map((item) => {
+        item.ispick = false;
+      });
+      row.ispick = true;
+    },
+    select_purpose_tag(row) {
+      this.purposeData.map((item) => {
         item.ispick = false;
       });
       row.ispick = true;
@@ -414,20 +475,49 @@ export default {
       let paymentdata = this.chargeData.filter((item) => {
         return item.ispick;
       });
+      let purposedata = this.purposeData.filter((item) => {
+        return item.ispick;
+      });
       this.filter = {
-        face_province_id: this.sizerSelect[0]
-          ? Number(this.multiArray[0][this.sizerSelect[0]].code)
-          : 0,
-        face_city_id: this.sizerSelect[1]
-          ? Number(this.multiArray[1][this.sizerSelect[1]].code)
-          : 0,
-        face_cid: facedata[0].cid,
-        sex: sexdata[0].value == 100 ? 100 : sexdata[0].value,
+        author_career: facedata[0].key == "all" ? 0 : facedata[0].key,
+        author_sex: sexdata[0].value == 100 ? 100 : sexdata[0].value,
+        face_career: purposedata[0].key == "all" ? 0 : purposedata[0].key,
         payment_type: paymentdata[0].key == "all" ? 0 : paymentdata[0].key,
       };
       this.showModal = false;
-      this.pageNum = 1;
-      this.query("init");
+      this.$emit("submitQuery", this.headCurrent, this.navActive, this.filter);
+    },
+    tonggaoSubmit() {
+      let identitydata = this.identityData.filter((item) => {
+        return item.ispick;
+      });
+      let noticedata = this.noticeData.filter((item) => {
+        return item.ispick;
+      });
+      let chargedata = this.chargeData.filter((item) => {
+        return item.ispick;
+      });
+      this.filter = {
+        first_code: noticedata[0].key != "all" ? noticedata[0].key : 0,
+        payment_type: chargedata[0].key != "all" ? chargedata[0].key : 0,
+        face_career: identitydata[0].key == "all" ? 0 : identitydata[0].key,
+      };
+      this.tonggaoShowModal = false;
+      this.$emit("submitQuery", this.headCurrent, this.navActive, this.filter);
+    },
+    zuopinSubmit() {
+      let sexdata = this.sexData.filter((item) => {
+        return item.ispick;
+      });
+      let identitydata = this.identityData.filter((item) => {
+        return item.ispick;
+      });
+      this.filter = {
+        author_sex: sexdata[0].value == 100 ? 100 : sexdata[0].value,
+        author_career: identitydata[0].key == "all" ? 0 : identitydata[0].key,
+      };
+      this.zuopinShowModal = false;
+      this.$emit("submitQuery", this.headCurrent, this.navActive, this.filter);
     },
   },
   mounted() {

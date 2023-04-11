@@ -190,13 +190,19 @@
 .my .my-vip .vip-text {
   color: #e5c385;
 }
+.my .my-title {
+  font-weight: bold;
+  color: #333333;
+  font-size: 30rpx;
+  margin: 16rpx 30rpx;
+}
 .my .my-column {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   background-color: #ffffff;
   border-radius: 10rpx;
-  margin-top: 16rpx;
+  margin: 16rpx 16rpx 0 16rpx;
   padding: 20rpx 30rpx;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
@@ -221,6 +227,9 @@
   height: 34rpx;
   margin-bottom: 16rpx;
 }
+.my .myblock {
+  margin: 16rpx;
+}
 .my .item {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -235,8 +244,7 @@
 .my .items {
   background: #ffffff;
   padding: 0 30rpx;
-  border-radius: 2rpx;
-  margin: 16rpx 0;
+  border-radius: 8rpx;
   font-size: 30rpx;
 }
 .my .item_icon {

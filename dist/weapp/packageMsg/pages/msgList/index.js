@@ -109,7 +109,7 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* systemList */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* systemList */ "ub"])(params);
 
               case 3:
                 res = _context.sent;

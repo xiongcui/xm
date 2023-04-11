@@ -112,7 +112,7 @@
                 <text>约拍</text>
               </view>
               <view class="my-count-box">
-                <text class="num">{{ infor.statistic.read_cnt }}</text>
+                <text class="num">{{ infor.statistic.visitor_cnt }}</text>
                 <text>访客</text>
               </view>
               <view class="my-count-box">
@@ -120,7 +120,7 @@
                 <text>足迹</text>
               </view>
             </view>
-            <view class="my-conunt-rt" @tap="personDetail">
+            <view class="my-conunt-rt" @tap="personDetail" v-if="myself">
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/user/show/btn_edit.png"
               ></image>
@@ -157,7 +157,10 @@
           <view class="home_item">
             <view class="home_item_title">
               <view class="home_item_title_text">模卡信息</view>
-              <view @tap="editpersondata" class="home_item_title_edit"
+              <view
+                @tap="editpersondata"
+                class="home_item_title_edit"
+                v-if="myself"
                 >编辑</view
               >
             </view>
@@ -196,7 +199,11 @@
           <view class="home_item">
             <view class="home_item_title ub">
               <view class="home_item_title_text ub-f1">照片相册</view>
-              <view @tap="editpersonimg" class="home_item_title_edit">
+              <view
+                @tap="editpersonimg"
+                class="home_item_title_edit"
+                v-if="myself"
+              >
                 {{ homeInfor.personimg.length ? "编辑" : "添加" }}</view
               >
             </view>
@@ -220,17 +227,17 @@
               </view>
             </view>
             <view class="home_item_main ub" v-else>
-              <view catchtap="editpersonimg" class="home_img_add">
+              <view @tap="editpersonimg" class="home_img_add">
                 <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
-              <view catchtap="editpersonimg" class="home_img_add">
+              <view @tap="editpersonimg" class="home_img_add">
                 <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
-              <view catchtap="editpersonimg" class="home_img_add">
+              <view @tap="editpersonimg" class="home_img_add">
                 <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
@@ -240,7 +247,7 @@
           <view class="home_item">
             <view class="home_item_title ub">
               <view class="home_item_title_text ub-f1">视频相册</view>
-              <view @tap="editvideo" class="home_item_title_edit">
+              <view @tap="editvideo" class="home_item_title_edit" v-if="myself">
                 {{ homeInfor.video.length ? "编辑" : "添加" }}</view
               >
             </view>
@@ -262,7 +269,7 @@
               </block>
             </view>
             <view class="home_item_main" v-else>
-              <view @tap="editvideo" class="home_video_add">
+              <view @tap="editvideo" class="home_video_add" v-if="myself">
                 <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
@@ -272,7 +279,7 @@
           <view class="home_item">
             <view class="home_item_title ub">
               <view class="home_item_title_text ub-f1">标签信息</view>
-              <view @tap="editzytag" class="home_item_title_edit">
+              <view @tap="editzytag" class="home_item_title_edit" v-if="myself">
                 {{ homeInfor.mode_sticker.length ? "编辑" : "添加" }}</view
               >
             </view>
@@ -370,6 +377,8 @@ export default {
   name: "editshow",
   data() {
     return {
+      myself: true,
+      uuid: "",
       winWidth: 0,
       winHeight: 0,
       globalData: {
@@ -416,10 +425,10 @@ export default {
           tab_name: "作品",
           tab_id: "zuopin",
         },
-        {
-          tab_name: "模卡",
-          tab_id: "moka",
-        },
+        // {
+        //   tab_name: "模卡",
+        //   tab_id: "moka",
+        // },
       ],
       list: [],
       pageNum: 1,
@@ -473,9 +482,9 @@ export default {
         this.homeInfor.video = [];
         this.homeInfor.personimg = res.data.data.album.photo_album;
         this.homeInfor.video = res.data.data.album.video_album;
-        this.homeInfor.mode_sticker = res.data.data.mode_sticker;
-        this.homeInfor.notice_sticker = res.data.data.notice_sticker;
-        this.homeInfor.style_sticker = res.data.data.style_sticker;
+        this.homeInfor.mode_sticker = res.data.data.sticker.mode_sticker;
+        this.homeInfor.notice_sticker = res.data.data.sticker.notice_sticker;
+        this.homeInfor.style_sticker = res.data.data.sticker.style_sticker;
         this.homeInfor.height = res.data.data.shape.height;
         this.homeInfor.weight = res.data.data.shape.weight;
         this.homeInfor.bwh_b = res.data.data.shape.bust;
@@ -548,13 +557,26 @@ export default {
     });
   },
   onShow() {
-    this.userInfo("");
+    if (this.uuid) {
+      let params = {
+        uuid: this.uuid,
+      };
+      this.userInfo(params);
+    } else {
+      this.userInfo("");
+    }
   },
   onReachBottom() {
-    this.pageNum++;
-    this.queryZuopinList();
+    if (this.select_tab == "zuopin") {
+      this.pageNum++;
+      this.queryZuopinList();
+    }
   },
   onLoad: function (options) {
+    this.uuid = options.uuid;
+    if (this.uuid) {
+      this.myself = false;
+    }
     var that = this;
     // 获取系统信息
     wx.getSystemInfo({

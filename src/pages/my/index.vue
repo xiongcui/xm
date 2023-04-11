@@ -196,7 +196,8 @@
           <text>收藏</text>
         </view>
       </view>
-      <view class="items">
+      <view class="my-title"> 我的发布 </view>
+      <view class="items myblock">
         <view @tap="onMyAd" class="item ub line-t">
           <view class="item_icon">
             <image
@@ -231,7 +232,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="coin" class="item ub line-t">
+        <!-- <view catchtap="coin" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -247,7 +248,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
-        </view>
+        </view> -->
         <view @tap="myZuopin" class="item ub line-t">
           <view class="item_icon">
             <image
@@ -265,7 +266,7 @@
             ></image>
           </view>
         </view>
-        <view catchtap="coin" class="item ub line-t">
+        <!-- <view catchtap="coin" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -281,10 +282,11 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
-        </view>
+        </view> -->
       </view>
-      <view class="items">
-        <view catchtap="coin" class="item ub line-t">
+      <view class="my-title"> 我的服务 </view>
+      <view class="items myblock">
+        <!-- <view catchtap="coin" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -300,7 +302,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
-        </view>
+        </view> -->
         <view
           catchtap="realName"
           class="item ub"
@@ -361,7 +363,7 @@
             ></image>
           </view>
         </view>
-        <view @tap="customerService" class="item ub line-t">
+        <!-- <view @tap="customerService" class="item ub line-t">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -377,7 +379,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
-        </view>
+        </view> -->
         <view @tap="customerCenter" class="item ub line-t">
           <view class="item_icon">
             <image
@@ -413,7 +415,8 @@
           </view>
         </view>
       </view>
-      <view class="items">
+      <view class="my-title"> 其他服务 </view>
+      <view class="items myblock">
         <view @tap="goAbout" class="item ub line-t">
           <view class="item_icon">
             <image

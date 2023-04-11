@@ -20,6 +20,8 @@
   }
   .head_left {
     display: flex;
+    position: relative;
+    z-index: 9999;
   }
   .head_sign,
   .head_signed {
@@ -227,19 +229,11 @@
     background: linear-gradient(#fff0da 0%, #ffffff 40%);
     border-radius: 10px;
     padding: 10px;
-    // .yuepai-swiper {
-    //   min-height: 580px;
-    // }
-    // .tonggao-swiper {
-    //   min-height: 350px;
-    // }
     .recommend-box {
       padding: 16px 16px 6px 16px;
     }
     .tonggao-recommend-top {
       display: flex;
-      //   justify-content: space-between;
-      //   align-items: center;
       margin-bottom: 16px;
       .tonggao-info-title {
         display: flex;
@@ -652,11 +646,74 @@
     right: 24px;
   }
   .ub {
-    //   display: box !important;
     display: flex;
   }
   .nav_active {
-    // border-bottom: 6px solid #ff1e3e;
     font-weight: bold;
+  }
+  .login-mask {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .mask-box {
+      background: #ffffff;
+      padding: 30px;
+      position: absolute;
+      width: calc(100% - 200px);
+      border-radius: 16px;
+      .mask-title {
+        margin-bottom: 30px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .mask-ct {
+        position: relative;
+        flex-direction: column;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 16px;
+        right: 10px;
+        background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png")
+          no-repeat;
+        background-size: 38px;
+      }
+      .mask-login-tips {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 30px;
+        margin-bottom: 16px;
+      }
+      .mask-login-btn {
+        margin: 16px 0px;
+        background-color: #ff5355;
+        color: #ffffff;
+        font-size: 30px;
+        line-height: 80px;
+        height: 80px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .mask-login-cancel {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+  }
+  .nomore {
+    padding: 0px 0px 16px 0px;
+    text-align: center;
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.5);
   }
 }

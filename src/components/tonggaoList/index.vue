@@ -1,7 +1,10 @@
 <template>
   <view class="componets-list">
     <view v-for="(item, index) in list" :key="index" v-if="list.length">
-      <view class="componets-box">
+      <view
+        class="componets-box"
+        @tap="godetail(item.basic.oid, item.author.uuid)"
+      >
         <view class="tonggao-recommend">
           <view class="tonggao-recommend-top">
             <view class="tonggao-info-title">
@@ -23,6 +26,12 @@
               <image
                 :src="item.details.media.cover[0]"
                 mode="aspectFill"
+                @tap.stop="
+                  previewImage(
+                    item.details.media.cover[0],
+                    item.details.media.cover
+                  )
+                "
               ></image>
             </view>
             <view class="tonggao-recommend-info">
@@ -76,6 +85,7 @@
 </template>
 
 <script>
+import { openPage } from "../../utils/util";
 import "./index.scss";
 export default {
   name: "tonggaoList",
@@ -98,6 +108,23 @@ export default {
     return {
       list: [],
     };
+  },
+  methods: {
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
+    godetail(oid, author_id) {
+      openPage(
+        "/packageTonggao/pages/detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
   },
 };
 </script>

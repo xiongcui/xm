@@ -9,29 +9,29 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "实名认证",
-                    "pathName": "packageAdd/pages/user/realnameAuth/index",
+                    "name": "首页列表管理",
+                    "pathName": "packageAdd/pages/user/homelist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "发布",
-                    "pathName": "packageAdd/pages/tips/index",
+                    "name": "摄影推荐",
+                    "pathName": "packageAdd/pages/user/takelist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "关于",
-                    "pathName": "packageSet/pages/about/index",
+                    "name": "通告详情",
+                    "pathName": "packageTonggao/pages/detail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "服务协议",
-                    "pathName": "packageSet/pages/serviceAgreement/index",
+                    "name": "信用担保",
+                    "pathName": "packageMsg/pages/creditGuarantee/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "我的收藏",
-                    "pathName": "packageAdd/pages/user/collection/index",
+                    "name": "约单详情",
+                    "pathName": "packageAdd/pages/yuedan/yuedan_detail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

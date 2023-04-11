@@ -178,7 +178,7 @@ export const userAlbumDetail = (data) => {
 // 获取标签
 export const userSticker = (data) => {
   return request({
-    url: baseUrl + "/v1/user/sticker",
+    url: baseUrl + "/v1/user/sticker/info",
     method: "post",
     data,
   });
@@ -434,7 +434,7 @@ export const collectList = (data) => {
 // 开通会员
 export const memberOpen = (data) => {
   return request({
-    url: baseUrl + "/v1/member/open",
+    url: baseUrl + "/v1/pay/wx/mina/member",
     method: "post",
     data,
   });
@@ -474,11 +474,12 @@ export const coinAcct = (data) => {
 // 金币充值
 export const coinStore = (data) => {
   return request({
-    url: baseUrl + "/v1/coin/store",
+    url: baseUrl + "/v1/pay/wx/mina/coin",
     method: "post",
     data,
   });
 };
+
 // 消息通知
 export const notifyNumber = (data) => {
   return request({
@@ -525,7 +526,7 @@ export const publicComplain = (data) => {
 // 存保证金
 export const securityOpen = (data) => {
   return request({
-    url: baseUrl + "/v1/security/open",
+    url: baseUrl + "/v1/pay/wx/mina/security",
     method: "post",
     data,
   });
@@ -799,6 +800,57 @@ export const inviteAdviseList = (data) => {
 export const noticeAdviseList = (data) => {
   return request({
     url: baseUrl + "/v1/note/notice/list/advise",
+    method: "post",
+    data,
+  });
+};
+
+// 用户选择城市
+export const userSelectCity = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/select/city",
+    method: "post",
+    data,
+  });
+};
+
+// 当前城市和签到
+export const userStatus = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/status",
+    method: "post",
+    data,
+  });
+};
+
+// 筛选-约拍下拉选项
+export const inviteFilter = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/invite/filter",
+    method: "post",
+    data,
+  });
+};
+// 筛选-作品下拉选项
+export const photoFilter = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/photo/filter",
+    method: "post",
+    data,
+  });
+};
+// 用户推荐筛选
+export const userFilter = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/list/filter",
+    method: "post",
+    data,
+  });
+};
+// 用户推荐列表
+export const userList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/list",
     method: "post",
     data,
   });

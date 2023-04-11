@@ -146,11 +146,17 @@
       color: #e5c385;
     }
   }
+  .my-title {
+    font-weight: bold;
+    color: #333333;
+    font-size: 30px;
+    margin: 16px 30px;
+  }
   .my-column {
     display: flex;
     background-color: #ffffff;
     border-radius: 10px;
-    margin-top: 16px;
+    margin: 16px 16px 0px 16px;
     padding: 20px 30px;
     justify-content: space-between;
     .my-column-item {
@@ -167,6 +173,9 @@
       margin-bottom: 16px;
     }
   }
+  .myblock {
+    margin: 16px;
+  }
   .item {
     display: flex;
     align-items: center;
@@ -177,8 +186,8 @@
   .items {
     background: #ffffff;
     padding: 0px 30px;
-    border-radius: 2px;
-    margin: 16px 0px;
+    border-radius: 8px;
+    // margin: 16px 0px;
     font-size: 30px;
   }
   .item_icon {

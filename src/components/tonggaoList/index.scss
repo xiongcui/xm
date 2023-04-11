@@ -9,8 +9,6 @@
 }
 .tonggao-recommend-top {
   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
   margin-bottom: 16px;
   .tonggao-info-title {
     display: flex;
@@ -84,6 +82,60 @@
   .tonggao-recommend-info {
     width: 528px;
   }
+}
+.tonggao-bottom {
+  display: flex;
+  justify-content: space-between;
+  color: #6b6b6b;
+  border-top: 1px solid #ebebeb;
+  padding-top: 6px;
+}
+.tonggao-head {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  image {
+    width: 40px;
+    height: 40px;
+    margin-right: 4px;
+    border-radius: 50%;
+  }
+}
+.tonggao-yuepai {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  image {
+    width: 26px;
+    height: 26px;
+    margin-right: 4px;
+  }
+}
+.tonggao-read {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  image {
+    width: 26px;
+    height: 26px;
+    margin-right: 4px;
+  }
+}
+.recommend-label {
+  padding: 2px 14px;
+  background: #f2280c;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 28px;
+  margin-right: 16px;
+}
+.recommend-label2 {
+  padding: 2px 14px;
+  background: #00ba7f;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 28px;
+  margin-right: 16px;
 }
 .none-data {
   display: flex;

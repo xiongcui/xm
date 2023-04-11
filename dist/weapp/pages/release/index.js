@@ -124,6 +124,12 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -178,7 +184,9 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "release-box" }, [
-    _c("view", { staticClass: "release-title" }, [_vm._v(" 您可以发布 ")]),
+    _c("view", { staticClass: "release-title" }, [
+      _vm._v(" 你可以在这里发布 "),
+    ]),
     _c("view", { staticClass: "release-list" }, [
       _c(
         "view",
@@ -191,11 +199,11 @@ var render = function () {
           },
         },
         [
-          _c("view", { staticClass: "release-left" }, [
+          _c("view", { staticClass: "release-left color1" }, [
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/camera.png",
+                src: __webpack_require__(/*! ../../assets/images/publish1.png */ "./src/assets/images/publish1.png"),
                 mode: "aspectFit",
               },
             }),
@@ -208,7 +216,9 @@ var render = function () {
             ]),
             _c("view", [
               _c("text", { staticClass: "release-list-content" }, [
-                _vm._v("招模特/红人/主播/演员等"),
+                _vm._v(
+                  "发布创作、影视、造型、种草、探店等通告，招募模特、演员、红人、主播等 "
+                ),
               ]),
             ]),
           ]),
@@ -225,11 +235,11 @@ var render = function () {
           },
         },
         [
-          _c("view", { staticClass: "release-left" }, [
+          _c("view", { staticClass: "release-left color2" }, [
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/publishLocation.png",
+                src: __webpack_require__(/*! ../../assets/images/publish2.png */ "./src/assets/images/publish2.png"),
                 mode: "aspectFit",
               },
             }),
@@ -242,7 +252,9 @@ var render = function () {
             ]),
             _c("view", [
               _c("text", { staticClass: "release-list-content" }, [
-                _vm._v("艺人发布合作意向"),
+                _vm._v(
+                  "发布互免、收费、付费、置换等约拍，邀约模特、摄影、妆造、修图等 "
+                ),
               ]),
             ]),
           ]),
@@ -259,11 +271,11 @@ var render = function () {
           },
         },
         [
-          _c("view", { staticClass: "release-left" }, [
+          _c("view", { staticClass: "release-left color3" }, [
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/works.png",
+                src: __webpack_require__(/*! ../../assets/images/publish3.png */ "./src/assets/images/publish3.png"),
                 mode: "aspectFit",
               },
             }),
@@ -276,35 +288,14 @@ var render = function () {
             ]),
             _c("view", [
               _c("text", { staticClass: "release-list-content" }, [
-                _vm._v("分享您的优秀作品"),
+                _vm._v(
+                  "分享自己的作品或照片，提升自己的约拍专业影响力，获得更多曝光"
+                ),
               ]),
             ]),
           ]),
         ]
       ),
-      _c("view", { staticClass: "release-item" }, [
-        _c("view", { staticClass: "release-left" }, [
-          _c("image", {
-            staticClass: "release-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/card.png",
-              mode: "aspectFit",
-            },
-          }),
-        ]),
-        _c("view", { staticClass: "release-right" }, [
-          _c("view", [
-            _c("text", { staticClass: "release-list-title" }, [
-              _vm._v(" 制作模卡"),
-            ]),
-          ]),
-          _c("view", [
-            _c("text", { staticClass: "release-list-content" }, [
-              _vm._v("免费制作专业高清模卡"),
-            ]),
-          ]),
-        ]),
-      ]),
     ]),
   ])
 }
@@ -312,6 +303,42 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/publish1.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/publish1.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/publish1.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/publish2.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/publish2.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/publish2.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/publish3.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/publish3.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/publish3.png";
 
 /***/ }),
 

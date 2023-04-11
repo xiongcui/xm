@@ -1,7 +1,10 @@
 <template>
   <view class="componets-list">
     <view v-for="(item, index) in list" v-if="list.length">
-      <view class="componets-box">
+      <view
+        class="componets-box"
+        @tap="goYuepaiDetail(item.basic.oid, item.author.uuid)"
+      >
         <view class="list_top">
           <view class="list_top_left">
             <image
@@ -128,6 +131,7 @@
 </template>
 
 <script>
+import { openPage } from "../../utils/util";
 import "./index.scss";
 export default {
   name: "yuepaiList",
@@ -150,6 +154,23 @@ export default {
     return {
       list: [],
     };
+  },
+  methods: {
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
+    goYuepaiDetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
   },
 };
 </script>

@@ -110,6 +110,40 @@ component.options.__file = "src/pages/release/appointment/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "appointment",
@@ -140,11 +174,11 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "appointment" }, [
-    _c("view", { staticClass: "appointment-list" }, [
+    _c("view", { staticClass: "select-list" }, [
       _c(
         "view",
         {
-          staticClass: "appointment-item",
+          staticClass: "select-item",
           on: {
             tap: function ($event) {
               return _vm.goyuedan("20001", "摄影师")
@@ -153,19 +187,66 @@ var render = function () {
         },
         [
           _c("image", {
-            staticClass: "appointment-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/cameraman.png",
-              mode: "aspectFit",
-            },
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/cameraman.png */ "./src/assets/images/cameraman.png") },
           }),
-          _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄影师")]),
+          _c("text", [_vm._v("约摄影师")]),
         ]
       ),
       _c(
         "view",
         {
-          staticClass: "appointment-item",
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("10001", "模特")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/icon_model.png */ "./src/assets/images/icon_model.png") },
+          }),
+          _c("text", [_vm._v("约模特")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20003", "化妆师")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png") },
+          }),
+          _c("text", [_vm._v("约化妆师")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("20004", "造型师")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png") },
+          }),
+          _c("text", [_vm._v("约造型师")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
           on: {
             tap: function ($event) {
               return _vm.goyuedan("20002", "摄像师")
@@ -174,97 +255,60 @@ var render = function () {
         },
         [
           _c("image", {
-            staticClass: "appointment-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/cameraman1.png",
-              mode: "aspectFit",
-            },
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/take.png */ "./src/assets/images/take.png") },
           }),
-          _c("text", { staticClass: "appointment-txt" }, [_vm._v("摄像师")]),
+          _c("text", [_vm._v("约摄像师")]),
         ]
       ),
       _c(
         "view",
         {
-          staticClass: "appointment-item",
+          staticClass: "select-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20003", "造型师")
+              return _vm.goyuedan("20005", "修图师")
             },
           },
         },
         [
           _c("image", {
-            staticClass: "appointment-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/makeup.png",
-              mode: "aspectFit",
-            },
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/ps.png */ "./src/assets/images/ps.png") },
           }),
-          _c("text", { staticClass: "appointment-txt" }, [_vm._v("造型师")]),
+          _c("text", [_vm._v("约修图师")]),
         ]
       ),
       _c(
         "view",
         {
-          staticClass: "appointment-item",
+          staticClass: "select-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20007", "经纪人")
+              return _vm.goyuedan("20008", "经纪人")
             },
           },
         },
         [
           _c("image", {
-            staticClass: "appointment-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/model.png",
-              mode: "aspectFit",
-            },
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/economicman.png */ "./src/assets/images/economicman.png") },
           }),
-          _c("text", { staticClass: "appointment-txt" }, [_vm._v("经纪人")]),
+          _c("text", [_vm._v("约经纪人")]),
         ]
       ),
       _c(
         "view",
         {
-          staticClass: "appointment-item",
+          staticClass: "select-item",
           on: {
             tap: function ($event) {
-              return _vm.goyuedan("20011", "导演")
+              return _vm.goyuedan("20013", "商家")
             },
           },
         },
         [
           _c("image", {
-            staticClass: "appointment-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/ps.png",
-              mode: "aspectFit",
-            },
+            attrs: { src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png") },
           }),
-          _c("text", { staticClass: "appointment-txt" }, [_vm._v("导演")]),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "appointment-item",
-          on: {
-            tap: function ($event) {
-              return _vm.goyuedan("20012", "商家")
-            },
-          },
-        },
-        [
-          _c("image", {
-            staticClass: "appointment-image",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/business.png",
-              mode: "aspectFit",
-            },
-          }),
-          _c("text", { staticClass: "appointment-txt" }, [_vm._v("商家")]),
+          _c("text", [_vm._v("约商家")]),
         ]
       ),
     ]),
@@ -274,6 +318,66 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/business.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/business.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/business.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/cameraman.png":
+/*!*****************************************!*\
+  !*** ./src/assets/images/cameraman.png ***!
+  \*****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/cameraman.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/economicman.png":
+/*!*******************************************!*\
+  !*** ./src/assets/images/economicman.png ***!
+  \*******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/economicman.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/makeup.png":
+/*!**************************************!*\
+  !*** ./src/assets/images/makeup.png ***!
+  \**************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/makeup.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/ps.png":
+/*!**********************************!*\
+  !*** ./src/assets/images/ps.png ***!
+  \**********************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/ps.png";
 
 /***/ }),
 
@@ -344,5 +448,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/pages/release/appointment/index.vue","runtime","taro","vendors"]]]);
+},[["./src/pages/release/appointment/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

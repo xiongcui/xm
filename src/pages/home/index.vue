@@ -15,7 +15,7 @@
           }"
         >
           <view class="head_left">
-            <view class="select-city">
+            <view class="select-city" @tap="selectCity" v-if="city">
               {{ city }}
               <image
                 src="../../assets/images/common/back.png"
@@ -65,21 +65,21 @@
       </view>
       <view class="page-nav">
         <view class="page-nav-top">
-          <view class="page-nav-item">
+          <view class="page-nav-item" @tap="goTakelist">
             <image
               src="../../assets/images/icon_model.png"
               class="page-nav-img"
             ></image>
             <text class="page-nav-text">模特</text>
           </view>
-          <view class="page-nav-item">
+          <view class="page-nav-item" @tap="goTakelist">
             <image
               src="../../assets/images/take.png"
               class="page-nav-img"
             ></image>
             <text class="page-nav-text">摄影</text>
           </view>
-          <view class="page-nav-item">
+          <view class="page-nav-item" @tap="goMore(2)">
             <image
               src="../../assets/images/more1.png"
               class="page-nav-img"
@@ -95,7 +95,7 @@
           </view>
         </view>
         <view class="page-nav-bottom">
-          <view class="page-nav-box nav_bg1">
+          <view class="page-nav-box nav_bg1" @tap="goMore(0)">
             <view class="page-nav-left">
               <view class="page-nav-title">约拍</view>
               <view class="page-nav-desc">你约我拍</view>
@@ -104,7 +104,7 @@
               <image src="../../assets/images/common/photo_white.png"></image>
             </view>
           </view>
-          <view class="page-nav-box nav_bg2">
+          <view class="page-nav-box nav_bg2" @tap="goMore(1)">
             <view class="page-nav-left">
               <view class="page-nav-title">通告</view>
               <view class="page-nav-desc">招募公告</view>
@@ -119,7 +119,12 @@
         <view class="recommend-title">
           <view class="recommend-name"> 约拍推荐 </view>
           <view class="recommend-tips"> 1分钟前***发布了人像创作</view>
-          <view class="recommend-more">更多</view>
+          <view
+            class="recommend-more"
+            @tap="goMore(0)"
+            v-if="inviteRecommendList.length"
+            >更多</view
+          >
         </view>
         <view class="recommend-ct">
           <swiper
@@ -132,10 +137,15 @@
             :style="{
               height: swiperheight + 'px',
             }"
+            v-if="inviteRecommendList.length"
           >
             <block v-for="(item, index) in inviteRecommendList" :key="index">
               <swiper-item>
-                <view class="recommend-box" :id="'recommend-box' + index">
+                <view
+                  class="recommend-box"
+                  :id="'recommend-box' + index"
+                  @tap="goYuepaiDetail(item.basic.oid, item.author.uuid)"
+                >
                   <view class="tonggao-recommend">
                     <view class="list_box">
                       <view class="list_top">
@@ -274,13 +284,26 @@
               </swiper-item>
             </block>
           </swiper>
+          <view v-else class="none-data">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+              mode="aspectFill"
+              class="none-img"
+            ></image>
+            <view>当前暂无信息哦～</view>
+          </view>
         </view>
       </view>
       <view class="recommend">
         <view class="recommend-title">
           <view class="recommend-name"> 通告推荐 </view>
           <view class="recommend-tips"> 1分钟前***发布了人像创作</view>
-          <view class="recommend-more">更多</view>
+          <view
+            class="recommend-more"
+            @tap="goMore(1)"
+            v-if="noticeRecommendList.length"
+            >更多</view
+          >
         </view>
         <view class="recommend-ct">
           <swiper
@@ -293,12 +316,14 @@
             :style="{
               height: tonggaoSwiperHeight + 'px',
             }"
+            v-if="noticeRecommendList.length"
           >
             <block v-for="(item, index) in noticeRecommendList" :key="index">
               <swiper-item>
                 <view
                   class="recommend-box"
                   :id="'tonggao-recommend-box' + index"
+                  @tap="godetail(item.basic.oid, item.author.uuid)"
                 >
                   <view class="tonggao-recommend">
                     <view class="tonggao-recommend-top">
@@ -323,6 +348,12 @@
                         <image
                           :src="item.details.media.cover[0]"
                           mode="aspectFill"
+                          @tap.stop="
+                            previewImage(
+                              item.details.media.cover[0],
+                              item.details.media.cover
+                            )
+                          "
                         ></image>
                       </view>
                       <view class="tonggao-recommend-info">
@@ -372,6 +403,14 @@
               </swiper-item>
             </block>
           </swiper>
+          <view v-else class="none-data">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+              mode="aspectFill"
+              class="none-img"
+            ></image>
+            <view>当前暂无信息哦～</view>
+          </view>
         </view>
       </view>
       <view class="componets">
@@ -391,12 +430,18 @@
 
     <Pagenav
       :pageActive="componetActive"
+      :active="navActive"
       :navList="navList"
       :chargeList="chargeData"
+      :purposeList="purposeData"
+      :appointmentList="appointmentData"
       :identityList="identityData"
       :noticeList="noticeData"
       :style="{ marginTop: globalData.navHeight + 'px' }"
+      :isMargin="true"
       @pageNavClick="pageNavClick"
+      @navClick="navClick"
+      @submitQuery="submitQuery"
       v-show="navShow"
       ref="pageNavRef"
       class="pagenav"
@@ -415,13 +460,28 @@
         :baseData="zuopinList"
         v-if="componetActive == 2"
       ></ZuopinList>
+      <view class="nomore" v-if="noMore">没有更多了～</view>
       <loading :showLoading="showLoading"></loading>
+      <view class="login-mask" v-if="visible">
+        <view class="mask-box">
+          <view class="mask-title">
+            授权登录
+            <view class="close" @tap="modelClose"></view>
+          </view>
+          <view class="mask-ct">
+            <view class="mask-login-tips">授权登录后查看更多优质模特图</view>
+            <view class="mask-login-btn" @tap="getUserProfile">授权登录</view>
+            <view class="mask-login-cancel" @tap="modelClose">再看看</view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
+const citySelector = requirePlugin("citySelector");
 import TonggaoList from "../../components/tonggaoList/index.vue";
 import YuepaiList from "../../components/yuepaiList/index.vue";
 import ZuopinList from "../../components/zuopinList/index.vue";
@@ -432,23 +492,31 @@ import {
   noticeAdviseList,
   notifyNumber,
   isSign,
-  publicConfig,
-  noticeFilter,
-  getCareer,
   inviteList,
   noticeList,
   photoList,
+  userStatus,
+  userSelectCity,
+  wxlogin,
+  inviteFilter,
+  noticeFilter,
+  photoFilter,
+  shareInvite,
+  submitSign,
 } from "../../api/index";
+import { openPage, isLogin } from "../../utils/util";
 export default {
   name: "home",
   data() {
     return {
+      visible: false,
+      noMore: false,
       showLoading: false,
       loading: false,
       topNum: 0,
       swiperheight: 0,
       tonggaoSwiperHeight: 0,
-      city: "北京",
+      city: "",
       is_today_sign: 0,
       background: ["demo-text-1", "demo-text-2", "demo-text-3"],
       indicatorDots: true,
@@ -459,15 +527,18 @@ export default {
       interval2: 10000,
       duration: 500,
       componetActive: 0,
+      navActive: 0,
       headCurrent: 0,
       pageNum: 1,
       pageSize: 10,
-      showSign: false,
+      //   showSign: false,
       navShow: false,
       inviteRecommendList: [],
       noticeRecommendList: [],
       navList: [],
       chargeData: [],
+      purposeData: [],
+      appointmentData: [],
       identityData: [],
       noticeData: [],
       componetsNav: [
@@ -488,7 +559,14 @@ export default {
       noticeList: [],
       zuopinList: [],
       city_filter: {},
+      recommend_city_filter: {},
       isclick: false,
+      key: "XJCBZ-ZUJNV-VRLP7-UCFUN-LNGNT-FVFZ2", // 使用在腾讯位置服务申请的key
+      referer: "虾米约拍", // 调用插件的app的名称
+      hotCitys: "",
+      shareTitle: "",
+      sharePath: "",
+      shareImg: "",
     };
   },
   components: {
@@ -499,6 +577,25 @@ export default {
     loading,
   },
   methods: {
+    showSign() {
+      this.submitSign("");
+    },
+    goYuepaiDetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
+    godetail(oid, author_id) {
+      openPage(
+        "/packageTonggao/pages/detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
     previewImage(src, urls) {
       // 微信预览图片的方法
       wx.previewImage({
@@ -506,47 +603,87 @@ export default {
         urls: urls, // 预览的地址url
       });
     },
+    selectCity() {
+      wx.navigateTo({
+        url: `plugin://citySelector/index?key=${this.key}&referer=${this.referer}&hotCitys=${this.hotCitys}`,
+      });
+    },
+    goMore(index) {
+      if (isLogin()) {
+        openPage(
+          "/packageAdd/pages/user/homelist/index?componetActive=" +
+            index +
+            "&city_filter=" +
+            this.city_filter
+        );
+      } else {
+        openPage("/pages/login/index");
+      }
+    },
+    goTakelist() {
+      if (isLogin()) {
+        openPage(
+          "/packageAdd/pages/user/takelist/index?city_filter=" +
+            this.city_filter
+        );
+      } else {
+        openPage("/pages/login/index");
+      }
+    },
     componetClick(index) {
       if (this.componetActive != index) {
         this.componetActive = index;
         this.pageNum = 1;
-        this.switchQuery(index);
+        this.isclick = true;
+        this.showLoading = true;
+        this.switchQuery(index, false);
       }
     },
     pageNavClick(index) {
       this.pageNum = 1;
       this.componetActive = index;
+      this.navActive = 0;
       this.isclick = true;
       this.showLoading = true;
-      this.switchQuery(index);
+      this.switchQuery(index, true);
     },
-    switchQuery(index) {
-      switch (index) {
+    navClick(pageNavIndex, navIndex) {
+      this.pageNum = 1;
+      this.isclick = true;
+      this.showLoading = true;
+      if (pageNavIndex == 0) {
+        this.query("init", navIndex, true);
+      } else if (pageNavIndex == 1) {
+        this.noticeQuery("init", navIndex, true);
+      } else if (pageNavIndex == 2) {
+        this.zuopinQuery("init", navIndex, true);
+      }
+    },
+    submitQuery(pageNavIndex, navIndex, select_filter) {
+      this.select_filter = select_filter;
+      this.showLoading = true;
+      switch (pageNavIndex) {
         case 0:
-          this.publicConfig(
-            {
-              type: ["invite_filter", "payment_type"],
-            },
-            true
-          );
+          this.query("init", navIndex, true);
           break;
         case 1:
-          this.noticeFilter("");
-          this.publicNoticeConfig(
-            {
-              type: ["notice_filter"],
-            },
-            true
-          );
+          this.noticeQuery("init", navIndex, true);
           break;
         case 2:
-          this.getCareer("");
-          this.publicPhotoConfig(
-            {
-              type: ["photo_filter"],
-            },
-            true
-          );
+          this.zuopinQuery("init", navIndex, true);
+          break;
+      }
+    },
+    switchQuery(index, scroll) {
+      switch (index) {
+        case 0:
+          this.inviteFilter({}, scroll);
+          break;
+        case 1:
+          this.noticeFilter({}, scroll);
+          break;
+        case 2:
+          this.photoFilter({}, scroll);
           break;
       }
     },
@@ -625,12 +762,70 @@ export default {
         this.zuopinQuery("more", this.$refs["pageNavRef"].navActive);
       }
     },
+    getUserProfile() {
+      let _this = this;
+      wx.getUserProfile({
+        desc: "用于完善会员资料",
+        success: (res) => {
+          let avatar = res.userInfo.avatarUrl;
+          let nickname = res.userInfo.nickName;
+          wx.login({
+            success(res) {
+              _this.getWxLogin({
+                avatar: avatar,
+                nickname: nickname,
+                account: res.code,
+                secret: "",
+                type: 200,
+              });
+            },
+            fail(err) {
+              console.log(err);
+            },
+          });
+        },
+        fail: (res) => {
+          console.log(res);
+        },
+      });
+    },
+    async getWxLogin(params) {
+      try {
+        let res = await wxlogin(params);
+        const token = res.data.data.token;
+        wx.setStorageSync("token", token);
+        wx.setStorageSync("userInfo", {
+          avatar: params.avatar,
+          nickname: params.nickname,
+        });
+        if (res.data.data.is_bind_phone == 0) {
+          this.pageshow = "bindphone";
+        } else if (res.data.data.login_type == 2) {
+          this.visible = false;
+          this.pageNum = 1;
+          this.yuepaiList = [];
+          this.zuopinList = [];
+          this.noticeList = [];
+          this.loading = true;
+          this.showLoading = true;
+          this.navClick(this.componetActive, 0);
+        } else {
+          // 未注册
+          openPage("/pages/register/index");
+        }
+      } catch (error) {
+        console.log("失败");
+      }
+    },
     async inviteList(params, type, scroll) {
       try {
         let res = await inviteList(params);
         //隐藏loading 提示框
         this.showLoading = false;
         wx.hideLoading();
+
+        this.noMore = false;
+
         //隐藏导航条加载动画
         wx.hideNavigationBarLoading();
         //停止下拉刷新
@@ -643,6 +838,7 @@ export default {
           if (!res.data.data || !res.data.data.items.length) {
             errortip("没有更多数据了～");
             this.loading = true;
+
             return false;
           }
           let data = res.data.data.items;
@@ -660,7 +856,6 @@ export default {
           });
           query.select(".nav_fixed").boundingClientRect((res) => {
             fixedHeight = res.height;
-            console.log(fixedHeight, "fixedHeight=====");
           });
           query
             .select("#list")
@@ -678,13 +873,17 @@ export default {
               });
             })
             .exec();
-          this.isclick = false;
         }
+        this.isclick = false;
       } catch (error) {
+        this.showLoading = false;
         if (error.data.error_code == 11020) {
           this.visible = true;
           this.isclick = false;
           console.log(error, "error");
+        }
+        if (error.data.error_code == 10100 && this.pageNum > 1) {
+          this.noMore = true;
         }
       }
     },
@@ -738,73 +937,113 @@ export default {
         this.is_today_sign = res.data.data.is_today_sign;
       } catch (error) {}
     },
-    async publicConfig(params, scroll) {
+    async userStatus(params) {
       try {
-        let res = await publicConfig(params);
+        let res = await userStatus(params);
+        if (res.data.data) {
+          this.is_today_sign = res.data.data.is_today_sign;
+          this.city = res.data.data.current_city.city_name;
+          this.city_filter = res.data.data.current_city.city_id;
+          this.recommend_city_filter = res.data.data.current_city.city_id;
+        }
+
+        // 约拍推荐
+        this.inviteAdviseList({
+          city_filter: this.recommend_city_filter,
+        });
+        // 通告推荐
+        this.noticeAdviseList({
+          city_filter: this.recommend_city_filter,
+        });
+      } catch (error) {}
+    },
+    async userSelectCity(params) {
+      try {
+        let res = await userSelectCity(params);
+      } catch (error) {}
+    },
+    async inviteFilter(params, scroll) {
+      try {
+        let res = await inviteFilter(params);
         let arr = [];
         let arr2 = [];
-        res.data.data.map((item, index) => {
-          if (item.type == "invite_filter") {
+        let arr3 = [];
+        if (res.data.data.quick_filter) {
+          this.navList = res.data.data.quick_filter;
+        }
+        if (res.data.data.author_career) {
+          res.data.data.author_career.map((item, index) => {
             arr.push(item);
-          } else if (item.type == "payment_type") {
+          });
+        }
+        if (res.data.data.payment_type) {
+          res.data.data.payment_type.map((item, index) => {
             item.ispick = false;
             arr2.push(item);
-          }
+          });
+        }
+        if (res.data.data.face_career) {
+          res.data.data.face_career.map((item, index) => {
+            item.ispick = false;
+            arr3.push(item);
+          });
+        }
+        arr.unshift({
+          key: "all",
+          value: "全部",
+          ispick: true,
         });
-        this.navList = arr;
         arr2.unshift({
           key: "all",
           name: "全部",
           value: "全部",
           ispick: true,
         });
+        arr3.unshift({
+          key: "all",
+          value: "全部",
+          ispick: true,
+        });
+        this.appointmentData = arr;
         this.chargeData = arr2;
+        this.purposeData = arr3;
         this.select_filter = {
-          face_province_id: 0,
-          face_city_id: 0,
-          face_cid: 0,
           sex: 10,
           payment_type: 0,
         };
         this.query("init", this.$refs["pageNavRef"].navActive, scroll);
       } catch (error) {}
     },
-    async publicNoticeConfig(params, scroll) {
-      try {
-        let res = await publicConfig(params);
-        this.navList = res.data.data;
-        this.select_filter = {
-          first_code: "",
-          payment_type: 0,
-          career_cid: 0,
-          face_cid: 0,
-          face_province_id: 0,
-        };
-        this.noticeQuery("init", this.$refs["pageNavRef"].navActive, scroll);
-      } catch (error) {}
-    },
-    async noticeFilter(params) {
+    async noticeFilter(params, scroll) {
       try {
         let res = await noticeFilter(params);
         let data = res.data.data;
+        if (data.quick_filter) {
+          this.navList = data.quick_filter;
+        }
         let arr = [];
         let arr1 = [];
         let arr2 = [];
-        arr = data.career.map((item) => {
-          item.ispick = false;
-          return item;
-        });
-        arr1 = data.first_code.map((item) => {
-          item.ispick = false;
-          return item;
-        });
-        arr2 = data.payment_type.map((item) => {
-          item.ispick = false;
-          return item;
-        });
+        if (data.face_career) {
+          arr = data.face_career.map((item) => {
+            item.ispick = false;
+            return item;
+          });
+        }
+        if (data.first_code) {
+          arr1 = data.first_code.map((item) => {
+            item.ispick = false;
+            return item;
+          });
+        }
+        if (data.payment_type) {
+          arr2 = data.payment_type.map((item) => {
+            item.ispick = false;
+            return item;
+          });
+        }
         arr.unshift({
           cid: "all",
-          name: "全部",
           value: "全部",
           ispick: true,
         });
@@ -821,46 +1060,51 @@ export default {
         this.identityData = arr;
         this.noticeData = arr1;
         this.chargeData = arr2;
-      } catch (error) {}
-    },
-    async publicPhotoConfig(params, scroll) {
-      try {
-        let res = await publicConfig(params);
-        let arr = [];
-        res.data.data.map((item, index) => {
-          if (item.type == "photo_filter") {
-            arr.push(item);
-          } else if (item.type == "payment_type") {
-            item.ispick = false;
-            arr2.push(item);
-          }
-        });
-        this.navList = arr;
         this.select_filter = {
-          face_province_id: 0,
-          face_cid: 0,
-          career_cid: 0,
-          sex: 10,
+          first_code: "",
+          payment_type: 0,
+          face_career: 0,
         };
-        this.zuopinQuery("init", this.$refs["pageNavRef"].navActive, scroll);
+        this.noticeQuery("init", this.$refs["pageNavRef"].navActive, scroll);
       } catch (error) {}
     },
-    async getCareer(params) {
+    async photoFilter(params, scroll) {
       try {
-        let res = await getCareer(params);
+        let res = await photoFilter(params);
         let data = res.data.data;
-        let arr = [];
-        arr = data.career_list.map((item) => {
-          item.ispick = false;
-          return item;
-        });
-        arr.unshift({
-          cid: "all",
-          role: "全部",
+        let arr2 = [];
+        let arr3 = [];
+        if (data.quick_filter) {
+          this.navList = data.quick_filter;
+        }
+        if (data.payment_type) {
+          arr2 = data.payment_type.map((item) => {
+            item.ispick = false;
+            return item;
+          });
+        }
+        if (data.author_career) {
+          arr3 = data.author_career.map((item) => {
+            item.ispick = false;
+            return item;
+          });
+        }
+        arr2.unshift({
+          key: "all",
           value: "全部",
           ispick: true,
         });
-        this.identityData = arr;
+        arr3.unshift({
+          key: "all",
+          value: "全部",
+          ispick: true,
+        });
+        this.identityData = arr3;
+        this.select_filter = {
+          author_career: 0,
+          author_sex: 10,
+        };
+        this.zuopinQuery("init", this.$refs["pageNavRef"].navActive, scroll);
       } catch (error) {}
     },
     async queryNoticeList(params, type, scroll) {
@@ -869,6 +1113,9 @@ export default {
         //隐藏loading 提示框
         this.showLoading = false;
         wx.hideLoading();
+
+        this.noMore = false;
+
         //隐藏导航条加载动画
         wx.hideNavigationBarLoading();
         //停止下拉刷新
@@ -897,7 +1144,6 @@ export default {
           });
           query.select(".nav_fixed").boundingClientRect((res) => {
             fixedHeight = res.height;
-            console.log(fixedHeight, "fixedHeight=======");
           });
           query
             .select("#list")
@@ -918,10 +1164,14 @@ export default {
         }
         this.isclick = false;
       } catch (error) {
+        this.showLoading = false;
         if (error.data.error_code == 11020) {
           this.visible = true;
           this.isclick = false;
           console.log(error, "error");
+        }
+        if (error.data.error_code == 10100 && this.pageNum > 1) {
+          this.noMore = true;
         }
       }
     },
@@ -931,6 +1181,9 @@ export default {
         //隐藏loading 提示框
         this.showLoading = false;
         wx.hideLoading();
+
+        this.noMore = false;
+
         //隐藏导航条加载动画
         wx.hideNavigationBarLoading();
         //停止下拉刷新
@@ -977,15 +1230,40 @@ export default {
               });
             })
             .exec();
-          this.isclick = false;
         }
+        this.isclick = false;
       } catch (error) {
+        this.showLoading = false;
         if (error.data.error_code == 11020) {
           this.visible = true;
           this.isclick = false;
           console.log(error, "error");
         }
+        if (error.data.error_code == 10100 && this.pageNum > 1) {
+          this.noMore = true;
+        }
       }
+    },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
+    async submitSign(params) {
+      try {
+        let res = await submitSign(params);
+        this.showModelSign = true;
+        this.hyper_desc = res.data.data.hyper_desc;
+        this.isSign("");
+      } catch (error) {}
     },
   },
   onPageScroll: function (e) {
@@ -1017,30 +1295,60 @@ export default {
   },
   created() {
     this.globalData = this.globalData;
-    // 约拍推荐
-    this.inviteAdviseList({});
-    // 通告推荐
-    this.noticeAdviseList({});
     // 消息通知红点
     this.notifyNumber("");
-    // 是否签到
-    this.isSign("");
+    // 当前城市&是否签到
+    this.userStatus("");
 
-    this.publicConfig({
-      type: ["invite_filter", "payment_type"],
+    this.inviteFilter({});
+    // 分享
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
     });
-
-    // this.publicNoticeConfig({
-    //   type: ["notice_filter"],
-    // });
-    // this.noticeFilter("");
-
-    // this.publicPhotoConfig({
-    //   type: ["photo_filter"],
-    // });
-    // this.getCareer("");
   },
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    if (options.scene) {
+      wx.setStorageSync("invited_uuid", options.scene);
+    }
+  },
+  // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
+  onShow() {
+    if (citySelector.getCity()) {
+      const selectedCity = citySelector.getCity(); // 选择城市后返回城市信息对象，若未选择返回null
+      this.city_filter = Number(selectedCity.id);
+      this.city = selectedCity.name;
+      this.userSelectCity({ city_info: this.city_filter });
+      // 约拍推荐
+      this.inviteAdviseList({
+        city_filter: this.recommend_city_filter,
+      });
+      // 通告推荐
+      this.noticeAdviseList({
+        city_filter: this.recommend_city_filter,
+      });
+      // 列表查询
+      this.pageNum = 1;
+      this.isclick = true;
+      this.showLoading = true;
+      this.switchQuery(this.componetActive);
+    }
+  },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat",
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
+  onUnload() {
+    // 页面卸载时清空插件数据，防止再次进入页面，getCity返回的是上次的结果
+    citySelector.clearCity();
+  },
 };
 </script>
 
