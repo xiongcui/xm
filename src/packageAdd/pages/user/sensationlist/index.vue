@@ -190,6 +190,7 @@ export default {
     },
   },
   onLoad: function (options) {
+    console.log(options);
     this.platform_code = options.platform_code;
     this.platform_name = options.platform_name;
     this.oid = options.oid;

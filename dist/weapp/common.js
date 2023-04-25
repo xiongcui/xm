@@ -788,6 +788,18 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -970,10 +982,6 @@
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -1008,6 +1016,9 @@
 
       });
     },
+    goZhuye: function goZhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     goYuepaiDetail: function goYuepaiDetail(oid, author_id) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
@@ -1028,6 +1039,8 @@
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/components/zuopinList/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
 //
 //
 //
@@ -1125,6 +1138,9 @@
     };
   },
   methods: {
+    goZhuye: function goZhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     godetail: function godetail(oid, author_id) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
@@ -1818,123 +1834,125 @@ var render = function () {
   return _c(
     "view",
     { staticClass: "componets-list" },
-    _vm._l(_vm.list, function (item, index) {
-      return _vm.list.length
-        ? _c("view", { key: index }, [
-            _c(
-              "view",
-              {
-                staticClass: "componets-box",
-                on: {
-                  tap: function ($event) {
-                    return _vm.godetail(item.basic.oid, item.author.uuid)
+    [
+      _vm._l(_vm.list, function (item, index) {
+        return _vm.list.length > 0
+          ? _c("view", { key: index }, [
+              _c(
+                "view",
+                {
+                  staticClass: "componets-box",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.godetail(item.basic.oid, item.author.uuid)
+                    },
                   },
                 },
-              },
-              [
-                _c("view", { staticClass: "tonggao-recommend" }, [
-                  _c("view", { staticClass: "tonggao-recommend-top" }, [
-                    _c(
-                      "view",
-                      { staticClass: "tonggao-info-title" },
-                      [
-                        _vm._l(
-                          item.topic.headline.tag,
-                          function (tagitem, tagindex) {
-                            return _c(
-                              "view",
-                              { key: tagindex, staticClass: "recommend-label" },
-                              [_vm._v(" " + _vm._s(tagitem) + " ")]
-                            )
-                          }
-                        ),
-                        _c("view", { staticClass: "tonggao-txt" }, [
-                          _vm._v(" " + _vm._s(item.topic.headline.title)),
-                        ]),
-                      ],
-                      2
-                    ),
-                  ]),
-                  _c("view", { staticClass: "tonggao-recommend-bt" }, [
-                    item.details.media.file_type == "picture"
-                      ? _c("view", { staticClass: "tonggao-recommend-img" }, [
-                          _c("image", {
-                            attrs: {
-                              src: item.details.media.cover[0],
-                              mode: "aspectFill",
-                            },
-                            on: {
-                              tap: function ($event) {
-                                $event.stopPropagation()
-                                return _vm.previewImage(
-                                  item.details.media.cover[0],
-                                  item.details.media.cover
-                                )
-                              },
-                            },
-                          }),
-                        ])
-                      : _vm._e(),
-                    _c("view", { staticClass: "tonggao-recommend-info" }, [
-                      _c("view", { staticClass: "tonggao-info-desc" }, [
-                        _vm._v(" " + _vm._s(item.details.summary)),
-                      ]),
+                [
+                  _c("view", { staticClass: "tonggao-recommend" }, [
+                    _c("view", { staticClass: "tonggao-recommend-top" }, [
                       _c(
                         "view",
-                        { staticClass: "tonggao-tags" },
-                        _vm._l(
-                          item.subtitle.first_label,
-                          function (tag, tagIndex) {
-                            return _c(
-                              "view",
-                              { key: tagIndex, staticClass: "tag-item" },
-                              [_vm._v(_vm._s(tag.name))]
-                            )
-                          }
-                        ),
-                        0
+                        { staticClass: "tonggao-info-title" },
+                        [
+                          item.topic.headline.tag.length
+                            ? _c(
+                                "block",
+                                _vm._l(
+                                  item.topic.headline.tag,
+                                  function (tagitem, tagindex) {
+                                    return _c("image", {
+                                      key: tagindex,
+                                      staticClass: "recommend-image",
+                                      attrs: { src: tagitem },
+                                    })
+                                  }
+                                ),
+                                0
+                              )
+                            : _vm._e(),
+                          _c("view", { staticClass: "tonggao-txt" }, [
+                            _vm._v(" " + _vm._s(item.topic.headline.title)),
+                          ]),
+                        ],
+                        1
                       ),
-                      _c("view", { staticClass: "tonggao-recommend-price" }, [
-                        _c("view", { staticClass: "pirce" }, [
-                          _vm._v(" " + _vm._s(item.topic.payment.title)),
+                    ]),
+                    _c("view", { staticClass: "tonggao-recommend-bt" }, [
+                      _c("view", { staticClass: "tonggao-recommend-info" }, [
+                        _c("view", { staticClass: "recommend-style" }, [
+                          _c("text", { staticClass: "recommend-label" }, [
+                            _vm._v(" " + _vm._s(item.topic.target) + " "),
+                          ]),
+                          _c("text", { staticClass: "recommend-label2" }, [
+                            _vm._v(
+                              " " + _vm._s(item.topic.payment.title) + " "
+                            ),
+                          ]),
                         ]),
-                        _c("view", { staticClass: "recommend-btn" }, [
-                          _vm._v("立即报名"),
-                        ]),
+                        _c(
+                          "view",
+                          { staticClass: "tonggao-tags" },
+                          _vm._l(
+                            item.subtitle.first_label,
+                            function (tag, tagIndex) {
+                              return _c(
+                                "view",
+                                { key: tagIndex, staticClass: "tag-item" },
+                                [_vm._v(_vm._s(tag.name))]
+                              )
+                            }
+                          ),
+                          0
+                        ),
                       ]),
+                      item.details.media.file_type == "picture"
+                        ? _c("view", { staticClass: "tonggao-recommend-img" }, [
+                            _c("image", {
+                              attrs: {
+                                src: item.details.media.cover[0],
+                                mode: "aspectFill",
+                              },
+                            }),
+                          ])
+                        : _vm._e(),
                     ]),
                   ]),
-                ]),
-                _c("view", { staticClass: "tonggao-bottom" }, [
-                  _c("view", { staticClass: "tonggao-head" }, [
-                    _c("image", {
-                      attrs: {
-                        src: item.author.avatar
-                          ? item.author.avatar
-                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-                      },
-                    }),
-                    _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                  _c("view", { staticClass: "tonggao-bottom" }, [
+                    _c("view", { staticClass: "tonggao-head" }, [
+                      _c("image", {
+                        attrs: {
+                          src: item.author.avatar
+                            ? item.author.avatar
+                            : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                    ]),
+                    _c("view", { staticClass: "tonggao-yuepai" }, [
+                      _c("image", {
+                        attrs: {
+                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.statistic.invite_cnt) + " "),
+                    ]),
+                    _c("view", { staticClass: "tonggao-read" }, [
+                      _c("image", {
+                        attrs: {
+                          src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.statistic.read_cnt) + " "),
+                    ]),
                   ]),
-                  _c("view", { staticClass: "tonggao-yuepai" }, [
-                    _c("image", {
-                      attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
-                      },
-                    }),
-                    _vm._v(" " + _vm._s(item.statistic.invite_cnt) + " "),
-                  ]),
-                  _c("view", { staticClass: "tonggao-read" }, [
-                    _c("image", {
-                      attrs: { src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png") },
-                    }),
-                    _vm._v(" " + _vm._s(item.statistic.read_cnt) + " "),
-                  ]),
-                ]),
-              ]
-            ),
-          ])
-        : _c("view", { staticClass: "none-data" }, [
+                ]
+              ),
+            ])
+          : _vm._e()
+      }),
+      _vm.list.length == 0
+        ? _c("view", { staticClass: "none-data" }, [
             _c("image", {
               staticClass: "none-img",
               attrs: {
@@ -1944,8 +1962,9 @@ var render = function () {
             }),
             _c("view", [_vm._v("当前暂无数据哦～")]),
           ])
-    }),
-    0
+        : _vm._e(),
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -1973,205 +1992,194 @@ var render = function () {
   return _c(
     "view",
     { staticClass: "componets-list" },
-    _vm._l(_vm.list, function (item, index) {
-      return _vm.list.length
-        ? _c("view", [
-            _c(
-              "view",
-              {
-                staticClass: "componets-box",
-                on: {
-                  tap: function ($event) {
-                    return _vm.goYuepaiDetail(item.basic.oid, item.author.uuid)
+    [
+      _vm._l(_vm.list, function (item, index) {
+        return _vm.list.length > 0
+          ? _c("view", { key: index }, [
+              _c(
+                "view",
+                {
+                  staticClass: "componets-box",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.goYuepaiDetail(
+                        item.basic.oid,
+                        item.author.uuid
+                      )
+                    },
                   },
                 },
-              },
-              [
-                _c("view", { staticClass: "list_top" }, [
-                  _c("view", { staticClass: "list_top_left" }, [
-                    _c("image", {
-                      staticClass: "avatar",
-                      attrs: {
-                        src: item.author.avatar
-                          ? item.author.avatar
-                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-                      },
-                    }),
-                    _c("view", { staticClass: "list_info" }, [
-                      _c(
-                        "view",
-                        { staticClass: "list_name" },
-                        [
-                          _vm._v(" " + _vm._s(item.author.nickname) + " "),
-                          item.author.sex !== null
-                            ? _c("block", [
-                                item.author.sex == 1
-                                  ? _c("image", {
-                                      staticClass: "list_sex",
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                      },
-                                    })
-                                  : _vm._e(),
-                                item.author.sex == 0
-                                  ? _c("image", {
-                                      staticClass: "list_sex",
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                      },
-                                    })
-                                  : _vm._e(),
-                              ])
-                            : _vm._e(),
-                        ],
-                        1
-                      ),
-                      _c("view", { staticClass: "list_p" }, [
-                        _c("text", [
-                          _vm._v(
-                            " " +
-                              _vm._s(
-                                item.author.career_list &&
-                                  item.author.career_list.length
-                                  ? item.author.career_list[0]
-                                  : null
-                              )
-                          ),
-                        ]),
-                        item.author.is_certify
-                          ? _c("view", { staticClass: "icon_real" }, [
-                              _vm._v("已实名"),
-                            ])
-                          : _vm._e(),
-                        item.author.is_security
-                          ? _c("view", { staticClass: "icon_pledge" }, [
-                              _vm._v("已担保"),
-                            ])
-                          : _vm._e(),
-                      ]),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "list_top_rt" }, [
-                    _c("view", { staticClass: "list_loction" }, [
-                      _vm._v(" " + _vm._s(item.author.province_name) + " "),
-                    ]),
-                    _c("view", { staticClass: "list_date" }, [
-                      _vm._v(_vm._s(item.basic.date_humanize)),
-                    ]),
-                  ]),
-                ]),
-                _c("view", { staticClass: "list_content" }, [
-                  _c(
-                    "view",
-                    { staticClass: "list_title" },
-                    [
-                      _vm._l(
-                        item.topic.headline.tag,
-                        function (tagitem, tagindex) {
-                          return _c(
-                            "view",
-                            { key: tagindex, staticClass: "recommend-label" },
-                            [_vm._v(" " + _vm._s(tagitem) + " ")]
-                          )
-                        }
-                      ),
-                      _c("view", { staticClass: "recommend-label2" }, [
-                        _vm._v(" " + _vm._s(item.topic.payment.title) + " "),
-                      ]),
-                    ],
-                    2
-                  ),
-                  _c("view", { staticClass: "list_title_desc" }, [
-                    _vm._v(_vm._s(item.topic.headline.title)),
-                  ]),
-                ]),
-                _c("view", { staticClass: "list_desc" }, [
-                  _vm._v(" " + _vm._s(item.details.summary) + " "),
-                ]),
-                item.details.media.file_type == "picture"
-                  ? _c(
-                      "view",
-                      { staticClass: "list_img" },
-                      [
-                        _c(
-                          "scroll-view",
-                          { attrs: { enhanced: true, scrollX: true } },
-                          _vm._l(
-                            item.details.media.cover,
-                            function (url, coverIndex) {
-                              return _c("image", {
-                                key: coverIndex,
-                                staticClass: "list_img_item",
-                                attrs: { src: url, mode: "aspectFill" },
-                                on: {
-                                  tap: function ($event) {
-                                    $event.stopPropagation()
-                                    return _vm.previewImage(
-                                      url,
-                                      item.details.media.cover
-                                    )
-                                  },
-                                },
-                              })
-                            }
-                          ),
-                          0
-                        ),
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                item.details.media.file_type == "video"
-                  ? _c("view", { staticClass: "list_video" }, [
-                      _c("video", {
-                        staticClass: "list_video-width",
+                [
+                  _c("view", { staticClass: "list_top" }, [
+                    _c("view", { staticClass: "list_top_left" }, [
+                      _c("image", {
+                        staticClass: "avatar",
                         attrs: {
-                          objectFit: "cover",
-                          poster: item.details.media.cover[0],
-                          src:
-                            item.details.media.video_cover &&
-                            item.details.media.video_cover[0],
+                          src: item.author.avatar
+                            ? item.author.avatar
+                            : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
                         },
                         on: {
                           tap: function ($event) {
-                            $event.stopPropagation()
+                            return _vm.goZhuye(item.author.uuid)
                           },
                         },
                       }),
-                    ])
-                  : _vm._e(),
-                _c("view", { staticClass: "list_bottom" }, [
-                  _c("view", { staticClass: "list_time" }, [
-                    _c("image", {
-                      attrs: {
-                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                      },
-                    }),
-                    _vm._v(" " + _vm._s(item.basic.date_humanize) + " "),
+                      _c("view", { staticClass: "list_info" }, [
+                        _c(
+                          "view",
+                          { staticClass: "list_name" },
+                          [
+                            _vm._v(" " + _vm._s(item.author.nickname) + " "),
+                            item.author.sex !== null
+                              ? _c("block", [
+                                  item.author.sex == 1
+                                    ? _c("image", {
+                                        staticClass: "list_sex",
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                        },
+                                      })
+                                    : _vm._e(),
+                                  item.author.sex == 0
+                                    ? _c("image", {
+                                        staticClass: "list_sex",
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                        },
+                                      })
+                                    : _vm._e(),
+                                ])
+                              : _vm._e(),
+                          ],
+                          1
+                        ),
+                        _c("view", { staticClass: "list_p" }, [
+                          _c("text", [
+                            _vm._v(
+                              " " +
+                                _vm._s(
+                                  item.author.career_list.length
+                                    ? item.author.career_list[0]
+                                    : null
+                                )
+                            ),
+                          ]),
+                          item.author.is_certify
+                            ? _c("view", { staticClass: "icon_real" }, [
+                                _vm._v("已实名"),
+                              ])
+                            : _vm._e(),
+                          item.author.is_security
+                            ? _c("view", { staticClass: "icon_pledge" }, [
+                                _vm._v("已担保"),
+                              ])
+                            : _vm._e(),
+                        ]),
+                      ]),
+                    ]),
+                    _c("view", { staticClass: "list_top_rt" }, [
+                      _c("view", { staticClass: "list_date" }, [
+                        _vm._v(_vm._s(item.basic.date_humanize)),
+                      ]),
+                    ]),
                   ]),
-                  _c("view", { staticClass: "list_yuepai" }, [
-                    _c("image", {
-                      attrs: {
-                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                      },
-                    }),
-                    _vm._v(
-                      " 收到约拍 " + _vm._s(item.statistic.invite_cnt) + " "
-                    ),
+                  _c("view", { staticClass: "list_content" }, [
+                    _c("view", { staticClass: "list_title" }, [
+                      _c("view", { staticClass: "recommend-style" }, [
+                        _c("view", { staticClass: "recommend-label" }, [
+                          _vm._v(" " + _vm._s(item.topic.target) + " "),
+                        ]),
+                        _c("view", { staticClass: "recommend-label2" }, [
+                          _vm._v(" " + _vm._s(item.topic.payment.title) + " "),
+                        ]),
+                      ]),
+                      _c("view", { staticClass: "list_loction" }, [
+                        _vm._v(" " + _vm._s(item.topic.face_city.name) + " "),
+                      ]),
+                    ]),
+                    _c("view", { staticClass: "list_title_desc" }, [
+                      _vm._v(_vm._s(item.topic.headline.title)),
+                    ]),
                   ]),
-                  _c("view", { staticClass: "list_read" }, [
-                    _c("image", {
-                      attrs: {
-                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                      },
-                    }),
-                    _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),
+                  item.details.media.file_type == "picture"
+                    ? _c(
+                        "view",
+                        { staticClass: "list_img" },
+                        [
+                          _c(
+                            "scroll-view",
+                            { attrs: { enhanced: true, scrollX: true } },
+                            _vm._l(
+                              item.details.media.cover,
+                              function (url, coverIndex) {
+                                return _c("image", {
+                                  key: coverIndex,
+                                  staticClass: "list_img_item",
+                                  attrs: { src: url, mode: "aspectFill" },
+                                })
+                              }
+                            ),
+                            0
+                          ),
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  item.details.media.file_type == "video"
+                    ? _c("view", { staticClass: "list_video" }, [
+                        _c("video", {
+                          staticClass: "list_video-width",
+                          attrs: {
+                            objectFit: "cover",
+                            poster: item.details.media.cover[0],
+                            src:
+                              item.details.media.video_cover &&
+                              item.details.media.video_cover[0],
+                          },
+                          on: {
+                            tap: function ($event) {
+                              $event.stopPropagation()
+                            },
+                          },
+                        }),
+                      ])
+                    : _vm._e(),
+                  _c("view", { staticClass: "list_bottom" }, [
+                    _c("view", { staticClass: "list_time" }, [
+                      _c("image", {
+                        attrs: {
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                        },
+                      }),
+                      _vm._v(" " + _vm._s(item.basic.date_humanize) + " "),
+                    ]),
+                    _c("view", { staticClass: "list_yuepai" }, [
+                      _c("image", {
+                        attrs: {
+                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                        },
+                      }),
+                      _vm._v(
+                        " 收到约拍 " + _vm._s(item.statistic.invite_cnt) + " "
+                      ),
+                    ]),
+                    _c("view", { staticClass: "list_read" }, [
+                      _c("image", {
+                        attrs: {
+                          src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                        },
+                      }),
+                      _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),
+                    ]),
                   ]),
-                ]),
-              ]
-            ),
-          ])
-        : _c("view", { staticClass: "none-data" }, [
+                ]
+              ),
+            ])
+          : _vm._e()
+      }),
+      _vm.list.length == 0
+        ? _c("view", { staticClass: "none-data" }, [
             _c("image", {
               staticClass: "none-img",
               attrs: {
@@ -2181,8 +2189,9 @@ var render = function () {
             }),
             _c("view", [_vm._v("当前暂无数据哦～")]),
           ])
-    }),
-    0
+        : _vm._e(),
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -2210,99 +2219,113 @@ var render = function () {
   return _c(
     "view",
     { staticClass: "zuopin_list" },
-    _vm._l(_vm.list, function (item, index) {
-      return _vm.list.length
-        ? _c(
-            "view",
-            {
-              key: index,
-              staticClass: "zuopin_box",
-              on: {
-                tap: function ($event) {
-                  return _vm.godetail(item.oid, item.author_id)
+    [
+      _vm._l(_vm.list, function (item, index) {
+        return _vm.list.length > 0
+          ? _c(
+              "view",
+              {
+                key: index,
+                staticClass: "zuopin_box",
+                on: {
+                  tap: function ($event) {
+                    return _vm.godetail(item.oid, item.author_id)
+                  },
                 },
               },
-            },
-            [
-              item.file_type == "picture"
-                ? _c("image", {
-                    staticClass: "zuopin_img",
-                    attrs: { src: item.cover[0], mode: "aspectFill" },
-                  })
-                : _vm._e(),
-              item.file_type == "video"
-                ? _c("video", {
-                    staticClass: "list_video-width",
+              [
+                item.file_type == "picture"
+                  ? _c("image", {
+                      staticClass: "zuopin_img",
+                      attrs: { src: item.cover[0], mode: "aspectFill" },
+                    })
+                  : _vm._e(),
+                item.file_type == "video"
+                  ? _c("video", {
+                      staticClass: "list_video-width",
+                      attrs: {
+                        objectFit: "cover",
+                        poster: item.cover[0],
+                        src: item.video_cover && item.video_cover[0],
+                      },
+                      on: {
+                        tap: function ($event) {
+                          $event.stopPropagation()
+                        },
+                      },
+                    })
+                  : _vm._e(),
+                _c("view", { staticClass: "zuopin_desc" }, [
+                  _vm._v(_vm._s(item.summary)),
+                ]),
+                _c("view", { staticClass: "zuopin_info" }, [
+                  _c("image", {
+                    staticClass: "avatar",
                     attrs: {
-                      objectFit: "cover",
-                      poster: item.cover[0],
-                      src: item.video_cover && item.video_cover[0],
+                      src: item.author.avatar
+                        ? item.author.avatar
+                        : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                      mode: "aspectFill",
                     },
-                  })
-                : _vm._e(),
-              _c("view", { staticClass: "zuopin_desc" }, [
-                _vm._v(_vm._s(item.summary)),
-              ]),
-              _c("view", { staticClass: "zuopin_info" }, [
-                _c("image", {
-                  staticClass: "avatar",
-                  attrs: {
-                    src: item.author.avatar
-                      ? item.author.avatar
-                      : "https://yuepai-oss.qubeitech.com/static/avatar_default.png",
-                    mode: "aspectFill",
-                  },
-                }),
-                _c("view", [
-                  _c(
-                    "view",
-                    { staticClass: "list_p_title" },
-                    [
-                      _c("text", { staticClass: "list_name" }, [
-                        _vm._v(_vm._s(item.author.nickname)),
+                    on: {
+                      tap: function ($event) {
+                        return _vm.goZhuye(item.author.uuid)
+                      },
+                    },
+                  }),
+                  _c("view", [
+                    _c(
+                      "view",
+                      { staticClass: "list_p_title" },
+                      [
+                        _c("text", { staticClass: "list_name" }, [
+                          _vm._v(_vm._s(item.author.nickname)),
+                        ]),
+                        _c("block", [
+                          item.author.sex == 1
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                },
+                              })
+                            : _vm._e(),
+                          item.author.sex == 0
+                            ? _c("image", {
+                                staticClass: "list_sex",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                },
+                              })
+                            : _vm._e(),
+                        ]),
+                      ],
+                      1
+                    ),
+                    _c("view", { staticClass: "list_p" }, [
+                      _c("text", [
+                        _vm._v(
+                          " " +
+                            _vm._s(
+                              item.author.career_list &&
+                                item.author.career_list[0]
+                            ) +
+                            " |" +
+                            _vm._s(item.author.province_name)
+                        ),
                       ]),
-                      _c("block", [
-                        item.author.sex == 1
-                          ? _c("image", {
-                              staticClass: "list_sex",
-                              attrs: {
-                                src: "https://yuepai-oss.qubeitech.com/static/nan.png",
-                              },
-                            })
-                          : _vm._e(),
-                        item.author.sex == 0
-                          ? _c("image", {
-                              staticClass: "list_sex",
-                              attrs: {
-                                src: "https://yuepai-oss.qubeitech.com/static/nv.png",
-                              },
-                            })
-                          : _vm._e(),
+                      _c("text", { staticClass: "read" }, [
+                        _vm._v(_vm._s(item.statistic.read_cnt)),
                       ]),
-                    ],
-                    1
-                  ),
-                  _c("view", { staticClass: "list_p" }, [
-                    _c("text", [
-                      _vm._v(
-                        " " +
-                          _vm._s(
-                            item.author.career_list &&
-                              item.author.career_list[0]
-                          ) +
-                          " |" +
-                          _vm._s(item.author.province_name)
-                      ),
-                    ]),
-                    _c("text", { staticClass: "read" }, [
-                      _vm._v(_vm._s(item.statistic.read_cnt)),
                     ]),
                   ]),
                 ]),
-              ]),
-            ]
-          )
-        : _c("view", { staticClass: "none-data" }, [
+              ]
+            )
+          : _vm._e()
+      }),
+      _vm.list.length == 0
+        ? _c("view", { staticClass: "none-data" }, [
             _c("image", {
               staticClass: "none-img",
               attrs: {
@@ -2312,8 +2335,9 @@ var render = function () {
             }),
             _c("view", [_vm._v("当前暂无数据哦～")]),
           ])
-    }),
-    0
+        : _vm._e(),
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -2327,15 +2351,15 @@ render._withStripped = true
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo, checkFollow, applyPay, userFollow, userUnfollow, followerList, followedList, systemList, ocrCard, submitCard, idcardInfo, ocrIdcard, inviteAdviseList, noticeAdviseList, userSelectCity, userStatus, inviteFilter, photoFilter, userFilter, userList */
-/*! exports used: addImUser, addressInfo, addressList, applyInfo, applyList, applyManage, applyPay, categoryList, celebrityInfo, celebrityList, checkFollow, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, feedback, followRedirect, followedList, followerList, getCareer, getPhone, giveUp, idcardInfo, inviteAdviseList, inviteFilter, inviteImage, inviteInfo, inviteList, inviteTemplate, isSign, manageEvent, manageList, manageOperation, memberInfo, memberOpen, msgInfo, msgList, noteManageList, noticeAdviseList, noticeFilter, noticeInfo, noticeList, noticeTemplate, notifyNumber, ocrCard, ocrIdcard, photoFilter, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, pushInit, recordCollect, securityInfo, securityOpen, sendMsg, shareInvite, shareInviteInfo, shareInviteList, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, systemList, updateAvatar, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userFilter, userFollow, userInfo, userList, userProfile, userRegister, userResume, userSelectCity, userShape, userShapeDetail, userStatus, userSticker, userUnfollow, visitorList, voteList, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo, checkFollow, applyPay, userFollow, userUnfollow, followerList, followedList, systemList, ocrCard, submitCard, idcardInfo, ocrIdcard, inviteAdviseList, noticeAdviseList, userSelectCity, userStatus, inviteFilter, photoFilter, userFilter, userList, receivePayment */
+/*! exports used: addImUser, addressInfo, addressList, applyInfo, applyList, applyManage, applyPay, categoryList, celebrityInfo, celebrityList, checkFollow, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, feedback, followRedirect, followedList, followerList, getCareer, getPhone, giveUp, idcardInfo, inviteAdviseList, inviteFilter, inviteImage, inviteInfo, inviteList, inviteTemplate, isSign, manageEvent, manageList, manageOperation, memberInfo, memberOpen, msgInfo, msgList, noteManageList, noticeAdviseList, noticeFilter, noticeInfo, noticeList, noticeTemplate, notifyNumber, ocrCard, ocrIdcard, photoFilter, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, pushInit, receivePayment, recordCollect, securityInfo, securityOpen, sendMsg, shareInvite, shareInviteInfo, shareInviteList, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, systemList, updateAvatar, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userFilter, userFollow, userInfo, userList, userProfile, userRegister, userResume, userSelectCity, userShape, userShapeDetail, userStatus, userSticker, userUnfollow, visitorList, voteList, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Qb", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rb", function() { return wxlogin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return getPhone; });
 /* unused harmony export uploadFile */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gb", function() { return userRegister; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hb", function() { return userRegister; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bb", function() { return profileUpdate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return getCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return creatCareer; });
@@ -2343,23 +2367,23 @@ render._withStripped = true
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return creatInvite; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return inviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return inviteInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Db", function() { return userInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Eb", function() { return userInfo; });
 /* unused harmony export getGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hb", function() { return userResume; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fb", function() { return userProfile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vb", function() { return updateAvatar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return userShape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xb", function() { return userAlbum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wb", function() { return uploadImagePhoto; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kb", function() { return userShapeDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "yb", function() { return userAlbumDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mb", function() { return userSticker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "qb", function() { return subUserSticker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ob", function() { return subNotePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ib", function() { return userResume; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gb", function() { return userProfile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wb", function() { return updateAvatar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kb", function() { return userShape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "yb", function() { return userAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xb", function() { return uploadImagePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lb", function() { return userShapeDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zb", function() { return userAlbumDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nb", function() { return userSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rb", function() { return subUserSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pb", function() { return subNotePhoto; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return photoList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return photoInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return noticeTemplate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sb", function() { return submitNotice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tb", function() { return submitNotice; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return noticeFilter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return noticeList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return noticeInfo; });
@@ -2367,20 +2391,20 @@ render._withStripped = true
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return inviteTemplate; });
 /* unused harmony export inviteApply */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return celebrityList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zb", function() { return userCelebrity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ab", function() { return userCelebrity; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return celebrityInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return addressList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rb", function() { return submitAddress; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sb", function() { return submitAddress; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addressInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ab", function() { return userContact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return subContact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mb", function() { return subApply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bb", function() { return userContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ob", function() { return subContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return subApply; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return applyList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return applyInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ob", function() { return visitorList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pb", function() { return voteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pb", function() { return visitorList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Qb", function() { return voteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return giveUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return recordCollect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return recordCollect; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return noteManageList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return manageEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ab", function() { return photoListOwn; });
@@ -2396,44 +2420,45 @@ render._withStripped = true
 /* unused harmony export facePrint */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return applyManage; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cb", function() { return publicComplain; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return securityOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return securityInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ib", function() { return securityOpen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return securityInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return manageList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return manageOperation; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eb", function() { return pushInit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pb", function() { return subOpenRecruitment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "qb", function() { return subOpenRecruitment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return inviteImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jb", function() { return shareInvite; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kb", function() { return shareInviteInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kb", function() { return shareInvite; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lb", function() { return shareInviteInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return isSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tb", function() { return submitSign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ub", function() { return submitSign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return followRedirect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lb", function() { return shareInviteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mb", function() { return shareInviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return categoryList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return feedback; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addImUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ib", function() { return sendMsg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jb", function() { return sendMsg; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return msgList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return msgInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return checkFollow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return applyPay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cb", function() { return userFollow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nb", function() { return userUnfollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Db", function() { return userFollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ob", function() { return userUnfollow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return followerList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return followedList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ub", function() { return systemList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vb", function() { return systemList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return ocrCard; });
 /* unused harmony export submitCard */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return idcardInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return ocrIdcard; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return inviteAdviseList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return noticeAdviseList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ib", function() { return userSelectCity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lb", function() { return userStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return userSelectCity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mb", function() { return userStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return inviteFilter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return photoFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bb", function() { return userFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Eb", function() { return userList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cb", function() { return userFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fb", function() { return userList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return receivePayment; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://pai.qubeitech.com"; // WX登录,拿code换登录
@@ -2460,15 +2485,7 @@ var uploadFile = function uploadFile(data) {
     method: "POST",
     data: data
   });
-}; // 更新个人资料
-// export const updateUser = (data) => {
-//   return request({
-//     url: baseUrl + "/v1/user",
-//     method: "PUT",
-//     data,
-//   });
-// };
-// 注册
+}; // 注册
 
 var userRegister = function userRegister(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
@@ -2520,7 +2537,7 @@ var creatInvite = function creatInvite(data) {
 
 var inviteList = function inviteList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/invite/list",
+    url: baseUrl + "/v1/note/explore/invite/list",
     method: "post",
     data: data
   });
@@ -2528,7 +2545,7 @@ var inviteList = function inviteList(data) {
 
 var inviteInfo = function inviteInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/invite/info",
+    url: baseUrl + "/v1/note/explore/invite/info",
     method: "post",
     data: data
   });
@@ -2596,7 +2613,7 @@ var uploadImagePhoto = function uploadImagePhoto(path, params) {
 
 var userShapeDetail = function userShapeDetail(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/user/shape",
+    url: baseUrl + "/v1/user/shape/info",
     method: "post",
     data: data
   });
@@ -2628,7 +2645,7 @@ var subUserSticker = function subUserSticker(data) {
 
 var subNotePhoto = function subNotePhoto(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/photo",
+    url: baseUrl + "/v1/note/publish/invite",
     method: "post",
     data: data
   });
@@ -2636,7 +2653,7 @@ var subNotePhoto = function subNotePhoto(data) {
 
 var photoList = function photoList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/photo/list",
+    url: baseUrl + "/v1/note/explore/photo/list",
     method: "post",
     data: data
   });
@@ -2644,7 +2661,7 @@ var photoList = function photoList(data) {
 
 var photoInfo = function photoInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/photo/info",
+    url: baseUrl + "/v1/note/explore/photo/info",
     method: "post",
     data: data
   });
@@ -2652,7 +2669,7 @@ var photoInfo = function photoInfo(data) {
 
 var noticeTemplate = function noticeTemplate(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/notice/template",
+    url: baseUrl + "/v1/note/explore/notice/template",
     method: "post",
     data: data
   });
@@ -2660,7 +2677,7 @@ var noticeTemplate = function noticeTemplate(data) {
 
 var submitNotice = function submitNotice(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/notice",
+    url: baseUrl + "/v1/note/publish/notice",
     method: "post",
     data: data
   });
@@ -2668,7 +2685,7 @@ var submitNotice = function submitNotice(data) {
 
 var noticeFilter = function noticeFilter(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/notice/filter",
+    url: baseUrl + "/v1/note/explore/notice/filter",
     method: "post",
     data: data
   });
@@ -2676,7 +2693,7 @@ var noticeFilter = function noticeFilter(data) {
 
 var noticeList = function noticeList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/notice/list",
+    url: baseUrl + "/v1/note/explore/notice/list",
     method: "post",
     data: data
   });
@@ -2684,7 +2701,7 @@ var noticeList = function noticeList(data) {
 
 var noticeInfo = function noticeInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/notice/info",
+    url: baseUrl + "/v1/note/explore/notice/info",
     method: "post",
     data: data
   });
@@ -2700,7 +2717,7 @@ var paymina = function paymina(data) {
 
 var inviteTemplate = function inviteTemplate(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/record/invite/template",
+    url: baseUrl + "/v1/note/apply/template",
     method: "post",
     data: data
   });
@@ -2780,7 +2797,7 @@ var subContact = function subContact(data) {
 
 var subApply = function subApply(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/record/invite/apply",
+    url: baseUrl + "/v1/note/apply/commit",
     method: "post",
     data: data
   });
@@ -2788,7 +2805,7 @@ var subApply = function subApply(data) {
 
 var applyList = function applyList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/record/apply/list",
+    url: baseUrl + "/v1/note/manage/receive/list",
     method: "post",
     data: data
   });
@@ -2796,7 +2813,7 @@ var applyList = function applyList(data) {
 
 var applyInfo = function applyInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/record/apply/info",
+    url: baseUrl + "/v1/note/manage/receive/info",
     method: "post",
     data: data
   });
@@ -2836,7 +2853,7 @@ var recordCollect = function recordCollect(data) {
 
 var noteManageList = function noteManageList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/manage/list",
+    url: baseUrl + "/v1/note/manage/publish/list",
     method: "post",
     data: data
   });
@@ -2844,7 +2861,7 @@ var noteManageList = function noteManageList(data) {
 
 var manageEvent = function manageEvent(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/manage/event",
+    url: baseUrl + "/v1/note/manage/publish/event",
     method: "post",
     data: data
   });
@@ -2852,7 +2869,7 @@ var manageEvent = function manageEvent(data) {
 
 var photoListOwn = function photoListOwn(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/photo/list/own",
+    url: baseUrl + "/v1/note/explore/photo/list/own",
     method: "post",
     data: data
   });
@@ -2876,7 +2893,7 @@ var memberOpen = function memberOpen(data) {
 
 var memberInfo = function memberInfo(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/member/info",
+    url: baseUrl + "/v1/acct/info",
     method: "post",
     data: data
   });
@@ -2884,7 +2901,7 @@ var memberInfo = function memberInfo(data) {
 
 var coinList = function coinList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/coin/rule/list",
+    url: baseUrl + "/v1/acct/coin/order/rule",
     method: "post",
     data: data
   });
@@ -2892,7 +2909,7 @@ var coinList = function coinList(data) {
 
 var coinItemList = function coinItemList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/coin/item/list",
+    url: baseUrl + "/v1/acct/coin/order/list",
     method: "post",
     data: data
   });
@@ -2900,7 +2917,7 @@ var coinItemList = function coinItemList(data) {
 
 var coinAcct = function coinAcct(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/coin/acct",
+    url: baseUrl + "/v1/acct/info",
     method: "post",
     data: data
   });
@@ -2938,7 +2955,7 @@ var facePrint = function facePrint(data) {
 
 var applyManage = function applyManage(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/record/apply/manage",
+    url: baseUrl + "/v1/note/manage/receive/event",
     method: "post",
     data: data
   });
@@ -2970,7 +2987,7 @@ var securityInfo = function securityInfo(data) {
 
 var manageList = function manageList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/manage/list",
+    url: baseUrl + "/v1/note/manage/publish/list",
     method: "post",
     data: data
   });
@@ -2978,7 +2995,7 @@ var manageList = function manageList(data) {
 
 var manageOperation = function manageOperation(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/manage/event",
+    url: baseUrl + "/v1/note/manage/publish/event",
     method: "post",
     data: data
   });
@@ -3114,7 +3131,7 @@ var checkFollow = function checkFollow(data) {
 
 var applyPay = function applyPay(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/record/apply/pay",
+    url: baseUrl + "/v1/note/apply/payment",
     method: "post",
     data: data
   });
@@ -3194,7 +3211,7 @@ var ocrIdcard = function ocrIdcard(data) {
 
 var inviteAdviseList = function inviteAdviseList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/invite/list/advise",
+    url: baseUrl + "/v1/note/explore/invite/list/advise",
     method: "post",
     data: data
   });
@@ -3202,7 +3219,7 @@ var inviteAdviseList = function inviteAdviseList(data) {
 
 var noticeAdviseList = function noticeAdviseList(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/notice/list/advise",
+    url: baseUrl + "/v1/note/explore/notice/list/advise",
     method: "post",
     data: data
   });
@@ -3226,7 +3243,7 @@ var userStatus = function userStatus(data) {
 
 var inviteFilter = function inviteFilter(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/invite/filter",
+    url: baseUrl + "/v1/note/explore/invite/filter",
     method: "post",
     data: data
   });
@@ -3234,7 +3251,7 @@ var inviteFilter = function inviteFilter(data) {
 
 var photoFilter = function photoFilter(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/note/photo/filter",
+    url: baseUrl + "/v1/note/explore/photo/filter",
     method: "post",
     data: data
   });
@@ -3254,67 +3271,15 @@ var userList = function userList(data) {
     method: "post",
     data: data
   });
+}; // 查看联系方式-支付
+
+var receivePayment = function receivePayment(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/note/manage/receive/payment",
+    method: "post",
+    data: data
+  });
 };
-
-/***/ }),
-
-/***/ "./src/assets/images/eyes.png":
-/*!************************************!*\
-  !*** ./src/assets/images/eyes.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/eyes.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/icon_model.png":
-/*!******************************************!*\
-  !*** ./src/assets/images/icon_model.png ***!
-  \******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/icon_model.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/share.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/share.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/share.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/take.png":
-/*!************************************!*\
-  !*** ./src/assets/images/take.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/take.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/user/index/yuepai.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/user/index/yuepai.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAAtCAMAAAANxBKoAAABelBMVEUAAAAAAAAAAAAAAABAQEAzMzMrKyskJCQuLi4nJyc3NzcwMDA2NjYzMzMuLi41NTUzMzM3Nzc1NTUzMzMwMDAzMzMyMjI0NDQ0NDQzMzMyMjIwMDA0NDQyMjIwMDAzMzMyMjI0NDQxMTEzMzMyMjIyMjIzMzM0NDQzMzMyMjIyMjIyMjIzMzMzMzM0NDQ0NDQzMzMzMzMzMzMzMzMyMjIzMzMzMzMyMjIyMjIyMjIzMzMzMzMzMzMyMjIyMjIzMzMzMzMzMzMyMjI0NDQzMzMyMjIyMjIzMzMzMzMyMjIzMzMzMzMyMjI0NDQzMzMzMzMyMjIzMzMyMjI0NDQzMzMzMzMyMjIyMjIzMzMzMzMyMjIzMzMyMjIzMzMzMzMzMzMzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzMyMjIzMzMzMzMzMzMzMzPqmi6JAAAAfXRSTlMAAQIDBAUGBwsNDhATFBYYGRwdHiAjJCcsMjM1Njg6PD1AREZHTVBUVVtcZmpucXZ3gYOIiYuMjpOUlZebnZ6goaWnqKusra6wsrO0tre4ubu/wMHCxMXGx8jKztDR0tPb3N3e39/h4uPk5ebo6err7O3v8vP09fb3+Pr8/hfJ7skAAAF7SURBVEjH7ZVXTwJBFEZHulhQECv2XsCKBbAXUFQUUVERGyB2FAVEvv8uG1h3je6MiTxynu79crIzNzOZJaRIgWncjiNPYreVIZuSEJHupNsnwKYjz3oGERVN7gZmhW4GGKTZx3g3CJ0uiSvFL1bVdPAiSxiwieMp4JrLg/ZqUWq45edKiWOiS/D5g1FIF4HABoer7/uavW4PxxngFMIYfNKzqGpJiRdvQpCGQ9r2YIjYAYWU3TaxumZt5zs/Rii20ZcbzF+X68s7ZNJ2fQzI3EQzwEvDVyhlq8+BhRpC9A4gomHZZmAyV40hu2GG7cedOlcpwwiw7CTm+NKGDzndVmZg5dNRQMv49jNcfLmEBGsnTqTyd1b3ii2W3ZU9ljKuKN0Delg2WcneaYupyRwC3MzTIZod/k57tWybyC33nPs0rCR/sAmRNfcPtMjFCc3+yT/sRxzJabLsAHGhmweu9ilcAsui5yQEBlG9aKmK8cNTCn5rZfHvUxA+AWWctuD+3T7EAAAAAElFTkSuQmCC"
 
 /***/ }),
 

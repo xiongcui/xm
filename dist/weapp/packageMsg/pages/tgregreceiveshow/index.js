@@ -210,7 +210,11 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
       visited_status: "",
       showModel: false,
       tgregreceiveInfo: {
-        visitor: {}
+        visitor: {},
+        content: {
+          title: "",
+          body: ""
+        }
       },
       showContact: false,
       showCelebrity: false,
@@ -309,7 +313,7 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
         success: function success(res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 410,
+              visited_status: 410,
               sid: _this.sid
             });
           } else if (res.cancel) {
@@ -327,7 +331,7 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
         success: function success(res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 420,
+              visited_status: 420,
               sid: _this.sid
             });
           } else if (res.cancel) {
@@ -338,31 +342,31 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
     },
     completeCooperation: function completeCooperation() {
       this.applyManage({
-        even_type: 440,
+        visited_status: 440,
         sid: this.sid
       });
     },
     abandonCooperation: function abandonCooperation() {
       this.applyManage({
-        even_type: 430,
+        visited_status: 430,
         sid: this.sid
       });
     },
     Delete: function Delete() {
       this.applyManage({
-        even_type: 111,
+        visited_status: -200,
         sid: this.sid
       });
     },
     recoveryPending: function recoveryPending() {
       this.applyManage({
-        even_type: 450,
+        visited_status: 450,
         sid: this.sid
       });
     },
     restoreAppropriately: function restoreAppropriately() {
       this.applyManage({
-        even_type: 460,
+        visited_status: 460,
         sid: this.sid
       });
     },
@@ -387,7 +391,7 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visitor_id=" + this.tgregreceiveInfo.visitor_id + "&avatar=" + this.tgregreceiveInfo.visitor.avatar + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&province_name=" + this.tgregreceiveInfo.visitor.province_name + "&career=" + this.tgregreceiveInfo.visitor.career_list[0]);
     },
     communicate: function communicate() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/chat/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.tgregreceiveInfo.visitor.uuid + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&avatar=" + this.tgregreceiveInfo.visitor.avatar);
     },
     applyInfo: function applyInfo(params) {
       var _this3 = this;
@@ -505,7 +509,7 @@ var render = function () {
             "view",
             { staticClass: "tgregreceive_name" },
             [
-              _vm._v(" nickname "),
+              _vm._v(" " + _vm._s(_vm.tgregreceiveInfo.visitor.nickname) + " "),
               _vm.tgregreceiveInfo.visitor.sex !== null
                 ? _c("block", [
                     _vm.tgregreceiveInfo.visitor.sex == 1
@@ -560,10 +564,10 @@ var render = function () {
       ]),
       _c("view", { staticClass: "tgregreceive_remark" }, [
         _c("view", { staticClass: "tgregreceive_remark_label" }, [
-          _vm._v(_vm._s(_vm.tgregreceiveInfo.title) + "："),
+          _vm._v(_vm._s(_vm.tgregreceiveInfo.content.title) + "："),
         ]),
         _c("view", { staticClass: "tgregreceive_remark_ct" }, [
-          _vm._v(_vm._s(_vm.tgregreceiveInfo.content)),
+          _vm._v(_vm._s(_vm.tgregreceiveInfo.content.body)),
         ]),
       ]),
     ]),

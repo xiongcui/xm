@@ -5,7 +5,7 @@
       <view class="release-item" @tap="releaseUrl(1)">
         <view class="release-left color1">
           <image
-            src="../../assets/images/publish1.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/publish1.png"
             mode="aspectFit"
             class="release-image"
           ></image>
@@ -24,7 +24,7 @@
       <view class="release-item" @tap="releaseUrl(2)">
         <view class="release-left color2">
           <image
-            src="../../assets/images/publish2.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/publish2.png"
             mode="aspectFit"
             class="release-image"
           ></image>
@@ -43,7 +43,7 @@
       <view class="release-item" @tap="releaseUrl(3)">
         <view class="release-left color3">
           <image
-            src="../../assets/images/publish3.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/publish3.png"
             mode="aspectFit"
             class="release-image"
           ></image>

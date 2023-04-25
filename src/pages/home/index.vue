@@ -18,16 +18,19 @@
             <view class="select-city" @tap="selectCity" v-if="city">
               {{ city }}
               <image
-                src="../../assets/images/common/back.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/back.png"
                 class="roll-down"
               ></image>
             </view>
             <view class="head_sign" @tap="showSign">
               <image
-                src="../../assets/images/icon_signed.jpg"
+                src="https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg"
                 v-if="is_today_sign"
               ></image>
-              <image src="../../assets/images/icon_sign.jpg" v-else></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg"
+                v-else
+              ></image>
             </view>
           </view>
           <view class="head_title"> 虾米约拍 </view>
@@ -67,28 +70,28 @@
         <view class="page-nav-top">
           <view class="page-nav-item" @tap="goTakelist">
             <image
-              src="../../assets/images/icon_model.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/icon_model.png"
               class="page-nav-img"
             ></image>
             <text class="page-nav-text">模特</text>
           </view>
           <view class="page-nav-item" @tap="goTakelist">
             <image
-              src="../../assets/images/take.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/take.png"
               class="page-nav-img"
             ></image>
             <text class="page-nav-text">摄影</text>
           </view>
           <view class="page-nav-item" @tap="goMore(2)">
             <image
-              src="../../assets/images/more1.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/more1.png"
               class="page-nav-img"
             ></image>
             <text class="page-nav-text">作品</text>
           </view>
-          <view class="page-nav-item">
+          <view class="page-nav-item" @tap="comingSoon">
             <image
-              src="../../assets/images/moka.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka.png"
               class="page-nav-img"
             ></image>
             <text class="page-nav-text">模卡</text>
@@ -101,7 +104,9 @@
               <view class="page-nav-desc">你约我拍</view>
             </view>
             <view class="page-nav-rt">
-              <image src="../../assets/images/common/photo_white.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/photo_white.png"
+              ></image>
             </view>
           </view>
           <view class="page-nav-box nav_bg2" @tap="goMore(1)">
@@ -110,7 +115,9 @@
               <view class="page-nav-desc">招募公告</view>
             </view>
             <view class="page-nav-rt">
-              <image src="../../assets/images/common/tonggao_white.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/tonggao_white.png"
+              ></image>
             </view>
           </view>
         </view>
@@ -157,6 +164,7 @@
                                 : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
                             "
                             class="avatar"
+                            @tap="goZhuye(item.author.uuid)"
                           ></image>
                           <view class="list_info">
                             <view class="list_name">
@@ -196,9 +204,9 @@
                           </view>
                         </view>
                         <view class="list_top_rt">
-                          <view class="list_loction">
-                            {{ item.author.province_name }}
-                          </view>
+                          <!-- <view class="list_loction">
+                            {{ item.topic.face_city }}
+                          </view> -->
                           <view class="list_date">{{
                             item.basic.date_humanize
                           }}</view>
@@ -206,24 +214,22 @@
                       </view>
                       <view class="list_content">
                         <view class="list_title">
-                          <view
-                            class="recommend-label"
-                            v-for="(tagitem, tagindex) in item.topic.headline
-                              .tag"
-                            :key="tagindex"
-                          >
-                            {{ tagitem }}
+                          <view class="recommend-style" :key="index">
+                            <view class="recommend-label">
+                              {{ item.topic.target }}
+                            </view>
+
+                            <view class="recommend-label2">
+                              {{ item.topic.payment.title }}
+                            </view>
                           </view>
-                          <view class="recommend-label2">
-                            {{ item.topic.payment.title }}
+                          <view class="list_loction">
+                            {{ item.topic.face_city.name }}
                           </view>
                         </view>
                         <view class="list_title_desc">{{
                           item.topic.headline.title
                         }}</view>
-                      </view>
-                      <view class="list_desc">
-                        {{ item.details.summary }}
                       </view>
                       <view
                         class="list_img"
@@ -237,9 +243,6 @@
                             v-for="(url, coverIndex) in item.details.media
                               .cover"
                             :key="coverIndex"
-                            @tap.stop="
-                              previewImage(url, item.details.media.cover)
-                            "
                           ></image>
                         </scroll-view>
                       </view>
@@ -328,38 +331,31 @@
                   <view class="tonggao-recommend">
                     <view class="tonggao-recommend-top">
                       <view class="tonggao-info-title">
-                        <view
-                          class="recommend-label"
-                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
-                          :key="tagindex"
-                        >
-                          {{ tagitem }}
-                        </view>
+                        <block v-if="item.topic.headline.tag.length">
+                          <image
+                            class="recommend-image"
+                            v-for="(tagitem, tagindex) in item.topic.headline
+                              .tag"
+                            :key="tagindex"
+                            :src="tagitem"
+                          >
+                          </image>
+                        </block>
                         <view class="tonggao-txt">
                           {{ item.topic.headline.title }}</view
                         >
                       </view>
                     </view>
                     <view class="tonggao-recommend-bt">
-                      <view
-                        class="tonggao-recommend-img"
-                        v-if="item.details.media.file_type == 'picture'"
-                      >
-                        <image
-                          :src="item.details.media.cover[0]"
-                          mode="aspectFill"
-                          @tap.stop="
-                            previewImage(
-                              item.details.media.cover[0],
-                              item.details.media.cover
-                            )
-                          "
-                        ></image>
-                      </view>
                       <view class="tonggao-recommend-info">
-                        <view class="tonggao-info-desc">
-                          {{ item.details.summary }}</view
-                        >
+                        <view class="recommend-style">
+                          <text class="recommend-label">
+                            {{ item.topic.target }}
+                          </text>
+                          <text class="recommend-label2">
+                            {{ item.topic.payment.title }}
+                          </text>
+                        </view>
                         <view class="tonggao-tags">
                           <view
                             class="tag-item"
@@ -368,12 +364,21 @@
                             >{{ tag.name }}</view
                           >
                         </view>
-                        <view class="tonggao-recommend-price">
+                        <!-- <view class="tonggao-recommend-price">
                           <view class="pirce">
                             {{ item.topic.payment.title }}</view
                           >
                           <view class="recommend-btn">立即报名</view>
-                        </view>
+                        </view> -->
+                      </view>
+                      <view
+                        class="tonggao-recommend-img"
+                        v-if="item.details.media.file_type == 'picture'"
+                      >
+                        <image
+                          :src="item.details.media.cover[0]"
+                          mode="aspectFill"
+                        ></image>
                       </view>
                     </view>
                   </view>
@@ -390,12 +395,14 @@
                     </view>
                     <view class="tonggao-yuepai">
                       <image
-                        src="../../assets/images/user/index/yuepai.png"
+                        src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                       ></image>
                       {{ item.statistic.invite_cnt }}
                     </view>
                     <view class="tonggao-read">
-                      <image src="../../assets/images/eyes.png"></image>
+                      <image
+                        src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                      ></image>
                       {{ item.statistic.read_cnt }}
                     </view>
                   </view>
@@ -476,6 +483,36 @@
         </view>
       </view>
     </view>
+    <!--签到-->
+    <view @tap="signClose" class="modal-bg" v-if="showModelSign"></view>
+    <view class="modal_box sign_modal" v-if="showModelSign">
+      <view class="sign_md_close_btn">
+        <image
+          @tap="signClose"
+          src="https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png"
+        ></image>
+      </view>
+      <view class="sign_modal_main">
+        <form class="main">
+          <view class="sign_md_top">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png"
+            ></image>
+          </view>
+          <view class="sign_md_title">
+            <view>签到成功</view>
+          </view>
+          <view class="sign_md_content">
+            <view>{{ hyper_desc }}</view>
+          </view>
+          <view class="sign_md_bottom">
+            <button open-type="share" class="share-btn">马上邀请</button>
+          </view>
+          <view class="sign_md_txt">每邀请1位好友可赚3金币哦！</view>
+        </form>
+      </view>
+    </view>
+    <!--签到-->
   </view>
 </template>
 
@@ -504,7 +541,7 @@ import {
   shareInvite,
   submitSign,
 } from "../../api/index";
-import { openPage, isLogin } from "../../utils/util";
+import { openPage, isLogin, errortip } from "../../utils/util";
 export default {
   name: "home",
   data() {
@@ -518,7 +555,9 @@ export default {
       tonggaoSwiperHeight: 0,
       city: "",
       is_today_sign: 0,
-      background: ["demo-text-1", "demo-text-2", "demo-text-3"],
+      showModelSign: false,
+      hyper_desc: "",
+      background: ["1", "2", "3"],
       indicatorDots: true,
       indicatorDots2: false,
       vertical: false,
@@ -531,7 +570,6 @@ export default {
       headCurrent: 0,
       pageNum: 1,
       pageSize: 10,
-      //   showSign: false,
       navShow: false,
       inviteRecommendList: [],
       noticeRecommendList: [],
@@ -577,6 +615,15 @@ export default {
     loading,
   },
   methods: {
+    goZhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
+    comingSoon() {
+      errortip("敬请期待，正在开发中");
+    },
+    signClose() {
+      this.showModelSign = false;
+    },
     showSign() {
       this.submitSign("");
     },
@@ -1318,7 +1365,7 @@ export default {
       const selectedCity = citySelector.getCity(); // 选择城市后返回城市信息对象，若未选择返回null
       this.city_filter = Number(selectedCity.id);
       this.city = selectedCity.name;
-      this.userSelectCity({ city_info: this.city_filter });
+      this.userSelectCity({ city_info: selectedCity });
       // 约拍推荐
       this.inviteAdviseList({
         city_filter: this.recommend_city_filter,

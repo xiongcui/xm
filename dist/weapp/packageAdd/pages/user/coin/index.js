@@ -191,6 +191,22 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -215,7 +231,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     dailyList: function dailyList() {
       var arr = [];
       this.list.map(function (item) {
-        if (item.code == "everyday_sign" || item.code == "invite_friends") {
+        if (item.class_code == "daily_rewards") {
           arr.push(item);
         }
       });
@@ -224,7 +240,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     taskList: function taskList() {
       var arr = [];
       this.list.map(function (item) {
-        if (item.code != "everyday_sign" && item.code != "invite_friends") {
+        if (item.class_code == "task_rewards") {
           arr.push(item);
         }
       });
@@ -232,6 +248,36 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     }
   },
   methods: {
+    taskClick: function taskClick(code) {
+      switch (code) {
+        case "everyday_sign":
+          wx.switchTab({
+            url: "/pages/my/index",
+            success: function success(e) {}
+          });
+          break;
+
+        case "invite_friends":
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/invite/index");
+          break;
+
+        case "finish_profile":
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+          break;
+
+        case "real_certify":
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+          break;
+
+        case "follow_wechat":
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+          break;
+
+        case "bind_phone":
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/contact/index");
+          break;
+      }
+    },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -261,9 +307,15 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       });
     },
     queryCoinList: function queryCoinList() {
-      this.coinList({
+      var params = {
         type: this.type
-      });
+      };
+
+      if (this.currentTab == 0) {
+        params.class_code = "member_service";
+      }
+
+      this.coinList(params);
     },
     goPay: function goPay() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargecoin/index");
@@ -518,7 +570,7 @@ var render = function () {
                         { key: index, staticClass: "privilege-box" },
                         [
                           _c("view", { staticClass: "service" }, [
-                            _vm._v(_vm._s(item.desc)),
+                            _vm._v(_vm._s(item.rule_desc)),
                           ]),
                           _c("view", { staticClass: "vip red" }, [
                             _vm._v(_vm._s(item.member_coin)),
@@ -559,7 +611,7 @@ var render = function () {
                                       _c(
                                         "text",
                                         { staticClass: "task-title" },
-                                        [_vm._v(_vm._s(item.name))]
+                                        [_vm._v(_vm._s(item.rule_name))]
                                       ),
                                       _c("text", { staticClass: "task-coin" }, [
                                         _vm._v(
@@ -570,12 +622,29 @@ var render = function () {
                                       ]),
                                     ]),
                                     _c("view", { staticClass: "task-tips" }, [
-                                      _vm._v(_vm._s(item.desc)),
+                                      _vm._v(_vm._s(item.rule_desc)),
                                     ]),
                                   ]),
-                                  _c("view", { staticClass: "task-btn" }, [
-                                    _vm._v(_vm._s(item.event)),
-                                  ]),
+                                  item.rule_status != "已完成"
+                                    ? _c(
+                                        "view",
+                                        {
+                                          staticClass: "task-btn",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.taskClick(
+                                                item.rule_code
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v(_vm._s(item.rule_status))]
+                                      )
+                                    : _c(
+                                        "view",
+                                        { staticClass: "task-sucess-btn" },
+                                        [_vm._v(_vm._s(item.rule_status))]
+                                      ),
                                 ]
                               )
                             }),
@@ -596,7 +665,7 @@ var render = function () {
                                       _c(
                                         "text",
                                         { staticClass: "task-title" },
-                                        [_vm._v(_vm._s(item.name))]
+                                        [_vm._v(_vm._s(item.rule_name))]
                                       ),
                                       _c("text", { staticClass: "task-coin" }, [
                                         _vm._v(
@@ -607,12 +676,29 @@ var render = function () {
                                       ]),
                                     ]),
                                     _c("view", { staticClass: "task-tips" }, [
-                                      _vm._v(_vm._s(item.desc)),
+                                      _vm._v(_vm._s(item.rule_desc)),
                                     ]),
                                   ]),
-                                  _c("view", { staticClass: "task-btn" }, [
-                                    _vm._v(_vm._s(item.event)),
-                                  ]),
+                                  item.rule_status != "已完成"
+                                    ? _c(
+                                        "view",
+                                        {
+                                          staticClass: "task-btn",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.taskClick(
+                                                item.rule_code
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v(_vm._s(item.rule_status))]
+                                      )
+                                    : _c(
+                                        "view",
+                                        { staticClass: "task-sucess-btn" },
+                                        [_vm._v(_vm._s(item.rule_status))]
+                                      ),
                                 ]
                               )
                             }),
@@ -648,15 +734,15 @@ var render = function () {
                                 _c("view", { staticClass: "task-info" }, [
                                   _c("view", [
                                     _c("text", { staticClass: "task-title" }, [
-                                      _vm._v(_vm._s(item.rule_name)),
+                                      _vm._v(_vm._s(item.order_name)),
                                     ]),
                                   ]),
                                   _c("view", { staticClass: "task-tips" }, [
-                                    _vm._v(_vm._s(item.create_at)),
+                                    _vm._v(_vm._s(item.success_time)),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "task-num" }, [
-                                  _vm._v(_vm._s(item.coin)),
+                                  _vm._v(_vm._s(item.curr_coin)),
                                 ]),
                               ]),
                             ]

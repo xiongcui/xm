@@ -5,7 +5,7 @@
       v-for="(item, index) in list"
       :key="index"
       @tap="godetail(item.oid, item.author_id)"
-      v-if="list.length"
+      v-if="list.length > 0"
     >
       <image
         v-if="item.file_type == 'picture'"
@@ -19,6 +19,7 @@
         :poster="item.cover[0]"
         :src="item.video_cover && item.video_cover[0]"
         class="list_video-width"
+        @tap.stop=""
       ></video>
       <view class="zuopin_desc">{{ item.summary }}</view>
       <view class="zuopin_info">
@@ -27,9 +28,10 @@
           :src="
             item.author.avatar
               ? item.author.avatar
-              : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
+              : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
           "
           mode="aspectFill"
+          @tap="goZhuye(item.author.uuid)"
         ></image>
 
         <view>
@@ -37,12 +39,12 @@
             <text class="list_name">{{ item.author.nickname }}</text>
             <block>
               <image
-                src="https://yuepai-oss.qubeitech.com/static/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="list_sex"
                 v-if="item.author.sex == 1"
               ></image>
               <image
-                src="https://yuepai-oss.qubeitech.com/static/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="list_sex"
                 v-if="item.author.sex == 0"
               ></image>
@@ -59,7 +61,7 @@
         </view>
       </view>
     </view>
-    <view v-else class="none-data">
+    <view v-if="list.length == 0" class="none-data">
       <image
         src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         mode="aspectFill"
@@ -96,6 +98,9 @@ export default {
     };
   },
   methods: {
+    goZhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     godetail(oid, author_id) {
       openPage(
         "/packageAdd/pages/zuopin/zuopin_detail/index?oid=" +

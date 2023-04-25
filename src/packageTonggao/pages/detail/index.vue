@@ -20,20 +20,31 @@
           </view>
 
           <view class="detail_label">
-            {{ tonggaoInfo.topic.ticket.name }}
+            {{ tonggaoInfo.topic.target }}
           </view>
         </view>
         <view class="detail_info_title">
-          <view
+          <!-- <view
             class="recommend-label"
             v-for="(item, index) in tonggaoInfo.topic.headline.tag"
             :key="index"
             >{{ item }}</view
-          >
+          > -->
+          <block v-if="tonggaoInfo.topic.headline.tag.length">
+            <image
+              class="recommend-image"
+              v-for="(tagitem, tagindex) in tonggaoInfo.topic.headline.tag"
+              :key="tagindex"
+              :src="tagitem"
+            >
+            </image>
+          </block>
           <view class="title_desc">{{ tonggaoInfo.topic.headline.title }}</view>
           <button open-type="share" class="share-btn">
             <view class="share">
-              <image src="../../../assets/images/share.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/share.png"
+              ></image>
             </view>
           </button>
         </view>
@@ -42,6 +53,25 @@
           <view
             class="detail_tag_item"
             v-for="(item, index) in tonggaoInfo.subtitle.first_label"
+            :key="index"
+          >
+            <view class="detail_tag_box">
+              <image class="detail_tag_icon" :src="item.icon"></image>
+              <view>{{ item.name }}</view>
+            </view>
+          </view>
+        </view>
+        <view
+          class="split_line"
+          v-if="tonggaoInfo.subtitle.second_label.length"
+        ></view>
+        <view
+          class="detail_tag"
+          v-if="tonggaoInfo.subtitle.second_label.length"
+        >
+          <view
+            class="detail_tag_item"
+            v-for="(item, index) in tonggaoInfo.subtitle.second_label"
             :key="index"
           >
             <view class="detail_tag_box">
@@ -60,6 +90,7 @@
                   : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
               "
               class="avatar"
+              @tap="goZhuye"
             ></image>
             <view class="list_info">
               <view class="list_name">
@@ -136,10 +167,10 @@
         <view class="tonggao_desc">
           <view class="dian"></view>{{ tonggaoInfo.details.content }}
         </view>
-        <view class="tonggao_desc">
+        <view class="tonggao_desc" v-if="tonggaoInfo.details.expect_time">
           <view class="dian"></view>时间：{{ tonggaoInfo.details.expect_time }}
         </view>
-        <view class="tonggao_desc">
+        <view class="tonggao_desc" v-if="tonggaoInfo.details.expect_locale">
           <view class="dian"></view>地点：{{
             tonggaoInfo.details.expect_locale
           }}
@@ -153,6 +184,7 @@
             :key="index"
             mode="widthFix"
             :src="item"
+            @tap.stop="previewImage(item, tonggaoInfo.details.media.cover)"
           ></image>
         </view>
         <view
@@ -172,7 +204,7 @@
         </view>
       </view>
     </view>
-    <view class="recommend">
+    <view class="recommend" v-if="noticeRecommendList.length">
       <view class="recommend-title">
         <view class="recommend-name"> 他的通告 </view>
       </view>
@@ -188,6 +220,91 @@
           @tap="godetail(item.basic.oid, item.author.uuid)"
         >
           <view class="tonggao-recommend">
+            <view class="tonggao-recommend-top">
+              <view class="tonggao-info-title">
+                <block v-if="item.topic.headline.tag.length">
+                  <image
+                    class="recommend-image"
+                    v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                    :key="tagindex"
+                    :src="tagitem"
+                  >
+                  </image>
+                </block>
+                <view class="tonggao-txt">
+                  {{ item.topic.headline.title }}</view
+                >
+              </view>
+            </view>
+            <view class="tonggao-recommend-bt">
+              <view class="tonggao-recommend-info">
+                <view class="list_title">
+                  <view class="recommend-style">
+                    <view class="recommend-label">
+                      {{ item.topic.target }}
+                    </view>
+                    <view class="recommend-label2">
+                      {{ item.topic.payment.title }}
+                    </view>
+                  </view>
+                </view>
+                <view class="tonggao-tags">
+                  <view
+                    class="tag-item"
+                    v-for="(tag, tagIndex) in item.subtitle.first_label"
+                    :key="tagIndex"
+                    >{{ tag.name }}</view
+                  >
+                </view>
+                <!-- <view class="tonggao-recommend-price">
+                          <view class="pirce">
+                            {{ item.topic.payment.title }}</view
+                          >
+                          <view class="recommend-btn">立即报名</view>
+                        </view> -->
+              </view>
+              <view
+                class="tonggao-recommend-img"
+                v-if="item.details.media.file_type == 'picture'"
+              >
+                <image
+                  :src="item.details.media.cover[0]"
+                  mode="aspectFill"
+                  @tap.stop="
+                    previewImage(
+                      item.details.media.cover[0],
+                      item.details.media.cover
+                    )
+                  "
+                ></image>
+              </view>
+            </view>
+          </view>
+          <view class="tonggao-bottom">
+            <view class="tonggao-head">
+              <image
+                :src="
+                  item.author.avatar
+                    ? item.author.avatar
+                    : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                "
+              ></image>
+              {{ item.author.nickname }}
+            </view>
+            <view class="tonggao-yuepai">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+              ></image>
+              {{ item.statistic.invite_cnt }}
+            </view>
+            <view class="tonggao-read">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+              ></image>
+              {{ item.statistic.read_cnt }}
+            </view>
+          </view>
+          <!-- <view class="tonggao-recommend">
             <view class="tonggao-recommend-top">
               <view class="tonggao-info-title">
                 <view
@@ -230,6 +347,14 @@
                     >{{ tag.name }}</view
                   >
                 </view>
+                <view class="tonggao-tags">
+                  <view
+                    class="tag-item"
+                    v-for="(tag, tagIndex) in item.subtitle.second_label"
+                    :key="tagIndex"
+                    >{{ tag.name }}</view
+                  >
+                </view>
                 <view class="tonggao-recommend-price">
                   <view class="pirce"> {{ item.topic.payment.title }}</view>
                   <view class="recommend-btn" @tap="nowYuepai(item.basic.oid)"
@@ -251,14 +376,18 @@
               {{ item.author.nickname }}
             </view>
             <view class="tonggao-yuepai">
-              <image src="../../../assets/images/user/index/yuepai.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+              ></image>
               {{ item.statistic.invite_cnt }}
             </view>
             <view class="tonggao-read">
-              <image src="../../../assets/images/eyes.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+              ></image>
               {{ item.statistic.read_cnt }}
             </view>
-          </view>
+          </view> -->
         </view>
       </view>
       <view v-else class="none-data">
@@ -348,12 +477,17 @@ export default {
         topic: {
           payment: {},
           ticket: {},
-          headline: {},
+          headline: {
+            tag: [],
+          },
         },
         subtitle: {
           first_label: [],
+          second_label: [],
         },
         details: {
+          expect_time: "",
+          expect_locale: "",
           media: {
             cover: [],
           },
@@ -369,6 +503,13 @@ export default {
     TonggaoList,
   },
   methods: {
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
     godetail(oid, author_id) {
       openPage(
         "/packageTonggao/pages/detail/index?oid=" +
@@ -397,12 +538,21 @@ export default {
     },
     launchYuepai() {
       if (isLogin()) {
-        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        let userInfo = wx.getStorageSync("userInfo");
+        let uuid = userInfo.uuid;
+        if (uuid != this.author_id) {
+          openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        } else {
+          errortip("自己不可报名自己哦，看看别的吧");
+        }
       } else {
         wx.redirectTo({
           url: "/pages/login/index",
         });
       }
+    },
+    goZhuye() {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     subRecordCollect() {
       let params = {

@@ -100,11 +100,7 @@
 
 <script>
 import "./index.scss";
-import {
-  publicConfig,
-  userShape,
-  userShapeDetail,
-} from "../../../../api/index";
+import { userShape, userShapeDetail } from "../../../../api/index";
 import { errortip } from "../../../../utils/util";
 export default {
   name: "editpersondata",
@@ -178,60 +174,60 @@ export default {
     async userShapeDetail(params) {
       try {
         let res = await userShapeDetail(params);
-        this.heightIndex = this.heights.findIndex((item) => {
-          return item == res.data.data.height;
-        });
-        this.weightIndex = this.weights.findIndex((item) => {
-          return item == res.data.data.weight;
-        });
-        this.BWHIndex[0] = this.BWHs[0].findIndex((item) => {
-          return item == res.data.data.bust;
-        });
-        this.BWHIndex[1] = this.BWHs[1].findIndex((item) => {
-          return item == res.data.data.waist;
-        });
-        this.BWHIndex[2] = this.BWHs[2].findIndex((item) => {
-          return item == res.data.data.hip;
-        });
-        this.shoeIndex = this.shoes.findIndex((item) => {
-          return item == res.data.data.size;
-        });
+        //默认下拉数据
+        if (res.data.data.shape_list.height) {
+          this.heights = res.data.data.shape_list.height;
+        }
+        if (res.data.data.shape_list.weight) {
+          this.weights = res.data.data.shape_list.weight;
+        }
+        if (res.data.data.shape_list.bwh) {
+          this.BWHs = [
+            res.data.data.shape_list.bwh,
+            res.data.data.shape_list.bwh,
+            res.data.data.shape_list.bwh,
+          ];
+        }
+        if (res.data.data.shape_list.size) {
+          this.shoes = res.data.data.shape_list.size;
+        }
+        // 数据回显
+        if (res.data.data.current_shape.height) {
+          this.heightIndex = this.heights.findIndex((item) => {
+            return item == res.data.data.current_shape.height;
+          });
+        }
+        if (res.data.data.current_shape.weight) {
+          this.weightIndex = this.weights.findIndex((item) => {
+            return item == res.data.data.current_shape.weight;
+          });
+        }
+        if (res.data.data.current_shape.bust) {
+          this.BWHIndex[0] = this.BWHs[0].findIndex((item) => {
+            return item == res.data.data.current_shape.bust;
+          });
+        }
+        if (res.data.data.current_shape.waist) {
+          this.BWHIndex[1] = this.BWHs[1].findIndex((item) => {
+            return item == res.data.data.current_shape.waist;
+          });
+        }
+        if (res.data.data.current_shape.hip) {
+          this.BWHIndex[2] = this.BWHs[2].findIndex((item) => {
+            return item == res.data.data.current_shape.hip;
+          });
+        }
+        if (res.data.data.current_shape.size) {
+          this.shoeIndex = this.shoes.findIndex((item) => {
+            return item == res.data.data.current_shape.size;
+          });
+        }
         this.BWHIndex = JSON.parse(JSON.stringify(this.BWHIndex));
-      } catch (error) {}
-    },
-    async publicConfig(params) {
-      try {
-        let res = await publicConfig(params);
-        let arr = [];
-        let arr2 = [];
-        let arr3 = [];
-        let arr4 = [];
-        res.data.data.map((item) => {
-          if (item.type == "shape_height") {
-            arr.push(item.value);
-          }
-          if (item.type == "shape_weight") {
-            arr2.push(item.value);
-          }
-          if (item.type == "shape_bwh") {
-            arr3.push(item.value);
-          }
-          if (item.type == "shape_size") {
-            arr4.push(item.value);
-          }
-        });
-        this.heights = arr;
-        this.weights = arr2;
-        this.BWHs = [arr3, arr3, arr3];
-        this.shoes = arr4;
-        this.userShapeDetail("");
       } catch (error) {}
     },
   },
   created() {
-    this.publicConfig({
-      type: ["shape_height", "shape_weight", "shape_bwh", "shape_size"],
-    });
+    this.userShapeDetail("");
   },
 };
 </script>

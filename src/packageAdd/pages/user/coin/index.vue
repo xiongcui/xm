@@ -49,7 +49,7 @@
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="service">{{ item.desc }}</view>
+                <view class="service">{{ item.rule_desc }}</view>
                 <view class="vip red">{{ item.member_coin }}</view>
                 <view class="novip red">{{ item.common_coin }}</view>
               </view>
@@ -67,12 +67,20 @@
                   <view class="task-info">
                     <view class="task-dian"></view>
                     <view>
-                      <text class="task-title">{{ item.name }}</text>
+                      <text class="task-title">{{ item.rule_name }}</text>
                       <text class="task-coin">+{{ item.common_coin }}金币</text>
                     </view>
-                    <view class="task-tips">{{ item.desc }}</view>
+                    <view class="task-tips">{{ item.rule_desc }}</view>
                   </view>
-                  <view class="task-btn">{{ item.event }}</view>
+                  <view
+                    class="task-btn"
+                    @tap="taskClick(item.rule_code)"
+                    v-if="item.rule_status != '已完成'"
+                    >{{ item.rule_status }}</view
+                  >
+                  <view v-else class="task-sucess-btn">{{
+                    item.rule_status
+                  }}</view>
                 </view>
                 <view class="coin-title mt16">/ 任务奖励 /</view>
                 <view
@@ -83,12 +91,20 @@
                   <view class="task-info">
                     <view class="task-dian"></view>
                     <view>
-                      <text class="task-title">{{ item.name }}</text>
+                      <text class="task-title">{{ item.rule_name }}</text>
                       <text class="task-coin">+{{ item.common_coin }}金币</text>
                     </view>
-                    <view class="task-tips">{{ item.desc }}</view>
+                    <view class="task-tips">{{ item.rule_desc }}</view>
                   </view>
-                  <view class="task-btn">{{ item.event }}</view>
+                  <view
+                    class="task-btn"
+                    @tap="taskClick(item.rule_code)"
+                    v-if="item.rule_status != '已完成'"
+                    >{{ item.rule_status }}</view
+                  >
+                  <view v-else class="task-sucess-btn">{{
+                    item.rule_status
+                  }}</view>
                 </view>
               </view>
             </block>
@@ -111,11 +127,11 @@
                 <view class="coin-task">
                   <view class="task-info">
                     <view>
-                      <text class="task-title">{{ item.rule_name }}</text>
+                      <text class="task-title">{{ item.order_name }}</text>
                     </view>
-                    <view class="task-tips">{{ item.create_at }}</view>
+                    <view class="task-tips">{{ item.success_time }}</view>
                   </view>
-                  <view class="task-num">{{ item.coin }}</view>
+                  <view class="task-num">{{ item.curr_coin }}</view>
                 </view>
               </view>
             </block>
@@ -159,7 +175,7 @@ export default {
     dailyList() {
       let arr = [];
       this.list.map((item) => {
-        if (item.code == "everyday_sign" || item.code == "invite_friends") {
+        if (item.class_code == "daily_rewards") {
           arr.push(item);
         }
       });
@@ -168,7 +184,7 @@ export default {
     taskList() {
       let arr = [];
       this.list.map((item) => {
-        if (item.code != "everyday_sign" && item.code != "invite_friends") {
+        if (item.class_code == "task_rewards") {
           arr.push(item);
         }
       });
@@ -176,6 +192,31 @@ export default {
     },
   },
   methods: {
+    taskClick(code) {
+      switch (code) {
+        case "everyday_sign":
+          wx.switchTab({
+            url: "/pages/my/index",
+            success: function (e) {},
+          });
+          break;
+        case "invite_friends":
+          openPage("/packageAdd/pages/user/invite/index");
+          break;
+        case "finish_profile":
+          openPage("/packageAdd/pages/user/editinfor/index");
+          break;
+        case "real_certify":
+          openPage("/packageAdd/pages/user/realnameAuth/index");
+          break;
+        case "follow_wechat":
+          openPage("/packageAdd/pages/user/follow/index");
+          break;
+        case "bind_phone":
+          openPage("/packageAdd/pages/user/contact/index");
+          break;
+      }
+    },
     // 点击tab切换
     changeItem(index, type) {
       if (this.currentTab === index) {
@@ -204,9 +245,13 @@ export default {
       });
     },
     queryCoinList() {
-      this.coinList({
+      let params = {
         type: this.type,
-      });
+      };
+      if (this.currentTab == 0) {
+        params.class_code = "member_service";
+      }
+      this.coinList(params);
     },
     goPay() {
       openPage("/packageAdd/pages/user/rechargecoin/index");

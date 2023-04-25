@@ -99,8 +99,8 @@
     padding: 0px 16px 16px 16px;
     align-items: center;
     .news-title {
-      background: url(../../assets/images/common/icon_tongzhi.png) no-repeat 0px
-        center;
+      background: url(https://yuepai-oss.qubeitech.com/static/images/common/icon_tongzhi.png)
+        no-repeat 0px center;
       background-size: 36px;
       padding-left: 46px;
       font-size: 28px;
@@ -121,6 +121,8 @@
       border-radius: 8px;
       padding: 2px 4px;
       font-size: 22px;
+      height: 38px;
+      box-sizing: border-box;
     }
   }
   .page-nav {
@@ -221,7 +223,8 @@
       padding-right: 22px;
       color: rgba(0, 0, 0, 0.5);
       font-size: 30px;
-      background: url("../../assets/images/right.png") no-repeat center right;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/right.png")
+        no-repeat center right;
       background-size: 12px 22px;
     }
   }
@@ -244,9 +247,9 @@
     .tonggao-recommend-bt {
       display: flex;
       .tonggao-recommend-img image {
-        width: 180px;
-        height: 220px;
-        margin-right: 16px;
+        width: 140px;
+        height: 90%;
+        margin-left: 16px;
       }
       .tonggao-txt {
         white-space: nowrap;
@@ -270,13 +273,13 @@
       }
       .tonggao-tags {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
         margin-top: 16px;
         .tag-item {
           padding: 4px 10px;
-          background: rgba(245, 50, 24, 0.08);
-          color: #ff1e3e;
-          font-size: 22px;
+          background: none;
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 26px;
           border-radius: 8px;
           margin-right: 10px;
           margin-bottom: 20px;
@@ -300,24 +303,38 @@
         }
       }
       .tonggao-recommend-info {
-        width: 528px;
+        width: 488px;
       }
     }
   }
+  .recommend-style {
+    display: flex;
+    white-space: nowrap;
+  }
   .recommend-label {
     padding: 2px 14px;
-    background: #f2280c;
-    border-radius: 8px;
-    color: #ffffff;
+    background: #fcedeb;
+    border-radius: 8px 0px 0px 8px;
+    color: #f2280c;
     font-size: 28px;
-    margin-right: 16px;
+    border: 2px solid #fcedeb;
   }
   .recommend-label2 {
     padding: 2px 14px;
-    background: #00ba7f;
-    border-radius: 8px;
-    color: #ffffff;
+    background: transparent;
+    color: #f2280c;
     font-size: 28px;
+    margin-right: 16px;
+    border: 2px solid #fcedeb;
+    border-left: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 0px 8px 8px 0px;
+  }
+  .recommend-image {
+    width: 40px;
+    height: 40px;
     margin-right: 16px;
   }
   .tonggao-bottom {
@@ -383,7 +400,6 @@
     margin-left: 16px;
     justify-content: center;
     .list_name {
-      //   margin-bottom: 5px;
       color: #111111;
       font-size: 34px;
     }
@@ -399,22 +415,22 @@
       margin-left: 16px;
     }
     .icon_pledge {
-      background: url("../../assets/images/pledge.png") #f0f6ff 10px center
-        no-repeat;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/pledge.png")
+        #f0f6ff 10px center no-repeat;
       background-size: 26px;
       color: #67a6ff;
-      font-size: 26px;
+      font-size: 20px;
       padding: 2px 10px;
       border-radius: 8px;
       padding-left: 40px;
       margin-left: 16px;
     }
     .icon_real {
-      background: url("../../assets/images/real.png") #fbede4 10px center
-        no-repeat;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/real.png")
+        #fbede4 10px center no-repeat;
       background-size: 26px;
       color: #ff9946;
-      font-size: 26px;
+      font-size: 20px;
       padding: 2px 10px;
       border-radius: 8px;
       padding-left: 40px;
@@ -431,6 +447,7 @@
     margin: 16px 0px;
     .list_title {
       display: flex;
+      justify-content: space-between;
     }
     .list_title_desc {
       font-size: 30px;
@@ -446,10 +463,12 @@
   .list_loction {
     background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png")
       left center no-repeat;
-    background-size: 36px;
+    background-size: 30px;
     padding-left: 36px;
-    font-size: 36px;
+    font-size: 28px;
     color: #3a3a3a;
+    display: flex;
+    align-items: center;
   }
   .list_date {
     color: #686868;
@@ -715,5 +734,79 @@
     text-align: center;
     font-size: 28px;
     color: rgba(0, 0, 0, 0.5);
+  }
+  .modal-bg {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+  }
+  .modal_box {
+    background: #ff5457;
+    position: fixed;
+    left: 50%;
+    margin-left: -260px;
+    top: 50%;
+    margin-top: -25%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 16px;
+    width: 450px;
+    padding: 60px 30px;
+  }
+  .sign_md_top image {
+    width: 89px;
+    height: 39px;
+  }
+  .sign_md_close_btn {
+    position: absolute;
+    right: -23px;
+    top: -23px;
+    z-index: 99;
+  }
+  .sign_md_close_btn image {
+    width: 46px;
+    height: 46px;
+  }
+  .sign_modal_main {
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+  }
+  .sign_md_title {
+    color: #fcda2f;
+    font-size: 30px;
+    margin-bottom: 40px;
+  }
+  .sign_md_content {
+    font-size: 26px;
+    margin-bottom: 16px;
+  }
+  .sign_md_bottom {
+    width: 200px;
+    font-size: 26px;
+    height: 50px;
+    line-height: 50px;
+    background: #fcda2f;
+    border-radius: 25px;
+    margin: 0 auto;
+    color: red;
+    margin-bottom: 10px;
+  }
+  .share-btn {
+    background-color: transparent;
+    line-height: normal;
+  }
+  .sign_md_txt {
+    font-size: 24px;
+    color: #fcda2f;
+    margin-top: 6px;
   }
 }

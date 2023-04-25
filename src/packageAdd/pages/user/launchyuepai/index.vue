@@ -494,24 +494,31 @@ export default {
       try {
         let res = await inviteTemplate(params);
         this.yuepaiInfo.author = res.data.data.visited;
-        this.yuepaiInfo.tips = res.data.data.tips;
-        this.yuepaiInfo.title = res.data.data.title;
+        this.yuepaiInfo.tips = res.data.data.input.tips;
+        this.yuepaiInfo.title = res.data.data.input.title;
         this.yuepaiInfo.warning = res.data.data.warning;
-
-        this.showContact = res.data.data.contact.is_enable;
-        this.showCelebrity = res.data.data.celebrity.is_enable;
-        this.showAddress = res.data.data.address.is_enable;
-
-        this.data.contact = res.data.data.contact.body;
-        this.data.celebrity = res.data.data.celebrity.body;
-        this.data.address = res.data.data.address.body;
-        this.media_info.platform_name = res.data.data.celebrity.platform_name;
-        this.media_info.platform_code = res.data.data.celebrity.platform_type;
-        this.pay_coin = res.data.data.visitor.pay_coin;
-        this.balance_coin = res.data.data.visitor.balance_coin;
-
+        if (res.data.data.contact) {
+          this.showContact = res.data.data.contact.is_enable;
+          this.data.contact = res.data.data.contact.body;
+        }
+        if (res.data.data.celebrity) {
+          this.showCelebrity = res.data.data.celebrity.is_enable;
+          this.data.celebrity = res.data.data.celebrity.body;
+          this.media_info.platform_name = this.data.celebrity.platform_name =
+            res.data.data.celebrity.body.platform_name;
+          this.media_info.platform_code = this.data.celebrity.platform_type =
+            res.data.data.celebrity.body.platform_type;
+          this.pay_coin = res.data.data.celebrity.visitor_acct.pay_coin;
+          this.balance_coin = res.data.data.celebrity.visitor_acct.balance_coin;
+        }
+        if (res.data.data.address) {
+          this.showAddress = res.data.data.address.is_enable;
+        }
+        if (res.data.data.address) {
+          this.data.address = res.data.data.address.body;
+        }
         this.visited_id = res.data.data.visited_id;
-        this.is_member = res.data.data.visitor.is_member;
+        this.is_member = res.data.data.visitor_acct.is_member;
       } catch (error) {}
     },
     async subApply(params) {

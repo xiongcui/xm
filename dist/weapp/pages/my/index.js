@@ -654,7 +654,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Eb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -739,7 +739,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "kb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -769,7 +769,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "lb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -802,7 +802,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "ub"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1494,6 +1494,9 @@ var render = function () {
                     [_vm._v("马上邀请")]
                   ),
                 ]),
+              ]),
+              _c("view", { staticClass: "sign_md_txt" }, [
+                _vm._v("每邀请1位好友可赚3金币哦！"),
               ]),
             ]),
           ]),

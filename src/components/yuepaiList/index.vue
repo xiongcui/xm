@@ -1,6 +1,6 @@
 <template>
   <view class="componets-list">
-    <view v-for="(item, index) in list" v-if="list.length">
+    <view v-for="(item, index) in list" v-if="list.length > 0" :key="index">
       <view
         class="componets-box"
         @tap="goYuepaiDetail(item.basic.oid, item.author.uuid)"
@@ -14,6 +14,7 @@
                   : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
               "
               class="avatar"
+              @tap="goZhuye(item.author.uuid)"
             ></image>
             <view class="list_info">
               <view class="list_name">
@@ -34,7 +35,7 @@
               <view class="list_p">
                 <text>
                   {{
-                    item.author.career_list && item.author.career_list.length
+                    item.author.career_list.length
                       ? item.author.career_list[0]
                       : null
                   }}</text
@@ -49,29 +50,25 @@
             </view>
           </view>
           <view class="list_top_rt">
-            <view class="list_loction">
-              {{ item.author.province_name }}
-            </view>
             <view class="list_date">{{ item.basic.date_humanize }}</view>
           </view>
         </view>
         <view class="list_content">
           <view class="list_title">
-            <view
-              class="recommend-label"
-              v-for="(tagitem, tagindex) in item.topic.headline.tag"
-              :key="tagindex"
-            >
-              {{ tagitem }}
+            <view class="recommend-style">
+              <view class="recommend-label">
+                {{ item.topic.target }}
+              </view>
+
+              <view class="recommend-label2">
+                {{ item.topic.payment.title }}
+              </view>
             </view>
-            <view class="recommend-label2">
-              {{ item.topic.payment.title }}
+            <view class="list_loction">
+              {{ item.topic.face_city.name }}
             </view>
           </view>
           <view class="list_title_desc">{{ item.topic.headline.title }}</view>
-        </view>
-        <view class="list_desc">
-          {{ item.details.summary }}
         </view>
         <view class="list_img" v-if="item.details.media.file_type == 'picture'">
           <scroll-view :enhanced="true" :scrollX="true">
@@ -81,7 +78,6 @@
               class="list_img_item"
               v-for="(url, coverIndex) in item.details.media.cover"
               :key="coverIndex"
-              @tap.stop="previewImage(url, item.details.media.cover)"
             ></image>
           </scroll-view>
         </view>
@@ -119,7 +115,7 @@
         </view>
       </view>
     </view>
-    <view v-else class="none-data">
+    <view v-if="list.length == 0" class="none-data">
       <image
         src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         mode="aspectFill"
@@ -162,6 +158,9 @@ export default {
         current: src, // 图片的地址url
         urls: urls, // 预览的地址url
       });
+    },
+    goZhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     goYuepaiDetail(oid, author_id) {
       openPage(

@@ -144,6 +144,22 @@ component.options.__file = "src/pages/release/appointment/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "appointment",
@@ -187,7 +203,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/cameraman.png */ "./src/assets/images/cameraman.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/cameraman.png",
+            },
           }),
           _c("text", [_vm._v("约摄影师")]),
         ]
@@ -204,7 +222,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/icon_model.png */ "./src/assets/images/icon_model.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/icon_model.png",
+            },
           }),
           _c("text", [_vm._v("约模特")]),
         ]
@@ -221,7 +241,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/makeup.png",
+            },
           }),
           _c("text", [_vm._v("约化妆师")]),
         ]
@@ -238,7 +260,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/makeup.png */ "./src/assets/images/makeup.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/makeup.png",
+            },
           }),
           _c("text", [_vm._v("约造型师")]),
         ]
@@ -255,7 +279,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/take.png */ "./src/assets/images/take.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/take.png",
+            },
           }),
           _c("text", [_vm._v("约摄像师")]),
         ]
@@ -272,7 +298,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/ps.png */ "./src/assets/images/ps.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/ps.png",
+            },
           }),
           _c("text", [_vm._v("约修图师")]),
         ]
@@ -289,7 +317,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/economicman.png */ "./src/assets/images/economicman.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/economicman.png",
+            },
           }),
           _c("text", [_vm._v("约经纪人")]),
         ]
@@ -306,7 +336,9 @@ var render = function () {
         },
         [
           _c("image", {
-            attrs: { src: __webpack_require__(/*! ../../../assets/images/business.png */ "./src/assets/images/business.png") },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/business.png",
+            },
           }),
           _c("text", [_vm._v("约商家")]),
         ]
@@ -318,66 +350,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/business.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/business.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/business.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/cameraman.png":
-/*!*****************************************!*\
-  !*** ./src/assets/images/cameraman.png ***!
-  \*****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/cameraman.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/economicman.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/economicman.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/economicman.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/makeup.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/makeup.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/makeup.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/ps.png":
-/*!**********************************!*\
-  !*** ./src/assets/images/ps.png ***!
-  \**********************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/ps.png";
 
 /***/ }),
 
@@ -448,5 +420,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/pages/release/appointment/index.vue","runtime","taro","vendors","common"]]]);
+},[["./src/pages/release/appointment/index.vue","runtime","taro","vendors"]]]);
 //# sourceMappingURL=index.js.map

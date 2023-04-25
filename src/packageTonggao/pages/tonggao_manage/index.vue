@@ -28,7 +28,7 @@
       <view
         class="tab-item"
         :class="currentTab == 4 ? 'on' : ''"
-        @tap="changeItem(4, 600)"
+        @tap="changeItem(4, -100)"
         >审核失败</view
       >
     </view>
@@ -53,9 +53,11 @@
               >
                 <view class="list-content">
                   <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
                     <view class="list_desc">
-                      {{ item.summary }}
+                      {{ item.details.summary }}
                     </view>
                     <view class="list_info">
                       <image
@@ -71,24 +73,29 @@
                     >
                   </view>
                   <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
                 </view>
                 <view class="list_num">
                   <view class="list_time">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.basic.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
@@ -107,49 +114,51 @@
                   <view class="list_bt_left">
                     <view
                       class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
+                      @tap="deleteTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
                       "
                       >删除通告</view
                     >
                     <view
                       class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
                       >结束报名</view
                     >
                   </view>
                   <view class="list_bt_rt">
                     <view
                       class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
                       >开放招募</view
                     >
                     <view
                       class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
+                      @tap="refreshTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 700
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
                       "
                       >刷新排名</view
                     >
                     <view
                       class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
                       >重新打开</view
                     >
                     <view
                       class="btn-red"
-                      @tap="manageTonggao(item.oid)"
+                      @tap="manageTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 300
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
                       "
                       >管理报名</view
                     >
@@ -179,9 +188,11 @@
               >
                 <view class="list-content">
                   <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
                     <view class="list_desc">
-                      {{ item.summary }}
+                      {{ item.details.summary }}
                     </view>
                     <view class="list_info">
                       <image
@@ -197,17 +208,22 @@
                     >
                   </view>
                   <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
                 </view>
                 <view class="list_num">
                   <view class="list_time">
@@ -233,303 +249,51 @@
                   <view class="list_bt_left">
                     <view
                       class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
+                      @tap="deleteTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
                       "
                       >删除通告</view
                     >
                     <view
                       class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
                       >结束报名</view
                     >
                   </view>
                   <view class="list_bt_rt">
                     <view
                       class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
                       >开放招募</view
                     >
                     <view
                       class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
+                      @tap="refreshTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 700
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
                       "
                       >刷新排名</view
                     >
                     <view
                       class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
                       >重新打开</view
                     >
                     <view
                       class="btn-red"
-                      @tap="manageTonggao(item.oid)"
+                      @tap="manageTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-        </swiper-item>
-        <swiper-item>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
-                    <view class="list_desc">
-                      {{ item.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
-                    <view class="list_desc">
-                      {{ item.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 300
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
                       "
                       >管理报名</view
                     >
@@ -561,9 +325,11 @@
               >
                 <view class="list-content">
                   <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
                     <view class="list_desc">
-                      {{ item.summary }}
+                      {{ item.details.summary }}
                     </view>
                     <view class="list_info">
                       <image
@@ -579,17 +345,22 @@
                     >
                   </view>
                   <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
                 </view>
                 <view class="list_num">
                   <view class="list_time">
@@ -615,49 +386,51 @@
                   <view class="list_bt_left">
                     <view
                       class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
+                      @tap="deleteTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
                       "
                       >删除通告</view
                     >
                     <view
                       class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
                       >结束报名</view
                     >
                   </view>
                   <view class="list_bt_rt">
                     <view
                       class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
                       >开放招募</view
                     >
                     <view
                       class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
+                      @tap="refreshTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 700
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
                       "
                       >刷新排名</view
                     >
                     <view
                       class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
                       >重新打开</view
                     >
                     <view
                       class="btn-red"
-                      @tap="manageTonggao(item.oid)"
+                      @tap="manageTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 300
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
                       "
                       >管理报名</view
                     >
@@ -687,9 +460,11 @@
               >
                 <view class="list-content">
                   <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
                     <view class="list_desc">
-                      {{ item.summary }}
+                      {{ item.details.summary }}
                     </view>
                     <view class="list_info">
                       <image
@@ -705,17 +480,22 @@
                     >
                   </view>
                   <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
                 </view>
                 <view class="list_num">
                   <view class="list_time">
@@ -741,303 +521,51 @@
                   <view class="list_bt_left">
                     <view
                       class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
+                      @tap="deleteTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
                       "
                       >删除通告</view
                     >
                     <view
                       class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
                       >结束报名</view
                     >
                   </view>
                   <view class="list_bt_rt">
                     <view
                       class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
                       >开放招募</view
                     >
                     <view
                       class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
+                      @tap="refreshTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 700
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
                       "
                       >刷新排名</view
                     >
                     <view
                       class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
                       >重新打开</view
                     >
                     <view
                       class="btn-red"
-                      @tap="manageTonggao(item.oid)"
+                      @tap="manageTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-        </swiper-item>
-        <swiper-item>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
-                    <view class="list_desc">
-                      {{ item.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
-                    <view class="list_desc">
-                      {{ item.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.oid)"
-                      v-if="
-                        item.publish_status == 200 || item.publish_status == 300
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
                       "
                       >管理报名</view
                     >
@@ -1069,9 +597,11 @@
               >
                 <view class="list-content">
                   <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
                     <view class="list_desc">
-                      {{ item.summary }}
+                      {{ item.details.summary }}
                     </view>
                     <view class="list_info">
                       <image
@@ -1087,17 +617,22 @@
                     >
                   </view>
                   <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
                 </view>
                 <view class="list_num">
                   <view class="list_time">
@@ -1123,49 +658,51 @@
                   <view class="list_bt_left">
                     <view
                       class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
+                      @tap="deleteTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
                       "
                       >删除通告</view
                     >
                     <view
                       class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
                       >结束报名</view
                     >
                   </view>
                   <view class="list_bt_rt">
                     <view
                       class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
                       >开放招募</view
                     >
                     <view
                       class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
+                      @tap="refreshTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 700
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
                       "
                       >刷新排名</view
                     >
                     <view
                       class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
                       >重新打开</view
                     >
                     <view
                       class="btn-red"
-                      @tap="manageTonggao(item.oid)"
+                      @tap="manageTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 300
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
                       "
                       >管理报名</view
                     >
@@ -1195,9 +732,11 @@
               >
                 <view class="list-content">
                   <view class="list_left">
-                    <view class="list_title"> {{ item.major_subject }} </view>
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
                     <view class="list_desc">
-                      {{ item.summary }}
+                      {{ item.details.summary }}
                     </view>
                     <view class="list_info">
                       <image
@@ -1213,17 +752,22 @@
                     >
                   </view>
                   <view class="list_rt">
-                    <image :src="item.cover[0]" mode="aspectFill"></image>
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
-                    >{{ item.publish_status_name }}</view
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
-                  <view class="list_tag">{{ item.second_name }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
                 </view>
                 <view class="list_num">
                   <view class="list_time">
@@ -1249,49 +793,595 @@
                   <view class="list_bt_left">
                     <view
                       class="btn-grey"
-                      @tap="deleteTonggao(item.oid)"
+                      @tap="deleteTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 100 ||
-                        item.publish_status == 120 ||
-                        item.publish_status == 400 ||
-                        item.publish_status == 300 ||
-                        item.publish_status == 600
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
                       "
                       >删除通告</view
                     >
                     <view
                       class="btn-grey"
-                      @tap="overTonggao(item.oid)"
-                      v-if="item.publish_status == 200"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
                       >结束报名</view
                     >
                   </view>
                   <view class="list_bt_rt">
                     <view
                       class="btn-red"
-                      @tap="openTonggao(item.oid)"
-                      v-if="item.publish_status == 120"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
                       >开放招募</view
                     >
                     <view
                       class="btn-red"
-                      @tap="refreshTonggao(item.oid)"
+                      @tap="refreshTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 700
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
                       "
                       >刷新排名</view
                     >
                     <view
                       class="btn-red"
-                      @tap="reopenTonggao(item.oid)"
-                      v-if="item.publish_status == 300"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
                       >重新打开</view
                     >
                     <view
                       class="btn-red"
-                      @tap="manageTonggao(item.oid)"
+                      @tap="manageTonggao(item.basic.oid)"
                       v-if="
-                        item.publish_status == 200 || item.publish_status == 300
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
+                      "
+                      >管理报名</view
+                    >
+                  </view>
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="tonggao-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_left">
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
+                    <view class="list_desc">
+                      {{ item.details.summary }}
+                    </view>
+                    <view class="list_info">
+                      <image
+                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                      ></image>
+                      面向地区：{{ item.author.province_name }}
+                    </view>
+                    <view class="list_info"
+                      ><image
+                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
+                      ></image
+                      >性别要求：{{ formatSex(item.author.sex) }}</view
+                    >
+                  </view>
+                  <view class="list_rt">
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
+                </view>
+                <view class="list_num">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_bt_left">
+                    <view
+                      class="btn-grey"
+                      @tap="deleteTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
+                      "
+                      >删除通告</view
+                    >
+                    <view
+                      class="btn-grey"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
+                      >结束报名</view
+                    >
+                  </view>
+                  <view class="list_bt_rt">
+                    <view
+                      class="btn-red"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
+                      >开放招募</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="refreshTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
+                      "
+                      >刷新排名</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
+                      >重新打开</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="manageTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
+                      "
+                      >管理报名</view
+                    >
+                  </view>
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="tonggao-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_left">
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
+                    <view class="list_desc">
+                      {{ item.details.summary }}
+                    </view>
+                    <view class="list_info">
+                      <image
+                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                      ></image>
+                      面向地区：{{ item.author.province_name }}
+                    </view>
+                    <view class="list_info"
+                      ><image
+                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
+                      ></image
+                      >性别要求：{{ formatSex(item.author.sex) }}</view
+                    >
+                  </view>
+                  <view class="list_rt">
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
+                </view>
+                <view class="list_num">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_bt_left">
+                    <view
+                      class="btn-grey"
+                      @tap="deleteTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
+                      "
+                      >删除通告</view
+                    >
+                    <view
+                      class="btn-grey"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
+                      >结束报名</view
+                    >
+                  </view>
+                  <view class="list_bt_rt">
+                    <view
+                      class="btn-red"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
+                      >开放招募</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="refreshTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
+                      "
+                      >刷新排名</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
+                      >重新打开</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="manageTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
+                      "
+                      >管理报名</view
+                    >
+                  </view>
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="tonggao-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_left">
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
+                    <view class="list_desc">
+                      {{ item.details.summary }}
+                    </view>
+                    <view class="list_info">
+                      <image
+                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                      ></image>
+                      面向地区：{{ item.author.province_name }}
+                    </view>
+                    <view class="list_info"
+                      ><image
+                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
+                      ></image
+                      >性别要求：{{ formatSex(item.author.sex) }}</view
+                    >
+                  </view>
+                  <view class="list_rt">
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
+                </view>
+                <view class="list_num">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_bt_left">
+                    <view
+                      class="btn-grey"
+                      @tap="deleteTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
+                      "
+                      >删除通告</view
+                    >
+                    <view
+                      class="btn-grey"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
+                      >结束报名</view
+                    >
+                  </view>
+                  <view class="list_bt_rt">
+                    <view
+                      class="btn-red"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
+                      >开放招募</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="refreshTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
+                      "
+                      >刷新排名</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
+                      >重新打开</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="manageTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
+                      "
+                      >管理报名</view
+                    >
+                  </view>
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="tonggao-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_left">
+                    <view class="list_title">
+                      {{ item.topic.headline.title }}</view
+                    >
+                    <view class="list_desc">
+                      {{ item.details.summary }}
+                    </view>
+                    <view class="list_info">
+                      <image
+                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                      ></image>
+                      面向地区：{{ item.author.province_name }}
+                    </view>
+                    <view class="list_info"
+                      ><image
+                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
+                      ></image
+                      >性别要求：{{ formatSex(item.author.sex) }}</view
+                    >
+                  </view>
+                  <view class="list_rt">
+                    <image
+                      :src="item.details.media.cover[0]"
+                      mode="aspectFill"
+                    ></image>
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >{{ item.status.publish_status_name }}</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                  <view class="list_tag">{{
+                    item.topic.headline.tag.join(",")
+                  }}</view>
+                </view>
+                <view class="list_num">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_bt_left">
+                    <view
+                      class="btn-grey"
+                      @tap="deleteTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 100 ||
+                        item.status.publish_status == 120 ||
+                        item.status.publish_status == 400 ||
+                        item.status.publish_status == 300 ||
+                        item.status.publish_status == -100
+                      "
+                      >删除通告</view
+                    >
+                    <view
+                      class="btn-grey"
+                      @tap="overTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 200"
+                      >结束报名</view
+                    >
+                  </view>
+                  <view class="list_bt_rt">
+                    <view
+                      class="btn-red"
+                      @tap="openTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 120"
+                      >开放招募</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="refreshTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 700
+                      "
+                      >刷新排名</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="reopenTonggao(item.basic.oid)"
+                      v-if="item.status.publish_status == 300"
+                      >重新打开</view
+                    >
+                    <view
+                      class="btn-red"
+                      @tap="manageTonggao(item.basic.oid)"
+                      v-if="
+                        item.status.publish_status == 200 ||
+                        item.status.publish_status == 300
                       "
                       >管理报名</view
                     >
@@ -1376,7 +1466,7 @@ export default {
             console.log("用户点击确定");
             _this.manageOperation({
               oid: oid,
-              even_type: 400,
+              even_type: -200,
             });
           } else if (res.cancel) {
             console.log("用户点击取消");
@@ -1415,7 +1505,7 @@ export default {
             console.log("用户点击确定");
             _this.manageOperation({
               oid: oid,
-              even_type: 700,
+              even_type: 400,
             });
           } else if (res.cancel) {
             console.log("用户点击取消");

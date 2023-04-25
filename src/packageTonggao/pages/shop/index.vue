@@ -513,9 +513,10 @@ export default {
         store_address: this.localtion,
         store_locale_address: this.locale_address,
         store_doorplate: this.doorplate,
-        task_reward_type: this.taskIndex + "00",
+        task_reward_type: Number(this.taskIndex + "00"),
         task_reward_name: this.taskData[Number(this.taskIndex - 1)].name,
-        payment_range: this.checked1 ? 0 : 1, // 费用区间(1:区间；0非区间)
+        payment_range:
+          this.checked1 || this.taskData[this.taskIndex - 1].ispick ? 0 : 1, // 费用区间(1:区间；0非区间)
         payment_amount: 0, // 付费金额(非金额区间),
         payment_min_amount: 0,
         payment_max_amount: 0,
@@ -523,7 +524,7 @@ export default {
         reward_good_name: "",
         reward_good_price: 0,
         no_limit_number: 0, // 不限人数(不限制：1)
-        recruit_number: this.recruitNum, //招募人数
+        recruit_number: Number(this.recruitNum), //招募人数
         is_quoted_price: this.checked ? 1 : 0, // 自报价格(1:是，0:否)
         no_limit_fans: this.checked2 ? 1 : 0, // 不限粉丝(1:不限；0:限制)
         fans_min_number: Number(this.minFans),
@@ -544,7 +545,6 @@ export default {
         params.reward_good_name = this.product;
         params.reward_good_price = Number(this.giftsValue);
       }
-      console.log(params);
       this.submitNotice(params);
     },
     async publicConfig(params) {

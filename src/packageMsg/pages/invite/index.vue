@@ -340,10 +340,13 @@ export default {
     query() {
       let params = {
         type: "NE",
-        visited_status: this.status,
+        // visited_status: this.status,
         page: this.pageNum,
         per_page: this.pageSize,
       };
+      if (this.status) {
+        params.visited_status = this.status;
+      }
       this.applyList(params);
     },
     goDetail(sid) {

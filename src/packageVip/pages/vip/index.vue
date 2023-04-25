@@ -252,12 +252,12 @@ export default {
     async memberInfo(params) {
       try {
         let res = await memberInfo(params);
-        this.avatar = res.data.data
-          ? res.data.data.avatar
+        this.avatar = res.data.data.member.avatar
+          ? res.data.data.member.avatar
           : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png";
-        this.nickname = res.data.data.nickname;
-        this.ismember = res.data.data.is_member;
-        this.endtime = res.data.data.end_time;
+        this.nickname = res.data.data.member.nickname;
+        this.ismember = res.data.data.member.is_member;
+        this.endtime = res.data.data.member.end_time;
       } catch (error) {}
     },
     submit() {

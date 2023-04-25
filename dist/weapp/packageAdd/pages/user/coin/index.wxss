@@ -37,7 +37,7 @@
   border: 1rpx solid #fffefb;
   border-radius: 14rpx;
   font-size: 28rpx;
-  background: url("https://yuepai-oss.qubeitech.com/static/user/coin/coin.png") no-repeat 10rpx center;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/user/coin/coin.png") no-repeat 10rpx center;
   background-size: 30rpx;
 }
 .coin .coin-content {
@@ -186,6 +186,9 @@
   color: #ffffff;
   font-size: 26rpx;
   border-radius: 10rpx;
+}
+.coin .task-sucess-btn {
+  color: rgba(0, 0, 0, 0.5);
 }
 .coin .mt16 {
   margin-top: 16rpx;

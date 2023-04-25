@@ -396,10 +396,15 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
     query: function query() {
       var params = {
         type: "NE",
-        visited_status: this.status,
+        // visited_status: this.status,
         page: this.pageNum,
         per_page: this.pageSize
       };
+
+      if (this.status) {
+        params.visited_status = this.status;
+      }
+
       this.applyList(params);
     },
     goDetail: function goDetail(sid) {

@@ -18,10 +18,11 @@
 }
 .tonggao-recommend-bt {
   display: flex;
+  justify-content: space-between;
   .tonggao-recommend-img image {
-    width: 180px;
-    height: 220px;
-    margin-right: 16px;
+    width: 140px;
+    height: 90%;
+    margin-left: 16px;
   }
   .tonggao-info-title {
     display: flex;
@@ -50,13 +51,13 @@
   }
   .tonggao-tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin-top: 16px;
     .tag-item {
       padding: 4px 10px;
-      background: rgba(245, 50, 24, 0.08);
-      color: #ff1e3e;
-      font-size: 22px;
+      background: none;
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 26px;
       border-radius: 8px;
       margin-right: 10px;
       margin-bottom: 20px;
@@ -80,7 +81,7 @@
     }
   }
   .tonggao-recommend-info {
-    width: 528px;
+    width: 488px;
   }
 }
 .tonggao-bottom {
@@ -121,20 +122,34 @@
     margin-right: 4px;
   }
 }
+.recommend-style {
+  display: flex;
+  white-space: nowrap;
+}
 .recommend-label {
   padding: 2px 14px;
-  background: #f2280c;
-  border-radius: 8px;
-  color: #ffffff;
+  background: #fcedeb;
+  border-radius: 8px 0px 0px 8px;
+  color: #f2280c;
   font-size: 28px;
-  margin-right: 16px;
+  border: 2px solid #fcedeb;
 }
 .recommend-label2 {
   padding: 2px 14px;
-  background: #00ba7f;
-  border-radius: 8px;
-  color: #ffffff;
+  background: transparent;
+  color: #f2280c;
   font-size: 28px;
+  margin-right: 16px;
+  border: 2px solid #fcedeb;
+  border-left: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 0px 8px 8px 0px;
+}
+.recommend-image {
+  width: 40px;
+  height: 40px;
   margin-right: 16px;
 }
 .none-data {

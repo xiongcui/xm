@@ -22,16 +22,18 @@
       <view
         class="tab-item"
         :class="currentTab == 3 ? 'on' : ''"
-        @tap="changeItem(3, 600)"
+        @tap="changeItem(3, -100)"
         >审核失败</view
       >
     </view>
     <view class="content">
+      <!--约拍-->
       <swiper
         :current="currentTab"
         class="swiper-box"
         duration="300"
         @change="bindChange"
+        v-if="type == 'NE'"
       >
         <swiper-item>
           <scroll-view
@@ -48,28 +50,643 @@
               >
                 <view class="list-content">
                   <view class="list_title">
-                    {{ item.type == "PH" ? item.title : item.major_subject }}
+                    {{ item.topic.headline.title }}
                   </view>
                   <view class="list_loction">
-                    {{ item.face_province_name }}
+                    {{ item.topic.face_city }}
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
+                    v-if="item.status.publish_status == 200"
                     >展示中</view
                   >
                   <view
                     class="list_status_fail"
-                    v-else-if="item.publish_status == 600"
+                    v-else-if="item.status.publish_status == -100"
                     >审核失败</view
                   >
                   <view
                     class="list_status"
-                    v-else-if="item.publish_status == 300"
+                    v-else-if="item.status.publish_status == 300"
                     >已关闭</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
+                  }}</view>
+                </view>
+                <view class="list_desc">
+                  {{ item.details.summary }}
+                </view>
+                <view
+                  class="list_img"
+                  v-if="item.details.media.file_type == 'picture'"
+                >
+                  <scroll-view :enhanced="true" :scrollX="true">
+                    <image
+                      :src="url"
+                      mode="aspectFill"
+                      class="list_img_item"
+                      v-for="(url, coverIndex) in item.details.media.cover"
+                      :key="coverIndex"
+                      @tap.stop="previewImage(url, item.details.media.cover)"
+                    ></image>
+                  </scroll-view>
+                </view>
+                <view
+                  class="list_video"
+                  v-if="item.details.media.file_type == 'video'"
+                >
+                  <video
+                    objectFit="cover"
+                    :poster="
+                      item.details.media.cover.length
+                        ? item.details.media.cover[0]
+                        : ''
+                    "
+                    :src="
+                      item.details.media.video_cover &&
+                      item.details.media.video_cover[0]
+                    "
+                    class="list_video-width"
+                  ></video>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.basic.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
+                  <view class="icon_more" @tap="moreClick(item.basic.oid)">
+                    更多
+                  </view>
+                  <view
+                    class="icon_refresh"
+                    @tap="refreshClick(item.author.is_certify, item.basic.oid)"
+                    >刷新</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
+                  "
+                >
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                  <view
+                    class="icon_open"
+                    v-if="item.status.publish_status == 300"
+                    @tap="openClick(item.basic.oid)"
+                    >打开</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
+                  <view class="list_tips">
+                    <image
+                      class="warn_icon"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
+                    ></image>
+                    {{ item.audit_reason }}
+                  </view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :lower-threshold="200"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="yuedan-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_title">
+                    {{ item.topic.headline.title }}
+                  </view>
+                  <view class="list_loction">
+                    {{ item.topic.face_city }}
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >展示中</view
+                  >
+                  <view
+                    class="list_status_fail"
+                    v-else-if="item.status.publish_status == -100"
+                    >审核失败</view
+                  >
+                  <view
+                    class="list_status"
+                    v-else-if="item.status.publish_status == 300"
+                    >已关闭</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                </view>
+                <view class="list_desc">
+                  {{ item.details.summary }}
+                </view>
+                <view
+                  class="list_img"
+                  v-if="item.details.media.file_type == 'picture'"
+                >
+                  <scroll-view :enhanced="true" :scrollX="true">
+                    <image
+                      :src="url"
+                      mode="aspectFill"
+                      class="list_img_item"
+                      v-for="(url, coverIndex) in item.details.media.cover"
+                      :key="coverIndex"
+                      @tap.stop="previewImage(url, item.details.media.cover)"
+                    ></image>
+                  </scroll-view>
+                </view>
+                <view
+                  class="list_video"
+                  v-if="item.details.media.file_type == 'video'"
+                >
+                  <video
+                    objectFit="cover"
+                    :poster="
+                      item.details.media.cover.length
+                        ? item.details.media.cover[0]
+                        : ''
+                    "
+                    :src="
+                      item.details.media.video_cover &&
+                      item.details.media.video_cover[0]
+                    "
+                    class="list_video-width"
+                  ></video>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
+                  <view class="icon_more" @tap="moreClick(item.basic.oid)">
+                    更多
+                  </view>
+                  <view
+                    class="icon_refresh"
+                    @tap="refreshClick(item.author.is_certify, item.basic.oid)"
+                    >刷新</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
+                  "
+                >
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                  <view
+                    class="icon_open"
+                    v-if="item.status.publish_status == 300"
+                    @tap="openClick(item.basic.oid)"
+                    >打开</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
+                  <view class="list_tips">
+                    <image
+                      class="warn_icon"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
+                    ></image>
+                    {{ item.audit_reason }}
+                  </view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :lower-threshold="200"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="yuedan-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_title">
+                    {{ item.topic.headline.title }}
+                  </view>
+                  <view class="list_loction">
+                    {{ item.topic.face_city }}
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >展示中</view
+                  >
+                  <view
+                    class="list_status_fail"
+                    v-else-if="item.status.publish_status == -100"
+                    >审核失败</view
+                  >
+                  <view
+                    class="list_status"
+                    v-else-if="item.status.publish_status == 300"
+                    >已关闭</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                </view>
+                <view class="list_desc">
+                  {{ item.details.summary }}
+                </view>
+                <view
+                  class="list_img"
+                  v-if="item.details.media.file_type == 'picture'"
+                >
+                  <scroll-view :enhanced="true" :scrollX="true">
+                    <image
+                      :src="url"
+                      mode="aspectFill"
+                      class="list_img_item"
+                      v-for="(url, coverIndex) in item.details.media.cover"
+                      :key="coverIndex"
+                      @tap.stop="previewImage(url, item.details.media.cover)"
+                    ></image>
+                  </scroll-view>
+                </view>
+                <view
+                  class="list_video"
+                  v-if="item.details.media.file_type == 'video'"
+                >
+                  <video
+                    objectFit="cover"
+                    :poster="
+                      item.details.media.cover.length
+                        ? item.details.media.cover[0]
+                        : ''
+                    "
+                    :src="
+                      item.details.media.video_cover &&
+                      item.details.media.video_cover[0]
+                    "
+                    class="list_video-width"
+                  ></video>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
+                  <view class="icon_more" @tap="moreClick(item.basic.oid)">
+                    更多
+                  </view>
+                  <view
+                    class="icon_refresh"
+                    @tap="refreshClick(item.author.is_certify, item.basic.oid)"
+                    >刷新</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
+                  "
+                >
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                  <view
+                    class="icon_open"
+                    v-if="item.status.publish_status == 300"
+                    @tap="openClick(item.basic.oid)"
+                    >打开</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
+                  <view class="list_tips">
+                    <image
+                      class="warn_icon"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
+                    ></image>
+                    {{ item.audit_reason }}
+                  </view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :lower-threshold="200"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="yuedan-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_title">
+                    {{ item.topic.headline.title }}
+                  </view>
+                  <view class="list_loction">
+                    {{ item.topic.face_city }}
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >展示中</view
+                  >
+                  <view
+                    class="list_status_fail"
+                    v-else-if="item.status.publish_status == -100"
+                    >审核失败</view
+                  >
+                  <view
+                    class="list_status"
+                    v-else-if="item.status.publish_status == 300"
+                    >已关闭</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
+                  }}</view>
+                </view>
+                <view class="list_desc">
+                  {{ item.details.summary }}
+                </view>
+                <view
+                  class="list_img"
+                  v-if="item.details.media.file_type == 'picture'"
+                >
+                  <scroll-view :enhanced="true" :scrollX="true">
+                    <image
+                      :src="url"
+                      mode="aspectFill"
+                      class="list_img_item"
+                      v-for="(url, coverIndex) in item.details.media.cover"
+                      :key="coverIndex"
+                      @tap.stop="previewImage(url, item.details.media.cover)"
+                    ></image>
+                  </scroll-view>
+                </view>
+                <view
+                  class="list_video"
+                  v-if="item.details.media.file_type == 'video'"
+                >
+                  <video
+                    objectFit="cover"
+                    :poster="
+                      item.details.media.cover.length
+                        ? item.details.media.cover[0]
+                        : ''
+                    "
+                    :src="
+                      item.details.media.video_cover &&
+                      item.details.media.video_cover[0]
+                    "
+                    class="list_video-width"
+                  ></video>
+                </view>
+                <view class="list_bottom">
+                  <view class="list_time">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                    ></image>
+                    {{ item.date_humanize }}
+                  </view>
+                  <view class="list_yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    收到约拍 {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="list_read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    阅读 {{ item.statistic.read_cnt }}
+                  </view>
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
+                  <view class="icon_more" @tap="moreClick(item.basic.oid)">
+                    更多
+                  </view>
+                  <view
+                    class="icon_refresh"
+                    @tap="refreshClick(item.author.is_certify, item.basic.oid)"
+                    >刷新</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
+                  "
+                >
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                  <view
+                    class="icon_open"
+                    v-if="item.status.publish_status == 300"
+                    @tap="openClick(item.basic.oid)"
+                    >打开</view
+                  >
+                </view>
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
+                  <view class="list_tips">
+                    <image
+                      class="warn_icon"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
+                    ></image>
+                    {{ item.audit_reason }}
+                  </view>
+                  <view class="icon_delete" @tap="deleteYuepai(item.basic.oid)"
+                    >删除</view
+                  >
+                </view>
+              </view>
+            </block>
+            <view v-else class="none-data">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+                mode="aspectFill"
+                class="none-img"
+              ></image>
+              <view>当前暂无信息哦～</view>
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </swiper>
+      <!--约拍-->
+      <!--作品-->
+      <swiper
+        :current="currentTab"
+        class="swiper-box"
+        duration="300"
+        @change="bindChange"
+        v-if="type == 'PH'"
+      >
+        <swiper-item>
+          <scroll-view
+            :scroll-y="true"
+            @scrolltolower="scrollToLower"
+            :lower-threshold="200"
+            :style="{ height: winHeight + 'px' }"
+          >
+            <block v-if="list.length">
+              <view
+                class="yuedan-manage-list"
+                v-for="(item, index) in list"
+                :key="index"
+              >
+                <view class="list-content">
+                  <view class="list_title">
+                    {{ item.title }}
+                  </view>
+                  <view
+                    class="list_status_sucess"
+                    v-if="item.status.publish_status == 200"
+                    >展示中</view
+                  >
+                  <view
+                    class="list_status_fail"
+                    v-else-if="item.status.publish_status == -100"
+                    >审核失败</view
+                  >
+                  <view
+                    class="list_status"
+                    v-else-if="item.status.publish_status == 300"
+                    >已关闭</view
+                  >
+                  <view class="list_status" v-else>{{
+                    item.status.publish_status_name
                   }}</view>
                 </view>
                 <view class="list_desc">
@@ -90,7 +707,7 @@
                 <view class="list_video" v-if="item.file_type == 'video'">
                   <video
                     objectFit="cover"
-                    :poster="item.cover[0]"
+                    :poster="item.cover.length ? item.cover[0] : ''"
                     :src="item.video_cover && item.video_cover[0]"
                     class="list_video-width"
                   ></video>
@@ -115,20 +732,24 @@
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 200">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
                   <view class="icon_more" @tap="moreClick(item.oid)">
                     更多
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_certify, item.oid)"
+                    @tap="refreshClick(item.author.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
                 <view
                   class="list_operation"
                   v-if="
-                    item.publish_status == 100 || item.publish_status == 300
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
                   "
                 >
                   <view class="icon_delete" @tap="deleteYuepai(item.oid)"
@@ -136,12 +757,15 @@
                   >
                   <view
                     class="icon_open"
-                    v-if="item.publish_status == 300"
+                    v-if="item.status.publish_status == 300"
                     @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 600">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
                   <view class="list_tips">
                     <image
                       class="warn_icon"
@@ -180,28 +804,25 @@
               >
                 <view class="list-content">
                   <view class="list_title">
-                    {{ item.type == "PH" ? item.title : item.major_subject }}
-                  </view>
-                  <view class="list_loction">
-                    {{ item.face_province_name }}
+                    {{ item.title }}
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
+                    v-if="item.status.publish_status == 200"
                     >展示中</view
                   >
                   <view
                     class="list_status_fail"
-                    v-else-if="item.publish_status == 600"
+                    v-else-if="item.status.publish_status == -100"
                     >审核失败</view
                   >
                   <view
                     class="list_status"
-                    v-else-if="item.publish_status == 300"
+                    v-else-if="item.status.publish_status == 300"
                     >已关闭</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
                 </view>
                 <view class="list_desc">
@@ -222,7 +843,7 @@
                 <view class="list_video" v-if="item.file_type == 'video'">
                   <video
                     objectFit="cover"
-                    :poster="item.cover[0]"
+                    :poster="item.cover.length ? item.cover[0] : ''"
                     :src="item.video_cover && item.video_cover[0]"
                     class="list_video-width"
                   ></video>
@@ -247,20 +868,24 @@
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 200">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
                   <view class="icon_more" @tap="moreClick(item.oid)">
                     更多
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_certify, item.oid)"
+                    @tap="refreshClick(item.author.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
                 <view
                   class="list_operation"
                   v-if="
-                    item.publish_status == 100 || item.publish_status == 300
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
                   "
                 >
                   <view class="icon_delete" @tap="deleteYuepai(item.oid)"
@@ -268,12 +893,15 @@
                   >
                   <view
                     class="icon_open"
-                    v-if="item.publish_status == 300"
+                    v-if="item.status.publish_status == 300"
                     @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 600">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
                   <view class="list_tips">
                     <image
                       class="warn_icon"
@@ -312,28 +940,25 @@
               >
                 <view class="list-content">
                   <view class="list_title">
-                    {{ item.type == "PH" ? item.title : item.major_subject }}
-                  </view>
-                  <view class="list_loction">
-                    {{ item.face_province_name }}
+                    {{ item.title }}
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
+                    v-if="item.status.publish_status == 200"
                     >展示中</view
                   >
                   <view
                     class="list_status_fail"
-                    v-else-if="item.publish_status == 600"
+                    v-else-if="item.status.publish_status == -100"
                     >审核失败</view
                   >
                   <view
                     class="list_status"
-                    v-else-if="item.publish_status == 300"
+                    v-else-if="item.status.publish_status == 300"
                     >已关闭</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
                 </view>
                 <view class="list_desc">
@@ -354,7 +979,7 @@
                 <view class="list_video" v-if="item.file_type == 'video'">
                   <video
                     objectFit="cover"
-                    :poster="item.cover[0]"
+                    :poster="item.cover.length ? item.cover[0] : ''"
                     :src="item.video_cover && item.video_cover[0]"
                     class="list_video-width"
                   ></video>
@@ -379,20 +1004,24 @@
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 200">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
                   <view class="icon_more" @tap="moreClick(item.oid)">
                     更多
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_certify, item.oid)"
+                    @tap="refreshClick(item.author.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
                 <view
                   class="list_operation"
                   v-if="
-                    item.publish_status == 100 || item.publish_status == 300
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
                   "
                 >
                   <view class="icon_delete" @tap="deleteYuepai(item.oid)"
@@ -400,12 +1029,15 @@
                   >
                   <view
                     class="icon_open"
-                    v-if="item.publish_status == 300"
+                    v-if="item.status.publish_status == 300"
                     @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 600">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
                   <view class="list_tips">
                     <image
                       class="warn_icon"
@@ -444,28 +1076,25 @@
               >
                 <view class="list-content">
                   <view class="list_title">
-                    {{ item.type == "PH" ? item.title : item.major_subject }}
-                  </view>
-                  <view class="list_loction">
-                    {{ item.face_province_name }}
+                    {{ item.title }}
                   </view>
                   <view
                     class="list_status_sucess"
-                    v-if="item.publish_status == 200"
+                    v-if="item.status.publish_status == 200"
                     >展示中</view
                   >
                   <view
                     class="list_status_fail"
-                    v-else-if="item.publish_status == 600"
+                    v-else-if="item.status.publish_status == -100"
                     >审核失败</view
                   >
                   <view
                     class="list_status"
-                    v-else-if="item.publish_status == 300"
+                    v-else-if="item.status.publish_status == 300"
                     >已关闭</view
                   >
                   <view class="list_status" v-else>{{
-                    item.publish_status_name
+                    item.status.publish_status_name
                   }}</view>
                 </view>
                 <view class="list_desc">
@@ -486,7 +1115,7 @@
                 <view class="list_video" v-if="item.file_type == 'video'">
                   <video
                     objectFit="cover"
-                    :poster="item.cover[0]"
+                    :poster="item.cover.length ? item.cover[0] : ''"
                     :src="item.video_cover && item.video_cover[0]"
                     class="list_video-width"
                   ></video>
@@ -511,20 +1140,24 @@
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 200">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == 200"
+                >
                   <view class="icon_more" @tap="moreClick(item.oid)">
                     更多
                   </view>
                   <view
                     class="icon_refresh"
-                    @tap="refreshClick(item.is_certify, item.oid)"
+                    @tap="refreshClick(item.author.is_certify, item.oid)"
                     >刷新</view
                   >
                 </view>
                 <view
                   class="list_operation"
                   v-if="
-                    item.publish_status == 100 || item.publish_status == 300
+                    item.status.publish_status == 100 ||
+                    item.status.publish_status == 300
                   "
                 >
                   <view class="icon_delete" @tap="deleteYuepai(item.oid)"
@@ -532,12 +1165,15 @@
                   >
                   <view
                     class="icon_open"
-                    v-if="item.publish_status == 300"
+                    v-if="item.status.publish_status == 300"
                     @tap="openClick(item.oid)"
                     >打开</view
                   >
                 </view>
-                <view class="list_operation" v-if="item.publish_status == 600">
+                <view
+                  class="list_operation"
+                  v-if="item.status.publish_status == -100"
+                >
                   <view class="list_tips">
                     <image
                       class="warn_icon"
@@ -562,6 +1198,7 @@
           </scroll-view>
         </swiper-item>
       </swiper>
+      <!--作品-->
     </view>
   </view>
 </template>
@@ -579,6 +1216,7 @@ export default {
         NT: "通告",
         PH: "作品",
       },
+      type: "",
       currentTab: 0,
       // 页面配置
       winWidth: 0,
@@ -646,7 +1284,11 @@ export default {
       });
     },
     deleteYuepai(oid) {
-      // # 200:打开；300:关闭；400:删除
+      // -200 删除
+      // -100 审核失败
+      // 200 展示中
+      // 300 关闭
+      // 400 筛新
       let _this = this;
       wx.showModal({
         title: "温馨提示",
@@ -656,7 +1298,7 @@ export default {
         success: function (res) {
           if (res.confirm) {
             console.log("用户点击确定");
-            let params = { oid: oid, even_type: 400 };
+            let params = { oid: oid, even_type: -200 };
             _this.manageEvent(params);
           } else if (res.cancel) {
             console.log("用户点击取消");
@@ -694,8 +1336,6 @@ export default {
           success: function (res) {
             if (res.confirm) {
               console.log("用户点击确定");
-              // let params = { oid: oid, even_type: 700 };
-              // _this.manageEvent(params);
               openPage("/packageAdd/pages/user/realnameAuth/index");
             } else if (res.cancel) {
               console.log("用户点击取消");
@@ -703,7 +1343,7 @@ export default {
           },
         });
       } else {
-        let params = { oid: oid, even_type: 700 };
+        let params = { oid: oid, even_type: 400 };
         this.manageEvent(params);
       }
     },
@@ -714,7 +1354,7 @@ export default {
     query() {
       let params = {
         type: this.type, // 约拍：NE； 通告：NT；照片：PH
-        publish_status: this.status, // 0:全部，100：审核中；200：展示中；300：已关闭；400：删除；500：修改；600：审核失败，
+        publish_status: this.status, // 0:全部，100：审核中；200：展示中；300：已关闭；400：删除；500：修改；-100：审核失败，
         page: this.pageNum,
         per_page: this.pageSize,
       };

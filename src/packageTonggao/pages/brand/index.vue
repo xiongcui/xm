@@ -319,6 +319,9 @@ export default {
     };
   },
   methods: {
+    uploadImgClose(index) {
+      this.imgList.splice(index, 1);
+    },
     platformChange(e) {
       this.platform = this.platformList[e.detail.value].value;
       this.platformIndex = e.detail.value;

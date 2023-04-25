@@ -9,16 +9,16 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "首页列表管理",
-                    "pathName": "packageAdd/pages/user/homelist/index",
+                    "name": "通告管理",
+                    "pathName": "packageTonggao/pages/tonggao_manage/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "摄影推荐",
-                    "pathName": "packageAdd/pages/user/takelist/index",
-                    "query": "",
+                    "name": "约拍管理",
+                    "pathName": "packageAdd/pages/yuedan/yuedan_manage/index",
+                    "query": "type=NE",
                     "launchMode": "default",
                     "scene": null
                 },
@@ -44,8 +44,8 @@
                     "scene": null
                 },
                 {
-                    "name": "约单详情",
-                    "pathName": "packageAdd/pages/yuedan/yuedan_detail/index",
+                    "name": "登录",
+                    "pathName": "pages/login/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

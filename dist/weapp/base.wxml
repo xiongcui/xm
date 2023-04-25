@@ -226,7 +226,7 @@
 </template>
 
 <template name="tmpl_0_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -342,7 +342,7 @@
 </template>
 
 <template name="tmpl_1_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -458,7 +458,7 @@
 </template>
 
 <template name="tmpl_2_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -574,7 +574,7 @@
 </template>
 
 <template name="tmpl_3_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -658,7 +658,7 @@
 </template>
 
 <template name="tmpl_4_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -742,7 +742,7 @@
 </template>
 
 <template name="tmpl_5_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -810,7 +810,7 @@
 </template>
 
 <template name="tmpl_6_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -878,7 +878,7 @@
 </template>
 
 <template name="tmpl_7_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -946,7 +946,7 @@
 </template>
 
 <template name="tmpl_8_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -1014,7 +1014,7 @@
 </template>
 
 <template name="tmpl_9_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -1082,7 +1082,7 @@
 </template>
 
 <template name="tmpl_10_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -1150,7 +1150,7 @@
 </template>
 
 <template name="tmpl_11_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -1218,7 +1218,7 @@
 </template>
 
 <template name="tmpl_12_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -1286,7 +1286,7 @@
 </template>
 
 <template name="tmpl_13_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>
@@ -1354,7 +1354,7 @@
 </template>
 
 <template name="tmpl_14_selector-component">
-  <selector-component show="{{i.show}}" key="{{i.key}}" referer="{{i.referer}}" hotCitys="{{i.hotCitys}}" bindselect="eh" bindselect="eh" bindchange="eh"  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
+  <selector-component  id="{{i.uid||i.sid}}" data-sid="{{i.sid}}">
     <block wx:for="{{i.cn}}" wx:key="sid">
       <template is="{{xs.e(cid+1)}}" data="{{i:item,l:l}}" />
     </block>

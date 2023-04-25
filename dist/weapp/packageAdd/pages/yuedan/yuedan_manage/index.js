@@ -623,6 +623,643 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -635,6 +1272,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
         NT: "通告",
         PH: "作品"
       },
+      type: "",
       currentTab: 0,
       // 页面配置
       winWidth: 0,
@@ -710,7 +1348,11 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
       });
     },
     deleteYuepai: function deleteYuepai(oid) {
-      // # 200:打开；300:关闭；400:删除
+      // -200 删除
+      // -100 审核失败
+      // 200 展示中
+      // 300 关闭
+      // 400 筛新
       var _this = this;
 
       wx.showModal({
@@ -721,7 +1363,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
             console.log("用户点击确定");
             var params = {
               oid: oid,
-              even_type: 400
+              even_type: -200
             };
 
             _this.manageEvent(params);
@@ -762,9 +1404,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
           content: "\u5237\u65B0".concat(this.optionMap[this.type], "\u4EC5\u9650\u5B9E\u540D\u8BA4\u8BC1\u7528\u6237\u53EF\u4F7F\u7528\uFF0C\u53BB\u5B9E\u540D\u8BA4\u8BC1\uFF1F"),
           success: function success(res) {
             if (res.confirm) {
-              console.log("用户点击确定"); // let params = { oid: oid, even_type: 700 };
-              // _this.manageEvent(params);
-
+              console.log("用户点击确定");
               Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
             } else if (res.cancel) {
               console.log("用户点击取消");
@@ -774,7 +1414,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
       } else {
         var params = {
           oid: oid,
-          even_type: 700
+          even_type: 400
         };
         this.manageEvent(params);
       }
@@ -788,7 +1428,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
         type: this.type,
         // 约拍：NE； 通告：NT；照片：PH
         publish_status: this.status,
-        // 0:全部，100：审核中；200：展示中；300：已关闭；400：删除；500：修改；600：审核失败，
+        // 0:全部，100：审核中；200：展示中；300：已关闭；400：删除；500：修改；-100：审核失败，
         page: this.pageNum,
         per_page: this.pageSize
       };
@@ -958,7 +1598,7 @@ var render = function () {
           class: _vm.currentTab == 3 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(3, 600)
+              return _vm.changeItem(3, -100)
             },
           },
         },
@@ -969,1193 +1609,2638 @@ var render = function () {
       "view",
       { staticClass: "content" },
       [
-        _c(
-          "swiper",
-          {
-            staticClass: "swiper-box",
-            attrs: { current: _vm.currentTab, duration: "300" },
-            on: { change: _vm.bindChange },
-          },
-          [
-            _c(
-              "swiper-item",
+        _vm.type == "NE"
+          ? _c(
+              "swiper",
+              {
+                staticClass: "swiper-box",
+                attrs: { current: _vm.currentTab, duration: "300" },
+                on: { change: _vm.bindChange },
+              },
               [
                 _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true, "lower-threshold": 200 },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
+                  "swiper-item",
                   [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "yuedan-manage-list" },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_title" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(
-                                          item.type == "PH"
-                                            ? item.title
-                                            : item.major_subject
-                                        ) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_loction" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(item.face_province_name) +
-                                        " "
-                                    ),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [_vm._v("展示中")]
-                                      )
-                                    : item.publish_status == 600
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_fail" },
-                                        [_vm._v("审核失败")]
-                                      )
-                                    : item.publish_status == 300
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [_vm._v("已关闭")]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                ]),
-                                _c("view", { staticClass: "list_desc" }, [
-                                  _vm._v(" " + _vm._s(item.summary) + " "),
-                                ]),
-                                item.file_type == "picture"
-                                  ? _c(
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
                                       "view",
-                                      { staticClass: "list_img" },
-                                      [
-                                        _c(
-                                          "scroll-view",
-                                          {
-                                            attrs: {
-                                              enhanced: true,
-                                              scrollX: true,
-                                            },
-                                          },
-                                          _vm._l(
-                                            item.cover,
-                                            function (url, coverIndex) {
-                                              return _c("image", {
-                                                key: coverIndex,
-                                                staticClass: "list_img_item",
-                                                attrs: {
-                                                  src: url,
-                                                  mode: "aspectFill",
-                                                },
-                                                on: {
-                                                  tap: function ($event) {
-                                                    $event.stopPropagation()
-                                                    return _vm.previewImage(
-                                                      url,
-                                                      item.cover
-                                                    )
-                                                  },
-                                                },
-                                              })
-                                            }
-                                          ),
-                                          0
-                                        ),
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e(),
-                                item.file_type == "video"
-                                  ? _c("view", { staticClass: "list_video" }, [
-                                      _c("video", {
-                                        staticClass: "list_video-width",
-                                        attrs: {
-                                          objectFit: "cover",
-                                          poster: item.cover[0],
-                                          src:
-                                            item.video_cover &&
-                                            item.video_cover[0],
-                                        },
-                                      }),
-                                    ])
-                                  : _vm._e(),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                item.publish_status == 200
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
+                                      { staticClass: "list-content" },
                                       [
                                         _c(
                                           "view",
-                                          {
-                                            staticClass: "icon_more",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.moreClick(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v(" 更多 ")]
-                                        ),
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_refresh",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshClick(
-                                                  item.is_certify,
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新")]
-                                        ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 100 ||
-                                item.publish_status == 300
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
-                                        ),
-                                        item.publish_status == 300
-                                          ? _c(
-                                              "view",
-                                              {
-                                                staticClass: "icon_open",
-                                                on: {
-                                                  tap: function ($event) {
-                                                    return _vm.openClick(
-                                                      item.oid
-                                                    )
-                                                  },
-                                                },
-                                              },
-                                              [_vm._v("打开")]
-                                            )
-                                          : _vm._e(),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 600
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          { staticClass: "list_tips" },
+                                          { staticClass: "list_title" },
                                           [
-                                            _c("image", {
-                                              staticClass: "warn_icon",
-                                              attrs: {
-                                                src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
-                                              },
-                                            }),
                                             _vm._v(
                                               " " +
-                                                _vm._s(item.audit_reason) +
+                                                _vm._s(
+                                                  item.topic.headline.title
+                                                ) +
                                                 " "
                                             ),
                                           ]
                                         ),
                                         _c(
                                           "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
+                                          { staticClass: "list_loction" },
+                                          [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(item.topic.face_city) +
+                                                " "
+                                            ),
+                                          ]
                                         ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true, "lower-threshold": 200 },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "yuedan-manage-list" },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_title" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(
-                                          item.type == "PH"
-                                            ? item.title
-                                            : item.major_subject
-                                        ) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_loction" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(item.face_province_name) +
-                                        " "
-                                    ),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [_vm._v("展示中")]
-                                      )
-                                    : item.publish_status == 600
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_fail" },
-                                        [_vm._v("审核失败")]
-                                      )
-                                    : item.publish_status == 300
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [_vm._v("已关闭")]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                ]),
-                                _c("view", { staticClass: "list_desc" }, [
-                                  _vm._v(" " + _vm._s(item.summary) + " "),
-                                ]),
-                                item.file_type == "picture"
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_img" },
-                                      [
-                                        _c(
-                                          "scroll-view",
-                                          {
-                                            attrs: {
-                                              enhanced: true,
-                                              scrollX: true,
-                                            },
-                                          },
-                                          _vm._l(
-                                            item.cover,
-                                            function (url, coverIndex) {
-                                              return _c("image", {
-                                                key: coverIndex,
-                                                staticClass: "list_img_item",
-                                                attrs: {
-                                                  src: url,
-                                                  mode: "aspectFill",
-                                                },
-                                                on: {
-                                                  tap: function ($event) {
-                                                    $event.stopPropagation()
-                                                    return _vm.previewImage(
-                                                      url,
-                                                      item.cover
-                                                    )
-                                                  },
-                                                },
-                                              })
-                                            }
-                                          ),
-                                          0
-                                        ),
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e(),
-                                item.file_type == "video"
-                                  ? _c("view", { staticClass: "list_video" }, [
-                                      _c("video", {
-                                        staticClass: "list_video-width",
-                                        attrs: {
-                                          objectFit: "cover",
-                                          poster: item.cover[0],
-                                          src:
-                                            item.video_cover &&
-                                            item.video_cover[0],
-                                        },
-                                      }),
-                                    ])
-                                  : _vm._e(),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                item.publish_status == 200
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_more",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.moreClick(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v(" 更多 ")]
-                                        ),
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_refresh",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshClick(
-                                                  item.is_certify,
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新")]
-                                        ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 100 ||
-                                item.publish_status == 300
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
-                                        ),
-                                        item.publish_status == 300
+                                        item.status.publish_status == 200
                                           ? _c(
                                               "view",
                                               {
-                                                staticClass: "icon_open",
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    item.details.media.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.details.media.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.details.media
+                                                            .cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.details.media.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.details.media.cover
+                                                  .length
+                                                  ? item.details.media.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.details.media
+                                                    .video_cover &&
+                                                  item.details.media
+                                                    .video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(item.basic.date_humanize) +
+                                            " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
                                                 on: {
                                                   tap: function ($event) {
-                                                    return _vm.openClick(
-                                                      item.oid
+                                                    return _vm.moreClick(
+                                                      item.basic.oid
                                                     )
                                                   },
                                                 },
                                               },
-                                              [_vm._v("打开")]
-                                            )
-                                          : _vm._e(),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 600
-                                  ? _c(
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.basic.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
                                       "view",
-                                      { staticClass: "list_operation" },
+                                      { staticClass: "list-content" },
                                       [
                                         _c(
                                           "view",
-                                          { staticClass: "list_tips" },
+                                          { staticClass: "list_title" },
                                           [
-                                            _c("image", {
-                                              staticClass: "warn_icon",
-                                              attrs: {
-                                                src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
-                                              },
-                                            }),
                                             _vm._v(
                                               " " +
-                                                _vm._s(item.audit_reason) +
+                                                _vm._s(
+                                                  item.topic.headline.title
+                                                ) +
                                                 " "
                                             ),
                                           ]
                                         ),
                                         _c(
                                           "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
+                                          { staticClass: "list_loction" },
+                                          [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(item.topic.face_city) +
+                                                " "
+                                            ),
+                                          ]
                                         ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true, "lower-threshold": 200 },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "yuedan-manage-list" },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_title" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(
-                                          item.type == "PH"
-                                            ? item.title
-                                            : item.major_subject
-                                        ) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_loction" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(item.face_province_name) +
-                                        " "
-                                    ),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [_vm._v("展示中")]
-                                      )
-                                    : item.publish_status == 600
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_fail" },
-                                        [_vm._v("审核失败")]
-                                      )
-                                    : item.publish_status == 300
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [_vm._v("已关闭")]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                ]),
-                                _c("view", { staticClass: "list_desc" }, [
-                                  _vm._v(" " + _vm._s(item.summary) + " "),
-                                ]),
-                                item.file_type == "picture"
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_img" },
-                                      [
-                                        _c(
-                                          "scroll-view",
-                                          {
-                                            attrs: {
-                                              enhanced: true,
-                                              scrollX: true,
-                                            },
-                                          },
-                                          _vm._l(
-                                            item.cover,
-                                            function (url, coverIndex) {
-                                              return _c("image", {
-                                                key: coverIndex,
-                                                staticClass: "list_img_item",
-                                                attrs: {
-                                                  src: url,
-                                                  mode: "aspectFill",
-                                                },
-                                                on: {
-                                                  tap: function ($event) {
-                                                    $event.stopPropagation()
-                                                    return _vm.previewImage(
-                                                      url,
-                                                      item.cover
-                                                    )
-                                                  },
-                                                },
-                                              })
-                                            }
-                                          ),
-                                          0
-                                        ),
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e(),
-                                item.file_type == "video"
-                                  ? _c("view", { staticClass: "list_video" }, [
-                                      _c("video", {
-                                        staticClass: "list_video-width",
-                                        attrs: {
-                                          objectFit: "cover",
-                                          poster: item.cover[0],
-                                          src:
-                                            item.video_cover &&
-                                            item.video_cover[0],
-                                        },
-                                      }),
-                                    ])
-                                  : _vm._e(),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                item.publish_status == 200
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_more",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.moreClick(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v(" 更多 ")]
-                                        ),
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_refresh",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshClick(
-                                                  item.is_certify,
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新")]
-                                        ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 100 ||
-                                item.publish_status == 300
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
-                                        ),
-                                        item.publish_status == 300
+                                        item.status.publish_status == 200
                                           ? _c(
                                               "view",
                                               {
-                                                staticClass: "icon_open",
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    item.details.media.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.details.media.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.details.media
+                                                            .cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.details.media.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.details.media.cover
+                                                  .length
+                                                  ? item.details.media.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.details.media
+                                                    .video_cover &&
+                                                  item.details.media
+                                                    .video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
                                                 on: {
                                                   tap: function ($event) {
-                                                    return _vm.openClick(
-                                                      item.oid
+                                                    return _vm.moreClick(
+                                                      item.basic.oid
                                                     )
                                                   },
                                                 },
                                               },
-                                              [_vm._v("打开")]
-                                            )
-                                          : _vm._e(),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 600
-                                  ? _c(
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.basic.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
                                       "view",
-                                      { staticClass: "list_operation" },
+                                      { staticClass: "list-content" },
                                       [
                                         _c(
                                           "view",
-                                          { staticClass: "list_tips" },
+                                          { staticClass: "list_title" },
                                           [
-                                            _c("image", {
-                                              staticClass: "warn_icon",
-                                              attrs: {
-                                                src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
-                                              },
-                                            }),
                                             _vm._v(
                                               " " +
-                                                _vm._s(item.audit_reason) +
+                                                _vm._s(
+                                                  item.topic.headline.title
+                                                ) +
                                                 " "
                                             ),
                                           ]
                                         ),
                                         _c(
                                           "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
+                                          { staticClass: "list_loction" },
+                                          [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(item.topic.face_city) +
+                                                " "
+                                            ),
+                                          ]
                                         ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true, "lower-threshold": 200 },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "yuedan-manage-list" },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_title" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(
-                                          item.type == "PH"
-                                            ? item.title
-                                            : item.major_subject
-                                        ) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_loction" }, [
-                                    _vm._v(
-                                      " " +
-                                        _vm._s(item.face_province_name) +
-                                        " "
-                                    ),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [_vm._v("展示中")]
-                                      )
-                                    : item.publish_status == 600
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_fail" },
-                                        [_vm._v("审核失败")]
-                                      )
-                                    : item.publish_status == 300
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [_vm._v("已关闭")]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                ]),
-                                _c("view", { staticClass: "list_desc" }, [
-                                  _vm._v(" " + _vm._s(item.summary) + " "),
-                                ]),
-                                item.file_type == "picture"
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_img" },
-                                      [
-                                        _c(
-                                          "scroll-view",
-                                          {
-                                            attrs: {
-                                              enhanced: true,
-                                              scrollX: true,
-                                            },
-                                          },
-                                          _vm._l(
-                                            item.cover,
-                                            function (url, coverIndex) {
-                                              return _c("image", {
-                                                key: coverIndex,
-                                                staticClass: "list_img_item",
-                                                attrs: {
-                                                  src: url,
-                                                  mode: "aspectFill",
-                                                },
-                                                on: {
-                                                  tap: function ($event) {
-                                                    $event.stopPropagation()
-                                                    return _vm.previewImage(
-                                                      url,
-                                                      item.cover
-                                                    )
-                                                  },
-                                                },
-                                              })
-                                            }
-                                          ),
-                                          0
-                                        ),
-                                      ],
-                                      1
-                                    )
-                                  : _vm._e(),
-                                item.file_type == "video"
-                                  ? _c("view", { staticClass: "list_video" }, [
-                                      _c("video", {
-                                        staticClass: "list_video-width",
-                                        attrs: {
-                                          objectFit: "cover",
-                                          poster: item.cover[0],
-                                          src:
-                                            item.video_cover &&
-                                            item.video_cover[0],
-                                        },
-                                      }),
-                                    ])
-                                  : _vm._e(),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                item.publish_status == 200
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_more",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.moreClick(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v(" 更多 ")]
-                                        ),
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_refresh",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshClick(
-                                                  item.is_certify,
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新")]
-                                        ),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 100 ||
-                                item.publish_status == 300
-                                  ? _c(
-                                      "view",
-                                      { staticClass: "list_operation" },
-                                      [
-                                        _c(
-                                          "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
-                                        ),
-                                        item.publish_status == 300
+                                        item.status.publish_status == 200
                                           ? _c(
                                               "view",
                                               {
-                                                staticClass: "icon_open",
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    item.details.media.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.details.media.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.details.media
+                                                            .cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.details.media.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.details.media.cover
+                                                  .length
+                                                  ? item.details.media.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.details.media
+                                                    .video_cover &&
+                                                  item.details.media
+                                                    .video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
                                                 on: {
                                                   tap: function ($event) {
-                                                    return _vm.openClick(
-                                                      item.oid
+                                                    return _vm.moreClick(
+                                                      item.basic.oid
                                                     )
                                                   },
                                                 },
                                               },
-                                              [_vm._v("打开")]
-                                            )
-                                          : _vm._e(),
-                                      ]
-                                    )
-                                  : _vm._e(),
-                                item.publish_status == 600
-                                  ? _c(
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.basic.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
                                       "view",
-                                      { staticClass: "list_operation" },
+                                      { staticClass: "list-content" },
                                       [
                                         _c(
                                           "view",
-                                          { staticClass: "list_tips" },
+                                          { staticClass: "list_title" },
                                           [
-                                            _c("image", {
-                                              staticClass: "warn_icon",
-                                              attrs: {
-                                                src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
-                                              },
-                                            }),
                                             _vm._v(
                                               " " +
-                                                _vm._s(item.audit_reason) +
+                                                _vm._s(
+                                                  item.topic.headline.title
+                                                ) +
                                                 " "
                                             ),
                                           ]
                                         ),
                                         _c(
                                           "view",
-                                          {
-                                            staticClass: "icon_delete",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteYuepai(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除")]
+                                          { staticClass: "list_loction" },
+                                          [
+                                            _vm._v(
+                                              " " +
+                                                _vm._s(item.topic.face_city) +
+                                                " "
+                                            ),
+                                          ]
                                         ),
+                                        item.status.publish_status == 200
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
                                       ]
-                                    )
-                                  : _vm._e(),
-                              ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    item.details.media.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.details.media.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.details.media
+                                                            .cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.details.media.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.details.media.cover
+                                                  .length
+                                                  ? item.details.media.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.details.media
+                                                    .video_cover &&
+                                                  item.details.media
+                                                    .video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.moreClick(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.basic.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.basic.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
                             )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
                   ],
                   1
                 ),
               ],
               1
-            ),
-          ],
-          1
-        ),
+            )
+          : _vm._e(),
+        _vm.type == "PH"
+          ? _c(
+              "swiper",
+              {
+                staticClass: "swiper-box",
+                attrs: { current: _vm.currentTab, duration: "300" },
+                on: { change: _vm.bindChange },
+              },
+              [
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "list-content" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "list_title" },
+                                          [
+                                            _vm._v(
+                                              " " + _vm._s(item.title) + " "
+                                            ),
+                                          ]
+                                        ),
+                                        item.status.publish_status == 200
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                    ]),
+                                    item.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.cover.length
+                                                  ? item.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.video_cover &&
+                                                  item.video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.moreClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "list-content" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "list_title" },
+                                          [
+                                            _vm._v(
+                                              " " + _vm._s(item.title) + " "
+                                            ),
+                                          ]
+                                        ),
+                                        item.status.publish_status == 200
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                    ]),
+                                    item.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.cover.length
+                                                  ? item.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.video_cover &&
+                                                  item.video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.moreClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "list-content" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "list_title" },
+                                          [
+                                            _vm._v(
+                                              " " + _vm._s(item.title) + " "
+                                            ),
+                                          ]
+                                        ),
+                                        item.status.publish_status == 200
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                    ]),
+                                    item.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.cover.length
+                                                  ? item.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.video_cover &&
+                                                  item.video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.moreClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _c(
+                      "scroll-view",
+                      {
+                        style: { height: _vm.winHeight + "px" },
+                        attrs: { "scroll-y": true, "lower-threshold": 200 },
+                        on: { scrolltolower: _vm.scrollToLower },
+                      },
+                      [
+                        _vm.list.length
+                          ? _c(
+                              "block",
+                              _vm._l(_vm.list, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: index,
+                                    staticClass: "yuedan-manage-list",
+                                  },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "list-content" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "list_title" },
+                                          [
+                                            _vm._v(
+                                              " " + _vm._s(item.title) + " "
+                                            ),
+                                          ]
+                                        ),
+                                        item.status.publish_status == 200
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "list_status_sucess",
+                                              },
+                                              [_vm._v("展示中")]
+                                            )
+                                          : item.status.publish_status == -100
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass: "list_status_fail",
+                                              },
+                                              [_vm._v("审核失败")]
+                                            )
+                                          : item.status.publish_status == 300
+                                          ? _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [_vm._v("已关闭")]
+                                            )
+                                          : _c(
+                                              "view",
+                                              { staticClass: "list_status" },
+                                              [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    item.status
+                                                      .publish_status_name
+                                                  )
+                                                ),
+                                              ]
+                                            ),
+                                      ]
+                                    ),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                    ]),
+                                    item.file_type == "picture"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_img" },
+                                          [
+                                            _c(
+                                              "scroll-view",
+                                              {
+                                                attrs: {
+                                                  enhanced: true,
+                                                  scrollX: true,
+                                                },
+                                              },
+                                              _vm._l(
+                                                item.cover,
+                                                function (url, coverIndex) {
+                                                  return _c("image", {
+                                                    key: coverIndex,
+                                                    staticClass:
+                                                      "list_img_item",
+                                                    attrs: {
+                                                      src: url,
+                                                      mode: "aspectFill",
+                                                    },
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        $event.stopPropagation()
+                                                        return _vm.previewImage(
+                                                          url,
+                                                          item.cover
+                                                        )
+                                                      },
+                                                    },
+                                                  })
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.file_type == "video"
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_video" },
+                                          [
+                                            _c("video", {
+                                              staticClass: "list_video-width",
+                                              attrs: {
+                                                objectFit: "cover",
+                                                poster: item.cover.length
+                                                  ? item.cover[0]
+                                                  : "",
+                                                src:
+                                                  item.video_cover &&
+                                                  item.video_cover[0],
+                                              },
+                                            }),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "list_bottom" }, [
+                                      _c("view", { staticClass: "list_time" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " " + _vm._s(item.date_humanize) + " "
+                                        ),
+                                      ]),
+                                      _c(
+                                        "view",
+                                        { staticClass: "list_yuepai" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                            },
+                                          }),
+                                          _vm._v(
+                                            " 收到约拍 " +
+                                              _vm._s(
+                                                item.statistic.invite_cnt
+                                              ) +
+                                              " "
+                                          ),
+                                        ]
+                                      ),
+                                      _c("view", { staticClass: "list_read" }, [
+                                        _c("image", {
+                                          attrs: {
+                                            src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                          },
+                                        }),
+                                        _vm._v(
+                                          " 阅读 " +
+                                            _vm._s(item.statistic.read_cnt) +
+                                            " "
+                                        ),
+                                      ]),
+                                    ]),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_more",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.moreClick(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v(" 更多 ")]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_refresh",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.refreshClick(
+                                                      item.author.is_certify,
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("刷新")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                            item.status.publish_status == 300
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "icon_open",
+                                                    on: {
+                                                      tap: function ($event) {
+                                                        return _vm.openClick(
+                                                          item.oid
+                                                        )
+                                                      },
+                                                    },
+                                                  },
+                                                  [_vm._v("打开")]
+                                                )
+                                              : _vm._e(),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "list_operation" },
+                                          [
+                                            _c(
+                                              "view",
+                                              { staticClass: "list_tips" },
+                                              [
+                                                _c("image", {
+                                                  staticClass: "warn_icon",
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                                  },
+                                                }),
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(item.audit_reason) +
+                                                    " "
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "icon_delete",
+                                                on: {
+                                                  tap: function ($event) {
+                                                    return _vm.deleteYuepai(
+                                                      item.oid
+                                                    )
+                                                  },
+                                                },
+                                              },
+                                              [_vm._v("删除")]
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _c("view", { staticClass: "none-data" }, [
+                              _c("image", {
+                                staticClass: "none-img",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                  mode: "aspectFill",
+                                },
+                              }),
+                              _c("view", [_vm._v("当前暂无信息哦～")]),
+                            ]),
+                      ],
+                      1
+                    ),
+                  ],
+                  1
+                ),
+              ],
+              1
+            )
+          : _vm._e(),
       ],
       1
     ),

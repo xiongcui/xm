@@ -128,6 +128,7 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -268,6 +269,7 @@ var render = function () {
       _c("view", { staticClass: "about-item" }, [
         _c("text", [_vm._v("当前版本")]),
         _c("view", { staticClass: "arrow" }, [
+          _c("text", [_vm._v("V1.0.0")]),
           _c("image", {
             attrs: {
               mode: "aspectFit",

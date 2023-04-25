@@ -5,7 +5,7 @@
         <image :src="tgregreceiveInfo.visitor.avatar" class="avatar"></image>
         <view class="tgregreceive_info">
           <view class="tgregreceive_name">
-            nickname
+            {{ tgregreceiveInfo.visitor.nickname }}
             <block v-if="tgregreceiveInfo.visitor.sex !== null">
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
@@ -40,10 +40,10 @@
       <view class="tgregreceive_title"> 对方报名信息 </view>
       <view class="tgregreceive_remark">
         <view class="tgregreceive_remark_label"
-          >{{ tgregreceiveInfo.title }}：</view
+          >{{ tgregreceiveInfo.content.title }}：</view
         >
         <view class="tgregreceive_remark_ct">{{
-          tgregreceiveInfo.content
+          tgregreceiveInfo.content.body
         }}</view>
       </view>
     </view>
@@ -155,6 +155,10 @@ export default {
       showModel: false,
       tgregreceiveInfo: {
         visitor: {},
+        content: {
+          title: "",
+          body: "",
+        },
       },
       showContact: false,
       showCelebrity: false,
@@ -250,7 +254,7 @@ export default {
         success: function (res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 410,
+              visited_status: 410,
               sid: _this.sid,
             });
           } else if (res.cancel) {
@@ -267,7 +271,7 @@ export default {
         success: function (res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 420,
+              visited_status: 420,
               sid: _this.sid,
             });
           } else if (res.cancel) {
@@ -278,31 +282,31 @@ export default {
     },
     completeCooperation() {
       this.applyManage({
-        even_type: 440,
+        visited_status: 440,
         sid: this.sid,
       });
     },
     abandonCooperation() {
       this.applyManage({
-        even_type: 430,
+        visited_status: 430,
         sid: this.sid,
       });
     },
     Delete() {
       this.applyManage({
-        even_type: 111,
+        visited_status: -200,
         sid: this.sid,
       });
     },
     recoveryPending() {
       this.applyManage({
-        even_type: 450,
+        visited_status: 450,
         sid: this.sid,
       });
     },
     restoreAppropriately() {
       this.applyManage({
-        even_type: 460,
+        visited_status: 460,
         sid: this.sid,
       });
     },
@@ -336,7 +340,14 @@ export default {
       );
     },
     communicate() {
-      openPage("/packageMsg/pages/chat/index");
+      openPage(
+        "/packageMsg/pages/chat/index?uuid=" +
+          this.tgregreceiveInfo.visitor.uuid +
+          "&nickname=" +
+          this.tgregreceiveInfo.visitor.nickname +
+          "&avatar=" +
+          this.tgregreceiveInfo.visitor.avatar
+      );
     },
     async applyInfo(params) {
       try {

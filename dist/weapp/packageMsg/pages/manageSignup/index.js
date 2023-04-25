@@ -652,7 +652,7 @@ var _methods;
       // 页面配置
       winWidth: 0,
       winHeight: 0,
-      status: 200,
+      status: 230,
       pageNum: 1,
       pageSize: 10,
       remarks: "",
@@ -690,7 +690,7 @@ var _methods;
     },
     clickSave: function clickSave() {
       this.applyManage({
-        even_type: 500,
+        visited_status: 500,
         sid: this.currentdata.sid,
         remark: this.remarks
       });
@@ -703,7 +703,7 @@ var _methods;
             case 0:
               console.log("删除");
               this.Delete({
-                even_type: 111,
+                visited_status: 111,
                 sid: sid
               });
               break;
@@ -727,7 +727,7 @@ var _methods;
         success: function success(res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 410,
+              visited_status: 410,
               sid: sid
             });
           } else if (res.cancel) {
@@ -745,7 +745,7 @@ var _methods;
         success: function success(res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 420,
+              visited_status: 420,
               sid: sid
             });
           } else if (res.cancel) {
@@ -756,42 +756,46 @@ var _methods;
     },
     completeCooperation: function completeCooperation(sid) {
       this.applyManage({
-        even_type: 440,
+        visited_status: 440,
         sid: sid
       });
     },
     abandonCooperation: function abandonCooperation(sid) {
       this.applyManage({
-        even_type: 430,
+        visited_status: 430,
         sid: sid
       });
     },
     Delete: function Delete(sid) {
       this.applyManage({
-        even_type: 111,
+        visited_status: 111,
         sid: sid
       });
     },
     recoveryPending: function recoveryPending(sid) {
       this.applyManage({
-        even_type: 450,
+        visited_status: 450,
         sid: sid
       });
     },
     restoreAppropriately: function restoreAppropriately(sid) {
       this.applyManage({
-        even_type: 460,
+        visited_status: 460,
         sid: sid
       });
     },
     query: function query() {
       var params = {
         type: "NT",
-        visited_status: Number(this.status),
         oid: this.oid,
         page: this.pageNum,
         per_page: this.pageSize
       };
+
+      if (this.status != 230) {
+        params.visited_status = Number(this.status);
+      }
+
       this.loading = false;
       this.applyList(params);
     },
@@ -934,7 +938,7 @@ var render = function () {
           class: _vm.currentTab == 0 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(0, 200)
+              return _vm.changeItem(0, 230)
             },
           },
         },
@@ -1116,7 +1120,7 @@ var render = function () {
                             ),
                           ]),
                           _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1140,7 +1144,7 @@ var render = function () {
                                   1
                                 )
                               : _vm._e(),
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1352,7 +1356,7 @@ var render = function () {
                             ),
                           ]),
                           _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1376,7 +1380,7 @@ var render = function () {
                                   1
                                 )
                               : _vm._e(),
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1588,7 +1592,7 @@ var render = function () {
                             ),
                           ]),
                           _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1612,7 +1616,7 @@ var render = function () {
                                   1
                                 )
                               : _vm._e(),
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1824,7 +1828,7 @@ var render = function () {
                             ),
                           ]),
                           _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -1848,7 +1852,7 @@ var render = function () {
                                   1
                                 )
                               : _vm._e(),
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -2060,7 +2064,7 @@ var render = function () {
                             ),
                           ]),
                           _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {
@@ -2084,7 +2088,7 @@ var render = function () {
                                   1
                                 )
                               : _vm._e(),
-                            item.visited_status == 200
+                            item.visited_status == 230
                               ? _c(
                                   "view",
                                   {

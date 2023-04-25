@@ -704,6 +704,141 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -716,14 +851,39 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       // 页面配置
       winWidth: 0,
       winHeight: 0,
-      status: 200,
+      status: 230,
       pageNum: 1,
       pageSize: 10,
       remarks: "",
       visible: false,
       contactVisible: false,
+      showModel: false,
       loading: true,
-      contact: {}
+      // contact: {
+      //   wechat: "",
+      // },
+      showContact: true,
+      showCelebrity: true,
+      showAddress: true,
+      data: {
+        contact: {
+          person: "",
+          wechat: "",
+          wechat_links: "",
+          mobile: "",
+          is_wechat: 1,
+          is_mobile: 1
+        },
+        celebrity: {
+          nickname: "",
+          fans_number: ""
+        },
+        address: {
+          detail_address: "",
+          mobile: "",
+          name: ""
+        }
+      }
     };
   },
   methods: {
@@ -744,7 +904,14 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
         }
       });
     },
+    closeQRcode: function closeQRcode() {
+      this.showModel = false;
+    },
+    showQRcode: function showQRcode() {
+      this.showModel = true;
+    },
     contactClose: function contactClose() {
+      console.log(3333);
       this.contactVisible = false;
     },
     // 点击tab切换
@@ -770,6 +937,63 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
     close: function close() {
       this.visible = false;
     },
+    clickSaveImg: function clickSaveImg() {
+      var _this2 = this;
+
+      //先授权相册
+      wx.getSetting({
+        success: function success(res) {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: function success() {
+                //用户允许授权，保存到相册
+                _this2.saveImg();
+              },
+              fail: function fail() {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: function success() {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: function succes() {
+                        //授权成功，保存图片
+                        _this2.saveImg();
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          } else {
+            //已经授权
+            _this2.saveImg();
+          }
+        }
+      });
+    },
+    saveImg: function saveImg() {
+      //保存到相册
+      var url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: function success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function success(res) {
+              wx.showToast({
+                title: "保存成功！"
+              });
+            },
+            faile: function faile(err) {
+              console.log("失败！");
+            }
+          });
+        }
+      });
+    },
     signupAllDetail: function signupAllDetail(oid) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
     },
@@ -778,7 +1002,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
     },
     clickSave: function clickSave() {
       this.applyManage({
-        even_type: 500,
+        visited_status: 500,
         sid: this.currentdata.sid,
         remark: this.remarks
       });
@@ -790,7 +1014,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
           switch (res.tapIndex) {
             case 0:
               this.Delete({
-                even_type: 111,
+                visited_status: -200,
                 sid: sid
               });
               break;
@@ -815,7 +1039,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
         success: function success(res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 410,
+              visited_status: 410,
               sid: sid
             });
           } else if (res.cancel) {
@@ -833,7 +1057,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
         success: function success(res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 420,
+              visited_status: 420,
               sid: sid
             });
           } else if (res.cancel) {
@@ -844,41 +1068,45 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
     },
     completeCooperation: function completeCooperation(sid) {
       this.applyManage({
-        even_type: 440,
+        visited_status: 440,
         sid: sid
       });
     },
     abandonCooperation: function abandonCooperation(sid) {
       this.applyManage({
-        even_type: 430,
+        visited_status: 430,
         sid: sid
       });
     },
     Delete: function Delete(sid) {
       this.applyManage({
-        even_type: 111,
+        visited_status: -200,
         sid: sid
       });
     },
     recoveryPending: function recoveryPending(sid) {
       this.applyManage({
-        even_type: 450,
+        visited_status: 230,
         sid: sid
       });
     },
     restoreAppropriately: function restoreAppropriately(sid) {
       this.applyManage({
-        even_type: 460,
+        visited_status: 410,
         sid: sid
       });
     },
     query: function query() {
       var params = {
         type: "NT",
-        visited_status: this.status,
         page: this.pageNum,
         per_page: this.pageSize
       };
+
+      if (this.status != 230) {
+        params.visited_status = this.status;
+      }
+
       this.loading = false;
       this.applyList(params);
     },
@@ -915,7 +1143,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       });
     },
     applyList: function applyList(params) {
-      var _this2 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, data;
@@ -929,7 +1157,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
               case 3:
                 res = _context.sent;
-                _this2.loading = true;
+                _this3.loading = true;
 
                 if (!(!res.data.data || !res.data.data.items.length)) {
                   _context.next = 8;
@@ -941,7 +1169,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
               case 8:
                 data = res.data.data.items;
-                _this2.list = _this2.list.concat(data);
+                _this3.list = _this3.list.concat(data);
                 _context.next = 14;
                 break;
 
@@ -958,7 +1186,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       }))();
     },
     applyManage: function applyManage(params) {
-      var _this3 = this;
+      var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
@@ -972,11 +1200,11 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
               case 3:
                 res = _context2.sent;
-                _this3.visible = false;
-                _this3.pageNum = 1;
-                _this3.list = [];
+                _this4.visible = false;
+                _this4.pageNum = 1;
+                _this4.list = [];
 
-                _this3.query();
+                _this4.query();
 
                 _context2.next = 12;
                 break;
@@ -994,7 +1222,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       }))();
     },
     applyInfo: function applyInfo(params) {
-      var _this4 = this;
+      var _this5 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res;
@@ -1008,20 +1236,54 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
               case 3:
                 res = _context3.sent;
-                _this4.contact = res.data.data.contact.body;
-                _context3.next = 9;
+                _this5.showContact = res.data.data.contact.is_enable;
+                _this5.showCelebrity = res.data.data.celebrity.is_enable;
+                _this5.showAddress = res.data.data.address.is_enable;
+                _this5.data.contact = res.data.data.contact.body;
+                _this5.data.celebrity = res.data.data.celebrity.body;
+                _this5.data.address = res.data.data.address.body;
+                _context3.next = 14;
                 break;
 
-              case 7:
-                _context3.prev = 7;
+              case 12:
+                _context3.prev = 12;
                 _context3.t0 = _context3["catch"](0);
 
-              case 9:
+              case 14:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[0, 12]]);
+      }))();
+    },
+    receivePayment: function receivePayment(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "fb"])(params);
+
+              case 3:
+                res = _context4.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("支付成功");
+                _context4.next = 9;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 7]]);
       }))();
     }
   },
@@ -1076,7 +1338,7 @@ var render = function () {
           class: _vm.currentTab == 0 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(0, 200)
+              return _vm.changeItem(0, 230)
             },
           },
         },
@@ -1157,257 +1419,297 @@ var render = function () {
                     attrs: { "scroll-y": true },
                     on: { scrolltolower: _vm.scrollToLower },
                   },
-                  _vm._l(_vm.list, function (item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "signup-box" },
-                      [
-                        _c("view", { staticClass: "signup-top" }, [
-                          _c("view", { staticClass: "signup-img" }, [
-                            _c("image", {
-                              attrs: { src: item.visitor.avatar },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "signup-info" }, [
-                            _c("view", { staticClass: "signup-name" }, [
-                              _vm._v(" " + _vm._s(item.visitor.nickname) + " "),
-                              item.visitor.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.visitor.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                            ]),
-                            _c("view", { staticClass: "identity" }, [
-                              _vm._v(
-                                _vm._s(item.visitor.career_list[0]) +
-                                  " ｜ " +
-                                  _vm._s(item.visitor.province_name)
-                              ),
-                            ]),
-                          ]),
-                          _c("view", { staticClass: "signup-rt" }, [
-                            _c(
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
                               "view",
-                              {
-                                staticClass: "contact",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.contactNow(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("立即联系")]
-                            ),
-                            _c("view", { staticClass: "time" }, [
-                              _vm._v(_vm._s(item.date_humanize) + "报名"),
-                            ]),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "notice" }, [
-                          _vm._v(" 来自通告：" + _vm._s(item.summary) + " "),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "notice-btn",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupAllDetail(item.oid)
-                                },
-                              },
-                            },
-                            [_vm._v("查看全部报名")]
-                          ),
-                        ]),
-                        item.remark
-                          ? _c("view", { staticClass: "remark" }, [
-                              _vm._v(" 备注：" + _vm._s(item.remark)),
-                            ])
-                          : _vm._e(),
-                        _c("view", { staticClass: "signup-cotent" }, [
-                          _c("text", { staticClass: "signup-desc" }, [
-                            _vm._v(_vm._s(item.content)),
-                          ]),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "signup-detail",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupDetail(
-                                    item.sid,
-                                    item.visited_status
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v("查看详情")]
-                          ),
-                        ]),
-                        _c("view", { staticClass: "signup-btns" }, [
-                          _c("view", { staticClass: "signup-btn-left" }, [
-                            _c(
-                              "text",
-                              {
-                                staticClass: "more",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.moreClick(item.sid, item)
-                                  },
-                                },
-                              },
-                              [_vm._v("更多")]
-                            ),
-                            _c(
-                              "text",
-                              {
-                                staticClass: "remarks",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.saveRemarks(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("备注")]
-                            ),
-                          ]),
-                          _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.noConformance(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "cancel",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
+                              { key: index, staticClass: "signup-box" },
+                              [
+                                _c("view", { staticClass: "signup-top" }, [
+                                  _c("view", { staticClass: "signup-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
                                     }),
-                                    _vm._v("不符"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.appropriate(item.sid)
+                                  ]),
+                                  _c("view", { staticClass: "signup-info" }, [
+                                    _c("view", { staticClass: "signup-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          " ｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "signup-rt" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "contact",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.contactNow(item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("立即联系")]
+                                    ),
+                                    _c("view", { staticClass: "time" }, [
+                                      _vm._v(
+                                        _vm._s(item.date_humanize) + "报名"
+                                      ),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "notice" }, [
+                                  _vm._v(
+                                    " 来自通告：" + _vm._s(item.summary) + " "
+                                  ),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "notice-btn",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupAllDetail(item.oid)
+                                        },
                                       },
                                     },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "success_no_circle",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("合适"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.abandonCooperation(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("放弃合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.completeCooperation(item.sid)
+                                    [_vm._v("查看全部报名")]
+                                  ),
+                                ]),
+                                item.remark
+                                  ? _c("view", { staticClass: "remark" }, [
+                                      _vm._v(" 备注：" + _vm._s(item.remark)),
+                                    ])
+                                  : _vm._e(),
+                                _c("view", { staticClass: "signup-cotent" }, [
+                                  _c("text", { staticClass: "signup-desc" }, [
+                                    _vm._v(_vm._s(item.content)),
+                                  ]),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "signup-detail",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupDetail(
+                                            item.sid,
+                                            item.visited_status
+                                          )
+                                        },
                                       },
                                     },
-                                  },
-                                  [_vm._v("完成合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 420
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-blue",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.recoveryPending(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复待定")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 430
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.restoreAppropriately(
-                                          item.sid
+                                    [_vm._v("查看详情")]
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "signup-btns" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "signup-btn-left" },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "more",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.moreClick(
+                                                item.sid,
+                                                item
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("更多")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "remarks",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.saveRemarks(item)
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("备注")]
+                                      ),
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "signup-btn-rt" }, [
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.noConformance(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "cancel",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("不符"),
+                                          ],
+                                          1
                                         )
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复合适")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 440
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-del",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.Delete(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("删除")]
-                                )
-                              : _vm._e(),
-                          ]),
+                                      : _vm._e(),
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.appropriate(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "success_no_circle",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("合适"),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.abandonCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("放弃合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.completeCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("完成合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 420
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-blue",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.recoveryPending(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复待定")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 430
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.restoreAppropriately(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复合适")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 440
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-del",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.Delete(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]
-                    )
-                  }),
-                  0
+                  ],
+                  1
                 ),
               ],
               1
@@ -1422,257 +1724,297 @@ var render = function () {
                     attrs: { "scroll-y": true },
                     on: { scrolltolower: _vm.scrollToLower },
                   },
-                  _vm._l(_vm.list, function (item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "signup-box" },
-                      [
-                        _c("view", { staticClass: "signup-top" }, [
-                          _c("view", { staticClass: "signup-img" }, [
-                            _c("image", {
-                              attrs: { src: item.visitor.avatar },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "signup-info" }, [
-                            _c("view", { staticClass: "signup-name" }, [
-                              _vm._v(" " + _vm._s(item.visitor.nickname) + " "),
-                              item.visitor.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.visitor.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                            ]),
-                            _c("view", { staticClass: "identity" }, [
-                              _vm._v(
-                                _vm._s(item.visitor.career_list[0]) +
-                                  " ｜ " +
-                                  _vm._s(item.visitor.province_name)
-                              ),
-                            ]),
-                          ]),
-                          _c("view", { staticClass: "signup-rt" }, [
-                            _c(
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
                               "view",
-                              {
-                                staticClass: "contact",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.contactNow(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("立即联系")]
-                            ),
-                            _c("view", { staticClass: "time" }, [
-                              _vm._v(_vm._s(item.date_humanize) + "报名"),
-                            ]),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "notice" }, [
-                          _vm._v(" 来自通告：" + _vm._s(item.summary) + " "),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "notice-btn",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupAllDetail(item.oid)
-                                },
-                              },
-                            },
-                            [_vm._v("查看全部报名")]
-                          ),
-                        ]),
-                        item.remark
-                          ? _c("view", { staticClass: "remark" }, [
-                              _vm._v(" 备注：" + _vm._s(item.remark)),
-                            ])
-                          : _vm._e(),
-                        _c("view", { staticClass: "signup-cotent" }, [
-                          _c("text", { staticClass: "signup-desc" }, [
-                            _vm._v(_vm._s(item.content)),
-                          ]),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "signup-detail",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupDetail(
-                                    item.sid,
-                                    item.visited_status
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v("查看详情")]
-                          ),
-                        ]),
-                        _c("view", { staticClass: "signup-btns" }, [
-                          _c("view", { staticClass: "signup-btn-left" }, [
-                            _c(
-                              "text",
-                              {
-                                staticClass: "more",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.moreClick(item.sid, item)
-                                  },
-                                },
-                              },
-                              [_vm._v("更多")]
-                            ),
-                            _c(
-                              "text",
-                              {
-                                staticClass: "remarks",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.saveRemarks(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("备注")]
-                            ),
-                          ]),
-                          _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.noConformance(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "cancel",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
+                              { key: index, staticClass: "signup-box" },
+                              [
+                                _c("view", { staticClass: "signup-top" }, [
+                                  _c("view", { staticClass: "signup-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
                                     }),
-                                    _vm._v("不符"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.appropriate(item.sid)
+                                  ]),
+                                  _c("view", { staticClass: "signup-info" }, [
+                                    _c("view", { staticClass: "signup-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          " ｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "signup-rt" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "contact",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.contactNow(item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("立即联系")]
+                                    ),
+                                    _c("view", { staticClass: "time" }, [
+                                      _vm._v(
+                                        _vm._s(item.date_humanize) + "报名"
+                                      ),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "notice" }, [
+                                  _vm._v(
+                                    " 来自通告：" + _vm._s(item.summary) + " "
+                                  ),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "notice-btn",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupAllDetail(item.oid)
+                                        },
                                       },
                                     },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "success_no_circle",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("合适"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.abandonCooperation(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("放弃合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.completeCooperation(item.sid)
+                                    [_vm._v("查看全部报名")]
+                                  ),
+                                ]),
+                                item.remark
+                                  ? _c("view", { staticClass: "remark" }, [
+                                      _vm._v(" 备注：" + _vm._s(item.remark)),
+                                    ])
+                                  : _vm._e(),
+                                _c("view", { staticClass: "signup-cotent" }, [
+                                  _c("text", { staticClass: "signup-desc" }, [
+                                    _vm._v(_vm._s(item.content)),
+                                  ]),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "signup-detail",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupDetail(
+                                            item.sid,
+                                            item.visited_status
+                                          )
+                                        },
                                       },
                                     },
-                                  },
-                                  [_vm._v("完成合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 420
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-blue",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.recoveryPending(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复待定")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 430
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.restoreAppropriately(
-                                          item.sid
+                                    [_vm._v("查看详情")]
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "signup-btns" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "signup-btn-left" },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "more",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.moreClick(
+                                                item.sid,
+                                                item
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("更多")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "remarks",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.saveRemarks(item)
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("备注")]
+                                      ),
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "signup-btn-rt" }, [
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.noConformance(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "cancel",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("不符"),
+                                          ],
+                                          1
                                         )
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复合适")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 440
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-del",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.Delete(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("删除")]
-                                )
-                              : _vm._e(),
-                          ]),
+                                      : _vm._e(),
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.appropriate(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "success_no_circle",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("合适"),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.abandonCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("放弃合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.completeCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("完成合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 420
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-blue",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.recoveryPending(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复待定")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 430
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.restoreAppropriately(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复合适")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 440
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-del",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.Delete(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]
-                    )
-                  }),
-                  0
+                  ],
+                  1
                 ),
               ],
               1
@@ -1687,257 +2029,297 @@ var render = function () {
                     attrs: { "scroll-y": true },
                     on: { scrolltolower: _vm.scrollToLower },
                   },
-                  _vm._l(_vm.list, function (item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "signup-box" },
-                      [
-                        _c("view", { staticClass: "signup-top" }, [
-                          _c("view", { staticClass: "signup-img" }, [
-                            _c("image", {
-                              attrs: { src: item.visitor.avatar },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "signup-info" }, [
-                            _c("view", { staticClass: "signup-name" }, [
-                              _vm._v(" " + _vm._s(item.visitor.nickname) + " "),
-                              item.visitor.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.visitor.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                            ]),
-                            _c("view", { staticClass: "identity" }, [
-                              _vm._v(
-                                _vm._s(item.visitor.career_list[0]) +
-                                  " ｜ " +
-                                  _vm._s(item.visitor.province_name)
-                              ),
-                            ]),
-                          ]),
-                          _c("view", { staticClass: "signup-rt" }, [
-                            _c(
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
                               "view",
-                              {
-                                staticClass: "contact",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.contactNow(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("立即联系")]
-                            ),
-                            _c("view", { staticClass: "time" }, [
-                              _vm._v(_vm._s(item.date_humanize) + "报名"),
-                            ]),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "notice" }, [
-                          _vm._v(" 来自通告：" + _vm._s(item.summary) + " "),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "notice-btn",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupAllDetail(item.oid)
-                                },
-                              },
-                            },
-                            [_vm._v("查看全部报名")]
-                          ),
-                        ]),
-                        item.remark
-                          ? _c("view", { staticClass: "remark" }, [
-                              _vm._v(" 备注：" + _vm._s(item.remark)),
-                            ])
-                          : _vm._e(),
-                        _c("view", { staticClass: "signup-cotent" }, [
-                          _c("text", { staticClass: "signup-desc" }, [
-                            _vm._v(_vm._s(item.content)),
-                          ]),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "signup-detail",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupDetail(
-                                    item.sid,
-                                    item.visited_status
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v("查看详情")]
-                          ),
-                        ]),
-                        _c("view", { staticClass: "signup-btns" }, [
-                          _c("view", { staticClass: "signup-btn-left" }, [
-                            _c(
-                              "text",
-                              {
-                                staticClass: "more",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.moreClick(item.sid, item)
-                                  },
-                                },
-                              },
-                              [_vm._v("更多")]
-                            ),
-                            _c(
-                              "text",
-                              {
-                                staticClass: "remarks",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.saveRemarks(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("备注")]
-                            ),
-                          ]),
-                          _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.noConformance(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "cancel",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
+                              { key: index, staticClass: "signup-box" },
+                              [
+                                _c("view", { staticClass: "signup-top" }, [
+                                  _c("view", { staticClass: "signup-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
                                     }),
-                                    _vm._v("不符"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.appropriate(item.sid)
+                                  ]),
+                                  _c("view", { staticClass: "signup-info" }, [
+                                    _c("view", { staticClass: "signup-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          " ｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "signup-rt" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "contact",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.contactNow(item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("立即联系")]
+                                    ),
+                                    _c("view", { staticClass: "time" }, [
+                                      _vm._v(
+                                        _vm._s(item.date_humanize) + "报名"
+                                      ),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "notice" }, [
+                                  _vm._v(
+                                    " 来自通告：" + _vm._s(item.summary) + " "
+                                  ),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "notice-btn",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupAllDetail(item.oid)
+                                        },
                                       },
                                     },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "success_no_circle",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("合适"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.abandonCooperation(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("放弃合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.completeCooperation(item.sid)
+                                    [_vm._v("查看全部报名")]
+                                  ),
+                                ]),
+                                item.remark
+                                  ? _c("view", { staticClass: "remark" }, [
+                                      _vm._v(" 备注：" + _vm._s(item.remark)),
+                                    ])
+                                  : _vm._e(),
+                                _c("view", { staticClass: "signup-cotent" }, [
+                                  _c("text", { staticClass: "signup-desc" }, [
+                                    _vm._v(_vm._s(item.content)),
+                                  ]),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "signup-detail",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupDetail(
+                                            item.sid,
+                                            item.visited_status
+                                          )
+                                        },
                                       },
                                     },
-                                  },
-                                  [_vm._v("完成合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 420
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-blue",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.recoveryPending(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复待定")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 430
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.restoreAppropriately(
-                                          item.sid
+                                    [_vm._v("查看详情")]
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "signup-btns" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "signup-btn-left" },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "more",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.moreClick(
+                                                item.sid,
+                                                item
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("更多")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "remarks",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.saveRemarks(item)
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("备注")]
+                                      ),
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "signup-btn-rt" }, [
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.noConformance(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "cancel",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("不符"),
+                                          ],
+                                          1
                                         )
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复合适")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 440
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-del",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.Delete(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("删除")]
-                                )
-                              : _vm._e(),
-                          ]),
+                                      : _vm._e(),
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.appropriate(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "success_no_circle",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("合适"),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.abandonCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("放弃合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.completeCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("完成合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 420
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-blue",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.recoveryPending(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复待定")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 430
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.restoreAppropriately(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复合适")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 440
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-del",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.Delete(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]
-                    )
-                  }),
-                  0
+                  ],
+                  1
                 ),
               ],
               1
@@ -1952,257 +2334,297 @@ var render = function () {
                     attrs: { "scroll-y": true },
                     on: { scrolltolower: _vm.scrollToLower },
                   },
-                  _vm._l(_vm.list, function (item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "signup-box" },
-                      [
-                        _c("view", { staticClass: "signup-top" }, [
-                          _c("view", { staticClass: "signup-img" }, [
-                            _c("image", {
-                              attrs: { src: item.visitor.avatar },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "signup-info" }, [
-                            _c("view", { staticClass: "signup-name" }, [
-                              _vm._v(" " + _vm._s(item.visitor.nickname) + " "),
-                              item.visitor.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.visitor.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                            ]),
-                            _c("view", { staticClass: "identity" }, [
-                              _vm._v(
-                                _vm._s(item.visitor.career_list[0]) +
-                                  " ｜ " +
-                                  _vm._s(item.visitor.province_name)
-                              ),
-                            ]),
-                          ]),
-                          _c("view", { staticClass: "signup-rt" }, [
-                            _c(
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
                               "view",
-                              {
-                                staticClass: "contact",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.contactNow(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("立即联系")]
-                            ),
-                            _c("view", { staticClass: "time" }, [
-                              _vm._v(_vm._s(item.date_humanize) + "报名"),
-                            ]),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "notice" }, [
-                          _vm._v(" 来自通告：" + _vm._s(item.summary) + " "),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "notice-btn",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupAllDetail(item.oid)
-                                },
-                              },
-                            },
-                            [_vm._v("查看全部报名")]
-                          ),
-                        ]),
-                        item.remark
-                          ? _c("view", { staticClass: "remark" }, [
-                              _vm._v(" 备注：" + _vm._s(item.remark)),
-                            ])
-                          : _vm._e(),
-                        _c("view", { staticClass: "signup-cotent" }, [
-                          _c("text", { staticClass: "signup-desc" }, [
-                            _vm._v(_vm._s(item.content)),
-                          ]),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "signup-detail",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupDetail(
-                                    item.sid,
-                                    item.visited_status
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v("查看详情")]
-                          ),
-                        ]),
-                        _c("view", { staticClass: "signup-btns" }, [
-                          _c("view", { staticClass: "signup-btn-left" }, [
-                            _c(
-                              "text",
-                              {
-                                staticClass: "more",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.moreClick(item.sid, item)
-                                  },
-                                },
-                              },
-                              [_vm._v("更多")]
-                            ),
-                            _c(
-                              "text",
-                              {
-                                staticClass: "remarks",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.saveRemarks(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("备注")]
-                            ),
-                          ]),
-                          _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.noConformance(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "cancel",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
+                              { key: index, staticClass: "signup-box" },
+                              [
+                                _c("view", { staticClass: "signup-top" }, [
+                                  _c("view", { staticClass: "signup-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
                                     }),
-                                    _vm._v("不符"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.appropriate(item.sid)
+                                  ]),
+                                  _c("view", { staticClass: "signup-info" }, [
+                                    _c("view", { staticClass: "signup-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          " ｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "signup-rt" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "contact",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.contactNow(item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("立即联系")]
+                                    ),
+                                    _c("view", { staticClass: "time" }, [
+                                      _vm._v(
+                                        _vm._s(item.date_humanize) + "报名"
+                                      ),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "notice" }, [
+                                  _vm._v(
+                                    " 来自通告：" + _vm._s(item.summary) + " "
+                                  ),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "notice-btn",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupAllDetail(item.oid)
+                                        },
                                       },
                                     },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "success_no_circle",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("合适"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.abandonCooperation(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("放弃合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.completeCooperation(item.sid)
+                                    [_vm._v("查看全部报名")]
+                                  ),
+                                ]),
+                                item.remark
+                                  ? _c("view", { staticClass: "remark" }, [
+                                      _vm._v(" 备注：" + _vm._s(item.remark)),
+                                    ])
+                                  : _vm._e(),
+                                _c("view", { staticClass: "signup-cotent" }, [
+                                  _c("text", { staticClass: "signup-desc" }, [
+                                    _vm._v(_vm._s(item.content)),
+                                  ]),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "signup-detail",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupDetail(
+                                            item.sid,
+                                            item.visited_status
+                                          )
+                                        },
                                       },
                                     },
-                                  },
-                                  [_vm._v("完成合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 420
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-blue",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.recoveryPending(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复待定")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 430
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.restoreAppropriately(
-                                          item.sid
+                                    [_vm._v("查看详情")]
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "signup-btns" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "signup-btn-left" },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "more",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.moreClick(
+                                                item.sid,
+                                                item
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("更多")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "remarks",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.saveRemarks(item)
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("备注")]
+                                      ),
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "signup-btn-rt" }, [
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.noConformance(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "cancel",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("不符"),
+                                          ],
+                                          1
                                         )
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复合适")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 440
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-del",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.Delete(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("删除")]
-                                )
-                              : _vm._e(),
-                          ]),
+                                      : _vm._e(),
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.appropriate(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "success_no_circle",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("合适"),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.abandonCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("放弃合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.completeCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("完成合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 420
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-blue",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.recoveryPending(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复待定")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 430
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.restoreAppropriately(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复合适")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 440
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-del",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.Delete(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]
-                    )
-                  }),
-                  0
+                  ],
+                  1
                 ),
               ],
               1
@@ -2217,257 +2639,297 @@ var render = function () {
                     attrs: { "scroll-y": true },
                     on: { scrolltolower: _vm.scrollToLower },
                   },
-                  _vm._l(_vm.list, function (item, index) {
-                    return _c(
-                      "view",
-                      { key: index, staticClass: "signup-box" },
-                      [
-                        _c("view", { staticClass: "signup-top" }, [
-                          _c("view", { staticClass: "signup-img" }, [
-                            _c("image", {
-                              attrs: { src: item.visitor.avatar },
-                            }),
-                          ]),
-                          _c("view", { staticClass: "signup-info" }, [
-                            _c("view", { staticClass: "signup-name" }, [
-                              _vm._v(" " + _vm._s(item.visitor.nickname) + " "),
-                              item.visitor.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.visitor.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                            ]),
-                            _c("view", { staticClass: "identity" }, [
-                              _vm._v(
-                                _vm._s(item.visitor.career_list[0]) +
-                                  " ｜ " +
-                                  _vm._s(item.visitor.province_name)
-                              ),
-                            ]),
-                          ]),
-                          _c("view", { staticClass: "signup-rt" }, [
-                            _c(
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
                               "view",
-                              {
-                                staticClass: "contact",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.contactNow(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("立即联系")]
-                            ),
-                            _c("view", { staticClass: "time" }, [
-                              _vm._v(_vm._s(item.date_humanize) + "报名"),
-                            ]),
-                          ]),
-                        ]),
-                        _c("view", { staticClass: "notice" }, [
-                          _vm._v(" 来自通告：" + _vm._s(item.summary) + " "),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "notice-btn",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupAllDetail(item.oid)
-                                },
-                              },
-                            },
-                            [_vm._v("查看全部报名")]
-                          ),
-                        ]),
-                        item.remark
-                          ? _c("view", { staticClass: "remark" }, [
-                              _vm._v(" 备注：" + _vm._s(item.remark)),
-                            ])
-                          : _vm._e(),
-                        _c("view", { staticClass: "signup-cotent" }, [
-                          _c("text", { staticClass: "signup-desc" }, [
-                            _vm._v(_vm._s(item.content)),
-                          ]),
-                          _c(
-                            "text",
-                            {
-                              staticClass: "signup-detail",
-                              on: {
-                                tap: function ($event) {
-                                  return _vm.signupDetail(
-                                    item.sid,
-                                    item.visited_status
-                                  )
-                                },
-                              },
-                            },
-                            [_vm._v("查看详情")]
-                          ),
-                        ]),
-                        _c("view", { staticClass: "signup-btns" }, [
-                          _c("view", { staticClass: "signup-btn-left" }, [
-                            _c(
-                              "text",
-                              {
-                                staticClass: "more",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.moreClick(item.sid, item)
-                                  },
-                                },
-                              },
-                              [_vm._v("更多")]
-                            ),
-                            _c(
-                              "text",
-                              {
-                                staticClass: "remarks",
-                                on: {
-                                  tap: function ($event) {
-                                    return _vm.saveRemarks(item)
-                                  },
-                                },
-                              },
-                              [_vm._v("备注")]
-                            ),
-                          ]),
-                          _c("view", { staticClass: "signup-btn-rt" }, [
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.noConformance(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "cancel",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
+                              { key: index, staticClass: "signup-box" },
+                              [
+                                _c("view", { staticClass: "signup-top" }, [
+                                  _c("view", { staticClass: "signup-img" }, [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
                                     }),
-                                    _vm._v("不符"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 200
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.appropriate(item.sid)
+                                  ]),
+                                  _c("view", { staticClass: "signup-info" }, [
+                                    _c("view", { staticClass: "signup-name" }, [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.visitor.nickname) +
+                                          " "
+                                      ),
+                                      item.visitor.sex == 1
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                      item.visitor.sex == 0
+                                        ? _c("image", {
+                                            staticClass: "list_sex",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]),
+                                    _c("view", { staticClass: "identity" }, [
+                                      _vm._v(
+                                        _vm._s(item.visitor.career_list[0]) +
+                                          " ｜ " +
+                                          _vm._s(item.visitor.province_name)
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "signup-rt" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "contact",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.contactNow(item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("立即联系")]
+                                    ),
+                                    _c("view", { staticClass: "time" }, [
+                                      _vm._v(
+                                        _vm._s(item.date_humanize) + "报名"
+                                      ),
+                                    ]),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "notice" }, [
+                                  _vm._v(
+                                    " 来自通告：" + _vm._s(item.summary) + " "
+                                  ),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "notice-btn",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupAllDetail(item.oid)
+                                        },
                                       },
                                     },
-                                  },
-                                  [
-                                    _c("icon", {
-                                      attrs: {
-                                        type: "success_no_circle",
-                                        size: "12",
-                                        color: "#ffffff",
-                                      },
-                                    }),
-                                    _vm._v("合适"),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.abandonCooperation(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("放弃合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 410
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-red",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.completeCooperation(item.sid)
+                                    [_vm._v("查看全部报名")]
+                                  ),
+                                ]),
+                                item.remark
+                                  ? _c("view", { staticClass: "remark" }, [
+                                      _vm._v(" 备注：" + _vm._s(item.remark)),
+                                    ])
+                                  : _vm._e(),
+                                _c("view", { staticClass: "signup-cotent" }, [
+                                  _c("text", { staticClass: "signup-desc" }, [
+                                    _vm._v(_vm._s(item.content)),
+                                  ]),
+                                  _c(
+                                    "text",
+                                    {
+                                      staticClass: "signup-detail",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.signupDetail(
+                                            item.sid,
+                                            item.visited_status
+                                          )
+                                        },
                                       },
                                     },
-                                  },
-                                  [_vm._v("完成合作")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 420
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-blue",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.recoveryPending(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复待定")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 430
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-yellow",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.restoreAppropriately(
-                                          item.sid
+                                    [_vm._v("查看详情")]
+                                  ),
+                                ]),
+                                _c("view", { staticClass: "signup-btns" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "signup-btn-left" },
+                                    [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "more",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.moreClick(
+                                                item.sid,
+                                                item
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("更多")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "remarks",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.saveRemarks(item)
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("备注")]
+                                      ),
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "signup-btn-rt" }, [
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.noConformance(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "cancel",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("不符"),
+                                          ],
+                                          1
                                         )
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("恢复合适")]
-                                )
-                              : _vm._e(),
-                            item.visited_status == 440
-                              ? _c(
-                                  "view",
-                                  {
-                                    staticClass: "btn-del",
-                                    on: {
-                                      tap: function ($event) {
-                                        return _vm.Delete(item.sid)
-                                      },
-                                    },
-                                  },
-                                  [_vm._v("删除")]
-                                )
-                              : _vm._e(),
-                          ]),
+                                      : _vm._e(),
+                                    item.visited_status == 230
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.appropriate(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [
+                                            _c("icon", {
+                                              attrs: {
+                                                type: "success_no_circle",
+                                                size: "12",
+                                                color: "#ffffff",
+                                              },
+                                            }),
+                                            _vm._v("合适"),
+                                          ],
+                                          1
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.abandonCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("放弃合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 410
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.completeCooperation(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("完成合作")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 420
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-blue",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.recoveryPending(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复待定")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 430
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-yellow",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.restoreAppropriately(
+                                                  item.sid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("恢复合适")]
+                                        )
+                                      : _vm._e(),
+                                    item.visited_status == 440
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-del",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.Delete(item.sid)
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
                         ]),
-                      ]
-                    )
-                  }),
-                  0
+                  ],
+                  1
                 ),
               ],
               1
@@ -2523,34 +2985,117 @@ var render = function () {
         ])
       : _vm._e(),
     _vm.contactVisible
+      ? _c(
+          "view",
+          { staticClass: "modal_box", on: { tap: _vm.contactClose } },
+          [
+            _c("view", { staticClass: "contact_box" }, [
+              _c("view", { staticClass: "modal_title" }, [
+                _c("view", [_vm._v(" 联系方式 ")]),
+                _c("image", {
+                  staticClass: "close-img",
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png",
+                  },
+                  on: { tap: _vm.contactClose },
+                }),
+              ]),
+              _vm.showAddress
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("手机号：")]),
+                      _c("view", [_vm._v(_vm._s(_vm.data.address.mobile))]),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "copy",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.copy(_vm.data.address.mobile)
+                          },
+                        },
+                      },
+                      [_vm._v("复制")]
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.showAddress
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("地址：")]),
+                      _c("view", [
+                        _vm._v(_vm._s(_vm.data.address.detail_address)),
+                      ]),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "copy",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.copy(_vm.data.address.detail_address)
+                          },
+                        },
+                      },
+                      [_vm._v("复制")]
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.showCelebrity
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("红人账号：")]),
+                      _c("view", [_vm._v(_vm._s(_vm.data.celebrity.nickname))]),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "copy",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.copy(_vm.data.celebrity.nickname)
+                          },
+                        },
+                      },
+                      [_vm._v("复制")]
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.showContact
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("微信号：")]),
+                      _c("view", [_vm._v(_vm._s(_vm.data.contact.wechat))]),
+                    ]),
+                    _c(
+                      "view",
+                      { staticClass: "copy", on: { tap: _vm.showQRcode } },
+                      [_vm._v("点击查看微信二维码")]
+                    ),
+                  ])
+                : _vm._e(),
+            ]),
+          ]
+        )
+      : _vm._e(),
+    _vm.showModel
       ? _c("view", { staticClass: "modal_box" }, [
           _c("view", { staticClass: "modal_content" }, [
-            _c("view", { staticClass: "modal_title" }, [
-              _c("view", [_vm._v(" 联系方式 ")]),
-              _c("image", {
-                staticClass: "close-img",
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png",
-                },
-                on: { tap: _vm.contactClose },
-              }),
-            ]),
-            _c("view", { staticClass: "modal_wechat" }, [
-              _c("view", [
-                _vm._v(" 微信号：" + _vm._s(_vm.contact.wechat) + " "),
-              ]),
-              _c(
-                "view",
-                {
-                  staticClass: "copy",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.copy(_vm.contact.wechat)
-                    },
-                  },
-                },
-                [_vm._v("复制")]
-              ),
+            _c("view", [_vm._v(" 微信二维码 ")]),
+            _c("image", {
+              staticClass: "qrcode-img",
+              attrs: { src: _vm.data.contact.wechat_links },
+            }),
+            _c("image", {
+              staticClass: "close-img",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png",
+              },
+              on: { tap: _vm.closeQRcode },
+            }),
+            _c("view", { staticClass: "save", on: { tap: _vm.clickSaveImg } }, [
+              _vm._v("保存到相册"),
             ]),
           ]),
         ])

@@ -478,8 +478,8 @@
             <view class="sign_md_bottom">
               <button open-type="share" class="share-btn">马上邀请</button>
             </view>
-            <!-- <view catchtap="invitego" class="sign_md_btn">马上邀请</view> -->
           </view>
+          <view class="sign_md_txt">每邀请1位好友可赚3金币哦！</view>
         </form>
       </view>
     </view>

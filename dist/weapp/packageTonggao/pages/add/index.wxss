@@ -228,3 +228,13 @@ page {
   width: 100%;
   margin-bottom: 16rpx;
 }
+
+.add-tonggao .upload-close {
+  width: 38rpx;
+  height: 38rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png") no-repeat rgba(0, 0, 0, 0.55);
+  background-size: 38rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

@@ -1,11 +1,11 @@
 <template>
   <view class="signup">
-    <!-- 200:待定 410:合适 420:不符 430:放弃合作 440:完成合作 -->
+    <!-- 230:待定 410:合适 420:不符 430:放弃合作 440:完成合作 -->
     <view class="tab">
       <view
         class="tab-item"
         :class="currentTab == 0 ? 'on' : ''"
-        @tap="changeItem(0, 200)"
+        @tap="changeItem(0, 230)"
         >待定</view
       >
       <view
@@ -95,14 +95,14 @@
                   <view
                     class="btn-yellow"
                     @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon type="cancel" size="12" color="#ffffff"></icon
                     >不符</view
                   >
                   <view
                     class="btn-red"
                     @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon
                       type="success_no_circle"
                       size="12"
@@ -197,14 +197,14 @@
                   <view
                     class="btn-yellow"
                     @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon type="cancel" size="12" color="#ffffff"></icon
                     >不符</view
                   >
                   <view
                     class="btn-red"
                     @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon
                       type="success_no_circle"
                       size="12"
@@ -299,14 +299,14 @@
                   <view
                     class="btn-yellow"
                     @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon type="cancel" size="12" color="#ffffff"></icon
                     >不符</view
                   >
                   <view
                     class="btn-red"
                     @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon
                       type="success_no_circle"
                       size="12"
@@ -401,14 +401,14 @@
                   <view
                     class="btn-yellow"
                     @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon type="cancel" size="12" color="#ffffff"></icon
                     >不符</view
                   >
                   <view
                     class="btn-red"
                     @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon
                       type="success_no_circle"
                       size="12"
@@ -503,14 +503,14 @@
                   <view
                     class="btn-yellow"
                     @tap="noConformance(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon type="cancel" size="12" color="#ffffff"></icon
                     >不符</view
                   >
                   <view
                     class="btn-red"
                     @tap="appropriate(item.sid)"
-                    v-if="item.visited_status == 200"
+                    v-if="item.visited_status == 230"
                     ><icon
                       type="success_no_circle"
                       size="12"
@@ -591,7 +591,7 @@ export default {
       // 页面配置
       winWidth: 0,
       winHeight: 0,
-      status: 200,
+      status: 230,
       pageNum: 1,
       pageSize: 10,
       remarks: "",
@@ -629,7 +629,7 @@ export default {
     },
     clickSave() {
       this.applyManage({
-        even_type: 500,
+        visited_status: 500,
         sid: this.currentdata.sid,
         remark: this.remarks,
       });
@@ -642,7 +642,7 @@ export default {
             case 0:
               console.log("删除");
               this.Delete({
-                even_type: 111,
+                visited_status: 111,
                 sid: sid,
               });
               break;
@@ -664,7 +664,7 @@ export default {
         success: function (res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 410,
+              visited_status: 410,
               sid: sid,
             });
           } else if (res.cancel) {
@@ -681,7 +681,7 @@ export default {
         success: function (res) {
           if (res.confirm) {
             _this.applyManage({
-              even_type: 420,
+              visited_status: 420,
               sid: sid,
             });
           } else if (res.cancel) {
@@ -692,42 +692,44 @@ export default {
     },
     completeCooperation(sid) {
       this.applyManage({
-        even_type: 440,
+        visited_status: 440,
         sid: sid,
       });
     },
     abandonCooperation(sid) {
       this.applyManage({
-        even_type: 430,
+        visited_status: 430,
         sid: sid,
       });
     },
     Delete(sid) {
       this.applyManage({
-        even_type: 111,
+        visited_status: 111,
         sid: sid,
       });
     },
     recoveryPending(sid) {
       this.applyManage({
-        even_type: 450,
+        visited_status: 450,
         sid: sid,
       });
     },
     restoreAppropriately(sid) {
       this.applyManage({
-        even_type: 460,
+        visited_status: 460,
         sid: sid,
       });
     },
     query() {
       let params = {
         type: "NT",
-        visited_status: Number(this.status),
         oid: this.oid,
         page: this.pageNum,
         per_page: this.pageSize,
       };
+      if (this.status != 230) {
+        params.visited_status = Number(this.status);
+      }
       this.loading = false;
       this.applyList(params);
     },

@@ -637,20 +637,16 @@ export default {
       let notice_label = [];
       this.styleTaglist.map((item) => {
         if (item.checked) {
-          style_label.push({
-            [item.key]: item.value,
-          });
+          style_label.push(item.value);
         }
       });
       this.taglist.map((item) => {
         if (item.checked) {
-          notice_label.push({
-            [item.key]: item.value,
-          });
+          notice_label.push(item.value);
         }
       });
-      params.style_label = style_label;
-      params.notice_label = notice_label;
+      params.style_label = style_label.join(",");
+      params.notice_label = notice_label.join(",");
       this.creatInvite(params);
     },
     async publicConfig(params) {

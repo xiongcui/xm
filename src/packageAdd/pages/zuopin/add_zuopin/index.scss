@@ -38,6 +38,9 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .zuopin-upload-img {
+    position: relative;
+  }
   .zuopin-upload-img,
   .zuopin-upload-video {
     width: 158px;
@@ -49,7 +52,6 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 16px;
-    // position: relative;
   }
   .upload-width {
     width: 100%;

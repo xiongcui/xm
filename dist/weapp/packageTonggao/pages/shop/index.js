@@ -586,9 +586,9 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
         store_address: this.localtion,
         store_locale_address: this.locale_address,
         store_doorplate: this.doorplate,
-        task_reward_type: this.taskIndex + "00",
+        task_reward_type: Number(this.taskIndex + "00"),
         task_reward_name: this.taskData[Number(this.taskIndex - 1)].name,
-        payment_range: this.checked1 ? 0 : 1,
+        payment_range: this.checked1 || this.taskData[this.taskIndex - 1].ispick ? 0 : 1,
         // 费用区间(1:区间；0非区间)
         payment_amount: 0,
         // 付费金额(非金额区间),
@@ -599,7 +599,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
         reward_good_price: 0,
         no_limit_number: 0,
         // 不限人数(不限制：1)
-        recruit_number: this.recruitNum,
+        recruit_number: Number(this.recruitNum),
         //招募人数
         is_quoted_price: this.checked ? 1 : 0,
         // 自报价格(1:是，0:否)
@@ -627,7 +627,6 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
         params.reward_good_price = Number(this.giftsValue);
       }
 
-      console.log(params);
       this.submitNotice(params);
     },
     publicConfig: function publicConfig(params) {
@@ -670,7 +669,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "sb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "tb"])(params);
 
               case 3:
                 res = _context2.sent;

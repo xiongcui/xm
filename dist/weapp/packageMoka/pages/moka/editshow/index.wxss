@@ -33,7 +33,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 16rpx 30rpx 4rpx 30rpx;
+  padding: 30rpx 30rpx 4rpx 30rpx;
 }
 .main .my-head .head-img {
   width: 120rpx;

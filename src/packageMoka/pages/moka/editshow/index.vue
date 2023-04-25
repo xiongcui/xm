@@ -1,7 +1,7 @@
 <template>
   <view class="main">
     <view class="main_top">
-      <view
+      <!-- <view
         :style="{
           height: globalData.navHeight + 'px',
         }"
@@ -14,11 +14,10 @@
           }"
           @tap="goback"
         ></image>
-      </view>
+      </view> -->
       <view
         class="homeimg"
         :style="{
-          'padding-top': globalData.navHeight + 'px',
           background: infor.homeimg
             ? 'rgba(0,0,0,0.5) url(' + infor.homeimg + ') no-repeat'
             : '#ea6a6b',
@@ -369,6 +368,8 @@ import {
   userAlbumDetail,
   userSticker,
   photoListOwn,
+  shareInvite,
+  shareInviteInfo,
 } from "../../../../api/index";
 import { errortip, openPage } from "../../../../utils/util";
 import myZuopinList from "../../../../components/myZuopinList/index.vue";
@@ -433,6 +434,9 @@ export default {
       list: [],
       pageNum: 1,
       pageSize: 10,
+      shareTitle: "",
+      shareImg: "",
+      sharePath: "",
     };
   },
   components: {
@@ -496,12 +500,12 @@ export default {
     async userShapeDetail(params) {
       try {
         let res = await userShapeDetail(params);
-        this.homeInfor.height = res.data.data.height;
-        this.homeInfor.weight = res.data.data.weight;
-        this.homeInfor.bwh_b = res.data.data.bust;
-        this.homeInfor.bwh_w = res.data.data.waist;
-        this.homeInfor.bwh_h = res.data.data.hip;
-        this.homeInfor.shoe = res.data.data.size;
+        this.homeInfor.height = res.data.data.shape_list.height;
+        this.homeInfor.weight = res.data.data.shape_list.weight;
+        this.homeInfor.bwh_b = res.data.data.shape_list.bust;
+        this.homeInfor.bwh_w = res.data.data.shape_list.waist;
+        this.homeInfor.bwh_h = res.data.data.shape_list.hip;
+        this.homeInfor.shoe = res.data.data.shape_list.size;
       } catch (error) {}
     },
     async userAlbumDetail(params) {
@@ -529,6 +533,19 @@ export default {
         }
         let data = res.data.data.items;
         this.list = this.list.concat(data);
+      } catch (error) {}
+    },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
       } catch (error) {}
     },
   },
@@ -565,6 +582,13 @@ export default {
     } else {
       this.userInfo("");
     }
+    let userInfo = wx.getStorageSync("userInfo");
+    let uuid = userInfo.uuid;
+    this.shareInviteInfo({
+      source: "share_homepage",
+      type: "wechat",
+      shared_uuid: this.uuid || uuid,
+    });
   },
   onReachBottom() {
     if (this.select_tab == "zuopin") {
@@ -577,6 +601,10 @@ export default {
     if (this.uuid) {
       this.myself = false;
     }
+    if (options.scene) {
+      this.uuid = options.scene;
+      this.myself = false;
+    }
     var that = this;
     // 获取系统信息
     wx.getSystemInfo({
@@ -585,6 +613,18 @@ export default {
         that.winHeight = res.windowHeight;
       },
     });
+  },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_details",
+      type: "wechat",
+      // oid: this.oid,
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
   },
 };
 </script>

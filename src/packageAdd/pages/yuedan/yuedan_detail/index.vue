@@ -20,7 +20,12 @@
           </view>
 
           <view class="detail_label">
-            {{ yuepaiInfo.topic.ticket.name }}
+            <!-- <image
+              class="detail_icon"
+              v-if="yuepaiInfo.topic.ticket.icon"
+              :src="yuepaiInfo.topic.ticket.icon"
+            ></image> -->
+            {{ yuepaiInfo.topic.target }}
           </view>
         </view>
         <view class="detail_info_title">
@@ -33,7 +38,9 @@
           <view class="title_desc">{{ yuepaiInfo.topic.headline.title }}</view>
           <button open-type="share" class="share-btn">
             <view class="share">
-              <image src="../../../../assets/images/share.png"></image>
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/share.png"
+              ></image>
             </view>
           </button>
         </view>
@@ -47,6 +54,7 @@
                   : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
               "
               class="avatar"
+              @tap="goZhuye()"
             ></image>
             <view class="list_info">
               <view class="list_name">
@@ -123,10 +131,10 @@
         <view class="tonggao_desc">
           <view class="dian"></view>{{ yuepaiInfo.details.content }}
         </view>
-        <view class="tonggao_desc">
+        <view class="tonggao_desc" v-if="yuepaiInfo.details.expect_time">
           <view class="dian"></view>时间：{{ yuepaiInfo.details.expect_time }}
         </view>
-        <view class="tonggao_desc">
+        <view class="tonggao_desc" v-if="yuepaiInfo.details.expect_locale">
           <view class="dian"></view>地点：{{ yuepaiInfo.details.expect_locale }}
         </view>
         <view class="yuepai_tag">
@@ -299,6 +307,8 @@ export default {
           first_label: [],
         },
         details: {
+          expect_time: "",
+          expect_locale: "",
           media: {
             cover: [],
           },
@@ -342,7 +352,13 @@ export default {
     },
     launchYuepai() {
       if (isLogin()) {
-        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        let userInfo = wx.getStorageSync("userInfo");
+        let uuid = userInfo.uuid;
+        if (uuid != this.author_id) {
+          openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        } else {
+          errortip("自己不可约拍自己哦，看看别的吧");
+        }
       } else {
         wx.redirectTo({
           url: "/pages/login/index",
@@ -399,7 +415,6 @@ export default {
       this.query("more");
     },
     goZhuye() {
-      console.log(this.author_id, "this.yuepaiInfo.author_id");
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     async inviteAdviseList(params, type) {

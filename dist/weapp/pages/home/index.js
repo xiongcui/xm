@@ -541,6 +541,43 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var citySelector = requirePlugin("citySelector");
 
@@ -563,7 +600,9 @@ var citySelector = requirePlugin("citySelector");
       tonggaoSwiperHeight: 0,
       city: "",
       is_today_sign: 0,
-      background: ["demo-text-1", "demo-text-2", "demo-text-3"],
+      showModelSign: false,
+      hyper_desc: "",
+      background: ["1", "2", "3"],
       indicatorDots: true,
       indicatorDots2: false,
       vertical: false,
@@ -576,7 +615,6 @@ var citySelector = requirePlugin("citySelector");
       headCurrent: 0,
       pageNum: 1,
       pageSize: 10,
-      //   showSign: false,
       navShow: false,
       inviteRecommendList: [],
       noticeRecommendList: [],
@@ -620,6 +658,15 @@ var citySelector = requirePlugin("citySelector");
     loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"]
   },
   methods: {
+    goZhuye: function goZhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
+    comingSoon: function comingSoon() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("敬请期待，正在开发中");
+    },
+    signClose: function signClose() {
+      this.showModelSign = false;
+    },
     showSign: function showSign() {
       this.submitSign("");
     },
@@ -831,7 +878,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* wxlogin */ "Qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* wxlogin */ "Rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -920,7 +967,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                errortip("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("没有更多数据了～");
                 _this3.loading = true;
                 return _context2.abrupt("return", false);
 
@@ -1136,7 +1183,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* userStatus */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* userStatus */ "Mb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1182,7 +1229,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* userSelectCity */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* userSelectCity */ "Jb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -1487,7 +1534,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                errortip("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("没有更多数据了～");
                 _this11.loading = true;
                 return _context12.abrupt("return", false);
 
@@ -1589,7 +1636,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                errortip("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("没有更多数据了～");
                 _this12.loading = true;
                 return _context13.abrupt("return", false);
 
@@ -1656,7 +1703,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* shareInvite */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* shareInvite */ "kb"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1729,7 +1776,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* submitSign */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* submitSign */ "ub"])(params);
 
               case 3:
                 res = _context16.sent;
@@ -1809,7 +1856,7 @@ var citySelector = requirePlugin("citySelector");
       this.city_filter = Number(selectedCity.id);
       this.city = selectedCity.name;
       this.userSelectCity({
-        city_info: this.city_filter
+        city_info: selectedCity
       }); // 约拍推荐
 
       this.inviteAdviseList({
@@ -1901,7 +1948,7 @@ var render = function () {
                             _c("image", {
                               staticClass: "roll-down",
                               attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/common/back.png */ "./src/assets/images/common/back.png"),
+                                src: "https://yuepai-oss.qubeitech.com/static/images/common/back.png",
                               },
                             }),
                           ]
@@ -1914,12 +1961,12 @@ var render = function () {
                         _vm.is_today_sign
                           ? _c("image", {
                               attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/icon_signed.jpg */ "./src/assets/images/icon_signed.jpg"),
+                                src: "https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg",
                               },
                             })
                           : _c("image", {
                               attrs: {
-                                src: __webpack_require__(/*! ../../assets/images/icon_sign.jpg */ "./src/assets/images/icon_sign.jpg"),
+                                src: "https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg",
                               },
                             }),
                       ]
@@ -1992,7 +2039,7 @@ var render = function () {
                   _c("image", {
                     staticClass: "page-nav-img",
                     attrs: {
-                      src: __webpack_require__(/*! ../../assets/images/icon_model.png */ "./src/assets/images/icon_model.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/icon_model.png",
                     },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
@@ -2006,7 +2053,9 @@ var render = function () {
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
-                    attrs: { src: __webpack_require__(/*! ../../assets/images/take.png */ "./src/assets/images/take.png") },
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/take.png",
+                    },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
                     _vm._v("摄影"),
@@ -2026,20 +2075,30 @@ var render = function () {
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
-                    attrs: { src: __webpack_require__(/*! ../../assets/images/more1.png */ "./src/assets/images/more1.png") },
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/more1.png",
+                    },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
                     _vm._v("作品"),
                   ]),
                 ]
               ),
-              _c("view", { staticClass: "page-nav-item" }, [
-                _c("image", {
-                  staticClass: "page-nav-img",
-                  attrs: { src: __webpack_require__(/*! ../../assets/images/moka.png */ "./src/assets/images/moka.png") },
-                }),
-                _c("text", { staticClass: "page-nav-text" }, [_vm._v("模卡")]),
-              ]),
+              _c(
+                "view",
+                { staticClass: "page-nav-item", on: { tap: _vm.comingSoon } },
+                [
+                  _c("image", {
+                    staticClass: "page-nav-img",
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/moka.png",
+                    },
+                  }),
+                  _c("text", { staticClass: "page-nav-text" }, [
+                    _vm._v("模卡"),
+                  ]),
+                ]
+              ),
             ]),
             _c("view", { staticClass: "page-nav-bottom" }, [
               _c(
@@ -2064,7 +2123,7 @@ var render = function () {
                   _c("view", { staticClass: "page-nav-rt" }, [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/photo_white.png */ "./src/assets/images/common/photo_white.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/photo_white.png",
                       },
                     }),
                   ]),
@@ -2092,7 +2151,7 @@ var render = function () {
                   _c("view", { staticClass: "page-nav-rt" }, [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/tonggao_white.png */ "./src/assets/images/common/tonggao_white.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/tonggao_white.png",
                       },
                     }),
                   ]),
@@ -2183,6 +2242,13 @@ var render = function () {
                                                     src: item.author.avatar
                                                       ? item.author.avatar
                                                       : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                                                  },
+                                                  on: {
+                                                    tap: function ($event) {
+                                                      return _vm.goZhuye(
+                                                        item.author.uuid
+                                                      )
+                                                    },
                                                   },
                                                 }),
                                                 _c(
@@ -2280,22 +2346,6 @@ var render = function () {
                                               [
                                                 _c(
                                                   "view",
-                                                  {
-                                                    staticClass: "list_loction",
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      " " +
-                                                        _vm._s(
-                                                          item.author
-                                                            .province_name
-                                                        ) +
-                                                        " "
-                                                    ),
-                                                  ]
-                                                ),
-                                                _c(
-                                                  "view",
                                                   { staticClass: "list_date" },
                                                   [
                                                     _vm._v(
@@ -2317,45 +2367,66 @@ var render = function () {
                                               "view",
                                               { staticClass: "list_title" },
                                               [
-                                                _vm._l(
-                                                  item.topic.headline.tag,
-                                                  function (tagitem, tagindex) {
-                                                    return _c(
+                                                _c(
+                                                  "view",
+                                                  {
+                                                    key: index,
+                                                    staticClass:
+                                                      "recommend-style",
+                                                  },
+                                                  [
+                                                    _c(
                                                       "view",
                                                       {
-                                                        key: tagindex,
                                                         staticClass:
                                                           "recommend-label",
                                                       },
                                                       [
                                                         _vm._v(
                                                           " " +
-                                                            _vm._s(tagitem) +
+                                                            _vm._s(
+                                                              item.topic.target
+                                                            ) +
                                                             " "
                                                         ),
                                                       ]
-                                                    )
-                                                  }
+                                                    ),
+                                                    _c(
+                                                      "view",
+                                                      {
+                                                        staticClass:
+                                                          "recommend-label2",
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          " " +
+                                                            _vm._s(
+                                                              item.topic.payment
+                                                                .title
+                                                            ) +
+                                                            " "
+                                                        ),
+                                                      ]
+                                                    ),
+                                                  ]
                                                 ),
                                                 _c(
                                                   "view",
                                                   {
-                                                    staticClass:
-                                                      "recommend-label2",
+                                                    staticClass: "list_loction",
                                                   },
                                                   [
                                                     _vm._v(
                                                       " " +
                                                         _vm._s(
-                                                          item.topic.payment
-                                                            .title
+                                                          item.topic.face_city
+                                                            .name
                                                         ) +
                                                         " "
                                                     ),
                                                   ]
                                                 ),
-                                              ],
-                                              2
+                                              ]
                                             ),
                                             _c(
                                               "view",
@@ -2369,17 +2440,6 @@ var render = function () {
                                                   )
                                                 ),
                                               ]
-                                            ),
-                                          ]
-                                        ),
-                                        _c(
-                                          "view",
-                                          { staticClass: "list_desc" },
-                                          [
-                                            _vm._v(
-                                              " " +
-                                                _vm._s(item.details.summary) +
-                                                " "
                                             ),
                                           ]
                                         ),
@@ -2407,18 +2467,6 @@ var render = function () {
                                                         attrs: {
                                                           src: url,
                                                           mode: "aspectFill",
-                                                        },
-                                                        on: {
-                                                          tap: function (
-                                                            $event
-                                                          ) {
-                                                            $event.stopPropagation()
-                                                            return _vm.previewImage(
-                                                              url,
-                                                              item.details.media
-                                                                .cover
-                                                            )
-                                                          },
                                                         },
                                                       })
                                                     }
@@ -2625,26 +2673,28 @@ var render = function () {
                                               staticClass: "tonggao-info-title",
                                             },
                                             [
-                                              _vm._l(
-                                                item.topic.headline.tag,
-                                                function (tagitem, tagindex) {
-                                                  return _c(
-                                                    "view",
-                                                    {
-                                                      key: tagindex,
-                                                      staticClass:
-                                                        "recommend-label",
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        " " +
-                                                          _vm._s(tagitem) +
-                                                          " "
-                                                      ),
-                                                    ]
+                                              item.topic.headline.tag.length
+                                                ? _c(
+                                                    "block",
+                                                    _vm._l(
+                                                      item.topic.headline.tag,
+                                                      function (
+                                                        tagitem,
+                                                        tagindex
+                                                      ) {
+                                                        return _c("image", {
+                                                          key: tagindex,
+                                                          staticClass:
+                                                            "recommend-image",
+                                                          attrs: {
+                                                            src: tagitem,
+                                                          },
+                                                        })
+                                                      }
+                                                    ),
+                                                    0
                                                   )
-                                                }
-                                              ),
+                                                : _vm._e(),
                                               _c(
                                                 "view",
                                                 { staticClass: "tonggao-txt" },
@@ -2659,7 +2709,7 @@ var render = function () {
                                                 ]
                                               ),
                                             ],
-                                            2
+                                            1
                                           ),
                                         ]
                                       ),
@@ -2667,36 +2717,6 @@ var render = function () {
                                         "view",
                                         { staticClass: "tonggao-recommend-bt" },
                                         [
-                                          item.details.media.file_type ==
-                                          "picture"
-                                            ? _c(
-                                                "view",
-                                                {
-                                                  staticClass:
-                                                    "tonggao-recommend-img",
-                                                },
-                                                [
-                                                  _c("image", {
-                                                    attrs: {
-                                                      src: item.details.media
-                                                        .cover[0],
-                                                      mode: "aspectFill",
-                                                    },
-                                                    on: {
-                                                      tap: function ($event) {
-                                                        $event.stopPropagation()
-                                                        return _vm.previewImage(
-                                                          item.details.media
-                                                            .cover[0],
-                                                          item.details.media
-                                                            .cover
-                                                        )
-                                                      },
-                                                    },
-                                                  }),
-                                                ]
-                                              )
-                                            : _vm._e(),
                                           _c(
                                             "view",
                                             {
@@ -2708,14 +2728,41 @@ var render = function () {
                                                 "view",
                                                 {
                                                   staticClass:
-                                                    "tonggao-info-desc",
+                                                    "recommend-style",
                                                 },
                                                 [
-                                                  _vm._v(
-                                                    " " +
-                                                      _vm._s(
-                                                        item.details.summary
-                                                      )
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass:
+                                                        "recommend-label",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        " " +
+                                                          _vm._s(
+                                                            item.topic.target
+                                                          ) +
+                                                          " "
+                                                      ),
+                                                    ]
+                                                  ),
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass:
+                                                        "recommend-label2",
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        " " +
+                                                          _vm._s(
+                                                            item.topic.payment
+                                                              .title
+                                                          ) +
+                                                          " "
+                                                      ),
+                                                    ]
                                                   ),
                                                 ]
                                               ),
@@ -2737,38 +2784,27 @@ var render = function () {
                                                 ),
                                                 0
                                               ),
-                                              _c(
+                                            ]
+                                          ),
+                                          item.details.media.file_type ==
+                                          "picture"
+                                            ? _c(
                                                 "view",
                                                 {
                                                   staticClass:
-                                                    "tonggao-recommend-price",
+                                                    "tonggao-recommend-img",
                                                 },
                                                 [
-                                                  _c(
-                                                    "view",
-                                                    { staticClass: "pirce" },
-                                                    [
-                                                      _vm._v(
-                                                        " " +
-                                                          _vm._s(
-                                                            item.topic.payment
-                                                              .title
-                                                          )
-                                                      ),
-                                                    ]
-                                                  ),
-                                                  _c(
-                                                    "view",
-                                                    {
-                                                      staticClass:
-                                                        "recommend-btn",
+                                                  _c("image", {
+                                                    attrs: {
+                                                      src: item.details.media
+                                                        .cover[0],
+                                                      mode: "aspectFill",
                                                     },
-                                                    [_vm._v("立即报名")]
-                                                  ),
+                                                  }),
                                                 ]
-                                              ),
-                                            ]
-                                          ),
+                                              )
+                                            : _vm._e(),
                                         ]
                                       ),
                                     ]
@@ -2801,7 +2837,7 @@ var render = function () {
                                         [
                                           _c("image", {
                                             attrs: {
-                                              src: __webpack_require__(/*! ../../assets/images/user/index/yuepai.png */ "./src/assets/images/user/index/yuepai.png"),
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
                                             },
                                           }),
                                           _vm._v(
@@ -2819,7 +2855,7 @@ var render = function () {
                                         [
                                           _c("image", {
                                             attrs: {
-                                              src: __webpack_require__(/*! ../../assets/images/eyes.png */ "./src/assets/images/eyes.png"),
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                                             },
                                           }),
                                           _vm._v(
@@ -2970,6 +3006,51 @@ var render = function () {
         ],
         1
       ),
+      _vm.showModelSign
+        ? _c("view", { staticClass: "modal-bg", on: { tap: _vm.signClose } })
+        : _vm._e(),
+      _vm.showModelSign
+        ? _c("view", { staticClass: "modal_box sign_modal" }, [
+            _c("view", { staticClass: "sign_md_close_btn" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png",
+                },
+                on: { tap: _vm.signClose },
+              }),
+            ]),
+            _c("view", { staticClass: "sign_modal_main" }, [
+              _c("form", { staticClass: "main" }, [
+                _c("view", { staticClass: "sign_md_top" }, [
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png",
+                    },
+                  }),
+                ]),
+                _c("view", { staticClass: "sign_md_title" }, [
+                  _c("view", [_vm._v("签到成功")]),
+                ]),
+                _c("view", { staticClass: "sign_md_content" }, [
+                  _c("view", [_vm._v(_vm._s(_vm.hyper_desc))]),
+                ]),
+                _c("view", { staticClass: "sign_md_bottom" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "share-btn",
+                      attrs: { "open-type": "share" },
+                    },
+                    [_vm._v("马上邀请")]
+                  ),
+                ]),
+                _c("view", { staticClass: "sign_md_txt" }, [
+                  _vm._v("每邀请1位好友可赚3金币哦！"),
+                ]),
+              ]),
+            ]),
+          ])
+        : _vm._e(),
     ],
     1
   )
@@ -2978,90 +3059,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/back.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/common/back.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAmCAMAAADtLHsqAAABaFBMVEUAAAD///+AgIBVVVVAQECAgIBmZmZVVVVJSUltbW2SkpJgYGBVVVWOjo5NTU1mZmZdXV1VVVVqampiYmJVVVVQUFBgYGBVVVVjY2NeXl5ZWVlzc3NdXV1ZWVlVVVVcXFxYWFhVVVVeXl5bW1ttbW1YWFhYWFhdXV1aWlpXV1dfX1/s7Ozp6ens7Ozs7Ozw8PDb29vt7e3w8PDx8fHx8fHNzc309PTLy8vMzMzS0tLs7Oz8/PzQ0NDT09PU1NTj4+P39/fS0tLV1dX19fXb29vW1tb19fX29vb29vb29vbg4OD29vb29vbf39/29vbg4OD39/fe3t739/fh4eHj4+P39/fj4+P39/f5+fni4uLk5OT19fXl5eXl5eXt7e3l5eXp6en9/f36+vr9/f36+vrz8/P29vb+/v7////+/v7////+/v7////+/v7////+/v7////+/v7////////+/v7////////////End8tAAAAd3RSTlMAAQIDBAQFBgcHBwgJCQoKCwwMDQ8QEBISExQUFhcYGRobGxwcHSAhIiMjT1BQUlNVVldZW1xcXl9gYGBiY2VlZWdoaGlqa21vcnN0dnh4enp8fX5/f4GBg4SGhoiKioyMoaamp6ut9vb39/j4+fn6+vv7/P39/r6hmUUAAAFhSURBVDjLjdNnT8MwEAbgODYOoaGEUtqmrNDSwd5777333qusMvP38TkSNK6FOCmfHulytt9TlH8XYqWyTyaYDJ4XYTXPkIrp2LtzWUxEQyrRJz8dx7nQMMqTGZC3AYMgUWZBXkfDfooEmftikp2yvQQyD/IynawK+nL+BbII8jyRsiMm/Z0QZAnkaTxlW6WF+OfQICsgjyMgulfWQB6GJbLBwMkMSbptg9z3swlE2QW57RNEQVjb49KbrvV0Y0SMQ07diWhAzxUFUb91wq0tZBR4HgMocQZ21yQSMUI16VM+YqPQEGumFW84hiNnmr1jsOHLovH6I34dLVI74JfYKrV9/ijtUtvh1qHLbIsHoFNqmxCbbJekZyy9zsPWQ1UhNmCrYFc+LIYNbPnDuanw5tA1y04uXNcJEXUtEKmO2ZVBIdiumeXhcNAU18FdIp+/xNCIZMHY6lFKJKv318Lm1jeYfF17kRSejgAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ "./src/assets/images/common/photo_white.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/common/photo_white.png ***!
-  \**************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/photo_white.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/tonggao_white.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/common/tonggao_white.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/tonggao_white.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/icon_sign.jpg":
-/*!*****************************************!*\
-  !*** ./src/assets/images/icon_sign.jpg ***!
-  \*****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/icon_sign.jpg";
-
-/***/ }),
-
-/***/ "./src/assets/images/icon_signed.jpg":
-/*!*******************************************!*\
-  !*** ./src/assets/images/icon_signed.jpg ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/icon_signed.jpg";
-
-/***/ }),
-
-/***/ "./src/assets/images/moka.png":
-/*!************************************!*\
-  !*** ./src/assets/images/moka.png ***!
-  \************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/more1.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/more1.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/more1.png";
 
 /***/ }),
 

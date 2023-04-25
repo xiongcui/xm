@@ -1371,6 +1371,96 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1436,7 +1526,7 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 
             _this.manageOperation({
               oid: oid,
-              even_type: 400
+              even_type: -200
             });
           } else if (res.cancel) {
             console.log("用户点击取消");
@@ -1479,7 +1569,7 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 
             _this.manageOperation({
               oid: oid,
-              even_type: 700
+              even_type: 400
             });
           } else if (res.cancel) {
             console.log("用户点击取消");
@@ -1699,7 +1789,7 @@ var render = function () {
           class: _vm.currentTab == 4 ? "on" : "",
           on: {
             tap: function ($event) {
-              return _vm.changeItem(4, 600)
+              return _vm.changeItem(4, -100)
             },
           },
         },
@@ -1744,11 +1834,13 @@ var render = function () {
                                   _c("view", { staticClass: "list_left" }, [
                                     _c("view", { staticClass: "list_title" }, [
                                       _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
+                                        " " + _vm._s(item.topic.headline.title)
                                       ),
                                     ]),
                                     _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
                                     ]),
                                     _c("view", { staticClass: "list_info" }, [
                                       _c("image", {
@@ -1777,18 +1869,20 @@ var render = function () {
                                   _c("view", { staticClass: "list_rt" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.cover[0],
+                                        src: item.details.media.cover[0],
                                         mode: "aspectFill",
                                       },
                                     }),
                                   ]),
-                                  item.publish_status == 200
+                                  item.status.publish_status == 200
                                     ? _c(
                                         "view",
                                         { staticClass: "list_status_sucess" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       )
@@ -1797,12 +1891,16 @@ var render = function () {
                                         { staticClass: "list_status" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       ),
                                   _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "list_num" }, [
@@ -1813,7 +1911,9 @@ var render = function () {
                                       },
                                     }),
                                     _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
+                                      " " +
+                                        _vm._s(item.basic.date_humanize) +
+                                        " "
                                     ),
                                   ]),
                                   _c("view", { staticClass: "list_yuepai" }, [
@@ -1843,11 +1943,11 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "list_bottom" }, [
                                   _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
                                       ? _c(
                                           "view",
                                           {
@@ -1855,7 +1955,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.deleteTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -1863,14 +1963,16 @@ var render = function () {
                                           [_vm._v("删除通告")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200
+                                    item.status.publish_status == 200
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-grey",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
@@ -1879,22 +1981,24 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                   _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
+                                    item.status.publish_status == 120
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-red",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
                                           [_vm._v("开放招募")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
                                       ? _c(
                                           "view",
                                           {
@@ -1902,7 +2006,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -1910,7 +2014,7 @@ var render = function () {
                                           [_vm._v("刷新排名")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 300
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -1918,7 +2022,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.reopenTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -1926,8 +2030,8 @@ var render = function () {
                                           [_vm._v("重新打开")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -1935,7 +2039,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.manageTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -1986,11 +2090,13 @@ var render = function () {
                                   _c("view", { staticClass: "list_left" }, [
                                     _c("view", { staticClass: "list_title" }, [
                                       _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
+                                        " " + _vm._s(item.topic.headline.title)
                                       ),
                                     ]),
                                     _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
                                     ]),
                                     _c("view", { staticClass: "list_info" }, [
                                       _c("image", {
@@ -2019,18 +2125,20 @@ var render = function () {
                                   _c("view", { staticClass: "list_rt" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.cover[0],
+                                        src: item.details.media.cover[0],
                                         mode: "aspectFill",
                                       },
                                     }),
                                   ]),
-                                  item.publish_status == 200
+                                  item.status.publish_status == 200
                                     ? _c(
                                         "view",
                                         { staticClass: "list_status_sucess" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       )
@@ -2039,12 +2147,16 @@ var render = function () {
                                         { staticClass: "list_status" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       ),
                                   _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "list_num" }, [
@@ -2085,11 +2197,11 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "list_bottom" }, [
                                   _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
                                       ? _c(
                                           "view",
                                           {
@@ -2097,7 +2209,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.deleteTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2105,14 +2217,16 @@ var render = function () {
                                           [_vm._v("删除通告")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200
+                                    item.status.publish_status == 200
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-grey",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
@@ -2121,22 +2235,24 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                   _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
+                                    item.status.publish_status == 120
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-red",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
                                           [_vm._v("开放招募")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
                                       ? _c(
                                           "view",
                                           {
@@ -2144,7 +2260,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2152,7 +2268,7 @@ var render = function () {
                                           [_vm._v("刷新排名")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 300
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -2160,7 +2276,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.reopenTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2168,8 +2284,8 @@ var render = function () {
                                           [_vm._v("重新打开")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -2177,497 +2293,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.manageTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2724,11 +2350,13 @@ var render = function () {
                                   _c("view", { staticClass: "list_left" }, [
                                     _c("view", { staticClass: "list_title" }, [
                                       _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
+                                        " " + _vm._s(item.topic.headline.title)
                                       ),
                                     ]),
                                     _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
                                     ]),
                                     _c("view", { staticClass: "list_info" }, [
                                       _c("image", {
@@ -2757,18 +2385,20 @@ var render = function () {
                                   _c("view", { staticClass: "list_rt" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.cover[0],
+                                        src: item.details.media.cover[0],
                                         mode: "aspectFill",
                                       },
                                     }),
                                   ]),
-                                  item.publish_status == 200
+                                  item.status.publish_status == 200
                                     ? _c(
                                         "view",
                                         { staticClass: "list_status_sucess" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       )
@@ -2777,12 +2407,16 @@ var render = function () {
                                         { staticClass: "list_status" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       ),
                                   _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "list_num" }, [
@@ -2823,11 +2457,11 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "list_bottom" }, [
                                   _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
                                       ? _c(
                                           "view",
                                           {
@@ -2835,7 +2469,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.deleteTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2843,14 +2477,16 @@ var render = function () {
                                           [_vm._v("删除通告")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200
+                                    item.status.publish_status == 200
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-grey",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
@@ -2859,22 +2495,24 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                   _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
+                                    item.status.publish_status == 120
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-red",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
                                           [_vm._v("开放招募")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
                                       ? _c(
                                           "view",
                                           {
@@ -2882,7 +2520,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2890,7 +2528,7 @@ var render = function () {
                                           [_vm._v("刷新排名")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 300
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -2898,7 +2536,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.reopenTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2906,8 +2544,8 @@ var render = function () {
                                           [_vm._v("重新打开")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -2915,7 +2553,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.manageTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -2966,11 +2604,13 @@ var render = function () {
                                   _c("view", { staticClass: "list_left" }, [
                                     _c("view", { staticClass: "list_title" }, [
                                       _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
+                                        " " + _vm._s(item.topic.headline.title)
                                       ),
                                     ]),
                                     _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
                                     ]),
                                     _c("view", { staticClass: "list_info" }, [
                                       _c("image", {
@@ -2999,18 +2639,20 @@ var render = function () {
                                   _c("view", { staticClass: "list_rt" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.cover[0],
+                                        src: item.details.media.cover[0],
                                         mode: "aspectFill",
                                       },
                                     }),
                                   ]),
-                                  item.publish_status == 200
+                                  item.status.publish_status == 200
                                     ? _c(
                                         "view",
                                         { staticClass: "list_status_sucess" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       )
@@ -3019,12 +2661,16 @@ var render = function () {
                                         { staticClass: "list_status" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       ),
                                   _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "list_num" }, [
@@ -3065,11 +2711,11 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "list_bottom" }, [
                                   _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
                                       ? _c(
                                           "view",
                                           {
@@ -3077,7 +2723,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.deleteTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3085,14 +2731,16 @@ var render = function () {
                                           [_vm._v("删除通告")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200
+                                    item.status.publish_status == 200
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-grey",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
@@ -3101,22 +2749,24 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                   _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
+                                    item.status.publish_status == 120
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-red",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
                                           [_vm._v("开放招募")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
                                       ? _c(
                                           "view",
                                           {
@@ -3124,7 +2774,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3132,7 +2782,7 @@ var render = function () {
                                           [_vm._v("刷新排名")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 300
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -3140,7 +2790,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.reopenTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3148,8 +2798,8 @@ var render = function () {
                                           [_vm._v("重新打开")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -3157,497 +2807,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.manageTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(item.publish_status_name)
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3704,11 +2864,13 @@ var render = function () {
                                   _c("view", { staticClass: "list_left" }, [
                                     _c("view", { staticClass: "list_title" }, [
                                       _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
+                                        " " + _vm._s(item.topic.headline.title)
                                       ),
                                     ]),
                                     _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
                                     ]),
                                     _c("view", { staticClass: "list_info" }, [
                                       _c("image", {
@@ -3737,18 +2899,20 @@ var render = function () {
                                   _c("view", { staticClass: "list_rt" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.cover[0],
+                                        src: item.details.media.cover[0],
                                         mode: "aspectFill",
                                       },
                                     }),
                                   ]),
-                                  item.publish_status == 200
+                                  item.status.publish_status == 200
                                     ? _c(
                                         "view",
                                         { staticClass: "list_status_sucess" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       )
@@ -3757,12 +2921,16 @@ var render = function () {
                                         { staticClass: "list_status" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       ),
                                   _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "list_num" }, [
@@ -3803,11 +2971,11 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "list_bottom" }, [
                                   _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
                                       ? _c(
                                           "view",
                                           {
@@ -3815,7 +2983,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.deleteTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3823,14 +2991,16 @@ var render = function () {
                                           [_vm._v("删除通告")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200
+                                    item.status.publish_status == 200
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-grey",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
@@ -3839,22 +3009,24 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                   _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
+                                    item.status.publish_status == 120
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-red",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
                                           [_vm._v("开放招募")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
                                       ? _c(
                                           "view",
                                           {
@@ -3862,7 +3034,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3870,7 +3042,7 @@ var render = function () {
                                           [_vm._v("刷新排名")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 300
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -3878,7 +3050,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.reopenTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3886,8 +3058,8 @@ var render = function () {
                                           [_vm._v("重新打开")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -3895,7 +3067,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.manageTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -3946,11 +3118,13 @@ var render = function () {
                                   _c("view", { staticClass: "list_left" }, [
                                     _c("view", { staticClass: "list_title" }, [
                                       _vm._v(
-                                        " " + _vm._s(item.major_subject) + " "
+                                        " " + _vm._s(item.topic.headline.title)
                                       ),
                                     ]),
                                     _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(" " + _vm._s(item.summary) + " "),
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
                                     ]),
                                     _c("view", { staticClass: "list_info" }, [
                                       _c("image", {
@@ -3979,18 +3153,20 @@ var render = function () {
                                   _c("view", { staticClass: "list_rt" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.cover[0],
+                                        src: item.details.media.cover[0],
                                         mode: "aspectFill",
                                       },
                                     }),
                                   ]),
-                                  item.publish_status == 200
+                                  item.status.publish_status == 200
                                     ? _c(
                                         "view",
                                         { staticClass: "list_status_sucess" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       )
@@ -3999,12 +3175,16 @@ var render = function () {
                                         { staticClass: "list_status" },
                                         [
                                           _vm._v(
-                                            _vm._s(item.publish_status_name)
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
                                           ),
                                         ]
                                       ),
                                   _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(_vm._s(item.second_name)),
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "list_num" }, [
@@ -4045,11 +3225,11 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "list_bottom" }, [
                                   _c("view", { staticClass: "list_bt_left" }, [
-                                    item.publish_status == 100 ||
-                                    item.publish_status == 120 ||
-                                    item.publish_status == 400 ||
-                                    item.publish_status == 300 ||
-                                    item.publish_status == 600
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
                                       ? _c(
                                           "view",
                                           {
@@ -4057,7 +3237,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.deleteTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -4065,14 +3245,16 @@ var render = function () {
                                           [_vm._v("删除通告")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200
+                                    item.status.publish_status == 200
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-grey",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.overTonggao(item.oid)
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
@@ -4081,22 +3263,24 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                   _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.publish_status == 120
+                                    item.status.publish_status == 120
                                       ? _c(
                                           "view",
                                           {
                                             staticClass: "btn-red",
                                             on: {
                                               tap: function ($event) {
-                                                return _vm.openTonggao(item.oid)
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
                                               },
                                             },
                                           },
                                           [_vm._v("开放招募")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 700
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
                                       ? _c(
                                           "view",
                                           {
@@ -4104,7 +3288,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.refreshTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -4112,7 +3296,7 @@ var render = function () {
                                           [_vm._v("刷新排名")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 300
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -4120,7 +3304,7 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.reopenTonggao(
-                                                  item.oid
+                                                  item.basic.oid
                                                 )
                                               },
                                             },
@@ -4128,8 +3312,8 @@ var render = function () {
                                           [_vm._v("重新打开")]
                                         )
                                       : _vm._e(),
-                                    item.publish_status == 200 ||
-                                    item.publish_status == 300
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
                                       ? _c(
                                           "view",
                                           {
@@ -4137,7 +3321,1035 @@ var render = function () {
                                             on: {
                                               tap: function ($event) {
                                                 return _vm.manageTonggao(
-                                                  item.oid
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("管理报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
+                        ]),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+            _c(
+              "swiper-item",
+              [
+                _c(
+                  "scroll-view",
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "tonggao-manage-list",
+                              },
+                              [
+                                _c("view", { staticClass: "list-content" }, [
+                                  _c("view", { staticClass: "list_left" }, [
+                                    _c("view", { staticClass: "list_title" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.topic.headline.title)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        " 面向地区：" +
+                                          _vm._s(item.author.province_name) +
+                                          " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        "性别要求：" +
+                                          _vm._s(_vm.formatSex(item.author.sex))
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "list_rt" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.details.media.cover[0],
+                                        mode: "aspectFill",
+                                      },
+                                    }),
+                                  ]),
+                                  item.status.publish_status == 200
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "list_status_sucess" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      )
+                                    : _c(
+                                        "view",
+                                        { staticClass: "list_status" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      ),
+                                  _c("view", { staticClass: "list_tag" }, [
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_num" }, [
+                                  _c("view", { staticClass: "list_time" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.date_humanize) + " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_yuepai" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 收到约拍 " +
+                                        _vm._s(item.statistic.invite_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_read" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 阅读 " +
+                                        _vm._s(item.statistic.read_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_bottom" }, [
+                                  _c("view", { staticClass: "list_bt_left" }, [
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除通告")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("结束报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                  _c("view", { staticClass: "list_bt_rt" }, [
+                                    item.status.publish_status == 120
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("开放招募")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.refreshTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("刷新排名")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.reopenTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("重新打开")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.manageTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("管理报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
+                        ]),
+                  ],
+                  1
+                ),
+                _c(
+                  "scroll-view",
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "tonggao-manage-list",
+                              },
+                              [
+                                _c("view", { staticClass: "list-content" }, [
+                                  _c("view", { staticClass: "list_left" }, [
+                                    _c("view", { staticClass: "list_title" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.topic.headline.title)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        " 面向地区：" +
+                                          _vm._s(item.author.province_name) +
+                                          " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        "性别要求：" +
+                                          _vm._s(_vm.formatSex(item.author.sex))
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "list_rt" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.details.media.cover[0],
+                                        mode: "aspectFill",
+                                      },
+                                    }),
+                                  ]),
+                                  item.status.publish_status == 200
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "list_status_sucess" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      )
+                                    : _c(
+                                        "view",
+                                        { staticClass: "list_status" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      ),
+                                  _c("view", { staticClass: "list_tag" }, [
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_num" }, [
+                                  _c("view", { staticClass: "list_time" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.date_humanize) + " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_yuepai" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 收到约拍 " +
+                                        _vm._s(item.statistic.invite_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_read" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 阅读 " +
+                                        _vm._s(item.statistic.read_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_bottom" }, [
+                                  _c("view", { staticClass: "list_bt_left" }, [
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除通告")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("结束报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                  _c("view", { staticClass: "list_bt_rt" }, [
+                                    item.status.publish_status == 120
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("开放招募")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.refreshTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("刷新排名")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.reopenTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("重新打开")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.manageTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("管理报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
+                        ]),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+            _c(
+              "swiper-item",
+              [
+                _c(
+                  "scroll-view",
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "tonggao-manage-list",
+                              },
+                              [
+                                _c("view", { staticClass: "list-content" }, [
+                                  _c("view", { staticClass: "list_left" }, [
+                                    _c("view", { staticClass: "list_title" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.topic.headline.title)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        " 面向地区：" +
+                                          _vm._s(item.author.province_name) +
+                                          " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        "性别要求：" +
+                                          _vm._s(_vm.formatSex(item.author.sex))
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "list_rt" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.details.media.cover[0],
+                                        mode: "aspectFill",
+                                      },
+                                    }),
+                                  ]),
+                                  item.status.publish_status == 200
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "list_status_sucess" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      )
+                                    : _c(
+                                        "view",
+                                        { staticClass: "list_status" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      ),
+                                  _c("view", { staticClass: "list_tag" }, [
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_num" }, [
+                                  _c("view", { staticClass: "list_time" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.date_humanize) + " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_yuepai" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 收到约拍 " +
+                                        _vm._s(item.statistic.invite_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_read" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 阅读 " +
+                                        _vm._s(item.statistic.read_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_bottom" }, [
+                                  _c("view", { staticClass: "list_bt_left" }, [
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除通告")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("结束报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                  _c("view", { staticClass: "list_bt_rt" }, [
+                                    item.status.publish_status == 120
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("开放招募")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.refreshTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("刷新排名")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.reopenTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("重新打开")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.manageTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("管理报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
+                        ]),
+                  ],
+                  1
+                ),
+                _c(
+                  "scroll-view",
+                  {
+                    style: { height: _vm.winHeight + "px" },
+                    attrs: { "scroll-y": true },
+                    on: { scrolltolower: _vm.scrollToLower },
+                  },
+                  [
+                    _vm.list.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.list, function (item, index) {
+                            return _c(
+                              "view",
+                              {
+                                key: index,
+                                staticClass: "tonggao-manage-list",
+                              },
+                              [
+                                _c("view", { staticClass: "list-content" }, [
+                                  _c("view", { staticClass: "list_left" }, [
+                                    _c("view", { staticClass: "list_title" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.topic.headline.title)
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_desc" }, [
+                                      _vm._v(
+                                        " " + _vm._s(item.details.summary) + " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        " 面向地区：" +
+                                          _vm._s(item.author.province_name) +
+                                          " "
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "list_info" }, [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        "性别要求：" +
+                                          _vm._s(_vm.formatSex(item.author.sex))
+                                      ),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "list_rt" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.details.media.cover[0],
+                                        mode: "aspectFill",
+                                      },
+                                    }),
+                                  ]),
+                                  item.status.publish_status == 200
+                                    ? _c(
+                                        "view",
+                                        { staticClass: "list_status_sucess" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      )
+                                    : _c(
+                                        "view",
+                                        { staticClass: "list_status" },
+                                        [
+                                          _vm._v(
+                                            _vm._s(
+                                              item.status.publish_status_name
+                                            )
+                                          ),
+                                        ]
+                                      ),
+                                  _c("view", { staticClass: "list_tag" }, [
+                                    _vm._v(
+                                      _vm._s(item.topic.headline.tag.join(","))
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_num" }, [
+                                  _c("view", { staticClass: "list_time" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.date_humanize) + " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_yuepai" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 收到约拍 " +
+                                        _vm._s(item.statistic.invite_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                  _c("view", { staticClass: "list_read" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " 阅读 " +
+                                        _vm._s(item.statistic.read_cnt) +
+                                        " "
+                                    ),
+                                  ]),
+                                ]),
+                                _c("view", { staticClass: "list_bottom" }, [
+                                  _c("view", { staticClass: "list_bt_left" }, [
+                                    item.status.publish_status == 100 ||
+                                    item.status.publish_status == 120 ||
+                                    item.status.publish_status == 400 ||
+                                    item.status.publish_status == 300 ||
+                                    item.status.publish_status == -100
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.deleteTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("删除通告")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-grey",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.overTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("结束报名")]
+                                        )
+                                      : _vm._e(),
+                                  ]),
+                                  _c("view", { staticClass: "list_bt_rt" }, [
+                                    item.status.publish_status == 120
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.openTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("开放招募")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 700
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.refreshTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("刷新排名")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.reopenTonggao(
+                                                  item.basic.oid
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v("重新打开")]
+                                        )
+                                      : _vm._e(),
+                                    item.status.publish_status == 200 ||
+                                    item.status.publish_status == 300
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "btn-red",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.manageTonggao(
+                                                  item.basic.oid
                                                 )
                                               },
                                             },

@@ -203,7 +203,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/publish1.png */ "./src/assets/images/publish1.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/publish1.png",
                 mode: "aspectFit",
               },
             }),
@@ -239,7 +239,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/publish2.png */ "./src/assets/images/publish2.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/publish2.png",
                 mode: "aspectFit",
               },
             }),
@@ -275,7 +275,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/publish3.png */ "./src/assets/images/publish3.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/publish3.png",
                 mode: "aspectFit",
               },
             }),
@@ -303,42 +303,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/publish1.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/publish1.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/publish1.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/publish2.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/publish2.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/publish2.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/publish3.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/publish3.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/publish3.png";
 
 /***/ }),
 

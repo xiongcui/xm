@@ -558,34 +558,47 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 3:
                 res = _context.sent;
                 _this2.yuepaiInfo.author = res.data.data.visited;
-                _this2.yuepaiInfo.tips = res.data.data.tips;
-                _this2.yuepaiInfo.title = res.data.data.title;
+                _this2.yuepaiInfo.tips = res.data.data.input.tips;
+                _this2.yuepaiInfo.title = res.data.data.input.title;
                 _this2.yuepaiInfo.warning = res.data.data.warning;
-                _this2.showContact = res.data.data.contact.is_enable;
-                _this2.showCelebrity = res.data.data.celebrity.is_enable;
-                _this2.showAddress = res.data.data.address.is_enable;
-                _this2.data.contact = res.data.data.contact.body;
-                _this2.data.celebrity = res.data.data.celebrity.body;
-                _this2.data.address = res.data.data.address.body;
-                _this2.media_info.platform_name = res.data.data.celebrity.platform_name;
-                _this2.media_info.platform_code = res.data.data.celebrity.platform_type;
-                _this2.pay_coin = res.data.data.visitor.pay_coin;
-                _this2.balance_coin = res.data.data.visitor.balance_coin;
+
+                if (res.data.data.contact) {
+                  _this2.showContact = res.data.data.contact.is_enable;
+                  _this2.data.contact = res.data.data.contact.body;
+                }
+
+                if (res.data.data.celebrity) {
+                  _this2.showCelebrity = res.data.data.celebrity.is_enable;
+                  _this2.data.celebrity = res.data.data.celebrity.body;
+                  _this2.media_info.platform_name = _this2.data.celebrity.platform_name = res.data.data.celebrity.body.platform_name;
+                  _this2.media_info.platform_code = _this2.data.celebrity.platform_type = res.data.data.celebrity.body.platform_type;
+                  _this2.pay_coin = res.data.data.celebrity.visitor_acct.pay_coin;
+                  _this2.balance_coin = res.data.data.celebrity.visitor_acct.balance_coin;
+                }
+
+                if (res.data.data.address) {
+                  _this2.showAddress = res.data.data.address.is_enable;
+                }
+
+                if (res.data.data.address) {
+                  _this2.data.address = res.data.data.address.body;
+                }
+
                 _this2.visited_id = res.data.data.visited_id;
-                _this2.is_member = res.data.data.visitor.is_member;
-                _context.next = 24;
+                _this2.is_member = res.data.data.visitor_acct.is_member;
+                _context.next = 18;
                 break;
 
-              case 22:
-                _context.prev = 22;
+              case 16:
+                _context.prev = 16;
                 _context.t0 = _context["catch"](0);
 
-              case 24:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 22]]);
+        }, _callee, null, [[0, 16]]);
       }))();
     },
     subApply: function subApply(params) {
@@ -599,7 +612,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "nb"])(params);
 
               case 3:
                 res = _context2.sent;

@@ -2,7 +2,11 @@
   <view class="yuedan_detail">
     <view class="yuedan_top">
       <view class="yuedan_top_left">
-        <image :src="yuepaiInfo.author.avatar" class="avatar"></image>
+        <image
+          :src="yuepaiInfo.author.avatar"
+          class="avatar"
+          @tap="goZhuye(yuepaiInfo.author.uuid)"
+        ></image>
         <view class="yuedan_info">
           <view class="yuedan_name">
             {{ yuepaiInfo.author.nickname }}
@@ -275,6 +279,9 @@ export default {
     },
     bindended() {
       wx.createVideoContext("video").exitFullScreen();
+    },
+    goZhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     launchYuepai() {
       if (isLogin()) {

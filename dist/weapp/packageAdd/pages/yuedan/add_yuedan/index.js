@@ -46,13 +46,11 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 "use strict";
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/yuedan/add_yuedan/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
-
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/yuedan/add_yuedan/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 
 
 //
@@ -484,7 +482,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -518,7 +516,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -552,7 +550,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -607,49 +605,49 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
     },
     submit: function submit() {
       if (!this.name) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请输入标题！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请输入标题！");
         return false;
       }
 
       if (!this.desc) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请输入描述！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请输入描述！");
         return false;
       }
 
       if (!this.imgList.length && !this.videolist.length) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请上传照片/视频！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请上传照片/视频！");
         return false;
       }
 
       if (!this.charge) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择收费模式！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择收费模式！");
         return false;
       }
 
       if (this.chargeList[this.chargeIndex].key == 300 || this.chargeList[this.chargeIndex].key == 400) {
         if (!this.checked && !this.amount) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写收费金额！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写收费金额！");
           return false;
         }
 
         if (this.checked && !this.minAmount || this.checked && !this.maxAmount) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请填写收费金额区间！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写收费金额区间！");
           return false;
         }
 
         if (!this.checked && !this.company || this.checked && !this.company) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择单位！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择单位！");
           return false;
         }
       }
 
       if (!this.select_city) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择面向地区！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择面向地区！");
         return false;
       }
 
       if (!this.security) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择信用担保！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择信用担保！");
         return false;
       }
 
@@ -658,7 +656,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
       });
 
       if (!checkTag) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择风格标签！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择风格标签！");
         return false;
       }
 
@@ -667,12 +665,12 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
       });
 
       if (!checkTag2) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择约拍通告！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择约拍通告！");
         return false;
       }
 
       if (this.name.length < 4 || this.name.length > 20) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("标题长度必须在4~20之间");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("标题长度必须在4~20之间");
         return false;
       }
 
@@ -719,16 +717,16 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
       var notice_label = [];
       this.styleTaglist.map(function (item) {
         if (item.checked) {
-          style_label.push(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({}, item.key, item.value));
+          style_label.push(item.value);
         }
       });
       this.taglist.map(function (item) {
         if (item.checked) {
-          notice_label.push(Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])({}, item.key, item.value));
+          notice_label.push(item.value);
         }
       });
-      params.style_label = style_label;
-      params.notice_label = notice_label;
+      params.style_label = style_label.join(",");
+      params.notice_label = notice_label.join(",");
       this.creatInvite(params);
     },
     publicConfig: function publicConfig(params) {
@@ -742,7 +740,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* publicConfig */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "db"])(params);
 
               case 3:
                 res = _context.sent;
@@ -806,18 +804,18 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* creatInvite */ "r"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* creatInvite */ "r"])(params);
 
               case 3:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1");
                 _context2.next = 10;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0");
 
               case 10:
               case "end":

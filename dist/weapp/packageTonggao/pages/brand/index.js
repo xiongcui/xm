@@ -372,6 +372,9 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
     };
   },
   methods: {
+    uploadImgClose: function uploadImgClose(index) {
+      this.imgList.splice(index, 1);
+    },
     platformChange: function platformChange(e) {
       this.platform = this.platformList[e.detail.value].value;
       this.platformIndex = e.detail.value;
@@ -635,7 +638,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "sb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "tb"])(params);
 
               case 3:
                 res = _context2.sent;

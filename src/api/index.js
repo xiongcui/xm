@@ -24,14 +24,6 @@ export const uploadFile = (data) => {
     data,
   });
 };
-// 更新个人资料
-// export const updateUser = (data) => {
-//   return request({
-//     url: baseUrl + "/v1/user",
-//     method: "PUT",
-//     data,
-//   });
-// };
 
 // 注册
 export const userRegister = (data) => {
@@ -86,7 +78,7 @@ export const creatInvite = (data) => {
 // 约拍列表
 export const inviteList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/invite/list",
+    url: baseUrl + "/v1/note/explore/invite/list",
     method: "post",
     data,
   });
@@ -94,7 +86,7 @@ export const inviteList = (data) => {
 // 约拍详情页
 export const inviteInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/note/invite/info",
+    url: baseUrl + "/v1/note/explore/invite/info",
     method: "post",
     data,
   });
@@ -162,7 +154,7 @@ export const uploadImagePhoto = (path, params) => {
 // 获取形象信息
 export const userShapeDetail = (data) => {
   return request({
-    url: baseUrl + "/v1/user/shape",
+    url: baseUrl + "/v1/user/shape/info",
     method: "post",
     data,
   });
@@ -194,7 +186,7 @@ export const subUserSticker = (data) => {
 // 创建作品
 export const subNotePhoto = (data) => {
   return request({
-    url: baseUrl + "/v1/note/photo",
+    url: baseUrl + "/v1/note/publish/invite",
     method: "post",
     data,
   });
@@ -202,7 +194,7 @@ export const subNotePhoto = (data) => {
 // 作品列表
 export const photoList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/photo/list",
+    url: baseUrl + "/v1/note/explore/photo/list",
     method: "post",
     data,
   });
@@ -210,7 +202,7 @@ export const photoList = (data) => {
 // 作品详情
 export const photoInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/note/photo/info",
+    url: baseUrl + "/v1/note/explore/photo/info",
     method: "post",
     data,
   });
@@ -218,7 +210,7 @@ export const photoInfo = (data) => {
 // 通告详情
 export const noticeTemplate = (data) => {
   return request({
-    url: baseUrl + "/v1/note/notice/template",
+    url: baseUrl + "/v1/note/explore/notice/template",
     method: "post",
     data,
   });
@@ -226,7 +218,7 @@ export const noticeTemplate = (data) => {
 // 提交通告
 export const submitNotice = (data) => {
   return request({
-    url: baseUrl + "/v1/note/notice",
+    url: baseUrl + "/v1/note/publish/notice",
     method: "post",
     data,
   });
@@ -234,7 +226,7 @@ export const submitNotice = (data) => {
 // 通告列表页筛选
 export const noticeFilter = (data) => {
   return request({
-    url: baseUrl + "/v1/note/notice/filter",
+    url: baseUrl + "/v1/note/explore/notice/filter",
     method: "post",
     data,
   });
@@ -242,7 +234,7 @@ export const noticeFilter = (data) => {
 // 通告列表
 export const noticeList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/notice/list",
+    url: baseUrl + "/v1/note/explore/notice/list",
     method: "post",
     data,
   });
@@ -250,7 +242,7 @@ export const noticeList = (data) => {
 // 通告详情
 export const noticeInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/note/notice/info",
+    url: baseUrl + "/v1/note/explore/notice/info",
     method: "post",
     data,
   });
@@ -266,7 +258,7 @@ export const paymina = (data) => {
 // 获取发起约拍页模版
 export const inviteTemplate = (data) => {
   return request({
-    url: baseUrl + "/v1/record/invite/template",
+    url: baseUrl + "/v1/note/apply/template",
     method: "post",
     data,
   });
@@ -346,7 +338,7 @@ export const subContact = (data) => {
 // 提交我的联系方式
 export const subApply = (data) => {
   return request({
-    url: baseUrl + "/v1/record/invite/apply",
+    url: baseUrl + "/v1/note/apply/commit",
     method: "post",
     data,
   });
@@ -354,7 +346,7 @@ export const subApply = (data) => {
 // 收到约拍列表
 export const applyList = (data) => {
   return request({
-    url: baseUrl + "/v1/record/apply/list",
+    url: baseUrl + "/v1/note/manage/receive/list",
     method: "post",
     data,
   });
@@ -362,7 +354,7 @@ export const applyList = (data) => {
 // 收到约拍详情
 export const applyInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/record/apply/info",
+    url: baseUrl + "/v1/note/manage/receive/info",
     method: "post",
     data,
   });
@@ -402,7 +394,7 @@ export const recordCollect = (data) => {
 // 约单管理
 export const noteManageList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/manage/list",
+    url: baseUrl + "/v1/note/manage/publish/list",
     method: "post",
     data,
   });
@@ -410,7 +402,7 @@ export const noteManageList = (data) => {
 // 作品管理和约拍管理按钮操作
 export const manageEvent = (data) => {
   return request({
-    url: baseUrl + "/v1/note/manage/event",
+    url: baseUrl + "/v1/note/manage/publish/event",
     method: "post",
     data,
   });
@@ -418,7 +410,7 @@ export const manageEvent = (data) => {
 // 作品列表
 export const photoListOwn = (data) => {
   return request({
-    url: baseUrl + "/v1/note/photo/list/own",
+    url: baseUrl + "/v1/note/explore/photo/list/own",
     method: "post",
     data,
   });
@@ -442,7 +434,7 @@ export const memberOpen = (data) => {
 // 会员信息
 export const memberInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/member/info",
+    url: baseUrl + "/v1/acct/info",
     method: "post",
     data,
   });
@@ -450,7 +442,7 @@ export const memberInfo = (data) => {
 // 金币用途、赚取金币
 export const coinList = (data) => {
   return request({
-    url: baseUrl + "/v1/coin/rule/list",
+    url: baseUrl + "/v1/acct/coin/order/rule",
     method: "post",
     data,
   });
@@ -458,7 +450,7 @@ export const coinList = (data) => {
 // 金币明细
 export const coinItemList = (data) => {
   return request({
-    url: baseUrl + "/v1/coin/item/list",
+    url: baseUrl + "/v1/acct/coin/order/list",
     method: "post",
     data,
   });
@@ -466,7 +458,7 @@ export const coinItemList = (data) => {
 // 获取金币数量
 export const coinAcct = (data) => {
   return request({
-    url: baseUrl + "/v1/coin/acct",
+    url: baseUrl + "/v1/acct/info",
     method: "post",
     data,
   });
@@ -508,7 +500,7 @@ export const facePrint = (data) => {
 // 收到操作
 export const applyManage = (data) => {
   return request({
-    url: baseUrl + "/v1/record/apply/manage",
+    url: baseUrl + "/v1/note/manage/receive/event",
     method: "post",
     data,
   });
@@ -544,7 +536,7 @@ export const securityInfo = (data) => {
 // 通告列表
 export const manageList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/manage/list",
+    url: baseUrl + "/v1/note/manage/publish/list",
     method: "post",
     data,
   });
@@ -553,7 +545,7 @@ export const manageList = (data) => {
 // 通告管理-操作
 export const manageOperation = (data) => {
   return request({
-    url: baseUrl + "/v1/note/manage/event",
+    url: baseUrl + "/v1/note/manage/publish/event",
     method: "post",
     data,
   });
@@ -700,7 +692,7 @@ export const checkFollow = (data) => {
 // 金币支付
 export const applyPay = (data) => {
   return request({
-    url: baseUrl + "/v1/record/apply/pay",
+    url: baseUrl + "/v1/note/apply/payment",
     method: "post",
     data,
   });
@@ -790,7 +782,7 @@ export const ocrIdcard = (data) => {
 // 约拍推荐
 export const inviteAdviseList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/invite/list/advise",
+    url: baseUrl + "/v1/note/explore/invite/list/advise",
     method: "post",
     data,
   });
@@ -799,7 +791,7 @@ export const inviteAdviseList = (data) => {
 // 通告推荐
 export const noticeAdviseList = (data) => {
   return request({
-    url: baseUrl + "/v1/note/notice/list/advise",
+    url: baseUrl + "/v1/note/explore/notice/list/advise",
     method: "post",
     data,
   });
@@ -826,7 +818,7 @@ export const userStatus = (data) => {
 // 筛选-约拍下拉选项
 export const inviteFilter = (data) => {
   return request({
-    url: baseUrl + "/v1/note/invite/filter",
+    url: baseUrl + "/v1/note/explore/invite/filter",
     method: "post",
     data,
   });
@@ -834,7 +826,7 @@ export const inviteFilter = (data) => {
 // 筛选-作品下拉选项
 export const photoFilter = (data) => {
   return request({
-    url: baseUrl + "/v1/note/photo/filter",
+    url: baseUrl + "/v1/note/explore/photo/filter",
     method: "post",
     data,
   });
@@ -851,6 +843,14 @@ export const userFilter = (data) => {
 export const userList = (data) => {
   return request({
     url: baseUrl + "/v1/user/list",
+    method: "post",
+    data,
+  });
+};
+// 查看联系方式-支付
+export const receivePayment = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/receive/payment",
     method: "post",
     data,
   });

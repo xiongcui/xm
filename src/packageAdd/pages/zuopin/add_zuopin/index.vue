@@ -439,20 +439,16 @@ export default {
       let photo_label = [];
       this.styleTaglist.map((item) => {
         if (item.checked) {
-          style_label.push({
-            [item.key]: item.value,
-          });
+          style_label.push(item.value);
         }
       });
       this.photoTaglist.map((item) => {
         if (item.checked) {
-          photo_label.push({
-            [item.key]: item.value,
-          });
+          photo_label.push(item.value);
         }
       });
-      params.style_label = style_label;
-      params.photo_label = photo_label;
+      params.style_label = style_label.join(",");
+      params.photo_label = photo_label.join(",");
       this.subNotePhoto(params);
     },
     async publicConfig(params) {

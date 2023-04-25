@@ -346,10 +346,10 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
 
               case 3:
                 res = _context2.sent;
-                _this.avatar = res.data.data ? res.data.data.avatar : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png";
-                _this.nickname = res.data.data.nickname;
-                _this.ismember = res.data.data.is_member;
-                _this.endtime = res.data.data.end_time;
+                _this.avatar = res.data.data.member.avatar ? res.data.data.member.avatar : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png";
+                _this.nickname = res.data.data.member.nickname;
+                _this.ismember = res.data.data.member.is_member;
+                _this.endtime = res.data.data.member.end_time;
                 _context2.next = 12;
                 break;
 

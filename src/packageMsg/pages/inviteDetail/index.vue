@@ -217,12 +217,29 @@
         <view class="save" @tap="clickSaveImg">保存到相册</view>
       </view>
     </view>
+    <!--联系方式-->
+    <view class="modal_box" v-if="contactVisible">
+      <view class="modal_content">
+        <view class="modal_title">
+          <view> 联系方式 </view>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
+            class="close-img"
+            @tap="contactClose"
+          ></image>
+        </view>
+        <view class="modal_wechat">
+          <view> 微信号：{{ data.contact.wechat }} </view>
+          <view class="copy" @tap="copy(data.contact.wechat)">复制</view>
+        </view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
-import { applyInfo } from "../../../api/index";
+import { applyInfo, receivePayment } from "../../../api/index";
 import { errortip } from "../../../utils/util";
 export default {
   name: "invite-detail",
@@ -231,7 +248,9 @@ export default {
       sid: "",
       showModel: false,
       isIphoneX: false,
+      contactVisible: false,
       yuepaiInfo: {
+        visited_coin: 0,
         visited_status: "",
         abstract: "",
         title: "",
@@ -276,13 +295,32 @@ export default {
     };
   },
   methods: {
+    contactClose() {
+      this.contactVisible = false;
+    },
     showQRcode() {
       this.showModel = true;
     },
     closeQRcode() {
       this.showModel = false;
     },
-    submit() {},
+    submit() {
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: `查看联系方式消耗${_this.yuepaiInfo.visited_coin}个金豆，确定查看吗？`,
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+            _this.receivePayment({
+              sid: _this.sid,
+            });
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
     copy(txt) {
       wx.setClipboardData({
         data: txt, //这个是要复制的数据
@@ -357,10 +395,10 @@ export default {
       try {
         let res = await applyInfo(params);
         this.yuepaiInfo.author = res.data.data.visitor;
-        this.yuepaiInfo.tips = res.data.data.tips;
-        this.yuepaiInfo.title = res.data.data.title;
-        this.yuepaiInfo.abstract = res.data.data.abstract;
-        this.yuepaiInfo.content = res.data.data.content;
+        this.yuepaiInfo.tips = res.data.data.content.tips;
+        this.yuepaiInfo.title = res.data.data.content.title;
+        this.yuepaiInfo.abstract = res.data.data.origin.title;
+        this.yuepaiInfo.content = res.data.data.content.body;
         this.yuepaiInfo.warning = res.data.data.warning;
 
         this.showContact = res.data.data.contact.is_enable;
@@ -374,7 +412,22 @@ export default {
           res.data.data.celebrity.body.platform_name;
         this.media_info.platform_code =
           res.data.data.celebrity.body.platform_type;
-        this.yuepaiInfo.visited_status = res.data.data.visited_status;
+        this.yuepaiInfo.visited_status = res.data.data.status.visited_status;
+        this.yuepaiInfo.visited_coin = res.data.data.visited_coin;
+        // if (showpay) {
+        //   this.contactVisible = true;
+        // }
+      } catch (error) {}
+    },
+    async receivePayment(params) {
+      try {
+        let res = await receivePayment(params);
+        errortip("支付成功");
+        setTimeout(() => {
+          this.applyInfo({
+            sid: this.sid,
+          });
+        }, 3000);
       } catch (error) {}
     },
   },

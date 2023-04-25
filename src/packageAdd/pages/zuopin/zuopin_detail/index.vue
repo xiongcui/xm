@@ -30,19 +30,9 @@
               v-if="zuopinInfo.author.is_certify"
             ></image>
             <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
-              class="zuopin_p_img"
-              v-else
-            ></image>
-            <image
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="zuopin_p_img"
               v-if="zuopinInfo.author.is_security"
-            ></image>
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
-              class="zuopin_p_img"
-              v-else
             ></image>
           </view>
         </view>

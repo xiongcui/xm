@@ -53,6 +53,9 @@
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
 }
+.zuopin .zuopin-upload-img {
+  position: relative;
+}
 .zuopin .zuopin-upload-img,
 .zuopin .zuopin-upload-video {
   width: 158rpx;

@@ -66,6 +66,7 @@
       <view class="about-item">
         <text>当前版本</text>
         <view class="arrow">
+          <text>V1.0.0</text>
           <image
             mode="aspectFit"
             src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"

@@ -300,6 +300,14 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -347,6 +355,8 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
           first_label: []
         },
         details: {
+          expect_time: "",
+          expect_locale: "",
           media: {
             cover: []
           }
@@ -392,7 +402,14 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
     },
     launchYuepai: function launchYuepai() {
       if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        var userInfo = wx.getStorageSync("userInfo");
+        var uuid = userInfo.uuid;
+
+        if (uuid != this.author_id) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        } else {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("自己不可约拍自己哦，看看别的吧");
+        }
       } else {
         wx.redirectTo({
           url: "/pages/login/index"
@@ -451,7 +468,6 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       this.query("more");
     },
     goZhuye: function goZhuye() {
-      console.log(this.author_id, "this.yuepaiInfo.author_id");
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     inviteAdviseList: function inviteAdviseList(params, type) {
@@ -618,7 +634,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "gb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -648,7 +664,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "kb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -678,7 +694,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "lb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -711,7 +727,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Cb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Db"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -742,7 +758,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Ob"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -870,7 +886,7 @@ var render = function () {
                 }
               ),
               _c("view", { staticClass: "detail_label" }, [
-                _vm._v(" " + _vm._s(_vm.yuepaiInfo.topic.ticket.name) + " "),
+                _vm._v(" " + _vm._s(_vm.yuepaiInfo.topic.target) + " "),
               ]),
             ],
             2
@@ -896,7 +912,7 @@ var render = function () {
                   _c("view", { staticClass: "share" }, [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/share.png */ "./src/assets/images/share.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/share.png",
                       },
                     }),
                   ]),
@@ -914,6 +930,11 @@ var render = function () {
                   src: _vm.yuepaiInfo.author.avatar
                     ? _vm.yuepaiInfo.author.avatar
                     : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                },
+                on: {
+                  tap: function ($event) {
+                    return _vm.goZhuye()
+                  },
                 },
               }),
               _c("view", { staticClass: "list_info" }, [
@@ -1039,16 +1060,22 @@ var render = function () {
             _c("view", { staticClass: "dian" }),
             _vm._v(_vm._s(_vm.yuepaiInfo.details.content) + " "),
           ]),
-          _c("view", { staticClass: "tonggao_desc" }, [
-            _c("view", { staticClass: "dian" }),
-            _vm._v("时间：" + _vm._s(_vm.yuepaiInfo.details.expect_time) + " "),
-          ]),
-          _c("view", { staticClass: "tonggao_desc" }, [
-            _c("view", { staticClass: "dian" }),
-            _vm._v(
-              "地点：" + _vm._s(_vm.yuepaiInfo.details.expect_locale) + " "
-            ),
-          ]),
+          _vm.yuepaiInfo.details.expect_time
+            ? _c("view", { staticClass: "tonggao_desc" }, [
+                _c("view", { staticClass: "dian" }),
+                _vm._v(
+                  "时间：" + _vm._s(_vm.yuepaiInfo.details.expect_time) + " "
+                ),
+              ])
+            : _vm._e(),
+          _vm.yuepaiInfo.details.expect_locale
+            ? _c("view", { staticClass: "tonggao_desc" }, [
+                _c("view", { staticClass: "dian" }),
+                _vm._v(
+                  "地点：" + _vm._s(_vm.yuepaiInfo.details.expect_locale) + " "
+                ),
+              ])
+            : _vm._e(),
           _c(
             "view",
             { staticClass: "yuepai_tag" },
