@@ -1,20 +1,6 @@
 <template>
   <view class="main">
     <view class="main_top">
-      <!-- <view
-        :style="{
-          height: globalData.navHeight + 'px',
-        }"
-        class="back"
-      >
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/common/goback.png"
-          :style="{
-            top: globalData.navTop + 'px',
-          }"
-          @tap="goback"
-        ></image>
-      </view> -->
       <view
         class="homeimg"
         :style="{
@@ -51,7 +37,7 @@
                   v-if="infor.is_certify"
                 ></image>
                 <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
                   class="head-tag-img"
                   v-else
                 ></image>
@@ -61,7 +47,7 @@
                   v-if="infor.is_security"
                 ></image>
                 <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
                   class="head-tag-img"
                   v-else
                 ></image>
@@ -123,6 +109,33 @@
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/user/show/btn_edit.png"
               ></image>
+            </view>
+            <view class="is_followed_box" v-if="!myself">
+              <text class="followed_send_msg" @tap="sendMsg">发消息</text>
+              <text
+                class="followed_style"
+                v-if="is_follower == 0 && is_followed == 0"
+                @tap="follow"
+                >关注</text
+              >
+              <text
+                class="followed_style"
+                v-if="is_followed == 0 && is_follower == 1"
+                @tap="unfollow"
+                >已关注</text
+              >
+              <text
+                class="followed_style2"
+                v-if="is_follower == 1 && is_followed == 1"
+                @tap="unfollow"
+              >
+              </text>
+              <text
+                class="followed_style"
+                v-if="is_follower == 0 && is_followed == 1"
+                @tap="follow"
+                >回粉</text
+              >
             </view>
           </view>
         </view>
@@ -205,6 +218,9 @@
               >
                 {{ homeInfor.personimg.length ? "编辑" : "添加" }}</view
               >
+              <view @tap="editpersonimg" class="home_item_title_edit" v-else>
+                更多</view
+              >
             </view>
             <view class="home_item_main" v-if="homeInfor.personimg.length">
               <view
@@ -248,6 +264,9 @@
               <view class="home_item_title_text ub-f1">视频相册</view>
               <view @tap="editvideo" class="home_item_title_edit" v-if="myself">
                 {{ homeInfor.video.length ? "编辑" : "添加" }}</view
+              >
+              <view @tap="editvideo" class="home_item_title_edit" v-else>
+                更多</view
               >
             </view>
             <view class="home_item_main" v-if="homeInfor.video.length">
@@ -370,6 +389,8 @@ import {
   photoListOwn,
   shareInvite,
   shareInviteInfo,
+  userFollow,
+  userUnfollow,
 } from "../../../../api/index";
 import { errortip, openPage } from "../../../../utils/util";
 import myZuopinList from "../../../../components/myZuopinList/index.vue";
@@ -382,6 +403,8 @@ export default {
       uuid: "",
       winWidth: 0,
       winHeight: 0,
+      is_follower: 0,
+      is_followed: 0,
       globalData: {
         navHeight: 0,
         navTop: 0,
@@ -455,10 +478,12 @@ export default {
       openPage("/packageMoka/pages/moka/editpersondata/index");
     },
     editpersonimg() {
-      openPage("/packageMoka/pages/moka/editpersonimg/index");
+      openPage(
+        "/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself
+      );
     },
     editvideo() {
-      openPage("/packageMoka/pages/moka/editvideo/index");
+      openPage("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself);
     },
     editzytag() {
       openPage("/packageAdd/pages/user/editlabel/index");
@@ -478,6 +503,38 @@ export default {
         per_page: this.pageSize,
       });
     },
+    follow() {
+      this.userFollow({
+        follow_uuid: this.uuid,
+      });
+    },
+    unfollow() {
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定不再关注？",
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+            _this.userUnfollow({
+              unfollow_uuid: _this.uuid,
+            });
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
+    sendMsg() {
+      openPage(
+        "/packageMsg/pages/chat/index?uuid=" +
+          this.uuid +
+          "&nickname=" +
+          this.infor.nickname +
+          "&avatar=" +
+          this.infor.avatar
+      );
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
@@ -495,6 +552,8 @@ export default {
         this.homeInfor.bwh_w = res.data.data.shape.waist;
         this.homeInfor.bwh_h = res.data.data.shape.hip;
         this.homeInfor.shoe = res.data.data.shape.size;
+        this.is_followed = res.data.data.follow_status.is_followed;
+        this.is_follower = res.data.data.follow_status.is_follower;
       } catch (error) {}
     },
     async userShapeDetail(params) {
@@ -546,6 +605,32 @@ export default {
         this.shareTitle = res.data.data.title;
         this.shareImg = res.data.data.imageUrl;
         this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
+    async userFollow(params) {
+      try {
+        let res = await userFollow(params);
+        if (this.uuid) {
+          let params = {
+            uuid: this.uuid,
+          };
+          this.userInfo(params);
+        } else {
+          this.userInfo("");
+        }
+      } catch (error) {}
+    },
+    async userUnfollow(params) {
+      try {
+        let res = await userUnfollow(params);
+        if (this.uuid) {
+          let params = {
+            uuid: this.uuid,
+          };
+          this.userInfo(params);
+        } else {
+          this.userInfo("");
+        }
       } catch (error) {}
     },
   },

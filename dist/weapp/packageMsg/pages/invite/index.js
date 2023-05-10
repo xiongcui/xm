@@ -629,7 +629,7 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
                                   _vm._v(
-                                    "邀约理由： " + _vm._s(item.content) + " "
+                                    "约拍理由： " + _vm._s(item.content) + " "
                                   ),
                                 ]),
                                 _c("view", { staticClass: "invite-bt" }, [
@@ -746,7 +746,7 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
                                   _vm._v(
-                                    "邀约理由： " + _vm._s(item.content) + " "
+                                    "约拍理由： " + _vm._s(item.content) + " "
                                   ),
                                 ]),
                                 _c("view", { staticClass: "invite-bt" }, [
@@ -863,7 +863,7 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
                                   _vm._v(
-                                    "邀约理由： " + _vm._s(item.content) + " "
+                                    "约拍理由： " + _vm._s(item.content) + " "
                                   ),
                                 ]),
                                 _c("view", { staticClass: "invite-bt" }, [
@@ -980,7 +980,7 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
                                   _vm._v(
-                                    "邀约理由： " + _vm._s(item.content) + " "
+                                    "约拍理由： " + _vm._s(item.content) + " "
                                   ),
                                 ]),
                                 _c("view", { staticClass: "invite-bt" }, [

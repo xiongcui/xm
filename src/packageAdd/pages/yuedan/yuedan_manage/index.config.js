@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "我收到的约拍",
+  navigationBarTitleText: "约拍管理",
 });

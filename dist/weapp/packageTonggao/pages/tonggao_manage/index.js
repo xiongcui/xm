@@ -894,573 +894,6 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -1620,7 +1053,7 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageList */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageList */ "K"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1663,7 +1096,7 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageOperation */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* manageOperation */ "L"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1825,371 +1258,219 @@ var render = function () {
                           _vm._l(_vm.list, function (item, index) {
                             return _c(
                               "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
+                              { key: index, staticClass: "componets-box" },
                               [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
+                                _c(
+                                  "view",
+                                  { staticClass: "tonggao-recommend" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-top" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "tonggao-info-title" },
+                                          [
+                                            item.topic.headline.tag.length
+                                              ? _c(
+                                                  "block",
+                                                  _vm._l(
+                                                    item.topic.headline.tag,
+                                                    function (
+                                                      tagitem,
+                                                      tagindex
+                                                    ) {
+                                                      return _c("image", {
+                                                        key: tagindex,
+                                                        staticClass:
+                                                          "recommend-image",
+                                                        attrs: { src: tagitem },
+                                                      })
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              : _vm._e(),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-txt" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      item.topic.headline.title
+                                                    )
+                                                ),
+                                              ]
+                                            ),
+                                            item.status.publish_status == 200
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass:
+                                                      "list_status_sucess",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "list_status",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                ),
+                                          ],
+                                          1
+                                        ),
+                                      ]
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-bt" },
+                                      [
+                                        _c(
+                                          "view",
+                                          {
+                                            staticClass:
+                                              "tonggao-recommend-info",
+                                          },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "recommend-style",
+                                              },
+                                              [
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.target
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label2",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.payment
+                                                            .title
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-tags" },
+                                              _vm._l(
+                                                item.subtitle.first_label,
+                                                function (tag, tagIndex) {
+                                                  return _c(
+                                                    "view",
+                                                    {
+                                                      key: tagIndex,
+                                                      staticClass: "tag-item",
+                                                    },
+                                                    [_vm._v(_vm._s(tag.name))]
+                                                  )
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ]
+                                        ),
+                                        item.details.media.file_type ==
+                                        "picture"
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "tonggao-recommend-img",
+                                              },
+                                              [
+                                                _c("image", {
+                                                  attrs: {
+                                                    src: item.details.media
+                                                      .cover[0],
+                                                    mode: "aspectFill",
+                                                  },
+                                                }),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                                _c("view", { staticClass: "tonggao-bottom" }, [
+                                  _c("view", { staticClass: "tonggao-head" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
+                                        src: item.author.avatar
+                                          ? item.author.avatar
+                                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
                                       },
                                     }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
                                     _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
+                                      " " + _vm._s(item.author.nickname) + " "
                                     ),
                                   ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
+                                  _c(
+                                    "view",
+                                    { staticClass: "tonggao-yuepai" },
+                                    [
+                                      _c("image", {
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
+                                        },
+                                      }),
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(item.statistic.invite_cnt) +
+                                          " "
+                                      ),
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "tonggao-read" }, [
                                     _c("image", {
                                       attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                                       },
                                     }),
                                     _vm._v(
                                       " " +
-                                        _vm._s(item.basic.date_humanize) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.status.publish_status == 100 ||
-                                    item.status.publish_status == 120 ||
-                                    item.status.publish_status == 400 ||
-                                    item.status.publish_status == 300 ||
-                                    item.status.publish_status == -100
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.status.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
                                         _vm._s(item.statistic.read_cnt) +
                                         " "
                                     ),
@@ -2341,369 +1622,219 @@ var render = function () {
                           _vm._l(_vm.list, function (item, index) {
                             return _c(
                               "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
+                              { key: index, staticClass: "componets-box" },
                               [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
+                                _c(
+                                  "view",
+                                  { staticClass: "tonggao-recommend" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-top" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "tonggao-info-title" },
+                                          [
+                                            item.topic.headline.tag.length
+                                              ? _c(
+                                                  "block",
+                                                  _vm._l(
+                                                    item.topic.headline.tag,
+                                                    function (
+                                                      tagitem,
+                                                      tagindex
+                                                    ) {
+                                                      return _c("image", {
+                                                        key: tagindex,
+                                                        staticClass:
+                                                          "recommend-image",
+                                                        attrs: { src: tagitem },
+                                                      })
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              : _vm._e(),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-txt" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      item.topic.headline.title
+                                                    )
+                                                ),
+                                              ]
+                                            ),
+                                            item.status.publish_status == 200
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass:
+                                                      "list_status_sucess",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "list_status",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                ),
+                                          ],
+                                          1
+                                        ),
+                                      ]
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-bt" },
+                                      [
+                                        _c(
+                                          "view",
+                                          {
+                                            staticClass:
+                                              "tonggao-recommend-info",
+                                          },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "recommend-style",
+                                              },
+                                              [
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.target
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label2",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.payment
+                                                            .title
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-tags" },
+                                              _vm._l(
+                                                item.subtitle.first_label,
+                                                function (tag, tagIndex) {
+                                                  return _c(
+                                                    "view",
+                                                    {
+                                                      key: tagIndex,
+                                                      staticClass: "tag-item",
+                                                    },
+                                                    [_vm._v(_vm._s(tag.name))]
+                                                  )
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ]
+                                        ),
+                                        item.details.media.file_type ==
+                                        "picture"
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "tonggao-recommend-img",
+                                              },
+                                              [
+                                                _c("image", {
+                                                  attrs: {
+                                                    src: item.details.media
+                                                      .cover[0],
+                                                    mode: "aspectFill",
+                                                  },
+                                                }),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                                _c("view", { staticClass: "tonggao-bottom" }, [
+                                  _c("view", { staticClass: "tonggao-head" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.author.avatar
+                                          ? item.author.avatar
+                                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.author.nickname) + " "
+                                    ),
+                                  ]),
+                                  _c(
+                                    "view",
+                                    { staticClass: "tonggao-yuepai" },
+                                    [
                                       _c("image", {
                                         attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
                                         },
                                       }),
                                       _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
+                                        " " +
+                                          _vm._s(item.statistic.invite_cnt) +
                                           " "
                                       ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "tonggao-read" }, [
                                     _c("image", {
                                       attrs: {
                                         src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                                       },
                                     }),
                                     _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.status.publish_status == 100 ||
-                                    item.status.publish_status == 120 ||
-                                    item.status.publish_status == 400 ||
-                                    item.status.publish_status == 300 ||
-                                    item.status.publish_status == -100
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.status.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
+                                      " " +
                                         _vm._s(item.statistic.read_cnt) +
                                         " "
                                     ),
@@ -2855,369 +1986,219 @@ var render = function () {
                           _vm._l(_vm.list, function (item, index) {
                             return _c(
                               "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
+                              { key: index, staticClass: "componets-box" },
                               [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
+                                _c(
+                                  "view",
+                                  { staticClass: "tonggao-recommend" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-top" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "tonggao-info-title" },
+                                          [
+                                            item.topic.headline.tag.length
+                                              ? _c(
+                                                  "block",
+                                                  _vm._l(
+                                                    item.topic.headline.tag,
+                                                    function (
+                                                      tagitem,
+                                                      tagindex
+                                                    ) {
+                                                      return _c("image", {
+                                                        key: tagindex,
+                                                        staticClass:
+                                                          "recommend-image",
+                                                        attrs: { src: tagitem },
+                                                      })
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              : _vm._e(),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-txt" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      item.topic.headline.title
+                                                    )
+                                                ),
+                                              ]
+                                            ),
+                                            item.status.publish_status == 200
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass:
+                                                      "list_status_sucess",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "list_status",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                ),
+                                          ],
+                                          1
+                                        ),
+                                      ]
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-bt" },
+                                      [
+                                        _c(
+                                          "view",
+                                          {
+                                            staticClass:
+                                              "tonggao-recommend-info",
+                                          },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "recommend-style",
+                                              },
+                                              [
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.target
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label2",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.payment
+                                                            .title
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-tags" },
+                                              _vm._l(
+                                                item.subtitle.first_label,
+                                                function (tag, tagIndex) {
+                                                  return _c(
+                                                    "view",
+                                                    {
+                                                      key: tagIndex,
+                                                      staticClass: "tag-item",
+                                                    },
+                                                    [_vm._v(_vm._s(tag.name))]
+                                                  )
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ]
+                                        ),
+                                        item.details.media.file_type ==
+                                        "picture"
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "tonggao-recommend-img",
+                                              },
+                                              [
+                                                _c("image", {
+                                                  attrs: {
+                                                    src: item.details.media
+                                                      .cover[0],
+                                                    mode: "aspectFill",
+                                                  },
+                                                }),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                                _c("view", { staticClass: "tonggao-bottom" }, [
+                                  _c("view", { staticClass: "tonggao-head" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.author.avatar
+                                          ? item.author.avatar
+                                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.author.nickname) + " "
+                                    ),
+                                  ]),
+                                  _c(
+                                    "view",
+                                    { staticClass: "tonggao-yuepai" },
+                                    [
                                       _c("image", {
                                         attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
                                         },
                                       }),
                                       _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
+                                        " " +
+                                          _vm._s(item.statistic.invite_cnt) +
                                           " "
                                       ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "tonggao-read" }, [
                                     _c("image", {
                                       attrs: {
                                         src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                                       },
                                     }),
                                     _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.status.publish_status == 100 ||
-                                    item.status.publish_status == 120 ||
-                                    item.status.publish_status == 400 ||
-                                    item.status.publish_status == 300 ||
-                                    item.status.publish_status == -100
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.status.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
+                                      " " +
                                         _vm._s(item.statistic.read_cnt) +
                                         " "
                                     ),
@@ -3369,369 +2350,219 @@ var render = function () {
                           _vm._l(_vm.list, function (item, index) {
                             return _c(
                               "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
+                              { key: index, staticClass: "componets-box" },
                               [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
+                                _c(
+                                  "view",
+                                  { staticClass: "tonggao-recommend" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-top" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "tonggao-info-title" },
+                                          [
+                                            item.topic.headline.tag.length
+                                              ? _c(
+                                                  "block",
+                                                  _vm._l(
+                                                    item.topic.headline.tag,
+                                                    function (
+                                                      tagitem,
+                                                      tagindex
+                                                    ) {
+                                                      return _c("image", {
+                                                        key: tagindex,
+                                                        staticClass:
+                                                          "recommend-image",
+                                                        attrs: { src: tagitem },
+                                                      })
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              : _vm._e(),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-txt" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      item.topic.headline.title
+                                                    )
+                                                ),
+                                              ]
+                                            ),
+                                            item.status.publish_status == 200
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass:
+                                                      "list_status_sucess",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "list_status",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                ),
+                                          ],
+                                          1
+                                        ),
+                                      ]
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-bt" },
+                                      [
+                                        _c(
+                                          "view",
+                                          {
+                                            staticClass:
+                                              "tonggao-recommend-info",
+                                          },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "recommend-style",
+                                              },
+                                              [
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.target
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label2",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.payment
+                                                            .title
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-tags" },
+                                              _vm._l(
+                                                item.subtitle.first_label,
+                                                function (tag, tagIndex) {
+                                                  return _c(
+                                                    "view",
+                                                    {
+                                                      key: tagIndex,
+                                                      staticClass: "tag-item",
+                                                    },
+                                                    [_vm._v(_vm._s(tag.name))]
+                                                  )
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ]
+                                        ),
+                                        item.details.media.file_type ==
+                                        "picture"
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "tonggao-recommend-img",
+                                              },
+                                              [
+                                                _c("image", {
+                                                  attrs: {
+                                                    src: item.details.media
+                                                      .cover[0],
+                                                    mode: "aspectFill",
+                                                  },
+                                                }),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                                _c("view", { staticClass: "tonggao-bottom" }, [
+                                  _c("view", { staticClass: "tonggao-head" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.author.avatar
+                                          ? item.author.avatar
+                                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.author.nickname) + " "
+                                    ),
+                                  ]),
+                                  _c(
+                                    "view",
+                                    { staticClass: "tonggao-yuepai" },
+                                    [
                                       _c("image", {
                                         attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
                                         },
                                       }),
                                       _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
+                                        " " +
+                                          _vm._s(item.statistic.invite_cnt) +
                                           " "
                                       ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "tonggao-read" }, [
                                     _c("image", {
                                       attrs: {
                                         src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                                       },
                                     }),
                                     _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.status.publish_status == 100 ||
-                                    item.status.publish_status == 120 ||
-                                    item.status.publish_status == 400 ||
-                                    item.status.publish_status == 300 ||
-                                    item.status.publish_status == -100
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.status.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
-                                          " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
+                                      " " +
                                         _vm._s(item.statistic.read_cnt) +
                                         " "
                                     ),
@@ -3883,115 +2714,219 @@ var render = function () {
                           _vm._l(_vm.list, function (item, index) {
                             return _c(
                               "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
+                              { key: index, staticClass: "componets-box" },
                               [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
+                                _c(
+                                  "view",
+                                  { staticClass: "tonggao-recommend" },
+                                  [
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-top" },
+                                      [
+                                        _c(
+                                          "view",
+                                          { staticClass: "tonggao-info-title" },
+                                          [
+                                            item.topic.headline.tag.length
+                                              ? _c(
+                                                  "block",
+                                                  _vm._l(
+                                                    item.topic.headline.tag,
+                                                    function (
+                                                      tagitem,
+                                                      tagindex
+                                                    ) {
+                                                      return _c("image", {
+                                                        key: tagindex,
+                                                        staticClass:
+                                                          "recommend-image",
+                                                        attrs: { src: tagitem },
+                                                      })
+                                                    }
+                                                  ),
+                                                  0
+                                                )
+                                              : _vm._e(),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-txt" },
+                                              [
+                                                _vm._v(
+                                                  " " +
+                                                    _vm._s(
+                                                      item.topic.headline.title
+                                                    )
+                                                ),
+                                              ]
+                                            ),
+                                            item.status.publish_status == 200
+                                              ? _c(
+                                                  "view",
+                                                  {
+                                                    staticClass:
+                                                      "list_status_sucess",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                )
+                                              : _c(
+                                                  "view",
+                                                  {
+                                                    staticClass: "list_status",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        item.status
+                                                          .publish_status_name
+                                                      )
+                                                    ),
+                                                  ]
+                                                ),
+                                          ],
+                                          1
+                                        ),
+                                      ]
+                                    ),
+                                    _c(
+                                      "view",
+                                      { staticClass: "tonggao-recommend-bt" },
+                                      [
+                                        _c(
+                                          "view",
+                                          {
+                                            staticClass:
+                                              "tonggao-recommend-info",
+                                          },
+                                          [
+                                            _c(
+                                              "view",
+                                              {
+                                                staticClass: "recommend-style",
+                                              },
+                                              [
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.target
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                                _c(
+                                                  "text",
+                                                  {
+                                                    staticClass:
+                                                      "recommend-label2",
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      " " +
+                                                        _vm._s(
+                                                          item.topic.payment
+                                                            .title
+                                                        ) +
+                                                        " "
+                                                    ),
+                                                  ]
+                                                ),
+                                              ]
+                                            ),
+                                            _c(
+                                              "view",
+                                              { staticClass: "tonggao-tags" },
+                                              _vm._l(
+                                                item.subtitle.first_label,
+                                                function (tag, tagIndex) {
+                                                  return _c(
+                                                    "view",
+                                                    {
+                                                      key: tagIndex,
+                                                      staticClass: "tag-item",
+                                                    },
+                                                    [_vm._v(_vm._s(tag.name))]
+                                                  )
+                                                }
+                                              ),
+                                              0
+                                            ),
+                                          ]
+                                        ),
+                                        item.details.media.file_type ==
+                                        "picture"
+                                          ? _c(
+                                              "view",
+                                              {
+                                                staticClass:
+                                                  "tonggao-recommend-img",
+                                              },
+                                              [
+                                                _c("image", {
+                                                  attrs: {
+                                                    src: item.details.media
+                                                      .cover[0],
+                                                    mode: "aspectFill",
+                                                  },
+                                                }),
+                                              ]
+                                            )
+                                          : _vm._e(),
+                                      ]
+                                    ),
+                                  ]
+                                ),
+                                _c("view", { staticClass: "tonggao-bottom" }, [
+                                  _c("view", { staticClass: "tonggao-head" }, [
+                                    _c("image", {
+                                      attrs: {
+                                        src: item.author.avatar
+                                          ? item.author.avatar
+                                          : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                                      },
+                                    }),
+                                    _vm._v(
+                                      " " + _vm._s(item.author.nickname) + " "
+                                    ),
+                                  ]),
+                                  _c(
+                                    "view",
+                                    { staticClass: "tonggao-yuepai" },
+                                    [
                                       _c("image", {
                                         attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
                                         },
                                       }),
                                       _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
+                                        " " +
+                                          _vm._s(item.statistic.invite_cnt) +
                                           " "
                                       ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
+                                    ]
+                                  ),
+                                  _c("view", { staticClass: "tonggao-read" }, [
                                     _c("image", {
                                       attrs: {
                                         src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                                       },
                                     }),
                                     _vm._v(
-                                      " 阅读 " +
+                                      " " +
                                         _vm._s(item.statistic.read_cnt) +
                                         " "
                                     ),
@@ -4103,260 +3038,21 @@ var render = function () {
                                           [_vm._v("管理报名")]
                                         )
                                       : _vm._e(),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              {
-                                key: index,
-                                staticClass: "tonggao-manage-list",
-                              },
-                              [
-                                _c("view", { staticClass: "list-content" }, [
-                                  _c("view", { staticClass: "list_left" }, [
-                                    _c("view", { staticClass: "list_title" }, [
+                                    _c("view", { staticClass: "list_tips" }, [
+                                      item.audit.audit_reason
+                                        ? _c("image", {
+                                            staticClass: "warn_icon",
+                                            attrs: {
+                                              src: "https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png",
+                                            },
+                                          })
+                                        : _vm._e(),
                                       _vm._v(
-                                        " " + _vm._s(item.topic.headline.title)
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_desc" }, [
-                                      _vm._v(
-                                        " " + _vm._s(item.details.summary) + " "
-                                      ),
-                                    ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/position.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        " 面向地区：" +
-                                          _vm._s(item.author.province_name) +
+                                        " " +
+                                          _vm._s(item.audit.audit_reason) +
                                           " "
                                       ),
                                     ]),
-                                    _c("view", { staticClass: "list_info" }, [
-                                      _c("image", {
-                                        attrs: {
-                                          src: "https://yuepai-oss.qubeitech.com/static/images/sex1.png",
-                                        },
-                                      }),
-                                      _vm._v(
-                                        "性别要求：" +
-                                          _vm._s(_vm.formatSex(item.author.sex))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "list_rt" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: item.details.media.cover[0],
-                                        mode: "aspectFill",
-                                      },
-                                    }),
-                                  ]),
-                                  item.status.publish_status == 200
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "list_status_sucess" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "list_status" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              item.status.publish_status_name
-                                            )
-                                          ),
-                                        ]
-                                      ),
-                                  _c("view", { staticClass: "list_tag" }, [
-                                    _vm._v(
-                                      _vm._s(item.topic.headline.tag.join(","))
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_num" }, [
-                                  _c("view", { staticClass: "list_time" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " " + _vm._s(item.date_humanize) + " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_yuepai" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 收到约拍 " +
-                                        _vm._s(item.statistic.invite_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "list_read" }, [
-                                    _c("image", {
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                                      },
-                                    }),
-                                    _vm._v(
-                                      " 阅读 " +
-                                        _vm._s(item.statistic.read_cnt) +
-                                        " "
-                                    ),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "list_bottom" }, [
-                                  _c("view", { staticClass: "list_bt_left" }, [
-                                    item.status.publish_status == 100 ||
-                                    item.status.publish_status == 120 ||
-                                    item.status.publish_status == 400 ||
-                                    item.status.publish_status == 300 ||
-                                    item.status.publish_status == -100
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.deleteTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("删除通告")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-grey",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.overTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("结束报名")]
-                                        )
-                                      : _vm._e(),
-                                  ]),
-                                  _c("view", { staticClass: "list_bt_rt" }, [
-                                    item.status.publish_status == 120
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.openTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("开放招募")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 700
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.refreshTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("刷新排名")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.reopenTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("重新打开")]
-                                        )
-                                      : _vm._e(),
-                                    item.status.publish_status == 200 ||
-                                    item.status.publish_status == 300
-                                      ? _c(
-                                          "view",
-                                          {
-                                            staticClass: "btn-red",
-                                            on: {
-                                              tap: function ($event) {
-                                                return _vm.manageTonggao(
-                                                  item.basic.oid
-                                                )
-                                              },
-                                            },
-                                          },
-                                          [_vm._v("管理报名")]
-                                        )
-                                      : _vm._e(),
                                   ]),
                                 ]),
                               ]
@@ -4420,7 +3116,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageTonggao/pages/tonggao_manage/index.vue");
 
 
-var config = {"navigationBarTitleText":"我收到的通告"};
+var config = {"navigationBarTitleText":"通告管理"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageTonggao/pages/tonggao_manage/index', {root:{cn:[]}}, config || {}))

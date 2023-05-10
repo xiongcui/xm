@@ -10,7 +10,7 @@
         :key="index"
         @tap="select(item, index)"
       >
-        <view class="day">{{ item.valid_time }}天</view>
+        <view class="day">{{ item.valid_days }}天</view>
         <view>{{ item.coin }}金币/通告</view>
       </view>
     </view>
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       active: 0,
-      coin: 70,
+      coin: 50,
       balanceCoin: 0,
       oid: "",
       list: [],
@@ -57,17 +57,17 @@ export default {
       let params = {
         coin: this.coin,
         oid: this.oid,
-        rule_code: this.list[this.active].code,
-        valid_time: this.list[this.active].valid_time,
+        rule_code: this.list[this.active].rule_code,
+        valid_days: this.list[this.active].valid_days,
       };
       this.subOpenRecruitment(params);
-      console.log(params);
     },
     async pushInit(params) {
       try {
         let res = await pushInit(params);
-        this.balanceCoin = res.data.data.balance_coin;
-        this.list = res.data.data.rules;
+        this.balanceCoin = res.data.data.acct_coin;
+        this.list = res.data.data.rules_list;
+        this.coin = res.data.data.rules_list[0].coin;
       } catch (error) {}
     },
     async subOpenRecruitment(params) {
@@ -85,11 +85,11 @@ export default {
       } catch (error) {}
     },
   },
-  created() {
-    this.pushInit({});
-  },
   onLoad: function (options) {
     this.oid = options.oid;
+    this.pushInit({
+      oid: this.oid,
+    });
   },
 };
 </script>

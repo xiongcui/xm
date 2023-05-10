@@ -11,7 +11,7 @@
             v-for="(item, index) in tonggaoInfo.topic.payment.items"
             :key="index"
           >
-            <view class="cost" v-if="item.is_show_value == 1">
+            <view class="price" v-if="item.is_show_value == 1">
               {{ item.value }}
             </view>
             <view class="cost" v-else>
@@ -163,7 +163,9 @@
         </view>
       </view>
       <view class="tonggao_box">
-        <view class="tonggao_title_left"> 通告详情 </view>
+        <view class="tonggao_title_left">
+          <text class="border-left"></text>通告详情
+        </view>
         <view class="tonggao_desc">
           <view class="dian"></view>{{ tonggaoInfo.details.content }}
         </view>
@@ -206,7 +208,9 @@
     </view>
     <view class="recommend" v-if="noticeRecommendList.length">
       <view class="recommend-title">
-        <view class="recommend-name"> 他的通告 </view>
+        <view class="recommend-name"
+          ><text class="border-left"></text> 他的通告
+        </view>
       </view>
       <view
         class="recommend-ct"
@@ -256,12 +260,6 @@
                     >{{ tag.name }}</view
                   >
                 </view>
-                <!-- <view class="tonggao-recommend-price">
-                          <view class="pirce">
-                            {{ item.topic.payment.title }}</view
-                          >
-                          <view class="recommend-btn">立即报名</view>
-                        </view> -->
               </view>
               <view
                 class="tonggao-recommend-img"
@@ -304,90 +302,6 @@
               {{ item.statistic.read_cnt }}
             </view>
           </view>
-          <!-- <view class="tonggao-recommend">
-            <view class="tonggao-recommend-top">
-              <view class="tonggao-info-title">
-                <view
-                  class="recommend-label"
-                  v-for="(tagitem, tagindex) in item.topic.headline.tag"
-                  :key="tagindex"
-                >
-                  {{ tagitem }}
-                </view>
-                <view class="tonggao-txt">
-                  {{ item.topic.headline.title }}</view
-                >
-              </view>
-            </view>
-            <view class="tonggao-recommend-bt">
-              <view
-                class="tonggao-recommend-img"
-                v-if="item.details.media.file_type == 'picture'"
-              >
-                <image
-                  :src="item.details.media.cover[0]"
-                  mode="aspectFill"
-                  @tap.stop="
-                    previewImage(
-                      item.details.media.cover[0],
-                      item.details.media.cover
-                    )
-                  "
-                ></image>
-              </view>
-              <view class="tonggao-recommend-info">
-                <view class="tonggao-info-desc">
-                  {{ item.details.summary }}</view
-                >
-                <view class="tonggao-tags">
-                  <view
-                    class="tag-item"
-                    v-for="(tag, tagIndex) in item.subtitle.first_label"
-                    :key="tagIndex"
-                    >{{ tag.name }}</view
-                  >
-                </view>
-                <view class="tonggao-tags">
-                  <view
-                    class="tag-item"
-                    v-for="(tag, tagIndex) in item.subtitle.second_label"
-                    :key="tagIndex"
-                    >{{ tag.name }}</view
-                  >
-                </view>
-                <view class="tonggao-recommend-price">
-                  <view class="pirce"> {{ item.topic.payment.title }}</view>
-                  <view class="recommend-btn" @tap="nowYuepai(item.basic.oid)"
-                    >立即报名</view
-                  >
-                </view>
-              </view>
-            </view>
-          </view>
-          <view class="tonggao-bottom">
-            <view class="tonggao-head">
-              <image
-                :src="
-                  item.author.avatar
-                    ? item.author.avatar
-                    : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
-                "
-              ></image>
-              {{ item.author.nickname }}
-            </view>
-            <view class="tonggao-yuepai">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-              ></image>
-              {{ item.statistic.invite_cnt }}
-            </view>
-            <view class="tonggao-read">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-              ></image>
-              {{ item.statistic.read_cnt }}
-            </view>
-          </view> -->
         </view>
       </view>
       <view v-else class="none-data">
@@ -431,7 +345,7 @@
           {{ tonggaoInfo.statistic.collect_cnt }}
         </view>
       </view>
-      <view class="tonggao_fixed_rt" @tap="launchYuepai"> 我要报名 </view>
+      <view class="tonggao_fixed_rt" @tap="launchYuepai"> 立即报名 </view>
     </view>
   </view>
 </template>
@@ -447,6 +361,7 @@ import {
   userFollow,
   userUnfollow,
   noticeAdviseList,
+  applyVerify,
 } from "../../../api/index";
 import { errortip, isLogin, openPage } from "../../../utils/util";
 export default {
@@ -538,13 +453,9 @@ export default {
     },
     launchYuepai() {
       if (isLogin()) {
-        let userInfo = wx.getStorageSync("userInfo");
-        let uuid = userInfo.uuid;
-        if (uuid != this.author_id) {
-          openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
-        } else {
-          errortip("自己不可报名自己哦，看看别的吧");
-        }
+        this.applyVerify({
+          oid: this.oid,
+        });
       } else {
         wx.redirectTo({
           url: "/pages/login/index",
@@ -672,6 +583,20 @@ export default {
         }
         if (error.data.error_code == 10100 && this.pageNum > 1) {
           this.noMore = true;
+        }
+      }
+    },
+    async applyVerify(params) {
+      try {
+        let res = await applyVerify(params);
+        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      } catch (error) {
+        if (error.data.error_code == 21030 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        } else {
+          errortip(error.data.msg);
         }
       }
     },

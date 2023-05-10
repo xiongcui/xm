@@ -52,7 +52,8 @@ component.options.__file = "src/pages/login/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/pages/login/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -104,6 +105,70 @@ component.options.__file = "src/pages/login/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -111,6 +176,12 @@ component.options.__file = "src/pages/login/index.vue"
   name: "login",
   data: function data() {
     return {
+      invited_uuid: "",
+      bind_type: 0,
+      visible: false,
+      is_bind_phone: 0,
+      is_bind_nickname: 0,
+      is_bind_avatar: 0,
       userInfo: {
         avatar: "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
         nickname: "",
@@ -122,20 +193,18 @@ component.options.__file = "src/pages/login/index.vue"
   methods: {
     // 可以在模拟器唤起授权 获得用户信息
     getUserProfile: function getUserProfile() {
-      var _this2 = this;
-
       var _this = this;
 
       wx.getUserProfile({
         desc: "用于完善会员资料",
         success: function success(res) {
-          _this2.userInfo.avatar = res.userInfo.avatarUrl;
-          _this2.userInfo.nickname = res.userInfo.nickName;
+          // this.userInfo.avatar = res.userInfo.avatarUrl;
+          // this.userInfo.nickname = res.userInfo.nickName;
           wx.login({
             success: function success(res) {
               _this.getWxLogin({
-                avatar: _this.userInfo.avatar,
-                nickname: _this.userInfo.nickname,
+                // avatar: _this.userInfo.avatar,
+                // nickname: _this.userInfo.nickname,
                 account: res.code,
                 secret: "",
                 type: 200
@@ -180,6 +249,53 @@ component.options.__file = "src/pages/login/index.vue"
         delta: 1
       });
     },
+    onChooseAvatar: function onChooseAvatar(e) {
+      this.userInfo.avatar = e.detail.avatarUrl;
+      this.is_bind_avatar = 1;
+    },
+    nicknameChange: function nicknameChange(e) {
+      console.log(e);
+
+      if (e.detail.value) {
+        this.is_bind_nickname = 1;
+      }
+    },
+    finishClick: function finishClick() {
+      this.upImgs(this.userInfo.avatar);
+    },
+    upImgs: function upImgs(filePath) {
+      var _this2 = this;
+
+      var header = {};
+      var token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_4__[/* Base64 */ "a"].encode(token + ":");
+      wx.uploadFile({
+        url: "https://pai.qubeitech.com/v1/file/upload",
+        filePath: filePath,
+        formData: {
+          scr_type: "avatar"
+        },
+        name: "file",
+        header: header,
+        success: function success(res) {
+          //判断上传的是图片还是视频
+          var data = JSON.parse(res.data);
+
+          if (data.code == 200) {
+            _this2.userRegister({
+              invited_uuid: _this2.invited_uuid ? _this2.invited_uuid : "",
+              avatar: data.data.file1,
+              nickname: _this2.userInfo.nickname
+            });
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none"
+            });
+          }
+        }
+      });
+    },
     getWxLogin: function getWxLogin(params) {
       var _this3 = this;
 
@@ -191,22 +307,28 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Vb"])(params);
 
               case 3:
                 res = _context.sent;
                 token = res.data.data.token;
                 wx.setStorageSync("token", token);
                 wx.setStorageSync("userInfo", {
-                  avatar: params.avatar,
-                  nickname: params.nickname,
+                  avatar: res.data.data.login_status.avatar,
+                  nickname: res.data.data.login_status.nickname,
                   uuid: res.data.data.uuid
                 });
+                _this3.userInfo.avatar = res.data.data.login_status.avatar ? res.data.data.login_status.avatar : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png";
+                _this3.userInfo.nickname = res.data.data.login_status.nickname;
+                _this3.bind_type = res.data.data.login_status.bind_type;
+                _this3.is_bind_phone = res.data.data.login_status.is_bind_phone;
+                _this3.is_bind_nickname = res.data.data.login_status.is_bind_nickname;
+                _this3.is_bind_avatar = res.data.data.login_status.is_bind_avatar;
 
-                if (res.data.data.is_bind_phone == 0) {
+                if (res.data.data.login_status.login_type == 1) {
                   // 绑定手机号
-                  _this3.pageshow = "bindphone";
-                } else if (res.data.data.login_type == 2) {
+                  _this3.visible = true;
+                } else if (res.data.data.login_status.login_type == 2) {
                   // 跳转首页
                   wx.switchTab({
                     url: "/pages/home/index",
@@ -216,28 +338,44 @@ component.options.__file = "src/pages/login/index.vue"
                       page.onLoad();
                     }
                   });
-                } else {
-                  // 未注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
-                }
+                } // if (res.data.data.is_bind_phone == 0) {
+                //   // 绑定手机号
+                //   this.pageshow = "bindphone";
+                // } else if (res.data.data.login_type == 2) {
+                //   // 跳转首页
+                //   wx.switchTab({
+                //     url: "/pages/home/index",
+                //     success: function (e) {
+                //       var page = getCurrentPages().pop();
+                //       if (page == undefined || page == null) return;
+                //       page.onLoad();
+                //     },
+                //   });
+                // } else {
+                //   // 未注册
+                //   openPage("/pages/register/index");
+                // }
 
-                _context.next = 13;
+
+                _context.next = 19;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 16:
+                _context.prev = 16;
                 _context.t0 = _context["catch"](0);
                 console.log("失败");
 
-              case 13:
+              case 19:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 16]]);
       }))();
     },
     getPhone: function getPhone(params) {
+      var _this4 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
@@ -246,28 +384,61 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "y"])(params);
 
               case 3:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/register/index");
-                _context2.next = 9;
+                _this4.userInfo.phone = res.data.data.mobile;
+                _this4.is_bind_phone = 1; // openPage("/pages/register/index");
+
+                _context2.next = 10;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 8]]);
+      }))();
+    },
+    userRegister: function userRegister(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Lb"])(params);
+
+              case 3:
+                res = _context3.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
       }))();
     }
   },
-  created: function created() {}
+  created: function created() {
+    this.invited_uuid = wx.getStorageSync("invited_uuid");
+  }
 });
 
 /***/ }),
@@ -329,16 +500,6 @@ var render = function () {
         : _vm._e(),
       _vm.pageshow == "bindphone"
         ? _c("block", { staticClass: "user_phone" }, [
-            _c("view", { staticClass: "user_infor" }, [
-              _c("view", { staticClass: "user_avatar" }, [
-                _c("image", {
-                  attrs: { mode: "widthFix", src: _vm.userInfo.avatar },
-                }),
-              ]),
-              _c("view", { staticClass: "user_name" }, [
-                _vm._v(_vm._s(_vm.userInfo.nickname)),
-              ]),
-            ]),
             _c("view", { staticClass: "get_phone" }, [
               _c(
                 "button",
@@ -349,6 +510,144 @@ var render = function () {
                 },
                 [_vm._v(" 授权绑定手机号 ")]
               ),
+            ]),
+          ])
+        : _vm._e(),
+      _vm.visible
+        ? _c("view", { staticClass: "login-modal" }, [
+            _c("view", { staticClass: "login-box" }, [
+              _c("view", { staticClass: "login-title" }, [
+                _vm._v(" 请先登录 "),
+              ]),
+              _c("view", { staticClass: "login-txt" }, [
+                _vm._v("完善以下信息以继续"),
+              ]),
+              _c("view", { staticClass: "login-info" }, [
+                _vm.userInfo.phone
+                  ? _c("view", { staticClass: "phone" }, [
+                      _vm._v("手机号：" + _vm._s(_vm.userInfo.phone)),
+                    ])
+                  : _vm._e(),
+                _c("view", { staticClass: "login-head" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "avatar-wrapper",
+                      attrs: { "open-type": "chooseAvatar" },
+                      on: { chooseavatar: _vm.onChooseAvatar },
+                    },
+                    [
+                      _c("image", {
+                        staticClass: "avatar",
+                        attrs: { src: _vm.userInfo.avatar },
+                      }),
+                    ]
+                  ),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.userInfo.nickname,
+                        expression: "userInfo.nickname",
+                      },
+                    ],
+                    staticClass: "weui-input",
+                    attrs: { type: "nickname", placeholder: "请输入昵称" },
+                    domProps: { value: _vm.userInfo.nickname },
+                    on: {
+                      input: [
+                        function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.userInfo,
+                            "nickname",
+                            $event.target.value
+                          )
+                        },
+                        _vm.nicknameChange,
+                      ],
+                    },
+                  }),
+                ]),
+                _vm.is_bind_phone == 0
+                  ? _c("view", { staticClass: "get_phone" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "phone-btn",
+                          attrs: { openType: "getPhoneNumber" },
+                          on: { getphonenumber: _vm.onGetPhoneNumber },
+                        },
+                        [_vm._v(" 授权绑定手机号 ")]
+                      ),
+                    ])
+                  : _vm.is_bind_avatar == 0
+                  ? _c("view", { staticClass: "get_avatar" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "avatar-btn",
+                          attrs: { "open-type": "chooseAvatar" },
+                          on: { chooseavatar: _vm.onChooseAvatar },
+                        },
+                        [_vm._v(" 授权头像 ")]
+                      ),
+                    ])
+                  : _vm.is_bind_nickname == 0
+                  ? _c("view", { staticClass: "get_nickname" }, [
+                      _c("view", { staticClass: "nickname-btn" }, [
+                        _vm._v("授权昵称"),
+                      ]),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.userInfo.nickname,
+                            expression: "userInfo.nickname",
+                          },
+                        ],
+                        staticClass: "nickname-input",
+                        attrs: { type: "nickname" },
+                        domProps: { value: _vm.userInfo.nickname },
+                        on: {
+                          input: [
+                            function ($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.userInfo,
+                                "nickname",
+                                $event.target.value
+                              )
+                            },
+                            _vm.nicknameChange,
+                          ],
+                        },
+                      }),
+                    ])
+                  : _vm._e(),
+                _vm.is_bind_phone == 1 &&
+                _vm.is_bind_nickname == 1 &&
+                _vm.is_bind_avatar == 1
+                  ? _c(
+                      "view",
+                      {
+                        staticClass: "get_finish",
+                        on: { tap: _vm.finishClick },
+                      },
+                      [
+                        _c("view", { staticClass: "finish-btn" }, [
+                          _vm._v("完成"),
+                        ]),
+                      ]
+                    )
+                  : _vm._e(),
+              ]),
             ]),
           ])
         : _vm._e(),

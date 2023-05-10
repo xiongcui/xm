@@ -189,7 +189,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "X"])(params);
 
               case 3:
                 res = _context.sent;
@@ -234,7 +234,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "P"])(params);
 
               case 3:
                 res = _context2.sent;

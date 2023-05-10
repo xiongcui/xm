@@ -35,148 +35,64 @@ page {
     height: 100%;
   }
 
-  .tonggao-manage-list {
-    color: #2f2f2f;
-    font-size: 30px;
-    margin: 16px 0px;
-    background: #ffffff;
-    padding: 30px 30px 16px 30px;
-    border-radius: 8px;
-    .list-content {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      margin-bottom: 16px;
-    }
-    .list_title {
-      font-size: 32px;
-      margin-top: 16px;
-    }
-    .list_desc {
-      font-size: 26px;
-      color: #6b6b6b;
-      line-height: 36px;
-      margin-bottom: 6px;
-    }
-    .list_info {
-      font-size: 26px;
-      color: #333333;
-      line-height: 36px;
-      display: flex;
-      align-items: center;
-      image {
-        width: 30px;
-        height: 30px;
-        margin-right: 6px;
-      }
-    }
-    .list_rt {
-      display: flex;
-      align-items: center;
-    }
-    .list_rt image {
-      width: 200px;
-      height: 200px;
-    }
-    .list_bottom,
-    .list_num {
-      display: flex;
-      justify-content: space-between;
-      color: #6b6b6b;
-    }
-    .list_num {
-      margin-bottom: 16px;
-    }
-    .list_time {
-      display: flex;
-      align-items: center;
-      font-size: 24px;
-      image {
-        width: 26px;
-        height: 26px;
-        margin-right: 4px;
-      }
-    }
-    .list_yuepai {
-      display: flex;
-      align-items: center;
-      font-size: 24px;
-      image {
-        width: 26px;
-        height: 26px;
-        margin-right: 4px;
-      }
-    }
-    .list_read {
-      display: flex;
-      align-items: center;
-      font-size: 24px;
-      image {
-        width: 26px;
-        height: 26px;
-        margin-right: 4px;
-      }
-    }
-    .list_status {
-      background: rgba(0, 0, 0, 0.4);
-      font-size: 22px;
-      color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 0px 0px 0px 12px;
-      position: absolute;
-      right: -30px;
-      top: -30px;
-    }
-    .list_status_sucess {
-      background: #4395ff;
-      font-size: 22px;
-      color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 0px 0px 0px 12px;
-      position: absolute;
-      right: -30px;
-      top: -30px;
-    }
-    .list_status_fail {
-      background: #ff1e3e;
-      font-size: 22px;
-      color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 0px 0px 0px 12px;
-      position: absolute;
-      right: -30px;
-      top: -30px;
-    }
-    .list_tag {
-      background: #f9942a;
-      font-size: 22px;
-      color: #ffffff;
-      padding: 2px 6px;
-      border-radius: 0px 0px 12px 0px;
-      position: absolute;
-      left: 0px;
-      top: -30px;
-    }
-    .btn-grey {
-      background: rgba(0, 0, 0, 0.4);
-      font-size: 22px;
-      color: #ffffff;
-      padding: 6px 12px;
-      border-radius: 8px;
-    }
-    .btn-red {
-      background: #ff1e3e;
-      font-size: 22px;
-      color: #ffffff;
-      padding: 6px 12px;
-      border-radius: 8px;
-    }
+  .list_bottom,
+  .list_num {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6b6b;
   }
-  .tonggao-manage-list:first-child {
+  .list_bottom {
+    padding-top: 16px;
+  }
+
+  .btn-grey {
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 22px;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+  .btn-red {
+    background: #ff1e3e;
+    font-size: 22px;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  .list_status {
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 22px;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 0px 0px 0px 12px;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+  }
+  .list_status_sucess {
+    background: #4395ff;
+    font-size: 22px;
+    color: #ffffff;
+    padding: 2px 6px;
+    border-radius: 0px 0px 0px 12px;
+    position: absolute;
+    right: -30px;
+    top: -30px;
+  }
+  .tonggao-recommend-top {
+    position: relative;
+  }
+  .componets-list .tonggao-recommend-info {
+    width: 540px !important;
+  }
+  .tonggao-manage-list:first-child,
+  .componets-box:first-child {
     margin-top: 104px;
   }
   .list_bt_rt {
     display: flex;
+    max-width: 80%;
     .btn-red {
       margin-left: 16px;
     }
@@ -193,5 +109,171 @@ page {
     width: 150px;
     height: 150px;
     margin-bottom: 16px;
+  }
+
+  .componets-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 16px;
+  }
+  .tonggao-recommend-top {
+    display: flex;
+    margin-bottom: 16px;
+    .tonggao-info-title {
+      display: flex;
+      font-size: 30px;
+      font-weight: bold;
+      line-height: 34px;
+    }
+  }
+  .tonggao-recommend-bt {
+    display: flex;
+    justify-content: space-between;
+    .tonggao-recommend-img image {
+      width: 140px;
+      height: 90%;
+      // margin-left: 16px;
+    }
+    .tonggao-info-title {
+      display: flex;
+      font-size: 30px;
+      font-weight: bold;
+    }
+    .tonggao-txt {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tonggao-info-desc {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 28px;
+      line-height: 36px;
+      /* 主要控制父元素容器里面子元素的排列方式 */
+      display: -webkit-box;
+      display: -moz-box;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-box-orient: vertical;
+      /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
+      -webkit-line-clamp: 2;
+    }
+    .tonggao-tags {
+      display: flex;
+      flex-direction: column;
+      margin: 16px 0px;
+      .tag-item {
+        padding: 4px 10px;
+        background: none;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 26px;
+        border-radius: 8px;
+        margin-right: 10px;
+      }
+    }
+    .tonggao-recommend-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .pirce {
+        color: #ff1e3e;
+        font-size: 36px;
+        font-weight: bold;
+      }
+      .recommend-btn {
+        border: 1px solid #ff1e3e;
+        border-radius: 8px;
+        padding: 4px 10px;
+        font-size: 26px;
+        color: #ff1e3e;
+      }
+    }
+  }
+  .tonggao-recommend-info {
+    width: 540px !important;
+  }
+  .tonggao-bottom {
+    display: flex;
+    justify-content: space-between;
+    color: #6b6b6b;
+    border-top: none;
+    padding-top: 6px;
+  }
+  .tonggao-head {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 40px;
+      height: 40px;
+      margin-right: 4px;
+      border-radius: 50%;
+    }
+  }
+  .tonggao-yuepai {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .tonggao-read {
+    display: flex;
+    align-items: center;
+    font-size: 26px;
+    image {
+      width: 26px;
+      height: 26px;
+      margin-right: 4px;
+    }
+  }
+  .recommend-style {
+    display: flex;
+    white-space: nowrap;
+  }
+  .recommend-label {
+    padding: 2px 14px;
+    background: #fcedeb;
+    border-radius: 8px 0px 0px 8px;
+    color: #f2280c;
+    font-size: 28px;
+    border: 2px solid #fcedeb;
+  }
+  .recommend-label2 {
+    padding: 2px 14px;
+    background: transparent;
+    color: #f2280c;
+    font-size: 28px;
+    margin-right: 16px;
+    border: 2px solid #fcedeb;
+    border-left: none;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 0px 8px 8px 0px;
+  }
+  .recommend-image {
+    width: 34px;
+    height: 34px;
+    margin-right: 16px;
+  }
+  .list_tips {
+    display: flex;
+    align-items: center;
+    background-color: #f9dbdb;
+    padding: 4px 16px;
+    border-radius: 8px;
+    color: #a09595;
+    font-size: 26px;
+  }
+  .warn_icon {
+    width: 31px;
+    height: 31px;
+    margin-right: 4px;
   }
 }

@@ -94,7 +94,7 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
   data: function data() {
     return {
       active: 0,
-      coin: 70,
+      coin: 50,
       balanceCoin: 0,
       oid: "",
       list: []
@@ -114,11 +114,10 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
       var params = {
         coin: this.coin,
         oid: this.oid,
-        rule_code: this.list[this.active].code,
-        valid_time: this.list[this.active].valid_time
+        rule_code: this.list[this.active].rule_code,
+        valid_days: this.list[this.active].valid_days
       };
       this.subOpenRecruitment(params);
-      console.log(params);
     },
     pushInit: function pushInit(params) {
       var _this = this;
@@ -131,25 +130,26 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* pushInit */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* pushInit */ "ib"])(params);
 
               case 3:
                 res = _context.sent;
-                _this.balanceCoin = res.data.data.balance_coin;
-                _this.list = res.data.data.rules;
-                _context.next = 10;
+                _this.balanceCoin = res.data.data.acct_coin;
+                _this.list = res.data.data.rules_list;
+                _this.coin = res.data.data.rules_list[0].coin;
+                _context.next = 11;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     subOpenRecruitment: function subOpenRecruitment(params) {
@@ -161,7 +161,7 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subOpenRecruitment */ "qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subOpenRecruitment */ "ub"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -190,11 +190,11 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
       }))();
     }
   },
-  created: function created() {
-    this.pushInit({});
-  },
   onLoad: function onLoad(options) {
     this.oid = options.oid;
+    this.pushInit({
+      oid: this.oid
+    });
   }
 });
 
@@ -238,7 +238,7 @@ var render = function () {
           },
           [
             _c("view", { staticClass: "day" }, [
-              _vm._v(_vm._s(item.valid_time) + "天"),
+              _vm._v(_vm._s(item.valid_days) + "天"),
             ]),
             _c("view", [_vm._v(_vm._s(item.coin) + "金币/通告")]),
           ]

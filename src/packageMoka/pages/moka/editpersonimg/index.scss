@@ -12,7 +12,7 @@ page {
 }
 .editpersonimg {
   display: block;
-  padding-top: 10rpx;
+  padding-top: 10px;
 }
 
 .none_main {
@@ -20,18 +20,17 @@ page {
 }
 
 .side_gap {
-  width: 30rpx;
+  width: 30px;
 }
 
 .side_gap_right {
-  width: 10rpx;
+  width: 10px;
 }
 
 .personimgs {
   background-color: #fff;
   margin: 0 auto;
-  padding: 0px 16px;
-  //   padding: 0px 30px;
+  padding-left: 16px;
 }
 
 .imgsblock {
@@ -39,107 +38,106 @@ page {
   width: 100%;
 }
 
-.imgs,
 .imgsblock {
   display: block;
   float: left;
 }
 
 .imgs {
-  padding-bottom: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
 }
 
 .pick_img {
   background-color: #f7f8fa;
-  border-radius: 4rpx;
-  display: inline-block;
+  border-radius: 4px;
   float: left;
-  height: 310rpx;
-  margin: 30rpx 20rpx 0 0;
+  height: 310px;
+  margin: 30px 20px 0 0;
   overflow: hidden;
   position: relative;
   text-align: center;
-  width: 217rpx;
+  width: 217px;
 }
 
 .pick_img_btn {
-  height: 150rpx;
+  height: 150px;
   text-align: center;
 }
 
 .pick_img_btn image {
-  height: 38rpx;
-  margin-top: 113rpx;
-  width: 38rpx;
+  height: 38px;
+  margin-top: 113px;
+  width: 38px;
 }
 
 .upload-text {
   color: #ccc;
-  font-size: 24rpx;
-  height: 75rpx;
-  padding-top: 13rpx;
+  font-size: 24px;
+  height: 75px;
+  padding-top: 13px;
   text-align: center;
 }
 
 .preview_img {
   background-color: #f7f8fa;
-  display: inline-block;
   float: left;
-  height: 310rpx;
-  margin: 30rpx 15rpx 0 0;
+  height: 310px;
+  margin: 30px 16px 0 0;
   overflow: hidden;
   position: relative;
   text-align: center;
-  width: 217rpx;
+  width: 224px;
 }
 
 .preview_img > image {
-  border-radius: 4rpx;
+  border-radius: 4px;
   height: 100%;
   width: 100%;
 }
 
 .preview_delet {
   background: #000;
-  border-radius: 4rpx;
+  border-radius: 4px;
   color: #fff;
-  font-size: 22rpx;
-  height: 34rpx;
-  line-height: 34rpx;
+  font-size: 22px;
+  height: 34px;
+  line-height: 34px;
   opacity: 0.5;
   position: absolute;
   right: 0;
   text-align: center;
   top: 0;
-  width: 60rpx;
+  width: 60px;
 }
 
 .preview_delet > image {
   height: 100%;
   position: absolute;
-  right: 2rpx;
+  right: 2px;
   width: 100%;
 }
 
 .icon_coverimg {
   background-color: #ff1e3e;
-  border-radius: 20rpx 0 0 0;
+  border-radius: 20px 0 0 0;
   bottom: 0;
   color: #fff;
-  font-size: 24rpx;
-  padding: 6rpx 0;
+  font-size: 24px;
+  padding: 6px 0;
   position: absolute;
   right: 0;
-  width: 68rpx;
+  width: 68px;
 }
 
 .sub_btn {
-  padding: 80rpx 103rpx 90rpx;
+  padding: 80px 103px 90px;
 }
 .sub_btn button {
   background-color: #ff1e3e;
   color: #fff;
-  font-size: 32rpx;
-  height: 88rpx;
-  line-height: 88rpx;
+  font-size: 32px;
+  height: 88px;
+  line-height: 88px;
 }

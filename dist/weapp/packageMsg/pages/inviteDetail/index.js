@@ -294,6 +294,9 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -359,6 +362,9 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
     },
     closeQRcode: function closeQRcode() {
       this.showModel = false;
+    },
+    goYuepaiDetail: function goYuepaiDetail() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + this.yuepaiInfo.oid + "&author_id=" + this.yuepaiInfo.author);
     },
     submit: function submit() {
       var _this = this;
@@ -468,6 +474,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
 
               case 3:
                 res = _context.sent;
+                _this3.yuepaiInfo.oid = res.data.data.oid;
                 _this3.yuepaiInfo.author = res.data.data.visitor;
                 _this3.yuepaiInfo.tips = res.data.data.content.tips;
                 _this3.yuepaiInfo.title = res.data.data.content.title;
@@ -483,23 +490,20 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
                 _this3.media_info.platform_name = res.data.data.celebrity.body.platform_name;
                 _this3.media_info.platform_code = res.data.data.celebrity.body.platform_type;
                 _this3.yuepaiInfo.visited_status = res.data.data.status.visited_status;
-                _this3.yuepaiInfo.visited_coin = res.data.data.visited_coin; // if (showpay) {
-                //   this.contactVisible = true;
-                // }
-
-                _context.next = 24;
+                _this3.yuepaiInfo.visited_coin = res.data.data.visited_coin;
+                _context.next = 25;
                 break;
 
-              case 22:
-                _context.prev = 22;
+              case 23:
+                _context.prev = 23;
                 _context.t0 = _context["catch"](0);
 
-              case 24:
+              case 25:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 22]]);
+        }, _callee, null, [[0, 23]]);
       }))();
     },
     receivePayment: function receivePayment(params) {
@@ -513,7 +517,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* receivePayment */ "fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* receivePayment */ "jb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -634,9 +638,14 @@ var render = function () {
       ]),
     ]),
     _c("view", { staticClass: "yuepai_from" }, [
-      _c("view", { staticClass: "yuepai_from_txt" }, [
-        _vm._v(" " + _vm._s(_vm.yuepaiInfo.abstract)),
-      ]),
+      _c(
+        "view",
+        { staticClass: "yuepai_from_txt", on: { tap: _vm.goYuepaiDetail } },
+        [
+          _c("text", { staticClass: "yuepai_from_title" }, [_vm._v("来自")]),
+          _vm._v(" " + _vm._s(_vm.yuepaiInfo.abstract)),
+        ]
+      ),
     ]),
     _c("view", { staticClass: "reg_remark" }, [
       _c("view", { staticClass: "reg_title ub" }, [
@@ -684,9 +693,7 @@ var render = function () {
                   },
                 }),
               ]),
-              _c("view", { staticClass: "type_text" }, [
-                _vm._v("我的联系信息"),
-              ]),
+              _c("view", { staticClass: "type_text" }, [_vm._v("联系信息")]),
             ]),
             _c("view", { staticClass: "info_content ub ub-ver ub-f1" }, [
               _c("view", { staticClass: "ub-f1" }),
@@ -871,7 +878,7 @@ var render = function () {
             _vm.data.address.name
               ? _c("view", { staticClass: "info_content ub ub-ver ub-f1" }, [
                   _c("view", { staticClass: "ub-f1" }),
-                  _c("view", { staticClass: "content_text" }, [
+                  _c("view", { staticClass: "content_address" }, [
                     _vm._v("收件人：" + _vm._s(_vm.data.address.name) + " "),
                     _vm.yuepaiInfo.visited_status == 230
                       ? _c(
@@ -888,7 +895,7 @@ var render = function () {
                         )
                       : _vm._e(),
                   ]),
-                  _c("view", { staticClass: "content_text" }, [
+                  _c("view", { staticClass: "content_address" }, [
                     _vm._v("手机号：" + _vm._s(_vm.data.address.mobile) + " "),
                     _vm.yuepaiInfo.visited_status == 230
                       ? _c(
@@ -1044,7 +1051,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMsg/pages/inviteDetail/index.vue");
 
 
-var config = {"navigationBarTitleText":"邀约理由详情"};
+var config = {"navigationBarTitleText":"报名详情"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageMsg/pages/inviteDetail/index', {root:{cn:[]}}, config || {}))

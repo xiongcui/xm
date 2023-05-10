@@ -542,20 +542,22 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       var _this6 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res, arr, arr1;
+        var _res, arr, arr1;
+
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "gb"])(params);
 
               case 3:
-                res = _context.sent;
+                _res = _context.sent;
                 arr = [];
                 arr1 = [];
-                res.data.data.map(function (item) {
+
+                _res.data.data.map(function (item) {
                   if (item.type == "style_label") {
                     item.checked = false;
                     arr.push(item);
@@ -566,6 +568,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
                     arr1.push(item);
                   }
                 });
+
                 _this6.styleTaglist = arr;
                 _this6.photoTaglist = arr1;
                 _context.next = 13;
@@ -585,25 +588,26 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
     },
     subNotePhoto: function subNotePhoto(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res;
+        var _res2;
+
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "tb"])(params);
 
               case 3:
-                res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1");
+                _res2 = _context2.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1&msg=".concat(_res2.data.data));
                 _context2.next = 10;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0&msg=".concat(res.data.data.msg));
 
               case 10:
               case "end":

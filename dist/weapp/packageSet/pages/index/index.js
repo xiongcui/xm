@@ -132,12 +132,13 @@ component.options.__file = "src/packageSet/pages/index/index.vue"
     logout: function logout() {
       wx.clearStorage();
       Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* errortip */ "a"])("退出成功");
+      var page = getCurrentPages().pop();
+      console.log(page);
+      if (page == undefined || page == null) return;
+      page.onLoad();
       wx.navigateBack({
         delta: 1
       });
-      var page = getCurrentPages().pop();
-      if (page == undefined || page == null) return;
-      page.onLoad();
     },
     personDetail: function personDetail() {
       Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");

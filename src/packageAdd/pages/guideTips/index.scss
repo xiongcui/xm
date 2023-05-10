@@ -1,0 +1,29 @@
+page {
+  background-color: #f4f4f4;
+}
+.guide-box {
+  background-color: #f4f4f4;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+  .guide-txt {
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 16px;
+    padding: 0px 30px;
+  }
+  .guide-btn {
+    font-size: 28px;
+    padding: 10px 30px;
+    color: #fe5457;
+    border: 2px solid #fe5457;
+    border-radius: 30px;
+  }
+}

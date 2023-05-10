@@ -47,14 +47,83 @@ component.options.__file = "src/packageAdd/pages/tips/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
-/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/tips/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/defineProperty.js */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/tips/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
+
+
+var _methods;
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -112,14 +181,30 @@ component.options.__file = "src/packageAdd/pages/tips/index.vue"
   data: function data() {
     return {
       type: 1,
-      is_follow_gzh: 0
+      msg: "",
+      is_follow_gzh: 0,
+      visible: true
     };
   },
-  methods: {
+  methods: (_methods = {
+    showSubscribe: function showSubscribe() {
+      this.visible = true;
+    },
+    nowSubscribe: function nowSubscribe() {
+      wx.requestSubscribeMessage({
+        tmplIds: ["tEX27GKFotgdenR3XC5grlgpS79LudBKxvy7uBbsdcM", "sQXqKGSEacobxAx8r7RJP5_y5mm7g53v6htcEPWfsPQ"],
+        success: function success(res) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("订阅成功，继续订阅可获得多次提醒");
+        }
+      });
+    },
+    cancel: function cancel() {
+      this.visible = false;
+    },
+    officialAccount: function officialAccount() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+    },
     goback: function goback() {
-      //   wx.navigateBack({
-      //     delta: 1,
-      //   });
       // 跳转首页
       wx.switchTab({
         url: "/pages/home/index",
@@ -130,46 +215,55 @@ component.options.__file = "src/packageAdd/pages/tips/index.vue"
         }
       });
     },
-    officialAccount: function officialAccount() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
-    },
-    checkFollow: function checkFollow(params) {
-      var _this = this;
-
-      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
-        var res;
-        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* checkFollow */ "k"])(params);
-
-              case 3:
-                res = _context.sent;
-                _this.is_follow_gzh = res.data.data.is_follow_gzh;
-                _context.next = 9;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 7]]);
-      }))();
+    continuePublish: function continuePublish() {
+      wx.navigateBack({
+        delta: 1
+      });
     }
-  },
+  }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "officialAccount", function officialAccount() {
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "checkFollow", function checkFollow(params) {
+    var _this = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* checkFollow */ "l"])(params);
+
+            case 3:
+              res = _context.sent;
+              _this.is_follow_gzh = res.data.data.is_follow_gzh;
+              _context.next = 9;
+              break;
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+
+            case 9:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, null, [[0, 7]]);
+    }))();
+  }), _methods),
   created: function created() {
     this.checkFollow("");
   },
   onLoad: function onLoad(options) {
-    this.type = options.type;
+    if (options.type) {
+      this.type = options.type;
+    }
+
+    if (options.msg) {
+      this.msg = options.msg;
+    }
   }
 });
 
@@ -199,7 +293,7 @@ var render = function () {
             _c("image", {
               staticClass: "toptip_icon",
               attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/common/tongzhi3.png",
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/tongzhi3.png",
               },
             }),
             _c("view", { staticClass: "toptip_text fl-g1" }, [
@@ -214,23 +308,59 @@ var render = function () {
           _c("image", {
             staticClass: "tips-img",
             attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/sucess.png",
+              src: "https://yuepai-oss.qubeitech.com/static/images/sucess.png",
             },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("发布成功")]),
-          _c("view", [_vm._v("正在审核，请耐心等等...")]),
-          _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
-            _vm._v("返回"),
+          _c("view", [_vm._v(_vm._s(_vm.msg))]),
+          _c(
+            "view",
+            { staticClass: "subscribe-btn", on: { tap: _vm.showSubscribe } },
+            [_vm._v(" 订阅通知 ")]
+          ),
+          _c("view", { staticClass: "subscribe-box" }, [
+            _c("view", { staticClass: "subscribe-left" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/wchat.jpg",
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "subscribe-ct" }, [
+              _c("view", { staticClass: "subscribe-title" }, [
+                _vm._v("订阅微信通知"),
+              ]),
+              _c("view", { staticClass: "subscribe-p" }, [
+                _vm._v("及时获取报名进度提醒"),
+              ]),
+            ]),
+            _c(
+              "view",
+              { staticClass: "subscribe-rt", on: { tap: _vm.nowSubscribe } },
+              [_c("text", [_vm._v("立即订阅")])]
+            ),
+          ]),
+          _c("view", { staticClass: "tips-box-btns" }, [
+            _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
+              _vm._v("返回首页"),
+            ]),
+            _c(
+              "view",
+              { staticClass: "tips-btn", on: { tap: _vm.continuePublish } },
+              [_vm._v("继续发布")]
+            ),
           ]),
         ])
       : _vm.type == 0
       ? _c("view", { staticClass: "tips-fail" }, [
           _c("image", {
             staticClass: "tips-img",
-            attrs: { src: "https://yuepai-oss.qubeitech.com/static/fail.png" },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/fail.png",
+            },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("发布失败")]),
-          _c("view", [_vm._v("请稍后重新发布！")]),
+          _c("view", [_vm._v(_vm._s(_vm.msg))]),
           _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
             _vm._v("返回"),
           ]),
@@ -240,25 +370,118 @@ var render = function () {
           _c("image", {
             staticClass: "tips-img",
             attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/sucess.png",
+              src: "https://yuepai-oss.qubeitech.com/static/images/sucess.png",
             },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("报名成功")]),
-          _c("view", [_vm._v("您的报名请求发送成功，等待对方联系您！")]),
-          _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
-            _vm._v("返回"),
+          _c("view", [_vm._v(_vm._s(_vm.msg))]),
+          _c(
+            "view",
+            { staticClass: "subscribe-btn", on: { tap: _vm.showSubscribe } },
+            [_vm._v(" 订阅通知 ")]
+          ),
+          _c("view", { staticClass: "subscribe-box" }, [
+            _c("view", { staticClass: "subscribe-left" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/wchat.jpg",
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "subscribe-ct" }, [
+              _c("view", { staticClass: "subscribe-title" }, [
+                _vm._v("订阅微信通知"),
+              ]),
+              _c("view", { staticClass: "subscribe-p" }, [
+                _vm._v("及时获取报名进度提醒"),
+              ]),
+            ]),
+            _c(
+              "view",
+              { staticClass: "subscribe-rt", on: { tap: _vm.nowSubscribe } },
+              [_c("text", [_vm._v("立即订阅")])]
+            ),
+          ]),
+          _c("view", { staticClass: "tips-box-btns" }, [
+            _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
+              _vm._v("返回首页"),
+            ]),
+            _c(
+              "view",
+              { staticClass: "tips-btn", on: { tap: _vm.continuePublish } },
+              [_vm._v("继续发布")]
+            ),
           ]),
         ])
       : _vm.type == 3
       ? _c("view", { staticClass: "tips-fail" }, [
           _c("image", {
             staticClass: "tips-img",
-            attrs: { src: "https://yuepai-oss.qubeitech.com/static/fail.png" },
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/fail.png",
+            },
           }),
           _c("view", { staticClass: "tips-title" }, [_vm._v("报名失败")]),
-          _c("view", [_vm._v("请稍后重新报名！")]),
+          _c("view", [_vm._v(_vm._s(_vm.msg))]),
           _c("view", { staticClass: "tips-btn", on: { tap: _vm.goback } }, [
             _vm._v("返回"),
+          ]),
+        ])
+      : _vm._e(),
+    _vm.visible
+      ? _c("view", { staticClass: "modal-box", on: { tap: _vm.cancel } }, [
+          _c("view", { staticClass: "modal-cotent" }, [
+            _c("view", { staticClass: "modal-title" }, [_vm._v("订阅通知")]),
+            _c("view", { staticClass: "subscribe-box" }, [
+              _c("view", { staticClass: "subscribe-left" }, [
+                _c("image", {
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/wchat.jpg",
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "subscribe-ct" }, [
+                _c("view", { staticClass: "subscribe-title" }, [
+                  _vm._v("订阅微信通知"),
+                ]),
+                _c("view", { staticClass: "subscribe-p" }, [
+                  _vm._v("及时获取报名进度提醒"),
+                ]),
+              ]),
+              _c(
+                "view",
+                {
+                  staticClass: "subscribe-rt",
+                  on: {
+                    tap: function ($event) {
+                      $event.stopPropagation()
+                      return _vm.nowSubscribe.apply(null, arguments)
+                    },
+                  },
+                },
+                [_c("text", [_vm._v("订阅通知")])]
+              ),
+            ]),
+            _c("view", { staticClass: "official-account" }, [
+              _c("view", { staticClass: "official-account-txt" }, [
+                _vm._v("扫码关注公众号，开启消息提醒"),
+              ]),
+              _c("image", {
+                staticClass: "official-account-qrcode",
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/official-account-qrcode.jpg",
+                },
+                on: {
+                  tap: function ($event) {
+                    $event.stopPropagation()
+                    return _vm.officialAccount.apply(null, arguments)
+                  },
+                },
+              }),
+            ]),
+            _c("view", { staticClass: "know", on: { tap: _vm.cancel } }, [
+              _vm._v("我知道了"),
+            ]),
           ]),
         ])
       : _vm._e(),

@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "我收到的通告",
+  navigationBarTitleText: "通告管理",
 });

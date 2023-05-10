@@ -109,6 +109,29 @@
         height: 53px;
       }
     }
+    .followed_style {
+      padding: 10px 30px;
+      border-radius: 30px;
+      color: #ffffff;
+      font-size: 26px;
+      border: 2px solid #ffffff;
+    }
+    .followed_style2 {
+      padding: 4px 40px;
+      border-radius: 30px;
+      border: 2px solid #ffffff;
+      background: url("../../../../assets/images/common/followed.jpg") no-repeat
+        center center;
+      background-size: 36px;
+    }
+    .followed_send_msg {
+      padding: 10px 30px;
+      border-radius: 30px;
+      color: #ffffff;
+      font-size: 26px;
+      border: 2px solid #ffffff;
+      margin-right: 16px;
+    }
     .my-count-box {
       display: flex;
       flex-direction: column;
@@ -136,17 +159,19 @@
       align-items: center;
     }
     .sex {
-      width: 32px;
-      height: 32px;
+      width: 24px;
+      height: 24px;
+      margin-right: 6px;
     }
   }
   .line-bg {
     position: absolute;
     width: 100%;
-    top: -26px;
+    top: -24px;
     border-radius: 26px 26px 0px 0px;
     height: 26px;
     background: #ffffff;
+    border: none;
   }
   .main_list {
     width: 100%;

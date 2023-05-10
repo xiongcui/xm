@@ -6,6 +6,11 @@ page {
   padding-bottom: 200rpx;
 }
 
+.shop .input-placeholder,
+.shop .textarea-placeholder {
+  font-size: 28rpx;
+}
+
 .shop .shop-box {
   margin: 16rpx 16rpx 0 16rpx;
   background: #ffffff;

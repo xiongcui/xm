@@ -6,6 +6,11 @@ page {
   padding-bottom: 200rpx;
 }
 
+.add-tonggao .input-placeholder,
+.add-tonggao .textarea-placeholder {
+  font-size: 28rpx;
+}
+
 .add-tonggao .tonggao-box {
   margin: 16rpx 16rpx 0 16rpx;
   background: #ffffff;
@@ -62,6 +67,7 @@ page {
 }
 
 .add-tonggao .tonggao-name {
+  width: 200rpx;
   text-align: right;
 }
 

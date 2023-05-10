@@ -3,6 +3,10 @@ page {
 }
 .add-tonggao {
   padding-bottom: 200px;
+  .input-placeholder,
+  .textarea-placeholder {
+    font-size: 28px;
+  }
   .tonggao-box {
     margin: 16px 16px 0px 16px;
     background: #ffffff;
@@ -39,6 +43,7 @@ page {
     }
   }
   .tonggao-name {
+    width: 200px;
     text-align: right;
   }
   .tonggao-split {

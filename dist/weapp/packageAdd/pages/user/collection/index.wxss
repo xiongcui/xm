@@ -1,7 +1,7 @@
+@charset "UTF-8";
 page {
   background: #f7f7f7;
 }
-
 .collection .tab {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14,7 +14,6 @@ page {
   position: fixed;
   z-index: 9999;
 }
-
 .collection .tab-item {
   color: #333333;
   -webkit-flex: 1;
@@ -26,93 +25,373 @@ page {
   border-bottom: 6rpx solid #ffffff;
   margin: 0 30rpx;
 }
-
 .collection .content {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   height: 100vh;
 }
-
 .collection .content > swiper {
   height: 100%;
 }
-
 .collection .tab-item.on {
   color: #333333;
   font-weight: bold;
   border-bottom-color: #ff1e3e;
 }
-
 .collection .swiper-box {
   height: 100%;
 }
-
-.collection .tonggao_box {
-  background: #ffffff;
-  margin: 0 16rpx 16rpx 16rpx;
-  padding: 16rpx;
+.collection .componets-box:first-child,
+.collection .componets-zuopin-box:first-child,
+.collection .zuopin_box_list {
+  margin-top: 100rpx;
 }
-
-.collection .tonggao_box .tonggao_title {
+.collection .componets-box {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 16rpx;
+  margin: 16rpx;
+}
+.collection .componets-box .tonggao-recommend-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16rpx;
+}
+.collection .componets-box .tonggao-recommend-top .tonggao-info-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 34rpx;
+}
+.collection .componets-box .tonggao-recommend-bt {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-recommend-img image {
+  width: 140rpx;
+  height: 90%;
+  margin-left: 16rpx;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-info-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-txt {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-info-desc {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  line-height: 36rpx;
+  /* 主要控制父元素容器里面子元素的排列方式 */
+  display: -webkit-box;
+  display: -moz-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
+  -webkit-line-clamp: 2;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 16rpx 0;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-tags .tag-item {
+  padding: 4rpx 10rpx;
+  background: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 26rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-recommend-price {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-recommend-price .pirce {
+  color: #ff1e3e;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-recommend-price .recommend-btn {
+  border: 1rpx solid #ff1e3e;
+  border-radius: 8rpx;
+  padding: 4rpx 10rpx;
+  font-size: 26rpx;
+  color: #ff1e3e;
+}
+.collection .componets-box .tonggao-recommend-bt .tonggao-recommend-info {
+  width: 488rpx;
+}
+.collection .componets-box .tonggao-bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+  border-top: 1rpx solid #ebebeb;
+  padding-top: 6rpx;
+}
+.collection .componets-box .tonggao-head {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.collection .componets-box .tonggao-head image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 4rpx;
+  border-radius: 50%;
+}
+.collection .componets-box .tonggao-yuepai {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.collection .componets-box .tonggao-yuepai image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.collection .componets-box .tonggao-read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.collection .componets-box .tonggao-read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.collection .componets-box .recommend-style {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+.collection .componets-box .recommend-label {
+  padding: 2rpx 14rpx;
+  background: #fcedeb;
+  border-radius: 8rpx 0 0 8rpx;
+  color: #f2280c;
+  font-size: 28rpx;
+  border: 2rpx solid #fcedeb;
+}
+.collection .componets-box .recommend-label2 {
+  padding: 2rpx 14rpx;
+  background: transparent;
+  color: #f2280c;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  border: 2rpx solid #fcedeb;
+  border-left: none;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 0 8rpx 8rpx 0;
+}
+.collection .componets-box .recommend-image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 16rpx;
+}
+.collection .componets-zuopin-box {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 16rpx;
+  margin: 16rpx;
+}
+.collection .componets-zuopin-box .avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+.collection .componets-zuopin-box .list_top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.collection .componets-zuopin-box .list_top_left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.collection .componets-zuopin-box .list_top_rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+.collection .componets-zuopin-box .list_info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 16rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.collection .componets-zuopin-box .list_info .list_name {
+  color: #111111;
+  font-size: 34rpx;
+}
+.collection .componets-zuopin-box .list_info .list_p {
+  color: #686868;
+  font-size: 26rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.collection .componets-zuopin-box .list_info .list_p_img {
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 16rpx;
+}
+.collection .componets-zuopin-box .list_info .icon_pledge {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/pledge.png") #f0f6ff 10rpx center no-repeat;
+  background-size: 26rpx;
+  color: #67a6ff;
+  font-size: 20rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 8rpx;
+  padding-left: 40rpx;
+  margin-left: 16rpx;
+}
+.collection .componets-zuopin-box .list_info .icon_real {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/real.png") #fbede4 10rpx center no-repeat;
+  background-size: 26rpx;
+  color: #ff9946;
+  font-size: 20rpx;
+  padding: 2rpx 10rpx;
+  border-radius: 8rpx;
+  padding-left: 40rpx;
+  margin-left: 16rpx;
+}
+.collection .componets-zuopin-box .list_collection image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.collection .componets-zuopin-box .list_content {
   color: #2f2f2f;
   font-size: 30rpx;
-  margin: 10rpx 0;
+  margin: 16rpx 0;
 }
-
-.collection .tonggao_box .tonggao_title .list_title {
-  font-size: 38rpx;
+.collection .componets-zuopin-box .list_content .list_title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
-
-.collection .tonggao_box .tonggao_title .list_loction {
-  background: url("https://yuepai-oss.qubeitech.com/static/common/local.png") left center no-repeat;
+.collection .componets-zuopin-box .list_content .list_title_desc {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-top: 16rpx;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.collection .componets-zuopin-box .list_loction {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png") left center no-repeat;
   background-size: 36rpx;
   padding-left: 36rpx;
   font-size: 36rpx;
   color: #3a3a3a;
 }
-
-.collection .tonggao_box .tonggao_ct {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  border-bottom: 1rpx solid #f1f1f1;
-  margin-bottom: 16rpx;
-  padding-bottom: 2rpx;
+.collection .componets-zuopin-box .list_date {
+  color: #686868;
+  font-size: 24rpx;
 }
-
-.collection .tonggao_box .tonggao_ct .tonggao-right image {
-  width: 200rpx;
-  height: 200rpx;
-  border-radius: 10rpx;
-  margin-left: 16rpx;
-}
-
-.collection .tonggao_box .tonggao_desc {
-  width: 460rpx;
+.collection .componets-zuopin-box .list_desc {
   font-size: 30rpx;
   color: #6b6b6b;
   line-height: 36rpx;
   margin-bottom: 16rpx;
-  height: 72rpx;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  -o-text-overflow: ellipsis;
-     text-overflow: ellipsis;
 }
-
-.collection .tonggao_box .tonggao_tags {
+.collection .componets-zuopin-box .list_img {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+.collection .componets-zuopin-box .list_img .list_img_item {
+  width: 214rpx;
+  height: 214rpx;
+  border-radius: 10rpx;
+  margin-right: 20rpx;
+  background: #e5e5e5;
+}
+.collection .componets-zuopin-box .list_sex {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 4rpx;
+}
+.collection .componets-zuopin-box .list_tags {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -121,8 +400,7 @@ page {
           flex-wrap: wrap;
   margin-top: 16rpx;
 }
-
-.collection .tonggao_box .tonggao_tags .tag-item {
+.collection .componets-zuopin-box .list_tags .tag {
   padding: 4rpx 10rpx;
   background: rgba(245, 50, 24, 0.08);
   color: #ff1e3e;
@@ -131,32 +409,7 @@ page {
   margin-right: 10rpx;
   margin-bottom: 16rpx;
 }
-
-.collection .tonggao_box .tonggao_info {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 30rpx;
-  color: #3a3a3a;
-}
-
-.collection .tonggao_box .tonggao_info .head-img {
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
-  margin-right: 16rpx;
-}
-
-.collection .tonggao_box .tonggao_info .pledge-img {
-  width: 100rpx;
-  height: 30rpx;
-  margin-left: 16rpx;
-}
-
-.collection .tonggao_box .tonggao_bottom {
+.collection .componets-zuopin-box .list_bottom {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -164,72 +417,53 @@ page {
       -ms-flex-pack: justify;
           justify-content: space-between;
   color: #6b6b6b;
+  border-top: 1rpx solid #ebebeb;
 }
-
-.collection .tonggao_box .tonggao_bottom_rt {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  min-width: 200rpx;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.collection .tonggao_box .tonggao_time {
+.collection .componets-zuopin-box .list_time {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 26rpx;
+  font-size: 24rpx;
 }
-
-.collection .tonggao_box .tonggao_time image {
+.collection .componets-zuopin-box .list_time image {
   width: 26rpx;
   height: 26rpx;
   margin-right: 4rpx;
 }
-
-.collection .tonggao_box .tonggao_yuepai {
+.collection .componets-zuopin-box .list_yuepai {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 26rpx;
+  font-size: 24rpx;
 }
-
-.collection .tonggao_box .tonggao_yuepai image {
+.collection .componets-zuopin-box .list_yuepai image {
   width: 26rpx;
   height: 26rpx;
   margin-right: 4rpx;
 }
-
-.collection .tonggao_box .tonggao_read {
+.collection .componets-zuopin-box .list_read {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 26rpx;
+  font-size: 24rpx;
 }
-
-.collection .tonggao_box .tonggao_read image {
+.collection .componets-zuopin-box .list_read image {
   width: 26rpx;
   height: 26rpx;
   margin-right: 4rpx;
 }
-
-.collection .tonggao_box:first-child,
-.collection .zuopin_box_list,
-.collection .list_box:first-child {
-  margin-top: 104rpx;
+.collection .componets-zuopin-box .list_video-width {
+  width: 50%;
 }
-
 .collection .zuopin_box_list {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -238,8 +472,7 @@ page {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
 }
-
-.collection .zuopin_box {
+.collection .zuopin_box_list .zuopin_box {
   margin: 0 0 16rpx 16rpx;
   width: 350rpx;
   background: #ffffff;
@@ -248,28 +481,24 @@ page {
   -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.06);
           box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.06);
 }
-
-.collection .zuopin_box .zuopin_img,
-.collection .zuopin_box .list_video-width {
-  width: 100%;
+.collection .zuopin_box_list .zuopin_img,
+.collection .zuopin_box_list .list_video-width {
+  width: 100% !important;
   height: 359rpx;
   border-radius: 10rpx 10rpx 0 0;
 }
-
-.collection .zuopin_box .avatar {
+.collection .zuopin_box_list .avatar {
   width: 70rpx;
   height: 70rpx;
   border-radius: 50%;
   margin-right: 16rpx;
 }
-
-.collection .zuopin_box .list_sex {
+.collection .zuopin_box_list .list_sex {
   width: 30rpx;
   height: 30rpx;
   margin-left: 4rpx;
 }
-
-.collection .zuopin_box .zuopin_desc {
+.collection .zuopin_box_list .zuopin_desc {
   font-size: 30rpx;
   color: #6b6b6b;
   height: 36rpx;
@@ -281,8 +510,7 @@ page {
      text-overflow: ellipsis;
   padding: 0 16rpx;
 }
-
-.collection .zuopin_box .list_p_title {
+.collection .zuopin_box_list .list_p_title {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -290,8 +518,7 @@ page {
       -ms-flex-align: center;
           align-items: center;
 }
-
-.collection .zuopin_box .zuopin_info {
+.collection .zuopin_box_list .zuopin_info {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -300,13 +527,11 @@ page {
           align-items: center;
   padding: 0 16rpx;
 }
-
-.collection .zuopin_box .list_name {
+.collection .zuopin_box_list .list_name {
   color: #111111;
   font-size: 32rpx;
 }
-
-.collection .zuopin_box .list_p {
+.collection .zuopin_box_list .list_p {
   width: 224rpx;
   color: #686868;
   font-size: 24rpx;
@@ -320,219 +545,11 @@ page {
       -ms-flex-align: center;
           align-items: center;
 }
-
-.collection .zuopin_box .read {
+.collection .zuopin_box_list .read {
   background: url("https://yuepai-oss.qubeitech.com/static/eyes.png") left center no-repeat;
   background-size: 30rpx;
   padding-left: 30rpx;
 }
-
-.collection .list_box {
-  background: #ffffff;
-  border-bottom: 1rpx solid #e5e5e5;
-  margin: 16rpx 0;
-  padding: 16rpx 16rpx 16rpx 16rpx;
-}
-
-.collection .list_box .avatar {
-  width: 110rpx;
-  height: 110rpx;
-  border-radius: 50%;
-}
-
-.collection .list_box .list_top {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.collection .list_box .list_top_left {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.collection .list_box .list_info {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin-left: 16rpx;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.collection .list_box .list_info .list_name {
-  color: #111111;
-  font-size: 34rpx;
-}
-
-.collection .list_box .list_info .list_p {
-  color: #686868;
-  font-size: 26rpx;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.collection .list_box .list_info .list_p_img {
-  width: 100rpx;
-  height: 30rpx;
-  margin-left: 16rpx;
-}
-
-.collection .list_box .list_collection image {
-  width: 40rpx;
-  height: 40rpx;
-}
-
-.collection .list_box .list_content {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  color: #2f2f2f;
-  font-size: 30rpx;
-  margin: 16rpx 0;
-}
-
-.collection .list_box .list_content .list_title {
-  font-size: 38rpx;
-}
-
-.collection .list_box .list_content .list_loction {
-  background: url("https://yuepai-oss.qubeitech.com/static/common/local.png") left center no-repeat;
-  background-size: 36rpx;
-  padding-left: 36rpx;
-  font-size: 36rpx;
-  color: #3a3a3a;
-}
-
-.collection .list_box .list_desc {
-  font-size: 30rpx;
-  color: #6b6b6b;
-  line-height: 36rpx;
-  margin-bottom: 16rpx;
-}
-
-.collection .list_box .list_img {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  white-space: nowrap;
-}
-
-.collection .list_box .list_img .list_img_item {
-  width: 225rpx;
-  height: 225rpx;
-  border-radius: 10rpx;
-  margin-right: 20rpx;
-  background: #e5e5e5;
-}
-
-.collection .list_box .list_sex {
-  width: 30rpx;
-  height: 30rpx;
-  margin-left: 4rpx;
-}
-
-.collection .list_box .list_tags {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  margin-top: 16rpx;
-}
-
-.collection .list_box .list_tags .tag {
-  padding: 4rpx 10rpx;
-  background: rgba(245, 50, 24, 0.08);
-  color: #ff1e3e;
-  font-size: 22rpx;
-  border-radius: 8rpx;
-  margin-right: 10rpx;
-  margin-bottom: 16rpx;
-}
-
-.collection .list_box .list_bottom {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  color: #6b6b6b;
-}
-
-.collection .list_box .list_time {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-}
-
-.collection .list_box .list_time image {
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 4rpx;
-}
-
-.collection .list_box .list_yuepai {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-}
-
-.collection .list_box .list_yuepai image {
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 4rpx;
-}
-
-.collection .list_box .list_read {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-}
-
-.collection .list_box .list_read image {
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 4rpx;
-}
-
-.collection .list_box .list_video-width {
-  width: 50%;
-}
-
-.collection .list_box:last-child {
-  border-bottom: none;
-}
-
 .collection .none-data {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -549,7 +566,6 @@ page {
   padding-top: 180rpx;
   color: #333;
 }
-
 .collection .none-img {
   width: 150rpx;
   height: 150rpx;

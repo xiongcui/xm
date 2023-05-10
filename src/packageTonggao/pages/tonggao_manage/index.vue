@@ -47,202 +47,87 @@
           >
             <block v-if="list.length">
               <view
-                class="tonggao-manage-list"
+                class="componets-box"
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
+                <view class="tonggao-recommend">
+                  <view class="tonggao-recommend-top">
+                    <view class="tonggao-info-title">
+                      <block v-if="item.topic.headline.tag.length">
+                        <image
+                          class="recommend-image"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                          :src="tagitem"
+                        >
+                        </image>
+                      </block>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
+                      >
+                      <view
+                        class="list_status_sucess"
+                        v-if="item.status.publish_status == 200"
+                        >{{ item.status.publish_status_name }}</view
+                      >
+                      <view class="list_status" v-else>{{
+                        item.status.publish_status_name
+                      }}</view>
                     </view>
-                    <view class="list_info">
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view class="tonggao-recommend-info">
+                      <view class="recommend-style">
+                        <text class="recommend-label">
+                          {{ item.topic.target }}
+                        </text>
+                        <text class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </text>
+                      </view>
+                      <view class="tonggao-tags">
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
+                      </view>
+                    </view>
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                        :src="item.details.media.cover[0]"
+                        mode="aspectFill"
                       ></image>
-                      面向地区：{{ item.author.province_name }}
                     </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
                   </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
                 </view>
-                <view class="list_num">
-                  <view class="list_time">
+                <view class="tonggao-bottom">
+                  <view class="tonggao-head">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                      :src="
+                        item.author.avatar
+                          ? item.author.avatar
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                      "
                     ></image>
-                    {{ item.basic.date_humanize }}
+                    {{ item.author.nickname }}
                   </view>
-                  <view class="list_yuepai">
+                  <view class="tonggao-yuepai">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
+                    {{ item.statistic.invite_cnt }}
                   </view>
-                  <view class="list_read">
+                  <view class="tonggao-read">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                     ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 100 ||
-                        item.status.publish_status == 120 ||
-                        item.status.publish_status == 400 ||
-                        item.status.publish_status == 300 ||
-                        item.status.publish_status == -100
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
+                    {{ item.statistic.read_cnt }}
                   </view>
                 </view>
                 <view class="list_bottom">
@@ -319,202 +204,87 @@
           >
             <block v-if="list.length">
               <view
-                class="tonggao-manage-list"
+                class="componets-box"
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
+                <view class="tonggao-recommend">
+                  <view class="tonggao-recommend-top">
+                    <view class="tonggao-info-title">
+                      <block v-if="item.topic.headline.tag.length">
+                        <image
+                          class="recommend-image"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                          :src="tagitem"
+                        >
+                        </image>
+                      </block>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
+                      >
+                      <view
+                        class="list_status_sucess"
+                        v-if="item.status.publish_status == 200"
+                        >{{ item.status.publish_status_name }}</view
+                      >
+                      <view class="list_status" v-else>{{
+                        item.status.publish_status_name
+                      }}</view>
                     </view>
-                    <view class="list_info">
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view class="tonggao-recommend-info">
+                      <view class="recommend-style">
+                        <text class="recommend-label">
+                          {{ item.topic.target }}
+                        </text>
+                        <text class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </text>
+                      </view>
+                      <view class="tonggao-tags">
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
+                      </view>
+                    </view>
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                        :src="item.details.media.cover[0]"
+                        mode="aspectFill"
                       ></image>
-                      面向地区：{{ item.author.province_name }}
                     </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
                   </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
                 </view>
-                <view class="list_num">
-                  <view class="list_time">
+                <view class="tonggao-bottom">
+                  <view class="tonggao-head">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                      :src="
+                        item.author.avatar
+                          ? item.author.avatar
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                      "
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.author.nickname }}
                   </view>
-                  <view class="list_yuepai">
+                  <view class="tonggao-yuepai">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
+                    {{ item.statistic.invite_cnt }}
                   </view>
-                  <view class="list_read">
+                  <view class="tonggao-read">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                     ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 100 ||
-                        item.status.publish_status == 120 ||
-                        item.status.publish_status == 400 ||
-                        item.status.publish_status == 300 ||
-                        item.status.publish_status == -100
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
+                    {{ item.statistic.read_cnt }}
                   </view>
                 </view>
                 <view class="list_bottom">
@@ -591,202 +361,87 @@
           >
             <block v-if="list.length">
               <view
-                class="tonggao-manage-list"
+                class="componets-box"
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
+                <view class="tonggao-recommend">
+                  <view class="tonggao-recommend-top">
+                    <view class="tonggao-info-title">
+                      <block v-if="item.topic.headline.tag.length">
+                        <image
+                          class="recommend-image"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                          :src="tagitem"
+                        >
+                        </image>
+                      </block>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
+                      >
+                      <view
+                        class="list_status_sucess"
+                        v-if="item.status.publish_status == 200"
+                        >{{ item.status.publish_status_name }}</view
+                      >
+                      <view class="list_status" v-else>{{
+                        item.status.publish_status_name
+                      }}</view>
                     </view>
-                    <view class="list_info">
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view class="tonggao-recommend-info">
+                      <view class="recommend-style">
+                        <text class="recommend-label">
+                          {{ item.topic.target }}
+                        </text>
+                        <text class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </text>
+                      </view>
+                      <view class="tonggao-tags">
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
+                      </view>
+                    </view>
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                        :src="item.details.media.cover[0]"
+                        mode="aspectFill"
                       ></image>
-                      面向地区：{{ item.author.province_name }}
                     </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
                   </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
                 </view>
-                <view class="list_num">
-                  <view class="list_time">
+                <view class="tonggao-bottom">
+                  <view class="tonggao-head">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                      :src="
+                        item.author.avatar
+                          ? item.author.avatar
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                      "
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.author.nickname }}
                   </view>
-                  <view class="list_yuepai">
+                  <view class="tonggao-yuepai">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
+                    {{ item.statistic.invite_cnt }}
                   </view>
-                  <view class="list_read">
+                  <view class="tonggao-read">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                     ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 100 ||
-                        item.status.publish_status == 120 ||
-                        item.status.publish_status == 400 ||
-                        item.status.publish_status == 300 ||
-                        item.status.publish_status == -100
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
+                    {{ item.statistic.read_cnt }}
                   </view>
                 </view>
                 <view class="list_bottom">
@@ -863,202 +518,87 @@
           >
             <block v-if="list.length">
               <view
-                class="tonggao-manage-list"
+                class="componets-box"
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
+                <view class="tonggao-recommend">
+                  <view class="tonggao-recommend-top">
+                    <view class="tonggao-info-title">
+                      <block v-if="item.topic.headline.tag.length">
+                        <image
+                          class="recommend-image"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                          :src="tagitem"
+                        >
+                        </image>
+                      </block>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
+                      >
+                      <view
+                        class="list_status_sucess"
+                        v-if="item.status.publish_status == 200"
+                        >{{ item.status.publish_status_name }}</view
+                      >
+                      <view class="list_status" v-else>{{
+                        item.status.publish_status_name
+                      }}</view>
                     </view>
-                    <view class="list_info">
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view class="tonggao-recommend-info">
+                      <view class="recommend-style">
+                        <text class="recommend-label">
+                          {{ item.topic.target }}
+                        </text>
+                        <text class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </text>
+                      </view>
+                      <view class="tonggao-tags">
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
+                      </view>
+                    </view>
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                        :src="item.details.media.cover[0]"
+                        mode="aspectFill"
                       ></image>
-                      面向地区：{{ item.author.province_name }}
                     </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
                   </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
                 </view>
-                <view class="list_num">
-                  <view class="list_time">
+                <view class="tonggao-bottom">
+                  <view class="tonggao-head">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                      :src="
+                        item.author.avatar
+                          ? item.author.avatar
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                      "
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.author.nickname }}
                   </view>
-                  <view class="list_yuepai">
+                  <view class="tonggao-yuepai">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
+                    {{ item.statistic.invite_cnt }}
                   </view>
-                  <view class="list_read">
+                  <view class="tonggao-read">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                     ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 100 ||
-                        item.status.publish_status == 120 ||
-                        item.status.publish_status == 400 ||
-                        item.status.publish_status == 300 ||
-                        item.status.publish_status == -100
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
-                    </view>
-                    <view class="list_info">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
-                      ></image>
-                      面向地区：{{ item.author.province_name }}
-                    </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
+                    {{ item.statistic.read_cnt }}
                   </view>
                 </view>
                 <view class="list_bottom">
@@ -1135,67 +675,87 @@
           >
             <block v-if="list.length">
               <view
-                class="tonggao-manage-list"
+                class="componets-box"
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
+                <view class="tonggao-recommend">
+                  <view class="tonggao-recommend-top">
+                    <view class="tonggao-info-title">
+                      <block v-if="item.topic.headline.tag.length">
+                        <image
+                          class="recommend-image"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                          :src="tagitem"
+                        >
+                        </image>
+                      </block>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
+                      >
+                      <view
+                        class="list_status_sucess"
+                        v-if="item.status.publish_status == 200"
+                        >{{ item.status.publish_status_name }}</view
+                      >
+                      <view class="list_status" v-else>{{
+                        item.status.publish_status_name
+                      }}</view>
                     </view>
-                    <view class="list_info">
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view class="tonggao-recommend-info">
+                      <view class="recommend-style">
+                        <text class="recommend-label">
+                          {{ item.topic.target }}
+                        </text>
+                        <text class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </text>
+                      </view>
+                      <view class="tonggao-tags">
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
+                      </view>
+                    </view>
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                        :src="item.details.media.cover[0]"
+                        mode="aspectFill"
                       ></image>
-                      面向地区：{{ item.author.province_name }}
                     </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
                   </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
                 </view>
-                <view class="list_num">
-                  <view class="list_time">
+                <view class="tonggao-bottom">
+                  <view class="tonggao-head">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+                      :src="
+                        item.author.avatar
+                          ? item.author.avatar
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                      "
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.author.nickname }}
                   </view>
-                  <view class="list_yuepai">
+                  <view class="tonggao-yuepai">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
+                    {{ item.statistic.invite_cnt }}
                   </view>
-                  <view class="list_read">
+                  <view class="tonggao-read">
                     <image
                       src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                     ></image>
-                    阅读 {{ item.statistic.read_cnt }}
+                    {{ item.statistic.read_cnt }}
                   </view>
                 </view>
                 <view class="list_bottom">
@@ -1250,141 +810,14 @@
                       "
                       >管理报名</view
                     >
-                  </view>
-                </view>
-              </view>
-            </block>
-            <view v-else class="none-data">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
-                mode="aspectFill"
-                class="none-img"
-              ></image>
-              <view>当前暂无信息哦～</view>
-            </view>
-          </scroll-view>
-          <scroll-view
-            :scroll-y="true"
-            @scrolltolower="scrollToLower"
-            :style="{ height: winHeight + 'px' }"
-          >
-            <block v-if="list.length">
-              <view
-                class="tonggao-manage-list"
-                v-for="(item, index) in list"
-                :key="index"
-              >
-                <view class="list-content">
-                  <view class="list_left">
-                    <view class="list_title">
-                      {{ item.topic.headline.title }}</view
-                    >
-                    <view class="list_desc">
-                      {{ item.details.summary }}
-                    </view>
-                    <view class="list_info">
+                    <view class="list_tips">
                       <image
-                        src="https://yuepai-oss.qubeitech.com/static/images/position.png"
+                        class="warn_icon"
+                        src="https://yuepai-oss.qubeitech.com/static/images/common/warn_icon.png"
+                        v-if="item.audit.audit_reason"
                       ></image>
-                      面向地区：{{ item.author.province_name }}
+                      {{ item.audit.audit_reason }}
                     </view>
-                    <view class="list_info"
-                      ><image
-                        src="https://yuepai-oss.qubeitech.com/static/images/sex1.png"
-                      ></image
-                      >性别要求：{{ formatSex(item.author.sex) }}</view
-                    >
-                  </view>
-                  <view class="list_rt">
-                    <image
-                      :src="item.details.media.cover[0]"
-                      mode="aspectFill"
-                    ></image>
-                  </view>
-                  <view
-                    class="list_status_sucess"
-                    v-if="item.status.publish_status == 200"
-                    >{{ item.status.publish_status_name }}</view
-                  >
-                  <view class="list_status" v-else>{{
-                    item.status.publish_status_name
-                  }}</view>
-                  <view class="list_tag">{{
-                    item.topic.headline.tag.join(",")
-                  }}</view>
-                </view>
-                <view class="list_num">
-                  <view class="list_time">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
-                    ></image>
-                    {{ item.date_humanize }}
-                  </view>
-                  <view class="list_yuepai">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-                    ></image>
-                    收到约拍 {{ item.statistic.invite_cnt }}
-                  </view>
-                  <view class="list_read">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
-                    ></image>
-                    阅读 {{ item.statistic.read_cnt }}
-                  </view>
-                </view>
-                <view class="list_bottom">
-                  <view class="list_bt_left">
-                    <view
-                      class="btn-grey"
-                      @tap="deleteTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 100 ||
-                        item.status.publish_status == 120 ||
-                        item.status.publish_status == 400 ||
-                        item.status.publish_status == 300 ||
-                        item.status.publish_status == -100
-                      "
-                      >删除通告</view
-                    >
-                    <view
-                      class="btn-grey"
-                      @tap="overTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 200"
-                      >结束报名</view
-                    >
-                  </view>
-                  <view class="list_bt_rt">
-                    <view
-                      class="btn-red"
-                      @tap="openTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 120"
-                      >开放招募</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="refreshTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 700
-                      "
-                      >刷新排名</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="reopenTonggao(item.basic.oid)"
-                      v-if="item.status.publish_status == 300"
-                      >重新打开</view
-                    >
-                    <view
-                      class="btn-red"
-                      @tap="manageTonggao(item.basic.oid)"
-                      v-if="
-                        item.status.publish_status == 200 ||
-                        item.status.publish_status == 300
-                      "
-                      >管理报名</view
-                    >
                   </view>
                 </view>
               </view>

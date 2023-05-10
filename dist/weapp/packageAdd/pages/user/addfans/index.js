@@ -493,6 +493,11 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -526,6 +531,8 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
       bargin_video_price: "",
       live_price: "",
       bargin_live_price: "",
+      enjoy_number: "",
+      vote_number: "",
       const_media_item_ids: {
         douyin: "douyin",
         redbook: "redbook",
@@ -559,8 +566,8 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
     };
   },
   methods: {
-    select_tag: function select_tag(row) {
-      row.taged = !row.taged;
+    select_tag: function select_tag(index) {
+      this.media.tag[index].taged = !this.media.tag[index].taged;
     },
     inputAdPrice: function inputAdPrice(e) {
       if (e.detail.value) {
@@ -668,7 +675,12 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
       }
 
       if (this.media_item_id == this.const_media_item_ids.redbook && !this.like_count || this.media_item_id == this.const_media_item_ids.douyin && !this.like_count) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请填写赞藏数量");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请填写赞藏数");
+        return false;
+      }
+
+      if (this.media_item_id == this.const_media_item_ids.douyin && !this.vote_number) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请填写点赞数");
         return false;
       }
 
@@ -745,22 +757,24 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
 
       if (this.media_item_id == this.const_media_item_ids.weibo) {
         params.shop_window = this.is_open_store;
-        params.direct_price = Number(this.pub_price ? this.pub_pric : 0);
+        params.direct_price = Number(this.pub_price ? this.pub_price : 0);
         params.forward_price = Number(this.share_price ? this.share_price : 0);
       }
 
       if (this.media_item_id == this.const_media_item_ids.douyin) {
         params.enjoy_number = Number(this.like_count);
+        params.vote_number = Number(this.vote_number);
         params.shop_window = this.is_open_store;
         params.video_price = Number(this.video_price ? this.video_price : 0);
         params.live_price = Number(this.live_price ? this.live_price : 0);
       }
 
       if (this.media_item_id == this.const_media_item_ids.kuaishou) {
+        params.video_price = Number(this.video_price ? this.video_price : 0);
+        params.live_price = Number(this.live_price ? this.live_price : 0);
         params.little_shop = this.is_open_store;
       }
 
-      console.log(params);
       this.userCelebrity(params);
     },
     publicConfig: function publicConfig(params) {
@@ -774,7 +788,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "gb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -813,7 +827,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userCelebrity */ "Eb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -846,7 +860,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* celebrityInfo */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* celebrityInfo */ "j"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -855,6 +869,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
                 _this3.nickname = data.nickname;
                 _this3.follow_count = data.fans_number;
                 _this3.like_count = data.enjoy_number;
+                _this3.vote_number = data.vote_number;
                 _this3.is_brand_partner = data.brand_cooperator;
 
                 if (!data.advert_price) {
@@ -894,6 +909,7 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
                   _this3.live_price = data.live_price;
                 }
 
+                console.log(data.acct_field);
                 data.acct_field.map(function (name) {
                   _this3.media.tag.map(function (item) {
                     if (name == item.value) {
@@ -901,19 +917,19 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
                     }
                   });
                 });
-                _context3.next = 21;
+                _context3.next = 23;
                 break;
 
-              case 19:
-                _context3.prev = 19;
+              case 21:
+                _context3.prev = 21;
                 _context3.t0 = _context3["catch"](0);
 
-              case 21:
+              case 23:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 19]]);
+        }, _callee3, null, [[0, 21]]);
       }))();
     }
   },
@@ -931,7 +947,6 @@ component.options.__file = "src/packageAdd/pages/user/addfans/index.vue"
       title: this.platform_name
     }); // 查询账号领域
 
-    console.log(this.platform_code, "this.platform_code");
     var type = "acct_field_" + this.platform_code;
     this.publicConfig({
       type: [type]
@@ -1114,8 +1129,8 @@ var render = function () {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.like_count,
-                        expression: "like_count",
+                        value: _vm.vote_number,
+                        expression: "vote_number",
                       },
                     ],
                     attrs: {
@@ -1128,13 +1143,13 @@ var render = function () {
                       placeholderClass: "placeholder_input",
                       type: "number",
                     },
-                    domProps: { value: _vm.like_count },
+                    domProps: { value: _vm.vote_number },
                     on: {
                       input: function ($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.like_count = $event.target.value
+                        _vm.vote_number = $event.target.value
                       },
                     },
                   }),
@@ -1315,6 +1330,7 @@ var render = function () {
                             expression: "pub_price",
                           },
                         ],
+                        staticClass: "input-pub-price",
                         attrs: {
                           cursorSpacing: "20",
                           maxlength: "5",
@@ -1388,6 +1404,7 @@ var render = function () {
                             expression: "share_price",
                           },
                         ],
+                        staticClass: "input-pub-price",
                         attrs: {
                           cursorSpacing: "20",
                           maxlength: "5",
@@ -1462,6 +1479,7 @@ var render = function () {
                             expression: "video_price",
                           },
                         ],
+                        staticClass: "input-pub-price",
                         attrs: {
                           cursorSpacing: "20",
                           maxlength: "5",
@@ -1536,6 +1554,7 @@ var render = function () {
                             expression: "live_price",
                           },
                         ],
+                        staticClass: "input-pub-price",
                         attrs: {
                           cursorSpacing: "20",
                           maxlength: "5",
@@ -1611,6 +1630,7 @@ var render = function () {
                             expression: "ad_price",
                           },
                         ],
+                        staticClass: "input-pub-price",
                         attrs: {
                           cursorSpacing: "20",
                           maxlength: "5",
@@ -1678,7 +1698,7 @@ var render = function () {
                         class: tagitem.taged ? "taged" : "",
                         on: {
                           tap: function ($event) {
-                            return _vm.select_tag(tagitem)
+                            return _vm.select_tag(index)
                           },
                         },
                       },

@@ -10,7 +10,7 @@
             :src="item.file"
             :key="item.file"
           ></video>
-          <view class="item_bottom ub">
+          <view class="item_bottom ub" v-if="myself">
             <view class="setVideoLeft">
               <view @tap="deleteVideo(index)" class="btn_set btn_delete"
                 >删除</view
@@ -23,14 +23,18 @@
           </view>
         </view>
       </block>
-      <view @tap="chooesVideo" class="video_none" v-if="videoData.length < 6">
+      <view
+        @tap="chooesVideo"
+        class="video_none"
+        v-if="videoData.length < 6 && myself"
+      >
         <image
           src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
         ></image>
         <view>添加形象视频</view>
       </view>
     </view>
-    <view catchtap="sub" class="sub_btn" v-if="videoData.length">
+    <view catchtap="sub" class="sub_btn" v-if="videoData.length && myself">
       <button type="primary" @tap="submit">保存</button>
     </view>
   </view>
@@ -45,12 +49,8 @@ export default {
   name: "editvideo",
   data() {
     return {
-      videoData: [
-        // {
-        //   cover: "",
-        //   file: "",
-        // },
-      ],
+      videoData: [],
+      myself: true,
     };
   },
   methods: {
@@ -277,6 +277,9 @@ export default {
     if (currPage.data.videoId) {
       this.upCover(currPage.data.homeimg, Number(currPage.data.videoId));
     }
+  },
+  onLoad: function (options) {
+    this.myself = options.myself === "true" ? true : false;
   },
 };
 </script>

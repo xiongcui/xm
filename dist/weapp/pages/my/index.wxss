@@ -1,5 +1,6 @@
 .my {
   background-color: #f7f7f7;
+  padding-bottom: 16rpx;
 }
 .my .my-head {
   display: -webkit-flex;
@@ -328,6 +329,15 @@
 }
 .my .sign_block image {
   margin-right: 6rpx;
+}
+.my .is_followed_box {
+  float: right;
+  font-size: 28rpx;
+}
+.my .feedback {
+  background: none;
+  padding: 0;
+  font-size: 30rpx;
 }
 .my .modal-bg {
   width: 100%;

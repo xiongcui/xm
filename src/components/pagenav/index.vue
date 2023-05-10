@@ -415,6 +415,10 @@ export default {
         item.ispick = index != 0 ? false : true;
         return item;
       });
+      this.purposeData = this.purposeData.map((item, index) => {
+        item.ispick = index != 0 ? false : true;
+        return item;
+      });
 
       this.identity_data = this.identityData.map((item, index) => {
         item.ispick = index != 0 ? false : true;

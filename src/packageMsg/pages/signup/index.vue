@@ -83,7 +83,7 @@
                   </view>
                 </view>
                 <view class="notice">
-                  来自通告：{{ item.summary }}
+                  来自通告：{{ item.title }}
                   <text class="notice-btn" @tap="signupAllDetail(item.oid)"
                     >查看全部报名</text
                   ></view
@@ -950,8 +950,14 @@ export default {
       );
     },
     signupDetail(sid, visited_status) {
+      // openPage(
+      //   "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+      //     sid +
+      //     "&visited_status=" +
+      //     visited_status
+      // );
       openPage(
-        "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+        "/packageMsg/pages/inviteDetail/index?sid=" +
           sid +
           "&visited_status=" +
           visited_status

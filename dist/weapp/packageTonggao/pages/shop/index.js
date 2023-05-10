@@ -325,8 +325,6 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 //
 //
 //
-//
-//
 
 
 
@@ -640,7 +638,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "db"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "gb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -661,33 +659,80 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
       }))();
     },
     submitNotice: function submitNotice(params) {
+      var _this5 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res;
+        var res, data, _this;
+
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "tb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "xb"])(params);
 
               case 3:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1");
-                _context2.next = 10;
+                data = res.data.data;
+                _this = _this5;
+                wx.showModal({
+                  title: "温馨提示",
+                  content: "\u53D1\u5E03\u901A\u544A\u4FE1\u606F\u6D88\u8017".concat(data.coin, "\u4E2A\u91D1\u8C46\uFF0C\u786E\u5B9A\u53D1\u5E03\u5417\uFF1F"),
+                  success: function success(res) {
+                    if (res.confirm) {
+                      console.log("用户点击确定");
+
+                      _this.noticePayment({
+                        oid: data.oid
+                      });
+                    } else if (res.cancel) {
+                      console.log("用户点击取消");
+                    }
+                  }
+                });
+                _context2.next = 11;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](0);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0");
 
-              case 10:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    },
+    noticePayment: function noticePayment(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "V"])(params);
+
+              case 3:
+                res = _context3.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1&msg=".concat(res.data.data));
+                _context3.next = 9;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](0);
+
+              case 9:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 7]]);
       }))();
     }
   },
@@ -769,9 +814,11 @@ var render = function () {
                     ? _c("view", { staticClass: "shop-select-item" }, [
                         _vm._v(_vm._s(_vm.platform)),
                       ])
-                    : _c("view", { staticClass: "shop-select-item" }, [
-                        _vm._v("请选择"),
-                      ]),
+                    : _c(
+                        "view",
+                        { staticClass: "shop-select-item input-placeholder" },
+                        [_vm._v("请选择")]
+                      ),
                 ]
               ),
             ],
@@ -820,7 +867,9 @@ var render = function () {
               }),
               _vm.localtion
                 ? _c("text", [_vm._v(" " + _vm._s(_vm.localtion))])
-                : _c("text", [_vm._v(" 请选择店铺地址")]),
+                : _c("text", { staticClass: "input-placeholder" }, [
+                    _vm._v(" 请选择店铺地址"),
+                  ]),
               _c("view", { staticClass: "shop-item-right" }, [
                 _c("image", {
                   attrs: {
@@ -1232,11 +1281,7 @@ var render = function () {
                 "picker",
                 {
                   staticClass: "shop-select",
-                  attrs: {
-                    mode: "date",
-                    start: "1960-09-01",
-                    value: "2000-01-01",
-                  },
+                  attrs: { mode: "date" },
                   on: { change: _vm.dateChange },
                 },
                 [
@@ -1244,9 +1289,11 @@ var render = function () {
                     ? _c("view", { staticClass: "shop-select-item" }, [
                         _vm._v(_vm._s(_vm.date)),
                       ])
-                    : _c("view", { staticClass: "shop-select-item" }, [
-                        _vm._v("请选择"),
-                      ]),
+                    : _c(
+                        "view",
+                        { staticClass: "shop-select-item input-placeholder" },
+                        [_vm._v("请选择")]
+                      ),
                 ]
               ),
             ],

@@ -257,7 +257,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Lb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -296,7 +296,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "w"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "x"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -331,9 +331,6 @@ component.options.__file = "src/pages/register/index.vue"
     this.nickname = userInfo.nickname;
   },
   onShow: function onShow() {
-    // let pages = getCurrentPages();
-    // let currPage = pages[pages.length - 1]; //当前页面
-    // let data = currPage.data;
     this.getCareer("");
   }
 });
@@ -463,11 +460,8 @@ var render = function () {
               _c(
                 "picker",
                 {
-                  attrs: {
-                    mode: "date",
-                    start: "1960-09-01",
-                    value: "2000-01-01",
-                  },
+                  staticClass: "picker",
+                  attrs: { mode: "date" },
                   on: { change: _vm.dateChange },
                 },
                 [
@@ -493,6 +487,7 @@ var render = function () {
               _c(
                 "picker",
                 {
+                  staticClass: "picker",
                   attrs: { mode: "region", value: "region" },
                   on: { change: _vm.bindRegionChange },
                 },

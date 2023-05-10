@@ -34,82 +34,82 @@
             :lower-threshold="200"
             :style="{ height: winHeight + 'px' }"
           >
-            <block v-if="list.length">
+            <block v-if="tonggaoList.length">
               <view
-                class="tonggao_box"
-                v-for="(item, index) in list"
+                v-for="(item, index) in tonggaoList"
                 :key="index"
+                class="componets-box"
+                @tap="godetail(item.basic.oid, item.author.uuid)"
               >
-                <view class="tonggao_title">
-                  <text class="list_title"
-                    >{{ item.major_subject }}{{ item.payment_format }}</text
-                  >
-                  <view class="list_loction">
-                    {{ item.author.province_name }}
-                  </view>
-                </view>
-                <view class="tonggao_ct">
-                  <view class="tonggao_left">
-                    <view class="tonggao_desc">
-                      {{ item.summary }}
-                    </view>
-                    <view class="tonggao_tags">
-                      <view class="tag-item">{{ item.second_name }}</view>
-                      <view
-                        class="tag-item"
-                        v-if="item.first_code == 'celebrity_spread'"
-                        >粉丝要求：{{ item.fans_number }}</view
-                      >
-                      <view
-                        class="tag-item"
-                        v-if="
-                          item.face_sex !== null &&
-                          item.first_code != 'celebrity_spread'
-                        "
-                        >性别要求：{{ formatSex(item.face_sex) }}</view
+                <view class="tonggao-recommend">
+                  <view class="tonggao-recommend-top">
+                    <view class="tonggao-info-title">
+                      <block v-if="item.topic.headline.tag.length">
+                        <image
+                          class="recommend-image"
+                          v-for="(tagitem, tagindex) in item.topic.headline.tag"
+                          :key="tagindex"
+                          :src="tagitem"
+                        >
+                        </image>
+                      </block>
+                      <view class="tonggao-txt">
+                        {{ item.topic.headline.title }}</view
                       >
                     </view>
-                    <view class="tonggao_info">
+                  </view>
+                  <view class="tonggao-recommend-bt">
+                    <view class="tonggao-recommend-info">
+                      <view class="recommend-style">
+                        <text class="recommend-label">
+                          {{ item.topic.target }}
+                        </text>
+                        <text class="recommend-label2">
+                          {{ item.topic.payment.title }}
+                        </text>
+                      </view>
+                      <view class="tonggao-tags">
+                        <view
+                          class="tag-item"
+                          v-for="(tag, tagIndex) in item.subtitle.first_label"
+                          :key="tagIndex"
+                          >{{ tag.name }}</view
+                        >
+                      </view>
+                    </view>
+                    <view
+                      class="tonggao-recommend-img"
+                      v-if="item.details.media.file_type == 'picture'"
+                    >
                       <image
-                        :src="
-                          item.author.avatar
-                            ? item.author.avatar
-                            : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
-                        "
-                        class="head-img"
-                      ></image>
-                      {{ item.author.nickname }}
-                      <image
-                        v-if="item.author.is_security"
-                        src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge.png"
-                        class="pledge-img"
+                        :src="item.details.media.cover[0]"
+                        mode="aspectFill"
                       ></image>
                     </view>
                   </view>
-                  <view class="tonggao-right">
-                    <image mode="aspectFill" :src="item.cover[0]"></image>
-                  </view>
                 </view>
-                <view class="tonggao_bottom">
-                  <view class="tonggao_time">
+                <view class="tonggao-bottom">
+                  <view class="tonggao-head">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/common/time.png"
+                      :src="
+                        item.author.avatar
+                          ? item.author.avatar
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                      "
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.author.nickname }}
                   </view>
-                  <view class="tonggao_bottom_rt">
-                    <view class="tonggao_yuepai">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/user/index/yuepai.png"
-                      ></image>
-                      {{ item.statistic.invite_cnt }}
-                    </view>
-                    <view class="tonggao_read">
-                      <image
-                        src="https://yuepai-oss.qubeitech.com/static/eyes.png"
-                      ></image>
-                      {{ item.statistic.read_cnt }}
-                    </view>
+                  <view class="tonggao-yuepai">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+                    ></image>
+                    {{ item.statistic.invite_cnt }}
+                  </view>
+                  <view class="tonggao-read">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+                    ></image>
+                    {{ item.statistic.read_cnt }}
                   </view>
                 </view>
               </view>
@@ -131,29 +131,36 @@
             :lower-threshold="200"
             :style="{ height: winHeight + 'px' }"
           >
-            <block v-if="list.length">
-              <view class="list_box" v-for="(item, index) in list" :key="index">
+            <block v-if="yuepaiList.length">
+              <view
+                v-for="(item, index) in yuepaiList"
+                v-if="yuepaiList.length > 0"
+                :key="index"
+                class="componets-zuopin-box"
+                @tap="goYuepaiDetail(item.basic.oid, item.author.uuid)"
+              >
                 <view class="list_top">
                   <view class="list_top_left">
                     <image
                       :src="
                         item.author.avatar
                           ? item.author.avatar
-                          : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
+                          : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
                       "
                       class="avatar"
+                      @tap="goZhuye(item.author.uuid)"
                     ></image>
                     <view class="list_info">
                       <view class="list_name">
                         {{ item.author.nickname }}
                         <block v-if="item.author.sex !== null">
                           <image
-                            src="https://yuepai-oss.qubeitech.com/static/nan.png"
+                            src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                             class="list_sex"
                             v-if="item.author.sex == 1"
                           ></image>
                           <image
-                            src="https://yuepai-oss.qubeitech.com/static/nv.png"
+                            src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                             class="list_sex"
                             v-if="item.author.sex == 0"
                           ></image>
@@ -161,111 +168,91 @@
                       </view>
                       <view class="list_p">
                         <text>
-                          {{ item.author.career_list[0] }} |
-                          {{ item.author.province_name }}</text
+                          {{
+                            item.author.career_list.length
+                              ? item.author.career_list[0]
+                              : null
+                          }}</text
                         >
-                        <image
-                          src="https://yuepai-oss.qubeitech.com/static/common/icon_real.png"
-                          class="list_p_img"
-                          v-if="item.author.is_certify"
-                        ></image>
-                        <image
-                          src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge_none.png"
-                          class="list_p_img"
-                          v-else
-                        ></image>
-                        <image
-                          src="https://yuepai-oss.qubeitech.com/static/common/icon_pledge.png"
-                          class="list_p_img"
-                          v-if="item.author.is_security"
-                        ></image>
-                        <image
-                          src="https://yuepai-oss.qubeitech.com/static/common/icon_real_none.png"
-                          class="list_p_img"
-                          v-else
-                        ></image>
+                        <view class="icon_real" v-if="item.author.is_certify"
+                          >已实名</view
+                        >
+                        <view class="icon_pledge" v-if="item.author.is_security"
+                          >已担保</view
+                        >
                       </view>
                     </view>
                   </view>
-                  <!-- <view class="list_collection">
-                    <image
-                      src="https://yuepai-oss.qubeitech.com/static/common/icon_favorite.png"
-                    ></image>
-                  </view> -->
+                  <view class="list_top_rt">
+                    <view class="list_date">{{
+                      item.basic.date_humanize
+                    }}</view>
+                  </view>
                 </view>
                 <view class="list_content">
                   <view class="list_title">
-                    {{ item.major_subject }}
-                    <text
-                      v-if="
-                        (item.payment_type == 300 && item.payment_range == 1) ||
-                        (item.payment_type == 400 && item.payment_range == 1)
-                      "
-                      >{{ item.payment_name }}{{ item.payment_min_amount }}-{{
-                        item.payment_max_amount
-                      }}{{ item.payment_unit }}</text
-                    >
-                    <text
-                      v-if="
-                        (item.payment_type == 300 && item.payment_range == 0) ||
-                        (item.payment_type == 400 && item.payment_range == 0)
-                      "
-                      >{{ item.payment_name }}{{ item.payment_amount
-                      }}{{ item.payment_unit }}
-                    </text>
+                    <view class="recommend-style">
+                      <view class="recommend-label">
+                        {{ item.topic.target }}
+                      </view>
+
+                      <view class="recommend-label2">
+                        {{ item.topic.payment.title }}
+                      </view>
+                    </view>
+                    <view class="list_loction">
+                      {{ item.topic.face_city.name }}
+                    </view>
                   </view>
-                  <view class="list_loction">
-                    {{ item.face_province_name }}
-                  </view>
+                  <view class="list_title_desc">{{
+                    item.topic.headline.title
+                  }}</view>
                 </view>
-                <view class="list_desc">
-                  {{ item.summary }}
-                </view>
-                <view class="list_img" v-if="item.file_type == 'picture'">
+                <view
+                  class="list_img"
+                  v-if="item.details.media.file_type == 'picture'"
+                >
                   <scroll-view :enhanced="true" :scrollX="true">
                     <image
                       :src="url"
                       mode="aspectFill"
                       class="list_img_item"
-                      v-for="(url, coverIndex) in item.cover"
+                      v-for="(url, coverIndex) in item.details.media.cover"
                       :key="coverIndex"
-                      @tap.stop="previewImage(url, item.cover)"
                     ></image>
                   </scroll-view>
                 </view>
-                <view class="list_video" v-if="item.file_type == 'video'">
+                <view
+                  class="list_video"
+                  v-if="item.details.media.file_type == 'video'"
+                >
                   <video
                     objectFit="cover"
-                    :poster="item.cover[0]"
-                    :src="item.video_cover && item.video_cover[0]"
+                    :poster="item.details.media.cover[0]"
+                    :src="
+                      item.details.media.video_cover &&
+                      item.details.media.video_cover[0]
+                    "
                     class="list_video-width"
                     @tap.stop=""
                   ></video>
                 </view>
-                <view class="list_tags">
-                  <view
-                    class="tag"
-                    v-for="(styleItem, styleIndex) in item.style_label"
-                    :key="styleIndex"
-                    >{{ styleItem }}</view
-                  >
-                </view>
                 <view class="list_bottom">
                   <view class="list_time">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/common/time.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
                     ></image>
-                    {{ item.date_humanize }}
+                    {{ item.basic.date_humanize }}
                   </view>
                   <view class="list_yuepai">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/user/index/yuepai.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
                     ></image>
                     收到约拍 {{ item.statistic.invite_cnt }}
                   </view>
                   <view class="list_read">
                     <image
-                      src="https://yuepai-oss.qubeitech.com/static/eyes.png"
+                      src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
                     ></image>
                     阅读 {{ item.statistic.read_cnt }}
                   </view>
@@ -295,6 +282,7 @@
                   class="zuopin_box"
                   v-for="(item, index) in list"
                   :key="index"
+                  @tap="gozuopinDetail(item.oid, item.author_id)"
                 >
                   <image
                     v-if="item.file_type == 'picture'"
@@ -370,7 +358,7 @@
 <script>
 import "./index.scss";
 import { collectList } from "../../../../api/index";
-import { errortip } from "../../../../utils/util";
+import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "collection",
   data() {
@@ -380,6 +368,8 @@ export default {
       winWidth: 0,
       winHeight: 0,
       list: [],
+      tonggaoList: [],
+      yuepaiList: [],
       type: "NT",
       pageNum: 1,
       pageSize: 10,
@@ -395,6 +385,8 @@ export default {
         this.type = type;
         this.pageNum = 1;
         this.list = [];
+        this.tonggaoList = [];
+        this.yuepaiList = [];
         this.query();
       }
     },
@@ -422,6 +414,30 @@ export default {
       };
       this.collectList(params);
     },
+    godetail(oid, author_id) {
+      openPage(
+        "/packageTonggao/pages/detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
+    goYuepaiDetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
+    gozuopinDetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/zuopin/zuopin_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
+    },
     async collectList(params) {
       try {
         let res = await collectList(params);
@@ -430,7 +446,13 @@ export default {
           return false;
         }
         let data = res.data.data.items;
-        this.list = this.list.concat(data);
+        if (params.type == "NT") {
+          this.tonggaoList = this.tonggaoList.concat(data);
+        } else if (params.type == "NE") {
+          this.yuepaiList = this.yuepaiList.concat(data);
+        } else {
+          this.list = this.list.concat(data);
+        }
       } catch (error) {}
     },
   },

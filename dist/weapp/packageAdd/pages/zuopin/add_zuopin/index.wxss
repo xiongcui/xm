@@ -9,6 +9,10 @@
           flex-direction: column;
   color: #333333;
 }
+.zuopin .input-placeholder,
+.zuopin .textarea-placeholder {
+  font-size: 28rpx;
+}
 .zuopin .zuopin-name {
   width: 100%;
 }

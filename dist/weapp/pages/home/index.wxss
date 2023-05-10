@@ -3,7 +3,7 @@
   background-color: #f4f4f4;
 }
 .home #list {
-  min-height: calc(100vh - 170rpx);
+  min-height: calc(100vh - 160rpx);
   position: relative;
 }
 .home .custom_head {
@@ -54,8 +54,8 @@
 }
 .home .head_sign image,
 .home .head_signed image {
-  width: 60rpx;
-  height: 60rpx;
+  width: 54rpx;
+  height: 54rpx;
 }
 .home .head_signed {
   color: #ffffff;
@@ -69,7 +69,7 @@
   font-size: 32rpx;
 }
 .home .head_nav {
-  padding: 20rpx 30rpx;
+  padding: 16rpx 30rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -321,6 +321,7 @@
   display: flex;
   font-size: 30rpx;
   font-weight: bold;
+  line-height: 34rpx;
 }
 .home .recommend-ct .tonggao-recommend-bt {
   display: -webkit-flex;
@@ -330,7 +331,6 @@
 .home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-img image {
   width: 140rpx;
   height: 90%;
-  margin-left: 16rpx;
 }
 .home .recommend-ct .tonggao-recommend-bt .tonggao-txt {
   white-space: nowrap;
@@ -361,7 +361,7 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 16rpx;
+  margin: 16rpx 0;
 }
 .home .recommend-ct .tonggao-recommend-bt .tonggao-tags .tag-item {
   padding: 4rpx 10rpx;
@@ -370,7 +370,6 @@
   font-size: 26rpx;
   border-radius: 8rpx;
   margin-right: 10rpx;
-  margin-bottom: 20rpx;
 }
 .home .recommend-ct .tonggao-recommend-bt .tonggao-recommend-price {
   display: -webkit-flex;
@@ -427,8 +426,8 @@
   border-radius: 0 8rpx 8rpx 0;
 }
 .home .recommend-image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 34rpx;
+  height: 34rpx;
   margin-right: 16rpx;
 }
 .home .tonggao-bottom {
@@ -759,12 +758,12 @@
 .home .nav_list .nav_item {
   color: #333333;
   font-size: 30rpx;
-  line-height: 82rpx;
   padding: 0 16rpx;
+  line-height: 78rpx;
 }
 .home .swiper_tab {
   background-color: #fff;
-  height: 88rpx;
+  height: 78rpx;
   white-space: nowrap;
   width: calc(100% - 110rpx);
   z-index: 99;
@@ -807,9 +806,9 @@
   background-color: #f1f1f1;
   border-radius: 8rpx;
   color: #666;
-  font-size: 26rpx;
-  height: 50rpx;
-  line-height: 50rpx;
+  font-size: 24rpx;
+  height: 44rpx;
+  line-height: 44rpx;
   margin: 16rpx 18rpx 0 8rpx;
   padding-left: 10rpx;
 }
@@ -828,8 +827,8 @@
   vertical-align: middle;
   width: 10rpx;
   position: absolute;
-  bottom: 12rpx;
-  right: 24rpx;
+  bottom: 8rpx;
+  right: 20rpx;
 }
 .home .ub {
   display: -webkit-flex;
@@ -996,4 +995,47 @@
   font-size: 24rpx;
   color: #fcda2f;
   margin-top: 6rpx;
+}
+.login-tost {
+  padding: 16rpx 30rpx;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 9999;
+}
+.login-tost .login-tost-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.login-tost .login-tost-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.login-tost .login-tost-p {
+  font-size: 26rpx;
+}
+.login-tost .login-tost-rt {
+  line-height: 66rpx;
+  height: 66rpx;
+  padding: 0 30rpx;
+  border-radius: 33rpx;
+  background: #fe5457;
+  font-size: 30rpx;
+  margin-right: 46rpx;
 }

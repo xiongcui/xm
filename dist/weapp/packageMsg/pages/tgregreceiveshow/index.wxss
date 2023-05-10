@@ -145,6 +145,7 @@ page {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  line-height: 60rpx;
 }
 
 .tgregreceiveshow .tgregreceive_contact .contact_info_left {

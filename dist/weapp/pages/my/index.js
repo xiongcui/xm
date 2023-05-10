@@ -540,6 +540,8 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -572,11 +574,25 @@ component.options.__file = "src/pages/my/index.vue"
       shareImg: ""
     };
   },
+  computed: {
+    islogin: function islogin() {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        return true;
+      }
+
+      return false;
+    }
+  },
   methods: {
     showSign: function showSign() {
       this.submitSign("");
     },
     open_settings: function open_settings() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/index/index");
     },
     close: function close() {
@@ -586,31 +602,76 @@ component.options.__file = "src/pages/my/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
     },
     goZhuye: function goZhuye() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index");
     },
     goZuopin: function goZuopin() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_list/index");
     },
     goCollection: function goCollection() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/collection/index");
     },
     pledgecash: function pledgecash() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/creditGuarantee/index");
     },
     myCertification: function myCertification() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
     },
     myYuepai: function myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
     },
     myZuopin: function myZuopin() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
     },
     goVip: function goVip() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/vip/index");
     },
     goCoin: function goCoin() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/coin/index");
     },
     onMyAd: function onMyAd() {
@@ -654,7 +715,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Ib"])(params);
 
               case 3:
                 res = _context.sent;
@@ -684,14 +745,29 @@ component.options.__file = "src/pages/my/index.vue"
               case 8:
                 _this.infor = res.data.data;
                 _this.coin = res.data.data.acct.coin;
-                _context.next = 14;
+                _context.next = 16;
                 break;
 
               case 12:
                 _context.prev = 12;
                 _context.t0 = _context["catch"](0);
+                _this.infor = {
+                  age: 0,
+                  avatar: "",
+                  realname: "",
+                  ispledge: "",
+                  statistic: {
+                    followed_cnt: 0,
+                    follower_cnt: 0,
+                    invite_cnt: 0,
+                    read_cnt: 0,
+                    track_cnt: 0,
+                    visitor_cnt: 0
+                  }
+                };
+                _this.coin = 0;
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
@@ -710,7 +786,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "G"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "I"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -739,7 +815,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "ob"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -769,7 +845,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "pb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -802,7 +878,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "yb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -905,36 +981,38 @@ var render = function () {
                     on: { tap: _vm.open_settings },
                   }),
                 ]),
-                _c("block", [
-                  _vm.is_today_sign
-                    ? _c("view", { staticClass: "sign_block fl" }, [
-                        _c("image", {
-                          staticClass: "icon_sign",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_signed.png",
-                          },
-                        }),
-                        _c("view", { staticClass: "is_sign" }, [
-                          _vm._v("已签到"),
-                        ]),
-                      ])
-                    : _c(
-                        "view",
-                        {
-                          staticClass: "sign_block fl",
-                          on: { tap: _vm.showSign },
-                        },
-                        [
-                          _c("image", {
-                            staticClass: "icon_sign",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_sign.png",
+                _vm.islogin
+                  ? _c("block", [
+                      _vm.is_today_sign
+                        ? _c("view", { staticClass: "sign_block fl" }, [
+                            _c("image", {
+                              staticClass: "icon_sign",
+                              attrs: {
+                                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_signed.png",
+                              },
+                            }),
+                            _c("view", { staticClass: "is_sign" }, [
+                              _vm._v("已签到"),
+                            ]),
+                          ])
+                        : _c(
+                            "view",
+                            {
+                              staticClass: "sign_block fl",
+                              on: { tap: _vm.showSign },
                             },
-                          }),
-                          _c("view", [_vm._v("签到")]),
-                        ]
-                      ),
-                ]),
+                            [
+                              _c("image", {
+                                staticClass: "icon_sign",
+                                attrs: {
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/user/index/icon_sign.png",
+                                },
+                              }),
+                              _c("view", [_vm._v("签到")]),
+                            ]
+                          ),
+                    ])
+                  : _vm._e(),
               ],
               1
             ),
@@ -1107,11 +1185,13 @@ var render = function () {
             _c("text", [_vm._v("足迹")]),
           ]),
         ]),
-        _c(
-          "view",
-          { staticClass: "my-conunt-rt", on: { tap: _vm.personDetail } },
-          [_vm._v(" 编辑资料 ")]
-        ),
+        _vm.islogin
+          ? _c(
+              "view",
+              { staticClass: "my-conunt-rt", on: { tap: _vm.personDetail } },
+              [_vm._v(" 编辑资料 ")]
+            )
+          : _vm._e(),
       ]),
     ]),
     _c("view", { staticClass: "my-ct" }, [

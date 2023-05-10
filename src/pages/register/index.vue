@@ -60,12 +60,7 @@
         <view class="item ub item-b">
           <view class="item_label">生日</view>
           <view class="ub-f1 item_input">
-            <picker
-              @change="dateChange"
-              mode="date"
-              start="1960-09-01"
-              value="2000-01-01"
-            >
+            <picker @change="dateChange" mode="date" class="picker">
               <view class="picker_children picked" v-if="date">{{ date }}</view>
               <view class="picker_children" v-else>请选择生日</view>
             </picker>
@@ -74,7 +69,12 @@
         <view class="item ub item-b">
           <view class="item_label">地区</view>
           <view class="ub-f1 item_input">
-            <picker mode="region" @change="bindRegionChange" value="region">
+            <picker
+              mode="region"
+              @change="bindRegionChange"
+              value="region"
+              class="picker"
+            >
               <view
                 class="picker_children pick_city picked"
                 v-if="select_city"
@@ -219,9 +219,6 @@ export default {
     this.nickname = userInfo.nickname;
   },
   onShow() {
-    // let pages = getCurrentPages();
-    // let currPage = pages[pages.length - 1]; //当前页面
-    // let data = currPage.data;
     this.getCareer("");
   },
 };

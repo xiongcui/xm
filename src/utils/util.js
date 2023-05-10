@@ -88,9 +88,7 @@ export const request = (params) => {
         if (res.data.code == 200) {
           resolve(res);
         } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
-          wx.redirectTo({
-            url: "/pages/login/index",
-          });
+          wx.clearStorage();
         } else {
           errortip(res.data.msg);
           reject(res);

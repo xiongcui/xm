@@ -102,7 +102,6 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 //
 //
 //
-//
 
 
 
@@ -111,7 +110,8 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
   data: function data() {
     return {
       imgs: [],
-      uploadImgList: []
+      uploadImgList: [],
+      myself: true
     };
   },
   methods: {
@@ -227,7 +227,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbum */ "Cb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -261,7 +261,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "xb"])(path, params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* uploadImagePhoto */ "Bb"])(path, params);
 
               case 3:
                 res = _context2.sent;
@@ -292,7 +292,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userAlbumDetail */ "Db"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -329,6 +329,9 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
       this.imgs[Number(currPage.data.imgId)] = currPage.data.homeimg;
       this.imgs = JSON.parse(JSON.stringify(this.imgs));
     }
+  },
+  onLoad: function onLoad(options) {
+    this.myself = options.myself === "true" ? true : false;
   }
 });
 
@@ -351,7 +354,6 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "editpersonimg" }, [
     _c("view", { staticClass: "personimgs ub" }, [
-      _c("view", { staticClass: "side_gap" }),
       _c("view", { staticClass: "ub-f1" }, [
         _c("view", { staticClass: "imgsblock" }, [
           _c(
@@ -368,19 +370,21 @@ var render = function () {
                       src: item,
                     },
                   }),
-                  _c(
-                    "view",
-                    {
-                      staticClass: "preview_delet",
-                      attrs: { id: index },
-                      on: {
-                        tap: function ($event) {
-                          return _vm.delete_preview(index)
+                  _vm.myself
+                    ? _c(
+                        "view",
+                        {
+                          staticClass: "preview_delet",
+                          attrs: { id: index },
+                          on: {
+                            tap: function ($event) {
+                              return _vm.delete_preview(index)
+                            },
+                          },
                         },
-                      },
-                    },
-                    [_vm._v("编辑")]
-                  ),
+                        [_vm._v("编辑")]
+                      )
+                    : _vm._e(),
                   index == 0
                     ? _c("view", { staticClass: "icon_coverimg" }, [
                         _vm._v(" 封面 "),
@@ -388,7 +392,7 @@ var render = function () {
                     : _vm._e(),
                 ])
               }),
-              _vm.imgs.length < 9
+              _vm.imgs.length < 9 && _vm.myself
                 ? _c(
                     "view",
                     {
@@ -415,13 +419,16 @@ var render = function () {
         ]),
         _c("view", { staticStyle: { clear: "both" } }),
       ]),
-      _c("view", { staticClass: "side_gap_right" }),
     ]),
-    _c("view", { staticClass: "sub_btn" }, [
-      _c("button", { attrs: { type: "primary" }, on: { tap: _vm.submit } }, [
-        _vm._v("保存"),
-      ]),
-    ]),
+    _vm.myself
+      ? _c("view", { staticClass: "sub_btn" }, [
+          _c(
+            "button",
+            { attrs: { type: "primary" }, on: { tap: _vm.submit } },
+            [_vm._v("保存")]
+          ),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

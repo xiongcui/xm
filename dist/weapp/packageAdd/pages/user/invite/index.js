@@ -223,7 +223,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteImage */ "C"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteImage */ "D"])(params);
 
               case 3:
                 res = _context.sent;
@@ -254,7 +254,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "ob"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -284,7 +284,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "pb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -317,7 +317,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "qb"])(params);
 
               case 3:
                 res = _context4.sent;

@@ -81,12 +81,13 @@ export default {
     logout() {
       wx.clearStorage();
       errortip("退出成功");
+      var page = getCurrentPages().pop();
+      console.log(page);
+      if (page == undefined || page == null) return;
+      page.onLoad();
       wx.navigateBack({
         delta: 1,
       });
-      var page = getCurrentPages().pop();
-      if (page == undefined || page == null) return;
-      page.onLoad();
     },
     personDetail() {
       openPage("/packageAdd/pages/user/editinfor/index");

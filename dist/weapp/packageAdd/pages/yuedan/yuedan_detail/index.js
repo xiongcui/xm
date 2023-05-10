@@ -307,7 +307,6 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
 //
 //
 //
-//
 
 
 
@@ -402,14 +401,9 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
     },
     launchYuepai: function launchYuepai() {
       if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        var userInfo = wx.getStorageSync("userInfo");
-        var uuid = userInfo.uuid;
-
-        if (uuid != this.author_id) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
-        } else {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("自己不可约拍自己哦，看看别的吧");
-        }
+        this.applyVerify({
+          oid: this.oid
+        });
       } else {
         wx.redirectTo({
           url: "/pages/login/index"
@@ -481,7 +475,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteAdviseList */ "A"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteAdviseList */ "B"])(params);
 
               case 3:
                 res = _context.sent;
@@ -563,7 +557,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteInfo */ "D"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* inviteInfo */ "E"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -602,7 +596,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* giveUp */ "y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* giveUp */ "z"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -634,7 +628,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "kb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -664,7 +658,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "ob"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -694,7 +688,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "pb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -727,7 +721,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Hb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -758,7 +752,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Sb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -776,6 +770,43 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
             }
           }
         }, _callee8, null, [[0, 7]]);
+      }))();
+    },
+    applyVerify: function applyVerify(params) {
+      var _this8 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee9() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                _context9.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyVerify */ "h"])(params);
+
+              case 3:
+                res = _context9.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.oid);
+                _context9.next = 10;
+                break;
+
+              case 7:
+                _context9.prev = 7;
+                _context9.t0 = _context9["catch"](0);
+
+                if (_context9.t0.data.error_code == 21030 || _context9.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context9.t0.data.msg, "&code=").concat(_context9.t0.data.error_code));
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(_context9.t0.data.msg);
+                }
+
+              case 10:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, null, [[0, 7]]);
       }))();
     }
   },
@@ -1054,6 +1085,7 @@ var render = function () {
           : _vm._e(),
         _c("view", { staticClass: "tonggao_box" }, [
           _c("view", { staticClass: "tonggao_title_left" }, [
+            _c("text", { staticClass: "border-left" }),
             _vm._v(" 约拍详情 "),
           ]),
           _c("view", { staticClass: "tonggao_desc" }, [
@@ -1125,6 +1157,7 @@ var render = function () {
         ? _c("view", { staticClass: "recommend" }, [
             _c("view", { staticClass: "recommend-title" }, [
               _c("view", { staticClass: "recommend-name" }, [
+                _c("text", { staticClass: "border-left" }),
                 _vm._v(" 他的作品 "),
               ]),
               _c(
@@ -1246,7 +1279,7 @@ var render = function () {
           _c(
             "view",
             { staticClass: "yuepai_fixed_rt", on: { tap: _vm.launchYuepai } },
-            [_vm._v(" 约拍 ")]
+            [_vm._v(" 立即约拍 ")]
           ),
         ]
       ),

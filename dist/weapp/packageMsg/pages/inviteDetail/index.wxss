@@ -25,11 +25,21 @@ page {
   width: 710rpx;
 }
 
+.reg_remark,
+.reg_info {
+  padding-top: 16rpx;
+}
+
 .yuepai_from_txt {
   background: #f9f9f9;
   padding: 16rpx;
   color: #333333;
   font-size: 26rpx;
+}
+
+.yuepai_from_txt .yuepai_from_title {
+  font-size: 26rpx;
+  font-weight: bold;
 }
 
 .avatar {
@@ -139,8 +149,7 @@ page {
   color: #333;
   font-size: 26rpx;
   height: 190rpx;
-  margin-top: 20rpx;
-  padding: 20rpx;
+  padding: 16rpx 20rpx;
   width: 650rpx;
 }
 
@@ -176,7 +185,7 @@ page {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 22rpx 0 13rpx;
-  width: 220rpx;
+  width: 180rpx;
 }
 
 .type_icon {
@@ -192,7 +201,7 @@ page {
 
 .type_text {
   color: #2f2f2f;
-  font-size: 24rpx;
+  font-size: 26rpx;
   line-height: 33rpx;
   text-align: center;
 }
@@ -212,7 +221,7 @@ page {
 
 .info_content,
 .info_content_none {
-  font-size: 22rpx;
+  font-size: 26rpx;
   line-height: 30rpx;
   padding-left: 30rpx;
 }
@@ -252,7 +261,7 @@ page {
 }
 
 .content_text {
-  width: 370rpx;
+  width: 410rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -276,7 +285,16 @@ page {
   overflow: hidden;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  width: 340rpx;
+  width: 400rpx;
+  position: relative;
+  padding-right: 60rpx;
+  margin-bottom: 6rpx;
+}
+
+.content_address .copy {
+  position: absolute;
+  right: 16rpx;
+  top: 0;
 }
 
 .content_price {

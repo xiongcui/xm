@@ -17,6 +17,14 @@ page {
       top: 0px;
     }
   }
+  .border-left {
+    display: inline-block;
+    background-color: #ff1e3e;
+    border-radius: 4rpx;
+    height: 30rpx;
+    margin-right: 16px;
+    width: 8rpx;
+  }
   .detail_info {
     background: #ffffff;
     border-radius: 16px;
@@ -62,6 +70,7 @@ page {
       margin-top: -16px;
       background: #ffffff;
       position: relative;
+      line-height: 34px;
     }
     .split_line {
       margin: 0px 16px;
@@ -279,9 +288,10 @@ page {
     border-radius: 16px;
     padding: 16px;
     .tonggao_title_left {
-      border-left: 4px solid #fe5457;
-      padding-left: 16px;
+      display: flex;
+      align-items: center;
       font-size: 30px;
+      font-weight: bold;
       color: #333333;
       margin-bottom: 16px;
     }
@@ -338,14 +348,13 @@ page {
       }
     }
     .yuepai_fixed_rt {
-      width: 100px;
-      height: 60px;
-      line-height: 60px;
+      width: 280px;
       text-align: center;
       background: #fe5457;
       color: #ffffff;
       font-size: 30px;
-      border-radius: 10px;
+      border-radius: 40px;
+      padding: 14px 40px;
     }
   }
   .share-btn {
@@ -365,16 +374,15 @@ page {
     margin: 16px;
   }
   .recommend-title {
-    padding: 16px;
+    padding: 16px 16px 16px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     .recommend-name {
       font-size: 30px;
       font-weight: bold;
-      margin-right: 16px;
-      border-left: 4px solid #fe5457;
-      padding-left: 16px;
+      display: flex;
+      align-items: center;
       color: #333333;
     }
     .recommend-rt {
@@ -437,7 +445,7 @@ page {
       .tonggao-tags {
         display: flex;
         flex-direction: column;
-        margin-top: 16px;
+        margin: 16px 0px;
         .tag-item {
           padding: 4px 10px;
           background: none;
@@ -445,7 +453,6 @@ page {
           font-size: 22px;
           border-radius: 8px;
           margin-right: 10px;
-          margin-bottom: 20px;
         }
       }
       .tonggao-recommend-price {

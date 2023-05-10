@@ -4,13 +4,13 @@
     "setting": {
         "compileHotReLoad": true
     },
-    "libVersion": "2.27.0",
+    "libVersion": "2.31.0",
     "condition": {
         "miniprogram": {
             "list": [
                 {
-                    "name": "通告管理",
-                    "pathName": "packageTonggao/pages/tonggao_manage/index",
+                    "name": "提示",
+                    "pathName": "packageAdd/pages/tips/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -37,8 +37,8 @@
                     "scene": null
                 },
                 {
-                    "name": "报名详情",
-                    "pathName": "packageMsg/pages/tgregreceiveshow/index",
+                    "name": "注册",
+                    "pathName": "pages/register/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

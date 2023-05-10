@@ -6,6 +6,7 @@
   height: 100vh;
   text-align: center;
   color: #333333;
+  padding: 0px 30px;
   .tips-sucess,
   .tips-fail {
     display: flex;
@@ -13,6 +14,7 @@
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    width: 100%;
   }
   .tips-img {
     width: 200px;
@@ -24,13 +26,13 @@
     margin-bottom: 16px;
   }
   .tips-btn {
-    background: #26b248;
     padding: 10px 20px;
     font-size: 30px;
-    width: 100px;
-    color: #ffffff;
+    color: rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     margin-top: 16px;
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    margin-right: 30px;
   }
   .toptip {
     background-color: #fff9ed;
@@ -74,5 +76,93 @@
     width: 102rpx;
     position: absolute;
     right: 0px;
+  }
+  .subscribe-btn {
+    border: 2rpx solid #ff6010;
+    border-radius: 30rpx;
+    color: #ff6010;
+    font-size: 26rpx;
+    padding: 10px 40px;
+    margin-top: 16px;
+    margin-bottom: 46px;
+  }
+  .subscribe-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    border-radius: 8px;
+    background: #f2f7fa;
+    image {
+      width: 60px;
+      height: 60px;
+      margin-right: 16px;
+    }
+    .subscribe-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .subscribe-ct {
+      text-align: left;
+      margin-right: 60px;
+    }
+    .subscribe-p {
+      font-size: 26px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+    .subscribe-rt {
+      color: #ff1e3e;
+      font-size: 28px;
+    }
+  }
+  .tips-box-btns {
+    justify-content: space-between;
+    display: flex;
+    margin-top: 400px;
+  }
+  .modal-box {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column-reverse;
+    .modal-cotent {
+      padding: 0px 30px 30px 30px;
+      background: #ffffff;
+      border-radius: 20px 20px 0px 0px;
+    }
+    .modal-title {
+      font-size: 32px;
+      font-weight: bold;
+      padding: 16px 0px;
+    }
+    .subscribe-rt text {
+      background: #ff1e3e;
+      color: #ffffff;
+      padding: 10px 30px;
+      border-radius: 30px;
+    }
+    .official-account-qrcode {
+      width: 400px;
+      height: 400px;
+    }
+    .official-account-txt {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 28px;
+      margin-top: 36px;
+    }
+    .know {
+      width: 50%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 40px;
+      border-radius: 30px;
+      color: #ffffff;
+      margin: 16px auto;
+    }
   }
 }

@@ -45,8 +45,8 @@
 
 <script>
 import "./index.scss";
-import { publicConfig } from "../../../api/index";
-import { openPage } from "../../../utils/util";
+import { publicConfig, publishVerify } from "../../../api/index";
+import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "tonggao",
   data() {
@@ -87,6 +87,7 @@ export default {
         },
       ],
       maskData: [],
+      verifyP1: null,
     };
   },
   methods: {
@@ -101,32 +102,42 @@ export default {
       this.visible = false;
     },
     goRelease(type) {
-      if (type == 1) {
-        openPage("/packageTonggao/pages/brand/index");
-      }
-      if (type == 2) {
-        openPage("/packageTonggao/pages/shop/index");
-      }
-      if (type == 3) {
-        openPage(
-          "/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002"
-        );
-      }
-      if (type == 4) {
-        openPage(
-          "/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001"
-        );
-      }
+      this.verifyP1 = this.publishVerify({
+        project_code: "NT",
+      });
+      Promise.all([this.verifyP1]).then(() => {
+        if (type == 1) {
+          openPage("/packageTonggao/pages/brand/index");
+        }
+        if (type == 2) {
+          openPage("/packageTonggao/pages/shop/index");
+        }
+        if (type == 3) {
+          openPage(
+            "/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002"
+          );
+        }
+        if (type == 4) {
+          openPage(
+            "/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001"
+          );
+        }
+      });
     },
     maskClick(row) {
-      openPage(
-        "/packageTonggao/pages/add/index?code=" +
-          this.code +
-          "&type=" +
-          row.value +
-          "&key=" +
-          row.key
-      );
+      this.verifyP1 = this.publishVerify({
+        project_code: "NT",
+      });
+      Promise.all([this.verifyP1]).then(() => {
+        openPage(
+          "/packageTonggao/pages/add/index?code=" +
+            this.code +
+            "&type=" +
+            row.value +
+            "&key=" +
+            row.key
+        );
+      });
     },
     async publicConfig(params) {
       try {
@@ -134,6 +145,19 @@ export default {
         this.maskData = res.data.data;
         this.visible = true;
       } catch (error) {}
+    },
+    async publishVerify(params) {
+      try {
+        let res = await publishVerify(params);
+      } catch (error) {
+        if (error.data.error_code == 21030 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        } else {
+          errortip(error.data.msg);
+        }
+      }
     },
   },
 };

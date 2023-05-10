@@ -83,15 +83,13 @@
 
 <script>
 import "./index.scss";
-import { isLogin } from "../../utils/util";
+import { isLogin, openPage } from "../../utils/util";
 export default {
   name: "release",
   methods: {
     releaseUrl(type) {
       if (!isLogin()) {
-        wx.redirectTo({
-          url: "/pages/login/index",
-        });
+        openPage("/pages/login/index");
         return false;
       }
       let url = "";
@@ -106,9 +104,7 @@ export default {
           url = "/packageAdd/pages/zuopin/add_zuopin/index";
           break;
       }
-      wx.navigateTo({
-        url: url,
-      });
+      openPage(url);
     },
   },
 };

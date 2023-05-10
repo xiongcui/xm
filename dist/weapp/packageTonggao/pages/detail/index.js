@@ -408,92 +408,6 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -584,14 +498,9 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     },
     launchYuepai: function launchYuepai() {
       if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
-        var userInfo = wx.getStorageSync("userInfo");
-        var uuid = userInfo.uuid;
-
-        if (uuid != this.author_id) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
-        } else {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("自己不可报名自己哦，看看别的吧");
-        }
+        this.applyVerify({
+          oid: this.oid
+        });
       } else {
         wx.redirectTo({
           url: "/pages/login/index"
@@ -652,7 +561,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* noticeInfo */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* noticeInfo */ "T"])(params);
 
               case 3:
                 res = _context.sent;
@@ -690,7 +599,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* recordCollect */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* recordCollect */ "kb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -720,7 +629,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "ob"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -750,7 +659,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "pb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -783,7 +692,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Hb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -814,7 +723,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Sb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -845,7 +754,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* noticeAdviseList */ "P"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* noticeAdviseList */ "R"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -914,6 +823,43 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
             }
           }
         }, _callee7, null, [[0, 24]]);
+      }))();
+    },
+    applyVerify: function applyVerify(params) {
+      var _this7 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* applyVerify */ "h"])(params);
+
+              case 3:
+                res = _context8.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this7.oid);
+                _context8.next = 10;
+                break;
+
+              case 7:
+                _context8.prev = 7;
+                _context8.t0 = _context8["catch"](0);
+
+                if (_context8.t0.data.error_code == 21030 || _context8.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context8.t0.data.msg, "&code=").concat(_context8.t0.data.error_code));
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])(_context8.t0.data.msg);
+                }
+
+              case 10:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, null, [[0, 7]]);
       }))();
     }
   },
@@ -1011,7 +957,7 @@ var render = function () {
                 function (item, index) {
                   return _c("view", { key: index }, [
                     item.is_show_value == 1
-                      ? _c("view", { staticClass: "cost" }, [
+                      ? _c("view", { staticClass: "price" }, [
                           _vm._v(" " + _vm._s(item.value) + " "),
                         ])
                       : _c("view", { staticClass: "cost" }, [
@@ -1249,7 +1195,8 @@ var render = function () {
           : _vm._e(),
         _c("view", { staticClass: "tonggao_box" }, [
           _c("view", { staticClass: "tonggao_title_left" }, [
-            _vm._v(" 通告详情 "),
+            _c("text", { staticClass: "border-left" }),
+            _vm._v("通告详情 "),
           ]),
           _c("view", { staticClass: "tonggao_desc" }, [
             _c("view", { staticClass: "dian" }),
@@ -1324,6 +1271,7 @@ var render = function () {
             [
               _c("view", { staticClass: "recommend-title" }, [
                 _c("view", { staticClass: "recommend-name" }, [
+                  _c("text", { staticClass: "border-left" }),
                   _vm._v(" 他的通告 "),
                 ]),
               ]),
@@ -1570,7 +1518,7 @@ var render = function () {
           _c(
             "view",
             { staticClass: "tonggao_fixed_rt", on: { tap: _vm.launchYuepai } },
-            [_vm._v(" 我要报名 ")]
+            [_vm._v(" 立即报名 ")]
           ),
         ]
       ),

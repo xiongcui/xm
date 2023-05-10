@@ -135,7 +135,8 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
         value: "business_activity",
         icon: "https://yuepai-oss.qubeitech.com/static/images/tonggao/shangye.png"
       }],
-      maskData: []
+      maskData: [],
+      verifyP1: null
     };
   },
   methods: {
@@ -150,27 +151,39 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
       this.visible = false;
     },
     goRelease: function goRelease(type) {
-      if (type == 1) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
-      }
+      this.verifyP1 = this.publishVerify({
+        project_code: "NT"
+      });
+      Promise.all([this.verifyP1]).then(function () {
+        if (type == 1) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
+        }
 
-      if (type == 2) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
-      }
+        if (type == 2) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
+        }
 
-      if (type == 3) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
-      }
+        if (type == 3) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
+        }
 
-      if (type == 4) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
-      }
+        if (type == 4) {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
+        }
+      });
     },
     maskClick: function maskClick(row) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + this.code + "&type=" + row.value + "&key=" + row.key);
+      var _this = this;
+
+      this.verifyP1 = this.publishVerify({
+        project_code: "NT"
+      });
+      Promise.all([this.verifyP1]).then(function () {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + _this.code + "&type=" + row.value + "&key=" + row.key);
+      });
     },
     publicConfig: function publicConfig(params) {
-      var _this = this;
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -180,12 +193,12 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "gb"])(params);
 
               case 3:
                 res = _context.sent;
-                _this.maskData = res.data.data;
-                _this.visible = true;
+                _this2.maskData = res.data.data;
+                _this2.visible = true;
                 _context.next = 10;
                 break;
 
@@ -199,6 +212,40 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
             }
           }
         }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    publishVerify: function publishVerify(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publishVerify */ "hb"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _context2.next = 9;
+                break;
+
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
+
+                if (_context2.t0.data.error_code == 21030 || _context2.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context2.t0.data.msg, "&code=").concat(_context2.t0.data.error_code));
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(_context2.t0.data.msg);
+                }
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 6]]);
       }))();
     }
   }

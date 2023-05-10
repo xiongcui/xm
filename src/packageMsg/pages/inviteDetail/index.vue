@@ -38,7 +38,10 @@
       </view>
     </view>
     <view class="yuepai_from">
-      <view class="yuepai_from_txt"> {{ yuepaiInfo.abstract }}</view>
+      <view class="yuepai_from_txt" @tap="goYuepaiDetail">
+        <text class="yuepai_from_title">来自</text>
+        {{ yuepaiInfo.abstract }}</view
+      >
     </view>
     <view class="reg_remark">
       <view class="reg_title ub">
@@ -63,7 +66,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png"
             ></image>
           </view>
-          <view class="type_text">我的联系信息</view>
+          <view class="type_text">联系信息</view>
         </view>
         <view class="info_content ub ub-ver ub-f1">
           <view class="ub-f1"></view>
@@ -156,7 +159,7 @@
         </view>
         <view class="info_content ub ub-ver ub-f1" v-if="data.address.name">
           <view class="ub-f1"></view>
-          <view class="content_text"
+          <view class="content_address"
             >收件人：{{ data.address.name }}
             <text
               class="copy"
@@ -165,7 +168,7 @@
               >复制</text
             ></view
           >
-          <view class="content_text"
+          <view class="content_address"
             >手机号：{{ data.address.mobile }}
             <text
               class="copy"
@@ -181,8 +184,8 @@
               v-if="yuepaiInfo.visited_status == 230"
               @tap="copy(data.address.detail_address)"
               >复制</text
-            ></view
-          >
+            >
+          </view>
           <view class="ub-f1"></view>
         </view>
       </view>
@@ -240,7 +243,7 @@
 <script>
 import "./index.scss";
 import { applyInfo, receivePayment } from "../../../api/index";
-import { errortip } from "../../../utils/util";
+import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "invite-detail",
   data() {
@@ -303,6 +306,14 @@ export default {
     },
     closeQRcode() {
       this.showModel = false;
+    },
+    goYuepaiDetail() {
+      openPage(
+        "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
+          this.yuepaiInfo.oid +
+          "&author_id=" +
+          this.yuepaiInfo.author
+      );
     },
     submit() {
       let _this = this;
@@ -394,6 +405,7 @@ export default {
     async applyInfo(params) {
       try {
         let res = await applyInfo(params);
+        this.yuepaiInfo.oid = res.data.data.oid;
         this.yuepaiInfo.author = res.data.data.visitor;
         this.yuepaiInfo.tips = res.data.data.content.tips;
         this.yuepaiInfo.title = res.data.data.content.title;
@@ -414,9 +426,6 @@ export default {
           res.data.data.celebrity.body.platform_type;
         this.yuepaiInfo.visited_status = res.data.data.status.visited_status;
         this.yuepaiInfo.visited_coin = res.data.data.visited_coin;
-        // if (showpay) {
-        //   this.contactVisible = true;
-        // }
       } catch (error) {}
     },
     async receivePayment(params) {

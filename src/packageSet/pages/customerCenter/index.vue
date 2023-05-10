@@ -61,7 +61,7 @@
 <script>
 import "./index.scss";
 import { categoryList } from "../../../api/index";
-import { openPage } from "../../../utils/util";
+import { isLogin, openPage } from "../../../utils/util";
 export default {
   name: "customerCenter",
   data() {
@@ -72,9 +72,17 @@ export default {
   },
   methods: {
     gofeedback() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageSet/pages/feedback/index");
     },
     customerService() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       wx.openCustomerServiceChat({
         extInfo: { url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6" },
         corpId: "ww9ad8086390afbfaa",

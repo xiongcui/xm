@@ -998,7 +998,13 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
     },
     signupDetail: function signupDetail(sid, visited_status) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/tgregreceiveshow/index?sid=" + sid + "&visited_status=" + visited_status);
+      // openPage(
+      //   "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+      //     sid +
+      //     "&visited_status=" +
+      //     visited_status
+      // );
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid + "&visited_status=" + visited_status);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -1266,7 +1272,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "jb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1488,7 +1494,7 @@ var render = function () {
                                 ]),
                                 _c("view", { staticClass: "notice" }, [
                                   _vm._v(
-                                    " 来自通告：" + _vm._s(item.summary) + " "
+                                    " 来自通告：" + _vm._s(item.title) + " "
                                   ),
                                   _c(
                                     "text",

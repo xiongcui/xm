@@ -22,7 +22,7 @@
                 class="roll-down"
               ></image>
             </view>
-            <view class="head_sign" @tap="showSign">
+            <view class="head_sign" @tap="showSign" v-if="!showlogin">
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg"
                 v-if="is_today_sign"
@@ -204,9 +204,6 @@
                           </view>
                         </view>
                         <view class="list_top_rt">
-                          <!-- <view class="list_loction">
-                            {{ item.topic.face_city }}
-                          </view> -->
                           <view class="list_date">{{
                             item.basic.date_humanize
                           }}</view>
@@ -364,12 +361,6 @@
                             >{{ tag.name }}</view
                           >
                         </view>
-                        <!-- <view class="tonggao-recommend-price">
-                          <view class="pirce">
-                            {{ item.topic.payment.title }}</view
-                          >
-                          <view class="recommend-btn">立即报名</view>
-                        </view> -->
                       </view>
                       <view
                         class="tonggao-recommend-img"
@@ -451,7 +442,6 @@
       @submitQuery="submitQuery"
       v-show="navShow"
       ref="pageNavRef"
-      class="pagenav"
     ></Pagenav>
 
     <view id="list">
@@ -513,6 +503,9 @@
       </view>
     </view>
     <!--签到-->
+    <!--未登录提示-->
+    <ShowLogin v-if="showlogin" @getUserProfile="getUserProfile"></ShowLogin>
+    <!--未登录提示-->
   </view>
 </template>
 
@@ -524,6 +517,7 @@ import YuepaiList from "../../components/yuepaiList/index.vue";
 import ZuopinList from "../../components/zuopinList/index.vue";
 import Pagenav from "../../components/pagenav/index.vue";
 import loading from "../../components/loading/index.vue";
+import ShowLogin from "../../components/showLogin/index.vue";
 import {
   inviteAdviseList,
   noticeAdviseList,
@@ -546,6 +540,7 @@ export default {
   name: "home",
   data() {
     return {
+      showlogin: false,
       visible: false,
       noMore: false,
       showLoading: false,
@@ -613,8 +608,20 @@ export default {
     ZuopinList,
     Pagenav,
     loading,
+    ShowLogin,
+  },
+  computed: {
+    islogin() {
+      if (isLogin()) {
+        return true;
+      }
+      return false;
+    },
   },
   methods: {
+    modelClose() {
+      this.visible = false;
+    },
     goZhuye(uuid) {
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
@@ -814,13 +821,14 @@ export default {
       wx.getUserProfile({
         desc: "用于完善会员资料",
         success: (res) => {
-          let avatar = res.userInfo.avatarUrl;
-          let nickname = res.userInfo.nickName;
+          console.log(res);
+          // let avatar = res.userInfo.avatarUrl;
+          // let nickname = res.userInfo.nickName;
           wx.login({
             success(res) {
               _this.getWxLogin({
-                avatar: avatar,
-                nickname: nickname,
+                // avatar: avatar,
+                // nickname: nickname,
                 account: res.code,
                 secret: "",
                 type: 200,
@@ -842,9 +850,11 @@ export default {
         const token = res.data.data.token;
         wx.setStorageSync("token", token);
         wx.setStorageSync("userInfo", {
-          avatar: params.avatar,
-          nickname: params.nickname,
+          avatar: res.data.data.login_status.avatar,
+          nickname: res.data.data.login_status.nickname,
+          uuid: res.data.data.uuid,
         });
+        this.showlogin = false;
         if (res.data.data.is_bind_phone == 0) {
           this.pageshow = "bindphone";
         } else if (res.data.data.login_type == 2) {
@@ -1379,6 +1389,12 @@ export default {
       this.isclick = true;
       this.showLoading = true;
       this.switchQuery(this.componetActive);
+    }
+    // 是否登录
+    if (isLogin()) {
+      this.showlogin = false;
+    } else {
+      this.showlogin = true;
     }
   },
   onShareAppMessage() {

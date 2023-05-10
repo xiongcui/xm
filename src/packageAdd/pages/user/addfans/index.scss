@@ -116,9 +116,10 @@ page {
 
 .item_label {
   border-top: 1rpx solid #f1f1f1;
-  height: 40rpx;
-  line-height: 40rpx;
-  padding: 30rpx 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  // padding: 30rpx 20rpx;
+  padding: 0rpx 20rpx;
 }
 
 .border_none {
@@ -128,7 +129,7 @@ page {
 .label_title {
   color: #2f2f2f;
   font-size: 28rpx;
-  line-height: 40rpx;
+  line-height: 100rpx;
   min-width: 120px;
 }
 
@@ -143,6 +144,14 @@ page {
   font-size: 26rpx;
   margin-top: -6rpx;
   text-align: right;
+  height: 100%;
+  width: 100%;
+}
+.input-pub-price {
+  width: 100% !important;
+}
+.ub-f1 {
+  height: 100%;
 }
 
 .placeholder_input {
@@ -154,9 +163,9 @@ page {
 .check_box {
   color: #999;
   font-size: 26rpx;
-  height: 40rpx;
-  line-height: 40rpx;
   padding-left: 16rpx;
+  display: flex;
+  align-items: center;
 }
 
 .check_box_ed {
@@ -188,7 +197,11 @@ page {
 .label_select {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   padding-left: 80rpx;
+  padding-bottom: 16px;
+  // padding-top: 16px;
+  min-height: 84px;
 }
 
 .height_rewrite {
@@ -201,7 +214,7 @@ page {
   color: #2f2f2f;
   font-size: 24rpx;
   line-height: 33rpx;
-  margin: 0 12rpx 12rpx 0;
+  margin: 16px 12px 0px 0;
   padding: 8rpx 20rpx;
 }
 

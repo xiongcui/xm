@@ -6,6 +6,11 @@ page {
   padding-bottom: 200rpx;
 }
 
+.brand .input-placeholder,
+.brand .textarea-placeholder {
+  font-size: 28rpx;
+}
+
 .brand .brand-box {
   margin: 16rpx 16rpx 0 16rpx;
   background: #ffffff;

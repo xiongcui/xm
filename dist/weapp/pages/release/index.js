@@ -137,9 +137,7 @@ component.options.__file = "src/pages/release/index.vue"
   methods: {
     releaseUrl: function releaseUrl(type) {
       if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* isLogin */ "b"])()) {
-        wx.redirectTo({
-          url: "/pages/login/index"
-        });
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* openPage */ "c"])("/pages/login/index");
         return false;
       }
 
@@ -159,9 +157,7 @@ component.options.__file = "src/pages/release/index.vue"
           break;
       }
 
-      wx.navigateTo({
-        url: url
-      });
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* openPage */ "c"])(url);
     }
   }
 });

@@ -3,6 +3,10 @@ page {
 }
 .brand {
   padding-bottom: 200px;
+  .input-placeholder,
+  .textarea-placeholder {
+    font-size: 28px;
+  }
   .brand-box {
     margin: 16px 16px 0px 16px;
     background: #ffffff;

@@ -22,9 +22,6 @@
           </view>
           <view class="tonggao-recommend-bt">
             <view class="tonggao-recommend-info">
-              <!-- <view class="list_title">
-               
-              </view> -->
               <view class="recommend-style">
                 <text class="recommend-label">
                   {{ item.topic.target }}
@@ -41,12 +38,6 @@
                   >{{ tag.name }}</view
                 >
               </view>
-              <!-- <view class="tonggao-recommend-price">
-                          <view class="pirce">
-                            {{ item.topic.payment.title }}</view
-                          >
-                          <view class="recommend-btn">立即报名</view>
-                        </view> -->
             </view>
             <view
               class="tonggao-recommend-img"

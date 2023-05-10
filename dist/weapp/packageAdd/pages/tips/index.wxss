@@ -12,6 +12,7 @@
   height: 100vh;
   text-align: center;
   color: #333333;
+  padding: 0 30rpx;
 }
 .tips .tips-sucess,
 .tips .tips-fail {
@@ -30,6 +31,7 @@
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
+  width: 100%;
 }
 .tips .tips-img {
   width: 200rpx;
@@ -41,13 +43,13 @@
   margin-bottom: 16rpx;
 }
 .tips .tips-btn {
-  background: #26b248;
   padding: 10rpx 20rpx;
   font-size: 30rpx;
-  width: 100rpx;
-  color: #ffffff;
+  color: rgba(0, 0, 0, 0.4);
   border-radius: 8rpx;
   margin-top: 16rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.4);
+  margin-right: 30rpx;
 }
 .tips .toptip {
   background-color: #fff9ed;
@@ -92,4 +94,106 @@
   width: 102rpx;
   position: absolute;
   right: 0;
+}
+.tips .subscribe-btn {
+  border: 2rpx solid #ff6010;
+  border-radius: 30rpx;
+  color: #ff6010;
+  font-size: 26rpx;
+  padding: 10rpx 40rpx;
+  margin-top: 16rpx;
+  margin-bottom: 46rpx;
+}
+.tips .subscribe-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16rpx 30rpx;
+  border-radius: 8rpx;
+  background: #f2f7fa;
+}
+.tips .subscribe-box image {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+.tips .subscribe-box .subscribe-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.tips .subscribe-box .subscribe-ct {
+  text-align: left;
+  margin-right: 60rpx;
+}
+.tips .subscribe-box .subscribe-p {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+.tips .subscribe-box .subscribe-rt {
+  color: #ff1e3e;
+  font-size: 28rpx;
+}
+.tips .tips-box-btns {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 400rpx;
+}
+.tips .modal-box {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+.tips .modal-box .modal-cotent {
+  padding: 0 30rpx 30rpx 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.tips .modal-box .modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  padding: 16rpx 0;
+}
+.tips .modal-box .subscribe-rt text {
+  background: #ff1e3e;
+  color: #ffffff;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+}
+.tips .modal-box .official-account-qrcode {
+  width: 400rpx;
+  height: 400rpx;
+}
+.tips .modal-box .official-account-txt {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  margin-top: 36rpx;
+}
+.tips .modal-box .know {
+  width: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10rpx 40rpx;
+  border-radius: 30rpx;
+  color: #ffffff;
+  margin: 16rpx auto;
 }

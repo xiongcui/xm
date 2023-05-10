@@ -1,7 +1,6 @@
 <template>
   <view class="editpersonimg">
     <view class="personimgs ub">
-      <view class="side_gap"></view>
       <view class="ub-f1">
         <view class="imgsblock">
           <view class="imgs">
@@ -16,6 +15,7 @@
                 @tap="delete_preview(index)"
                 class="preview_delet"
                 :id="index"
+                v-if="myself"
                 >编辑</view
               >
               <view class="icon_coverimg" v-if="index == 0"> 封面 </view>
@@ -23,7 +23,7 @@
             <view
               @tap="choosePersonImg"
               class="pick_img"
-              v-if="imgs.length < 9"
+              v-if="imgs.length < 9 && myself"
             >
               <view class="pick_img_btn">
                 <image
@@ -38,9 +38,8 @@
         </view>
         <view style="clear: both"></view>
       </view>
-      <view class="side_gap_right"></view>
     </view>
-    <view class="sub_btn">
+    <view class="sub_btn" v-if="myself">
       <button @tap="submit" type="primary">保存</button>
     </view>
   </view>
@@ -60,6 +59,7 @@ export default {
     return {
       imgs: [],
       uploadImgList: [],
+      myself: true,
     };
   },
   methods: {
@@ -199,6 +199,9 @@ export default {
       this.imgs[Number(currPage.data.imgId)] = currPage.data.homeimg;
       this.imgs = JSON.parse(JSON.stringify(this.imgs));
     }
+  },
+  onLoad: function (options) {
+    this.myself = options.myself === "true" ? true : false;
   },
 };
 </script>

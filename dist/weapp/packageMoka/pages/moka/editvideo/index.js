@@ -94,6 +94,10 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -102,11 +106,8 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
   name: "editvideo",
   data: function data() {
     return {
-      videoData: [// {
-        //   cover: "",
-        //   file: "",
-        // },
-      ]
+      videoData: [],
+      myself: true
     };
   },
   methods: {
@@ -324,7 +325,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbum */ "Cb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -358,7 +359,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userAlbumDetail */ "Db"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -389,6 +390,9 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
     if (currPage.data.videoId) {
       this.upCover(currPage.data.homeimg, Number(currPage.data.videoId));
     }
+  },
+  onLoad: function onLoad(options) {
+    this.myself = options.myself === "true" ? true : false;
   }
 });
 
@@ -428,52 +432,54 @@ var render = function () {
                       src: item.file,
                     },
                   }),
-                  _c("view", { staticClass: "item_bottom ub" }, [
-                    _c("view", { staticClass: "setVideoLeft" }, [
-                      _c(
-                        "view",
-                        {
-                          staticClass: "btn_set btn_delete",
-                          on: {
-                            tap: function ($event) {
-                              return _vm.deleteVideo(index)
+                  _vm.myself
+                    ? _c("view", { staticClass: "item_bottom ub" }, [
+                        _c("view", { staticClass: "setVideoLeft" }, [
+                          _c(
+                            "view",
+                            {
+                              staticClass: "btn_set btn_delete",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.deleteVideo(index)
+                                },
+                              },
+                            },
+                            [_vm._v("删除")]
+                          ),
+                          _c(
+                            "view",
+                            {
+                              staticClass: "btn_set",
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.changeVideo(index)
+                                },
+                              },
+                            },
+                            [_vm._v("更换")]
+                          ),
+                        ]),
+                        _c(
+                          "view",
+                          {
+                            staticClass: "btn_set",
+                            on: {
+                              tap: function ($event) {
+                                return _vm.setVideoCover(index)
+                              },
                             },
                           },
-                        },
-                        [_vm._v("删除")]
-                      ),
-                      _c(
-                        "view",
-                        {
-                          staticClass: "btn_set",
-                          on: {
-                            tap: function ($event) {
-                              return _vm.changeVideo(index)
-                            },
-                          },
-                        },
-                        [_vm._v("更换")]
-                      ),
-                    ]),
-                    _c(
-                      "view",
-                      {
-                        staticClass: "btn_set",
-                        on: {
-                          tap: function ($event) {
-                            return _vm.setVideoCover(index)
-                          },
-                        },
-                      },
-                      [_vm._v("设置视频封面")]
-                    ),
-                  ]),
+                          [_vm._v("设置视频封面")]
+                        ),
+                      ])
+                    : _vm._e(),
                 ])
               }),
               0
             )
           : _vm._e(),
-        _vm.videoData.length < 6
+        _vm.videoData.length < 6 && _vm.myself
           ? _c(
               "view",
               { staticClass: "video_none", on: { tap: _vm.chooesVideo } },
@@ -490,7 +496,7 @@ var render = function () {
       ],
       1
     ),
-    _vm.videoData.length
+    _vm.videoData.length && _vm.myself
       ? _c("view", { staticClass: "sub_btn", attrs: { catchtap: "sub" } }, [
           _c(
             "button",

@@ -244,6 +244,7 @@ export default {
     },
     closeModel() {
       this.showModel = false;
+      this.info.is_mobile = 0;
     },
     cancleModel() {
       this.showModel = false;

@@ -38,6 +38,41 @@ component.options.__file = "src/pages/home/index.vue"
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/showLogin/index.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/showLogin/index.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/components/showLogin/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "showLogin",
+  methods: {
+    login: function login() {
+      this.$emit("getUserProfile");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/pages/home/index.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/pages/home/index.vue?vue&type=script&lang=js& ***!
@@ -56,17 +91,11 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/zuopinList/index.vue */ "./src/components/zuopinList/index.vue");
 /* harmony import */ var _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/pagenav/index.vue */ "./src/components/pagenav/index.vue");
 /* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _components_showLogin_index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/showLogin/index.vue */ "./src/components/showLogin/index.vue");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
 
 
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -587,10 +616,12 @@ var citySelector = requirePlugin("citySelector");
 
 
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
   data: function data() {
     return {
+      showlogin: false,
       visible: false,
       noMore: false,
       showLoading: false,
@@ -655,14 +686,27 @@ var citySelector = requirePlugin("citySelector");
     YuepaiList: _components_yuepaiList_index_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"],
     ZuopinList: _components_zuopinList_index_vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"],
     Pagenav: _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"],
-    loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"]
+    loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"],
+    ShowLogin: _components_showLogin_index_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"]
+  },
+  computed: {
+    islogin: function islogin() {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* isLogin */ "b"])()) {
+        return true;
+      }
+
+      return false;
+    }
   },
   methods: {
+    modelClose: function modelClose() {
+      this.visible = false;
+    },
     goZhuye: function goZhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     comingSoon: function comingSoon() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("敬请期待，正在开发中");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* errortip */ "a"])("敬请期待，正在开发中");
     },
     signClose: function signClose() {
       this.showModelSign = false;
@@ -671,10 +715,10 @@ var citySelector = requirePlugin("citySelector");
       this.submitSign("");
     },
     goYuepaiDetail: function goYuepaiDetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     previewImage: function previewImage(src, urls) {
       // 微信预览图片的方法
@@ -691,17 +735,17 @@ var citySelector = requirePlugin("citySelector");
       });
     },
     goMore: function goMore(index) {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/packageAdd/pages/user/homelist/index?componetActive=" + index + "&city_filter=" + this.city_filter);
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/packageAdd/pages/user/homelist/index?componetActive=" + index + "&city_filter=" + this.city_filter);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/pages/login/index");
       }
     },
     goTakelist: function goTakelist() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter);
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/pages/login/index");
       }
     },
     componetClick: function componetClick(index) {
@@ -845,13 +889,14 @@ var citySelector = requirePlugin("citySelector");
       wx.getUserProfile({
         desc: "用于完善会员资料",
         success: function success(res) {
-          var avatar = res.userInfo.avatarUrl;
-          var nickname = res.userInfo.nickName;
+          console.log(res); // let avatar = res.userInfo.avatarUrl;
+          // let nickname = res.userInfo.nickName;
+
           wx.login({
             success: function success(res) {
               _this.getWxLogin({
-                avatar: avatar,
-                nickname: nickname,
+                // avatar: avatar,
+                // nickname: nickname,
                 account: res.code,
                 secret: "",
                 type: 200
@@ -878,16 +923,18 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* wxlogin */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* wxlogin */ "Vb"])(params);
 
               case 3:
                 res = _context.sent;
                 token = res.data.data.token;
                 wx.setStorageSync("token", token);
                 wx.setStorageSync("userInfo", {
-                  avatar: params.avatar,
-                  nickname: params.nickname
+                  avatar: res.data.data.login_status.avatar,
+                  nickname: res.data.data.login_status.nickname,
+                  uuid: res.data.data.uuid
                 });
+                _this2.showlogin = false;
 
                 if (res.data.data.is_bind_phone == 0) {
                   _this2.pageshow = "bindphone";
@@ -903,23 +950,23 @@ var citySelector = requirePlugin("citySelector");
                   _this2.navClick(_this2.componetActive, 0);
                 } else {
                   // 未注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* openPage */ "c"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* openPage */ "c"])("/pages/register/index");
                 }
 
-                _context.next = 13;
+                _context.next = 14;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 11:
+                _context.prev = 11;
                 _context.t0 = _context["catch"](0);
                 console.log("失败");
 
-              case 13:
+              case 14:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 11]]);
       }))();
     },
     inviteList: function inviteList(params, type, scroll) {
@@ -933,7 +980,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* inviteList */ "E"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* inviteList */ "F"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -967,7 +1014,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* errortip */ "a"])("没有更多数据了～");
                 _this3.loading = true;
                 return _context2.abrupt("return", false);
 
@@ -1035,7 +1082,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* inviteAdviseList */ "A"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* inviteAdviseList */ "B"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1074,7 +1121,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeAdviseList */ "P"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* noticeAdviseList */ "R"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1111,7 +1158,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* notifyNumber */ "U"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* notifyNumber */ "X"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1152,7 +1199,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* isSign */ "G"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* isSign */ "I"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1183,7 +1230,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* userStatus */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* userStatus */ "Qb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1229,7 +1276,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* userSelectCity */ "Jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* userSelectCity */ "Nb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -1259,7 +1306,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* inviteFilter */ "B"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* inviteFilter */ "C"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1343,7 +1390,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeFilter */ "Q"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* noticeFilter */ "S"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1430,7 +1477,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* photoFilter */ "X"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* photoFilter */ "ab"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1500,7 +1547,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeList */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* noticeList */ "U"])(params);
 
               case 3:
                 res = _context12.sent;
@@ -1534,7 +1581,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* errortip */ "a"])("没有更多数据了～");
                 _this11.loading = true;
                 return _context12.abrupt("return", false);
 
@@ -1602,7 +1649,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* photoList */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* photoList */ "cb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1636,7 +1683,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_9__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* errortip */ "a"])("没有更多数据了～");
                 _this12.loading = true;
                 return _context13.abrupt("return", false);
 
@@ -1703,7 +1750,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* shareInvite */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* shareInvite */ "ob"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1776,7 +1823,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* submitSign */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_9__[/* submitSign */ "yb"])(params);
 
               case 3:
                 res = _context16.sent;
@@ -1871,6 +1918,13 @@ var citySelector = requirePlugin("citySelector");
       this.isclick = true;
       this.showLoading = true;
       this.switchQuery(this.componetActive);
+    } // 是否登录
+
+
+    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_10__[/* isLogin */ "b"])()) {
+      this.showlogin = false;
+    } else {
+      this.showlogin = true;
     }
   },
   onShareAppMessage: function onShareAppMessage() {
@@ -1890,6 +1944,42 @@ var citySelector = requirePlugin("citySelector");
     citySelector.clearCity();
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/showLogin/index.vue?vue&type=template&id=1dcc1a0f&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/showLogin/index.vue?vue&type=template&id=1dcc1a0f&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("view", { staticClass: "login-tost" }, [
+    _c("view", { staticClass: "login-tost-left" }, [
+      _c("text", { staticClass: "login-tost-title" }, [
+        _vm._v("安全、快捷、高效、可靠"),
+      ]),
+      _c("text", { staticClass: "login-tost-p" }, [
+        _vm._v("享受优质模特与摄影约拍服务"),
+      ]),
+    ]),
+    _c("view", { staticClass: "login-tost-rt" }, [
+      _c("text", { on: { tap: _vm.login } }, [_vm._v("立即登录")]),
+    ]),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
 
 /***/ }),
 
@@ -1954,23 +2044,28 @@ var render = function () {
                           ]
                         )
                       : _vm._e(),
-                    _c(
-                      "view",
-                      { staticClass: "head_sign", on: { tap: _vm.showSign } },
-                      [
-                        _vm.is_today_sign
-                          ? _c("image", {
-                              attrs: {
-                                src: "https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg",
-                              },
-                            })
-                          : _c("image", {
-                              attrs: {
-                                src: "https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg",
-                              },
-                            }),
-                      ]
-                    ),
+                    !_vm.showlogin
+                      ? _c(
+                          "view",
+                          {
+                            staticClass: "head_sign",
+                            on: { tap: _vm.showSign },
+                          },
+                          [
+                            _vm.is_today_sign
+                              ? _c("image", {
+                                  attrs: {
+                                    src: "https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg",
+                                  },
+                                })
+                              : _c("image", {
+                                  attrs: {
+                                    src: "https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg",
+                                  },
+                                }),
+                          ]
+                        )
+                      : _vm._e(),
                   ]),
                   _c("view", { staticClass: "head_title" }, [
                     _vm._v(" 虾米约拍 "),
@@ -2933,7 +3028,6 @@ var render = function () {
           },
         ],
         ref: "pageNavRef",
-        staticClass: "pagenav",
         style: { marginTop: _vm.globalData.navHeight + "px" },
         attrs: {
           pageActive: _vm.componetActive,
@@ -3051,12 +3145,96 @@ var render = function () {
             ]),
           ])
         : _vm._e(),
+      _vm.showlogin
+        ? _c("ShowLogin", { on: { getUserProfile: _vm.getUserProfile } })
+        : _vm._e(),
     ],
     1
   )
 }
 var staticRenderFns = []
 render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./src/components/showLogin/index.scss":
+/*!*********************************************!*\
+  !*** ./src/components/showLogin/index.scss ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/showLogin/index.vue":
+/*!********************************************!*\
+  !*** ./src/components/showLogin/index.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_vue_vue_type_template_id_1dcc1a0f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=1dcc1a0f&scoped=true& */ "./src/components/showLogin/index.vue?vue&type=template&id=1dcc1a0f&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/components/showLogin/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+function injectStyles (context) {
+  
+  
+}
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
+  _index_vue_vue_type_template_id_1dcc1a0f_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_1dcc1a0f_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  false,
+  injectStyles,
+  "1dcc1a0f",
+  "9249575c"
+  
+)
+
+component.options.__file = "src/components/showLogin/index.vue"
+/* harmony default export */ __webpack_exports__["a"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/showLogin/index.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./src/components/showLogin/index.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/showLogin/index.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
+
+/***/ }),
+
+/***/ "./src/components/showLogin/index.vue?vue&type=template&id=1dcc1a0f&scoped=true&":
+/*!***************************************************************************************!*\
+  !*** ./src/components/showLogin/index.vue?vue&type=template&id=1dcc1a0f&scoped=true& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_1dcc1a0f_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=1dcc1a0f&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/showLogin/index.vue?vue&type=template&id=1dcc1a0f&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_1dcc1a0f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_1dcc1a0f_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
 
 
 

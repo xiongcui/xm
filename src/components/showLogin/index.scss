@@ -1,0 +1,33 @@
+.login-tost {
+  padding: 16px 30px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 9999;
+  .login-tost-left {
+    display: flex;
+    flex-direction: column;
+  }
+  .login-tost-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .login-tost-p {
+    font-size: 26px;
+  }
+  .login-tost-rt {
+    line-height: 66px;
+    height: 66px;
+    padding: 0px 30px;
+    border-radius: 33px;
+    background: #fe5457;
+    font-size: 30px;
+    margin-right: 46px;
+  }
+}

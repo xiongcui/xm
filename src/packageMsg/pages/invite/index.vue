@@ -74,7 +74,7 @@
                   </view>
                 </view>
                 <view class="invite-desc"
-                  >邀约理由：
+                  >约拍理由：
                   {{ item.content }}
                 </view>
                 <view class="invite-bt">
@@ -139,7 +139,7 @@
                   </view>
                 </view>
                 <view class="invite-desc"
-                  >邀约理由：
+                  >约拍理由：
                   {{ item.content }}
                 </view>
                 <view class="invite-bt">
@@ -204,7 +204,7 @@
                   </view>
                 </view>
                 <view class="invite-desc"
-                  >邀约理由：
+                  >约拍理由：
                   {{ item.content }}
                 </view>
                 <view class="invite-bt">
@@ -269,7 +269,7 @@
                   </view>
                 </view>
                 <view class="invite-desc"
-                  >邀约理由：
+                  >约拍理由：
                   {{ item.content }}
                 </view>
                 <view class="invite-bt">

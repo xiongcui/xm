@@ -810,13 +810,13 @@ export default {
       wx.getUserProfile({
         desc: "用于完善会员资料",
         success: (res) => {
-          let avatar = res.userInfo.avatarUrl;
-          let nickname = res.userInfo.nickName;
+          // let avatar = res.userInfo.avatarUrl;
+          // let nickname = res.userInfo.nickName;
           wx.login({
             success(res) {
               _this.getWxLogin({
-                avatar: avatar,
-                nickname: nickname,
+                // avatar: avatar,
+                // nickname: nickname,
                 account: res.code,
                 secret: "",
                 type: 200,
@@ -878,8 +878,9 @@ export default {
         const token = res.data.data.token;
         wx.setStorageSync("token", token);
         wx.setStorageSync("userInfo", {
-          avatar: params.avatar,
-          nickname: params.nickname,
+          avatar: res.data.data.login_status.avatar,
+          nickname: res.data.data.login_status.nickname,
+          uuid: res.data.data.uuid,
         });
         if (res.data.data.is_bind_phone == 0) {
           this.pageshow = "bindphone";

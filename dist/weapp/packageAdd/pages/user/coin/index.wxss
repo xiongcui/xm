@@ -34,7 +34,7 @@
 }
 .coin .coin-bg-rt {
   padding: 6rpx 12rpx 6rpx 50rpx;
-  border: 1rpx solid #fffefb;
+  border: 2rpx solid #fffefb;
   border-radius: 14rpx;
   font-size: 28rpx;
   background: url("https://yuepai-oss.qubeitech.com/static/images/user/coin/coin.png") no-repeat 10rpx center;

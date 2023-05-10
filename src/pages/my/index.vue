@@ -16,7 +16,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_settings.png"
             ></image>
           </view>
-          <block>
+          <block v-if="islogin">
             <view class="sign_block fl" v-if="is_today_sign">
               <image
                 class="icon_sign"
@@ -142,7 +142,9 @@
             <text>足迹</text>
           </view>
         </view>
-        <view class="my-conunt-rt" @tap="personDetail"> 编辑资料 </view>
+        <view class="my-conunt-rt" @tap="personDetail" v-if="islogin">
+          编辑资料
+        </view>
       </view>
     </view>
     <view class="my-ct">
@@ -495,7 +497,7 @@ import {
   shareInviteInfo,
   submitSign,
 } from "../../api/index";
-import { openPage } from "../../utils/util";
+import { isLogin, openPage } from "../../utils/util";
 export default {
   name: "my",
   data() {
@@ -525,11 +527,23 @@ export default {
       shareImg: "",
     };
   },
+  computed: {
+    islogin() {
+      if (isLogin()) {
+        return true;
+      }
+      return false;
+    },
+  },
   methods: {
     showSign() {
       this.submitSign("");
     },
     open_settings() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageSet/pages/index/index");
     },
     close() {
@@ -539,31 +553,67 @@ export default {
       openPage("/packageAdd/pages/user/editinfor/index");
     },
     goZhuye() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageMoka/pages/moka/editshow/index");
     },
     goZuopin() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/zuopin/zuopin_list/index");
     },
     goCollection() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/user/collection/index");
     },
     pledgecash() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageMsg/pages/creditGuarantee/index");
     },
     myCertification() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/user/realnameAuth/index");
     },
     myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
     },
     myZuopin() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
     },
     goVip() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageVip/pages/vip/index");
     },
     goCoin() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/user/coin/index");
     },
     onMyAd() {
@@ -618,7 +668,23 @@ export default {
 
         this.infor = res.data.data;
         this.coin = res.data.data.acct.coin;
-      } catch (error) {}
+      } catch (error) {
+        this.infor = {
+          age: 0,
+          avatar: "",
+          realname: "",
+          ispledge: "",
+          statistic: {
+            followed_cnt: 0,
+            follower_cnt: 0,
+            invite_cnt: 0,
+            read_cnt: 0,
+            track_cnt: 0,
+            visitor_cnt: 0,
+          },
+        };
+        this.coin = 0;
+      }
     },
     async isSign(params) {
       try {

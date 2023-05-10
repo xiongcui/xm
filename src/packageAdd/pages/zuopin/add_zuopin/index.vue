@@ -473,9 +473,11 @@ export default {
     async subNotePhoto(params) {
       try {
         let res = await subNotePhoto(params);
-        openPage("/packageAdd/pages/tips/index?type=1");
+        openPage(`/packageAdd/pages/tips/index?type=1&msg=${res.data.data}`);
       } catch (error) {
-        openPage("/packageAdd/pages/tips/index?type=0");
+        openPage(
+          `/packageAdd/pages/tips/index?type=0&msg=${res.data.data.msg}`
+        );
       }
     },
   },

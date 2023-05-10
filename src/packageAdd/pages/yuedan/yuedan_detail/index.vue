@@ -20,11 +20,6 @@
           </view>
 
           <view class="detail_label">
-            <!-- <image
-              class="detail_icon"
-              v-if="yuepaiInfo.topic.ticket.icon"
-              :src="yuepaiInfo.topic.ticket.icon"
-            ></image> -->
             {{ yuepaiInfo.topic.target }}
           </view>
         </view>
@@ -127,7 +122,9 @@
         </view>
       </view>
       <view class="tonggao_box">
-        <view class="tonggao_title_left"> 约拍详情 </view>
+        <view class="tonggao_title_left"
+          ><text class="border-left"></text> 约拍详情
+        </view>
         <view class="tonggao_desc">
           <view class="dian"></view>{{ yuepaiInfo.details.content }}
         </view>
@@ -174,7 +171,9 @@
     </view>
     <view class="recommend" v-if="photoAlbumList.length">
       <view class="recommend-title">
-        <view class="recommend-name"> 他的作品 </view>
+        <view class="recommend-name"
+          ><text class="border-left"></text> 他的作品
+        </view>
         <view class="recommend-rt" @tap="goZhuye">查看主页</view>
       </view>
       <view class="home_item_main">
@@ -245,7 +244,7 @@
           {{ yuepaiInfo.statistic.collect_cnt }}
         </view>
       </view>
-      <view class="yuepai_fixed_rt" @tap="launchYuepai"> 约拍 </view>
+      <view class="yuepai_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
     </view>
   </view>
 </template>
@@ -260,6 +259,7 @@ import {
   userFollow,
   userUnfollow,
   inviteAdviseList,
+  applyVerify,
 } from "../../../../api/index";
 import YuepaiList from "../../../../components/yuepaiList/index.vue";
 import { errortip, isLogin, openPage } from "../../../../utils/util";
@@ -352,13 +352,9 @@ export default {
     },
     launchYuepai() {
       if (isLogin()) {
-        let userInfo = wx.getStorageSync("userInfo");
-        let uuid = userInfo.uuid;
-        if (uuid != this.author_id) {
-          openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
-        } else {
-          errortip("自己不可约拍自己哦，看看别的吧");
-        }
+        this.applyVerify({
+          oid: this.oid,
+        });
       } else {
         wx.redirectTo({
           url: "/pages/login/index",
@@ -506,6 +502,20 @@ export default {
         let res = await userUnfollow(params);
         this.is_follow = 0;
       } catch (error) {}
+    },
+    async applyVerify(params) {
+      try {
+        let res = await applyVerify(params);
+        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+      } catch (error) {
+        if (error.data.error_code == 21030 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        } else {
+          errortip(error.data.msg);
+        }
+      }
     },
   },
   created() {

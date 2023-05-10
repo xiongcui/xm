@@ -738,8 +738,14 @@ export default {
       this.query();
     },
     signupDetail(sid, visited_status) {
+      // openPage(
+      //   "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+      //     sid +
+      //     "&visited_status=" +
+      //     visited_status
+      // );
       openPage(
-        "/packageMsg/pages/tgregreceiveshow/index?sid=" +
+        "/packageMsg/pages/inviteDetail/index?sid=" +
           sid +
           "&visited_status=" +
           visited_status

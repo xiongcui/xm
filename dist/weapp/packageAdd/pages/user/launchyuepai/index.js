@@ -553,7 +553,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "F"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* inviteTemplate */ "H"])(params);
 
               case 3:
                 res = _context.sent;
@@ -572,15 +572,15 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
                   _this2.data.celebrity = res.data.data.celebrity.body;
                   _this2.media_info.platform_name = _this2.data.celebrity.platform_name = res.data.data.celebrity.body.platform_name;
                   _this2.media_info.platform_code = _this2.data.celebrity.platform_type = res.data.data.celebrity.body.platform_type;
-                  _this2.pay_coin = res.data.data.celebrity.visitor_acct.pay_coin;
-                  _this2.balance_coin = res.data.data.celebrity.visitor_acct.balance_coin;
+                }
+
+                if (res.data.data.visitor_acct) {
+                  _this2.pay_coin = res.data.data.visitor_acct.pay_coin;
+                  _this2.balance_coin = res.data.data.visitor_acct.balance_coin;
                 }
 
                 if (res.data.data.address) {
                   _this2.showAddress = res.data.data.address.is_enable;
-                }
-
-                if (res.data.data.address) {
                   _this2.data.address = res.data.data.address.body;
                 }
 
@@ -612,7 +612,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subApply */ "rb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -647,14 +647,14 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 
               case 3:
                 res = _context3.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=2");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=2&msg=".concat(res.data.data));
                 _context3.next = 10;
                 break;
 
               case 7:
                 _context3.prev = 7;
                 _context3.t0 = _context3["catch"](0);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=3");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=3&msg=".concat(_context3.t0.data.msg));
 
               case 10:
               case "end":
@@ -1260,7 +1260,7 @@ var render = function () {
               _c("view", { staticClass: "comment_content" }, [
                 _vm._v(
                   " 提交约拍请求需要消耗" +
-                    _vm._s(_vm.is_member ? 2 : 5) +
+                    _vm._s(_vm.pay_coin) +
                     "积分，确定发送吗？ "
                 ),
               ]),

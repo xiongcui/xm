@@ -83,7 +83,7 @@
               :placeholder="pla_value ? '粘贴主页后自动获取' : '请输入点赞数'"
               placeholderClass="placeholder_input"
               type="number"
-              v-model="like_count"
+              v-model="vote_number"
             />
           </view>
         </view>
@@ -205,6 +205,7 @@
                 placeholderClass="placeholder_input"
                 type="number"
                 v-model="pub_price"
+                class="input-pub-price"
               />
             </view>
             <view class="input-unit" v-if="pub_price">元</view>
@@ -241,6 +242,7 @@
                 placeholderClass="placeholder_input"
                 type="number"
                 v-model="share_price"
+                class="input-pub-price"
               />
             </view>
             <view class="input-unit" v-if="share_price">元</view>
@@ -280,6 +282,7 @@
                 placeholderClass="placeholder_input"
                 type="number"
                 v-model="video_price"
+                class="input-pub-price"
               />
             </view>
             <view class="input-unit" v-if="video_price">元</view>
@@ -319,6 +322,7 @@
                 placeholderClass="placeholder_input"
                 type="number"
                 v-model="live_price"
+                class="input-pub-price"
               />
             </view>
             <view class="input-unit" v-if="live_price">元</view>
@@ -359,6 +363,7 @@
                 placeholderClass="placeholder_input"
                 type="number"
                 v-model="ad_price"
+                class="input-pub-price"
               />
             </view>
             <view class="input-unit" v-if="ad_price">元</view>
@@ -384,7 +389,7 @@
           <view class="label_title">账号领域</view>
           <view class="label_select ub-f1">
             <view
-              @tap="select_tag(tagitem)"
+              @tap="select_tag(index)"
               class="tag_name"
               :class="tagitem.taged ? 'taged' : ''"
               v-for="(tagitem, index) in media.tag"
@@ -474,6 +479,8 @@ export default {
       bargin_video_price: "",
       live_price: "",
       bargin_live_price: "",
+      enjoy_number: "",
+      vote_number: "",
       const_media_item_ids: {
         douyin: "douyin",
         redbook: "redbook",
@@ -511,8 +518,8 @@ export default {
     };
   },
   methods: {
-    select_tag(row) {
-      row.taged = !row.taged;
+    select_tag(index) {
+      this.media.tag[index].taged = !this.media.tag[index].taged;
     },
     inputAdPrice(e) {
       if (e.detail.value) {
@@ -616,7 +623,14 @@ export default {
         (this.media_item_id == this.const_media_item_ids.douyin &&
           !this.like_count)
       ) {
-        errortip("请填写赞藏数量");
+        errortip("请填写赞藏数");
+        return false;
+      }
+      if (
+        this.media_item_id == this.const_media_item_ids.douyin &&
+        !this.vote_number
+      ) {
+        errortip("请填写点赞数");
         return false;
       }
       if (
@@ -701,19 +715,21 @@ export default {
       }
       if (this.media_item_id == this.const_media_item_ids.weibo) {
         params.shop_window = this.is_open_store;
-        params.direct_price = Number(this.pub_price ? this.pub_pric : 0);
+        params.direct_price = Number(this.pub_price ? this.pub_price : 0);
         params.forward_price = Number(this.share_price ? this.share_price : 0);
       }
       if (this.media_item_id == this.const_media_item_ids.douyin) {
         params.enjoy_number = Number(this.like_count);
+        params.vote_number = Number(this.vote_number);
         params.shop_window = this.is_open_store;
         params.video_price = Number(this.video_price ? this.video_price : 0);
         params.live_price = Number(this.live_price ? this.live_price : 0);
       }
       if (this.media_item_id == this.const_media_item_ids.kuaishou) {
+        params.video_price = Number(this.video_price ? this.video_price : 0);
+        params.live_price = Number(this.live_price ? this.live_price : 0);
         params.little_shop = this.is_open_store;
       }
-      console.log(params);
       this.userCelebrity(params);
     },
     async publicConfig(params) {
@@ -747,6 +763,7 @@ export default {
         this.nickname = data.nickname;
         this.follow_count = data.fans_number;
         this.like_count = data.enjoy_number;
+        this.vote_number = data.vote_number;
         this.is_brand_partner = data.brand_cooperator;
         if (!data.advert_price) {
           this.bargin_ad_price = 1;
@@ -779,6 +796,7 @@ export default {
         } else {
           this.live_price = data.live_price;
         }
+        console.log(data.acct_field);
         data.acct_field.map((name) => {
           this.media.tag.map((item) => {
             if (name == item.value) {
@@ -804,7 +822,6 @@ export default {
       title: this.platform_name,
     });
     // 查询账号领域
-    console.log(this.platform_code, "this.platform_code");
     let type = "acct_field_" + this.platform_code;
     this.publicConfig({
       type: [type],

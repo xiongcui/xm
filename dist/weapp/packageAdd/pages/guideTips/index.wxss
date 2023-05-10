@@ -1,0 +1,41 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.guide-box {
+  background-color: #f4f4f4;
+  height: 100vh;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.guide-box image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
+}
+
+.guide-box .guide-txt {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 16rpx;
+  padding: 0 30rpx;
+}
+
+.guide-box .guide-btn {
+  font-size: 28rpx;
+  padding: 10rpx 30rpx;
+  color: #fe5457;
+  border: 2rpx solid #fe5457;
+  border-radius: 30rpx;
+}

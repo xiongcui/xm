@@ -269,7 +269,11 @@
 <script>
 import "./index.scss";
 import { errortip, openPage } from "../../../../utils/util";
-import { publicConfig, creatInvite } from "../../../../api/index";
+import {
+  publicConfig,
+  creatInvite,
+  invitePayment,
+} from "../../../../api/index";
 import { Base64 } from "js-Base64";
 export default {
   name: "works",
@@ -689,10 +693,29 @@ export default {
     async creatInvite(params) {
       try {
         let res = await creatInvite(params);
-        openPage("/packageAdd/pages/tips/index?type=1");
-      } catch (error) {
-        openPage("/packageAdd/pages/tips/index?type=0");
-      }
+        let data = res.data.data;
+        let _this = this;
+        wx.showModal({
+          title: "温馨提示",
+          content: `发布约拍信息消耗${data.coin}个金豆，确定发布吗？`,
+          success: function (res) {
+            if (res.confirm) {
+              console.log("用户点击确定");
+              _this.invitePayment({
+                oid: data.oid,
+              });
+            } else if (res.cancel) {
+              console.log("用户点击取消");
+            }
+          },
+        });
+      } catch (error) {}
+    },
+    async invitePayment(params) {
+      try {
+        let res = await invitePayment(params);
+        openPage(`/packageAdd/pages/tips/index?type=1&msg=${res.data.data}`);
+      } catch (error) {}
     },
   },
   created() {

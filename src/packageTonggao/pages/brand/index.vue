@@ -24,7 +24,9 @@
             <view class="brand-select-item" v-if="platform">{{
               platform
             }}</view>
-            <view class="brand-select-item" v-else>请选择</view>
+            <view class="brand-select-item input-placeholder" v-else
+              >请选择</view
+            >
           </picker>
         </view>
       </view>
@@ -186,15 +188,11 @@
       <view class="brand-item">
         <view class="brand-left"> 截止日期 </view>
         <view class="brand-rt">
-          <picker
-            @change="dateChange"
-            mode="date"
-            start="1960-09-01"
-            value="2000-01-01"
-            class="brand-select"
-          >
+          <picker @change="dateChange" mode="date" class="brand-select">
             <view class="brand-select-item" v-if="date">{{ date }}</view>
-            <view class="brand-select-item" v-else>请选择</view>
+            <view class="brand-select-item input-placeholder" v-else
+              >请选择</view
+            >
           </picker>
         </view>
       </view>
@@ -269,7 +267,11 @@
 <script>
 import "./index.scss";
 import { Base64 } from "js-Base64";
-import { publicConfig, submitNotice } from "../../../api/index.js";
+import {
+  publicConfig,
+  submitNotice,
+  noticePayment,
+} from "../../../api/index.js";
 import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "brand",
@@ -529,10 +531,29 @@ export default {
     async submitNotice(params) {
       try {
         let res = await submitNotice(params);
-        openPage("/packageAdd/pages/tips/index?type=1");
-      } catch (error) {
-        openPage("/packageAdd/pages/tips/index?type=0");
-      }
+        let data = res.data.data;
+        let _this = this;
+        wx.showModal({
+          title: "温馨提示",
+          content: `发布通告信息消耗${data.coin}个金豆，确定发布吗？`,
+          success: function (res) {
+            if (res.confirm) {
+              console.log("用户点击确定");
+              _this.noticePayment({
+                oid: data.oid,
+              });
+            } else if (res.cancel) {
+              console.log("用户点击取消");
+            }
+          },
+        });
+      } catch (error) {}
+    },
+    async noticePayment(params) {
+      try {
+        let res = await noticePayment(params);
+        openPage(`/packageAdd/pages/tips/index?type=1&msg=${res.data.data}`);
+      } catch (error) {}
     },
   },
   created() {

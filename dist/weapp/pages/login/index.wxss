@@ -49,7 +49,10 @@
 }
 
 .login-btn,
-.phone-btn {
+.phone-btn,
+.avatar-btn,
+.nickname-btn,
+.finish-btn {
   border-radius: 40rpx;
   width: 90%;
   height: 78rpx;
@@ -57,6 +60,13 @@
   text-align: center;
   color: #ffffff;
   background-color: #ff5355;
+  position: relative;
+}
+
+.nickname-input {
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .cancel-btn {
@@ -102,16 +112,93 @@
   height: 220rpx;
 }
 
-.get_phone {
+.get_phone,
+.get_avatar,
+.get_nickname,
+.get_finish {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 16rpx;
+  padding: 30rpx 16rpx;
 }
 
 .user_name {
   color: #b1b1b1;
+}
+
+.login-modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-modal .login-box {
+  background: #ffffff;
+  width: 500rpx;
+  padding: 30rpx;
+  border-radius: 10rpx;
+}
+
+.login-modal .login-box .login-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.login-modal .login-box .login-txt {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.login-modal .login-box .phone {
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 16rpx 0;
+}
+
+.login-modal .login-box .avatar-wrapper {
+  background: transparent;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.login-modal .login-box .avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+}
+
+.login-modal .login-box .login-head {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.login-modal .login-box .weui-input {
+  margin-left: 16rpx;
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 30rpx;
 }

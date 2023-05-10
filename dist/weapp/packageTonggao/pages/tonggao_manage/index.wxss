@@ -1,7 +1,7 @@
+@charset "UTF-8";
 page {
   background: #f7f7f7;
 }
-
 .tonggao-manage .tab {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -14,7 +14,6 @@ page {
   position: fixed;
   z-index: 9999;
 }
-
 .tonggao-manage .tab-item {
   color: #333333;
   -webkit-flex: 1;
@@ -25,156 +24,51 @@ page {
   line-height: 80rpx;
   border-bottom: 6rpx solid #ffffff;
 }
-
 .tonggao-manage .content {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   height: 100vh;
 }
-
 .tonggao-manage .content > swiper {
   height: 100%;
 }
-
 .tonggao-manage .tab-item.on {
   color: #333333;
   font-weight: bold;
   border-bottom-color: #ff1e3e;
 }
-
 .tonggao-manage .swiper-box {
   height: 100%;
 }
-
-.tonggao-manage .tonggao-manage-list {
-  color: #2f2f2f;
-  font-size: 30rpx;
-  margin: 16rpx 0;
-  background: #ffffff;
-  padding: 30rpx 30rpx 16rpx 30rpx;
+.tonggao-manage .list_bottom,
+.tonggao-manage .list_num {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+}
+.tonggao-manage .list_bottom {
+  padding-top: 16rpx;
+}
+.tonggao-manage .btn-grey {
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 22rpx;
+  color: #ffffff;
+  padding: 6rpx 12rpx;
   border-radius: 8rpx;
 }
-
-.tonggao-manage .tonggao-manage-list .list-content {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  position: relative;
-  margin-bottom: 16rpx;
+.tonggao-manage .btn-red {
+  background: #ff1e3e;
+  font-size: 22rpx;
+  color: #ffffff;
+  padding: 6rpx 12rpx;
+  border-radius: 8rpx;
 }
-
-.tonggao-manage .tonggao-manage-list .list_title {
-  font-size: 32rpx;
-  margin-top: 16rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_desc {
-  font-size: 26rpx;
-  color: #6b6b6b;
-  line-height: 36rpx;
-  margin-bottom: 6rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_info {
-  font-size: 26rpx;
-  color: #333333;
-  line-height: 36rpx;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.tonggao-manage .tonggao-manage-list .list_info image {
-  width: 30rpx;
-  height: 30rpx;
-  margin-right: 6rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_rt {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.tonggao-manage .tonggao-manage-list .list_rt image {
-  width: 200rpx;
-  height: 200rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_bottom,
-.tonggao-manage .tonggao-manage-list .list_num {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  color: #6b6b6b;
-}
-
-.tonggao-manage .tonggao-manage-list .list_num {
-  margin-bottom: 16rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_time {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_time image {
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 4rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_yuepai {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_yuepai image {
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 4rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_read {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_read image {
-  width: 26rpx;
-  height: 26rpx;
-  margin-right: 4rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .list_status {
+.tonggao-manage .list_status {
   background: rgba(0, 0, 0, 0.4);
   font-size: 22rpx;
   color: #ffffff;
@@ -184,8 +78,7 @@ page {
   right: -30rpx;
   top: -30rpx;
 }
-
-.tonggao-manage .tonggao-manage-list .list_status_sucess {
+.tonggao-manage .list_status_sucess {
   background: #4395ff;
   font-size: 22rpx;
   color: #ffffff;
@@ -195,59 +88,25 @@ page {
   right: -30rpx;
   top: -30rpx;
 }
-
-.tonggao-manage .tonggao-manage-list .list_status_fail {
-  background: #ff1e3e;
-  font-size: 22rpx;
-  color: #ffffff;
-  padding: 2rpx 6rpx;
-  border-radius: 0 0 0 12rpx;
-  position: absolute;
-  right: -30rpx;
-  top: -30rpx;
+.tonggao-manage .tonggao-recommend-top {
+  position: relative;
 }
-
-.tonggao-manage .tonggao-manage-list .list_tag {
-  background: #f9942a;
-  font-size: 22rpx;
-  color: #ffffff;
-  padding: 2rpx 6rpx;
-  border-radius: 0 0 12rpx 0;
-  position: absolute;
-  left: 0;
-  top: -30rpx;
+.tonggao-manage .componets-list .tonggao-recommend-info {
+  width: 540rpx !important;
 }
-
-.tonggao-manage .tonggao-manage-list .btn-grey {
-  background: rgba(0, 0, 0, 0.4);
-  font-size: 22rpx;
-  color: #ffffff;
-  padding: 6rpx 12rpx;
-  border-radius: 8rpx;
-}
-
-.tonggao-manage .tonggao-manage-list .btn-red {
-  background: #ff1e3e;
-  font-size: 22rpx;
-  color: #ffffff;
-  padding: 6rpx 12rpx;
-  border-radius: 8rpx;
-}
-
-.tonggao-manage .tonggao-manage-list:first-child {
+.tonggao-manage .tonggao-manage-list:first-child,
+.tonggao-manage .componets-box:first-child {
   margin-top: 104rpx;
 }
-
 .tonggao-manage .list_bt_rt {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  max-width: 80%;
 }
-
 .tonggao-manage .list_bt_rt .btn-red {
   margin-left: 16rpx;
 }
-
 .tonggao-manage .none-data {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -264,9 +123,217 @@ page {
   padding-top: 180rpx;
   color: #333;
 }
-
 .tonggao-manage .none-img {
   width: 150rpx;
   height: 150rpx;
   margin-bottom: 16rpx;
+}
+.tonggao-manage .componets-box {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 16rpx;
+  margin: 16rpx;
+}
+.tonggao-manage .tonggao-recommend-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16rpx;
+}
+.tonggao-manage .tonggao-recommend-top .tonggao-info-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: bold;
+  line-height: 34rpx;
+}
+.tonggao-manage .tonggao-recommend-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-recommend-img image {
+  width: 140rpx;
+  height: 90%;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-info-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-txt {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-info-desc {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  line-height: 36rpx;
+  /* 主要控制父元素容器里面子元素的排列方式 */
+  display: -webkit-box;
+  display: -moz-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  /* 实现限制文字显示多少行,也就是说要多少行是出现省略号,我这里设置三行就让文本出现省略号 */
+  -webkit-line-clamp: 2;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-tags {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 16rpx 0;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-tags .tag-item {
+  padding: 4rpx 10rpx;
+  background: none;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 26rpx;
+  border-radius: 8rpx;
+  margin-right: 10rpx;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-recommend-price {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-recommend-price .pirce {
+  color: #ff1e3e;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.tonggao-manage .tonggao-recommend-bt .tonggao-recommend-price .recommend-btn {
+  border: 1rpx solid #ff1e3e;
+  border-radius: 8rpx;
+  padding: 4rpx 10rpx;
+  font-size: 26rpx;
+  color: #ff1e3e;
+}
+.tonggao-manage .tonggao-recommend-info {
+  width: 540rpx !important;
+}
+.tonggao-manage .tonggao-bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: #6b6b6b;
+  border-top: none;
+  padding-top: 6rpx;
+}
+.tonggao-manage .tonggao-head {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.tonggao-manage .tonggao-head image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 4rpx;
+  border-radius: 50%;
+}
+.tonggao-manage .tonggao-yuepai {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.tonggao-manage .tonggao-yuepai image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.tonggao-manage .tonggao-read {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 26rpx;
+}
+.tonggao-manage .tonggao-read image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 4rpx;
+}
+.tonggao-manage .recommend-style {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap;
+}
+.tonggao-manage .recommend-label {
+  padding: 2rpx 14rpx;
+  background: #fcedeb;
+  border-radius: 8rpx 0 0 8rpx;
+  color: #f2280c;
+  font-size: 28rpx;
+  border: 2rpx solid #fcedeb;
+}
+.tonggao-manage .recommend-label2 {
+  padding: 2rpx 14rpx;
+  background: transparent;
+  color: #f2280c;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+  border: 2rpx solid #fcedeb;
+  border-left: none;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border-radius: 0 8rpx 8rpx 0;
+}
+.tonggao-manage .recommend-image {
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 16rpx;
+}
+.tonggao-manage .list_tips {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #f9dbdb;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  color: #a09595;
+  font-size: 26rpx;
+}
+.tonggao-manage .warn_icon {
+  width: 31rpx;
+  height: 31rpx;
+  margin-right: 4rpx;
 }

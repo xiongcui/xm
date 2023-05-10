@@ -54,7 +54,7 @@
           ></image>
         </view>
       </view>
-      <view class="about-item">
+      <view class="about-item" @tap="businessLicense">
         <text>营业执照</text>
         <view class="arrow">
           <image
@@ -98,6 +98,9 @@ export default {
     },
     cheatPrevention() {
       openPage("/packageSet/pages/cheatPrevention/index");
+    },
+    businessLicense() {
+      openPage("/packageSet/pages/businessLicense/index");
     },
   },
 };

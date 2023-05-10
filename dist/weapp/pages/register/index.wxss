@@ -72,6 +72,18 @@
 
 .item_input {
   color: #818181;
+  height: 100%;
+  width: 74%;
+}
+
+.item_input input,
+.item_input .picker {
+  height: 100%;
+}
+
+.picker_children {
+  height: 90rpx;
+  line-height: 90rpx;
 }
 
 .item_input image {

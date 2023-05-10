@@ -22,7 +22,9 @@
             class="shop-select"
           >
             <view class="shop-select-item" v-if="platform">{{ platform }}</view>
-            <view class="shop-select-item" v-else>请选择</view>
+            <view class="shop-select-item input-placeholder" v-else
+              >请选择</view
+            >
           </picker>
         </view>
       </view>
@@ -47,7 +49,7 @@
           >
           </image>
           <text v-if="localtion"> {{ localtion }}</text>
-          <text v-else> 请选择店铺地址</text>
+          <text class="input-placeholder" v-else> 请选择店铺地址</text>
           <view class="shop-item-right">
             <image
               mode="aspectFit"
@@ -202,15 +204,11 @@
       <view class="shop-item">
         <view class="shop-left"> 截止日期 </view>
         <view class="shop-rt">
-          <picker
-            @change="dateChange"
-            mode="date"
-            start="1960-09-01"
-            value="2000-01-01"
-            class="shop-select"
-          >
+          <picker @change="dateChange" mode="date" class="shop-select">
             <view class="shop-select-item" v-if="date">{{ date }}</view>
-            <view class="shop-select-item" v-else>请选择</view>
+            <view class="shop-select-item input-placeholder" v-else
+              >请选择</view
+            >
           </picker>
         </view>
       </view>
@@ -272,7 +270,11 @@
 <script>
 import { Base64 } from "js-Base64";
 import { errortip, openPage } from "../../../utils/util";
-import { publicConfig, submitNotice } from "../../../api/index.js";
+import {
+  publicConfig,
+  submitNotice,
+  noticePayment,
+} from "../../../api/index.js";
 import "./index.scss";
 export default {
   name: "shop",
@@ -556,10 +558,29 @@ export default {
     async submitNotice(params) {
       try {
         let res = await submitNotice(params);
-        openPage("/packageAdd/pages/tips/index?type=1");
-      } catch (error) {
-        openPage("/packageAdd/pages/tips/index?type=0");
-      }
+        let data = res.data.data;
+        let _this = this;
+        wx.showModal({
+          title: "温馨提示",
+          content: `发布通告信息消耗${data.coin}个金豆，确定发布吗？`,
+          success: function (res) {
+            if (res.confirm) {
+              console.log("用户点击确定");
+              _this.noticePayment({
+                oid: data.oid,
+              });
+            } else if (res.cancel) {
+              console.log("用户点击取消");
+            }
+          },
+        });
+      } catch (error) {}
+    },
+    async noticePayment(params) {
+      try {
+        let res = await noticePayment(params);
+        openPage(`/packageAdd/pages/tips/index?type=1&msg=${res.data.data}`);
+      } catch (error) {}
     },
   },
   created() {

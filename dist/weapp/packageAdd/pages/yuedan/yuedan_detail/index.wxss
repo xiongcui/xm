@@ -22,6 +22,14 @@ page {
   position: absolute;
   top: 0;
 }
+.yuedan_detail .border-left {
+  display: inline-block;
+  background-color: #ff1e3e;
+  border-radius: 4rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+  width: 8rpx;
+}
 .yuedan_detail .detail_info {
   background: #ffffff;
   border-radius: 16rpx;
@@ -74,6 +82,7 @@ page {
   margin-top: -16rpx;
   background: #ffffff;
   position: relative;
+  line-height: 34rpx;
 }
 .yuedan_detail .detail_info .split_line {
   margin: 0 16rpx;
@@ -343,9 +352,14 @@ page {
   padding: 16rpx;
 }
 .yuedan_detail .tonggao_box .tonggao_title_left {
-  border-left: 4rpx solid #fe5457;
-  padding-left: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 30rpx;
+  font-weight: bold;
   color: #333333;
   margin-bottom: 16rpx;
 }
@@ -421,14 +435,13 @@ page {
   margin-right: 6rpx;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt {
-  width: 100rpx;
-  height: 60rpx;
-  line-height: 60rpx;
+  width: 280rpx;
   text-align: center;
   background: #fe5457;
   color: #ffffff;
   font-size: 30rpx;
-  border-radius: 10rpx;
+  border-radius: 40rpx;
+  padding: 14rpx 40rpx;
 }
 .yuedan_detail .share-btn {
   background-color: transparent;
@@ -447,7 +460,7 @@ page {
   margin: 16rpx;
 }
 .yuedan_detail .recommend-title {
-  padding: 16rpx;
+  padding: 16rpx 16rpx 16rpx 0;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -461,9 +474,12 @@ page {
 .yuedan_detail .recommend-title .recommend-name {
   font-size: 30rpx;
   font-weight: bold;
-  margin-right: 16rpx;
-  border-left: 4rpx solid #fe5457;
-  padding-left: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #333333;
 }
 .yuedan_detail .recommend-title .recommend-rt {
@@ -541,7 +557,7 @@ page {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-top: 16rpx;
+  margin: 16rpx 0;
 }
 .yuedan_detail .recommend-ct .tonggao-recommend-bt .tonggao-tags .tag-item {
   padding: 4rpx 10rpx;
@@ -550,7 +566,6 @@ page {
   font-size: 22rpx;
   border-radius: 8rpx;
   margin-right: 10rpx;
-  margin-bottom: 20rpx;
 }
 .yuedan_detail .recommend-ct .tonggao-recommend-bt .tonggao-recommend-price {
   display: -webkit-flex;

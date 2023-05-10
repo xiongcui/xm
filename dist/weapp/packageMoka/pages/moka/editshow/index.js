@@ -419,6 +419,25 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -431,6 +450,8 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       uuid: "",
       winWidth: 0,
       winHeight: 0,
+      is_follower: 0,
+      is_followed: 0,
       globalData: {
         navHeight: 0,
         navTop: 0,
@@ -501,10 +522,10 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
     },
     editpersonimg: function editpersonimg() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersonimg/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself);
     },
     editvideo: function editvideo() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editvideo/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself);
     },
     editzytag: function editzytag() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editlabel/index");
@@ -525,8 +546,35 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         per_page: this.pageSize
       });
     },
-    userInfo: function userInfo(params) {
+    follow: function follow() {
+      this.userFollow({
+        follow_uuid: this.uuid
+      });
+    },
+    unfollow: function unfollow() {
       var _this = this;
+
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定不再关注？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+
+            _this.userUnfollow({
+              unfollow_uuid: _this.uuid
+            });
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
+    sendMsg: function sendMsg() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.uuid + "&nickname=" + this.infor.nickname + "&avatar=" + this.infor.avatar);
+    },
+    userInfo: function userInfo(params) {
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -536,41 +584,43 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Ib"])(params);
 
               case 3:
                 res = _context.sent;
-                _this.infor = res.data.data;
-                _this.homeInfor.personimg = [];
-                _this.homeInfor.video = [];
-                _this.homeInfor.personimg = res.data.data.album.photo_album;
-                _this.homeInfor.video = res.data.data.album.video_album;
-                _this.homeInfor.mode_sticker = res.data.data.sticker.mode_sticker;
-                _this.homeInfor.notice_sticker = res.data.data.sticker.notice_sticker;
-                _this.homeInfor.style_sticker = res.data.data.sticker.style_sticker;
-                _this.homeInfor.height = res.data.data.shape.height;
-                _this.homeInfor.weight = res.data.data.shape.weight;
-                _this.homeInfor.bwh_b = res.data.data.shape.bust;
-                _this.homeInfor.bwh_w = res.data.data.shape.waist;
-                _this.homeInfor.bwh_h = res.data.data.shape.hip;
-                _this.homeInfor.shoe = res.data.data.shape.size;
-                _context.next = 22;
+                _this2.infor = res.data.data;
+                _this2.homeInfor.personimg = [];
+                _this2.homeInfor.video = [];
+                _this2.homeInfor.personimg = res.data.data.album.photo_album;
+                _this2.homeInfor.video = res.data.data.album.video_album;
+                _this2.homeInfor.mode_sticker = res.data.data.sticker.mode_sticker;
+                _this2.homeInfor.notice_sticker = res.data.data.sticker.notice_sticker;
+                _this2.homeInfor.style_sticker = res.data.data.sticker.style_sticker;
+                _this2.homeInfor.height = res.data.data.shape.height;
+                _this2.homeInfor.weight = res.data.data.shape.weight;
+                _this2.homeInfor.bwh_b = res.data.data.shape.bust;
+                _this2.homeInfor.bwh_w = res.data.data.shape.waist;
+                _this2.homeInfor.bwh_h = res.data.data.shape.hip;
+                _this2.homeInfor.shoe = res.data.data.shape.size;
+                _this2.is_followed = res.data.data.follow_status.is_followed;
+                _this2.is_follower = res.data.data.follow_status.is_follower;
+                _context.next = 24;
                 break;
 
-              case 20:
-                _context.prev = 20;
+              case 22:
+                _context.prev = 22;
                 _context.t0 = _context["catch"](0);
 
-              case 22:
+              case 24:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 20]]);
+        }, _callee, null, [[0, 22]]);
       }))();
     },
     userShapeDetail: function userShapeDetail(params) {
-      var _this2 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
@@ -580,16 +630,16 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Pb"])(params);
 
               case 3:
                 res = _context2.sent;
-                _this2.homeInfor.height = res.data.data.shape_list.height;
-                _this2.homeInfor.weight = res.data.data.shape_list.weight;
-                _this2.homeInfor.bwh_b = res.data.data.shape_list.bust;
-                _this2.homeInfor.bwh_w = res.data.data.shape_list.waist;
-                _this2.homeInfor.bwh_h = res.data.data.shape_list.hip;
-                _this2.homeInfor.shoe = res.data.data.shape_list.size;
+                _this3.homeInfor.height = res.data.data.shape_list.height;
+                _this3.homeInfor.weight = res.data.data.shape_list.weight;
+                _this3.homeInfor.bwh_b = res.data.data.shape_list.bust;
+                _this3.homeInfor.bwh_w = res.data.data.shape_list.waist;
+                _this3.homeInfor.bwh_h = res.data.data.shape_list.hip;
+                _this3.homeInfor.shoe = res.data.data.shape_list.size;
                 _context2.next = 14;
                 break;
 
@@ -614,7 +664,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Db"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -634,7 +684,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }))();
     },
     userSticker: function userSticker(params) {
-      var _this3 = this;
+      var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
@@ -644,13 +694,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Rb"])(params);
 
               case 3:
                 res = _context4.sent;
-                _this3.homeInfor.mode_sticker = res.data.data.cur_sticker_list.mode_sticker;
-                _this3.homeInfor.notice_sticker = res.data.data.cur_sticker_list.notice_sticker;
-                _this3.homeInfor.style_sticker = res.data.data.cur_sticker_list.style_sticker;
+                _this4.homeInfor.mode_sticker = res.data.data.cur_sticker_list.mode_sticker;
+                _this4.homeInfor.notice_sticker = res.data.data.cur_sticker_list.notice_sticker;
+                _this4.homeInfor.style_sticker = res.data.data.cur_sticker_list.style_sticker;
                 _context4.next = 11;
                 break;
 
@@ -667,7 +717,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }))();
     },
     photoListOwn: function photoListOwn(params) {
-      var _this4 = this;
+      var _this5 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
         var res, data;
@@ -677,7 +727,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "db"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -692,7 +742,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 
               case 7:
                 data = res.data.data.items;
-                _this4.list = _this4.list.concat(data);
+                _this5.list = _this5.list.concat(data);
                 _context5.next = 13;
                 break;
 
@@ -717,7 +767,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "ob"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -737,7 +787,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       }))();
     },
     shareInviteInfo: function shareInviteInfo(params) {
-      var _this5 = this;
+      var _this6 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
         var res;
@@ -747,13 +797,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "pb"])(params);
 
               case 3:
                 res = _context7.sent;
-                _this5.shareTitle = res.data.data.title;
-                _this5.shareImg = res.data.data.imageUrl;
-                _this5.sharePath = res.data.data.path;
+                _this6.shareTitle = res.data.data.title;
+                _this6.shareImg = res.data.data.imageUrl;
+                _this6.sharePath = res.data.data.path;
                 _context7.next = 11;
                 break;
 
@@ -768,10 +818,94 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
           }
         }, _callee7, null, [[0, 9]]);
       }))();
+    },
+    userFollow: function userFollow(params) {
+      var _this7 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
+        var res, _params;
+
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.prev = 0;
+                _context8.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Hb"])(params);
+
+              case 3:
+                res = _context8.sent;
+
+                if (_this7.uuid) {
+                  _params = {
+                    uuid: _this7.uuid
+                  };
+
+                  _this7.userInfo(_params);
+                } else {
+                  _this7.userInfo("");
+                }
+
+                _context8.next = 9;
+                break;
+
+              case 7:
+                _context8.prev = 7;
+                _context8.t0 = _context8["catch"](0);
+
+              case 9:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, null, [[0, 7]]);
+      }))();
+    },
+    userUnfollow: function userUnfollow(params) {
+      var _this8 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee9() {
+        var res, _params2;
+
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                _context9.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Sb"])(params);
+
+              case 3:
+                res = _context9.sent;
+
+                if (_this8.uuid) {
+                  _params2 = {
+                    uuid: _this8.uuid
+                  };
+
+                  _this8.userInfo(_params2);
+                } else {
+                  _this8.userInfo("");
+                }
+
+                _context9.next = 9;
+                break;
+
+              case 7:
+                _context9.prev = 7;
+                _context9.t0 = _context9["catch"](0);
+
+              case 9:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, null, [[0, 7]]);
+      }))();
     }
   },
   created: function created() {
-    var _this6 = this;
+    var _this9 = this;
 
     var menuButtonObject = wx.getMenuButtonBoundingClientRect();
     wx.getSystemInfo({
@@ -782,13 +916,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
             navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
             // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
         navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this6.globalData.navHeight = navHeight; //导航栏总体高度
+        _this9.globalData.navHeight = navHeight; //导航栏总体高度
 
-        _this6.globalData.navTop = navTop; //胶囊距离顶部距离
+        _this9.globalData.navTop = navTop; //胶囊距离顶部距离
 
-        _this6.globalData.navObj = menuButtonObject.height; //胶囊高度
+        _this9.globalData.navObj = menuButtonObject.height; //胶囊高度
 
-        _this6.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
+        _this9.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
         // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
       },
       fail: function fail(err) {
@@ -922,7 +1056,7 @@ var render = function () {
                     : _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
                         },
                       }),
                   _vm.infor.is_security
@@ -935,7 +1069,7 @@ var render = function () {
                     : _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
                         },
                       }),
                 ]),
@@ -1028,6 +1162,54 @@ var render = function () {
                       }),
                     ]
                   )
+                : _vm._e(),
+              !_vm.myself
+                ? _c("view", { staticClass: "is_followed_box" }, [
+                    _c(
+                      "text",
+                      {
+                        staticClass: "followed_send_msg",
+                        on: { tap: _vm.sendMsg },
+                      },
+                      [_vm._v("发消息")]
+                    ),
+                    _vm.is_follower == 0 && _vm.is_followed == 0
+                      ? _c(
+                          "text",
+                          {
+                            staticClass: "followed_style",
+                            on: { tap: _vm.follow },
+                          },
+                          [_vm._v("关注")]
+                        )
+                      : _vm._e(),
+                    _vm.is_followed == 0 && _vm.is_follower == 1
+                      ? _c(
+                          "text",
+                          {
+                            staticClass: "followed_style",
+                            on: { tap: _vm.unfollow },
+                          },
+                          [_vm._v("已关注")]
+                        )
+                      : _vm._e(),
+                    _vm.is_follower == 1 && _vm.is_followed == 1
+                      ? _c("text", {
+                          staticClass: "followed_style2",
+                          on: { tap: _vm.unfollow },
+                        })
+                      : _vm._e(),
+                    _vm.is_follower == 0 && _vm.is_followed == 1
+                      ? _c(
+                          "text",
+                          {
+                            staticClass: "followed_style",
+                            on: { tap: _vm.follow },
+                          },
+                          [_vm._v("回粉")]
+                        )
+                      : _vm._e(),
+                  ])
                 : _vm._e(),
             ]),
           ]),
@@ -1215,7 +1397,14 @@ var render = function () {
                                   ),
                                 ]
                               )
-                            : _vm._e(),
+                            : _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.editpersonimg },
+                                },
+                                [_vm._v(" 更多")]
+                              ),
                         ]),
                         _vm.homeInfor.personimg.length
                           ? _c(
@@ -1334,7 +1523,14 @@ var render = function () {
                                   ),
                                 ]
                               )
-                            : _vm._e(),
+                            : _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.editvideo },
+                                },
+                                [_vm._v(" 更多")]
+                              ),
                         ]),
                         _vm.homeInfor.video.length
                           ? _c(

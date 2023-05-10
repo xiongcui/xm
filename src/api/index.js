@@ -186,7 +186,7 @@ export const subUserSticker = (data) => {
 // 创建作品
 export const subNotePhoto = (data) => {
   return request({
-    url: baseUrl + "/v1/note/publish/invite",
+    url: baseUrl + "/v1/note/publish/photo",
     method: "post",
     data,
   });
@@ -554,7 +554,7 @@ export const manageOperation = (data) => {
 // 开放招募-详情
 export const pushInit = (data) => {
   return request({
-    url: baseUrl + "/v1/note/manage/event/push/init",
+    url: baseUrl + "/v1/note/manage/publish/notice/open/template",
     method: "post",
     data,
   });
@@ -563,7 +563,7 @@ export const pushInit = (data) => {
 // 开放招募-提交
 export const subOpenRecruitment = (data) => {
   return request({
-    url: baseUrl + "/v1/note/manage/event/push",
+    url: baseUrl + "/v1/note/manage/publish/notice/open/payment",
     method: "post",
     data,
   });
@@ -851,6 +851,38 @@ export const userList = (data) => {
 export const receivePayment = (data) => {
   return request({
     url: baseUrl + "/v1/note/manage/receive/payment",
+    method: "post",
+    data,
+  });
+};
+// 约拍支付
+export const invitePayment = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/publish/invite/payment",
+    method: "post",
+    data,
+  });
+};
+// 通告支付
+export const noticePayment = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/publish/notice/payment",
+    method: "post",
+    data,
+  });
+};
+// 发布校验
+export const publishVerify = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/publish/verify",
+    method: "post",
+    data,
+  });
+};
+// 申请报名检验
+export const applyVerify = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/apply/verify",
     method: "post",
     data,
   });

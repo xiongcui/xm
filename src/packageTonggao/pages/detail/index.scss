@@ -55,6 +55,7 @@ page {
       margin-top: -16px;
       background: #ffffff;
       position: relative;
+      line-height: 34px;
     }
     .split_line {
       margin: 0px 16px;
@@ -268,17 +269,26 @@ page {
       color: rgba(0, 0, 0, 0.5);
     }
   }
+  .border-left {
+    display: inline-block;
+    background-color: #ff1e3e;
+    border-radius: 4rpx;
+    height: 30rpx;
+    margin-right: 16px;
+    width: 8rpx;
+  }
   .tonggao_box {
     background: #ffffff;
     margin: 16px;
     border-radius: 16px;
     padding: 16px;
     .tonggao_title_left {
-      border-left: 4px solid #fe5457;
-      padding-left: 16px;
       font-size: 30px;
+      font-weight: bold;
       color: #333333;
       margin-bottom: 16px;
+      display: flex;
+      align-items: center;
     }
     .tonggao_box_title {
       display: flex;
@@ -333,20 +343,18 @@ page {
       }
     }
     .tonggao_fixed_rt {
-      padding: 0px 16px;
-      min-width: 100px;
-      height: 60px;
-      line-height: 60px;
+      width: 280px;
       text-align: center;
       background: #fe5457;
       color: #ffffff;
       font-size: 30px;
-      border-radius: 10px;
+      border-radius: 40px;
+      padding: 14px 40px;
     }
   }
   .recommend {
     padding: 0px 16px 0px 16px;
-    background: #ffffff;
+    // background: #ffffff;
     border-radius: 16px;
     margin: 16px;
   }
@@ -358,9 +366,8 @@ page {
     .recommend-name {
       font-size: 30px;
       font-weight: bold;
-      margin-right: 16px;
-      border-left: 4px solid #fe5457;
-      padding-left: 16px;
+      display: flex;
+      align-items: center;
       color: #333333;
     }
     .recommend-tips {
@@ -370,9 +377,10 @@ page {
     }
   }
   .recommend-ct {
-    background: linear-gradient(#fff0da 0%, #ffffff 40%);
+    background: #ffffff;
     border-radius: 10px;
     padding: 10px;
+    margin-bottom: 16px;
     .recommend-box {
       padding: 16px 16px 6px 16px;
     }
@@ -415,7 +423,7 @@ page {
       .tonggao-tags {
         display: flex;
         flex-direction: column;
-        margin-top: 16px;
+        margin: 16px 0px;
         .tag-item {
           padding: 4px 10px;
           background: none;
@@ -423,7 +431,6 @@ page {
           font-size: 22px;
           border-radius: 8px;
           margin-right: 10px;
-          margin-bottom: 20px;
         }
       }
       .tonggao-recommend-price {

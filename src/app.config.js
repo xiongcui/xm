@@ -81,6 +81,7 @@ export default defineAppConfig({
         "pages/user/baiduRealnameAuth/index",
         "pages/user/homelist/index",
         "pages/user/takelist/index",
+        "pages/guideTips/index",
       ],
     },
     {
@@ -137,6 +138,7 @@ export default defineAppConfig({
         "pages/customerCenter/index",
         "pages/feedback/index",
         "pages/cheatPrevention/index",
+        "pages/businessLicense/index",
       ],
     },
   ],

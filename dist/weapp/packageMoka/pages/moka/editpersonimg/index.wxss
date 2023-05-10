@@ -32,7 +32,7 @@ page {
 .personimgs {
   background-color: #fff;
   margin: 0 auto;
-  padding: 0 16rpx;
+  padding-left: 16rpx;
 }
 
 .imgsblock {
@@ -40,20 +40,24 @@ page {
   width: 100%;
 }
 
-.imgs,
 .imgsblock {
   display: block;
   float: left;
 }
 
 .imgs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
   padding-bottom: 20rpx;
 }
 
 .pick_img {
   background-color: #f7f8fa;
   border-radius: 4rpx;
-  display: inline-block;
   float: left;
   height: 310rpx;
   margin: 30rpx 20rpx 0 0;
@@ -84,14 +88,13 @@ page {
 
 .preview_img {
   background-color: #f7f8fa;
-  display: inline-block;
   float: left;
   height: 310rpx;
-  margin: 30rpx 15rpx 0 0;
+  margin: 30rpx 16rpx 0 0;
   overflow: hidden;
   position: relative;
   text-align: center;
-  width: 217rpx;
+  width: 224rpx;
 }
 
 .preview_img > image {

@@ -287,7 +287,7 @@
         <view class="modal_title">温馨提示</view>
         <view class="modal_content">
           <view class="comment_content">
-            提交约拍请求需要消耗{{ is_member ? 2 : 5 }}积分，确定发送吗？
+            提交约拍请求需要消耗{{ pay_coin }}积分，确定发送吗？
           </view>
           <view class="ub commentbox">
             <view class="comment_cancel ub-f1">
@@ -508,13 +508,13 @@ export default {
             res.data.data.celebrity.body.platform_name;
           this.media_info.platform_code = this.data.celebrity.platform_type =
             res.data.data.celebrity.body.platform_type;
-          this.pay_coin = res.data.data.celebrity.visitor_acct.pay_coin;
-          this.balance_coin = res.data.data.celebrity.visitor_acct.balance_coin;
+        }
+        if (res.data.data.visitor_acct) {
+          this.pay_coin = res.data.data.visitor_acct.pay_coin;
+          this.balance_coin = res.data.data.visitor_acct.balance_coin;
         }
         if (res.data.data.address) {
           this.showAddress = res.data.data.address.is_enable;
-        }
-        if (res.data.data.address) {
           this.data.address = res.data.data.address.body;
         }
         this.visited_id = res.data.data.visited_id;
@@ -532,9 +532,9 @@ export default {
     async applyPay(params) {
       try {
         let res = await applyPay(params);
-        openPage("/packageAdd/pages/tips/index?type=2");
+        openPage(`/packageAdd/pages/tips/index?type=2&msg=${res.data.data}`);
       } catch (error) {
-        openPage("/packageAdd/pages/tips/index?type=3");
+        openPage(`/packageAdd/pages/tips/index?type=3&msg=${error.data.msg}`);
       }
     },
   },
