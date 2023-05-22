@@ -84,6 +84,7 @@
 <script>
 import "./index.scss";
 import { isLogin, openPage } from "../../utils/util";
+import { publishVerify } from "../../api/index";
 export default {
   name: "release",
   methods: {
@@ -101,10 +102,26 @@ export default {
           url = "appointment/index";
           break;
         case 3:
-          url = "/packageAdd/pages/zuopin/add_zuopin/index";
+          this.publishVerify({
+            project_code: "PH",
+          });
           break;
       }
       openPage(url);
+    },
+    async publishVerify(params) {
+      try {
+        let res = await publishVerify(params);
+        openPage("/packageAdd/pages/zuopin/add_zuopin/index");
+      } catch (error) {
+        if (error.data.error_code == 21030 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        } else {
+          errortip(error.data.msg);
+        }
+      }
     },
   },
 };

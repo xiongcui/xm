@@ -29,7 +29,7 @@
             <view class="my-account">账号：{{ infor.uuid }}</view>
             <view class="my-info">
               <text>IP归属：</text>
-              <text>{{ infor.province_name }}</text>
+              <text>{{ infor.login_ip_city }}</text>
               <view class="head-tag-box">
                 <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
@@ -37,19 +37,9 @@
                   v-if="infor.is_certify"
                 ></image>
                 <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
-                  class="head-tag-img"
-                  v-else
-                ></image>
-                <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
                   class="head-tag-img"
                   v-if="infor.is_security"
-                ></image>
-                <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
-                  class="head-tag-img"
-                  v-else
                 ></image>
               </view>
             </view>
@@ -60,7 +50,7 @@
             {{ infor.resume }}
           </view>
           <view class="my_tags">
-            <view class="tag">
+            <view class="tag" v-if="infor.age">
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/user/show/sex1.png"
                 class="sex"
@@ -73,10 +63,12 @@
               ></image>
               {{ infor.age }}岁
             </view>
-            <view class="tag"> {{ infor.province_name }} </view>
+            <view class="tag" v-if="infor.province_name">
+              {{ infor.province_name }}
+            </view>
             <view
               class="tag"
-              v-for="(item, index) in infor.career_list"
+              v-for="(item, index) in infor.career_label"
               :key="index"
             >
               {{ item }}
@@ -84,25 +76,25 @@
           </view>
           <view class="my-count">
             <view class="my-conunt-left">
-              <view class="my-count-box">
-                <text class="num">{{ infor.statistic.followed_cnt }}</text>
+              <view class="my-count-box" @tap="goFollowAndfans('fans')">
+                <text class="num">{{ infor.statistic.follower_cnt }}</text>
                 <text>粉丝</text>
               </view>
-              <view class="my-count-box">
-                <text class="num">{{ infor.statistic.follower_cnt }}</text>
+              <view class="my-count-box" @tap="goFollowAndfans('follow')">
+                <text class="num">{{ infor.statistic.followed_cnt }}</text>
                 <text>关注</text>
               </view>
               <view class="my-count-box">
                 <text class="num">{{ infor.statistic.invite_cnt }}</text>
-                <text>约拍</text>
+                <text>收到</text>
+              </view>
+              <view class="my-count-box">
+                <text class="num">{{ infor.statistic.vote_cnt }}</text>
+                <text>点赞</text>
               </view>
               <view class="my-count-box">
                 <text class="num">{{ infor.statistic.visitor_cnt }}</text>
-                <text>访客</text>
-              </view>
-              <view class="my-count-box">
-                <text class="num">{{ infor.statistic.track_cnt }}</text>
-                <text>足迹</text>
+                <text>人气</text>
               </view>
             </view>
             <view class="my-conunt-rt" @tap="personDetail" v-if="myself">
@@ -111,7 +103,7 @@
               ></image>
             </view>
             <view class="is_followed_box" v-if="!myself">
-              <text class="followed_send_msg" @tap="sendMsg">发消息</text>
+              <text class="followed_send_msg" @tap="communicate">发消息</text>
               <text
                 class="followed_style"
                 v-if="is_follower == 0 && is_followed == 0"
@@ -377,6 +369,14 @@
         <myZuopinList :base_data="list"></myZuopinList>
       </block>
     </view>
+    <view
+      class="zhuye_fixed_bottom"
+      :class="isIphoneX ? 'fix-iphonex-button' : ''"
+      v-if="!myself"
+    >
+      <view class="zhuye_fixed_left" @tap="communicate"> 立即沟通 </view>
+      <view class="zhuye_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
+    </view>
   </view>
 </template>
 
@@ -391,35 +391,33 @@ import {
   shareInviteInfo,
   userFollow,
   userUnfollow,
+  applyVerify,
+  imVerify,
 } from "../../../../api/index";
-import { errortip, openPage } from "../../../../utils/util";
+import { errortip, isLogin, openPage } from "../../../../utils/util";
 import myZuopinList from "../../../../components/myZuopinList/index.vue";
+import clickThrottle from "../../../../utils/clickThrottle";
 import "./index.scss";
 export default {
   name: "editshow",
   data() {
     return {
       myself: true,
+      isIphoneX: false,
       uuid: "",
       winWidth: 0,
       winHeight: 0,
       is_follower: 0,
       is_followed: 0,
-      globalData: {
-        navHeight: 0,
-        navTop: 0,
-        navObj: 0,
-        navObjWid: 0,
-      },
       infor: {
         avatar: "",
         homeimg: "",
         statistic: {
           followed_cnt: 0,
           follower_cnt: 0,
-          invite_cnt: 20,
-          read_cnt: 20,
-          track_cnt: 20,
+          invite_cnt: 0,
+          vote_cnt: 0,
+          visitor_cnt: 0,
         },
       },
       currentTab: 0,
@@ -535,6 +533,24 @@ export default {
           this.infor.avatar
       );
     },
+    communicate() {
+      this.imVerify({
+        to_account: this.uuid,
+      });
+    },
+    launchYuepai() {
+      if (!clickThrottle()) return;
+      if (isLogin()) {
+        this.applyVerify({
+          source: "home",
+          oid: this.uuid,
+        });
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+      }
+    },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
@@ -633,30 +649,40 @@ export default {
         }
       } catch (error) {}
     },
+    async applyVerify(params) {
+      try {
+        let res = await applyVerify(params);
+        openPage(
+          "/packageAdd/pages/user/launchyuepai/index?oid=" +
+            this.uuid +
+            "&source=home"
+        );
+      } catch (error) {
+        if (error.data.error_code == 21030 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        } else {
+          errortip(error.data.msg);
+        }
+      }
+    },
+    async imVerify(params) {
+      try {
+        let res = await imVerify(params);
+        this.sendMsg();
+      } catch (error) {
+        errortip(error.data.msg);
+        if (error.data.error_code == 21050 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        }
+      }
+    },
   },
   created() {
-    let menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: (res) => {
-        //导航高度
-        let statusBarHeight = res.statusBarHeight,
-          navTop = menuButtonObject.top,
-          navObjWid =
-            res.windowWidth - menuButtonObject.right + menuButtonObject.width, // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-          navHeight =
-            statusBarHeight +
-            menuButtonObject.height +
-            (menuButtonObject.top - statusBarHeight) * 2;
-        this.globalData.navHeight = navHeight; //导航栏总体高度
-        this.globalData.navTop = navTop; //胶囊距离顶部距离
-        this.globalData.navObj = menuButtonObject.height; //胶囊高度
-        this.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-        // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
-      },
-      fail(err) {
-        console.log(err);
-      },
-    });
+    this.isIphoneX = this.globalData.isIphoneX;
   },
   onShow() {
     if (this.uuid) {

@@ -356,6 +356,14 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -410,8 +418,37 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
     goDetail: function goDetail(sid) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid);
     },
-    applyList: function applyList(params) {
+    moreClick: function moreClick(sid, row) {
       var _this = this;
+
+      wx.showActionSheet({
+        itemList: ["删除", "投诉"],
+        success: function success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              _this.Delete(sid);
+
+              break;
+
+            case 1:
+              console.log("投诉");
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
+              break;
+          }
+        },
+        fail: function fail(res) {
+          console.log(res.errMsg);
+        }
+      });
+    },
+    Delete: function Delete(sid) {
+      this.applyManage({
+        visited_status: -200,
+        sid: sid
+      });
+    },
+    applyList: function applyList(params) {
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, data;
@@ -436,7 +473,7 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
 
               case 7:
                 data = res.data.data.items;
-                _this.list = _this.list.concat(data);
+                _this2.list = _this2.list.concat(data);
                 _context.next = 13;
                 break;
 
@@ -450,6 +487,41 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
             }
           }
         }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    applyManage: function applyManage(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyManage */ "f"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this3.pageNum = 1;
+                _this3.list = [];
+
+                _this3.query();
+
+                _context2.next = 11;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
       }))();
     }
   },
@@ -622,9 +694,19 @@ var render = function () {
                                           _vm._s(item.visitor.province_name)
                                       ),
                                     ]),
-                                    _c("view", { staticClass: "dian" }, [
-                                      _vm._v("..."),
-                                    ]),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "dian",
+                                        on: {
+                                          tap: function ($event) {
+                                            $event.stopPropagation()
+                                            return _vm.moreClick(item.sid, item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("...")]
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
@@ -739,9 +821,19 @@ var render = function () {
                                           _vm._s(item.visitor.province_name)
                                       ),
                                     ]),
-                                    _c("view", { staticClass: "dian" }, [
-                                      _vm._v("..."),
-                                    ]),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "dian",
+                                        on: {
+                                          tap: function ($event) {
+                                            $event.stopPropagation()
+                                            return _vm.moreClick(item.sid, item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("...")]
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
@@ -856,9 +948,19 @@ var render = function () {
                                           _vm._s(item.visitor.province_name)
                                       ),
                                     ]),
-                                    _c("view", { staticClass: "dian" }, [
-                                      _vm._v("..."),
-                                    ]),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "dian",
+                                        on: {
+                                          tap: function ($event) {
+                                            $event.stopPropagation()
+                                            return _vm.moreClick(item.sid, item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("...")]
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [
@@ -973,9 +1075,19 @@ var render = function () {
                                           _vm._s(item.visitor.province_name)
                                       ),
                                     ]),
-                                    _c("view", { staticClass: "dian" }, [
-                                      _vm._v("..."),
-                                    ]),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "dian",
+                                        on: {
+                                          tap: function ($event) {
+                                            $event.stopPropagation()
+                                            return _vm.moreClick(item.sid, item)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("...")]
+                                    ),
                                   ]),
                                 ]),
                                 _c("view", { staticClass: "invite-desc" }, [

@@ -36,7 +36,7 @@
           ></image>
         </view>
       </view>
-      <view class="about-item">
+      <view class="about-item" @tap="privacy">
         <text>隐私政策</text>
         <view class="arrow">
           <image
@@ -101,6 +101,9 @@ export default {
     },
     businessLicense() {
       openPage("/packageSet/pages/businessLicense/index");
+    },
+    privacy() {
+      openPage("/packageSet/pages/privacy/index");
     },
   },
 };

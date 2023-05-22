@@ -53,7 +53,8 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 
 
 //
@@ -229,6 +230,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 //
 //
 //
+
 
 
 
@@ -374,7 +376,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -408,7 +410,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -442,7 +444,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -536,6 +538,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
       });
       params.style_label = style_label.join(",");
       params.photo_label = photo_label.join(",");
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.subNotePhoto(params);
     },
     publicConfig: function publicConfig(params) {
@@ -550,7 +553,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "kb"])(params);
 
               case 3:
                 _res = _context.sent;
@@ -596,7 +599,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "xb"])(params);
 
               case 3:
                 _res2 = _context2.sent;

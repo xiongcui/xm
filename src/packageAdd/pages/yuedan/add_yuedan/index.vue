@@ -110,6 +110,14 @@
           v-model="place"
         />
       </view>
+      <!-- <view class="works-info">
+        <text>成片</text>
+        <input
+          placeholder="如：原片多少，精修多少等（选填）"
+          class="works-input"
+          v-model="place"
+        />
+      </view> -->
       <view class="works-info">
         <view>
           <text>收费模式</text>
@@ -121,7 +129,9 @@
           :range="chargeList"
           :range-key="'value'"
         >
-          <view class="works-select-item" v-if="charge">{{ charge }}</view>
+          <view class="works-select-item works-select-value" v-if="charge">{{
+            charge
+          }}</view>
           <view class="works-select-item" v-else>请选择</view>
         </picker>
       </view>
@@ -137,41 +147,54 @@
           <text class="check-tips">*</text>
         </view>
 
-        <block class="payment-amount" v-if="!checked">
-          <input placeholder="请输入" class="amount1" v-model="amount" />
-          <picker
+        <block class="payment-amount">
+          <view class="payment-box">
+            <input
+              :placeholder="
+                this.chargeList[this.chargeIndex].key == 300
+                  ? '请输入收费金额'
+                  : '请输入付费金额'
+              "
+              class="amount1"
+              v-model="amount"
+              type="number"
+              @input="amountInput"
+            />
+            <view class="first-none">元</view></view
+          >
+          <!-- <picker
             @change="companyChange"
             :value="companyIndex"
             :range="companyList"
             :range-key="'value'"
           >
             <view class="works-select-item company" v-if="company"
-              >元{{ company }}</view
+              >元<view :class="company ? 'first' : 'first-none'">{{
+                company
+              }}</view></view
             >
-            <view class="works-select-item company" v-else>元/单位</view>
-          </picker>
-          <text class="split">|</text>
-          <block>
-            <checkbox
-              :value="payment_range"
-              :checked="checked"
-              class="payment_range"
-              @tap="checkClick"
-            />
-            <text class="payment_range_text">区间</text>
-          </block>
+            <view class="works-select-item company" v-else
+              >元<view :class="company ? 'first' : 'first-none'"
+                >/单位</view
+              ></view
+            >
+          </picker> -->
         </block>
-        <block class="payment-amount" v-if="checked">
+        <!-- <block class="payment-amount" v-if="checked">
           <input
             placeholder="最小金额"
             class="min-amount"
             v-model="minAmount"
+            type="number"
+            @input="minAmountInput"
           />
           <text class="split">-</text>
           <input
             placeholder="最大金额"
             class="max-amount"
             v-model="maxAmount"
+            type="number"
+            @input="maxAmountInput"
           />
           <picker
             @change="companyChange"
@@ -180,9 +203,15 @@
             :range-key="'value'"
           >
             <view class="works-select-item company" v-if="company"
-              >元{{ company }}</view
+              >元<view :class="company ? 'first' : 'first-none'">{{
+                company
+              }}</view></view
             >
-            <view class="works-select-item company" v-else>元/单位</view>
+            <view class="works-select-item company" v-else
+              >元<view :class="company ? 'first' : 'first-none'"
+                >/单位</view
+              ></view
+            >
           </picker>
           <text class="split">|</text>
           <block>
@@ -194,7 +223,7 @@
             />
             <text class="payment_range_text">区间</text>
           </block>
-        </block>
+        </block> -->
       </view>
       <view class="works-info">
         <view><text>面向地区</text> <text class="check-tips">*</text></view>
@@ -204,9 +233,11 @@
           class="works-select"
           @change="bindRegionChange"
         >
-          <view class="works-select-item" v-if="select_city">{{
-            select_city
-          }}</view>
+          <view
+            class="works-select-item works-select-value"
+            v-if="select_city"
+            >{{ select_city }}</view
+          >
           <view class="works-select-item" v-else>请选择</view>
         </picker>
       </view>
@@ -222,7 +253,9 @@
           :range-key="'value'"
           class="works-select"
         >
-          <view class="works-select-item" v-if="security">{{ security }}</view>
+          <view class="works-select-item works-select-value" v-if="security">{{
+            security
+          }}</view>
           <view class="works-select-item" v-else>请选择</view>
         </picker>
       </view>
@@ -274,6 +307,7 @@ import {
   creatInvite,
   invitePayment,
 } from "../../../../api/index";
+import clickThrottle from "../../../../utils/clickThrottle";
 import { Base64 } from "js-Base64";
 export default {
   name: "works",
@@ -325,6 +359,27 @@ export default {
     bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
+    },
+    minAmountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.minAmount = "";
+      }
+    },
+    maxAmountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.maxAmount = "";
+      }
+    },
+    amountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.amount = "";
+      }
     },
     uploadImgClose(index) {
       this.imgList.splice(index, 1);
@@ -567,13 +622,13 @@ export default {
           errortip("请填写收费金额区间！");
           return false;
         }
-        if (
-          (!this.checked && !this.company) ||
-          (this.checked && !this.company)
-        ) {
-          errortip("请选择单位！");
-          return false;
-        }
+        // if (
+        //   (!this.checked && !this.company) ||
+        //   (this.checked && !this.company)
+        // ) {
+        //   errortip("请选择单位！");
+        //   return false;
+        // }
       }
 
       if (!this.select_city) {
@@ -651,6 +706,7 @@ export default {
       });
       params.style_label = style_label.join(",");
       params.notice_label = notice_label.join(",");
+      if (!clickThrottle()) return;
       this.creatInvite(params);
     },
     async publicConfig(params) {

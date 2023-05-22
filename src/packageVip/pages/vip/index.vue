@@ -175,8 +175,14 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <cover-view class="subbtn_bottom">
-        <button @tap="submit">
-          立即以{{ price }}元{{ ismember ? "续费" : "开通" }}
+        <button @tap="submit" v-if="active == 0" :key="0">
+          {{ `立即以${price}元${ismember ? "续费" : "开通"}` }}
+        </button>
+        <button @tap="submit" v-if="active == 1" :key="1">
+          {{ `立即以${price}元${ismember ? "续费" : "开通"}` }}
+        </button>
+        <button @tap="submit" v-if="active == 2" :key="2">
+          {{ `立即以${price}元${ismember ? "续费" : "开通"}` }}
         </button>
         <text class="tagcoin" v-if="coin > 0"
           >{{ ismember ? "续费" : "开通" }}可得{{ coin }}金币</text

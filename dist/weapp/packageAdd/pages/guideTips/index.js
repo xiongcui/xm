@@ -63,6 +63,7 @@ component.options.__file = "src/packageAdd/pages/guideTips/index.vue"
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -79,6 +80,9 @@ component.options.__file = "src/packageAdd/pages/guideTips/index.vue"
     },
     goPledgecash: function goPledgecash() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMsg/pages/creditGuarantee/index");
+    },
+    goVip: function goVip() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageVip/pages/vip/index");
     }
   },
   onLoad: function onLoad(options) {
@@ -129,6 +133,11 @@ var render = function () {
           { staticClass: "guide-btn", on: { tap: _vm.goPledgecash } },
           [_vm._v("去担保")]
         )
+      : _vm._e(),
+    _vm.code == 21050
+      ? _c("view", { staticClass: "guide-btn", on: { tap: _vm.goVip } }, [
+          _vm._v("开通会员"),
+        ])
       : _vm._e(),
   ])
 }

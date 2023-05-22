@@ -36,7 +36,7 @@
           <view class="ub-f1 ub item_mid">
             <view class="item_label">性别</view>
             <view class="ub-f1 item_input">
-              <view class="picker" v-if="sex !== ''">{{ sexs[sex] }}</view>
+              <view class="picker" v-if="sex !== null">{{ sexs[sex] }}</view>
               <view class="picker" v-else>请选择</view>
             </view>
           </view>
@@ -106,8 +106,8 @@
       </view>
     </view>
     <view class="title">自我简介</view>
-    <view class="infor intro_info ub">
-      <view @tap="goEditUserIntro" class="ub-f1">
+    <view class="infor intro_info ub" @tap="goEditUserIntro">
+      <view class="ub-f1">
         <view class="intro_content" v-if="infor.intro">
           <text>{{ infor.intro }}</text>
         </view>
@@ -134,7 +134,7 @@ import { openPage, errortip } from "../../../../utils/util";
 import {
   userProfile,
   profileUpdate,
-  updateAvatar,
+  userRegister,
 } from "../../../../api/index";
 import { Base64 } from "js-Base64";
 import "./index.scss";
@@ -205,12 +205,14 @@ export default {
       }
       let params = {
         nickname: this.nickname,
-        sex: Number(this.sex),
         birthday: this.birthday,
-        addressName: this.region.join("-"),
-        address: this.regionList.join("-"),
+        addressName: this.region.length ? this.region.join("-") : null,
+        address: this.regionList ? this.regionList.join("-") : null,
         avatar: this.infor.avatar,
       };
+      if (this.sex !== null) {
+        params.sex = Number(this.sex);
+      }
       this.profileUpdate(params);
     },
     async profileUpdate(params, type) {
@@ -229,9 +231,9 @@ export default {
         // });
       } catch (error) {}
     },
-    async updateAvatar(params) {
+    async userRegister(params) {
       try {
-        let res = await updateAvatar(params);
+        let res = await userRegister(params);
         this.infor.avatar = params.avatar;
         let userInfo = wx.getStorageSync("userInfo");
         userInfo.avatar = this.infor.avatar;
@@ -245,9 +247,11 @@ export default {
         this.nickname = res.data.data.nickname;
         this.sex = res.data.data.sex;
         this.birthday = res.data.data.birthday;
-        this.region = res.data.data.address_name.split("-");
+        this.region = res.data.data.address_name
+          ? res.data.data.address_name.split("-")
+          : "";
         this.regionList = res.data.data.address.split("-");
-        this.infor.intro = res.data.data.resume;
+        this.infor.intro = res.data.data.resume ? res.data.data.resume : "";
         this.identity = res.data.data.career_label.join(".");
       } catch (error) {}
     },
@@ -272,7 +276,7 @@ export default {
           //判断上传的是图片还是视频
           let data = JSON.parse(res.data);
           if (data.code == 200) {
-            this.updateAvatar({
+            this.userRegister({
               avatar: data.data.file1,
             });
           } else {

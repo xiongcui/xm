@@ -12,6 +12,7 @@ page {
     z-index: 9999;
   }
   .tab-item {
+    position: relative;
     color: #333333;
     flex: 1;
     font-size: 30px;
@@ -19,6 +20,20 @@ page {
     line-height: 80rpx;
     border-bottom: 6rpx solid #ffffff;
     margin: 0px 15%;
+  }
+  .tab-num {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    padding: 2px;
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #ffffff;
+    background: red;
+    border-radius: 50%;
+    font-size: 20px;
   }
   .content {
     flex: 1;

@@ -201,7 +201,47 @@ page {
       align-items: center;
     }
   }
-  .modal_box {
+  // .modal_box_bg {
+  //   position: fixed;
+  //   top: 0px;
+  //   left: 0px;
+  //   right: 0px;
+  //   bottom: 0px;
+  //   background: rgba(0, 0, 0, 0.4);
+  //   z-index: 99999;
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   .modal_content {
+  //     position: relative;
+  //     background: #ffffff;
+  //     padding: 16px 30px;
+  //     border-radius: 10px;
+  //     width: 600px;
+  //     display: flex;
+  //     flex-direction: column;
+  //     align-items: center;
+  //     font-size: 30px;
+  //     color: #333333;
+
+  //     .save {
+  //       margin-top: 16px;
+  //       font-size: 26px;
+  //       background: #ff1e3e;
+  //       color: #ffffff;
+  //       padding: 16px 40px;
+  //       border-radius: 8px;
+  //     }
+  //     .close-img {
+  //       width: 38px;
+  //       height: 38px;
+  //       position: absolute;
+  //       right: 16px;
+  //       top: 16px;
+  //     }
+  //   }
+  // }
+  .modal_box_bg {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -211,21 +251,50 @@ page {
     z-index: 99999;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    .modal_title {
+      text-align: center;
+      width: 100%;
+      line-height: 70px;
+      border-bottom: 1px solid #f5f5f5;
+      margin-bottom: 16px;
+    }
+    .qrcode-img {
+      width: 300px;
+      height: 300px;
+      margin: 16px 0px;
+    }
+    .close-img {
+      width: 38px;
+      height: 38px;
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      z-index: 99;
+    }
     .modal_content {
       position: relative;
       background: #ffffff;
-      padding: 16px 30px;
-      border-radius: 10px;
-      width: 600px;
+      border-radius: 12px 12px 0px 0px;
+      padding: 16px 0px;
+      width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       font-size: 30px;
       color: #333333;
-
+      .modal_wechat {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        color: #333333;
+      }
+      .copy {
+        color: #6493d7;
+        min-width: 60px;
+      }
       .save {
-        margin-top: 16px;
+        margin: 30px 0;
         font-size: 26px;
         background: #ff1e3e;
         color: #ffffff;
@@ -239,6 +308,13 @@ page {
         right: 16px;
         top: 16px;
       }
+    }
+    .contact_box {
+      background: #ffffff;
+      width: 100%;
+      padding: 0px 30px 60px 30px;
+      border-radius: 12px 12px 0px 0px;
+      position: relative;
     }
   }
   .intro_content {
@@ -255,5 +331,18 @@ page {
     line-height: 40rpx;
     min-height: 200rpx;
     padding: 20rpx 5rpx;
+  }
+  .contact_info {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 30px;
+  }
+  .contact_info_left {
+    display: flex;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .copy {
+    color: #6493d7;
+    min-width: 70px;
   }
 }

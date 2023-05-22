@@ -79,10 +79,6 @@ export default {
       openPage("/packageSet/pages/feedback/index");
     },
     customerService() {
-      if (!isLogin()) {
-        openPage("/pages/login/index");
-        return false;
-      }
       wx.openCustomerServiceChat({
         extInfo: { url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6" },
         corpId: "ww9ad8086390afbfaa",

@@ -640,6 +640,62 @@ var _methods;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -658,10 +714,117 @@ var _methods;
       remarks: "",
       visible: false,
       loading: true,
-      oid: ""
+      contactVisible: false,
+      oid: "",
+      showContact: true,
+      showCelebrity: true,
+      showAddress: true,
+      showModel: false,
+      data: {
+        contact: {
+          person: "",
+          wechat: "",
+          wechat_links: "",
+          mobile: "",
+          is_wechat: 1,
+          is_mobile: 1
+        },
+        celebrity: {
+          nickname: "",
+          fans_number: ""
+        },
+        address: {
+          detail_address: "",
+          mobile: "",
+          name: ""
+        }
+      }
     };
   },
   methods: (_methods = {
+    copy: function copy(txt) {
+      wx.setClipboardData({
+        data: txt,
+        //这个是要复制的数据
+        success: function success(res) {
+          wx.getClipboardData({
+            success: function success(res) {
+              console.log(res.data); // data
+
+              if (res.data) {
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("复制成功");
+              }
+            }
+          });
+        }
+      });
+    },
+    closeQRcode: function closeQRcode() {
+      this.showModel = false;
+    },
+    showQRcode: function showQRcode() {
+      this.showModel = true;
+    },
+    contactClose: function contactClose() {
+      this.contactVisible = false;
+    },
+    clickSaveImg: function clickSaveImg() {
+      var _this2 = this;
+
+      //先授权相册
+      wx.getSetting({
+        success: function success(res) {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: function success() {
+                //用户允许授权，保存到相册
+                _this2.saveImg();
+              },
+              fail: function fail() {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: function success() {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: function succes() {
+                        //授权成功，保存图片
+                        _this2.saveImg();
+                      }
+                    });
+                  }
+                });
+              }
+            });
+          } else {
+            //已经授权
+            _this2.saveImg();
+          }
+        }
+      });
+    },
+    saveImg: function saveImg() {
+      //保存到相册
+      var url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: function success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function success(res) {
+              wx.showToast({
+                title: "保存成功！"
+              });
+            },
+            faile: function faile(err) {
+              console.log("失败！");
+            }
+          });
+        }
+      });
+    },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -804,15 +967,40 @@ var _methods;
       this.query();
     }
   }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "signupDetail", function signupDetail(sid, visited_status) {
-    // openPage(
-    //   "/packageMsg/pages/tgregreceiveshow/index?sid=" +
-    //     sid +
-    //     "&visited_status=" +
-    //     visited_status
-    // );
     Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid + "&visited_status=" + visited_status);
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "contactNow", function contactNow(row) {
+    var _this = this;
+
+    wx.showActionSheet({
+      itemList: ["立即沟通", "查看联系方式"],
+      success: function success(res) {
+        switch (res.tapIndex) {
+          case 0:
+            console.log("立即沟通");
+
+            _this.imVerify({
+              to_account: row.visitor.uuid
+            }, row);
+
+            break;
+
+          case 1:
+            console.log("查看联系方式");
+            _this.contactVisible = true;
+
+            _this.applyInfo({
+              sid: row.sid
+            });
+
+            break;
+        }
+      },
+      fail: function fail(res) {
+        console.log(res.errMsg);
+      }
+    });
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "applyList", function applyList(params) {
-    var _this2 = this;
+    var _this3 = this;
 
     return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee() {
       var res, data;
@@ -826,7 +1014,7 @@ var _methods;
 
             case 3:
               res = _context.sent;
-              _this2.loading = true;
+              _this3.loading = true;
 
               if (!(!res.data.data || !res.data.data.items.length)) {
                 _context.next = 8;
@@ -838,7 +1026,7 @@ var _methods;
 
             case 8:
               data = res.data.data.items;
-              _this2.list = _this2.list.concat(data);
+              _this3.list = _this3.list.concat(data);
               _context.next = 14;
               break;
 
@@ -854,7 +1042,7 @@ var _methods;
       }, _callee, null, [[0, 12]]);
     }))();
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "applyManage", function applyManage(params) {
-    var _this3 = this;
+    var _this4 = this;
 
     return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee2() {
       var res;
@@ -868,11 +1056,11 @@ var _methods;
 
             case 3:
               res = _context2.sent;
-              _this3.visible = false;
-              _this3.pageNum = 1;
-              _this3.list = [];
+              _this4.visible = false;
+              _this4.pageNum = 1;
+              _this4.list = [];
 
-              _this3.query();
+              _this4.query();
 
               _context2.next = 12;
               break;
@@ -887,6 +1075,74 @@ var _methods;
           }
         }
       }, _callee2, null, [[0, 10]]);
+    }))();
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "imVerify", function imVerify(params, row) {
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee3() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.prev = 0;
+              _context3.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* imVerify */ "C"])(params);
+
+            case 3:
+              res = _context3.sent;
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
+              _context3.next = 11;
+              break;
+
+            case 7:
+              _context3.prev = 7;
+              _context3.t0 = _context3["catch"](0);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(_context3.t0.data.msg);
+
+              if (_context3.t0.data.error_code == 21050 || _context3.t0.data.error_code == 21040) {
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context3.t0.data.msg, "&code=").concat(_context3.t0.data.error_code));
+              }
+
+            case 11:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3, null, [[0, 7]]);
+    }))();
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "applyInfo", function applyInfo(params) {
+    var _this5 = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee4() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.prev = 0;
+              _context4.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyInfo */ "d"])(params);
+
+            case 3:
+              res = _context4.sent;
+              _this5.showContact = res.data.data.contact.is_enable;
+              _this5.showCelebrity = res.data.data.celebrity.is_enable;
+              _this5.showAddress = res.data.data.address.is_enable;
+              _this5.data.contact = res.data.data.contact.body;
+              _this5.data.celebrity = res.data.data.celebrity.body;
+              _this5.data.address = res.data.data.address.body;
+              _context4.next = 14;
+              break;
+
+            case 12:
+              _context4.prev = 12;
+              _context4.t0 = _context4["catch"](0);
+
+            case 14:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4, null, [[0, 12]]);
     }))();
   }), _methods),
   onShow: function onShow() {
@@ -1065,9 +1321,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -1306,9 +1571,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -1542,9 +1816,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -1778,9 +2061,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -2014,9 +2306,18 @@ var render = function () {
                             ]),
                           ]),
                           _c("view", { staticClass: "signup-rt" }, [
-                            _c("view", { staticClass: "contact" }, [
-                              _vm._v("立即联系"),
-                            ]),
+                            _c(
+                              "view",
+                              {
+                                staticClass: "contact",
+                                on: {
+                                  tap: function ($event) {
+                                    return _vm.contactNow(item)
+                                  },
+                                },
+                              },
+                              [_vm._v("立即联系")]
+                            ),
                             _c("view", { staticClass: "time" }, [
                               _vm._v(_vm._s(item.date_humanize) + "报名"),
                             ]),
@@ -2207,7 +2508,7 @@ var render = function () {
       1
     ),
     _vm.visible
-      ? _c("view", { staticClass: "modal_box" }, [
+      ? _c("view", { staticClass: "modal_box_bg" }, [
           _c("view", { staticClass: "modal_content" }, [
             _c("view", [_vm._v(" 添加备注信息 ")]),
             _c("textarea", {
@@ -2246,6 +2547,122 @@ var render = function () {
             }),
             _c("view", { staticClass: "save", on: { tap: _vm.clickSave } }, [
               _vm._v("保存"),
+            ]),
+          ]),
+        ])
+      : _vm._e(),
+    _vm.contactVisible
+      ? _c(
+          "view",
+          { staticClass: "modal_box_bg", on: { tap: _vm.contactClose } },
+          [
+            _c("view", { staticClass: "contact_box" }, [
+              _c("view", { staticClass: "modal_title" }, [
+                _c("view", [_vm._v(" 联系方式 ")]),
+                _c("image", {
+                  staticClass: "close-img",
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png",
+                  },
+                  on: { tap: _vm.contactClose },
+                }),
+              ]),
+              _vm.showAddress
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("手机号：")]),
+                      _c("view", [_vm._v(_vm._s(_vm.data.address.mobile))]),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "copy",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.copy(_vm.data.address.mobile)
+                          },
+                        },
+                      },
+                      [_vm._v("复制")]
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.showAddress
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("地址：")]),
+                      _c("view", [
+                        _vm._v(_vm._s(_vm.data.address.detail_address)),
+                      ]),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "copy",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.copy(_vm.data.address.detail_address)
+                          },
+                        },
+                      },
+                      [_vm._v("复制")]
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.showCelebrity
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("红人账号：")]),
+                      _c("view", [_vm._v(_vm._s(_vm.data.celebrity.nickname))]),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "copy",
+                        on: {
+                          tap: function ($event) {
+                            return _vm.copy(_vm.data.celebrity.nickname)
+                          },
+                        },
+                      },
+                      [_vm._v("复制")]
+                    ),
+                  ])
+                : _vm._e(),
+              _vm.showContact
+                ? _c("view", { staticClass: "contact_info" }, [
+                    _c("view", { staticClass: "contact_info_left" }, [
+                      _c("view", [_vm._v("微信号：")]),
+                      _c("view", [_vm._v(_vm._s(_vm.data.contact.wechat))]),
+                    ]),
+                    _c(
+                      "view",
+                      { staticClass: "copy", on: { tap: _vm.showQRcode } },
+                      [_vm._v("点击查看微信二维码")]
+                    ),
+                  ])
+                : _vm._e(),
+            ]),
+          ]
+        )
+      : _vm._e(),
+    _vm.showModel
+      ? _c("view", { staticClass: "modal_box_bg" }, [
+          _c("view", { staticClass: "modal_content" }, [
+            _c("view", [_vm._v(" 微信二维码 ")]),
+            _c("image", {
+              staticClass: "qrcode-img",
+              attrs: { src: _vm.data.contact.wechat_links },
+            }),
+            _c("image", {
+              staticClass: "close-img",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png",
+              },
+              on: { tap: _vm.closeQRcode },
+            }),
+            _c("view", { staticClass: "save", on: { tap: _vm.clickSaveImg } }, [
+              _vm._v("保存到相册"),
             ]),
           ]),
         ])

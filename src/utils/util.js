@@ -1,4 +1,5 @@
 import { Base64 } from "js-Base64";
+
 export const formatTime = (date) => {
   const year = date.getFullYear();
   const month = date.getMonth() + 1;
@@ -87,8 +88,18 @@ export const request = (params) => {
       success: (res) => {
         if (res.data.code == 200) {
           resolve(res);
-        } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
-          wx.clearStorage();
+        } else if (
+          res.data.error_code == 1001 ||
+          res.data.error_code == 1002 ||
+          res.data.error_code == 1003 ||
+          res.data.error_code == 1004
+        ) {
+          wx.removeStorage({
+            key: "userInfo",
+          });
+          wx.removeStorage({
+            key: "token",
+          });
         } else {
           errortip(res.data.msg);
           reject(res);
@@ -154,4 +165,18 @@ export const isLogin = () => {
   let token = wx.getStorageSync("token");
   if (token) return true;
   return false;
+};
+
+export const throttle = (fn, t) => {
+  let flag = true;
+  const interval = t;
+  return function () {
+    if (flag) {
+      fn.apply(this, arguments);
+      flag = false;
+      setTimeout(() => {
+        flag = true;
+      }, interval);
+    }
+  };
 };

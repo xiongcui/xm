@@ -6,6 +6,7 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding-bottom: 200rpx;
 }
 .main .main_top {
   position: relative;
@@ -137,7 +138,7 @@
   height: 53rpx;
 }
 .main .my-count .followed_style {
-  padding: 10rpx 30rpx;
+  padding: 10rpx 20rpx;
   border-radius: 30rpx;
   color: #ffffff;
   font-size: 26rpx;
@@ -151,7 +152,7 @@
   background-size: 36rpx;
 }
 .main .my-count .followed_send_msg {
-  padding: 10rpx 30rpx;
+  padding: 10rpx 20rpx;
   border-radius: 30rpx;
   color: #ffffff;
   font-size: 26rpx;
@@ -357,4 +358,35 @@
 .main .main_list .video_item {
   width: 337rpx;
   margin-right: 16rpx;
+}
+.main .zhuye_fixed_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  padding: 20rpx 20rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+.main .zhuye_fixed_bottom .zhuye_fixed_rt,
+.main .zhuye_fixed_bottom .zhuye_fixed_left {
+  width: 240rpx;
+  text-align: center;
+  background: #fe5457;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  padding: 14rpx 40rpx;
+}
+.main .zhuye_fixed_bottom .zhuye_fixed_left {
+  background: #00bb80;
+}
+.main .fix-iphonex-button {
+  padding-bottom: 48rpx;
 }

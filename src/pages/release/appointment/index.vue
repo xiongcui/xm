@@ -66,10 +66,17 @@ export default {
   },
   methods: {
     goyuedan(code, name) {
-      this.verifyP1 = this.publishVerify({
-        project_code: "NE",
-      });
-      Promise.all([this.verifyP1]).then(() => {
+      this.publishVerify(
+        {
+          project_code: "NE",
+        },
+        code,
+        name
+      );
+    },
+    async publishVerify(params, code, name) {
+      try {
+        let res = await publishVerify(params);
         wx.navigateTo({
           url:
             "/packageAdd/pages/yuedan/add_yuedan/index?id=" +
@@ -77,16 +84,41 @@ export default {
             "&name=" +
             name,
         });
-      });
-    },
-    async publishVerify(params) {
-      try {
-        let res = await publishVerify(params);
       } catch (error) {
         if (error.data.error_code == 21030 || error.data.error_code == 21040) {
           openPage(
             `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
           );
+        } else if (error.data.error_code == 22010) {
+          wx.showModal({
+            title: "温馨提示",
+            content: "你的主身份不符约拍发布，建议修改身份或发布通告",
+            cancelText: "修改身份",
+            confirmText: "发布通告",
+            success: function (res) {
+              if (res.confirm) {
+                console.log("用户点击确定");
+                openPage("/packageTonggao/pages/index/index");
+              } else if (res.cancel) {
+                openPage("/packageAdd/pages/user/identity/index");
+                console.log("用户点击取消");
+              }
+            },
+          });
+        } else if (error.data.error_code == 21060) {
+          wx.showModal({
+            title: "温馨提示",
+            content: "还未完善个人资料，请前往完善个人资料",
+            confirmText: "完善资料",
+            success: function (res) {
+              if (res.confirm) {
+                console.log("用户点击确定");
+                openPage("/packageAdd/pages/user/editinfor/index");
+              } else if (res.cancel) {
+                console.log("用户点击取消");
+              }
+            },
+          });
         } else {
           errortip(error.data.msg);
         }

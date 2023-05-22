@@ -16,7 +16,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_settings.png"
             ></image>
           </view>
-          <block v-if="islogin">
+          <block v-if="!showlogin">
             <view class="sign_block fl" v-if="is_today_sign">
               <image
                 class="icon_sign"
@@ -51,14 +51,14 @@
           mode="aspectFit"
         ></image>
       </view>
-      <view class="my-head-ct" v-if="infor.uuid">
+      <view class="my-head-ct" v-if="!showlogin && infor.uuid">
         <view>
           <text class="my-head-name">{{ infor.nickname }}</text>
         </view>
         <view class="my-account">账号：{{ infor.uuid }}</view>
         <view class="my-info">
           <text>IP归属：</text>
-          <text>{{ infor.province_name }}</text>
+          <text>{{ infor.login_ip_city }}</text>
           <view class="head-tag-box">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
@@ -113,7 +113,7 @@
         <view class="tag"> {{ infor.province_name }} </view>
         <view
           class="tag"
-          v-for="(item, index) in infor.career_list"
+          v-for="(item, index) in infor.career_label"
           :key="index"
         >
           {{ item }}
@@ -131,18 +131,18 @@
           </view>
           <view class="my-count-box">
             <text class="num">{{ infor.statistic.invite_cnt }}</text>
-            <text>约拍</text>
+            <text>收到</text>
+          </view>
+          <view class="my-count-box">
+            <text class="num">{{ infor.statistic.vote_cnt }}</text>
+            <text>点赞</text>
           </view>
           <view class="my-count-box">
             <text class="num">{{ infor.statistic.visitor_cnt }}</text>
-            <text>访客</text>
-          </view>
-          <view class="my-count-box">
-            <text class="num">{{ infor.statistic.track_cnt }}</text>
-            <text>足迹</text>
+            <text>人气</text>
           </view>
         </view>
-        <view class="my-conunt-rt" @tap="personDetail" v-if="islogin">
+        <view class="my-conunt-rt" @tap="personDetail" v-if="!showlogin">
           编辑资料
         </view>
       </view>
@@ -260,6 +260,23 @@
           </view>
           <view class="ub-f1">
             <view class="item_text">作品管理</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view class="item ub line-t" @tap="myApply">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/feed_back.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">我的申请</view>
           </view>
           <view class="arrow">
             <image
@@ -455,36 +472,7 @@
         </view>
       </view>
     </view>
-    <view @tap="close" class="modal-bg" v-if="showModelSign"></view>
-    <view class="modal_box sign_modal" v-if="showModelSign">
-      <view class="sign_md_close_btn">
-        <image
-          @tap="close"
-          src="https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png"
-        ></image>
-      </view>
-      <view class="sign_modal_main">
-        <form class="main">
-          <view class="sign_md_top">
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png"
-            ></image>
-          </view>
-          <view class="sign_md_title">
-            <view>签到成功</view>
-          </view>
-          <view class="sign_md_content">
-            <view>{{ hyper_desc }}</view>
-          </view>
-          <view class="sign_md_bottom">
-            <view class="sign_md_bottom">
-              <button open-type="share" class="share-btn">马上邀请</button>
-            </view>
-          </view>
-          <view class="sign_md_txt">每邀请1位好友可赚3金币哦！</view>
-        </form>
-      </view>
-    </view>
+    <sign :visible="showModelSign" :msg="hyper_desc" @close="close"></sign>
   </view>
 </template>
 
@@ -498,14 +486,17 @@ import {
   submitSign,
 } from "../../api/index";
 import { isLogin, openPage } from "../../utils/util";
+import sign from "../../components/sign/index.vue";
 export default {
   name: "my",
   data() {
     return {
       is_today_sign: 0,
+      num: 0,
       sex: 1,
       show_my_ad: false,
       showModelSign: false,
+      showlogin: false,
       infor: {
         age: 0,
         avatar: "",
@@ -515,8 +506,7 @@ export default {
           followed_cnt: 0,
           follower_cnt: 0,
           invite_cnt: 0,
-          read_cnt: 0,
-          track_cnt: 0,
+          vote_cnt: 0,
           visitor_cnt: 0,
         },
       },
@@ -526,14 +516,6 @@ export default {
       sharePath: "",
       shareImg: "",
     };
-  },
-  computed: {
-    islogin() {
-      if (isLogin()) {
-        return true;
-      }
-      return false;
-    },
   },
   methods: {
     showSign() {
@@ -585,7 +567,11 @@ export default {
         openPage("/pages/login/index");
         return false;
       }
-      openPage("/packageAdd/pages/user/realnameAuth/index");
+      if (this.infor.is_certify) {
+        openPage("/packageSet/pages/success/index?msg=实名认证审核通过！");
+      } else {
+        openPage("/packageAdd/pages/user/realnameAuth/index");
+      }
     },
     myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
@@ -617,6 +603,10 @@ export default {
       openPage("/packageAdd/pages/user/coin/index");
     },
     onMyAd() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageTonggao/pages/tonggao_manage/index");
     },
     invitego() {
@@ -631,6 +621,13 @@ export default {
     },
     customerCenter() {
       openPage("/packageSet/pages/customerCenter/index");
+    },
+    myApply() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageSet/pages/apply/index");
     },
     follow() {
       openPage("/packageAdd/pages/user/follow/index");
@@ -647,25 +644,6 @@ export default {
     async userInfo(params) {
       try {
         let res = await userInfo(params);
-        if (!res.data.data) {
-          this.infor = {
-            age: 0,
-            avatar: "",
-            realname: "",
-            ispledge: "",
-            statistic: {
-              followed_cnt: 0,
-              follower_cnt: 0,
-              invite_cnt: 0,
-              read_cnt: 0,
-              track_cnt: 0,
-              visitor_cnt: 0,
-            },
-          };
-          this.coin = 0;
-          return false;
-        }
-
         this.infor = res.data.data;
         this.coin = res.data.data.acct.coin;
       } catch (error) {
@@ -678,8 +656,7 @@ export default {
             followed_cnt: 0,
             follower_cnt: 0,
             invite_cnt: 0,
-            read_cnt: 0,
-            track_cnt: 0,
+            vote_cnt: 0,
             visitor_cnt: 0,
           },
         };
@@ -695,9 +672,6 @@ export default {
     async shareInvite(params) {
       try {
         let res = await shareInvite(params);
-        // this.shareTitle = res.data.data.title;
-        // this.shareImg = res.data.data.imageUrl;
-        // this.sharePath = res.data.data.path;
       } catch (error) {}
     },
     async shareInviteInfo(params) {
@@ -717,6 +691,9 @@ export default {
       } catch (error) {}
     },
   },
+  components: {
+    sign,
+  },
   created() {
     this.globalData = this.globalData;
     this.userInfo("");
@@ -728,6 +705,12 @@ export default {
     });
   },
   onShow() {
+    // 是否登录
+    if (isLogin()) {
+      this.showlogin = false;
+    } else {
+      this.showlogin = true;
+    }
     this.userInfo("");
   },
   onLoad: function (options) {

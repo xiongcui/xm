@@ -23,7 +23,11 @@
         </view>
       </view>
     </scroll-view>
-    <view class="chat-send" :style="{ bottom: bottomVal }">
+    <view
+      class="chat-send"
+      :class="isIphoneX ? 'fix-iphonex-button' : ''"
+      :style="{ bottom: bottomVal }"
+    >
       <input
         v-model="msg"
         class="send-input"
@@ -47,6 +51,7 @@ export default {
   data() {
     return {
       bottomVal: 0,
+      isIphoneX: false,
       triggered: false,
       userInfo: {},
       userArr: [],
@@ -301,6 +306,9 @@ export default {
         errortip("没有更多数据了～");
       }
     },
+  },
+  created() {
+    this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad(options) {
     this.init_TIM(); //在需要的页面初始化

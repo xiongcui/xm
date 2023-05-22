@@ -36,11 +36,14 @@ page {
       color: #ffffff;
     }
   }
+  .fix-iphonex-button {
+    padding-bottom: 48px !important;
+  }
   .chat-send {
     position: fixed;
     bottom: 0px;
     background: #ffffff;
-    padding: 16px 30px;
+    padding: 20px 30px;
     width: 690px;
     display: flex;
     justify-content: space-between;

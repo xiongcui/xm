@@ -154,6 +154,9 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
     },
     businessLicense: function businessLicense() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/businessLicense/index");
+    },
+    privacy: function privacy() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/privacy/index");
     }
   }
 });
@@ -232,7 +235,7 @@ var render = function () {
           ]),
         ]
       ),
-      _c("view", { staticClass: "about-item" }, [
+      _c("view", { staticClass: "about-item", on: { tap: _vm.privacy } }, [
         _c("text", [_vm._v("隐私政策")]),
         _c("view", { staticClass: "arrow" }, [
           _c("image", {

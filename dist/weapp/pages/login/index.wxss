@@ -63,10 +63,23 @@
   position: relative;
 }
 
+.avatar-btn,
+.nickname-btn,
+.nickname-input,
+.finish-btn {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
 .nickname-input {
   position: absolute;
   left: 0;
   right: 0;
+  width: 100%;
+  height: 78rpx;
 }
 
 .cancel-btn {
@@ -85,6 +98,12 @@
   bottom: 8%;
   font-size: 20rpx;
   color: #c0c0c0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .user-xy {
@@ -123,6 +142,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 30rpx 16rpx;
+  height: 70rpx;
+  position: relative;
 }
 
 .user_name {
@@ -152,8 +173,9 @@
 .login-modal .login-box {
   background: #ffffff;
   width: 500rpx;
-  padding: 30rpx;
+  padding: 60rpx;
   border-radius: 10rpx;
+  position: relative;
 }
 
 .login-modal .login-box .login-title {
@@ -161,6 +183,14 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 16rpx;
+}
+
+.login-modal .login-box .icon_close {
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  right: 20rpx;
+  top: 20rpx;
 }
 
 .login-modal .login-box .login-txt {
@@ -181,6 +211,7 @@
   display: inline-block;
   padding: 0;
   margin: 0;
+  height: 70rpx;
 }
 
 .login-modal .login-box .avatar {
@@ -193,6 +224,9 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  border: 2rpx solid #e5e5e5;
+  padding: 16rpx;
+  border-radius: 8rpx;
 }
 
 .login-modal .login-box .weui-input {
@@ -201,4 +235,52 @@
   height: 70rpx;
   line-height: 70rpx;
   font-size: 30rpx;
+}
+
+.select {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.agreement-model {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.agreement-model .agreement-box {
+  background: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 30rpx 0 100rpx 0;
+  text-align: center;
+}
+
+.agreement-model .agreement-title {
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.agreement-model .agreement-ct {
+  margin: 60rpx 0;
+  font-size: 28rpx;
+}
+
+.agreement-model .agreement-btn {
+  background: #ff5355;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #ffffff;
+  border-radius: 40rpx;
+  width: 50%;
+  margin: 0 auto;
 }

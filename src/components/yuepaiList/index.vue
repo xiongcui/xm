@@ -35,7 +35,7 @@
               <view class="list_p">
                 <text>
                   {{
-                    item.author.career_list.length
+                    item.author.career_list && item.author.career_list.length
                       ? item.author.career_list[0]
                       : null
                   }}</text

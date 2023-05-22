@@ -121,7 +121,7 @@
         </view>
         <view class="list_bottom">
           <view class="list_time"> 1分钟前来过 </view>
-          <view class="contact" @tap="connect(item)">立即沟通</view>
+          <view class="contact" @tap="communicate(item)">立即沟通</view>
         </view>
       </view>
     </view>
@@ -213,6 +213,7 @@ import {
   userUnfollow,
   userFilter,
   userList,
+  imVerify,
 } from "../../../../api/index";
 import { errortip, openPage } from "../../../../utils/util";
 export default {
@@ -346,6 +347,14 @@ export default {
         },
         type,
         scroll
+      );
+    },
+    communicate(row) {
+      this.imVerify(
+        {
+          to_account: row.basic.uuid,
+        },
+        row
       );
     },
     submit() {
@@ -511,6 +520,19 @@ export default {
         let res = await userUnfollow(params);
         row.follow.is_follower = false;
       } catch (error) {}
+    },
+    async imVerify(params, row) {
+      try {
+        let res = await imVerify(params);
+        this.connect(row);
+      } catch (error) {
+        errortip(error.data.msg);
+        if (error.data.error_code == 21050 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        }
+      }
     },
   },
   onLoad: function (options) {

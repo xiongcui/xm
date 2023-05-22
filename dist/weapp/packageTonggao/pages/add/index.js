@@ -53,7 +53,8 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/add/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index.js */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -303,6 +304,11 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 //
 //
 //
+//
+//
+//
+//
+
 
 
 
@@ -407,6 +413,30 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
         this.checked2 = true;
       }
     },
+    minAmountInput: function minAmountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请输入纯数字！");
+        this.minAmount = "";
+      }
+    },
+    maxAmountInput: function maxAmountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请输入纯数字！");
+        this.maxAmount = "";
+      }
+    },
+    recruitNumInput: function recruitNumInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请输入纯数字！");
+        this.recruitNum = "";
+      }
+    },
     select_tag: function select_tag(row) {
       this.sexData.map(function (item) {
         item.ispick = false;
@@ -496,59 +526,59 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
     },
     submit: function submit() {
       if (!this.identity) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择身份！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请选择身份！");
         return false;
       }
 
       if (!this.select_city) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择面向地区！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请选择面向地区！");
         return false;
       }
 
       if (!this.date && !this.checked) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写截止日期！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写截止日期！");
         return false;
       }
 
       if (!this.cost) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写通告费用！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写通告费用！");
         return false;
       }
 
       if (this.costList[this.costIndex].key == 400) {
         if (!this.checked1 && !this.amount) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写收费金额！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写收费金额！");
           return false;
         }
 
         if (this.checked1 && !this.minAmount || this.checked1 && !this.maxAmount) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写收费金额区间！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写收费金额区间！");
           return false;
         }
 
         if (!this.checked1 && !this.company || this.checked1 && !this.company) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择单位！");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请选择单位！");
           return false;
         }
       }
 
       if (!this.recruitNum && !this.checked2) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写招募人数！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写招募人数！");
         return false;
       }
 
       if (!this.name) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写通告名称！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写通告名称！");
         return false;
       }
 
       if (!this.desc) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请填写通告描述！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请填写通告描述！");
         return false;
       }
 
       if (!this.imgList.length) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请上传图片！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请上传图片！");
         return false;
       }
 
@@ -599,6 +629,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
       } // console.log(params);
 
 
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.submitNotice(params);
     },
     noticeTemplate: function noticeTemplate(params) {
@@ -612,7 +643,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticeTemplate */ "W"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticeTemplate */ "ab"])(params);
 
               case 3:
                 res = _context.sent;
@@ -651,7 +682,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "xb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "Bb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -696,11 +727,11 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "V"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "Z"])(params);
 
               case 3:
                 res = _context3.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1&msg=".concat(res.data.data));
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1&msg=".concat(res.data.data));
                 _context3.next = 9;
                 break;
 
@@ -1031,12 +1062,15 @@ var render = function () {
                             attrs: { placeholder: "最小金额" },
                             domProps: { value: _vm.minAmount },
                             on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.minAmount = $event.target.value
-                              },
+                              input: [
+                                function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.minAmount = $event.target.value
+                                },
+                                _vm.minAmountInput,
+                              ],
                             },
                           }),
                           _c("text", { staticClass: "split" }, [_vm._v("-")]),
@@ -1053,12 +1087,15 @@ var render = function () {
                             attrs: { placeholder: "最大金额" },
                             domProps: { value: _vm.maxAmount },
                             on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.maxAmount = $event.target.value
-                              },
+                              input: [
+                                function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.maxAmount = $event.target.value
+                                },
+                                _vm.maxAmountInput,
+                              ],
                             },
                           }),
                           _c(
@@ -1138,16 +1175,19 @@ var render = function () {
                   },
                 ],
                 staticClass: "tonggao-name",
-                attrs: { placeholder: "请输入招募人数" },
+                attrs: { placeholder: "请输入招募人数", type: "number" },
                 domProps: { value: _vm.recruitNum },
                 on: {
                   blur: _vm.recruitBlur,
-                  input: function ($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.recruitNum = $event.target.value
-                  },
+                  input: [
+                    function ($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.recruitNum = $event.target.value
+                    },
+                    _vm.recruitNumInput,
+                  ],
                 },
               }),
               _c("text", { staticClass: "tonggao-split" }, [_vm._v("|")]),

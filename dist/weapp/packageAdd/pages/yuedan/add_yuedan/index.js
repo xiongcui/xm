@@ -50,7 +50,8 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 
 
 //
@@ -321,6 +322,40 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -376,6 +411,30 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
     bindRegionChange: function bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
+    },
+    minAmountInput: function minAmountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请输入纯数字！");
+        this.minAmount = "";
+      }
+    },
+    maxAmountInput: function maxAmountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请输入纯数字！");
+        this.maxAmount = "";
+      }
+    },
+    amountInput: function amountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请输入纯数字！");
+        this.amount = "";
+      }
     },
     uploadImgClose: function uploadImgClose(index) {
       this.imgList.splice(index, 1);
@@ -482,7 +541,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -516,7 +575,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -550,7 +609,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 
       var header = {};
       var token = wx.getStorageSync("token");
-      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_6__[/* Base64 */ "a"].encode(token + ":");
       wx.showLoading({
         title: "上传中",
         mask: true
@@ -633,12 +692,14 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
         if (this.checked && !this.minAmount || this.checked && !this.maxAmount) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写收费金额区间！");
           return false;
-        }
+        } // if (
+        //   (!this.checked && !this.company) ||
+        //   (this.checked && !this.company)
+        // ) {
+        //   errortip("请选择单位！");
+        //   return false;
+        // }
 
-        if (!this.checked && !this.company || this.checked && !this.company) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择单位！");
-          return false;
-        }
       }
 
       if (!this.select_city) {
@@ -727,6 +788,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
       });
       params.style_label = style_label.join(",");
       params.notice_label = notice_label.join(",");
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.creatInvite(params);
     },
     publicConfig: function publicConfig(params) {
@@ -740,7 +802,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "kb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -807,7 +869,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* creatInvite */ "s"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* creatInvite */ "t"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -852,7 +914,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* invitePayment */ "G"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* invitePayment */ "I"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1150,9 +1212,11 @@ var render = function () {
             },
             [
               _vm.charge
-                ? _c("view", { staticClass: "works-select-item" }, [
-                    _vm._v(_vm._s(_vm.charge)),
-                  ])
+                ? _c(
+                    "view",
+                    { staticClass: "works-select-item works-select-value" },
+                    [_vm._v(_vm._s(_vm.charge))]
+                  )
                 : _c("view", { staticClass: "works-select-item" }, [
                     _vm._v("请选择"),
                   ]),
@@ -1171,172 +1235,41 @@ var render = function () {
                 _c("text", [_vm._v("收费金额")]),
                 _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
               ]),
-              !_vm.checked
-                ? _c(
-                    "block",
-                    { staticClass: "payment-amount" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.amount,
-                            expression: "amount",
-                          },
-                        ],
-                        staticClass: "amount1",
-                        attrs: { placeholder: "请输入" },
-                        domProps: { value: _vm.amount },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.amount = $event.target.value
-                          },
-                        },
-                      }),
-                      _c(
-                        "picker",
-                        {
-                          attrs: {
-                            value: _vm.companyIndex,
-                            range: _vm.companyList,
-                            "range-key": "value",
-                          },
-                          on: { change: _vm.companyChange },
-                        },
-                        [
-                          _vm.company
-                            ? _c(
-                                "view",
-                                { staticClass: "works-select-item company" },
-                                [_vm._v("元" + _vm._s(_vm.company))]
-                              )
-                            : _c(
-                                "view",
-                                { staticClass: "works-select-item company" },
-                                [_vm._v("元/单位")]
-                              ),
-                        ]
-                      ),
-                      _c("text", { staticClass: "split" }, [_vm._v("|")]),
-                      _c(
-                        "block",
-                        [
-                          _c("checkbox", {
-                            staticClass: "payment_range",
-                            attrs: {
-                              value: _vm.payment_range,
-                              checked: _vm.checked,
-                            },
-                            on: { tap: _vm.checkClick },
-                          }),
-                          _c("text", { staticClass: "payment_range_text" }, [
-                            _vm._v("区间"),
-                          ]),
-                        ],
-                        1
-                      ),
+              _c("block", { staticClass: "payment-amount" }, [
+                _c("view", { staticClass: "payment-box" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.amount,
+                        expression: "amount",
+                      },
                     ],
-                    1
-                  )
-                : _vm._e(),
-              _vm.checked
-                ? _c(
-                    "block",
-                    { staticClass: "payment-amount" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.minAmount,
-                            expression: "minAmount",
-                          },
-                        ],
-                        staticClass: "min-amount",
-                        attrs: { placeholder: "最小金额" },
-                        domProps: { value: _vm.minAmount },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.minAmount = $event.target.value
-                          },
+                    staticClass: "amount1",
+                    attrs: {
+                      placeholder:
+                        this.chargeList[this.chargeIndex].key == 300
+                          ? "请输入收费金额"
+                          : "请输入付费金额",
+                      type: "number",
+                    },
+                    domProps: { value: _vm.amount },
+                    on: {
+                      input: [
+                        function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.amount = $event.target.value
                         },
-                      }),
-                      _c("text", { staticClass: "split" }, [_vm._v("-")]),
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.maxAmount,
-                            expression: "maxAmount",
-                          },
-                        ],
-                        staticClass: "max-amount",
-                        attrs: { placeholder: "最大金额" },
-                        domProps: { value: _vm.maxAmount },
-                        on: {
-                          input: function ($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.maxAmount = $event.target.value
-                          },
-                        },
-                      }),
-                      _c(
-                        "picker",
-                        {
-                          attrs: {
-                            value: _vm.companyIndex,
-                            range: _vm.companyList,
-                            "range-key": "value",
-                          },
-                          on: { change: _vm.companyChange },
-                        },
-                        [
-                          _vm.company
-                            ? _c(
-                                "view",
-                                { staticClass: "works-select-item company" },
-                                [_vm._v("元" + _vm._s(_vm.company))]
-                              )
-                            : _c(
-                                "view",
-                                { staticClass: "works-select-item company" },
-                                [_vm._v("元/单位")]
-                              ),
-                        ]
-                      ),
-                      _c("text", { staticClass: "split" }, [_vm._v("|")]),
-                      _c(
-                        "block",
-                        [
-                          _c("checkbox", {
-                            staticClass: "payment_range",
-                            attrs: {
-                              value: _vm.payment_range,
-                              checked: _vm.checked,
-                            },
-                            on: { tap: _vm.checkClick },
-                          }),
-                          _c("text", { staticClass: "payment_range_text" }, [
-                            _vm._v("区间"),
-                          ]),
-                        ],
-                        1
-                      ),
-                    ],
-                    1
-                  )
-                : _vm._e(),
+                        _vm.amountInput,
+                      ],
+                    },
+                  }),
+                  _c("view", { staticClass: "first-none" }, [_vm._v("元")]),
+                ]),
+              ]),
             ],
             1
           )
@@ -1359,9 +1292,11 @@ var render = function () {
             },
             [
               _vm.select_city
-                ? _c("view", { staticClass: "works-select-item" }, [
-                    _vm._v(_vm._s(_vm.select_city)),
-                  ])
+                ? _c(
+                    "view",
+                    { staticClass: "works-select-item works-select-value" },
+                    [_vm._v(_vm._s(_vm.select_city))]
+                  )
                 : _c("view", { staticClass: "works-select-item" }, [
                     _vm._v("请选择"),
                   ]),
@@ -1391,9 +1326,11 @@ var render = function () {
             },
             [
               _vm.security
-                ? _c("view", { staticClass: "works-select-item" }, [
-                    _vm._v(_vm._s(_vm.security)),
-                  ])
+                ? _c(
+                    "view",
+                    { staticClass: "works-select-item works-select-value" },
+                    [_vm._v(_vm._s(_vm.security))]
+                  )
                 : _c("view", { staticClass: "works-select-item" }, [
                     _vm._v("请选择"),
                   ]),

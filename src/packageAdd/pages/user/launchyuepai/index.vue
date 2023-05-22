@@ -147,7 +147,7 @@
                 src="https://yuepai-oss.qubeitech.com/static/images/tonggao/user.png"
               ></image>
             </view>
-            <view class="type_text">我的联系信息</view>
+            <view class="type_text">联系信息</view>
           </view>
           <view class="info_content ub ub-ver ub-f1">
             <view class="ub-f1"></view>
@@ -156,7 +156,7 @@
                 data.contact.person ? data.contact.person : "未设置"
               }}</view
             >
-            <view v-if="data.contact.is_mobile"
+            <view class="content_text" v-if="data.contact.is_mobile"
               >手机号：{{
                 data.contact.mobile ? data.contact.mobile : "未设置"
               }}</view
@@ -266,7 +266,7 @@
           <view class="bottom_coin">
             <view class="needcoin">
               <text> {{ pay_coin }} 金豆 </text>
-              <text class="vip-tips" v-if="!is_member">
+              <text class="vip-tips" v-if="!is_member" @tap="goVip">
                 开通会员仅需2金豆 >>
               </text>
             </view>
@@ -282,25 +282,23 @@
         </view>
       </view>
     </view>
-    <view class="modal_box" v-if="visible">
-      <view>
+    <view class="modal_box_bg" v-if="visible">
+      <view class="modal_content">
         <view class="modal_title">温馨提示</view>
-        <view class="modal_content">
-          <view class="comment_content">
-            提交约拍请求需要消耗{{ pay_coin }}积分，确定发送吗？
+        <view class="comment_content">
+          提交约拍请求需要消耗{{ pay_coin }}积分，确定发送吗？
+        </view>
+        <view class="ub commentbox">
+          <view class="comment_cancel ub-f1">
+            <view @tap="closecomment">取消</view>
           </view>
-          <view class="ub commentbox">
-            <view class="comment_cancel ub-f1">
-              <view @tap="closecomment">取消</view>
-            </view>
-            <view class="comment_confirm ub-f1">
-              <view @tap="paysubmit">确认</view>
-            </view>
+          <view class="comment_confirm ub-f1">
+            <view @tap="paysubmit">确认</view>
           </view>
         </view>
       </view>
     </view>
-    <view class="modal_box" v-if="showModel">
+    <view class="modal_box_bg" v-if="showModel">
       <view class="modal_content">
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>
@@ -319,11 +317,14 @@
 import "./index.scss";
 import { inviteTemplate, subApply, applyPay } from "../../../../api/index";
 import { errortip, openPage } from "../../../../utils/util";
+import clickThrottle from "../../../../utils/clickThrottle";
 export default {
   name: "launchyuepai",
   data() {
     return {
       oid: "",
+      sid: "",
+      source: "",
       visited_id: "",
       isIphoneX: false,
       pageshow: "normal",
@@ -417,18 +418,28 @@ export default {
         return false;
       }
       let params = {
-        oid: this.oid,
+        // oid: this.oid,
+        sid: this.sid,
         type: "NT",
         visited_id: this.visited_id,
         content: this.yuepaiInfo.content,
         contact: this.data.contact,
-        celebrity: this.data.celebrity,
-        address: this.data.address,
         visitor_coin: this.pay_coin,
       };
+      let celebrity = {
+        body: this.data.celebrity,
+        is_enable: this.showCelebrity ? 1 : 0,
+      };
+      let address = {
+        body: this.data.address,
+        is_enable: this.showAddress ? 1 : 0,
+      };
+      params.celebrity = celebrity;
+      params.address = address;
       this.subApply(params);
     },
     paysubmit() {
+      if (!clickThrottle()) return;
       let params = {
         sid: this.sid,
         rule_code: this.rule_code,
@@ -490,9 +501,13 @@ export default {
         },
       });
     },
+    goVip() {
+      openPage("/packageVip/pages/vip/index");
+    },
     async inviteTemplate(params) {
       try {
         let res = await inviteTemplate(params);
+        this.sid = res.data.data.sid;
         this.yuepaiInfo.author = res.data.data.visited;
         this.yuepaiInfo.tips = res.data.data.input.tips;
         this.yuepaiInfo.title = res.data.data.input.title;
@@ -505,9 +520,9 @@ export default {
           this.showCelebrity = res.data.data.celebrity.is_enable;
           this.data.celebrity = res.data.data.celebrity.body;
           this.media_info.platform_name = this.data.celebrity.platform_name =
-            res.data.data.celebrity.body.platform_name;
+            res.data.data.celebrity.spread_platform_name;
           this.media_info.platform_code = this.data.celebrity.platform_type =
-            res.data.data.celebrity.body.platform_type;
+            res.data.data.celebrity.spread_platform_code;
         }
         if (res.data.data.visitor_acct) {
           this.pay_coin = res.data.data.visitor_acct.pay_coin;
@@ -543,8 +558,11 @@ export default {
   },
   onLoad: function (options) {
     this.oid = options.oid;
+    this.sid = options.sid;
+    this.source = options.source;
     this.inviteTemplate({
       oid: this.oid,
+      source: this.source,
     });
   },
   onShow() {

@@ -53,11 +53,15 @@ page {
   color: #ffffff;
 }
 
+.chat .fix-iphonex-button {
+  padding-bottom: 48rpx !important;
+}
+
 .chat .chat-send {
   position: fixed;
   bottom: 0;
   background: #ffffff;
-  padding: 16rpx 30rpx;
+  padding: 20rpx 30rpx;
   width: 690rpx;
   display: -webkit-flex;
   display: -ms-flexbox;

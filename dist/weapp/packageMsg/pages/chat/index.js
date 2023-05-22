@@ -6825,6 +6825,10 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -6835,6 +6839,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
   data: function data() {
     return {
       bottomVal: 0,
+      isIphoneX: false,
       triggered: false,
       userInfo: {},
       userArr: [],
@@ -7042,7 +7047,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* sendMsg */ "rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -7122,7 +7127,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "O"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "S"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -7153,7 +7158,7 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "O"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* msgInfo */ "S"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -7176,6 +7181,9 @@ component.options.__file = "src/packageMsg/pages/chat/index.vue"
         }, _callee4, null, [[0, 8]]);
       }))();
     }
+  },
+  created: function created() {
+    this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function onLoad(options) {
     this.init_TIM(); //在需要的页面初始化
@@ -7269,7 +7277,11 @@ var render = function () {
       ),
       _c(
         "view",
-        { staticClass: "chat-send", style: { bottom: _vm.bottomVal } },
+        {
+          staticClass: "chat-send",
+          class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+          style: { bottom: _vm.bottomVal },
+        },
         [
           _c("input", {
             directives: [

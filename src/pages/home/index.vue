@@ -46,12 +46,12 @@
             :interval="interval"
             :duration="duration"
           >
-            <block v-for="(item, index) in background" :key="index">
-              <swiper-item>
+            <block v-for="(item, index) in banner" :key="index">
+              <swiper-item @tap="bannerClick(item.event, item.redirect_url)">
                 <view class="swiper-item">
                   <image
                     mode="aspectFill"
-                    :src="'https://yuepai-oss.oss-cn-zhangjiakou.aliyuncs.com/invite/upVg5cIs/9f7062c8-67b9-11ed-ae45-473a871aac32.jpg'"
+                    :src="item.image_url"
                     class="swiper-item-img"
                   ></image>
                 </view>
@@ -60,11 +60,36 @@
           </swiper>
         </view>
       </block>
-      <view class="news">
+      <!-- <view class="news">
         <view class="news-title">消息</view>
         <view class="news-line">|</view>
         <view class="news-txt">看大佬如何用手机拍出黑白大片</view>
         <view class="news-btn">去看看</view>
+      </view> -->
+      <view class="news">
+        <view class="news-title">消息</view>
+        <view class="news-line">|</view>
+        <swiper
+          :indicator-dots="false"
+          :autoplay="true"
+          :interval="interval"
+          :duration="duration"
+          :vertical="true"
+          class="home_notify"
+        >
+          <swiper-item
+            class="home_notify_item"
+            v-for="(item, index) in notify"
+            :key="index"
+          >
+            <view class="news-txt">{{ item.name }}</view>
+            <view
+              class="news-btn"
+              @tap="bannerClick(item.event, item.redirect_url)"
+              >去看看</view
+            >
+          </swiper-item>
+        </swiper>
       </view>
       <view class="page-nav">
         <view class="page-nav-top">
@@ -125,7 +150,7 @@
       <view class="recommend">
         <view class="recommend-title">
           <view class="recommend-name"> 约拍推荐 </view>
-          <view class="recommend-tips"> 1分钟前***发布了人像创作</view>
+          <!-- <view class="recommend-tips"> 1分钟前***发布了人像创作</view> -->
           <view
             class="recommend-more"
             @tap="goMore(0)"
@@ -144,6 +169,7 @@
             :style="{
               height: swiperheight + 'px',
             }"
+            :key="1"
             v-if="inviteRecommendList.length"
           >
             <block v-for="(item, index) in inviteRecommendList" :key="index">
@@ -164,7 +190,7 @@
                                 : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
                             "
                             class="avatar"
-                            @tap="goZhuye(item.author.uuid)"
+                            @tap.stop="goZhuye(item.author.uuid)"
                           ></image>
                           <view class="list_info">
                             <view class="list_name">
@@ -185,6 +211,7 @@
                             <view class="list_p">
                               <text>
                                 {{
+                                  item.author.career_list &&
                                   item.author.career_list.length
                                     ? item.author.career_list[0]
                                     : null
@@ -284,7 +311,7 @@
               </swiper-item>
             </block>
           </swiper>
-          <view v-else class="none-data">
+          <view v-if="!inviteRecommendList.length" class="none-data">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
               mode="aspectFill"
@@ -297,7 +324,7 @@
       <view class="recommend">
         <view class="recommend-title">
           <view class="recommend-name"> 通告推荐 </view>
-          <view class="recommend-tips"> 1分钟前***发布了人像创作</view>
+          <!-- <view class="recommend-tips"> 1分钟前***发布了人像创作</view> -->
           <view
             class="recommend-more"
             @tap="goMore(1)"
@@ -316,6 +343,7 @@
             :style="{
               height: tonggaoSwiperHeight + 'px',
             }"
+            :key="2"
             v-if="noticeRecommendList.length"
           >
             <block v-for="(item, index) in noticeRecommendList" :key="index">
@@ -401,7 +429,7 @@
               </swiper-item>
             </block>
           </swiper>
-          <view v-else class="none-data">
+          <view v-if="!noticeRecommendList.length" class="none-data">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
               mode="aspectFill"
@@ -467,44 +495,17 @@
           </view>
           <view class="mask-ct">
             <view class="mask-login-tips">授权登录后查看更多优质模特图</view>
-            <view class="mask-login-btn" @tap="getUserProfile">授权登录</view>
+            <view class="mask-login-btn" @tap="goLogin">授权登录</view>
             <view class="mask-login-cancel" @tap="modelClose">再看看</view>
           </view>
         </view>
       </view>
     </view>
     <!--签到-->
-    <view @tap="signClose" class="modal-bg" v-if="showModelSign"></view>
-    <view class="modal_box sign_modal" v-if="showModelSign">
-      <view class="sign_md_close_btn">
-        <image
-          @tap="signClose"
-          src="https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png"
-        ></image>
-      </view>
-      <view class="sign_modal_main">
-        <form class="main">
-          <view class="sign_md_top">
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png"
-            ></image>
-          </view>
-          <view class="sign_md_title">
-            <view>签到成功</view>
-          </view>
-          <view class="sign_md_content">
-            <view>{{ hyper_desc }}</view>
-          </view>
-          <view class="sign_md_bottom">
-            <button open-type="share" class="share-btn">马上邀请</button>
-          </view>
-          <view class="sign_md_txt">每邀请1位好友可赚3金币哦！</view>
-        </form>
-      </view>
-    </view>
+    <sign :visible="showModelSign" :msg="hyper_desc" @close="signClose"></sign>
     <!--签到-->
     <!--未登录提示-->
-    <ShowLogin v-if="showlogin" @getUserProfile="getUserProfile"></ShowLogin>
+    <ShowLogin v-if="showlogin" @getUserProfile="goLogin"></ShowLogin>
     <!--未登录提示-->
   </view>
 </template>
@@ -518,6 +519,7 @@ import ZuopinList from "../../components/zuopinList/index.vue";
 import Pagenav from "../../components/pagenav/index.vue";
 import loading from "../../components/loading/index.vue";
 import ShowLogin from "../../components/showLogin/index.vue";
+import sign from "../../components/sign/index.vue";
 import {
   inviteAdviseList,
   noticeAdviseList,
@@ -528,14 +530,15 @@ import {
   photoList,
   userStatus,
   userSelectCity,
-  wxlogin,
   inviteFilter,
   noticeFilter,
   photoFilter,
   shareInvite,
   submitSign,
+  bannerList,
 } from "../../api/index";
 import { openPage, isLogin, errortip } from "../../utils/util";
+import clickThrottle from "../../utils/clickThrottle";
 export default {
   name: "home",
   data() {
@@ -546,13 +549,15 @@ export default {
       showLoading: false,
       loading: false,
       topNum: 0,
-      swiperheight: 0,
-      tonggaoSwiperHeight: 0,
+      swiperheight: 144,
+      tonggaoSwiperHeight: 240,
       city: "",
       is_today_sign: 0,
       showModelSign: false,
       hyper_desc: "",
       background: ["1", "2", "3"],
+      banner: [],
+      notify: [],
       indicatorDots: true,
       indicatorDots2: false,
       vertical: false,
@@ -600,6 +605,8 @@ export default {
       shareTitle: "",
       sharePath: "",
       shareImg: "",
+      token: "",
+      userinfor: {},
     };
   },
   components: {
@@ -609,20 +616,14 @@ export default {
     Pagenav,
     loading,
     ShowLogin,
-  },
-  computed: {
-    islogin() {
-      if (isLogin()) {
-        return true;
-      }
-      return false;
-    },
+    sign,
   },
   methods: {
     modelClose() {
       this.visible = false;
     },
     goZhuye(uuid) {
+      if (!clickThrottle()) return;
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     comingSoon() {
@@ -785,7 +786,7 @@ export default {
       query.select(id).boundingClientRect();
       query.exec(function (res) {
         //res[0].height 为获取的收缩栏面板展开部分的高度
-        that.swiperheight = res[0].height;
+        that.swiperheight = res[0] ? res[0].height : 0;
       });
     },
     tonggaoSwiperChange(e) {
@@ -796,7 +797,7 @@ export default {
       query.select(id).boundingClientRect();
       query.exec(function (res) {
         //res[0].height 为获取的收缩栏面板展开部分的高度
-        that.tonggaoSwiperHeight = res[0].height;
+        that.tonggaoSwiperHeight = res[0] ? res[0].height : 0;
       });
     },
     // 加载更多
@@ -816,62 +817,18 @@ export default {
         this.zuopinQuery("more", this.$refs["pageNavRef"].navActive);
       }
     },
-    getUserProfile() {
-      let _this = this;
-      wx.getUserProfile({
-        desc: "用于完善会员资料",
-        success: (res) => {
-          console.log(res);
-          // let avatar = res.userInfo.avatarUrl;
-          // let nickname = res.userInfo.nickName;
-          wx.login({
-            success(res) {
-              _this.getWxLogin({
-                // avatar: avatar,
-                // nickname: nickname,
-                account: res.code,
-                secret: "",
-                type: 200,
-              });
-            },
-            fail(err) {
-              console.log(err);
-            },
-          });
-        },
-        fail: (res) => {
-          console.log(res);
-        },
-      });
+    goLogin() {
+      openPage("/pages/login/index");
     },
-    async getWxLogin(params) {
-      try {
-        let res = await wxlogin(params);
-        const token = res.data.data.token;
-        wx.setStorageSync("token", token);
-        wx.setStorageSync("userInfo", {
-          avatar: res.data.data.login_status.avatar,
-          nickname: res.data.data.login_status.nickname,
-          uuid: res.data.data.uuid,
-        });
-        this.showlogin = false;
-        if (res.data.data.is_bind_phone == 0) {
-          this.pageshow = "bindphone";
-        } else if (res.data.data.login_type == 2) {
-          this.visible = false;
-          this.pageNum = 1;
-          this.yuepaiList = [];
-          this.zuopinList = [];
-          this.noticeList = [];
-          this.loading = true;
-          this.showLoading = true;
-          this.navClick(this.componetActive, 0);
-        } else {
-          // 未注册
-          openPage("/pages/register/index");
-        }
-      } catch (error) {
-        console.log("失败");
+    bannerClick(event, url) {
+      // static:无导向，静态的，不进行跳转
+      // mina:小程序,跳转至小程序内的页面
+      // gzh:公众号, 跳转至公众号
+      // h5:H5页面，跳转至H5
+      if (event == "mina") {
+        openPage(url);
+      } else if (event == "gzh" || event == "h5") {
+        openPage("/packageSet/pages/webview/index?url=" + url);
       }
     },
     async inviteList(params, type, scroll) {
@@ -948,30 +905,36 @@ export default {
       try {
         let res = await inviteAdviseList(params);
         this.inviteRecommendList = res.data.data.items;
-
-        setTimeout(() => {
-          // 初始化高度
-          var query = wx.createSelectorQuery();
-          query.select("#recommend-box0").boundingClientRect();
-          query.exec((res) => {
-            this.swiperheight = res[0].height;
-          });
-        }, 100);
+        console.log(this.inviteRecommendList, "this.inviteRecommendList");
+        this.$nextTick(() => {
+          setTimeout(() => {
+            // 初始化高度
+            var query = wx.createSelectorQuery();
+            query.select("#recommend-box0").boundingClientRect();
+            query.exec((res) => {
+              console.log(res, "res");
+              this.swiperheight = res[0] ? res[0].height : this.swiperheight;
+            });
+          }, 100);
+        });
       } catch (error) {}
     },
     async noticeAdviseList(params) {
       try {
         let res = await noticeAdviseList(params);
         this.noticeRecommendList = res.data.data.items;
-
-        setTimeout(() => {
-          // 初始化高度
-          var query = wx.createSelectorQuery();
-          query.select("#tonggao-recommend-box0").boundingClientRect();
-          query.exec((res) => {
-            this.tonggaoSwiperHeight = res[0].height;
-          });
-        }, 100);
+        this.$nextTick(() => {
+          setTimeout(() => {
+            // 初始化高度
+            var query = wx.createSelectorQuery();
+            query.select("#tonggao-recommend-box0").boundingClientRect();
+            query.exec((res) => {
+              this.tonggaoSwiperHeight = res[0]
+                ? res[0].height
+                : this.tonggaoSwiperHeight;
+            });
+          }, 100);
+        });
       } catch (error) {}
     },
     async notifyNumber(params) {
@@ -994,7 +957,7 @@ export default {
         this.is_today_sign = res.data.data.is_today_sign;
       } catch (error) {}
     },
-    async userStatus(params) {
+    async userStatus(params, queryList) {
       try {
         let res = await userStatus(params);
         if (res.data.data) {
@@ -1002,8 +965,18 @@ export default {
           this.city = res.data.data.current_city.city_name;
           this.city_filter = res.data.data.current_city.city_id;
           this.recommend_city_filter = res.data.data.current_city.city_id;
+          if (res.data.data.login_status.bind_type == 0) {
+            wx.removeStorage({
+              key: "userInfo",
+            });
+            wx.removeStorage({
+              key: "token",
+            });
+          }
         }
-
+        this.yuepaiList = [];
+        this.inviteRecommendList = [];
+        this.noticeRecommendList = [];
         // 约拍推荐
         this.inviteAdviseList({
           city_filter: this.recommend_city_filter,
@@ -1012,11 +985,19 @@ export default {
         this.noticeAdviseList({
           city_filter: this.recommend_city_filter,
         });
+        if (queryList) {
+          // 列表查询
+          this.pageNum = 1;
+          this.isclick = true;
+          this.showLoading = true;
+          this.switchQuery(this.componetActive);
+        }
       } catch (error) {}
     },
     async userSelectCity(params) {
       try {
         let res = await userSelectCity(params);
+        this.userStatus("", true);
       } catch (error) {}
     },
     async inviteFilter(params, scroll) {
@@ -1322,6 +1303,21 @@ export default {
         this.isSign("");
       } catch (error) {}
     },
+    async bannerList(params) {
+      try {
+        let res = await bannerList(params);
+        this.banner = [];
+        this.notify = [];
+        res.data.data.map((item) => {
+          if (item.item == "home_banner") {
+            this.banner.push(item);
+          }
+          if (item.item == "home_notify") {
+            this.notify.push(item);
+          }
+        });
+      } catch (error) {}
+    },
   },
   onPageScroll: function (e) {
     this.scrollTop = e.scrollTop;
@@ -1352,17 +1348,6 @@ export default {
   },
   created() {
     this.globalData = this.globalData;
-    // 消息通知红点
-    this.notifyNumber("");
-    // 当前城市&是否签到
-    this.userStatus("");
-
-    this.inviteFilter({});
-    // 分享
-    this.shareInviteInfo({
-      source: "share_friend",
-      type: "wechat",
-    });
   },
   onLoad: function (options) {
     if (options.scene) {
@@ -1371,31 +1356,38 @@ export default {
   },
   // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
   onShow() {
+    this.bannerList({
+      item: ["home_banner", "home_notify"],
+    });
+    // 消息通知红点
+    this.notifyNumber("");
+    // 当前城市&是否签到
+    if (!citySelector.getCity()) {
+      this.userStatus("");
+    }
+    this.inviteFilter({});
+    // 分享
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
+    this.autoplay = true;
     if (citySelector.getCity()) {
       const selectedCity = citySelector.getCity(); // 选择城市后返回城市信息对象，若未选择返回null
-      this.city_filter = Number(selectedCity.id);
-      this.city = selectedCity.name;
+      this.city_filter = selectedCity ? Number(selectedCity.id) : "";
+      this.city = selectedCity ? selectedCity.name : "";
       this.userSelectCity({ city_info: selectedCity });
-      // 约拍推荐
-      this.inviteAdviseList({
-        city_filter: this.recommend_city_filter,
-      });
-      // 通告推荐
-      this.noticeAdviseList({
-        city_filter: this.recommend_city_filter,
-      });
-      // 列表查询
-      this.pageNum = 1;
-      this.isclick = true;
-      this.showLoading = true;
-      this.switchQuery(this.componetActive);
     }
     // 是否登录
     if (isLogin()) {
       this.showlogin = false;
+      this.visible = false;
     } else {
       this.showlogin = true;
     }
+  },
+  onHide() {
+    this.autoplay = false;
   },
   onShareAppMessage() {
     this.shareInvite({

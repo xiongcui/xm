@@ -160,6 +160,7 @@
   text-align: center;
   margin-top: 40rpx;
   position: relative;
+  z-index: 99;
 }
 
 .package-list .month {
@@ -259,4 +260,10 @@
   font-size: 22rpx;
   padding: 6rpx;
   border-radius: 25% 0 25% 0;
+}
+
+.subbtn_vip_txt {
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
 }

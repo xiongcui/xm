@@ -51,9 +51,10 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageTonggao/pages/detail/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../components/tonggaoList/index.vue */ "./src/components/tonggaoList/index.vue");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../components/tonggaoList/index.vue */ "./src/components/tonggaoList/index.vue");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -408,6 +409,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+//
+
 
 
 
@@ -463,7 +466,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     };
   },
   components: {
-    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]
+    TonggaoList: _components_tonggaoList_index_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]
   },
   methods: {
     previewImage: function previewImage(src, urls) {
@@ -476,7 +479,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       });
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     formatSex: function formatSex(sex) {
       if (sex == 1) {
@@ -488,8 +491,10 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       }
     },
     nowYuepai: function nowYuepai(oid) {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + oid);
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
+
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + oid + "&source=note");
       } else {
         wx.redirectTo({
           url: "/pages/login/index"
@@ -497,8 +502,11 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       }
     },
     launchYuepai: function launchYuepai() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
+
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "b"])()) {
         this.applyVerify({
+          source: "note",
           oid: this.oid
         });
       } else {
@@ -508,7 +516,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       }
     },
     goZhuye: function goZhuye() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     subRecordCollect: function subRecordCollect() {
       var params = {
@@ -522,11 +531,13 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       this.recordCollect(params);
     },
     follow: function follow() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
       this.userFollow({
         follow_uuid: this.tonggaoInfo.author.uuid
       });
     },
     unfollow: function unfollow() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
       this.userUnfollow({
         unfollow_uuid: this.tonggaoInfo.author.uuid
       });
@@ -561,7 +572,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* noticeInfo */ "T"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeInfo */ "X"])(params);
 
               case 3:
                 res = _context.sent;
@@ -599,7 +610,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* recordCollect */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* recordCollect */ "ob"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -629,7 +640,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInvite */ "sb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -659,7 +670,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInviteInfo */ "tb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -692,7 +703,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Lb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -723,7 +734,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "Wb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -754,7 +765,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* noticeAdviseList */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeAdviseList */ "V"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -788,7 +799,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("没有更多数据了～");
                 _this6.loading = true;
                 return _context7.abrupt("return", false);
 
@@ -836,11 +847,11 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* applyVerify */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* applyVerify */ "h"])(params);
 
               case 3:
                 res = _context8.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this7.oid);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this7.oid + "&source=note");
                 _context8.next = 10;
                 break;
 
@@ -849,9 +860,9 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
                 _context8.t0 = _context8["catch"](0);
 
                 if (_context8.t0.data.error_code == 21030 || _context8.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context8.t0.data.msg, "&code=").concat(_context8.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context8.t0.data.msg, "&code=").concat(_context8.t0.data.error_code));
                 } else {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])(_context8.t0.data.msg);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])(_context8.t0.data.msg);
                 }
 
               case 10:
@@ -1200,7 +1211,7 @@ var render = function () {
           ]),
           _c("view", { staticClass: "tonggao_desc" }, [
             _c("view", { staticClass: "dian" }),
-            _vm._v(_vm._s(_vm.tonggaoInfo.details.content) + " "),
+            _c("text", [_vm._v(_vm._s(_vm.tonggaoInfo.details.content))]),
           ]),
           _vm.tonggaoInfo.details.expect_time
             ? _c("view", { staticClass: "tonggao_desc" }, [

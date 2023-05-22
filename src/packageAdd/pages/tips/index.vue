@@ -113,7 +113,7 @@
 
 <script>
 import "./index.scss";
-import { checkFollow } from "../../../api/index";
+import { checkFollow, subscribeEvent } from "../../../api/index";
 import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "tips",
@@ -123,6 +123,10 @@ export default {
       msg: "",
       is_follow_gzh: 0,
       visible: true,
+      template: [
+        // "tEX27GKFotgdenR3XC5grlgpS79LudBKxvy7uBbsdcM",
+        // "sQXqKGSEacobxAx8r7RJP5_y5mm7g53v6htcEPWfsPQ",
+      ],
     };
   },
   methods: {
@@ -131,10 +135,7 @@ export default {
     },
     nowSubscribe() {
       wx.requestSubscribeMessage({
-        tmplIds: [
-          "tEX27GKFotgdenR3XC5grlgpS79LudBKxvy7uBbsdcM",
-          "sQXqKGSEacobxAx8r7RJP5_y5mm7g53v6htcEPWfsPQ",
-        ],
+        tmplIds: this.template,
         success(res) {
           errortip("订阅成功，继续订阅可获得多次提醒");
         },
@@ -171,9 +172,20 @@ export default {
         this.is_follow_gzh = res.data.data.is_follow_gzh;
       } catch (error) {}
     },
+    async subscribeEvent(params) {
+      try {
+        let res = await subscribeEvent(params);
+        this.template = res.data.data.map((item) => {
+          return item.code;
+        });
+      } catch (error) {}
+    },
   },
   created() {
     this.checkFollow("");
+    this.subscribeEvent({
+      sub_type: "publish",
+    });
   },
   onLoad: function (options) {
     if (options.type) {

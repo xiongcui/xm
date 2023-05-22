@@ -147,17 +147,29 @@
         </swiper>
       </view>
     </view>
+    <!--签到-->
+    <sign :visible="visible" :msg="hyper_desc" @close="close"></sign>
   </view>
 </template>
 
 <script>
 import "./index.scss";
-import { coinList, coinItemList, coinAcct } from "../../../../api/index";
+import {
+  coinList,
+  coinItemList,
+  coinAcct,
+  submitSign,
+  shareInvite,
+  shareInviteInfo,
+} from "../../../../api/index";
 import { errortip, openPage } from "../../../../utils/util";
+import sign from "../../../../components/sign/index.vue";
 export default {
   name: "coin",
   data() {
     return {
+      visible: false,
+      hyper_desc: "",
       currentTab: 0,
       // 页面配置
       winWidth: 0,
@@ -170,6 +182,9 @@ export default {
       pageNum: 1,
       pageSize: 10,
     };
+  },
+  components: {
+    sign,
   },
   computed: {
     dailyList() {
@@ -192,13 +207,13 @@ export default {
     },
   },
   methods: {
+    close() {
+      this.visible = false;
+    },
     taskClick(code) {
       switch (code) {
         case "everyday_sign":
-          wx.switchTab({
-            url: "/pages/my/index",
-            success: function (e) {},
-          });
+          this.submitSign("");
           break;
         case "invite_friends":
           openPage("/packageAdd/pages/user/invite/index");
@@ -256,6 +271,14 @@ export default {
     goPay() {
       openPage("/packageAdd/pages/user/rechargecoin/index");
     },
+    async submitSign(params) {
+      try {
+        let res = await submitSign(params);
+        this.visible = true;
+        this.hyper_desc = res.data.data.hyper_desc;
+        this.queryCoinList();
+      } catch (error) {}
+    },
     async coinList(params) {
       try {
         let res = await coinList(params);
@@ -293,6 +316,19 @@ export default {
         this.coin = res.data.data.coin;
       } catch (error) {}
     },
+    async shareInvite(params) {
+      try {
+        let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
+        this.shareTitle = res.data.data.title;
+        this.shareImg = res.data.data.imageUrl;
+        this.sharePath = res.data.data.path;
+      } catch (error) {}
+    },
   },
   onLoad: function (options) {
     var that = this;
@@ -305,10 +341,14 @@ export default {
     });
   },
   onShow() {
-    this.currentTab = 0;
-    this.type = "cost";
+    this.currentTab = 1;
+    this.type = "earn";
     this.queryCoinList();
     this.coinAcct("");
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
   },
   onReachBottom() {
     if (this.currentTab == 2) {
@@ -317,6 +357,17 @@ export default {
         this.query();
       }
     }
+  },
+  onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat",
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
   },
 };
 </script>

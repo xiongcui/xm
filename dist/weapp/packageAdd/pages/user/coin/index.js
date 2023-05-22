@@ -53,6 +53,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _components_sign_index_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../components/sign/index.vue */ "./src/components/sign/index.vue");
 
 
 //
@@ -207,6 +208,9 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 //
 //
 //
+//
+//
+
 
 
 
@@ -214,6 +218,8 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
   name: "coin",
   data: function data() {
     return {
+      visible: false,
+      hyper_desc: "",
       currentTab: 0,
       // 页面配置
       winWidth: 0,
@@ -226,6 +232,9 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       pageNum: 1,
       pageSize: 10
     };
+  },
+  components: {
+    sign: _components_sign_index_vue__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]
   },
   computed: {
     dailyList: function dailyList() {
@@ -248,13 +257,13 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     }
   },
   methods: {
+    close: function close() {
+      this.visible = false;
+    },
     taskClick: function taskClick(code) {
       switch (code) {
         case "everyday_sign":
-          wx.switchTab({
-            url: "/pages/my/index",
-            success: function success(e) {}
-          });
+          this.submitSign("");
           break;
 
         case "invite_friends":
@@ -320,7 +329,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     goPay: function goPay() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargecoin/index");
     },
-    coinList: function coinList(params) {
+    submitSign: function submitSign(params) {
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
@@ -331,112 +340,208 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinList */ "o"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Cb"])(params);
 
               case 3:
                 res = _context.sent;
+                _this.visible = true;
+                _this.hyper_desc = res.data.data.hyper_desc;
 
-                if (res.data.data) {
-                  _this.list = res.data.data;
-                } else {
-                  _this.pageNum = 1;
-                  _this.list = [];
-                }
+                _this.queryCoinList();
 
-                _context.next = 9;
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
-              case 9:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
-    coinItemList: function coinItemList(params) {
+    coinList: function coinList(params) {
       var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
-        var res, data;
+        var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinItemList */ "n"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinList */ "p"])(params);
 
               case 3:
                 res = _context2.sent;
 
-                if (!(!res.data.data && _this2.pageNum > 1 || !res.data.data.items.length && _this2.pageNum > 1)) {
-                  _context2.next = 7;
-                  break;
-                }
-
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
-                return _context2.abrupt("return", false);
-
-              case 7:
-                data = res.data.data.items;
-                console.log(data, "data");
-
-                if (data) {
-                  _this2.coinDetails = _this2.coinDetails.concat(data);
+                if (res.data.data) {
+                  _this2.list = res.data.data;
                 } else {
-                  _this2.coinDetails = [];
+                  _this2.pageNum = 1;
+                  _this2.list = [];
                 }
 
-                _this2.loading = true;
-                _context2.next = 15;
+                _context2.next = 9;
                 break;
 
-              case 13:
-                _context2.prev = 13;
+              case 7:
+                _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
 
-              case 15:
+              case 9:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 13]]);
+        }, _callee2, null, [[0, 7]]);
       }))();
     },
-    coinAcct: function coinAcct(params) {
+    coinItemList: function coinItemList(params) {
       var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
-        var res;
+        var res, data;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinAcct */ "m"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinItemList */ "o"])(params);
 
               case 3:
                 res = _context3.sent;
-                _this3.coin = res.data.data.coin;
-                _context3.next = 9;
-                break;
+
+                if (!(!res.data.data && _this3.pageNum > 1 || !res.data.data.items.length && _this3.pageNum > 1)) {
+                  _context3.next = 7;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("没有更多数据了～");
+                return _context3.abrupt("return", false);
 
               case 7:
-                _context3.prev = 7;
+                data = res.data.data.items;
+                console.log(data, "data");
+
+                if (data) {
+                  _this3.coinDetails = _this3.coinDetails.concat(data);
+                } else {
+                  _this3.coinDetails = [];
+                }
+
+                _this3.loading = true;
+                _context3.next = 15;
+                break;
+
+              case 13:
+                _context3.prev = 13;
                 _context3.t0 = _context3["catch"](0);
 
-              case 9:
+              case 15:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[0, 13]]);
+      }))();
+    },
+    coinAcct: function coinAcct(params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinAcct */ "n"])(params);
+
+              case 3:
+                res = _context4.sent;
+                _this4.coin = res.data.data.coin;
+                _context4.next = 9;
+                break;
+
+              case 7:
+                _context4.prev = 7;
+                _context4.t0 = _context4["catch"](0);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, null, [[0, 7]]);
+      }))();
+    },
+    shareInvite: function shareInvite(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "sb"])(params);
+
+              case 3:
+                res = _context5.sent;
+                _context5.next = 8;
+                break;
+
+              case 6:
+                _context5.prev = 6;
+                _context5.t0 = _context5["catch"](0);
+
+              case 8:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 6]]);
+      }))();
+    },
+    shareInviteInfo: function shareInviteInfo(params) {
+      var _this5 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.prev = 0;
+                _context6.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "tb"])(params);
+
+              case 3:
+                res = _context6.sent;
+                _this5.shareTitle = res.data.data.title;
+                _this5.shareImg = res.data.data.imageUrl;
+                _this5.sharePath = res.data.data.path;
+                _context6.next = 11;
+                break;
+
+              case 9:
+                _context6.prev = 9;
+                _context6.t0 = _context6["catch"](0);
+
+              case 11:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, null, [[0, 9]]);
       }))();
     }
   },
@@ -451,10 +556,14 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     });
   },
   onShow: function onShow() {
-    this.currentTab = 0;
-    this.type = "cost";
+    this.currentTab = 1;
+    this.type = "earn";
     this.queryCoinList();
     this.coinAcct("");
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat"
+    });
   },
   onReachBottom: function onReachBottom() {
     if (this.currentTab == 2) {
@@ -463,6 +572,18 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
         this.query();
       }
     }
+  },
+  onShareAppMessage: function onShareAppMessage() {
+    this.shareInvite({
+      source: "share_friend",
+      type: "wechat"
+    });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
   }
 });
 
@@ -483,294 +604,315 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "coin" }, [
-    _c("view", { staticClass: "coin-bg" }, [
-      _c("view", { staticClass: "coin-bg-left" }, [
-        _c("view", { staticClass: "coin-total" }, [
-          _vm._v(_vm._s(_vm.coin)),
-          _c("text", { staticClass: "company" }, [_vm._v("金币")]),
+  return _c(
+    "view",
+    { staticClass: "coin" },
+    [
+      _c("view", { staticClass: "coin-bg" }, [
+        _c("view", { staticClass: "coin-bg-left" }, [
+          _c("view", { staticClass: "coin-total" }, [
+            _vm._v(_vm._s(_vm.coin)),
+            _c("text", { staticClass: "company" }, [_vm._v("金币")]),
+          ]),
+          _c("view", { staticClass: "coin-tips" }, [_vm._v("小金币大用途")]),
         ]),
-        _c("view", { staticClass: "coin-tips" }, [_vm._v("小金币大用途")]),
+        _c("view", { staticClass: "coin-bg-rt", on: { tap: _vm.goPay } }, [
+          _vm._v(" 充值金币 "),
+        ]),
       ]),
-      _c("view", { staticClass: "coin-bg-rt", on: { tap: _vm.goPay } }, [
-        _vm._v(" 充值金币 "),
-      ]),
-    ]),
-    _c("view", { staticClass: "coin-content" }, [
-      _c("view", { staticClass: "tab" }, [
-        _c(
-          "view",
-          {
-            staticClass: "tab-item",
-            class: _vm.currentTab == 0 ? "on" : "",
-            on: {
-              tap: function ($event) {
-                return _vm.changeItem(0, "cost")
-              },
-            },
-          },
-          [_vm._v("金币用途")]
-        ),
-        _c(
-          "view",
-          {
-            staticClass: "tab-item",
-            class: _vm.currentTab == 1 ? "on" : "",
-            on: {
-              tap: function ($event) {
-                return _vm.changeItem(1, "earn")
-              },
-            },
-          },
-          [_vm._v("获取金币")]
-        ),
-        _c(
-          "view",
-          {
-            staticClass: "tab-item",
-            class: _vm.currentTab == 2 ? "on" : "",
-            on: {
-              tap: function ($event) {
-                return _vm.changeItem(2)
-              },
-            },
-          },
-          [_vm._v("金币明细")]
-        ),
-      ]),
-      _c(
-        "view",
-        { staticClass: "content" },
-        [
+      _c("view", { staticClass: "coin-content" }, [
+        _c("view", { staticClass: "tab" }, [
           _c(
-            "swiper",
+            "view",
             {
-              staticClass: "swiper-box",
-              attrs: { current: _vm.currentTab, duration: "300" },
-              on: { change: _vm.bindChange },
+              staticClass: "tab-item",
+              class: _vm.currentTab == 0 ? "on" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.changeItem(0, "cost")
+                },
+              },
             },
-            [
-              _c("swiper-item", [
-                _c(
-                  "view",
-                  { staticClass: "privilege-list" },
-                  [
-                    _c("view", { staticClass: "privilege-box" }, [
-                      _c("view", { staticClass: "service blod" }, [
-                        _vm._v("特权服务"),
-                      ]),
-                      _c("view", { staticClass: "vip blod" }, [_vm._v("会员")]),
-                      _c("view", { staticClass: "novip blod" }, [
-                        _vm._v("非会员"),
-                      ]),
-                    ]),
-                    _vm._l(_vm.list, function (item, index) {
-                      return _c(
-                        "view",
-                        { key: index, staticClass: "privilege-box" },
-                        [
-                          _c("view", { staticClass: "service" }, [
-                            _vm._v(_vm._s(item.rule_desc)),
-                          ]),
-                          _c("view", { staticClass: "vip red" }, [
-                            _vm._v(_vm._s(item.member_coin)),
-                          ]),
-                          _c("view", { staticClass: "novip red" }, [
-                            _vm._v(_vm._s(item.common_coin)),
-                          ]),
-                        ]
-                      )
-                    }),
-                  ],
-                  2
-                ),
-              ]),
-              _c(
-                "swiper-item",
-                [
-                  _vm.list.length
-                    ? _c("block", [
-                        _c(
-                          "view",
-                          { staticClass: "get-coin" },
-                          [
-                            _c("view", { staticClass: "coin-title" }, [
-                              _vm._v("/ 日常奖励 /"),
-                            ]),
-                            _vm._l(_vm.dailyList, function (item, index) {
-                              return _c(
-                                "view",
-                                {
-                                  key: item.code + index,
-                                  staticClass: "coin-task",
-                                },
-                                [
-                                  _c("view", { staticClass: "task-info" }, [
-                                    _c("view", { staticClass: "task-dian" }),
-                                    _c("view", [
-                                      _c(
-                                        "text",
-                                        { staticClass: "task-title" },
-                                        [_vm._v(_vm._s(item.rule_name))]
-                                      ),
-                                      _c("text", { staticClass: "task-coin" }, [
-                                        _vm._v(
-                                          "+" +
-                                            _vm._s(item.common_coin) +
-                                            "金币"
-                                        ),
-                                      ]),
-                                    ]),
-                                    _c("view", { staticClass: "task-tips" }, [
-                                      _vm._v(_vm._s(item.rule_desc)),
-                                    ]),
-                                  ]),
-                                  item.rule_status != "已完成"
-                                    ? _c(
-                                        "view",
-                                        {
-                                          staticClass: "task-btn",
-                                          on: {
-                                            tap: function ($event) {
-                                              return _vm.taskClick(
-                                                item.rule_code
-                                              )
-                                            },
-                                          },
-                                        },
-                                        [_vm._v(_vm._s(item.rule_status))]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "task-sucess-btn" },
-                                        [_vm._v(_vm._s(item.rule_status))]
-                                      ),
-                                ]
-                              )
-                            }),
-                            _c("view", { staticClass: "coin-title mt16" }, [
-                              _vm._v("/ 任务奖励 /"),
-                            ]),
-                            _vm._l(_vm.taskList, function (item, index) {
-                              return _c(
-                                "view",
-                                {
-                                  key: item.code + index,
-                                  staticClass: "coin-task",
-                                },
-                                [
-                                  _c("view", { staticClass: "task-info" }, [
-                                    _c("view", { staticClass: "task-dian" }),
-                                    _c("view", [
-                                      _c(
-                                        "text",
-                                        { staticClass: "task-title" },
-                                        [_vm._v(_vm._s(item.rule_name))]
-                                      ),
-                                      _c("text", { staticClass: "task-coin" }, [
-                                        _vm._v(
-                                          "+" +
-                                            _vm._s(item.common_coin) +
-                                            "金币"
-                                        ),
-                                      ]),
-                                    ]),
-                                    _c("view", { staticClass: "task-tips" }, [
-                                      _vm._v(_vm._s(item.rule_desc)),
-                                    ]),
-                                  ]),
-                                  item.rule_status != "已完成"
-                                    ? _c(
-                                        "view",
-                                        {
-                                          staticClass: "task-btn",
-                                          on: {
-                                            tap: function ($event) {
-                                              return _vm.taskClick(
-                                                item.rule_code
-                                              )
-                                            },
-                                          },
-                                        },
-                                        [_vm._v(_vm._s(item.rule_status))]
-                                      )
-                                    : _c(
-                                        "view",
-                                        { staticClass: "task-sucess-btn" },
-                                        [_vm._v(_vm._s(item.rule_status))]
-                                      ),
-                                ]
-                              )
-                            }),
-                          ],
-                          2
-                        ),
-                      ])
-                    : _c("view", { staticClass: "none-data" }, [
-                        _c("image", {
-                          staticClass: "none-img",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
-                            mode: "aspectFill",
-                          },
-                        }),
-                        _c("view", [_vm._v("当前暂无信息哦～")]),
-                      ]),
-                ],
-                1
-              ),
-              _c(
-                "swiper-item",
-                [
-                  _vm.coinDetails.length
-                    ? _c(
-                        "block",
-                        _vm._l(_vm.coinDetails, function (item, index) {
-                          return _c(
-                            "view",
-                            { key: index, staticClass: "detailed-list" },
-                            [
-                              _c("view", { staticClass: "coin-task" }, [
-                                _c("view", { staticClass: "task-info" }, [
-                                  _c("view", [
-                                    _c("text", { staticClass: "task-title" }, [
-                                      _vm._v(_vm._s(item.order_name)),
-                                    ]),
-                                  ]),
-                                  _c("view", { staticClass: "task-tips" }, [
-                                    _vm._v(_vm._s(item.success_time)),
-                                  ]),
-                                ]),
-                                _c("view", { staticClass: "task-num" }, [
-                                  _vm._v(_vm._s(item.curr_coin)),
-                                ]),
-                              ]),
-                            ]
-                          )
-                        }),
-                        0
-                      )
-                    : _c("view", { staticClass: "none-data" }, [
-                        _c("image", {
-                          staticClass: "none-img",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
-                            mode: "aspectFill",
-                          },
-                        }),
-                        _c("view", [_vm._v("当前暂无信息哦～")]),
-                      ]),
-                ],
-                1
-              ),
-            ],
-            1
+            [_vm._v("金币用途")]
           ),
-        ],
-        1
-      ),
-    ]),
-  ])
+          _c(
+            "view",
+            {
+              staticClass: "tab-item",
+              class: _vm.currentTab == 1 ? "on" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.changeItem(1, "earn")
+                },
+              },
+            },
+            [_vm._v("获取金币")]
+          ),
+          _c(
+            "view",
+            {
+              staticClass: "tab-item",
+              class: _vm.currentTab == 2 ? "on" : "",
+              on: {
+                tap: function ($event) {
+                  return _vm.changeItem(2)
+                },
+              },
+            },
+            [_vm._v("金币明细")]
+          ),
+        ]),
+        _c(
+          "view",
+          { staticClass: "content" },
+          [
+            _c(
+              "swiper",
+              {
+                staticClass: "swiper-box",
+                attrs: { current: _vm.currentTab, duration: "300" },
+                on: { change: _vm.bindChange },
+              },
+              [
+                _c("swiper-item", [
+                  _c(
+                    "view",
+                    { staticClass: "privilege-list" },
+                    [
+                      _c("view", { staticClass: "privilege-box" }, [
+                        _c("view", { staticClass: "service blod" }, [
+                          _vm._v("特权服务"),
+                        ]),
+                        _c("view", { staticClass: "vip blod" }, [
+                          _vm._v("会员"),
+                        ]),
+                        _c("view", { staticClass: "novip blod" }, [
+                          _vm._v("非会员"),
+                        ]),
+                      ]),
+                      _vm._l(_vm.list, function (item, index) {
+                        return _c(
+                          "view",
+                          { key: index, staticClass: "privilege-box" },
+                          [
+                            _c("view", { staticClass: "service" }, [
+                              _vm._v(_vm._s(item.rule_desc)),
+                            ]),
+                            _c("view", { staticClass: "vip red" }, [
+                              _vm._v(_vm._s(item.member_coin)),
+                            ]),
+                            _c("view", { staticClass: "novip red" }, [
+                              _vm._v(_vm._s(item.common_coin)),
+                            ]),
+                          ]
+                        )
+                      }),
+                    ],
+                    2
+                  ),
+                ]),
+                _c(
+                  "swiper-item",
+                  [
+                    _vm.list.length
+                      ? _c("block", [
+                          _c(
+                            "view",
+                            { staticClass: "get-coin" },
+                            [
+                              _c("view", { staticClass: "coin-title" }, [
+                                _vm._v("/ 日常奖励 /"),
+                              ]),
+                              _vm._l(_vm.dailyList, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: item.code + index,
+                                    staticClass: "coin-task",
+                                  },
+                                  [
+                                    _c("view", { staticClass: "task-info" }, [
+                                      _c("view", { staticClass: "task-dian" }),
+                                      _c("view", [
+                                        _c(
+                                          "text",
+                                          { staticClass: "task-title" },
+                                          [_vm._v(_vm._s(item.rule_name))]
+                                        ),
+                                        _c(
+                                          "text",
+                                          { staticClass: "task-coin" },
+                                          [
+                                            _vm._v(
+                                              "+" +
+                                                _vm._s(item.common_coin) +
+                                                "金币"
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                      _c("view", { staticClass: "task-tips" }, [
+                                        _vm._v(_vm._s(item.rule_desc)),
+                                      ]),
+                                    ]),
+                                    item.rule_status != "已完成"
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "task-btn",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.taskClick(
+                                                  item.rule_code
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v(_vm._s(item.rule_status))]
+                                        )
+                                      : _c(
+                                          "view",
+                                          { staticClass: "task-sucess-btn" },
+                                          [_vm._v(_vm._s(item.rule_status))]
+                                        ),
+                                  ]
+                                )
+                              }),
+                              _c("view", { staticClass: "coin-title mt16" }, [
+                                _vm._v("/ 任务奖励 /"),
+                              ]),
+                              _vm._l(_vm.taskList, function (item, index) {
+                                return _c(
+                                  "view",
+                                  {
+                                    key: item.code + index,
+                                    staticClass: "coin-task",
+                                  },
+                                  [
+                                    _c("view", { staticClass: "task-info" }, [
+                                      _c("view", { staticClass: "task-dian" }),
+                                      _c("view", [
+                                        _c(
+                                          "text",
+                                          { staticClass: "task-title" },
+                                          [_vm._v(_vm._s(item.rule_name))]
+                                        ),
+                                        _c(
+                                          "text",
+                                          { staticClass: "task-coin" },
+                                          [
+                                            _vm._v(
+                                              "+" +
+                                                _vm._s(item.common_coin) +
+                                                "金币"
+                                            ),
+                                          ]
+                                        ),
+                                      ]),
+                                      _c("view", { staticClass: "task-tips" }, [
+                                        _vm._v(_vm._s(item.rule_desc)),
+                                      ]),
+                                    ]),
+                                    item.rule_status != "已完成"
+                                      ? _c(
+                                          "view",
+                                          {
+                                            staticClass: "task-btn",
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.taskClick(
+                                                  item.rule_code
+                                                )
+                                              },
+                                            },
+                                          },
+                                          [_vm._v(_vm._s(item.rule_status))]
+                                        )
+                                      : _c(
+                                          "view",
+                                          { staticClass: "task-sucess-btn" },
+                                          [_vm._v(_vm._s(item.rule_status))]
+                                        ),
+                                  ]
+                                )
+                              }),
+                            ],
+                            2
+                          ),
+                        ])
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
+                        ]),
+                  ],
+                  1
+                ),
+                _c(
+                  "swiper-item",
+                  [
+                    _vm.coinDetails.length
+                      ? _c(
+                          "block",
+                          _vm._l(_vm.coinDetails, function (item, index) {
+                            return _c(
+                              "view",
+                              { key: index, staticClass: "detailed-list" },
+                              [
+                                _c("view", { staticClass: "coin-task" }, [
+                                  _c("view", { staticClass: "task-info" }, [
+                                    _c("view", [
+                                      _c(
+                                        "text",
+                                        { staticClass: "task-title" },
+                                        [_vm._v(_vm._s(item.order_name))]
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "task-tips" }, [
+                                      _vm._v(_vm._s(item.success_time)),
+                                    ]),
+                                  ]),
+                                  _c("view", { staticClass: "task-num" }, [
+                                    _vm._v(_vm._s(item.curr_coin)),
+                                  ]),
+                                ]),
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      : _c("view", { staticClass: "none-data" }, [
+                          _c("image", {
+                            staticClass: "none-img",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
+                              mode: "aspectFill",
+                            },
+                          }),
+                          _c("view", [_vm._v("当前暂无信息哦～")]),
+                        ]),
+                  ],
+                  1
+                ),
+              ],
+              1
+            ),
+          ],
+          1
+        ),
+      ]),
+      _c("sign", {
+        attrs: { visible: _vm.visible, msg: _vm.hyper_desc },
+        on: { close: _vm.close },
+      }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

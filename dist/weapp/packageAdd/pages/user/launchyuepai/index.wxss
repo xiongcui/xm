@@ -168,7 +168,7 @@ page {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 22rpx 0 13rpx;
-  width: 220rpx;
+  width: 180rpx;
 }
 
 .type_icon {
@@ -244,7 +244,7 @@ page {
 }
 
 .content_text {
-  padding-bottom: 5rpx;
+  padding-bottom: 10rpx;
 }
 
 .qrcode {
@@ -514,7 +514,7 @@ page {
   width: 100%;
 }
 
-.modal_box {
+.modal_box_bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -533,12 +533,16 @@ page {
           align-items: center;
 }
 
-.modal_box .modal_content {
+.modal_box_bg .modal_title {
+  font-weight: bold;
+}
+
+.modal_box_bg .modal_content {
   position: relative;
   background: #ffffff;
-  padding: 16rpx 0;
+  padding: 40rpx 0;
   border-radius: 10rpx;
-  width: 360rpx;
+  width: 500rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -552,18 +556,18 @@ page {
   color: #333333;
 }
 
-.modal_box .modal_content .qrcode-img {
+.modal_box_bg .modal_content .qrcode-img {
   width: 300rpx;
   height: 300rpx;
   margin: 16rpx 0;
 }
 
-.modal_box .modal_content .save {
+.modal_box_bg .modal_content .save {
   color: #6493d7;
   font-size: 26rpx;
 }
 
-.modal_box .modal_content .close-img {
+.modal_box_bg .modal_content .close-img {
   width: 38rpx;
   height: 38rpx;
   position: absolute;
@@ -596,4 +600,5 @@ page {
   width: 50%;
   line-height: 60rpx;
   text-align: center;
+  color: #6493d7;
 }

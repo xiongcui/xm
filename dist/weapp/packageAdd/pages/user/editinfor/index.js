@@ -253,12 +253,16 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 
       var params = {
         nickname: this.nickname,
-        sex: Number(this.sex),
         birthday: this.birthday,
-        addressName: this.region.join("-"),
-        address: this.regionList.join("-"),
+        addressName: this.region.length ? this.region.join("-") : null,
+        address: this.regionList ? this.regionList.join("-") : null,
         avatar: this.infor.avatar
       };
+
+      if (this.sex !== null) {
+        params.sex = Number(this.sex);
+      }
+
       this.profileUpdate(params);
     },
     profileUpdate: function profileUpdate(params, type) {
@@ -270,7 +274,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* profileUpdate */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* profileUpdate */ "ib"])(params);
 
               case 3:
                 res = _context.sent;
@@ -300,7 +304,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         }, _callee, null, [[0, 7]]);
       }))();
     },
-    updateAvatar: function updateAvatar(params) {
+    userRegister: function userRegister(params) {
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
@@ -311,7 +315,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* updateAvatar */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Pb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -345,7 +349,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Ob"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -353,9 +357,9 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
                 _this2.nickname = res.data.data.nickname;
                 _this2.sex = res.data.data.sex;
                 _this2.birthday = res.data.data.birthday;
-                _this2.region = res.data.data.address_name.split("-");
+                _this2.region = res.data.data.address_name ? res.data.data.address_name.split("-") : "";
                 _this2.regionList = res.data.data.address.split("-");
-                _this2.infor.intro = res.data.data.resume;
+                _this2.infor.intro = res.data.data.resume ? res.data.data.resume : "";
                 _this2.identity = res.data.data.career_label.join(".");
                 _context3.next = 16;
                 break;
@@ -396,7 +400,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
           var data = JSON.parse(res.data);
 
           if (data.code == 200) {
-            _this3.updateAvatar({
+            _this3.userRegister({
               avatar: data.data.file1
             });
           } else {
@@ -517,7 +521,7 @@ var render = function () {
                 _c("view", { staticClass: "ub-f1 ub item_mid" }, [
                   _c("view", { staticClass: "item_label" }, [_vm._v("性别")]),
                   _c("view", { staticClass: "ub-f1 item_input" }, [
-                    _vm.sex !== ""
+                    _vm.sex !== null
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.sexs[_vm.sex])),
                         ])
@@ -652,20 +656,27 @@ var render = function () {
         1
       ),
       _c("view", { staticClass: "title" }, [_vm._v("自我简介")]),
-      _c("view", { staticClass: "infor intro_info ub" }, [
-        _c("view", { staticClass: "ub-f1", on: { tap: _vm.goEditUserIntro } }, [
-          _vm.infor.intro
-            ? _c("view", { staticClass: "intro_content" }, [
-                _c("text", [_vm._v(_vm._s(_vm.infor.intro))]),
-              ])
-            : _c("view", { staticClass: "intro_content_none" }, [
-                _vm._v(
-                  "请填写自我简介（请勿填写任何联系方式，否则审核不通过）"
-                ),
-              ]),
-        ]),
-        _c("view", { staticClass: "item_right" }),
-      ]),
+      _c(
+        "view",
+        {
+          staticClass: "infor intro_info ub",
+          on: { tap: _vm.goEditUserIntro },
+        },
+        [
+          _c("view", { staticClass: "ub-f1" }, [
+            _vm.infor.intro
+              ? _c("view", { staticClass: "intro_content" }, [
+                  _c("text", [_vm._v(_vm._s(_vm.infor.intro))]),
+                ])
+              : _c("view", { staticClass: "intro_content_none" }, [
+                  _vm._v(
+                    "请填写自我简介（请勿填写任何联系方式，否则审核不通过）"
+                  ),
+                ]),
+          ]),
+          _c("view", { staticClass: "item_right" }),
+        ]
+      ),
       _c(
         "cover-view",
         {

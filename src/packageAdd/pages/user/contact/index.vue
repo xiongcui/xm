@@ -23,30 +23,13 @@
           </view>
         </view>
         <view class="item line-b ub">
-          <view class="item_title">微信号</view>
-          <view class="ub-f1"></view>
-          <view class="item_switch">
-            <switch
-              @tap="switch_selct_wechat"
-              :checked="info.is_wechat == 1 ? true : false"
-              class="btn_switch"
-              color="#fe5457"
-            ></switch>
+          <view class="item_title"
+            >手机号
+            <text
+              :class="info.is_mobile == 1 ? 'mobile_black' : 'mobile_grey'"
+              >{{ info.mobile }}</text
+            >
           </view>
-        </view>
-        <view class="item line-b" v-if="info.is_wechat == 1">
-          <view class="item_input">
-            <input
-              name="wechat"
-              placeholder="请输入微信号"
-              placeholderClass="input-placeholder"
-              type="text"
-              v-model="info.wechat"
-            />
-          </view>
-        </view>
-        <view class="item line-b ub">
-          <view class="item_title">手机号</view>
           <view class="ub-f1"></view>
           <view class="item_switch">
             <switch
@@ -57,7 +40,7 @@
             ></switch>
           </view>
         </view>
-        <view class="item line-b" v-if="info.is_mobile == 1">
+        <!-- <view class="item line-b" v-if="info.is_mobile == 1">
           <view class="item_input">
             <input
               name="wechat"
@@ -66,15 +49,43 @@
               type="text"
               v-model="info.mobile"
             />
-            <!-- <button
-              @getmobilenumber="changemobile"
-              class="change_mobile_btn"
-              openType="getmobileNumber"
-            >
-              {{ info.mobile }}
-            </button> -->
+          </view>
+        </view> -->
+        <view class="item line-b ub">
+          <view class="item_title">
+            微信号
+            <view class="wechat_input">
+              <input
+                name="wechat"
+                placeholder="请输入微信号"
+                placeholderClass="input-placeholder"
+                :class="info.is_wechat == 1 ? 'mobile_black' : 'mobile_grey'"
+                type="text"
+                v-model="info.wechat"
+              />
+            </view>
+          </view>
+          <view class="ub-f1"></view>
+          <view class="item_switch">
+            <switch
+              @tap="switch_selct_wechat"
+              :checked="info.is_wechat == 1 ? true : false"
+              class="btn_switch"
+              color="#fe5457"
+            ></switch>
           </view>
         </view>
+        <!-- <view class="item line-b" v-if="info.is_wechat == 1">
+          <view class="item_input">
+            <input
+              name="wechat"
+              placeholder="请输入微信号"
+              placeholderClass="input-placeholder"
+              type="text"
+              v-model="info.wechat"
+            />
+          </view>
+        </view> -->
         <view class="item ub">
           <view class="item_title item_title_qrcode">微信名片二维码</view>
           <view class="ub-f1"></view>
@@ -93,13 +104,13 @@
                 <view @tap.stop="delete_preview" class="preview_delet">
                   <image
                     mode="scaleToFill"
-                    src="https://yuepai-oss.qubeitech.com/static/common/icon_sizer_close.png"
+                    src="https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png"
                   ></image>
                 </view>
               </view>
               <view @tap="chooseImage" class="pick_img" v-else>
                 <image
-                  src="https://yuepai-oss.qubeitech.com/static/common/img_add.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/common/img_add.png"
                 ></image>
               </view>
             </view>
@@ -128,6 +139,15 @@
         </view>
       </view>
       <view class="ub-f1"></view>
+    </view>
+    <view class="prompt">
+      <view>个人信息保护申明：</view>
+      <view
+        >1、在未得到您的许可之前，我们不会把您的任何个人信息提供给无关的第三方（包括公司或个人），提交申请（报名）属已事先获得你的明确授权；</view
+      >
+      <view
+        >2、为保护个人信息安全可控，申请（报名）过程中默认使用微信作为沟通方式，得到你的授权后才向对方提交手机号码，但微信号需真实可信，否则被投诉后将进行相应处罚</view
+      >
     </view>
   </view>
 </template>

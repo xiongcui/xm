@@ -322,6 +322,24 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -407,6 +425,54 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
         this.checked3 = false;
       } else {
         this.checked3 = true;
+      }
+    },
+    minFansInput: function minFansInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请输入纯数字！");
+        this.minFans = "";
+      }
+    },
+    maxFansInput: function maxFansInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请输入纯数字！");
+        this.maxFans = "";
+      }
+    },
+    minAmountInput: function minAmountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请输入纯数字！");
+        this.minAmount = "";
+      }
+    },
+    maxAmountInput: function maxAmountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请输入纯数字！");
+        this.maxAmount = "";
+      }
+    },
+    amountInput: function amountInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请输入纯数字！");
+        this.amount = "";
+      }
+    },
+    recruitNumInput: function recruitNumInput(e) {
+      var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+
+      if (!exp.test(e.detail.value)) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请输入纯数字！");
+        this.recruitNum = "";
       }
     },
     chooseImage: function chooseImage() {
@@ -591,9 +657,9 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
       if (this.taskIndex == 2 || this.taskIndex == 3) {
         params.reward_good_name = this.product;
         params.reward_good_price = Number(this.giftsValue);
-      }
+      } // console.log(params);
 
-      console.log(params);
+
       this.submitNotice(params);
     },
     publicConfig: function publicConfig(params) {
@@ -607,7 +673,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "gb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "kb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -639,7 +705,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "xb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "Bb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -684,7 +750,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "V"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "Z"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -879,15 +945,18 @@ var render = function () {
                               },
                             ],
                             staticClass: "amount1",
-                            attrs: { placeholder: "请输入" },
+                            attrs: { placeholder: "请输入", type: "number" },
                             domProps: { value: _vm.amount },
                             on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.amount = $event.target.value
-                              },
+                              input: [
+                                function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.amount = $event.target.value
+                                },
+                                _vm.amountInput,
+                              ],
                             },
                           }),
                           _c("text", { staticClass: "yuan" }, [_vm._v("元")]),
@@ -932,15 +1001,18 @@ var render = function () {
                               },
                             ],
                             staticClass: "min-amount",
-                            attrs: { placeholder: "最小金额" },
+                            attrs: { placeholder: "最小金额", type: "number" },
                             domProps: { value: _vm.minAmount },
                             on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.minAmount = $event.target.value
-                              },
+                              input: [
+                                function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.minAmount = $event.target.value
+                                },
+                                _vm.minAmountInput,
+                              ],
                             },
                           }),
                           _c("text", { staticClass: "split" }, [_vm._v("-")]),
@@ -954,15 +1026,18 @@ var render = function () {
                               },
                             ],
                             staticClass: "max-amount",
-                            attrs: { placeholder: "最大金额" },
+                            attrs: { placeholder: "最大金额", type: "number" },
                             domProps: { value: _vm.maxAmount },
                             on: {
-                              input: function ($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.maxAmount = $event.target.value
-                              },
+                              input: [
+                                function ($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.maxAmount = $event.target.value
+                                },
+                                _vm.maxAmountInput,
+                              ],
                             },
                           }),
                           _c("text", { staticClass: "yuan" }, [_vm._v("元")]),
@@ -1039,7 +1114,7 @@ var render = function () {
                     },
                   ],
                   staticClass: "brand-input",
-                  attrs: { placeholder: "请输入赠送产品价值" },
+                  attrs: { placeholder: "请输入赠送产品价值", type: "number" },
                   domProps: { value: _vm.giftsValue },
                   on: {
                     input: function ($event) {
@@ -1071,15 +1146,18 @@ var render = function () {
                 },
               ],
               staticClass: "brand-input",
-              attrs: { placeholder: "请输入招募人数" },
+              attrs: { placeholder: "请输入招募人数", type: "number" },
               domProps: { value: _vm.recruitNum },
               on: {
-                input: function ($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.recruitNum = $event.target.value
-                },
+                input: [
+                  function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.recruitNum = $event.target.value
+                  },
+                  _vm.recruitNumInput,
+                ],
               },
             }),
           ]),
@@ -1143,16 +1221,19 @@ var render = function () {
                       },
                     ],
                     staticClass: "min-fans",
-                    attrs: { placeholder: "最低粉丝数" },
+                    attrs: { placeholder: "最低粉丝数", type: "number" },
                     domProps: { value: _vm.minFans },
                     on: {
                       blur: _vm.fansChange,
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.minFans = $event.target.value
-                      },
+                      input: [
+                        function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.minFans = $event.target.value
+                        },
+                        _vm.minFansInput,
+                      ],
                     },
                   }),
                   _c("text", { staticClass: "tonggao-split" }, [_vm._v("-")]),
@@ -1166,15 +1247,19 @@ var render = function () {
                       },
                     ],
                     staticClass: "max-fans",
-                    attrs: { placeholder: "最高粉丝数" },
+                    attrs: { placeholder: "最高粉丝数", type: "number" },
                     domProps: { value: _vm.maxFans },
                     on: {
-                      input: function ($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.maxFans = $event.target.value
-                      },
+                      blur: _vm.fansChange,
+                      input: [
+                        function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.maxFans = $event.target.value
+                        },
+                        _vm.maxFansInput,
+                      ],
                     },
                   }),
                   _c("text", { staticClass: "tonggao-split" }, [_vm._v("|")]),

@@ -687,7 +687,7 @@
         </swiper-item>
       </swiper>
     </view>
-    <view class="modal_box" v-if="visible">
+    <view class="modal_box_bg" v-if="visible">
       <view class="modal_content">
         <view> 添加备注信息 </view>
         <textarea
@@ -708,23 +708,7 @@
       </view>
     </view>
     <!--联系方式-->
-    <!-- <view class="modal_box" v-if="contactVisible">
-      <view class="modal_content">
-        <view class="modal_title">
-          <view> 联系方式 </view>
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
-            class="close-img"
-            @tap="contactClose"
-          ></image>
-        </view>
-        <view class="modal_wechat">
-          <view> 微信号：{{ contact.wechat }} </view>
-          <view class="copy" @tap="copy(contact.wechat)">复制</view>
-        </view>
-      </view>
-    </view> -->
-    <view class="modal_box" v-if="contactVisible" @tap="contactClose">
+    <view class="modal_box_bg" v-if="contactVisible" @tap="contactClose">
       <view class="contact_box">
         <view class="modal_title">
           <view> 联系方式 </view>
@@ -767,7 +751,7 @@
       </view>
     </view>
     <!--微信二维码-->
-    <view class="modal_box" v-if="showModel">
+    <view class="modal_box_bg" v-if="showModel">
       <view class="modal_content">
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>
@@ -788,6 +772,7 @@ import {
   applyManage,
   applyInfo,
   receivePayment,
+  imVerify,
 } from "../../../api/index";
 import { errortip, openPage } from "../../../utils/util";
 import "./index.scss";
@@ -808,9 +793,6 @@ export default {
       contactVisible: false,
       showModel: false,
       loading: true,
-      // contact: {
-      //   wechat: "",
-      // },
       showContact: true,
       showCelebrity: true,
       showAddress: true,
@@ -858,7 +840,6 @@ export default {
       this.showModel = true;
     },
     contactClose() {
-      console.log(3333);
       this.contactVisible = false;
     },
     // 点击tab切换
@@ -971,12 +952,13 @@ export default {
       });
     },
     moreClick(sid, row) {
+      let _this = this;
       wx.showActionSheet({
         itemList: ["删除", "投诉"],
         success(res) {
           switch (res.tapIndex) {
             case 0:
-              this.Delete({
+              _this.Delete({
                 visited_status: -200,
                 sid: sid,
               });
@@ -1049,10 +1031,19 @@ export default {
         sid: sid,
       });
     },
-    Delete(sid) {
-      this.applyManage({
-        visited_status: -200,
-        sid: sid,
+    Delete(params) {
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定删除吗？",
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+            _this.applyManage(params);
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
       });
     },
     recoveryPending(sid) {
@@ -1091,13 +1082,11 @@ export default {
           switch (res.tapIndex) {
             case 0:
               console.log("立即沟通");
-              openPage(
-                "/packageMsg/pages/chat/index?uuid=" +
-                  row.visitor.uuid +
-                  "&nickname=" +
-                  row.visitor.nickname +
-                  "&avatar=" +
-                  row.visitor.avatar
+              _this.imVerify(
+                {
+                  to_account: row.visitor.uuid,
+                },
+                row
               );
               break;
             case 1:
@@ -1150,6 +1139,26 @@ export default {
         let res = await receivePayment(params);
         errortip("支付成功");
       } catch (error) {}
+    },
+    async imVerify(params, row) {
+      try {
+        let res = await imVerify(params);
+        openPage(
+          "/packageMsg/pages/chat/index?uuid=" +
+            row.visitor.uuid +
+            "&nickname=" +
+            row.visitor.nickname +
+            "&avatar=" +
+            row.visitor.avatar
+        );
+      } catch (error) {
+        errortip(error.data.msg);
+        if (error.data.error_code == 21050 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        }
+      }
     },
   },
   onShow() {

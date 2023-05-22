@@ -8,6 +8,20 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.works .input-placeholder,
+.works .textarea-placeholder {
+  font-size: 30rpx;
+}
+.works .first {
+  margin-right: 6rpx;
+  color: #333333;
+  margin-left: 10rpx;
+}
+.works .first-none {
+  margin-left: 10rpx;
+  color: #808080;
+  font-size: 30rpx;
+}
 .works .works-item {
   margin: 10rpx 0;
   padding: 0 16rpx 16rpx 16rpx;
@@ -111,6 +125,10 @@
   background: url("https://yuepai-oss.qubeitech.com/static/images/right.png") right center no-repeat;
   background-size: 12rpx;
   padding-right: 24rpx;
+  font-size: 30rpx;
+}
+.works .works-select-value {
+  color: #333333;
 }
 .works .switch-btn {
   margin-left: 16rpx;
@@ -148,7 +166,7 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 16rpx 0;
+  padding: 16rpx 0 50rpx 0;
   z-index: 9;
 }
 .works .works-btn .release {
@@ -186,11 +204,21 @@
   text-align: center;
   font-size: 26rpx;
 }
+.works .payment-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
 .works .amount1 {
   border-bottom: 1rpx solid #e5e5e5;
   width: 210rpx;
   text-align: center;
   font-size: 26rpx;
+}
+.works .company {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .works .company,
 .works .payment_range,

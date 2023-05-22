@@ -54,7 +54,7 @@ page {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
-  border-bottom: 1rpx solid #f5f5f5;
+  margin-bottom: 6rpx;
 }
 
 .invite .invite-box:first-child {

@@ -71,7 +71,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -176,7 +176,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -278,7 +278,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -380,7 +380,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -482,7 +482,7 @@
                   >
                 </view>
                 <view class="signup-rt">
-                  <view class="contact">立即联系</view>
+                  <view class="contact" @tap="contactNow(item)">立即联系</view>
                   <view class="time">{{ item.date_humanize }}报名</view>
                 </view>
               </view>
@@ -555,7 +555,7 @@
         </swiper-item>
       </swiper>
     </view>
-    <view class="modal_box" v-if="visible">
+    <view class="modal_box_bg" v-if="visible">
       <view class="modal_content">
         <view> 添加备注信息 </view>
         <textarea
@@ -575,11 +575,72 @@
         <view class="save" @tap="clickSave">保存</view>
       </view>
     </view>
+    <!--联系方式-->
+    <view class="modal_box_bg" v-if="contactVisible" @tap="contactClose">
+      <view class="contact_box">
+        <view class="modal_title">
+          <view> 联系方式 </view>
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
+            class="close-img"
+            @tap="contactClose"
+          ></image>
+        </view>
+        <view class="contact_info" v-if="showAddress">
+          <view class="contact_info_left">
+            <view>手机号：</view>
+            <view>{{ data.address.mobile }}</view>
+          </view>
+          <view class="copy" @tap="copy(data.address.mobile)">复制</view>
+        </view>
+        <view class="contact_info" v-if="showAddress">
+          <view class="contact_info_left">
+            <view>地址：</view>
+            <view>{{ data.address.detail_address }}</view>
+          </view>
+          <view class="copy" @tap="copy(data.address.detail_address)"
+            >复制</view
+          >
+        </view>
+        <view class="contact_info" v-if="showCelebrity">
+          <view class="contact_info_left">
+            <view>红人账号：</view>
+            <view>{{ data.celebrity.nickname }}</view>
+          </view>
+          <view class="copy" @tap="copy(data.celebrity.nickname)">复制</view>
+        </view>
+        <view class="contact_info" v-if="showContact">
+          <view class="contact_info_left">
+            <view>微信号：</view>
+            <view>{{ data.contact.wechat }}</view>
+          </view>
+          <view class="copy" @tap="showQRcode">点击查看微信二维码</view>
+        </view>
+      </view>
+    </view>
+    <!--微信二维码-->
+    <view class="modal_box_bg" v-if="showModel">
+      <view class="modal_content">
+        <view> 微信二维码 </view>
+        <image class="qrcode-img" :src="data.contact.wechat_links"></image>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png"
+          class="close-img"
+          @tap="closeQRcode"
+        ></image>
+        <view class="save" @tap="clickSaveImg">保存到相册</view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
-import { applyList, applyManage } from "../../../api/index";
+import {
+  applyList,
+  applyManage,
+  imVerify,
+  applyInfo,
+} from "../../../api/index";
 import { errortip, openPage } from "../../../utils/util";
 import "./index.scss";
 export default {
@@ -597,10 +658,113 @@ export default {
       remarks: "",
       visible: false,
       loading: true,
+      contactVisible: false,
       oid: "",
+      showContact: true,
+      showCelebrity: true,
+      showAddress: true,
+      showModel: false,
+      data: {
+        contact: {
+          person: "",
+          wechat: "",
+          wechat_links: "",
+          mobile: "",
+          is_wechat: 1,
+          is_mobile: 1,
+        },
+        celebrity: {
+          nickname: "",
+          fans_number: "",
+        },
+        address: {
+          detail_address: "",
+          mobile: "",
+          name: "",
+        },
+      },
     };
   },
   methods: {
+    copy(txt) {
+      wx.setClipboardData({
+        data: txt, //这个是要复制的数据
+        success(res) {
+          wx.getClipboardData({
+            success(res) {
+              console.log(res.data); // data
+              if (res.data) {
+                errortip("复制成功");
+              }
+            },
+          });
+        },
+      });
+    },
+    closeQRcode() {
+      this.showModel = false;
+    },
+    showQRcode() {
+      this.showModel = true;
+    },
+    contactClose() {
+      this.contactVisible = false;
+    },
+    clickSaveImg() {
+      //先授权相册
+      wx.getSetting({
+        success: (res) => {
+          if (!res.authSetting["scope.writePhotosAlbum"]) {
+            //未授权的话发起授权
+            wx.authorize({
+              scope: "scope.writePhotosAlbum",
+              success: () => {
+                //用户允许授权，保存到相册
+                this.saveImg();
+              },
+              fail: () => {
+                //用户拒绝授权，然后就引导授权（这里的话如果用户拒绝，不会立马弹出引导授权界面，坑就是上边所说的官网原因）
+                wx.openSetting({
+                  success: () => {
+                    wx.authorize({
+                      scope: "scope.writePhotosAlbum",
+                      succes: () => {
+                        //授权成功，保存图片
+                        this.saveImg();
+                      },
+                    });
+                  },
+                });
+              },
+            });
+          } else {
+            //已经授权
+            this.saveImg();
+          }
+        },
+      });
+    },
+    saveImg() {
+      //保存到相册
+      let url = this.data.contact.wechat_links;
+      wx.downloadFile({
+        //这里如果有报错就按照上边的解决方案来处理
+        url: url,
+        success: (res) => {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: (res) => {
+              wx.showToast({
+                title: "保存成功！",
+              });
+            },
+            faile: (err) => {
+              console.log("失败！");
+            },
+          });
+        },
+      });
+    },
     // 点击tab切换
     changeItem(index, type) {
       if (this.currentTab === index) {
@@ -738,18 +902,39 @@ export default {
       this.query();
     },
     signupDetail(sid, visited_status) {
-      // openPage(
-      //   "/packageMsg/pages/tgregreceiveshow/index?sid=" +
-      //     sid +
-      //     "&visited_status=" +
-      //     visited_status
-      // );
       openPage(
         "/packageMsg/pages/inviteDetail/index?sid=" +
           sid +
           "&visited_status=" +
           visited_status
       );
+    },
+    contactNow(row) {
+      let _this = this;
+      wx.showActionSheet({
+        itemList: ["立即沟通", "查看联系方式"],
+        success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              console.log("立即沟通");
+              _this.imVerify(
+                {
+                  to_account: row.visitor.uuid,
+                },
+                row
+              );
+              break;
+            case 1:
+              console.log("查看联系方式");
+              _this.contactVisible = true;
+              _this.applyInfo({ sid: row.sid });
+              break;
+          }
+        },
+        fail(res) {
+          console.log(res.errMsg);
+        },
+      });
     },
     async applyList(params) {
       try {
@@ -770,6 +955,38 @@ export default {
         this.pageNum = 1;
         this.list = [];
         this.query();
+      } catch (error) {}
+    },
+    async imVerify(params, row) {
+      try {
+        let res = await imVerify(params);
+        openPage(
+          "/packageMsg/pages/chat/index?uuid=" +
+            row.visitor.uuid +
+            "&nickname=" +
+            row.visitor.nickname +
+            "&avatar=" +
+            row.visitor.avatar
+        );
+      } catch (error) {
+        errortip(error.data.msg);
+        if (error.data.error_code == 21050 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        }
+      }
+    },
+    async applyInfo(params) {
+      try {
+        let res = await applyInfo(params);
+        this.showContact = res.data.data.contact.is_enable;
+        this.showCelebrity = res.data.data.celebrity.is_enable;
+        this.showAddress = res.data.data.address.is_enable;
+
+        this.data.contact = res.data.data.contact.body;
+        this.data.celebrity = res.data.data.celebrity.body;
+        this.data.address = res.data.data.address.body;
       } catch (error) {}
     },
   },

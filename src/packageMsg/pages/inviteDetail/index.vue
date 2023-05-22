@@ -201,9 +201,15 @@
         <button
           @tap="submit"
           type="primary"
-          v-if="yuepaiInfo.visited_status != 230"
+          v-if="
+            yuepaiInfo.visited_status != 230 && yuepaiInfo.visited_status != 220
+          "
         >
           查看联系方式
+        </button>
+        <!-- 已查看联系方式 -->
+        <button type="primary" v-else-if="yuepaiInfo.visited_status == 230">
+          已查看联系方式
         </button>
         <button type="primary" v-else>已查看</button>
       </view>
@@ -244,6 +250,7 @@
 import "./index.scss";
 import { applyInfo, receivePayment } from "../../../api/index";
 import { errortip, openPage } from "../../../utils/util";
+import clickThrottle from "../../../utils/clickThrottle";
 export default {
   name: "invite-detail",
   data() {
@@ -316,6 +323,7 @@ export default {
       );
     },
     submit() {
+      if (!clickThrottle(5000)) return;
       let _this = this;
       wx.showModal({
         title: "温馨提示",

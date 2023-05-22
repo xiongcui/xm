@@ -53,6 +53,7 @@ component.options.__file = "src/pages/register/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
 //
@@ -166,6 +167,13 @@ component.options.__file = "src/pages/register/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -189,9 +197,6 @@ component.options.__file = "src/pages/register/index.vue"
       identityList: []
     };
   },
-  // components: {
-  //   weCropper,
-  // },
   methods: {
     chooesImage: function chooesImage() {
       this.visible = true;
@@ -208,6 +213,16 @@ component.options.__file = "src/pages/register/index.vue"
     },
     identityFocus: function identityFocus() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
+    },
+    goHome: function goHome() {
+      // 跳转首页
+      wx.switchTab({
+        url: "/pages/home/index",
+        success: function success(e) {
+          var page = getCurrentPages().pop();
+          if (page == undefined || page == null) return; // page.onLoad();
+        }
+      });
     },
     submit: function submit() {
       if (!this.nickname) {
@@ -236,7 +251,6 @@ component.options.__file = "src/pages/register/index.vue"
       }
 
       var params = {
-        invited_uuid: this.invited_uuid,
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
@@ -246,6 +260,7 @@ component.options.__file = "src/pages/register/index.vue"
         career_label: this.identityList
       };
       console.log(params);
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.userRegister(params);
     },
     userRegister: function userRegister(params) {
@@ -257,7 +272,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Pb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -296,7 +311,7 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "x"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getCareer */ "y"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -326,7 +341,6 @@ component.options.__file = "src/pages/register/index.vue"
   },
   created: function created() {
     var userInfo = wx.getStorageSync("userInfo");
-    this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
   },
@@ -355,6 +369,9 @@ var render = function () {
   return _c("view", [
     _c("form", { staticClass: "main", attrs: { bindreset: "reset" } }, [
       _c("view", { staticClass: "top" }, [
+        _c("view", { staticClass: "skip-btn", on: { tap: _vm.goHome } }, [
+          _vm._v("跳过"),
+        ]),
         _c("view", { staticClass: "avatar", on: { tap: _vm.chooesImage } }, [
           _vm.avatar
             ? _c("image", { attrs: { mode: "aspectFit", src: _vm.avatar } })
@@ -383,6 +400,7 @@ var render = function () {
                 placeholder: "请输入你的昵称",
                 placeholderClass: "nickname_tip",
                 type: "text",
+                disabled: "",
               },
               domProps: { value: _vm.nickname },
               on: {
@@ -461,7 +479,7 @@ var render = function () {
                 "picker",
                 {
                   staticClass: "picker",
-                  attrs: { mode: "date" },
+                  attrs: { mode: "date", value: "2005-01-01" },
                   on: { change: _vm.dateChange },
                 },
                 [

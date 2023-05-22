@@ -70,7 +70,9 @@
                       >{{ item.visitor.career_list[0] }}｜
                       {{ item.visitor.province_name }}</view
                     >
-                    <view class="dian">...</view>
+                    <view class="dian" @tap.stop="moreClick(item.sid, item)"
+                      >...</view
+                    >
                   </view>
                 </view>
                 <view class="invite-desc"
@@ -135,7 +137,9 @@
                       >{{ item.visitor.career_list[0] }}｜
                       {{ item.visitor.province_name }}</view
                     >
-                    <view class="dian">...</view>
+                    <view class="dian" @tap.stop="moreClick(item.sid, item)"
+                      >...</view
+                    >
                   </view>
                 </view>
                 <view class="invite-desc"
@@ -200,7 +204,9 @@
                       >{{ item.visitor.career_list[0] }}｜
                       {{ item.visitor.province_name }}</view
                     >
-                    <view class="dian">...</view>
+                    <view class="dian" @tap.stop="moreClick(item.sid, item)"
+                      >...</view
+                    >
                   </view>
                 </view>
                 <view class="invite-desc"
@@ -265,7 +271,9 @@
                       >{{ item.visitor.career_list[0] }}｜
                       {{ item.visitor.province_name }}</view
                     >
-                    <view class="dian">...</view>
+                    <view class="dian" @tap.stop="moreClick(item.sid, item)"
+                      >...</view
+                    >
                   </view>
                 </view>
                 <view class="invite-desc"
@@ -301,7 +309,7 @@
 
 <script>
 import "./index.scss";
-import { applyList } from "../../../api/index";
+import { applyList, applyManage } from "../../../api/index";
 import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "invite",
@@ -352,6 +360,43 @@ export default {
     goDetail(sid) {
       openPage("/packageMsg/pages/inviteDetail/index?sid=" + sid);
     },
+    moreClick(sid, row) {
+      let _this = this;
+      wx.showActionSheet({
+        itemList: ["删除", "投诉"],
+        success(res) {
+          switch (res.tapIndex) {
+            case 0:
+              _this.Delete(sid);
+              break;
+            case 1:
+              console.log("投诉");
+              openPage(
+                "/packageMsg/pages/complaint/index?visitor_id=" +
+                  row.visitor_id +
+                  "&avatar=" +
+                  row.visitor.avatar +
+                  "&nickname=" +
+                  row.visitor.nickname +
+                  "&province_name=" +
+                  row.visitor.province_name +
+                  "&career=" +
+                  row.visitor.career_list[0]
+              );
+              break;
+          }
+        },
+        fail(res) {
+          console.log(res.errMsg);
+        },
+      });
+    },
+    Delete(sid) {
+      this.applyManage({
+        visited_status: -200,
+        sid: sid,
+      });
+    },
     async applyList(params) {
       try {
         let res = await applyList(params);
@@ -361,6 +406,14 @@ export default {
         }
         let data = res.data.data.items;
         this.list = this.list.concat(data);
+      } catch (error) {}
+    },
+    async applyManage(params) {
+      try {
+        let res = await applyManage(params);
+        this.pageNum = 1;
+        this.list = [];
+        this.query();
       } catch (error) {}
     },
   },

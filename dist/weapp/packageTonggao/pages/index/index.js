@@ -151,39 +151,17 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
       this.visible = false;
     },
     goRelease: function goRelease(type) {
-      this.verifyP1 = this.publishVerify({
+      this.publishVerify({
         project_code: "NT"
-      });
-      Promise.all([this.verifyP1]).then(function () {
-        if (type == 1) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
-        }
-
-        if (type == 2) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
-        }
-
-        if (type == 3) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
-        }
-
-        if (type == 4) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
-        }
-      });
+      }, "", type);
     },
     maskClick: function maskClick(row) {
-      var _this = this;
-
-      this.verifyP1 = this.publishVerify({
+      this.publishVerify({
         project_code: "NT"
-      });
-      Promise.all([this.verifyP1]).then(function () {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + _this.code + "&type=" + row.value + "&key=" + row.key);
-      });
+      }, row, 0);
     },
     publicConfig: function publicConfig(params) {
-      var _this2 = this;
+      var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -193,12 +171,12 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "kb"])(params);
 
               case 3:
                 res = _context.sent;
-                _this2.maskData = res.data.data;
-                _this2.visible = true;
+                _this.maskData = res.data.data;
+                _this.visible = true;
                 _context.next = 10;
                 break;
 
@@ -214,7 +192,9 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
         }, _callee, null, [[0, 8]]);
       }))();
     },
-    publishVerify: function publishVerify(params) {
+    publishVerify: function publishVerify(params, row, type) {
+      var _this2 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
@@ -223,29 +203,64 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publishVerify */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publishVerify */ "lb"])(params);
 
               case 3:
                 res = _context2.sent;
-                _context2.next = 9;
+
+                if (type) {
+                  if (type == 1) {
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
+                  }
+
+                  if (type == 2) {
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
+                  }
+
+                  if (type == 3) {
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
+                  }
+
+                  if (type == 4) {
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
+                  }
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + _this2.code + "&type=" + row.value + "&key=" + row.key);
+                }
+
+                _context2.next = 10;
                 break;
 
-              case 6:
-                _context2.prev = 6;
+              case 7:
+                _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
 
                 if (_context2.t0.data.error_code == 21030 || _context2.t0.data.error_code == 21040) {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context2.t0.data.msg, "&code=").concat(_context2.t0.data.error_code));
+                } else if (_context2.t0.data.error_code == 21060) {
+                  wx.showModal({
+                    title: "温馨提示",
+                    content: "还未完善个人资料，请前往完善个人资料",
+                    confirmText: "完善资料",
+                    success: function success(res) {
+                      if (res.confirm) {
+                        console.log("用户点击确定");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+                      } else if (res.cancel) {
+                        console.log("用户点击取消");
+                      }
+                    }
+                  });
                 } else {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(_context2.t0.data.msg);
                 }
 
-              case 9:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 6]]);
+        }, _callee2, null, [[0, 7]]);
       }))();
     }
   }

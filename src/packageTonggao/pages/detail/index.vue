@@ -167,7 +167,8 @@
           <text class="border-left"></text>通告详情
         </view>
         <view class="tonggao_desc">
-          <view class="dian"></view>{{ tonggaoInfo.details.content }}
+          <view class="dian"></view
+          ><text>{{ tonggaoInfo.details.content }}</text>
         </view>
         <view class="tonggao_desc" v-if="tonggaoInfo.details.expect_time">
           <view class="dian"></view>时间：{{ tonggaoInfo.details.expect_time }}
@@ -352,6 +353,7 @@
 
 <script>
 import "./index.scss";
+import clickThrottle from "../../../utils/clickThrottle";
 import TonggaoList from "../../../components/tonggaoList/index.vue";
 import {
   noticeInfo,
@@ -443,8 +445,13 @@ export default {
       }
     },
     nowYuepai(oid) {
+      if (!clickThrottle()) return;
       if (isLogin()) {
-        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + oid);
+        openPage(
+          "/packageAdd/pages/user/launchyuepai/index?oid=" +
+            oid +
+            "&source=note"
+        );
       } else {
         wx.redirectTo({
           url: "/pages/login/index",
@@ -452,8 +459,10 @@ export default {
       }
     },
     launchYuepai() {
+      if (!clickThrottle()) return;
       if (isLogin()) {
         this.applyVerify({
+          source: "note",
           oid: this.oid,
         });
       } else {
@@ -463,6 +472,7 @@ export default {
       }
     },
     goZhuye() {
+      if (!clickThrottle()) return;
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     subRecordCollect() {
@@ -476,11 +486,13 @@ export default {
       this.recordCollect(params);
     },
     follow() {
+      if (!clickThrottle()) return;
       this.userFollow({
         follow_uuid: this.tonggaoInfo.author.uuid,
       });
     },
     unfollow() {
+      if (!clickThrottle()) return;
       this.userUnfollow({
         unfollow_uuid: this.tonggaoInfo.author.uuid,
       });
@@ -589,7 +601,11 @@ export default {
     async applyVerify(params) {
       try {
         let res = await applyVerify(params);
-        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        openPage(
+          "/packageAdd/pages/user/launchyuepai/index?oid=" +
+            this.oid +
+            "&source=note"
+        );
       } catch (error) {
         if (error.data.error_code == 21030 || error.data.error_code == 21040) {
           openPage(

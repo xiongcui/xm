@@ -1,0 +1,133 @@
+page {
+  background: #f7f7f7;
+}
+.apply {
+  .tab {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+    position: fixed;
+    z-index: 9999;
+  }
+  .tab-item {
+    color: #333333;
+    flex: 1;
+    font-size: 30px;
+    text-align: center;
+    line-height: 80rpx;
+    border-bottom: 6rpx solid #ffffff;
+  }
+  .content {
+    flex: 1;
+    height: 100vh;
+  }
+  .content > swiper {
+    height: 100%;
+  }
+  .tab-item.on {
+    color: #333333;
+    font-weight: bold;
+    border-bottom-color: #ff1e3e;
+  }
+  .invite-box {
+    background: #ffffff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    // border-bottom: 1px solid #f5f5f5;
+    margin-bottom: 6px;
+  }
+  .invite-box:first-child {
+    margin-top: 104px;
+  }
+  .invite-top {
+    display: flex;
+  }
+  .list_sex {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+  }
+  .invite-info {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+  }
+  .invite-img image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 16px;
+  }
+  .invite-name {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    margin: 6px 0px;
+  }
+  .identity {
+    color: #6b6b6b;
+    font-size: 28px;
+    display: flex;
+    .time {
+      color: #6b6b6b;
+      font-size: 28px;
+      margin-left: 30px;
+    }
+  }
+  .dian {
+    color: #6b6b6b;
+    font-size: 50px;
+    position: absolute;
+    right: 30px;
+    top: 0px;
+    image {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .first-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+    position: absolute;
+    right: 30px;
+    top: 16px;
+  }
+  .swiper-box {
+    height: 100%;
+  }
+  .invite-desc {
+    display: flex;
+    font-size: 28px;
+    color: #6b6b6b;
+  }
+  .invite-bt {
+    display: flex;
+    justify-content: space-between;
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-top: 16px;
+  }
+  .fail {
+    color: #ff1e3e;
+  }
+  .success {
+    color: #6493d7;
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+}

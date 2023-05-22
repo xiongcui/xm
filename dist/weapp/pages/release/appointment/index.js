@@ -122,16 +122,11 @@ component.options.__file = "src/pages/release/appointment/index.vue"
   },
   methods: {
     goyuedan: function goyuedan(code, name) {
-      this.verifyP1 = this.publishVerify({
+      this.publishVerify({
         project_code: "NE"
-      });
-      Promise.all([this.verifyP1]).then(function () {
-        wx.navigateTo({
-          url: "/packageAdd/pages/yuedan/add_yuedan/index?id=" + code + "&name=" + name
-        });
-      });
+      }, code, name);
     },
-    publishVerify: function publishVerify(params) {
+    publishVerify: function publishVerify(params, code, name) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
@@ -140,29 +135,62 @@ component.options.__file = "src/pages/release/appointment/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publishVerify */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* publishVerify */ "lb"])(params);
 
               case 3:
                 res = _context.sent;
-                _context.next = 9;
+                wx.navigateTo({
+                  url: "/packageAdd/pages/yuedan/add_yuedan/index?id=" + code + "&name=" + name
+                });
+                _context.next = 10;
                 break;
 
-              case 6:
-                _context.prev = 6;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.data.error_code == 21030 || _context.t0.data.error_code == 21040) {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                } else if (_context.t0.data.error_code == 22010) {
+                  wx.showModal({
+                    title: "温馨提示",
+                    content: "你的主身份不符约拍发布，建议修改身份或发布通告",
+                    cancelText: "修改身份",
+                    confirmText: "发布通告",
+                    success: function success(res) {
+                      if (res.confirm) {
+                        console.log("用户点击确定");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/index/index");
+                      } else if (res.cancel) {
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
+                        console.log("用户点击取消");
+                      }
+                    }
+                  });
+                } else if (_context.t0.data.error_code == 21060) {
+                  wx.showModal({
+                    title: "温馨提示",
+                    content: "还未完善个人资料，请前往完善个人资料",
+                    confirmText: "完善资料",
+                    success: function success(res) {
+                      if (res.confirm) {
+                        console.log("用户点击确定");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+                      } else if (res.cancel) {
+                        console.log("用户点击取消");
+                      }
+                    }
+                  });
                 } else {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(_context.t0.data.msg);
                 }
 
-              case 9:
+              case 10:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 6]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     }
   }

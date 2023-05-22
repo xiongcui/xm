@@ -8,6 +8,7 @@
     <view class="guide-btn" @tap="goPledgecash" v-if="code == 21030"
       >去担保</view
     >
+    <view class="guide-btn" @tap="goVip" v-if="code == 21050">开通会员</view>
   </view>
 </template>
 
@@ -28,6 +29,9 @@ export default {
     },
     goPledgecash() {
       openPage("/packageMsg/pages/creditGuarantee/index");
+    },
+    goVip() {
+      openPage("/packageVip/pages/vip/index");
     },
   },
   onLoad: function (options) {

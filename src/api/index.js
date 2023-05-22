@@ -36,7 +36,7 @@ export const userRegister = (data) => {
 // 更新个人资料
 export const profileUpdate = (data) => {
   return request({
-    url: baseUrl + "/v1/user/profile/update",
+    url: baseUrl + "/v1/user/register",
     method: "post",
     data,
   });
@@ -883,6 +883,46 @@ export const publishVerify = (data) => {
 export const applyVerify = (data) => {
   return request({
     url: baseUrl + "/v1/note/apply/verify",
+    method: "post",
+    data,
+  });
+};
+// 订阅模版
+export const subscribeEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/wechat/nina/subscribe/msg/event",
+    method: "post",
+    data,
+  });
+};
+// banner
+export const bannerList = (data) => {
+  return request({
+    url: baseUrl + "/v1/banner/list",
+    method: "post",
+    data,
+  });
+};
+// 我的申请列表
+export const manageApplyList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/apply/list",
+    method: "post",
+    data,
+  });
+};
+// 申请-列表操作
+export const manageApplyEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/manage/apply/event",
+    method: "post",
+    data,
+  });
+};
+// 沟通校验
+export const imVerify = (data) => {
+  return request({
+    url: baseUrl + "/v1/im/verify",
     method: "post",
     data,
   });

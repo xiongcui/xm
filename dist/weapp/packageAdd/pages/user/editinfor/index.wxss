@@ -118,6 +118,7 @@ page {
 
 .item_input {
   color: #333;
+  width: 60%;
 }
 
 .item_input,

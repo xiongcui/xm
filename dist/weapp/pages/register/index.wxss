@@ -1,3 +1,7 @@
+.top {
+  position: relative;
+}
+
 .avatar {
   margin-top: 60rpx;
   display: -webkit-flex;
@@ -93,16 +97,12 @@
 }
 
 .savebox {
-  height: 10vh;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .save-btn {
@@ -113,4 +113,14 @@
   text-align: center;
   color: #ffffff;
   background-color: #ff5355;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.skip-btn {
+  position: absolute;
+  left: 30rpx;
+  top: -44rpx;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 30rpx;
 }

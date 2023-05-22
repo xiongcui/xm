@@ -102,42 +102,22 @@ export default {
       this.visible = false;
     },
     goRelease(type) {
-      this.verifyP1 = this.publishVerify({
-        project_code: "NT",
-      });
-      Promise.all([this.verifyP1]).then(() => {
-        if (type == 1) {
-          openPage("/packageTonggao/pages/brand/index");
-        }
-        if (type == 2) {
-          openPage("/packageTonggao/pages/shop/index");
-        }
-        if (type == 3) {
-          openPage(
-            "/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002"
-          );
-        }
-        if (type == 4) {
-          openPage(
-            "/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001"
-          );
-        }
-      });
+      this.publishVerify(
+        {
+          project_code: "NT",
+        },
+        "",
+        type
+      );
     },
     maskClick(row) {
-      this.verifyP1 = this.publishVerify({
-        project_code: "NT",
-      });
-      Promise.all([this.verifyP1]).then(() => {
-        openPage(
-          "/packageTonggao/pages/add/index?code=" +
-            this.code +
-            "&type=" +
-            row.value +
-            "&key=" +
-            row.key
-        );
-      });
+      this.publishVerify(
+        {
+          project_code: "NT",
+        },
+        row,
+        0
+      );
     },
     async publicConfig(params) {
       try {
@@ -146,14 +126,55 @@ export default {
         this.visible = true;
       } catch (error) {}
     },
-    async publishVerify(params) {
+    async publishVerify(params, row, type) {
       try {
         let res = await publishVerify(params);
+        if (type) {
+          if (type == 1) {
+            openPage("/packageTonggao/pages/brand/index");
+          }
+          if (type == 2) {
+            openPage("/packageTonggao/pages/shop/index");
+          }
+          if (type == 3) {
+            openPage(
+              "/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002"
+            );
+          }
+          if (type == 4) {
+            openPage(
+              "/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001"
+            );
+          }
+        } else {
+          openPage(
+            "/packageTonggao/pages/add/index?code=" +
+              this.code +
+              "&type=" +
+              row.value +
+              "&key=" +
+              row.key
+          );
+        }
       } catch (error) {
         if (error.data.error_code == 21030 || error.data.error_code == 21040) {
           openPage(
             `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
           );
+        } else if (error.data.error_code == 21060) {
+          wx.showModal({
+            title: "温馨提示",
+            content: "还未完善个人资料，请前往完善个人资料",
+            confirmText: "完善资料",
+            success: function (res) {
+              if (res.confirm) {
+                console.log("用户点击确定");
+                openPage("/packageAdd/pages/user/editinfor/index");
+              } else if (res.cancel) {
+                console.log("用户点击取消");
+              }
+            },
+          });
         } else {
           errortip(error.data.msg);
         }

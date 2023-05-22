@@ -1,3 +1,6 @@
+.top {
+  position: relative;
+}
 .avatar {
   margin-top: 60px;
   display: flex;
@@ -62,10 +65,11 @@
   margin-right: 30px;
 }
 .savebox {
-  height: 10vh;
+  // height: 10vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
 }
 .save-btn {
   border-radius: 40px;
@@ -75,4 +79,13 @@
   text-align: center;
   color: #ffffff;
   background-color: #ff5355;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.skip-btn {
+  position: absolute;
+  left: 30px;
+  top: -44px;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 30px;
 }

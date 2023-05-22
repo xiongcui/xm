@@ -89,7 +89,13 @@
         <view class="shop-left"> 人均稿费 </view>
         <view class="shop-rt">
           <block class="payment-amount" v-if="checked1">
-            <input placeholder="请输入" class="amount1" v-model="amount" />
+            <input
+              placeholder="请输入"
+              class="amount1"
+              v-model="amount"
+              type="number"
+              @input="amountInput"
+            />
             <text class="yuan">元</text>
             <text class="tonggao-split">|</text>
             <block>
@@ -106,12 +112,16 @@
               placeholder="最小金额"
               class="min-amount"
               v-model="minAmount"
+              type="number"
+              @input="minAmountInput"
             />
             <text class="split">-</text>
             <input
               placeholder="最大金额"
               class="max-amount"
               v-model="maxAmount"
+              type="number"
+              @input="maxAmountInput"
             />
             <text class="yuan">元</text>
             <text class="tonggao-split">|</text>
@@ -143,6 +153,7 @@
             class="shop-input"
             placeholder="请输入赠送产品价值"
             v-model="giftsValue"
+            type="number"
           />
           <text style="color: #333333; margin-left: 6px">元</text>
         </view>
@@ -154,6 +165,8 @@
             class="shop-input"
             placeholder="请输入招募人数"
             v-model="recruitNum"
+            type="number"
+            @input="recruitNumInput"
           />
         </view>
       </view>
@@ -181,12 +194,17 @@
               class="min-fans"
               v-model="minFans"
               @blur="fansChange"
+              @input="minFansInput"
+              type="number"
             />
             <text class="tonggao-split">-</text>
             <input
               placeholder="最高粉丝数"
               class="max-fans"
               v-model="maxFans"
+              @blur="fansChange"
+              @input="maxFansInput"
+              type="number"
             />
             <text class="tonggao-split">|</text>
             <block>
@@ -373,6 +391,48 @@ export default {
         this.checked2 = false;
       } else {
         this.checked2 = true;
+      }
+    },
+    minFansInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.minFans = "";
+      }
+    },
+    maxFansInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.maxFans = "";
+      }
+    },
+    minAmountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.minAmount = "";
+      }
+    },
+    maxAmountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.maxAmount = "";
+      }
+    },
+    amountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.amount = "";
+      }
+    },
+    recruitNumInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.recruitNum = "";
       }
     },
     dateChange(e) {

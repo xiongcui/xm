@@ -4,21 +4,21 @@
     "setting": {
         "compileHotReLoad": true
     },
-    "libVersion": "2.31.0",
+    "libVersion": "2.31.1",
     "condition": {
         "miniprogram": {
             "list": [
                 {
                     "name": "提示",
-                    "pathName": "packageAdd/pages/tips/index",
+                    "pathName": "packageAdd/pages/guideTips/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "约拍管理",
-                    "pathName": "packageAdd/pages/yuedan/yuedan_manage/index",
-                    "query": "type=NE",
+                    "name": "我的申请",
+                    "pathName": "packageSet/pages/apply/index",
+                    "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
@@ -30,8 +30,15 @@
                     "scene": null
                 },
                 {
-                    "name": "信用担保",
-                    "pathName": "packageMsg/pages/creditGuarantee/index",
+                    "name": "用户隐私",
+                    "pathName": "packageSet/pages/privacy/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "订阅",
+                    "pathName": "packageAdd/pages/tips/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -39,13 +46,6 @@
                 {
                     "name": "注册",
                     "pathName": "pages/register/index",
-                    "query": "",
-                    "launchMode": "default",
-                    "scene": null
-                },
-                {
-                    "name": "登录",
-                    "pathName": "pages/login/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

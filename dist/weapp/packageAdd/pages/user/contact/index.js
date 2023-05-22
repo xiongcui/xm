@@ -190,6 +190,26 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -331,7 +351,7 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userContact */ "Fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userContact */ "Jb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -362,7 +382,7 @@ component.options.__file = "src/packageAdd/pages/user/contact/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subContact */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subContact */ "wb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -464,52 +484,16 @@ var render = function () {
           ]),
         ]),
         _c("view", { staticClass: "item line-b ub" }, [
-          _c("view", { staticClass: "item_title" }, [_vm._v("微信号")]),
-          _c("view", { staticClass: "ub-f1" }),
-          _c("view", { staticClass: "item_switch" }, [
-            _c("switch", {
-              staticClass: "btn_switch",
-              attrs: {
-                checked: _vm.info.is_wechat == 1 ? true : false,
-                color: "#fe5457",
+          _c("view", { staticClass: "item_title" }, [
+            _vm._v("手机号 "),
+            _c(
+              "text",
+              {
+                class: _vm.info.is_mobile == 1 ? "mobile_black" : "mobile_grey",
               },
-              on: { tap: _vm.switch_selct_wechat },
-            }),
+              [_vm._v(_vm._s(_vm.info.mobile))]
+            ),
           ]),
-        ]),
-        _vm.info.is_wechat == 1
-          ? _c("view", { staticClass: "item line-b" }, [
-              _c("view", { staticClass: "item_input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.wechat,
-                      expression: "info.wechat",
-                    },
-                  ],
-                  attrs: {
-                    name: "wechat",
-                    placeholder: "请输入微信号",
-                    placeholderClass: "input-placeholder",
-                    type: "text",
-                  },
-                  domProps: { value: _vm.info.wechat },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.info, "wechat", $event.target.value)
-                    },
-                  },
-                }),
-              ]),
-            ])
-          : _vm._e(),
-        _c("view", { staticClass: "item line-b ub" }, [
-          _c("view", { staticClass: "item_title" }, [_vm._v("手机号")]),
           _c("view", { staticClass: "ub-f1" }),
           _c("view", { staticClass: "item_switch" }, [
             _c("switch", {
@@ -522,37 +506,50 @@ var render = function () {
             }),
           ]),
         ]),
-        _vm.info.is_mobile == 1
-          ? _c("view", { staticClass: "item line-b" }, [
-              _c("view", { staticClass: "item_input" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.info.mobile,
-                      expression: "info.mobile",
-                    },
-                  ],
-                  attrs: {
-                    name: "wechat",
-                    placeholder: "请输入手机号",
-                    placeholderClass: "input-placeholder",
-                    type: "text",
+        _c("view", { staticClass: "item line-b ub" }, [
+          _c("view", { staticClass: "item_title" }, [
+            _vm._v(" 微信号 "),
+            _c("view", { staticClass: "wechat_input" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.info.wechat,
+                    expression: "info.wechat",
                   },
-                  domProps: { value: _vm.info.mobile },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.info, "mobile", $event.target.value)
-                    },
+                ],
+                class: _vm.info.is_wechat == 1 ? "mobile_black" : "mobile_grey",
+                attrs: {
+                  name: "wechat",
+                  placeholder: "请输入微信号",
+                  placeholderClass: "input-placeholder",
+                  type: "text",
+                },
+                domProps: { value: _vm.info.wechat },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.info, "wechat", $event.target.value)
                   },
-                }),
-              ]),
-            ])
-          : _vm._e(),
+                },
+              }),
+            ]),
+          ]),
+          _c("view", { staticClass: "ub-f1" }),
+          _c("view", { staticClass: "item_switch" }, [
+            _c("switch", {
+              staticClass: "btn_switch",
+              attrs: {
+                checked: _vm.info.is_wechat == 1 ? true : false,
+                color: "#fe5457",
+              },
+              on: { tap: _vm.switch_selct_wechat },
+            }),
+          ]),
+        ]),
         _c("view", { staticClass: "item ub" }, [
           _c("view", { staticClass: "item_title item_title_qrcode" }, [
             _vm._v("微信名片二维码"),
@@ -590,7 +587,7 @@ var render = function () {
                           _c("image", {
                             attrs: {
                               mode: "scaleToFill",
-                              src: "https://yuepai-oss.qubeitech.com/static/common/icon_sizer_close.png",
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png",
                             },
                           }),
                         ]
@@ -603,7 +600,7 @@ var render = function () {
                     [
                       _c("image", {
                         attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/common/img_add.png",
+                          src: "https://yuepai-oss.qubeitech.com/static/images/common/img_add.png",
                         },
                       }),
                     ]
@@ -649,6 +646,19 @@ var render = function () {
           _c("view", { staticClass: "ub-f1" }),
         ])
       : _vm._e(),
+    _c("view", { staticClass: "prompt" }, [
+      _c("view", [_vm._v("个人信息保护申明：")]),
+      _c("view", [
+        _vm._v(
+          "1、在未得到您的许可之前，我们不会把您的任何个人信息提供给无关的第三方（包括公司或个人），提交申请（报名）属已事先获得你的明确授权；"
+        ),
+      ]),
+      _c("view", [
+        _vm._v(
+          "2、为保护个人信息安全可控，申请（报名）过程中默认使用微信作为沟通方式，得到你的授权后才向对方提交手机号码，但微信号需真实可信，否则被投诉后将进行相应处罚"
+        ),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = []

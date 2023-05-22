@@ -1,0 +1,25 @@
+.sucess {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+.sucess image {
+  width: 150rpx;
+  height: 150rpx;
+}
+.sucess .sucess-tips {
+  padding: 30rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.5);
+}

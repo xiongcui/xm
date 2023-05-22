@@ -126,7 +126,8 @@
           ><text class="border-left"></text> 约拍详情
         </view>
         <view class="tonggao_desc">
-          <view class="dian"></view>{{ yuepaiInfo.details.content }}
+          <view class="dian"></view
+          ><text>{{ yuepaiInfo.details.content }}</text>
         </view>
         <view class="tonggao_desc" v-if="yuepaiInfo.details.expect_time">
           <view class="dian"></view>时间：{{ yuepaiInfo.details.expect_time }}
@@ -150,6 +151,7 @@
             :key="index"
             mode="widthFix"
             :src="item"
+            @tap="showbigPersonimg(item, yuepaiInfo.details.media.cover)"
           ></image>
         </view>
         <view
@@ -263,6 +265,7 @@ import {
 } from "../../../../api/index";
 import YuepaiList from "../../../../components/yuepaiList/index.vue";
 import { errortip, isLogin, openPage } from "../../../../utils/util";
+import clickThrottle from "../../../../utils/clickThrottle";
 import "./index.scss";
 export default {
   name: "yuedanDetail",
@@ -351,8 +354,10 @@ export default {
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai() {
+      if (!clickThrottle()) return;
       if (isLogin()) {
         this.applyVerify({
+          source: "note",
           oid: this.oid,
         });
       } else {
@@ -362,6 +367,7 @@ export default {
       }
     },
     subGiveUp() {
+      if (!clickThrottle()) return;
       let params = {
         oid: this.oid,
         visited_id: this.author_id,
@@ -372,6 +378,7 @@ export default {
       this.giveUp(params);
     },
     subRecordCollect() {
+      if (!clickThrottle()) return;
       let params = {
         oid: this.oid,
         visited_id: this.author_id,
@@ -382,11 +389,13 @@ export default {
       this.recordCollect(params);
     },
     follow() {
+      if (!clickThrottle()) return;
       this.userFollow({
         follow_uuid: this.author_id,
       });
     },
     unfollow() {
+      if (!clickThrottle()) return;
       this.userUnfollow({
         unfollow_uuid: this.author_id,
       });
@@ -411,6 +420,7 @@ export default {
       this.query("more");
     },
     goZhuye() {
+      if (!clickThrottle()) return;
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     async inviteAdviseList(params, type) {
@@ -506,7 +516,11 @@ export default {
     async applyVerify(params) {
       try {
         let res = await applyVerify(params);
-        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        openPage(
+          "/packageAdd/pages/user/launchyuepai/index?oid=" +
+            this.oid +
+            "&source=note"
+        );
       } catch (error) {
         if (error.data.error_code == 21030 || error.data.error_code == 21040) {
           openPage(

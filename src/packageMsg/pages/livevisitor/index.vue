@@ -5,14 +5,16 @@
         class="tab-item"
         :class="currentTab == 0 ? 'on' : ''"
         @tap="changeItem(0)"
-        >收到的赞</view
-      >
+        >收到的赞
+        <view class="tab-num" v-if="vote_cnt > 0">{{ vote_cnt }}</view>
+      </view>
       <view
         class="tab-item"
         :class="currentTab == 1 ? 'on' : ''"
         @tap="changeItem(1)"
-        >来访的客</view
-      >
+        >来访的客
+        <view class="tab-num" v-if="visitor_cnt > 0">{{ visitor_cnt }}</view>
+      </view>
     </view>
     <view class="content">
       <swiper
@@ -148,6 +150,8 @@ export default {
       currentTab: 0,
       list: [],
       list2: [],
+      vote_cnt: 0,
+      visitor_cnt: 0,
       pageNum: 1,
       pageSize: 10,
     };
@@ -212,6 +216,12 @@ export default {
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options.vote_cnt) {
+      this.vote_cnt = options.vote_cnt;
+    }
+    if (options.visitor_cnt) {
+      this.visitor_cnt = options.visitor_cnt;
+    }
     var that = this;
     // 获取系统信息
     wx.getSystemInfo({

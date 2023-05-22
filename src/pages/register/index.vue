@@ -2,6 +2,7 @@
   <view>
     <form bindreset="reset" class="main">
       <view class="top">
+        <view class="skip-btn" @tap="goHome">跳过</view>
         <view @tap="chooesImage" class="avatar">
           <image mode="aspectFit" :src="avatar" v-if="avatar"></image>
           <image class="no_avatar" mode="aspectFit" v-else></image>
@@ -21,6 +22,7 @@
               placeholderClass="nickname_tip"
               type="text"
               v-model="nickname"
+              disabled
             />
           </view>
         </view>
@@ -60,7 +62,12 @@
         <view class="item ub item-b">
           <view class="item_label">生日</view>
           <view class="ub-f1 item_input">
-            <picker @change="dateChange" mode="date" class="picker">
+            <picker
+              @change="dateChange"
+              mode="date"
+              class="picker"
+              value="2005-01-01"
+            >
               <view class="picker_children picked" v-if="date">{{ date }}</view>
               <view class="picker_children" v-else>请选择生日</view>
             </picker>
@@ -105,7 +112,6 @@
         <button class="save-btn" @tap="submit">完 成</button>
       </view>
     </form>
-    <!-- <weCropper :visible="visible" :src="avatar"></weCropper> -->
   </view>
 </template>
 
@@ -113,6 +119,7 @@
 import "./index.scss";
 import { getCareer, userRegister } from "../../api/index";
 import { errortip, openPage } from "../../utils/util";
+import clickThrottle from "../../utils/clickThrottle";
 export default {
   name: "register",
   data() {
@@ -132,9 +139,6 @@ export default {
       identityList: [],
     };
   },
-  // components: {
-  //   weCropper,
-  // },
   methods: {
     chooesImage() {
       this.visible = true;
@@ -151,6 +155,17 @@ export default {
     },
     identityFocus() {
       openPage("/packageAdd/pages/user/identity/index");
+    },
+    goHome() {
+      // 跳转首页
+      wx.switchTab({
+        url: "/pages/home/index",
+        success: function (e) {
+          var page = getCurrentPages().pop();
+          if (page == undefined || page == null) return;
+          // page.onLoad();
+        },
+      });
     },
     submit() {
       if (!this.nickname) {
@@ -174,7 +189,6 @@ export default {
         return false;
       }
       let params = {
-        invited_uuid: this.invited_uuid,
         nickname: this.nickname,
         sex: this.sex,
         birthday: this.date,
@@ -184,6 +198,7 @@ export default {
         career_label: this.identityList,
       };
       console.log(params);
+      if (!clickThrottle()) return;
       this.userRegister(params);
     },
     async userRegister(params) {
@@ -214,7 +229,6 @@ export default {
   },
   created() {
     let userInfo = wx.getStorageSync("userInfo");
-    this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.avatar = userInfo.avatar;
     this.nickname = userInfo.nickname;
   },

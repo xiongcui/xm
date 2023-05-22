@@ -41,7 +41,6 @@
 .my .my-head .my-info {
   color: #999999;
   font-size: 26rpx;
-  margin-bottom: 10rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -98,6 +97,7 @@
   color: #999999;
   font-size: 26rpx;
   line-height: 30rpx;
+  padding: 10rpx 0 16rpx;
 }
 .my .my-count {
   display: -webkit-flex;
@@ -424,7 +424,6 @@
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  margin-top: 16rpx;
   padding-top: 16rpx;
 }
 .my .my_tags .tag {

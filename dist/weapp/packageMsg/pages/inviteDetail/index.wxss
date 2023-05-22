@@ -268,7 +268,7 @@ page {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-bottom: 6rpx;
+  padding-bottom: 10rpx;
 }
 
 .qrcode,

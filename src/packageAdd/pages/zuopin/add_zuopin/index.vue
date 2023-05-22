@@ -175,6 +175,7 @@
 import "./index.scss";
 import { errortip, openPage } from "../../../../utils/util";
 import { publicConfig, subNotePhoto } from "../../../../api/index";
+import clickThrottle from "../../../../utils/clickThrottle";
 import { Base64 } from "js-Base64";
 export default {
   name: "addZuopin",
@@ -449,6 +450,7 @@ export default {
       });
       params.style_label = style_label.join(",");
       params.photo_label = photo_label.join(",");
+      if (!clickThrottle()) return;
       this.subNotePhoto(params);
     },
     async publicConfig(params) {

@@ -134,6 +134,18 @@
       -ms-flex-align: center;
           align-items: center;
 }
+.home .news .home_notify {
+  height: 40rpx;
+  width: 560rpx;
+}
+.home .news .home_notify_item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .home .news .news-title {
   background: url(https://yuepai-oss.qubeitech.com/static/images/common/icon_tongzhi.png) no-repeat 0 center;
   background-size: 36rpx;
@@ -148,6 +160,11 @@
 .home .news .news-txt {
   color: #808080;
   font-size: 26rpx;
+  width: 460rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
 }
 .home .news .news-btn {
   margin-left: 16rpx;
@@ -837,6 +854,7 @@
 }
 .home .nav_active {
   font-weight: bold;
+  font-size: 32rpx !important;
 }
 .home .login-mask {
   position: fixed;
@@ -894,7 +912,7 @@
   margin-bottom: 16rpx;
 }
 .home .login-mask .mask-box .mask-login-btn {
-  margin: 16rpx 0;
+  margin: 30rpx 0 16rpx 0;
   background-color: #ff5355;
   color: #ffffff;
   font-size: 30rpx;

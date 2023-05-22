@@ -143,6 +143,8 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
       realname: "",
       realname_rx: "",
       realname_gh: "",
+      realname_rx_off: false,
+      realname_gh_off: false,
       card: "",
       frontfileName: "",
       backfileName: "",
@@ -259,11 +261,16 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
       });
     },
     next: function next() {
-      if (this.realname_rx && this.realname_gh) {
-        this.pageShow = "info";
-        this.idcardInfo("");
+      if (this.realname_rx_off && this.realname_gh_off) {
+        if (this.realname_rx && this.realname_gh) {
+          this.pageShow = "info";
+          this.idcardInfo("");
+        } else {
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请先上传身份证");
+        }
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请先上传身份证");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请检查身份证上传是否正确！");
+        return false;
       }
     },
     reupload: function reupload() {
@@ -286,29 +293,43 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrCard */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrCard */ "cb"])(params);
 
               case 3:
                 res = _context.sent;
+                _this4.realname = res.data.data.id_name;
+                _this4.card = res.data.data.id_no;
 
-                if (res.data.data.id_card_front) {
-                  _this4.realname = res.data.data.id_name;
-                  _this4.card = res.data.data.id_no;
+                if (params.id_card_side == "front") {
+                  _this4.realname_rx_off = true;
                 }
 
-                _context.next = 9;
+                if (params.id_card_side == "back") {
+                  _this4.realname_gh_off = true;
+                }
+
+                _context.next = 15;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])(_context.t0.data.msg);
 
-              case 9:
+                if (params.id_card_side == "front") {
+                  _this4.realname_rx_off = false;
+                }
+
+                if (params.id_card_side == "back") {
+                  _this4.realname_gh_off = false;
+                }
+
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
     idcardInfo: function idcardInfo(params) {
@@ -322,7 +343,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "A"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "B"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -356,7 +377,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrIdcard */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrIdcard */ "db"])(params);
 
               case 3:
                 res = _context3.sent;

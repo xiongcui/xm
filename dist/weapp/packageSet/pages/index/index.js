@@ -130,7 +130,12 @@ component.options.__file = "src/packageSet/pages/index/index.vue"
   },
   methods: {
     logout: function logout() {
-      wx.clearStorage();
+      wx.removeStorage({
+        key: "userInfo"
+      });
+      wx.removeStorage({
+        key: "token"
+      });
       Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* errortip */ "a"])("退出成功");
       var page = getCurrentPages().pop();
       console.log(page);

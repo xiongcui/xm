@@ -114,6 +114,7 @@ page {
 
 .nav_active {
   font-weight: bold;
+  font-size: 32rpx !important;
 }
 
 .head_nav {

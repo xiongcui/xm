@@ -110,6 +110,7 @@ page {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
+  padding-bottom: 60rpx;
 }
 
 .tonggao .tonggao-mask .mask-box .mask-item {

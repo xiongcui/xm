@@ -138,15 +138,22 @@ component.options.__file = "src/pages/msg/index.vue"
       invite_cnt: 0,
       notice_cnt: 0,
       vote_visitor_cnt: 0,
+      vote_cnt: 0,
+      visitor_cnt: 0,
       is_follow_gzh: 0,
       list: []
     };
   },
   methods: {
     openUrl: function openUrl(type) {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
       switch (type) {
         case 1:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/livevisitor/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/livevisitor/index?vote_cnt=" + this.vote_cnt + "&visitor_cnt=" + this.visitor_cnt);
           break;
 
         case 2:
@@ -189,13 +196,15 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "X"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "bb"])(params);
 
               case 3:
                 res = _context.sent;
                 _this.invite_cnt = res.data.data.invite_cnt;
                 _this.notice_cnt = res.data.data.notice_cnt;
                 _this.vote_visitor_cnt = res.data.data.vote_visitor_cnt;
+                _this.vote_cnt = res.data.data.vote_cnt;
+                _this.visitor_cnt = res.data.data.visitor_cnt;
                 _this.is_follow_gzh = res.data.data.is_follow_gzh;
 
                 if (res.data.data.is_notify_warn) {
@@ -208,19 +217,19 @@ component.options.__file = "src/pages/msg/index.vue"
                   });
                 }
 
-                _context.next = 13;
+                _context.next = 15;
                 break;
 
-              case 11:
-                _context.prev = 11;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](0);
 
-              case 13:
+              case 15:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 11]]);
+        }, _callee, null, [[0, 13]]);
       }))();
     },
     msgList: function msgList(params) {
@@ -234,7 +243,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "P"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "T"])(params);
 
               case 3:
                 res = _context2.sent;

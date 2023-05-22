@@ -277,7 +277,7 @@ component.options.__file = "src/packageMsg/pages/complaint/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "gb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publicConfig */ "kb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -311,7 +311,7 @@ component.options.__file = "src/packageMsg/pages/complaint/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publicComplain */ "fb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publicComplain */ "jb"])(params);
 
               case 3:
                 res = _context2.sent;

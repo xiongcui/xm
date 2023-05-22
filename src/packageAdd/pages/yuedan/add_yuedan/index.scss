@@ -3,6 +3,20 @@
   background: #f7f7f7;
   display: flex;
   flex-direction: column;
+  .input-placeholder,
+  .textarea-placeholder {
+    font-size: 30px;
+  }
+  .first {
+    margin-right: 6px;
+    color: #333333;
+    margin-left: 10px;
+  }
+  .first-none {
+    margin-left: 10px;
+    color: #808080;
+    font-size: 30px;
+  }
   .works-item {
     margin: 10px 0px;
     padding: 0px 16px 16px 16px;
@@ -87,6 +101,10 @@
       right center no-repeat;
     background-size: 12px;
     padding-right: 24px;
+    font-size: 30px;
+  }
+  .works-select-value {
+    color: #333333;
   }
   .switch-btn {
     margin-left: 16px;
@@ -116,7 +134,7 @@
     bottom: 0px;
     display: flex;
     justify-content: center;
-    padding: 16px 0px;
+    padding: 16px 0px 50px 0px;
     z-index: 9;
     .release {
       //   width: 440px;
@@ -154,11 +172,17 @@
     text-align: center;
     font-size: 26px;
   }
+  .payment-box {
+    display: flex;
+  }
   .amount1 {
     border-bottom: 1px solid #e5e5e5;
     width: 210px;
     text-align: center;
     font-size: 26px;
+  }
+  .company {
+    display: flex;
   }
   .company,
   .payment_range,

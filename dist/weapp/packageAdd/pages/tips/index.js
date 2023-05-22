@@ -183,7 +183,10 @@ var _methods;
       type: 1,
       msg: "",
       is_follow_gzh: 0,
-      visible: true
+      visible: true,
+      template: [// "tEX27GKFotgdenR3XC5grlgpS79LudBKxvy7uBbsdcM",
+        // "sQXqKGSEacobxAx8r7RJP5_y5mm7g53v6htcEPWfsPQ",
+      ]
     };
   },
   methods: (_methods = {
@@ -192,7 +195,7 @@ var _methods;
     },
     nowSubscribe: function nowSubscribe() {
       wx.requestSubscribeMessage({
-        tmplIds: ["tEX27GKFotgdenR3XC5grlgpS79LudBKxvy7uBbsdcM", "sQXqKGSEacobxAx8r7RJP5_y5mm7g53v6htcEPWfsPQ"],
+        tmplIds: this.template,
         success: function success(res) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("订阅成功，继续订阅可获得多次提醒");
         }
@@ -233,7 +236,7 @@ var _methods;
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* checkFollow */ "l"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* checkFollow */ "m"])(params);
 
             case 3:
               res = _context.sent;
@@ -252,9 +255,44 @@ var _methods;
         }
       }, _callee, null, [[0, 7]]);
     }))();
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "subscribeEvent", function subscribeEvent(params) {
+    var _this2 = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee2() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.prev = 0;
+              _context2.next = 3;
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subscribeEvent */ "Db"])(params);
+
+            case 3:
+              res = _context2.sent;
+              _this2.template = res.data.data.map(function (item) {
+                return item.code;
+              });
+              _context2.next = 9;
+              break;
+
+            case 7:
+              _context2.prev = 7;
+              _context2.t0 = _context2["catch"](0);
+
+            case 9:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2, null, [[0, 7]]);
+    }))();
   }), _methods),
   created: function created() {
     this.checkFollow("");
+    this.subscribeEvent({
+      sub_type: "publish"
+    });
   },
   onLoad: function onLoad(options) {
     if (options.type) {

@@ -823,22 +823,6 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -859,9 +843,6 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       contactVisible: false,
       showModel: false,
       loading: true,
-      // contact: {
-      //   wechat: "",
-      // },
       showContact: true,
       showCelebrity: true,
       showAddress: true,
@@ -911,7 +892,6 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       this.showModel = true;
     },
     contactClose: function contactClose() {
-      console.log(3333);
       this.contactVisible = false;
     },
     // 点击tab切换
@@ -1014,15 +994,18 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       });
     },
     moreClick: function moreClick(sid, row) {
+      var _this = this;
+
       wx.showActionSheet({
         itemList: ["删除", "投诉"],
         success: function success(res) {
           switch (res.tapIndex) {
             case 0:
-              this.Delete({
+              _this.Delete({
                 visited_status: -200,
                 sid: sid
               });
+
               break;
 
             case 1:
@@ -1084,10 +1067,21 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
         sid: sid
       });
     },
-    Delete: function Delete(sid) {
-      this.applyManage({
-        visited_status: -200,
-        sid: sid
+    Delete: function Delete(params) {
+      var _this = this;
+
+      wx.showModal({
+        title: "温馨提示",
+        content: "确定删除吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+
+            _this.applyManage(params);
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
       });
     },
     recoveryPending: function recoveryPending(sid) {
@@ -1129,7 +1123,11 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
           switch (res.tapIndex) {
             case 0:
               console.log("立即沟通");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
+
+              _this.imVerify({
+                to_account: row.visitor.uuid
+              }, row);
+
               break;
 
             case 1:
@@ -1272,7 +1270,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "nb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1290,6 +1288,40 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
             }
           }
         }, _callee4, null, [[0, 7]]);
+      }))();
+    },
+    imVerify: function imVerify(params, row) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "C"])(params);
+
+              case 3:
+                res = _context5.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
+                _context5.next = 11;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context5.t0.data.msg);
+
+                if (_context5.t0.data.error_code == 21050 || _context5.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context5.t0.data.msg, "&code=").concat(_context5.t0.data.error_code));
+                }
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 7]]);
       }))();
     }
   },
@@ -2947,7 +2979,7 @@ var render = function () {
       1
     ),
     _vm.visible
-      ? _c("view", { staticClass: "modal_box" }, [
+      ? _c("view", { staticClass: "modal_box_bg" }, [
           _c("view", { staticClass: "modal_content" }, [
             _c("view", [_vm._v(" 添加备注信息 ")]),
             _c("textarea", {
@@ -2993,7 +3025,7 @@ var render = function () {
     _vm.contactVisible
       ? _c(
           "view",
-          { staticClass: "modal_box", on: { tap: _vm.contactClose } },
+          { staticClass: "modal_box_bg", on: { tap: _vm.contactClose } },
           [
             _c("view", { staticClass: "contact_box" }, [
               _c("view", { staticClass: "modal_title" }, [
@@ -3086,7 +3118,7 @@ var render = function () {
         )
       : _vm._e(),
     _vm.showModel
-      ? _c("view", { staticClass: "modal_box" }, [
+      ? _c("view", { staticClass: "modal_box_bg" }, [
           _c("view", { staticClass: "modal_content" }, [
             _c("view", [_vm._v(" 微信二维码 ")]),
             _c("image", {

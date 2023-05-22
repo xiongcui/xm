@@ -22,8 +22,22 @@
           <text>取消登录</text>
         </view>
         <view class="login-tips">
-          <text>登录即代表同意虾米约拍</text>
-          <text class="user-xy">《用户协议》</text>
+          <image
+            class="select"
+            src="../../assets/images/common/select2_1.png"
+            v-if="select"
+            @tap="selectChange"
+          ></image>
+          <image
+            v-else
+            class="select"
+            src="../../assets/images/common/select2_0.png"
+            @tap="selectChange"
+          ></image>
+          <text>我已阅读并同意</text>
+          <text class="user-xy" @tap="userAgreement">《用户协议》</text>
+          和
+          <text class="user-xy" @tap="privacy">《隐私权政策》</text>
         </view>
       </view>
     </block>
@@ -47,11 +61,16 @@
     <view class="login-modal" v-if="visible">
       <view class="login-box">
         <view class="login-title"> 请先登录 </view>
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png"
+          class="icon_close"
+          @tap="close"
+        ></image>
         <view class="login-txt">完善以下信息以继续</view>
         <view class="login-info">
-          <view class="phone" v-if="userInfo.phone"
+          <!-- <view class="phone" v-if="userInfo.phone"
             >手机号：{{ userInfo.phone }}</view
-          >
+          > -->
           <view class="login-head">
             <button
               class="avatar-wrapper"
@@ -68,7 +87,7 @@
               @input="nicknameChange"
             />
           </view>
-          <view class="get_phone" v-if="is_bind_phone == 0">
+          <view class="get_phone" v-if="is_bind_phone == 0" :key="1">
             <button
               @getphonenumber="onGetPhoneNumber"
               openType="getPhoneNumber"
@@ -77,7 +96,7 @@
               授权绑定手机号
             </button>
           </view>
-          <view class="get_avatar" v-else-if="is_bind_avatar == 0">
+          <view class="get_avatar" v-else-if="is_bind_avatar == 0" :key="2">
             <button
               class="avatar-btn"
               open-type="chooseAvatar"
@@ -86,7 +105,7 @@
               授权头像
             </button>
           </view>
-          <view class="get_nickname" v-else-if="is_bind_nickname == 0">
+          <view class="get_nickname" v-else-if="is_bind_nickname == 0" :key="3">
             <view class="nickname-btn">授权昵称</view>
             <input
               type="nickname"
@@ -107,6 +126,16 @@
         </view>
       </view>
     </view>
+    <view class="agreement-model" @tap="agreementClose" v-if="agreementVisible">
+      <view class="agreement-box">
+        <view class="agreement-title">请阅读并同意以下条款</view>
+        <view class="agreement-ct">
+          <text class="user-xy" @tap.stop="userAgreement">《用户协议》</text>
+          <text class="user-xy" @tap.stop="privacy">《隐私权政策》</text>
+        </view>
+        <view class="agreement-btn" @tap="agreementAgree">同意并继续</view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -114,7 +143,8 @@
 import "./index.scss";
 import { wxlogin, getPhone, userRegister } from "../../api/index";
 import { Base64 } from "js-Base64";
-import { openPage } from "../../utils/util";
+import { errortip, openPage } from "../../utils/util";
+import clickThrottle from "../../utils/clickThrottle";
 
 export default {
   name: "login",
@@ -122,10 +152,15 @@ export default {
     return {
       invited_uuid: "",
       bind_type: 0,
+      login_type: 0,
+      select: false,
+      agreementVisible: false,
       visible: false,
       is_bind_phone: 0,
       is_bind_nickname: 0,
       is_bind_avatar: 0,
+      token: "",
+      userinfor: {},
       userInfo: {
         avatar:
           "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
@@ -136,19 +171,33 @@ export default {
     };
   },
   methods: {
+    selectChange() {
+      this.select = !this.select;
+    },
+    agreementClose() {
+      this.agreementVisible = false;
+    },
+    agreementAgree() {
+      this.agreementVisible = false;
+      this.select = true;
+      this.getUserProfile();
+    },
+    close() {
+      this.visible = false;
+    },
     // 可以在模拟器唤起授权 获得用户信息
     getUserProfile() {
+      if (!this.select) {
+        this.agreementVisible = true;
+        return false;
+      }
       let _this = this;
       wx.getUserProfile({
         desc: "用于完善会员资料",
         success: (res) => {
-          // this.userInfo.avatar = res.userInfo.avatarUrl;
-          // this.userInfo.nickname = res.userInfo.nickName;
           wx.login({
             success(res) {
               _this.getWxLogin({
-                // avatar: _this.userInfo.avatar,
-                // nickname: _this.userInfo.nickname,
                 account: res.code,
                 secret: "",
                 type: 200,
@@ -166,24 +215,19 @@ export default {
     },
     onGetPhoneNumber(e) {
       let _this = this;
-      let token = wx.getStorageSync("token");
-      if (token) {
-        if ("getPhoneNumber:ok" == e.detail.errMsg) {
-          wx.login({
-            success(res) {
-              _this.getPhone({
-                code: res.code,
-                encryptedData: e.detail.encryptedData,
-                iv: e.detail.iv,
-              });
-            },
-            fail(err) {
-              console.log(err);
-            },
-          });
-        }
-      } else {
-        this.pageshow = "login";
+      if ("getPhoneNumber:ok" == e.detail.errMsg) {
+        wx.login({
+          success(res) {
+            _this.getPhone({
+              code: res.code,
+              encryptedData: e.detail.encryptedData,
+              iv: e.detail.iv,
+            });
+          },
+          fail(err) {
+            console.log(err);
+          },
+        });
       }
     },
     cancelLogin() {
@@ -192,6 +236,7 @@ export default {
       });
     },
     onChooseAvatar(e) {
+      console.log(e);
       this.userInfo.avatar = e.detail.avatarUrl;
       this.is_bind_avatar = 1;
     },
@@ -202,7 +247,14 @@ export default {
       }
     },
     finishClick() {
+      if (!clickThrottle()) return;
       this.upImgs(this.userInfo.avatar);
+    },
+    userAgreement() {
+      openPage("/packageSet/pages/serviceAgreement/index");
+    },
+    privacy() {
+      openPage("/packageSet/pages/privacy/index");
     },
     upImgs(filePath) {
       let header = {};
@@ -220,12 +272,18 @@ export default {
           //判断上传的是图片还是视频
           let data = JSON.parse(res.data);
           if (data.code == 200) {
-            this.userRegister({
-              invited_uuid: this.invited_uuid ? this.invited_uuid : "",
+            let params = {
               avatar: data.data.file1,
               nickname: this.userInfo.nickname,
-            });
+            };
+            if (this.invited_uuid) {
+              params.invited_uuid = this.invited_uuid;
+            }
+            this.userRegister(params);
           } else {
+            if (data.error_code == 1004) {
+              this.getUserProfile();
+            }
             wx.showToast({
               title: "上传失败！",
               icon: "none",
@@ -238,23 +296,30 @@ export default {
       try {
         let res = await wxlogin(params);
         const token = res.data.data.token;
-        wx.setStorageSync("token", token);
-        wx.setStorageSync("userInfo", {
+        this.token = token;
+        this.userinfor = {
           avatar: res.data.data.login_status.avatar,
           nickname: res.data.data.login_status.nickname,
           uuid: res.data.data.uuid,
-        });
+        };
+        if (res.data.data.login_status.is_bind_phone == 1) {
+          wx.setStorageSync("token", this.token);
+          wx.setStorageSync("userInfo", this.userinfor);
+        }
         this.userInfo.avatar = res.data.data.login_status.avatar
           ? res.data.data.login_status.avatar
           : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png";
         this.userInfo.nickname = res.data.data.login_status.nickname;
         this.bind_type = res.data.data.login_status.bind_type;
+        this.login_type = res.data.data.login_status.login_type;
         this.is_bind_phone = res.data.data.login_status.is_bind_phone;
         this.is_bind_nickname = res.data.data.login_status.is_bind_nickname;
         this.is_bind_avatar = res.data.data.login_status.is_bind_avatar;
-        if (res.data.data.login_status.login_type == 1) {
+        if (this.login_type == 1 && this.bind_type == 0) {
           // 绑定手机号
           this.visible = true;
+        } else if (this.login_type == 1 && this.bind_type == 1) {
+          openPage("/pages/register/index");
         } else if (res.data.data.login_status.login_type == 2) {
           // 跳转首页
           wx.switchTab({
@@ -262,27 +327,10 @@ export default {
             success: function (e) {
               var page = getCurrentPages().pop();
               if (page == undefined || page == null) return;
-              page.onLoad();
+              // page.onLoad();
             },
           });
         }
-        // if (res.data.data.is_bind_phone == 0) {
-        //   // 绑定手机号
-        //   this.pageshow = "bindphone";
-        // } else if (res.data.data.login_type == 2) {
-        //   // 跳转首页
-        //   wx.switchTab({
-        //     url: "/pages/home/index",
-        //     success: function (e) {
-        //       var page = getCurrentPages().pop();
-        //       if (page == undefined || page == null) return;
-        //       page.onLoad();
-        //     },
-        //   });
-        // } else {
-        //   // 未注册
-        //   openPage("/pages/register/index");
-        // }
       } catch (error) {
         console.log("失败");
       }
@@ -292,12 +340,18 @@ export default {
         let res = await getPhone(params);
         this.userInfo.phone = res.data.data.mobile;
         this.is_bind_phone = 1;
-        // openPage("/pages/register/index");
+        errortip(res.data.msg);
+        wx.setStorageSync("token", this.token);
+        wx.setStorageSync("userInfo", this.userinfor);
       } catch (error) {}
     },
     async userRegister(params) {
       try {
         let res = await userRegister(params);
+        let userInfo = wx.getStorageSync("userInfo");
+        userInfo.avatar = params.avatar;
+        userInfo.nickname = params.nickname;
+        wx.setStorageSync("userInfo", userInfo);
         openPage("/pages/register/index");
       } catch (error) {}
     },

@@ -385,6 +385,11 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
         per_page: this.pageSize
       }, type, scroll);
     },
+    communicate: function communicate(row) {
+      this.imVerify({
+        to_account: row.basic.uuid
+      }, row);
+    },
     submit: function submit() {
       var facedata = this.appointmentData.filter(function (item) {
         return item.ispick;
@@ -441,7 +446,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFilter */ "Gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFilter */ "Kb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -525,7 +530,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userList */ "Jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userList */ "Nb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -613,7 +618,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Lb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -642,7 +647,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Wb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -660,6 +665,44 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
             }
           }
         }, _callee4, null, [[0, 7]]);
+      }))();
+    },
+    imVerify: function imVerify(params, row) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.prev = 0;
+                _context5.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "C"])(params);
+
+              case 3:
+                res = _context5.sent;
+
+                _this3.connect(row);
+
+                _context5.next = 11;
+                break;
+
+              case 7:
+                _context5.prev = 7;
+                _context5.t0 = _context5["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])(_context5.t0.data.msg);
+
+                if (_context5.t0.data.error_code == 21050 || _context5.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context5.t0.data.msg, "&code=").concat(_context5.t0.data.error_code));
+                }
+
+              case 11:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, null, [[0, 7]]);
       }))();
     }
   },
@@ -957,7 +1000,7 @@ var render = function () {
                       staticClass: "contact",
                       on: {
                         tap: function ($event) {
-                          return _vm.connect(item)
+                          return _vm.communicate(item)
                         },
                       },
                     },

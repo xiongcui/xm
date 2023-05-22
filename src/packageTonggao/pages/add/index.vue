@@ -123,12 +123,14 @@
               placeholder="最小金额"
               class="min-amount"
               v-model="minAmount"
+              @input="minAmountInput"
             />
             <text class="split">-</text>
             <input
               placeholder="最大金额"
               class="max-amount"
               v-model="maxAmount"
+              @input="maxAmountInput"
             />
             <picker
               @change="companyChange"
@@ -162,6 +164,8 @@
             placeholder="请输入招募人数"
             v-model="recruitNum"
             @blur="recruitBlur"
+            type="number"
+            @input="recruitNumInput"
           />
           <text class="tonggao-split">|</text>
           <text class="long-term">不限</text>
@@ -253,6 +257,7 @@ import {
   submitNotice,
   noticePayment,
 } from "../../../api/index.js";
+import clickThrottle from "../../../utils/clickThrottle";
 import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "addtonggao",
@@ -352,6 +357,27 @@ export default {
         this.checked2 = false;
       } else {
         this.checked2 = true;
+      }
+    },
+    minAmountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.minAmount = "";
+      }
+    },
+    maxAmountInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.maxAmount = "";
+      }
+    },
+    recruitNumInput(e) {
+      let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
+      if (!exp.test(e.detail.value)) {
+        errortip("请输入纯数字！");
+        this.recruitNum = "";
       }
     },
     select_tag(row) {
@@ -529,6 +555,7 @@ export default {
         params.payment_unit = this.company;
       }
       // console.log(params);
+      if (!clickThrottle()) return;
       this.submitNotice(params);
     },
     async noticeTemplate(params) {

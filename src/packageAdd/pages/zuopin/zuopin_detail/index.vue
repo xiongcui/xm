@@ -61,7 +61,7 @@
     <view class="zuopin_info">
       <view class="zuopin_title"> {{ zuopinInfo.title }} </view>
       <view class="zuopin_content">
-        {{ zuopinInfo.content }}
+        <text> {{ zuopinInfo.content }}</text>
       </view>
       <view class="zuopin_icon">
         <view class="zuopin_icon_box">
@@ -168,7 +168,7 @@
           {{ zuopinInfo.statistic.collect_cnt }}
         </view>
       </view>
-      <view class="zuopin_fixed_rt" @tap="launchYuepai"> 约拍 </view>
+      <view class="zuopin_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
     </view>
   </view>
 </template>
@@ -183,7 +183,9 @@ import {
   shareInviteInfo,
   userFollow,
   userUnfollow,
+  applyVerify,
 } from "../../../../api/index";
+import clickThrottle from "../../../../utils/clickThrottle";
 import { isLogin, openPage } from "../../../../utils/util";
 export default {
   name: "zuopin_detail",
@@ -211,8 +213,12 @@ export default {
       wx.createVideoContext("video").exitFullScreen();
     },
     launchYuepai() {
+      if (!clickThrottle()) return;
       if (isLogin()) {
-        openPage("/packageAdd/pages/user/launchyuepai/index?oid=" + this.oid);
+        this.applyVerify({
+          source: "note",
+          oid: this.oid,
+        });
       } else {
         wx.redirectTo({
           url: "/pages/login/index",
@@ -220,6 +226,7 @@ export default {
       }
     },
     subGiveUp() {
+      if (!clickThrottle()) return;
       let params = {
         oid: this.oid,
         visited_id: this.author_id,
@@ -230,6 +237,7 @@ export default {
       this.giveUp(params);
     },
     subRecordCollect() {
+      if (!clickThrottle()) return;
       let params = {
         oid: this.oid,
         visited_id: this.author_id,
@@ -240,11 +248,13 @@ export default {
       this.recordCollect(params);
     },
     follow() {
+      if (!clickThrottle()) return;
       this.userFollow({
         follow_uuid: this.zuopinInfo.author_id,
       });
     },
     unfollow() {
+      if (!clickThrottle()) return;
       this.userUnfollow({
         unfollow_uuid: this.zuopinInfo.author_id,
       });
@@ -296,6 +306,24 @@ export default {
         let res = await userUnfollow(params);
         this.is_follow = 0;
       } catch (error) {}
+    },
+    async applyVerify(params) {
+      try {
+        let res = await applyVerify(params);
+        openPage(
+          "/packageAdd/pages/user/launchyuepai/index?oid=" +
+            this.oid +
+            "&source=note"
+        );
+      } catch (error) {
+        if (error.data.error_code == 21030 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        } else {
+          errortip(error.data.msg);
+        }
+      }
     },
   },
   created() {

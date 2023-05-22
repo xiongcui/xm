@@ -53,6 +53,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
 //
@@ -297,6 +298,13 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -367,6 +375,8 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + this.yuepaiInfo.oid + "&author_id=" + this.yuepaiInfo.author);
     },
     submit: function submit() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(5000)) return;
+
       var _this = this;
 
       wx.showModal({
@@ -517,7 +527,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* receivePayment */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* receivePayment */ "nb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -953,12 +963,17 @@ var render = function () {
       },
       [
         _c("view", { staticClass: "subbtn_bottom" }, [
-          _vm.yuepaiInfo.visited_status != 230
+          _vm.yuepaiInfo.visited_status != 230 &&
+          _vm.yuepaiInfo.visited_status != 220
             ? _c(
                 "button",
                 { attrs: { type: "primary" }, on: { tap: _vm.submit } },
                 [_vm._v(" 查看联系方式 ")]
               )
+            : _vm.yuepaiInfo.visited_status == 230
+            ? _c("button", { attrs: { type: "primary" } }, [
+                _vm._v(" 已查看联系方式 "),
+              ])
             : _c("button", { attrs: { type: "primary" } }, [_vm._v("已查看")]),
         ]),
       ]

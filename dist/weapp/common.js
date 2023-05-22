@@ -694,6 +694,95 @@
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/sign/index.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/sign/index.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/components/sign/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: "sign",
+  data: function data() {
+    return {
+      showModelSign: false,
+      hyper_desc: "",
+      shareTitle: "",
+      shareImg: "",
+      sharePath: ""
+    };
+  },
+  props: {
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  },
+  watch: {
+    visible: {
+      handler: function handler(newVal, oldVal) {
+        this.showModelSign = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    msg: {
+      handler: function handler(newVal, oldVal) {
+        this.hyper_desc = newVal;
+      },
+      deep: true,
+      immediate: true
+    }
+  },
+  methods: {
+    close: function close() {
+      this.$emit("close");
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/tonggaoList/index.vue?vue&type=script&lang=js& ***!
@@ -1811,6 +1900,78 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/sign/index.vue?vue&type=template&id=1147cfe0&scoped=true&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/sign/index.vue?vue&type=template&id=1147cfe0&scoped=true& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("view", [
+    _vm.showModelSign
+      ? _c("view", { staticClass: "modal-bg", on: { tap: _vm.close } })
+      : _vm._e(),
+    _vm.showModelSign
+      ? _c("view", { staticClass: "modal_box sign_modal" }, [
+          _c("view", { staticClass: "sign_md_close_btn" }, [
+            _c("image", {
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/tipclose.png",
+              },
+              on: { tap: _vm.close },
+            }),
+          ]),
+          _c("view", { staticClass: "sign_modal_main" }, [
+            _c("form", { staticClass: "main" }, [
+              _c("view", { staticClass: "sign_md_top" }, [
+                _c("image", {
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/sign/addcoin.png",
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "sign_md_title" }, [
+                _c("view", [_vm._v("签到成功")]),
+              ]),
+              _c("view", { staticClass: "sign_md_content" }, [
+                _c("view", [_vm._v(_vm._s(_vm.hyper_desc))]),
+              ]),
+              _c("view", { staticClass: "sign_md_bottom" }, [
+                _c("view", { staticClass: "sign_md_bottom" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "share-btn",
+                      attrs: { "open-type": "share" },
+                    },
+                    [_vm._v("马上邀请")]
+                  ),
+                ]),
+              ]),
+              _c("view", { staticClass: "sign_md_txt" }, [
+                _vm._v("每邀请1位好友可赚3金币哦！"),
+              ]),
+            ]),
+          ]),
+        ])
+      : _vm._e(),
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/tonggaoList/index.vue?vue&type=template&id=04d931fc&scoped=true& ***!
@@ -2054,7 +2215,8 @@ var render = function () {
                             _vm._v(
                               " " +
                                 _vm._s(
-                                  item.author.career_list.length
+                                  item.author.career_list &&
+                                    item.author.career_list.length
                                     ? item.author.career_list[0]
                                     : null
                                 )
@@ -2346,118 +2508,123 @@ render._withStripped = true
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo, checkFollow, applyPay, userFollow, userUnfollow, followerList, followedList, systemList, ocrCard, submitCard, idcardInfo, ocrIdcard, inviteAdviseList, noticeAdviseList, userSelectCity, userStatus, inviteFilter, photoFilter, userFilter, userList, receivePayment, invitePayment, noticePayment, publishVerify, applyVerify */
-/*! exports used: addImUser, addressInfo, addressList, applyInfo, applyList, applyManage, applyPay, applyVerify, categoryList, celebrityInfo, celebrityList, checkFollow, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, feedback, followRedirect, followedList, followerList, getCareer, getPhone, giveUp, idcardInfo, inviteAdviseList, inviteFilter, inviteImage, inviteInfo, inviteList, invitePayment, inviteTemplate, isSign, manageEvent, manageList, manageOperation, memberInfo, memberOpen, msgInfo, msgList, noteManageList, noticeAdviseList, noticeFilter, noticeInfo, noticeList, noticePayment, noticeTemplate, notifyNumber, ocrCard, ocrIdcard, photoFilter, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, publishVerify, pushInit, receivePayment, recordCollect, securityInfo, securityOpen, sendMsg, shareInvite, shareInviteInfo, shareInviteList, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, systemList, updateAvatar, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userFilter, userFollow, userInfo, userList, userProfile, userRegister, userResume, userSelectCity, userShape, userShapeDetail, userStatus, userSticker, userUnfollow, visitorList, voteList, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo, checkFollow, applyPay, userFollow, userUnfollow, followerList, followedList, systemList, ocrCard, submitCard, idcardInfo, ocrIdcard, inviteAdviseList, noticeAdviseList, userSelectCity, userStatus, inviteFilter, photoFilter, userFilter, userList, receivePayment, invitePayment, noticePayment, publishVerify, applyVerify, subscribeEvent, bannerList, manageApplyList, manageApplyEvent, imVerify */
+/*! exports used: addImUser, addressInfo, addressList, applyInfo, applyList, applyManage, applyPay, applyVerify, bannerList, categoryList, celebrityInfo, celebrityList, checkFollow, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, feedback, followRedirect, followedList, followerList, getCareer, getPhone, giveUp, idcardInfo, imVerify, inviteAdviseList, inviteFilter, inviteImage, inviteInfo, inviteList, invitePayment, inviteTemplate, isSign, manageApplyEvent, manageApplyList, manageEvent, manageList, manageOperation, memberInfo, memberOpen, msgInfo, msgList, noteManageList, noticeAdviseList, noticeFilter, noticeInfo, noticeList, noticePayment, noticeTemplate, notifyNumber, ocrCard, ocrIdcard, photoFilter, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, publishVerify, pushInit, receivePayment, recordCollect, securityInfo, securityOpen, sendMsg, shareInvite, shareInviteInfo, shareInviteList, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, subscribeEvent, systemList, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userFilter, userFollow, userInfo, userList, userProfile, userRegister, userResume, userSelectCity, userShape, userShapeDetail, userStatus, userSticker, userUnfollow, visitorList, voteList, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vb", function() { return wxlogin; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return getPhone; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Zb", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return getPhone; });
 /* unused harmony export uploadFile */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lb", function() { return userRegister; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eb", function() { return profileUpdate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return getCareer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return creatCareer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return publicConfig; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return creatInvite; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return inviteList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return inviteInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ib", function() { return userInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pb", function() { return userRegister; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ib", function() { return profileUpdate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return getCareer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return creatCareer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kb", function() { return publicConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return creatInvite; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return inviteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return inviteInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mb", function() { return userInfo; });
 /* unused harmony export getGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mb", function() { return userResume; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kb", function() { return userProfile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ab", function() { return updateAvatar; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ob", function() { return userShape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cb", function() { return userAlbum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bb", function() { return uploadImagePhoto; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pb", function() { return userShapeDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Db", function() { return userAlbumDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rb", function() { return userSticker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vb", function() { return subUserSticker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tb", function() { return subNotePhoto; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cb", function() { return photoList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bb", function() { return photoInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return noticeTemplate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xb", function() { return submitNotice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return noticeFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return noticeList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return noticeInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Qb", function() { return userResume; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ob", function() { return userProfile; });
+/* unused harmony export updateAvatar */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sb", function() { return userShape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gb", function() { return userAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fb", function() { return uploadImagePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tb", function() { return userShapeDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hb", function() { return userAlbumDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vb", function() { return userSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zb", function() { return subUserSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xb", function() { return subNotePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return photoList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return photoInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ab", function() { return noticeTemplate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bb", function() { return submitNotice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return noticeFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return noticeList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return noticeInfo; });
 /* unused harmony export paymina */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return inviteTemplate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return inviteTemplate; });
 /* unused harmony export inviteApply */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return celebrityList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Eb", function() { return userCelebrity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return celebrityInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return celebrityList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ib", function() { return userCelebrity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return celebrityInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return addressList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wb", function() { return submitAddress; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ab", function() { return submitAddress; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addressInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fb", function() { return userContact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sb", function() { return subContact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rb", function() { return subApply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return userContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wb", function() { return subContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vb", function() { return subApply; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return applyList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return applyInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tb", function() { return visitorList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ub", function() { return voteList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return giveUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kb", function() { return recordCollect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return noteManageList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return manageEvent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "db", function() { return photoListOwn; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return collectList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return memberOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return memberInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return coinList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return coinItemList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return coinAcct; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return coinStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return notifyNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Xb", function() { return visitorList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Yb", function() { return voteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return giveUp; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ob", function() { return recordCollect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return noteManageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return manageEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return photoListOwn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return collectList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return memberOpen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return memberInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "p", function() { return coinList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return coinItemList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return coinAcct; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return coinStore; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bb", function() { return notifyNumber; });
 /* unused harmony export faceToken */
 /* unused harmony export facePrint */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return applyManage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return publicComplain; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mb", function() { return securityOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lb", function() { return securityInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return manageList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return manageOperation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ib", function() { return pushInit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ub", function() { return subOpenRecruitment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return inviteImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ob", function() { return shareInvite; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pb", function() { return shareInviteInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return isSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "yb", function() { return submitSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return followRedirect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "qb", function() { return shareInviteList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return categoryList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return feedback; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jb", function() { return publicComplain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "qb", function() { return securityOpen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pb", function() { return securityInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return manageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return manageOperation; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mb", function() { return pushInit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "yb", function() { return subOpenRecruitment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return inviteImage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sb", function() { return shareInvite; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tb", function() { return shareInviteInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return isSign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cb", function() { return submitSign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return followRedirect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ub", function() { return shareInviteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return categoryList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return feedback; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addImUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return sendMsg; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return msgList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return msgInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return checkFollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rb", function() { return sendMsg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return msgList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return msgInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return checkFollow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return applyPay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hb", function() { return userFollow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sb", function() { return userUnfollow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return followerList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return followedList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zb", function() { return systemList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return ocrCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lb", function() { return userFollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Wb", function() { return userUnfollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return followerList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return followedList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Eb", function() { return systemList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cb", function() { return ocrCard; });
 /* unused harmony export submitCard */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return idcardInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return ocrIdcard; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return inviteAdviseList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return noticeAdviseList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nb", function() { return userSelectCity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Qb", function() { return userStatus; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return inviteFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ab", function() { return photoFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gb", function() { return userFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return userList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jb", function() { return receivePayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return invitePayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return noticePayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return publishVerify; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return idcardInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "db", function() { return ocrIdcard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return inviteAdviseList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return noticeAdviseList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rb", function() { return userSelectCity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ub", function() { return userStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return inviteFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eb", function() { return photoFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kb", function() { return userFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nb", function() { return userList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return receivePayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return invitePayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return noticePayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lb", function() { return publishVerify; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return applyVerify; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Db", function() { return subscribeEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return bannerList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return manageApplyList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return manageApplyEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return imVerify; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://pai.qubeitech.com"; // WX登录,拿code换登录
@@ -2496,7 +2663,7 @@ var userRegister = function userRegister(data) {
 
 var profileUpdate = function profileUpdate(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
-    url: baseUrl + "/v1/user/profile/update",
+    url: baseUrl + "/v1/user/register",
     method: "post",
     data: data
   });
@@ -3310,6 +3477,46 @@ var applyVerify = function applyVerify(data) {
     method: "post",
     data: data
   });
+}; // 订阅模版
+
+var subscribeEvent = function subscribeEvent(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/wechat/nina/subscribe/msg/event",
+    method: "post",
+    data: data
+  });
+}; // banner
+
+var bannerList = function bannerList(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/banner/list",
+    method: "post",
+    data: data
+  });
+}; // 我的申请列表
+
+var manageApplyList = function manageApplyList(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/note/manage/apply/list",
+    method: "post",
+    data: data
+  });
+}; // 申请-列表操作
+
+var manageApplyEvent = function manageApplyEvent(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/note/manage/apply/event",
+    method: "post",
+    data: data
+  });
+}; // 沟通校验
+
+var imVerify = function imVerify(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/im/verify",
+    method: "post",
+    data: data
+  });
 };
 
 /***/ }),
@@ -3552,6 +3759,87 @@ component.options.__file = "src/components/pagenav/index.vue"
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_6d454fd7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_6d454fd7_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
+
+
+
+/***/ }),
+
+/***/ "./src/components/sign/index.scss":
+/*!****************************************!*\
+  !*** ./src/components/sign/index.scss ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./src/components/sign/index.vue":
+/*!***************************************!*\
+  !*** ./src/components/sign/index.vue ***!
+  \***************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _index_vue_vue_type_template_id_1147cfe0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=1147cfe0&scoped=true& */ "./src/components/sign/index.vue?vue&type=template&id=1147cfe0&scoped=true&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./src/components/sign/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+function injectStyles (context) {
+  
+  
+}
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(
+  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"],
+  _index_vue_vue_type_template_id_1147cfe0_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* render */ "a"],
+  _index_vue_vue_type_template_id_1147cfe0_scoped_true___WEBPACK_IMPORTED_MODULE_0__[/* staticRenderFns */ "b"],
+  false,
+  injectStyles,
+  "1147cfe0",
+  "4e6c3fed"
+  
+)
+
+component.options.__file = "src/components/sign/index.vue"
+/* harmony default export */ __webpack_exports__["a"] = (component.exports);
+
+/***/ }),
+
+/***/ "./src/components/sign/index.vue?vue&type=script&lang=js&":
+/*!****************************************************************!*\
+  !*** ./src/components/sign/index.vue?vue&type=script&lang=js& ***!
+  \****************************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js!./node_modules/vue-loader/lib/index.js?!./src/components/sign/index.vue?vue&type=script&lang=js&");
+ /* harmony default export */ __webpack_exports__["a"] = (_node_modules_babel_loader_lib_index_js_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]); 
+
+/***/ }),
+
+/***/ "./src/components/sign/index.vue?vue&type=template&id=1147cfe0&scoped=true&":
+/*!**********************************************************************************!*\
+  !*** ./src/components/sign/index.vue?vue&type=template&id=1147cfe0&scoped=true& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/*! exports used: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_1147cfe0_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=1147cfe0&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./src/components/sign/index.vue?vue&type=template&id=1147cfe0&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_1147cfe0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_1147cfe0_scoped_true___WEBPACK_IMPORTED_MODULE_0__["b"]; });
 
 
 
@@ -3800,11 +4088,44 @@ component.options.__file = "src/components/zuopinList/index.vue"
 
 /***/ }),
 
+/***/ "./src/utils/clickThrottle.js":
+/*!************************************!*\
+  !*** ./src/utils/clickThrottle.js ***!
+  \************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* 防止重复点击 */
+var clickTimer = 0;
+
+function clickThrottle() {
+  var interval = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 3000;
+  var now = +new Date(); // 获取当前时间的时间戳
+
+  var timer = clickTimer; // 记录触发事件的事件戳
+
+  if (now - timer < interval) {
+    // 如果当前时间 - 触发事件时的事件 < interVal，那么不符合条件，直接return false，
+    // 不让当前事件继续执行下去
+    return false;
+  } else {
+    // 反之，记录符合条件触发了事件的时间戳，并 return true，使事件继续往下执行
+    clickTimer = now;
+    return true;
+  }
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (clickThrottle);
+
+/***/ }),
+
 /***/ "./src/utils/util.js":
 /*!***************************!*\
   !*** ./src/utils/util.js ***!
   \***************************/
-/*! exports provided: formatTime, formatNumber, openPage, timeformat, request, requestUpload, errortip, isLogin */
+/*! exports provided: formatTime, formatNumber, openPage, timeformat, request, requestUpload, errortip, isLogin, throttle */
 /*! exports used: errortip, isLogin, openPage, request, requestUpload */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -3817,6 +4138,7 @@ component.options.__file = "src/components/zuopinList/index.vue"
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return requestUpload; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return errortip; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isLogin; });
+/* unused harmony export throttle */
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 
@@ -3898,8 +4220,13 @@ var request = function request(params) {
       success: function success(res) {
         if (res.data.code == 200) {
           resolve(res);
-        } else if (res.data.error_code == 1002 || res.data.error_code == 1003) {
-          wx.clearStorage();
+        } else if (res.data.error_code == 1001 || res.data.error_code == 1002 || res.data.error_code == 1003 || res.data.error_code == 1004) {
+          wx.removeStorage({
+            key: "userInfo"
+          });
+          wx.removeStorage({
+            key: "token"
+          });
         } else {
           errortip(res.data.msg);
           reject(res);
@@ -3963,6 +4290,19 @@ var isLogin = function isLogin() {
   var token = wx.getStorageSync("token");
   if (token) return true;
   return false;
+};
+var throttle = function throttle(fn, t) {
+  var flag = true;
+  var interval = t;
+  return function () {
+    if (flag) {
+      fn.apply(this, arguments);
+      flag = false;
+      setTimeout(function () {
+        flag = true;
+      }, interval);
+    }
+  };
 };
 
 /***/ })

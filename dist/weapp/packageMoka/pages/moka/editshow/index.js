@@ -52,8 +52,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _components_myZuopinList_index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../components/myZuopinList/index.vue */ "./src/components/myZuopinList/index.vue");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editshow/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editshow/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_6__);
 
 
 //
@@ -438,6 +439,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+
 
 
 
@@ -447,26 +449,21 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
   data: function data() {
     return {
       myself: true,
+      isIphoneX: false,
       uuid: "",
       winWidth: 0,
       winHeight: 0,
       is_follower: 0,
       is_followed: 0,
-      globalData: {
-        navHeight: 0,
-        navTop: 0,
-        navObj: 0,
-        navObjWid: 0
-      },
       infor: {
         avatar: "",
         homeimg: "",
         statistic: {
           followed_cnt: 0,
           follower_cnt: 0,
-          invite_cnt: 20,
-          read_cnt: 20,
-          track_cnt: 20
+          invite_cnt: 0,
+          vote_cnt: 0,
+          visitor_cnt: 0
         }
       },
       currentTab: 0,
@@ -573,6 +570,25 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     sendMsg: function sendMsg() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.uuid + "&nickname=" + this.infor.nickname + "&avatar=" + this.infor.avatar);
     },
+    communicate: function communicate() {
+      this.imVerify({
+        to_account: this.uuid
+      });
+    },
+    launchYuepai: function launchYuepai() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
+
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
+        this.applyVerify({
+          source: "home",
+          oid: this.uuid
+        });
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index"
+        });
+      }
+    },
     userInfo: function userInfo(params) {
       var _this2 = this;
 
@@ -584,7 +600,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Mb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -630,7 +646,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Tb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -664,7 +680,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Hb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -694,7 +710,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Vb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -727,7 +743,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "hb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -767,7 +783,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "sb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -797,7 +813,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "tb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -831,7 +847,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Lb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -873,7 +889,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Wb"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -902,33 +918,85 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
           }
         }, _callee9, null, [[0, 7]]);
       }))();
+    },
+    applyVerify: function applyVerify(params) {
+      var _this9 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee10() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.prev = 0;
+                _context10.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyVerify */ "h"])(params);
+
+              case 3:
+                res = _context10.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this9.uuid + "&source=home");
+                _context10.next = 10;
+                break;
+
+              case 7:
+                _context10.prev = 7;
+                _context10.t0 = _context10["catch"](0);
+
+                if (_context10.t0.data.error_code == 21030 || _context10.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context10.t0.data.msg);
+                }
+
+              case 10:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, null, [[0, 7]]);
+      }))();
+    },
+    imVerify: function imVerify(params) {
+      var _this10 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee11() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.prev = 0;
+                _context11.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "C"])(params);
+
+              case 3:
+                res = _context11.sent;
+
+                _this10.sendMsg();
+
+                _context11.next = 11;
+                break;
+
+              case 7:
+                _context11.prev = 7;
+                _context11.t0 = _context11["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context11.t0.data.msg);
+
+                if (_context11.t0.data.error_code == 21050 || _context11.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context11.t0.data.msg, "&code=").concat(_context11.t0.data.error_code));
+                }
+
+              case 11:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, null, [[0, 7]]);
+      }))();
     }
   },
   created: function created() {
-    var _this9 = this;
-
-    var menuButtonObject = wx.getMenuButtonBoundingClientRect();
-    wx.getSystemInfo({
-      success: function success(res) {
-        //导航高度
-        var statusBarHeight = res.statusBarHeight,
-            navTop = menuButtonObject.top,
-            navObjWid = res.windowWidth - menuButtonObject.right + menuButtonObject.width,
-            // 胶囊按钮与右侧的距离 = windowWidth - right+胶囊宽度
-        navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2;
-        _this9.globalData.navHeight = navHeight; //导航栏总体高度
-
-        _this9.globalData.navTop = navTop; //胶囊距离顶部距离
-
-        _this9.globalData.navObj = menuButtonObject.height; //胶囊高度
-
-        _this9.globalData.navObjWid = navObjWid; //胶囊宽度(包括右边距离)
-        // console.log(navHeight,navTop,menuButtonObject.height,navObjWid)
-      },
-      fail: function fail(err) {
-        console.log(err);
-      }
-    });
+    this.isIphoneX = this.globalData.isIphoneX;
   },
   onShow: function onShow() {
     if (this.uuid) {
@@ -1044,7 +1112,7 @@ var render = function () {
               ]),
               _c("view", { staticClass: "my-info" }, [
                 _c("text", [_vm._v("IP归属：")]),
-                _c("text", [_vm._v(_vm._s(_vm.infor.province_name))]),
+                _c("text", [_vm._v(_vm._s(_vm.infor.login_ip_city))]),
                 _c("view", { staticClass: "head-tag-box" }, [
                   _vm.infor.is_certify
                     ? _c("image", {
@@ -1053,12 +1121,7 @@ var render = function () {
                           src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png",
                         },
                       })
-                    : _c("image", {
-                        staticClass: "head-tag-img",
-                        attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png",
-                        },
-                      }),
+                    : _vm._e(),
                   _vm.infor.is_security
                     ? _c("image", {
                         staticClass: "head-tag-img",
@@ -1066,12 +1129,7 @@ var render = function () {
                           src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png",
                         },
                       })
-                    : _c("image", {
-                        staticClass: "head-tag-img",
-                        attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png",
-                        },
-                      }),
+                    : _vm._e(),
                 ]),
               ]),
             ]),
@@ -1084,29 +1142,33 @@ var render = function () {
               "view",
               { staticClass: "my_tags" },
               [
-                _c("view", { staticClass: "tag" }, [
-                  _vm.infor.sex == 1
-                    ? _c("image", {
-                        staticClass: "sex",
-                        attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/images/user/show/sex1.png",
-                        },
-                      })
-                    : _vm._e(),
-                  _vm.infor.sex == 0
-                    ? _c("image", {
-                        staticClass: "sex",
-                        attrs: {
-                          src: "https://yuepai-oss.qubeitech.com/static/images/user/show/sex2.png",
-                        },
-                      })
-                    : _vm._e(),
-                  _vm._v(" " + _vm._s(_vm.infor.age) + "岁 "),
-                ]),
-                _c("view", { staticClass: "tag" }, [
-                  _vm._v(" " + _vm._s(_vm.infor.province_name) + " "),
-                ]),
-                _vm._l(_vm.infor.career_list, function (item, index) {
+                _vm.infor.age
+                  ? _c("view", { staticClass: "tag" }, [
+                      _vm.infor.sex == 1
+                        ? _c("image", {
+                            staticClass: "sex",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/user/show/sex1.png",
+                            },
+                          })
+                        : _vm._e(),
+                      _vm.infor.sex == 0
+                        ? _c("image", {
+                            staticClass: "sex",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/user/show/sex2.png",
+                            },
+                          })
+                        : _vm._e(),
+                      _vm._v(" " + _vm._s(_vm.infor.age) + "岁 "),
+                    ])
+                  : _vm._e(),
+                _vm.infor.province_name
+                  ? _c("view", { staticClass: "tag" }, [
+                      _vm._v(" " + _vm._s(_vm.infor.province_name) + " "),
+                    ])
+                  : _vm._e(),
+                _vm._l(_vm.infor.career_label, function (item, index) {
                   return _c("view", { key: index, staticClass: "tag" }, [
                     _vm._v(" " + _vm._s(item) + " "),
                   ])
@@ -1116,35 +1178,57 @@ var render = function () {
             ),
             _c("view", { staticClass: "my-count" }, [
               _c("view", { staticClass: "my-conunt-left" }, [
-                _c("view", { staticClass: "my-count-box" }, [
-                  _c("text", { staticClass: "num" }, [
-                    _vm._v(_vm._s(_vm.infor.statistic.followed_cnt)),
-                  ]),
-                  _c("text", [_vm._v("粉丝")]),
-                ]),
-                _c("view", { staticClass: "my-count-box" }, [
-                  _c("text", { staticClass: "num" }, [
-                    _vm._v(_vm._s(_vm.infor.statistic.follower_cnt)),
-                  ]),
-                  _c("text", [_vm._v("关注")]),
-                ]),
+                _c(
+                  "view",
+                  {
+                    staticClass: "my-count-box",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.goFollowAndfans("fans")
+                      },
+                    },
+                  },
+                  [
+                    _c("text", { staticClass: "num" }, [
+                      _vm._v(_vm._s(_vm.infor.statistic.follower_cnt)),
+                    ]),
+                    _c("text", [_vm._v("粉丝")]),
+                  ]
+                ),
+                _c(
+                  "view",
+                  {
+                    staticClass: "my-count-box",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.goFollowAndfans("follow")
+                      },
+                    },
+                  },
+                  [
+                    _c("text", { staticClass: "num" }, [
+                      _vm._v(_vm._s(_vm.infor.statistic.followed_cnt)),
+                    ]),
+                    _c("text", [_vm._v("关注")]),
+                  ]
+                ),
                 _c("view", { staticClass: "my-count-box" }, [
                   _c("text", { staticClass: "num" }, [
                     _vm._v(_vm._s(_vm.infor.statistic.invite_cnt)),
                   ]),
-                  _c("text", [_vm._v("约拍")]),
+                  _c("text", [_vm._v("收到")]),
+                ]),
+                _c("view", { staticClass: "my-count-box" }, [
+                  _c("text", { staticClass: "num" }, [
+                    _vm._v(_vm._s(_vm.infor.statistic.vote_cnt)),
+                  ]),
+                  _c("text", [_vm._v("点赞")]),
                 ]),
                 _c("view", { staticClass: "my-count-box" }, [
                   _c("text", { staticClass: "num" }, [
                     _vm._v(_vm._s(_vm.infor.statistic.visitor_cnt)),
                   ]),
-                  _c("text", [_vm._v("访客")]),
-                ]),
-                _c("view", { staticClass: "my-count-box" }, [
-                  _c("text", { staticClass: "num" }, [
-                    _vm._v(_vm._s(_vm.infor.statistic.track_cnt)),
-                  ]),
-                  _c("text", [_vm._v("足迹")]),
+                  _c("text", [_vm._v("人气")]),
                 ]),
               ]),
               _vm.myself
@@ -1169,7 +1253,7 @@ var render = function () {
                       "text",
                       {
                         staticClass: "followed_send_msg",
-                        on: { tap: _vm.sendMsg },
+                        on: { tap: _vm.communicate },
                       },
                       [_vm._v("发消息")]
                     ),
@@ -1773,6 +1857,27 @@ var render = function () {
       ],
       1
     ),
+    !_vm.myself
+      ? _c(
+          "view",
+          {
+            staticClass: "zhuye_fixed_bottom",
+            class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+          },
+          [
+            _c(
+              "view",
+              { staticClass: "zhuye_fixed_left", on: { tap: _vm.communicate } },
+              [_vm._v(" 立即沟通 ")]
+            ),
+            _c(
+              "view",
+              { staticClass: "zhuye_fixed_rt", on: { tap: _vm.launchYuepai } },
+              [_vm._v(" 立即约拍 ")]
+            ),
+          ]
+        )
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

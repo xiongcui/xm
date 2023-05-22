@@ -186,6 +186,8 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -204,6 +206,8 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
       currentTab: 0,
       list: [],
       list2: [],
+      vote_cnt: 0,
+      visitor_cnt: 0,
       pageNum: 1,
       pageSize: 10
     };
@@ -253,7 +257,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "Xb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -295,7 +299,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "Yb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -332,6 +336,14 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
    * 生命周期函数--监听页面加载
    */
   onLoad: function onLoad(options) {
+    if (options.vote_cnt) {
+      this.vote_cnt = options.vote_cnt;
+    }
+
+    if (options.visitor_cnt) {
+      this.visitor_cnt = options.visitor_cnt;
+    }
+
     var that = this; // 获取系统信息
 
     wx.getSystemInfo({
@@ -374,7 +386,14 @@ var render = function () {
             },
           },
         },
-        [_vm._v("收到的赞")]
+        [
+          _vm._v("收到的赞 "),
+          _vm.vote_cnt > 0
+            ? _c("view", { staticClass: "tab-num" }, [
+                _vm._v(_vm._s(_vm.vote_cnt)),
+              ])
+            : _vm._e(),
+        ]
       ),
       _c(
         "view",
@@ -387,7 +406,14 @@ var render = function () {
             },
           },
         },
-        [_vm._v("来访的客")]
+        [
+          _vm._v("来访的客 "),
+          _vm.visitor_cnt > 0
+            ? _c("view", { staticClass: "tab-num" }, [
+                _vm._v(_vm._s(_vm.visitor_cnt)),
+              ])
+            : _vm._e(),
+        ]
       ),
     ]),
     _c(

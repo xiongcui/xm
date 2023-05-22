@@ -212,7 +212,7 @@ page {
   margin-left: 16rpx;
 }
 
-.tgregreceiveshow .modal_box {
+.tgregreceiveshow .modal_box_bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -231,7 +231,7 @@ page {
           align-items: center;
 }
 
-.tgregreceiveshow .modal_box .modal_content {
+.tgregreceiveshow .modal_box_bg .modal_content {
   position: relative;
   background: #ffffff;
   padding: 16rpx 0;
@@ -250,18 +250,18 @@ page {
   color: #333333;
 }
 
-.tgregreceiveshow .modal_box .modal_content .qrcode-img {
+.tgregreceiveshow .modal_box_bg .modal_content .qrcode-img {
   width: 300rpx;
   height: 300rpx;
   margin: 16rpx 0;
 }
 
-.tgregreceiveshow .modal_box .modal_content .save {
+.tgregreceiveshow .modal_box_bg .modal_content .save {
   color: #6493d7;
   font-size: 26rpx;
 }
 
-.tgregreceiveshow .modal_box .modal_content .close-img {
+.tgregreceiveshow .modal_box_bg .modal_content .close-img {
   width: 38rpx;
   height: 38rpx;
   position: absolute;

@@ -243,6 +243,12 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -295,7 +301,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "R"])(params);
 
               case 3:
                 res = _context.sent;
@@ -342,7 +348,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "Q"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -653,15 +659,48 @@ var render = function () {
         },
         [
           _c("cover-view", { staticClass: "subbtn_bottom" }, [
-            _c("button", { on: { tap: _vm.submit } }, [
-              _vm._v(
-                " 立即以" +
-                  _vm._s(_vm.price) +
-                  "元" +
-                  _vm._s(_vm.ismember ? "续费" : "开通") +
-                  " "
-              ),
-            ]),
+            _vm.active == 0
+              ? _c("button", { key: 0, on: { tap: _vm.submit } }, [
+                  _vm._v(
+                    " " +
+                      _vm._s(
+                        "立即以" +
+                          _vm.price +
+                          "元" +
+                          (_vm.ismember ? "续费" : "开通")
+                      ) +
+                      " "
+                  ),
+                ])
+              : _vm._e(),
+            _vm.active == 1
+              ? _c("button", { key: 1, on: { tap: _vm.submit } }, [
+                  _vm._v(
+                    " " +
+                      _vm._s(
+                        "立即以" +
+                          _vm.price +
+                          "元" +
+                          (_vm.ismember ? "续费" : "开通")
+                      ) +
+                      " "
+                  ),
+                ])
+              : _vm._e(),
+            _vm.active == 2
+              ? _c("button", { key: 2, on: { tap: _vm.submit } }, [
+                  _vm._v(
+                    " " +
+                      _vm._s(
+                        "立即以" +
+                          _vm.price +
+                          "元" +
+                          (_vm.ismember ? "续费" : "开通")
+                      ) +
+                      " "
+                  ),
+                ])
+              : _vm._e(),
             _vm.coin > 0
               ? _c("text", { staticClass: "tagcoin" }, [
                   _vm._v(

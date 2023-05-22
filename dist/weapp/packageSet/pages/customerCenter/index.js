@@ -136,11 +136,6 @@ component.options.__file = "src/packageSet/pages/customerCenter/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/feedback/index");
     },
     customerService: function customerService() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
-        return false;
-      }
-
       wx.openCustomerServiceChat({
         extInfo: {
           url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6"
@@ -172,7 +167,7 @@ component.options.__file = "src/packageSet/pages/customerCenter/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* categoryList */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* categoryList */ "j"])(params);
 
               case 3:
                 res = _context.sent;

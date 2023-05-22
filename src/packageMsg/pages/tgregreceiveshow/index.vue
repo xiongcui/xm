@@ -127,7 +127,7 @@
         <view class="communicate" @tap="communicate">发起沟通</view>
       </view>
     </view>
-    <view class="modal_box" v-if="showModel">
+    <view class="modal_box_bg" v-if="showModel">
       <view class="modal_content">
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>

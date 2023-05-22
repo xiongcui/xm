@@ -102,6 +102,7 @@
     text-align: center;
     margin-top: 40px;
     position: relative;
+    z-index: 99;
   }
   .month {
     font-weight: bold;
@@ -181,4 +182,9 @@
   font-size: 22px;
   padding: 6px;
   border-radius: 25% 0px 25% 0px;
+}
+.subbtn_vip_txt {
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 600;
 }

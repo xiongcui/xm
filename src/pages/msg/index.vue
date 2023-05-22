@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { openPage } from "../../utils/util";
+import { openPage, isLogin } from "../../utils/util";
 import { notifyNumber, msgList } from "../../api/index";
 import "./index.scss";
 export default {
@@ -82,15 +82,26 @@ export default {
       invite_cnt: 0,
       notice_cnt: 0,
       vote_visitor_cnt: 0,
+      vote_cnt: 0,
+      visitor_cnt: 0,
       is_follow_gzh: 0,
       list: [],
     };
   },
   methods: {
     openUrl(type) {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       switch (type) {
         case 1:
-          openPage("/packageMsg/pages/livevisitor/index");
+          openPage(
+            "/packageMsg/pages/livevisitor/index?vote_cnt=" +
+              this.vote_cnt +
+              "&visitor_cnt=" +
+              this.visitor_cnt
+          );
           break;
         case 2:
           openPage("/packageMsg/pages/invite/index");
@@ -133,6 +144,8 @@ export default {
         this.invite_cnt = res.data.data.invite_cnt;
         this.notice_cnt = res.data.data.notice_cnt;
         this.vote_visitor_cnt = res.data.data.vote_visitor_cnt;
+        this.vote_cnt = res.data.data.vote_cnt;
+        this.visitor_cnt = res.data.data.visitor_cnt;
         this.is_follow_gzh = res.data.data.is_follow_gzh;
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({

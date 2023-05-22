@@ -79,7 +79,12 @@ export default {
   },
   methods: {
     logout() {
-      wx.clearStorage();
+      wx.removeStorage({
+        key: "userInfo",
+      });
+      wx.removeStorage({
+        key: "token",
+      });
       errortip("退出成功");
       var page = getCurrentPages().pop();
       console.log(page);

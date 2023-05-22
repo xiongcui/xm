@@ -1,0 +1,82 @@
+.privacy {
+  padding: 30px;
+  .table-box {
+    height: 100%;
+    overflow-x: auto;
+    margin: 30rpx 0px;
+    background: #fff;
+    border-radius: 16rpx;
+  }
+
+  .table {
+    border-radius: 8rpx;
+    margin: 0 auto;
+    display: table;
+    table-layout: fixed;
+    border-collapse: collapse;
+    overflow-x: auto;
+    // word-break: keep-all;
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    font-size: 28px;
+  }
+
+  .tr {
+    display: table-row;
+  }
+
+  .th {
+    display: table-cell;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border: 2rpx solid #f3f4f7;
+    border-right: none;
+    border-bottom: none;
+    padding: 0 30rpx;
+    color: #333333;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+
+  .td {
+    padding: 0 10rpx;
+    display: table-cell;
+    height: 60rpx;
+    vertical-align: middle;
+    text-align: center;
+    border: 2rpx solid #f3f4f7;
+    border-right: none;
+  }
+  .th:first-child,
+  .td:first-child {
+    position: sticky;
+    left: -2rpx;
+    background: #fff;
+  }
+  .th:first-child {
+    background: #fff;
+    z-index: 1; /*左上角单元格z-index，切记要设置，不然表格纵向横向滚动时会被该单元格右方或者下方的单元格遮挡*/
+  }
+}
+.privacy-title {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 40px;
+  margin-bottom: 16px;
+  color: #333333;
+}
+.privacy-p {
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 40px;
+  margin-bottom: 16px;
+}
+.blod {
+  font-weight: bold;
+  color: #333333;
+}
+.block {
+  display: block;
+  text-align: left;
+}

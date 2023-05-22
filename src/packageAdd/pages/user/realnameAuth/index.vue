@@ -86,6 +86,8 @@ export default {
       realname: "",
       realname_rx: "",
       realname_gh: "",
+      realname_rx_off: false,
+      realname_gh_off: false,
       card: "",
       frontfileName: "",
       backfileName: "",
@@ -198,11 +200,16 @@ export default {
       });
     },
     next() {
-      if (this.realname_rx && this.realname_gh) {
-        this.pageShow = "info";
-        this.idcardInfo("");
+      if (this.realname_rx_off && this.realname_gh_off) {
+        if (this.realname_rx && this.realname_gh) {
+          this.pageShow = "info";
+          this.idcardInfo("");
+        } else {
+          errortip("请先上传身份证");
+        }
       } else {
-        errortip("请先上传身份证");
+        errortip("请检查身份证上传是否正确！");
+        return false;
       }
     },
     reupload() {
@@ -217,11 +224,23 @@ export default {
     async ocrCard(params) {
       try {
         let res = await ocrCard(params);
-        if (res.data.data.id_card_front) {
-          this.realname = res.data.data.id_name;
-          this.card = res.data.data.id_no;
+        this.realname = res.data.data.id_name;
+        this.card = res.data.data.id_no;
+        if (params.id_card_side == "front") {
+          this.realname_rx_off = true;
         }
-      } catch (error) {}
+        if (params.id_card_side == "back") {
+          this.realname_gh_off = true;
+        }
+      } catch (error) {
+        errortip(error.data.msg);
+        if (params.id_card_side == "front") {
+          this.realname_rx_off = false;
+        }
+        if (params.id_card_side == "back") {
+          this.realname_gh_off = false;
+        }
+      }
     },
     async idcardInfo(params) {
       try {

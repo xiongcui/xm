@@ -1,0 +1,191 @@
+page {
+  background: #f7f7f7;
+}
+
+.apply .tab {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #ffffff;
+  position: fixed;
+  z-index: 9999;
+}
+
+.apply .tab-item {
+  color: #333333;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #ffffff;
+}
+
+.apply .content {
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 100vh;
+}
+
+.apply .content > swiper {
+  height: 100%;
+}
+
+.apply .tab-item.on {
+  color: #333333;
+  font-weight: bold;
+  border-bottom-color: #ff1e3e;
+}
+
+.apply .invite-box {
+  background: #ffffff;
+  padding: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  margin-bottom: 6rpx;
+}
+
+.apply .invite-box:first-child {
+  margin-top: 104rpx;
+}
+
+.apply .invite-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.apply .list_sex {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 4rpx;
+}
+
+.apply .invite-info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.apply .invite-img image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.apply .invite-name {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30rpx;
+  margin: 6rpx 0;
+}
+
+.apply .identity {
+  color: #6b6b6b;
+  font-size: 28rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.apply .identity .time {
+  color: #6b6b6b;
+  font-size: 28rpx;
+  margin-left: 30rpx;
+}
+
+.apply .dian {
+  color: #6b6b6b;
+  font-size: 50rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+}
+
+.apply .dian image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.apply .first-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 15rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 16rpx;
+}
+
+.apply .swiper-box {
+  height: 100%;
+}
+
+.apply .invite-desc {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 28rpx;
+  color: #6b6b6b;
+}
+
+.apply .invite-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 16rpx;
+}
+
+.apply .fail {
+  color: #ff1e3e;
+}
+
+.apply .success {
+  color: #6493d7;
+}
+
+.apply .none-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 180rpx;
+  color: #333;
+}
+
+.apply .none-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
+}
