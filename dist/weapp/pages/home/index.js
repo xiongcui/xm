@@ -1017,7 +1017,6 @@ var citySelector = requirePlugin("citySelector");
               case 3:
                 res = _context2.sent;
                 _this2.inviteRecommendList = res.data.data.items;
-                console.log(_this2.inviteRecommendList, "this.inviteRecommendList");
 
                 _this2.$nextTick(function () {
                   setTimeout(function () {
@@ -1025,25 +1024,24 @@ var citySelector = requirePlugin("citySelector");
                     var query = wx.createSelectorQuery();
                     query.select("#recommend-box0").boundingClientRect();
                     query.exec(function (res) {
-                      console.log(res, "res");
                       _this2.swiperheight = res[0] ? res[0].height : _this2.swiperheight;
                     });
                   }, 100);
                 });
 
-                _context2.next = 11;
+                _context2.next = 10;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     noticeAdviseList: function noticeAdviseList(params) {

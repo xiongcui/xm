@@ -155,6 +155,9 @@ export default defineAppConfig({
     "scope.userFuzzyLocation": {
       desc: "你的位置信息将用于小程序定位",
     },
+    "scope.userLocation": {
+      desc: "你的位置信息将用于小程序定位",
+    },
   },
   requiredPrivateInfos: [
     "chooseAddress",
@@ -168,7 +171,7 @@ export default defineAppConfig({
   lazyCodeLoading: "requiredComponents",
   plugins: {
     chooseLocation: {
-      version: "1.0.9",
+      version: "1.0.10",
       provider: "wx76a9a06e5b4e693e",
     },
     citySelector: {

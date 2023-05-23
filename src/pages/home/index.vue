@@ -905,14 +905,12 @@ export default {
       try {
         let res = await inviteAdviseList(params);
         this.inviteRecommendList = res.data.data.items;
-        console.log(this.inviteRecommendList, "this.inviteRecommendList");
         this.$nextTick(() => {
           setTimeout(() => {
             // 初始化高度
             var query = wx.createSelectorQuery();
             query.select("#recommend-box0").boundingClientRect();
             query.exec((res) => {
-              console.log(res, "res");
               this.swiperheight = res[0] ? res[0].height : this.swiperheight;
             });
           }, 100);
