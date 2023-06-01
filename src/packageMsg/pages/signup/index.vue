@@ -157,6 +157,10 @@
                     >
                   </view>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -286,6 +290,10 @@
                     >
                   </view>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -415,6 +423,10 @@
                     >
                   </view>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -544,6 +556,10 @@
                     >
                   </view>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -673,6 +689,10 @@
                     >
                   </view>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">

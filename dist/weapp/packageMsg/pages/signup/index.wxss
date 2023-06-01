@@ -55,6 +55,19 @@ page {
   margin-bottom: 16rpx;
 }
 
+.signup .signup-box .notice_bg {
+  width: 50rpx;
+  height: 50rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/notice.png") no-repeat right top;
+  background-size: 50rpx;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
 .signup .signup-box:first-child {
   margin-top: 104rpx;
 }

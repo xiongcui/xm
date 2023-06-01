@@ -12,7 +12,7 @@
   color: #fff;
   position: fixed;
   top: 0;
-  z-index: 999;
+  z-index: 9999;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -32,7 +32,8 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
+  position: absolute;
+  left: 0;
   z-index: 9999;
 }
 .home .head_sign,

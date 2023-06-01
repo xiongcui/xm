@@ -1,0 +1,17 @@
+{
+  "toolkitVersion": "0.5.1",
+  "sdkVersion": "0.9.2",
+  "enableVConsole": "open",
+  "sdkKey": "5whlPXLmST",
+  "sdkKeySecret": "_EFxrIxZgCvyg36lfcahyQ",
+  "packageName": "com.tencent.weauth",
+  "miniModuleId": "wxa356535f4d0d7f40",
+  "useExtendedSdk": {
+    "media": true,
+    "bluetooth": false,
+    "network": false,
+    "scanner": false,
+    "xweb": false
+  },
+  "splashscreen": false
+}

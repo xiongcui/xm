@@ -1434,7 +1434,7 @@ var render = function () {
       {
         staticClass: "nav_fixed",
         style: {
-          marginTop: _vm.isMargin ? _vm.globalData.navHeight + "px" : "0px",
+          paddingTop: _vm.isMargin ? _vm.globalData.navHeight + "px" : "0px",
         },
       },
       [
@@ -2237,7 +2237,7 @@ var render = function () {
                     ]),
                     _c("view", { staticClass: "list_top_rt" }, [
                       _c("view", { staticClass: "list_date" }, [
-                        _vm._v(_vm._s(item.basic.date_humanize)),
+                        _vm._v(_vm._s(item.author.login_time_humanize)),
                       ]),
                     ]),
                   ]),

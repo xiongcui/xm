@@ -40,7 +40,9 @@
         "useLanDebug": false,
         "showES6CompileOption": false,
         "ignoreUploadUnusedFiles": false,
-        "ignoreDevUnusedFiles": false
+        "ignoreDevUnusedFiles": false,
+        "condition": true,
+        "skylineRenderEnable": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.26.2",
@@ -54,5 +56,8 @@
         "tabSize": 4
     },
     "condition": {},
-    "simulatorPluginLibVersion": {}
+    "simulatorPluginLibVersion": {
+        "wxext14566970e7e9f62": "2.27.3"
+    },
+    "projectArchitecture": "multiPlatform"
 }

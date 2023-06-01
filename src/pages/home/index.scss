@@ -1,7 +1,6 @@
 .home {
   background-color: #f4f4f4;
   #list {
-    // min-height: calc(100vh - 170px);
     min-height: calc(100vh - 160px);
     position: relative;
   }
@@ -11,7 +10,7 @@
     color: #fff;
     position: fixed;
     top: 0;
-    z-index: 999;
+    z-index: 9999;
     display: flex;
   }
   .flex-row {
@@ -21,7 +20,8 @@
   }
   .head_left {
     display: flex;
-    position: relative;
+    position: absolute;
+    left: 0px;
     z-index: 9999;
   }
   .head_sign,

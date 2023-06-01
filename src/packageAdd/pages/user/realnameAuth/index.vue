@@ -172,7 +172,7 @@ export default {
         url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "photo",
+          scr_type: "idcard",
         },
         name: "file",
         header,
@@ -202,7 +202,6 @@ export default {
     next() {
       if (this.realname_rx_off && this.realname_gh_off) {
         if (this.realname_rx && this.realname_gh) {
-          this.pageShow = "info";
           this.idcardInfo("");
         } else {
           errortip("请先上传身份证");
@@ -245,11 +244,14 @@ export default {
     async idcardInfo(params) {
       try {
         let res = await idcardInfo(params);
-        if (res.data.data.id_card_front) {
-          this.realname = res.data.data.id_name;
-          this.card = res.data.data.id_no;
+        this.pageShow = "info";
+        this.realname = res.data.data.id_name;
+        this.card = res.data.data.id_no;
+      } catch (error) {
+        if (error.data.error_code == 21002) {
+          this.pageShow = "uploadimg";
         }
-      } catch (error) {}
+      }
     },
     async ocrIdcard(params) {
       try {
@@ -263,6 +265,9 @@ export default {
         );
       } catch (error) {}
     },
+  },
+  created() {
+    this.idcardInfo("");
   },
 };
 </script>

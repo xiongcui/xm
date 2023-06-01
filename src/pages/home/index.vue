@@ -232,7 +232,7 @@
                         </view>
                         <view class="list_top_rt">
                           <view class="list_date">{{
-                            item.basic.date_humanize
+                            item.author.login_time_humanize
                           }}</view>
                         </view>
                       </view>
@@ -463,7 +463,6 @@
       :appointmentList="appointmentData"
       :identityList="identityData"
       :noticeList="noticeData"
-      :style="{ marginTop: globalData.navHeight + 'px' }"
       :isMargin="true"
       @pageNavClick="pageNavClick"
       @navClick="navClick"
@@ -473,18 +472,35 @@
     ></Pagenav>
 
     <view id="list">
-      <YuepaiList
-        :baseData="yuepaiList"
-        v-if="componetActive == 0"
-      ></YuepaiList>
-      <TonggaoList
-        :baseData="noticeList"
-        v-if="componetActive == 1"
-      ></TonggaoList>
-      <ZuopinList
-        :baseData="zuopinList"
-        v-if="componetActive == 2"
-      ></ZuopinList>
+      <swiper
+        :current="componetActive"
+        class="swiper-box"
+        duration="300"
+        @change="bindChange"
+        :style="{ height: swiperHeightCt ? swiperHeightCt : '100vh' }"
+      >
+        <swiper-item>
+          <YuepaiList
+            class="list-height"
+            :baseData="yuepaiList"
+            v-if="componetActive == 0"
+          ></YuepaiList>
+        </swiper-item>
+        <swiper-item>
+          <TonggaoList
+            class="list-height"
+            :baseData="noticeList"
+            v-if="componetActive == 1"
+          ></TonggaoList>
+        </swiper-item>
+        <swiper-item>
+          <ZuopinList
+            class="list-height"
+            :baseData="zuopinList"
+            v-if="componetActive == 2"
+          ></ZuopinList>
+        </swiper-item>
+      </swiper>
       <view class="nomore" v-if="noMore">没有更多了～</view>
       <loading :showLoading="showLoading"></loading>
       <view class="login-mask" v-if="visible">
@@ -536,6 +552,7 @@ import {
   shareInvite,
   submitSign,
   bannerList,
+  shareInviteInfo,
 } from "../../api/index";
 import { openPage, isLogin, errortip } from "../../utils/util";
 import clickThrottle from "../../utils/clickThrottle";
@@ -546,7 +563,7 @@ export default {
       showlogin: false,
       visible: false,
       noMore: false,
-      showLoading: false,
+      showLoading: true,
       loading: false,
       topNum: 0,
       swiperheight: 144,
@@ -607,6 +624,9 @@ export default {
       shareImg: "",
       token: "",
       userinfor: {},
+      winWidth: 0,
+      winHeight: 0,
+      swiperHeightCt: 0,
     };
   },
   components: {
@@ -619,6 +639,19 @@ export default {
     sign,
   },
   methods: {
+    bindChange(e) {
+      this.componetActive = e.detail.current;
+      this.pageNavClick(e.detail.current);
+    },
+    setSwiperHeight() {
+      let dom = ".list-height";
+      wx.createSelectorQuery()
+        .select(dom)
+        .boundingClientRect((rect) => {
+          this.swiperHeightCt = rect.height + "px";
+        })
+        .exec();
+    },
     modelClose() {
       this.visible = false;
     },
@@ -817,6 +850,12 @@ export default {
         this.zuopinQuery("more", this.$refs["pageNavRef"].navActive);
       }
     },
+    scrollToLower() {
+      this.pageNum++;
+      if (this.loading && !this.isclick) {
+        this.onMore();
+      }
+    },
     goLogin() {
       openPage("/pages/login/index");
     },
@@ -860,7 +899,7 @@ export default {
           this.loading = true;
         }
 
-        if (scroll) {
+        if (scroll && this.navShow) {
           let scrollTop = 0;
           let fixedHeight = 0;
           const query = wx.createSelectorQuery();
@@ -888,6 +927,9 @@ export default {
             })
             .exec();
         }
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
         this.isclick = false;
       } catch (error) {
         this.showLoading = false;
@@ -1170,7 +1212,7 @@ export default {
           this.loading = true;
         }
 
-        if (scroll) {
+        if (scroll && this.navShow) {
           let scrollTop = 0;
           let fixedHeight = 0;
           const query = wx.createSelectorQuery();
@@ -1198,6 +1240,9 @@ export default {
             })
             .exec();
         }
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
         this.isclick = false;
       } catch (error) {
         this.showLoading = false;
@@ -1238,7 +1283,7 @@ export default {
           this.loading = true;
         }
 
-        if (scroll) {
+        if (scroll && this.navShow) {
           let scrollTop = 0;
           let fixedHeight = 0;
           const query = wx.createSelectorQuery();
@@ -1248,7 +1293,6 @@ export default {
           });
           query.select(".nav_fixed").boundingClientRect((res) => {
             fixedHeight = res.height;
-            console.log(fixedHeight, "fixedHeight======");
           });
           query
             .select("#list")
@@ -1267,6 +1311,9 @@ export default {
             })
             .exec();
         }
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
         this.isclick = false;
       } catch (error) {
         this.showLoading = false;
@@ -1319,6 +1366,7 @@ export default {
   },
   onPageScroll: function (e) {
     this.scrollTop = e.scrollTop;
+    this.setSwiperHeight();
     if (!this.isclick) {
       let query = wx.createSelectorQuery();
       query
@@ -1336,6 +1384,18 @@ export default {
         .exec();
     }
   },
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
+    this.bannerList({
+      item: ["home_banner", "home_notify"],
+    });
+    // 分享
+    this.shareInviteInfo({
+      source: "share_friend",
+      type: "wechat",
+    });
+    this.userStatus("", true);
+  },
   //触底加载
   onReachBottom: function () {
     console.log("下拉加载更多", this.loading);
@@ -1351,24 +1411,33 @@ export default {
     if (options.scene) {
       wx.setStorageSync("invited_uuid", options.scene);
     }
-  },
-  // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
-  onShow() {
+    var that = this;
+    // 获取系统信息
+    wx.getSystemInfo({
+      success: function (res) {
+        that.winWidth = res.windowWidth;
+        that.winHeight = res.windowHeight;
+      },
+    });
+
     this.bannerList({
       item: ["home_banner", "home_notify"],
     });
-    // 消息通知红点
-    this.notifyNumber("");
-    // 当前城市&是否签到
-    if (!citySelector.getCity()) {
-      this.userStatus("");
-    }
-    this.inviteFilter({});
+    // this.inviteFilter({});
     // 分享
     this.shareInviteInfo({
       source: "share_friend",
       type: "wechat",
     });
+    // 当前城市&是否签到
+    if (!citySelector.getCity()) {
+      this.userStatus("", true);
+    }
+  },
+  // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
+  onShow() {
+    // 消息通知红点
+    this.notifyNumber("");
     this.autoplay = true;
     if (citySelector.getCity()) {
       const selectedCity = citySelector.getCity(); // 选择城市后返回城市信息对象，若未选择返回null
@@ -1386,6 +1455,7 @@ export default {
   },
   onHide() {
     this.autoplay = false;
+    this.showLoading = false;
   },
   onShareAppMessage() {
     this.shareInvite({

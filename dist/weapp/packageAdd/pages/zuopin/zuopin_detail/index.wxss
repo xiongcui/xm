@@ -82,12 +82,6 @@ page {
   height: 53rpx;
 }
 
-.zuopin_detail .zuopin_right .share {
-  width: 50rpx;
-  height: 50rpx;
-  margin-left: 16rpx;
-}
-
 .zuopin_detail .zuopin_sex {
   width: 30rpx;
   height: 30rpx;
@@ -285,21 +279,26 @@ page {
 }
 
 .zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_item {
-  margin-right: 20rpx;
+  margin-right: 40rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 30rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 26rpx;
   color: #333333;
 }
 
 .zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_item image {
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 6rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_rt {
@@ -312,9 +311,21 @@ page {
   padding: 14rpx 40rpx;
 }
 
+.zuopin_detail .share {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.zuopin_detail .share image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .zuopin_detail .share-btn {
-  background-color: transparent;
-  text-align: left;
-  line-height: normal;
   padding: 0;
+  margin: 0;
 }

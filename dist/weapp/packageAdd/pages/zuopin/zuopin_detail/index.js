@@ -231,6 +231,17 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -719,18 +730,6 @@ var render = function () {
               on: { tap: _vm.unfollow },
             })
           : _vm._e(),
-        _c(
-          "button",
-          { staticClass: "share-btn", attrs: { "open-type": "share" } },
-          [
-            _c("image", {
-              staticClass: "share",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png",
-              },
-            }),
-          ]
-        ),
       ]),
     ]),
     _c("view", { staticClass: "zuopin_info" }, [
@@ -845,6 +844,21 @@ var render = function () {
       },
       [
         _c("view", { staticClass: "zuopin_fixed_left" }, [
+          _c("view", { staticClass: "zuopin_fixed_item" }, [
+            _c(
+              "button",
+              { staticClass: "share-btn", attrs: { "open-type": "share" } },
+              [
+                _c("image", {
+                  staticClass: "share",
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png",
+                  },
+                }),
+              ]
+            ),
+            _vm._v(" 分享 "),
+          ]),
           _c(
             "view",
             { staticClass: "zuopin_fixed_item", on: { tap: _vm.subGiveUp } },
@@ -860,7 +874,15 @@ var render = function () {
                       src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
                     },
                   }),
-              _vm._v(" " + _vm._s(_vm.zuopinInfo.statistic.vote_cnt) + " "),
+              _vm._v(
+                " " +
+                  _vm._s(
+                    _vm.zuopinInfo.statistic.vote_cnt
+                      ? _vm.zuopinInfo.statistic.vote_cnt
+                      : "点赞"
+                  ) +
+                  " "
+              ),
             ]
           ),
           _c(
@@ -881,7 +903,15 @@ var render = function () {
                       src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png",
                     },
                   }),
-              _vm._v(" " + _vm._s(_vm.zuopinInfo.statistic.collect_cnt) + " "),
+              _vm._v(
+                " " +
+                  _vm._s(
+                    _vm.zuopinInfo.statistic.collect_cnt
+                      ? _vm.zuopinInfo.statistic.collect_cnt
+                      : "收藏"
+                  ) +
+                  " "
+              ),
             ]
           ),
         ]),

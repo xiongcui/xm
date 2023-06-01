@@ -50,7 +50,7 @@
             </view>
           </view>
           <view class="list_top_rt">
-            <view class="list_date">{{ item.basic.date_humanize }}</view>
+            <view class="list_date">{{ item.author.login_time_humanize }}</view>
           </view>
         </view>
         <view class="list_content">

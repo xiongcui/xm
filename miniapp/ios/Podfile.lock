@@ -1,0 +1,18 @@
+PODS:
+  - WeAppSDK (0.7.5):
+    - WeAppSDK/Core (= 0.7.5)
+  - WeAppSDK/Core (0.7.5)
+
+DEPENDENCIES:
+  - WeAppSDK (from `/Users/yuchaozhong/.miniapp/WeAppSDK-0.7.5`)
+
+EXTERNAL SOURCES:
+  WeAppSDK:
+    :path: "/Users/yuchaozhong/.miniapp/WeAppSDK-0.7.5"
+
+SPEC CHECKSUMS:
+  WeAppSDK: bbe7b2bba8832f4ca74ff5d1e66175df04b691e1
+
+PODFILE CHECKSUM: 10ad4bd43b3cf5d22e475a207ce6c78d5d092a16
+
+COCOAPODS: 1.11.3

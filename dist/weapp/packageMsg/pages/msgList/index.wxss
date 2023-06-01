@@ -8,9 +8,21 @@ page {
 
 .msg-list .msg-box {
   background: #ffffff;
+  background-size: 80rpx;
   margin: 16rpx;
   padding: 30rpx 30rpx 0 30rpx;
   border-radius: 4rpx;
+  position: relative;
+}
+
+.msg-list .notice_bg {
+  width: 50rpx;
+  height: 50rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/notice.png") no-repeat right top;
+  background-size: 50rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .msg-list .msg-title {

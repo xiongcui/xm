@@ -234,7 +234,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
         url: "https://pai.qubeitech.com/v1/file/upload",
         filePath: dataInfo.tempFilePath,
         formData: {
-          scr_type: "photo"
+          scr_type: "idcard"
         },
         name: "file",
         header: header,
@@ -263,7 +263,6 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
     next: function next() {
       if (this.realname_rx_off && this.realname_gh_off) {
         if (this.realname_rx && this.realname_gh) {
-          this.pageShow = "info";
           this.idcardInfo("");
         } else {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请先上传身份证");
@@ -347,25 +346,26 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
 
               case 3:
                 res = _context2.sent;
-
-                if (res.data.data.id_card_front) {
-                  _this5.realname = res.data.data.id_name;
-                  _this5.card = res.data.data.id_no;
-                }
-
-                _context2.next = 9;
+                _this5.pageShow = "info";
+                _this5.realname = res.data.data.id_name;
+                _this5.card = res.data.data.id_no;
+                _context2.next = 12;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 9:
+                _context2.prev = 9;
                 _context2.t0 = _context2["catch"](0);
 
-              case 9:
+                if (_context2.t0.data.error_code == 21002) {
+                  _this5.pageShow = "uploadimg";
+                }
+
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 9]]);
       }))();
     },
     ocrIdcard: function ocrIdcard(params) {
@@ -398,6 +398,9 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
         }, _callee3, null, [[0, 8]]);
       }))();
     }
+  },
+  created: function created() {
+    this.idcardInfo("");
   }
 });
 

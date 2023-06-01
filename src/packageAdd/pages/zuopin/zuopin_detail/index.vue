@@ -50,12 +50,6 @@
           @tap="unfollow"
           v-if="is_follow == 1"
         ></image>
-        <button open-type="share" class="share-btn">
-          <image
-            class="share"
-            src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
-          ></image>
-        </button>
       </view>
     </view>
     <view class="zuopin_info">
@@ -145,6 +139,15 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <view class="zuopin_fixed_left">
+        <view class="zuopin_fixed_item">
+          <button open-type="share" class="share-btn">
+            <image
+              class="share"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
+            ></image>
+          </button>
+          分享
+        </view>
         <view class="zuopin_fixed_item" @tap="subGiveUp">
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png"
@@ -154,7 +157,11 @@
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png"
             v-else
           ></image>
-          {{ zuopinInfo.statistic.vote_cnt }}
+          {{
+            zuopinInfo.statistic.vote_cnt
+              ? zuopinInfo.statistic.vote_cnt
+              : "点赞"
+          }}
         </view>
         <view class="zuopin_fixed_item" @tap="subRecordCollect">
           <image
@@ -165,7 +172,11 @@
             v-else
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
-          {{ zuopinInfo.statistic.collect_cnt }}
+          {{
+            zuopinInfo.statistic.collect_cnt
+              ? zuopinInfo.statistic.collect_cnt
+              : "收藏"
+          }}
         </view>
       </view>
       <view class="zuopin_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>

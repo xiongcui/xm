@@ -128,6 +128,7 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 //
+//
 
 
 
@@ -141,7 +142,12 @@ component.options.__file = "src/pages/msg/index.vue"
       vote_cnt: 0,
       visitor_cnt: 0,
       is_follow_gzh: 0,
-      list: []
+      list: [],
+      mailbox: {
+        tips: "",
+        create_time: ""
+      },
+      mailbox_cnt: 0
     };
   },
   methods: {
@@ -206,6 +212,8 @@ component.options.__file = "src/pages/msg/index.vue"
                 _this.vote_cnt = res.data.data.vote_cnt;
                 _this.visitor_cnt = res.data.data.visitor_cnt;
                 _this.is_follow_gzh = res.data.data.is_follow_gzh;
+                _this.mailbox = res.data.data.mailbox;
+                _this.mailbox_cnt = res.data.data.mailbox_cnt;
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
@@ -217,19 +225,19 @@ component.options.__file = "src/pages/msg/index.vue"
                   });
                 }
 
-                _context.next = 15;
+                _context.next = 17;
                 break;
 
-              case 13:
-                _context.prev = 13;
+              case 15:
+                _context.prev = 15;
                 _context.t0 = _context["catch"](0);
 
-              case 15:
+              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 13]]);
+        }, _callee, null, [[0, 15]]);
       }))();
     },
     msgList: function msgList(params) {
@@ -408,13 +416,14 @@ var render = function () {
             _c("view", { staticClass: "notification-title" }, [
               _c("text", [_vm._v("消息通知")]),
               _c("text", { staticClass: "notification-time" }, [
-                _vm._v("昨天"),
+                _vm._v(_vm._s(_vm.mailbox.create_time)),
               ]),
             ]),
             _c("view", { staticClass: "notification-txt" }, [
-              _vm._v("您有一条审核通知"),
+              _vm._v(_vm._s(_vm.mailbox.tips)),
             ]),
           ]),
+          _vm.mailbox_cnt >= 1 ? _c("view", { staticClass: "dian" }) : _vm._e(),
         ]
       ),
       _vm._l(_vm.list, function (item, index) {

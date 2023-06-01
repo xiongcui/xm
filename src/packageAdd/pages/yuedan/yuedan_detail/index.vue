@@ -31,13 +31,6 @@
             >{{ item }}</view
           >
           <view class="title_desc">{{ yuepaiInfo.topic.headline.title }}</view>
-          <button open-type="share" class="share-btn">
-            <view class="share">
-              <image
-                src="https://yuepai-oss.qubeitech.com/static/images/share.png"
-              ></image>
-            </view>
-          </button>
         </view>
         <view class="split_line"></view>
         <view class="list_top">
@@ -88,7 +81,9 @@
             <view class="followed_btn" @tap="unfollow" v-if="is_follow == 1"
               >取消关注</view
             >
-            <view class="list_date">1小时前来过</view>
+            <view class="list_date">{{
+              yuepaiInfo.author.login_time_humanize
+            }}</view>
           </view>
         </view>
         <view class="split_line"></view>
@@ -218,10 +213,14 @@
     >
       <view class="yuepai_fixed_left">
         <view class="yuepai_fixed_item">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-          ></image>
-          {{ yuepaiInfo.statistic.invite_cnt }}
+          <button open-type="share" class="share-btn">
+            <view class="share">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
+              ></image>
+            </view>
+          </button>
+          分享
         </view>
         <view class="yuepai_fixed_item" @tap="subGiveUp">
           <image
@@ -232,7 +231,11 @@
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png"
             v-else
           ></image>
-          {{ yuepaiInfo.statistic.vote_cnt }}
+          {{
+            yuepaiInfo.statistic.vote_cnt
+              ? yuepaiInfo.statistic.vote_cnt
+              : "点赞"
+          }}
         </view>
         <view class="yuepai_fixed_item" @tap="subRecordCollect">
           <image
@@ -243,7 +246,11 @@
             v-else
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
-          {{ yuepaiInfo.statistic.collect_cnt }}
+          {{
+            yuepaiInfo.statistic.collect_cnt
+              ? yuepaiInfo.statistic.collect_cnt
+              : "收藏"
+          }}
         </view>
       </view>
       <view class="yuepai_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>

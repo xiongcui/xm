@@ -183,16 +183,17 @@ component.options.__file = "src/packageAdd/pages/user/identity/index.vue"
           if (item == items.role) {
             arr.push({
               cid: items.cid,
-              role: items.role
+              role: items.role,
+              code: items.code
             });
           }
         });
       });
-      var index = this.identity.findIndex(function (ele) {
+      var index = arr.find(function (ele) {
         return ele.code == "ACTOR";
       });
 
-      if (index != -1) {
+      if (index) {
         wx.showModal({
           title: "温馨提示",
           content: "当前选择包含【艺人身份】，您的主页将会以【艺人主页】形式展示",

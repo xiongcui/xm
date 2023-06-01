@@ -86,21 +86,7 @@ page {
       font-size: 30px;
       font-weight: bold;
       color: #333333;
-      padding-right: 66px;
-    }
-    .share {
-      background: #fbedeb;
-      border-radius: 16px;
-      padding: 16px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 16px;
-      image {
-        width: 40px;
-        height: 40px;
-      }
+      width: 95%;
     }
   }
   .detail_tag {
@@ -113,15 +99,11 @@ page {
       margin-right: 10px;
     }
     .detail_tag_item {
-      // width: calc(50% - 32px);
-      // margin: 0px 16px;
       width: 100%;
     }
     .detail_tag_box {
       font-size: 26px;
       color: rgba(0, 0, 0, 0.5);
-      // color: #f2290d;
-      // background: #fbedeb;
       display: flex;
       align-items: center;
       padding: 6px 16px;
@@ -143,6 +125,9 @@ page {
     display: flex;
     justify-content: space-between;
     padding: 16px;
+    background: #ffffff;
+    margin: 0 16px;
+    border-radius: 16px;
   }
   .list_top_left {
     display: flex;
@@ -151,7 +136,22 @@ page {
   .list_top_rt {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    .communicate-bg {
+      background: #f3f7fb;
+      padding: 10px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+    .communicate-img {
+      width: 50px;
+      height: 50px;
+    }
+    .communicate-txt {
+      font-size: 26px;
+      color: #0abb08;
+    }
   }
   .list_info {
     display: flex;
@@ -331,15 +331,16 @@ page {
       align-items: center;
     }
     .tonggao_fixed_item {
-      margin-right: 20px;
+      margin-right: 40px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      font-size: 30px;
+      justify-content: center;
+      font-size: 26px;
       color: #333333;
       image {
-        width: 50px;
-        height: 50px;
-        margin-right: 6px;
+        width: 40px;
+        height: 40px;
       }
     }
     .tonggao_fixed_rt {
@@ -564,14 +565,16 @@ page {
     font-size: 28px;
     color: rgba(0, 0, 0, 0.5);
   }
+  .share {
+    display: flex;
+    align-items: center;
+    image {
+      width: 40px;
+      height: 40px;
+    }
+  }
   .share-btn {
-    background-color: transparent;
-    text-align: left;
-    line-height: normal;
     padding: 0;
     margin: 0;
-    position: absolute;
-    right: 16px;
-    top: 16px;
   }
 }

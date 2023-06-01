@@ -410,6 +410,13 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -480,6 +487,33 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     },
     godetail: function godetail(oid, author_id) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+    },
+    toCommunicate: function toCommunicate() {
+      var _this = this;
+
+      wx.showModal({
+        title: "温馨提示",
+        content: "报名后对方将联系您或与对方直接沟通",
+        cancelText: "我知道了",
+        confirmText: "立即沟通",
+        success: function success(res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+
+            _this.communicate();
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
+    },
+    communicate: function communicate() {
+      this.imVerify({
+        to_account: this.tonggaoInfo.author.uuid
+      });
+    },
+    sendMsg: function sendMsg() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.tonggaoInfo.author.uuid + "&nickname=" + this.tonggaoInfo.author.nickname + "&avatar=" + this.tonggaoInfo.author.avatar);
     },
     formatSex: function formatSex(sex) {
       if (sex == 1) {
@@ -561,8 +595,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       this.loading = false;
       this.noticeQuery("more");
     },
-    noticeInfo: function noticeInfo(params) {
-      var _this = this;
+    imVerify: function imVerify(params) {
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -572,35 +606,35 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeInfo */ "X"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* imVerify */ "C"])(params);
 
               case 3:
                 res = _context.sent;
-                _this.backdrop = res.data.data.basic.backdrop;
-                _this.tonggaoInfo = res.data.data;
-                _this.is_collect = res.data.data.action.is_collect;
-                _this.is_follow = res.data.data.action.is_follow;
-                _this.noticeRecommendList = res.data.data.myself_list.items;
 
-                _this.noticeQuery("init");
+                _this2.sendMsg();
 
-                _context.next = 14;
+                _context.next = 11;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])(_context.t0.data.msg);
 
-              case 14:
+                if (_context.t0.data.error_code == 21050 || _context.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                }
+
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 12]]);
+        }, _callee, null, [[0, 7]]);
       }))();
     },
-    recordCollect: function recordCollect(params) {
-      var _this2 = this;
+    noticeInfo: function noticeInfo(params) {
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
@@ -610,28 +644,36 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* recordCollect */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeInfo */ "X"])(params);
 
               case 3:
                 res = _context2.sent;
-                _this2.is_collect = res.data.data.is_collect;
-                _this2.tonggaoInfo.statistic.collect_cnt = res.data.data.collect_cnt;
-                _context2.next = 10;
+                _this3.backdrop = res.data.data.basic.backdrop;
+                _this3.tonggaoInfo = res.data.data;
+                _this3.is_collect = res.data.data.action.is_collect;
+                _this3.is_follow = res.data.data.action.is_follow;
+                _this3.noticeRecommendList = res.data.data.myself_list.items;
+
+                _this3.noticeQuery("init");
+
+                _context2.next = 14;
                 break;
 
-              case 8:
-                _context2.prev = 8;
+              case 12:
+                _context2.prev = 12;
                 _context2.t0 = _context2["catch"](0);
 
-              case 10:
+              case 14:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 8]]);
+        }, _callee2, null, [[0, 12]]);
       }))();
     },
-    shareInvite: function shareInvite(params) {
+    recordCollect: function recordCollect(params) {
+      var _this4 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
@@ -640,28 +682,28 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* recordCollect */ "ob"])(params);
 
               case 3:
                 res = _context3.sent;
-                _context3.next = 8;
+                _this4.is_collect = res.data.data.is_collect;
+                _this4.tonggaoInfo.statistic.collect_cnt = res.data.data.collect_cnt;
+                _context3.next = 10;
                 break;
 
-              case 6:
-                _context3.prev = 6;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
 
-              case 8:
+              case 10:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 6]]);
+        }, _callee3, null, [[0, 8]]);
       }))();
     },
-    shareInviteInfo: function shareInviteInfo(params) {
-      var _this3 = this;
-
+    shareInvite: function shareInvite(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
@@ -670,30 +712,27 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInvite */ "sb"])(params);
 
               case 3:
                 res = _context4.sent;
-                _this3.shareTitle = res.data.data.title;
-                _this3.shareImg = res.data.data.imageUrl;
-                _this3.sharePath = res.data.data.path;
-                _context4.next = 11;
+                _context4.next = 8;
                 break;
 
-              case 9:
-                _context4.prev = 9;
+              case 6:
+                _context4.prev = 6;
                 _context4.t0 = _context4["catch"](0);
 
-              case 11:
+              case 8:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 9]]);
+        }, _callee4, null, [[0, 6]]);
       }))();
     },
-    userFollow: function userFollow(params) {
-      var _this4 = this;
+    shareInviteInfo: function shareInviteInfo(params) {
+      var _this5 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
         var res;
@@ -703,28 +742,30 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInviteInfo */ "tb"])(params);
 
               case 3:
                 res = _context5.sent;
-                _this4.is_follow = 1;
-                _context5.next = 9;
+                _this5.shareTitle = res.data.data.title;
+                _this5.shareImg = res.data.data.imageUrl;
+                _this5.sharePath = res.data.data.path;
+                _context5.next = 11;
                 break;
 
-              case 7:
-                _context5.prev = 7;
+              case 9:
+                _context5.prev = 9;
                 _context5.t0 = _context5["catch"](0);
 
-              case 9:
+              case 11:
               case "end":
                 return _context5.stop();
             }
           }
-        }, _callee5, null, [[0, 7]]);
+        }, _callee5, null, [[0, 9]]);
       }))();
     },
-    userUnfollow: function userUnfollow(params) {
-      var _this5 = this;
+    userFollow: function userFollow(params) {
+      var _this6 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
         var res;
@@ -734,11 +775,11 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Lb"])(params);
 
               case 3:
                 res = _context6.sent;
-                _this5.is_follow = 0;
+                _this6.is_follow = 1;
                 _context6.next = 9;
                 break;
 
@@ -754,123 +795,154 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
         }, _callee6, null, [[0, 7]]);
       }))();
     },
-    noticeAdviseList: function noticeAdviseList(params, type) {
-      var _this6 = this;
+    userUnfollow: function userUnfollow(params) {
+      var _this7 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
-        var res, data;
+        var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeAdviseList */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "Wb"])(params);
 
               case 3:
                 res = _context7.sent;
-                //隐藏loading 提示框
-                _this6.showLoading = false;
-                wx.hideLoading();
-                _this6.noMore = false; //隐藏导航条加载动画
-
-                wx.hideNavigationBarLoading(); //停止下拉刷新
-
-                wx.stopPullDownRefresh();
-
-                if (!(type == "init")) {
-                  _context7.next = 14;
-                  break;
-                }
-
-                _this6.noticeList = res.data.data.items;
-                _this6.loading = true;
-                _context7.next = 22;
+                _this7.is_follow = 0;
+                _context7.next = 9;
                 break;
 
-              case 14:
-                if (!(type == "more")) {
-                  _context7.next = 22;
-                  break;
-                }
-
-                if (!(!res.data.data || !res.data.data.items.length)) {
-                  _context7.next = 19;
-                  break;
-                }
-
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("没有更多数据了～");
-                _this6.loading = true;
-                return _context7.abrupt("return", false);
-
-              case 19:
-                data = res.data.data.items;
-                _this6.noticeList = _this6.noticeList.concat(data);
-                _this6.loading = true;
-
-              case 22:
-                _context7.next = 30;
-                break;
-
-              case 24:
-                _context7.prev = 24;
+              case 7:
+                _context7.prev = 7;
                 _context7.t0 = _context7["catch"](0);
-                _this6.showLoading = false;
-                wx.hideNavigationBarLoading();
 
-                if (_context7.t0.data.error_code == 11020) {
-                  _this6.visible = true;
-                  _this6.isclick = false;
-                  console.log(_context7.t0, "error");
-                }
-
-                if (_context7.t0.data.error_code == 10100 && _this6.pageNum > 1) {
-                  _this6.noMore = true;
-                }
-
-              case 30:
+              case 9:
               case "end":
                 return _context7.stop();
             }
           }
-        }, _callee7, null, [[0, 24]]);
+        }, _callee7, null, [[0, 7]]);
       }))();
     },
-    applyVerify: function applyVerify(params) {
-      var _this7 = this;
+    noticeAdviseList: function noticeAdviseList(params, type) {
+      var _this8 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
-        var res;
+        var res, data;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* applyVerify */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeAdviseList */ "V"])(params);
 
               case 3:
                 res = _context8.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this7.oid + "&source=note");
-                _context8.next = 10;
-                break;
+                //隐藏loading 提示框
+                _this8.showLoading = false;
+                wx.hideLoading();
+                _this8.noMore = false; //隐藏导航条加载动画
 
-              case 7:
-                _context8.prev = 7;
-                _context8.t0 = _context8["catch"](0);
+                wx.hideNavigationBarLoading(); //停止下拉刷新
 
-                if (_context8.t0.data.error_code == 21030 || _context8.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context8.t0.data.msg, "&code=").concat(_context8.t0.data.error_code));
-                } else {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])(_context8.t0.data.msg);
+                wx.stopPullDownRefresh();
+
+                if (!(type == "init")) {
+                  _context8.next = 14;
+                  break;
                 }
 
-              case 10:
+                _this8.noticeList = res.data.data.items;
+                _this8.loading = true;
+                _context8.next = 22;
+                break;
+
+              case 14:
+                if (!(type == "more")) {
+                  _context8.next = 22;
+                  break;
+                }
+
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context8.next = 19;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("没有更多数据了～");
+                _this8.loading = true;
+                return _context8.abrupt("return", false);
+
+              case 19:
+                data = res.data.data.items;
+                _this8.noticeList = _this8.noticeList.concat(data);
+                _this8.loading = true;
+
+              case 22:
+                _context8.next = 30;
+                break;
+
+              case 24:
+                _context8.prev = 24;
+                _context8.t0 = _context8["catch"](0);
+                _this8.showLoading = false;
+                wx.hideNavigationBarLoading();
+
+                if (_context8.t0.data.error_code == 11020) {
+                  _this8.visible = true;
+                  _this8.isclick = false;
+                  console.log(_context8.t0, "error");
+                }
+
+                if (_context8.t0.data.error_code == 10100 && _this8.pageNum > 1) {
+                  _this8.noMore = true;
+                }
+
+              case 30:
               case "end":
                 return _context8.stop();
             }
           }
-        }, _callee8, null, [[0, 7]]);
+        }, _callee8, null, [[0, 24]]);
+      }))();
+    },
+    applyVerify: function applyVerify(params) {
+      var _this9 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee9() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.prev = 0;
+                _context9.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* applyVerify */ "h"])(params);
+
+              case 3:
+                res = _context9.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this9.oid + "&source=note");
+                _context9.next = 10;
+                break;
+
+              case 7:
+                _context9.prev = 7;
+                _context9.t0 = _context9["catch"](0);
+
+                if (_context9.t0.data.error_code == 21030 || _context9.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context9.t0.data.msg, "&code=").concat(_context9.t0.data.error_code));
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])(_context9.t0.data.msg);
+                }
+
+              case 10:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, null, [[0, 7]]);
       }))();
     }
   },
@@ -1009,19 +1081,6 @@ var render = function () {
               _c("view", { staticClass: "title_desc" }, [
                 _vm._v(_vm._s(_vm.tonggaoInfo.topic.headline.title)),
               ]),
-              _c(
-                "button",
-                { staticClass: "share-btn", attrs: { "open-type": "share" } },
-                [
-                  _c("view", { staticClass: "share" }, [
-                    _c("image", {
-                      attrs: {
-                        src: "https://yuepai-oss.qubeitech.com/static/images/share.png",
-                      },
-                    }),
-                  ]),
-                ]
-              ),
             ],
             1
           ),
@@ -1078,90 +1137,6 @@ var render = function () {
               )
             : _vm._e(),
           _c("view", { staticClass: "split_line" }),
-          _c("view", { staticClass: "list_top" }, [
-            _c("view", { staticClass: "list_top_left" }, [
-              _c("image", {
-                staticClass: "avatar",
-                attrs: {
-                  src: _vm.tonggaoInfo.author.avatar
-                    ? _vm.tonggaoInfo.author.avatar
-                    : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-                },
-                on: { tap: _vm.goZhuye },
-              }),
-              _c("view", { staticClass: "list_info" }, [
-                _c(
-                  "view",
-                  { staticClass: "list_name" },
-                  [
-                    _vm._v(" " + _vm._s(_vm.tonggaoInfo.author.nickname) + " "),
-                    _vm.tonggaoInfo.author.sex !== null
-                      ? _c("block", [
-                          _vm.tonggaoInfo.author.sex == 1
-                            ? _c("image", {
-                                staticClass: "list_sex",
-                                attrs: {
-                                  src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                },
-                              })
-                            : _vm._e(),
-                          _vm.tonggaoInfo.author.sex == 0
-                            ? _c("image", {
-                                staticClass: "list_sex",
-                                attrs: {
-                                  src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                },
-                              })
-                            : _vm._e(),
-                        ])
-                      : _vm._e(),
-                  ],
-                  1
-                ),
-                _c("view", { staticClass: "list_p" }, [
-                  _c("text", [
-                    _vm._v(
-                      _vm._s(
-                        _vm.tonggaoInfo.author.career_list &&
-                          _vm.tonggaoInfo.author.career_list[0]
-                      )
-                    ),
-                  ]),
-                  _vm.tonggaoInfo.author.is_certify
-                    ? _c("view", { staticClass: "icon_real" }, [
-                        _vm._v("已实名"),
-                      ])
-                    : _vm._e(),
-                  _vm.tonggaoInfo.author.is_security
-                    ? _c("view", { staticClass: "icon_pledge" }, [
-                        _vm._v("已担保"),
-                      ])
-                    : _vm._e(),
-                ]),
-              ]),
-            ]),
-            _c("view", { staticClass: "list_top_rt" }, [
-              _vm.is_follow == 0
-                ? _c(
-                    "view",
-                    {
-                      staticClass: "followed_btn_red",
-                      on: { tap: _vm.follow },
-                    },
-                    [_vm._v("关注")]
-                  )
-                : _vm._e(),
-              _vm.is_follow == 1
-                ? _c(
-                    "view",
-                    { staticClass: "followed_btn", on: { tap: _vm.unfollow } },
-                    [_vm._v("取消关注")]
-                  )
-                : _vm._e(),
-              _c("view", { staticClass: "list_date" }, [_vm._v("1小时前来过")]),
-            ]),
-          ]),
-          _c("view", { staticClass: "split_line" }),
           _c("view", { staticClass: "list_bottom" }, [
             _c("view", { staticClass: "list_time" }, [
               _c("image", {
@@ -1182,6 +1157,82 @@ var render = function () {
               ),
             ]),
           ]),
+        ]),
+        _c("view", { staticClass: "list_top" }, [
+          _c("view", { staticClass: "list_top_left" }, [
+            _c("image", {
+              staticClass: "avatar",
+              attrs: {
+                src: _vm.tonggaoInfo.author.avatar
+                  ? _vm.tonggaoInfo.author.avatar
+                  : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+              },
+              on: { tap: _vm.goZhuye },
+            }),
+            _c("view", { staticClass: "list_info" }, [
+              _c(
+                "view",
+                { staticClass: "list_name" },
+                [
+                  _vm._v(" " + _vm._s(_vm.tonggaoInfo.author.nickname) + " "),
+                  _vm.tonggaoInfo.author.sex !== null
+                    ? _c("block", [
+                        _vm.tonggaoInfo.author.sex == 1
+                          ? _c("image", {
+                              staticClass: "list_sex",
+                              attrs: {
+                                src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                              },
+                            })
+                          : _vm._e(),
+                        _vm.tonggaoInfo.author.sex == 0
+                          ? _c("image", {
+                              staticClass: "list_sex",
+                              attrs: {
+                                src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                              },
+                            })
+                          : _vm._e(),
+                      ])
+                    : _vm._e(),
+                ],
+                1
+              ),
+              _c("view", { staticClass: "list_p" }, [
+                _c("text", [
+                  _vm._v(
+                    _vm._s(
+                      _vm.tonggaoInfo.author.career_list &&
+                        _vm.tonggaoInfo.author.career_list[0]
+                    )
+                  ),
+                ]),
+                _vm.tonggaoInfo.author.is_certify
+                  ? _c("view", { staticClass: "icon_real" }, [_vm._v("已实名")])
+                  : _vm._e(),
+                _vm.tonggaoInfo.author.is_security
+                  ? _c("view", { staticClass: "icon_pledge" }, [
+                      _vm._v("已担保"),
+                    ])
+                  : _vm._e(),
+              ]),
+            ]),
+          ]),
+          _c(
+            "view",
+            { staticClass: "list_top_rt", on: { tap: _vm.toCommunicate } },
+            [
+              _c("view", { staticClass: "communicate-bg" }, [
+                _c("image", {
+                  staticClass: "communicate-img",
+                  attrs: { src: __webpack_require__(/*! ../../../assets/images/wchat.jpg */ "./src/assets/images/wchat.jpg") },
+                }),
+              ]),
+              _c("text", { staticClass: "communicate-txt" }, [
+                _vm._v("去沟通"),
+              ]),
+            ]
+          ),
         ]),
         _vm.tonggaoInfo.signup.length
           ? _c("view", { staticClass: "enroll_box" }, [
@@ -1502,6 +1553,22 @@ var render = function () {
         },
         [
           _c("view", { staticClass: "tonggao_fixed_left" }, [
+            _c("view", { staticClass: "tonggao_fixed_item" }, [
+              _c(
+                "button",
+                { staticClass: "share-btn", attrs: { "open-type": "share" } },
+                [
+                  _c("view", { staticClass: "share" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png",
+                      },
+                    }),
+                  ]),
+                ]
+              ),
+              _vm._v(" 分享 "),
+            ]),
             _c(
               "view",
               {
@@ -1521,7 +1588,13 @@ var render = function () {
                       },
                     }),
                 _vm._v(
-                  " " + _vm._s(_vm.tonggaoInfo.statistic.collect_cnt) + " "
+                  " " +
+                    _vm._s(
+                      _vm.tonggaoInfo.statistic.collect_cnt
+                        ? _vm.tonggaoInfo.statistic.collect_cnt
+                        : "收藏"
+                    ) +
+                    " "
                 ),
               ]
             ),
@@ -1541,6 +1614,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/wchat.jpg":
+/*!*************************************!*\
+  !*** ./src/assets/images/wchat.jpg ***!
+  \*************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/wchat.jpg";
 
 /***/ }),
 

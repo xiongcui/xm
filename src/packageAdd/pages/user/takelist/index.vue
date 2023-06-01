@@ -44,6 +44,7 @@
                     : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
                 "
                 class="avatar"
+                @tap="goZhuye(item.basic.uuid)"
               ></image>
               <block v-if="item.basic.sex !== null">
                 <image
@@ -120,7 +121,7 @@
           </scroll-view>
         </view>
         <view class="list_bottom">
-          <view class="list_time"> 1分钟前来过 </view>
+          <view class="list_time"> {{ item.basic.login_time_humanize }} </view>
           <view class="contact" @tap="communicate(item)">立即沟通</view>
         </view>
       </view>
@@ -255,6 +256,9 @@ export default {
     loading,
   },
   methods: {
+    goZhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     previewImage(src, urls) {
       // 微信预览图片的方法
       wx.previewImage({

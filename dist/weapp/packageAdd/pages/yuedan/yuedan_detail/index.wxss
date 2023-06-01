@@ -116,26 +116,6 @@ page {
   color: #333333;
   padding-right: 66rpx;
 }
-.yuedan_detail .detail_info .share {
-  background: #fbedeb;
-  border-radius: 16rpx;
-  padding: 16rpx;
-  height: 40rpx;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: 16rpx;
-}
-.yuedan_detail .detail_info .share image {
-  width: 40rpx;
-  height: 40rpx;
-}
 .yuedan_detail .detail_tag {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -419,20 +399,25 @@ page {
           align-items: center;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_item {
-  margin-right: 20rpx;
+  margin-right: 40rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 30rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 26rpx;
   color: #333333;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_item image {
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 6rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt {
   width: 280rpx;
@@ -443,15 +428,21 @@ page {
   border-radius: 40rpx;
   padding: 14rpx 40rpx;
 }
+.yuedan_detail .share {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.yuedan_detail .share image {
+  width: 40rpx;
+  height: 40rpx;
+}
 .yuedan_detail .share-btn {
-  background-color: transparent;
-  text-align: left;
-  line-height: normal;
   padding: 0;
   margin: 0;
-  position: absolute;
-  right: 16rpx;
-  top: 16rpx;
 }
 .yuedan_detail .recommend {
   padding: 0 16rpx 0 16rpx;

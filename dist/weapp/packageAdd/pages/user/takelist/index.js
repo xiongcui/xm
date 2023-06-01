@@ -263,6 +263,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
 //
 //
 //
+//
 
 
 
@@ -302,6 +303,9 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
     loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]
   },
   methods: {
+    goZhuye: function goZhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     previewImage: function previewImage(src, urls) {
       // 微信预览图片的方法
       wx.previewImage({
@@ -841,6 +845,11 @@ var render = function () {
                               ? item.basic.avatar
                               : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
                           },
+                          on: {
+                            tap: function ($event) {
+                              return _vm.goZhuye(item.basic.uuid)
+                            },
+                          },
                         }),
                         item.basic.sex !== null
                           ? _c("block", [
@@ -992,7 +1001,7 @@ var render = function () {
                   : _vm._e(),
                 _c("view", { staticClass: "list_bottom" }, [
                   _c("view", { staticClass: "list_time" }, [
-                    _vm._v(" 1分钟前来过 "),
+                    _vm._v(" " + _vm._s(item.basic.login_time_humanize) + " "),
                   ]),
                   _c(
                     "view",

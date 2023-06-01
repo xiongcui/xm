@@ -3,7 +3,7 @@ page {
 }
 
 .home-list-ct {
-  margin-top: 198rpx;
+  margin-top: 182rpx;
 }
 
 .nav_fixed {

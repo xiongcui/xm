@@ -111,18 +111,22 @@ export default {
         return false;
       }
       let arr = [];
+
       this.identity.map((item) => {
         this.identity_data.map((items) => {
           if (item == items.role) {
             arr.push({
               cid: items.cid,
               role: items.role,
+              code: items.code,
             });
           }
         });
       });
-      const index = this.identity.findIndex((ele) => ele.code == "ACTOR");
-      if (index != -1) {
+      const index = arr.find((ele) => {
+        return ele.code == "ACTOR";
+      });
+      if (index) {
         wx.showModal({
           title: "温馨提示",
           content:

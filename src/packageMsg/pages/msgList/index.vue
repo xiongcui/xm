@@ -13,6 +13,7 @@
         <text>{{ item.date_humanize }}</text>
         <text @tap="hyper_link(item.hyper_link)">{{ item.hyper_tips }}</text>
       </view>
+      <view class="notice_bg" v-if="item.is_read === 0"></view>
     </view>
   </view>
 </template>

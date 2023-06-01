@@ -823,6 +823,26 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -1731,6 +1751,9 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                 ]),
+                                item.is_visited_read === 0
+                                  ? _c("view", { staticClass: "notice_bg" })
+                                  : _vm._e(),
                               ]
                             )
                           }),
@@ -2036,6 +2059,9 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                 ]),
+                                item.is_visited_read === 0
+                                  ? _c("view", { staticClass: "notice_bg" })
+                                  : _vm._e(),
                               ]
                             )
                           }),
@@ -2341,6 +2367,9 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                 ]),
+                                item.is_visited_read === 0
+                                  ? _c("view", { staticClass: "notice_bg" })
+                                  : _vm._e(),
                               ]
                             )
                           }),
@@ -2646,6 +2675,9 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                 ]),
+                                item.is_visited_read === 0
+                                  ? _c("view", { staticClass: "notice_bg" })
+                                  : _vm._e(),
                               ]
                             )
                           }),
@@ -2951,6 +2983,9 @@ var render = function () {
                                       : _vm._e(),
                                   ]),
                                 ]),
+                                item.is_visited_read === 0
+                                  ? _c("view", { staticClass: "notice_bg" })
+                                  : _vm._e(),
                               ]
                             )
                           }),

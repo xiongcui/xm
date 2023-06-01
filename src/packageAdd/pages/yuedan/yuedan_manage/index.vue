@@ -1298,7 +1298,7 @@ export default {
               });
               break;
             case 1:
-              _this.deleteYuepai();
+              _this.deleteYuepai(oid);
               break;
           }
         },

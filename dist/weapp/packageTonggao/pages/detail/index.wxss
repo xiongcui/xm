@@ -95,27 +95,7 @@ page {
   font-size: 30rpx;
   font-weight: bold;
   color: #333333;
-  padding-right: 66rpx;
-}
-.tonggao_detail .detail_info .share {
-  background: #fbedeb;
-  border-radius: 16rpx;
-  padding: 16rpx;
-  height: 40rpx;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-left: 16rpx;
-}
-.tonggao_detail .detail_info .share image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 95%;
 }
 .tonggao_detail .detail_tag {
   display: -webkit-flex;
@@ -165,6 +145,9 @@ page {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding: 16rpx;
+  background: #ffffff;
+  margin: 0 16rpx;
+  border-radius: 16rpx;
 }
 .tonggao_detail .list_top_left {
   display: -webkit-flex;
@@ -181,9 +164,28 @@ page {
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-align-items: flex-end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tonggao_detail .list_top_rt .communicate-bg {
+  background: #f3f7fb;
+  padding: 10rpx 16rpx;
+  border-radius: 8rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tonggao_detail .list_top_rt .communicate-img {
+  width: 50rpx;
+  height: 50rpx;
+}
+.tonggao_detail .list_top_rt .communicate-txt {
+  font-size: 26rpx;
+  color: #0abb08;
 }
 .tonggao_detail .list_info {
   display: -webkit-flex;
@@ -406,20 +408,25 @@ page {
           align-items: center;
 }
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_item {
-  margin-right: 20rpx;
+  margin-right: 40rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 30rpx;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 26rpx;
   color: #333333;
 }
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_item image {
-  width: 50rpx;
-  height: 50rpx;
-  margin-right: 6rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_rt {
   width: 280rpx;
@@ -692,13 +699,19 @@ page {
   font-size: 28rpx;
   color: rgba(0, 0, 0, 0.5);
 }
+.tonggao_detail .share {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tonggao_detail .share image {
+  width: 40rpx;
+  height: 40rpx;
+}
 .tonggao_detail .share-btn {
-  background-color: transparent;
-  text-align: left;
-  line-height: normal;
   padding: 0;
   margin: 0;
-  position: absolute;
-  right: 16rpx;
-  top: 16rpx;
 }

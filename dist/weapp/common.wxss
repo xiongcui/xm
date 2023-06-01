@@ -462,10 +462,16 @@
 }
 .componets-list .list_loction {
   background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png") left center no-repeat;
-  background-size: 36rpx;
+  background-size: 30rpx;
   padding-left: 36rpx;
-  font-size: 36rpx;
+  font-size: 28rpx;
   color: #3a3a3a;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .componets-list .list_date {
   color: #686868;
@@ -718,7 +724,7 @@
           flex-wrap: wrap;
 }
 .zuopin_list .zuopin_box {
-  margin: 0 0 16rpx 16rpx;
+  margin: 16rpx 0 16rpx 16rpx;
   width: 350rpx;
   background: #ffffff;
   padding-bottom: 16rpx;

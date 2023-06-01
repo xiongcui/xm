@@ -74,6 +74,7 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
 //
 //
 //
+//
 
 
 
@@ -203,6 +204,9 @@ var render = function () {
             [_vm._v(_vm._s(item.hyper_tips))]
           ),
         ]),
+        item.is_read === 0
+          ? _c("view", { staticClass: "notice_bg" })
+          : _vm._e(),
       ])
     }),
     0

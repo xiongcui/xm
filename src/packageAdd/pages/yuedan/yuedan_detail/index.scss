@@ -103,20 +103,20 @@ page {
       color: #333333;
       padding-right: 66px;
     }
-    .share {
-      background: #fbedeb;
-      border-radius: 16px;
-      padding: 16px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 16px;
-      image {
-        width: 40px;
-        height: 40px;
-      }
-    }
+    // .share {
+    //   background: #fbedeb;
+    //   border-radius: 16px;
+    //   padding: 16px;
+    //   height: 40px;
+    //   display: flex;
+    //   justify-content: center;
+    //   align-items: center;
+    //   margin-left: 16px;
+    //   image {
+    //     width: 40px;
+    //     height: 40px;
+    //   }
+    // }
   }
   .detail_tag {
     display: flex;
@@ -336,15 +336,16 @@ page {
       align-items: center;
     }
     .yuepai_fixed_item {
-      margin-right: 20px;
+      margin-right: 40px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      font-size: 30px;
+      justify-content: center;
+      font-size: 26px;
       color: #333333;
       image {
-        width: 50px;
-        height: 50px;
-        margin-right: 6px;
+        width: 40px;
+        height: 40px;
       }
     }
     .yuepai_fixed_rt {
@@ -357,15 +358,17 @@ page {
       padding: 14px 40px;
     }
   }
+  .share {
+    display: flex;
+    align-items: center;
+    image {
+      width: 40px;
+      height: 40px;
+    }
+  }
   .share-btn {
-    background-color: transparent;
-    text-align: left;
-    line-height: normal;
     padding: 0;
     margin: 0;
-    position: absolute;
-    right: 16px;
-    top: 16px;
   }
   .recommend {
     padding: 0px 16px 0px 16px;

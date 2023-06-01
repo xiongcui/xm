@@ -45,10 +45,11 @@
       <view class="notification-rt">
         <view class="notification-title">
           <text>消息通知</text>
-          <text class="notification-time">昨天</text>
+          <text class="notification-time">{{ mailbox.create_time }}</text>
         </view>
-        <view class="notification-txt">您有一条审核通知</view>
+        <view class="notification-txt">{{ mailbox.tips }}</view>
       </view>
+      <view class="dian" v-if="mailbox_cnt >= 1"></view>
     </view>
 
     <view
@@ -86,6 +87,11 @@ export default {
       visitor_cnt: 0,
       is_follow_gzh: 0,
       list: [],
+      mailbox: {
+        tips: "",
+        create_time: "",
+      },
+      mailbox_cnt: 0,
     };
   },
   methods: {
@@ -147,6 +153,8 @@ export default {
         this.vote_cnt = res.data.data.vote_cnt;
         this.visitor_cnt = res.data.data.visitor_cnt;
         this.is_follow_gzh = res.data.data.is_follow_gzh;
+        this.mailbox = res.data.data.mailbox;
+        this.mailbox_cnt = res.data.data.mailbox_cnt;
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
             index: 2,

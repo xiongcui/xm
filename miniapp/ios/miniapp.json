@@ -1,0 +1,18 @@
+{
+  "toolkitVersion": "0.0.9",
+  "sdkVersion": "0.9.8",
+  "sdkKey": "5whlPXLmST",
+  "sdkKeySecret": "_EFxrIxZgCvyg36lfcahyQ",
+  "bundleId": "com.tencent.devtoolssaaademo.db",
+  "openAppUniversalLink": "https://help.wechat.com/weappdemo/",
+  "miniModuleId": "wxa356535f4d0d7f40",
+  "useExtendedSdk": {
+    "WeAppOpenFuns": true,
+    "WeAppNetwork": false,
+    "WeAppBluetooth": false,
+    "WeAppMedia": false,
+    "WeAppLBS": false,
+    "WeAppLive": false,
+    "WeAppOthers": false
+  }
+}

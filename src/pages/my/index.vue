@@ -484,6 +484,7 @@ import {
   shareInvite,
   shareInviteInfo,
   submitSign,
+  idcardInfo,
 } from "../../api/index";
 import { isLogin, openPage } from "../../utils/util";
 import sign from "../../components/sign/index.vue";
@@ -689,6 +690,21 @@ export default {
         this.hyper_desc = res.data.data.hyper_desc;
         this.isSign("");
       } catch (error) {}
+    },
+    async idcardInfo(params) {
+      try {
+        let res = await idcardInfo(params);
+        openPage(
+          "/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" +
+            res.data.data.verify_token +
+            "&uuid=" +
+            this.infor.uuid
+        );
+      } catch (error) {
+        if (error.data.error_code == 21002) {
+          openPage("/packageAdd/pages/user/realnameAuth/index");
+        }
+      }
     },
   },
   components: {

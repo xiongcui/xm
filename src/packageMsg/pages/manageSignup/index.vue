@@ -142,6 +142,7 @@
                   >
                 </view>
               </view>
+              <view class="notice_bg" v-if="item.is_visited_read === 0"></view>
             </view>
           </scroll-view>
         </swiper-item>
@@ -244,6 +245,7 @@
                   >
                 </view>
               </view>
+              <view class="notice_bg" v-if="item.is_visited_read === 0"></view>
             </view>
           </scroll-view>
         </swiper-item>
@@ -346,6 +348,7 @@
                   >
                 </view>
               </view>
+              <view class="notice_bg" v-if="item.is_visited_read === 0"></view>
             </view>
           </scroll-view>
         </swiper-item>
@@ -448,6 +451,7 @@
                   >
                 </view>
               </view>
+              <view class="notice_bg" v-if="item.is_visited_read === 0"></view>
             </view>
           </scroll-view>
         </swiper-item>
@@ -550,6 +554,7 @@
                   >
                 </view>
               </view>
+              <view class="notice_bg" v-if="item.is_visited_read === 0"></view>
             </view>
           </scroll-view>
         </swiper-item>

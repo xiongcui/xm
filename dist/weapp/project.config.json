@@ -40,7 +40,8 @@
     "useLanDebug": false,
     "showES6CompileOption": false,
     "ignoreUploadUnusedFiles": false,
-    "ignoreDevUnusedFiles": false
+    "ignoreDevUnusedFiles": false,
+    "condition": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.26.2",

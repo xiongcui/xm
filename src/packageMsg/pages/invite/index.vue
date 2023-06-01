@@ -89,6 +89,10 @@
                   }}</text>
                   <text v-else>{{ item.visited_status_name }}</text>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -156,6 +160,10 @@
                   }}</text>
                   <text v-else>{{ item.visited_status_name }}</text>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -223,6 +231,10 @@
                   }}</text>
                   <text v-else>{{ item.visited_status_name }}</text>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">
@@ -290,6 +302,10 @@
                   }}</text>
                   <text v-else>{{ item.visited_status_name }}</text>
                 </view>
+                <view
+                  class="notice_bg"
+                  v-if="item.is_visited_read === 0"
+                ></view>
               </view>
             </block>
             <view v-else class="none-data">

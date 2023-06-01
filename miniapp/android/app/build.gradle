@@ -1,0 +1,174 @@
+apply plugin: 'com.android.application'
+// NOTE!!! 重要!!! aar需要kotlin支持,不引入会导致小程序打不开.
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    def miniAppConfig = rootProject.ext.miniAppConfig
+    defaultConfig {
+        buildConfigField "String", "SDK_KEY", "\"$miniAppConfig.sdkKey\""
+        buildConfigField "String", "SDK_KEY_SECRET", "\"$miniAppConfig.sdkKeySecret\""
+        buildConfigField "Boolean", "SPLASHSCREEN", "$miniAppConfig.splashscreen"
+        buildConfigField "String", "ENABLE_VCONSOLE", "\"$miniAppConfig.enableVConsole\""
+        buildConfigField "Boolean", "PRIVACY_POPUP", "$miniAppConfig.privacyPopup"
+    }
+
+    signingConfigs {
+        debug {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile rootProject.file('compile/debug.keystore')
+            storePassword 'android'
+        }
+        // 使用该 test.jks 生成的 应用签名 md5 为 d8d9a7134de382c19ff2a42a287ec627
+        release {
+            keyAlias 'test'
+            keyPassword '12345678'
+            storeFile file('./sign/test2.jks')
+            storePassword '12345678'
+        }
+    }
+
+    defaultConfig {
+        multiDexEnabled true
+        versionName "0.1.0"
+        versionCode 100
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        // ndk {
+        //     abiFilters "arm64-v8a", "armeabi-v7a"
+        // }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            shrinkResources false
+        }
+        release {
+            debuggable false
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+
+    flavorDimensions 'abi'
+    productFlavors {
+        arm {
+            dimension 'abi'
+            ndk {
+                abiFilter "armeabi-v7a"
+            }
+        }
+
+        arm64 {
+            dimension 'abi'
+            ndk {
+                abiFilter "arm64-v8a"
+            }
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    packagingOptions {
+        // wxa-standalone-open-runtime-SaaA-sdk-media 和 wxa-standalone-open-runtime-SaaA-sdk-scanner 存在下面相同依赖动态库
+        pickFirst 'lib/armeabi-v7a/libFFmpeg.so'
+        pickFirst 'lib/arm64-v8a/libFFmpeg.so'
+        pickFirst 'lib/armeabi-v7a/libwechatpack.so'
+        pickFirst 'lib/arm64-v8a/libwechatpack.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libwmpfcommonjni.so'
+        pickFirst 'lib/arm64-v8a/libwmpfcommonjni.so'
+    }
+}
+
+def wxa_sdk_version = rootProject.ext.miniAppConfig.sdkVersion
+
+def libsDir = file("./libs")
+
+if (!file("$libsDir/com/tencent/luggage/wxa-standalone-open-runtime-SaaA-sdk/${wxa_sdk_version}").exists()) {
+    libsDir.mkdir()
+
+    apply plugin: 'de.undercouch.download'
+    
+    def zipFileName = "wxa-standalone-open-runtime-SaaA-sdk-all-${wxa_sdk_version}.zip"
+    download.run {
+        src "https://dldir1.qq.com/WechatWebDev/donut/android/sdk/${zipFileName}"
+        dest libsDir
+    }
+    def zipFilePath = "$libsDir/$zipFileName"
+    copy {
+        def subDir = 'localAar'
+        from {
+            zipTree(zipFilePath).matching { include "$subDir/**" }
+        }
+        into libsDir
+        eachFile { fcp ->
+            fcp.path = fcp.path.replaceFirst("^$subDir", '')
+        }
+        includeEmptyDirs false
+    }
+    file(zipFilePath).delete()
+
+    def qbarZipFileName = "qbar.zip"
+    download.run {
+        src "https://dldir1.qq.com/WechatWebDev/miniapp/${qbarZipFileName}"
+        dest libsDir
+    }
+    def qbarZipFilePath = "$libsDir/$qbarZipFileName"
+    copy {
+        from {
+            zipTree(qbarZipFilePath)
+        }
+        into file("$libsDir/com/tencent/qbar")
+    }
+    file(qbarZipFilePath).delete()
+}
+
+dependencies {
+    def miniAppConfig = rootProject.ext.miniAppConfig
+    def useExtendedSdk = miniAppConfig.useExtendedSdk
+    implementation("com.tencent.luggage:wxa-standalone-open-runtime-SaaA-sdk:${wxa_sdk_version}")
+    if (useExtendedSdk.bluetooth) {
+        implementation("com.tencent.luggage:wxa-standalone-open-runtime-SaaA-sdk-bluetooth:${wxa_sdk_version}")
+    }
+    if (useExtendedSdk.media) {
+        implementation("com.tencent.luggage:wxa-standalone-open-runtime-SaaA-sdk-media:${wxa_sdk_version}")
+    }
+    if (useExtendedSdk.network) {
+        implementation("com.tencent.luggage:wxa-standalone-open-runtime-SaaA-sdk-network:${wxa_sdk_version}")
+    }
+    if (useExtendedSdk.scanner) {
+        implementation("com.tencent.luggage:wxa-standalone-open-runtime-SaaA-sdk-scanner:${wxa_sdk_version}")
+        implementation("com.tencent.qbar:qbar:1.0.6-for_wxa-rc1")
+    }
+    if (useExtendedSdk.xweb) {
+        implementation("com.tencent.luggage:wxa-standalone-open-runtime-SaaA-sdk-xweb:${wxa_sdk_version}")
+    }
+}

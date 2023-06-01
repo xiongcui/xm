@@ -24,12 +24,6 @@
           </view>
         </view>
         <view class="detail_info_title">
-          <!-- <view
-            class="recommend-label"
-            v-for="(item, index) in tonggaoInfo.topic.headline.tag"
-            :key="index"
-            >{{ item }}</view
-          > -->
           <block v-if="tonggaoInfo.topic.headline.tag.length">
             <image
               class="recommend-image"
@@ -40,13 +34,13 @@
             </image>
           </block>
           <view class="title_desc">{{ tonggaoInfo.topic.headline.title }}</view>
-          <button open-type="share" class="share-btn">
+          <!-- <button open-type="share" class="share-btn">
             <view class="share">
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/share.png"
               ></image>
             </view>
-          </button>
+          </button> -->
         </view>
         <view class="split_line"></view>
         <view class="detail_tag">
@@ -81,58 +75,6 @@
           </view>
         </view>
         <view class="split_line"></view>
-        <view class="list_top">
-          <view class="list_top_left">
-            <image
-              :src="
-                tonggaoInfo.author.avatar
-                  ? tonggaoInfo.author.avatar
-                  : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
-              "
-              class="avatar"
-              @tap="goZhuye"
-            ></image>
-            <view class="list_info">
-              <view class="list_name">
-                {{ tonggaoInfo.author.nickname }}
-                <block v-if="tonggaoInfo.author.sex !== null">
-                  <image
-                    src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
-                    class="list_sex"
-                    v-if="tonggaoInfo.author.sex == 1"
-                  ></image>
-                  <image
-                    src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
-                    class="list_sex"
-                    v-if="tonggaoInfo.author.sex == 0"
-                  ></image>
-                </block>
-              </view>
-              <view class="list_p">
-                <text>{{
-                  tonggaoInfo.author.career_list &&
-                  tonggaoInfo.author.career_list[0]
-                }}</text>
-                <view class="icon_real" v-if="tonggaoInfo.author.is_certify"
-                  >已实名</view
-                >
-                <view class="icon_pledge" v-if="tonggaoInfo.author.is_security"
-                  >已担保</view
-                >
-              </view>
-            </view>
-          </view>
-          <view class="list_top_rt">
-            <view @tap="follow" class="followed_btn_red" v-if="is_follow == 0"
-              >关注</view
-            >
-            <view class="followed_btn" @tap="unfollow" v-if="is_follow == 1"
-              >取消关注</view
-            >
-            <view class="list_date">1小时前来过</view>
-          </view>
-        </view>
-        <view class="split_line"></view>
         <view class="list_bottom">
           <view class="list_time">
             <image
@@ -146,6 +88,57 @@
             ></image>
             阅读 {{ tonggaoInfo.statistic.read_cnt }}
           </view>
+        </view>
+      </view>
+      <view class="list_top">
+        <view class="list_top_left">
+          <image
+            :src="
+              tonggaoInfo.author.avatar
+                ? tonggaoInfo.author.avatar
+                : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+            "
+            class="avatar"
+            @tap="goZhuye"
+          ></image>
+          <view class="list_info">
+            <view class="list_name">
+              {{ tonggaoInfo.author.nickname }}
+              <block v-if="tonggaoInfo.author.sex !== null">
+                <image
+                  src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                  class="list_sex"
+                  v-if="tonggaoInfo.author.sex == 1"
+                ></image>
+                <image
+                  src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                  class="list_sex"
+                  v-if="tonggaoInfo.author.sex == 0"
+                ></image>
+              </block>
+            </view>
+            <view class="list_p">
+              <text>{{
+                tonggaoInfo.author.career_list &&
+                tonggaoInfo.author.career_list[0]
+              }}</text>
+              <view class="icon_real" v-if="tonggaoInfo.author.is_certify"
+                >已实名</view
+              >
+              <view class="icon_pledge" v-if="tonggaoInfo.author.is_security"
+                >已担保</view
+              >
+            </view>
+          </view>
+        </view>
+        <view class="list_top_rt" @tap="toCommunicate">
+          <view class="communicate-bg">
+            <image
+              src="../../../assets/images/wchat.jpg"
+              class="communicate-img"
+            />
+          </view>
+          <text class="communicate-txt">去沟通</text>
         </view>
       </view>
       <view class="enroll_box" v-if="tonggaoInfo.signup.length">
@@ -334,6 +327,16 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <view class="tonggao_fixed_left">
+        <view class="tonggao_fixed_item">
+          <button open-type="share" class="share-btn">
+            <view class="share">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png"
+              ></image>
+            </view>
+          </button>
+          分享
+        </view>
         <view class="tonggao_fixed_item" @tap="subRecordCollect">
           <image
             v-if="is_collect"
@@ -343,7 +346,11 @@
             v-else
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
-          {{ tonggaoInfo.statistic.collect_cnt }}
+          {{
+            tonggaoInfo.statistic.collect_cnt
+              ? tonggaoInfo.statistic.collect_cnt
+              : "收藏"
+          }}
         </view>
       </view>
       <view class="tonggao_fixed_rt" @tap="launchYuepai"> 立即报名 </view>
@@ -364,6 +371,7 @@ import {
   userUnfollow,
   noticeAdviseList,
   applyVerify,
+  imVerify,
 } from "../../../api/index";
 import { errortip, isLogin, openPage } from "../../../utils/util";
 export default {
@@ -433,6 +441,38 @@ export default {
           oid +
           "&author_id=" +
           author_id
+      );
+    },
+    toCommunicate() {
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: "报名后对方将联系您或与对方直接沟通",
+        cancelText: "我知道了",
+        confirmText: "立即沟通",
+        success: function (res) {
+          if (res.confirm) {
+            console.log("用户点击确定");
+            _this.communicate();
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        },
+      });
+    },
+    communicate() {
+      this.imVerify({
+        to_account: this.tonggaoInfo.author.uuid,
+      });
+    },
+    sendMsg() {
+      openPage(
+        "/packageMsg/pages/chat/index?uuid=" +
+          this.tonggaoInfo.author.uuid +
+          "&nickname=" +
+          this.tonggaoInfo.author.nickname +
+          "&avatar=" +
+          this.tonggaoInfo.author.avatar
       );
     },
     formatSex(sex) {
@@ -515,6 +555,19 @@ export default {
       });
       this.loading = false;
       this.noticeQuery("more");
+    },
+    async imVerify(params) {
+      try {
+        let res = await imVerify(params);
+        this.sendMsg();
+      } catch (error) {
+        errortip(error.data.msg);
+        if (error.data.error_code == 21050 || error.data.error_code == 21040) {
+          openPage(
+            `/packageAdd/pages/guideTips/index?msg=${error.data.msg}&code=${error.data.error_code}`
+          );
+        }
+      }
     },
     async noticeInfo(params) {
       try {

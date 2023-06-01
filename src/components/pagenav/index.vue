@@ -2,7 +2,7 @@
   <view class="pagenav">
     <view
       class="nav_fixed"
-      :style="{ marginTop: isMargin ? globalData.navHeight + 'px' : '0px' }"
+      :style="{ paddingTop: isMargin ? globalData.navHeight + 'px' : '0px' }"
     >
       <view class="head_nav">
         <text

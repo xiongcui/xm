@@ -57,6 +57,16 @@ page {
   margin-bottom: 6rpx;
 }
 
+.invite .invite-box .notice_bg {
+  width: 50rpx;
+  height: 50rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/notice.png") no-repeat right top;
+  background-size: 50rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
 .invite .invite-box:first-child {
   margin-top: 104rpx;
 }
@@ -120,6 +130,7 @@ page {
   position: absolute;
   right: 30rpx;
   top: 0;
+  z-index: 999;
 }
 
 .invite .first-img {

@@ -1361,7 +1361,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
               break;
 
             case 1:
-              _this.deleteYuepai();
+              _this.deleteYuepai(oid);
 
               break;
           }

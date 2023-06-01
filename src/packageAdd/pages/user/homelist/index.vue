@@ -17,18 +17,35 @@
       class="pagenav"
     ></Pagenav>
     <view class="home-list-ct">
-      <YuepaiList
-        :baseData="yuepaiList"
-        v-if="componetActive == 0"
-      ></YuepaiList>
-      <TonggaoList
-        :baseData="noticeList"
-        v-if="componetActive == 1"
-      ></TonggaoList>
-      <ZuopinList
-        :baseData="zuopinList"
-        v-if="componetActive == 2"
-      ></ZuopinList>
+      <swiper
+        :current="componetActive"
+        class="swiper-box"
+        duration="300"
+        @change="bindChange"
+        :style="{ height: swiperHeightCt ? swiperHeightCt : '100vh' }"
+      >
+        <swiper-item>
+          <YuepaiList
+            :baseData="yuepaiList"
+            v-if="componetActive == 0"
+            class="list-height"
+          ></YuepaiList>
+        </swiper-item>
+        <swiper-item>
+          <TonggaoList
+            :baseData="noticeList"
+            v-if="componetActive == 1"
+            class="list-height"
+          ></TonggaoList>
+        </swiper-item>
+        <swiper-item>
+          <ZuopinList
+            :baseData="zuopinList"
+            v-if="componetActive == 2"
+            class="list-height"
+          ></ZuopinList>
+        </swiper-item>
+      </swiper>
     </view>
 
     <view class="nomore" v-if="noMore">没有更多了～</view>
@@ -79,6 +96,7 @@ export default {
         1: "通告列表",
         2: "作品列表",
       },
+      swiperHeightCt: 0,
     };
   },
   components: {
@@ -89,6 +107,19 @@ export default {
     ZuopinList,
   },
   methods: {
+    bindChange(e) {
+      this.componetActive = e.detail.current;
+      this.pageNavClick(e.detail.current);
+    },
+    setSwiperHeight() {
+      let dom = ".list-height";
+      wx.createSelectorQuery()
+        .select(dom)
+        .boundingClientRect((rect) => {
+          this.swiperHeightCt = rect.height + "px";
+        })
+        .exec();
+    },
     pageNavClick(index) {
       this.pageNum = 1;
       this.componetActive = index;
@@ -226,6 +257,9 @@ export default {
           });
         }
         this.isclick = false;
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
       } catch (error) {
         this.showLoading = false;
         wx.hideNavigationBarLoading();
@@ -273,6 +307,9 @@ export default {
           });
         }
         this.isclick = false;
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
       } catch (error) {
         this.showLoading = false;
         wx.hideNavigationBarLoading();
@@ -320,6 +357,9 @@ export default {
           });
         }
         this.isclick = false;
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
       } catch (error) {
         this.showLoading = false;
         wx.hideNavigationBarLoading();
@@ -478,6 +518,11 @@ export default {
         this.zuopinQuery("init", this.$refs["pageNavRef"].navActive, scroll);
       } catch (error) {}
     },
+  },
+  onPullDownRefresh: function () {
+    //调用刷新时将执行的方法
+    this.showLoading = true;
+    this.switchQuery(this.componetActive, true);
   },
   //触底加载
   onReachBottom: function () {

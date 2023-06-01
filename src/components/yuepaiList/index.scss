@@ -87,10 +87,12 @@
   .list_loction {
     background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png")
       left center no-repeat;
-    background-size: 36px;
+    background-size: 30px;
     padding-left: 36px;
-    font-size: 36px;
+    font-size: 28px;
     color: #3a3a3a;
+    display: flex;
+    align-items: center;
   }
   .list_date {
     color: #686868;
