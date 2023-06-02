@@ -92,6 +92,7 @@ export default defineAppConfig({
         "pages/moka/editpersondata/index",
         "pages/moka/editpersonimg/index",
         "pages/moka/editvideo/index",
+        "pages/moka/makecard/index",
       ],
     },
     {

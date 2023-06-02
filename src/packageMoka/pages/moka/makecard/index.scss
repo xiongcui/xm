@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title {
+      color: #9b9b9b;
+      font-size: 30px;
+      margin-left: 30px;
+    }
+    image {
+      width: 118px;
+      height: 54px;
+    }
+  }
+  .operation {
+    display: flex;
+    align-items: center;
+  }
+  .switch {
+    margin-left: 30px;
+  }
+  .slider-bg {
+    position: fixed;
+    bottom: 0px;
+    z-index: 999;
+    image {
+      width: 52px;
+      height: 146px;
+    }
+  }
+  .make {
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 30px;
+    background: #f6e64f;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 28px;
+    margin: 0px 30px;
+  }
+}

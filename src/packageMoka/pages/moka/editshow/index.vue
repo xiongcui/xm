@@ -505,6 +505,7 @@ export default {
     },
     queryZuopinList() {
       this.photoListOwn({
+        uuid: Number(this.infor.uuid),
         page: this.pageNum,
         per_page: this.pageSize,
       });
@@ -737,7 +738,6 @@ export default {
     this.shareInvite({
       source: "share_details",
       type: "wechat",
-      // oid: this.oid,
     });
     return {
       title: this.shareTitle,

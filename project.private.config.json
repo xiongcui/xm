@@ -10,8 +10,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "提示",
-                    "pathName": "packageAdd/pages/guideTips/index",
+                    "name": "制作模卡",
+                    "pathName": "packageMoka/pages/moka/makecard/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
