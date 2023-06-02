@@ -3,7 +3,7 @@
     <view class="none_tipimg">
       <image
         mode="widthFix"
-        src="https://yuepai-oss.qubeitech.com/static//common/none.png"
+        src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
       ></image>
     </view>
     <view class="none_tiptext">还没有发布过作品动态哦～</view>
@@ -45,14 +45,14 @@
       <view class="list_bottom">
         <view class="list_time">
           <image
-            src="https://yuepai-oss.qubeitech.com/static//common/time.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
           ></image>
           {{ item.date_humanize }}
         </view>
 
         <view class="list_read">
           <image
-            src="https://yuepai-oss.qubeitech.com/static//eyes.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
           ></image>
           阅读 {{ item.statistic.read_cnt }}
         </view>

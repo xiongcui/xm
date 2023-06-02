@@ -1305,7 +1305,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "widthFix",
-              src: "https://yuepai-oss.qubeitech.com/static//common/none.png",
+              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
             },
           }),
         ]),
@@ -1387,7 +1387,7 @@ var render = function () {
               _c("view", { staticClass: "list_time" }, [
                 _c("image", {
                   attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static//common/time.png",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
                   },
                 }),
                 _vm._v(" " + _vm._s(item.date_humanize) + " "),
@@ -1395,7 +1395,7 @@ var render = function () {
               _c("view", { staticClass: "list_read" }, [
                 _c("image", {
                   attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static//eyes.png",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
                   },
                 }),
                 _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),

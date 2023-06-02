@@ -313,9 +313,6 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
       }))();
     }
   },
-  created: function created() {
-    this.userAlbumDetail();
-  },
   onShow: function onShow() {
     var pages = getCurrentPages();
     var currPage = pages[pages.length - 1]; //当前页面
@@ -332,6 +329,14 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
   },
   onLoad: function onLoad(options) {
     this.myself = options.myself === "true" ? true : false;
+
+    if (options.uuid) {
+      this.userAlbumDetail({
+        uuid: Number(options.uuid)
+      });
+    } else {
+      this.userAlbumDetail();
+    }
   }
 });
 

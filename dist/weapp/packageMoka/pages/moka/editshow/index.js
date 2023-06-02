@@ -519,10 +519,10 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
     },
     editpersonimg: function editpersonimg() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself + "&uuid=" + this.infor.uuid);
     },
     editvideo: function editvideo() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself + "&uuid=" + this.infor.uuid);
     },
     editzytag: function editzytag() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editlabel/index");

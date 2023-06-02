@@ -36,7 +36,7 @@
                 v-for="(item, index) in list"
                 :key="index"
               >
-                <view class="livevisitor-img">
+                <view class="livevisitor-img" @tap="goZhuye(item.visitor_id)">
                   <image :src="item.visitor.avatar"></image>
                 </view>
                 <view class="livevisitor-info">
@@ -90,7 +90,7 @@
                 v-for="(item, index) in list2"
                 :key="index"
               >
-                <view class="livevisitor-img">
+                <view class="livevisitor-img" @tap="goZhuye(item.visitor_id)">
                   <image :src="item.visitor.avatar"></image>
                 </view>
                 <view class="livevisitor-info">
@@ -134,7 +134,7 @@
 <script>
 import "./index.scss";
 import { visitorList, voteList } from "../../../api/index";
-import { errortip } from "../../../utils/util";
+import { errortip, openPage } from "../../../utils/util";
 export default {
   name: "livevisitor",
   data() {
@@ -188,6 +188,9 @@ export default {
     scrollToLower() {
       this.pageNum++;
       this.query();
+    },
+    goZhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     async visitorList(params) {
       try {

@@ -280,6 +280,13 @@ export default {
   },
   onLoad: function (options) {
     this.myself = options.myself === "true" ? true : false;
+    if (options.uuid) {
+      this.userAlbumDetail({
+        uuid: Number(options.uuid),
+      });
+    } else {
+      this.userAlbumDetail();
+    }
   },
 };
 </script>

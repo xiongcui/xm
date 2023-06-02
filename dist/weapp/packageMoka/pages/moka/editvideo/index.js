@@ -393,6 +393,14 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
   },
   onLoad: function onLoad(options) {
     this.myself = options.myself === "true" ? true : false;
+
+    if (options.uuid) {
+      this.userAlbumDetail({
+        uuid: Number(options.uuid)
+      });
+    } else {
+      this.userAlbumDetail();
+    }
   }
 });
 

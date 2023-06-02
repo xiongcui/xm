@@ -477,11 +477,19 @@ export default {
     },
     editpersonimg() {
       openPage(
-        "/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself
+        "/packageMoka/pages/moka/editpersonimg/index?myself=" +
+          this.myself +
+          "&uuid=" +
+          this.infor.uuid
       );
     },
     editvideo() {
-      openPage("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself);
+      openPage(
+        "/packageMoka/pages/moka/editvideo/index?myself=" +
+          this.myself +
+          "&uuid=" +
+          this.infor.uuid
+      );
     },
     editzytag() {
       openPage("/packageAdd/pages/user/editlabel/index");

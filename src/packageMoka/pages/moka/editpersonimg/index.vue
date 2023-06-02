@@ -185,9 +185,6 @@ export default {
       } catch (error) {}
     },
   },
-  created() {
-    this.userAlbumDetail();
-  },
   onShow() {
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1]; //当前页面
@@ -202,6 +199,13 @@ export default {
   },
   onLoad: function (options) {
     this.myself = options.myself === "true" ? true : false;
+    if (options.uuid) {
+      this.userAlbumDetail({
+        uuid: Number(options.uuid),
+      });
+    } else {
+      this.userAlbumDetail();
+    }
   },
 };
 </script>

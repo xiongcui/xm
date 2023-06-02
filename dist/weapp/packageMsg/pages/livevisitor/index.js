@@ -246,6 +246,9 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
       this.pageNum++;
       this.query();
     },
+    goZhuye: function goZhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     visitorList: function visitorList(params) {
       var _this = this;
 
@@ -447,11 +450,22 @@ var render = function () {
                               "view",
                               { key: index, staticClass: "livevisitor-box" },
                               [
-                                _c("view", { staticClass: "livevisitor-img" }, [
-                                  _c("image", {
-                                    attrs: { src: item.visitor.avatar },
-                                  }),
-                                ]),
+                                _c(
+                                  "view",
+                                  {
+                                    staticClass: "livevisitor-img",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.goZhuye(item.visitor_id)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
+                                    }),
+                                  ]
+                                ),
                                 _c(
                                   "view",
                                   { staticClass: "livevisitor-info" },
@@ -542,11 +556,22 @@ var render = function () {
                               "view",
                               { key: index, staticClass: "livevisitor-box" },
                               [
-                                _c("view", { staticClass: "livevisitor-img" }, [
-                                  _c("image", {
-                                    attrs: { src: item.visitor.avatar },
-                                  }),
-                                ]),
+                                _c(
+                                  "view",
+                                  {
+                                    staticClass: "livevisitor-img",
+                                    on: {
+                                      tap: function ($event) {
+                                        return _vm.goZhuye(item.visitor_id)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("image", {
+                                      attrs: { src: item.visitor.avatar },
+                                    }),
+                                  ]
+                                ),
                                 _c(
                                   "view",
                                   { staticClass: "livevisitor-info" },

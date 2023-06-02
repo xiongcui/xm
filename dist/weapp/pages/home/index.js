@@ -624,8 +624,6 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
-//
-//
 
 var citySelector = requirePlugin("citySelector");
 
@@ -2405,7 +2403,7 @@ var render = function () {
                         },
                         attrs: {
                           "indicator-dots": _vm.indicatorDots2,
-                          autoplay: _vm.autoplay,
+                          autoplay: false,
                           interval: _vm.interval2,
                           duration: _vm.duration,
                         },
@@ -2842,7 +2840,7 @@ var render = function () {
                         },
                         attrs: {
                           "indicator-dots": _vm.indicatorDots2,
-                          autoplay: _vm.autoplay,
+                          autoplay: false,
                           interval: _vm.interval2,
                           duration: _vm.duration,
                         },

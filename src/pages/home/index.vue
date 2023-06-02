@@ -150,7 +150,6 @@
       <view class="recommend">
         <view class="recommend-title">
           <view class="recommend-name"> 约拍推荐 </view>
-          <!-- <view class="recommend-tips"> 1分钟前***发布了人像创作</view> -->
           <view
             class="recommend-more"
             @tap="goMore(0)"
@@ -161,7 +160,7 @@
         <view class="recommend-ct">
           <swiper
             :indicator-dots="indicatorDots2"
-            :autoplay="autoplay"
+            :autoplay="false"
             :interval="interval2"
             :duration="duration"
             class="yuepai-swiper"
@@ -324,7 +323,6 @@
       <view class="recommend">
         <view class="recommend-title">
           <view class="recommend-name"> 通告推荐 </view>
-          <!-- <view class="recommend-tips"> 1分钟前***发布了人像创作</view> -->
           <view
             class="recommend-more"
             @tap="goMore(1)"
@@ -335,7 +333,7 @@
         <view class="recommend-ct">
           <swiper
             :indicator-dots="indicatorDots2"
-            :autoplay="autoplay"
+            :autoplay="false"
             :interval="interval2"
             :duration="duration"
             class="tonggao-swiper"
