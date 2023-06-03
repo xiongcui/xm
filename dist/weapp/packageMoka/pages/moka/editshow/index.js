@@ -539,6 +539,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     },
     queryZuopinList: function queryZuopinList() {
       this.photoListOwn({
+        uuid: Number(this.infor.uuid),
         page: this.pageNum,
         per_page: this.pageSize
       });
@@ -1046,8 +1047,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
       source: "share_details",
-      type: "wechat" // oid: this.oid,
-
+      type: "wechat"
     });
     return {
       title: this.shareTitle,
@@ -1850,7 +1850,11 @@ var render = function () {
         _vm.select_tab == "zuopin"
           ? _c(
               "block",
-              [_c("myZuopinList", { attrs: { base_data: _vm.list } })],
+              [
+                _c("myZuopinList", {
+                  attrs: { base_data: _vm.list, myself: _vm.myself },
+                }),
+              ],
               1
             )
           : _vm._e(),

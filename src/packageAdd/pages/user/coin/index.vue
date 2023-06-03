@@ -36,6 +36,7 @@
           class="swiper-box"
           duration="300"
           @change="bindChange"
+          :style="{ height: swiperHeightCt ? swiperHeightCt : '100vh' }"
         >
           <swiper-item>
             <view class="privilege-list">
@@ -119,19 +120,21 @@
           </swiper-item>
           <swiper-item>
             <block v-if="coinDetails.length">
-              <view
-                class="detailed-list"
-                v-for="(item, index) in coinDetails"
-                :key="index"
-              >
-                <view class="coin-task">
-                  <view class="task-info">
-                    <view>
-                      <text class="task-title">{{ item.order_name }}</text>
+              <view class="detailed">
+                <view
+                  class="detailed-list"
+                  v-for="(item, index) in coinDetails"
+                  :key="index"
+                >
+                  <view class="coin-task">
+                    <view class="task-info">
+                      <view>
+                        <text class="task-title">{{ item.order_name }}</text>
+                      </view>
+                      <view class="task-tips">{{ item.success_time }}</view>
                     </view>
-                    <view class="task-tips">{{ item.success_time }}</view>
+                    <view class="task-num">{{ item.curr_coin }}</view>
                   </view>
-                  <view class="task-num">{{ item.curr_coin }}</view>
                 </view>
               </view>
             </block>
@@ -179,6 +182,7 @@ export default {
       type: "cost",
       loading: true,
       coin: 0,
+      swiperHeightCt: 0,
       pageNum: 1,
       pageSize: 10,
     };
@@ -207,6 +211,24 @@ export default {
     },
   },
   methods: {
+    findDom() {
+      if (this.currentTab == 0) {
+        return ".privilege-list";
+      } else if (this.currentTab == 1) {
+        return ".get-coin";
+      } else if (this.currentTab == 2) {
+        return ".detailed";
+      }
+    },
+    setSwiperHeight() {
+      let dom = this.findDom();
+      wx.createSelectorQuery()
+        .select(dom)
+        .boundingClientRect((rect) => {
+          this.swiperHeightCt = rect.height + "px";
+        })
+        .exec();
+    },
     close() {
       this.visible = false;
     },
@@ -251,6 +273,19 @@ export default {
     },
     bindChange(e) {
       this.currentTab = e.detail.current;
+      this.pageNum = 1;
+      this.list = [];
+      this.coinDetails = [];
+      if (e.detail.current == 0) {
+        this.type = "cost";
+        this.queryCoinList();
+      } else if (e.detail.current == 1) {
+        this.type = "earn";
+        this.queryCoinList();
+      } else if (e.detail.current == 2) {
+        this.type = "";
+        this.query();
+      }
     },
     query() {
       this.loading = false;
@@ -288,6 +323,9 @@ export default {
           this.pageNum = 1;
           this.list = [];
         }
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
       } catch (error) {}
     },
     async coinItemList(params) {
@@ -301,13 +339,15 @@ export default {
           return false;
         }
         let data = res.data.data.items;
-        console.log(data, "data");
         if (data) {
           this.coinDetails = this.coinDetails.concat(data);
         } else {
           this.coinDetails = [];
         }
         this.loading = true;
+        setTimeout(() => {
+          this.setSwiperHeight();
+        }, 200);
       } catch (error) {}
     },
     async coinAcct(params) {

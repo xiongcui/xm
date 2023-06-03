@@ -2,7 +2,11 @@
   <view class="zuopin_detail">
     <view class="zuopin_top">
       <view class="zuopin_top_left">
-        <image :src="zuopinInfo.author.avatar" class="avatar"></image>
+        <image
+          :src="zuopinInfo.author.avatar"
+          class="avatar"
+          @tap="goZhuye(zuopinInfo.author.uuid)"
+        ></image>
         <view class="zuopin_author_info">
           <view class="zuopin_name">
             {{ zuopinInfo.author.nickname }}
@@ -220,6 +224,10 @@ export default {
     };
   },
   methods: {
+    goZhuye(uuid) {
+      if (!clickThrottle()) return;
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     bindended() {
       wx.createVideoContext("video").exitFullScreen();
     },

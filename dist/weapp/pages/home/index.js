@@ -2022,7 +2022,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "login-tost" }, [
+  return _c("view", { staticClass: "login-tost", on: { tap: _vm.login } }, [
     _c("view", { staticClass: "login-tost-left" }, [
       _c("text", { staticClass: "login-tost-title" }, [
         _vm._v("安全、快捷、高效、可靠"),
@@ -2032,7 +2032,7 @@ var render = function () {
       ]),
     ]),
     _c("view", { staticClass: "login-tost-rt" }, [
-      _c("text", { on: { tap: _vm.login } }, [_vm._v("立即登录")]),
+      _c("text", [_vm._v("立即登录")]),
     ]),
   ])
 }

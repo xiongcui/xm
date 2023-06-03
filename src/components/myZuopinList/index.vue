@@ -6,11 +6,19 @@
         src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
       ></image>
     </view>
-    <view class="none_tiptext">还没有发布过作品动态哦～</view>
-    <view @tap="goAddZuopin" class="none_now_make">马上发布</view>
+    <view class="none_tiptext" v-if="ismyself">还没有发布过作品动态哦～</view>
+    <view class="none_tiptext" v-if="!ismyself">暂无数据</view>
+    <view @tap="goAddZuopin" v-if="ismyself" class="none_now_make"
+      >马上发布</view
+    >
   </view>
   <view class="main ub ub-ver" v-else>
-    <view class="zuopin-list" v-for="(item, index) in list" :key="index">
+    <view
+      class="zuopin-list"
+      v-for="(item, index) in list"
+      :key="index"
+      @tap="godetail(item.oid, item.author_id)"
+    >
       <view class="list_img" v-if="item.file_type == 'picture'">
         <scroll-view :enhanced="true" :scrollX="true">
           <image
@@ -19,7 +27,6 @@
             class="list_img_item"
             v-for="(url, coverIndex) in item.cover"
             :key="coverIndex"
-            @tap.stop="previewImage(url, item.cover)"
           ></image>
         </scroll-view>
       </view>
@@ -71,6 +78,10 @@ export default {
       type: Array,
       default: [],
     },
+    myself: {
+      type: Boolean,
+      default: true,
+    },
   },
   watch: {
     base_data: {
@@ -80,10 +91,18 @@ export default {
       deep: true,
       immediate: true,
     },
+    myself: {
+      handler(newVal, oldVal) {
+        this.ismyself = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
   },
   data() {
     return {
       list: [],
+      ismyself: true,
     };
   },
   methods: {
@@ -96,6 +115,14 @@ export default {
         current: src, // 图片的地址url
         urls: urls, // 预览的地址url
       });
+    },
+    godetail(oid, author_id) {
+      openPage(
+        "/packageAdd/pages/zuopin/zuopin_detail/index?oid=" +
+          oid +
+          "&author_id=" +
+          author_id
+      );
     },
   },
 };

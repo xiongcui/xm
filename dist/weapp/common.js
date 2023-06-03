@@ -119,6 +119,13 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -127,6 +134,10 @@
     base_data: {
       type: Array,
       default: []
+    },
+    myself: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -136,11 +147,19 @@
       },
       deep: true,
       immediate: true
+    },
+    myself: {
+      handler: function handler(newVal, oldVal) {
+        this.ismyself = newVal;
+      },
+      deep: true,
+      immediate: true
     }
   },
   data: function data() {
     return {
-      list: []
+      list: [],
+      ismyself: true
     };
   },
   methods: {
@@ -155,6 +174,9 @@
         urls: urls // 预览的地址url
 
       });
+    },
+    godetail: function godetail(oid, author_id) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
   }
 });
@@ -1309,99 +1331,112 @@ var render = function () {
             },
           }),
         ]),
-        _c("view", { staticClass: "none_tiptext" }, [
-          _vm._v("还没有发布过作品动态哦～"),
-        ]),
-        _c(
-          "view",
-          { staticClass: "none_now_make", on: { tap: _vm.goAddZuopin } },
-          [_vm._v("马上发布")]
-        ),
+        _vm.ismyself
+          ? _c("view", { staticClass: "none_tiptext" }, [
+              _vm._v("还没有发布过作品动态哦～"),
+            ])
+          : _vm._e(),
+        !_vm.ismyself
+          ? _c("view", { staticClass: "none_tiptext" }, [_vm._v("暂无数据")])
+          : _vm._e(),
+        _vm.ismyself
+          ? _c(
+              "view",
+              { staticClass: "none_now_make", on: { tap: _vm.goAddZuopin } },
+              [_vm._v("马上发布")]
+            )
+          : _vm._e(),
       ])
     : _c(
         "view",
         { staticClass: "main ub ub-ver" },
         _vm._l(_vm.list, function (item, index) {
-          return _c("view", { key: index, staticClass: "zuopin-list" }, [
-            item.file_type == "picture"
-              ? _c(
-                  "view",
-                  { staticClass: "list_img" },
-                  [
-                    _c(
-                      "scroll-view",
-                      { attrs: { enhanced: true, scrollX: true } },
-                      _vm._l(item.cover, function (url, coverIndex) {
-                        return _c("image", {
-                          key: coverIndex,
-                          staticClass: "list_img_item",
-                          attrs: { src: url, mode: "aspectFill" },
-                          on: {
-                            tap: function ($event) {
-                              $event.stopPropagation()
-                              return _vm.previewImage(url, item.cover)
-                            },
-                          },
-                        })
-                      }),
-                      0
-                    ),
-                  ],
-                  1
-                )
-              : _vm._e(),
-            item.file_type == "video"
-              ? _c("view", { staticClass: "list_video" }, [
-                  _c("video", {
-                    staticClass: "list_video-width",
-                    attrs: {
-                      objectFit: "cover",
-                      poster: item.cover[0],
-                      src: item.video_cover && item.video_cover[0],
-                    },
-                    on: {
-                      tap: function ($event) {
-                        $event.stopPropagation()
+          return _c(
+            "view",
+            {
+              key: index,
+              staticClass: "zuopin-list",
+              on: {
+                tap: function ($event) {
+                  return _vm.godetail(item.oid, item.author_id)
+                },
+              },
+            },
+            [
+              item.file_type == "picture"
+                ? _c(
+                    "view",
+                    { staticClass: "list_img" },
+                    [
+                      _c(
+                        "scroll-view",
+                        { attrs: { enhanced: true, scrollX: true } },
+                        _vm._l(item.cover, function (url, coverIndex) {
+                          return _c("image", {
+                            key: coverIndex,
+                            staticClass: "list_img_item",
+                            attrs: { src: url, mode: "aspectFill" },
+                          })
+                        }),
+                        0
+                      ),
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              item.file_type == "video"
+                ? _c("view", { staticClass: "list_video" }, [
+                    _c("video", {
+                      staticClass: "list_video-width",
+                      attrs: {
+                        objectFit: "cover",
+                        poster: item.cover[0],
+                        src: item.video_cover && item.video_cover[0],
                       },
+                      on: {
+                        tap: function ($event) {
+                          $event.stopPropagation()
+                        },
+                      },
+                    }),
+                  ])
+                : _vm._e(),
+              _c("view", { staticClass: "list_title" }, [
+                _vm._v(" " + _vm._s(item.title) + " "),
+              ]),
+              _c("view", { staticClass: "list_desc" }, [
+                _vm._v(" " + _vm._s(item.summary) + " "),
+              ]),
+              _c(
+                "view",
+                { staticClass: "list_tags" },
+                _vm._l(item.style_label, function (styleItem, styleIndex) {
+                  return _c("view", { key: styleIndex, staticClass: "tag" }, [
+                    _vm._v(_vm._s(styleItem)),
+                  ])
+                }),
+                0
+              ),
+              _c("view", { staticClass: "list_bottom" }, [
+                _c("view", { staticClass: "list_time" }, [
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
                     },
                   }),
-                ])
-              : _vm._e(),
-            _c("view", { staticClass: "list_title" }, [
-              _vm._v(" " + _vm._s(item.title) + " "),
-            ]),
-            _c("view", { staticClass: "list_desc" }, [
-              _vm._v(" " + _vm._s(item.summary) + " "),
-            ]),
-            _c(
-              "view",
-              { staticClass: "list_tags" },
-              _vm._l(item.style_label, function (styleItem, styleIndex) {
-                return _c("view", { key: styleIndex, staticClass: "tag" }, [
-                  _vm._v(_vm._s(styleItem)),
-                ])
-              }),
-              0
-            ),
-            _c("view", { staticClass: "list_bottom" }, [
-              _c("view", { staticClass: "list_time" }, [
-                _c("image", {
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                  },
-                }),
-                _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                  _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                ]),
+                _c("view", { staticClass: "list_read" }, [
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                    },
+                  }),
+                  _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),
+                ]),
               ]),
-              _c("view", { staticClass: "list_read" }, [
-                _c("image", {
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                  },
-                }),
-                _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),
-              ]),
-            ]),
-          ])
+            ]
+          )
         }),
         0
       )

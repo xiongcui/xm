@@ -102,6 +102,8 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -115,6 +117,15 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
     };
   },
   methods: {
+    previewImage: function previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src,
+        // 图片的地址url
+        urls: urls // 预览的地址url
+
+      });
+    },
     choosePersonImg: function choosePersonImg() {
       if (this.imgs.length >= 9) {
         wx.showToast({
@@ -374,6 +385,11 @@ var render = function () {
                       mode: "widthFix",
                       src: item,
                     },
+                    on: {
+                      tap: function ($event) {
+                        return _vm.previewImage(item, _vm.imgs)
+                      },
+                    },
                   }),
                   _vm.myself
                     ? _c(
@@ -409,6 +425,11 @@ var render = function () {
                         _c("image", {
                           attrs: {
                             src: "https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png",
+                          },
+                          on: {
+                            tap: function ($event) {
+                              return _vm.previewImage(_vm.item, _vm.imgs)
+                            },
                           },
                         }),
                       ]),

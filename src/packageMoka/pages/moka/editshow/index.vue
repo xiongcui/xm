@@ -366,7 +366,7 @@
         </view>
       </block>
       <block v-if="select_tab == 'zuopin'">
-        <myZuopinList :base_data="list"></myZuopinList>
+        <myZuopinList :base_data="list" :myself="myself"></myZuopinList>
       </block>
     </view>
     <view
@@ -505,6 +505,7 @@ export default {
     },
     queryZuopinList() {
       this.photoListOwn({
+        uuid: Number(this.infor.uuid),
         page: this.pageNum,
         per_page: this.pageSize,
       });
@@ -737,7 +738,6 @@ export default {
     this.shareInvite({
       source: "share_details",
       type: "wechat",
-      // oid: this.oid,
     });
     return {
       title: this.shareTitle,

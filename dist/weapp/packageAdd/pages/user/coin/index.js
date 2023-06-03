@@ -210,6 +210,9 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -229,6 +232,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       type: "cost",
       loading: true,
       coin: 0,
+      swiperHeightCt: 0,
       pageNum: 1,
       pageSize: 10
     };
@@ -257,6 +261,23 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     }
   },
   methods: {
+    findDom: function findDom() {
+      if (this.currentTab == 0) {
+        return ".privilege-list";
+      } else if (this.currentTab == 1) {
+        return ".get-coin";
+      } else if (this.currentTab == 2) {
+        return ".detailed";
+      }
+    },
+    setSwiperHeight: function setSwiperHeight() {
+      var _this = this;
+
+      var dom = this.findDom();
+      wx.createSelectorQuery().select(dom).boundingClientRect(function (rect) {
+        _this.swiperHeightCt = rect.height + "px";
+      }).exec();
+    },
     close: function close() {
       this.visible = false;
     },
@@ -307,6 +328,20 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
     },
     bindChange: function bindChange(e) {
       this.currentTab = e.detail.current;
+      this.pageNum = 1;
+      this.list = [];
+      this.coinDetails = [];
+
+      if (e.detail.current == 0) {
+        this.type = "cost";
+        this.queryCoinList();
+      } else if (e.detail.current == 1) {
+        this.type = "earn";
+        this.queryCoinList();
+      } else if (e.detail.current == 2) {
+        this.type = "";
+        this.query();
+      }
     },
     query: function query() {
       this.loading = false;
@@ -330,7 +365,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargecoin/index");
     },
     submitSign: function submitSign(params) {
-      var _this = this;
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -344,10 +379,10 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 
               case 3:
                 res = _context.sent;
-                _this.visible = true;
-                _this.hyper_desc = res.data.data.hyper_desc;
+                _this2.visible = true;
+                _this2.hyper_desc = res.data.data.hyper_desc;
 
-                _this.queryCoinList();
+                _this2.queryCoinList();
 
                 _context.next = 11;
                 break;
@@ -365,7 +400,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       }))();
     },
     coinList: function coinList(params) {
-      var _this2 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res;
@@ -381,29 +416,32 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
                 res = _context2.sent;
 
                 if (res.data.data) {
-                  _this2.list = res.data.data;
+                  _this3.list = res.data.data;
                 } else {
-                  _this2.pageNum = 1;
-                  _this2.list = [];
+                  _this3.pageNum = 1;
+                  _this3.list = [];
                 }
 
-                _context2.next = 9;
+                setTimeout(function () {
+                  _this3.setSwiperHeight();
+                }, 200);
+                _context2.next = 10;
                 break;
 
-              case 7:
-                _context2.prev = 7;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
 
-              case 9:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 7]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     coinItemList: function coinItemList(params) {
-      var _this3 = this;
+      var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res, data;
@@ -418,7 +456,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 3:
                 res = _context3.sent;
 
-                if (!(!res.data.data && _this3.pageNum > 1 || !res.data.data.items.length && _this3.pageNum > 1)) {
+                if (!(!res.data.data && _this4.pageNum > 1 || !res.data.data.items.length && _this4.pageNum > 1)) {
                   _context3.next = 7;
                   break;
                 }
@@ -428,15 +466,17 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 
               case 7:
                 data = res.data.data.items;
-                console.log(data, "data");
 
                 if (data) {
-                  _this3.coinDetails = _this3.coinDetails.concat(data);
+                  _this4.coinDetails = _this4.coinDetails.concat(data);
                 } else {
-                  _this3.coinDetails = [];
+                  _this4.coinDetails = [];
                 }
 
-                _this3.loading = true;
+                _this4.loading = true;
+                setTimeout(function () {
+                  _this4.setSwiperHeight();
+                }, 200);
                 _context3.next = 15;
                 break;
 
@@ -453,7 +493,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       }))();
     },
     coinAcct: function coinAcct(params) {
-      var _this4 = this;
+      var _this5 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
@@ -467,7 +507,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 
               case 3:
                 res = _context4.sent;
-                _this4.coin = res.data.data.coin;
+                _this5.coin = res.data.data.coin;
                 _context4.next = 9;
                 break;
 
@@ -512,7 +552,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       }))();
     },
     shareInviteInfo: function shareInviteInfo(params) {
-      var _this5 = this;
+      var _this6 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
         var res;
@@ -526,9 +566,9 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
 
               case 3:
                 res = _context6.sent;
-                _this5.shareTitle = res.data.data.title;
-                _this5.shareImg = res.data.data.imageUrl;
-                _this5.sharePath = res.data.data.path;
+                _this6.shareTitle = res.data.data.title;
+                _this6.shareImg = res.data.data.imageUrl;
+                _this6.sharePath = res.data.data.path;
                 _context6.next = 11;
                 break;
 
@@ -670,6 +710,9 @@ var render = function () {
               "swiper",
               {
                 staticClass: "swiper-box",
+                style: {
+                  height: _vm.swiperHeightCt ? _vm.swiperHeightCt : "100vh",
+                },
                 attrs: { current: _vm.currentTab, duration: "300" },
                 on: { change: _vm.bindChange },
               },
@@ -857,35 +900,38 @@ var render = function () {
                   "swiper-item",
                   [
                     _vm.coinDetails.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.coinDetails, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "detailed-list" },
-                              [
-                                _c("view", { staticClass: "coin-task" }, [
-                                  _c("view", { staticClass: "task-info" }, [
-                                    _c("view", [
-                                      _c(
-                                        "text",
-                                        { staticClass: "task-title" },
-                                        [_vm._v(_vm._s(item.order_name))]
-                                      ),
+                      ? _c("block", [
+                          _c(
+                            "view",
+                            { staticClass: "detailed" },
+                            _vm._l(_vm.coinDetails, function (item, index) {
+                              return _c(
+                                "view",
+                                { key: index, staticClass: "detailed-list" },
+                                [
+                                  _c("view", { staticClass: "coin-task" }, [
+                                    _c("view", { staticClass: "task-info" }, [
+                                      _c("view", [
+                                        _c(
+                                          "text",
+                                          { staticClass: "task-title" },
+                                          [_vm._v(_vm._s(item.order_name))]
+                                        ),
+                                      ]),
+                                      _c("view", { staticClass: "task-tips" }, [
+                                        _vm._v(_vm._s(item.success_time)),
+                                      ]),
                                     ]),
-                                    _c("view", { staticClass: "task-tips" }, [
-                                      _vm._v(_vm._s(item.success_time)),
+                                    _c("view", { staticClass: "task-num" }, [
+                                      _vm._v(_vm._s(item.curr_coin)),
                                     ]),
                                   ]),
-                                  _c("view", { staticClass: "task-num" }, [
-                                    _vm._v(_vm._s(item.curr_coin)),
-                                  ]),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
+                                ]
+                              )
+                            }),
+                            0
+                          ),
+                        ])
                       : _c("view", { staticClass: "none-data" }, [
                           _c("image", {
                             staticClass: "none-img",

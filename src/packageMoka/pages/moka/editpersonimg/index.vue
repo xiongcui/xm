@@ -10,6 +10,7 @@
                 :markImgindex="index"
                 mode="widthFix"
                 :src="item"
+                @tap="previewImage(item, imgs)"
               ></image>
               <view
                 @tap="delete_preview(index)"
@@ -27,6 +28,7 @@
             >
               <view class="pick_img_btn">
                 <image
+                  @tap="previewImage(item, imgs)"
                   src="https://yuepai-oss.qubeitech.com/static/images/common/add_icon.png"
                 ></image>
               </view>
@@ -63,6 +65,13 @@ export default {
     };
   },
   methods: {
+    previewImage(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
     choosePersonImg() {
       if (this.imgs.length >= 9) {
         wx.showToast({

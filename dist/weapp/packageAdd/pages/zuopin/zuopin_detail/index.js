@@ -242,6 +242,10 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -268,6 +272,10 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
     };
   },
   methods: {
+    goZhuye: function goZhuye(uuid) {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     bindended: function bindended() {
       wx.createVideoContext("video").exitFullScreen();
     },
@@ -652,6 +660,11 @@ var render = function () {
         _c("image", {
           staticClass: "avatar",
           attrs: { src: _vm.zuopinInfo.author.avatar },
+          on: {
+            tap: function ($event) {
+              return _vm.goZhuye(_vm.zuopinInfo.author.uuid)
+            },
+          },
         }),
         _c("view", { staticClass: "zuopin_author_info" }, [
           _c(
