@@ -38,6 +38,26 @@
               >请选择公告面向地区</view
             >
           </picker>
+          <view class="works-split" v-if="key == 'RC2001' || key == 'RC2002'"
+            >|</view
+          >
+          <view
+            class="word"
+            @tap="select_word"
+            v-if="key == 'RC2001' || key == 'RC2002'"
+          >
+            <image
+              src="../../../assets/images/common/select2_0.png"
+              class="word-img"
+              v-if="!isword"
+            ></image>
+            <image
+              src="../../../assets/images/common/select2_1.png"
+              class="word-img"
+              v-if="isword"
+            ></image>
+            <text>不限</text>
+          </view>
         </view>
       </view>
       <view class="tonggao-item">
@@ -263,6 +283,7 @@ export default {
   name: "addtonggao",
   data() {
     return {
+      isword: false,
       isIphoneX: false,
       type: "",
       key: "",
@@ -312,6 +333,13 @@ export default {
     };
   },
   methods: {
+    select_word() {
+      this.isword = !this.isword;
+      if (this.isword) {
+        this.select_city = "";
+        this.regionList = [];
+      }
+    },
     dateChange(e) {
       this.date = e.detail.value;
       if (this.date) {
@@ -335,6 +363,7 @@ export default {
     bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
+      this.isword = false;
     },
     checkClick() {
       this.checked = !this.checked;
@@ -465,7 +494,7 @@ export default {
         errortip("请选择身份！");
         return false;
       }
-      if (!this.select_city) {
+      if (!this.select_city && !this.isword) {
         errortip("请选择面向地区！");
         return false;
       }
@@ -554,7 +583,6 @@ export default {
         }
         params.payment_unit = this.company;
       }
-      // console.log(params);
       if (!clickThrottle()) return;
       this.submitNotice(params);
     },
@@ -601,6 +629,7 @@ export default {
     this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function (options) {
+    console.log(options);
     this.type = options.type;
     this.key = options.key;
     this.code = options.code;

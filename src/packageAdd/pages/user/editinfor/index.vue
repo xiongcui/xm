@@ -138,6 +138,7 @@ import {
 } from "../../../../api/index";
 import { Base64 } from "js-Base64";
 import "./index.scss";
+import clickThrottle from "../../../../utils/clickThrottle";
 export default {
   name: "editinfor",
   data() {
@@ -203,6 +204,7 @@ export default {
         errortip("请填写名称！");
         return false;
       }
+      if (!clickThrottle()) return;
       let params = {
         nickname: this.nickname,
         birthday: this.birthday,

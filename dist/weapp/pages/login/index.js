@@ -344,6 +344,8 @@ component.options.__file = "src/pages/login/index.vue"
               params.invited_uuid = _this2.invited_uuid;
             }
 
+            if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
+
             _this2.userRegister(params);
           } else {
             if (data.error_code == 1004) {
@@ -792,30 +794,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/select2_0.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/select2_0.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAM1BMVEUAAACZmZmZmZmZmZmZmZmZmZmbm5uioqKZmZmYmJiZmZmZmZmbm5uZmZmPj4+ZmZmZmZn9AVcQAAAAEHRSTlMA6vnOflBABcWShGtCGRCopcsuSQAAAKdJREFUKM+Fk9sOxCAIRAFBdNV2/v9r95Js3XZrmDdyMgZhoENutbAIl2pOV23KOMS6nakxkDQP95E1AWy/9PGCfZY9AY9Z7pBGJzXBPr2c6aLMX79BJp1cYJ+eGY1u1MDv/hWJbpWgRM7o97iDnWya/+1GFbrCikoFeYUzCjHGCg8wCXyFHRLg4PGgteBjwViCoQYrCRYaxCEIUxDFIMjBGQRHFJzgEykRCXFvdaQ0AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/common/select2_1.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/select2_1.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAV1BMVEUAAAD/VFf/VFf/VFf9VFf/U1f+VFj/VVj/VFf/UFD9U1f+VFf////++fn++/v+a23+6uv+iIr+qqz+hoj+g4X+gYT+ZWj+7u7+3+D+oaL+oKH+eHv+dHeYymaNAAAAC3RSTlMA6vjFkoSAVEwQqE0ARwUAAAC9SURBVCjPhdNZDoQgEEXRKkEFC7VHtYf9r7PNixFpGe6PJCeEGAryGa24qlhpQ6dsw7LHjQ21Bfq4PWotp2qvnUTqgr3J/a0kwvmWU8x25UaSNStHNj/mZcJ2IhPR3rkXVoZ0VPsvlpqUoGkM9C5IbUd/encT9NwVh1f4vp2DhyrVxtMFDh2gG7OgEQ69yh6TkoMPoYrCj3kPVTQZ8f6vYojY+zKHyoUrKVxofhzyw5QfxfwgF59B+REVnuAPuu8fLmpDKooAAAAASUVORK5CYII="
 
 /***/ }),
 

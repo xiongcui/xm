@@ -197,7 +197,6 @@ export default {
         avatar: this.avatar,
         career_label: this.identityList,
       };
-      console.log(params);
       if (!clickThrottle()) return;
       this.userRegister(params);
     },

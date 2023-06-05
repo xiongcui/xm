@@ -308,6 +308,26 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -317,6 +337,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
   name: "addtonggao",
   data: function data() {
     return {
+      isword: false,
       isIphoneX: false,
       type: "",
       key: "",
@@ -362,6 +383,14 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
     };
   },
   methods: {
+    select_word: function select_word() {
+      this.isword = !this.isword;
+
+      if (this.isword) {
+        this.select_city = "";
+        this.regionList = [];
+      }
+    },
     dateChange: function dateChange(e) {
       this.date = e.detail.value;
 
@@ -388,6 +417,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
     bindRegionChange: function bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
+      this.isword = false;
     },
     checkClick: function checkClick() {
       this.checked = !this.checked;
@@ -530,7 +560,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
         return false;
       }
 
-      if (!this.select_city) {
+      if (!this.select_city && !this.isword) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("请选择面向地区！");
         return false;
       }
@@ -626,8 +656,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
         }
 
         params.payment_unit = this.company;
-      } // console.log(params);
-
+      }
 
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.submitNotice(params);
@@ -752,6 +781,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
     this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function onLoad(options) {
+    console.log(options);
     this.type = options.type;
     this.key = options.key;
     this.code = options.code;
@@ -851,6 +881,34 @@ var render = function () {
                       ),
                 ]
               ),
+              _vm.key == "RC2001" || _vm.key == "RC2002"
+                ? _c("view", { staticClass: "works-split" }, [_vm._v("|")])
+                : _vm._e(),
+              _vm.key == "RC2001" || _vm.key == "RC2002"
+                ? _c(
+                    "view",
+                    { staticClass: "word", on: { tap: _vm.select_word } },
+                    [
+                      !_vm.isword
+                        ? _c("image", {
+                            staticClass: "word-img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/common/select2_0.png */ "./src/assets/images/common/select2_0.png"),
+                            },
+                          })
+                        : _vm._e(),
+                      _vm.isword
+                        ? _c("image", {
+                            staticClass: "word-img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../assets/images/common/select2_1.png */ "./src/assets/images/common/select2_1.png"),
+                            },
+                          })
+                        : _vm._e(),
+                      _c("text", [_vm._v("不限")]),
+                    ]
+                  )
+                : _vm._e(),
             ],
             1
           ),

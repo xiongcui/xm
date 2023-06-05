@@ -7,6 +7,21 @@ page {
   .textarea-placeholder {
     font-size: 28px;
   }
+  .works-split {
+    color: #808080;
+    margin: 0px 10px;
+  }
+  .word {
+    display: flex;
+    font-size: 30px;
+    color: #808080;
+    align-items: center;
+  }
+  .word-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
   .tonggao-box {
     margin: 16px 16px 0px 16px;
     background: #ffffff;

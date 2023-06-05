@@ -104,7 +104,6 @@
               class="list_img_item"
               v-for="(url, coverIndex) in item.album.photo_album"
               :key="coverIndex"
-              @tap.stop="previewImage(url, item.album.photo_album)"
             ></image>
           </scroll-view>
         </view>
@@ -262,13 +261,6 @@ export default {
   methods: {
     goZhuye(uuid) {
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
-    },
-    previewImage(src, urls) {
-      // 微信预览图片的方法
-      wx.previewImage({
-        current: src, // 图片的地址url
-        urls: urls, // 预览的地址url
-      });
     },
     clear() {
       this.appointmentData = this.appointmentData.map((item, index) => {

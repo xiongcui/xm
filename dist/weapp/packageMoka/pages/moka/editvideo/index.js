@@ -54,6 +54,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
 /* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
 //
@@ -98,6 +99,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
 //
 //
 //
+
 
 
 
@@ -307,6 +309,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
       });
     },
     submit: function submit() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
       this.userAlbum({
         scr_type: "album",
         file_type: "video",

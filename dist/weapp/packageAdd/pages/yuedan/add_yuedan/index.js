@@ -355,6 +355,35 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -364,6 +393,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
   name: "works",
   data: function data() {
     return {
+      isword: false,
       face_cid: "",
       face_career: "",
       name: "",
@@ -396,6 +426,14 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
     };
   },
   methods: {
+    select_word: function select_word() {
+      this.isword = !this.isword;
+
+      if (this.isword) {
+        this.select_city = "";
+        this.regionList = [];
+      }
+    },
     bindPickerChange: function bindPickerChange(e) {
       this.charge = this.chargeList[e.detail.value].value;
       this.chargeIndex = e.detail.value;
@@ -411,6 +449,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
     bindRegionChange: function bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
+      this.isword = false;
     },
     minAmountInput: function minAmountInput(e) {
       var exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
@@ -504,8 +543,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
           arr.map(function (v, i) {
             v["progress"] = 0;
             videoInfo = v;
-          });
-          console.log(videoInfo, "videoInfo"); //获取临时存放的视频资源
+          }); //获取临时存放的视频资源
           // let tempFilePath = res.tempFiles[0].tempFilePath;
           //获取该视频的播放时间
 
@@ -692,17 +730,10 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
         if (this.checked && !this.minAmount || this.checked && !this.maxAmount) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写收费金额区间！");
           return false;
-        } // if (
-        //   (!this.checked && !this.company) ||
-        //   (this.checked && !this.company)
-        // ) {
-        //   errortip("请选择单位！");
-        //   return false;
-        // }
-
+        }
       }
 
-      if (!this.select_city) {
+      if (!this.select_city && !this.isword) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请选择面向地区！");
         return false;
       }
@@ -1274,37 +1305,71 @@ var render = function () {
             1
           )
         : _vm._e(),
-      _c(
-        "view",
-        { staticClass: "works-info" },
-        [
-          _c("view", [
-            _c("text", [_vm._v("面向地区")]),
-            _vm._v(" "),
-            _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
-          ]),
-          _c(
-            "picker",
-            {
-              staticClass: "works-select",
-              attrs: { mode: "region", value: "region" },
-              on: { change: _vm.bindRegionChange },
-            },
-            [
-              _vm.select_city
-                ? _c(
-                    "view",
-                    { staticClass: "works-select-item works-select-value" },
-                    [_vm._v(_vm._s(_vm.select_city))]
-                  )
-                : _c("view", { staticClass: "works-select-item" }, [
-                    _vm._v("请选择"),
-                  ]),
-            ]
-          ),
-        ],
-        1
-      ),
+      _c("view", { staticClass: "works-info" }, [
+        _c("view", [
+          _c("text", [_vm._v("面向地区")]),
+          _vm._v(" "),
+          _c("text", { staticClass: "check-tips" }, [_vm._v("*")]),
+        ]),
+        _c(
+          "view",
+          { staticClass: "flex" },
+          [
+            _c(
+              "picker",
+              {
+                staticClass: "works-select",
+                attrs: { mode: "region", value: "region", level: "city" },
+                on: { change: _vm.bindRegionChange },
+              },
+              [
+                _vm.select_city
+                  ? _c(
+                      "view",
+                      { staticClass: "works-select-item works-select-value" },
+                      [_vm._v(_vm._s(_vm.select_city))]
+                    )
+                  : _c("view", { staticClass: "works-select-item" }, [
+                      _vm._v("请选择"),
+                    ]),
+              ]
+            ),
+            _vm.face_cid == "20005" ||
+            _vm.face_cid == "20008" ||
+            _vm.face_cid == "20013"
+              ? _c("view", { staticClass: "works-split" }, [_vm._v("|")])
+              : _vm._e(),
+            _vm.face_cid == "20005" ||
+            _vm.face_cid == "20008" ||
+            _vm.face_cid == "20013"
+              ? _c(
+                  "view",
+                  { staticClass: "word", on: { tap: _vm.select_word } },
+                  [
+                    !_vm.isword
+                      ? _c("image", {
+                          staticClass: "word-img",
+                          attrs: {
+                            src: __webpack_require__(/*! ../../../../assets/images/common/select2_0.png */ "./src/assets/images/common/select2_0.png"),
+                          },
+                        })
+                      : _vm._e(),
+                    _vm.isword
+                      ? _c("image", {
+                          staticClass: "word-img",
+                          attrs: {
+                            src: __webpack_require__(/*! ../../../../assets/images/common/select2_1.png */ "./src/assets/images/common/select2_1.png"),
+                          },
+                        })
+                      : _vm._e(),
+                    _c("text", [_vm._v("全国 ")]),
+                  ]
+                )
+              : _vm._e(),
+          ],
+          1
+        ),
+      ]),
       _c(
         "view",
         { staticClass: "works-info" },

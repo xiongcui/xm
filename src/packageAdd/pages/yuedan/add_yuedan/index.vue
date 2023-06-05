@@ -227,19 +227,48 @@
       </view>
       <view class="works-info">
         <view><text>面向地区</text> <text class="check-tips">*</text></view>
-        <picker
-          mode="region"
-          value="region"
-          class="works-select"
-          @change="bindRegionChange"
-        >
-          <view
-            class="works-select-item works-select-value"
-            v-if="select_city"
-            >{{ select_city }}</view
+        <view class="flex">
+          <picker
+            mode="region"
+            value="region"
+            class="works-select"
+            level="city"
+            @change="bindRegionChange"
           >
-          <view class="works-select-item" v-else>请选择</view>
-        </picker>
+            <view
+              class="works-select-item works-select-value"
+              v-if="select_city"
+              >{{ select_city }}</view
+            >
+            <view class="works-select-item" v-else>请选择</view>
+          </picker>
+          <view
+            class="works-split"
+            v-if="
+              face_cid == '20005' || face_cid == '20008' || face_cid == '20013'
+            "
+            >|</view
+          >
+          <view
+            class="word"
+            @tap="select_word"
+            v-if="
+              face_cid == '20005' || face_cid == '20008' || face_cid == '20013'
+            "
+          >
+            <image
+              src="../../../../assets/images/common/select2_0.png"
+              class="word-img"
+              v-if="!isword"
+            ></image>
+            <image
+              src="../../../../assets/images/common/select2_1.png"
+              class="word-img"
+              v-if="isword"
+            ></image>
+            <text>全国 </text>
+          </view>
+        </view>
       </view>
       <view class="works-info">
         <view>
@@ -313,6 +342,7 @@ export default {
   name: "works",
   data() {
     return {
+      isword: false,
       face_cid: "",
       face_career: "",
       name: "",
@@ -344,6 +374,13 @@ export default {
     };
   },
   methods: {
+    select_word() {
+      this.isword = !this.isword;
+      if (this.isword) {
+        this.select_city = "";
+        this.regionList = [];
+      }
+    },
     bindPickerChange(e) {
       this.charge = this.chargeList[e.detail.value].value;
       this.chargeIndex = e.detail.value;
@@ -359,6 +396,7 @@ export default {
     bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
+      this.isword = false;
     },
     minAmountInput(e) {
       let exp = /^[+-]?\d*(\.\d*)?(e[+-]?\d+)?$/;
@@ -444,7 +482,6 @@ export default {
             v["progress"] = 0;
             videoInfo = v;
           });
-          console.log(videoInfo, "videoInfo");
           //获取临时存放的视频资源
           // let tempFilePath = res.tempFiles[0].tempFilePath;
           //获取该视频的播放时间
@@ -622,16 +659,8 @@ export default {
           errortip("请填写收费金额区间！");
           return false;
         }
-        // if (
-        //   (!this.checked && !this.company) ||
-        //   (this.checked && !this.company)
-        // ) {
-        //   errortip("请选择单位！");
-        //   return false;
-        // }
       }
-
-      if (!this.select_city) {
+      if (!this.select_city && !this.isword) {
         errortip("请选择面向地区！");
         return false;
       }

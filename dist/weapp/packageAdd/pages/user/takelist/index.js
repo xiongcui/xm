@@ -267,7 +267,6 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
 //
 //
 //
-//
 
 
 
@@ -309,15 +308,6 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
   methods: {
     goZhuye: function goZhuye(uuid) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
-    },
-    previewImage: function previewImage(src, urls) {
-      // 微信预览图片的方法
-      wx.previewImage({
-        current: src,
-        // 图片的地址url
-        urls: urls // 预览的地址url
-
-      });
     },
     clear: function clear() {
       this.appointmentData = this.appointmentData.map(function (item, index) {
@@ -960,15 +950,6 @@ var render = function () {
                                   key: coverIndex,
                                   staticClass: "list_img_item",
                                   attrs: { src: url, mode: "aspectFill" },
-                                  on: {
-                                    tap: function ($event) {
-                                      $event.stopPropagation()
-                                      return _vm.previewImage(
-                                        url,
-                                        item.album.photo_album
-                                      )
-                                    },
-                                  },
                                 })
                               }
                             ),

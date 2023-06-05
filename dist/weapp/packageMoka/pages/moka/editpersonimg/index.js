@@ -51,8 +51,9 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editpersonimg/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/editpersonimg/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
 
 
 //
@@ -104,6 +105,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 //
 //
 //
+
 
 
 
@@ -201,10 +203,13 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
         return;
       }
 
+      wx.showLoading({
+        title: "保存中",
+        mask: true
+      });
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
       var arr = [];
       this.imgs.map(function (item, index) {
-        console.log(item.indexOf("https:") < 0);
-
         if (item.indexOf("https:") < 0) {
           // if (item.indexOf("http:") != -1 || item.indexOf("wxfile://" != -1)) {
           arr[index] = _this2.uploadImagePhoto(item, {
@@ -220,6 +225,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
           video_album: []
         });
       }).catch(function () {
+        wx.hideLoading();
         wx.showToast({
           title: "有图片上传失败！",
           icon: "none"
@@ -242,23 +248,24 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
 
               case 3:
                 res = _context.sent;
+                wx.hideLoading();
                 _this3.uploadImgList = [];
                 wx.navigateBack({
                   delta: 1
                 });
-                _context.next = 10;
+                _context.next = 11;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     uploadImagePhoto: function uploadImagePhoto(path, params, index) {

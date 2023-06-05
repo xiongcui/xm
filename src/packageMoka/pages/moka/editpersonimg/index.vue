@@ -54,6 +54,7 @@ import {
   uploadImagePhoto,
   userAlbumDetail,
 } from "../../../../api/index";
+import clickThrottle from "../../../../utils/clickThrottle";
 import "./index.scss";
 export default {
   name: "editpersonimg",
@@ -141,9 +142,13 @@ export default {
         errortip("形象照不能少于3张哦");
         return;
       }
+      wx.showLoading({
+        title: "保存中",
+        mask: true,
+      });
+      if (!clickThrottle()) return;
       let arr = [];
       this.imgs.map((item, index) => {
-        console.log(item.indexOf("https:") < 0);
         if (item.indexOf("https:") < 0) {
           // if (item.indexOf("http:") != -1 || item.indexOf("wxfile://" != -1)) {
           arr[index] = this.uploadImagePhoto(
@@ -165,6 +170,7 @@ export default {
           });
         })
         .catch(() => {
+          wx.hideLoading();
           wx.showToast({
             title: "有图片上传失败！",
             icon: "none",
@@ -175,6 +181,7 @@ export default {
     async userAlbum(params) {
       try {
         let res = await userAlbum(params);
+        wx.hideLoading();
         this.uploadImgList = [];
         wx.navigateBack({
           delta: 1,

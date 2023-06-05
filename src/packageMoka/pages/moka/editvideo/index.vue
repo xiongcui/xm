@@ -43,8 +43,9 @@
 <script>
 import "./index.scss";
 import { Base64 } from "js-Base64";
-import { errortip, openPage } from "../../../../utils/util";
+import { openPage } from "../../../../utils/util";
 import { userAlbum, userAlbumDetail } from "../../../../api/index";
+import clickThrottle from "../../../../utils/clickThrottle";
 export default {
   name: "editvideo",
   data() {
@@ -245,6 +246,7 @@ export default {
       });
     },
     submit() {
+      if (!clickThrottle()) return;
       this.userAlbum({
         scr_type: "album",
         file_type: "video",

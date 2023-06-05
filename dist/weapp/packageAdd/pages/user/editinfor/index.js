@@ -54,6 +54,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 /* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/editinfor/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
 //
@@ -187,6 +188,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 //
 //
 //
+
 
 
 
@@ -251,6 +253,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         return false;
       }
 
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
       var params = {
         nickname: this.nickname,
         birthday: this.birthday,

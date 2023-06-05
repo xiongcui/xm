@@ -8,6 +8,32 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.works .flex {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 75%;
+}
+.works .works-split {
+  color: #808080;
+  margin: 0 10rpx;
+}
+.works .word {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 146rpx;
+  font-size: 30rpx;
+  color: #808080;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.works .word-img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
 .works .input-placeholder,
 .works .textarea-placeholder {
   font-size: 30rpx;
@@ -115,6 +141,9 @@
 .works .works-input,
 .works .works-select {
   width: 75%;
+}
+.works .flex .works-select {
+  width: 100%;
 }
 .works .works-info .works-input {
   text-align: right;
