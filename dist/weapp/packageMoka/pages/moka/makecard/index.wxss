@@ -3,6 +3,33 @@
   display: -ms-flexbox;
   display: flex;
 }
+.container .userinfo-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.container .userinfo-info image {
+  width: 120rpx;
+  height: 120rpx;
+}
+.container .name {
+  font-size: 32rpx;
+}
+.container .item-cebian {
+  font-size: 26rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
 .container .header {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -45,13 +72,14 @@
 }
 .container .slider-bg {
   width: 52rpx;
-  height: 400rpx;
-  background: rgba(0, 0, 0, 0.5);
+  height: 360rpx;
+  border-radius: 26rpx;
+  background: rgba(0, 0, 0, 0.3);
   z-index: 99999;
-  -webkit-transform: rotate(-90);
-      -ms-transform: rotate(-90);
-          transform: rotate(-90);
+  position: fixed;
+  left: 16rpx;
 }
+.container .slider-bg .slider-btn,
 .container .slider-bg image {
   width: 52rpx;
   height: 146rpx;
@@ -65,4 +93,25 @@
   color: #333333;
   font-size: 28rpx;
   margin: 0 30rpx;
+}
+.container .photo-container {
+  position: relative;
+}
+.container .change {
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  background: #f9dc4a;
+  border-radius: 50%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #333333;
+  font-size: 28rpx;
 }

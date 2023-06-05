@@ -622,6 +622,8 @@ component.options.__file = "src/packageMoka/pages/moka/makecard/index.vue"
 //
 //
 //
+//
+//
 
 var device = wx.getSystemInfoSync(); // 获取设备信息
 
@@ -692,39 +694,196 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     };
   },
   methods: {
-    touchStart: function touchStart(e) {
+    touchStart: function touchStart(a) {
       this.allowScroll = false;
-      var id = 0;
+      var e = parseInt(a.currentTarget.id);
       var t = "";
-      var n = "";
+      var n = false;
 
-      if (t = e >= 0 && e < this.photos.length ? e : -1, n = true, e.touches.length >= 2) {
+      if (t = e >= 0 && e < this.photos.length ? e : -1, n = true, a.touches.length >= 2) {
         var h = true;
-        var o = e.touches[1].pageX - e.touches[0].pageX,
-            s = e.touches[1].pageY - e.touches[0].pageY;
+        var o = a.touches[1].pageX - a.touches[0].pageX,
+            s = a.touches[1].pageY - a.touches[0].pageY;
         d = Math.sqrt(o * o + s * s);
       }
     },
+    touchMove: function touchMove() {},
+    touchEnd: function touchEnd() {},
+    isTouchInLayout: function isTouchInLayout() {},
     sliderChange: function sliderChange(t) {
-      console.log(t);
       this.allowScroll = true;
+      var r = 750 / width;
       var a = t.detail.y,
           e = 274 / r,
           o = (this.card.height - this.screenH + 40) / r * a / e;
       this.scrollTop = o;
+      console.log(this.scrollTop, "this.scrollTop");
     },
     switchBirthday: function switchBirthday() {},
     switchBWH: function switchBWH() {},
     switchQrcode: function switchQrcode() {},
     switchBg: function switchBg() {},
     make: function make() {},
-    changePhoto: function changePhoto() {}
+    changePhoto: function changePhoto(t) {
+      console.log(t, "t----");
+
+      var a = parseInt(t.currentTarget.id),
+          _this = this;
+
+      wx.chooseImage({
+        count: 1,
+        sizeType: ["compressed"],
+        sourceType: ["album"],
+        success: function success(t) {
+          var o = t.tempFilePaths[0];
+          _this.photos[a] = o;
+
+          _this.getPhotoInfos([], 0);
+
+          _this.changeIndex = -1;
+          _this.showChangeButton = false;
+        }
+      });
+    },
+    getPhotoInfos: function getPhotoInfos(e, o) {
+      var s = this.photos;
+      var i = this.card.layouts;
+      var l = s[o];
+      var r = i[o];
+
+      var _this = this;
+
+      wx.getImageInfo({
+        src: l,
+        success: function success(i) {
+          var l, n, h, d;
+          i.width / i.height > r.height / r.width ? (n = r.width, l = i.width / i.height * n, h = true, d = false) : (l = r.height, n = i.height / i.width * l, h = false, d = true);
+          var c = {
+            width: i.width,
+            height: i.height,
+            rotateW: l,
+            rotateH: n,
+            scrollX: h,
+            scrollY: d
+          };
+          e[o] = c;
+
+          if ((o += 1) >= s.length) {
+            _this.photos = s;
+            _this.photoInfos = e;
+          } else {
+            _this.getPhotoInfos(e, o);
+          }
+        }
+      });
+    },
+    scroll: function scroll(t) {
+      console.log(this.scrollInfo, "this.scrollInfo"); // this.scrollInfo[t.currentTarget.id].x = t.detail.scrollLeft, this.data.scrollInfo[t.currentTarget.id].y = t.detail.scrollTop;
+    },
+    tapPhoto: function tapPhoto(t) {
+      var a = parseInt(t.currentTarget.id);
+      this.changeIndex = a;
+
+      if (this.showChangeButton = !this.showChangeButton) {
+        this.changeIndex = this.changeIndex;
+        this.showChangeButton = this.showChangeButton;
+      }
+    },
+    cutAvartar: function cutAvartar() {
+      var _this = this;
+
+      wx.downloadFile({
+        url: this.userInfo.avatar,
+        success: function success(res) {
+          if (200 === res.statusCode) {
+            var e = wx.createCanvasContext("firstCanvas");
+            e.save(), e.beginPath(), e.arc(100, 100, 100, 0, 2 * Math.PI, !1), e.clip(), e.drawImage(res.tempFilePath, 0, 0, 200, 200), e.restore(), e.draw(false, function (a) {
+              wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: 200,
+                height: 200,
+                destWidth: 200,
+                destHeight: 200,
+                canvasId: "firstCanvas",
+                fileType: "png",
+                quality: 1,
+                success: function success(a) {
+                  _this.avartar = a.tempFilePath;
+
+                  _this.drawAvartar(true);
+
+                  _this.drawAvartar(false);
+                },
+                fail: function fail(t) {
+                  wx.showModal({
+                    title: "头像裁剪失败",
+                    showCancel: !1
+                  });
+                }
+              });
+            });
+          }
+        }
+      });
+    },
+    drawAvartar: function drawAvartar(t) {
+      var _this = this;
+
+      console.log(111);
+      wx.downloadFile({
+        // url: this.userInfo.xcxcode.moka_code,
+        url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
+        success: function success(e) {
+          console.log(e, "e");
+
+          if (200 === e.statusCode && t) {
+            if (t) {
+              _this.blackCode = e.tempFilePath;
+            } else {
+              _this.whiteCode = e.tempFilePath;
+            }
+
+            console.log(_this.blackCode, _this.whiteCode);
+
+            _this.drawCode(t);
+          }
+        }
+      });
+    },
+    drawCode: function drawCode(t) {
+      var a = this,
+          e = wx.createCanvasContext("firstCanvas");
+      e.setFillStyle("white"), e.fillRect(0, 0, 200, 200), e.drawImage(t ? a.blackCode : a.whiteCode, 0, 0, 200, 200), e.drawImage(a.avartar, 55, 55, 90, 90), e.draw(false, function (e) {
+        wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: 200,
+          height: 200,
+          destWidth: 200,
+          destHeight: 200,
+          canvasId: "firstCanvas",
+          fileType: "png",
+          quality: 1,
+          success: function success(e) {
+            t ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
+          },
+          fail: function fail(t) {
+            wx.showModal({
+              title: "头像绘制失败",
+              showCancel: false
+            });
+          }
+        });
+      });
+    }
   },
   onLoad: function onLoad(options) {
     var mokaIndex = moka.getIndexByCardId("1001010501");
     this.card = moka.layouts[mokaIndex];
     this.photos = ["https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg", "https://yuepai-oss.qubeitech.com/notice/111452/fe4576f1-ff51-11ed-a646-f7624355584a-qa60.jpg", "https://yuepai-oss.qubeitech.com/invite/111514/b6417311-ff7c-11ed-a646-f7624355584a-qa60.jpg", "https://yuepai-oss.qubeitech.com/invite/111166/fbe29799-f48f-11ed-a646-f7624355584a.jpg", "https://yuepai-oss.qubeitech.com/invite/111166/fbe2979a-f48f-11ed-a646-f7624355584a.jpg"];
     this.userInfo = {
+      avatar: "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
       nickname: "nickname",
       province: "province",
       city: "city",
@@ -736,10 +895,14 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       birthday: "1994-08-29",
       height: 100,
       weight: 200,
+      is_bwh: true,
       bwh_b: 38,
       bwh_w: 39,
       bwh_h: 40,
-      shoe: 41
+      shoe: 41,
+      xcxcode: {
+        moka_code: 10
+      }
     };
     var arr = [];
 
@@ -752,6 +915,8 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     }
 
     this.scrollInfo = arr;
+    this.getPhotoInfos([], 0);
+    this.cutAvartar();
   }
 });
 
@@ -893,11 +1058,6 @@ var render = function () {
                                   height: _vm.card.userInfo.width + "rpx",
                                   width: _vm.card.userInfo.height + "rpx",
                                   transform:
-                                    //     'rotate(90deg)' +
-                                    //    ' translate('+
-                                    //       -card.userInfo.offset + 'rpx',
-                                    //       -card.userInfo.offset + 'rpx',+
-                                    //     ')',
                                     "rotate(90deg) translate(" +
                                     (-_vm.card.userInfo.offset + "rpx") +
                                     ", " +
@@ -1590,24 +1750,21 @@ var render = function () {
                                 ]
                               )
                             : _vm._e(),
-                          _c(
-                            "view",
-                            {
-                              staticClass: "change",
-                              staticStyle: {
-                                top: "(item.height-100)*0.5 +'rpx',right:(item.width-100)*0.5+'rpx'",
-                              },
-                              attrs: {
-                                hidden: !(
-                                  _vm.showChangeButton &&
-                                  index == _vm.changeIndex
-                                ),
-                                id: item.id,
-                              },
-                              on: { tap: _vm.changePhoto },
-                            },
-                            [_vm._v("替换")]
-                          ),
+                          _vm.showChangeButton && index == _vm.changeIndex
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "change",
+                                  style: {
+                                    top: (item.height - 100) * 0.5 + "rpx",
+                                    right: (item.width - 100) * 0.5 + "rpx",
+                                  },
+                                  attrs: { id: item.id },
+                                  on: { tap: _vm.changePhoto },
+                                },
+                                [_vm._v("替换")]
+                              )
+                            : _vm._e(),
                         ],
                         1
                       )
@@ -1744,14 +1901,29 @@ var render = function () {
       ],
       1
     ),
-    _c("canvas", {
-      style: { width: _vm.cutCanvasWH + "px", height: _vm.cutCanvasWH + "px" },
-      attrs: { canvasId: "cutCanvas", hidden: _vm.canvasHidden },
-    }),
-    _c("canvas", {
-      staticStyle: { width: "200px", height: "200px" },
-      attrs: { canvasId: "firstCanvas", hidden: _vm.canvasHidden },
-    }),
+    _c(
+      "view",
+      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+      [
+        _c("canvas", {
+          style: {
+            width: _vm.cutCanvasWH + "px",
+            height: _vm.cutCanvasWH + "px",
+          },
+          attrs: { canvasId: "cutCanvas", hidden: _vm.canvasHidden },
+        }),
+      ]
+    ),
+    _c(
+      "view",
+      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+      [
+        _c("canvas", {
+          staticStyle: { width: "200px", height: "200px" },
+          attrs: { canvasId: "firstCanvas", hidden: _vm.canvasHidden },
+        }),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
