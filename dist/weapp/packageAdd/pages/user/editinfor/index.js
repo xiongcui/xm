@@ -188,6 +188,8 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -528,7 +530,7 @@ var render = function () {
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.sexs[_vm.sex])),
                         ])
-                      : _c("view", { staticClass: "picker" }, [
+                      : _c("view", { staticClass: "picker-none" }, [
                           _vm._v("请选择"),
                         ]),
                   ]),
@@ -559,7 +561,7 @@ var render = function () {
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.birthday)),
                         ])
-                      : _c("view", { staticClass: "picker" }, [
+                      : _c("view", { staticClass: "picker-none" }, [
                           _vm._v("请选择"),
                         ]),
                   ]),
@@ -595,7 +597,7 @@ var render = function () {
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.identity)),
                         ])
-                      : _c("view", { staticClass: "picker" }, [
+                      : _c("view", { staticClass: "picker-none" }, [
                           _vm._v("请选择身份"),
                         ]),
                   ]
@@ -637,9 +639,11 @@ var render = function () {
                               ),
                             ]
                           )
-                        : _c("view", { staticClass: "pickers pick-city" }, [
-                            _vm._v("请选择地区"),
-                          ]),
+                        : _c(
+                            "view",
+                            { staticClass: "pickers pick-city picker-none" },
+                            [_vm._v("请选择地区")]
+                          ),
                     ]
                   ),
                 ],

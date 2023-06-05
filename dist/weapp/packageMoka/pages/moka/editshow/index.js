@@ -515,6 +515,15 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         delta: 1
       });
     },
+    showbigPersonimg: function showbigPersonimg(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src,
+        // 图片的地址url
+        urls: urls // 预览的地址url
+
+      });
+    },
     editpersondata: function editpersondata() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
     },
@@ -1508,10 +1517,17 @@ var render = function () {
                                           _c("image", {
                                             staticClass: "personimg",
                                             attrs: {
-                                              catchtap: "showbigPersonimg",
                                               "data-index": index,
                                               mode: "aspectFill",
                                               src: imgitem,
+                                            },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.showbigPersonimg(
+                                                  imgitem,
+                                                  _vm.homeInfor.personimg
+                                                )
+                                              },
                                             },
                                           }),
                                           index == 2

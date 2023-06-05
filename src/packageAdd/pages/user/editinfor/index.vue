@@ -37,7 +37,7 @@
             <view class="item_label">性别</view>
             <view class="ub-f1 item_input">
               <view class="picker" v-if="sex !== null">{{ sexs[sex] }}</view>
-              <view class="picker" v-else>请选择</view>
+              <view class="picker-none" v-else>请选择</view>
             </view>
           </view>
           <view class="item_right">
@@ -59,7 +59,7 @@
             <view class="item_label">生日</view>
             <view class="ub-f1 item_input">
               <view class="picker" v-if="birthday">{{ birthday }}</view>
-              <view class="picker" v-else>请选择</view>
+              <view class="picker-none" v-else>请选择</view>
             </view>
           </view>
           <view class="item_right">
@@ -75,7 +75,7 @@
           <view class="item_label">身份</view>
           <view class="ub-f1 item_input" @tap="goIdentity">
             <view class="picker" v-if="identity">{{ identity }}</view>
-            <view class="picker" v-else>请选择身份</view>
+            <view class="picker-none" v-else>请选择身份</view>
           </view>
         </view>
         <view class="item_right">
@@ -93,7 +93,9 @@
               <view class="pickers pick-city picked" v-if="region.length"
                 >{{ region[1] }}-{{ region[2] }}</view
               >
-              <view class="pickers pick-city" v-else>请选择地区</view>
+              <view class="pickers pick-city picker-none" v-else
+                >请选择地区</view
+              >
             </picker>
           </view>
         </view>

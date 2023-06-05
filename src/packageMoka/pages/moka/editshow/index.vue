@@ -222,7 +222,7 @@
                 :key="index"
               >
                 <image
-                  catchtap="showbigPersonimg"
+                  @tap="showbigPersonimg(imgitem, homeInfor.personimg)"
                   class="personimg"
                   :data-index="index"
                   mode="aspectFill"
@@ -470,6 +470,13 @@ export default {
     goback() {
       wx.navigateBack({
         delta: 1,
+      });
+    },
+    showbigPersonimg(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
       });
     },
     editpersondata() {
