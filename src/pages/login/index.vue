@@ -248,6 +248,10 @@ export default {
     },
     finishClick() {
       if (!clickThrottle()) return;
+      wx.showLoading({
+        title: "保存中",
+        mask: true,
+      });
       this.upImgs(this.userInfo.avatar);
     },
     userAgreement() {
@@ -279,7 +283,6 @@ export default {
             if (this.invited_uuid) {
               params.invited_uuid = this.invited_uuid;
             }
-            if (!clickThrottle()) return;
             this.userRegister(params);
           } else {
             if (data.error_code == 1004) {
@@ -349,6 +352,7 @@ export default {
     async userRegister(params) {
       try {
         let res = await userRegister(params);
+        wx.hideLoading();
         let userInfo = wx.getStorageSync("userInfo");
         userInfo.avatar = params.avatar;
         userInfo.nickname = params.nickname;

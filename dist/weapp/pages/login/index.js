@@ -308,6 +308,10 @@ component.options.__file = "src/pages/login/index.vue"
     },
     finishClick: function finishClick() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
+      wx.showLoading({
+        title: "保存中",
+        mask: true
+      });
       this.upImgs(this.userInfo.avatar);
     },
     userAgreement: function userAgreement() {
@@ -343,8 +347,6 @@ component.options.__file = "src/pages/login/index.vue"
             if (_this2.invited_uuid) {
               params.invited_uuid = _this2.invited_uuid;
             }
-
-            if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
 
             _this2.userRegister(params);
           } else {
@@ -476,24 +478,25 @@ component.options.__file = "src/pages/login/index.vue"
 
               case 3:
                 res = _context3.sent;
+                wx.hideLoading();
                 userInfo = wx.getStorageSync("userInfo");
                 userInfo.avatar = params.avatar;
                 userInfo.nickname = params.nickname;
                 wx.setStorageSync("userInfo", userInfo);
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
-                _context3.next = 13;
+                _context3.next = 14;
                 break;
 
-              case 11:
-                _context3.prev = 11;
+              case 12:
+                _context3.prev = 12;
                 _context3.t0 = _context3["catch"](0);
 
-              case 13:
+              case 14:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 11]]);
+        }, _callee3, null, [[0, 12]]);
       }))();
     }
   },
