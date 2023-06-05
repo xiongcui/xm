@@ -33,7 +33,12 @@
       </view>
     </view>
     <view v-if="list.length" class="takect">
-      <view class="componets-box" v-for="(item, index) in list" :key="index">
+      <view
+        class="componets-box"
+        v-for="(item, index) in list"
+        :key="index"
+        @tap="goZhuye(item.basic.uuid)"
+      >
         <view class="list_top">
           <view class="list_top_left">
             <view class="avatar-box">
@@ -44,7 +49,6 @@
                     : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
                 "
                 class="avatar"
-                @tap="goZhuye(item.basic.uuid)"
               ></image>
               <block v-if="item.basic.sex !== null">
                 <image
@@ -79,12 +83,12 @@
           </view>
           <view class="list_top_rt">
             <view
-              @tap="follow(item)"
+              @tap.stop="follow(item)"
               class="followed_btn_red"
               v-if="!item.follow.is_follower"
               >关注</view
             >
-            <view class="followed_btn" @tap="unfollow(item)" v-else
+            <view class="followed_btn" @tap.stop="unfollow(item)" v-else
               >取消关注</view
             >
           </view>
@@ -100,7 +104,6 @@
               class="list_img_item"
               v-for="(url, coverIndex) in item.album.photo_album"
               :key="coverIndex"
-              @tap.stop="previewImage(url, item.album.photo_album)"
             ></image>
           </scroll-view>
         </view>
@@ -122,7 +125,7 @@
         </view>
         <view class="list_bottom">
           <view class="list_time"> {{ item.basic.login_time_humanize }} </view>
-          <view class="contact" @tap="communicate(item)">立即沟通</view>
+          <view class="contact" @tap.stop="communicate(item)">立即沟通</view>
         </view>
       </view>
     </view>
@@ -258,13 +261,6 @@ export default {
   methods: {
     goZhuye(uuid) {
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
-    },
-    previewImage(src, urls) {
-      // 微信预览图片的方法
-      wx.previewImage({
-        current: src, // 图片的地址url
-        urls: urls, // 预览的地址url
-      });
     },
     clear() {
       this.appointmentData = this.appointmentData.map((item, index) => {

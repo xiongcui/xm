@@ -14,7 +14,7 @@
         <text class="making-text">制作中，请稍候</text>
       </view>
       <view
-        @touch-start="touchStart"
+        @touchStart="touchStart"
         class="slider"
         :style="{ top: (screenH - 458) * 0.5 + 'rpx' }"
       >
@@ -638,8 +638,30 @@ export default {
     };
   },
   methods: {
-    touchStart() {},
-    sliderChange() {},
+    touchStart(e) {
+      this.allowScroll = false;
+      var id = 0;
+      var t = "";
+      var n = "";
+      if (
+        ((t = e >= 0 && e < this.photos.length ? e : -1),
+        (n = true),
+        e.touches.length >= 2)
+      ) {
+        var h = true;
+        var o = e.touches[1].pageX - e.touches[0].pageX,
+          s = e.touches[1].pageY - e.touches[0].pageY;
+        d = Math.sqrt(o * o + s * s);
+      }
+    },
+    sliderChange(t) {
+      console.log(t);
+      this.allowScroll = true;
+      var a = t.detail.y,
+        e = 274 / r,
+        o = (((this.card.height - this.screenH + 40) / r) * a) / e;
+      this.scrollTop = o;
+    },
     switchBirthday() {},
     switchBWH() {},
     switchQrcode() {},

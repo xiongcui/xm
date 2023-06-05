@@ -259,7 +259,6 @@ component.options.__file = "src/pages/register/index.vue"
         avatar: this.avatar,
         career_label: this.identityList
       };
-      console.log(params);
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.userRegister(params);
     },

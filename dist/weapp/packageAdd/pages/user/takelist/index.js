@@ -264,6 +264,9 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -305,15 +308,6 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
   methods: {
     goZhuye: function goZhuye(uuid) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
-    },
-    previewImage: function previewImage(src, urls) {
-      // 微信预览图片的方法
-      wx.previewImage({
-        current: src,
-        // 图片的地址url
-        urls: urls // 预览的地址url
-
-      });
     },
     clear: function clear() {
       this.appointmentData = this.appointmentData.map(function (item, index) {
@@ -831,192 +825,196 @@ var render = function () {
             "view",
             { staticClass: "takect" },
             _vm._l(_vm.list, function (item, index) {
-              return _c("view", { key: index, staticClass: "componets-box" }, [
-                _c("view", { staticClass: "list_top" }, [
-                  _c("view", { staticClass: "list_top_left" }, [
-                    _c(
-                      "view",
-                      { staticClass: "avatar-box" },
-                      [
-                        _c("image", {
-                          staticClass: "avatar",
-                          attrs: {
-                            src: item.basic.avatar
-                              ? item.basic.avatar
-                              : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-                          },
-                          on: {
-                            tap: function ($event) {
-                              return _vm.goZhuye(item.basic.uuid)
+              return _c(
+                "view",
+                {
+                  key: index,
+                  staticClass: "componets-box",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.goZhuye(item.basic.uuid)
+                    },
+                  },
+                },
+                [
+                  _c("view", { staticClass: "list_top" }, [
+                    _c("view", { staticClass: "list_top_left" }, [
+                      _c(
+                        "view",
+                        { staticClass: "avatar-box" },
+                        [
+                          _c("image", {
+                            staticClass: "avatar",
+                            attrs: {
+                              src: item.basic.avatar
+                                ? item.basic.avatar
+                                : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
                             },
-                          },
-                        }),
-                        item.basic.sex !== null
-                          ? _c("block", [
-                              item.basic.sex == 1
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                              item.basic.sex == 0
-                                ? _c("image", {
-                                    staticClass: "list_sex",
-                                    attrs: {
-                                      src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                    },
-                                  })
-                                : _vm._e(),
-                            ])
-                          : _vm._e(),
-                      ],
-                      1
-                    ),
-                    _c("view", { staticClass: "list_info" }, [
-                      _c("view", { staticClass: "list_name" }, [
-                        _vm._v(" " + _vm._s(item.basic.nickname) + " "),
-                      ]),
-                      _c("view", { staticClass: "list_p" }, [
-                        item.basic.career_label.length
-                          ? _c("text", [
-                              _vm._v(
-                                " " +
-                                  _vm._s(item.basic.career_label[0]) +
-                                  "｜" +
-                                  _vm._s(item.basic.province_name)
-                              ),
-                            ])
-                          : _vm._e(),
-                        item.basic.is_certify
-                          ? _c("view", { staticClass: "icon_real" }, [
-                              _vm._v("已实名"),
-                            ])
-                          : _vm._e(),
-                        item.basic.is_security
-                          ? _c("view", { staticClass: "icon_pledge" }, [
-                              _vm._v("已担保"),
-                            ])
-                          : _vm._e(),
+                          }),
+                          item.basic.sex !== null
+                            ? _c("block", [
+                                item.basic.sex == 1
+                                  ? _c("image", {
+                                      staticClass: "list_sex",
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                                      },
+                                    })
+                                  : _vm._e(),
+                                item.basic.sex == 0
+                                  ? _c("image", {
+                                      staticClass: "list_sex",
+                                      attrs: {
+                                        src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                                      },
+                                    })
+                                  : _vm._e(),
+                              ])
+                            : _vm._e(),
+                        ],
+                        1
+                      ),
+                      _c("view", { staticClass: "list_info" }, [
+                        _c("view", { staticClass: "list_name" }, [
+                          _vm._v(" " + _vm._s(item.basic.nickname) + " "),
+                        ]),
+                        _c("view", { staticClass: "list_p" }, [
+                          item.basic.career_label.length
+                            ? _c("text", [
+                                _vm._v(
+                                  " " +
+                                    _vm._s(item.basic.career_label[0]) +
+                                    "｜" +
+                                    _vm._s(item.basic.province_name)
+                                ),
+                              ])
+                            : _vm._e(),
+                          item.basic.is_certify
+                            ? _c("view", { staticClass: "icon_real" }, [
+                                _vm._v("已实名"),
+                              ])
+                            : _vm._e(),
+                          item.basic.is_security
+                            ? _c("view", { staticClass: "icon_pledge" }, [
+                                _vm._v("已担保"),
+                              ])
+                            : _vm._e(),
+                        ]),
                       ]),
                     ]),
-                  ]),
-                  _c("view", { staticClass: "list_top_rt" }, [
-                    !item.follow.is_follower
-                      ? _c(
-                          "view",
-                          {
-                            staticClass: "followed_btn_red",
-                            on: {
-                              tap: function ($event) {
-                                return _vm.follow(item)
+                    _c("view", { staticClass: "list_top_rt" }, [
+                      !item.follow.is_follower
+                        ? _c(
+                            "view",
+                            {
+                              staticClass: "followed_btn_red",
+                              on: {
+                                tap: function ($event) {
+                                  $event.stopPropagation()
+                                  return _vm.follow(item)
+                                },
                               },
                             },
-                          },
-                          [_vm._v("关注")]
-                        )
-                      : _c(
-                          "view",
-                          {
-                            staticClass: "followed_btn",
-                            on: {
-                              tap: function ($event) {
-                                return _vm.unfollow(item)
+                            [_vm._v("关注")]
+                          )
+                        : _c(
+                            "view",
+                            {
+                              staticClass: "followed_btn",
+                              on: {
+                                tap: function ($event) {
+                                  $event.stopPropagation()
+                                  return _vm.unfollow(item)
+                                },
                               },
                             },
+                            [_vm._v("取消关注")]
+                          ),
+                    ]),
+                  ]),
+                  _c("view", { staticClass: "list_desc" }, [
+                    _vm._v(" " + _vm._s(item.basic.resume) + " "),
+                  ]),
+                  item.album.photo_album.length
+                    ? _c(
+                        "view",
+                        { staticClass: "list_img" },
+                        [
+                          _c(
+                            "scroll-view",
+                            { attrs: { enhanced: true, scrollX: true } },
+                            _vm._l(
+                              item.album.photo_album,
+                              function (url, coverIndex) {
+                                return _c("image", {
+                                  key: coverIndex,
+                                  staticClass: "list_img_item",
+                                  attrs: { src: url, mode: "aspectFill" },
+                                })
+                              }
+                            ),
+                            0
+                          ),
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  !item.album.photo_album.length &&
+                  item.album.video_album.length
+                    ? _c(
+                        "view",
+                        { staticClass: "list_video" },
+                        [
+                          _c(
+                            "scroll-view",
+                            { attrs: { enhanced: true, scrollX: true } },
+                            _vm._l(
+                              item.album.video_album,
+                              function (videoItem, videoIndex) {
+                                return _c("video", {
+                                  key: videoIndex,
+                                  staticClass: "list_video-width",
+                                  attrs: {
+                                    objectFit: "cover",
+                                    poster: videoItem.cover,
+                                    src: videoItem.file,
+                                  },
+                                  on: {
+                                    tap: function ($event) {
+                                      $event.stopPropagation()
+                                    },
+                                  },
+                                })
+                              }
+                            ),
+                            0
+                          ),
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _c("view", { staticClass: "list_bottom" }, [
+                    _c("view", { staticClass: "list_time" }, [
+                      _vm._v(
+                        " " + _vm._s(item.basic.login_time_humanize) + " "
+                      ),
+                    ]),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "contact",
+                        on: {
+                          tap: function ($event) {
+                            $event.stopPropagation()
+                            return _vm.communicate(item)
                           },
-                          [_vm._v("取消关注")]
-                        ),
-                  ]),
-                ]),
-                _c("view", { staticClass: "list_desc" }, [
-                  _vm._v(" " + _vm._s(item.basic.resume) + " "),
-                ]),
-                item.album.photo_album.length
-                  ? _c(
-                      "view",
-                      { staticClass: "list_img" },
-                      [
-                        _c(
-                          "scroll-view",
-                          { attrs: { enhanced: true, scrollX: true } },
-                          _vm._l(
-                            item.album.photo_album,
-                            function (url, coverIndex) {
-                              return _c("image", {
-                                key: coverIndex,
-                                staticClass: "list_img_item",
-                                attrs: { src: url, mode: "aspectFill" },
-                                on: {
-                                  tap: function ($event) {
-                                    $event.stopPropagation()
-                                    return _vm.previewImage(
-                                      url,
-                                      item.album.photo_album
-                                    )
-                                  },
-                                },
-                              })
-                            }
-                          ),
-                          0
-                        ),
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                !item.album.photo_album.length && item.album.video_album.length
-                  ? _c(
-                      "view",
-                      { staticClass: "list_video" },
-                      [
-                        _c(
-                          "scroll-view",
-                          { attrs: { enhanced: true, scrollX: true } },
-                          _vm._l(
-                            item.album.video_album,
-                            function (videoItem, videoIndex) {
-                              return _c("video", {
-                                key: videoIndex,
-                                staticClass: "list_video-width",
-                                attrs: {
-                                  objectFit: "cover",
-                                  poster: videoItem.cover,
-                                  src: videoItem.file,
-                                },
-                                on: {
-                                  tap: function ($event) {
-                                    $event.stopPropagation()
-                                  },
-                                },
-                              })
-                            }
-                          ),
-                          0
-                        ),
-                      ],
-                      1
-                    )
-                  : _vm._e(),
-                _c("view", { staticClass: "list_bottom" }, [
-                  _c("view", { staticClass: "list_time" }, [
-                    _vm._v(" " + _vm._s(item.basic.login_time_humanize) + " "),
-                  ]),
-                  _c(
-                    "view",
-                    {
-                      staticClass: "contact",
-                      on: {
-                        tap: function ($event) {
-                          return _vm.communicate(item)
                         },
                       },
-                    },
-                    [_vm._v("立即沟通")]
-                  ),
-                ]),
-              ])
+                      [_vm._v("立即沟通")]
+                    ),
+                  ]),
+                ]
+              )
             }),
             0
           )

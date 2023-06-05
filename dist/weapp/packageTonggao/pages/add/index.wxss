@@ -11,6 +11,28 @@ page {
   font-size: 28rpx;
 }
 
+.add-tonggao .works-split {
+  color: #808080;
+  margin: 0 10rpx;
+}
+
+.add-tonggao .word {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 30rpx;
+  color: #808080;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-tonggao .word-img {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
 .add-tonggao .tonggao-box {
   margin: 16rpx 16rpx 0 16rpx;
   background: #ffffff;

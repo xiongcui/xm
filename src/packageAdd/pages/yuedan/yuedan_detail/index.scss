@@ -309,7 +309,6 @@ page {
       font-size: 30px;
       color: rgba(0, 0, 0, 0.5);
       line-height: 38px;
-      margin-bottom: 16px;
       display: flex;
       padding: 0px 16px;
     }
@@ -593,6 +592,8 @@ page {
     color: rgba(0, 0, 0, 0.5);
   }
   .yuepai_tag {
+    display: flex;
+    flex-wrap: wrap;
     padding: 0px 16px 16px 16px;
     .tag {
       padding: 4px 10px;
@@ -601,6 +602,7 @@ page {
       color: #06a51c;
       font-size: 28px;
       margin-right: 16px;
+      margin-top: 16px;
     }
   }
   .home_item_main {

@@ -119,6 +119,13 @@
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -127,6 +134,10 @@
     base_data: {
       type: Array,
       default: []
+    },
+    myself: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -136,11 +147,19 @@
       },
       deep: true,
       immediate: true
+    },
+    myself: {
+      handler: function handler(newVal, oldVal) {
+        this.ismyself = newVal;
+      },
+      deep: true,
+      immediate: true
     }
   },
   data: function data() {
     return {
-      list: []
+      list: [],
+      ismyself: true
     };
   },
   methods: {
@@ -155,6 +174,9 @@
         urls: urls // 预览的地址url
 
       });
+    },
+    godetail: function godetail(oid, author_id) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
   }
 });
@@ -1309,99 +1331,112 @@ var render = function () {
             },
           }),
         ]),
-        _c("view", { staticClass: "none_tiptext" }, [
-          _vm._v("还没有发布过作品动态哦～"),
-        ]),
-        _c(
-          "view",
-          { staticClass: "none_now_make", on: { tap: _vm.goAddZuopin } },
-          [_vm._v("马上发布")]
-        ),
+        _vm.ismyself
+          ? _c("view", { staticClass: "none_tiptext" }, [
+              _vm._v("还没有发布过作品动态哦～"),
+            ])
+          : _vm._e(),
+        !_vm.ismyself
+          ? _c("view", { staticClass: "none_tiptext" }, [_vm._v("暂无数据")])
+          : _vm._e(),
+        _vm.ismyself
+          ? _c(
+              "view",
+              { staticClass: "none_now_make", on: { tap: _vm.goAddZuopin } },
+              [_vm._v("马上发布")]
+            )
+          : _vm._e(),
       ])
     : _c(
         "view",
         { staticClass: "main ub ub-ver" },
         _vm._l(_vm.list, function (item, index) {
-          return _c("view", { key: index, staticClass: "zuopin-list" }, [
-            item.file_type == "picture"
-              ? _c(
-                  "view",
-                  { staticClass: "list_img" },
-                  [
-                    _c(
-                      "scroll-view",
-                      { attrs: { enhanced: true, scrollX: true } },
-                      _vm._l(item.cover, function (url, coverIndex) {
-                        return _c("image", {
-                          key: coverIndex,
-                          staticClass: "list_img_item",
-                          attrs: { src: url, mode: "aspectFill" },
-                          on: {
-                            tap: function ($event) {
-                              $event.stopPropagation()
-                              return _vm.previewImage(url, item.cover)
-                            },
-                          },
-                        })
-                      }),
-                      0
-                    ),
-                  ],
-                  1
-                )
-              : _vm._e(),
-            item.file_type == "video"
-              ? _c("view", { staticClass: "list_video" }, [
-                  _c("video", {
-                    staticClass: "list_video-width",
-                    attrs: {
-                      objectFit: "cover",
-                      poster: item.cover[0],
-                      src: item.video_cover && item.video_cover[0],
-                    },
-                    on: {
-                      tap: function ($event) {
-                        $event.stopPropagation()
+          return _c(
+            "view",
+            {
+              key: index,
+              staticClass: "zuopin-list",
+              on: {
+                tap: function ($event) {
+                  return _vm.godetail(item.oid, item.author_id)
+                },
+              },
+            },
+            [
+              item.file_type == "picture"
+                ? _c(
+                    "view",
+                    { staticClass: "list_img" },
+                    [
+                      _c(
+                        "scroll-view",
+                        { attrs: { enhanced: true, scrollX: true } },
+                        _vm._l(item.cover, function (url, coverIndex) {
+                          return _c("image", {
+                            key: coverIndex,
+                            staticClass: "list_img_item",
+                            attrs: { src: url, mode: "aspectFill" },
+                          })
+                        }),
+                        0
+                      ),
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              item.file_type == "video"
+                ? _c("view", { staticClass: "list_video" }, [
+                    _c("video", {
+                      staticClass: "list_video-width",
+                      attrs: {
+                        objectFit: "cover",
+                        poster: item.cover[0],
+                        src: item.video_cover && item.video_cover[0],
                       },
+                      on: {
+                        tap: function ($event) {
+                          $event.stopPropagation()
+                        },
+                      },
+                    }),
+                  ])
+                : _vm._e(),
+              _c("view", { staticClass: "list_title" }, [
+                _vm._v(" " + _vm._s(item.title) + " "),
+              ]),
+              _c("view", { staticClass: "list_desc" }, [
+                _vm._v(" " + _vm._s(item.summary) + " "),
+              ]),
+              _c(
+                "view",
+                { staticClass: "list_tags" },
+                _vm._l(item.style_label, function (styleItem, styleIndex) {
+                  return _c("view", { key: styleIndex, staticClass: "tag" }, [
+                    _vm._v(_vm._s(styleItem)),
+                  ])
+                }),
+                0
+              ),
+              _c("view", { staticClass: "list_bottom" }, [
+                _c("view", { staticClass: "list_time" }, [
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
                     },
                   }),
-                ])
-              : _vm._e(),
-            _c("view", { staticClass: "list_title" }, [
-              _vm._v(" " + _vm._s(item.title) + " "),
-            ]),
-            _c("view", { staticClass: "list_desc" }, [
-              _vm._v(" " + _vm._s(item.summary) + " "),
-            ]),
-            _c(
-              "view",
-              { staticClass: "list_tags" },
-              _vm._l(item.style_label, function (styleItem, styleIndex) {
-                return _c("view", { key: styleIndex, staticClass: "tag" }, [
-                  _vm._v(_vm._s(styleItem)),
-                ])
-              }),
-              0
-            ),
-            _c("view", { staticClass: "list_bottom" }, [
-              _c("view", { staticClass: "list_time" }, [
-                _c("image", {
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-                  },
-                }),
-                _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                  _vm._v(" " + _vm._s(item.date_humanize) + " "),
+                ]),
+                _c("view", { staticClass: "list_read" }, [
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
+                    },
+                  }),
+                  _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),
+                ]),
               ]),
-              _c("view", { staticClass: "list_read" }, [
-                _c("image", {
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/eyes.png",
-                  },
-                }),
-                _vm._v(" 阅读 " + _vm._s(item.statistic.read_cnt) + " "),
-              ]),
-            ]),
-          ])
+            ]
+          )
         }),
         0
       )
@@ -3518,6 +3553,30 @@ var imVerify = function imVerify(data) {
     data: data
   });
 };
+
+/***/ }),
+
+/***/ "./src/assets/images/common/select2_0.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/common/select2_0.png ***!
+  \************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAM1BMVEUAAACZmZmZmZmZmZmZmZmZmZmbm5uioqKZmZmYmJiZmZmZmZmbm5uZmZmPj4+ZmZmZmZn9AVcQAAAAEHRSTlMA6vnOflBABcWShGtCGRCopcsuSQAAAKdJREFUKM+Fk9sOxCAIRAFBdNV2/v9r95Js3XZrmDdyMgZhoENutbAIl2pOV23KOMS6nakxkDQP95E1AWy/9PGCfZY9AY9Z7pBGJzXBPr2c6aLMX79BJp1cYJ+eGY1u1MDv/hWJbpWgRM7o97iDnWya/+1GFbrCikoFeYUzCjHGCg8wCXyFHRLg4PGgteBjwViCoQYrCRYaxCEIUxDFIMjBGQRHFJzgEykRCXFvdaQ0AAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ "./src/assets/images/common/select2_1.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/common/select2_1.png ***!
+  \************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAV1BMVEUAAAD/VFf/VFf/VFf9VFf/U1f+VFj/VVj/VFf/UFD9U1f+VFf////++fn++/v+a23+6uv+iIr+qqz+hoj+g4X+gYT+ZWj+7u7+3+D+oaL+oKH+eHv+dHeYymaNAAAAC3RSTlMA6vjFkoSAVEwQqE0ARwUAAAC9SURBVCjPhdNZDoQgEEXRKkEFC7VHtYf9r7PNixFpGe6PJCeEGAryGa24qlhpQ6dsw7LHjQ21Bfq4PWotp2qvnUTqgr3J/a0kwvmWU8x25UaSNStHNj/mZcJ2IhPR3rkXVoZ0VPsvlpqUoGkM9C5IbUd/encT9NwVh1f4vp2DhyrVxtMFDh2gG7OgEQ69yh6TkoMPoYrCj3kPVTQZ8f6vYojY+zKHyoUrKVxofhzyw5QfxfwgF59B+REVnuAPuu8fLmpDKooAAAAASUVORK5CYII="
 
 /***/ }),
 

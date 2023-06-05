@@ -21,10 +21,18 @@
   .switch {
     margin-left: 30px;
   }
+  .slider {
+    display: flex;
+    align-items: center;
+    z-index: 9999;
+    // margin-left: 16px;
+  }
   .slider-bg {
-    position: fixed;
-    bottom: 0px;
-    z-index: 999;
+    width: 52px;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    transform: rotate(-90);
     image {
       width: 52px;
       height: 146px;

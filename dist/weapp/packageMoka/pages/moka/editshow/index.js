@@ -1850,7 +1850,11 @@ var render = function () {
         _vm.select_tab == "zuopin"
           ? _c(
               "block",
-              [_c("myZuopinList", { attrs: { base_data: _vm.list } })],
+              [
+                _c("myZuopinList", {
+                  attrs: { base_data: _vm.list, myself: _vm.myself },
+                }),
+              ],
               1
             )
           : _vm._e(),

@@ -69,8 +69,11 @@
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding-bottom: 40rpx;
   height: 100vh;
+}
+.coin .detailed,
+.coin .get-coin {
+  padding-bottom: 60rpx;
 }
 .coin .content > swiper {
   height: 100%;

@@ -366,7 +366,7 @@
         </view>
       </block>
       <block v-if="select_tab == 'zuopin'">
-        <myZuopinList :base_data="list"></myZuopinList>
+        <myZuopinList :base_data="list" :myself="myself"></myZuopinList>
       </block>
     </view>
     <view

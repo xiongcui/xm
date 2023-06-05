@@ -34,10 +34,23 @@
 .container .switch {
   margin-left: 30rpx;
 }
+.container .slider {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 9999;
+}
 .container .slider-bg {
-  position: fixed;
-  bottom: 0;
-  z-index: 999;
+  width: 52rpx;
+  height: 400rpx;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+  -webkit-transform: rotate(-90);
+      -ms-transform: rotate(-90);
+          transform: rotate(-90);
 }
 .container .slider-bg image {
   width: 52rpx;

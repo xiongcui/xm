@@ -3,6 +3,26 @@
   background: #f7f7f7;
   display: flex;
   flex-direction: column;
+  .flex {
+    display: flex;
+    width: 75%;
+  }
+  .works-split {
+    color: #808080;
+    margin: 0px 10px;
+  }
+  .word {
+    display: flex;
+    width: 146px;
+    font-size: 30px;
+    color: #808080;
+    align-items: center;
+  }
+  .word-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
   .input-placeholder,
   .textarea-placeholder {
     font-size: 30px;
@@ -90,6 +110,9 @@
   .works-select {
     // margin-left: 186px;
     width: 75%;
+  }
+  .flex .works-select {
+    width: 100%;
   }
   .works-info .works-input {
     text-align: right;

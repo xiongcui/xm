@@ -279,6 +279,7 @@ export default {
             if (this.invited_uuid) {
               params.invited_uuid = this.invited_uuid;
             }
+            if (!clickThrottle()) return;
             this.userRegister(params);
           } else {
             if (data.error_code == 1004) {
