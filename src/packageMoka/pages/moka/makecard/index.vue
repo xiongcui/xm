@@ -580,6 +580,7 @@ const width = device.screenWidth; // 示例为一个与屏幕等宽的正方形�
 const height = device.screenHeight;
 const statusBarHeight = device.statusBarHeight;
 const moka = require("../../../../assets/js/moka.js");
+import { qrcode } from "../../../../api/index";
 export default {
   name: "makecard",
   data() {
@@ -637,6 +638,7 @@ export default {
       blackCode: "",
       whiteCode: "",
       uploadData: {},
+      moka_code: "",
     };
   },
   methods: {
@@ -672,7 +674,9 @@ export default {
     switchBWH() {},
     switchQrcode() {},
     switchBg() {},
-    make() {},
+    make() {
+      this.showMaking = true;
+    },
     changePhoto(t) {
       console.log(t, "t----");
       var a = parseInt(t.currentTarget.id),
@@ -782,10 +786,10 @@ export default {
     },
     drawAvartar(t) {
       var _this = this;
-      console.log(111);
+      console.log(111, this.moka_code);
       wx.downloadFile({
-        // url: this.userInfo.xcxcode.moka_code,
-        url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
+        url: this.moka_code,
+        // url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
         success: function (e) {
           console.log(e, "e");
           if (200 === e.statusCode && t) {
@@ -833,6 +837,13 @@ export default {
           });
         });
     },
+    async qrcode(params) {
+      try {
+        let res = await qrcode(params);
+        this.moka_code = res.data.data;
+        this.cutAvartar();
+      } catch (error) {}
+    },
   },
   onLoad: function (options) {
     let mokaIndex = moka.getIndexByCardId("1001010501");
@@ -863,9 +874,6 @@ export default {
       bwh_w: 39,
       bwh_h: 40,
       shoe: 41,
-      xcxcode: {
-        moka_code: 10,
-      },
     };
     var arr = [];
     for (var i = 0; i < this.photos.length; i++) {
@@ -876,8 +884,10 @@ export default {
       });
     }
     this.scrollInfo = arr;
+    this.qrcode({
+      source: "homepage",
+    });
     this.getPhotoInfos([], 0);
-    this.cutAvartar();
   },
 };
 </script>

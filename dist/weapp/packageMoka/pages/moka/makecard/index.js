@@ -47,8 +47,13 @@ component.options.__file = "src/packageMoka/pages/moka/makecard/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/makecard/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/makecard/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+
+
 //
 //
 //
@@ -634,6 +639,7 @@ var statusBarHeight = device.statusBarHeight;
 
 var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/assets/js/moka.js");
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "makecard",
   data: function data() {
@@ -690,7 +696,8 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       tipmoveqrcode_task2: false,
       blackCode: "",
       whiteCode: "",
-      uploadData: {}
+      uploadData: {},
+      moka_code: ""
     };
   },
   methods: {
@@ -723,7 +730,9 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     switchBWH: function switchBWH() {},
     switchQrcode: function switchQrcode() {},
     switchBg: function switchBg() {},
-    make: function make() {},
+    make: function make() {
+      this.showMaking = true;
+    },
     changePhoto: function changePhoto(t) {
       console.log(t, "t----");
 
@@ -830,10 +839,10 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     drawAvartar: function drawAvartar(t) {
       var _this = this;
 
-      console.log(111);
+      console.log(111, this.moka_code);
       wx.downloadFile({
-        // url: this.userInfo.xcxcode.moka_code,
-        url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
+        url: this.moka_code,
+        // url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
         success: function success(e) {
           console.log(e, "e");
 
@@ -876,6 +885,40 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           }
         });
       });
+    },
+    qrcode: function qrcode(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "nb"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this2.moka_code = res.data.data;
+
+                _this2.cutAvartar();
+
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
     }
   },
   onLoad: function onLoad(options) {
@@ -899,10 +942,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       bwh_b: 38,
       bwh_w: 39,
       bwh_h: 40,
-      shoe: 41,
-      xcxcode: {
-        moka_code: 10
-      }
+      shoe: 41
     };
     var arr = [];
 
@@ -915,8 +955,10 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     }
 
     this.scrollInfo = arr;
+    this.qrcode({
+      source: "homepage"
+    });
     this.getPhotoInfos([], 0);
-    this.cutAvartar();
   }
 });
 
@@ -6833,5 +6875,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageMoka/pages/moka/makecard/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageMoka/pages/moka/makecard/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

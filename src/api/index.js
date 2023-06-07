@@ -927,3 +927,11 @@ export const imVerify = (data) => {
     data,
   });
 };
+// 获取小程序码
+export const qrcode = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/user/unlimited/qrcode",
+    method: "post",
+    data,
+  });
+};

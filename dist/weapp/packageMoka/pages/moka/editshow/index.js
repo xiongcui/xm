@@ -601,7 +601,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Nb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -647,7 +647,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Ub"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -681,7 +681,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Ib"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -711,7 +711,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Wb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -784,7 +784,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "tb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -814,7 +814,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "ub"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -848,7 +848,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Mb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -890,7 +890,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Xb"])(params);
 
               case 3:
                 res = _context9.sent;

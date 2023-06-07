@@ -714,7 +714,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Nb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -789,7 +789,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "tb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -819,7 +819,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ub"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -852,7 +852,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Cb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Db"])(params);
 
               case 3:
                 res = _context5.sent;

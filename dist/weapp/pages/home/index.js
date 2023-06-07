@@ -1207,7 +1207,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "Vb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1276,7 +1276,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Sb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1758,7 +1758,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "tb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1788,7 +1788,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "ub"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1821,7 +1821,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Cb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Db"])(params);
 
               case 3:
                 res = _context15.sent;
