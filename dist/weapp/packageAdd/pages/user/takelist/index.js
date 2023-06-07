@@ -930,7 +930,7 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "follow_img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/follow.png */ "./src/assets/images/follow.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/follow.png",
                             },
                             on: {
                               tap: function ($event) {
@@ -942,7 +942,7 @@ var render = function () {
                         : _c("image", {
                             staticClass: "follow_img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/followed.png */ "./src/assets/images/followed.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/followed.png",
                             },
                             on: {
                               tap: function ($event) {
@@ -1194,30 +1194,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/follow.png":
-/*!**************************************!*\
-  !*** ./src/assets/images/follow.png ***!
-  \**************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/follow.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/followed.png":
-/*!****************************************!*\
-  !*** ./src/assets/images/followed.png ***!
-  \****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/followed.png";
 
 /***/ }),
 

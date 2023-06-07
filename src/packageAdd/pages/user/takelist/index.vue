@@ -87,13 +87,13 @@
             </view>
             <image
               class="follow_img"
-              src="../../../../assets/images/follow.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/follow.png"
               v-if="!item.follow.is_follower"
               @tap.stop="follow(item)"
             ></image>
             <image
               class="follow_img"
-              src="../../../../assets/images/followed.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/followed.png"
               @tap.stop="unfollow(item)"
               v-else
             ></image>
