@@ -195,9 +195,6 @@ component.options.__file = "src/pages/login/index.vue"
 //
 //
 //
-//
-//
-//
 
 
 
@@ -223,7 +220,8 @@ component.options.__file = "src/pages/login/index.vue"
         nickname: "",
         phone: ""
       },
-      pageshow: "login"
+      pageshow: "login",
+      scene: ""
     };
   },
   methods: {
@@ -341,7 +339,8 @@ component.options.__file = "src/pages/login/index.vue"
           if (data.code == 200) {
             var params = {
               avatar: data.data.file1,
-              nickname: _this2.userInfo.nickname
+              nickname: _this2.userInfo.nickname,
+              scene: _this2.scene
             };
 
             if (_this2.invited_uuid) {
@@ -398,12 +397,13 @@ component.options.__file = "src/pages/login/index.vue"
                 _this3.is_bind_nickname = res.data.data.login_status.is_bind_nickname;
                 _this3.is_bind_avatar = res.data.data.login_status.is_bind_avatar;
 
-                if (_this3.login_type == 1 && _this3.bind_type == 0) {
+                if (_this3.bind_type == 0 && _this3.is_bind_phone == 0 || _this3.bind_type == 0 && _this3.is_bind_phone == 1) {
                   // 绑定手机号
                   _this3.visible = true;
-                } else if (_this3.login_type == 1 && _this3.bind_type == 1) {
+                } else if (_this3.bind_type == 1 && _this3.login_type == 1) {
+                  // 注册
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
-                } else if (res.data.data.login_status.login_type == 2) {
+                } else if (_this3.bind_type == 1 && _this3.login_type == 2) {
                   // 跳转首页
                   wx.switchTab({
                     url: "/pages/home/index",
@@ -502,6 +502,7 @@ component.options.__file = "src/pages/login/index.vue"
   },
   created: function created() {
     this.invited_uuid = wx.getStorageSync("invited_uuid");
+    this.scene = wx.getLaunchOptionsSync().scene;
   }
 });
 
