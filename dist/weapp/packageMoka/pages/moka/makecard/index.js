@@ -628,7 +628,6 @@ component.options.__file = "src/packageMoka/pages/moka/makecard/index.vue"
 //
 //
 //
-//
 
 var device = wx.getSystemInfoSync(); // 获取设备信息
 
@@ -697,7 +696,8 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       blackCode: "",
       whiteCode: "",
       uploadData: {},
-      moka_code: ""
+      moka_code: "",
+      src: ""
     };
   },
   methods: {
@@ -732,10 +732,51 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     switchBg: function switchBg() {},
     make: function make() {
       this.showMaking = true;
+      this.makes(this, [], 0);
+    },
+    makes: function makes(a, e, o) {
+      var s,
+          i,
+          l = a.scrollInfo,
+          n = a.photoInfos,
+          h = a.photos,
+          d = a.card.layouts,
+          c = h[o],
+          u = d[o],
+          f = n[o],
+          g = l[o],
+          w = a.cutCanvasWH;
+      f.width >= f.height ? i = (s = w) / f.width * f.height : s = (i = w) / f.height * f.width;
+      var v = s / (f.rotateW * g.scale),
+          S = u.height * v,
+          p = u.width * v,
+          y = wx.createCanvasContext("cutCanvas");
+      var r = 750 / width;
+      y.clearRect(0, 0, s, i), y.drawImage(c, 0, 0, s, i), y.draw(false, function (s) {
+        wx.canvasToTempFilePath({
+          x: g.x * v * r,
+          y: g.y * v * r,
+          width: S,
+          height: p,
+          destWidth: 2 * S,
+          destHeight: 2 * p,
+          canvasId: "cutCanvas",
+          fileType: "png",
+          quality: 1,
+          success: function success(s) {
+            e[o] = s.tempFilePath;
+
+            if ((o += 1) >= h.length) {
+              a.cutPhotos = e;
+              a.drawMocard();
+            } else {
+              a.makes(a, e, o);
+            }
+          }
+        });
+      });
     },
     changePhoto: function changePhoto(t) {
-      console.log(t, "t----");
-
       var a = parseInt(t.currentTarget.id),
           _this = this;
 
@@ -844,18 +885,15 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
         url: this.moka_code,
         // url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
         success: function success(e) {
-          console.log(e, "e");
-
           if (200 === e.statusCode && t) {
             if (t) {
               _this.blackCode = e.tempFilePath;
             } else {
               _this.whiteCode = e.tempFilePath;
-            }
+            } // console.log(_this.blackCode, _this.whiteCode);
 
-            console.log(_this.blackCode, _this.whiteCode);
 
-            _this.drawCode(t);
+            _this.drawCode(_this);
           }
         }
       });
@@ -885,6 +923,97 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           }
         });
       });
+    },
+    drawMocard: function drawMocard() {
+      var t = this,
+          a = t.card.height,
+          o = t.card.width,
+          s = wx.createCanvasContext("cutCanvas"),
+          i = {};
+      i = t.isDark ? t.darkStyle : t.lightStyle, s.setFillStyle(i.bgColor), s.fillRect(0, 0, a, o), "cebian" == t.card.type || "charu" == t.card.type ? t.drawUserInfoWithCebian(s) : "dibu" == t.card.type && t.drawUserInfoWithDibu(s), t.drawPhotos(s);
+      var l = "android" == device.platform,
+          r = l ? 2 : 1.8;
+      s.draw(false, function (s) {
+        "drawCanvas:ok" == s.errMsg && wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: a,
+          height: o,
+          destWidth: a * r,
+          destHeight: o * r,
+          canvasId: "cutCanvas",
+          fileType: "png",
+          quality: 1,
+          success: function success(a) {
+            var o = t.card.cardId,
+                s = t.card.name;
+            t.test(a.tempFilePath, t, o, s);
+          },
+          fail: function fail(a) {
+            wx.hideToast(), t.showMaking = false, wx.showModal({
+              title: "模卡保存失败",
+              showCancel: false
+            });
+          }
+        });
+      });
+    },
+    test: function test(t, a, o, s) {
+      console.log(t, "t");
+      console.log(a, "a");
+      console.log(o, "o");
+      console.log(s, "s");
+      if (a.isposting) return;
+      a.isposting = !0;
+      var i = 1;
+      a.isMoveQrcode && (i = 0);
+      var l = {
+        sub_user_id: a.userInfo.sub_user_id,
+        has_qrcode: i,
+        template_id: o,
+        template_name: s
+      };
+      a.src = t;
+    },
+    drawUserInfoWithCebian: function drawUserInfoWithCebian(a) {
+      var e = this.userInfo,
+          o = (this.card.userInfo.x, this.card.userInfo.Y, this.card.userInfo.height, this.card.userInfo.width, 55);
+      this.isMoveQrcode && (o += 65), e.is_bwh || (o += 80), e.is_birthday || (o += 25);
+      var s = 40 + this.card.userInfo.y,
+          i = o,
+          l = {},
+          r = (l = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
+          n = l.valueColor;
+      a.setFontSize(32), a.setFillStyle(n), a.fillText(e.nickname, s, i);
+      var h = 8;
+
+      if (this.isMoveQrcode && (h = 10), i += 40, a.setFontSize(18), a.setFillStyle(r), a.fillText("身高 HEIGHT", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.height + "cm", s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("体重 WEIGHT", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.weight + "kg", s, i), e.is_bwh && (i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("胸围 BUST", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_b, s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("腰围 WAIST", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_w, s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("臀围 HIPS", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_h, s, i)), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("鞋码 SHOES", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.shoe, s, i), e.is_birthday && (i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("生日 BIRTH", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.birthday, s, i)), !this.isMoveQrcode) {
+        i += 30;
+        a.drawImage(this.isDark ? this.logoAvartar : this.blackLogoAvartar, s, i, 120, 120);
+      }
+    },
+    drawUserInfoWithDibu: function drawUserInfoWithDibu(a) {
+      var e = this.userInfo,
+          o = (this.card.userInfo.x, this.card.userInfo.Y, this.card.userInfo.height, this.card.userInfo.width, 67),
+          s = 580,
+          i = {},
+          l = (i = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
+          r = i.valueColor;
+      a.setFontSize(32), a.setFillStyle(r), a.fillText(e.nickname, o, s);
+      s = 560, o += 160, a.setFontSize(18), a.setFillStyle(l), a.fillText("身高HEIGHT", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.height + "cm", o, s), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("体重WEIGHT", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.weight + "kg", o, s), e.is_bwh && (s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("胸围BUST", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.bwh_b, o, s), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("腰围WAIST", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.bwh_w, o, s), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("臀围HIPS", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.bwh_h, o, s)), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("鞋码SHOES", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.shoe, o, s), e.is_birthday && (s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("生日BIRTH", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.birthday, o, s));
+      o = this.card.userInfo.height - 80 - 30, s = 530;
+      this.isMoveQrcode || a.drawImage(this.isDark ? this.logoAvartar : this.blackLogoAvartar, o, s, 80, 80);
+    },
+    drawPhotos: function drawPhotos(a) {
+      for (var e = this.cutPhotos, o = this.card.layouts, s = this.card.width, i = 0; i < e.length; i++) {
+        var l = e[i],
+            r = o[i],
+            n = r.y + 2,
+            h = s - r.x - r.width + 2,
+            d = r.height - 4,
+            c = r.width - 4;
+        a.drawImage(l, n, h, d, c);
+      }
     },
     qrcode: function qrcode(params) {
       var _this2 = this;
@@ -979,455 +1108,234 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", [
-    _c(
-      "view",
-      {
-        staticClass: "container",
-        style: { backgroundColor: _vm.darkStyle.pageBgColor },
-      },
-      [
-        _vm.showMaking
-          ? _c(
-              "view",
-              {
-                staticClass: "making",
-                style: { top: (_vm.screenH - 200) * 0.5 + "rpx" },
-              },
-              [
-                _c("view", { staticClass: "making-icon" }, [
-                  _c("image", {
-                    attrs: {
-                      src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/loading.gif */ "./src/assets/images/moka/makecard/loading.gif"),
-                    },
-                  }),
-                ]),
-                _c("text", { staticClass: "making-text" }, [
-                  _vm._v("制作中，请稍候"),
-                ]),
-              ]
-            )
-          : _vm._e(),
-        _c(
-          "view",
-          {
-            staticClass: "slider",
-            style: { top: (_vm.screenH - 458) * 0.5 + "rpx" },
-            on: { touchStart: _vm.touchStart },
-          },
-          [
-            _c(
-              "movable-area",
-              { staticClass: "slider-bg" },
-              [
-                _c(
-                  "movable-view",
-                  {
-                    staticClass: "slider-btn",
-                    attrs: { direction: "all", scale: false, x: 0, y: 0 },
-                    on: { change: _vm.sliderChange },
-                  },
-                  [
+  return _c(
+    "view",
+    [
+      _c(
+        "view",
+        {
+          staticClass: "container",
+          style: { backgroundColor: _vm.darkStyle.pageBgColor },
+        },
+        [
+          _vm.showMaking
+            ? _c(
+                "view",
+                {
+                  staticClass: "making",
+                  style: { top: (_vm.screenH - 200) * 0.5 + "rpx" },
+                },
+                [
+                  _c("view", { staticClass: "making-icon" }, [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/slider_v.png */ "./src/assets/images/moka/makecard/slider_v.png"),
+                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/loading.gif */ "./src/assets/images/moka/makecard/loading.gif"),
                       },
                     }),
-                  ]
-                ),
-              ],
-              1
-            ),
-          ],
-          1
-        ),
-        _c(
-          "view",
-          {
-            staticClass: "moka-container",
-            style: {
-              height: _vm.screenH + "rpx",
-              width: _vm.card.width + "rpx",
+                  ]),
+                  _c("text", { staticClass: "making-text" }, [
+                    _vm._v("制作中，请稍候"),
+                  ]),
+                ]
+              )
+            : _vm._e(),
+          _c(
+            "view",
+            {
+              staticClass: "slider",
+              style: { top: (_vm.screenH - 458) * 0.5 + "rpx" },
+              on: { touchStart: _vm.touchStart },
             },
-          },
-          [
-            _c(
-              "scroll-view",
-              {
-                class: _vm.isDark
-                  ? "main-scrollview-black"
-                  : "main-scrollview-white",
-                staticStyle: { height: "100%", width: "100%" },
-                attrs: { scrollTop: _vm.scrollTop, scrollY: _vm.allowScroll },
-              },
-              [
-                _c(
-                  "movable-area",
-                  {
-                    staticClass: "photos-container",
-                    style: {
-                      height: _vm.card.height + "rpx",
-                      width: _vm.card.width + "rpx",
-                      backgroundColor: _vm.isDark
-                        ? _vm.darkStyle.bgColor
-                        : _vm.lightStyle.bgColor,
+            [
+              _c(
+                "movable-area",
+                { staticClass: "slider-bg" },
+                [
+                  _c(
+                    "movable-view",
+                    {
+                      staticClass: "slider-btn",
+                      attrs: { direction: "all", scale: false, x: 0, y: 0 },
+                      on: { change: _vm.sliderChange },
                     },
-                  },
-                  [
-                    _c(
-                      "movable-view",
-                      {
-                        staticClass: "userinfo",
-                        staticStyle: {
-                          "{height":
-                            "card.userInfo.height+'rpx', width: card.userInfo.width +'rpx'}",
-                        },
+                    [
+                      _c("image", {
                         attrs: {
-                          disabled: true,
-                          outOfBounds: true,
-                          scale: false,
-                          x: _vm.card.userInfo.x + "rpx",
-                          y: _vm.card.userInfo.y + "rpx",
+                          src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/slider_v.png */ "./src/assets/images/moka/makecard/slider_v.png"),
                         },
+                      }),
+                    ]
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _c(
+            "view",
+            {
+              staticClass: "moka-container",
+              style: {
+                height: _vm.screenH + "rpx",
+                width: _vm.card.width + "rpx",
+              },
+            },
+            [
+              _c(
+                "scroll-view",
+                {
+                  class: _vm.isDark
+                    ? "main-scrollview-black"
+                    : "main-scrollview-white",
+                  staticStyle: { height: "100%", width: "100%" },
+                  attrs: { scrollTop: _vm.scrollTop, scrollY: _vm.allowScroll },
+                },
+                [
+                  _c(
+                    "movable-area",
+                    {
+                      staticClass: "photos-container",
+                      style: {
+                        height: _vm.card.height + "rpx",
+                        width: _vm.card.width + "rpx",
+                        backgroundColor: _vm.isDark
+                          ? _vm.darkStyle.bgColor
+                          : _vm.lightStyle.bgColor,
                       },
-                      [
-                        _vm.card.type == "charu" || _vm.card.type == "cebian"
-                          ? _c(
-                              "view",
-                              {
-                                staticClass: "userinfo-container",
-                                style: {
-                                  height: _vm.card.userInfo.width + "rpx",
-                                  width: _vm.card.userInfo.height + "rpx",
-                                  transform:
-                                    "rotate(90deg) translate(" +
-                                    (-_vm.card.userInfo.offset + "rpx") +
-                                    ", " +
-                                    (-_vm.card.userInfo.offset + "rpx") +
-                                    ")",
+                    },
+                    [
+                      _c(
+                        "movable-view",
+                        {
+                          staticClass: "userinfo",
+                          staticStyle: {
+                            "{height":
+                              "card.userInfo.height+'rpx', width: card.userInfo.width +'rpx'}",
+                          },
+                          attrs: {
+                            disabled: true,
+                            outOfBounds: true,
+                            scale: false,
+                            x: _vm.card.userInfo.x + "rpx",
+                            y: _vm.card.userInfo.y + "rpx",
+                          },
+                        },
+                        [
+                          _vm.card.type == "charu" || _vm.card.type == "cebian"
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "userinfo-container",
+                                  style: {
+                                    height: _vm.card.userInfo.width + "rpx",
+                                    width: _vm.card.userInfo.height + "rpx",
+                                    transform:
+                                      "rotate(90deg) translate(" +
+                                      (-_vm.card.userInfo.offset + "rpx") +
+                                      ", " +
+                                      (-_vm.card.userInfo.offset + "rpx") +
+                                      ")",
+                                  },
                                 },
-                              },
-                              [
-                                _c("view", { staticClass: "userinfo-info" }, [
-                                  _vm.isMoveQrcode
-                                    ? _c("view", {
-                                        staticClass: "cebian_move_qrcode",
-                                      })
-                                    : _vm._e(),
-                                  !_vm.userInfo.is_bwh
-                                    ? _c("view", {
-                                        staticClass: "cebian_move_bwh",
-                                      })
-                                    : _vm._e(),
-                                  !_vm.userInfo.is_birthday
-                                    ? _c("view", {
-                                        staticClass: "cebian_move_birthday",
-                                      })
-                                    : _vm._e(),
-                                  _c(
-                                    "text",
-                                    {
-                                      staticClass: "name",
-                                      style: {
-                                        color: _vm.isDark
-                                          ? _vm.darkStyle.nameColor
-                                          : _vm.lightStyle.nameColor,
-                                      },
-                                    },
-                                    [_vm._v(_vm._s(_vm.userInfo.nickname))]
-                                  ),
-                                  _c("view", { staticClass: "item-cebian" }, [
+                                [
+                                  _c("view", { staticClass: "userinfo-info" }, [
+                                    _vm.isMoveQrcode
+                                      ? _c("view", {
+                                          staticClass: "cebian_move_qrcode",
+                                        })
+                                      : _vm._e(),
+                                    !_vm.userInfo.is_bwh
+                                      ? _c("view", {
+                                          staticClass: "cebian_move_bwh",
+                                        })
+                                      : _vm._e(),
+                                    !_vm.userInfo.is_birthday
+                                      ? _c("view", {
+                                          staticClass: "cebian_move_birthday",
+                                        })
+                                      : _vm._e(),
                                     _c(
                                       "text",
                                       {
-                                        staticClass: "property",
+                                        staticClass: "name",
                                         style: {
                                           color: _vm.isDark
-                                            ? _vm.darkStyle.propertyColor
-                                            : _vm.lightStyle.propertyColor,
+                                            ? _vm.darkStyle.nameColor
+                                            : _vm.lightStyle.nameColor,
                                         },
                                       },
-                                      [_vm._v("身高 HEIGHT")]
+                                      [_vm._v(_vm._s(_vm.userInfo.nickname))]
                                     ),
-                                    _c(
-                                      "text",
-                                      {
-                                        staticClass: "value",
-                                        style: {
-                                          color: _vm.isDark
-                                            ? _vm.darkStyle.valueColor
-                                            : _vm.lightStyle.valueColor,
-                                        },
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(_vm.userInfo.height) + "cm"
-                                        ),
-                                      ]
-                                    ),
-                                  ]),
-                                  _c("view", { staticClass: "item-cebian" }, [
-                                    _c(
-                                      "text",
-                                      {
-                                        staticClass: "property",
-                                        style: {
-                                          color: _vm.isDark
-                                            ? _vm.darkStyle.propertyColor
-                                            : _vm.lightStyle.propertyColor,
-                                        },
-                                      },
-                                      [_vm._v("体重 HEIGHT")]
-                                    ),
-                                    _c(
-                                      "text",
-                                      {
-                                        staticClass: "value",
-                                        style: {
-                                          color: _vm.isDark
-                                            ? _vm.darkStyle.valueColor
-                                            : _vm.lightStyle.valueColor,
-                                        },
-                                      },
-                                      [
-                                        _vm._v(
-                                          _vm._s(_vm.userInfo.weight) + "kg"
-                                        ),
-                                      ]
-                                    ),
-                                  ]),
-                                  _vm.userInfo.is_bwh
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "item-cebian" },
-                                        [
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "property",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.propertyColor
-                                                  : _vm.lightStyle
-                                                      .propertyColor,
-                                              },
-                                            },
-                                            [_vm._v("胸围 BUST")]
-                                          ),
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "value",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.valueColor
-                                                  : _vm.lightStyle.valueColor,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(_vm.userInfo.bwh_b))]
-                                          ),
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm.userInfo.is_bwh
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "item-cebian" },
-                                        [
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "property",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.propertyColor
-                                                  : _vm.lightStyle
-                                                      .propertyColor,
-                                              },
-                                            },
-                                            [_vm._v("腰围 WAIST")]
-                                          ),
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "value",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.valueColor
-                                                  : _vm.lightStyle.valueColor,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(_vm.userInfo.bwh_w))]
-                                          ),
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm.userInfo.is_bwh
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "item-cebian" },
-                                        [
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "property",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.propertyColor
-                                                  : _vm.lightStyle
-                                                      .propertyColor,
-                                              },
-                                            },
-                                            [_vm._v("臀围 HIPS")]
-                                          ),
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "value",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.valueColor
-                                                  : _vm.lightStyle.valueColor,
-                                              },
-                                            },
-                                            [_vm._v(_vm._s(_vm.userInfo.bwh_h))]
-                                          ),
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _c("view", { staticClass: "item-cebian" }, [
-                                    _c(
-                                      "text",
-                                      {
-                                        staticClass: "property",
-                                        style: {
-                                          color: _vm.isDark
-                                            ? _vm.darkStyle.propertyColor
-                                            : _vm.lightStyle.propertyColor,
-                                        },
-                                      },
-                                      [_vm._v("鞋码 SHOES")]
-                                    ),
-                                    _c(
-                                      "text",
-                                      {
-                                        staticClass: "value",
-                                        style: {
-                                          color: _vm.isDark
-                                            ? _vm.darkStyle.valueColor
-                                            : _vm.lightStyle.valueColor,
-                                        },
-                                      },
-                                      [_vm._v(_vm._s(_vm.userInfo.shoe))]
-                                    ),
-                                  ]),
-                                  _vm.userInfo.is_birthday
-                                    ? _c(
-                                        "view",
-                                        { staticClass: "item-cebian" },
-                                        [
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "property",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.propertyColor
-                                                  : _vm.lightStyle
-                                                      .propertyColor,
-                                              },
-                                            },
-                                            [_vm._v("生日 BIRTH")]
-                                          ),
-                                          _c(
-                                            "text",
-                                            {
-                                              staticClass: "value",
-                                              style: {
-                                                color: _vm.isDark
-                                                  ? _vm.darkStyle.valueColor
-                                                  : _vm.lightStyle.valueColor,
-                                              },
-                                            },
-                                            [
-                                              _vm._v(
-                                                _vm._s(_vm.userInfo.birthday)
-                                              ),
-                                            ]
-                                          ),
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  !_vm.isMoveQrcode
-                                    ? _c("image", {
-                                        attrs: {
-                                          mode: "aspectFit",
-                                          src: _vm.isDark
-                                            ? _vm.logoAvartar
-                                            : _vm.blackLogoAvartar,
-                                        },
-                                      })
-                                    : _vm._e(),
-                                ]),
-                              ]
-                            )
-                          : _vm._e(),
-                        _vm.card.type == "dibu"
-                          ? _c(
-                              "view",
-                              {
-                                staticClass: "userinfo-container",
-                                style: {
-                                  height: _vm.card.userInfo.width + "rpx",
-                                  width: _vm.card.userInfo.height + "rpx",
-                                  transform:
-                                    // 'rotate(90deg)' +
-                                    // translate(
-                                    //   -card.userInfo.offset + 'rpx',
-                                    //   -card.userInfo.offset + 'rpx'
-                                    // ),
-                                    "rotate(90deg) translate(" +
-                                    (-_vm.card.userInfo.offset + "rpx") +
-                                    ", " +
-                                    (-_vm.card.userInfo.offset + "rpx") +
-                                    ")",
-                                },
-                              },
-                              [
-                                _c(
-                                  "view",
-                                  { staticClass: "userinfo-info-dibu" },
-                                  [
-                                    _c(
-                                      "view",
-                                      {
-                                        staticClass: "userinfo-info-dibu-left",
-                                      },
-                                      [
-                                        _c(
-                                          "text",
-                                          {
-                                            staticClass: "name-dibu",
-                                            style: {
-                                              color: _vm.isDark
-                                                ? _vm.darkStyle.nameColor
-                                                : _vm.lightStyle.nameColor,
-                                            },
+                                    _c("view", { staticClass: "item-cebian" }, [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "property",
+                                          style: {
+                                            color: _vm.isDark
+                                              ? _vm.darkStyle.propertyColor
+                                              : _vm.lightStyle.propertyColor,
                                           },
-                                          [
-                                            _vm._v(
-                                              _vm._s(_vm.userInfo.nickname)
-                                            ),
-                                          ]
-                                        ),
-                                        _c(
+                                        },
+                                        [_vm._v("身高 HEIGHT")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "value",
+                                          style: {
+                                            color: _vm.isDark
+                                              ? _vm.darkStyle.valueColor
+                                              : _vm.lightStyle.valueColor,
+                                          },
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(_vm.userInfo.height) + "cm"
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                    _c("view", { staticClass: "item-cebian" }, [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "property",
+                                          style: {
+                                            color: _vm.isDark
+                                              ? _vm.darkStyle.propertyColor
+                                              : _vm.lightStyle.propertyColor,
+                                          },
+                                        },
+                                        [_vm._v("体重 HEIGHT")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "value",
+                                          style: {
+                                            color: _vm.isDark
+                                              ? _vm.darkStyle.valueColor
+                                              : _vm.lightStyle.valueColor,
+                                          },
+                                        },
+                                        [
+                                          _vm._v(
+                                            _vm._s(_vm.userInfo.weight) + "kg"
+                                          ),
+                                        ]
+                                      ),
+                                    ]),
+                                    _vm.userInfo.is_bwh
+                                      ? _c(
                                           "view",
-                                          { staticClass: "item-dibu" },
+                                          { staticClass: "item-cebian" },
                                           [
                                             _c(
                                               "text",
                                               {
-                                                staticClass: "property-dibu",
+                                                staticClass: "property",
                                                 style: {
                                                   color: _vm.isDark
                                                     ? _vm.darkStyle
@@ -1436,12 +1344,12 @@ var render = function () {
                                                         .propertyColor,
                                                 },
                                               },
-                                              [_vm._v("身高 HEIGHT")]
+                                              [_vm._v("胸围 BUST")]
                                             ),
                                             _c(
                                               "text",
                                               {
-                                                staticClass: "value-dibu",
+                                                staticClass: "value",
                                                 style: {
                                                   color: _vm.isDark
                                                     ? _vm.darkStyle.valueColor
@@ -1450,21 +1358,22 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  _vm._s(_vm.userInfo.height) +
-                                                    "cm"
+                                                  _vm._s(_vm.userInfo.bwh_b)
                                                 ),
                                               ]
                                             ),
                                           ]
-                                        ),
-                                        _c(
+                                        )
+                                      : _vm._e(),
+                                    _vm.userInfo.is_bwh
+                                      ? _c(
                                           "view",
-                                          { staticClass: "item-dibu" },
+                                          { staticClass: "item-cebian" },
                                           [
                                             _c(
                                               "text",
                                               {
-                                                staticClass: "property-dibu",
+                                                staticClass: "property",
                                                 style: {
                                                   color: _vm.isDark
                                                     ? _vm.darkStyle
@@ -1473,12 +1382,12 @@ var render = function () {
                                                         .propertyColor,
                                                 },
                                               },
-                                              [_vm._v("体重 HEIGHT")]
+                                              [_vm._v("腰围 WAIST")]
                                             ),
                                             _c(
                                               "text",
                                               {
-                                                staticClass: "value-dibu",
+                                                staticClass: "value",
                                                 style: {
                                                   color: _vm.isDark
                                                     ? _vm.darkStyle.valueColor
@@ -1487,144 +1396,22 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  _vm._s(_vm.userInfo.weight) +
-                                                    "kg"
+                                                  _vm._s(_vm.userInfo.bwh_w)
                                                 ),
                                               ]
                                             ),
                                           ]
-                                        ),
-                                        _vm.userInfo.is_bwh
-                                          ? _c(
-                                              "view",
-                                              { staticClass: "item-dibu" },
-                                              [
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass:
-                                                      "property-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .propertyColor
-                                                        : _vm.lightStyle
-                                                            .propertyColor,
-                                                    },
-                                                  },
-                                                  [_vm._v("胸围 BUST")]
-                                                ),
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass: "value-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .valueColor
-                                                        : _vm.lightStyle
-                                                            .valueColor,
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(_vm.userInfo.bwh_b)
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm.userInfo.is_bwh
-                                          ? _c(
-                                              "view",
-                                              { staticClass: "item-dibu" },
-                                              [
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass:
-                                                      "property-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .propertyColor
-                                                        : _vm.lightStyle
-                                                            .propertyColor,
-                                                    },
-                                                  },
-                                                  [_vm._v("腰围 WAIST")]
-                                                ),
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass: "value-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .valueColor
-                                                        : _vm.lightStyle
-                                                            .valueColor,
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(_vm.userInfo.bwh_w)
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _vm.userInfo.is_bwh
-                                          ? _c(
-                                              "view",
-                                              { staticClass: "item-dibu" },
-                                              [
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass:
-                                                      "property-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .propertyColor
-                                                        : _vm.lightStyle
-                                                            .propertyColor,
-                                                    },
-                                                  },
-                                                  [_vm._v("臀围 HIPS")]
-                                                ),
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass: "value-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .valueColor
-                                                        : _vm.lightStyle
-                                                            .valueColor,
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(_vm.userInfo.bwh_h)
-                                                    ),
-                                                  ]
-                                                ),
-                                              ]
-                                            )
-                                          : _vm._e(),
-                                        _c(
+                                        )
+                                      : _vm._e(),
+                                    _vm.userInfo.is_bwh
+                                      ? _c(
                                           "view",
-                                          { staticClass: "item-dibu" },
+                                          { staticClass: "item-cebian" },
                                           [
                                             _c(
                                               "text",
                                               {
-                                                staticClass: "property-dibu",
+                                                staticClass: "property",
                                                 style: {
                                                   color: _vm.isDark
                                                     ? _vm.darkStyle
@@ -1633,12 +1420,12 @@ var render = function () {
                                                         .propertyColor,
                                                 },
                                               },
-                                              [_vm._v("鞋码 SHOES")]
+                                              [_vm._v("臀围 HIPS")]
                                             ),
                                             _c(
                                               "text",
                                               {
-                                                staticClass: "value-dibu",
+                                                staticClass: "value",
                                                 style: {
                                                   color: _vm.isDark
                                                     ? _vm.darkStyle.valueColor
@@ -1647,57 +1434,77 @@ var render = function () {
                                               },
                                               [
                                                 _vm._v(
-                                                  _vm._s(_vm.userInfo.shoe)
+                                                  _vm._s(_vm.userInfo.bwh_h)
                                                 ),
                                               ]
                                             ),
                                           ]
-                                        ),
-                                        _vm.userInfo.is_birthday
-                                          ? _c(
-                                              "view",
-                                              { staticClass: "item-dibu" },
+                                        )
+                                      : _vm._e(),
+                                    _c("view", { staticClass: "item-cebian" }, [
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "property",
+                                          style: {
+                                            color: _vm.isDark
+                                              ? _vm.darkStyle.propertyColor
+                                              : _vm.lightStyle.propertyColor,
+                                          },
+                                        },
+                                        [_vm._v("鞋码 SHOES")]
+                                      ),
+                                      _c(
+                                        "text",
+                                        {
+                                          staticClass: "value",
+                                          style: {
+                                            color: _vm.isDark
+                                              ? _vm.darkStyle.valueColor
+                                              : _vm.lightStyle.valueColor,
+                                          },
+                                        },
+                                        [_vm._v(_vm._s(_vm.userInfo.shoe))]
+                                      ),
+                                    ]),
+                                    _vm.userInfo.is_birthday
+                                      ? _c(
+                                          "view",
+                                          { staticClass: "item-cebian" },
+                                          [
+                                            _c(
+                                              "text",
+                                              {
+                                                staticClass: "property",
+                                                style: {
+                                                  color: _vm.isDark
+                                                    ? _vm.darkStyle
+                                                        .propertyColor
+                                                    : _vm.lightStyle
+                                                        .propertyColor,
+                                                },
+                                              },
+                                              [_vm._v("生日 BIRTH")]
+                                            ),
+                                            _c(
+                                              "text",
+                                              {
+                                                staticClass: "value",
+                                                style: {
+                                                  color: _vm.isDark
+                                                    ? _vm.darkStyle.valueColor
+                                                    : _vm.lightStyle.valueColor,
+                                                },
+                                              },
                                               [
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass:
-                                                      "property-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .propertyColor
-                                                        : _vm.lightStyle
-                                                            .propertyColor,
-                                                    },
-                                                  },
-                                                  [_vm._v("生日 BIRTH")]
-                                                ),
-                                                _c(
-                                                  "text",
-                                                  {
-                                                    staticClass: "value-dibu",
-                                                    style: {
-                                                      color: _vm.isDark
-                                                        ? _vm.darkStyle
-                                                            .valueColor
-                                                        : _vm.lightStyle
-                                                            .valueColor,
-                                                    },
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        _vm.userInfo.birthday
-                                                      )
-                                                    ),
-                                                  ]
+                                                _vm._v(
+                                                  _vm._s(_vm.userInfo.birthday)
                                                 ),
                                               ]
-                                            )
-                                          : _vm._e(),
-                                      ]
-                                    ),
+                                            ),
+                                          ]
+                                        )
+                                      : _vm._e(),
                                     !_vm.isMoveQrcode
                                       ? _c("image", {
                                           attrs: {
@@ -1708,265 +1515,623 @@ var render = function () {
                                           },
                                         })
                                       : _vm._e(),
-                                  ]
-                                ),
-                              ]
-                            )
-                          : _vm._e(),
-                      ]
-                    ),
-                    _vm._l(_vm.card.layouts, function (item, index) {
-                      return _c(
-                        "movable-view",
-                        {
-                          key: index,
-                          staticClass: "layout",
-                          style: {
-                            height: item.height + "rpx",
-                            width: item.width + "rpx",
-                          },
-                          attrs: {
-                            disabled: true,
-                            id: item.id,
-                            outOfBounds: true,
-                            scale: false,
-                            x: item.x + "rpx",
-                            y: item.y + "rpx",
-                          },
-                        },
-                        [
-                          index < _vm.photoInfos.length
-                            ? _c(
-                                "scroll-view",
-                                {
-                                  staticClass: "photo-container",
-                                  style: {
-                                    height: item.width + "rpx",
-                                    width: item.height + "rpx",
-                                    transform:
-                                      // 'rotate(90deg)' +
-                                      // translate(-item.offset + 'rpx', -item.offset + 'rpx'),
-                                      "rotate(90deg) translate(" +
-                                      (-item.offset + "rpx") +
-                                      ", " +
-                                      (-item.offset + "rpx") +
-                                      ")",
-                                    border:
-                                       true
-                                        ? _vm.darkStyle.bgColor
-                                        : undefined,
-                                  },
-                                  attrs: {
-                                    id: item.id,
-                                    scrollX:
-                                      _vm.photoInfos[index].scrollX ||
-                                      _vm.scrollInfo[index].scale != 1,
-                                    scrollY:
-                                      _vm.photoInfos[index].scrollY ||
-                                      _vm.scrollInfo[index].scale != 1,
-                                  },
-                                  on: {
-                                    scroll: _vm.scroll,
-                                    tap: _vm.tapPhoto,
-                                    touchEnd: _vm.touchEnd,
-                                    touchMove: _vm.touchMove,
-                                    touchStart: _vm.touchStart,
-                                  },
-                                },
-                                [
-                                  _c("image", {
-                                    staticClass: "rotate",
-                                    style: {
-                                      height:
-                                        _vm.photoInfos[index].rotateH *
-                                          (_vm.scrollInfo[index].scale || 1) +
-                                        "rpx",
-                                      width:
-                                        _vm.photoInfos[index].rotateW *
-                                          (_vm.scrollInfo[index].scale || 1) +
-                                        "rpx",
-                                      verticalAlign: "middle",
-                                    },
-                                    attrs: { src: _vm.photos[index] },
-                                  }),
+                                  ]),
                                 ]
                               )
                             : _vm._e(),
-                          _vm.showChangeButton && index == _vm.changeIndex
+                          _vm.card.type == "dibu"
                             ? _c(
                                 "view",
                                 {
-                                  staticClass: "change",
+                                  staticClass: "userinfo-container",
                                   style: {
-                                    top: (item.height - 100) * 0.5 + "rpx",
-                                    right: (item.width - 100) * 0.5 + "rpx",
+                                    height: _vm.card.userInfo.width + "rpx",
+                                    width: _vm.card.userInfo.height + "rpx",
+                                    transform:
+                                      // 'rotate(90deg)' +
+                                      // translate(
+                                      //   -card.userInfo.offset + 'rpx',
+                                      //   -card.userInfo.offset + 'rpx'
+                                      // ),
+                                      "rotate(90deg) translate(" +
+                                      (-_vm.card.userInfo.offset + "rpx") +
+                                      ", " +
+                                      (-_vm.card.userInfo.offset + "rpx") +
+                                      ")",
                                   },
-                                  attrs: { id: item.id },
-                                  on: { tap: _vm.changePhoto },
                                 },
-                                [_vm._v("替换")]
+                                [
+                                  _c(
+                                    "view",
+                                    { staticClass: "userinfo-info-dibu" },
+                                    [
+                                      _c(
+                                        "view",
+                                        {
+                                          staticClass:
+                                            "userinfo-info-dibu-left",
+                                        },
+                                        [
+                                          _c(
+                                            "text",
+                                            {
+                                              staticClass: "name-dibu",
+                                              style: {
+                                                color: _vm.isDark
+                                                  ? _vm.darkStyle.nameColor
+                                                  : _vm.lightStyle.nameColor,
+                                              },
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.userInfo.nickname)
+                                              ),
+                                            ]
+                                          ),
+                                          _c(
+                                            "view",
+                                            { staticClass: "item-dibu" },
+                                            [
+                                              _c(
+                                                "text",
+                                                {
+                                                  staticClass: "property-dibu",
+                                                  style: {
+                                                    color: _vm.isDark
+                                                      ? _vm.darkStyle
+                                                          .propertyColor
+                                                      : _vm.lightStyle
+                                                          .propertyColor,
+                                                  },
+                                                },
+                                                [_vm._v("身高 HEIGHT")]
+                                              ),
+                                              _c(
+                                                "text",
+                                                {
+                                                  staticClass: "value-dibu",
+                                                  style: {
+                                                    color: _vm.isDark
+                                                      ? _vm.darkStyle.valueColor
+                                                      : _vm.lightStyle
+                                                          .valueColor,
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.userInfo.height
+                                                    ) + "cm"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                          _c(
+                                            "view",
+                                            { staticClass: "item-dibu" },
+                                            [
+                                              _c(
+                                                "text",
+                                                {
+                                                  staticClass: "property-dibu",
+                                                  style: {
+                                                    color: _vm.isDark
+                                                      ? _vm.darkStyle
+                                                          .propertyColor
+                                                      : _vm.lightStyle
+                                                          .propertyColor,
+                                                  },
+                                                },
+                                                [_vm._v("体重 HEIGHT")]
+                                              ),
+                                              _c(
+                                                "text",
+                                                {
+                                                  staticClass: "value-dibu",
+                                                  style: {
+                                                    color: _vm.isDark
+                                                      ? _vm.darkStyle.valueColor
+                                                      : _vm.lightStyle
+                                                          .valueColor,
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.userInfo.weight
+                                                    ) + "kg"
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                          _vm.userInfo.is_bwh
+                                            ? _c(
+                                                "view",
+                                                { staticClass: "item-dibu" },
+                                                [
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass:
+                                                        "property-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .propertyColor
+                                                          : _vm.lightStyle
+                                                              .propertyColor,
+                                                      },
+                                                    },
+                                                    [_vm._v("胸围 BUST")]
+                                                  ),
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass: "value-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .valueColor
+                                                          : _vm.lightStyle
+                                                              .valueColor,
+                                                      },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.userInfo.bwh_b
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm.userInfo.is_bwh
+                                            ? _c(
+                                                "view",
+                                                { staticClass: "item-dibu" },
+                                                [
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass:
+                                                        "property-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .propertyColor
+                                                          : _vm.lightStyle
+                                                              .propertyColor,
+                                                      },
+                                                    },
+                                                    [_vm._v("腰围 WAIST")]
+                                                  ),
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass: "value-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .valueColor
+                                                          : _vm.lightStyle
+                                                              .valueColor,
+                                                      },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.userInfo.bwh_w
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _vm.userInfo.is_bwh
+                                            ? _c(
+                                                "view",
+                                                { staticClass: "item-dibu" },
+                                                [
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass:
+                                                        "property-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .propertyColor
+                                                          : _vm.lightStyle
+                                                              .propertyColor,
+                                                      },
+                                                    },
+                                                    [_vm._v("臀围 HIPS")]
+                                                  ),
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass: "value-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .valueColor
+                                                          : _vm.lightStyle
+                                                              .valueColor,
+                                                      },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.userInfo.bwh_h
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                          _c(
+                                            "view",
+                                            { staticClass: "item-dibu" },
+                                            [
+                                              _c(
+                                                "text",
+                                                {
+                                                  staticClass: "property-dibu",
+                                                  style: {
+                                                    color: _vm.isDark
+                                                      ? _vm.darkStyle
+                                                          .propertyColor
+                                                      : _vm.lightStyle
+                                                          .propertyColor,
+                                                  },
+                                                },
+                                                [_vm._v("鞋码 SHOES")]
+                                              ),
+                                              _c(
+                                                "text",
+                                                {
+                                                  staticClass: "value-dibu",
+                                                  style: {
+                                                    color: _vm.isDark
+                                                      ? _vm.darkStyle.valueColor
+                                                      : _vm.lightStyle
+                                                          .valueColor,
+                                                  },
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    _vm._s(_vm.userInfo.shoe)
+                                                  ),
+                                                ]
+                                              ),
+                                            ]
+                                          ),
+                                          _vm.userInfo.is_birthday
+                                            ? _c(
+                                                "view",
+                                                { staticClass: "item-dibu" },
+                                                [
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass:
+                                                        "property-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .propertyColor
+                                                          : _vm.lightStyle
+                                                              .propertyColor,
+                                                      },
+                                                    },
+                                                    [_vm._v("生日 BIRTH")]
+                                                  ),
+                                                  _c(
+                                                    "text",
+                                                    {
+                                                      staticClass: "value-dibu",
+                                                      style: {
+                                                        color: _vm.isDark
+                                                          ? _vm.darkStyle
+                                                              .valueColor
+                                                          : _vm.lightStyle
+                                                              .valueColor,
+                                                      },
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          _vm.userInfo.birthday
+                                                        )
+                                                      ),
+                                                    ]
+                                                  ),
+                                                ]
+                                              )
+                                            : _vm._e(),
+                                        ]
+                                      ),
+                                      !_vm.isMoveQrcode
+                                        ? _c("image", {
+                                            attrs: {
+                                              mode: "aspectFit",
+                                              src: _vm.isDark
+                                                ? _vm.logoAvartar
+                                                : _vm.blackLogoAvartar,
+                                            },
+                                          })
+                                        : _vm._e(),
+                                    ]
+                                  ),
+                                ]
                               )
                             : _vm._e(),
-                        ],
-                        1
-                      )
-                    }),
-                  ],
-                  2
-                ),
-              ],
-              1
-            ),
-          ],
-          1
-        ),
-        _c(
-          "scroll-view",
-          {
-            style: {
-              height: _vm.screenH + "rpx",
-              width: 750 - _vm.card.width + "rpx",
-            },
-          },
-          [
-            _c(
-              "view",
-              {
-                staticClass: "header",
-                style: {
-                  height: 750 - _vm.card.width + "rpx",
-                  width: _vm.screenH + "rpx",
-                  transform:
-                    "rotate(90deg) translate(" +
-                    ((_vm.screenH - 750 + _vm.card.width) / 2 + "rpx") +
-                    ", " +
-                    ((_vm.screenH - 750 + _vm.card.width) / 2 + "rpx") +
-                    ")",
-                },
-              },
-              [
-                _c("view", { staticClass: "title" }, [
-                  _c("view", { staticClass: "move" }, [_vm._v("拖拽挪动")]),
-                ]),
-                _c("view", { staticClass: "operation" }, [
-                  _c(
-                    "view",
-                    {
-                      staticClass: "switch switch_birth",
-                      on: { tap: _vm.switchBirthday },
-                    },
-                    [
-                      _vm.userInfo.is_birthday
-                        ? _c("image", {
-                            staticClass: "icon_check",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/birthday1.png */ "./src/assets/images/moka/makecard/birthday1.png"),
-                            },
-                          })
-                        : _c("image", {
-                            staticClass: "icon_check",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/birthday0.png */ "./src/assets/images/moka/makecard/birthday0.png"),
-                            },
-                          }),
-                    ]
-                  ),
-                  _c(
-                    "view",
-                    {
-                      staticClass: "switch switch_bwh",
-                      on: { tap: _vm.switchBWH },
-                    },
-                    [
-                      _vm.userInfo.is_bwh
-                        ? _c("image", {
-                            staticClass: "icon_check",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh1.png */ "./src/assets/images/moka/makecard/bwh1.png"),
-                            },
-                          })
-                        : _c("image", {
-                            staticClass: "icon_check",
-                            attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh0.png */ "./src/assets/images/moka/makecard/bwh0.png"),
-                            },
-                          }),
-                    ]
-                  ),
-                  !_vm.userInfo.sub_user_id
-                    ? _c(
-                        "view",
-                        {
-                          staticClass: "switch switch_bwh",
-                          on: { tap: _vm.switchQrcode },
-                        },
-                        [
-                          _vm.isMoveQrcode
-                            ? _c("image", {
-                                staticClass: "icon_check_qrcode",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode0.png */ "./src/assets/images/moka/makecard/qrcode0.png"),
-                                },
-                              })
-                            : _c("image", {
-                                staticClass: "icon_check_qrcode",
-                                attrs: {
-                                  src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode1.png */ "./src/assets/images/moka/makecard/qrcode1.png"),
-                                },
-                              }),
                         ]
-                      )
-                    : _vm._e(),
-                  _c(
-                    "view",
-                    {
-                      staticClass: "switch switch_bg",
-                      on: { tap: _vm.switchBg },
-                    },
-                    [
-                      _c("image", {
-                        staticClass: "icon_switchbg",
-                        attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/switchbg.png */ "./src/assets/images/moka/makecard/switchbg.png"),
-                        },
+                      ),
+                      _vm._l(_vm.card.layouts, function (item, index) {
+                        return _c(
+                          "movable-view",
+                          {
+                            key: index,
+                            staticClass: "layout",
+                            style: {
+                              height: item.height + "rpx",
+                              width: item.width + "rpx",
+                            },
+                            attrs: {
+                              disabled: true,
+                              id: item.id,
+                              outOfBounds: true,
+                              scale: false,
+                              x: item.x + "rpx",
+                              y: item.y + "rpx",
+                            },
+                          },
+                          [
+                            index < _vm.photoInfos.length
+                              ? _c(
+                                  "scroll-view",
+                                  {
+                                    staticClass: "photo-container",
+                                    style: {
+                                      height: item.width + "rpx",
+                                      width: item.height + "rpx",
+                                      transform:
+                                        // 'rotate(90deg)' +
+                                        // translate(-item.offset + 'rpx', -item.offset + 'rpx'),
+                                        "rotate(90deg) translate(" +
+                                        (-item.offset + "rpx") +
+                                        ", " +
+                                        (-item.offset + "rpx") +
+                                        ")",
+                                      border:
+                                         true
+                                          ? _vm.darkStyle.bgColor
+                                          : undefined,
+                                    },
+                                    attrs: {
+                                      id: item.id,
+                                      scrollX:
+                                        _vm.photoInfos[index].scrollX ||
+                                        _vm.scrollInfo[index].scale != 1,
+                                      scrollY:
+                                        _vm.photoInfos[index].scrollY ||
+                                        _vm.scrollInfo[index].scale != 1,
+                                    },
+                                    on: {
+                                      scroll: _vm.scroll,
+                                      tap: _vm.tapPhoto,
+                                      touchEnd: _vm.touchEnd,
+                                      touchMove: _vm.touchMove,
+                                      touchStart: _vm.touchStart,
+                                    },
+                                  },
+                                  [
+                                    _c("image", {
+                                      staticClass: "rotate",
+                                      style: {
+                                        height:
+                                          _vm.photoInfos[index].rotateH *
+                                            (_vm.scrollInfo[index].scale || 1) +
+                                          "rpx",
+                                        width:
+                                          _vm.photoInfos[index].rotateW *
+                                            (_vm.scrollInfo[index].scale || 1) +
+                                          "rpx",
+                                        verticalAlign: "middle",
+                                      },
+                                      attrs: { src: _vm.photos[index] },
+                                    }),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _vm.showChangeButton && index == _vm.changeIndex
+                              ? _c(
+                                  "view",
+                                  {
+                                    staticClass: "change",
+                                    style: {
+                                      top: (item.height - 100) * 0.5 + "rpx",
+                                      right: (item.width - 100) * 0.5 + "rpx",
+                                    },
+                                    attrs: { id: item.id },
+                                    on: { tap: _vm.changePhoto },
+                                  },
+                                  [_vm._v("替换")]
+                                )
+                              : _vm._e(),
+                          ],
+                          1
+                        )
                       }),
-                    ]
+                    ],
+                    2
                   ),
-                  _c("view", { staticClass: "make", on: { tap: _vm.make } }, [
-                    _vm._v("制作"),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+          _c(
+            "scroll-view",
+            {
+              style: {
+                height: _vm.screenH + "rpx",
+                width: 750 - _vm.card.width + "rpx",
+              },
+            },
+            [
+              _c(
+                "view",
+                {
+                  staticClass: "header",
+                  style: {
+                    height: 750 - _vm.card.width + "rpx",
+                    width: _vm.screenH + "rpx",
+                    transform:
+                      "rotate(90deg) translate(" +
+                      ((_vm.screenH - 750 + _vm.card.width) / 2 + "rpx") +
+                      ", " +
+                      ((_vm.screenH - 750 + _vm.card.width) / 2 + "rpx") +
+                      ")",
+                  },
+                },
+                [
+                  _c("view", { staticClass: "title" }, [
+                    _c("view", { staticClass: "move" }, [_vm._v("拖拽挪动")]),
                   ]),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ],
-      1
-    ),
-    _c(
-      "view",
-      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
-      [
-        _c("canvas", {
-          style: {
-            width: _vm.cutCanvasWH + "px",
-            height: _vm.cutCanvasWH + "px",
-          },
-          attrs: { canvasId: "cutCanvas", hidden: _vm.canvasHidden },
-        }),
-      ]
-    ),
-    _c(
-      "view",
-      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
-      [
-        _c("canvas", {
-          staticStyle: { width: "200px", height: "200px" },
-          attrs: { canvasId: "firstCanvas", hidden: _vm.canvasHidden },
-        }),
-      ]
-    ),
-  ])
+                  _c("view", { staticClass: "operation" }, [
+                    _c(
+                      "view",
+                      {
+                        staticClass: "switch switch_birth",
+                        on: { tap: _vm.switchBirthday },
+                      },
+                      [
+                        _vm.userInfo.is_birthday
+                          ? _c("image", {
+                              staticClass: "icon_check",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/birthday1.png */ "./src/assets/images/moka/makecard/birthday1.png"),
+                              },
+                            })
+                          : _c("image", {
+                              staticClass: "icon_check",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/birthday0.png */ "./src/assets/images/moka/makecard/birthday0.png"),
+                              },
+                            }),
+                      ]
+                    ),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "switch switch_bwh",
+                        on: { tap: _vm.switchBWH },
+                      },
+                      [
+                        _vm.userInfo.is_bwh
+                          ? _c("image", {
+                              staticClass: "icon_check",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh1.png */ "./src/assets/images/moka/makecard/bwh1.png"),
+                              },
+                            })
+                          : _c("image", {
+                              staticClass: "icon_check",
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh0.png */ "./src/assets/images/moka/makecard/bwh0.png"),
+                              },
+                            }),
+                      ]
+                    ),
+                    !_vm.userInfo.sub_user_id
+                      ? _c(
+                          "view",
+                          {
+                            staticClass: "switch switch_bwh",
+                            on: { tap: _vm.switchQrcode },
+                          },
+                          [
+                            _vm.isMoveQrcode
+                              ? _c("image", {
+                                  staticClass: "icon_check_qrcode",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode0.png */ "./src/assets/images/moka/makecard/qrcode0.png"),
+                                  },
+                                })
+                              : _c("image", {
+                                  staticClass: "icon_check_qrcode",
+                                  attrs: {
+                                    src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode1.png */ "./src/assets/images/moka/makecard/qrcode1.png"),
+                                  },
+                                }),
+                          ]
+                        )
+                      : _vm._e(),
+                    _c(
+                      "view",
+                      {
+                        staticClass: "switch switch_bg",
+                        on: { tap: _vm.switchBg },
+                      },
+                      [
+                        _c("image", {
+                          staticClass: "icon_switchbg",
+                          attrs: {
+                            src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/switchbg.png */ "./src/assets/images/moka/makecard/switchbg.png"),
+                          },
+                        }),
+                      ]
+                    ),
+                    _c("view", { staticClass: "make", on: { tap: _vm.make } }, [
+                      _vm._v("制作"),
+                    ]),
+                  ]),
+                ]
+              ),
+            ]
+          ),
+        ],
+        1
+      ),
+      _vm._l(_vm.cutPhotos, function (item, index) {
+        return _c("image", { key: index, attrs: { src: item } })
+      }),
+      _c("image", { attrs: { src: _vm.src } }),
+      _c(
+        "view",
+        { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+        [
+          _c("canvas", {
+            style: {
+              width: _vm.cutCanvasWH + "px",
+              height: _vm.cutCanvasWH + "px",
+            },
+            attrs: { canvasId: "cutCanvas" },
+          }),
+        ]
+      ),
+      _c(
+        "view",
+        { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+        [
+          _c("canvas", {
+            staticStyle: { width: "200px", height: "200px" },
+            attrs: { canvasId: "firstCanvas" },
+          }),
+        ]
+      ),
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

@@ -555,18 +555,17 @@
         </view>
       </scroll-view>
     </view>
-
+    <image :src="item" v-for="(item, index) in cutPhotos" :key="index"></image>
+    <image :src="src"></image>
     <view style="width: 0px; height: 0px; overflow: hidden">
       <canvas
         canvasId="cutCanvas"
-        :hidden="canvasHidden"
         :style="{ width: cutCanvasWH + 'px', height: cutCanvasWH + 'px' }"
       ></canvas>
     </view>
     <view style="width: 0px; height: 0px; overflow: hidden">
       <canvas
         canvasId="firstCanvas"
-        :hidden="canvasHidden"
         style="width: 200px; height: 200px"
       ></canvas>
     </view>
@@ -639,6 +638,7 @@ export default {
       whiteCode: "",
       uploadData: {},
       moka_code: "",
+      src: "",
     };
   },
   methods: {
@@ -676,9 +676,54 @@ export default {
     switchBg() {},
     make() {
       this.showMaking = true;
+      this.makes(this, [], 0);
+    },
+    makes(a, e, o) {
+      var s,
+        i,
+        l = a.scrollInfo,
+        n = a.photoInfos,
+        h = a.photos,
+        d = a.card.layouts,
+        c = h[o],
+        u = d[o],
+        f = n[o],
+        g = l[o],
+        w = a.cutCanvasWH;
+      f.width >= f.height
+        ? (i = ((s = w) / f.width) * f.height)
+        : (s = ((i = w) / f.height) * f.width);
+      var v = s / (f.rotateW * g.scale),
+        S = u.height * v,
+        p = u.width * v,
+        y = wx.createCanvasContext("cutCanvas");
+      var r = 750 / width;
+      y.clearRect(0, 0, s, i),
+        y.drawImage(c, 0, 0, s, i),
+        y.draw(false, function (s) {
+          wx.canvasToTempFilePath({
+            x: g.x * v * r,
+            y: g.y * v * r,
+            width: S,
+            height: p,
+            destWidth: 2 * S,
+            destHeight: 2 * p,
+            canvasId: "cutCanvas",
+            fileType: "png",
+            quality: 1,
+            success: function (s) {
+              e[o] = s.tempFilePath;
+              if ((o += 1) >= h.length) {
+                a.cutPhotos = e;
+                a.drawMocard();
+              } else {
+                a.makes(a, e, o);
+              }
+            },
+          });
+        });
     },
     changePhoto(t) {
-      console.log(t, "t----");
       var a = parseInt(t.currentTarget.id),
         _this = this;
       wx.chooseImage({
@@ -791,15 +836,14 @@ export default {
         url: this.moka_code,
         // url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
         success: function (e) {
-          console.log(e, "e");
           if (200 === e.statusCode && t) {
             if (t) {
               _this.blackCode = e.tempFilePath;
             } else {
               _this.whiteCode = e.tempFilePath;
             }
-            console.log(_this.blackCode, _this.whiteCode);
-            _this.drawCode(t);
+            // console.log(_this.blackCode, _this.whiteCode);
+            _this.drawCode(_this);
           }
         },
       });
@@ -836,6 +880,262 @@ export default {
             },
           });
         });
+    },
+    drawMocard() {
+      var t = this,
+        a = t.card.height,
+        o = t.card.width,
+        s = wx.createCanvasContext("cutCanvas"),
+        i = {};
+      (i = t.isDark ? t.darkStyle : t.lightStyle),
+        s.setFillStyle(i.bgColor),
+        s.fillRect(0, 0, a, o),
+        "cebian" == t.card.type || "charu" == t.card.type
+          ? t.drawUserInfoWithCebian(s)
+          : "dibu" == t.card.type && t.drawUserInfoWithDibu(s),
+        t.drawPhotos(s);
+      var l = "android" == device.platform,
+        r = l ? 2 : 1.8;
+      s.draw(false, function (s) {
+        "drawCanvas:ok" == s.errMsg &&
+          wx.canvasToTempFilePath({
+            x: 0,
+            y: 0,
+            width: a,
+            height: o,
+            destWidth: a * r,
+            destHeight: o * r,
+            canvasId: "cutCanvas",
+            fileType: "png",
+            quality: 1,
+            success: function (a) {
+              var o = t.card.cardId,
+                s = t.card.name;
+              t.test(a.tempFilePath, t, o, s);
+            },
+            fail: function (a) {
+              wx.hideToast(),
+                (t.showMaking = false),
+                wx.showModal({
+                  title: "模卡保存失败",
+                  showCancel: false,
+                });
+            },
+          });
+      });
+    },
+    test(t, a, o, s) {
+      console.log(t, "t");
+      console.log(a, "a");
+      console.log(o, "o");
+      console.log(s, "s");
+      if (a.isposting) return;
+      a.isposting = !0;
+      var i = 1;
+      a.isMoveQrcode && (i = 0);
+      var l = {
+        sub_user_id: a.userInfo.sub_user_id,
+        has_qrcode: i,
+        template_id: o,
+        template_name: s,
+      };
+      a.src = t;
+    },
+    drawUserInfoWithCebian(a) {
+      var e = this.userInfo,
+        o =
+          (this.card.userInfo.x,
+          this.card.userInfo.Y,
+          this.card.userInfo.height,
+          this.card.userInfo.width,
+          55);
+      this.isMoveQrcode && (o += 65),
+        e.is_bwh || (o += 80),
+        e.is_birthday || (o += 25);
+      var s = 40 + this.card.userInfo.y,
+        i = o,
+        l = {},
+        r = (l = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
+        n = l.valueColor;
+      a.setFontSize(32), a.setFillStyle(n), a.fillText(e.nickname, s, i);
+      var h = 8;
+      if (
+        (this.isMoveQrcode && (h = 10),
+        (i += 40),
+        a.setFontSize(18),
+        a.setFillStyle(r),
+        a.fillText("身高 HEIGHT", s, i),
+        (i += 25),
+        a.setFontSize(18),
+        a.setFillStyle(n),
+        a.fillText(e.height + "cm", s, i),
+        (i += 22 + h),
+        a.setFontSize(18),
+        a.setFillStyle(r),
+        a.fillText("体重 WEIGHT", s, i),
+        (i += 25),
+        a.setFontSize(18),
+        a.setFillStyle(n),
+        a.fillText(e.weight + "kg", s, i),
+        e.is_bwh &&
+          ((i += 22 + h),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText("胸围 BUST", s, i),
+          (i += 25),
+          a.setFontSize(18),
+          a.setFillStyle(n),
+          a.fillText(e.bwh_b, s, i),
+          (i += 22 + h),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText("腰围 WAIST", s, i),
+          (i += 25),
+          a.setFontSize(18),
+          a.setFillStyle(n),
+          a.fillText(e.bwh_w, s, i),
+          (i += 22 + h),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText("臀围 HIPS", s, i),
+          (i += 25),
+          a.setFontSize(18),
+          a.setFillStyle(n),
+          a.fillText(e.bwh_h, s, i)),
+        (i += 22 + h),
+        a.setFontSize(18),
+        a.setFillStyle(r),
+        a.fillText("鞋码 SHOES", s, i),
+        (i += 25),
+        a.setFontSize(18),
+        a.setFillStyle(n),
+        a.fillText(e.shoe, s, i),
+        e.is_birthday &&
+          ((i += 22 + h),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText("生日 BIRTH", s, i),
+          (i += 25),
+          a.setFontSize(18),
+          a.setFillStyle(n),
+          a.fillText(e.birthday, s, i)),
+        !this.isMoveQrcode)
+      ) {
+        i += 30;
+        a.drawImage(
+          this.isDark ? this.logoAvartar : this.blackLogoAvartar,
+          s,
+          i,
+          120,
+          120
+        );
+      }
+    },
+    drawUserInfoWithDibu(a) {
+      var e = this.userInfo,
+        o =
+          (this.card.userInfo.x,
+          this.card.userInfo.Y,
+          this.card.userInfo.height,
+          this.card.userInfo.width,
+          67),
+        s = 580,
+        i = {},
+        l = (i = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
+        r = i.valueColor;
+      a.setFontSize(32), a.setFillStyle(r), a.fillText(e.nickname, o, s);
+      (s = 560),
+        (o += 160),
+        a.setFontSize(18),
+        a.setFillStyle(l),
+        a.fillText("身高HEIGHT", o, s),
+        (s += 31),
+        a.setFontSize(18),
+        a.setFillStyle(r),
+        a.fillText(e.height + "cm", o, s),
+        (s = 560),
+        (o += 140),
+        a.setFontSize(18),
+        a.setFillStyle(l),
+        a.fillText("体重WEIGHT", o, s),
+        (s += 31),
+        a.setFontSize(18),
+        a.setFillStyle(r),
+        a.fillText(e.weight + "kg", o, s),
+        e.is_bwh &&
+          ((s = 560),
+          (o += 140),
+          a.setFontSize(18),
+          a.setFillStyle(l),
+          a.fillText("胸围BUST", o, s),
+          (s += 31),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText(e.bwh_b, o, s),
+          (s = 560),
+          (o += 140),
+          a.setFontSize(18),
+          a.setFillStyle(l),
+          a.fillText("腰围WAIST", o, s),
+          (s += 31),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText(e.bwh_w, o, s),
+          (s = 560),
+          (o += 140),
+          a.setFontSize(18),
+          a.setFillStyle(l),
+          a.fillText("臀围HIPS", o, s),
+          (s += 31),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText(e.bwh_h, o, s)),
+        (s = 560),
+        (o += 140),
+        a.setFontSize(18),
+        a.setFillStyle(l),
+        a.fillText("鞋码SHOES", o, s),
+        (s += 31),
+        a.setFontSize(18),
+        a.setFillStyle(r),
+        a.fillText(e.shoe, o, s),
+        e.is_birthday &&
+          ((s = 560),
+          (o += 140),
+          a.setFontSize(18),
+          a.setFillStyle(l),
+          a.fillText("生日BIRTH", o, s),
+          (s += 31),
+          a.setFontSize(18),
+          a.setFillStyle(r),
+          a.fillText(e.birthday, o, s));
+      (o = this.card.userInfo.height - 80 - 30), (s = 530);
+      this.isMoveQrcode ||
+        a.drawImage(
+          this.isDark ? this.logoAvartar : this.blackLogoAvartar,
+          o,
+          s,
+          80,
+          80
+        );
+    },
+    drawPhotos(a) {
+      for (
+        var e = this.cutPhotos,
+          o = this.card.layouts,
+          s = this.card.width,
+          i = 0;
+        i < e.length;
+        i++
+      ) {
+        var l = e[i],
+          r = o[i],
+          n = r.y + 2,
+          h = s - r.x - r.width + 2,
+          d = r.height - 4,
+          c = r.width - 4;
+        a.drawImage(l, n, h, d, c);
+      }
     },
     async qrcode(params) {
       try {
