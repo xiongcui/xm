@@ -214,7 +214,7 @@
         <button type="primary" v-else>已查看</button>
       </view>
     </view>
-    <view class="modal_box" v-if="showModel">
+    <view class="modal_box_bg" v-if="showModel">
       <view class="modal_content">
         <view> 微信二维码 </view>
         <image class="qrcode-img" :src="data.contact.wechat_links"></image>
@@ -227,7 +227,7 @@
       </view>
     </view>
     <!--联系方式-->
-    <view class="modal_box" v-if="contactVisible">
+    <view class="modal_box_bg" v-if="contactVisible">
       <view class="modal_content">
         <view class="modal_title">
           <view> 联系方式 </view>

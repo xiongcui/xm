@@ -267,6 +267,12 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -369,9 +375,21 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
       }, row);
     },
     unfollow: function unfollow(row) {
-      this.userUnfollow({
-        unfollow_uuid: row.basic.uuid
-      }, row);
+      var _this = this;
+
+      wx.showModal({
+        title: "温馨提示",
+        content: " 确定要取消关注吗？",
+        success: function success(res) {
+          if (res.confirm) {
+            _this.userUnfollow({
+              unfollow_uuid: row.basic.uuid
+            }, row);
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
+        }
+      });
     },
     query: function query(type, scroll) {
       if (type == "init") this.pageNum = 1;
@@ -434,7 +452,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
       this.query("more", false);
     },
     userFilter: function userFilter(params, scroll) {
-      var _this = this;
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res, arr, arr2, arr3;
@@ -453,7 +471,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
                 arr3 = [];
 
                 if (res.data.data.quick_filter) {
-                  _this.navData = res.data.data.quick_filter;
+                  _this2.navData = res.data.data.quick_filter;
                 }
 
                 if (res.data.data.select_filter.career) {
@@ -492,15 +510,15 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
                   value: "全部",
                   ispick: true
                 });
-                _this.appointmentData = arr;
-                _this.certifyData = arr2;
-                _this.securityData = arr3;
-                _this.select_filter = {
+                _this2.appointmentData = arr;
+                _this2.certifyData = arr2;
+                _this2.securityData = arr3;
+                _this2.select_filter = {
                   sex: 10,
                   career: 0
                 };
 
-                _this.query("init", scroll);
+                _this2.query("init", scroll);
 
                 _context.next = 23;
                 break;
@@ -518,7 +536,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
       }))();
     },
     userList: function userList(params, type, scroll) {
-      var _this2 = this;
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res, data;
@@ -533,9 +551,9 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 3:
                 res = _context2.sent;
                 //隐藏loading 提示框
-                _this2.showLoading = false;
+                _this3.showLoading = false;
                 wx.hideLoading();
-                _this2.noMore = false; //隐藏导航条加载动画
+                _this3.noMore = false; //隐藏导航条加载动画
 
                 wx.hideNavigationBarLoading(); //停止下拉刷新
 
@@ -546,8 +564,8 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
                   break;
                 }
 
-                _this2.list = res.data.data.items;
-                _this2.loading = true;
+                _this3.list = res.data.data.items;
+                _this3.loading = true;
                 _context2.next = 22;
                 break;
 
@@ -563,13 +581,13 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
                 }
 
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("没有更多数据了～");
-                _this2.loading = true;
+                _this3.loading = true;
                 return _context2.abrupt("return", false);
 
               case 19:
                 data = res.data.data.items;
-                _this2.list = _this2.list.concat(data);
-                _this2.loading = true;
+                _this3.list = _this3.list.concat(data);
+                _this3.loading = true;
 
               case 22:
                 if (scroll) {
@@ -579,24 +597,24 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
                   });
                 }
 
-                _this2.isclick = false;
+                _this3.isclick = false;
                 _context2.next = 32;
                 break;
 
               case 26:
                 _context2.prev = 26;
                 _context2.t0 = _context2["catch"](0);
-                _this2.showLoading = false;
+                _this3.showLoading = false;
                 wx.hideNavigationBarLoading();
 
                 if (_context2.t0.data.error_code == 11020) {
-                  _this2.visible = true;
-                  _this2.isclick = false;
+                  _this3.visible = true;
+                  _this3.isclick = false;
                   console.log(_context2.t0, "error");
                 }
 
-                if (_context2.t0.data.error_code == 10100 && _this2.pageNum > 1) {
-                  _this2.noMore = true;
+                if (_context2.t0.data.error_code == 10100 && _this3.pageNum > 1) {
+                  _this3.noMore = true;
                 }
 
               case 32:
@@ -666,7 +684,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
       }))();
     },
     imVerify: function imVerify(params, row) {
-      var _this3 = this;
+      var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee5() {
         var res;
@@ -681,7 +699,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 3:
                 res = _context5.sent;
 
-                _this3.connect(row);
+                _this4.connect(row);
 
                 _context5.next = 11;
                 break;
@@ -903,38 +921,53 @@ var render = function () {
                       ]),
                     ]),
                     _c("view", { staticClass: "list_top_rt" }, [
+                      _c("view", { staticClass: "list_time" }, [
+                        _vm._v(
+                          " " + _vm._s(item.basic.login_time_humanize) + " "
+                        ),
+                      ]),
                       !item.follow.is_follower
-                        ? _c(
-                            "view",
-                            {
-                              staticClass: "followed_btn_red",
-                              on: {
-                                tap: function ($event) {
-                                  $event.stopPropagation()
-                                  return _vm.follow(item)
-                                },
+                        ? _c("image", {
+                            staticClass: "follow_img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../../assets/images/follow.png */ "./src/assets/images/follow.png"),
+                            },
+                            on: {
+                              tap: function ($event) {
+                                $event.stopPropagation()
+                                return _vm.follow(item)
                               },
                             },
-                            [_vm._v("关注")]
-                          )
-                        : _c(
-                            "view",
-                            {
-                              staticClass: "followed_btn",
-                              on: {
-                                tap: function ($event) {
-                                  $event.stopPropagation()
-                                  return _vm.unfollow(item)
-                                },
+                          })
+                        : _c("image", {
+                            staticClass: "follow_img",
+                            attrs: {
+                              src: __webpack_require__(/*! ../../../../assets/images/followed.png */ "./src/assets/images/followed.png"),
+                            },
+                            on: {
+                              tap: function ($event) {
+                                $event.stopPropagation()
+                                return _vm.unfollow(item)
                               },
                             },
-                            [_vm._v("取消关注")]
-                          ),
+                          }),
                     ]),
                   ]),
-                  _c("view", { staticClass: "list_desc" }, [
-                    _vm._v(" " + _vm._s(item.basic.resume) + " "),
-                  ]),
+                  item.basic.resume
+                    ? _c(
+                        "view",
+                        {
+                          staticClass: "list_desc",
+                          on: {
+                            tap: function ($event) {
+                              $event.stopPropagation()
+                              return _vm.follow(item)
+                            },
+                          },
+                        },
+                        [_vm._v(" " + _vm._s(item.basic.resume) + " ")]
+                      )
+                    : _vm._e(),
                   item.album.photo_album.length
                     ? _c(
                         "view",
@@ -993,26 +1026,6 @@ var render = function () {
                         1
                       )
                     : _vm._e(),
-                  _c("view", { staticClass: "list_bottom" }, [
-                    _c("view", { staticClass: "list_time" }, [
-                      _vm._v(
-                        " " + _vm._s(item.basic.login_time_humanize) + " "
-                      ),
-                    ]),
-                    _c(
-                      "view",
-                      {
-                        staticClass: "contact",
-                        on: {
-                          tap: function ($event) {
-                            $event.stopPropagation()
-                            return _vm.communicate(item)
-                          },
-                        },
-                      },
-                      [_vm._v("立即沟通")]
-                    ),
-                  ]),
                 ]
               )
             }),
@@ -1181,6 +1194,30 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/follow.png":
+/*!**************************************!*\
+  !*** ./src/assets/images/follow.png ***!
+  \**************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/follow.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/followed.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/followed.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/followed.png";
 
 /***/ }),
 
