@@ -51,8 +51,7 @@
       <picker
         @change="birthdayChange"
         mode="date"
-        start="1960-06-01"
-        :value="birthday"
+        :value="birthday ? birthday : '2005-01-01'"
       >
         <view class="item ub item-b">
           <view class="ub-f1 ub item_mid">
@@ -206,12 +205,28 @@ export default {
         errortip("请填写名称！");
         return false;
       }
+      if (this.sex === null) {
+        errortip("请选择性别！");
+        return false;
+      }
+      if (!this.birthday) {
+        errortip("请选择生日！");
+        return false;
+      }
+      if (!this.identity) {
+        errortip("请选择身份！");
+        return false;
+      }
+      if (!this.region.length) {
+        errortip("请选择地区！");
+        return false;
+      }
       if (!clickThrottle()) return;
       let params = {
         nickname: this.nickname,
         birthday: this.birthday,
         addressName: this.region.length ? this.region.join("-") : null,
-        address: this.regionList ? this.regionList.join("-") : null,
+        address: this.regionList.length ? this.regionList.join("-") : null,
         avatar: this.infor.avatar,
       };
       if (this.sex !== null) {

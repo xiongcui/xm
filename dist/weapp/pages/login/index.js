@@ -466,6 +466,8 @@ component.options.__file = "src/pages/login/index.vue"
       }))();
     },
     userRegister: function userRegister(params) {
+      var _this5 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
         var res, userInfo;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
@@ -483,20 +485,34 @@ component.options.__file = "src/pages/login/index.vue"
                 userInfo.avatar = params.avatar;
                 userInfo.nickname = params.nickname;
                 wx.setStorageSync("userInfo", userInfo);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
-                _context3.next = 14;
+                console.log(_this5.bind_type, _this5.login_type);
+
+                if (_this5.login_type == 1) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
+                } else {
+                  // 跳转首页
+                  wx.switchTab({
+                    url: "/pages/home/index",
+                    success: function success(e) {
+                      var page = getCurrentPages().pop();
+                      if (page == undefined || page == null) return; // page.onLoad();
+                    }
+                  });
+                }
+
+                _context3.next = 15;
                 break;
 
-              case 12:
-                _context3.prev = 12;
+              case 13:
+                _context3.prev = 13;
                 _context3.t0 = _context3["catch"](0);
 
-              case 14:
+              case 15:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 12]]);
+        }, _callee3, null, [[0, 13]]);
       }))();
     }
   },

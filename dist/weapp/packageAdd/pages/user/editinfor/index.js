@@ -189,7 +189,6 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 //
 //
 //
-//
 
 
 
@@ -255,12 +254,32 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         return false;
       }
 
+      if (this.sex === null) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择性别！");
+        return false;
+      }
+
+      if (!this.birthday) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择生日！");
+        return false;
+      }
+
+      if (!this.identity) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择身份！");
+        return false;
+      }
+
+      if (!this.region.length) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择地区！");
+        return false;
+      }
+
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
       var params = {
         nickname: this.nickname,
         birthday: this.birthday,
         addressName: this.region.length ? this.region.join("-") : null,
-        address: this.regionList ? this.regionList.join("-") : null,
+        address: this.regionList.length ? this.regionList.join("-") : null,
         avatar: this.infor.avatar
       };
 
@@ -549,7 +568,10 @@ var render = function () {
           _c(
             "picker",
             {
-              attrs: { mode: "date", start: "1960-06-01", value: _vm.birthday },
+              attrs: {
+                mode: "date",
+                value: _vm.birthday ? _vm.birthday : "2005-01-01",
+              },
               on: { change: _vm.birthdayChange },
             },
             [

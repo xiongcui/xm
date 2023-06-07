@@ -360,7 +360,20 @@ export default {
         userInfo.avatar = params.avatar;
         userInfo.nickname = params.nickname;
         wx.setStorageSync("userInfo", userInfo);
-        openPage("/pages/register/index");
+        console.log(this.bind_type, this.login_type);
+        if (this.login_type == 1) {
+          openPage("/pages/register/index");
+        } else {
+          // 跳转首页
+          wx.switchTab({
+            url: "/pages/home/index",
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              // page.onLoad();
+            },
+          });
+        }
       } catch (error) {}
     },
   },
