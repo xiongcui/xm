@@ -617,7 +617,6 @@ component.options.__file = "src/packageMoka/pages/moka/makecard/index.vue"
 //
 //
 //
-//
 
 var device = wx.getSystemInfoSync(); // 获取设备信息
 
@@ -773,10 +772,18 @@ function c() {
           o = (this.card.height - this.screenH + 40) / r * a / e;
       this.scrollTop = o;
     },
-    switchBirthday: function switchBirthday() {},
-    switchBWH: function switchBWH() {},
-    switchQrcode: function switchQrcode() {},
-    switchBg: function switchBg() {},
+    switchBirthday: function switchBirthday() {
+      this.userInfo.is_birthday = !this.userInfo.is_birthday;
+    },
+    switchBWH: function switchBWH() {
+      this.userInfo.is_bwh = !this.userInfo.is_bwh;
+    },
+    switchQrcode: function switchQrcode() {
+      this.isMoveQrcode ? this.isMoveQrcode = 0 : this.isMoveQrcode = 1;
+    },
+    switchBg: function switchBg() {
+      this.isDark = !this.isDark;
+    },
     make: function make() {
       this.showMaking = true;
       this.makes([], 0);
@@ -1101,14 +1108,7 @@ function c() {
   },
   onLoad: function onLoad(options) {
     var mokaIndex = moka.getIndexByCardId("1001010501");
-    this.card = moka.layouts[mokaIndex]; // this.photos = [
-    //   "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
-    //   "https://yuepai-oss.qubeitech.com/notice/111452/fe4576f1-ff51-11ed-a646-f7624355584a-qa60.jpg",
-    //   "https://yuepai-oss.qubeitech.com/invite/111514/b6417311-ff7c-11ed-a646-f7624355584a-qa60.jpg",
-    //   "https://yuepai-oss.qubeitech.com/invite/111166/fbe29799-f48f-11ed-a646-f7624355584a.jpg",
-    //   "https://yuepai-oss.qubeitech.com/invite/111166/fbe2979a-f48f-11ed-a646-f7624355584a.jpg",
-    // ];
-
+    this.card = moka.layouts[mokaIndex];
     this.photos = [__webpack_require__(/*! ../../../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"), __webpack_require__(/*! ../../../../assets/images/cheatPrevention.png */ "./src/assets/images/cheatPrevention.png"), __webpack_require__(/*! ../../../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"), __webpack_require__(/*! ../../../../assets/images/lanmao2.jpg */ "./src/assets/images/lanmao2.jpg"), __webpack_require__(/*! ../../../../assets/images/lanmao3.jpg */ "./src/assets/images/lanmao3.jpg")];
     this.userInfo = {
       avatar: "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
@@ -1123,11 +1123,12 @@ function c() {
       birthday: "1994-08-29",
       height: 100,
       weight: 200,
-      is_bwh: true,
       bwh_b: 38,
       bwh_w: 39,
       bwh_h: 40,
-      shoe: 41
+      shoe: 41,
+      is_bwh: true,
+      is_birthday: true
     };
     var l = [];
 
@@ -1936,9 +1937,10 @@ var render = function () {
                                       (-item.offset + "rpx") +
                                       ")",
                                     border:
-                                       true
+                                      "1px solid " +
+                                      (_vm.isDark
                                         ? _vm.darkStyle.bgColor
-                                        : undefined,
+                                        : _vm.lightStyle.bgColor),
                                   },
                                   attrs: {
                                     id: item.id,

@@ -9,6 +9,7 @@
     image {
       width: 120px;
       height: 120px;
+      margin-top: 16px;
     }
   }
   .name {
@@ -37,7 +38,8 @@
     }
   }
   .item-cebian {
-    font-size: 26px;
+    // font-size: 26px;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
   }

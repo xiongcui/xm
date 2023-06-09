@@ -440,10 +440,9 @@
                   transform: `rotate(90deg) translate(${
                     -item.offset + 'rpx'
                   }, ${-item.offset + 'rpx'})`,
-                  border:
-                    '1rpx solid' + isDark
-                      ? darkStyle.bgColor
-                      : lightStyle.bgColor,
+                  border: `1px solid ${
+                    isDark ? darkStyle.bgColor : lightStyle.bgColor
+                  }`,
                 }"
                 v-if="index < photoInfos.length"
               >
@@ -722,10 +721,18 @@ export default {
         o = (((this.card.height - this.screenH + 40) / r) * a) / e;
       this.scrollTop = o;
     },
-    switchBirthday() {},
-    switchBWH() {},
-    switchQrcode() {},
-    switchBg() {},
+    switchBirthday() {
+      this.userInfo.is_birthday = !this.userInfo.is_birthday;
+    },
+    switchBWH() {
+      this.userInfo.is_bwh = !this.userInfo.is_bwh;
+    },
+    switchQrcode() {
+      this.isMoveQrcode ? (this.isMoveQrcode = 0) : (this.isMoveQrcode = 1);
+    },
+    switchBg() {
+      this.isDark = !this.isDark;
+    },
     make() {
       this.showMaking = true;
       this.makes([], 0);
@@ -1204,13 +1211,6 @@ export default {
   onLoad: function (options) {
     let mokaIndex = moka.getIndexByCardId("1001010501");
     this.card = moka.layouts[mokaIndex];
-    // this.photos = [
-    //   "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
-    //   "https://yuepai-oss.qubeitech.com/notice/111452/fe4576f1-ff51-11ed-a646-f7624355584a-qa60.jpg",
-    //   "https://yuepai-oss.qubeitech.com/invite/111514/b6417311-ff7c-11ed-a646-f7624355584a-qa60.jpg",
-    //   "https://yuepai-oss.qubeitech.com/invite/111166/fbe29799-f48f-11ed-a646-f7624355584a.jpg",
-    //   "https://yuepai-oss.qubeitech.com/invite/111166/fbe2979a-f48f-11ed-a646-f7624355584a.jpg",
-    // ];
     this.photos = [
       require("../../../../assets/images/lanmao1.jpg"),
       require("../../../../assets/images/cheatPrevention.png"),
@@ -1232,11 +1232,12 @@ export default {
       birthday: "1994-08-29",
       height: 100,
       weight: 200,
-      is_bwh: true,
       bwh_b: 38,
       bwh_w: 39,
       bwh_h: 40,
       shoe: 41,
+      is_bwh: true,
+      is_birthday: true,
     };
     var l = [];
     for (var r = 0; r < this.photos.length; r++) {
