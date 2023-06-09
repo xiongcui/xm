@@ -1,0 +1,98 @@
+.makesuccess .hint {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 100rpx 0 40rpx 0;
+}
+.makesuccess .hint image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.makesuccess .hint .hint-text {
+  font-size: 34rpx;
+  color: #333333;
+}
+.makesuccess .card {
+  margin: 30rpx auto;
+}
+.makesuccess .main {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.makesuccess .save {
+  color: #ffffff;
+  background: #ff1e3e;
+  width: 85%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+  margin: 0 auto;
+}
+.makesuccess .modal_box_bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99999;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.makesuccess .modal_box_bg .tip_set {
+  position: relative;
+  background: #ffffff;
+  padding: 16rpx 0;
+  border-radius: 10rpx;
+  width: 460rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 30rpx;
+  color: #333333;
+}
+.makesuccess .modal_box_bg .tip_set_tittle {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+.makesuccess .modal_box_bg .tip_set_content {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 30rpx;
+  padding: 0 30rpx;
+}
+.makesuccess .modal_box_bg .openSetting {
+  padding: 0;
+  margin: 0;
+  background: #ff1e3e;
+  width: 80%;
+  margin: 16rpx 0 30rpx 0;
+}

@@ -4,7 +4,7 @@
       <view
         class="making"
         :style="{ top: (screenH - 200) * 0.5 + 'rpx' }"
-        v-if="showMaking"
+        v-show="showMaking"
       >
         <view class="making-icon">
           <image
@@ -239,15 +239,9 @@
                 :style="{
                   height: card.userInfo.width + 'rpx',
                   width: card.userInfo.height + 'rpx',
-                  transform:
-                    // 'rotate(90deg)' +
-                    // translate(
-                    //   -card.userInfo.offset + 'rpx',
-                    //   -card.userInfo.offset + 'rpx'
-                    // ),
-                    `rotate(90deg) translate(${
-                      -card.userInfo.offset + 'rpx'
-                    }, ${-card.userInfo.offset + 'rpx'})`,
+                  transform: `rotate(90deg) translate(${
+                    -card.userInfo.offset + 'rpx'
+                  }, ${-card.userInfo.offset + 'rpx'})`,
                 }"
                 v-if="card.type == 'dibu'"
               >
@@ -443,12 +437,9 @@
                 :style="{
                   height: item.width + 'rpx',
                   width: item.height + 'rpx',
-                  transform:
-                    // 'rotate(90deg)' +
-                    // translate(-item.offset + 'rpx', -item.offset + 'rpx'),
-                    `rotate(90deg) translate(${-item.offset + 'rpx'}, ${
-                      -item.offset + 'rpx'
-                    })`,
+                  transform: `rotate(90deg) translate(${
+                    -item.offset + 'rpx'
+                  }, ${-item.offset + 'rpx'})`,
                   border:
                     '1rpx solid' + isDark
                       ? darkStyle.bgColor
@@ -475,7 +466,7 @@
               <view
                 @tap="changePhoto"
                 class="change"
-                v-if="showChangeButton && index == changeIndex"
+                v-show="showChangeButton && index == changeIndex"
                 :id="item.id"
                 :style="{
                   top: (item.height - 100) * 0.5 + 'rpx',
@@ -555,8 +546,6 @@
         </view>
       </scroll-view>
     </view>
-    <image :src="item" v-for="(item, index) in cutPhotos" :key="index"></image>
-    <image :src="src"></image>
     <view style="width: 0px; height: 0px; overflow: hidden">
       <canvas
         canvasId="cutCanvas"
@@ -580,6 +569,13 @@ const height = device.screenHeight;
 const statusBarHeight = device.statusBarHeight;
 const moka = require("../../../../assets/js/moka.js");
 import { qrcode } from "../../../../api/index";
+import { openPage } from "../../../../utils/util";
+
+function c() {
+  var t = wx.getSystemInfoSync();
+  return t;
+}
+
 export default {
   name: "makecard",
   data() {
@@ -592,7 +588,6 @@ export default {
       isposting: false,
       pageshow: "",
       screenW: width * (750 / width),
-      //   screenH: (l - 44 - s.statusBarHeight) * r,
       screenH: (height - 44 - statusBarHeight) * (750 / width),
       showChangeButton: false,
       changeIndex: -1,
@@ -638,29 +633,87 @@ export default {
       whiteCode: "",
       uploadData: {},
       moka_code: "",
-      src: "",
+      n: false,
+      h: false,
+      t: "",
     };
   },
   methods: {
     touchStart(a) {
       this.allowScroll = false;
       var e = parseInt(a.currentTarget.id);
-      var t = "";
-      var n = false;
-      if (
-        ((t = e >= 0 && e < this.photos.length ? e : -1),
-        (n = true),
-        a.touches.length >= 2)
-      ) {
-        var h = true;
+      this.t = e >= 0 && e < this.photos.length ? e : -1;
+      this.n = true;
+      if (a.touches.length >= 2) {
+        this.h = true;
         var o = a.touches[1].pageX - a.touches[0].pageX,
           s = a.touches[1].pageY - a.touches[0].pageY;
         d = Math.sqrt(o * o + s * s);
       }
+
+      // if (
+      //   ((this.t = e >= 0 && e < this.photos.length ? e : -1),
+      //   (this.n = true),
+      //   a.touches.length >= 2)
+      // ) {
+      //   this.h = true;
+      //   var o = a.touches[1].pageX - a.touches[0].pageX,
+      //     s = a.touches[1].pageY - a.touches[0].pageY;
+      //   d = Math.sqrt(o * o + s * s);
+      // }
     },
-    touchMove() {},
-    touchEnd() {},
-    isTouchInLayout() {},
+    touchMove(a) {
+      if (
+        !(this.t < 0 || this.t >= this.scrollInfo.length) &&
+        this.n &&
+        a.touches.length >= 2
+      ) {
+        var e = a.touches[1].pageX - a.touches[0].pageX,
+          o = a.touches[1].pageY - a.touches[0].pageY,
+          s = Math.sqrt(e * e + o * o) - d;
+        if (Math.abs(s) >= 0) {
+          var i = this.scrollInfo[this.t].scale || 1;
+          (i += 4e-4 * s) > 2 && (i = 2),
+            i < 1 && (i = 1),
+            (this.scrollInfo[this.t].scale = i),
+            (this.scrollInfo = this.scrollInfo);
+        }
+      }
+    },
+    touchEnd(a) {
+      if (0 == a.touches.length) {
+        if (((this.n = false), !this.h)) {
+          for (
+            var e = a.changedTouches[0], o = -1, s = this.card.layouts, i = 0;
+            i < s.length;
+            i++
+          ) {
+            var l = s[i];
+            if (this.isTouchInLayout(e, l)) {
+              o = l.id;
+              break;
+            }
+          }
+          var r = this.photos;
+          if (-1 != this.t && -1 != o) {
+            var d = r[this.t];
+            (r[this.t] = r[o]),
+              (r[o] = d),
+              (this.photos = r),
+              this.getPhotoInfos();
+          }
+        }
+        this.h = false;
+      }
+    },
+    isTouchInLayout(t, a) {
+      // c();
+      var r = 750 / width;
+      var e = this.scrollTop,
+        o = r * t.pageX,
+        s = r * (t.pageY + e);
+      return o > a.x && o < a.x + a.width && s > a.y && s < a.y + a.height;
+    },
     sliderChange(t) {
       this.allowScroll = true;
       var r = 750 / width;
@@ -668,7 +721,6 @@ export default {
         e = 274 / r,
         o = (((this.card.height - this.screenH + 40) / r) * a) / e;
       this.scrollTop = o;
-      console.log(this.scrollTop, "this.scrollTop");
     },
     switchBirthday() {},
     switchBWH() {},
@@ -676,20 +728,21 @@ export default {
     switchBg() {},
     make() {
       this.showMaking = true;
-      this.makes(this, [], 0);
+      this.makes([], 0);
     },
-    makes(a, e, o) {
+    makes(e, o) {
+      let _this = this;
       var s,
         i,
-        l = a.scrollInfo,
-        n = a.photoInfos,
-        h = a.photos,
-        d = a.card.layouts,
+        l = this.scrollInfo,
+        n = this.photoInfos,
+        h = this.photos,
+        d = this.card.layouts,
         c = h[o],
         u = d[o],
         f = n[o],
         g = l[o],
-        w = a.cutCanvasWH;
+        w = this.cutCanvasWH;
       f.width >= f.height
         ? (i = ((s = w) / f.width) * f.height)
         : (s = ((i = w) / f.height) * f.width);
@@ -698,6 +751,7 @@ export default {
         p = u.width * v,
         y = wx.createCanvasContext("cutCanvas");
       var r = 750 / width;
+
       y.clearRect(0, 0, s, i),
         y.drawImage(c, 0, 0, s, i),
         y.draw(false, function (s) {
@@ -714,10 +768,10 @@ export default {
             success: function (s) {
               e[o] = s.tempFilePath;
               if ((o += 1) >= h.length) {
-                a.cutPhotos = e;
-                a.drawMocard();
+                _this.cutPhotos = e;
+                _this.drawMocard();
               } else {
-                a.makes(a, e, o);
+                _this.makes(e, o);
               }
             },
           });
@@ -733,52 +787,56 @@ export default {
         success: function (t) {
           var o = t.tempFilePaths[0];
           _this.photos[a] = o;
-          _this.getPhotoInfos([], 0);
+          _this.getPhotoInfos();
           _this.changeIndex = -1;
           _this.showChangeButton = false;
+          _this.changeIndex = _this.changeIndex;
+          _this.showChangeButton = _this.showChangeButton;
         },
       });
     },
-    getPhotoInfos(e, o) {
-      let s = this.photos;
-      let i = this.card.layouts;
-      let l = s[o];
-      let r = i[o];
-      let _this = this;
-      wx.getImageInfo({
-        src: l,
-        success: function (i) {
-          var l, n, h, d;
-          i.width / i.height > r.height / r.width
-            ? ((n = r.width),
-              (l = (i.width / i.height) * n),
-              (h = true),
-              (d = false))
-            : ((l = r.height),
-              (n = (i.height / i.width) * l),
-              (h = false),
-              (d = true));
-          var c = {
-            width: i.width,
-            height: i.height,
-            rotateW: l,
-            rotateH: n,
-            scrollX: h,
-            scrollY: d,
-          };
-          e[o] = c;
-          if ((o += 1) >= s.length) {
-            _this.photos = s;
-            _this.photoInfos = e;
-          } else {
-            _this.getPhotoInfos(e, o);
-          }
-        },
-      });
+    getPhotoInfos() {
+      !(function t(a, e, o) {
+        var s = a.photos,
+          i = a.card.layouts,
+          l = s[o],
+          r = i[o];
+        wx.getImageInfo({
+          src: l,
+          success: function (i) {
+            var l, n, h, d;
+            i.width / i.height > r.height / r.width
+              ? ((n = r.width),
+                (l = (i.width / i.height) * n),
+                (h = !0),
+                (d = !1))
+              : ((l = r.height),
+                (n = (i.height / i.width) * l),
+                (h = !1),
+                (d = !0));
+            var c = {
+              width: i.width,
+              height: i.height,
+              rotateW: l,
+              rotateH: n,
+              scrollX: h,
+              scrollY: d,
+            };
+            e[o] = c;
+            if ((o += 1) >= s.length) {
+              a.photos = s;
+              a.photoInfos = e;
+            } else {
+              t(a, e, o);
+            }
+          },
+        });
+      })(this, [], 0);
     },
     scroll(t) {
-      console.log(this.scrollInfo, "this.scrollInfo");
-      // this.scrollInfo[t.currentTarget.id].x = t.detail.scrollLeft, this.data.scrollInfo[t.currentTarget.id].y = t.detail.scrollTop;
+      this.scrollInfo[t.currentTarget.id].x = t.detail.scrollLeft;
+      this.scrollInfo[t.currentTarget.id].y = t.detail.scrollTop;
+      console.log(this.scrollInfo, "this.scrollInfo----");
     },
     tapPhoto(t) {
       var a = parseInt(t.currentTarget.id);
@@ -831,10 +889,8 @@ export default {
     },
     drawAvartar(t) {
       var _this = this;
-      console.log(111, this.moka_code);
       wx.downloadFile({
         url: this.moka_code,
-        // url: "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
         success: function (e) {
           if (200 === e.statusCode && t) {
             if (t) {
@@ -925,10 +981,6 @@ export default {
       });
     },
     test(t, a, o, s) {
-      console.log(t, "t");
-      console.log(a, "a");
-      console.log(o, "o");
-      console.log(s, "s");
       if (a.isposting) return;
       a.isposting = !0;
       var i = 1;
@@ -939,7 +991,11 @@ export default {
         template_id: o,
         template_name: s,
       };
-      a.src = t;
+      wx.setStorageSync("successImgSrc", t);
+      openPage(
+        "/packageMoka/pages/moka/makesuccess/index?vertical=0&has_qrcode=" + i
+      );
+      this.showMaking = false;
     },
     drawUserInfoWithCebian(a) {
       var e = this.userInfo,
@@ -1148,12 +1204,19 @@ export default {
   onLoad: function (options) {
     let mokaIndex = moka.getIndexByCardId("1001010501");
     this.card = moka.layouts[mokaIndex];
+    // this.photos = [
+    //   "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
+    //   "https://yuepai-oss.qubeitech.com/notice/111452/fe4576f1-ff51-11ed-a646-f7624355584a-qa60.jpg",
+    //   "https://yuepai-oss.qubeitech.com/invite/111514/b6417311-ff7c-11ed-a646-f7624355584a-qa60.jpg",
+    //   "https://yuepai-oss.qubeitech.com/invite/111166/fbe29799-f48f-11ed-a646-f7624355584a.jpg",
+    //   "https://yuepai-oss.qubeitech.com/invite/111166/fbe2979a-f48f-11ed-a646-f7624355584a.jpg",
+    // ];
     this.photos = [
-      "https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg",
-      "https://yuepai-oss.qubeitech.com/notice/111452/fe4576f1-ff51-11ed-a646-f7624355584a-qa60.jpg",
-      "https://yuepai-oss.qubeitech.com/invite/111514/b6417311-ff7c-11ed-a646-f7624355584a-qa60.jpg",
-      "https://yuepai-oss.qubeitech.com/invite/111166/fbe29799-f48f-11ed-a646-f7624355584a.jpg",
-      "https://yuepai-oss.qubeitech.com/invite/111166/fbe2979a-f48f-11ed-a646-f7624355584a.jpg",
+      require("../../../../assets/images/lanmao1.jpg"),
+      require("../../../../assets/images/cheatPrevention.png"),
+      require("../../../../assets/images/lanmao1.jpg"),
+      require("../../../../assets/images/lanmao2.jpg"),
+      require("../../../../assets/images/lanmao3.jpg"),
     ];
     this.userInfo = {
       avatar:
@@ -1175,19 +1238,19 @@ export default {
       bwh_h: 40,
       shoe: 41,
     };
-    var arr = [];
-    for (var i = 0; i < this.photos.length; i++) {
-      arr.push({
+    var l = [];
+    for (var r = 0; r < this.photos.length; r++) {
+      l.push({
         x: 0,
         y: 0,
         scale: 1,
       });
     }
-    this.scrollInfo = arr;
+    this.scrollInfo = l;
     this.qrcode({
       source: "homepage",
     });
-    this.getPhotoInfos([], 0);
+    this.getPhotoInfos();
   },
 };
 </script>

@@ -93,6 +93,7 @@ export default defineAppConfig({
         "pages/moka/editpersonimg/index",
         "pages/moka/editvideo/index",
         "pages/moka/makecard/index",
+        "pages/moka/makesuccess/index",
       ],
     },
     {

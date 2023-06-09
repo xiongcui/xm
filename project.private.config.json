@@ -17,8 +17,8 @@
                     "scene": null
                 },
                 {
-                    "name": "我的申请",
-                    "pathName": "packageSet/pages/apply/index",
+                    "name": "完成制作",
+                    "pathName": "packageMoka/pages/moka/makesuccess/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
