@@ -551,6 +551,7 @@ import {
   submitSign,
   bannerList,
   shareInviteInfo,
+  sourceItems,
 } from "../../api/index";
 import { openPage, isLogin, errortip } from "../../utils/util";
 import clickThrottle from "../../utils/clickThrottle";
@@ -1338,6 +1339,11 @@ export default {
         this.sharePath = res.data.data.path;
       } catch (error) {}
     },
+    async sourceItems(params) {
+      try {
+        let res = await sourceItems(params);
+      } catch (error) {}
+    },
     async submitSign(params) {
       try {
         let res = await submitSign(params);
@@ -1421,7 +1427,6 @@ export default {
     this.bannerList({
       item: ["home_banner", "home_notify"],
     });
-    // this.inviteFilter({});
     // 分享
     this.shareInviteInfo({
       source: "share_friend",
@@ -1430,6 +1435,15 @@ export default {
     // 当前城市&是否签到
     if (!citySelector.getCity()) {
       this.userStatus("", true);
+    }
+    // 来源
+    if (options.channel) {
+      let params = {
+        channel: options.channel,
+      };
+      this.sourceItems({
+        args: params,
+      });
     }
   },
   // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象

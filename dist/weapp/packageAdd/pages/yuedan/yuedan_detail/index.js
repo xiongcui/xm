@@ -740,7 +740,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Mb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -771,7 +771,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Xb"])(params);
 
               case 3:
                 res = _context8.sent;

@@ -927,3 +927,11 @@ export const imVerify = (data) => {
     data,
   });
 };
+// 来源
+export const sourceItems = (data) => {
+  return request({
+    url: baseUrl + "/v1/public/promotion/source/items",
+    method: "post",
+    data,
+  });
+};

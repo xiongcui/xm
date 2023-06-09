@@ -265,12 +265,13 @@
               <block v-for="(item, index) in homeInfor.video" :key="index">
                 <video
                   class="video_item"
-                  id="user_video"
+                  :id="'user_video' + index"
                   objectFit="cover"
                   :poster="item.cover"
                   :src="item.file"
                   :title="homeInfor.nickname"
                   :vslideGestureInFullscreen="false"
+                  @ended="bindended('user_video' + index)"
                   v-if="index < 2"
                 ></video>
                 <view class="icon_imgnum" v-if="index == 2">
@@ -566,6 +567,9 @@ export default {
           url: "/pages/login/index",
         });
       }
+    },
+    bindended(id) {
+      wx.createVideoContext(id).exitFullScreen();
     },
     async userInfo(params) {
       try {

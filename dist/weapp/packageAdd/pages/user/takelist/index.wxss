@@ -345,6 +345,7 @@ page {
 
 .takelist .list_video {
   white-space: nowrap;
+  margin-top: 16rpx;
 }
 
 .takelist .list_video-width {

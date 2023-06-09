@@ -270,9 +270,6 @@ export default {
       } catch (error) {}
     },
   },
-  created() {
-    this.userAlbumDetail("");
-  },
   onShow() {
     let pages = getCurrentPages();
     let currPage = pages[pages.length - 1]; //当前页面

@@ -775,7 +775,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Mb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -806,7 +806,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "Xb"])(params);
 
               case 3:
                 res = _context7.sent;
