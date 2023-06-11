@@ -24,8 +24,8 @@
                     "scene": null
                 },
                 {
-                    "name": "通告详情",
-                    "pathName": "packageTonggao/pages/detail/index",
+                    "name": "制作模卡-竖版",
+                    "pathName": "packageMoka/pages/moka/makecardv/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

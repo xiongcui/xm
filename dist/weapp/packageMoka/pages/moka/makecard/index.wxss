@@ -7,17 +7,58 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.container .userinfo-info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .container .userinfo-info image {
   width: 120rpx;
   height: 120rpx;
   margin-top: 16rpx;
+}
+.container .userinfo-info-dibu {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.container .userinfo-info-dibu .userinfo-info-dibu-left {
+  width: 78%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.container .userinfo-info-dibu .name-dibu {
+  margin-left: 30rpx;
+  font-size: 32rpx;
+}
+.container .userinfo-info-dibu .item-dibu {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 18rpx;
+  margin-left: 20rpx;
+}
+.container .userinfo-info-dibu image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 30rpx;
 }
 .container .name {
   font-size: 32rpx;
@@ -147,4 +188,10 @@
           justify-content: center;
   color: #333333;
   font-size: 28rpx;
+}
+.container .userinfo-info-dibu {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }

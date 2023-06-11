@@ -12,7 +12,7 @@
         class="card"
         mode="widthFix"
         :src="imageSrc"
-        :style="{ width: isVertical ? 380 : 650 + 'rpx' }"
+        :style="{ width: isVertical ? 380 + 'rpx' : 650 + 'rpx' }"
       ></image>
       <view @tap="goIndex" class="save" v-if="goIndex">返回首页</view>
       <view @tap="save" class="save" v-else>保存手机相册</view>

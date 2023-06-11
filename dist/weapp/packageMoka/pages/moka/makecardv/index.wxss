@@ -1,0 +1,173 @@
+page {
+  background: #15161a;
+}
+
+.makecardv .main-scrollview {
+  margin: 30rpx auto;
+  position: relative;
+}
+
+.makecardv .userinfo-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.makecardv .userinfo-info {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.makecardv .userinfo-info .name {
+  padding: 0 30rpx;
+  font-size: 32rpx;
+}
+
+.makecardv .userinfo-info .text-info {
+  font-size: 18rpx;
+}
+
+.makecardv .userinfo-info .property {
+  margin-right: 16rpx;
+}
+
+.makecardv .userinfo-info-neiqian {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.makecardv .userinfo-info-neiqian .name-neiqian {
+  font-size: 32rpx;
+  margin-bottom: 16rpx;
+}
+
+.makecardv .userinfo-info-neiqian image {
+  margin-top: 16rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.makecardv .userinfo-info-neiqian .text-info-neiqian {
+  font-size: 18rpx;
+}
+
+.makecardv .userinfo-info-neiqian .property {
+  margin-right: 16rpx;
+}
+
+.makecardv .finish {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30rpx;
+  position: fixed;
+  bottom: 0;
+  width: 690rpx;
+}
+
+.makecardv .finish .title {
+  color: #9b9b9b;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+
+.makecardv .finish image {
+  width: 118rpx;
+  height: 54rpx;
+}
+
+.makecardv .logoavatar image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.makecardv .photo-container {
+  position: relative;
+}
+
+.makecardv .change {
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  background: #f9dc4a;
+  border-radius: 50%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.makecardv .slider {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 9999;
+  position: absolute;
+  right: 0;
+}
+
+.makecardv .slider-bg {
+  width: 52rpx;
+  height: 360rpx;
+  border-radius: 26rpx;
+  background: #292932;
+  z-index: 99999;
+  position: absolute;
+  right: 0;
+}
+
+.makecardv .slider-bg .slider-btn,
+.makecardv .slider-bg image {
+  width: 52rpx;
+  height: 146rpx;
+}
+
+.makecardv .make {
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 30rpx;
+  background: #f6e64f;
+  border-radius: 8rpx;
+  color: #333333;
+  font-size: 28rpx;
+  margin: 0 30rpx;
+}

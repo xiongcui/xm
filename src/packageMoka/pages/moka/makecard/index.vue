@@ -56,7 +56,10 @@
               :disabled="true"
               :outOfBounds="true"
               :scale="false"
-              style="{height:card.userInfo.height+'rpx', width: card.userInfo.width +'rpx'}"
+              :style="{
+                height: card.userInfo.height + 'rpx',
+                width: card.userInfo.width + 'rpx',
+              }"
               :x="card.userInfo.x + 'rpx'"
               :y="card.userInfo.y + 'rpx'"
             >
@@ -570,11 +573,6 @@ const moka = require("../../../../assets/js/moka.js");
 import { qrcode } from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
 
-function c() {
-  var t = wx.getSystemInfoSync();
-  return t;
-}
-
 export default {
   name: "makecard",
   data() {
@@ -649,17 +647,6 @@ export default {
           s = a.touches[1].pageY - a.touches[0].pageY;
         d = Math.sqrt(o * o + s * s);
       }
-
-      // if (
-      //   ((this.t = e >= 0 && e < this.photos.length ? e : -1),
-      //   (this.n = true),
-      //   a.touches.length >= 2)
-      // ) {
-      //   this.h = true;
-      //   var o = a.touches[1].pageX - a.touches[0].pageX,
-      //     s = a.touches[1].pageY - a.touches[0].pageY;
-      //   d = Math.sqrt(o * o + s * s);
-      // }
     },
     touchMove(a) {
       if (
@@ -706,7 +693,6 @@ export default {
       }
     },
     isTouchInLayout(t, a) {
-      // c();
       var r = 750 / width;
       var e = this.scrollTop,
         o = r * t.pageX,
@@ -797,8 +783,6 @@ export default {
           _this.getPhotoInfos();
           _this.changeIndex = -1;
           _this.showChangeButton = false;
-          _this.changeIndex = _this.changeIndex;
-          _this.showChangeButton = _this.showChangeButton;
         },
       });
     },
@@ -843,7 +827,6 @@ export default {
     scroll(t) {
       this.scrollInfo[t.currentTarget.id].x = t.detail.scrollLeft;
       this.scrollInfo[t.currentTarget.id].y = t.detail.scrollTop;
-      console.log(this.scrollInfo, "this.scrollInfo----");
     },
     tapPhoto(t) {
       var a = parseInt(t.currentTarget.id);
@@ -905,7 +888,6 @@ export default {
             } else {
               _this.whiteCode = e.tempFilePath;
             }
-            // console.log(_this.blackCode, _this.whiteCode);
             _this.drawCode(_this);
           }
         },
@@ -1209,7 +1191,7 @@ export default {
     },
   },
   onLoad: function (options) {
-    let mokaIndex = moka.getIndexByCardId("1001010501");
+    let mokaIndex = moka.getIndexByCardId("1001030501");
     this.card = moka.layouts[mokaIndex];
     this.photos = [
       require("../../../../assets/images/lanmao1.jpg"),

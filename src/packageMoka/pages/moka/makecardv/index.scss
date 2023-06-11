@@ -1,0 +1,120 @@
+page {
+  background: #15161a;
+}
+.makecardv {
+  .main-scrollview {
+    margin: 30px auto;
+    position: relative;
+  }
+  .userinfo-container {
+    display: flex;
+    align-items: center;
+  }
+  .userinfo-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .name {
+      padding: 0px 30px;
+      font-size: 32px;
+    }
+    .text-info {
+      font-size: 18px;
+    }
+    .property {
+      margin-right: 16px;
+    }
+  }
+  .userinfo-info-neiqian {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .name-neiqian {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    image {
+      margin-top: 16px;
+      width: 120px;
+      height: 120px;
+    }
+    .text-info-neiqian {
+      font-size: 18px;
+    }
+    .property {
+      margin-right: 16px;
+    }
+  }
+  .finish {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    position: fixed;
+    bottom: 0px;
+    width: 690px;
+    .title {
+      color: #9b9b9b;
+      font-size: 30px;
+      margin-left: 30px;
+    }
+    image {
+      width: 118px;
+      height: 54px;
+    }
+  }
+  .logoavatar image {
+    width: 100px;
+    height: 100px;
+  }
+  .photo-container {
+    position: relative;
+  }
+  .change {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: #f9dc4a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333333;
+    font-size: 28px;
+  }
+  .slider {
+    display: flex;
+    align-items: center;
+    z-index: 9999;
+    position: absolute;
+    right: 0px;
+  }
+  .slider-bg {
+    width: 52px;
+    height: 360px;
+    border-radius: 26px;
+    background: #292932;
+    z-index: 99999;
+    position: absolute;
+    right: 0px;
+    .slider-btn,
+    image {
+      width: 52px;
+      height: 146px;
+    }
+  }
+  .make {
+    height: 50px;
+    line-height: 50px;
+    padding: 0px 30px;
+    background: #f6e64f;
+    border-radius: 8px;
+    color: #333333;
+    font-size: 28px;
+    margin: 0px 30px;
+  }
+}

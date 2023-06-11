@@ -193,7 +193,7 @@ var render = function () {
       ]),
       _c("image", {
         staticClass: "card",
-        style: { width: _vm.isVertical ? 380 : 650 + "rpx" },
+        style: { width: _vm.isVertical ? 380 + "rpx" : 650 + "rpx" },
         attrs: { mode: "widthFix", src: _vm.imageSrc },
         on: { tap: _vm.previewImage },
       }),
