@@ -967,25 +967,26 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     this.author_id = options.author_id;
 
     if (options.scene) {
-      // 分享出去-查看详情
-      var params = {
-        oid: options.scene,
-        author_id: options.author_id
-      };
-      this.noticeInfo(params);
-      this.shareInviteInfo({
-        source: "share_details",
-        type: "wechat",
-        oid: options.scene
-      });
+      this.oid = options.scene;
+      this.author_id = options.author_id; // 分享出去-查看详情
+      // let params = {
+      //   oid: options.scene,
+      //   author_id: options.author_id,
+      // };
+      // this.noticeInfo(params);
+      // this.shareInviteInfo({
+      //   source: "share_details",
+      //   type: "wechat",
+      //   oid: options.scene,
+      // });
     }
 
     if (this.oid && this.author_id) {
-      var _params = {
+      var params = {
         oid: this.oid,
         author_id: this.author_id
       };
-      this.noticeInfo(_params);
+      this.noticeInfo(params);
       this.shareInviteInfo({
         source: "share_details",
         type: "wechat",

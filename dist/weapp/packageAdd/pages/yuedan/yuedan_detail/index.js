@@ -414,6 +414,10 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
 
       if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        console.log({
+          source: "note",
+          oid: this.oid
+        }, "params------");
         this.applyVerify({
           source: "note",
           oid: this.oid
@@ -850,25 +854,16 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
     this.author_id = options.author_id;
 
     if (options.scene) {
-      // 分享出去-查看详情
-      var params = {
-        oid: options.scene,
-        author_id: options.author_id
-      };
-      this.inviteInfo(params);
-      this.shareInviteInfo({
-        source: "share_details",
-        type: "wechat",
-        oid: options.scene
-      });
+      this.oid = options.scene;
+      this.author_id = options.author_id;
     }
 
     if (this.oid && this.author_id) {
-      var _params = {
+      var params = {
         oid: this.oid,
         author_id: this.author_id
       };
-      this.inviteInfo(_params);
+      this.inviteInfo(params);
       this.shareInviteInfo({
         source: "share_details",
         type: "wechat",

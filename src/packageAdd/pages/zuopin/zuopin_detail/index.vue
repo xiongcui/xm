@@ -364,17 +364,8 @@ export default {
     this.oid = options.oid;
     this.author_id = options.author_id;
     if (options.scene) {
-      // 分享出去-查看详情
-      let params = {
-        oid: options.scene,
-        author_id: options.author_id,
-      };
-      this.photoInfo(params);
-      this.shareInviteInfo({
-        source: "share_details",
-        type: "wechat",
-        oid: options.scene,
-      });
+      this.oid = options.scene;
+      this.author_id = options.author_id;
     }
     if (this.oid && this.author_id) {
       let params = {
