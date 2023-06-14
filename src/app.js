@@ -5,6 +5,7 @@ import "./app.scss";
 
 const App = {
   onLaunch: () => {
+    console.log(process.env.NODE_ENV, 112122);
     // 微信登陆
     let _this = App;
     // 判断是否为iphoneX

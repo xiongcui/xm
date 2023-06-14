@@ -95,6 +95,8 @@ export default defineAppConfig({
         "pages/moka/makecard/index",
         "pages/moka/makesuccess/index",
         "pages/moka/makecardv/index",
+        "pages/moka/index/index",
+        "pages/moka/modelcard/index",
       ],
     },
     {

@@ -31,15 +31,15 @@
                     "scene": null
                 },
                 {
-                    "name": "用户隐私",
-                    "pathName": "packageSet/pages/privacy/index",
+                    "name": "制作模卡-首页",
+                    "pathName": "packageMoka/pages/moka/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "订阅",
-                    "pathName": "packageAdd/pages/tips/index",
+                    "name": "模特卡",
+                    "pathName": "packageMoka/pages/moka/modelcard/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
