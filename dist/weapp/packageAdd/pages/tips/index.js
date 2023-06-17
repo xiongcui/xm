@@ -219,8 +219,8 @@ var _methods;
       });
     },
     continuePublish: function continuePublish() {
-      wx.navigateBack({
-        delta: 1
+      wx.switchTab({
+        url: "/pages/release/index"
       });
     }
   }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "officialAccount", function officialAccount() {

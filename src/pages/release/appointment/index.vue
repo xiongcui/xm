@@ -49,6 +49,30 @@
         ></image>
         <text>约商家</text>
       </view>
+      <view class="select-item" @tap="goyuedan('10002', '主播')">
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/zhubo.png"
+        ></image>
+        <text>约主播</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('10003', '演员')">
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/direct.png"
+        ></image>
+        <text>约演员</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('10004', '主持')">
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/economicman.png"
+        ></image>
+        <text>约主持</text>
+      </view>
+      <view class="select-item" @tap="goyuedan('10007', '红人')">
+        <image
+          src="https://yuepai-oss.qubeitech.com/static/images/hongren.png"
+        ></image>
+        <text>约红人</text>
+      </view>
     </view>
   </view>
 </template>
