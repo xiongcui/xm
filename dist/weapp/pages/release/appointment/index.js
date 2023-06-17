@@ -110,6 +110,30 @@ component.options.__file = "src/pages/release/appointment/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -365,6 +389,82 @@ var render = function () {
             },
           }),
           _c("text", [_vm._v("约商家")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("10002", "主播")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/zhubo.png",
+            },
+          }),
+          _c("text", [_vm._v("约主播")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("10003", "演员")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/direct.png",
+            },
+          }),
+          _c("text", [_vm._v("约演员")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("10004", "主持")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/economicman.png",
+            },
+          }),
+          _c("text", [_vm._v("约主持")]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "select-item",
+          on: {
+            tap: function ($event) {
+              return _vm.goyuedan("10007", "红人")
+            },
+          },
+        },
+        [
+          _c("image", {
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/hongren.png",
+            },
+          }),
+          _c("text", [_vm._v("约红人")]),
         ]
       ),
     ]),

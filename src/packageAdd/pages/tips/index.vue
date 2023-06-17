@@ -159,8 +159,8 @@ export default {
       });
     },
     continuePublish() {
-      wx.navigateBack({
-        delta: 1,
+      wx.switchTab({
+        url: "/pages/release/index",
       });
     },
     officialAccount() {
