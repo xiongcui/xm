@@ -97,6 +97,10 @@ export default defineAppConfig({
         "pages/moka/makecardv/index",
         "pages/moka/index/index",
         "pages/moka/modelcard/index",
+        "pages/moka/chooseisself/index",
+        "pages/moka/choosephoto/index",
+        "pages/moka/inforother/index",
+        "pages/moka/otherlist/index",
       ],
     },
     {

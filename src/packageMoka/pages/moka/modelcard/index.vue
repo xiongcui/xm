@@ -447,7 +447,9 @@
 </template>
 
 <script>
+import { openPage } from "../../../../utils/util";
 import "./index.scss";
+const moka = require("../../../../assets/js/moka.js");
 export default {
   name: "modelcard",
   data() {
@@ -479,8 +481,44 @@ export default {
       if (this.vercurrentTab === t.currentTarget.dataset.current) return false;
       this.vercurrentTab = t.currentTarget.dataset.current;
     },
-    chooseMocard() {},
-    chooseMocardV() {},
+    chooseMocard(t) {
+      wx.setStorageSync("card-type", "");
+      var cardid = parseInt(t.currentTarget.dataset.cardid);
+      var mokaIndex = moka.getIndexByCardId(cardid);
+      var o = moka.layouts[mokaIndex];
+      wx.setStorageSync("cardid", mokaIndex);
+      wx.chooseImage({
+        count: o.maxCount,
+        sizeType: ["compressed"],
+        sourceType: ["album"],
+        success: function (e) {
+          var t = e.tempFilePaths;
+          wx.setStorageSync("selectedPhotos", t),
+            t.length >= o.maxCount
+              ? openPage("/packageMoka/pages/moka/chooseisself/index")
+              : openPage("/packageMoka/pages/moka/choosephoto/index");
+        },
+      });
+    },
+    chooseMocardV(t) {
+      wx.setStorageSync("card-type", "vertical");
+      var a = parseInt(t.currentTarget.dataset.cardid),
+        n = e.getIndexByCardId(a),
+        o = e.layouts[n];
+      wx.setStorageSync("cardid", n),
+        wx.chooseImage({
+          count: o.maxCount,
+          sizeType: ["compressed"],
+          sourceType: ["album"],
+          success: function (e) {
+            var t = e.tempFilePaths;
+            wx.setStorageSync("selectedPhotos", t),
+              t.length >= o.maxCount
+                ? openPage("/packageMoka/pages/moka/chooseisself/index")
+                : openPage("/packageMoka/pages/moka/choosephoto/index");
+          },
+        });
+    },
   },
   created() {
     this.globalData = this.globalData;

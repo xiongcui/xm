@@ -1,0 +1,54 @@
+page {
+  background: #f4f4f4;
+}
+.inforother {
+  .title {
+    font-size: 28px;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+  }
+  .infor {
+    background: #ffffff;
+    padding: 0px 30px;
+  }
+  .item {
+    display: flex;
+    justify-content: space-between;
+    height: 88px;
+    line-height: 88px;
+  }
+  .item_right image {
+    height: 22rpx;
+    margin-top: 35rpx;
+    width: 12rpx;
+  }
+  .item-b {
+    border-bottom: 1rpx solid #eee;
+  }
+  .item_mid {
+    color: #333333;
+    font-size: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .item_input {
+    color: #333;
+    line-height: 88px;
+    text-align: right;
+    font-size: 30px;
+    input {
+      height: 88px;
+    }
+  }
+  .picker {
+    margin-right: 16px;
+    color: #808080;
+    font-size: 30px;
+  }
+  .picker-value {
+    color: #333333;
+    font-size: 30px;
+    margin-right: 16px;
+  }
+}

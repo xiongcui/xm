@@ -113,11 +113,12 @@ component.options.__file = "src/packageMoka/pages/moka/index/index.vue"
     return {};
   },
   methods: {
-    goModel: function goModel() {// openPage()
-    },
-    goActor: function goActor() {},
-    goAnchor: function goAnchor() {},
-    goTheme: function goTheme() {}
+    goModel: function goModel() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+    } // goActor() {},
+    // goAnchor() {},
+    // goTheme() {},
+
   }
 });
 

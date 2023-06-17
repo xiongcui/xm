@@ -22,7 +22,7 @@ page {
   }
   .release-item {
     width: 100%;
-    margin-bottom: 44px;
+    margin-bottom: 24px;
     box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
     background: #ffffff;
     padding: 30px 0px;
@@ -34,7 +34,8 @@ page {
       justify-content: center;
       align-items: center;
       margin: 0px 30px;
-      padding: 0px 16px;
+      width: 110px;
+      min-width: 110px;
       border-radius: 16px;
       height: 110px;
     }
@@ -46,6 +47,9 @@ page {
     }
     .color3 {
       background-color: #3a7df8;
+    }
+    .color4 {
+      background-color: #767bea;
     }
     .release-list-title {
       font-size: 30px;
@@ -59,6 +63,11 @@ page {
     }
     .release-right {
       padding-right: 30px;
+    }
+    .color4 .release-image {
+      width: 68px;
+      height: 68px;
+      // margin: 10px;
     }
   }
 }

@@ -377,6 +377,13 @@
       <view class="zhuye_fixed_left" @tap="communicate"> 立即沟通 </view>
       <view class="zhuye_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
     </view>
+    <view
+      class="zhuye_fixed_bottom"
+      :class="isIphoneX ? 'fix-iphonex-button' : ''"
+      v-if="next"
+    >
+      <text class="next-btn" @tap="sub">下一步</text>
+    </view>
   </view>
 </template>
 
@@ -458,6 +465,7 @@ export default {
       shareTitle: "",
       shareImg: "",
       sharePath: "",
+      next: false,
     };
   },
   components: {
@@ -558,6 +566,40 @@ export default {
         wx.redirectTo({
           url: "/pages/login/index",
         });
+      }
+    },
+    sub() {
+      // 请设置三围
+      if (!this.homeInfor.height) {
+        errortip("请设置三围");
+        return false;
+      }
+      let carduserinfo = {
+        avatar:
+          "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
+        nickname: "nickname",
+        province: "province",
+        city: "city",
+        area: "area",
+        province_name: "province_name",
+        city_name: "city_name",
+        area_name: "area_name",
+        sex: 0,
+        birthday: "1994-08-29",
+        height: 100,
+        weight: 200,
+        bwh_b: 38,
+        bwh_w: 39,
+        bwh_h: 40,
+        shoe: 41,
+        is_bwh: true,
+        is_birthday: true,
+      };
+      wx.setStorageSync("carduserinfo", carduserinfo);
+      if ("vertical" == wx.getStorageSync("card-type")) {
+        openPage("/packageMoka/pages/moka/makecardv/index");
+      } else {
+        openPage("/packageMoka/pages/moka/makecard/index");
       }
     },
     async userInfo(params) {
@@ -724,6 +766,9 @@ export default {
     if (options.scene) {
       this.uuid = options.scene;
       this.myself = false;
+    }
+    if (options.next) {
+      this.next = true;
     }
     var that = this;
     // 获取系统信息

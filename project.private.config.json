@@ -17,8 +17,8 @@
                     "scene": null
                 },
                 {
-                    "name": "完成制作",
-                    "pathName": "packageMoka/pages/moka/makesuccess/index",
+                    "name": "给谁制作模卡",
+                    "pathName": "packageMoka/pages/moka/chooseisself/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -45,8 +45,22 @@
                     "scene": null
                 },
                 {
-                    "name": "注册",
-                    "pathName": "pages/register/index",
+                    "name": "选择照片",
+                    "pathName": "packageMoka/pages/moka/choosephoto/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "他/她模卡资料",
+                    "pathName": "packageMoka/pages/moka/inforother/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "模卡列表",
+                    "pathName": "packageMoka/pages/moka/otherlist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

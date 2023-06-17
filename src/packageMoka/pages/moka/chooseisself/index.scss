@@ -1,0 +1,71 @@
+.chooseisself {
+  padding: 30px;
+  .title {
+    font-size: 34px;
+    color: #333333;
+    font-weight: bold;
+    padding: 30px 0px;
+  }
+  .item_arrow image {
+    margin-left: 16px;
+    margin-top: 20px;
+    width: 24px;
+    height: 24px;
+  }
+  .item_icon image {
+    width: 100px;
+    height: 100px;
+  }
+  .item_self {
+    background: #eba755;
+    border-radius: 8px;
+    width: 630px;
+    padding: 40px 30px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .item_other {
+    background: #7db6f8;
+    border-radius: 8px;
+    width: 630px;
+    padding: 40px 30px;
+    color: #ffffff;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .item_name_self,
+  .item_name_other {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 10px;
+    color: #f9dd69;
+  }
+  .choose_imgs_block {
+    position: fixed;
+    bottom: 30px;
+    .choose_imgs_title {
+      font-size: 28px;
+      color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 30px;
+    }
+    .photo {
+      width: 156px;
+      height: 156px;
+      margin-right: 16px;
+    }
+    .tip_add_count {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      font-size: 24px;
+      padding: 4px;
+    }
+  }
+}

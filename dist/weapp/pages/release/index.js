@@ -135,6 +135,7 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
+//
 
 
 
@@ -162,6 +163,10 @@ component.options.__file = "src/pages/release/index.vue"
           this.publishVerify({
             project_code: "PH"
           });
+          break;
+
+        case 4:
+          url = "/packageMoka/pages/moka/modelcard/index";
           break;
       }
 
@@ -335,6 +340,42 @@ var render = function () {
           ]),
         ]
       ),
+      _c(
+        "view",
+        {
+          staticClass: "release-item",
+          on: {
+            tap: function ($event) {
+              return _vm.releaseUrl(4)
+            },
+          },
+        },
+        [
+          _c("view", { staticClass: "release-left color4" }, [
+            _c("image", {
+              staticClass: "release-image",
+              attrs: {
+                src: __webpack_require__(/*! ../../assets/images/moka_icon.png */ "./src/assets/images/moka_icon.png"),
+                mode: "aspectFit",
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "release-right" }, [
+            _c("view", [
+              _c("text", { staticClass: "release-list-title" }, [
+                _vm._v(" 制作模卡 "),
+              ]),
+            ]),
+            _c("view", [
+              _c("text", { staticClass: "release-list-content" }, [
+                _vm._v(
+                  "免费制作专业高清模卡，数百个模板可供选择，制作专业模卡的神器"
+                ),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
     ]),
   ])
 }
@@ -342,6 +383,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/moka_icon.png":
+/*!*****************************************!*\
+  !*** ./src/assets/images/moka_icon.png ***!
+  \*****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/moka_icon.png";
 
 /***/ }),
 

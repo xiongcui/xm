@@ -1,0 +1,70 @@
+page {
+  background: #f4f4f4;
+}
+
+.inforother .title {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 30rpx;
+}
+
+.inforother .infor {
+  background: #ffffff;
+  padding: 0 30rpx;
+}
+
+.inforother .item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 88rpx;
+  line-height: 88rpx;
+}
+
+.inforother .item_right image {
+  height: 22rpx;
+  margin-top: 35rpx;
+  width: 12rpx;
+}
+
+.inforother .item-b {
+  border-bottom: 1rpx solid #eee;
+}
+
+.inforother .item_mid {
+  color: #333333;
+  font-size: 30rpx;
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.inforother .item_input {
+  color: #333;
+  line-height: 88rpx;
+  text-align: right;
+  font-size: 30rpx;
+}
+
+.inforother .item_input input {
+  height: 88rpx;
+}
+
+.inforother .picker {
+  margin-right: 16rpx;
+  color: #808080;
+  font-size: 30rpx;
+}
+
+.inforother .picker-value {
+  color: #333333;
+  font-size: 30rpx;
+  margin-right: 16rpx;
+}

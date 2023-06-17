@@ -439,6 +439,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -500,7 +507,8 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       pageSize: 10,
       shareTitle: "",
       shareImg: "",
-      sharePath: ""
+      sharePath: "",
+      next: false
     };
   },
   components: {
@@ -588,6 +596,41 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         wx.redirectTo({
           url: "/pages/login/index"
         });
+      }
+    },
+    sub: function sub() {
+      // 请设置三围
+      if (!this.homeInfor.height) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请设置三围");
+        return false;
+      }
+
+      var carduserinfo = {
+        avatar: "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
+        nickname: "nickname",
+        province: "province",
+        city: "city",
+        area: "area",
+        province_name: "province_name",
+        city_name: "city_name",
+        area_name: "area_name",
+        sex: 0,
+        birthday: "1994-08-29",
+        height: 100,
+        weight: 200,
+        bwh_b: 38,
+        bwh_w: 39,
+        bwh_h: 40,
+        shoe: 41,
+        is_bwh: true,
+        is_birthday: true
+      };
+      wx.setStorageSync("carduserinfo", carduserinfo);
+
+      if ("vertical" == wx.getStorageSync("card-type")) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecardv/index");
+      } else {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecard/index");
       }
     },
     userInfo: function userInfo(params) {
@@ -1033,6 +1076,10 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     if (options.scene) {
       this.uuid = options.scene;
       this.myself = false;
+    }
+
+    if (options.next) {
+      this.next = true;
     }
 
     var that = this; // 获取系统信息
@@ -1879,6 +1926,20 @@ var render = function () {
               { staticClass: "zhuye_fixed_rt", on: { tap: _vm.launchYuepai } },
               [_vm._v(" 立即约拍 ")]
             ),
+          ]
+        )
+      : _vm._e(),
+    _vm.next
+      ? _c(
+          "view",
+          {
+            staticClass: "zhuye_fixed_bottom",
+            class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+          },
+          [
+            _c("text", { staticClass: "next-btn", on: { tap: _vm.sub } }, [
+              _vm._v("下一步"),
+            ]),
           ]
         )
       : _vm._e(),

@@ -63,11 +63,11 @@ export default {
   },
   methods: {
     goModel() {
-      // openPage()
+      openPage("/packageMoka/pages/moka/modelcard/index");
     },
-    goActor() {},
-    goAnchor() {},
-    goTheme() {},
+    // goActor() {},
+    // goAnchor() {},
+    // goTheme() {},
   },
 };
 </script>

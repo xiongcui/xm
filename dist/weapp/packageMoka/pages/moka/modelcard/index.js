@@ -47,8 +47,9 @@ component.options.__file = "src/packageMoka/pages/moka/modelcard/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/modelcard/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/modelcard/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -498,6 +499,10 @@ component.options.__file = "src/packageMoka/pages/moka/modelcard/index.vue"
 //
 //
 
+
+
+var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/assets/js/moka.js");
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "modelcard",
   data: function data() {
@@ -529,8 +534,37 @@ component.options.__file = "src/packageMoka/pages/moka/modelcard/index.vue"
       if (this.vercurrentTab === t.currentTarget.dataset.current) return false;
       this.vercurrentTab = t.currentTarget.dataset.current;
     },
-    chooseMocard: function chooseMocard() {},
-    chooseMocardV: function chooseMocardV() {}
+    chooseMocard: function chooseMocard(t) {
+      wx.setStorageSync("card-type", "");
+      var cardid = parseInt(t.currentTarget.dataset.cardid);
+      var mokaIndex = moka.getIndexByCardId(cardid);
+      var o = moka.layouts[mokaIndex];
+      wx.setStorageSync("cardid", mokaIndex);
+      wx.chooseImage({
+        count: o.maxCount,
+        sizeType: ["compressed"],
+        sourceType: ["album"],
+        success: function success(e) {
+          var t = e.tempFilePaths;
+          wx.setStorageSync("selectedPhotos", t), t.length >= o.maxCount ? Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/chooseisself/index") : Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/choosephoto/index");
+        }
+      });
+    },
+    chooseMocardV: function chooseMocardV(t) {
+      wx.setStorageSync("card-type", "vertical");
+      var a = parseInt(t.currentTarget.dataset.cardid),
+          n = e.getIndexByCardId(a),
+          o = e.layouts[n];
+      wx.setStorageSync("cardid", n), wx.chooseImage({
+        count: o.maxCount,
+        sizeType: ["compressed"],
+        sourceType: ["album"],
+        success: function success(e) {
+          var t = e.tempFilePaths;
+          wx.setStorageSync("selectedPhotos", t), t.length >= o.maxCount ? Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/chooseisself/index") : Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/choosephoto/index");
+        }
+      });
+    }
   },
   created: function created() {
     this.globalData = this.globalData;
@@ -1555,5 +1589,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageMoka/pages/moka/modelcard/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageMoka/pages/moka/modelcard/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

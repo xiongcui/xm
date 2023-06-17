@@ -390,3 +390,12 @@
 .main .fix-iphonex-button {
   padding-bottom: 48rpx;
 }
+.main .next-btn {
+  height: 78rpx;
+  line-height: 78rpx;
+  border-radius: 8rpx;
+  background: #fe5457;
+  text-align: center;
+  color: #ffffff;
+  width: 100%;
+}

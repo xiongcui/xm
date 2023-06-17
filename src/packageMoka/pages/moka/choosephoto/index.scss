@@ -1,0 +1,51 @@
+.choosephoto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .choose-number {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 0px 30px;
+    color: #333333;
+    font-size: 30px;
+  }
+  .photos-container {
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .photo-container {
+    position: relative;
+  }
+  .delete-button {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .photo {
+    width: 155px;
+    height: 155px;
+    margin-right: 16px;
+    margin-bottom: 16px;
+  }
+  .choose-hint {
+    font-size: 24px;
+    background: #faf8df;
+    padding: 10px 30px;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 30px auto;
+    border-radius: 32px;
+  }
+  .choose-button {
+    margin: 30px auto;
+    background: #fe5457;
+    height: 78px;
+    line-height: 78px;
+    width: 80%;
+    border-radius: 35px;
+    text-align: center;
+    color: #ffffff;
+  }
+}

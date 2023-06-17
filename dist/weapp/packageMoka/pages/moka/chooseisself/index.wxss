@@ -1,0 +1,79 @@
+.chooseisself {
+  padding: 30rpx;
+}
+.chooseisself .title {
+  font-size: 34rpx;
+  color: #333333;
+  font-weight: bold;
+  padding: 30rpx 0;
+}
+.chooseisself .item_arrow image {
+  margin-left: 16rpx;
+  margin-top: 20rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+.chooseisself .item_icon image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.chooseisself .item_self {
+  background: #eba755;
+  border-radius: 8rpx;
+  width: 630rpx;
+  padding: 40rpx 30rpx;
+  margin-bottom: 30rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.chooseisself .item_other {
+  background: #7db6f8;
+  border-radius: 8rpx;
+  width: 630rpx;
+  padding: 40rpx 30rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+.chooseisself .item_name_self,
+.chooseisself .item_name_other {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin: 0 10rpx;
+  color: #f9dd69;
+}
+.chooseisself .choose_imgs_block {
+  position: fixed;
+  bottom: 30rpx;
+}
+.chooseisself .choose_imgs_block .choose_imgs_title {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 30rpx;
+}
+.chooseisself .choose_imgs_block .photo {
+  width: 156rpx;
+  height: 156rpx;
+  margin-right: 16rpx;
+}
+.chooseisself .choose_imgs_block .tip_add_count {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 4rpx;
+}
