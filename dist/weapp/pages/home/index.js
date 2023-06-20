@@ -1094,7 +1094,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeAdviseList */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeAdviseList */ "Y"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1135,7 +1135,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* notifyNumber */ "bb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* notifyNumber */ "eb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1207,7 +1207,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "Vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "Zb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1276,7 +1276,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Wb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1393,7 +1393,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeFilter */ "W"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeFilter */ "Z"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1480,7 +1480,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoFilter */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoFilter */ "hb"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1550,7 +1550,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeList */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeList */ "bb"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1655,7 +1655,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoList */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoList */ "jb"])(params);
 
               case 3:
                 res = _context12.sent;
@@ -1758,7 +1758,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "wb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1788,7 +1788,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "xb"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1821,7 +1821,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Gb"])(params);
 
               case 3:
                 res = _context15.sent;

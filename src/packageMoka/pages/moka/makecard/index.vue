@@ -570,8 +570,10 @@ const width = device.screenWidth; // 示例为一个与屏幕等宽的正方形�
 const height = device.screenHeight;
 const statusBarHeight = device.statusBarHeight;
 const moka = require("../../../../assets/js/moka.js");
-import { qrcode } from "../../../../api/index";
+import { qrcode, userMocha } from "../../../../api/index";
 import { openPage } from "../../../../utils/util";
+import { Base64 } from "js-Base64";
+import clickThrottle from "../../../../utils/clickThrottle";
 
 export default {
   name: "makecard",
@@ -633,6 +635,7 @@ export default {
       n: false,
       h: false,
       t: "",
+      sub_user_id: "",
     };
   },
   methods: {
@@ -720,6 +723,7 @@ export default {
       this.isDark = !this.isDark;
     },
     make() {
+      if (!clickThrottle(5000)) return;
       this.showMaking = true;
       this.makes([], 0);
     },
@@ -956,7 +960,7 @@ export default {
             success: function (a) {
               var o = t.card.cardId,
                 s = t.card.name;
-              t.test(a.tempFilePath, t, o, s);
+              t.uploadFilePath(a.tempFilePath, t, o, s);
             },
             fail: function (a) {
               wx.hideToast(),
@@ -969,7 +973,7 @@ export default {
           });
       });
     },
-    test(t, a, o, s) {
+    uploadFilePath(t, a, o, s) {
       if (a.isposting) return;
       a.isposting = !0;
       var i = 1;
@@ -980,11 +984,7 @@ export default {
         template_id: o,
         template_name: s,
       };
-      wx.setStorageSync("successImgSrc", t);
-      openPage(
-        "/packageMoka/pages/moka/makesuccess/index?vertical=0&has_qrcode=" + i
-      );
-      this.showMaking = false;
+      this.upImgs(t, i);
     },
     drawUserInfoWithCebian(a) {
       var e = this.userInfo,
@@ -1182,6 +1182,48 @@ export default {
         a.drawImage(l, n, h, d, c);
       }
     },
+    upImgs(tempFilePath, i) {
+      let header = {};
+      let _this = this;
+      let token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      wx.uploadFile({
+        url: "https://pai.qubeitech.com/v1/file/upload",
+        filePath: tempFilePath,
+        formData: {
+          scr_type: "mocha",
+        },
+        name: "file",
+        header,
+        success: (res) => {
+          wx.hideLoading();
+          //判断上传的是图片还是视频
+          let data = JSON.parse(res.data);
+          if (data.code == 200) {
+            let params = {
+              mocha_url: data.data.file1,
+            };
+            if (_this.sub_user_id) {
+              params.sub_uuid = _this.sub_user_id;
+            }
+            _this.userMocha(data.data.file1, i, params);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none",
+            });
+          }
+        },
+        fail: (error) => {
+          wx.hideLoading();
+          this.showMaking = false;
+          wx.showToast({
+            title: "上传失败！",
+            icon: "none",
+          });
+        },
+      });
+    },
     async qrcode(params) {
       try {
         let res = await qrcode(params);
@@ -1189,38 +1231,26 @@ export default {
         this.cutAvartar();
       } catch (error) {}
     },
+    async userMocha(file, i, params) {
+      try {
+        let res = await userMocha(params);
+        this.showMaking = false;
+        wx.setStorageSync("successImgSrc", file);
+        openPage(
+          "/packageMoka/pages/moka/makesuccess/index?vertical=0&has_qrcode=" + i
+        );
+      } catch (error) {}
+    },
   },
   onLoad: function (options) {
-    let mokaIndex = moka.getIndexByCardId("1001030501");
+    let cardid = wx.getStorageSync("cardid");
+    let mokaIndex = moka.getIndexByCardId(cardid);
     this.card = moka.layouts[mokaIndex];
-    this.photos = [
-      require("../../../../assets/images/lanmao1.jpg"),
-      require("../../../../assets/images/cheatPrevention.png"),
-      require("../../../../assets/images/lanmao1.jpg"),
-      require("../../../../assets/images/lanmao2.jpg"),
-      require("../../../../assets/images/lanmao3.jpg"),
-    ];
-    this.userInfo = {
-      avatar:
-        "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-      nickname: "nickname",
-      province: "province",
-      city: "city",
-      area: "area",
-      province_name: "province_name",
-      city_name: "city_name",
-      area_name: "area_name",
-      sex: 0,
-      birthday: "1994-08-29",
-      height: 100,
-      weight: 200,
-      bwh_b: 38,
-      bwh_w: 39,
-      bwh_h: 40,
-      shoe: 41,
-      is_bwh: true,
-      is_birthday: true,
-    };
+    this.photos = wx.getStorageSync("selectedPhotos");
+    this.userInfo = wx.getStorageSync("carduserinfo");
+    if (options.sub_user_id) {
+      this.sub_user_id = options.sub_user_id;
+    }
     var l = [];
     for (var r = 0; r < this.photos.length; r++) {
       l.push({

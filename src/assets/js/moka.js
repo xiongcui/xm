@@ -9,7 +9,8 @@ var layouts = [
     idindex: 0,
     title: "模特卡—横版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml59obb1o061t818c8h3d4u57.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-1.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -70,7 +71,8 @@ var layouts = [
     idindex: 1,
     title: "模特卡—横版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5a9r51jid1jgn9u81b4s1o2u7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-2.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -139,7 +141,8 @@ var layouts = [
     idindex: 2,
     title: "模特卡—横版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5aqhvnbq6jjkk519blj3a7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-3.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -301,7 +304,8 @@ var layouts = [
     idindex: 4,
     title: "模特卡—横版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5bukb6hh1h2k152e6kd9t27.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-4.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -402,7 +406,8 @@ var layouts = [
     idindex: 5,
     title: "模特卡—横版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5cg3t1tcn1k6a19nj1pje1v0s7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-5.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -503,7 +508,8 @@ var layouts = [
     idindex: 6,
     title: "模特卡—横版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5d3nv127212m612gq1bm1opt7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-6.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -628,7 +634,8 @@ var layouts = [
     idindex: 7,
     title: "模特卡—横版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5dp5m1b0987vo35ngj2id7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-1.png",
     userInfo: {
       x: 0,
       y: 440,
@@ -697,7 +704,8 @@ var layouts = [
     idindex: 8,
     title: "模特卡—横版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5ecu9p2q1fr219vkv2h14c17.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-2.png",
     userInfo: {
       x: 0,
       y: 440,
@@ -774,7 +782,8 @@ var layouts = [
     idindex: 9,
     title: "模特卡—横版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5eq7vobf1bbg14mmkir11i77.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-3.png",
     userInfo: {
       x: 0,
       y: 440,
@@ -859,7 +868,8 @@ var layouts = [
     idindex: 10,
     title: "模特卡—横版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5fbsq19vf1knseak15251car7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-4.png",
     userInfo: {
       x: 0,
       y: 560,
@@ -952,7 +962,8 @@ var layouts = [
     idindex: 11,
     title: "模特卡—横版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5g0vua4010b21imso1oj37.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-5.png",
     userInfo: {
       x: 0,
       y: 760,
@@ -1053,7 +1064,8 @@ var layouts = [
     idindex: 12,
     title: "模特卡—横版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5grfd1tmc16baalv1gdv3kb7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-6.png",
     userInfo: {
       x: 0,
       y: 440,
@@ -1170,7 +1182,8 @@ var layouts = [
     idindex: 13,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5hbbe1blf1ne0ii4r1t1hk07.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-1.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1231,7 +1244,8 @@ var layouts = [
     idindex: 14,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5hrf4123l15gf16d918l81elq7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-2.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1300,7 +1314,8 @@ var layouts = [
     idindex: 15,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5ivdpja41d2o1b2c1f5g15tv7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-4.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1377,7 +1392,8 @@ var layouts = [
     idindex: 16,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5ja8g156vtkt1otl1st4m1d7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-3.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1462,7 +1478,8 @@ var layouts = [
     idindex: 17,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5jjin1eqkdu313imfdksmv7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-5.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1555,7 +1572,8 @@ var layouts = [
     idindex: 18,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5k2jegln5cgc3s4ni19qr7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-7.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1656,7 +1674,8 @@ var layouts = [
     idindex: 19,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5kjo643264t1uao19j5i977.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-6.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1765,7 +1784,8 @@ var layouts = [
     idindex: 20,
     title: "模特卡—横版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5kvprvlp10q21naa812175g7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-8.png",
     userInfo: {
       x: 0,
       y: 0,
@@ -1890,7 +1910,8 @@ var layouts = [
     idindex: 21,
     title: "模特卡—竖版—底部式",
     type: "dibu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5lkrjljh1mq71geaj9811ha7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-1.png",
     userInfo: {
       x: 0,
       y: 840,
@@ -1943,7 +1964,8 @@ var layouts = [
     idindex: 22,
     title: "模特卡—竖版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5mk7nljdim81cd353g1vu07.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-2.png",
     userInfo: {
       x: 0,
       y: 360,
@@ -2004,7 +2026,8 @@ var layouts = [
     idindex: 23,
     title: "模特卡—竖版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5rrl01mbv1voo1rsq1nno53i7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-3.png",
     userInfo: {
       x: 0,
       y: 380,
@@ -2065,7 +2088,8 @@ var layouts = [
     idindex: 24,
     title: "模特卡—竖版—插入式",
     type: "charu",
-    imgurl: "http://imgs.weimoka.com/o_1dml5sbbm1e3f1oop17ilviuf6n7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-4.png",
     userInfo: {
       x: 0,
       y: 380,
@@ -2211,7 +2235,8 @@ var layouts = [
     idindex: 26,
     title: "模特卡—竖版—侧边式",
     type: "cebian",
-    imgurl: "http://imgs.weimoka.com/o_1dml5t8971rcrt9l1c1b1uiv1qeq7.png",
+    imgurl:
+      "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-5.png",
     userInfo: {
       x: 0,
       y: 360,

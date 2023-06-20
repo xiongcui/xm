@@ -9,7 +9,7 @@
             <view class="item_add_btn_img">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/moka/makecard/addbtn.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/addbtn.png"
               ></image>
             </view>
             <view class="item_add_btn_text">新增模卡资料</view>
@@ -28,7 +28,7 @@
             <view class="item_add_btn_img">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/moka/makecard/addbtn.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/addbtn.png"
               ></image>
             </view>
             <view class="item_add_btn_text">新增模卡资料</view>
@@ -46,23 +46,23 @@
         <view
           @tap="goInforother"
           class="ub-f1 item_content ub"
-          :data-id="item.sub_user_id"
+          :data-id="item.sub_uuid"
         >
           <view class="item_content_gap"></view>
           <view class="ub-f1">
             <view class="ub item_content_top">
               <view class="user_info">
                 <view class="user_name">{{ item.nickname }}</view>
-                <view class="user_sex">
+                <view class="user_sex" v-if="item.sex !== null">
                   <image
                     mode="widthFix"
-                    :src="
-                      require(`../../../../assets/images/common/sex${item.sex}.png`)
-                    "
+                    :src="`https://yuepai-oss.qubeitech.com/static/images/common/sex${
+                      item.sex ? 1 : 0
+                    }.png`"
                   ></image>
                 </view>
               </view>
-              <view>做过 {{ item.moka_num }} 张模卡</view>
+              <view>做过 {{ item.mocha_cnt }} 张模卡</view>
             </view>
             <view class="ub item_content_bottom">
               <view class="user_tag">
@@ -70,7 +70,7 @@
                 <text>{{ item.weight }}kg</text>
               </view>
               <view class="ub-f1"></view>
-              <view class="user_time">{{ item.timetext }}更新</view>
+              <view class="user_time">{{ item.date_humanize }}更新</view>
             </view>
           </view>
         </view>
@@ -82,30 +82,14 @@
 
 <script>
 import { openPage } from "../../../../utils/util";
+import { nonpersonalList } from "../../../../api/index";
 import "./index.scss";
 export default {
   name: "otherlist",
   data() {
     return {
       noneData: false,
-      listdata: [
-        {
-          nickname: "nickname",
-          sex: 1,
-          height: 29,
-          weight: 99,
-          timetext: "1小时前",
-          moka_num: 1,
-        },
-        {
-          nickname: "nickname",
-          sex: 1,
-          height: 29,
-          weight: 99,
-          timetext: "1小时前",
-          moka_num: 1,
-        },
-      ],
+      listdata: [],
       itemIndex: 0,
     };
   },
@@ -114,6 +98,15 @@ export default {
       var id = e.currentTarget.dataset.id;
       openPage("/packageMoka/pages/moka/inforother/index?sub_user_id=" + id);
     },
+    async nonpersonalList(params) {
+      try {
+        let res = await nonpersonalList(params);
+        this.listdata = res.data.data;
+      } catch (error) {}
+    },
+  },
+  created() {
+    this.nonpersonalList("");
   },
 };
 </script>

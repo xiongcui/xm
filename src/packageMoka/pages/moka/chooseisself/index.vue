@@ -127,6 +127,7 @@
 
 <script>
 import { openPage } from "../../../../utils/util";
+import { nonpersonalList } from "../../../../api/index";
 import "./index.scss";
 export default {
   name: "chooseisself",
@@ -140,21 +141,7 @@ export default {
   },
   methods: {
     goSelfMoka() {
-      var _this = this;
-      this.infor.isartist
-        ? openPage("/packageMoka/pages/moka/editshow/index?next=1")
-        : wx.showModal({
-            title: "温馨提示",
-            content:
-              "您未选择艺人身份，不支持给自己制作，您可选择给别人制作或修改身份",
-            cancelText: "修改身份",
-            confirmText: "给别人做",
-            success: function (o) {
-              o.confirm
-                ? _this.goOtherMoka()
-                : o.cancel && openPage("/packageAdd/pages/user/identity/index");
-            },
-          });
+      openPage("/packageMoka/pages/moka/editshow/index?next=1");
     },
     goOtherMoka() {
       if (this.infor.has_sub_user) {
@@ -163,10 +150,17 @@ export default {
         openPage("/packageMoka/pages/moka/inforother/index");
       }
     },
+    async nonpersonalList(params) {
+      try {
+        let res = await nonpersonalList(params);
+        this.infor.has_sub_user = res.data.data.length;
+      } catch (error) {}
+    },
   },
   onLoad: function (options) {
     var selectedPhotos = wx.getStorageSync("selectedPhotos");
     this.photos = selectedPhotos;
+    this.nonpersonalList("");
   },
 };
 </script>

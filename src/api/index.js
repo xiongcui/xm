@@ -935,3 +935,35 @@ export const qrcode = (data) => {
     data,
   });
 };
+// 子用户列表
+export const nonpersonalList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/shape/non_personal/list",
+    method: "post",
+    data,
+  });
+};
+// 创建模卡
+export const userMocha = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/mocha",
+    method: "post",
+    data,
+  });
+};
+// 模卡列表
+export const mochaList = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/mocha/list",
+    method: "post",
+    data,
+  });
+};
+// 模卡操作
+export const mochaEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/mocha/event",
+    method: "post",
+    data,
+  });
+};

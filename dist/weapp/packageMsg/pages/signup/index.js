@@ -1290,7 +1290,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "rb"])(params);
 
               case 3:
                 res = _context4.sent;

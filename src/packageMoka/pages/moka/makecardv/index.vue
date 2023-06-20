@@ -420,8 +420,10 @@ const device = wx.getSystemInfoSync(); // 获取设备信息
 const width = device.screenWidth; // 示例为一个与屏幕等宽的正方形裁剪框
 const height = device.screenHeight;
 const moka = require("../../../../assets/js/moka.js");
-import { qrcode } from "../../../../api/index";
-import { openPage } from "../../../../utils/util";
+import { qrcode, userMocha } from "../../../../api/index";
+import { errortip, openPage } from "../../../../utils/util";
+import { Base64 } from "js-Base64";
+import clickThrottle from "../../../../utils/clickThrottle";
 export default {
   name: "makecardv",
   data() {
@@ -481,6 +483,7 @@ export default {
       n: false,
       h: false,
       t: "",
+      sub_user_id: "",
     };
   },
   methods: {
@@ -692,10 +695,20 @@ export default {
         o = (((this.card.height - (this.screenH - 150) + 40) / h) * a) / e;
       this.scrollTop = o;
     },
-    switchBWH() {},
-    switchQrcode() {},
-    switchBg() {},
+    switchBirthday() {
+      this.userInfo.is_birthday = !this.userInfo.is_birthday;
+    },
+    switchBWH() {
+      this.userInfo.is_bwh = !this.userInfo.is_bwh;
+    },
+    switchQrcode() {
+      this.isMoveQrcode ? (this.isMoveQrcode = 0) : (this.isMoveQrcode = 1);
+    },
+    switchBg() {
+      this.isDark = !this.isDark;
+    },
     make() {
+      if (!clickThrottle(5000)) return;
       wx.showLoading({
         title: "制作中，请稍候...",
       });
@@ -939,12 +952,7 @@ export default {
                       template_id: o,
                       template_name: s,
                     };
-                    wx.setStorageSync("successImgSrc", t);
-                    openPage(
-                      "/packageMoka/pages/moka/makesuccess/index?isVertical=1&has_qrcode=" +
-                        i
-                    );
-                    wx.hideLoading();
+                    a.upImgs(t, i);
                   })(a.tempFilePath, t, o, s);
                 },
                 fail: function (t) {
@@ -958,6 +966,48 @@ export default {
           });
       } else this.drawPhotosContent(t, a, o);
     },
+    upImgs(tempFilePath, i) {
+      let header = {};
+      let _this = this;
+      let token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + Base64.encode(token + ":");
+      wx.uploadFile({
+        url: "https://pai.qubeitech.com/v1/file/upload",
+        filePath: tempFilePath,
+        formData: {
+          scr_type: "mocha",
+        },
+        name: "file",
+        header,
+        success: (res) => {
+          wx.hideLoading();
+          //判断上传的是图片还是视频
+          let data = JSON.parse(res.data);
+          if (data.code == 200) {
+            let params = {
+              mocha_url: data.data.file1,
+            };
+            if (_this.sub_user_id) {
+              params.sub_uuid = _this.sub_user_id;
+            }
+            _this.userMocha(data.data.file1, i, params);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none",
+            });
+          }
+        },
+        fail: (error) => {
+          wx.hideLoading();
+          this.showMaking = false;
+          wx.showToast({
+            title: "上传失败！",
+            icon: "none",
+          });
+        },
+      });
+    },
     async qrcode(params) {
       try {
         let res = await qrcode(params);
@@ -965,40 +1015,27 @@ export default {
         this.cutAvartar();
       } catch (error) {}
     },
+    async userMocha(file, i, params) {
+      try {
+        let res = await userMocha(params);
+        wx.setStorageSync("successImgSrc", file);
+        openPage(
+          "/packageMoka/pages/moka/makesuccess/index?isVertical=1&has_qrcode=" +
+            i
+        );
+        wx.hideLoading();
+      } catch (error) {}
+    },
   },
   onLoad: function (options) {
-    let mokaIndex = moka.getIndexByCardId("1002010701");
+    let cardid = wx.getStorageSync("cardid");
+    let mokaIndex = moka.getIndexByCardId(cardid);
     this.card = moka.layouts[mokaIndex];
-    this.photos = [
-      require("../../../../assets/images/lanmao1.jpg"),
-      require("../../../../assets/images/cheatPrevention.png"),
-      require("../../../../assets/images/lanmao1.jpg"),
-      require("../../../../assets/images/lanmao2.jpg"),
-      require("../../../../assets/images/lanmao3.jpg"),
-      require("../../../../assets/images/lanmao2.jpg"),
-      require("../../../../assets/images/lanmao3.jpg"),
-    ];
-    this.userInfo = {
-      avatar:
-        "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-      nickname: "nickname",
-      province: "province",
-      city: "city",
-      area: "area",
-      province_name: "province_name",
-      city_name: "city_name",
-      area_name: "area_name",
-      sex: 0,
-      birthday: "1994-08-29",
-      height: 100,
-      weight: 200,
-      bwh_b: 38,
-      bwh_w: 39,
-      bwh_h: 40,
-      shoe: 41,
-      is_bwh: true,
-      is_birthday: true,
-    };
+    this.photos = wx.getStorageSync("selectedPhotos");
+    this.userInfo = wx.getStorageSync("carduserinfo");
+    if (options.sub_user_id) {
+      this.sub_user_id = options.sub_user_id;
+    }
     var l = [];
     for (var r = 0; r < this.photos.length; r++) {
       l.push({

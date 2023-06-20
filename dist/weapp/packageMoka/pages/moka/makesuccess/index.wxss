@@ -17,6 +17,7 @@
 .makesuccess .hint .hint-text {
   font-size: 34rpx;
   color: #333333;
+  margin-left: 16rpx;
 }
 .makesuccess .card {
   margin: 30rpx auto;

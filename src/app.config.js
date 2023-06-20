@@ -101,6 +101,7 @@ export default defineAppConfig({
         "pages/moka/choosephoto/index",
         "pages/moka/inforother/index",
         "pages/moka/otherlist/index",
+        "pages/moka/myModelCardlist/index",
       ],
     },
     {

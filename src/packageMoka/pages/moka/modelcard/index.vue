@@ -62,7 +62,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001010501">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml59obb1o061t818c8h3d4u57.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-1.png"
                 ></image>
               </view>
             </view>
@@ -75,7 +75,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001010601">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml5a9r51jid1jgn9u81b4s1o2u7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-2.png"
                 ></image>
               </view>
             </view>
@@ -88,7 +88,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001010701">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml5aqhvnbq6jjkk519blj3a7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-3.png"
                 ></image>
               </view>
             </view>
@@ -101,7 +101,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001011001">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml5bukb6hh1h2k152e6kd9t27.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-4.png"
                 ></image>
               </view>
             </view>
@@ -114,7 +114,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001011002">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dneosb7r1bjf11aq1ftkq4c129b7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-5.png"
                 ></image>
               </view>
             </view>
@@ -127,7 +127,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001011301">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml5d3nv127212m612gq1bm1opt7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-6.png"
                 ></image>
               </view>
             </view>
@@ -146,7 +146,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001020601">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml5dp5m1b0987vo35ngj2id7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-1.png"
                 ></image>
               </view>
             </view>
@@ -159,7 +159,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001020701">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep4b951i62m21i2drrl1bbs7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-2.png"
                 ></image>
               </view>
             </view>
@@ -172,7 +172,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001020801">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep4p4m1o9v10m716k514lvd4l7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-3.png"
                 ></image>
               </view>
             </view>
@@ -185,7 +185,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001020901">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dml5fbsq19vf1knseak15251car7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-4.png"
                 ></image>
               </view>
             </view>
@@ -198,7 +198,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001021001">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep5dd4h5lue1ddf26p1cj57.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-5.png"
                 ></image>
               </view>
             </view>
@@ -211,7 +211,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001021201">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnepg8hs1ti71dfc1dhr1mps1op87.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-6.png"
                 ></image>
               </view>
             </view>
@@ -230,7 +230,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001030501">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dneoun6uevl1i625rj1q181a5o7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-1.png"
                 ></image>
               </view>
             </view>
@@ -243,7 +243,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001030601">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dneov61u1ilg6r11qmdk07acc7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-2.png"
                 ></image>
               </view>
             </view>
@@ -256,7 +256,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001030801">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep02uh13h11bb2oqq1lgts8e7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-3.png"
                 ></image>
               </view>
             </view>
@@ -269,7 +269,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001030701">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dneovkengi2h2q171uvumbm77.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-4.png"
                 ></image>
               </view>
             </view>
@@ -282,7 +282,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001030901">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep0nqsm9lvnq1v0m1h2j1i8d7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-5.png"
                 ></image>
               </view>
             </view>
@@ -295,7 +295,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001031101">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep2h55112p91a1862f9a1jro7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-6.png"
                 ></image>
               </view>
             </view>
@@ -308,7 +308,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001031001">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep25bk1j0r1linglodks9e97.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-7.png"
                 ></image>
               </view>
             </view>
@@ -321,7 +321,7 @@
               <view @tap="chooseMocard" class="item" data-cardid="1001031301">
                 <image
                   mode="widthFix"
-                  src="http://imgs.weimoka.com/o_1dnep2ueoncg1aa51p9mgl0blr7.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-8.png"
                 ></image>
               </view>
             </view>
@@ -389,7 +389,7 @@
           >
             <image
               mode="aspectFit"
-              src="http://imgs.weimoka.com/o_1dml5lkrjljh1mq71geaj9811ha7.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-1.png"
             ></image>
           </view>
         </swiper-item>
@@ -401,7 +401,7 @@
           >
             <image
               mode="aspectFit"
-              src="http://imgs.weimoka.com/o_1dml5mk7nljdim81cd353g1vu07.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-2.png"
             ></image>
           </view>
         </swiper-item>
@@ -413,7 +413,7 @@
           >
             <image
               mode="aspectFit"
-              src="http://imgs.weimoka.com/o_1dml5rrl01mbv1voo1rsq1nno53i7.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-3.png"
             ></image>
           </view>
         </swiper-item>
@@ -425,7 +425,7 @@
           >
             <image
               mode="aspectFit"
-              src="http://imgs.weimoka.com/o_1dml5sbbm1e3f1oop17ilviuf6n7.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-4.png"
             ></image>
           </view>
         </swiper-item>
@@ -437,7 +437,7 @@
           >
             <image
               mode="aspectFit"
-              src="http://imgs.weimoka.com/o_1dmnrba2p3vs4n3f61kqfkcr7.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-5.png"
             ></image>
           </view>
         </swiper-item>
@@ -486,7 +486,7 @@ export default {
       var cardid = parseInt(t.currentTarget.dataset.cardid);
       var mokaIndex = moka.getIndexByCardId(cardid);
       var o = moka.layouts[mokaIndex];
-      wx.setStorageSync("cardid", mokaIndex);
+      wx.setStorageSync("cardid", cardid);
       wx.chooseImage({
         count: o.maxCount,
         sizeType: ["compressed"],
@@ -503,9 +503,9 @@ export default {
     chooseMocardV(t) {
       wx.setStorageSync("card-type", "vertical");
       var a = parseInt(t.currentTarget.dataset.cardid),
-        n = e.getIndexByCardId(a),
-        o = e.layouts[n];
-      wx.setStorageSync("cardid", n),
+        n = moka.getIndexByCardId(a),
+        o = moka.layouts[n];
+      wx.setStorageSync("cardid", a),
         wx.chooseImage({
           count: o.maxCount,
           sizeType: ["compressed"],

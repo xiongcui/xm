@@ -10,8 +10,8 @@
         "miniprogram": {
             "list": [
                 {
-                    "name": "制作模卡",
-                    "pathName": "packageMoka/pages/moka/makecard/index",
+                    "name": "我的模卡",
+                    "pathName": "packageMoka/pages/moka/myModelCardlist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

@@ -170,8 +170,8 @@
 
 <script>
 import "./index.scss";
-import { userShapeDetail } from "../../../../api/index";
-import { errortip } from "../../../../utils/util";
+import { userShape, userShapeDetail } from "../../../../api/index";
+import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "inforother",
   data() {
@@ -180,7 +180,7 @@ export default {
       birthday: "",
       avatar: "",
       nickname: "",
-      sexs: ["请选择性别", "男", "女"],
+      sexs: ["女", "男"],
       sex: "",
       heights: [],
       heightIndex: "",
@@ -193,6 +193,7 @@ export default {
       isshowBWH: true,
       isshowBirthday: true,
       region: [],
+      sub_user_id: "",
     };
   },
   methods: {
@@ -209,7 +210,7 @@ export default {
       this.weightIndex = String(e.detail.value);
     },
     BWHChange(e) {
-      this.BWHIndex = String(e.detail.value);
+      this.BWHIndex = e.detail.value;
     },
     shoeChange(e) {
       this.shoeIndex = String(e.detail.value);
@@ -219,6 +220,10 @@ export default {
         errortip("请输入昵称");
         return false;
       }
+      //   if (this.nickname.length > 4) {
+      //     errortip("昵称不能超过4个字");
+      //     return false;
+      //   }
       if (this.sex === "") {
         errortip("请选择性别");
         return false;
@@ -243,33 +248,71 @@ export default {
         errortip("请选择鞋码");
         return false;
       }
-      let carduserinfo = {
-        avatar:
-          "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-        nickname: "nickname",
-        province: "province",
-        city: "city",
-        area: "area",
-        province_name: "province_name",
-        city_name: "city_name",
-        area_name: "area_name",
-        sex: 0,
-        birthday: "1994-08-29",
-        height: 100,
-        weight: 200,
-        bwh_b: 38,
-        bwh_w: 39,
-        bwh_h: 40,
-        shoe: 41,
-        is_bwh: true,
-        is_birthday: true,
+      let height = this.heights[this.heightIndex];
+      let weight = this.weights[this.weightIndex];
+      let bust = this.BWHs[0][this.BWHIndex[0]];
+      let waist = this.BWHs[1][this.BWHIndex[1]];
+      let hip = this.BWHs[2][this.BWHIndex[2]];
+      let size = this.shoes[this.shoeIndex];
+      let params = {
+        height: height,
+        weight: weight,
+        bust: bust,
+        waist: waist,
+        hip: hip,
+        size: size,
+        sub_uuid: "non_personal",
+        nickname: this.nickname,
+        sex: Number(this.sex),
+        birthday: this.birthday,
       };
-      wx.setStorageSync("carduserinfo", carduserinfo);
-      if ("vertical" == wx.getStorageSync("card-type")) {
-        openPage("/packageMoka/pages/moka/makecardv/index");
-      } else {
-        openPage("/packageMoka/pages/moka/makecard/index");
+      if (this.sub_user_id) {
+        params.sub_uuid = this.sub_user_id;
       }
+      this.userShape(params);
+    },
+    async userShape(params) {
+      try {
+        let res = await userShape(params);
+        this.userinfoDetail({
+          sub_uuid: res.data.data.sub_uuid,
+        });
+      } catch (error) {}
+    },
+    async userinfoDetail(params) {
+      try {
+        let res = await userShapeDetail(params);
+        let data = res.data.data.current_shape;
+        this.sub_user_id = res.data.data.sub_uuid
+          ? res.data.data.sub_uuid
+          : this.sub_user_id;
+        let carduserinfo = {
+          avatar: data.avatar,
+          nickname: data.nickname,
+          sex: data.sex,
+          birthday: data.birthday,
+          height: data.height,
+          weight: data.weight,
+          bwh_b: data.bust,
+          bwh_w: data.waist,
+          bwh_h: data.hip,
+          shoe: data.size,
+          is_bwh: data.bust ? true : false,
+          is_birthday: data.birthday ? true : false,
+        };
+        wx.setStorageSync("carduserinfo", carduserinfo);
+        if ("vertical" == wx.getStorageSync("card-type")) {
+          openPage(
+            "/packageMoka/pages/moka/makecardv/index?sub_user_id=" +
+              this.sub_user_id
+          );
+        } else {
+          openPage(
+            "/packageMoka/pages/moka/makecard/index?sub_user_id=" +
+              this.sub_user_id
+          );
+        }
+      } catch (error) {}
     },
     async userShapeDetail(params) {
       try {
@@ -292,42 +335,54 @@ export default {
           this.shoes = res.data.data.shape_list.size;
         }
         // 数据回显
-        // if (res.data.data.current_shape.height) {
-        //   this.heightIndex = this.heights.findIndex((item) => {
-        //     return item == res.data.data.current_shape.height;
-        //   });
-        // }
-        // if (res.data.data.current_shape.weight) {
-        //   this.weightIndex = this.weights.findIndex((item) => {
-        //     return item == res.data.data.current_shape.weight;
-        //   });
-        // }
-        // if (res.data.data.current_shape.bust) {
-        //   this.BWHIndex[0] = this.BWHs[0].findIndex((item) => {
-        //     return item == res.data.data.current_shape.bust;
-        //   });
-        // }
-        // if (res.data.data.current_shape.waist) {
-        //   this.BWHIndex[1] = this.BWHs[1].findIndex((item) => {
-        //     return item == res.data.data.current_shape.waist;
-        //   });
-        // }
-        // if (res.data.data.current_shape.hip) {
-        //   this.BWHIndex[2] = this.BWHs[2].findIndex((item) => {
-        //     return item == res.data.data.current_shape.hip;
-        //   });
-        // }
-        // if (res.data.data.current_shape.size) {
-        //   this.shoeIndex = this.shoes.findIndex((item) => {
-        //     return item == res.data.data.current_shape.size;
-        //   });
-        // }
-        // this.BWHIndex = JSON.parse(JSON.stringify(this.BWHIndex));
+        if (this.sub_user_id) {
+          this.nickname = res.data.data.current_shape.nickname;
+          this.birthday = res.data.data.current_shape.birthday;
+          this.sex = String(res.data.data.current_shape.sex);
+          if (res.data.data.current_shape.height) {
+            this.heightIndex = this.heights.findIndex((item) => {
+              return item == res.data.data.current_shape.height;
+            });
+          }
+          if (res.data.data.current_shape.weight) {
+            this.weightIndex = this.weights.findIndex((item) => {
+              return item == res.data.data.current_shape.weight;
+            });
+          }
+          if (res.data.data.current_shape.bust) {
+            this.BWHIndex[0] = this.BWHs[0].findIndex((item) => {
+              return item == res.data.data.current_shape.bust;
+            });
+          }
+          if (res.data.data.current_shape.waist) {
+            this.BWHIndex[1] = this.BWHs[1].findIndex((item) => {
+              return item == res.data.data.current_shape.waist;
+            });
+          }
+          if (res.data.data.current_shape.hip) {
+            this.BWHIndex[2] = this.BWHs[2].findIndex((item) => {
+              return item == res.data.data.current_shape.hip;
+            });
+          }
+          if (res.data.data.current_shape.size) {
+            this.shoeIndex = this.shoes.findIndex((item) => {
+              return item == res.data.data.current_shape.size;
+            });
+          }
+          this.BWHIndex = JSON.parse(JSON.stringify(this.BWHIndex));
+        }
       } catch (error) {}
     },
   },
-  created() {
-    this.userShapeDetail("");
+  onLoad: function (options) {
+    if (options.sub_user_id) {
+      this.sub_user_id = options.sub_user_id;
+      this.userShapeDetail({
+        sub_uuid: options.sub_user_id,
+      });
+    } else {
+      this.userShapeDetail("");
+    }
   },
 };
 </script>

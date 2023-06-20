@@ -574,26 +574,20 @@ export default {
         errortip("请设置三围");
         return false;
       }
+      let data = this.infor;
       let carduserinfo = {
-        avatar:
-          "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-        nickname: "nickname",
-        province: "province",
-        city: "city",
-        area: "area",
-        province_name: "province_name",
-        city_name: "city_name",
-        area_name: "area_name",
-        sex: 0,
-        birthday: "1994-08-29",
-        height: 100,
-        weight: 200,
-        bwh_b: 38,
-        bwh_w: 39,
-        bwh_h: 40,
-        shoe: 41,
-        is_bwh: true,
-        is_birthday: true,
+        avatar: data.avatar,
+        nickname: data.nickname,
+        sex: data.sex,
+        birthday: data.age,
+        height: data.shape.height,
+        weight: data.shape.weight,
+        bwh_b: data.shape.bust,
+        bwh_w: data.shape.waist,
+        bwh_h: data.shape.hip,
+        shoe: data.shape.size,
+        is_bwh: data.shape.bust ? true : false,
+        is_birthday: data.age ? true : false,
       };
       wx.setStorageSync("carduserinfo", carduserinfo);
       if ("vertical" == wx.getStorageSync("card-type")) {

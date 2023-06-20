@@ -236,7 +236,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
       birthday: "",
       avatar: "",
       nickname: "",
-      sexs: ["请选择性别", "男", "女"],
+      sexs: ["女", "男"],
       sex: "",
       heights: [],
       heightIndex: "",
@@ -248,7 +248,8 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
       BWHIndex: Array(),
       isshowBWH: true,
       isshowBirthday: true,
-      region: []
+      region: [],
+      sub_user_id: ""
     };
   },
   methods: {
@@ -265,7 +266,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
       this.weightIndex = String(e.detail.value);
     },
     BWHChange: function BWHChange(e) {
-      this.BWHIndex = String(e.detail.value);
+      this.BWHIndex = e.detail.value;
     },
     shoeChange: function shoeChange(e) {
       this.shoeIndex = String(e.detail.value);
@@ -274,7 +275,11 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
       if (!this.nickname) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请输入昵称");
         return false;
-      }
+      } //   if (this.nickname.length > 4) {
+      //     errortip("昵称不能超过4个字");
+      //     return false;
+      //   }
+
 
       if (this.sex === "") {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择性别");
@@ -306,35 +311,32 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
         return false;
       }
 
-      var carduserinfo = {
-        avatar: "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-        nickname: "nickname",
-        province: "province",
-        city: "city",
-        area: "area",
-        province_name: "province_name",
-        city_name: "city_name",
-        area_name: "area_name",
-        sex: 0,
-        birthday: "1994-08-29",
-        height: 100,
-        weight: 200,
-        bwh_b: 38,
-        bwh_w: 39,
-        bwh_h: 40,
-        shoe: 41,
-        is_bwh: true,
-        is_birthday: true
+      var height = this.heights[this.heightIndex];
+      var weight = this.weights[this.weightIndex];
+      var bust = this.BWHs[0][this.BWHIndex[0]];
+      var waist = this.BWHs[1][this.BWHIndex[1]];
+      var hip = this.BWHs[2][this.BWHIndex[2]];
+      var size = this.shoes[this.shoeIndex];
+      var params = {
+        height: height,
+        weight: weight,
+        bust: bust,
+        waist: waist,
+        hip: hip,
+        size: size,
+        sub_uuid: "non_personal",
+        nickname: this.nickname,
+        sex: Number(this.sex),
+        birthday: this.birthday
       };
-      wx.setStorageSync("carduserinfo", carduserinfo);
 
-      if ("vertical" == wx.getStorageSync("card-type")) {
-        openPage("/packageMoka/pages/moka/makecardv/index");
-      } else {
-        openPage("/packageMoka/pages/moka/makecard/index");
+      if (this.sub_user_id) {
+        params.sub_uuid = this.sub_user_id;
       }
+
+      this.userShape(params);
     },
-    userShapeDetail: function userShapeDetail(params) {
+    userShape: function userShape(params) {
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
@@ -345,78 +347,187 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShape */ "Xb"])(params);
 
               case 3:
                 res = _context.sent;
 
-                //默认下拉数据
-                if (res.data.data.shape_list.height) {
-                  _this.heights = res.data.data.shape_list.height;
-                }
+                _this.userinfoDetail({
+                  sub_uuid: res.data.data.sub_uuid
+                });
 
-                if (res.data.data.shape_list.weight) {
-                  _this.weights = res.data.data.shape_list.weight;
-                }
-
-                if (res.data.data.shape_list.bwh) {
-                  _this.BWHs = [res.data.data.shape_list.bwh, res.data.data.shape_list.bwh, res.data.data.shape_list.bwh];
-                }
-
-                if (res.data.data.shape_list.size) {
-                  _this.shoes = res.data.data.shape_list.size;
-                } // 数据回显
-                // if (res.data.data.current_shape.height) {
-                //   this.heightIndex = this.heights.findIndex((item) => {
-                //     return item == res.data.data.current_shape.height;
-                //   });
-                // }
-                // if (res.data.data.current_shape.weight) {
-                //   this.weightIndex = this.weights.findIndex((item) => {
-                //     return item == res.data.data.current_shape.weight;
-                //   });
-                // }
-                // if (res.data.data.current_shape.bust) {
-                //   this.BWHIndex[0] = this.BWHs[0].findIndex((item) => {
-                //     return item == res.data.data.current_shape.bust;
-                //   });
-                // }
-                // if (res.data.data.current_shape.waist) {
-                //   this.BWHIndex[1] = this.BWHs[1].findIndex((item) => {
-                //     return item == res.data.data.current_shape.waist;
-                //   });
-                // }
-                // if (res.data.data.current_shape.hip) {
-                //   this.BWHIndex[2] = this.BWHs[2].findIndex((item) => {
-                //     return item == res.data.data.current_shape.hip;
-                //   });
-                // }
-                // if (res.data.data.current_shape.size) {
-                //   this.shoeIndex = this.shoes.findIndex((item) => {
-                //     return item == res.data.data.current_shape.size;
-                //   });
-                // }
-                // this.BWHIndex = JSON.parse(JSON.stringify(this.BWHIndex));
-
-
-                _context.next = 12;
+                _context.next = 9;
                 break;
 
-              case 10:
-                _context.prev = 10;
+              case 7:
+                _context.prev = 7;
                 _context.t0 = _context["catch"](0);
 
-              case 12:
+              case 9:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 10]]);
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    userinfoDetail: function userinfoDetail(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res, data, carduserinfo;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Yb"])(params);
+
+              case 3:
+                res = _context2.sent;
+                data = res.data.data.current_shape;
+                _this2.sub_user_id = res.data.data.sub_uuid ? res.data.data.sub_uuid : _this2.sub_user_id;
+                carduserinfo = {
+                  avatar: data.avatar,
+                  nickname: data.nickname,
+                  sex: data.sex,
+                  birthday: data.birthday,
+                  height: data.height,
+                  weight: data.weight,
+                  bwh_b: data.bust,
+                  bwh_w: data.waist,
+                  bwh_h: data.hip,
+                  shoe: data.size,
+                  is_bwh: data.bust ? true : false,
+                  is_birthday: data.birthday ? true : false
+                };
+                wx.setStorageSync("carduserinfo", carduserinfo);
+
+                if ("vertical" == wx.getStorageSync("card-type")) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makecardv/index?sub_user_id=" + _this2.sub_user_id);
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makecard/index?sub_user_id=" + _this2.sub_user_id);
+                }
+
+                _context2.next = 13;
+                break;
+
+              case 11:
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](0);
+
+              case 13:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 11]]);
+      }))();
+    },
+    userShapeDetail: function userShapeDetail(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.prev = 0;
+                _context3.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Yb"])(params);
+
+              case 3:
+                res = _context3.sent;
+
+                //默认下拉数据
+                if (res.data.data.shape_list.height) {
+                  _this3.heights = res.data.data.shape_list.height;
+                }
+
+                if (res.data.data.shape_list.weight) {
+                  _this3.weights = res.data.data.shape_list.weight;
+                }
+
+                if (res.data.data.shape_list.bwh) {
+                  _this3.BWHs = [res.data.data.shape_list.bwh, res.data.data.shape_list.bwh, res.data.data.shape_list.bwh];
+                }
+
+                if (res.data.data.shape_list.size) {
+                  _this3.shoes = res.data.data.shape_list.size;
+                } // 数据回显
+
+
+                if (_this3.sub_user_id) {
+                  _this3.nickname = res.data.data.current_shape.nickname;
+                  _this3.birthday = res.data.data.current_shape.birthday;
+                  _this3.sex = String(res.data.data.current_shape.sex);
+
+                  if (res.data.data.current_shape.height) {
+                    _this3.heightIndex = _this3.heights.findIndex(function (item) {
+                      return item == res.data.data.current_shape.height;
+                    });
+                  }
+
+                  if (res.data.data.current_shape.weight) {
+                    _this3.weightIndex = _this3.weights.findIndex(function (item) {
+                      return item == res.data.data.current_shape.weight;
+                    });
+                  }
+
+                  if (res.data.data.current_shape.bust) {
+                    _this3.BWHIndex[0] = _this3.BWHs[0].findIndex(function (item) {
+                      return item == res.data.data.current_shape.bust;
+                    });
+                  }
+
+                  if (res.data.data.current_shape.waist) {
+                    _this3.BWHIndex[1] = _this3.BWHs[1].findIndex(function (item) {
+                      return item == res.data.data.current_shape.waist;
+                    });
+                  }
+
+                  if (res.data.data.current_shape.hip) {
+                    _this3.BWHIndex[2] = _this3.BWHs[2].findIndex(function (item) {
+                      return item == res.data.data.current_shape.hip;
+                    });
+                  }
+
+                  if (res.data.data.current_shape.size) {
+                    _this3.shoeIndex = _this3.shoes.findIndex(function (item) {
+                      return item == res.data.data.current_shape.size;
+                    });
+                  }
+
+                  _this3.BWHIndex = JSON.parse(JSON.stringify(_this3.BWHIndex));
+                }
+
+                _context3.next = 13;
+                break;
+
+              case 11:
+                _context3.prev = 11;
+                _context3.t0 = _context3["catch"](0);
+
+              case 13:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[0, 11]]);
       }))();
     }
   },
-  created: function created() {
-    this.userShapeDetail("");
+  onLoad: function onLoad(options) {
+    if (options.sub_user_id) {
+      this.sub_user_id = options.sub_user_id;
+      this.userShapeDetail({
+        sub_uuid: options.sub_user_id
+      });
+    } else {
+      this.userShapeDetail("");
+    }
   }
 });
 

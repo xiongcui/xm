@@ -47,9 +47,14 @@ component.options.__file = "src/packageMoka/pages/moka/otherlist/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/otherlist/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/otherlist/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_4__);
+
+
 //
 //
 //
@@ -132,6 +137,7 @@ component.options.__file = "src/packageMoka/pages/moka/otherlist/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -139,29 +145,49 @@ component.options.__file = "src/packageMoka/pages/moka/otherlist/index.vue"
   data: function data() {
     return {
       noneData: false,
-      listdata: [{
-        nickname: "nickname",
-        sex: 1,
-        height: 29,
-        weight: 99,
-        timetext: "1小时前",
-        moka_num: 1
-      }, {
-        nickname: "nickname",
-        sex: 1,
-        height: 29,
-        weight: 99,
-        timetext: "1小时前",
-        moka_num: 1
-      }],
+      listdata: [],
       itemIndex: 0
     };
   },
   methods: {
     goInforother: function goInforother(e) {
       var id = e.currentTarget.dataset.id;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/inforother/index?sub_user_id=" + id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMoka/pages/moka/inforother/index?sub_user_id=" + id);
+    },
+    nonpersonalList: function nonpersonalList(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* nonpersonalList */ "W"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.listdata = res.data.data;
+                _context.next = 9;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
     }
+  },
+  created: function created() {
+    this.nonpersonalList("");
   }
 });
 
@@ -201,7 +227,7 @@ var render = function () {
                     _c("image", {
                       attrs: {
                         mode: "widthFix",
-                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/addbtn.png */ "./src/assets/images/moka/makecard/addbtn.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/addbtn.png",
                       },
                     }),
                   ]),
@@ -235,7 +261,7 @@ var render = function () {
                       _c("image", {
                         attrs: {
                           mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/addbtn.png */ "./src/assets/images/moka/makecard/addbtn.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/addbtn.png",
                         },
                       }),
                     ]),
@@ -255,7 +281,7 @@ var render = function () {
                   "view",
                   {
                     staticClass: "ub-f1 item_content ub",
-                    attrs: { "data-id": item.sub_user_id },
+                    attrs: { "data-id": item.sub_uuid },
                     on: { tap: _vm.goInforother },
                   },
                   [
@@ -266,19 +292,22 @@ var render = function () {
                           _c("view", { staticClass: "user_name" }, [
                             _vm._v(_vm._s(item.nickname)),
                           ]),
-                          _c("view", { staticClass: "user_sex" }, [
-                            _c("image", {
-                              attrs: {
-                                mode: "widthFix",
-                                src: __webpack_require__("./src/assets/images/common sync recursive ^\\.\\/sex.*\\.png$")("./sex" +
-                                  item.sex +
-                                  ".png"),
-                              },
-                            }),
-                          ]),
+                          item.sex !== null
+                            ? _c("view", { staticClass: "user_sex" }, [
+                                _c("image", {
+                                  attrs: {
+                                    mode: "widthFix",
+                                    src:
+                                      "https://yuepai-oss.qubeitech.com/static/images/common/sex" +
+                                      (item.sex ? 1 : 0) +
+                                      ".png",
+                                  },
+                                }),
+                              ])
+                            : _vm._e(),
                         ]),
                         _c("view", [
-                          _vm._v("做过 " + _vm._s(item.moka_num) + " 张模卡"),
+                          _vm._v("做过 " + _vm._s(item.mocha_cnt) + " 张模卡"),
                         ]),
                       ]),
                       _c("view", { staticClass: "ub item_content_bottom" }, [
@@ -288,7 +317,7 @@ var render = function () {
                         ]),
                         _c("view", { staticClass: "ub-f1" }),
                         _c("view", { staticClass: "user_time" }, [
-                          _vm._v(_vm._s(item.timetext) + "更新"),
+                          _vm._v(_vm._s(item.date_humanize) + "更新"),
                         ]),
                       ]),
                     ]),
@@ -306,77 +335,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common sync recursive ^\\.\\/sex.*\\.png$":
-/*!********************************************************!*\
-  !*** ./src/assets/images/common sync ^\.\/sex.*\.png$ ***!
-  \********************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-var map = {
-	"./sex1.png": "./src/assets/images/common/sex1.png",
-	"./sex2.png": "./src/assets/images/common/sex2.png"
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = "./src/assets/images/common sync recursive ^\\.\\/sex.*\\.png$";
-
-/***/ }),
-
-/***/ "./src/assets/images/common/sex1.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/common/sex1.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAANlBMVEX///8xl/s1mPxOqP8xl/ozl/s8nv8xl/sxl/szmPsxl/s2mvwyl/s0mPtjtf85m/tDof8xlvtjsYgqAAAAEXRSTlMDu2ES25ot6veFzFGodAo/HH7I8KMAAAFkSURBVDjLvZVbloQgDEQNb5WH7H+zE0RbgoSZ+en8dZ8rSSoVWJavR3CZhFsnsMpduAkslH3ipP9Y0voPuLJDWBpzxJ7V9g2ndasiKL3Hll1esCAK2CAftofTVhVSAFtt34oP28HhzL6a+suE81N/sxTW10lP7DVTZQlcWB9HklW2hQX+O5j9jtL4HjZuyCKNh+wdDDkDOzwrCZxQsIMZNXYZCAxMEVchNp6OrRaVeHBkXbTVqoUKtxR+sjEf9c7wOQseNjhXmshM3OyIK9Brcb6Msv10totFqyaxncO0SppnVEbk8gwabBPra6LjQC9sdKIwvQdaL0TH+2iJqivS04n201b9RLkWpb3d37aoxup52l6JwzI9YncuvfRBt8Dr7FjWe2DIst6qq/uAzHQuyoWoGwXl6jK7bqncbw6CkeXWFb6gjl2KQ9+Px/30wMwyxrcvFKRfHoS4a1DOqc0L+dWH9AflMBj+mOmDHAAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ "./src/assets/images/common/sex2.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/common/sex2.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsBAMAAADsqkcyAAAALVBMVEX//v7/e43/hpj/g5P/e43/fI7/e43/kaD/fo//e43/fI//e47/gJH/e43/eoz5vbVRAAAADnRSTlMD8B8w3Ye8EViXa6lH02tNK7gAAAF7SURBVCjPnZKxS8NAFMZjNMYWFIsIdjmiBHUqGUTEIYugWxBxLg7iIBg6qKO4Kx1chSDiatFBcCoOLi4iiJsIp22stH5/g9fkLrmL4tAHubz78e7ed3efpvUW5sNmYfm2kqH6NboROmptwFiBfW2FzwHbM5p+RDAh0SGCkyjZI1hNcRXPPNtHM6H9JEwkBDgU6S42kpIcxkRabkh6/bZQRzpS+0lwjQauJGyIHQcgn8Ekn3HiNpQT11vxv9ZUcJX3DFoKLoV81YeCR/ie/ruC++i/uN5R8MH3ny1d3rL2pWAxLVEF+3zPYdzJj43ROMnjScI5cXEmkXu6sNi4yIYaTa/Q9KKOb+yNBrGSYJ77rFInDVFu+vFKmz2pgcQ194j76B51yiB4jWbzoFysjSKa00DxeGphHVgS8j0wg10gjvFK6gAmybyM6EtqmDKi5rOnWzfnsi9o6i9NKl7zqJOlBnOu/bv8kclg2q0Mjrxj4yyD891T6TuW1nv8AIcomdWd91CqAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/makecard/addbtn.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/moka/makecard/addbtn.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADN0lEQVRYR82XXUgUURSAz7njuv1J+WAQSYTRg0O1oTODIJUPxdpLZMVKJRokaw8RPixGBWVBf7IPEj3ksgu5WODSz6NGBVYIMjNEVuhDlBESlA8WprSuc09c2ZVtdXXYium+DMy955zv3vNzz0UiksDmqK6uXjs+Pl5FRB7OeQkArE6KfmeMfUDEwcLCwr7e3t6vNlUCLgUQCoVYOByu4ZyfIKJdiMiIKI6IwuA3YYiI1hBRCSK6iYgj4jPG2K3GxsaHfr+fLwazKEBFRcXOmZmZGwCwBQDeMca6XC5XT0NDw6tMxQK0s7NzeyKR2Ms5rwOAzQDwNi8v79TAwMDzbBBZATRNO2tZVisifmSMnWlra3tQVVVFdo62r68PW1paDnDOrxLRRkmSWnVdv7KQ7DyA+vr6ZcPDwxEiqgWA27Isn4xGoz/tGM5cI3QNDQ3dBIBjiNhdWlp6PFPXPABVVe8Q0SHG2Gld19tzMZwpo2laM+f8OiLeMwzjaPr8bwDi2Dnnlxhjgb9lPGUsCRFkjJ1Pd8ccgAi4RCLxBBGjpmk22tl5XV3dyunpaYzFYj/srFcUJUxE9S6Xa3cqMGcBRASHQqGXALBCluVtdn2uqupTIpo0TXOfHYBkTLwGgCm/318mMmkWQNO0g5zzbsZYra7r9+0oE2tUVR0UX8MwPHZlMm3NAiiK8hgAioPBoGw31XIFECkaCASGAGDUNM096PV6142NjY1KknRR1/XLdneSK4CQ0zTtnGVZF4qKiopR07TDlmXddbvdWn9/v4gD2yMXFwjllZWVZfF4XJck6QiqqnrNsqzmpqamgqXqdiZZrgAi6Ds6OiYkSWrH8vLymKj1pmlutb315MJcAYS4oihvxF0hAB4hYoFhGDsyAXw+3/KRkZEYEa3PArcp+f99lvkvsizXLJTWqqq+IKKJRQGSedsDAEVZDGxI/v+UZf6zx+PZH4lEphZw3xyAsy5wPAgdT0PHC5Hjpfi/uIz+4DruBQA0DMNrp4hlvY6FcC4Nic/nW5Wfn09dXV2TdgCyNiRpbZNzLVkKwtGmVEA43panu8ORh0l6MDn6NEuBOPo4zUytf/E8/wVcV7qJIGgoiwAAAABJRU5ErkJggg=="
 
 /***/ }),
 

@@ -122,8 +122,10 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
   },
   onLoad: function onLoad(options) {
     var cardid = wx.getStorageSync("cardid");
-    var layouts = moka.layouts[cardid],
-        photos = wx.getStorageSync("selectedPhotos");
+    var mokaIndex = moka.getIndexByCardId(cardid);
+    var layouts = moka.layouts[mokaIndex];
+    console.log(layouts, "layouts");
+    photos = wx.getStorageSync("selectedPhotos");
     this.maxCount = layouts.maxCount;
     this.photos = photos;
     this.setButtonTitle();

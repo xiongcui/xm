@@ -53,6 +53,8 @@ component.options.__file = "src/packageMoka/pages/moka/makecardv/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
 //
@@ -482,6 +484,8 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
 
 
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "makecardv",
   data: function data() {
@@ -540,7 +544,8 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       uploadData: {},
       n: false,
       h: false,
-      t: ""
+      t: "",
+      sub_user_id: ""
     };
   },
   methods: {
@@ -732,10 +737,20 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           o = (this.card.height - (this.screenH - 150) + 40) / h * a / e;
       this.scrollTop = o;
     },
-    switchBWH: function switchBWH() {},
-    switchQrcode: function switchQrcode() {},
-    switchBg: function switchBg() {},
+    switchBirthday: function switchBirthday() {
+      this.userInfo.is_birthday = !this.userInfo.is_birthday;
+    },
+    switchBWH: function switchBWH() {
+      this.userInfo.is_bwh = !this.userInfo.is_bwh;
+    },
+    switchQrcode: function switchQrcode() {
+      this.isMoveQrcode ? this.isMoveQrcode = 0 : this.isMoveQrcode = 1;
+    },
+    switchBg: function switchBg() {
+      this.isDark = !this.isDark;
+    },
     make: function make() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(5000)) return;
       wx.showLoading({
         title: "制作中，请稍候..."
       });
@@ -875,9 +890,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
                   template_id: o,
                   template_name: s
                 };
-                wx.setStorageSync("successImgSrc", t);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makesuccess/index?isVertical=1&has_qrcode=" + i);
-                wx.hideLoading();
+                a.upImgs(t, i);
               }(a.tempFilePath, t, o, s);
             },
             fail: function fail(t) {
@@ -890,8 +903,57 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
         });
       } else this.drawPhotosContent(t, a, o);
     },
-    qrcode: function qrcode(params) {
+    upImgs: function upImgs(tempFilePath, i) {
       var _this2 = this;
+
+      var header = {};
+
+      var _this = this;
+
+      var token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      wx.uploadFile({
+        url: "https://pai.qubeitech.com/v1/file/upload",
+        filePath: tempFilePath,
+        formData: {
+          scr_type: "mocha"
+        },
+        name: "file",
+        header: header,
+        success: function success(res) {
+          wx.hideLoading(); //判断上传的是图片还是视频
+
+          var data = JSON.parse(res.data);
+
+          if (data.code == 200) {
+            var params = {
+              mocha_url: data.data.file1
+            };
+
+            if (_this.sub_user_id) {
+              params.sub_uuid = _this.sub_user_id;
+            }
+
+            _this.userMocha(data.data.file1, i, params);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none"
+            });
+          }
+        },
+        fail: function fail(error) {
+          wx.hideLoading();
+          _this2.showMaking = false;
+          wx.showToast({
+            title: "上传失败！",
+            icon: "none"
+          });
+        }
+      });
+    },
+    qrcode: function qrcode(params) {
+      var _this3 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
@@ -901,13 +963,13 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "qb"])(params);
 
               case 3:
                 res = _context.sent;
-                _this2.moka_code = res.data.data;
+                _this3.moka_code = res.data.data;
 
-                _this2.cutAvartar();
+                _this3.cutAvartar();
 
                 _context.next = 10;
                 break;
@@ -923,32 +985,50 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           }
         }, _callee, null, [[0, 8]]);
       }))();
+    },
+    userMocha: function userMocha(file, i, params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Sb"])(params);
+
+              case 3:
+                res = _context2.sent;
+                wx.setStorageSync("successImgSrc", file);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makesuccess/index?isVertical=1&has_qrcode=" + i);
+                wx.hideLoading();
+                _context2.next = 11;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
     }
   },
   onLoad: function onLoad(options) {
-    var mokaIndex = moka.getIndexByCardId("1002010701");
+    var cardid = wx.getStorageSync("cardid");
+    var mokaIndex = moka.getIndexByCardId(cardid);
     this.card = moka.layouts[mokaIndex];
-    this.photos = [__webpack_require__(/*! ../../../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"), __webpack_require__(/*! ../../../../assets/images/cheatPrevention.png */ "./src/assets/images/cheatPrevention.png"), __webpack_require__(/*! ../../../../assets/images/lanmao1.jpg */ "./src/assets/images/lanmao1.jpg"), __webpack_require__(/*! ../../../../assets/images/lanmao2.jpg */ "./src/assets/images/lanmao2.jpg"), __webpack_require__(/*! ../../../../assets/images/lanmao3.jpg */ "./src/assets/images/lanmao3.jpg"), __webpack_require__(/*! ../../../../assets/images/lanmao2.jpg */ "./src/assets/images/lanmao2.jpg"), __webpack_require__(/*! ../../../../assets/images/lanmao3.jpg */ "./src/assets/images/lanmao3.jpg")];
-    this.userInfo = {
-      avatar: "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-      nickname: "nickname",
-      province: "province",
-      city: "city",
-      area: "area",
-      province_name: "province_name",
-      city_name: "city_name",
-      area_name: "area_name",
-      sex: 0,
-      birthday: "1994-08-29",
-      height: 100,
-      weight: 200,
-      bwh_b: 38,
-      bwh_w: 39,
-      bwh_h: 40,
-      shoe: 41,
-      is_bwh: true,
-      is_birthday: true
-    };
+    this.photos = wx.getStorageSync("selectedPhotos");
+    this.userInfo = wx.getStorageSync("carduserinfo");
+
+    if (options.sub_user_id) {
+      this.sub_user_id = options.sub_user_id;
+    }
+
     var l = [];
 
     for (var r = 0; r < this.photos.length; r++) {

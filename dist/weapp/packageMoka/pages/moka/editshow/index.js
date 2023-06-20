@@ -605,25 +605,20 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         return false;
       }
 
+      var data = this.infor;
       var carduserinfo = {
-        avatar: "https://yuepai-oss.qubeitech.com/avatar/111111/2f6e9fa5-0353-11ee-8f34-812b5b24112e-qa60.jpg",
-        nickname: "nickname",
-        province: "province",
-        city: "city",
-        area: "area",
-        province_name: "province_name",
-        city_name: "city_name",
-        area_name: "area_name",
-        sex: 0,
-        birthday: "1994-08-29",
-        height: 100,
-        weight: 200,
-        bwh_b: 38,
-        bwh_w: 39,
-        bwh_h: 40,
-        shoe: 41,
-        is_bwh: true,
-        is_birthday: true
+        avatar: data.avatar,
+        nickname: data.nickname,
+        sex: data.sex,
+        birthday: data.age,
+        height: data.shape.height,
+        weight: data.shape.weight,
+        bwh_b: data.shape.bust,
+        bwh_w: data.shape.waist,
+        bwh_h: data.shape.hip,
+        shoe: data.shape.size,
+        is_bwh: data.shape.bust ? true : false,
+        is_birthday: data.age ? true : false
       };
       wx.setStorageSync("carduserinfo", carduserinfo);
 
@@ -644,7 +639,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Qb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -690,7 +685,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Yb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -724,7 +719,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Lb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -754,7 +749,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "ac"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -787,7 +782,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "kb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -827,7 +822,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "wb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -857,7 +852,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "xb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -891,7 +886,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Pb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -933,7 +928,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "bc"])(params);
 
               case 3:
                 res = _context9.sent;
