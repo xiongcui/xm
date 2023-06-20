@@ -555,14 +555,14 @@ var render = function () {
                   ? _c("image", {
                       staticClass: "select",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/select2_1.png */ "./src/assets/images/common/select2_1.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/select2_1.png",
                       },
                       on: { tap: _vm.selectChange },
                     })
                   : _c("image", {
                       staticClass: "select",
                       attrs: {
-                        src: __webpack_require__(/*! ../../assets/images/common/select2_0.png */ "./src/assets/images/common/select2_0.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/select2_0.png",
                       },
                       on: { tap: _vm.selectChange },
                     }),

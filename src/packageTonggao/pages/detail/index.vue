@@ -134,7 +134,7 @@
         <view class="list_top_rt" @tap="toCommunicate">
           <view class="communicate-bg">
             <image
-              src="../../../assets/images/wchat.jpg"
+              src="https://yuepai-oss.qubeitech.com/static/images/wchat.jpg"
               class="communicate-img"
             />
           </view>

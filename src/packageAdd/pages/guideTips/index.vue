@@ -1,6 +1,8 @@
 <template>
   <view class="guide-box">
-    <image src="../../../assets/images/common/none.png"></image>
+    <image
+      src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
+    ></image>
     <view class="guide-txt"> {{ msg }} </view>
     <view class="guide-btn" @tap="goRealnameAuth" v-if="code == 21040"
       >去实名</view

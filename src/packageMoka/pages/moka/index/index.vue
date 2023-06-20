@@ -7,7 +7,7 @@
         <view @tap="goModel" class="item_img">
           <image
             mode="widthFix"
-            src="../../../../assets/images/moka/index/model.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/index/model.png"
           ></image>
         </view>
       </view>
@@ -19,7 +19,7 @@
         <view @tap="goActor" class="item_img">
           <image
             mode="widthFix"
-            src="../../../../assets/images/moka/index/actor.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/index/actor.png"
           ></image>
         </view>
       </view>
@@ -31,7 +31,7 @@
         <view @tap="goAnchor" class="item_img">
           <image
             mode="widthFix"
-            src="../../../../assets/images/moka/index/anchor.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/index/anchor.png"
           ></image>
         </view>
       </view>
@@ -43,7 +43,7 @@
         <view @tap="goTheme" class="item_img">
           <image
             mode="widthFix"
-            src="../../../../assets/images/moka/index/theme.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/index/theme.png"
           ></image>
         </view>
       </view>

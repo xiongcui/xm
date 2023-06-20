@@ -257,12 +257,12 @@
             "
           >
             <image
-              src="../../../../assets/images/common/select2_0.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/select2_0.png"
               class="word-img"
               v-if="!isword"
             ></image>
             <image
-              src="../../../../assets/images/common/select2_1.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/common/select2_1.png"
               class="word-img"
               v-if="isword"
             ></image>

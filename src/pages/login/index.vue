@@ -24,14 +24,14 @@
         <view class="login-tips">
           <image
             class="select"
-            src="../../assets/images/common/select2_1.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/select2_1.png"
             v-if="select"
             @tap="selectChange"
           ></image>
           <image
             v-else
             class="select"
-            src="../../assets/images/common/select2_0.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/common/select2_0.png"
             @tap="selectChange"
           ></image>
           <text>我已阅读并同意</text>

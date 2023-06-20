@@ -62,7 +62,7 @@
       <view class="release-item" @tap="releaseUrl(4)">
         <view class="release-left color4">
           <image
-            src="../../assets/images/moka_icon.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka_icon.png"
             mode="aspectFit"
             class="release-image"
           ></image>

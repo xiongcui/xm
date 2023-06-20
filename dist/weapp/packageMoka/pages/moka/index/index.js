@@ -148,7 +148,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "widthFix",
-              src: __webpack_require__(/*! ../../../../assets/images/moka/index/model.png */ "./src/assets/images/moka/index/model.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/model.png",
             },
           }),
         ]),
@@ -162,7 +162,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "widthFix",
-              src: __webpack_require__(/*! ../../../../assets/images/moka/index/actor.png */ "./src/assets/images/moka/index/actor.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/actor.png",
             },
           }),
         ]),
@@ -176,7 +176,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "widthFix",
-              src: __webpack_require__(/*! ../../../../assets/images/moka/index/anchor.png */ "./src/assets/images/moka/index/anchor.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/anchor.png",
             },
           }),
         ]),
@@ -190,7 +190,7 @@ var render = function () {
           _c("image", {
             attrs: {
               mode: "widthFix",
-              src: __webpack_require__(/*! ../../../../assets/images/moka/index/theme.png */ "./src/assets/images/moka/index/theme.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/theme.png",
             },
           }),
         ]),
@@ -204,54 +204,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/actor.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/moka/index/actor.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/index/actor.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/anchor.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/moka/index/anchor.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/index/anchor.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/model.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/moka/index/model.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/index/model.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/theme.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/moka/index/theme.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/index/theme.png";
 
 /***/ }),
 

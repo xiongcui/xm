@@ -1225,7 +1225,9 @@ var render = function () {
               _c("view", { staticClass: "communicate-bg" }, [
                 _c("image", {
                   staticClass: "communicate-img",
-                  attrs: { src: __webpack_require__(/*! ../../../assets/images/wchat.jpg */ "./src/assets/images/wchat.jpg") },
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/wchat.jpg",
+                  },
                 }),
               ]),
               _c("text", { staticClass: "communicate-txt" }, [
@@ -1614,18 +1616,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/wchat.jpg":
-/*!*************************************!*\
-  !*** ./src/assets/images/wchat.jpg ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/wchat.jpg";
 
 /***/ }),
 

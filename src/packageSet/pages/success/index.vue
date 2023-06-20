@@ -1,6 +1,8 @@
 <template>
   <view class="sucess">
-    <image src="../../../assets/images/common/tip_success.png"></image>
+    <image
+      src="https://yuepai-oss.qubeitech.com/static/images/common/tip_success.png"
+    ></image>
     <view class="sucess-tips">{{ msg }}</view>
   </view>
 </template>

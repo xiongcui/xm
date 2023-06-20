@@ -355,7 +355,7 @@ var render = function () {
             _c("image", {
               staticClass: "release-image",
               attrs: {
-                src: __webpack_require__(/*! ../../assets/images/moka_icon.png */ "./src/assets/images/moka_icon.png"),
+                src: "https://yuepai-oss.qubeitech.com/static/images/moka_icon.png",
                 mode: "aspectFit",
               },
             }),
@@ -383,18 +383,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/moka_icon.png":
-/*!*****************************************!*\
-  !*** ./src/assets/images/moka_icon.png ***!
-  \*****************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka_icon.png";
 
 /***/ }),
 

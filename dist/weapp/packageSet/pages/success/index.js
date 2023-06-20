@@ -56,6 +56,8 @@ component.options.__file = "src/packageSet/pages/success/index.vue"
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "sucess",
@@ -90,7 +92,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "sucess" }, [
     _c("image", {
-      attrs: { src: __webpack_require__(/*! ../../../assets/images/common/tip_success.png */ "./src/assets/images/common/tip_success.png") },
+      attrs: {
+        src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_success.png",
+      },
     }),
     _c("view", { staticClass: "sucess-tips" }, [_vm._v(_vm._s(_vm.msg))]),
   ])
@@ -99,18 +103,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/tip_success.png":
-/*!**************************************************!*\
-  !*** ./src/assets/images/common/tip_success.png ***!
-  \**************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/tip_success.png";
 
 /***/ }),
 
