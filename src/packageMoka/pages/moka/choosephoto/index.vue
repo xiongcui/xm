@@ -11,7 +11,7 @@
           @tap="deletePhoto"
           class="delete-button"
           :id="index"
-          src="../../../../assets/images/moka/makecard/delete.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/delete.png"
         ></image>
       </view>
     </view>

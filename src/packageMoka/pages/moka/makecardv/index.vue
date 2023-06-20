@@ -351,7 +351,7 @@
             :y="0"
           >
             <image
-              src="../../../../assets/images/moka/makecard/slider_v.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/slider_v.png"
             ></image>
           </movable-view>
         </movable-area>
@@ -360,12 +360,12 @@
         <view @tap="switchBWH" class="switch switch_bwh">
           <image
             class="icon_check"
-            src="../../../../assets/images/moka/makecard/bwh1.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh1.png"
             v-if="userInfo.is_bwh"
           ></image>
           <image
             class="icon_check"
-            src="../../../../assets/images/moka/makecard/bwh0.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh0.png"
             v-else
           ></image>
         </view>
@@ -376,19 +376,19 @@
         >
           <image
             class="icon_check_qrcode"
-            src="../../../../assets/images/moka/makecard/qrcode0.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode0.png"
             v-if="isMoveQrcode"
           ></image>
           <image
             class="icon_check_qrcode"
-            src="../../../../assets/images/moka/makecard/qrcode1.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode1.png"
             v-else
           ></image>
         </view>
         <view @tap="switchBg" class="switch switch_bg">
           <image
             class="icon_switchbg"
-            src="../../../../assets/images/moka/makecard/switchbg.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/switchbg.png"
           ></image>
         </view>
         <view class="ub-f1"></view>

@@ -1246,7 +1246,7 @@ var render = function () {
             _c("view", { staticClass: "making-icon" }, [
               _c("image", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/loading.gif */ "./src/assets/images/moka/makecard/loading.gif"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/loading.gif",
                 },
               }),
             ]),
@@ -1277,7 +1277,7 @@ var render = function () {
                   [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/slider_v.png */ "./src/assets/images/moka/makecard/slider_v.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/slider_v.png",
                       },
                     }),
                   ]
@@ -2110,13 +2110,13 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/birthday1.png */ "./src/assets/images/moka/makecard/birthday1.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/birthday1.png",
                             },
                           })
                         : _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/birthday0.png */ "./src/assets/images/moka/makecard/birthday0.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/birthday0.png",
                             },
                           }),
                     ]
@@ -2132,13 +2132,13 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh1.png */ "./src/assets/images/moka/makecard/bwh1.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh1.png",
                             },
                           })
                         : _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh0.png */ "./src/assets/images/moka/makecard/bwh0.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh0.png",
                             },
                           }),
                     ]
@@ -2155,13 +2155,13 @@ var render = function () {
                             ? _c("image", {
                                 staticClass: "icon_check_qrcode",
                                 attrs: {
-                                  src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode0.png */ "./src/assets/images/moka/makecard/qrcode0.png"),
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode0.png",
                                 },
                               })
                             : _c("image", {
                                 staticClass: "icon_check_qrcode",
                                 attrs: {
-                                  src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode1.png */ "./src/assets/images/moka/makecard/qrcode1.png"),
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode1.png",
                                 },
                               }),
                         ]
@@ -2177,7 +2177,7 @@ var render = function () {
                       _c("image", {
                         staticClass: "icon_switchbg",
                         attrs: {
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/switchbg.png */ "./src/assets/images/moka/makecard/switchbg.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/switchbg.png",
                         },
                       }),
                     ]
@@ -2222,42 +2222,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/makecard/birthday0.png":
-/*!*******************************************************!*\
-  !*** ./src/assets/images/moka/makecard/birthday0.png ***!
-  \*******************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAA2CAMAAAAlIZ1PAAAAnFBMVEX19fW4uLi0tLS1tbW6urrAwMCzs7PNzc3V1dWysrK2trbGxsbJycm0tLS2tra5ubm9vb2ysrLCwsLNzc2ysrK0tLSysrK9vb3IyMi1tbW8vLzm5ua6urrb29uzs7O0tLS4uLi/v7+2traxsbEMDA6tra2EhIQQEBI+Pj8XFxlRUVItLS+oqKiSkpJtbW5DQ0UjIyWampp6enqenp4lBK7CAAAAI3RSTlMai8u+dl3dPTD5nlBHpKd5ZPRSN+3E22VGsHMhgCnpzZdZodyNrcIAAAGtSURBVFjD7ddtU+IwFIbhk8KWAi7Y95by5j4RRdzV1f//36SgSRuLibXMOGOuT/3EPT2HTlOyLMuyrO5lLHZ9341ZRm0U1EaaQEhS+oR5QHsMfVIMLuoWpAod1DghmbqCcyLroO4XKYIIiiggQ3/ATmbzieS+ywZDvDM07S4xPpn1SPqtZsMIDSKzOY+BaX+vh7x/NDPMOmjkkIk1VL5ZNoXq+na7AZCS3mIJNi31kE+PDO82geqO8zsACelNkBO12W0G1RPnN3+xl5HOJYaDdlkGxf8t5/9QYtoRRxhRu2ysLnbH+QMOYtLIsSo+yg4rUM+6KD1vKot9vMeBSxqzpUcfZd0Kv571D7e45bfXcrHiUdDxaDE6WiF+vQoMhiyzZVcsVmS1Qqjm2qwc8uam7IrFiiFrFeOjCdavV57pX0p25WJLMZlo+wDJ7k4utsTOmM1Q6ZaLlbLus1JS7T5ASuic2RSi+7i7h5R+OTu7lHrdvfiKgTACE9de4+9295q/QqPJW3bNpFV3h5qLXqO5drf6I1x7M1ZUJzMPOzywSuc9nn+zjxHLsizrR3gB+0t1v4IVAx8AAAAASUVORK5CYII="
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/makecard/birthday1.png":
-/*!*******************************************************!*\
-  !*** ./src/assets/images/moka/makecard/birthday1.png ***!
-  \*******************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAAA2CAMAAAAlIZ1PAAAAolBMVEX19fW7u7u3t7e0tLS1tbXAwMDNzc3V1dXGxsa2tra5ubnJycm0tLSysrK2trazs7O9vb3/2wH/2wH/3AP/3AP/3Ab/3Qj/3hb84Sj84zj75kn66GGysrK1tbXm5ub/2wDb29u4uLi6urrAwMD/2wCxsbEMDA761gETEg69owQdGg1VSgpyYwgvKQ07NAxeUQqbhQbStAPgwALyzwGulgVGPQs1njmwAAAAJHRSTlMadYvMvlw8MFCeekek+KfdZPTt3NvMxI1lUkY36rAh+imYhmGrIY8jAAABsUlEQVRYw+3X2XKCMBSA4QMoIK22KgKi4tKcuGtb2/d/tUKxBOKSFHGmM813Q+7+SY4OARRFURSleqHvddvtrueHUEYEZQQuybgB/IJjQ0xHDTjmQ9EEeIMeKegNQFYdjQtZA4vqwOl3CKfTB0kN1C9mRy3m6STbH5MTY9nuEO2LWQuYRz476JAzOnLnbCM6WqyGI+1IMtsjZ/VAxhR5TblsQHjz9WoZPwIQmwxx5iTi3Topyd26hLehdBM/XBBr4QigzGxDwvugdPGWLEIQecGmWS7r89X3FaWvJOFLHHEDymU9frA7Svfp0gOBERrRtWwzB4vZbrrFZW6w20O67IKANrTgWvYpZ1jMtr+3uKLreW6wqTaIWDBppAysHVe2xCGzbNzNBptlxUzkOcIsO+TlIulmg80OWSiyUy2c2ilL9ifFumywCQ9klP0Dse6ODTbh3zEbklw3GSwTVp9l3Hx3TxgX7pkNSNbdfh4IE9yc1Z6ZWnUvvsjMNFDP1pbgUnPra76OZ7V+slOdMaq71DzUznKEsxVf4crT9AiY+sys8MLK3Pd6/sc+RhRFUZR/4Qs6ynqvyYg7xAAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/makecard/loading.gif":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/moka/makecard/loading.gif ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/makecard/loading.gif";
 
 /***/ }),
 

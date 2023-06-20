@@ -604,7 +604,7 @@ var render = function () {
               _c("image", {
                 attrs: {
                   mode: "aspectFit",
-                  src: __webpack_require__(/*! ../../../../assets/images/common/icon_right.png */ "./src/assets/images/common/icon_right.png"),
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_right.png",
                 },
               }),
             ]
@@ -1507,18 +1507,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/icon_right.png":
-/*!*************************************************!*\
-  !*** ./src/assets/images/common/icon_right.png ***!
-  \*************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAaCAMAAABfE/ZQAAAAz1BMVEUAAABVVVVjY2Nra2tmZmZhYWFoaGhkZGRgYGBqampmZmZiYmJoaGhkZGRqampmZmZoaGhkZGRpaWllZWVlZWVnZ2dnZ2dlZWVoaGhlZWVmZmZmZmZlZWVmZmZmZmZmZmZnZ2dmZmZnZ2dlZWVnZ2dmZmZnZ2dlZWVnZ2dnZ2dnZ2dlZWVnZ2dmZmZmZmZmZmZmZmZnZ2dmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZlZWVmZmZmZmZmZmZmZmZmZmZlZWVmZmZmZmasldbwAAAARHRSTlMACRITFBUWFxgYGRobHB0eICEiMGBhY2Vnamxub3Fzdnd6fH6BhIaIiIuNoa620dLU1dbX2Nna29zd3t/g4eLr7P3+/gIezZcAAACYSURBVBjTTc/FAoIAEEVR7AK7xe4uVGyB+//f5G6Y2Z27emMsvrah7wcDbRsY6tALYKRDN4CxDp0AJjq0fZjq0PJhpkPTg7kODQ+WOtQ9WOlQ82CtQx+ohCzc4RkRWi4ck0LzBqeUMHcFJyPMOnDJCdNnuJnC5BFcS5g4wD0vjO/hURDGdvAqhrM28C6p1Vs+Zf1FtJrR/APIKBjhjJdrOgAAAABJRU5ErkJggg=="
 
 /***/ }),
 

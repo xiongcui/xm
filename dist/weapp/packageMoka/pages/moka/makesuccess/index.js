@@ -186,7 +186,7 @@ var render = function () {
       _c("view", { staticClass: "hint" }, [
         _c("image", {
           attrs: {
-            src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/success.png */ "./src/assets/images/moka/makecard/success.png"),
+            src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/success.png",
           },
         }),
         _c("text", { staticClass: "hint-text" }, [_vm._v("制作完成！")]),
@@ -232,18 +232,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/makecard/success.png":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/moka/makecard/success.png ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/makecard/success.png";
 
 /***/ }),
 

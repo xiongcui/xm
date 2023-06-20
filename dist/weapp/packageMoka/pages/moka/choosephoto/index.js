@@ -163,7 +163,7 @@ var render = function () {
             staticClass: "delete-button",
             attrs: {
               id: index,
-              src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/delete.png */ "./src/assets/images/moka/makecard/delete.png"),
+              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/delete.png",
             },
             on: { tap: _vm.deletePhoto },
           }),
@@ -194,18 +194,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/makecard/delete.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/moka/makecard/delete.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAMAAABiM0N1AAAAhFBMVEUAAAD/3AD/3AD//wD/3AD/3wD/4QD/3AD/3AD/3AD/3AD/+wD/3AD/3AD/3AD/3QD/3gD/5wD/3AD/3AD/3AD/3QD/3QD/3QD/3AD/3AD/3AD/3AD/3AD/3AD/3gD/3QD/4QD/3AD/3AD/3QD/2wAzMzNIRC7hwghfVyl8byGbiBnnxwYPCuBfAAAAJHRSTlMA+ecD9C4X7dOsVgbbzFxuQgrhuYR0aWLHs5a/jVA9NiGiSH0K6g/bAAACEElEQVRYw63X55KiQBiF4UM3ORvHtOOEg2G8//tb3bWKkUY/aHh+atVbLdgJr3j5PMpS5boqzaJ57sGGv4wCNgTR0kcvSbxmO2cdJ+hqslB8YVpM0IUuAgpUoSF6D9lBtpcezo4d7RK88JGxs9UHnipd9hC844nYYS/OH7R6Y29vreOhhZYxlQ4tOO/G+3JpJWi8uySjpVXyENrQ2u5hXnCAfd3RIQcI6xm84CAF7iYBBwkmTwf0czpf2OpyPv2waXEfkDI6VVUdjmxxPFy/MkoqwU3OplNVl8xOdWJTjJsZm85VXTI71ZlNM1z5NFwOdcnsHC40+AAKmo51SfjwbglgTakkdxgB2qVUkjsMNPakVJI7pIc3yiW5wxw7yiW5wznWlEtyhxFCyiW5wwxTyiW5wxQB5ZLcoYJDuSR36I4WGu2njfawx3v90Vh/yPlIU2S8SeuNtYzoYIyFTQGIxlhqPwEs7RZ/8zDpO8O3I8fH1Xr4BhnhJrbbss3DbTIdeohINf4phh5rlvgvURxEJbhb0op5kdAZB1ih5nEAD6jNae0bv+ktLW01HviKVpSPhr1LC64Hw5fD3pxSuNIOvNSWLntxSzzhKfagPDzlz9jZzMcL+tthJ84CAm/LDrYeZHlKQRqjE52HfCHMNTorP122cj9L9DOJN6kxlk08gQ3/a7GZrcLpNFzNNsWXjxf+As7AOJvBqz92AAAAAElFTkSuQmCC"
 
 /***/ }),
 

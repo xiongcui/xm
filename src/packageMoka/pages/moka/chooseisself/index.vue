@@ -13,14 +13,14 @@
               <view class="item_arrow">
                 <image
                   mode="widthFix"
-                  src="../../../../assets/images/moka/index/arrow.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png"
                 ></image>
               </view>
             </view>
             <view class="item_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/moka/index/moka_self.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_self.png"
               ></image>
             </view>
           </view>
@@ -36,14 +36,14 @@
               <view class="item_arrow">
                 <image
                   mode="widthFix"
-                  src="../../../../assets/images/moka/index/arrow.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png"
                 ></image>
               </view>
             </view>
             <view class="item_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/moka/index/moka_other.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_other.png"
               ></image>
             </view>
           </view>
@@ -61,14 +61,14 @@
               <view class="item_arrow">
                 <image
                   mode="widthFix"
-                  src="../../../../assets/images/moka/index/arrow.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png"
                 ></image>
               </view>
             </view>
             <view class="item_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/moka/index/moka_other.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_other.png"
               ></image>
             </view>
           </view>
@@ -84,14 +84,14 @@
               <view class="item_arrow">
                 <image
                   mode="widthFix"
-                  src="../../../../assets/images/moka/index/arrow.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png"
                 ></image>
               </view>
             </view>
             <view class="item_icon">
               <image
                 mode="widthFix"
-                src="../../../../assets/images/moka/index/moka_self.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_self.png"
               ></image>
             </view>
           </view>

@@ -29,7 +29,7 @@
           <view class="item_right">
             <image
               mode="aspectFit"
-              src="../../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>
@@ -53,7 +53,7 @@
           <view class="item_right">
             <image
               mode="aspectFit"
-              src="../../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>
@@ -80,7 +80,7 @@
           <view class="item_right">
             <image
               mode="aspectFit"
-              src="../../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>
@@ -103,7 +103,7 @@
           <view class="item_right">
             <image
               mode="aspectFit"
-              src="../../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>
@@ -130,7 +130,7 @@
           <view class="item_right">
             <image
               mode="aspectFit"
-              src="../../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>
@@ -151,7 +151,7 @@
           <view class="item_right">
             <image
               mode="aspectFit"
-              src="../../../../assets/images/right.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/right.png"
             ></image>
           </view>
         </view>

@@ -1779,7 +1779,7 @@ var render = function () {
                   [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/slider_v.png */ "./src/assets/images/moka/makecard/slider_v.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/slider_v.png",
                       },
                     }),
                   ]
@@ -1802,13 +1802,13 @@ var render = function () {
                   ? _c("image", {
                       staticClass: "icon_check",
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh1.png */ "./src/assets/images/moka/makecard/bwh1.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh1.png",
                       },
                     })
                   : _c("image", {
                       staticClass: "icon_check",
                       attrs: {
-                        src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/bwh0.png */ "./src/assets/images/moka/makecard/bwh0.png"),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh0.png",
                       },
                     }),
               ]
@@ -1825,13 +1825,13 @@ var render = function () {
                       ? _c("image", {
                           staticClass: "icon_check_qrcode",
                           attrs: {
-                            src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode0.png */ "./src/assets/images/moka/makecard/qrcode0.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode0.png",
                           },
                         })
                       : _c("image", {
                           staticClass: "icon_check_qrcode",
                           attrs: {
-                            src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/qrcode1.png */ "./src/assets/images/moka/makecard/qrcode1.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode1.png",
                           },
                         }),
                   ]
@@ -1844,7 +1844,7 @@ var render = function () {
                 _c("image", {
                   staticClass: "icon_switchbg",
                   attrs: {
-                    src: __webpack_require__(/*! ../../../../assets/images/moka/makecard/switchbg.png */ "./src/assets/images/moka/makecard/switchbg.png"),
+                    src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/switchbg.png",
                   },
                 }),
               ]

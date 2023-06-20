@@ -621,7 +621,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
                     },
                   }),
                 ]),
@@ -664,7 +664,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
                     },
                   }),
                 ]),
@@ -709,7 +709,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
                     },
                   }),
                 ]),
@@ -745,7 +745,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
                     },
                   }),
                 ]),
@@ -791,7 +791,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
                     },
                   }),
                 ]),
@@ -825,7 +825,7 @@ var render = function () {
                   _c("image", {
                     attrs: {
                       mode: "aspectFit",
-                      src: __webpack_require__(/*! ../../../../assets/images/right.png */ "./src/assets/images/right.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/right.png",
                     },
                   }),
                 ]),
@@ -858,18 +858,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/right.png":
-/*!*************************************!*\
-  !*** ./src/assets/images/right.png ***!
-  \*************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAWCAMAAADD5o0oAAAASFBMVEUAAAC1tbW3t7evr6+1tbWnp6e0tLS1tbW0tLS0tLS0tLS0tLS1tbW1tbW0tLS0tLS0tLS0tLS0tLSzs7O1tbWzs7Ozs7O1tbUNPAZqAAAAF3RSTlMAFxAL4Qa01c/EvCIdqN3ayK2iiolUUa/GGI4AAABRSURBVBjTdc9JDoBACETRtm1xbGet+99UV34NkRUvIUCFw2J4atWMYqMWFbdKVKv71SRDwyirUNKC+qT80fbG7sZYwGp3lHfoXQTCudhnpr8AZJQETibiUiUAAAAASUVORK5CYII="
 
 /***/ }),
 

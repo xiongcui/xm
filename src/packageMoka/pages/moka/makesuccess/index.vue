@@ -3,7 +3,7 @@
     <view class="main">
       <view class="hint">
         <image
-          src="../../../../assets/images/moka/makecard/success.png"
+          src="https://yuepai-oss.qubeitech.com/static/images/moka/makecard/success.png"
         ></image>
         <text class="hint-text">制作完成！</text>
       </view>

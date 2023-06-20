@@ -291,7 +291,7 @@ var render = function () {
                         _c("image", {
                           attrs: {
                             mode: "widthFix",
-                            src: __webpack_require__(/*! ../../../../assets/images/moka/index/arrow.png */ "./src/assets/images/moka/index/arrow.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png",
                           },
                         }),
                       ]),
@@ -300,7 +300,7 @@ var render = function () {
                       _c("image", {
                         attrs: {
                           mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/index/moka_self.png */ "./src/assets/images/moka/index/moka_self.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_self.png",
                         },
                       }),
                     ]),
@@ -329,7 +329,7 @@ var render = function () {
                         _c("image", {
                           attrs: {
                             mode: "widthFix",
-                            src: __webpack_require__(/*! ../../../../assets/images/moka/index/arrow.png */ "./src/assets/images/moka/index/arrow.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png",
                           },
                         }),
                       ]),
@@ -338,7 +338,7 @@ var render = function () {
                       _c("image", {
                         attrs: {
                           mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/index/moka_other.png */ "./src/assets/images/moka/index/moka_other.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_other.png",
                         },
                       }),
                     ]),
@@ -369,7 +369,7 @@ var render = function () {
                         _c("image", {
                           attrs: {
                             mode: "widthFix",
-                            src: __webpack_require__(/*! ../../../../assets/images/moka/index/arrow.png */ "./src/assets/images/moka/index/arrow.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png",
                           },
                         }),
                       ]),
@@ -378,7 +378,7 @@ var render = function () {
                       _c("image", {
                         attrs: {
                           mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/index/moka_other.png */ "./src/assets/images/moka/index/moka_other.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_other.png",
                         },
                       }),
                     ]),
@@ -407,7 +407,7 @@ var render = function () {
                         _c("image", {
                           attrs: {
                             mode: "widthFix",
-                            src: __webpack_require__(/*! ../../../../assets/images/moka/index/arrow.png */ "./src/assets/images/moka/index/arrow.png"),
+                            src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/arrow.png",
                           },
                         }),
                       ]),
@@ -416,7 +416,7 @@ var render = function () {
                       _c("image", {
                         attrs: {
                           mode: "widthFix",
-                          src: __webpack_require__(/*! ../../../../assets/images/moka/index/moka_self.png */ "./src/assets/images/moka/index/moka_self.png"),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/index/moka_self.png",
                         },
                       }),
                     ]),
@@ -471,42 +471,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/arrow.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/moka/index/arrow.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAABO0lEQVRIS63Wv0rDUBTH8W/aWqF1kE61k4OLiyAiLg6SOii4KCRTcXAsOPsGXQsu+gIWNIsRHUQcHKS+gGhdXOzi4OgQlJRIQan3pvdPMoZzfx8O9xwSJz7z8oienZNdnLzL12eLcO9FWKPw0hEC9VaZytwHkAPeiaJ1wsaTQt6/EjGQlHmn9+CsALENIgc2DytMVa+BRRtEDiRdZICkAxkg4wFLRA2wQNQBQ0QPMED0ATlSJ2w8j26aGfCL3AHzwz25JfA3sgO8jguFc6A0DD0i8PezAUbD4/iK/oNHtx3ZAxrhCaZ3B5rheoBBuDpgGK4GWISPByzD04Htjkvhz5ynjGLap1Q8RasHk8ws9YHpn8OG4fIOlpsTzK69AlXgkreuL1oilZ8A+R5sHdcolhfoXdzwGHyrhIlqBlZf7DEKpKMDAAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/moka_other.png":
-/*!*****************************************************!*\
-  !*** ./src/assets/images/moka/index/moka_other.png ***!
-  \*****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/index/moka_other.png";
-
-/***/ }),
-
-/***/ "./src/assets/images/moka/index/moka_self.png":
-/*!****************************************************!*\
-  !*** ./src/assets/images/moka/index/moka_self.png ***!
-  \****************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/moka/index/moka_self.png";
 
 /***/ }),
 
