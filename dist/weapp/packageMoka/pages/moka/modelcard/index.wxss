@@ -129,7 +129,7 @@
 }
 .modelcard .swiper-box {
   padding-top: 88rpx;
-  height: 100vh;
+  height: calc(100vh - 188rpx);
 }
 .modelcard .scroll_block {
   height: 100%;
