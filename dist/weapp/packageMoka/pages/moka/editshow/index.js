@@ -446,6 +446,20 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -522,6 +536,18 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       wx.navigateBack({
         delta: 1
       });
+    },
+    showbigPersonimg: function showbigPersonimg(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src,
+        // 图片的地址url
+        urls: urls // 预览的地址url
+
+      });
+    },
+    gomoka: function gomoka() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.uuid || false);
     },
     editpersondata: function editpersondata() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
@@ -628,6 +654,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecard/index");
       }
     },
+    bindended: function bindended(id) {
+      wx.createVideoContext(id).exitFullScreen();
+    },
     userInfo: function userInfo(params) {
       var _this2 = this;
 
@@ -639,7 +668,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -685,7 +714,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Zb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -719,7 +748,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Mb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -749,7 +778,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "bc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -886,7 +915,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Qb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -928,7 +957,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "bc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "cc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1410,6 +1439,16 @@ var render = function () {
                                 [_vm._v("编辑")]
                               )
                             : _vm._e(),
+                          !_vm.myself && _vm.infor.mocha
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.gomoka },
+                                },
+                                [_vm._v("更多")]
+                              )
+                            : _vm._e(),
                         ]),
                         _c("view", { staticClass: "home_item_main" }, [
                           _c("view", { attrs: { catchtap: "myMoka" } }, [
@@ -1497,6 +1536,19 @@ var render = function () {
                             ]),
                           ]),
                         ]),
+                        _vm.infor.mocha
+                          ? _c("image", {
+                              staticClass: "mokaimg",
+                              attrs: { mode: "widthFix", src: _vm.infor.mocha },
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.showbigPersonimg(_vm.infor.mocha, [
+                                    _vm.infor.mocha,
+                                  ])
+                                },
+                              },
+                            })
+                          : _vm._e(),
                       ]),
                       _c("view", { staticClass: "home_item" }, [
                         _c("view", { staticClass: "home_item_title ub" }, [
@@ -1550,10 +1602,17 @@ var render = function () {
                                           _c("image", {
                                             staticClass: "personimg",
                                             attrs: {
-                                              catchtap: "showbigPersonimg",
                                               "data-index": index,
                                               mode: "aspectFill",
                                               src: imgitem,
+                                            },
+                                            on: {
+                                              tap: function ($event) {
+                                                return _vm.showbigPersonimg(
+                                                  imgitem,
+                                                  _vm.homeInfor.personimg
+                                                )
+                                              },
                                             },
                                           }),
                                           index == 2
@@ -1670,12 +1729,19 @@ var render = function () {
                                       ? _c("video", {
                                           staticClass: "video_item",
                                           attrs: {
-                                            id: "user_video",
+                                            id: "user_video" + index,
                                             objectFit: "cover",
                                             poster: item.cover,
                                             src: item.file,
                                             title: _vm.homeInfor.nickname,
                                             vslideGestureInFullscreen: false,
+                                          },
+                                          on: {
+                                            ended: function ($event) {
+                                              return _vm.bindended(
+                                                "user_video" + index
+                                              )
+                                            },
                                           },
                                         })
                                       : _vm._e(),

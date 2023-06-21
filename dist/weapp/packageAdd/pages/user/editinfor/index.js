@@ -188,6 +188,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
 //
 //
 //
+//
 
 
 
@@ -253,12 +254,32 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         return false;
       }
 
+      if (this.sex === null) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择性别！");
+        return false;
+      }
+
+      if (!this.birthday) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择生日！");
+        return false;
+      }
+
+      if (!this.identity) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择身份！");
+        return false;
+      }
+
+      if (!this.region.length) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* errortip */ "a"])("请选择地区！");
+        return false;
+      }
+
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
       var params = {
         nickname: this.nickname,
         birthday: this.birthday,
         addressName: this.region.length ? this.region.join("-") : null,
-        address: this.regionList ? this.regionList.join("-") : null,
+        address: this.regionList.length ? this.regionList.join("-") : null,
         avatar: this.infor.avatar
       };
 
@@ -318,7 +339,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Vb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -352,7 +373,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Ub"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -528,7 +549,7 @@ var render = function () {
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.sexs[_vm.sex])),
                         ])
-                      : _c("view", { staticClass: "picker" }, [
+                      : _c("view", { staticClass: "picker-none" }, [
                           _vm._v("请选择"),
                         ]),
                   ]),
@@ -547,7 +568,10 @@ var render = function () {
           _c(
             "picker",
             {
-              attrs: { mode: "date", start: "1960-06-01", value: _vm.birthday },
+              attrs: {
+                mode: "date",
+                value: _vm.birthday ? _vm.birthday : "2005-01-01",
+              },
               on: { change: _vm.birthdayChange },
             },
             [
@@ -559,7 +583,7 @@ var render = function () {
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.birthday)),
                         ])
-                      : _c("view", { staticClass: "picker" }, [
+                      : _c("view", { staticClass: "picker-none" }, [
                           _vm._v("请选择"),
                         ]),
                   ]),
@@ -595,7 +619,7 @@ var render = function () {
                       ? _c("view", { staticClass: "picker" }, [
                           _vm._v(_vm._s(_vm.identity)),
                         ])
-                      : _c("view", { staticClass: "picker" }, [
+                      : _c("view", { staticClass: "picker-none" }, [
                           _vm._v("请选择身份"),
                         ]),
                   ]
@@ -637,9 +661,11 @@ var render = function () {
                               ),
                             ]
                           )
-                        : _c("view", { staticClass: "pickers pick-city" }, [
-                            _vm._v("请选择地区"),
-                          ]),
+                        : _c(
+                            "view",
+                            { staticClass: "pickers pick-city picker-none" },
+                            [_vm._v("请选择地区")]
+                          ),
                     ]
                   ),
                 ],

@@ -2,9 +2,24 @@ page {
   background: #15161a;
 }
 
-.makecardv .main-scrollview {
-  margin: 30rpx auto;
+.makecardv {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
   position: relative;
+}
+
+.makecardv .main-scrollview {
+  position: relative;
+}
+
+.makecardv .container {
+  width: 620rpx;
+  margin: 30rpx auto;
 }
 
 .makecardv .userinfo-container {
@@ -91,6 +106,7 @@ page {
   padding: 30rpx;
   position: fixed;
   bottom: 0;
+  left: 16rpx;
   width: 690rpx;
 }
 
@@ -108,6 +124,7 @@ page {
 .makecardv .logoavatar image {
   width: 100rpx;
   height: 100rpx;
+  margin-right: 16rpx;
 }
 
 .makecardv .photo-container {
@@ -170,4 +187,32 @@ page {
   color: #333333;
   font-size: 28rpx;
   margin: 0 30rpx;
+}
+
+.makecardv .canvas-box {
+  position: absolute;
+  left: 99999rpx;
+}
+
+.makecardv .userinfo-info-moveqr {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.makecardv .name-moveqr {
+  padding: 0 30rpx;
+  font-size: 32rpx;
+}
+
+.makecardv .text-info-moveqr {
+  font-size: 18rpx;
 }

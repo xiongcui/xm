@@ -82,18 +82,28 @@
             </view>
           </view>
           <view class="list_top_rt">
-            <view
-              @tap.stop="follow(item)"
-              class="followed_btn_red"
+            <view class="list_time">
+              {{ item.basic.login_time_humanize }}
+            </view>
+            <image
+              class="follow_img"
+              src="https://yuepai-oss.qubeitech.com/static/images/follow.png"
               v-if="!item.follow.is_follower"
-              >关注</view
-            >
-            <view class="followed_btn" @tap.stop="unfollow(item)" v-else
-              >取消关注</view
-            >
+              @tap.stop="follow(item)"
+            ></image>
+            <image
+              class="follow_img"
+              src="https://yuepai-oss.qubeitech.com/static/images/followed.png"
+              @tap.stop="unfollow(item)"
+              v-else
+            ></image>
           </view>
         </view>
-        <view class="list_desc">
+        <view
+          class="list_desc"
+          v-if="item.basic.resume"
+          @tap.stop="follow(item)"
+        >
           {{ item.basic.resume }}
         </view>
         <view class="list_img" v-if="item.album.photo_album.length">
@@ -122,10 +132,6 @@
               @tap.stop=""
             ></video>
           </scroll-view>
-        </view>
-        <view class="list_bottom">
-          <view class="list_time"> {{ item.basic.login_time_humanize }} </view>
-          <view class="contact" @tap.stop="communicate(item)">立即沟通</view>
         </view>
       </view>
     </view>
@@ -325,12 +331,23 @@ export default {
       );
     },
     unfollow(row) {
-      this.userUnfollow(
-        {
-          unfollow_uuid: row.basic.uuid,
+      let _this = this;
+      wx.showModal({
+        title: "温馨提示",
+        content: " 确定要取消关注吗？",
+        success: function (res) {
+          if (res.confirm) {
+            _this.userUnfollow(
+              {
+                unfollow_uuid: row.basic.uuid,
+              },
+              row
+            );
+          } else if (res.cancel) {
+            console.log("用户点击取消");
+          }
         },
-        row
-      );
+      });
     },
     query(type, scroll) {
       if (type == "init") this.pageNum = 1;

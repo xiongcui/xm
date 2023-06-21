@@ -232,6 +232,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
   name: "inforother",
   data: function data() {
     return {
+      myself: "",
       isIphoneX: false,
       birthday: "",
       avatar: "",
@@ -275,11 +276,12 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
       if (!this.nickname) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请输入昵称");
         return false;
-      } //   if (this.nickname.length > 4) {
-      //     errortip("昵称不能超过4个字");
-      //     return false;
-      //   }
+      }
 
+      if (this.nickname.length > 4) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("昵称不能超过4个字");
+        return false;
+      }
 
       if (this.sex === "") {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("请选择性别");
@@ -324,11 +326,14 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
         waist: waist,
         hip: hip,
         size: size,
-        sub_uuid: "non_personal",
         nickname: this.nickname,
         sex: Number(this.sex),
         birthday: this.birthday
       };
+
+      if (!this.myself) {
+        params.sub_uuid = "non_personal";
+      }
 
       if (this.sub_user_id) {
         params.sub_uuid = this.sub_user_id;
@@ -347,7 +352,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShape */ "Xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShape */ "Yb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -382,7 +387,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Zb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -436,7 +441,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userShapeDetail */ "Zb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -459,7 +464,7 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
                 } // 数据回显
 
 
-                if (_this3.sub_user_id) {
+                if (_this3.myself || _this3.sub_user_id) {
                   _this3.nickname = res.data.data.current_shape.nickname;
                   _this3.birthday = res.data.data.current_shape.birthday;
                   _this3.sex = String(res.data.data.current_shape.sex);
@@ -519,7 +524,12 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
       }))();
     }
   },
+  created: function created() {
+    this.isIphoneX = this.globalData.isIphoneX;
+  },
   onLoad: function onLoad(options) {
+    this.myself = options.myself;
+
     if (options.sub_user_id) {
       this.sub_user_id = options.sub_user_id;
       this.userShapeDetail({

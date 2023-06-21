@@ -68,9 +68,6 @@
         ></image>
         <view class="login-txt">完善以下信息以继续</view>
         <view class="login-info">
-          <!-- <view class="phone" v-if="userInfo.phone"
-            >手机号：{{ userInfo.phone }}</view
-          > -->
           <view class="login-head">
             <button
               class="avatar-wrapper"
@@ -168,6 +165,7 @@ export default {
         phone: "",
       },
       pageshow: "login",
+      scene: "",
     };
   },
   methods: {
@@ -248,6 +246,10 @@ export default {
     },
     finishClick() {
       if (!clickThrottle()) return;
+      wx.showLoading({
+        title: "保存中",
+        mask: true,
+      });
       this.upImgs(this.userInfo.avatar);
     },
     userAgreement() {
@@ -275,11 +277,11 @@ export default {
             let params = {
               avatar: data.data.file1,
               nickname: this.userInfo.nickname,
+              scene: this.scene,
             };
             if (this.invited_uuid) {
               params.invited_uuid = this.invited_uuid;
             }
-            if (!clickThrottle()) return;
             this.userRegister(params);
           } else {
             if (data.error_code == 1004) {
@@ -316,12 +318,16 @@ export default {
         this.is_bind_phone = res.data.data.login_status.is_bind_phone;
         this.is_bind_nickname = res.data.data.login_status.is_bind_nickname;
         this.is_bind_avatar = res.data.data.login_status.is_bind_avatar;
-        if (this.login_type == 1 && this.bind_type == 0) {
+        if (
+          (this.bind_type == 0 && this.is_bind_phone == 0) ||
+          (this.bind_type == 0 && this.is_bind_phone == 1)
+        ) {
           // 绑定手机号
           this.visible = true;
-        } else if (this.login_type == 1 && this.bind_type == 1) {
+        } else if (this.bind_type == 1 && this.login_type == 1) {
+          // 注册
           openPage("/pages/register/index");
-        } else if (res.data.data.login_status.login_type == 2) {
+        } else if (this.bind_type == 1 && this.login_type == 2) {
           // 跳转首页
           wx.switchTab({
             url: "/pages/home/index",
@@ -349,16 +355,31 @@ export default {
     async userRegister(params) {
       try {
         let res = await userRegister(params);
+        wx.hideLoading();
         let userInfo = wx.getStorageSync("userInfo");
         userInfo.avatar = params.avatar;
         userInfo.nickname = params.nickname;
         wx.setStorageSync("userInfo", userInfo);
-        openPage("/pages/register/index");
+        console.log(this.bind_type, this.login_type);
+        if (this.login_type == 1) {
+          openPage("/pages/register/index");
+        } else {
+          // 跳转首页
+          wx.switchTab({
+            url: "/pages/home/index",
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              // page.onLoad();
+            },
+          });
+        }
       } catch (error) {}
     },
   },
   created() {
     this.invited_uuid = wx.getStorageSync("invited_uuid");
+    this.scene = wx.getLaunchOptionsSync().scene;
   },
 };
 </script>

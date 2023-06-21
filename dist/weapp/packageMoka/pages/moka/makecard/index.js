@@ -774,6 +774,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     },
     switchBg: function switchBg() {
       this.isDark = !this.isDark;
+      this.cutAvartar();
     },
     make: function make() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(5000)) return;
@@ -959,7 +960,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           fileType: "png",
           quality: 1,
           success: function success(e) {
-            t ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
+            t.isDark ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
           },
           fail: function fail(t) {
             wx.showModal({
@@ -1151,7 +1152,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Tb"])(params);
 
               case 3:
                 res = _context2.sent;

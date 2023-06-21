@@ -144,6 +144,14 @@ component.options.__file = "src/packageMoka/pages/moka/myModelCardlist/index.vue
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -151,6 +159,7 @@ component.options.__file = "src/packageMoka/pages/moka/myModelCardlist/index.vue
   name: "myModelCardlist",
   data: function data() {
     return {
+      isIphoneX: false,
       // 页面配置
       winWidth: 0,
       winHeight: 0,
@@ -162,6 +171,9 @@ component.options.__file = "src/packageMoka/pages/moka/myModelCardlist/index.vue
     };
   },
   methods: {
+    makeMoka: function makeMoka() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+    },
     // 滑动切换tab
     bindChange: function bindChange(e) {
       this.currentTab = e.detail.current;
@@ -331,6 +343,9 @@ component.options.__file = "src/packageMoka/pages/moka/myModelCardlist/index.vue
       }))();
     }
   },
+  created: function created() {
+    this.isIphoneX = this.globalData.isIphoneX;
+  },
   onLoad: function onLoad(options) {
     var that = this; // 获取系统信息
 
@@ -361,202 +376,222 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "my-model-card" }, [
-    _c("view", { staticClass: "tab" }, [
-      _c(
-        "view",
-        {
-          staticClass: "tab-item",
-          class: _vm.currentTab == 0 ? "on" : "",
-          on: {
-            tap: function ($event) {
-              return _vm.changeItem(0)
-            },
-          },
-        },
-        [_vm._v("给自己做的 ")]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "tab-item",
-          class: _vm.currentTab == 1 ? "on" : "",
-          on: {
-            tap: function ($event) {
-              return _vm.changeItem(1)
-            },
-          },
-        },
-        [_vm._v("给别人做的 ")]
-      ),
-    ]),
-    _c(
-      "view",
-      { staticClass: "content" },
-      [
+  return _c(
+    "view",
+    { staticClass: "my-model-card" },
+    [
+      _c("view", { staticClass: "tab" }, [
         _c(
-          "swiper",
+          "view",
           {
-            staticClass: "swiper-box",
-            attrs: { current: _vm.currentTab, duration: "300" },
-            on: { change: _vm.bindChange },
+            staticClass: "tab-item",
+            class: _vm.currentTab == 0 ? "on" : "",
+            on: {
+              tap: function ($event) {
+                return _vm.changeItem(0)
+              },
+            },
           },
-          [
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true, "lower-threshold": 200 },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "card-box" },
-                              [
-                                _c("image", {
-                                  attrs: {
-                                    mode: "widthFix",
-                                    src: item.mocha_url,
-                                  },
-                                }),
-                                _c("view", { staticClass: "card-bottom" }, [
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "card-delete",
-                                      on: {
-                                        tap: function ($event) {
-                                          return _vm.cardDelete(item.oid)
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("删除")]
-                                  ),
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "card-img",
-                                      on: {
-                                        tap: function ($event) {
-                                          return _vm.downloadMoka(
-                                            item.mocha_url
-                                          )
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("下载原图")]
-                                  ),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-            _c(
-              "swiper-item",
-              [
-                _c(
-                  "scroll-view",
-                  {
-                    style: { height: _vm.winHeight + "px" },
-                    attrs: { "scroll-y": true, "lower-threshold": 200 },
-                    on: { scrolltolower: _vm.scrollToLower },
-                  },
-                  [
-                    _vm.list.length
-                      ? _c(
-                          "block",
-                          _vm._l(_vm.list, function (item, index) {
-                            return _c(
-                              "view",
-                              { key: index, staticClass: "card-box" },
-                              [
-                                _c("image", {
-                                  attrs: {
-                                    mode: "widthFix",
-                                    src: item.mocha_url,
-                                  },
-                                }),
-                                _c("view", { staticClass: "card-bottom" }, [
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "card-delete",
-                                      on: {
-                                        tap: function ($event) {
-                                          return _vm.cardDelete(item.oid)
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("删除")]
-                                  ),
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "card-img",
-                                      on: {
-                                        tap: function ($event) {
-                                          return _vm.downloadMoka(
-                                            item.mocha_url
-                                          )
-                                        },
-                                      },
-                                    },
-                                    [_vm._v("下载原图")]
-                                  ),
-                                ]),
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      : _c("view", { staticClass: "none-data" }, [
-                          _c("image", {
-                            staticClass: "none-img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
-                              mode: "aspectFill",
-                            },
-                          }),
-                          _c("view", [_vm._v("当前暂无信息哦～")]),
-                        ]),
-                  ],
-                  1
-                ),
-              ],
-              1
-            ),
-          ],
-          1
+          [_vm._v("给自己做的 ")]
         ),
-      ],
-      1
-    ),
-  ])
+        _c(
+          "view",
+          {
+            staticClass: "tab-item",
+            class: _vm.currentTab == 1 ? "on" : "",
+            on: {
+              tap: function ($event) {
+                return _vm.changeItem(1)
+              },
+            },
+          },
+          [_vm._v("给别人做的 ")]
+        ),
+      ]),
+      _c(
+        "view",
+        { staticClass: "content" },
+        [
+          _c(
+            "swiper",
+            {
+              staticClass: "swiper-box",
+              style: { paddingBottom: _vm.isIphoneX ? "180rpx" : "120rpx" },
+              attrs: { current: _vm.currentTab, duration: "300" },
+              on: { change: _vm.bindChange },
+            },
+            [
+              _c(
+                "swiper-item",
+                [
+                  _c(
+                    "scroll-view",
+                    {
+                      style: { height: _vm.winHeight + "px" },
+                      attrs: { "scroll-y": true, "lower-threshold": 200 },
+                      on: { scrolltolower: _vm.scrollToLower },
+                    },
+                    [
+                      _vm.list.length
+                        ? _c(
+                            "block",
+                            _vm._l(_vm.list, function (item, index) {
+                              return _c(
+                                "view",
+                                { key: index, staticClass: "card-box" },
+                                [
+                                  _c("image", {
+                                    attrs: {
+                                      mode: "widthFix",
+                                      src: item.mocha_url,
+                                    },
+                                  }),
+                                  _c("view", { staticClass: "card-bottom" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "card-delete",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.cardDelete(item.oid)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("删除")]
+                                    ),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "card-img",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.downloadMoka(
+                                              item.mocha_url
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("下载原图")]
+                                    ),
+                                  ]),
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        : _c("view", { staticClass: "none-data" }, [
+                            _c("image", {
+                              staticClass: "none-img",
+                              attrs: {
+                                src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                mode: "aspectFill",
+                              },
+                            }),
+                            _c("view", [_vm._v("当前暂无信息哦～")]),
+                          ]),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+              _c(
+                "swiper-item",
+                [
+                  _c(
+                    "scroll-view",
+                    {
+                      style: { height: _vm.winHeight + "px" },
+                      attrs: { "scroll-y": true, "lower-threshold": 200 },
+                      on: { scrolltolower: _vm.scrollToLower },
+                    },
+                    [
+                      _vm.list.length
+                        ? _c(
+                            "block",
+                            _vm._l(_vm.list, function (item, index) {
+                              return _c(
+                                "view",
+                                { key: index, staticClass: "card-box" },
+                                [
+                                  _c("image", {
+                                    attrs: {
+                                      mode: "widthFix",
+                                      src: item.mocha_url,
+                                    },
+                                  }),
+                                  _c("view", { staticClass: "card-bottom" }, [
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "card-delete",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.cardDelete(item.oid)
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("删除")]
+                                    ),
+                                    _c(
+                                      "view",
+                                      {
+                                        staticClass: "card-img",
+                                        on: {
+                                          tap: function ($event) {
+                                            return _vm.downloadMoka(
+                                              item.mocha_url
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [_vm._v("下载原图")]
+                                    ),
+                                  ]),
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        : _c("view", { staticClass: "none-data" }, [
+                            _c("image", {
+                              staticClass: "none-img",
+                              attrs: {
+                                src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                                mode: "aspectFill",
+                              },
+                            }),
+                            _c("view", [_vm._v("当前暂无信息哦～")]),
+                          ]),
+                    ],
+                    1
+                  ),
+                ],
+                1
+              ),
+            ],
+            1
+          ),
+        ],
+        1
+      ),
+      _c(
+        "cover-view",
+        {
+          class:
+            "subbtn_bottom_block " +
+            (_vm.isIphoneX ? "fix-iphonex-button" : ""),
+        },
+        [
+          _c("cover-view", { staticClass: "subbtn_bottom" }, [
+            _c("button", { on: { tap: _vm.makeMoka } }, [_vm._v("制作模卡")]),
+          ]),
+        ],
+        1
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

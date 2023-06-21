@@ -42,6 +42,7 @@
                         : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                     "
                     class="avatar"
+                    @tap="gozhuye(item.followed_id)"
                   ></image>
                   <view class="follow_and_fans_info">
                     <text class="follow_and_fans_nickname">{{
@@ -99,6 +100,7 @@
                         : 'https://yuepai-oss.qubeitech.com/static/avatar_default.png'
                     "
                     class="avatar"
+                    @tap="gozhuye(item.follower_id)"
                   ></image>
                   <view class="follow_and_fans_info">
                     <text class="follow_and_fans_nickname">{{
@@ -148,6 +150,7 @@ import {
   userFollow,
   userUnfollow,
 } from "../../../../api/index";
+import { openPage } from "../../../../utils/util";
 export default {
   name: "followAndfans",
   data() {
@@ -163,6 +166,9 @@ export default {
     };
   },
   methods: {
+    gozhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     // 点击tab切换
     changeItem(index, type) {
       if (this.currentTab === index) {

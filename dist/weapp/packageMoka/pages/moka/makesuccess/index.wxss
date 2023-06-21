@@ -44,6 +44,17 @@
   text-align: center;
   margin: 0 auto;
 }
+.makesuccess .mymoka {
+  background: #ededed;
+  color: rgba(0, 0, 0, 0.6);
+  width: 85%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  text-align: center;
+  margin: 30rpx auto 16rpx auto;
+}
 .makesuccess .modal_box_bg {
   position: fixed;
   top: 0;

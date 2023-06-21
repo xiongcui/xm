@@ -37,7 +37,7 @@
             <view class="item_label">性别</view>
             <view class="ub-f1 item_input">
               <view class="picker" v-if="sex !== null">{{ sexs[sex] }}</view>
-              <view class="picker" v-else>请选择</view>
+              <view class="picker-none" v-else>请选择</view>
             </view>
           </view>
           <view class="item_right">
@@ -51,15 +51,14 @@
       <picker
         @change="birthdayChange"
         mode="date"
-        start="1960-06-01"
-        :value="birthday"
+        :value="birthday ? birthday : '2005-01-01'"
       >
         <view class="item ub item-b">
           <view class="ub-f1 ub item_mid">
             <view class="item_label">生日</view>
             <view class="ub-f1 item_input">
               <view class="picker" v-if="birthday">{{ birthday }}</view>
-              <view class="picker" v-else>请选择</view>
+              <view class="picker-none" v-else>请选择</view>
             </view>
           </view>
           <view class="item_right">
@@ -75,7 +74,7 @@
           <view class="item_label">身份</view>
           <view class="ub-f1 item_input" @tap="goIdentity">
             <view class="picker" v-if="identity">{{ identity }}</view>
-            <view class="picker" v-else>请选择身份</view>
+            <view class="picker-none" v-else>请选择身份</view>
           </view>
         </view>
         <view class="item_right">
@@ -93,7 +92,9 @@
               <view class="pickers pick-city picked" v-if="region.length"
                 >{{ region[1] }}-{{ region[2] }}</view
               >
-              <view class="pickers pick-city" v-else>请选择地区</view>
+              <view class="pickers pick-city picker-none" v-else
+                >请选择地区</view
+              >
             </picker>
           </view>
         </view>
@@ -204,12 +205,28 @@ export default {
         errortip("请填写名称！");
         return false;
       }
+      if (this.sex === null) {
+        errortip("请选择性别！");
+        return false;
+      }
+      if (!this.birthday) {
+        errortip("请选择生日！");
+        return false;
+      }
+      if (!this.identity) {
+        errortip("请选择身份！");
+        return false;
+      }
+      if (!this.region.length) {
+        errortip("请选择地区！");
+        return false;
+      }
       if (!clickThrottle()) return;
       let params = {
         nickname: this.nickname,
         birthday: this.birthday,
         addressName: this.region.length ? this.region.join("-") : null,
-        address: this.regionList ? this.regionList.join("-") : null,
+        address: this.regionList.length ? this.regionList.join("-") : null,
         avatar: this.infor.avatar,
       };
       if (this.sex !== null) {

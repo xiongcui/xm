@@ -167,6 +167,12 @@
                 v-if="myself"
                 >编辑</view
               >
+              <view
+                @tap="gomoka"
+                class="home_item_title_edit"
+                v-if="!myself && infor.mocha"
+                >更多</view
+              >
             </view>
             <view class="home_item_main">
               <view catchtap="myMoka">
@@ -199,6 +205,13 @@
                 <view class="user_infor_text">鞋码</view>
               </view>
             </view>
+            <image
+              class="mokaimg"
+              mode="widthFix"
+              :src="infor.mocha"
+              v-if="infor.mocha"
+              @tap="showbigPersonimg(infor.mocha, [infor.mocha])"
+            ></image>
           </view>
           <view class="home_item">
             <view class="home_item_title ub">
@@ -222,7 +235,7 @@
                 :key="index"
               >
                 <image
-                  catchtap="showbigPersonimg"
+                  @tap="showbigPersonimg(imgitem, homeInfor.personimg)"
                   class="personimg"
                   :data-index="index"
                   mode="aspectFill"
@@ -265,12 +278,13 @@
               <block v-for="(item, index) in homeInfor.video" :key="index">
                 <video
                   class="video_item"
-                  id="user_video"
+                  :id="'user_video' + index"
                   objectFit="cover"
                   :poster="item.cover"
                   :src="item.file"
                   :title="homeInfor.nickname"
                   :vslideGestureInFullscreen="false"
+                  @ended="bindended('user_video' + index)"
                   v-if="index < 2"
                 ></video>
                 <view class="icon_imgnum" v-if="index == 2">
@@ -480,6 +494,19 @@ export default {
         delta: 1,
       });
     },
+    showbigPersonimg(src, urls) {
+      // 微信预览图片的方法
+      wx.previewImage({
+        current: src, // 图片的地址url
+        urls: urls, // 预览的地址url
+      });
+    },
+    gomoka() {
+      openPage(
+        "/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.uuid ||
+          this.uuid
+      );
+    },
     editpersondata() {
       openPage("/packageMoka/pages/moka/editpersondata/index");
     },
@@ -595,6 +622,9 @@ export default {
       } else {
         openPage("/packageMoka/pages/moka/makecard/index");
       }
+    },
+    bindended(id) {
+      wx.createVideoContext(id).exitFullScreen();
     },
     async userInfo(params) {
       try {

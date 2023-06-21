@@ -113,7 +113,10 @@
                   </view>
                 </view>
                 <view class="logoavatar">
-                  <image mode="aspectFit" :src="logoAvartar"></image>
+                  <image
+                    mode="aspectFit"
+                    :src="isDark ? logoAvartar : blackLogoAvartar"
+                  ></image>
                 </view>
               </view>
               <view class="userinfo-info-moveqr" v-else>
@@ -266,7 +269,7 @@
                 </view>
                 <image
                   mode="aspectFit"
-                  :src="logoAvartar"
+                  :src="isDark ? logoAvartar : blackLogoAvartar"
                   v-if="!isMoveQrcode"
                 ></image>
               </view>
@@ -397,17 +400,18 @@
         </view>
       </view>
     </view>
-    <view style="width: 0px; height: 0px; overflow: hidden">
+    <view style="width: 0px; height: 0px; overflow: hidden" class="canvas-box">
       <canvas
         canvasId="cutCanvas"
-        :hidden="canvasHidden"
-        :style="{ width: cutCanvasWH + 'rpx', height: cutCanvasWH + 'rpx' }"
+        :style="{
+          width: cutCanvasWH + 'rpx',
+          height: cutCanvasWH + 'rpx',
+        }"
       ></canvas>
     </view>
-    <view style="width: 0px; height: 0px; overflow: hidden">
+    <view style="width: 0px; height: 0px; overflow: hidden" class="canvas-box">
       <canvas
         canvasId="firstCanvas"
-        :hidden="canvasHidden"
         style="width: 800px; height: 800px"
       ></canvas>
     </view>
@@ -421,7 +425,7 @@ const width = device.screenWidth; // 示例为一个与屏幕等宽的正方形�
 const height = device.screenHeight;
 const moka = require("../../../../assets/js/moka.js");
 import { qrcode, userMocha } from "../../../../api/index";
-import { errortip, openPage } from "../../../../utils/util";
+import { openPage } from "../../../../utils/util";
 import { Base64 } from "js-Base64";
 import clickThrottle from "../../../../utils/clickThrottle";
 export default {
@@ -496,7 +500,7 @@ export default {
             var e = wx.createCanvasContext("firstCanvas");
             e.save(),
               e.beginPath(),
-              e.arc(100, 100, 100, 0, 2 * Math.PI, !1),
+              e.arc(100, 100, 100, 0, 2 * Math.PI, false),
               e.clip(),
               e.drawImage(res.tempFilePath, 0, 0, 200, 200),
               e.restore(),
@@ -519,7 +523,7 @@ export default {
                   fail: function (t) {
                     wx.showModal({
                       title: "头像裁剪失败",
-                      showCancel: !1,
+                      showCancel: false,
                     });
                   },
                 });
@@ -563,7 +567,7 @@ export default {
             fileType: "png",
             quality: 1,
             success: function (e) {
-              t
+              t.isDark
                 ? (a.logoAvartar = e.tempFilePath)
                 : (a.blackLogoAvartar = e.tempFilePath),
                 (a.canvasHidden = true);
@@ -581,33 +585,34 @@ export default {
       !(function t(a, e, o) {
         var s = a.photos,
           i = a.card.layouts,
-          l = s[o],
-          r = i[o];
+          r = s[o],
+          h = i[o];
         wx.getImageInfo({
-          src: l,
+          src: r,
           success: function (i) {
-            var l, n, h, d;
-            i.width / i.height > r.height / r.width
-              ? ((n = r.width),
-                (l = (i.width / i.height) * n),
-                (h = !0),
-                (d = !1))
-              : ((l = r.height),
-                (n = (i.height / i.width) * l),
-                (h = !1),
-                (d = !0));
-            var c = {
+            var r, d, n, c;
+            i.width / i.height > h.width / h.height
+              ? ((d = h.height),
+                (r = (i.width / i.height) * d),
+                (n = !0),
+                (c = !1))
+              : ((r = h.width),
+                (d = (i.height / i.width) * r),
+                (n = !1),
+                (c = !0));
+            var l = {
               width: i.width,
               height: i.height,
-              rotateW: l,
-              rotateH: n,
-              scrollX: h,
-              scrollY: d,
+              rotateW: r,
+              rotateH: d,
+              scrollX: n,
+              scrollY: c,
             };
-            e[o] = c;
+            e[o] = l;
             if ((o += 1) >= s.length) {
               a.photos = s;
               a.photoInfos = e;
+              console.log(a.photoInfos, "photoInfos======");
             } else {
               t(a, e, o);
             }
@@ -706,6 +711,7 @@ export default {
     },
     switchBg() {
       this.isDark = !this.isDark;
+      this.cutAvartar();
     },
     make() {
       if (!clickThrottle(5000)) return;
@@ -737,7 +743,7 @@ export default {
           x = wx.createCanvasContext("cutCanvas");
         x.clearRect(0, 0, s, i),
           x.drawImage(l, 0, 0, s, i),
-          x.draw(!1, function (s) {
+          x.draw(false, function (s) {
             wx.canvasToTempFilePath({
               x: (f.x * v) / p,
               y: (f.y * v) / p,
@@ -926,7 +932,7 @@ export default {
           v = "android" == device.platform,
           p = 2;
         v && t.photos.length > 10 && (p = 2.5),
-          o.draw(!1, function (a) {
+          o.draw(false, function (a) {
             "drawCanvas:ok" == a.errMsg &&
               wx.canvasToTempFilePath({
                 x: 0,
@@ -943,7 +949,7 @@ export default {
                     s = t.card.name;
                   !(function (t, a, o, s) {
                     if (a.isposting) return;
-                    a.isposting = !0;
+                    a.isposting = true;
                     var i = 1;
                     a.isMoveQrcode && (i = 0);
                     var r = {
@@ -1030,6 +1036,7 @@ export default {
   onLoad: function (options) {
     let cardid = wx.getStorageSync("cardid");
     let mokaIndex = moka.getIndexByCardId(cardid);
+    console.log(moka.layouts[mokaIndex], "moka.layouts[mokaIndex]");
     this.card = moka.layouts[mokaIndex];
     this.photos = wx.getStorageSync("selectedPhotos");
     this.userInfo = wx.getStorageSync("carduserinfo");

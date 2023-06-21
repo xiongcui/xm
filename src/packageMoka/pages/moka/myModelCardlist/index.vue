@@ -20,6 +20,7 @@
         class="swiper-box"
         duration="300"
         @change="bindChange"
+        :style="{ paddingBottom: isIphoneX ? '180rpx' : '120rpx' }"
       >
         <swiper-item>
           <scroll-view
@@ -84,17 +85,25 @@
         </swiper-item>
       </swiper>
     </view>
+    <cover-view
+      :class="`subbtn_bottom_block ${isIphoneX ? 'fix-iphonex-button' : ''}`"
+    >
+      <cover-view class="subbtn_bottom">
+        <button @tap="makeMoka">制作模卡</button>
+      </cover-view>
+    </cover-view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
 import { mochaList, mochaEvent } from "../../../../api/index";
-import { errortip } from "../../../../utils/util";
+import { errortip, openPage } from "../../../../utils/util";
 export default {
   name: "myModelCardlist",
   data() {
     return {
+      isIphoneX: false,
       // 页面配置
       winWidth: 0,
       winHeight: 0,
@@ -106,6 +115,9 @@ export default {
     };
   },
   methods: {
+    makeMoka() {
+      openPage("/packageMoka/pages/moka/modelcard/index");
+    },
     // 滑动切换tab
     bindChange(e) {
       this.currentTab = e.detail.current;
@@ -208,6 +220,9 @@ export default {
         this.query();
       } catch (error) {}
     },
+  },
+  created() {
+    this.isIphoneX = this.globalData.isIphoneX;
   },
   onLoad: function (options) {
     var that = this;

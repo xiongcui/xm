@@ -2,9 +2,18 @@ page {
   background: #15161a;
 }
 .makecardv {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  //   justify-content: center;
+  position: relative;
   .main-scrollview {
-    margin: 30px auto;
+    // margin: 30px auto;
     position: relative;
+  }
+  .container {
+    width: 620px;
+    margin: 30px auto;
   }
   .userinfo-container {
     display: flex;
@@ -56,6 +65,7 @@ page {
     padding: 30px;
     position: fixed;
     bottom: 0px;
+    left: 16px;
     width: 690px;
     .title {
       color: #9b9b9b;
@@ -70,6 +80,7 @@ page {
   .logoavatar image {
     width: 100px;
     height: 100px;
+    margin-right: 16px;
   }
   .photo-container {
     position: relative;
@@ -116,5 +127,23 @@ page {
     color: #333333;
     font-size: 28px;
     margin: 0px 30px;
+  }
+  .canvas-box {
+    position: absolute;
+    left: 99999px;
+  }
+  .userinfo-info-moveqr {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .name-moveqr {
+    padding: 0px 30px;
+    font-size: 32px;
+  }
+  .text-info-moveqr {
+    font-size: 18px;
   }
 }

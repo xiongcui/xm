@@ -77,8 +77,7 @@ export default {
     let cardid = wx.getStorageSync("cardid");
     let mokaIndex = moka.getIndexByCardId(cardid);
     var layouts = moka.layouts[mokaIndex];
-    console.log(layouts, "layouts");
-    photos = wx.getStorageSync("selectedPhotos");
+    var photos = wx.getStorageSync("selectedPhotos");
     this.maxCount = layouts.maxCount;
     this.photos = photos;
     this.setButtonTitle();

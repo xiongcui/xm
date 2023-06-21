@@ -201,6 +201,7 @@ page {
   .list_img {
     display: flex;
     white-space: nowrap;
+    margin-top: 16px;
     .list_img_item {
       width: 214px;
       height: 214px;
@@ -241,6 +242,8 @@ page {
     display: flex;
     align-items: center;
     font-size: 24px;
+    color: #6b6b6b;
+    margin-bottom: 16px;
     image {
       width: 26px;
       height: 26px;
@@ -260,6 +263,7 @@ page {
   }
   .list_video {
     white-space: nowrap;
+    margin-top: 16px;
   }
   .list_video-width {
     width: 49%;
@@ -278,6 +282,10 @@ page {
     color: #ff465f;
     border-radius: 8px;
     font-size: 28px;
+  }
+  .follow_img {
+    width: 40px;
+    height: 40px;
   }
   .nomore {
     padding: 0px 0px 16px 0px;

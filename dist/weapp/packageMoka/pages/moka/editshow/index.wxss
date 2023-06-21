@@ -359,6 +359,9 @@
   width: 337rpx;
   margin-right: 16rpx;
 }
+.main .mokaimg {
+  width: 100%;
+}
 .main .zhuye_fixed_bottom {
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -380,6 +380,18 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -398,6 +410,9 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
     };
   },
   methods: {
+    gozhuye: function gozhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -677,6 +692,11 @@ var render = function () {
                                   _c("view", { staticClass: "invite-img" }, [
                                     _c("image", {
                                       attrs: { src: item.visitor.avatar },
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.gozhuye(item.visitor.uuid)
+                                        },
+                                      },
                                     }),
                                   ]),
                                   _c("view", { staticClass: "invite-info" }, [
@@ -807,6 +827,11 @@ var render = function () {
                                   _c("view", { staticClass: "invite-img" }, [
                                     _c("image", {
                                       attrs: { src: item.visitor.avatar },
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.gozhuye(item.visitor.uuid)
+                                        },
+                                      },
                                     }),
                                   ]),
                                   _c("view", { staticClass: "invite-info" }, [
@@ -937,6 +962,11 @@ var render = function () {
                                   _c("view", { staticClass: "invite-img" }, [
                                     _c("image", {
                                       attrs: { src: item.visitor.avatar },
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.gozhuye(item.visitor.uuid)
+                                        },
+                                      },
                                     }),
                                   ]),
                                   _c("view", { staticClass: "invite-info" }, [
@@ -1067,6 +1097,11 @@ var render = function () {
                                   _c("view", { staticClass: "invite-img" }, [
                                     _c("image", {
                                       attrs: { src: item.visitor.avatar },
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.gozhuye(item.visitor.uuid)
+                                        },
+                                      },
                                     }),
                                   ]),
                                   _c("view", { staticClass: "invite-info" }, [

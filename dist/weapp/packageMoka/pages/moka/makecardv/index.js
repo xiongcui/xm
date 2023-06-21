@@ -473,6 +473,10 @@ component.options.__file = "src/packageMoka/pages/moka/makecardv/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 var device = wx.getSystemInfoSync(); // 获取设备信息
 
@@ -557,7 +561,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
         success: function success(res) {
           if (200 === res.statusCode) {
             var e = wx.createCanvasContext("firstCanvas");
-            e.save(), e.beginPath(), e.arc(100, 100, 100, 0, 2 * Math.PI, !1), e.clip(), e.drawImage(res.tempFilePath, 0, 0, 200, 200), e.restore(), e.draw(false, function (a) {
+            e.save(), e.beginPath(), e.arc(100, 100, 100, 0, 2 * Math.PI, false), e.clip(), e.drawImage(res.tempFilePath, 0, 0, 200, 200), e.restore(), e.draw(false, function (a) {
               wx.canvasToTempFilePath({
                 x: 0,
                 y: 0,
@@ -578,7 +582,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
                 fail: function fail(t) {
                   wx.showModal({
                     title: "头像裁剪失败",
-                    showCancel: !1
+                    showCancel: false
                   });
                 }
               });
@@ -620,7 +624,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           fileType: "png",
           quality: 1,
           success: function success(e) {
-            t ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
+            t.isDark ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
           },
           fail: function fail(t) {
             wx.showModal({
@@ -635,26 +639,27 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       !function t(a, e, o) {
         var s = a.photos,
             i = a.card.layouts,
-            l = s[o],
-            r = i[o];
+            r = s[o],
+            h = i[o];
         wx.getImageInfo({
-          src: l,
+          src: r,
           success: function success(i) {
-            var l, n, h, d;
-            i.width / i.height > r.height / r.width ? (n = r.width, l = i.width / i.height * n, h = !0, d = !1) : (l = r.height, n = i.height / i.width * l, h = !1, d = !0);
-            var c = {
+            var r, d, n, c;
+            i.width / i.height > h.width / h.height ? (d = h.height, r = i.width / i.height * d, n = !0, c = !1) : (r = h.width, d = i.height / i.width * r, n = !1, c = !0);
+            var l = {
               width: i.width,
               height: i.height,
-              rotateW: l,
-              rotateH: n,
-              scrollX: h,
-              scrollY: d
+              rotateW: r,
+              rotateH: d,
+              scrollX: n,
+              scrollY: c
             };
-            e[o] = c;
+            e[o] = l;
 
             if ((o += 1) >= s.length) {
               a.photos = s;
               a.photoInfos = e;
+              console.log(a.photoInfos, "photoInfos======");
             } else {
               t(a, e, o);
             }
@@ -748,6 +753,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     },
     switchBg: function switchBg() {
       this.isDark = !this.isDark;
+      this.cutAvartar();
     },
     make: function make() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(5000)) return;
@@ -773,7 +779,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
             I = u.width * v / (h * p),
             y = u.height * v / (h * p),
             x = wx.createCanvasContext("cutCanvas");
-        x.clearRect(0, 0, s, i), x.drawImage(l, 0, 0, s, i), x.draw(!1, function (s) {
+        x.clearRect(0, 0, s, i), x.drawImage(l, 0, 0, s, i), x.draw(false, function (s) {
           wx.canvasToTempFilePath({
             x: f.x * v / p,
             y: f.y * v / p,
@@ -865,7 +871,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
             w = t.card.height,
             v = "android" == device.platform,
             p = 2;
-        v && t.photos.length > 10 && (p = 2.5), o.draw(!1, function (a) {
+        v && t.photos.length > 10 && (p = 2.5), o.draw(false, function (a) {
           "drawCanvas:ok" == a.errMsg && wx.canvasToTempFilePath({
             x: 0,
             y: 0,
@@ -881,7 +887,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
                   s = t.card.name;
               !function (t, a, o, s) {
                 if (a.isposting) return;
-                a.isposting = !0;
+                a.isposting = true;
                 var i = 1;
                 a.isMoveQrcode && (i = 0);
                 var r = {
@@ -995,7 +1001,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Tb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1021,6 +1027,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
   onLoad: function onLoad(options) {
     var cardid = wx.getStorageSync("cardid");
     var mokaIndex = moka.getIndexByCardId(cardid);
+    console.log(moka.layouts[mokaIndex], "moka.layouts[mokaIndex]");
     this.card = moka.layouts[mokaIndex];
     this.photos = wx.getStorageSync("selectedPhotos");
     this.userInfo = wx.getStorageSync("carduserinfo");
@@ -1298,7 +1305,9 @@ var render = function () {
                                       _c("image", {
                                         attrs: {
                                           mode: "aspectFit",
-                                          src: _vm.logoAvartar,
+                                          src: _vm.isDark
+                                            ? _vm.logoAvartar
+                                            : _vm.blackLogoAvartar,
                                         },
                                       }),
                                     ]),
@@ -1634,7 +1643,9 @@ var render = function () {
                                   ? _c("image", {
                                       attrs: {
                                         mode: "aspectFit",
-                                        src: _vm.logoAvartar,
+                                        src: _vm.isDark
+                                          ? _vm.logoAvartar
+                                          : _vm.blackLogoAvartar,
                                       },
                                     })
                                   : _vm._e(),
@@ -1862,24 +1873,30 @@ var render = function () {
     ),
     _c(
       "view",
-      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+      {
+        staticClass: "canvas-box",
+        staticStyle: { width: "0px", height: "0px", overflow: "hidden" },
+      },
       [
         _c("canvas", {
           style: {
             width: _vm.cutCanvasWH + "rpx",
             height: _vm.cutCanvasWH + "rpx",
           },
-          attrs: { canvasId: "cutCanvas", hidden: _vm.canvasHidden },
+          attrs: { canvasId: "cutCanvas" },
         }),
       ]
     ),
     _c(
       "view",
-      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+      {
+        staticClass: "canvas-box",
+        staticStyle: { width: "0px", height: "0px", overflow: "hidden" },
+      },
       [
         _c("canvas", {
           staticStyle: { width: "800px", height: "800px" },
-          attrs: { canvasId: "firstCanvas", hidden: _vm.canvasHidden },
+          attrs: { canvasId: "firstCanvas" },
         }),
       ]
     ),

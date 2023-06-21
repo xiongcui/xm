@@ -54,7 +54,10 @@
               >
                 <view class="signup-top">
                   <view class="signup-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="signup-info">
                     <view class="signup-name">
@@ -187,7 +190,10 @@
               >
                 <view class="signup-top">
                   <view class="signup-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="signup-info">
                     <view class="signup-name">
@@ -320,7 +326,10 @@
               >
                 <view class="signup-top">
                   <view class="signup-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="signup-info">
                     <view class="signup-name">
@@ -453,7 +462,10 @@
               >
                 <view class="signup-top">
                   <view class="signup-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="signup-info">
                     <view class="signup-name">
@@ -586,7 +598,10 @@
               >
                 <view class="signup-top">
                   <view class="signup-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="signup-info">
                     <view class="signup-name">
@@ -838,6 +853,9 @@ export default {
     };
   },
   methods: {
+    gozhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     copy(txt) {
       wx.setClipboardData({
         data: txt, //这个是要复制的数据

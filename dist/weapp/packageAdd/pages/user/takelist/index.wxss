@@ -263,6 +263,7 @@ page {
   display: -ms-flexbox;
   display: flex;
   white-space: nowrap;
+  margin-top: 16rpx;
 }
 
 .takelist .list_img .list_img_item {
@@ -321,6 +322,8 @@ page {
       -ms-flex-align: center;
           align-items: center;
   font-size: 24rpx;
+  color: #6b6b6b;
+  margin-bottom: 16rpx;
 }
 
 .takelist .list_time image {
@@ -342,6 +345,7 @@ page {
 
 .takelist .list_video {
   white-space: nowrap;
+  margin-top: 16rpx;
 }
 
 .takelist .list_video-width {
@@ -363,6 +367,11 @@ page {
   color: #ff465f;
   border-radius: 8rpx;
   font-size: 28rpx;
+}
+
+.takelist .follow_img {
+  width: 40rpx;
+  height: 40rpx;
 }
 
 .takelist .nomore {

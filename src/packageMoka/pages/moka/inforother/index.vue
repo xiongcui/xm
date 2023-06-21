@@ -176,6 +176,7 @@ export default {
   name: "inforother",
   data() {
     return {
+      myself: "",
       isIphoneX: false,
       birthday: "",
       avatar: "",
@@ -220,10 +221,10 @@ export default {
         errortip("请输入昵称");
         return false;
       }
-      //   if (this.nickname.length > 4) {
-      //     errortip("昵称不能超过4个字");
-      //     return false;
-      //   }
+      if (this.nickname.length > 4) {
+        errortip("昵称不能超过4个字");
+        return false;
+      }
       if (this.sex === "") {
         errortip("请选择性别");
         return false;
@@ -261,11 +262,13 @@ export default {
         waist: waist,
         hip: hip,
         size: size,
-        sub_uuid: "non_personal",
         nickname: this.nickname,
         sex: Number(this.sex),
         birthday: this.birthday,
       };
+      if (!this.myself) {
+        params.sub_uuid = "non_personal";
+      }
       if (this.sub_user_id) {
         params.sub_uuid = this.sub_user_id;
       }
@@ -335,7 +338,7 @@ export default {
           this.shoes = res.data.data.shape_list.size;
         }
         // 数据回显
-        if (this.sub_user_id) {
+        if (this.myself || this.sub_user_id) {
           this.nickname = res.data.data.current_shape.nickname;
           this.birthday = res.data.data.current_shape.birthday;
           this.sex = String(res.data.data.current_shape.sex);
@@ -374,7 +377,11 @@ export default {
       } catch (error) {}
     },
   },
+  created() {
+    this.isIphoneX = this.globalData.isIphoneX;
+  },
   onLoad: function (options) {
+    this.myself = options.myself;
     if (options.sub_user_id) {
       this.sub_user_id = options.sub_user_id;
       this.userShapeDetail({

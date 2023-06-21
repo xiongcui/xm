@@ -549,7 +549,7 @@ page {
   width: 100%;
 }
 
-.modal_box {
+.modal_box_bg {
   position: fixed;
   top: 0;
   left: 0;
@@ -568,7 +568,7 @@ page {
           align-items: center;
 }
 
-.modal_box .modal_content {
+.modal_box_bg .modal_content {
   position: relative;
   background: #ffffff;
   padding: 16rpx 0;
@@ -587,18 +587,18 @@ page {
   color: #333333;
 }
 
-.modal_box .modal_content .qrcode-img {
+.modal_box_bg .modal_content .qrcode-img {
   width: 300rpx;
   height: 300rpx;
   margin: 16rpx 0;
 }
 
-.modal_box .modal_content .save {
+.modal_box_bg .modal_content .save {
   color: #6493d7;
   font-size: 26rpx;
 }
 
-.modal_box .modal_content .close-img {
+.modal_box_bg .modal_content .close-img {
   width: 38rpx;
   height: 38rpx;
   position: absolute;

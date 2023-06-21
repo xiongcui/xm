@@ -1207,7 +1207,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "ac"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1276,7 +1276,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Xb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1810,9 +1810,7 @@ var citySelector = requirePlugin("citySelector");
         }, _callee14, null, [[0, 9]]);
       }))();
     },
-    submitSign: function submitSign(params) {
-      var _this14 = this;
-
+    sourceItems: function sourceItems(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee15() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee15$(_context15) {
@@ -1821,32 +1819,27 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* sourceItems */ "zb"])(params);
 
               case 3:
                 res = _context15.sent;
-                _this14.showModelSign = true;
-                _this14.hyper_desc = res.data.data.hyper_desc;
-
-                _this14.isSign("");
-
-                _context15.next = 11;
+                _context15.next = 8;
                 break;
 
-              case 9:
-                _context15.prev = 9;
+              case 6:
+                _context15.prev = 6;
                 _context15.t0 = _context15["catch"](0);
 
-              case 11:
+              case 8:
               case "end":
                 return _context15.stop();
             }
           }
-        }, _callee15, null, [[0, 9]]);
+        }, _callee15, null, [[0, 6]]);
       }))();
     },
-    bannerList: function bannerList(params) {
-      var _this15 = this;
+    submitSign: function submitSign(params) {
+      var _this14 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee16() {
         var res;
@@ -1856,21 +1849,15 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* bannerList */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Hb"])(params);
 
               case 3:
                 res = _context16.sent;
-                _this15.banner = [];
-                _this15.notify = [];
-                res.data.data.map(function (item) {
-                  if (item.item == "home_banner") {
-                    _this15.banner.push(item);
-                  }
+                _this14.showModelSign = true;
+                _this14.hyper_desc = res.data.data.hyper_desc;
 
-                  if (item.item == "home_notify") {
-                    _this15.notify.push(item);
-                  }
-                });
+                _this14.isSign("");
+
                 _context16.next = 11;
                 break;
 
@@ -1884,6 +1871,47 @@ var citySelector = requirePlugin("citySelector");
             }
           }
         }, _callee16, null, [[0, 9]]);
+      }))();
+    },
+    bannerList: function bannerList(params) {
+      var _this15 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee17() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee17$(_context17) {
+          while (1) {
+            switch (_context17.prev = _context17.next) {
+              case 0:
+                _context17.prev = 0;
+                _context17.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* bannerList */ "i"])(params);
+
+              case 3:
+                res = _context17.sent;
+                _this15.banner = [];
+                _this15.notify = [];
+                res.data.data.map(function (item) {
+                  if (item.item == "home_banner") {
+                    _this15.banner.push(item);
+                  }
+
+                  if (item.item == "home_notify") {
+                    _this15.notify.push(item);
+                  }
+                });
+                _context17.next = 11;
+                break;
+
+              case 9:
+                _context17.prev = 9;
+                _context17.t0 = _context17["catch"](0);
+
+              case 11:
+              case "end":
+                return _context17.stop();
+            }
+          }
+        }, _callee17, null, [[0, 9]]);
       }))();
     }
   },
@@ -1947,8 +1975,7 @@ var citySelector = requirePlugin("citySelector");
     });
     this.bannerList({
       item: ["home_banner", "home_notify"]
-    }); // this.inviteFilter({});
-    // 分享
+    }); // 分享
 
     this.shareInviteInfo({
       source: "share_friend",
@@ -1957,6 +1984,16 @@ var citySelector = requirePlugin("citySelector");
 
     if (!citySelector.getCity()) {
       this.userStatus("", true);
+    } // 来源
+
+
+    if (options.channel) {
+      var params = {
+        channel: options.channel
+      };
+      this.sourceItems({
+        args: params
+      });
     }
   },
   // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象

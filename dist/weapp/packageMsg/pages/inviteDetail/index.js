@@ -979,7 +979,7 @@ var render = function () {
       ]
     ),
     _vm.showModel
-      ? _c("view", { staticClass: "modal_box" }, [
+      ? _c("view", { staticClass: "modal_box_bg" }, [
           _c("view", { staticClass: "modal_content" }, [
             _c("view", [_vm._v(" 微信二维码 ")]),
             _c("image", {
@@ -1000,7 +1000,7 @@ var render = function () {
         ])
       : _vm._e(),
     _vm.contactVisible
-      ? _c("view", { staticClass: "modal_box" }, [
+      ? _c("view", { staticClass: "modal_box_bg" }, [
           _c("view", { staticClass: "modal_content" }, [
             _c("view", { staticClass: "modal_title" }, [
               _c("view", [_vm._v(" 联系方式 ")]),

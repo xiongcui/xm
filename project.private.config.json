@@ -17,15 +17,15 @@
                     "scene": null
                 },
                 {
-                    "name": "给谁制作模卡",
-                    "pathName": "packageMoka/pages/moka/chooseisself/index",
+                    "name": "模卡列表",
+                    "pathName": "packageMoka/pages/moka/editmoka/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "制作模卡-竖版",
-                    "pathName": "packageMoka/pages/moka/makecardv/index",
+                    "name": "生成模卡成功",
+                    "pathName": "packageMoka/pages/moka/makesuccess/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

@@ -141,13 +141,13 @@ export default {
   },
   methods: {
     goSelfMoka() {
-      openPage("/packageMoka/pages/moka/editshow/index?next=1");
+      openPage("/packageMoka/pages/moka/inforother/index?myself=1");
     },
     goOtherMoka() {
       if (this.infor.has_sub_user) {
         openPage("/packageMoka/pages/moka/otherlist/index");
       } else {
-        openPage("/packageMoka/pages/moka/inforother/index");
+        openPage("/packageMoka/pages/moka/inforother/index?=0");
       }
     },
     async nonpersonalList(params) {

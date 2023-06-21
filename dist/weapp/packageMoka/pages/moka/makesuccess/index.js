@@ -47,8 +47,9 @@ component.options.__file = "src/packageMoka/pages/moka/makesuccess/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/makesuccess/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/makesuccess/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -85,6 +86,7 @@ component.options.__file = "src/packageMoka/pages/moka/makesuccess/index.vue"
 //
 //
 //
+
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "makesuccess",
@@ -119,6 +121,9 @@ component.options.__file = "src/packageMoka/pages/moka/makesuccess/index.vue"
         });
       }
     },
+    myMoka: function myMoka() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
+    },
     save: function save() {
       var _this = this;
 
@@ -143,16 +148,23 @@ component.options.__file = "src/packageMoka/pages/moka/makesuccess/index.vue"
       wx.showLoading({
         title: "保存中..."
       });
-      wx.saveImageToPhotosAlbum({
-        filePath: this.imageSrc,
-        success: function success(a) {
-          wx.hideLoading();
-          wx.showToast({
-            title: "保存成功",
-            icon: "success",
-            duration: 3000
+      wx.downloadFile({
+        url: this.imageSrc,
+        success: function success(res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: function success(res) {
+              wx.hideLoading();
+              wx.showToast({
+                title: "已保存至相册",
+                icon: "success",
+                duration: 3000
+              });
+            },
+            faile: function faile(err) {
+              console.log("失败！");
+            }
           });
-          this.goIndex = true;
         }
       });
     }
@@ -197,13 +209,12 @@ var render = function () {
         attrs: { mode: "widthFix", src: _vm.imageSrc },
         on: { tap: _vm.previewImage },
       }),
-      _vm.goIndex
-        ? _c("view", { staticClass: "save", on: { tap: _vm.goIndex } }, [
-            _vm._v("返回首页"),
-          ])
-        : _c("view", { staticClass: "save", on: { tap: _vm.save } }, [
-            _vm._v("保存手机相册"),
-          ]),
+      _c("view", { staticClass: "save", on: { tap: _vm.save } }, [
+        _vm._v("保存手机相册"),
+      ]),
+      _c("view", { staticClass: "mymoka", on: { tap: _vm.myMoka } }, [
+        _vm._v("查看我的模卡"),
+      ]),
     ]),
     _vm.openSet
       ? _c("view", { staticClass: "modal_box_bg", on: { tap: _vm.close } }, [
@@ -302,5 +313,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageMoka/pages/moka/makesuccess/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageMoka/pages/moka/makesuccess/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

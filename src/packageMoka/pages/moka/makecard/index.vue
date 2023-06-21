@@ -721,6 +721,7 @@ export default {
     },
     switchBg() {
       this.isDark = !this.isDark;
+      this.cutAvartar();
     },
     make() {
       if (!clickThrottle(5000)) return;
@@ -916,7 +917,7 @@ export default {
             fileType: "png",
             quality: 1,
             success: function (e) {
-              t
+              t.isDark
                 ? (a.logoAvartar = e.tempFilePath)
                 : (a.blackLogoAvartar = e.tempFilePath),
                 (a.canvasHidden = true);

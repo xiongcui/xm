@@ -14,8 +14,8 @@
         :src="imageSrc"
         :style="{ width: isVertical ? 380 + 'rpx' : 650 + 'rpx' }"
       ></image>
-      <view @tap="goIndex" class="save" v-if="goIndex">返回首页</view>
-      <view @tap="save" class="save" v-else>保存手机相册</view>
+      <view @tap="save" class="save">保存手机相册</view>
+      <view @tap="myMoka" class="mymoka">查看我的模卡</view>
     </view>
     <view class="modal_box_bg" v-if="openSet" @tap="close">
       <view class="tip_set">
@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { openPage } from "../../../../utils/util";
 import "./index.scss";
 export default {
   name: "makesuccess",
@@ -69,6 +70,9 @@ export default {
         });
       }
     },
+    myMoka() {
+      openPage("/packageMoka/pages/moka/myModelCardlist/index");
+    },
     save() {
       let _this = this;
       wx.getSetting({
@@ -94,16 +98,23 @@ export default {
       wx.showLoading({
         title: "保存中...",
       });
-      wx.saveImageToPhotosAlbum({
-        filePath: this.imageSrc,
-        success: function (a) {
-          wx.hideLoading();
-          wx.showToast({
-            title: "保存成功",
-            icon: "success",
-            duration: 3000,
+      wx.downloadFile({
+        url: this.imageSrc,
+        success: function (res) {
+          wx.saveImageToPhotosAlbum({
+            filePath: res.tempFilePath,
+            success: (res) => {
+              wx.hideLoading();
+              wx.showToast({
+                title: "已保存至相册",
+                icon: "success",
+                duration: 3000,
+              });
+            },
+            faile: (err) => {
+              console.log("失败！");
+            },
           });
-          this.goIndex = true;
         },
       });
     },

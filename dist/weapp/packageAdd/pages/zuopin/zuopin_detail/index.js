@@ -499,7 +499,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Qb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -530,7 +530,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "bc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "cc"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -609,25 +609,16 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
     this.author_id = options.author_id;
 
     if (options.scene) {
-      // 分享出去-查看详情
-      var params = {
-        oid: options.scene,
-        author_id: options.author_id
-      };
-      this.photoInfo(params);
-      this.shareInviteInfo({
-        source: "share_details",
-        type: "wechat",
-        oid: options.scene
-      });
+      this.oid = options.scene;
+      this.author_id = options.author_id;
     }
 
     if (this.oid && this.author_id) {
-      var _params = {
+      var params = {
         oid: this.oid,
         author_id: this.author_id
       };
-      this.photoInfo(_params);
+      this.photoInfo(params);
       this.shareInviteInfo({
         source: "share_details",
         type: "wechat",

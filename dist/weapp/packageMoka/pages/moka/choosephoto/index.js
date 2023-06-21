@@ -124,8 +124,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
     var cardid = wx.getStorageSync("cardid");
     var mokaIndex = moka.getIndexByCardId(cardid);
     var layouts = moka.layouts[mokaIndex];
-    console.log(layouts, "layouts");
-    photos = wx.getStorageSync("selectedPhotos");
+    var photos = wx.getStorageSync("selectedPhotos");
     this.maxCount = layouts.maxCount;
     this.photos = photos;
     this.setButtonTitle();

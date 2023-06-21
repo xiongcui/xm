@@ -102,6 +102,7 @@ export default defineAppConfig({
         "pages/moka/inforother/index",
         "pages/moka/otherlist/index",
         "pages/moka/myModelCardlist/index",
+        "pages/moka/editmoka/index",
       ],
     },
     {
