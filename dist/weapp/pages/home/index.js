@@ -736,8 +736,12 @@ var citySelector = requirePlugin("citySelector");
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])()) return;
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
-    comingSoon: function comingSoon() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* errortip */ "a"])("敬请期待，正在开发中");
+    gomoka: function gomoka() {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+      } else {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/pages/login/index");
+      }
     },
     signClose: function signClose() {
       this.showModelSign = false;
@@ -2332,7 +2336,7 @@ var render = function () {
               ),
               _c(
                 "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.comingSoon } },
+                { staticClass: "page-nav-item", on: { tap: _vm.gomoka } },
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
