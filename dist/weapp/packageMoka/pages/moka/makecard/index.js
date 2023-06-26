@@ -47,16 +47,16 @@ component.options.__file = "src/packageMoka/pages/moka/makecard/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/makecard/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageMoka/pages/moka/makecard/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+
+
 //
 //
 //
@@ -632,6 +632,10 @@ var statusBarHeight = device.statusBarHeight;
 
 var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/assets/js/moka.js");
 
+
+
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "makecard",
   data: function data() {
@@ -644,7 +648,6 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       isposting: false,
       pageshow: "",
       screenW: width * (750 / width),
-      //   screenH: (l - 44 - s.statusBarHeight) * r,
       screenH: (height - 44 - statusBarHeight) * (750 / width),
       showChangeButton: false,
       changeIndex: -1,
@@ -688,70 +691,516 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       tipmoveqrcode_task2: false,
       blackCode: "",
       whiteCode: "",
-      uploadData: {}
+      uploadData: {},
+      moka_code: "",
+      n: false,
+      h: false,
+      t: "",
+      sub_user_id: ""
     };
   },
   methods: {
-    touchStart: function touchStart(e) {
+    touchStart: function touchStart(a) {
       this.allowScroll = false;
-      var id = 0;
-      var t = "";
-      var n = "";
+      var e = parseInt(a.currentTarget.id);
+      this.t = e >= 0 && e < this.photos.length ? e : -1;
+      this.n = true;
 
-      if (t = e >= 0 && e < this.photos.length ? e : -1, n = true, e.touches.length >= 2) {
-        var h = true;
-        var o = e.touches[1].pageX - e.touches[0].pageX,
-            s = e.touches[1].pageY - e.touches[0].pageY;
+      if (a.touches.length >= 2) {
+        this.h = true;
+        var o = a.touches[1].pageX - a.touches[0].pageX,
+            s = a.touches[1].pageY - a.touches[0].pageY;
         d = Math.sqrt(o * o + s * s);
       }
     },
+    touchMove: function touchMove(a) {
+      if (!(this.t < 0 || this.t >= this.scrollInfo.length) && this.n && a.touches.length >= 2) {
+        var e = a.touches[1].pageX - a.touches[0].pageX,
+            o = a.touches[1].pageY - a.touches[0].pageY,
+            s = Math.sqrt(e * e + o * o) - d;
+
+        if (Math.abs(s) >= 0) {
+          var i = this.scrollInfo[this.t].scale || 1;
+          (i += 4e-4 * s) > 2 && (i = 2), i < 1 && (i = 1), this.scrollInfo[this.t].scale = i, this.scrollInfo = this.scrollInfo;
+        }
+      }
+    },
+    touchEnd: function touchEnd(a) {
+      if (0 == a.touches.length) {
+        if (this.n = false, !this.h) {
+          for (var e = a.changedTouches[0], o = -1, s = this.card.layouts, i = 0; i < s.length; i++) {
+            var l = s[i];
+
+            if (this.isTouchInLayout(e, l)) {
+              o = l.id;
+              break;
+            }
+          }
+
+          var r = this.photos;
+
+          if (-1 != this.t && -1 != o) {
+            var d = r[this.t];
+            r[this.t] = r[o], r[o] = d, this.photos = r, this.getPhotoInfos();
+          }
+        }
+
+        this.h = false;
+      }
+    },
+    isTouchInLayout: function isTouchInLayout(t, a) {
+      var r = 750 / width;
+      var e = this.scrollTop,
+          o = r * t.pageX,
+          s = r * (t.pageY + e);
+      return o > a.x && o < a.x + a.width && s > a.y && s < a.y + a.height;
+    },
     sliderChange: function sliderChange(t) {
-      console.log(t);
       this.allowScroll = true;
+      var r = 750 / width;
       var a = t.detail.y,
           e = 274 / r,
           o = (this.card.height - this.screenH + 40) / r * a / e;
       this.scrollTop = o;
     },
-    switchBirthday: function switchBirthday() {},
-    switchBWH: function switchBWH() {},
-    switchQrcode: function switchQrcode() {},
-    switchBg: function switchBg() {},
-    make: function make() {},
-    changePhoto: function changePhoto() {}
+    switchBirthday: function switchBirthday() {
+      this.userInfo.is_birthday = !this.userInfo.is_birthday;
+    },
+    switchBWH: function switchBWH() {
+      this.userInfo.is_bwh = !this.userInfo.is_bwh;
+    },
+    switchQrcode: function switchQrcode() {
+      this.isMoveQrcode ? this.isMoveQrcode = 0 : this.isMoveQrcode = 1;
+    },
+    switchBg: function switchBg() {
+      this.isDark = !this.isDark;
+      this.cutAvartar();
+    },
+    make: function make() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])(5000)) return;
+      this.showMaking = true;
+      this.makes([], 0);
+    },
+    makes: function makes(e, o) {
+      var _this = this;
+
+      var s,
+          i,
+          l = this.scrollInfo,
+          n = this.photoInfos,
+          h = this.photos,
+          d = this.card.layouts,
+          c = h[o],
+          u = d[o],
+          f = n[o],
+          g = l[o],
+          w = this.cutCanvasWH;
+      f.width >= f.height ? i = (s = w) / f.width * f.height : s = (i = w) / f.height * f.width;
+      var v = s / (f.rotateW * g.scale),
+          S = u.height * v,
+          p = u.width * v,
+          y = wx.createCanvasContext("cutCanvas");
+      var r = 750 / width;
+      y.clearRect(0, 0, s, i), y.drawImage(c, 0, 0, s, i), y.draw(false, function (s) {
+        wx.canvasToTempFilePath({
+          x: g.x * v * r,
+          y: g.y * v * r,
+          width: S,
+          height: p,
+          destWidth: 2 * S,
+          destHeight: 2 * p,
+          canvasId: "cutCanvas",
+          fileType: "png",
+          quality: 1,
+          success: function success(s) {
+            e[o] = s.tempFilePath;
+
+            if ((o += 1) >= h.length) {
+              _this.cutPhotos = e;
+
+              _this.drawMocard();
+            } else {
+              _this.makes(e, o);
+            }
+          }
+        });
+      });
+    },
+    changePhoto: function changePhoto(t) {
+      var a = parseInt(t.currentTarget.id),
+          _this = this;
+
+      wx.chooseImage({
+        count: 1,
+        sizeType: ["compressed"],
+        sourceType: ["album"],
+        success: function success(t) {
+          var o = t.tempFilePaths[0];
+          _this.photos[a] = o;
+
+          _this.getPhotoInfos();
+
+          _this.changeIndex = -1;
+          _this.showChangeButton = false;
+        }
+      });
+    },
+    getPhotoInfos: function getPhotoInfos() {
+      !function t(a, e, o) {
+        var s = a.photos,
+            i = a.card.layouts,
+            l = s[o],
+            r = i[o];
+        wx.getImageInfo({
+          src: l,
+          success: function success(i) {
+            var l, n, h, d;
+            i.width / i.height > r.height / r.width ? (n = r.width, l = i.width / i.height * n, h = !0, d = !1) : (l = r.height, n = i.height / i.width * l, h = !1, d = !0);
+            var c = {
+              width: i.width,
+              height: i.height,
+              rotateW: l,
+              rotateH: n,
+              scrollX: h,
+              scrollY: d
+            };
+            e[o] = c;
+
+            if ((o += 1) >= s.length) {
+              a.photos = s;
+              a.photoInfos = e;
+            } else {
+              t(a, e, o);
+            }
+          }
+        });
+      }(this, [], 0);
+    },
+    scroll: function scroll(t) {
+      this.scrollInfo[t.currentTarget.id].x = t.detail.scrollLeft;
+      this.scrollInfo[t.currentTarget.id].y = t.detail.scrollTop;
+    },
+    tapPhoto: function tapPhoto(t) {
+      var a = parseInt(t.currentTarget.id);
+      this.changeIndex = a;
+
+      if (this.showChangeButton = !this.showChangeButton) {
+        this.changeIndex = this.changeIndex;
+        this.showChangeButton = this.showChangeButton;
+      }
+    },
+    cutAvartar: function cutAvartar() {
+      var _this = this;
+
+      wx.downloadFile({
+        url: this.userInfo.avatar,
+        success: function success(res) {
+          if (200 === res.statusCode) {
+            var e = wx.createCanvasContext("firstCanvas");
+            e.save(), e.beginPath(), e.arc(100, 100, 100, 0, 2 * Math.PI, !1), e.clip(), e.drawImage(res.tempFilePath, 0, 0, 200, 200), e.restore(), e.draw(false, function (a) {
+              wx.canvasToTempFilePath({
+                x: 0,
+                y: 0,
+                width: 200,
+                height: 200,
+                destWidth: 200,
+                destHeight: 200,
+                canvasId: "firstCanvas",
+                fileType: "png",
+                quality: 1,
+                success: function success(a) {
+                  _this.avartar = a.tempFilePath;
+
+                  _this.drawAvartar(true);
+
+                  _this.drawAvartar(false);
+                },
+                fail: function fail(t) {
+                  wx.showModal({
+                    title: "头像裁剪失败",
+                    showCancel: !1
+                  });
+                }
+              });
+            });
+          }
+        }
+      });
+    },
+    drawAvartar: function drawAvartar(t) {
+      var _this = this;
+
+      wx.downloadFile({
+        url: this.moka_code,
+        success: function success(e) {
+          if (200 === e.statusCode && t) {
+            if (t) {
+              _this.blackCode = e.tempFilePath;
+            } else {
+              _this.whiteCode = e.tempFilePath;
+            }
+
+            _this.drawCode(_this);
+          }
+        }
+      });
+    },
+    drawCode: function drawCode(t) {
+      var a = this,
+          e = wx.createCanvasContext("firstCanvas");
+      e.setFillStyle("white"), e.fillRect(0, 0, 200, 200), e.drawImage(t ? a.blackCode : a.whiteCode, 0, 0, 200, 200), e.drawImage(a.avartar, 55, 55, 90, 90), e.draw(false, function (e) {
+        wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: 200,
+          height: 200,
+          destWidth: 200,
+          destHeight: 200,
+          canvasId: "firstCanvas",
+          fileType: "png",
+          quality: 1,
+          success: function success(e) {
+            t.isDark ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
+          },
+          fail: function fail(t) {
+            wx.showModal({
+              title: "头像绘制失败",
+              showCancel: false
+            });
+          }
+        });
+      });
+    },
+    drawMocard: function drawMocard() {
+      var t = this,
+          a = t.card.height,
+          o = t.card.width,
+          s = wx.createCanvasContext("cutCanvas"),
+          i = {};
+      i = t.isDark ? t.darkStyle : t.lightStyle, s.setFillStyle(i.bgColor), s.fillRect(0, 0, a, o), "cebian" == t.card.type || "charu" == t.card.type ? t.drawUserInfoWithCebian(s) : "dibu" == t.card.type && t.drawUserInfoWithDibu(s), t.drawPhotos(s);
+      var l = "android" == device.platform,
+          r = l ? 2 : 1.8;
+      s.draw(false, function (s) {
+        "drawCanvas:ok" == s.errMsg && wx.canvasToTempFilePath({
+          x: 0,
+          y: 0,
+          width: a,
+          height: o,
+          destWidth: a * r,
+          destHeight: o * r,
+          canvasId: "cutCanvas",
+          fileType: "png",
+          quality: 1,
+          success: function success(a) {
+            var o = t.card.cardId,
+                s = t.card.name;
+            t.uploadFilePath(a.tempFilePath, t, o, s);
+          },
+          fail: function fail(a) {
+            wx.hideToast(), t.showMaking = false, wx.showModal({
+              title: "模卡保存失败",
+              showCancel: false
+            });
+          }
+        });
+      });
+    },
+    uploadFilePath: function uploadFilePath(t, a, o, s) {
+      if (a.isposting) return;
+      a.isposting = !0;
+      var i = 1;
+      a.isMoveQrcode && (i = 0);
+      var l = {
+        sub_user_id: a.userInfo.sub_user_id,
+        has_qrcode: i,
+        template_id: o,
+        template_name: s
+      };
+      this.upImgs(t, i);
+    },
+    drawUserInfoWithCebian: function drawUserInfoWithCebian(a) {
+      var e = this.userInfo,
+          o = (this.card.userInfo.x, this.card.userInfo.Y, this.card.userInfo.height, this.card.userInfo.width, 55);
+      this.isMoveQrcode && (o += 65), e.is_bwh || (o += 80), e.is_birthday || (o += 25);
+      var s = 40 + this.card.userInfo.y,
+          i = o,
+          l = {},
+          r = (l = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
+          n = l.valueColor;
+      a.setFontSize(32), a.setFillStyle(n), a.fillText(e.nickname, s, i);
+      var h = 8;
+
+      if (this.isMoveQrcode && (h = 10), i += 40, a.setFontSize(18), a.setFillStyle(r), a.fillText("身高 HEIGHT", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.height + "cm", s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("体重 WEIGHT", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.weight + "kg", s, i), e.is_bwh && (i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("胸围 BUST", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_b, s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("腰围 WAIST", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_w, s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("臀围 HIPS", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_h, s, i)), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("鞋码 SHOES", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.shoe, s, i), e.is_birthday && (i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("生日 BIRTH", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.birthday, s, i)), !this.isMoveQrcode) {
+        i += 30;
+        a.drawImage(this.isDark ? this.logoAvartar : this.blackLogoAvartar, s, i, 120, 120);
+      }
+    },
+    drawUserInfoWithDibu: function drawUserInfoWithDibu(a) {
+      var e = this.userInfo,
+          o = (this.card.userInfo.x, this.card.userInfo.Y, this.card.userInfo.height, this.card.userInfo.width, 67),
+          s = 580,
+          i = {},
+          l = (i = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
+          r = i.valueColor;
+      a.setFontSize(32), a.setFillStyle(r), a.fillText(e.nickname, o, s);
+      s = 560, o += 160, a.setFontSize(18), a.setFillStyle(l), a.fillText("身高HEIGHT", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.height + "cm", o, s), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("体重WEIGHT", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.weight + "kg", o, s), e.is_bwh && (s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("胸围BUST", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.bwh_b, o, s), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("腰围WAIST", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.bwh_w, o, s), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("臀围HIPS", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.bwh_h, o, s)), s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("鞋码SHOES", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.shoe, o, s), e.is_birthday && (s = 560, o += 140, a.setFontSize(18), a.setFillStyle(l), a.fillText("生日BIRTH", o, s), s += 31, a.setFontSize(18), a.setFillStyle(r), a.fillText(e.birthday, o, s));
+      o = this.card.userInfo.height - 80 - 30, s = 530;
+      this.isMoveQrcode || a.drawImage(this.isDark ? this.logoAvartar : this.blackLogoAvartar, o, s, 80, 80);
+    },
+    drawPhotos: function drawPhotos(a) {
+      for (var e = this.cutPhotos, o = this.card.layouts, s = this.card.width, i = 0; i < e.length; i++) {
+        var l = e[i],
+            r = o[i],
+            n = r.y + 2,
+            h = s - r.x - r.width + 2,
+            d = r.height - 4,
+            c = r.width - 4;
+        a.drawImage(l, n, h, d, c);
+      }
+    },
+    upImgs: function upImgs(tempFilePath, i) {
+      var _this2 = this;
+
+      var header = {};
+
+      var _this = this;
+
+      var token = wx.getStorageSync("token");
+      header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_5__[/* Base64 */ "a"].encode(token + ":");
+      wx.uploadFile({
+        url: "https://pai.qubeitech.com/v1/file/upload",
+        filePath: tempFilePath,
+        formData: {
+          scr_type: "mocha"
+        },
+        name: "file",
+        header: header,
+        success: function success(res) {
+          wx.hideLoading(); //判断上传的是图片还是视频
+
+          var data = JSON.parse(res.data);
+
+          if (data.code == 200) {
+            var params = {
+              mocha_url: data.data.file1
+            };
+
+            if (_this.sub_user_id) {
+              params.sub_uuid = _this.sub_user_id;
+            }
+
+            _this.userMocha(data.data.file1, i, params);
+          } else {
+            wx.showToast({
+              title: "上传失败！",
+              icon: "none"
+            });
+          }
+        },
+        fail: function fail(error) {
+          wx.hideLoading();
+          _this2.showMaking = false;
+          wx.showToast({
+            title: "上传失败！",
+            icon: "none"
+          });
+        }
+      });
+    },
+    qrcode: function qrcode(params) {
+      var _this3 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "qb"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this3.moka_code = res.data.data;
+
+                _this3.cutAvartar();
+
+                _context.next = 10;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 8]]);
+      }))();
+    },
+    userMocha: function userMocha(file, i, params) {
+      var _this4 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Tb"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this4.showMaking = false;
+                wx.setStorageSync("successImgSrc", file);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makesuccess/index?vertical=0&has_qrcode=" + i);
+                _context2.next = 11;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](0);
+
+              case 11:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 9]]);
+      }))();
+    }
   },
   onLoad: function onLoad(options) {
-    var mokaIndex = moka.getIndexByCardId("1001010501");
+    var cardid = wx.getStorageSync("cardid");
+    var mokaIndex = moka.getIndexByCardId(cardid);
     this.card = moka.layouts[mokaIndex];
-    this.photos = ["https://yuepai-oss.qubeitech.com/invite/111661/5bed3f4d-ffb9-11ed-a646-f7624355584a-qa60.jpeg", "https://yuepai-oss.qubeitech.com/notice/111452/fe4576f1-ff51-11ed-a646-f7624355584a-qa60.jpg", "https://yuepai-oss.qubeitech.com/invite/111514/b6417311-ff7c-11ed-a646-f7624355584a-qa60.jpg", "https://yuepai-oss.qubeitech.com/invite/111166/fbe29799-f48f-11ed-a646-f7624355584a.jpg", "https://yuepai-oss.qubeitech.com/invite/111166/fbe2979a-f48f-11ed-a646-f7624355584a.jpg"];
-    this.userInfo = {
-      nickname: "nickname",
-      province: "province",
-      city: "city",
-      area: "area",
-      province_name: "province_name",
-      city_name: "city_name",
-      area_name: "area_name",
-      sex: 0,
-      birthday: "1994-08-29",
-      height: 100,
-      weight: 200,
-      bwh_b: 38,
-      bwh_w: 39,
-      bwh_h: 40,
-      shoe: 41
-    };
-    var arr = [];
+    this.photos = wx.getStorageSync("selectedPhotos");
+    this.userInfo = wx.getStorageSync("carduserinfo");
 
-    for (var i = 0; i < this.photos.length; i++) {
-      arr.push({
+    if (options.sub_user_id) {
+      this.sub_user_id = options.sub_user_id;
+    }
+
+    var l = [];
+
+    for (var r = 0; r < this.photos.length; r++) {
+      l.push({
         x: 0,
         y: 0,
         scale: 1
       });
     }
 
-    this.scrollInfo = arr;
+    this.scrollInfo = l;
+    this.qrcode({
+      source: "homepage"
+    });
+    this.getPhotoInfos();
   }
 });
 
@@ -780,27 +1229,33 @@ var render = function () {
         style: { backgroundColor: _vm.darkStyle.pageBgColor },
       },
       [
-        _vm.showMaking
-          ? _c(
-              "view",
+        _c(
+          "view",
+          {
+            directives: [
               {
-                staticClass: "making",
-                style: { top: (_vm.screenH - 200) * 0.5 + "rpx" },
+                name: "show",
+                rawName: "v-show",
+                value: _vm.showMaking,
+                expression: "showMaking",
               },
-              [
-                _c("view", { staticClass: "making-icon" }, [
-                  _c("image", {
-                    attrs: {
-                      src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/loading.gif'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                    },
-                  }),
-                ]),
-                _c("text", { staticClass: "making-text" }, [
-                  _vm._v("制作中，请稍候"),
-                ]),
-              ]
-            )
-          : _vm._e(),
+            ],
+            staticClass: "making",
+            style: { top: (_vm.screenH - 200) * 0.5 + "rpx" },
+          },
+          [
+            _c("view", { staticClass: "making-icon" }, [
+              _c("image", {
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/loading.gif",
+                },
+              }),
+            ]),
+            _c("text", { staticClass: "making-text" }, [
+              _vm._v("制作中，请稍候"),
+            ]),
+          ]
+        ),
         _c(
           "view",
           {
@@ -823,7 +1278,7 @@ var render = function () {
                   [
                     _c("image", {
                       attrs: {
-                        src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/slider_v.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                        src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/slider_v.png",
                       },
                     }),
                   ]
@@ -871,9 +1326,9 @@ var render = function () {
                       "movable-view",
                       {
                         staticClass: "userinfo",
-                        staticStyle: {
-                          "{height":
-                            "card.userInfo.height+'rpx', width: card.userInfo.width +'rpx'}",
+                        style: {
+                          height: _vm.card.userInfo.height + "rpx",
+                          width: _vm.card.userInfo.width + "rpx",
                         },
                         attrs: {
                           disabled: true,
@@ -893,11 +1348,6 @@ var render = function () {
                                   height: _vm.card.userInfo.width + "rpx",
                                   width: _vm.card.userInfo.height + "rpx",
                                   transform:
-                                    //     'rotate(90deg)' +
-                                    //    ' translate('+
-                                    //       -card.userInfo.offset + 'rpx',
-                                    //       -card.userInfo.offset + 'rpx',+
-                                    //     ')',
                                     "rotate(90deg) translate(" +
                                     (-_vm.card.userInfo.offset + "rpx") +
                                     ", " +
@@ -1179,11 +1629,6 @@ var render = function () {
                                   height: _vm.card.userInfo.width + "rpx",
                                   width: _vm.card.userInfo.height + "rpx",
                                   transform:
-                                    // 'rotate(90deg)' +
-                                    // translate(
-                                    //   -card.userInfo.offset + 'rpx',
-                                    //   -card.userInfo.offset + 'rpx'
-                                    // ),
                                     "rotate(90deg) translate(" +
                                     (-_vm.card.userInfo.offset + "rpx") +
                                     ", " +
@@ -1542,17 +1987,16 @@ var render = function () {
                                     height: item.width + "rpx",
                                     width: item.height + "rpx",
                                     transform:
-                                      // 'rotate(90deg)' +
-                                      // translate(-item.offset + 'rpx', -item.offset + 'rpx'),
                                       "rotate(90deg) translate(" +
                                       (-item.offset + "rpx") +
                                       ", " +
                                       (-item.offset + "rpx") +
                                       ")",
                                     border:
-                                       true
+                                      "1px solid " +
+                                      (_vm.isDark
                                         ? _vm.darkStyle.bgColor
-                                        : undefined,
+                                        : _vm.lightStyle.bgColor),
                                   },
                                   attrs: {
                                     id: item.id,
@@ -1593,17 +2037,23 @@ var render = function () {
                           _c(
                             "view",
                             {
+                              directives: [
+                                {
+                                  name: "show",
+                                  rawName: "v-show",
+                                  value:
+                                    _vm.showChangeButton &&
+                                    index == _vm.changeIndex,
+                                  expression:
+                                    "showChangeButton && index == changeIndex",
+                                },
+                              ],
                               staticClass: "change",
-                              staticStyle: {
-                                top: "(item.height-100)*0.5 +'rpx',right:(item.width-100)*0.5+'rpx'",
+                              style: {
+                                top: (item.height - 100) * 0.5 + "rpx",
+                                right: (item.width - 100) * 0.5 + "rpx",
                               },
-                              attrs: {
-                                hidden: !(
-                                  _vm.showChangeButton &&
-                                  index == _vm.changeIndex
-                                ),
-                                id: item.id,
-                              },
+                              attrs: { id: item.id },
                               on: { tap: _vm.changePhoto },
                             },
                             [_vm._v("替换")]
@@ -1661,13 +2111,13 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/birthday1.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/birthday1.png",
                             },
                           })
                         : _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/birthday0.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/birthday0.png",
                             },
                           }),
                     ]
@@ -1683,13 +2133,13 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/bwh1.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh1.png",
                             },
                           })
                         : _c("image", {
                             staticClass: "icon_check",
                             attrs: {
-                              src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/bwh0.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/bwh0.png",
                             },
                           }),
                     ]
@@ -1706,13 +2156,13 @@ var render = function () {
                             ? _c("image", {
                                 staticClass: "icon_check_qrcode",
                                 attrs: {
-                                  src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/qrcode0.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode0.png",
                                 },
                               })
                             : _c("image", {
                                 staticClass: "icon_check_qrcode",
                                 attrs: {
-                                  src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/qrcode1.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                                  src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/qrcode1.png",
                                 },
                               }),
                         ]
@@ -1728,7 +2178,7 @@ var render = function () {
                       _c("image", {
                         staticClass: "icon_switchbg",
                         attrs: {
-                          src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../assets/images/moka/makecard/switchbg.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
+                          src: "https://yuepai-oss.qubeitech.com/static/images/moka/makecard/switchbg.png",
                         },
                       }),
                     ]
@@ -1744,14 +2194,29 @@ var render = function () {
       ],
       1
     ),
-    _c("canvas", {
-      style: { width: _vm.cutCanvasWH + "px", height: _vm.cutCanvasWH + "px" },
-      attrs: { canvasId: "cutCanvas", hidden: _vm.canvasHidden },
-    }),
-    _c("canvas", {
-      staticStyle: { width: "200px", height: "200px" },
-      attrs: { canvasId: "firstCanvas", hidden: _vm.canvasHidden },
-    }),
+    _c(
+      "view",
+      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+      [
+        _c("canvas", {
+          style: {
+            width: _vm.cutCanvasWH + "px",
+            height: _vm.cutCanvasWH + "px",
+          },
+          attrs: { canvasId: "cutCanvas" },
+        }),
+      ]
+    ),
+    _c(
+      "view",
+      { staticStyle: { width: "0px", height: "0px", overflow: "hidden" } },
+      [
+        _c("canvas", {
+          staticStyle: { width: "200px", height: "200px" },
+          attrs: { canvasId: "firstCanvas" },
+        }),
+      ]
+    ),
   ])
 }
 var staticRenderFns = []
@@ -1761,26 +2226,14 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./src/assets/js/moka.js":
-/*!*******************************!*\
-  !*** ./src/assets/js/moka.js ***!
-  \*******************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/niujun/WeChatProjects/xiamiyuepai/src/assets/js/moka.js'");
-
-/***/ }),
-
 /***/ "./src/packageMoka/pages/moka/makecard/index.scss":
 /*!********************************************************!*\
   !*** ./src/packageMoka/pages/moka/makecard/index.scss ***!
   \********************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/@tarojs/mini-runner/node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, open '/Users/niujun/WeChatProjects/xiamiyuepai/src/packageMoka/pages/moka/makecard/index.scss'\n    at /Users/niujun/WeChatProjects/xiamiyuepai/node_modules/webpack/lib/NormalModule.js:316:20\n    at /Users/niujun/WeChatProjects/xiamiyuepai/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at Array.<anonymous> (/Users/niujun/WeChatProjects/xiamiyuepai/node_modules/loader-runner/lib/LoaderRunner.js:203:19)\n    at Storage.finished (/Users/niujun/WeChatProjects/xiamiyuepai/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:55:16)\n    at ReadFileContext.<anonymous> (/Users/niujun/WeChatProjects/xiamiyuepai/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:91:9)\n    at ReadFileContext.callback (/Users/niujun/WeChatProjects/xiamiyuepai/node_modules/graceful-fs/graceful-fs.js:123:16)\n    at FSReqCallback.readFileAfterOpen [as oncomplete] (node:fs:314:13)");
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -1798,7 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageMoka/pages/moka/makecard/index.vue");
 
 
-var config = {"navigationBarTitleText":"制作模卡","usingComponents":{"custom-wrapper":"../../../../custom-wrapper","comp":"../../../../comp"}};
+var config = {"navigationBarTitleText":"制作模卡","usingComponents":{}};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageMoka/pages/moka/makecard/index', {root:{cn:[]}}, config || {}))
@@ -1840,5 +2293,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageMoka/pages/moka/makecard/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageMoka/pages/moka/makecard/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

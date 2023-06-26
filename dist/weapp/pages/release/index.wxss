@@ -38,7 +38,7 @@ page {
 
 .release-box .release-item {
   width: 100%;
-  margin-bottom: 44rpx;
+  margin-bottom: 24rpx;
   -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
           box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
   background: #ffffff;
@@ -63,7 +63,8 @@ page {
       -ms-flex-align: center;
           align-items: center;
   margin: 0 30rpx;
-  padding: 0 16rpx;
+  width: 110rpx;
+  min-width: 110rpx;
   border-radius: 16rpx;
   height: 110rpx;
 }
@@ -80,6 +81,10 @@ page {
   background-color: #3a7df8;
 }
 
+.release-box .release-item .color4 {
+  background-color: #767bea;
+}
+
 .release-box .release-item .release-list-title {
   font-size: 30rpx;
   color: #f9475f;
@@ -94,4 +99,9 @@ page {
 
 .release-box .release-item .release-right {
   padding-right: 30rpx;
+}
+
+.release-box .release-item .color4 .release-image {
+  width: 68rpx;
+  height: 68rpx;
 }

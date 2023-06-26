@@ -114,7 +114,7 @@
             ></image>
             <text class="page-nav-text">作品</text>
           </view>
-          <view class="page-nav-item" @tap="comingSoon">
+          <view class="page-nav-item" @tap="gomoka">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/moka.png"
               class="page-nav-img"
@@ -658,8 +658,12 @@ export default {
       if (!clickThrottle()) return;
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
-    comingSoon() {
-      errortip("敬请期待，正在开发中");
+    gomoka() {
+      if (isLogin()) {
+        openPage("/packageMoka/pages/moka/modelcard/index");
+      } else {
+        openPage("/pages/login/index");
+      }
     },
     signClose() {
       this.showModelSign = false;

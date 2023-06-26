@@ -672,7 +672,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticeTemplate */ "ab"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticeTemplate */ "db"])(params);
 
               case 3:
                 res = _context.sent;
@@ -711,7 +711,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "Cb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "Gb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -756,7 +756,7 @@ component.options.__file = "src/packageTonggao/pages/add/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "Z"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "cb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -893,7 +893,7 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "word-img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/common/select2_0.png */ "./src/assets/images/common/select2_0.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/select2_0.png",
                             },
                           })
                         : _vm._e(),
@@ -901,7 +901,7 @@ var render = function () {
                         ? _c("image", {
                             staticClass: "word-img",
                             attrs: {
-                              src: __webpack_require__(/*! ../../../assets/images/common/select2_1.png */ "./src/assets/images/common/select2_1.png"),
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/select2_1.png",
                             },
                           })
                         : _vm._e(),

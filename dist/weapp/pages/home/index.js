@@ -736,8 +736,12 @@ var citySelector = requirePlugin("citySelector");
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])()) return;
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
-    comingSoon: function comingSoon() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* errortip */ "a"])("敬请期待，正在开发中");
+    gomoka: function gomoka() {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+      } else {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/pages/login/index");
+      }
     },
     signClose: function signClose() {
       this.showModelSign = false;
@@ -1094,7 +1098,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeAdviseList */ "V"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeAdviseList */ "Y"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1135,7 +1139,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* notifyNumber */ "bb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* notifyNumber */ "eb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1207,7 +1211,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "Vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "ac"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1276,7 +1280,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Xb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1393,7 +1397,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeFilter */ "W"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeFilter */ "Z"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1480,7 +1484,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoFilter */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoFilter */ "hb"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1550,7 +1554,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeList */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeList */ "bb"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1655,7 +1659,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoList */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoList */ "jb"])(params);
 
               case 3:
                 res = _context12.sent;
@@ -1758,7 +1762,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "wb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1788,7 +1792,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "xb"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1819,7 +1823,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* sourceItems */ "vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* sourceItems */ "zb"])(params);
 
               case 3:
                 res = _context15.sent;
@@ -1849,7 +1853,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Hb"])(params);
 
               case 3:
                 res = _context16.sent;
@@ -2332,7 +2336,7 @@ var render = function () {
               ),
               _c(
                 "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.comingSoon } },
+                { staticClass: "page-nav-item", on: { tap: _vm.gomoka } },
                 [
                   _c("image", {
                     staticClass: "page-nav-img",

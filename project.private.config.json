@@ -5,48 +5,62 @@
         "compileHotReLoad": true,
         "bigPackageSizeSupport": true
     },
-    "libVersion": "2.32.0",
+    "libVersion": "2.32.1",
     "condition": {
         "miniprogram": {
             "list": [
                 {
-                    "name": "提示",
-                    "pathName": "packageAdd/pages/guideTips/index",
+                    "name": "我的模卡",
+                    "pathName": "packageMoka/pages/moka/myModelCardlist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "我的申请",
-                    "pathName": "packageSet/pages/apply/index",
+                    "name": "模卡列表",
+                    "pathName": "packageMoka/pages/moka/editmoka/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "通告详情",
-                    "pathName": "packageTonggao/pages/detail/index",
+                    "name": "生成模卡成功",
+                    "pathName": "packageMoka/pages/moka/makesuccess/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "用户隐私",
-                    "pathName": "packageSet/pages/privacy/index",
+                    "name": "制作模卡-首页",
+                    "pathName": "packageMoka/pages/moka/index/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "订阅",
-                    "pathName": "packageAdd/pages/tips/index",
+                    "name": "模特卡",
+                    "pathName": "packageMoka/pages/moka/modelcard/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "注册",
-                    "pathName": "pages/register/index",
+                    "name": "选择照片",
+                    "pathName": "packageMoka/pages/moka/choosephoto/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "他/她模卡资料",
+                    "pathName": "packageMoka/pages/moka/inforother/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "模卡列表",
+                    "pathName": "packageMoka/pages/moka/otherlist/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

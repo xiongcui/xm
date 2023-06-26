@@ -50,7 +50,10 @@
               >
                 <view class="invite-top">
                   <view class="invite-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="invite-info">
                     <view class="invite-name">
@@ -121,7 +124,10 @@
               >
                 <view class="invite-top">
                   <view class="invite-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="invite-info">
                     <view class="invite-name">
@@ -192,7 +198,10 @@
               >
                 <view class="invite-top">
                   <view class="invite-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="invite-info">
                     <view class="invite-name">
@@ -263,7 +272,10 @@
               >
                 <view class="invite-top">
                   <view class="invite-img">
-                    <image :src="item.visitor.avatar"></image>
+                    <image
+                      :src="item.visitor.avatar"
+                      @tap="gozhuye(item.visitor.uuid)"
+                    ></image>
                   </view>
                   <view class="invite-info">
                     <view class="invite-name">
@@ -342,6 +354,9 @@ export default {
     };
   },
   methods: {
+    gozhuye(uuid) {
+      openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     // 点击tab切换
     changeItem(index, type) {
       if (this.currentTab === index) {

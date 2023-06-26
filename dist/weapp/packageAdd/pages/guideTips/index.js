@@ -64,6 +64,8 @@ component.options.__file = "src/packageAdd/pages/guideTips/index.vue"
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -115,7 +117,9 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "guide-box" }, [
     _c("image", {
-      attrs: { src: __webpack_require__(/*! ../../../assets/images/common/none.png */ "./src/assets/images/common/none.png") },
+      attrs: {
+        src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+      },
     }),
     _c("view", { staticClass: "guide-txt" }, [
       _vm._v(" " + _vm._s(_vm.msg) + " "),
@@ -145,18 +149,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/common/none.png":
-/*!*******************************************!*\
-  !*** ./src/assets/images/common/none.png ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/common/none.png";
 
 /***/ }),
 

@@ -381,7 +381,7 @@ component.options.__file = "src/packageAdd/pages/user/homelist/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeList */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeList */ "bb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -474,7 +474,7 @@ component.options.__file = "src/packageAdd/pages/user/homelist/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* photoList */ "gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* photoList */ "jb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -651,7 +651,7 @@ component.options.__file = "src/packageAdd/pages/user/homelist/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeFilter */ "W"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* noticeFilter */ "Z"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -738,7 +738,7 @@ component.options.__file = "src/packageAdd/pages/user/homelist/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* photoFilter */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_8__[/* photoFilter */ "hb"])(params);
 
               case 3:
                 res = _context6.sent;

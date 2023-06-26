@@ -138,7 +138,8 @@ module.exports = _objectSpread2, module.exports.__esModule = true, module.export
 
 var App = {
   onLaunch: function onLaunch() {
-    // 微信登陆
+    console.log("development", 112122); // 微信登陆
+
     var _this = App; // 判断是否为iphoneX
 
     vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].prototype.globalData = _this.globalData;

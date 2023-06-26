@@ -285,6 +285,23 @@
             ></image>
           </view>
         </view>
+        <view class="item ub line-t" @tap="myMoka">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">我的模卡</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
         <!-- <view catchtap="coin" class="item ub line-t">
           <view class="item_icon">
             <image
@@ -629,6 +646,13 @@ export default {
         return false;
       }
       openPage("/packageSet/pages/apply/index");
+    },
+    myMoka() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageMoka/pages/moka/myModelCardlist/index");
     },
     follow() {
       openPage("/packageAdd/pages/user/follow/index");

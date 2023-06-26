@@ -135,6 +135,7 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
+//
 
 
 
@@ -163,6 +164,10 @@ component.options.__file = "src/pages/release/index.vue"
             project_code: "PH"
           });
           break;
+
+        case 4:
+          url = "/packageMoka/pages/moka/modelcard/index";
+          break;
       }
 
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])(url);
@@ -176,7 +181,7 @@ component.options.__file = "src/pages/release/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "ob"])(params);
 
               case 3:
                 res = _context.sent;
@@ -329,6 +334,42 @@ var render = function () {
               _c("text", { staticClass: "release-list-content" }, [
                 _vm._v(
                   "分享自己的作品或照片，提升自己的约拍专业影响力，获得更多曝光"
+                ),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "release-item",
+          on: {
+            tap: function ($event) {
+              return _vm.releaseUrl(4)
+            },
+          },
+        },
+        [
+          _c("view", { staticClass: "release-left color4" }, [
+            _c("image", {
+              staticClass: "release-image",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/moka_icon.png",
+                mode: "aspectFit",
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "release-right" }, [
+            _c("view", [
+              _c("text", { staticClass: "release-list-title" }, [
+                _vm._v(" 制作模卡 "),
+              ]),
+            ]),
+            _c("view", [
+              _c("text", { staticClass: "release-list-content" }, [
+                _vm._v(
+                  "免费制作专业高清模卡，数百个模板可供选择，制作专业模卡的神器"
                 ),
               ]),
             ]),

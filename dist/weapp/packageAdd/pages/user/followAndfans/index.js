@@ -52,6 +52,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/followAndfans/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -196,6 +197,9 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
 //
 //
 //
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -213,6 +217,9 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
     };
   },
   methods: {
+    gozhuye: function gozhuye(uuid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+    },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
       if (this.currentTab === index) {
@@ -363,7 +370,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Qb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -397,7 +404,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "cc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -535,6 +542,11 @@ var render = function () {
                                           ? item.avatar
                                           : "https://yuepai-oss.qubeitech.com/static/avatar_default.png",
                                       },
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.gozhuye(item.followed_id)
+                                        },
+                                      },
                                     }),
                                     _c(
                                       "view",
@@ -651,6 +663,11 @@ var render = function () {
                                         src: item.avatar
                                           ? item.avatar
                                           : "https://yuepai-oss.qubeitech.com/static/avatar_default.png",
+                                      },
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.gozhuye(item.follower_id)
+                                        },
                                       },
                                     }),
                                     _c(

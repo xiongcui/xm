@@ -1,0 +1,65 @@
+.choosephoto {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.choosephoto .choose-number {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  padding: 0 30rpx;
+  color: #333333;
+  font-size: 30rpx;
+}
+.choosephoto .photos-container {
+  padding: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.choosephoto .photo-container {
+  position: relative;
+}
+.choosephoto .delete-button {
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.choosephoto .photo {
+  width: 155rpx;
+  height: 155rpx;
+  margin-right: 16rpx;
+  margin-bottom: 16rpx;
+}
+.choosephoto .choose-hint {
+  font-size: 24rpx;
+  background: #faf8df;
+  padding: 10rpx 30rpx;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 30rpx auto;
+  border-radius: 32rpx;
+}
+.choosephoto .choose-button {
+  margin: 30rpx auto;
+  background: #fe5457;
+  height: 78rpx;
+  line-height: 78rpx;
+  width: 80%;
+  border-radius: 35rpx;
+  text-align: center;
+  color: #ffffff;
+}

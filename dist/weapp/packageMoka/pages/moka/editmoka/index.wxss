@@ -1,0 +1,14 @@
+page {
+  background: #f7f7f7;
+}
+
+.card-box {
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding: 30rpx 30rpx 14rpx 30rpx;
+  margin: 16rpx 16rpx 16rpx 16rpx;
+}
+
+.card-box image {
+  width: 100%;
+}

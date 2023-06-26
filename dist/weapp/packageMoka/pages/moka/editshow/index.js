@@ -440,6 +440,26 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -501,7 +521,8 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       pageSize: 10,
       shareTitle: "",
       shareImg: "",
-      sharePath: ""
+      sharePath: "",
+      next: false
     };
   },
   components: {
@@ -524,6 +545,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         urls: urls // 预览的地址url
 
       });
+    },
+    gomoka: function gomoka() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.uuid || false);
     },
     editpersondata: function editpersondata() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
@@ -600,6 +624,36 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
         });
       }
     },
+    sub: function sub() {
+      // 请设置三围
+      if (!this.homeInfor.height) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请设置三围");
+        return false;
+      }
+
+      var data = this.infor;
+      var carduserinfo = {
+        avatar: data.avatar,
+        nickname: data.nickname,
+        sex: data.sex,
+        birthday: data.age,
+        height: data.shape.height,
+        weight: data.shape.weight,
+        bwh_b: data.shape.bust,
+        bwh_w: data.shape.waist,
+        bwh_h: data.shape.hip,
+        shoe: data.shape.size,
+        is_bwh: data.shape.bust ? true : false,
+        is_birthday: data.age ? true : false
+      };
+      wx.setStorageSync("carduserinfo", carduserinfo);
+
+      if ("vertical" == wx.getStorageSync("card-type")) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecardv/index");
+      } else {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecard/index");
+      }
+    },
     bindended: function bindended(id) {
       wx.createVideoContext(id).exitFullScreen();
     },
@@ -614,7 +668,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "Rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -660,7 +714,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Zb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -694,7 +748,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "Mb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -724,7 +778,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "bc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -757,7 +811,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "kb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -797,7 +851,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "wb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -827,7 +881,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "xb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -861,7 +915,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "Qb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -903,7 +957,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "cc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1046,6 +1100,10 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     if (options.scene) {
       this.uuid = options.scene;
       this.myself = false;
+    }
+
+    if (options.next) {
+      this.next = true;
     }
 
     var that = this; // 获取系统信息
@@ -1381,6 +1439,16 @@ var render = function () {
                                 [_vm._v("编辑")]
                               )
                             : _vm._e(),
+                          !_vm.myself && _vm.infor.mocha
+                            ? _c(
+                                "view",
+                                {
+                                  staticClass: "home_item_title_edit",
+                                  on: { tap: _vm.gomoka },
+                                },
+                                [_vm._v("更多")]
+                              )
+                            : _vm._e(),
                         ]),
                         _c("view", { staticClass: "home_item_main" }, [
                           _c("view", { attrs: { catchtap: "myMoka" } }, [
@@ -1468,6 +1536,19 @@ var render = function () {
                             ]),
                           ]),
                         ]),
+                        _vm.infor.mocha
+                          ? _c("image", {
+                              staticClass: "mokaimg",
+                              attrs: { mode: "widthFix", src: _vm.infor.mocha },
+                              on: {
+                                tap: function ($event) {
+                                  return _vm.showbigPersonimg(_vm.infor.mocha, [
+                                    _vm.infor.mocha,
+                                  ])
+                                },
+                              },
+                            })
+                          : _vm._e(),
                       ]),
                       _c("view", { staticClass: "home_item" }, [
                         _c("view", { staticClass: "home_item_title ub" }, [
@@ -1906,6 +1987,20 @@ var render = function () {
               { staticClass: "zhuye_fixed_rt", on: { tap: _vm.launchYuepai } },
               [_vm._v(" 立即约拍 ")]
             ),
+          ]
+        )
+      : _vm._e(),
+    _vm.next
+      ? _c(
+          "view",
+          {
+            staticClass: "zhuye_fixed_bottom",
+            class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+          },
+          [
+            _c("text", { staticClass: "next-btn", on: { tap: _vm.sub } }, [
+              _vm._v("下一步"),
+            ]),
           ]
         )
       : _vm._e(),

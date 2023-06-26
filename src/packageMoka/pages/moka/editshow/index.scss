@@ -121,8 +121,8 @@
       padding: 4px 40px;
       border-radius: 30px;
       border: 2px solid #ffffff;
-      background: url("../../../../assets/images/common/followed.jpg") no-repeat
-        center center;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/common/followed.jpg")
+        no-repeat center center;
       background-size: 36px;
     }
     .followed_send_msg {
@@ -296,6 +296,9 @@
       margin-right: 16px;
     }
   }
+  .mokaimg {
+    width: 100%;
+  }
   .zhuye_fixed_bottom {
     display: flex;
     justify-content: space-between;
@@ -321,5 +324,14 @@
   }
   .fix-iphonex-button {
     padding-bottom: 48px;
+  }
+  .next-btn {
+    height: 78px;
+    line-height: 78px;
+    border-radius: 8px;
+    background: #fe5457;
+    text-align: center;
+    color: #ffffff;
+    width: 100%;
   }
 }

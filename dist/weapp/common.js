@@ -435,13 +435,7 @@
         name: "作品",
         value: 2
       }],
-      navData: [// {
-        //   value: "推荐",
-        // },
-        // {
-        //   value: "最新",
-        // },
-      ],
+      navData: [],
       chargeData: [],
       purposeData: [],
       sizer_num: [],
@@ -460,7 +454,8 @@
         ispick: false
       }],
       identityData: [],
-      noticeData: []
+      noticeData: [],
+      showcomponet: true
     };
   },
   props: {
@@ -499,6 +494,10 @@
     noticeList: {
       type: Array,
       default: []
+    },
+    showComponet: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -554,6 +553,13 @@
     noticeList: {
       handler: function handler(newVal, oldVal) {
         this.noticeData = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    showComponet: {
+      handler: function handler(newVal, oldVal) {
+        this.showcomponet = newVal;
       },
       deep: true,
       immediate: true
@@ -1473,27 +1479,29 @@ var render = function () {
         },
       },
       [
-        _c(
-          "view",
-          { staticClass: "head_nav" },
-          _vm._l(_vm.headNavList, function (item, index) {
-            return _c(
-              "text",
-              {
-                key: index,
-                staticClass: "head_nav_item",
-                class: index == _vm.headCurrent ? "acitve" : "",
-                on: {
-                  tap: function ($event) {
-                    return _vm.headNavClick(index)
+        _vm.showcomponet
+          ? _c(
+              "view",
+              { staticClass: "head_nav" },
+              _vm._l(_vm.headNavList, function (item, index) {
+                return _c(
+                  "text",
+                  {
+                    key: index,
+                    staticClass: "head_nav_item",
+                    class: index == _vm.headCurrent ? "acitve" : "",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.headNavClick(index)
+                      },
+                    },
                   },
-                },
-              },
-              [_vm._v(" " + _vm._s(item.name) + " ")]
+                  [_vm._v(" " + _vm._s(item.name) + " ")]
+                )
+              }),
+              0
             )
-          }),
-          0
-        ),
+          : _vm._e(),
         _c(
           "view",
           { staticClass: "nav_list" },
@@ -2543,63 +2551,63 @@ render._withStripped = true
 /*!**************************!*\
   !*** ./src/api/index.js ***!
   \**************************/
-/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo, checkFollow, applyPay, userFollow, userUnfollow, followerList, followedList, systemList, ocrCard, submitCard, idcardInfo, ocrIdcard, inviteAdviseList, noticeAdviseList, userSelectCity, userStatus, inviteFilter, photoFilter, userFilter, userList, receivePayment, invitePayment, noticePayment, publishVerify, applyVerify, subscribeEvent, bannerList, manageApplyList, manageApplyEvent, imVerify, sourceItems */
-/*! exports used: addImUser, addressInfo, addressList, applyInfo, applyList, applyManage, applyPay, applyVerify, bannerList, categoryList, celebrityInfo, celebrityList, checkFollow, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, feedback, followRedirect, followedList, followerList, getCareer, getPhone, giveUp, idcardInfo, imVerify, inviteAdviseList, inviteFilter, inviteImage, inviteInfo, inviteList, invitePayment, inviteTemplate, isSign, manageApplyEvent, manageApplyList, manageEvent, manageList, manageOperation, memberInfo, memberOpen, msgInfo, msgList, noteManageList, noticeAdviseList, noticeFilter, noticeInfo, noticeList, noticePayment, noticeTemplate, notifyNumber, ocrCard, ocrIdcard, photoFilter, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, publishVerify, pushInit, receivePayment, recordCollect, securityInfo, securityOpen, sendMsg, shareInvite, shareInviteInfo, shareInviteList, sourceItems, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, subscribeEvent, systemList, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userFilter, userFollow, userInfo, userList, userProfile, userRegister, userResume, userSelectCity, userShape, userShapeDetail, userStatus, userSticker, userUnfollow, visitorList, voteList, wxlogin */
+/*! exports provided: wxlogin, getPhone, uploadFile, userRegister, profileUpdate, getCareer, creatCareer, publicConfig, creatInvite, inviteList, inviteInfo, userInfo, getGeometry, userResume, userProfile, updateAvatar, userShape, userAlbum, uploadImagePhoto, userShapeDetail, userAlbumDetail, userSticker, subUserSticker, subNotePhoto, photoList, photoInfo, noticeTemplate, submitNotice, noticeFilter, noticeList, noticeInfo, paymina, inviteTemplate, inviteApply, celebrityList, userCelebrity, celebrityInfo, addressList, submitAddress, addressInfo, userContact, subContact, subApply, applyList, applyInfo, visitorList, voteList, giveUp, recordCollect, noteManageList, manageEvent, photoListOwn, collectList, memberOpen, memberInfo, coinList, coinItemList, coinAcct, coinStore, notifyNumber, faceToken, facePrint, applyManage, publicComplain, securityOpen, securityInfo, manageList, manageOperation, pushInit, subOpenRecruitment, inviteImage, shareInvite, shareInviteInfo, isSign, submitSign, followRedirect, shareInviteList, categoryList, feedback, addImUser, sendMsg, msgList, msgInfo, checkFollow, applyPay, userFollow, userUnfollow, followerList, followedList, systemList, ocrCard, submitCard, idcardInfo, ocrIdcard, inviteAdviseList, noticeAdviseList, userSelectCity, userStatus, inviteFilter, photoFilter, userFilter, userList, receivePayment, invitePayment, noticePayment, publishVerify, applyVerify, subscribeEvent, bannerList, manageApplyList, manageApplyEvent, imVerify, qrcode, nonpersonalList, userMocha, mochaList, mochaEvent, sourceItems */
+/*! exports used: addImUser, addressInfo, addressList, applyInfo, applyList, applyManage, applyPay, applyVerify, bannerList, categoryList, celebrityInfo, celebrityList, checkFollow, coinAcct, coinItemList, coinList, coinStore, collectList, creatCareer, creatInvite, feedback, followRedirect, followedList, followerList, getCareer, getPhone, giveUp, idcardInfo, imVerify, inviteAdviseList, inviteFilter, inviteImage, inviteInfo, inviteList, invitePayment, inviteTemplate, isSign, manageApplyEvent, manageApplyList, manageEvent, manageList, manageOperation, memberInfo, memberOpen, mochaEvent, mochaList, msgInfo, msgList, nonpersonalList, noteManageList, noticeAdviseList, noticeFilter, noticeInfo, noticeList, noticePayment, noticeTemplate, notifyNumber, ocrCard, ocrIdcard, photoFilter, photoInfo, photoList, photoListOwn, profileUpdate, publicComplain, publicConfig, publishVerify, pushInit, qrcode, receivePayment, recordCollect, securityInfo, securityOpen, sendMsg, shareInvite, shareInviteInfo, shareInviteList, sourceItems, subApply, subContact, subNotePhoto, subOpenRecruitment, subUserSticker, submitAddress, submitNotice, submitSign, subscribeEvent, systemList, uploadImagePhoto, userAlbum, userAlbumDetail, userCelebrity, userContact, userFilter, userFollow, userInfo, userList, userMocha, userProfile, userRegister, userResume, userSelectCity, userShape, userShapeDetail, userStatus, userSticker, userUnfollow, visitorList, voteList, wxlogin */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ac", function() { return wxlogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fc", function() { return wxlogin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "z", function() { return getPhone; });
 /* unused harmony export uploadFile */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Qb", function() { return userRegister; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ib", function() { return profileUpdate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vb", function() { return userRegister; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lb", function() { return profileUpdate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return getCareer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return creatCareer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kb", function() { return publicConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return publicConfig; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "t", function() { return creatInvite; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "H", function() { return inviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "G", function() { return inviteInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nb", function() { return userInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rb", function() { return userInfo; });
 /* unused harmony export getGeometry */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Rb", function() { return userResume; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pb", function() { return userProfile; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Wb", function() { return userResume; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ub", function() { return userProfile; });
 /* unused harmony export updateAvatar */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tb", function() { return userShape; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hb", function() { return userAlbum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gb", function() { return uploadImagePhoto; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ub", function() { return userShapeDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ib", function() { return userAlbumDetail; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Wb", function() { return userSticker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ab", function() { return subUserSticker; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "yb", function() { return subNotePhoto; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return photoList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return photoInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ab", function() { return noticeTemplate; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cb", function() { return submitNotice; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return noticeFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return noticeList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return noticeInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Yb", function() { return userShape; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lb", function() { return userAlbum; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kb", function() { return uploadImagePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Zb", function() { return userShapeDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mb", function() { return userAlbumDetail; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bc", function() { return userSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Eb", function() { return subUserSticker; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Cb", function() { return subNotePhoto; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jb", function() { return photoList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ib", function() { return photoInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "db", function() { return noticeTemplate; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Gb", function() { return submitNotice; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return noticeFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bb", function() { return noticeList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ab", function() { return noticeInfo; });
 /* unused harmony export paymina */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "J", function() { return inviteTemplate; });
 /* unused harmony export inviteApply */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "l", function() { return celebrityList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return userCelebrity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nb", function() { return userCelebrity; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return celebrityInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return addressList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bb", function() { return submitAddress; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fb", function() { return submitAddress; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return addressInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Kb", function() { return userContact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xb", function() { return subContact; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wb", function() { return subApply; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ob", function() { return userContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Bb", function() { return subContact; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ab", function() { return subApply; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return applyList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return applyInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Yb", function() { return visitorList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Zb", function() { return voteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "dc", function() { return visitorList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ec", function() { return voteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "A", function() { return giveUp; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ob", function() { return recordCollect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return noteManageList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sb", function() { return recordCollect; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "X", function() { return noteManageList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "N", function() { return manageEvent; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return photoListOwn; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "kb", function() { return photoListOwn; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return collectList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "R", function() { return memberOpen; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Q", function() { return memberInfo; });
@@ -2607,60 +2615,65 @@ render._withStripped = true
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return coinItemList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return coinAcct; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "q", function() { return coinStore; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "bb", function() { return notifyNumber; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eb", function() { return notifyNumber; });
 /* unused harmony export faceToken */
 /* unused harmony export facePrint */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return applyManage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "jb", function() { return publicComplain; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "qb", function() { return securityOpen; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pb", function() { return securityInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mb", function() { return publicComplain; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ub", function() { return securityOpen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tb", function() { return securityInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "O", function() { return manageList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "P", function() { return manageOperation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mb", function() { return pushInit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zb", function() { return subOpenRecruitment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pb", function() { return pushInit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Db", function() { return subOpenRecruitment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "F", function() { return inviteImage; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sb", function() { return shareInvite; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tb", function() { return shareInviteInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wb", function() { return shareInvite; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "xb", function() { return shareInviteInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "K", function() { return isSign; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Db", function() { return submitSign; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Hb", function() { return submitSign; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return followRedirect; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ub", function() { return shareInviteList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "yb", function() { return shareInviteList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return categoryList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "u", function() { return feedback; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return addImUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rb", function() { return sendMsg; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return msgList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return msgInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vb", function() { return sendMsg; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return msgList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "U", function() { return msgInfo; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return checkFollow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return applyPay; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Mb", function() { return userFollow; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Xb", function() { return userUnfollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Qb", function() { return userFollow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cc", function() { return userUnfollow; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "x", function() { return followerList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return followedList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fb", function() { return systemList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cb", function() { return ocrCard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return systemList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fb", function() { return ocrCard; });
 /* unused harmony export submitCard */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "B", function() { return idcardInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "db", function() { return ocrIdcard; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "gb", function() { return ocrIdcard; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "D", function() { return inviteAdviseList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "V", function() { return noticeAdviseList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sb", function() { return userSelectCity; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Vb", function() { return userStatus; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Y", function() { return noticeAdviseList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Xb", function() { return userSelectCity; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ac", function() { return userStatus; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "E", function() { return inviteFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "eb", function() { return photoFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Lb", function() { return userFilter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ob", function() { return userList; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "nb", function() { return receivePayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hb", function() { return photoFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Pb", function() { return userFilter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Sb", function() { return userList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rb", function() { return receivePayment; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "I", function() { return invitePayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Z", function() { return noticePayment; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "lb", function() { return publishVerify; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cb", function() { return noticePayment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ob", function() { return publishVerify; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return applyVerify; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Eb", function() { return subscribeEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Ib", function() { return subscribeEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return bannerList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "M", function() { return manageApplyList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "L", function() { return manageApplyEvent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "C", function() { return imVerify; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "vb", function() { return sourceItems; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "qb", function() { return qrcode; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "W", function() { return nonpersonalList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Tb", function() { return userMocha; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "T", function() { return mochaList; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "S", function() { return mochaEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "zb", function() { return sourceItems; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
 
 var baseUrl = "https://pai.qubeitech.com"; // WX登录,拿code换登录
@@ -3553,6 +3566,46 @@ var imVerify = function imVerify(data) {
     method: "post",
     data: data
   });
+}; // 获取小程序码
+
+var qrcode = function qrcode(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/public/user/unlimited/qrcode",
+    method: "post",
+    data: data
+  });
+}; // 子用户列表
+
+var nonpersonalList = function nonpersonalList(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/user/shape/non_personal/list",
+    method: "post",
+    data: data
+  });
+}; // 创建模卡
+
+var userMocha = function userMocha(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/user/mocha",
+    method: "post",
+    data: data
+  });
+}; // 模卡列表
+
+var mochaList = function mochaList(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/user/mocha/list",
+    method: "post",
+    data: data
+  });
+}; // 模卡操作
+
+var mochaEvent = function mochaEvent(data) {
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "d"])({
+    url: baseUrl + "/v1/user/mocha/event",
+    method: "post",
+    data: data
+  });
 }; // 来源
 
 var sourceItems = function sourceItems(data) {
@@ -3565,27 +3618,4728 @@ var sourceItems = function sourceItems(data) {
 
 /***/ }),
 
-/***/ "./src/assets/images/common/select2_0.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/select2_0.png ***!
-  \************************************************/
+/***/ "./src/assets/js/moka.js":
+/*!*******************************!*\
+  !*** ./src/assets/js/moka.js ***!
+  \*******************************/
 /*! no static exports found */
 /*! all exports used */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAM1BMVEUAAACZmZmZmZmZmZmZmZmZmZmbm5uioqKZmZmYmJiZmZmZmZmbm5uZmZmPj4+ZmZmZmZn9AVcQAAAAEHRSTlMA6vnOflBABcWShGtCGRCopcsuSQAAAKdJREFUKM+Fk9sOxCAIRAFBdNV2/v9r95Js3XZrmDdyMgZhoENutbAIl2pOV23KOMS6nakxkDQP95E1AWy/9PGCfZY9AY9Z7pBGJzXBPr2c6aLMX79BJp1cYJ+eGY1u1MDv/hWJbpWgRM7o97iDnWya/+1GFbrCikoFeYUzCjHGCg8wCXyFHRLg4PGgteBjwViCoQYrCRYaxCEIUxDFIMjBGQRHFJzgEykRCXFvdaQ0AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ "./src/assets/images/common/select2_1.png":
-/*!************************************************!*\
-  !*** ./src/assets/images/common/select2_1.png ***!
-  \************************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAV1BMVEUAAAD/VFf/VFf/VFf9VFf/U1f+VFj/VVj/VFf/UFD9U1f+VFf////++fn++/v+a23+6uv+iIr+qqz+hoj+g4X+gYT+ZWj+7u7+3+D+oaL+oKH+eHv+dHeYymaNAAAAC3RSTlMA6vjFkoSAVEwQqE0ARwUAAAC9SURBVCjPhdNZDoQgEEXRKkEFC7VHtYf9r7PNixFpGe6PJCeEGAryGa24qlhpQ6dsw7LHjQ21Bfq4PWotp2qvnUTqgr3J/a0kwvmWU8x25UaSNStHNj/mZcJ2IhPR3rkXVoZ0VPsvlpqUoGkM9C5IbUd/encT9NwVh1f4vp2DhyrVxtMFDh2gG7OgEQ69yh6TkoMPoYrCj3kPVTQZ8f6vYojY+zKHyoUrKVxofhzyw5QfxfwgF59B+REVnuAPuu8fLmpDKooAAAAASUVORK5CYII="
+var layouts = [{
+  id: 1,
+  name: "1竖图4横图",
+  width: 620,
+  height: 1580,
+  cardId: 1001010501,
+  maxCount: 5,
+  idindex: 0,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-1.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 420,
+    offset: 100,
+    id: 0
+  }, {
+    x: 0,
+    y: 620,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 1
+  }, {
+    x: 310,
+    y: 620,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 2
+  }, {
+    x: 0,
+    y: 1100,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 3
+  }, {
+    x: 310,
+    y: 1100,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 4
+  }]
+}, {
+  id: 2,
+  name: "4竖图2横图",
+  width: 620,
+  height: 1460,
+  cardId: 1001010601,
+  maxCount: 6,
+  idindex: 1,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-2.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 420,
+    offset: 100,
+    id: 0
+  }, {
+    x: 0,
+    y: 620,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 1
+  }, {
+    x: 310,
+    y: 620,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 2
+  }, {
+    x: 0,
+    y: 1040,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 3
+  }, {
+    x: 310,
+    y: 900,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 4
+  }, {
+    x: 310,
+    y: 1180,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 5
+  }]
+}, {
+  id: 3,
+  name: "5竖图2横图",
+  width: 620,
+  height: 1580,
+  cardId: 1001010701,
+  maxCount: 7,
+  idindex: 2,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-3.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 420,
+    offset: 100,
+    id: 0
+  }, {
+    x: 0,
+    y: 620,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 1
+  }, {
+    x: 310,
+    y: 620,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 2
+  }, {
+    x: 0,
+    y: 1100,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 3
+  }, {
+    x: 310,
+    y: 1100,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 4
+  }, {
+    x: 0,
+    y: 1340,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 5
+  }, {
+    x: 310,
+    y: 1340,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 6
+  }]
+}, {
+  id: 4,
+  name: "4竖图4横图",
+  width: 620,
+  height: 1590,
+  cardId: 1001010801,
+  maxCount: 8,
+  idindex: 3,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dml5bd3nbfp6bvgm71g101ck87.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 300,
+    offset: 160,
+    id: 0
+  }, {
+    x: 0,
+    y: 500,
+    width: 206,
+    height: 155,
+    offset: 25.5,
+    id: 1
+  }, {
+    x: 206,
+    y: 500,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 2
+  }, {
+    x: 412,
+    y: 500,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 3
+  }, {
+    x: 0,
+    y: 655,
+    width: 206,
+    height: 155,
+    offset: 25.5,
+    id: 4
+  }, {
+    x: 0,
+    y: 810,
+    width: 310,
+    height: 480,
+    offset: 85,
+    id: 5
+  }, {
+    x: 310,
+    y: 810,
+    width: 310,
+    height: 480,
+    offset: 85,
+    id: 6
+  }, {
+    x: 0,
+    y: 1290,
+    width: 620,
+    height: 300,
+    offset: 160,
+    id: 7
+  }]
+}, {
+  id: 5,
+  name: "7竖图3横图",
+  width: 620,
+  height: 1600,
+  cardId: 1001011001,
+  maxCount: 10,
+  idindex: 4,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-4.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 300,
+    offset: 160,
+    id: 0
+  }, {
+    x: 0,
+    y: 500,
+    width: 206,
+    height: 155,
+    offset: 25.5,
+    id: 1
+  }, {
+    x: 206,
+    y: 500,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 2
+  }, {
+    x: 412,
+    y: 500,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 3
+  }, {
+    x: 0,
+    y: 655,
+    width: 206,
+    height: 155,
+    offset: 25.5,
+    id: 4
+  }, {
+    x: 0,
+    y: 810,
+    width: 206,
+    height: 290,
+    offset: -42,
+    id: 5
+  }, {
+    x: 206,
+    y: 810,
+    width: 414,
+    height: 290,
+    offset: 62,
+    id: 6
+  }, {
+    x: 0,
+    y: 1100,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 7
+  }, {
+    x: 310,
+    y: 1100,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 8
+  }, {
+    x: 0,
+    y: 1300,
+    width: 620,
+    height: 300,
+    offset: 160,
+    id: 9
+  }]
+}, {
+  id: 6,
+  name: "7竖图3横图",
+  width: 620,
+  height: 1530,
+  cardId: 1001011002,
+  maxCount: 10,
+  idindex: 5,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-5.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 420,
+    offset: 100,
+    id: 0
+  }, {
+    x: 0,
+    y: 620,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 1
+  }, {
+    x: 310,
+    y: 620,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 2
+  }, {
+    x: 0,
+    y: 820,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 3
+  }, {
+    x: 310,
+    y: 820,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 4
+  }, {
+    x: 0,
+    y: 1020,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 5
+  }, {
+    x: 310,
+    y: 1020,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 6
+  }, {
+    x: 0,
+    y: 1220,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 7
+  }, {
+    x: 206,
+    y: 1220,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 8
+  }, {
+    x: 412,
+    y: 1220,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 9
+  }]
+}, {
+  id: 7,
+  name: "4竖图9横图",
+  width: 620,
+  height: 1740,
+  cardId: 1001011301,
+  maxCount: 13,
+  idindex: 6,
+  title: "模特卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-cebian-6.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 300,
+    offset: 160,
+    id: 0
+  }, {
+    x: 0,
+    y: 500,
+    width: 208,
+    height: 155,
+    offset: 26.5,
+    id: 1
+  }, {
+    x: 208,
+    y: 500,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 2
+  }, {
+    x: 414,
+    y: 500,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 3
+  }, {
+    x: 0,
+    y: 655,
+    width: 208,
+    height: 155,
+    offset: 26.5,
+    id: 4
+  }, {
+    x: 0,
+    y: 810,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 5
+  }, {
+    x: 208,
+    y: 810,
+    width: 412,
+    height: 310,
+    offset: 51,
+    id: 6
+  }, {
+    x: 0,
+    y: 1120,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 7
+  }, {
+    x: 208,
+    y: 1120,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 8
+  }, {
+    x: 414,
+    y: 1120,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 9
+  }, {
+    x: 0,
+    y: 1430,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 10
+  }, {
+    x: 208,
+    y: 1430,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 11
+  }, {
+    x: 414,
+    y: 1430,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 12
+  }]
+}, {
+  id: 8,
+  name: "6竖图",
+  width: 620,
+  height: 1520,
+  cardId: 1001020601,
+  maxCount: 6,
+  idindex: 7,
+  title: "模特卡—横版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-1.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 5
+  }]
+}, {
+  id: 9,
+  name: "5竖图2横图",
+  width: 620,
+  height: 1560,
+  cardId: 1001020701,
+  maxCount: 7,
+  idindex: 8,
+  title: "模特卡—横版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-2.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 480,
+    offset: -85,
+    id: 2
+  }, {
+    x: 0,
+    y: 1120,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 1120,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1340,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1340,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }]
+}, {
+  id: 10,
+  name: "4竖图4横图",
+  width: 620,
+  height: 1500,
+  cardId: 1001020801,
+  maxCount: 8,
+  idindex: 9,
+  title: "模特卡—横版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-3.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 1
+  }, {
+    x: 206,
+    y: 640,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 2
+  }, {
+    x: 412,
+    y: 640,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 3
+  }, {
+    x: 0,
+    y: 950,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 4
+  }, {
+    x: 206,
+    y: 950,
+    width: 414,
+    height: 310,
+    offset: 52,
+    id: 5
+  }, {
+    x: 0,
+    y: 1260,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 6
+  }, {
+    x: 310,
+    y: 1260,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 7
+  }]
+}, {
+  id: 11,
+  name: "9竖图",
+  width: 620,
+  height: 1720,
+  cardId: 1001020901,
+  maxCount: 9,
+  idindex: 10,
+  title: "模特卡—横版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-4.png",
+  userInfo: {
+    x: 0,
+    y: 560,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 560,
+    offset: 30,
+    id: 0
+  }, {
+    x: 0,
+    y: 760,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 1
+  }, {
+    x: 310,
+    y: 760,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 2
+  }, {
+    x: 0,
+    y: 1e3,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 3
+  }, {
+    x: 310,
+    y: 1e3,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 4
+  }, {
+    x: 0,
+    y: 1240,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 5
+  }, {
+    x: 310,
+    y: 1240,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 6
+  }, {
+    x: 0,
+    y: 1480,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 7
+  }, {
+    x: 310,
+    y: 1480,
+    width: 310,
+    height: 240,
+    offset: 35,
+    id: 8
+  }]
+}, {
+  id: 12,
+  name: "7竖图3横图",
+  width: 620,
+  height: 1620,
+  cardId: 1001021001,
+  maxCount: 10,
+  idindex: 11,
+  title: "模特卡—横版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-5.png",
+  userInfo: {
+    x: 0,
+    y: 760,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 450,
+    offset: 85,
+    id: 0
+  }, {
+    x: 0,
+    y: 450,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 1
+  }, {
+    x: 206,
+    y: 450,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 2
+  }, {
+    x: 412,
+    y: 450,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 3
+  }, {
+    x: 0,
+    y: 960,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 310,
+    y: 960,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 0,
+    y: 1180,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 310,
+    y: 1180,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 0,
+    y: 1400,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }, {
+    x: 310,
+    y: 1400,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 9
+  }]
+}, {
+  id: 13,
+  name: "7竖图5横图",
+  width: 620,
+  height: 1700,
+  cardId: 1001021201,
+  maxCount: 12,
+  idindex: 12,
+  title: "模特卡—横版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-charu-6.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 0,
+    y: 220,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 310,
+    y: 220,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 0,
+    y: 640,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 5
+  }, {
+    x: 206,
+    y: 1080,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 6
+  }, {
+    x: 412,
+    y: 1080,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 7
+  }, {
+    x: 0,
+    y: 1390,
+    width: 206,
+    height: 155,
+    offset: 25.5,
+    id: 8
+  }, {
+    x: 206,
+    y: 1390,
+    width: 206,
+    height: 310,
+    offset: -52,
+    id: 9
+  }, {
+    x: 412,
+    y: 1390,
+    width: 208,
+    height: 310,
+    offset: -51,
+    id: 10
+  }, {
+    x: 0,
+    y: 1545,
+    width: 206,
+    height: 155,
+    offset: 25.5,
+    id: 11
+  }]
+}, {
+  id: 14,
+  name: "1竖图4横图",
+  width: 620,
+  height: 1350,
+  cardId: 1001030501,
+  maxCount: 5,
+  idindex: 13,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-1.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1350,
+    offset: -625
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 450,
+    offset: 35,
+    id: 0
+  }, {
+    x: 100,
+    y: 450,
+    width: 260,
+    height: 450,
+    offset: -95,
+    id: 1
+  }, {
+    x: 360,
+    y: 450,
+    width: 260,
+    height: 450,
+    offset: -95,
+    id: 2
+  }, {
+    x: 100,
+    y: 900,
+    width: 260,
+    height: 450,
+    offset: -95,
+    id: 3
+  }, {
+    x: 360,
+    y: 900,
+    width: 260,
+    height: 450,
+    offset: -95,
+    id: 4
+  }]
+}, {
+  id: 15,
+  name: "6竖图",
+  width: 620,
+  height: 1280,
+  cardId: 1001030601,
+  maxCount: 6,
+  idindex: 14,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-2.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1280,
+    offset: -590
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 860,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 5
+  }]
+}, {
+  id: 16,
+  name: "3竖图4横图",
+  width: 620,
+  height: 1440,
+  cardId: 1001030701,
+  maxCount: 7,
+  idindex: 15,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-4.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1440,
+    offset: -670
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 2
+  }, {
+    x: 100,
+    y: 820,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 3
+  }, {
+    x: 360,
+    y: 820,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 4
+  }, {
+    x: 100,
+    y: 1220,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 1220,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }]
+}, {
+  id: 17,
+  name: "8竖图",
+  width: 620,
+  height: 1500,
+  cardId: 1001030801,
+  maxCount: 8,
+  idindex: 16,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-3.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1500,
+    offset: -700
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 860,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 860,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1080,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 7
+  }]
+}, {
+  id: 18,
+  name: "7竖图2横图",
+  width: 620,
+  height: 1420,
+  cardId: 1001030901,
+  maxCount: 9,
+  idindex: 17,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-5.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1420,
+    offset: -660
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 440,
+    offset: -90,
+    id: 2
+  }, {
+    x: 100,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 100,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 360,
+    y: 760,
+    width: 260,
+    height: 440,
+    offset: -90,
+    id: 5
+  }, {
+    x: 100,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1200,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 1200,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }]
+}, {
+  id: 19,
+  name: "10竖图",
+  width: 620,
+  height: 1520,
+  cardId: 1001031001,
+  maxCount: 10,
+  idindex: 18,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1520,
+    offset: -710
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }, {
+    x: 100,
+    y: 1200,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 9
+  }]
+}, {
+  id: 20,
+  name: "9竖图2横图",
+  width: 620,
+  height: 1600,
+  cardId: 1001031101,
+  maxCount: 11,
+  idindex: 19,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-6.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1600,
+    offset: -750
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 2
+  }, {
+    x: 100,
+    y: 720,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 720,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 940,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 940,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1160,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 1160,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }, {
+    x: 100,
+    y: 1380,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 9
+  }, {
+    x: 360,
+    y: 1380,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 10
+  }]
+}, {
+  id: 21,
+  name: "1竖图12横图",
+  width: 620,
+  height: 1440,
+  cardId: 1001031301,
+  maxCount: 13,
+  idindex: 20,
+  title: "模特卡—横版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-didu-8.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1440,
+    offset: -670
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 1
+  }, {
+    x: 273,
+    y: 320,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 2
+  }, {
+    x: 446,
+    y: 320,
+    width: 174,
+    height: 280,
+    offset: -53,
+    id: 3
+  }, {
+    x: 100,
+    y: 600,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 4
+  }, {
+    x: 273,
+    y: 600,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 5
+  }, {
+    x: 446,
+    y: 600,
+    width: 174,
+    height: 280,
+    offset: -53,
+    id: 6
+  }, {
+    x: 100,
+    y: 880,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 7
+  }, {
+    x: 273,
+    y: 880,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 8
+  }, {
+    x: 446,
+    y: 880,
+    width: 174,
+    height: 280,
+    offset: -53,
+    id: 9
+  }, {
+    x: 100,
+    y: 1160,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 10
+  }, {
+    x: 273,
+    y: 1160,
+    width: 173,
+    height: 280,
+    offset: -53.5,
+    id: 11
+  }, {
+    x: 446,
+    y: 1160,
+    width: 174,
+    height: 280,
+    offset: -53,
+    id: 12
+  }]
+}, {
+  id: 22,
+  name: "1竖图3横图",
+  width: 620,
+  height: 1040,
+  cardId: 1002030401,
+  maxCount: 4,
+  idindex: 21,
+  title: "模特卡—竖版—底部式",
+  type: "dibu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-1.png",
+  userInfo: {
+    x: 0,
+    y: 840,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 210,
+    offset: 50,
+    id: 1
+  }, {
+    x: 310,
+    y: 210,
+    width: 310,
+    height: 210,
+    offset: 50,
+    id: 2
+  }, {
+    x: 0,
+    y: 420,
+    width: 620,
+    height: 420,
+    offset: 100,
+    id: 3
+  }]
+}, {
+  id: 23,
+  name: "4竖图1横图",
+  width: 620,
+  height: 950,
+  cardId: 1002010501,
+  maxCount: 5,
+  idindex: 22,
+  title: "模特卡—竖版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-2.png",
+  userInfo: {
+    x: 0,
+    y: 360,
+    width: 340,
+    height: 330,
+    offset: 5
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 0
+  }, {
+    x: 340,
+    y: 360,
+    width: 280,
+    height: 330,
+    offset: -25,
+    id: 1
+  }, {
+    x: 0,
+    y: 690,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 2
+  }, {
+    x: 206,
+    y: 690,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 3
+  }, {
+    x: 412,
+    y: 690,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 4
+  }]
+}, {
+  id: 24,
+  name: "5横图",
+  width: 620,
+  height: 980,
+  cardId: 1002020501,
+  maxCount: 5,
+  idindex: 23,
+  title: "模特卡—竖版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-3.png",
+  userInfo: {
+    x: 0,
+    y: 380,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 380,
+    offset: 120,
+    id: 0
+  }, {
+    x: 0,
+    y: 580,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 1
+  }, {
+    x: 310,
+    y: 580,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 2
+  }, {
+    x: 0,
+    y: 780,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 3
+  }, {
+    x: 310,
+    y: 780,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 4
+  }]
+}, {
+  id: 25,
+  name: "3竖图3横图",
+  width: 620,
+  height: 1040,
+  cardId: 1002020601,
+  maxCount: 6,
+  idindex: 24,
+  title: "模特卡—竖版—插入式",
+  type: "charu",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-4.png",
+  userInfo: {
+    x: 0,
+    y: 380,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 380,
+    offset: 120,
+    id: 0
+  }, {
+    x: 0,
+    y: 580,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 1
+  }, {
+    x: 206,
+    y: 580,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 2
+  }, {
+    x: 412,
+    y: 580,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 3
+  }, {
+    x: 0,
+    y: 840,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 4
+  }, {
+    x: 310,
+    y: 840,
+    width: 310,
+    height: 200,
+    offset: 55,
+    id: 5
+  }]
+}, {
+  id: 26,
+  name: "4竖图3横图",
+  width: 620,
+  height: 1040,
+  cardId: 1002030701,
+  maxCount: 7,
+  idindex: 25,
+  title: "模特卡—竖版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dml5soqp9kl1vti17u218111gi7.png",
+  userInfo: {
+    x: 0,
+    y: 840,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 210,
+    offset: 50,
+    id: 1
+  }, {
+    x: 310,
+    y: 210,
+    width: 310,
+    height: 210,
+    offset: 50,
+    id: 2
+  }, {
+    x: 0,
+    y: 420,
+    width: 310,
+    height: 210,
+    offset: 50,
+    id: 3
+  }, {
+    x: 0,
+    y: 630,
+    width: 155,
+    height: 210,
+    offset: -27.5,
+    id: 4
+  }, {
+    x: 155,
+    y: 630,
+    width: 155,
+    height: 210,
+    offset: -27.5,
+    id: 5
+  }, {
+    x: 310,
+    y: 420,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 6
+  }]
+}, {
+  id: 27,
+  name: "5竖图2横图",
+  width: 620,
+  height: 1230,
+  cardId: 1002010701,
+  maxCount: 7,
+  idindex: 26,
+  title: "模特卡—竖版—侧边式",
+  type: "cebian",
+  imgurl: "https://yuepai-oss.qubeitech.com/static/images/moka/card/model-shuban-5.png",
+  userInfo: {
+    x: 0,
+    y: 360,
+    width: 340,
+    height: 330,
+    offset: 5
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 0
+  }, {
+    x: 340,
+    y: 360,
+    width: 280,
+    height: 330,
+    offset: -25,
+    id: 1
+  }, {
+    x: 0,
+    y: 690,
+    width: 412,
+    height: 280,
+    offset: 66,
+    id: 2
+  }, {
+    x: 412,
+    y: 690,
+    width: 208,
+    height: 280,
+    offset: -36,
+    id: 3
+  }, {
+    x: 0,
+    y: 970,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 4
+  }, {
+    x: 206,
+    y: 970,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 5
+  }, {
+    x: 412,
+    y: 970,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 6
+  }]
+}, {
+  id: 2001,
+  name: "6竖图",
+  width: 620,
+  height: 1520,
+  cardId: 2001010601,
+  maxCount: 6,
+  idindex: 27,
+  title: "主播卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovbco513jo1epfl4j4v11jdk7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 5
+  }]
+}, {
+  id: 2002,
+  name: "7竖图",
+  width: 620,
+  height: 1300,
+  cardId: 2001010701,
+  maxCount: 7,
+  idindex: 28,
+  title: "主播卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovbv3j1d21eo0s6919llbo87.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }]
+}, {
+  id: 2003,
+  name: "8竖图",
+  width: 620,
+  height: 1740,
+  cardId: 2001010801,
+  maxCount: 8,
+  idindex: 29,
+  title: "主播卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovc92i1bvlak4m4aho1u6l7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 7
+  }]
+}, {
+  id: 2004,
+  name: "9竖图",
+  width: 620,
+  height: 1520,
+  cardId: 2001010901,
+  maxCount: 9,
+  idindex: 30,
+  title: "主播卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovckd91f8biik1sl3god1ng7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 310,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }]
+}, {
+  id: 2005,
+  name: "5竖图",
+  width: 620,
+  height: 1250,
+  cardId: 2001020501,
+  maxCount: 5,
+  idindex: 31,
+  title: "主播卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovdj8bg7m1k8fbou1vbl1i3gc.png",
+  userInfo: {
+    x: 0,
+    y: 490,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 490,
+    offset: 65,
+    id: 0
+  }, {
+    x: 0,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 1
+  }, {
+    x: 310,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 2
+  }, {
+    x: 0,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 3
+  }, {
+    x: 310,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 4
+  }]
+}, {
+  id: 2006,
+  name: "7竖图",
+  width: 620,
+  height: 1300,
+  cardId: 2001020701,
+  maxCount: 7,
+  idindex: 32,
+  title: "主播卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovekh11j7b1lpd50d1knkb8o7.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }]
+}, {
+  id: 2007,
+  name: "8竖图",
+  width: 620,
+  height: 1740,
+  cardId: 2001020801,
+  maxCount: 8,
+  idindex: 33,
+  title: "主播卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dloveu3gff13ghmj3128t33i7.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 640,
+    height: 440,
+    offset: 100,
+    id: 7
+  }]
+}, {
+  id: 2008,
+  name: "9竖图",
+  width: 620,
+  height: 1520,
+  cardId: 2001020901,
+  maxCount: 9,
+  idindex: 34,
+  title: "主播卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovgkh4tsl18ar15li1no8ael7.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 310,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }]
+}, {
+  id: 2009,
+  name: "10竖图",
+  width: 620,
+  height: 1800,
+  cardId: 2001021001,
+  maxCount: 10,
+  idindex: 35,
+  title: "主播卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovguneqhm165719f9b8qc347.png",
+  userInfo: {
+    x: 0,
+    y: 360,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 0
+  }, {
+    x: 0,
+    y: 560,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 560,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 780,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 780,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1e3,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1e3,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1220,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 310,
+    y: 1220,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }, {
+    x: 0,
+    y: 1440,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 9
+  }]
+}, {
+  id: 2010,
+  name: "6竖图",
+  width: 620,
+  height: 1280,
+  cardId: 2001030601,
+  maxCount: 6,
+  idindex: 36,
+  title: "主播卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovhl4s1dhp1crbmvo1u3vop87.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1280,
+    offset: -590
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 860,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 5
+  }]
+}, {
+  id: 2011,
+  name: "8竖图",
+  width: 620,
+  height: 1500,
+  cardId: 2001030801,
+  maxCount: 8,
+  idindex: 37,
+  title: "主播卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovhvf01psgsnf1nk233710487.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1500,
+    offset: -700
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 860,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 860,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1080,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 7
+  }]
+}, {
+  id: 2012,
+  name: "10竖图",
+  width: 620,
+  height: 1520,
+  cardId: 2001031001,
+  maxCount: 10,
+  idindex: 38,
+  title: "主播卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovifrtbqkgfss6l11oh1bc27.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1520,
+    offset: -710
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }, {
+    x: 100,
+    y: 1200,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 9
+  }]
+}, {
+  id: 2013,
+  name: "9竖图2横图",
+  width: 620,
+  height: 1600,
+  cardId: 2001031101,
+  maxCount: 11,
+  idindex: 39,
+  title: "主播卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovitt415hj1ldu1q361ravhi7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1600,
+    offset: -750
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 2
+  }, {
+    x: 100,
+    y: 720,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 720,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 940,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 940,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1160,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 1160,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }, {
+    x: 100,
+    y: 1380,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 9
+  }, {
+    x: 360,
+    y: 1380,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 10
+  }]
+}, {
+  id: 3001,
+  name: "6竖图",
+  width: 620,
+  height: 1520,
+  cardId: 3001010601,
+  maxCount: 6,
+  idindex: 40,
+  title: "演员卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovoj1f1g4m1hrm1ul27g51n5d7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 5
+  }]
+}, {
+  id: 3002,
+  name: "7竖图",
+  width: 620,
+  height: 1300,
+  cardId: 3001010701,
+  maxCount: 7,
+  idindex: 41,
+  title: "演员卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovovbk1n3n9c517g8qfp10eq7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }]
+}, {
+  id: 3003,
+  name: "8竖图",
+  width: 620,
+  height: 1740,
+  cardId: 3001010801,
+  maxCount: 8,
+  idindex: 42,
+  title: "演员卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovpda91p7i1kgtr7j9ph7vd7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 7
+  }]
+}, {
+  id: 3004,
+  name: "9竖图",
+  width: 620,
+  height: 1520,
+  cardId: 3001010901,
+  maxCount: 9,
+  idindex: 43,
+  title: "演员卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovpsmoiqjsh0roc1rou54u7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 310,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }]
+}, {
+  id: 3005,
+  name: "5竖图",
+  width: 620,
+  height: 1250,
+  cardId: 3001020501,
+  maxCount: 5,
+  idindex: 44,
+  title: "演员卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovqcbuerkmep1bds67p1krf7.png",
+  userInfo: {
+    x: 0,
+    y: 490,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 490,
+    offset: 65,
+    id: 0
+  }, {
+    x: 0,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 1
+  }, {
+    x: 310,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 2
+  }, {
+    x: 0,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 3
+  }, {
+    x: 310,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 4
+  }]
+}, {
+  id: 3006,
+  name: "7竖图",
+  width: 620,
+  height: 1300,
+  cardId: 3001020701,
+  maxCount: 7,
+  idindex: 45,
+  title: "演员卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovqoit1maq10j4b1472t1vhb7.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }]
+}, {
+  id: 3007,
+  name: "8竖图",
+  width: 620,
+  height: 1740,
+  cardId: 3001020801,
+  maxCount: 8,
+  idindex: 46,
+  title: "演员卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovr3lm125irdi1gl31q8i13e47.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 640,
+    height: 440,
+    offset: 100,
+    id: 7
+  }]
+}, {
+  id: 3008,
+  name: "9竖图",
+  width: 620,
+  height: 1520,
+  cardId: 3001020901,
+  maxCount: 9,
+  idindex: 47,
+  title: "演员卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovrepb1rf2u0tlfg1urn1m8l7.png",
+  userInfo: {
+    x: 0,
+    y: 440,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 440,
+    offset: 90,
+    id: 0
+  }, {
+    x: 0,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 640,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 860,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1080,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 310,
+    y: 1300,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }]
+}, {
+  id: 3009,
+  name: "10竖图",
+  width: 620,
+  height: 1800,
+  cardId: 3001021001,
+  maxCount: 10,
+  idindex: 48,
+  title: "演员卡—横版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovrsumkap1obbb49oi68rs7.png",
+  userInfo: {
+    x: 0,
+    y: 360,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 0
+  }, {
+    x: 0,
+    y: 560,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 1
+  }, {
+    x: 310,
+    y: 560,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 2
+  }, {
+    x: 0,
+    y: 780,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 3
+  }, {
+    x: 310,
+    y: 780,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 4
+  }, {
+    x: 0,
+    y: 1e3,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 5
+  }, {
+    x: 310,
+    y: 1e3,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 6
+  }, {
+    x: 0,
+    y: 1220,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 7
+  }, {
+    x: 310,
+    y: 1220,
+    width: 310,
+    height: 220,
+    offset: 45,
+    id: 8
+  }, {
+    x: 0,
+    y: 1440,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 9
+  }]
+}, {
+  id: 3010,
+  name: "6竖图",
+  width: 620,
+  height: 1280,
+  cardId: 3001030601,
+  maxCount: 6,
+  idindex: 49,
+  title: "演员卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovsej41eac9h1tqaejb4487.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1280,
+    offset: -590
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 860,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 5
+  }]
+}, {
+  id: 3011,
+  name: "8竖图",
+  width: 620,
+  height: 1500,
+  cardId: 3001030801,
+  maxCount: 8,
+  idindex: 50,
+  title: "演员卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovss811qa88ff122i15jr9887.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1500,
+    offset: -700
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 0
+  }, {
+    x: 100,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 420,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 640,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 860,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 860,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1080,
+    width: 520,
+    height: 420,
+    offset: 50,
+    id: 7
+  }]
+}, {
+  id: 3012,
+  name: "10竖图",
+  width: 620,
+  height: 1520,
+  cardId: 3001031001,
+  maxCount: 10,
+  idindex: 51,
+  title: "演员卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dml151c71mns771ck010bk9v37.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1520,
+    offset: -710
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 2
+  }, {
+    x: 100,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 540,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 760,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 980,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }, {
+    x: 100,
+    y: 1200,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 9
+  }]
+}, {
+  id: 3013,
+  name: "9竖图2横图",
+  width: 620,
+  height: 1600,
+  cardId: 3001031101,
+  maxCount: 11,
+  idindex: 52,
+  title: "演员卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovtl6n7du195q17ab2mgocs7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1600,
+    offset: -750
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 320,
+    offset: 100,
+    id: 0
+  }, {
+    x: 100,
+    y: 320,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 1
+  }, {
+    x: 360,
+    y: 320,
+    width: 260,
+    height: 400,
+    offset: -70,
+    id: 2
+  }, {
+    x: 100,
+    y: 720,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 3
+  }, {
+    x: 360,
+    y: 720,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 4
+  }, {
+    x: 100,
+    y: 940,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 5
+  }, {
+    x: 360,
+    y: 940,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 6
+  }, {
+    x: 100,
+    y: 1160,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 7
+  }, {
+    x: 360,
+    y: 1160,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 8
+  }, {
+    x: 100,
+    y: 1380,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 9
+  }, {
+    x: 360,
+    y: 1380,
+    width: 260,
+    height: 220,
+    offset: 20,
+    id: 10
+  }]
+}, {
+  id: 3014,
+  name: "4竖图",
+  width: 620,
+  height: 1240,
+  cardId: 2001030401,
+  maxCount: 4,
+  idindex: 53,
+  title: "主播卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovjetdons1dos162qcsa19gc7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1240,
+    offset: -570
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 0
+  }, {
+    x: 100,
+    y: 310,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 1
+  }, {
+    x: 100,
+    y: 620,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 2
+  }, {
+    x: 100,
+    y: 930,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 3
+  }]
+}, {
+  id: 3015,
+  name: "4竖图",
+  width: 620,
+  height: 1240,
+  cardId: 3001030401,
+  maxCount: 4,
+  idindex: 54,
+  title: "演员卡—横版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovu4ju1h00npd1ohavj51j8u7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 1240,
+    offset: -570
+  },
+  layouts: [{
+    x: 100,
+    y: 0,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 0
+  }, {
+    x: 100,
+    y: 310,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 1
+  }, {
+    x: 100,
+    y: 620,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 2
+  }, {
+    x: 100,
+    y: 930,
+    width: 520,
+    height: 310,
+    offset: 105,
+    id: 3
+  }]
+}, {
+  id: 3016,
+  name: "5竖图",
+  width: 620,
+  height: 1250,
+  cardId: 2001010501,
+  maxCount: 5,
+  idindex: 55,
+  title: "主播卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovk8681an91047t21r9b1kg7c.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 490,
+    offset: 65,
+    id: 0
+  }, {
+    x: 0,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 1
+  }, {
+    x: 310,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 2
+  }, {
+    x: 0,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 3
+  }, {
+    x: 310,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 4
+  }]
+}, {
+  id: 3019,
+  name: "5竖图",
+  width: 620,
+  height: 1250,
+  cardId: 3001010501,
+  maxCount: 5,
+  idindex: 56,
+  title: "演员卡—横版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dml127lccep1ef91h3cd1c154t7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 200,
+    width: 620,
+    height: 490,
+    offset: 65,
+    id: 0
+  }, {
+    x: 0,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 1
+  }, {
+    x: 310,
+    y: 690,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 2
+  }, {
+    x: 0,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 3
+  }, {
+    x: 310,
+    y: 970,
+    width: 310,
+    height: 280,
+    offset: 15,
+    id: 4
+  }]
+}, {
+  id: 3020,
+  name: "2竖图1横图",
+  width: 620,
+  height: 980,
+  cardId: 3002020301,
+  maxCount: 3,
+  idindex: 57,
+  title: "演员卡—竖版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovv9aa1e54uoh19ms1k5s1bli7.png",
+  userInfo: {
+    x: 0,
+    y: 360,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 0
+  }, {
+    x: 0,
+    y: 560,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 1
+  }, {
+    x: 310,
+    y: 560,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 2
+  }]
+}, {
+  id: 3021,
+  name: "4竖图",
+  width: 620,
+  height: 1040,
+  cardId: 3002030401,
+  maxCount: 4,
+  idindex: 58,
+  title: "演员卡—竖版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovvjtr3ti1rijo234pv9767.png",
+  userInfo: {
+    x: 0,
+    y: 840,
+    width: 620,
+    height: 200,
+    offset: 208
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 1
+  }, {
+    x: 0,
+    y: 420,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 2
+  }, {
+    x: 310,
+    y: 420,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 3
+  }]
+}, {
+  id: 3022,
+  name: "5竖图",
+  width: 620,
+  height: 860,
+  cardId: 3002020501,
+  maxCount: 5,
+  idindex: 59,
+  title: "演员卡—竖版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovvv2l1r0512tdnnh6s21s3m7.png",
+  userInfo: {
+    x: 0,
+    y: 400,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 1
+  }, {
+    x: 0,
+    y: 600,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 2
+  }, {
+    x: 206,
+    y: 600,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 3
+  }, {
+    x: 412,
+    y: 600,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 4
+  }]
+}, {
+  id: 3023,
+  name: "6竖图",
+  width: 620,
+  height: 1060,
+  cardId: 3002010601,
+  maxCount: 6,
+  idindex: 60,
+  title: "演员卡—竖版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlp00adj15co107m2esh4b1g8l7.png",
+  userInfo: {
+    x: 0,
+    y: 400,
+    width: 310,
+    height: 400,
+    offset: -45
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 1
+  }, {
+    x: 310,
+    y: 400,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 2
+  }, {
+    x: 0,
+    y: 800,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 3
+  }, {
+    x: 206,
+    y: 800,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 4
+  }, {
+    x: 412,
+    y: 800,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 5
+  }]
+}, {
+  id: 3024,
+  name: "7竖图",
+  width: 620,
+  height: 920,
+  cardId: 3002010701,
+  maxCount: 7,
+  idindex: 61,
+  title: "演员卡—竖版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlp00nltrt21kgafnl1kh610ba7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45
+  },
+  layouts: [{
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 0
+  }, {
+    x: 0,
+    y: 400,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 1
+  }, {
+    x: 206,
+    y: 400,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 2
+  }, {
+    x: 412,
+    y: 400,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 3
+  }, {
+    x: 0,
+    y: 660,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 4
+  }, {
+    x: 206,
+    y: 660,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 5
+  }, {
+    x: 412,
+    y: 660,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 6
+  }]
+}, {
+  id: 3025,
+  name: "2竖图1横图",
+  width: 620,
+  height: 980,
+  cardId: 2002020301,
+  maxCount: 3,
+  idindex: 62,
+  title: "主播卡—竖版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovktbnqc014fb1b981t8u1am77.png",
+  userInfo: {
+    x: 0,
+    y: 360,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 620,
+    height: 360,
+    offset: 130,
+    id: 0
+  }, {
+    x: 0,
+    y: 560,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 1
+  }, {
+    x: 310,
+    y: 560,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 2
+  }]
+}, {
+  id: 3026,
+  name: "4竖图",
+  width: 620,
+  height: 1040,
+  cardId: 2002030401,
+  maxCount: 4,
+  idindex: 63,
+  title: "主播卡—竖版—底部式",
+  type: "dibu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovl7th11le16s51m3n19fk146j7.png",
+  userInfo: {
+    x: 0,
+    y: 840,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 1
+  }, {
+    x: 0,
+    y: 420,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 2
+  }, {
+    x: 310,
+    y: 420,
+    width: 310,
+    height: 420,
+    offset: -55,
+    id: 3
+  }]
+}, {
+  id: 3027,
+  name: "5竖图",
+  width: 620,
+  height: 860,
+  cardId: 2002020501,
+  maxCount: 5,
+  idindex: 64,
+  title: "主播卡—竖版—插入式",
+  type: "charu",
+  imgurl: "http://imgs.weimoka.com/o_1dlovlir2j45rvo2sr18gq1ubv7.png",
+  userInfo: {
+    x: 0,
+    y: 400,
+    width: 620,
+    height: 200,
+    offset: 210
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 1
+  }, {
+    x: 0,
+    y: 600,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 2
+  }, {
+    x: 206,
+    y: 600,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 3
+  }, {
+    x: 412,
+    y: 600,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 4
+  }]
+}, {
+  id: 3028,
+  name: "6竖图",
+  width: 620,
+  height: 1060,
+  cardId: 2002010601,
+  maxCount: 6,
+  idindex: 65,
+  title: "主播卡—竖版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovlt8j150varh1qo11birhul7.png",
+  userInfo: {
+    x: 0,
+    y: 400,
+    width: 310,
+    height: 400,
+    offset: -45
+  },
+  layouts: [{
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 0
+  }, {
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 1
+  }, {
+    x: 310,
+    y: 400,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 2
+  }, {
+    x: 0,
+    y: 800,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 3
+  }, {
+    x: 206,
+    y: 800,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 4
+  }, {
+    x: 412,
+    y: 800,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 5
+  }]
+}, {
+  id: 3029,
+  name: "7竖图",
+  width: 620,
+  height: 920,
+  cardId: 2002010701,
+  maxCount: 7,
+  idindex: 66,
+  title: "主播卡—竖版—侧边式",
+  type: "cebian",
+  imgurl: "http://imgs.weimoka.com/o_1dlovm8ma1rhf1hj7uh55jhejd7.png",
+  userInfo: {
+    x: 0,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45
+  },
+  layouts: [{
+    x: 310,
+    y: 0,
+    width: 310,
+    height: 400,
+    offset: -45,
+    id: 0
+  }, {
+    x: 0,
+    y: 400,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 1
+  }, {
+    x: 206,
+    y: 400,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 2
+  }, {
+    x: 412,
+    y: 400,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 3
+  }, {
+    x: 0,
+    y: 660,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 4
+  }, {
+    x: 206,
+    y: 660,
+    width: 206,
+    height: 260,
+    offset: -27,
+    id: 5
+  }, {
+    x: 412,
+    y: 660,
+    width: 208,
+    height: 260,
+    offset: -26,
+    id: 6
+  }]
+}];
+module.exports = {
+  layouts: layouts
+}, module.exports = {
+  layouts: layouts,
+  getIndexByCardId: function getIndexByCardId(index) {
+    for (var i = 0; i < layouts.length; i++) {
+      if (layouts[i].cardId == index) return i;
+    }
+  }
+};
 
 /***/ }),
 

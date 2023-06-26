@@ -1,0 +1,88 @@
+.makesuccess {
+  .hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0px 40px 0px;
+    image {
+      width: 40px;
+      height: 40px;
+    }
+    .hint-text {
+      font-size: 34px;
+      color: #333333;
+      margin-left: 16px;
+    }
+  }
+  .card {
+    margin: 30px auto;
+  }
+  .main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .save {
+    color: #ffffff;
+    background: #ff1e3e;
+    width: 85%;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 40px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .mymoka {
+    background: #ededed;
+    color: rgba(0, 0, 0, 0.6);
+    width: 85%;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 40px;
+    font-size: 30px;
+    text-align: center;
+    margin: 30px auto 16px auto;
+  }
+  .modal_box_bg {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .tip_set {
+      position: relative;
+      background: #ffffff;
+      padding: 16px 0px;
+      border-radius: 10px;
+      width: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 30px;
+      color: #333333;
+    }
+    .tip_set_tittle {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    .tip_set_content {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 30px;
+      padding: 0px 30px;
+    }
+    .openSetting {
+      padding: 0px;
+      margin: 0px;
+      background: #ff1e3e;
+      width: 80%;
+      margin: 16px 0px 30px 0px;
+    }
+  }
+}

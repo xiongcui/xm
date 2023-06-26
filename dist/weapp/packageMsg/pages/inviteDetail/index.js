@@ -527,7 +527,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* receivePayment */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* receivePayment */ "rb"])(params);
 
               case 3:
                 res = _context2.sent;

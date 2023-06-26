@@ -167,6 +167,12 @@
                 v-if="myself"
                 >编辑</view
               >
+              <view
+                @tap="gomoka"
+                class="home_item_title_edit"
+                v-if="!myself && infor.mocha"
+                >更多</view
+              >
             </view>
             <view class="home_item_main">
               <view catchtap="myMoka">
@@ -199,6 +205,13 @@
                 <view class="user_infor_text">鞋码</view>
               </view>
             </view>
+            <image
+              class="mokaimg"
+              mode="widthFix"
+              :src="infor.mocha"
+              v-if="infor.mocha"
+              @tap="showbigPersonimg(infor.mocha, [infor.mocha])"
+            ></image>
           </view>
           <view class="home_item">
             <view class="home_item_title ub">
@@ -378,6 +391,13 @@
       <view class="zhuye_fixed_left" @tap="communicate"> 立即沟通 </view>
       <view class="zhuye_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
     </view>
+    <view
+      class="zhuye_fixed_bottom"
+      :class="isIphoneX ? 'fix-iphonex-button' : ''"
+      v-if="next"
+    >
+      <text class="next-btn" @tap="sub">下一步</text>
+    </view>
   </view>
 </template>
 
@@ -459,6 +479,7 @@ export default {
       shareTitle: "",
       shareImg: "",
       sharePath: "",
+      next: false,
     };
   },
   components: {
@@ -479,6 +500,12 @@ export default {
         current: src, // 图片的地址url
         urls: urls, // 预览的地址url
       });
+    },
+    gomoka() {
+      openPage(
+        "/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.uuid ||
+          this.uuid
+      );
     },
     editpersondata() {
       openPage("/packageMoka/pages/moka/editpersondata/index");
@@ -566,6 +593,34 @@ export default {
         wx.redirectTo({
           url: "/pages/login/index",
         });
+      }
+    },
+    sub() {
+      // 请设置三围
+      if (!this.homeInfor.height) {
+        errortip("请设置三围");
+        return false;
+      }
+      let data = this.infor;
+      let carduserinfo = {
+        avatar: data.avatar,
+        nickname: data.nickname,
+        sex: data.sex,
+        birthday: data.age,
+        height: data.shape.height,
+        weight: data.shape.weight,
+        bwh_b: data.shape.bust,
+        bwh_w: data.shape.waist,
+        bwh_h: data.shape.hip,
+        shoe: data.shape.size,
+        is_bwh: data.shape.bust ? true : false,
+        is_birthday: data.age ? true : false,
+      };
+      wx.setStorageSync("carduserinfo", carduserinfo);
+      if ("vertical" == wx.getStorageSync("card-type")) {
+        openPage("/packageMoka/pages/moka/makecardv/index");
+      } else {
+        openPage("/packageMoka/pages/moka/makecard/index");
       }
     },
     bindended(id) {
@@ -735,6 +790,9 @@ export default {
     if (options.scene) {
       this.uuid = options.scene;
       this.myself = false;
+    }
+    if (options.next) {
+      this.next = true;
     }
     var that = this;
     // 获取系统信息

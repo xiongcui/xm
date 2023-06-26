@@ -1,0 +1,125 @@
+.modelcard {
+  background: #f4f4f4;
+  .statusbar {
+    position: fixed;
+    top: 0px;
+    width: 750px;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    z-index: 9;
+  }
+  .page_nav {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    align-items: flex-end;
+  }
+  .page_nav_tab {
+    position: absolute;
+    left: 0px;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 8;
+  }
+  .page_nav_tab_left {
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    width: 160px;
+    font-size: 30px;
+    padding: 14px 0px;
+    text-align: center;
+    border-radius: 30px 0px 0px 30px;
+  }
+
+  .page_nav_tab_right {
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    border-left: none;
+    width: 160px;
+    font-size: 30px;
+    padding: 14px 0px;
+    text-align: center;
+    border-radius: 0px 30px 30px 0px;
+  }
+  .page_nav_left {
+    position: absolute;
+    left: 30px;
+    z-index: 99;
+    transform: rotate(180deg);
+    bottom: 30px;
+    image {
+      width: 26px;
+      height: 38px;
+    }
+  }
+  .page_nav_tab_on {
+    color: #ffffff;
+    background: #fe5457;
+  }
+  .swiper-tab {
+    display: flex;
+    align-items: center;
+    padding: 0px 60px;
+    height: 88px;
+    justify-content: space-between;
+    background: #ffffff;
+    position: fixed;
+    width: 630px;
+    z-index: 8;
+    .swiper-tab-list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .tab_item {
+      margin-bottom: 10px;
+      font-size: 30px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .tab_line {
+    width: 60px;
+    border-bottom: 4px solid #ffffff;
+  }
+  .online {
+    border-bottom: 4px solid #fe5457;
+  }
+  .on {
+    color: #333333 !important;
+  }
+  .title {
+    border-left: 8px solid #fe5457;
+    padding-left: 16px;
+    margin: 30px 16px;
+    font-size: 28px;
+    border-radius: 4px;
+  }
+  .swiper-box {
+    padding-top: 88px;
+    height: calc(100vh - 188px);
+  }
+  .scroll_block {
+    height: 100%;
+  }
+  .bottom_gap {
+    padding-bottom: 30px;
+  }
+  .item {
+    image {
+      width: 100%;
+    }
+  }
+  .vertical_item {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    image {
+      height: 800px;
+    }
+  }
+}

@@ -531,6 +531,23 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -691,6 +708,14 @@ component.options.__file = "src/pages/my/index.vue"
 
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/apply/index");
     },
+    myMoka: function myMoka() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
+    },
     follow: function follow() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
     },
@@ -714,7 +739,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -789,7 +814,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "wb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -819,7 +844,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "xb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -852,7 +877,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Hb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1380,6 +1405,31 @@ var render = function () {
               ]),
               _c("view", { staticClass: "ub-f1" }, [
                 _c("view", { staticClass: "item_text" }, [_vm._v("我的申请")]),
+              ]),
+              _c("view", { staticClass: "arrow" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
+                  },
+                }),
+              ]),
+            ]
+          ),
+          _c(
+            "view",
+            { staticClass: "item ub line-t", on: { tap: _vm.myMoka } },
+            [
+              _c("view", { staticClass: "item_icon" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png",
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "ub-f1" }, [
+                _c("view", { staticClass: "item_text" }, [_vm._v("我的模卡")]),
               ]),
               _c("view", { staticClass: "arrow" }, [
                 _c("image", {
