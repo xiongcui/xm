@@ -4,7 +4,7 @@
       class="nav_fixed"
       :style="{ paddingTop: isMargin ? globalData.navHeight + 'px' : '0px' }"
     >
-      <view class="head_nav">
+      <view class="head_nav" v-if="showcomponet">
         <text
           class="head_nav_item"
           v-for="(item, index) in headNavList"
@@ -244,14 +244,7 @@ export default {
           value: 2,
         },
       ],
-      navData: [
-        // {
-        //   value: "推荐",
-        // },
-        // {
-        //   value: "最新",
-        // },
-      ],
+      navData: [],
       chargeData: [],
       purposeData: [],
       sizer_num: [],
@@ -275,6 +268,7 @@ export default {
       ],
       identityData: [],
       noticeData: [],
+      showcomponet: true,
     };
   },
   props: {
@@ -313,6 +307,10 @@ export default {
     noticeList: {
       type: Array,
       default: [],
+    },
+    showComponet: {
+      type: Boolean,
+      default: true,
     },
   },
   watch: {
@@ -368,6 +366,13 @@ export default {
     noticeList: {
       handler(newVal, oldVal) {
         this.noticeData = newVal;
+      },
+      deep: true,
+      immediate: true,
+    },
+    showComponet: {
+      handler(newVal, oldVal) {
+        this.showcomponet = newVal;
       },
       deep: true,
       immediate: true,

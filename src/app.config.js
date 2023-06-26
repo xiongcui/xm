@@ -8,6 +8,7 @@ export default defineAppConfig({
     "pages/msg/index",
     "pages/release/appointment/index",
     "pages/release/field/index",
+    "pages/zuopin/index",
   ],
   window: {
     backgroundTextStyle: "light",
@@ -26,6 +27,12 @@ export default defineAppConfig({
         iconPath: "assets/images/home.png",
         selectedIconPath: "assets/images/home-sel.png",
         text: "首页",
+      },
+      {
+        pagePath: "pages/zuopin/index",
+        iconPath: "assets/images/zuopin.png",
+        selectedIconPath: "assets/images/zuopin-sel.png",
+        text: "作品",
       },
       {
         pagePath: "pages/release/index",

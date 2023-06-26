@@ -435,13 +435,7 @@
         name: "作品",
         value: 2
       }],
-      navData: [// {
-        //   value: "推荐",
-        // },
-        // {
-        //   value: "最新",
-        // },
-      ],
+      navData: [],
       chargeData: [],
       purposeData: [],
       sizer_num: [],
@@ -460,7 +454,8 @@
         ispick: false
       }],
       identityData: [],
-      noticeData: []
+      noticeData: [],
+      showcomponet: true
     };
   },
   props: {
@@ -499,6 +494,10 @@
     noticeList: {
       type: Array,
       default: []
+    },
+    showComponet: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -554,6 +553,13 @@
     noticeList: {
       handler: function handler(newVal, oldVal) {
         this.noticeData = newVal;
+      },
+      deep: true,
+      immediate: true
+    },
+    showComponet: {
+      handler: function handler(newVal, oldVal) {
+        this.showcomponet = newVal;
       },
       deep: true,
       immediate: true
@@ -1473,27 +1479,29 @@ var render = function () {
         },
       },
       [
-        _c(
-          "view",
-          { staticClass: "head_nav" },
-          _vm._l(_vm.headNavList, function (item, index) {
-            return _c(
-              "text",
-              {
-                key: index,
-                staticClass: "head_nav_item",
-                class: index == _vm.headCurrent ? "acitve" : "",
-                on: {
-                  tap: function ($event) {
-                    return _vm.headNavClick(index)
+        _vm.showcomponet
+          ? _c(
+              "view",
+              { staticClass: "head_nav" },
+              _vm._l(_vm.headNavList, function (item, index) {
+                return _c(
+                  "text",
+                  {
+                    key: index,
+                    staticClass: "head_nav_item",
+                    class: index == _vm.headCurrent ? "acitve" : "",
+                    on: {
+                      tap: function ($event) {
+                        return _vm.headNavClick(index)
+                      },
+                    },
                   },
-                },
-              },
-              [_vm._v(" " + _vm._s(item.name) + " ")]
+                  [_vm._v(" " + _vm._s(item.name) + " ")]
+                )
+              }),
+              0
             )
-          }),
-          0
-        ),
+          : _vm._e(),
         _c(
           "view",
           { staticClass: "nav_list" },

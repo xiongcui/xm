@@ -1,0 +1,129 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.zuopin-list-ct {
+  margin-top: 90rpx;
+}
+
+.nav_fixed {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
+.nav_list {
+  background: #ffffff;
+  padding: 0 16rpx;
+  position: relative;
+  border-bottom: 1rpx solid #ebebeb;
+}
+
+.nav_list .nav_item {
+  color: #333333;
+  font-size: 30rpx;
+  line-height: 82rpx;
+  padding: 0 16rpx;
+}
+
+.sizer_block {
+  height: 70rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gradient {
+  background-image: -webkit-gradient(linear, left top, right top, from(hsla(0deg, 0%, 100%, 0)), to(#fff));
+  background-image: -webkit-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #fff);
+  background-image: -o-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #fff);
+  background-image: linear-gradient(90deg, hsla(0deg, 0%, 100%, 0), #fff);
+  height: 50rpx;
+  left: -30rpx;
+  position: absolute;
+  top: 19rpx;
+  width: 30rpx;
+}
+
+.gradient2 {
+  background-image: -webkit-gradient(linear, left top, right top, from(hsla(0deg, 0%, 100%, 0)), to(#f7f8fa));
+  background-image: -webkit-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #f7f8fa);
+  background-image: -o-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #f7f8fa);
+  background-image: linear-gradient(90deg, hsla(0deg, 0%, 100%, 0), #f7f8fa);
+}
+
+.sizer {
+  background-color: #f1f1f1;
+  border-radius: 8rpx;
+  color: #666;
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 16rpx 18rpx 0 8rpx;
+  padding-left: 10rpx;
+}
+
+.sizer_dian {
+  font-family: Courier New, Courier, monospace;
+  padding: 0 4rpx;
+}
+
+.sizer_img {
+  height: 10rpx;
+  margin: 0 10rpx 0 5rpx;
+  width: 10rpx;
+}
+
+.sizer_img image {
+  height: 10rpx;
+  margin-top: 6rpx;
+  vertical-align: middle;
+  width: 10rpx;
+  position: absolute;
+  bottom: 12rpx;
+  right: 24rpx;
+}
+
+.ub {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.nav_active {
+  font-weight: bold;
+  font-size: 32rpx !important;
+}
+
+.head_nav {
+  padding: 20rpx 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #ffffff;
+  border-bottom: 1rpx solid #ebebeb;
+  z-index: 999;
+}
+
+.head_nav .head_nav_item {
+  color: #333333;
+  padding: 0 10rpx;
+  margin: 0 10rpx;
+  font-weight: bold;
+}
+
+.head_nav .acitve {
+  color: #fe5457;
+  border-bottom: 6rpx solid #fe5457;
+}
+
+.nomore {
+  padding: 0 0 16rpx 0;
+  text-align: center;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
