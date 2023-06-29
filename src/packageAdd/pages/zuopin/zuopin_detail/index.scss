@@ -180,6 +180,7 @@ page {
       align-items: center;
     }
     .zuopin_fixed_item {
+      position: relative;
       margin-right: 40px;
       display: flex;
       flex-direction: column;
@@ -191,6 +192,13 @@ page {
         width: 40px;
         height: 40px;
       }
+    }
+    .vote_cnt,
+    .collect_cnt {
+      position: absolute;
+      right: -10px;
+      top: -20px;
+      font-size: 22px;
     }
     .zuopin_fixed_rt {
       width: 280px;

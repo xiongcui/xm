@@ -408,6 +408,7 @@ page {
           align-items: center;
 }
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_item {
+  position: relative;
   margin-right: 40rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -427,6 +428,13 @@ page {
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_item image {
   width: 40rpx;
   height: 40rpx;
+}
+.tonggao_detail .tonggao_fixed_bottom .vote_cnt,
+.tonggao_detail .tonggao_fixed_bottom .collect_cnt {
+  position: absolute;
+  right: -10rpx;
+  top: -20rpx;
+  font-size: 22rpx;
 }
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_rt {
   width: 280rpx;

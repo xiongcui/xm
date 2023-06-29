@@ -767,5 +767,12 @@ export default {
       path: this.sharePath, // 路径，传递参数到指定页面。
     };
   },
+  onShareTimeline() {
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
 };
 </script>

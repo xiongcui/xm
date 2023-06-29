@@ -1117,9 +1117,17 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
   },
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
-      source: "share_details",
+      source: "friends_circle",
       type: "wechat"
     });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
+  },
+  onShareTimeline: function onShareTimeline() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,

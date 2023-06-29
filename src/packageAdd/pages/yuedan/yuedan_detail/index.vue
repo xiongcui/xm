@@ -220,7 +220,7 @@
               ></image>
             </view>
           </button>
-          分享
+          <!-- 分享 -->
         </view>
         <view class="yuepai_fixed_item" @tap="subGiveUp">
           <image
@@ -231,11 +231,9 @@
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png"
             v-else
           ></image>
-          {{
-            yuepaiInfo.statistic.vote_cnt
-              ? yuepaiInfo.statistic.vote_cnt
-              : "点赞"
-          }}
+          <text v-if="yuepaiInfo.statistic.vote_cnt" class="vote_cnt">
+            {{ yuepaiInfo.statistic.vote_cnt }}
+          </text>
         </view>
         <view class="yuepai_fixed_item" @tap="subRecordCollect">
           <image
@@ -246,11 +244,9 @@
             v-else
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
-          {{
-            yuepaiInfo.statistic.collect_cnt
-              ? yuepaiInfo.statistic.collect_cnt
-              : "收藏"
-          }}
+          <text v-if="yuepaiInfo.statistic.collect_cnt" class="collect_cnt">
+            {{ yuepaiInfo.statistic.collect_cnt }}
+          </text>
         </view>
       </view>
       <view class="yuepai_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
@@ -481,8 +477,8 @@ export default {
         let res = await inviteInfo(params);
         this.backdrop = res.data.data.basic.backdrop;
         this.yuepaiInfo = res.data.data;
-        this.is_vote = res.data.data.action.is_vote;
-        this.is_collect = res.data.data.action.is_collect;
+        this.is_vote = res.data.data.statistic.vote_cnt;
+        this.is_collect = res.data.data.statistic.collect_cnt;
         this.is_follow = res.data.data.action.is_follow;
         this.photoAlbumList = res.data.data.myself_list.photo_album;
         this.query("init");
@@ -551,10 +547,17 @@ export default {
   },
   onShareAppMessage() {
     this.shareInvite({
-      source: "share_details",
+      source: "friends_circle",
       type: "wechat",
       oid: this.oid,
     });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
+  onShareTimeline() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
@@ -575,7 +578,7 @@ export default {
       };
       this.inviteInfo(params);
       this.shareInviteInfo({
-        source: "share_details",
+        source: "friends_circle",
         type: "wechat",
         oid: this.oid,
       });

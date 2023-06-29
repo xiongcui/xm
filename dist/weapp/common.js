@@ -2456,7 +2456,7 @@ var render = function () {
                     })
                   : _vm._e(),
                 _c("view", { staticClass: "zuopin_desc" }, [
-                  _vm._v(_vm._s(item.summary)),
+                  _vm._v(_vm._s(item.title)),
                 ]),
                 _c("view", { staticClass: "zuopin_info" }, [
                   _c("image", {

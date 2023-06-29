@@ -17,6 +17,39 @@
   display: -ms-flexbox;
   display: flex;
 }
+.home .custom_tips_box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  z-index: 9999;
+}
+.home .custom_tips {
+  font-size: 24rpx;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 8rpx;
+  color: #ffffff;
+  padding: 0 10rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+.home .triangle {
+  position: absolute;
+  right: -10rpx;
+  width: 0;
+  height: 0;
+  border-left: 10rpx solid rgba(0, 0, 0, 0.8);
+  border-top: 10rpx solid transparent;
+  border-bottom: 10rpx solid transparent;
+}
 .home .flex-row {
   display: -webkit-flex;
   display: -ms-flexbox;

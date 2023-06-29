@@ -398,6 +398,7 @@ page {
           align-items: center;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_item {
+  position: relative;
   margin-right: 40rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -417,6 +418,13 @@ page {
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_item image {
   width: 40rpx;
   height: 40rpx;
+}
+.yuedan_detail .yuepai_fixed_bottom .vote_cnt,
+.yuedan_detail .yuepai_fixed_bottom .collect_cnt {
+  position: absolute;
+  right: -10rpx;
+  top: -20rpx;
+  font-size: 22rpx;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt {
   width: 280rpx;

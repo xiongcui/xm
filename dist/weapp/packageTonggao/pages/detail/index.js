@@ -417,6 +417,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -650,8 +652,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
                 res = _context2.sent;
                 _this3.backdrop = res.data.data.basic.backdrop;
                 _this3.tonggaoInfo = res.data.data;
-                _this3.is_collect = res.data.data.action.is_collect;
-                _this3.is_follow = res.data.data.action.is_follow;
+                _this3.is_vote = res.data.data.statistic.vote_cnt;
+                _this3.is_collect = res.data.data.statistic.collect_cnt;
                 _this3.noticeRecommendList = res.data.data.myself_list.items;
 
                 _this3.noticeQuery("init");
@@ -951,10 +953,18 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
   },
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
-      source: "share_details",
+      source: "friends_circle",
       type: "wechat",
       oid: this.oid
     });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
+  },
+  onShareTimeline: function onShareTimeline() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
@@ -975,7 +985,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       // };
       // this.noticeInfo(params);
       // this.shareInviteInfo({
-      //   source: "share_details",
+      //   source: "friends_circle",
       //   type: "wechat",
       //   oid: options.scene,
       // });
@@ -988,7 +998,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       };
       this.noticeInfo(params);
       this.shareInviteInfo({
-        source: "share_details",
+        source: "friends_circle",
         type: "wechat",
         oid: this.oid
       });
@@ -1570,7 +1580,6 @@ var render = function () {
                   ]),
                 ]
               ),
-              _vm._v(" 分享 "),
             ]),
             _c(
               "view",
@@ -1590,15 +1599,15 @@ var render = function () {
                         src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png",
                       },
                     }),
-                _vm._v(
-                  " " +
-                    _vm._s(
-                      _vm.tonggaoInfo.statistic.collect_cnt
-                        ? _vm.tonggaoInfo.statistic.collect_cnt
-                        : "收藏"
-                    ) +
-                    " "
-                ),
+                _vm.tonggaoInfo.statistic.collect_cnt
+                  ? _c("text", { staticClass: "collect_cnt" }, [
+                      _vm._v(
+                        " " +
+                          _vm._s(_vm.tonggaoInfo.statistic.collect_cnt) +
+                          " "
+                      ),
+                    ])
+                  : _vm._e(),
               ]
             ),
           ]),

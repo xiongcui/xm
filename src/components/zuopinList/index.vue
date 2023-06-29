@@ -21,7 +21,7 @@
         class="list_video-width"
         @tap.stop=""
       ></video>
-      <view class="zuopin_desc">{{ item.summary }}</view>
+      <view class="zuopin_desc">{{ item.title }}</view>
       <view class="zuopin_info">
         <image
           class="avatar"

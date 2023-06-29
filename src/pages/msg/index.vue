@@ -157,11 +157,11 @@ export default {
         this.mailbox_cnt = res.data.data.mailbox_cnt;
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
-            index: 2,
+            index: 3,
           });
         } else {
           wx.hideTabBarRedDot({
-            index: 2,
+            index: 3,
           });
         }
       } catch (error) {}

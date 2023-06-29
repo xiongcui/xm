@@ -353,6 +353,14 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
 
     };
   },
+  onShareTimeline: function onShareTimeline() {
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
+  },
   mounted: function mounted() {
     this.shareInviteInfo({
       source: "share_friend",

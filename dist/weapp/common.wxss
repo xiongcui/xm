@@ -739,8 +739,8 @@
   border-radius: 10rpx 10rpx 0 0;
 }
 .zuopin_list .avatar {
-  width: 70rpx;
-  height: 70rpx;
+  width: 50rpx !important;
+  height: 50rpx !important;
   border-radius: 50%;
   margin-right: 16rpx;
 }
@@ -780,10 +780,10 @@
 }
 .zuopin_list .list_name {
   color: #111111;
-  font-size: 32rpx;
+  font-size: 28rpx;
 }
 .zuopin_list .list_p {
-  width: 224rpx;
+  width: 244rpx;
   color: #686868;
   font-size: 24rpx;
   display: -webkit-flex;
@@ -797,7 +797,7 @@
           align-items: center;
 }
 .zuopin_list .read {
-  background: url("https://yuepai-oss.qubeitech.com/static/eyes.png") left center no-repeat;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/eyes.png") left center no-repeat;
   background-size: 30rpx;
   padding-left: 30rpx;
 }

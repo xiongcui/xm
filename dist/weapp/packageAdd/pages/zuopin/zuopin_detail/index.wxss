@@ -279,6 +279,7 @@ page {
 }
 
 .zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_item {
+  position: relative;
   margin-right: 40rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -299,6 +300,14 @@ page {
 .zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_item image {
   width: 40rpx;
   height: 40rpx;
+}
+
+.zuopin_detail .zuopin_fixed_bottom .vote_cnt,
+.zuopin_detail .zuopin_fixed_bottom .collect_cnt {
+  position: absolute;
+  right: -10rpx;
+  top: -20rpx;
+  font-size: 22rpx;
 }
 
 .zuopin_detail .zuopin_fixed_bottom .zuopin_fixed_rt {

@@ -335,7 +335,6 @@
               ></image>
             </view>
           </button>
-          分享
         </view>
         <view class="tonggao_fixed_item" @tap="subRecordCollect">
           <image
@@ -346,11 +345,14 @@
             v-else
             src="https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png"
           ></image>
-          {{
+          <text v-if="tonggaoInfo.statistic.collect_cnt" class="collect_cnt">
+            {{ tonggaoInfo.statistic.collect_cnt }}
+          </text>
+          <!-- {{
             tonggaoInfo.statistic.collect_cnt
               ? tonggaoInfo.statistic.collect_cnt
               : "收藏"
-          }}
+          }} -->
         </view>
       </view>
       <view class="tonggao_fixed_rt" @tap="launchYuepai"> 立即报名 </view>
@@ -574,8 +576,8 @@ export default {
         let res = await noticeInfo(params);
         this.backdrop = res.data.data.basic.backdrop;
         this.tonggaoInfo = res.data.data;
-        this.is_collect = res.data.data.action.is_collect;
-        this.is_follow = res.data.data.action.is_follow;
+        this.is_vote = res.data.data.statistic.vote_cnt;
+        this.is_collect = res.data.data.statistic.collect_cnt;
         this.noticeRecommendList = res.data.data.myself_list.items;
         this.noticeQuery("init");
       } catch (error) {}
@@ -675,10 +677,17 @@ export default {
   },
   onShareAppMessage() {
     this.shareInvite({
-      source: "share_details",
+      source: "friends_circle",
       type: "wechat",
       oid: this.oid,
     });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
+  onShareTimeline() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,
@@ -698,7 +707,7 @@ export default {
       // };
       // this.noticeInfo(params);
       // this.shareInviteInfo({
-      //   source: "share_details",
+      //   source: "friends_circle",
       //   type: "wechat",
       //   oid: options.scene,
       // });
@@ -710,7 +719,7 @@ export default {
       };
       this.noticeInfo(params);
       this.shareInviteInfo({
-        source: "share_details",
+        source: "friends_circle",
         type: "wechat",
         oid: this.oid,
       });

@@ -13,6 +13,31 @@
     z-index: 9999;
     display: flex;
   }
+  .custom_tips_box {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 9999;
+  }
+  .custom_tips {
+    font-size: 24px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    color: #ffffff;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .triangle {
+    position: absolute;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid rgba(0, 0, 0, 0.8);
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
   .flex-row {
     display: flex;
     justify-content: space-between;

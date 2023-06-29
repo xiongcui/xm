@@ -805,9 +805,16 @@ export default {
   },
   onShareAppMessage() {
     this.shareInvite({
-      source: "share_details",
+      source: "friends_circle",
       type: "wechat",
     });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
+  onShareTimeline() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,

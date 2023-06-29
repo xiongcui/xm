@@ -35,6 +35,26 @@
           </view>
           <view class="head_title"> 虾米约拍 </view>
         </view>
+        <view
+          class="custom_tips_box"
+          :style="{
+            height: globalData.navObj + 'px',
+            right: globalData.navObjWid + 10 + 'px',
+            top: globalData.navTop + 'px',
+          }"
+          @tap="changeTips"
+          v-if="!added"
+        >
+          <text
+            class="custom_tips"
+            :style="{
+              height: globalData.navObj - 6 + 'px',
+            }"
+          >
+            点击“···”【添加到我的】
+            <text class="triangle"></text>
+          </text>
+        </view>
       </view>
       <view :style="{ height: globalData.navHeight + 'px' }"></view>
       <block>
@@ -147,7 +167,7 @@
           </view>
         </view>
       </view>
-      <view class="recommend">
+      <!-- <view class="recommend">
         <view class="recommend-title">
           <view class="recommend-name"> 约拍推荐 </view>
           <view
@@ -436,7 +456,7 @@
             <view>当前暂无信息哦～</view>
           </view>
         </view>
-      </view>
+      </view> -->
       <view class="componets">
         <view
           :class="
@@ -578,7 +598,7 @@ export default {
       indicatorDots2: false,
       vertical: false,
       autoplay: true,
-      interval: 3000,
+      interval: 5000,
       interval2: 10000,
       duration: 500,
       componetActive: 0,
@@ -626,6 +646,7 @@ export default {
       winWidth: 0,
       winHeight: 0,
       swiperHeightCt: 0,
+      added: false,
     };
   },
   components: {
@@ -638,6 +659,9 @@ export default {
     sign,
   },
   methods: {
+    changeTips() {
+      this.added = !this.added;
+    },
     bindChange(e) {
       this.componetActive = e.detail.current;
       this.pageNavClick(e.detail.current);
@@ -985,11 +1009,11 @@ export default {
         let res = await notifyNumber(params);
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
-            index: 2,
+            index: 3,
           });
         } else {
           wx.hideTabBarRedDot({
-            index: 2,
+            index: 3,
           });
         }
       } catch (error) {}
@@ -1021,13 +1045,13 @@ export default {
         this.inviteRecommendList = [];
         this.noticeRecommendList = [];
         // 约拍推荐
-        this.inviteAdviseList({
-          city_filter: this.recommend_city_filter,
-        });
+        // this.inviteAdviseList({
+        //   city_filter: this.recommend_city_filter,
+        // });
         // 通告推荐
-        this.noticeAdviseList({
-          city_filter: this.recommend_city_filter,
-        });
+        // this.noticeAdviseList({
+        //   city_filter: this.recommend_city_filter,
+        // });
         if (queryList) {
           // 列表查询
           this.pageNum = 1;
@@ -1449,6 +1473,15 @@ export default {
         args: params,
       });
     }
+    // 检查微信小程序是否添加到我的
+    wx.checkIsAddedToMyMiniProgram({
+      success: (res) => {
+        that.added = res.added;
+      },
+    });
+    setTimeout(() => {
+      this.added = true;
+    }, 10000);
   },
   // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
   onShow() {
@@ -1478,6 +1511,13 @@ export default {
       source: "share_friend",
       type: "wechat",
     });
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath, // 路径，传递参数到指定页面。
+    };
+  },
+  onShareTimeline() {
     return {
       title: this.shareTitle,
       imageUrl: this.shareImg,

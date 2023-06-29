@@ -974,6 +974,14 @@ component.options.__file = "src/pages/my/index.vue"
       path: this.sharePath // 路径，传递参数到指定页面。
 
     };
+  },
+  onShareTimeline: function onShareTimeline() {
+    return {
+      title: this.shareTitle,
+      imageUrl: this.shareImg,
+      path: this.sharePath // 路径，传递参数到指定页面。
+
+    };
   }
 });
 

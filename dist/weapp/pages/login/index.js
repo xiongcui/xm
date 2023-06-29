@@ -321,6 +321,23 @@ component.options.__file = "src/pages/login/index.vue"
     upImgs: function upImgs(filePath) {
       var _this2 = this;
 
+      console.log(filePath, filePath.indexOf("yuepai-oss") != -1);
+
+      if (filePath.indexOf("yuepai-oss") != -1) {
+        var params = {
+          avatar: filePath,
+          nickname: this.userInfo.nickname,
+          scene: this.scene
+        };
+
+        if (this.invited_uuid) {
+          params.invited_uuid = this.invited_uuid;
+        }
+
+        this.userRegister(params);
+        return false;
+      }
+
       var header = {};
       var token = wx.getStorageSync("token");
       header["Authorization"] = "Basic " + js_Base64__WEBPACK_IMPORTED_MODULE_4__[/* Base64 */ "a"].encode(token + ":");
@@ -337,17 +354,17 @@ component.options.__file = "src/pages/login/index.vue"
           var data = JSON.parse(res.data);
 
           if (data.code == 200) {
-            var params = {
+            var _params = {
               avatar: data.data.file1,
               nickname: _this2.userInfo.nickname,
               scene: _this2.scene
             };
 
             if (_this2.invited_uuid) {
-              params.invited_uuid = _this2.invited_uuid;
+              _params.invited_uuid = _this2.invited_uuid;
             }
 
-            _this2.userRegister(params);
+            _this2.userRegister(_params);
           } else {
             if (data.error_code == 1004) {
               _this2.getUserProfile();
@@ -563,7 +580,7 @@ var render = function () {
               _c(
                 "view",
                 { staticClass: "login-btn", on: { tap: _vm.getUserProfile } },
-                [_c("text", [_vm._v("微信登录")])]
+                [_c("text", [_vm._v("授权登录")])]
               ),
               _c(
                 "view",

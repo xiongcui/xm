@@ -16,7 +16,7 @@
       </view>
       <view class="login-bottom">
         <view class="login-btn" @tap="getUserProfile">
-          <text>微信登录</text>
+          <text>授权登录</text>
         </view>
         <view class="cancel-btn" @tap="cancelLogin">
           <text>取消登录</text>
@@ -259,6 +259,19 @@ export default {
       openPage("/packageSet/pages/privacy/index");
     },
     upImgs(filePath) {
+      console.log(filePath, filePath.indexOf("yuepai-oss") != -1);
+      if (filePath.indexOf("yuepai-oss") != -1) {
+        let params = {
+          avatar: filePath,
+          nickname: this.userInfo.nickname,
+          scene: this.scene,
+        };
+        if (this.invited_uuid) {
+          params.invited_uuid = this.invited_uuid;
+        }
+        this.userRegister(params);
+        return false;
+      }
       let header = {};
       let token = wx.getStorageSync("token");
       header["Authorization"] = "Basic " + Base64.encode(token + ":");
