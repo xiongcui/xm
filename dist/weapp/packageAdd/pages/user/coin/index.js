@@ -375,7 +375,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Ib"])(params);
 
               case 3:
                 res = _context.sent;
@@ -532,7 +532,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "xb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -562,7 +562,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "yb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -895,7 +895,7 @@ var render = function () {
                           _c("image", {
                             staticClass: "none-img",
                             attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/common/none.png",
+                              src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
                               mode: "aspectFill",
                             },
                           }),

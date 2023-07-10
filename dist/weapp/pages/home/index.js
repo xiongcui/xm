@@ -644,6 +644,20 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var citySelector = requirePlugin("citySelector");
 
@@ -665,6 +679,7 @@ var citySelector = requirePlugin("citySelector");
       noMore: false,
       showLoading: true,
       loading: false,
+      invitedVisible: false,
       topNum: 0,
       swiperheight: 144,
       tonggaoSwiperHeight: 240,
@@ -725,7 +740,11 @@ var citySelector = requirePlugin("citySelector");
       winWidth: 0,
       winHeight: 0,
       swiperHeightCt: 0,
-      added: false
+      added: false,
+      invitedTitle: "恭喜成为特邀用户",
+      invitedText: "现邀你参加快捷约拍活动↵发布约拍后将获得更多曝光机会",
+      invitedBtn: "立即参加",
+      invitedRedirectUrl: ""
     };
   },
   components: {
@@ -738,6 +757,19 @@ var citySelector = requirePlugin("citySelector");
     sign: _components_sign_index_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
   },
   methods: {
+    invitedClose: function invitedClose() {
+      this.invitedVisible = false;
+      this.popupLogs({
+        click_event: 0
+      });
+    },
+    invited: function invited() {
+      this.popupLogs({
+        click_event: 1
+      });
+      this.invitedVisible = false;
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])(this.invitedRedirectUrl);
+    },
     changeTips: function changeTips() {
       this.added = !this.added;
     },
@@ -1235,7 +1267,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "bc"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1254,6 +1286,14 @@ var citySelector = requirePlugin("citySelector");
                       key: "token"
                     });
                   }
+
+                  setTimeout(function () {
+                    _this6.invitedVisible = res.data.data.advice.popup.is_homepage_popup;
+                    _this6.invitedTitle = res.data.data.advice.popup.title;
+                    _this6.invitedText = res.data.data.advice.popup.body;
+                    _this6.invitedBtn = res.data.data.advice.popup.redirect_tip;
+                    _this6.invitedRedirectUrl = res.data.data.advice.popup.redirect_url;
+                  }, 3000);
                 }
 
                 _this6.yuepaiList = [];
@@ -1302,7 +1342,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Yb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1784,7 +1824,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "xb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1814,7 +1854,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "yb"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1845,7 +1885,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* sourceItems */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* sourceItems */ "Ab"])(params);
 
               case 3:
                 res = _context15.sent;
@@ -1864,9 +1904,7 @@ var citySelector = requirePlugin("citySelector");
         }, _callee15, null, [[0, 6]]);
       }))();
     },
-    submitSign: function submitSign(params) {
-      var _this14 = this;
-
+    popupLogs: function popupLogs(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee16() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee16$(_context16) {
@@ -1875,32 +1913,27 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* popupLogs */ "lb"])(params);
 
               case 3:
                 res = _context16.sent;
-                _this14.showModelSign = true;
-                _this14.hyper_desc = res.data.data.hyper_desc;
-
-                _this14.isSign("");
-
-                _context16.next = 11;
+                _context16.next = 8;
                 break;
 
-              case 9:
-                _context16.prev = 9;
+              case 6:
+                _context16.prev = 6;
                 _context16.t0 = _context16["catch"](0);
 
-              case 11:
+              case 8:
               case "end":
                 return _context16.stop();
             }
           }
-        }, _callee16, null, [[0, 9]]);
+        }, _callee16, null, [[0, 6]]);
       }))();
     },
-    bannerList: function bannerList(params) {
-      var _this15 = this;
+    submitSign: function submitSign(params) {
+      var _this14 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee17() {
         var res;
@@ -1910,21 +1943,15 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context17.prev = 0;
                 _context17.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* bannerList */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Ib"])(params);
 
               case 3:
                 res = _context17.sent;
-                _this15.banner = [];
-                _this15.notify = [];
-                res.data.data.map(function (item) {
-                  if (item.item == "home_banner") {
-                    _this15.banner.push(item);
-                  }
+                _this14.showModelSign = true;
+                _this14.hyper_desc = res.data.data.hyper_desc;
 
-                  if (item.item == "home_notify") {
-                    _this15.notify.push(item);
-                  }
-                });
+                _this14.isSign("");
+
                 _context17.next = 11;
                 break;
 
@@ -1938,6 +1965,47 @@ var citySelector = requirePlugin("citySelector");
             }
           }
         }, _callee17, null, [[0, 9]]);
+      }))();
+    },
+    bannerList: function bannerList(params) {
+      var _this15 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee18() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee18$(_context18) {
+          while (1) {
+            switch (_context18.prev = _context18.next) {
+              case 0:
+                _context18.prev = 0;
+                _context18.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* bannerList */ "i"])(params);
+
+              case 3:
+                res = _context18.sent;
+                _this15.banner = [];
+                _this15.notify = [];
+                res.data.data.map(function (item) {
+                  if (item.item == "home_banner") {
+                    _this15.banner.push(item);
+                  }
+
+                  if (item.item == "home_notify") {
+                    _this15.notify.push(item);
+                  }
+                });
+                _context18.next = 11;
+                break;
+
+              case 9:
+                _context18.prev = 9;
+                _context18.t0 = _context18["catch"](0);
+
+              case 11:
+              case "end":
+                return _context18.stop();
+            }
+          }
+        }, _callee18, null, [[0, 9]]);
       }))();
     }
   },
@@ -2023,13 +2091,13 @@ var citySelector = requirePlugin("citySelector");
         args: params
       });
     } // 检查微信小程序是否添加到我的
+    // wx.checkIsAddedToMyMiniProgram({
+    //   success: (res) => {
+    //     that.added = res.added;
+    //   },
+    // });
 
 
-    wx.checkIsAddedToMyMiniProgram({
-      success: function success(res) {
-        that.added = res.added;
-      }
-    });
     setTimeout(function () {
       _this17.added = true;
     }, 10000);
@@ -2641,6 +2709,52 @@ var render = function () {
       }),
       _vm.showlogin
         ? _c("ShowLogin", { on: { getUserProfile: _vm.goLogin } })
+        : _vm._e(),
+      _vm.invitedVisible
+        ? _c(
+            "view",
+            {
+              staticClass: "invited-users",
+              on: {
+                tap: function ($event) {
+                  $event.stopPropagation()
+                  return _vm.invitedClose.apply(null, arguments)
+                },
+              },
+            },
+            [
+              _c("view", { staticClass: "invited-users-box" }, [
+                _c("view", {
+                  staticClass: "invited-users-close",
+                  on: {
+                    tap: function ($event) {
+                      $event.stopPropagation()
+                      return _vm.invitedClose.apply(null, arguments)
+                    },
+                  },
+                }),
+                _c("view", { staticClass: "invited-users-title" }, [
+                  _vm._v(_vm._s(_vm.invitedTitle)),
+                ]),
+                _c("view", { staticClass: "invited-users-txt" }, [
+                  _c("text", [_vm._v(_vm._s(_vm.invitedText))]),
+                ]),
+                _c(
+                  "view",
+                  {
+                    staticClass: "invited-users-btn",
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.invited.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [_vm._v(" " + _vm._s(_vm.invitedBtn) + " ")]
+                ),
+              ]),
+            ]
+          )
         : _vm._e(),
     ],
     1

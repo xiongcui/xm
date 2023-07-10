@@ -21,6 +21,7 @@ page {
     height: 78px;
   }
   .release-item {
+    position: relative;
     width: 100%;
     margin-bottom: 24px;
     box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
@@ -69,5 +70,12 @@ page {
       height: 68px;
       // margin: 10px;
     }
+  }
+  .hot {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 80px;
+    height: 80px;
   }
 }

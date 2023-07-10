@@ -3,7 +3,8 @@
     "projectname": "xiamiyuepai",
     "setting": {
         "compileHotReLoad": true,
-        "bigPackageSizeSupport": true
+        "bigPackageSizeSupport": true,
+        "autoAudits": false
     },
     "libVersion": "2.32.1",
     "condition": {

@@ -471,7 +471,10 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       noticeRecommendList: [],
       noticeList: [],
       pageNum: 1,
-      pageSize: 10
+      pageSize: 10,
+      shareFriendsTitle: "",
+      shareFriendsImg: "",
+      shareFriendsPath: ""
     };
   },
   components: {
@@ -684,7 +687,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* recordCollect */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* recordCollect */ "tb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -714,7 +717,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInvite */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInvite */ "xb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -744,7 +747,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInviteInfo */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInviteInfo */ "yb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -766,9 +769,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
         }, _callee5, null, [[0, 9]]);
       }))();
     },
-    userFollow: function userFollow(params) {
-      var _this6 = this;
-
+    shareFriendsInvite: function shareFriendsInvite(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee6() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee6$(_context6) {
@@ -777,28 +778,27 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInvite */ "xb"])(params);
 
               case 3:
                 res = _context6.sent;
-                _this6.is_follow = 1;
-                _context6.next = 9;
+                _context6.next = 8;
                 break;
 
-              case 7:
-                _context6.prev = 7;
+              case 6:
+                _context6.prev = 6;
                 _context6.t0 = _context6["catch"](0);
 
-              case 9:
+              case 8:
               case "end":
                 return _context6.stop();
             }
           }
-        }, _callee6, null, [[0, 7]]);
+        }, _callee6, null, [[0, 6]]);
       }))();
     },
-    userUnfollow: function userUnfollow(params) {
-      var _this7 = this;
+    shareFriendsInviteInfo: function shareFriendsInviteInfo(params) {
+      var _this6 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
         var res;
@@ -808,110 +808,61 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "cc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* shareInviteInfo */ "yb"])(params);
 
               case 3:
                 res = _context7.sent;
-                _this7.is_follow = 0;
-                _context7.next = 9;
+                _this6.shareFriendsTitle = res.data.data.title;
+                _this6.shareFriendsImg = res.data.data.imageUrl;
+                _this6.shareFriendsPath = res.data.data.path;
+                _context7.next = 11;
                 break;
 
-              case 7:
-                _context7.prev = 7;
+              case 9:
+                _context7.prev = 9;
                 _context7.t0 = _context7["catch"](0);
 
-              case 9:
+              case 11:
               case "end":
                 return _context7.stop();
             }
           }
-        }, _callee7, null, [[0, 7]]);
+        }, _callee7, null, [[0, 9]]);
       }))();
     },
-    noticeAdviseList: function noticeAdviseList(params, type) {
-      var _this8 = this;
+    userFollow: function userFollow(params) {
+      var _this7 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee8() {
-        var res, data;
+        var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeAdviseList */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userFollow */ "Rb"])(params);
 
               case 3:
                 res = _context8.sent;
-                //隐藏loading 提示框
-                _this8.showLoading = false;
-                wx.hideLoading();
-                _this8.noMore = false; //隐藏导航条加载动画
-
-                wx.hideNavigationBarLoading(); //停止下拉刷新
-
-                wx.stopPullDownRefresh();
-
-                if (!(type == "init")) {
-                  _context8.next = 14;
-                  break;
-                }
-
-                _this8.noticeList = res.data.data.items;
-                _this8.loading = true;
-                _context8.next = 22;
+                _this7.is_follow = 1;
+                _context8.next = 9;
                 break;
 
-              case 14:
-                if (!(type == "more")) {
-                  _context8.next = 22;
-                  break;
-                }
-
-                if (!(!res.data.data || !res.data.data.items.length)) {
-                  _context8.next = 19;
-                  break;
-                }
-
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("没有更多数据了～");
-                _this8.loading = true;
-                return _context8.abrupt("return", false);
-
-              case 19:
-                data = res.data.data.items;
-                _this8.noticeList = _this8.noticeList.concat(data);
-                _this8.loading = true;
-
-              case 22:
-                _context8.next = 30;
-                break;
-
-              case 24:
-                _context8.prev = 24;
+              case 7:
+                _context8.prev = 7;
                 _context8.t0 = _context8["catch"](0);
-                _this8.showLoading = false;
-                wx.hideNavigationBarLoading();
 
-                if (_context8.t0.data.error_code == 11020) {
-                  _this8.visible = true;
-                  _this8.isclick = false;
-                  console.log(_context8.t0, "error");
-                }
-
-                if (_context8.t0.data.error_code == 10100 && _this8.pageNum > 1) {
-                  _this8.noMore = true;
-                }
-
-              case 30:
+              case 9:
               case "end":
                 return _context8.stop();
             }
           }
-        }, _callee8, null, [[0, 24]]);
+        }, _callee8, null, [[0, 7]]);
       }))();
     },
-    applyVerify: function applyVerify(params) {
-      var _this9 = this;
+    userUnfollow: function userUnfollow(params) {
+      var _this8 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee9() {
         var res;
@@ -921,30 +872,143 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* applyVerify */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* userUnfollow */ "dc"])(params);
 
               case 3:
                 res = _context9.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this9.oid + "&source=note");
-                _context9.next = 10;
+                _this8.is_follow = 0;
+                _context9.next = 9;
                 break;
 
               case 7:
                 _context9.prev = 7;
                 _context9.t0 = _context9["catch"](0);
 
-                if (_context9.t0.data.error_code == 21030 || _context9.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context9.t0.data.msg, "&code=").concat(_context9.t0.data.error_code));
-                } else {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])(_context9.t0.data.msg);
-                }
-
-              case 10:
+              case 9:
               case "end":
                 return _context9.stop();
             }
           }
         }, _callee9, null, [[0, 7]]);
+      }))();
+    },
+    noticeAdviseList: function noticeAdviseList(params, type) {
+      var _this9 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee10() {
+        var res, data;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.prev = 0;
+                _context10.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* noticeAdviseList */ "Y"])(params);
+
+              case 3:
+                res = _context10.sent;
+                //隐藏loading 提示框
+                _this9.showLoading = false;
+                wx.hideLoading();
+                _this9.noMore = false; //隐藏导航条加载动画
+
+                wx.hideNavigationBarLoading(); //停止下拉刷新
+
+                wx.stopPullDownRefresh();
+
+                if (!(type == "init")) {
+                  _context10.next = 14;
+                  break;
+                }
+
+                _this9.noticeList = res.data.data.items;
+                _this9.loading = true;
+                _context10.next = 22;
+                break;
+
+              case 14:
+                if (!(type == "more")) {
+                  _context10.next = 22;
+                  break;
+                }
+
+                if (!(!res.data.data || !res.data.data.items.length)) {
+                  _context10.next = 19;
+                  break;
+                }
+
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])("没有更多数据了～");
+                _this9.loading = true;
+                return _context10.abrupt("return", false);
+
+              case 19:
+                data = res.data.data.items;
+                _this9.noticeList = _this9.noticeList.concat(data);
+                _this9.loading = true;
+
+              case 22:
+                _context10.next = 30;
+                break;
+
+              case 24:
+                _context10.prev = 24;
+                _context10.t0 = _context10["catch"](0);
+                _this9.showLoading = false;
+                wx.hideNavigationBarLoading();
+
+                if (_context10.t0.data.error_code == 11020) {
+                  _this9.visible = true;
+                  _this9.isclick = false;
+                  console.log(_context10.t0, "error");
+                }
+
+                if (_context10.t0.data.error_code == 10100 && _this9.pageNum > 1) {
+                  _this9.noMore = true;
+                }
+
+              case 30:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, null, [[0, 24]]);
+      }))();
+    },
+    applyVerify: function applyVerify(params) {
+      var _this10 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee11() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.prev = 0;
+                _context11.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_5__[/* applyVerify */ "h"])(params);
+
+              case 3:
+                res = _context11.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this10.oid + "&source=note");
+                _context11.next = 10;
+                break;
+
+              case 7:
+                _context11.prev = 7;
+                _context11.t0 = _context11["catch"](0);
+
+                if (_context11.t0.data.error_code == 21030 || _context11.t0.data.error_code == 21040) {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context11.t0.data.msg, "&code=").concat(_context11.t0.data.error_code));
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* errortip */ "a"])(_context11.t0.data.msg);
+                }
+
+              case 10:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, null, [[0, 7]]);
       }))();
     }
   },
@@ -953,7 +1017,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
   },
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
-      source: "friends_circle",
+      source: "share_details",
       type: "wechat",
       oid: this.oid
     });
@@ -965,10 +1029,15 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     };
   },
   onShareTimeline: function onShareTimeline() {
+    this.shareFriendsInvite({
+      source: "friends_circle",
+      type: "wechat",
+      oid: this.oid
+    });
     return {
-      title: this.shareTitle,
-      imageUrl: this.shareImg,
-      path: this.sharePath // 路径，传递参数到指定页面。
+      title: this.shareFriendsTitle,
+      imageUrl: this.shareFriendsImg,
+      path: this.shareFriendsPath // 路径，传递参数到指定页面。
 
     };
   },
@@ -978,17 +1047,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 
     if (options.scene) {
       this.oid = options.scene;
-      this.author_id = options.author_id; // 分享出去-查看详情
-      // let params = {
-      //   oid: options.scene,
-      //   author_id: options.author_id,
-      // };
-      // this.noticeInfo(params);
-      // this.shareInviteInfo({
-      //   source: "friends_circle",
-      //   type: "wechat",
-      //   oid: options.scene,
-      // });
+      this.author_id = options.author_id;
     }
 
     if (this.oid && this.author_id) {
@@ -998,6 +1057,11 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       };
       this.noticeInfo(params);
       this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: this.oid
+      });
+      this.shareFriendsInviteInfo({
         source: "friends_circle",
         type: "wechat",
         oid: this.oid

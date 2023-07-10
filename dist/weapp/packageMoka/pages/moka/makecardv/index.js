@@ -969,7 +969,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1001,7 +1001,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Ub"])(params);
 
               case 3:
                 res = _context2.sent;

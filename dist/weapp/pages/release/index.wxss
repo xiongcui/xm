@@ -37,6 +37,7 @@ page {
 }
 
 .release-box .release-item {
+  position: relative;
   width: 100%;
   margin-bottom: 24rpx;
   -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
@@ -104,4 +105,12 @@ page {
 .release-box .release-item .color4 .release-image {
   width: 68rpx;
   height: 68rpx;
+}
+
+.release-box .hot {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80rpx;
+  height: 80rpx;
 }

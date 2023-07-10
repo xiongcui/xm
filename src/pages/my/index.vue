@@ -487,6 +487,23 @@
             ></image>
           </view>
         </view>
+        <view @tap="evaluation" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/evaluation.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">体验评价</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
       </view>
     </view>
     <sign :visible="showModelSign" :msg="hyper_desc" @close="close"></sign>
@@ -548,6 +565,17 @@ export default {
     },
     close() {
       this.showModelSign = false;
+    },
+    evaluation() {
+      var plugin = requirePlugin("wxacommentplugin");
+      plugin.openComment({
+        success: (res) => {
+          console.log("plugin.openComment success", res);
+        },
+        fail: (res) => {
+          console.log("plugin.openComment fail", res);
+        },
+      });
     },
     personDetail() {
       openPage("/packageAdd/pages/user/editinfor/index");

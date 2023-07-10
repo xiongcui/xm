@@ -852,4 +852,75 @@
     color: #fcda2f;
     margin-top: 6px;
   }
+  .invited-users {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .invited-users-box {
+      width: 690px;
+      height: 750px;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/InvitedUsers.png")
+        no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+    }
+    .invited-users-close {
+      border-radius: 50%;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/common/close_icon.png")
+        rgba(0, 0, 0, 0.6) no-repeat;
+      background-size: cover;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 0px;
+      top: 40px;
+      padding: 5px;
+    }
+    .invited-users-title {
+      color: #ffffff;
+      font-size: 50px;
+      font-weight: bold;
+    }
+    .invited-users-txt {
+      width: 520px;
+      height: 220px;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/InvitedUsersTxt.png")
+        no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 30px 0px;
+      text {
+        line-height: 60px;
+        font-size: 32px;
+        color: #d05d46;
+        text-align: center;
+      }
+    }
+    .invited-users-btn {
+      width: 440px;
+      height: 100px;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/InvitedUsersBtn.png")
+        no-repeat;
+      background-size: cover;
+      color: #ffffff;
+      line-height: 88px;
+      font-size: 32px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  }
 }

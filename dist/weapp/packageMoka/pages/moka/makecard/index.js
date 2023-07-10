@@ -622,6 +622,10 @@ component.options.__file = "src/packageMoka/pages/moka/makecard/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 var device = wx.getSystemInfoSync(); // 获取设备信息
 
@@ -798,33 +802,73 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       f.width >= f.height ? i = (s = w) / f.width * f.height : s = (i = w) / f.height * f.width;
       var v = s / (f.rotateW * g.scale),
           S = u.height * v,
-          p = u.width * v,
-          y = wx.createCanvasContext("cutCanvas");
+          p = u.width * v; // y = wx.createCanvasContext("cutCanvas");
+
       var r = 750 / width;
-      y.clearRect(0, 0, s, i), y.drawImage(c, 0, 0, s, i), y.draw(false, function (s) {
-        wx.canvasToTempFilePath({
-          x: g.x * v * r,
-          y: g.y * v * r,
-          width: S,
-          height: p,
-          destWidth: 2 * S,
-          destHeight: 2 * p,
-          canvasId: "cutCanvas",
-          fileType: "png",
-          quality: 1,
-          success: function success(s) {
-            e[o] = s.tempFilePath;
+      var query = wx.createSelectorQuery();
+      query.select("#cutCanvas").fields({
+        node: true,
+        size: true
+      }).exec(function (res) {
+        var canvas = res[0].node;
+        var ctx = canvas.getContext("2d");
+        var y = ctx;
+        var image = canvas.createImage();
+        image.src = c;
 
-            if ((o += 1) >= h.length) {
-              _this.cutPhotos = e;
+        image.onload = function () {
+          y.clearRect(0, 0, s, i), y.drawImage(image, 0, 0, s, i), setTimeout(function () {
+            wx.canvasToTempFilePath({
+              x: g.x * v * r,
+              y: g.y * v * r,
+              width: S,
+              height: p,
+              destWidth: 2 * S,
+              destHeight: 2 * p,
+              // canvasId: "cutCanvas",
+              canvas: canvas,
+              fileType: "png",
+              quality: 1,
+              success: function success(s) {
+                e[o] = s.tempFilePath;
 
-              _this.drawMocard();
-            } else {
-              _this.makes(e, o);
-            }
-          }
-        });
-      });
+                if ((o += 1) >= h.length) {
+                  _this.cutPhotos = e;
+
+                  _this.drawMocard();
+                } else {
+                  _this.makes(e, o);
+                }
+              }
+            });
+          }, 300);
+        }; // y.draw(false, function (s) {
+        // });
+
+      }); // y.clearRect(0, 0, s, i),
+      //   y.drawImage(c, 0, 0, s, i),
+      //   y.draw(false, function (s) {
+      //     wx.canvasToTempFilePath({
+      //       x: g.x * v * r,
+      //       y: g.y * v * r,
+      //       width: S,
+      //       height: p,
+      //       destWidth: 2 * S,
+      //       destHeight: 2 * p,
+      //       canvasId: "cutCanvas",
+      //       fileType: "png",
+      //       quality: 1,
+      //       success: function (s) {
+      //         e[o] = s.tempFilePath;
+      //         if ((o += 1) >= h.length) {
+      //           _this.cutPhotos = e;
+      //           _this.drawMocard();
+      //         } else {
+      //           _this.makes(e, o);
+      //         }
+      //       },
+      //     });
+      //   });
     },
     changePhoto: function changePhoto(t) {
       var a = parseInt(t.currentTarget.id),
@@ -894,35 +938,82 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
 
       wx.downloadFile({
         url: this.userInfo.avatar,
-        success: function success(res) {
-          if (200 === res.statusCode) {
-            var e = wx.createCanvasContext("firstCanvas");
-            e.save(), e.beginPath(), e.arc(100, 100, 100, 0, 2 * Math.PI, !1), e.clip(), e.drawImage(res.tempFilePath, 0, 0, 200, 200), e.restore(), e.draw(false, function (a) {
-              wx.canvasToTempFilePath({
-                x: 0,
-                y: 0,
-                width: 200,
-                height: 200,
-                destWidth: 200,
-                destHeight: 200,
-                canvasId: "firstCanvas",
-                fileType: "png",
-                quality: 1,
-                success: function success(a) {
-                  _this.avartar = a.tempFilePath;
+        success: function success(responese) {
+          if (200 === responese.statusCode) {
+            // var e = wx.createCanvasContext("firstCanvas");
+            var query = wx.createSelectorQuery();
+            query.select("#firstCanvas").fields({
+              node: true,
+              size: true
+            }).exec(function (res) {
+              var canvas = res[0].node;
+              var ctx = canvas.getContext("2d");
+              var e = ctx;
+              var image = canvas.createImage();
+              image.src = responese.tempFilePath;
 
-                  _this.drawAvartar(true);
+              image.onload = function () {
+                e.save(), e.beginPath(), e.arc(100, 100, 100, 0, 2 * Math.PI, !1), e.clip(), e.drawImage(image, 0, 0, 200, 200), e.restore();
+                setTimeout(function () {
+                  wx.canvasToTempFilePath({
+                    x: 0,
+                    y: 0,
+                    width: 200,
+                    height: 200,
+                    destWidth: 200,
+                    destHeight: 200,
+                    // canvasId: "firstCanvas",
+                    canvas: canvas,
+                    fileType: "png",
+                    quality: 1,
+                    success: function success(a) {
+                      _this.avartar = a.tempFilePath;
 
-                  _this.drawAvartar(false);
-                },
-                fail: function fail(t) {
-                  wx.showModal({
-                    title: "头像裁剪失败",
-                    showCancel: !1
+                      _this.drawAvartar(true);
+
+                      _this.drawAvartar(false);
+                    },
+                    fail: function fail(t) {
+                      wx.showModal({
+                        title: "头像裁剪失败",
+                        showCancel: !1
+                      });
+                    }
                   });
-                }
-              });
-            });
+                }, 300);
+              }; // e.draw(false, function (a) {
+              // });
+
+            }); // e.save(),
+            //   e.beginPath(),
+            //   e.arc(100, 100, 100, 0, 2 * Math.PI, !1),
+            //   e.clip(),
+            //   e.drawImage(res.tempFilePath, 0, 0, 200, 200),
+            //   e.restore(),
+            //   e.draw(false, function (a) {
+            //     wx.canvasToTempFilePath({
+            //       x: 0,
+            //       y: 0,
+            //       width: 200,
+            //       height: 200,
+            //       destWidth: 200,
+            //       destHeight: 200,
+            //       canvasId: "firstCanvas",
+            //       fileType: "png",
+            //       quality: 1,
+            //       success: function (a) {
+            //         _this.avartar = a.tempFilePath;
+            //         _this.drawAvartar(true);
+            //         _this.drawAvartar(false);
+            //       },
+            //       fail: function (t) {
+            //         wx.showModal({
+            //           title: "头像裁剪失败",
+            //           showCancel: !1,
+            //         });
+            //       },
+            //     });
+            //   });
           }
         }
       });
@@ -946,64 +1037,167 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       });
     },
     drawCode: function drawCode(t) {
-      var a = this,
-          e = wx.createCanvasContext("firstCanvas");
-      e.setFillStyle("white"), e.fillRect(0, 0, 200, 200), e.drawImage(t ? a.blackCode : a.whiteCode, 0, 0, 200, 200), e.drawImage(a.avartar, 55, 55, 90, 90), e.draw(false, function (e) {
-        wx.canvasToTempFilePath({
-          x: 0,
-          y: 0,
-          width: 200,
-          height: 200,
-          destWidth: 200,
-          destHeight: 200,
-          canvasId: "firstCanvas",
-          fileType: "png",
-          quality: 1,
-          success: function success(e) {
-            t.isDark ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
-          },
-          fail: function fail(t) {
-            wx.showModal({
-              title: "头像绘制失败",
-              showCancel: false
+      var a = this; // e = wx.createCanvasContext("firstCanvas");
+
+      var query = wx.createSelectorQuery();
+      query.select("#firstCanvas").fields({
+        node: true,
+        size: true
+      }).exec(function (res) {
+        var canvas = res[0].node;
+        var ctx = canvas.getContext("2d");
+        var e = ctx;
+        console.log(e, "e=====");
+        var image = canvas.createImage();
+        image.src = t ? a.blackCode : a.whiteCode;
+        console.log(image.src, "image.src");
+        var image2 = canvas.createImage();
+        image2.src = a.avartar;
+        console.log(a.avartar);
+        console.log(image2.src, "image2.src");
+
+        image.onload = function () {
+          console.log(1111);
+        };
+
+        image2.onload = function () {
+          console.log(333);
+          e.fillStyle = "white", e.fillRect(0, 0, 200, 200), e.drawImage(image, 0, 0, 200, 200), e.drawImage(image2, 55, 55, 90, 90), setTimeout(function () {
+            wx.canvasToTempFilePath({
+              x: 0,
+              y: 0,
+              width: 200,
+              height: 200,
+              destWidth: 200,
+              destHeight: 200,
+              // canvasId: "firstCanvas",
+              canvas: canvas,
+              fileType: "png",
+              quality: 1,
+              success: function success(e) {
+                t.isDark ? a.logoAvartar = e.tempFilePath : a.blackLogoAvartar = e.tempFilePath, a.canvasHidden = true;
+              },
+              fail: function fail(t) {
+                wx.showModal({
+                  title: "头像绘制失败",
+                  showCancel: false
+                });
+              }
             });
-          }
-        });
-      });
+          }, 300);
+        }; // e.setFillStyle("white"),
+        // e.draw(false, function (e) {
+        // });
+
+      }); // e.setFillStyle("white"),
+      //   e.fillRect(0, 0, 200, 200),
+      //   e.drawImage(t ? a.blackCode : a.whiteCode, 0, 0, 200, 200),
+      //   e.drawImage(a.avartar, 55, 55, 90, 90),
+      //   e.draw(false, function (e) {
+      //     wx.canvasToTempFilePath({
+      //       x: 0,
+      //       y: 0,
+      //       width: 200,
+      //       height: 200,
+      //       destWidth: 200,
+      //       destHeight: 200,
+      //       canvasId: "firstCanvas",
+      //       fileType: "png",
+      //       quality: 1,
+      //       success: function (e) {
+      //         t.isDark
+      //           ? (a.logoAvartar = e.tempFilePath)
+      //           : (a.blackLogoAvartar = e.tempFilePath),
+      //           (a.canvasHidden = true);
+      //       },
+      //       fail: function (t) {
+      //         wx.showModal({
+      //           title: "头像绘制失败",
+      //           showCancel: false,
+      //         });
+      //       },
+      //     });
+      //   });
     },
     drawMocard: function drawMocard() {
       var t = this,
           a = t.card.height,
           o = t.card.width,
-          s = wx.createCanvasContext("cutCanvas"),
-          i = {};
-      i = t.isDark ? t.darkStyle : t.lightStyle, s.setFillStyle(i.bgColor), s.fillRect(0, 0, a, o), "cebian" == t.card.type || "charu" == t.card.type ? t.drawUserInfoWithCebian(s) : "dibu" == t.card.type && t.drawUserInfoWithDibu(s), t.drawPhotos(s);
-      var l = "android" == device.platform,
-          r = l ? 2 : 1.8;
-      s.draw(false, function (s) {
-        "drawCanvas:ok" == s.errMsg && wx.canvasToTempFilePath({
-          x: 0,
-          y: 0,
-          width: a,
-          height: o,
-          destWidth: a * r,
-          destHeight: o * r,
-          canvasId: "cutCanvas",
-          fileType: "png",
-          quality: 1,
-          success: function success(a) {
-            var o = t.card.cardId,
-                s = t.card.name;
-            t.uploadFilePath(a.tempFilePath, t, o, s);
-          },
-          fail: function fail(a) {
-            wx.hideToast(), t.showMaking = false, wx.showModal({
-              title: "模卡保存失败",
-              showCancel: false
-            });
-          }
+          // s = wx.createCanvasContext("cutCanvas"),
+      i = {};
+      var query = wx.createSelectorQuery();
+      query.select("#cutCanvas").fields({
+        node: true,
+        size: true
+      }).exec(function (res) {
+        var canvas = res[0].node;
+        var ctx = canvas.getContext("2d");
+        var s = ctx;
+        i = t.isDark ? t.darkStyle : t.lightStyle, // s.setFillStyle(i.bgColor),
+        s.fillStyle = i.bgColor, s.fillRect(0, 0, a, o), "cebian" == t.card.type || "charu" == t.card.type ? t.drawUserInfoWithCebian(s) : "dibu" == t.card.type && t.drawUserInfoWithDibu(s), t.drawPhotos(s);
+        var l = "android" == device.platform,
+            r = l ? 2 : 1.8;
+        s.draw(false, function (s) {
+          "drawCanvas:ok" == s.errMsg && wx.canvasToTempFilePath({
+            x: 0,
+            y: 0,
+            width: a,
+            height: o,
+            destWidth: a * r,
+            destHeight: o * r,
+            // canvasId: "cutCanvas",
+            canvas: canvas,
+            fileType: "png",
+            quality: 1,
+            success: function success(a) {
+              var o = t.card.cardId,
+                  s = t.card.name;
+              t.uploadFilePath(a.tempFilePath, t, o, s);
+            },
+            fail: function fail(a) {
+              wx.hideToast(), t.showMaking = false, wx.showModal({
+                title: "模卡保存失败",
+                showCancel: false
+              });
+            }
+          });
         });
-      });
+      }); // (i = t.isDark ? t.darkStyle : t.lightStyle),
+      //   s.setFillStyle(i.bgColor),
+      //   s.fillRect(0, 0, a, o),
+      //   "cebian" == t.card.type || "charu" == t.card.type
+      //     ? t.drawUserInfoWithCebian(s)
+      //     : "dibu" == t.card.type && t.drawUserInfoWithDibu(s),
+      //   t.drawPhotos(s);
+      // var l = "android" == device.platform,
+      //   r = l ? 2 : 1.8;
+      // s.draw(false, function (s) {
+      //   "drawCanvas:ok" == s.errMsg &&
+      //     wx.canvasToTempFilePath({
+      //       x: 0,
+      //       y: 0,
+      //       width: a,
+      //       height: o,
+      //       destWidth: a * r,
+      //       destHeight: o * r,
+      //       canvasId: "cutCanvas",
+      //       fileType: "png",
+      //       quality: 1,
+      //       success: function (a) {
+      //         var o = t.card.cardId,
+      //           s = t.card.name;
+      //         t.uploadFilePath(a.tempFilePath, t, o, s);
+      //       },
+      //       fail: function (a) {
+      //         wx.hideToast(),
+      //           (t.showMaking = false),
+      //           wx.showModal({
+      //             title: "模卡保存失败",
+      //             showCancel: false,
+      //           });
+      //       },
+      //     });
+      // });
     },
     uploadFilePath: function uploadFilePath(t, a, o, s) {
       if (a.isposting) return;
@@ -1027,10 +1221,24 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
           l = {},
           r = (l = this.isDark ? this.darkStyle : this.lightStyle).propertyColor,
           n = l.valueColor;
-      a.setFontSize(32), a.setFillStyle(n), a.fillText(e.nickname, s, i);
+      a.setFontSize(32), a.fillStyle = n, a.fillText(e.nickname, s, i);
       var h = 8;
 
-      if (this.isMoveQrcode && (h = 10), i += 40, a.setFontSize(18), a.setFillStyle(r), a.fillText("身高 HEIGHT", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.height + "cm", s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("体重 WEIGHT", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.weight + "kg", s, i), e.is_bwh && (i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("胸围 BUST", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_b, s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("腰围 WAIST", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_w, s, i), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("臀围 HIPS", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.bwh_h, s, i)), i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("鞋码 SHOES", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.shoe, s, i), e.is_birthday && (i += 22 + h, a.setFontSize(18), a.setFillStyle(r), a.fillText("生日 BIRTH", s, i), i += 25, a.setFontSize(18), a.setFillStyle(n), a.fillText(e.birthday, s, i)), !this.isMoveQrcode) {
+      if (this.isMoveQrcode && (h = 10), i += 40, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("身高 HEIGHT", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.height + "cm", s, i), i += 22 + h, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("体重 WEIGHT", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.weight + "kg", s, i), e.is_bwh && (i += 22 + h, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("胸围 BUST", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.bwh_b, s, i), i += 22 + h, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("腰围 WAIST", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.bwh_w, s, i), i += 22 + h, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("臀围 HIPS", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.bwh_h, s, i)), i += 22 + h, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("鞋码 SHOES", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.shoe, s, i), e.is_birthday && (i += 22 + h, a.setFontSize(18), // a.setFillStyle(r),
+      a.fillStyle = r, a.fillText("生日 BIRTH", s, i), i += 25, a.setFontSize(18), // a.setFillStyle(n),
+      a.fillStyle = n, a.fillText(e.birthday, s, i)), !this.isMoveQrcode) {
         i += 30;
         a.drawImage(this.isDark ? this.logoAvartar : this.blackLogoAvartar, s, i, 120, 120);
       }
@@ -1118,7 +1326,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* qrcode */ "rb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1152,7 +1360,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userMocha */ "Ub"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -2203,7 +2411,7 @@ var render = function () {
             width: _vm.cutCanvasWH + "px",
             height: _vm.cutCanvasWH + "px",
           },
-          attrs: { canvasId: "cutCanvas" },
+          attrs: { type: "2d", canvasId: "cutCanvas", id: "cutCanvas" },
         }),
       ]
     ),
@@ -2213,7 +2421,7 @@ var render = function () {
       [
         _c("canvas", {
           staticStyle: { width: "200px", height: "200px" },
-          attrs: { canvasId: "firstCanvas" },
+          attrs: { type: "2d", id: "firstCanvas", canvasId: "firstCanvas" },
         }),
       ]
     ),

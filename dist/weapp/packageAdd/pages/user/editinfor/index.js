@@ -298,7 +298,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* profileUpdate */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* profileUpdate */ "mb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -339,7 +339,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Wb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -373,7 +373,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userProfile */ "Vb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -495,7 +495,7 @@ var render = function () {
                 _c("image", {
                   attrs: {
                     mode: "aspectFit",
-                    src: "https://yuepai-oss.qubeitech.com/static/common/icon_right.png",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_right.png",
                   },
                 }),
               ]),

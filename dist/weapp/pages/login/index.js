@@ -241,6 +241,8 @@ component.options.__file = "src/pages/login/index.vue"
     },
     // 可以在模拟器唤起授权 获得用户信息
     getUserProfile: function getUserProfile() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
+
       if (!this.select) {
         this.agreementVisible = true;
         return false;
@@ -321,8 +323,6 @@ component.options.__file = "src/pages/login/index.vue"
     upImgs: function upImgs(filePath) {
       var _this2 = this;
 
-      console.log(filePath, filePath.indexOf("yuepai-oss") != -1);
-
       if (filePath.indexOf("yuepai-oss") != -1) {
         var params = {
           avatar: filePath,
@@ -389,7 +389,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "fc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "gc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -493,7 +493,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Vb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Wb"])(params);
 
               case 3:
                 res = _context3.sent;

@@ -185,6 +185,7 @@ export default {
     },
     // 可以在模拟器唤起授权 获得用户信息
     getUserProfile() {
+      if (!clickThrottle()) return;
       if (!this.select) {
         this.agreementVisible = true;
         return false;
@@ -259,7 +260,6 @@ export default {
       openPage("/packageSet/pages/privacy/index");
     },
     upImgs(filePath) {
-      console.log(filePath, filePath.indexOf("yuepai-oss") != -1);
       if (filePath.indexOf("yuepai-oss") != -1) {
         let params = {
           avatar: filePath,

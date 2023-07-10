@@ -548,6 +548,23 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -596,6 +613,17 @@ component.options.__file = "src/pages/my/index.vue"
     },
     close: function close() {
       this.showModelSign = false;
+    },
+    evaluation: function evaluation() {
+      var plugin = requirePlugin("wxacommentplugin");
+      plugin.openComment({
+        success: function success(res) {
+          console.log("plugin.openComment success", res);
+        },
+        fail: function fail(res) {
+          console.log("plugin.openComment fail", res);
+        }
+      });
     },
     personDetail: function personDetail() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
@@ -739,7 +767,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Sb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -814,7 +842,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "xb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -844,7 +872,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "yb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -877,7 +905,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Ib"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1645,6 +1673,31 @@ var render = function () {
               ]),
               _c("view", { staticClass: "ub-f1" }, [
                 _c("view", { staticClass: "item_text" }, [_vm._v("开具发票")]),
+              ]),
+              _c("view", { staticClass: "arrow" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
+                  },
+                }),
+              ]),
+            ]
+          ),
+          _c(
+            "view",
+            { staticClass: "item ub line-t", on: { tap: _vm.evaluation } },
+            [
+              _c("view", { staticClass: "item_icon" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/evaluation.png",
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "ub-f1" }, [
+                _c("view", { staticClass: "item_text" }, [_vm._v("体验评价")]),
               ]),
               _c("view", { staticClass: "arrow" }, [
                 _c("image", {

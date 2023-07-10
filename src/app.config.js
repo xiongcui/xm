@@ -36,7 +36,7 @@ export default defineAppConfig({
       },
       {
         pagePath: "pages/release/index",
-        iconPath: "assets/images/release.png",
+        iconPath: "assets/images/release-sel.png",
         selectedIconPath: "assets/images/release-sel.png",
         text: "发布",
       },
@@ -195,6 +195,10 @@ export default defineAppConfig({
     citySelector: {
       version: "1.0.2",
       provider: "wx63ffb7b7894e99ae",
+    },
+    wxacommentplugin: {
+      version: "latest",
+      provider: "wx82e6ae1175f264fa", // 必须填该评价组件appid，该示例值即为评价组件appid（复制时请去掉注释）
     },
   },
 });

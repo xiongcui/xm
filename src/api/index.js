@@ -975,3 +975,11 @@ export const sourceItems = (data) => {
     data,
   });
 };
+// 首页弹框操作
+export const popupLogs = (data) => {
+  return request({
+    url: baseUrl + "/v1/task/popup/logs",
+    method: "post",
+    data,
+  });
+};

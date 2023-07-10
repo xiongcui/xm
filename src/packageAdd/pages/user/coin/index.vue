@@ -111,7 +111,7 @@
             </block>
             <view v-else class="none-data">
               <image
-                src="https://yuepai-oss.qubeitech.com/static/common/none.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
                 mode="aspectFill"
                 class="none-img"
               ></image>

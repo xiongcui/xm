@@ -216,6 +216,9 @@ export default {
       shareTitle: "",
       shareImg: "",
       sharePath: "",
+      shareFriendsTitle: "",
+      shareFriendsImg: "",
+      shareFriendsPath: "",
     };
   },
   methods: {
@@ -309,6 +312,19 @@ export default {
         this.sharePath = res.data.data.path;
       } catch (error) {}
     },
+    async shareFriendsInvite(params) {
+      try {
+        let res = await shareInvite(params);
+      } catch (error) {}
+    },
+    async shareFriendsInviteInfo(params) {
+      try {
+        let res = await shareInviteInfo(params);
+        this.shareFriendsTitle = res.data.data.title;
+        this.shareFriendsImg = res.data.data.imageUrl;
+        this.shareFriendsPath = res.data.data.path;
+      } catch (error) {}
+    },
     async userFollow(params) {
       try {
         let res = await userFollow(params);
@@ -345,7 +361,7 @@ export default {
   },
   onShareAppMessage() {
     this.shareInvite({
-      source: "friends_circle",
+      source: "share_details",
       type: "wechat",
       oid: this.oid,
     });
@@ -356,10 +372,15 @@ export default {
     };
   },
   onShareTimeline() {
+    this.shareFriendsInvite({
+      source: "friends_circle",
+      type: "wechat",
+      oid: this.oid,
+    });
     return {
-      title: this.shareTitle,
-      imageUrl: this.shareImg,
-      path: this.sharePath, // 路径，传递参数到指定页面。
+      title: this.shareFriendsTitle,
+      imageUrl: this.shareFriendsImg,
+      path: this.shareFriendsPath, // 路径，传递参数到指定页面。
     };
   },
   onLoad: function (options) {
@@ -376,6 +397,11 @@ export default {
       };
       this.photoInfo(params);
       this.shareInviteInfo({
+        source: "share_details",
+        type: "wechat",
+        oid: this.oid,
+      });
+      this.shareFriendsInviteInfo({
         source: "friends_circle",
         type: "wechat",
         oid: this.oid,

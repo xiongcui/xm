@@ -136,6 +136,10 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -181,7 +185,7 @@ component.options.__file = "src/pages/release/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "pb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -238,42 +242,6 @@ var render = function () {
           staticClass: "release-item",
           on: {
             tap: function ($event) {
-              return _vm.releaseUrl(1)
-            },
-          },
-        },
-        [
-          _c("view", { staticClass: "release-left color1" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/publish1.png",
-                mode: "aspectFit",
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布通告 "),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "发布创作、影视、造型、种草、探店等通告，招募模特、演员、红人、主播等 "
-                ),
-              ]),
-            ]),
-          ]),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
               return _vm.releaseUrl(2)
             },
           },
@@ -302,6 +270,12 @@ var render = function () {
               ]),
             ]),
           ]),
+          _c("image", {
+            staticClass: "hot",
+            attrs: {
+              src: "https://yuepai-oss.qubeitech.com/static/images/hot.png",
+            },
+          }),
         ]
       ),
       _c(
@@ -334,6 +308,42 @@ var render = function () {
               _c("text", { staticClass: "release-list-content" }, [
                 _vm._v(
                   "分享自己的作品或照片，提升自己的约拍专业影响力，获得更多曝光"
+                ),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
+      _c(
+        "view",
+        {
+          staticClass: "release-item",
+          on: {
+            tap: function ($event) {
+              return _vm.releaseUrl(1)
+            },
+          },
+        },
+        [
+          _c("view", { staticClass: "release-left color1" }, [
+            _c("image", {
+              staticClass: "release-image",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/publish1.png",
+                mode: "aspectFit",
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "release-right" }, [
+            _c("view", [
+              _c("text", { staticClass: "release-list-title" }, [
+                _vm._v(" 发布通告 "),
+              ]),
+            ]),
+            _c("view", [
+              _c("text", { staticClass: "release-list-content" }, [
+                _vm._v(
+                  "发布创作、影视、造型、种草、探店等通告，招募模特、演员、红人、主播等 "
                 ),
               ]),
             ]),

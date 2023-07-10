@@ -1048,6 +1048,95 @@
   color: #fcda2f;
   margin-top: 6rpx;
 }
+.home .invited-users {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.home .invited-users .invited-users-box {
+  width: 690rpx;
+  height: 750rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/InvitedUsers.png") no-repeat;
+  background-size: cover;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+.home .invited-users .invited-users-close {
+  border-radius: 50%;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/close_icon.png") rgba(0, 0, 0, 0.6) no-repeat;
+  background-size: cover;
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 0;
+  top: 40rpx;
+  padding: 5rpx;
+}
+.home .invited-users .invited-users-title {
+  color: #ffffff;
+  font-size: 50rpx;
+  font-weight: bold;
+}
+.home .invited-users .invited-users-txt {
+  width: 520rpx;
+  height: 220rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/InvitedUsersTxt.png") no-repeat;
+  background-size: cover;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 30rpx 0;
+}
+.home .invited-users .invited-users-txt text {
+  line-height: 60rpx;
+  font-size: 32rpx;
+  color: #d05d46;
+  text-align: center;
+}
+.home .invited-users .invited-users-btn {
+  width: 440rpx;
+  height: 100rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/InvitedUsersBtn.png") no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  line-height: 88rpx;
+  font-size: 32rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
 .login-tost {
   padding: 16rpx 30rpx;
   background: rgba(0, 0, 0, 0.7);

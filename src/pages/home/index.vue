@@ -541,6 +541,20 @@
     <!--未登录提示-->
     <ShowLogin v-if="showlogin" @getUserProfile="goLogin"></ShowLogin>
     <!--未登录提示-->
+    <!--特邀用户-->
+    <view class="invited-users" v-if="invitedVisible" @tap.stop="invitedClose">
+      <view class="invited-users-box">
+        <view class="invited-users-close" @tap.stop="invitedClose"></view>
+        <view class="invited-users-title">{{ invitedTitle }}</view>
+        <view class="invited-users-txt">
+          <text>{{ invitedText }}</text>
+        </view>
+        <view class="invited-users-btn" @tap.stop="invited">
+          {{ invitedBtn }}
+        </view>
+      </view>
+    </view>
+    <!--特邀用户-->
   </view>
 </template>
 
@@ -572,6 +586,7 @@ import {
   bannerList,
   shareInviteInfo,
   sourceItems,
+  popupLogs,
 } from "../../api/index";
 import { openPage, isLogin, errortip } from "../../utils/util";
 import clickThrottle from "../../utils/clickThrottle";
@@ -584,6 +599,7 @@ export default {
       noMore: false,
       showLoading: true,
       loading: false,
+      invitedVisible: false,
       topNum: 0,
       swiperheight: 144,
       tonggaoSwiperHeight: 240,
@@ -647,6 +663,10 @@ export default {
       winHeight: 0,
       swiperHeightCt: 0,
       added: false,
+      invitedTitle: "恭喜成为特邀用户",
+      invitedText: "现邀你参加快捷约拍活动↵发布约拍后将获得更多曝光机会",
+      invitedBtn: "立即参加",
+      invitedRedirectUrl: "",
     };
   },
   components: {
@@ -659,6 +679,19 @@ export default {
     sign,
   },
   methods: {
+    invitedClose() {
+      this.invitedVisible = false;
+      this.popupLogs({
+        click_event: 0,
+      });
+    },
+    invited() {
+      this.popupLogs({
+        click_event: 1,
+      });
+      this.invitedVisible = false;
+      openPage(this.invitedRedirectUrl);
+    },
     changeTips() {
       this.added = !this.added;
     },
@@ -1040,6 +1073,13 @@ export default {
               key: "token",
             });
           }
+          setTimeout(() => {
+            this.invitedVisible = res.data.data.advice.popup.is_homepage_popup;
+            this.invitedTitle = res.data.data.advice.popup.title;
+            this.invitedText = res.data.data.advice.popup.body;
+            this.invitedBtn = res.data.data.advice.popup.redirect_tip;
+            this.invitedRedirectUrl = res.data.data.advice.popup.redirect_url;
+          }, 3000);
         }
         this.yuepaiList = [];
         this.inviteRecommendList = [];
@@ -1372,6 +1412,11 @@ export default {
         let res = await sourceItems(params);
       } catch (error) {}
     },
+    async popupLogs(params) {
+      try {
+        let res = await popupLogs(params);
+      } catch (error) {}
+    },
     async submitSign(params) {
       try {
         let res = await submitSign(params);
@@ -1474,11 +1519,11 @@ export default {
       });
     }
     // 检查微信小程序是否添加到我的
-    wx.checkIsAddedToMyMiniProgram({
-      success: (res) => {
-        that.added = res.added;
-      },
-    });
+    // wx.checkIsAddedToMyMiniProgram({
+    //   success: (res) => {
+    //     that.added = res.added;
+    //   },
+    // });
     setTimeout(() => {
       this.added = true;
     }, 10000);
