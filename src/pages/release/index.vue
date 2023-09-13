@@ -82,6 +82,25 @@
           </view>
         </view>
       </view>
+      <view class="release-item" @tap="releaseUrl(5)" v-if="false">
+        <view class="release-left color5">
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/release-activity.png"
+            mode="aspectFit"
+            class="release-image"
+          ></image>
+        </view>
+        <view class="release-right">
+          <view>
+            <text class="release-list-title"> 发布活动 </text>
+          </view>
+          <view>
+            <text class="release-list-content"
+              >免费制作专业高清模卡，数百个模板可供选择，制作专业模卡的神器</text
+            >
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </template>
@@ -113,6 +132,9 @@ export default {
           break;
         case 4:
           url = "/packageMoka/pages/moka/modelcard/index";
+          break;
+        case 5:
+          url = "/packageActivity/pages/add/index";
           break;
       }
       openPage(url);

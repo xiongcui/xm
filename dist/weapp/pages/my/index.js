@@ -767,7 +767,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "bc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -813,7 +813,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "Q"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -842,7 +842,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Gb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -872,7 +872,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Hb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -905,7 +905,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Rb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -940,7 +940,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "B"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "H"])(params);
 
               case 3:
                 res = _context6.sent;

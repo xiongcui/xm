@@ -20,16 +20,19 @@
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/common/back.png"
                 class="roll-down"
+                :lazy-load="true"
               ></image>
             </view>
             <view class="head_sign" @tap="showSign" v-if="!showlogin">
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg"
                 v-if="is_today_sign"
+                :lazy-load="true"
               ></image>
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg"
                 v-else
+                :lazy-load="true"
               ></image>
             </view>
           </view>
@@ -73,6 +76,7 @@
                     mode="aspectFill"
                     :src="item.image_url"
                     class="swiper-item-img"
+                    :lazy-load="true"
                   ></image>
                 </view>
               </swiper-item>
@@ -117,6 +121,7 @@
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/icon_model.png"
               class="page-nav-img"
+              :lazy-load="true"
             ></image>
             <text class="page-nav-text">模特</text>
           </view>
@@ -124,20 +129,23 @@
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/take.png"
               class="page-nav-img"
+              :lazy-load="true"
             ></image>
             <text class="page-nav-text">摄影</text>
           </view>
-          <view class="page-nav-item" @tap="goMore(2)">
+          <view class="page-nav-item" @tap="goActivity">
             <image
-              src="https://yuepai-oss.qubeitech.com/static/images/more1.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/activity-icon.png"
               class="page-nav-img"
+              :lazy-load="true"
             ></image>
-            <text class="page-nav-text">作品</text>
+            <text class="page-nav-text">活动</text>
           </view>
           <view class="page-nav-item" @tap="gomoka">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/moka.png"
               class="page-nav-img"
+              :lazy-load="true"
             ></image>
             <text class="page-nav-text">模卡</text>
           </view>
@@ -150,6 +158,7 @@
             </view>
             <view class="page-nav-rt">
               <image
+                :lazy-load="true"
                 src="https://yuepai-oss.qubeitech.com/static/images/common/photo_white.png"
               ></image>
             </view>
@@ -161,6 +170,7 @@
             </view>
             <view class="page-nav-rt">
               <image
+                :lazy-load="true"
                 src="https://yuepai-oss.qubeitech.com/static/images/common/tonggao_white.png"
               ></image>
             </view>
@@ -555,6 +565,9 @@
       </view>
     </view>
     <!--特邀用户-->
+    <!--隐私权益弹框-->
+    <privacyPopup></privacyPopup>
+    <!--隐私权益弹框-->
   </view>
 </template>
 
@@ -568,6 +581,7 @@ import Pagenav from "../../components/pagenav/index.vue";
 import loading from "../../components/loading/index.vue";
 import ShowLogin from "../../components/showLogin/index.vue";
 import sign from "../../components/sign/index.vue";
+import privacyPopup from "../../components/privacyPopup/index.vue";
 import {
   inviteAdviseList,
   noticeAdviseList,
@@ -677,6 +691,7 @@ export default {
     loading,
     ShowLogin,
     sign,
+    privacyPopup,
   },
   methods: {
     invitedClose() {
@@ -756,6 +771,14 @@ export default {
         url: `plugin://citySelector/index?key=${this.key}&referer=${this.referer}&hotCitys=${this.hotCitys}`,
       });
     },
+    goActivity() {
+      // if (isLogin()) {
+      //   openPage("/packageActivity/pages/list/index");
+      // } else {
+      //   openPage("/pages/login/index");
+      // }
+      errortip("内测中暂未开放");
+    },
     goMore(index) {
       if (isLogin()) {
         openPage(
@@ -769,14 +792,9 @@ export default {
       }
     },
     goTakelist() {
-      if (isLogin()) {
-        openPage(
-          "/packageAdd/pages/user/takelist/index?city_filter=" +
-            this.city_filter
-        );
-      } else {
-        openPage("/pages/login/index");
-      }
+      openPage(
+        "/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter
+      );
     },
     componetClick(index) {
       if (this.componetActive != index) {

@@ -1,0 +1,392 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.my-activity {
+  padding: 16rpx;
+}
+
+.my-activity .activity-box {
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+  padding: 0 16rpx;
+}
+
+.my-activity .activity-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx 0;
+}
+
+.my-activity .activity-top .activity-name {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  padding-right: 30rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/user/index/right.png") right center no-repeat;
+  background-size: 18rpx;
+}
+
+.my-activity .activity-top .activity-status {
+  font-size: 28rpx;
+  color: #eb9b4c;
+}
+
+.my-activity .activity-ct {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 16rpx;
+}
+
+.my-activity .activity-left {
+  position: relative;
+  margin-right: 16rpx;
+}
+
+.my-activity .activity-left image {
+  width: 180rpx;
+  max-height: 240rpx;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.my-activity .activity-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  width: 100%;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 40rpx;
+  max-height: 80rpx;
+}
+
+.my-activity .activity-location {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 26rpx;
+  background: url(https://yuepai-oss.qubeitech.com/static/images/common/local.png) left center no-repeat;
+  background-size: 30rpx;
+  padding-left: 36rpx;
+}
+
+.my-activity .activity-time {
+  width: 490rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.my-activity .activity-txt {
+  margin-top: 6rpx;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 26rpx;
+  background: url(https://yuepai-oss.qubeitech.com/static/images/time.png) left center no-repeat;
+  background-size: 28rpx;
+  padding-left: 36rpx;
+}
+
+.my-activity .activity-session {
+  width: 490rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.my-activity .activity-session .activity-session-txt {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.my-activity .activity-session .activity-price {
+  font-size: 28rpx;
+  color: #ff1e3e;
+}
+
+.my-activity .activity-session .price-blod {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.my-activity .activity-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  border-top: 1rpx solid #f5f5f5;
+  padding-top: 16rpx;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 16rpx;
+}
+
+.my-activity .activity-bt .more {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_more.png") left center no-repeat;
+  background-size: 28rpx;
+  font-size: 26rpx;
+  padding-left: 40rpx;
+  color: #6b6b6b;
+}
+
+.my-activity .activity-bt .btn {
+  padding: 2rpx 26rpx;
+  font-size: 24rpx;
+  border: 2rpx solid #cacaca;
+  border-radius: 24rpx;
+  margin-left: 16rpx;
+}
+
+.my-activity .bottom-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  overflow: auto;
+  padding-top: 60rpx;
+  height: calc(100vh - 60rpx);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+
+.my-activity .bottom-modal .bottom-content {
+  width: 100%;
+  background: #ffffff;
+  height: 70vh;
+  overflow: auto;
+  border-radius: 10rpx 10rpx 0 0;
+  position: relative;
+}
+
+.my-activity .bottom-modal .bottom-title {
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.my-activity .bottom-modal .session {
+  padding-bottom: 6rpx;
+}
+
+.my-activity .bottom-modal .session-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #333333;
+  font-size: 30rpx;
+  padding: 6rpx 16rpx;
+  margin: 0 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.my-activity .bottom-modal .session-title .session-lable {
+  position: relative;
+  padding: 16rpx 80rpx;
+}
+
+.my-activity .bottom-modal .session-title .session-txt {
+  z-index: 99;
+  position: relative;
+  background: #ffffff;
+  font-size: 34rpx;
+  font-weight: bold;
+  padding: 0 16rpx;
+  color: #333333;
+}
+
+.my-activity .bottom-modal .session-title .session-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 34rpx;
+  border-bottom: 6rpx solid #bbbbbb;
+}
+
+.my-activity .bottom-modal .distinguish {
+  position: relative;
+  border: 2rpx solid #dddddd;
+  border-radius: 8rpx;
+  padding: 40rpx 16rpx 16rpx 16rpx;
+  margin: 30rpx 16rpx;
+}
+
+.my-activity .bottom-modal .distinguish .candidate-name {
+  padding: 6rpx 16rpx;
+  color: #333333;
+  border-radius: 8rpx;
+  position: absolute;
+  top: -24rpx;
+  left: 50%;
+  margin-left: -70rpx;
+  font-size: 28rpx;
+  width: 140rpx;
+  text-align: center;
+  border: 2rpx solid #dddddd;
+  border-radius: 6rpx;
+  z-index: 99;
+  background: #ffffff;
+}
+
+.my-activity .bottom-modal .distinguish .grade-name {
+  background: #bebebe;
+  padding: 6rpx 0;
+  color: #333333;
+  border-radius: 8rpx;
+  position: absolute;
+  top: -20rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  font-size: 28rpx;
+  width: 120rpx;
+  text-align: center;
+}
+
+.my-activity .bottom-modal .group-box {
+  border-radius: 8rpx;
+  margin-top: 16rpx;
+  background: #eeeeef;
+}
+
+.my-activity .bottom-modal .group-box .group-title {
+  border-bottom: 2rpx solid #dddddd;
+  color: #333333;
+  padding: 6rpx 16rpx;
+}
+
+.my-activity .bottom-modal .group-box .group-blod {
+  font-weight: bold;
+  font-size: 30rpx;
+}
+
+.my-activity .bottom-modal .group-box .group-num {
+  font-size: 28rpx;
+}
+
+.my-activity .bottom-modal .group {
+  padding: 16rpx;
+}
+
+.my-activity .bottom-modal .group .group-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.my-activity .bottom-modal .group .group-left image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.my-activity .bottom-modal .group-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 6rpx 16rpx 6rpx 34rpx;
+}
+
+.my-activity .bottom-modal .group-list image {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+.my-activity .bottom-modal .group-identity-list {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.my-activity .bottom-modal .group-home {
+  padding: 2rpx 16rpx;
+  border: 1rpx solid #c6c7c7;
+  border-radius: 2rpx;
+  color: #acacad;
+  font-size: 22rpx;
+  background: #eeeeee;
+}
+
+.my-activity .bottom-modal .candidate-title {
+  position: relative;
+  border-bottom: 1rpx dotted #dedede;
+  margin: 16rpx 0 30rpx 0;
+}
+
+.my-activity .bottom-modal .candidate-identity {
+  font-size: 26rpx;
+  width: 120rpx;
+  position: absolute;
+  top: -12rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  background: #ffffff;
+  text-align: center;
+  font-weight: bold;
+}
+
+.my-activity .bottom-modal .candidate-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.my-activity .bottom-modal .candidate-list image {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+
+.my-activity .bottom-modal .candidate-identity-list {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.my-activity .bottom-modal .none-data {
+  text-align: center;
+  padding: 30rpx 0;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+}

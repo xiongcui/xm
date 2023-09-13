@@ -1,0 +1,113 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.application-confirm .confirm-success {
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin: 16rpx;
+  padding: 16rpx;
+}
+
+.application-confirm .confirm-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.application-confirm .confirm-title image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 16rpx;
+}
+
+.application-confirm .confirm-txt {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+}
+
+.application-confirm .application-fixed {
+  background: #ffffff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16rpx 30rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.application-confirm .application-fixed-left {
+  background: #9a9a9a;
+  color: #ffffff;
+  height: 60rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 300rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+}
+
+.application-confirm .application-fixed-rt {
+  background: #ff1e3e;
+  color: #ffffff;
+  height: 60rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 300rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+}
+
+.application-confirm .tips-box-btns {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 16rpx;
+  padding: 0 30rpx;
+}
+
+.application-confirm .tips-btn {
+  padding: 10rpx 20rpx;
+  font-size: 30rpx;
+  color: rgba(0, 0, 0, 0.4);
+  border-radius: 8rpx;
+  margin-top: 16rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.4);
+  margin-right: 30rpx;
+}

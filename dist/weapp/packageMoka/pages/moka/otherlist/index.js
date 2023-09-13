@@ -165,7 +165,7 @@ component.options.__file = "src/packageMoka/pages/moka/otherlist/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* nonpersonalList */ "W"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* nonpersonalList */ "cb"])(params);
 
               case 3:
                 res = _context.sent;

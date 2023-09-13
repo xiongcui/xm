@@ -1,5 +1,6 @@
 import { request, requestUpload } from "../utils/util";
-const baseUrl = "https://pai.qubeitech.com";
+// const baseUrl = "https://pai.qubeitech.com";
+const baseUrl = "https://dev.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({
@@ -979,6 +980,86 @@ export const sourceItems = (data) => {
 export const popupLogs = (data) => {
   return request({
     url: baseUrl + "/v1/task/popup/logs",
+    method: "post",
+    data,
+  });
+};
+// 活动获得参数
+export const publishConfig = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/publish/config",
+    method: "post",
+    data,
+  });
+};
+// 搜索用户
+export const userSearch = (data) => {
+  return request({
+    url: baseUrl + "/v1/user/search",
+    method: "post",
+    data,
+  });
+};
+// 活动发布
+export const publishCreate = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/publish/create",
+    method: "post",
+    data,
+  });
+};
+// 活动列表
+export const exploreList = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/explore/list",
+    method: "post",
+    data,
+  });
+};
+// 活动详情
+export const exploreInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/explore/info",
+    method: "post",
+    data,
+  });
+};
+// 活动报名详情
+export const sceneInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/explore/scene/info",
+    method: "post",
+    data,
+  });
+};
+// 报名支付
+export const applicationPay = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/apply/commit",
+    method: "post",
+    data,
+  });
+};
+// 获取报名成员列表
+export const applyMember = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/apply/member",
+    method: "post",
+    data,
+  });
+};
+// 获取报名状态
+export const applyResult = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/apply/result",
+    method: "post",
+    data,
+  });
+};
+// 活动校验
+export const activityVerify = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/apply/verify",
     method: "post",
     data,
   });

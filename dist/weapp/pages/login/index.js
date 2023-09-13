@@ -54,7 +54,8 @@ component.options.__file = "src/pages/login/index.vue"
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
 /* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _components_privacyPopup_index_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/privacyPopup/index.vue */ "./src/components/privacyPopup/index.vue");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
 //
@@ -195,6 +196,10 @@ component.options.__file = "src/pages/login/index.vue"
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -224,6 +229,9 @@ component.options.__file = "src/pages/login/index.vue"
       scene: ""
     };
   },
+  components: {
+    privacyPopup: _components_privacyPopup_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]
+  },
   methods: {
     selectChange: function selectChange() {
       this.select = !this.select;
@@ -241,8 +249,6 @@ component.options.__file = "src/pages/login/index.vue"
     },
     // 可以在模拟器唤起授权 获得用户信息
     getUserProfile: function getUserProfile() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
-
       if (!this.select) {
         this.agreementVisible = true;
         return false;
@@ -307,7 +313,7 @@ component.options.__file = "src/pages/login/index.vue"
       }
     },
     finishClick: function finishClick() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"])()) return;
       wx.showLoading({
         title: "保存中",
         mask: true
@@ -389,7 +395,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "gc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "qc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -458,7 +464,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "F"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -493,7 +499,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "fc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -823,6 +829,7 @@ var render = function () {
             ]
           )
         : _vm._e(),
+      _c("privacyPopup"),
     ],
     1
   )

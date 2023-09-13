@@ -99,11 +99,7 @@
             ></image>
           </view>
         </view>
-        <view
-          class="list_desc"
-          v-if="item.basic.resume"
-          @tap.stop="follow(item)"
-        >
+        <view class="list_desc" v-if="item.basic.resume">
           {{ item.basic.resume }}
         </view>
         <view class="list_img" v-if="item.album.photo_album.length">

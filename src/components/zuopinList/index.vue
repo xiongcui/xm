@@ -32,6 +32,7 @@
           "
           mode="aspectFill"
           @tap="goZhuye(item.author.uuid)"
+          :lazy-load="true"
         ></image>
 
         <view>
@@ -42,11 +43,13 @@
                 src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                 class="list_sex"
                 v-if="item.author.sex == 1"
+                :lazy-load="true"
               ></image>
               <image
                 src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                 class="list_sex"
                 v-if="item.author.sex == 0"
+                :lazy-load="true"
               ></image>
             </block>
           </view>
@@ -66,6 +69,7 @@
         src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         mode="aspectFill"
         class="none-img"
+        :lazy-load="true"
       ></image>
       <view>当前暂无数据哦～</view>
     </view>

@@ -140,6 +140,25 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -172,6 +191,10 @@ component.options.__file = "src/pages/release/index.vue"
         case 4:
           url = "/packageMoka/pages/moka/modelcard/index";
           break;
+
+        case 5:
+          url = "/packageActivity/pages/add/index";
+          break;
       }
 
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])(url);
@@ -185,7 +208,7 @@ component.options.__file = "src/pages/release/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "xb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -386,6 +409,9 @@ var render = function () {
           ]),
         ]
       ),
+      false
+        ? undefined
+        : _vm._e(),
     ]),
   ])
 }

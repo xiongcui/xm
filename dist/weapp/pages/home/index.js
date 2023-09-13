@@ -93,11 +93,25 @@ component.options.__file = "src/pages/home/index.vue"
 /* harmony import */ var _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/loading/index.vue */ "./src/components/loading/index.vue");
 /* harmony import */ var _components_showLogin_index_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/showLogin/index.vue */ "./src/components/showLogin/index.vue");
 /* harmony import */ var _components_sign_index_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/sign/index.vue */ "./src/components/sign/index.vue");
-/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
-/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _components_privacyPopup_index_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/privacyPopup/index.vue */ "./src/components/privacyPopup/index.vue");
+/* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
 
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -670,6 +684,7 @@ var citySelector = requirePlugin("citySelector");
 
 
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "home",
   data: function data() {
@@ -754,7 +769,8 @@ var citySelector = requirePlugin("citySelector");
     Pagenav: _components_pagenav_index_vue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"],
     loading: _components_loading_index_vue__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"],
     ShowLogin: _components_showLogin_index_vue__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"],
-    sign: _components_sign_index_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"]
+    sign: _components_sign_index_vue__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"],
+    privacyPopup: _components_privacyPopup_index_vue__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]
   },
   methods: {
     invitedClose: function invitedClose() {
@@ -768,7 +784,7 @@ var citySelector = requirePlugin("citySelector");
         click_event: 1
       });
       this.invitedVisible = false;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])(this.invitedRedirectUrl);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])(this.invitedRedirectUrl);
     },
     changeTips: function changeTips() {
       this.added = !this.added;
@@ -789,14 +805,14 @@ var citySelector = requirePlugin("citySelector");
       this.visible = false;
     },
     goZhuye: function goZhuye(uuid) {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"])()) return;
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     gomoka: function gomoka() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
       }
     },
     signClose: function signClose() {
@@ -806,10 +822,10 @@ var citySelector = requirePlugin("citySelector");
       this.submitSign("");
     },
     goYuepaiDetail: function goYuepaiDetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     previewImage: function previewImage(src, urls) {
       // 微信预览图片的方法
@@ -825,19 +841,23 @@ var citySelector = requirePlugin("citySelector");
         url: "plugin://citySelector/index?key=".concat(this.key, "&referer=").concat(this.referer, "&hotCitys=").concat(this.hotCitys)
       });
     },
+    goActivity: function goActivity() {
+      // if (isLogin()) {
+      //   openPage("/packageActivity/pages/list/index");
+      // } else {
+      //   openPage("/pages/login/index");
+      // }
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* errortip */ "a"])("内测中暂未开放");
+    },
     goMore: function goMore(index) {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageAdd/pages/user/homelist/index?componetActive=" + index + "&city_filter=" + this.city_filter);
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/homelist/index?componetActive=" + index + "&city_filter=" + this.city_filter);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
       }
     },
     goTakelist: function goTakelist() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter);
-      } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/pages/login/index");
-      }
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter);
     },
     componetClick: function componetClick(index) {
       if (this.componetActive != index) {
@@ -982,7 +1002,7 @@ var citySelector = requirePlugin("citySelector");
       }
     },
     goLogin: function goLogin() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/pages/login/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
     },
     bannerClick: function bannerClick(event, url) {
       // static:无导向，静态的，不进行跳转
@@ -990,9 +1010,9 @@ var citySelector = requirePlugin("citySelector");
       // gzh:公众号, 跳转至公众号
       // h5:H5页面，跳转至H5
       if (event == "mina") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])(url);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])(url);
       } else if (event == "gzh" || event == "h5") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* openPage */ "c"])("/packageSet/pages/webview/index?url=" + url);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageSet/pages/webview/index?url=" + url);
       }
     },
     inviteList: function inviteList(params, type, scroll) {
@@ -1006,7 +1026,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* inviteList */ "H"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteList */ "N"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1040,7 +1060,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* errortip */ "a"])("没有更多数据了～");
                 _this2.loading = true;
                 return _context.abrupt("return", false);
 
@@ -1111,7 +1131,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* inviteAdviseList */ "D"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteAdviseList */ "J"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1154,7 +1174,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeAdviseList */ "Y"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeAdviseList */ "eb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1195,7 +1215,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* notifyNumber */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* notifyNumber */ "kb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1236,7 +1256,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* isSign */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* isSign */ "Q"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1267,7 +1287,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userStatus */ "bc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userStatus */ "lc"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1342,7 +1362,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* userSelectCity */ "Yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userSelectCity */ "ic"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1375,7 +1395,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* inviteFilter */ "E"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteFilter */ "K"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -1459,7 +1479,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeFilter */ "Z"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeFilter */ "fb"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1546,7 +1566,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoFilter */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoFilter */ "nb"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1616,7 +1636,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* noticeList */ "bb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeList */ "hb"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1650,7 +1670,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* errortip */ "a"])("没有更多数据了～");
                 _this11.loading = true;
                 return _context11.abrupt("return", false);
 
@@ -1721,7 +1741,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* photoList */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoList */ "pb"])(params);
 
               case 3:
                 res = _context12.sent;
@@ -1755,7 +1775,7 @@ var citySelector = requirePlugin("citySelector");
                   break;
                 }
 
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* errortip */ "a"])("没有更多数据了～");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* errortip */ "a"])("没有更多数据了～");
                 _this12.loading = true;
                 return _context12.abrupt("return", false);
 
@@ -1824,7 +1844,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInvite */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInvite */ "Gb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1854,7 +1874,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* shareInviteInfo */ "yb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInviteInfo */ "Hb"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1885,7 +1905,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* sourceItems */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* sourceItems */ "Jb"])(params);
 
               case 3:
                 res = _context15.sent;
@@ -1913,7 +1933,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* popupLogs */ "lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* popupLogs */ "rb"])(params);
 
               case 3:
                 res = _context16.sent;
@@ -1943,7 +1963,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context17.prev = 0;
                 _context17.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* submitSign */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* submitSign */ "Rb"])(params);
 
               case 3:
                 res = _context17.sent;
@@ -1978,7 +1998,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context18.prev = 0;
                 _context18.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_10__[/* bannerList */ "i"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* bannerList */ "m"])(params);
 
               case 3:
                 res = _context18.sent;
@@ -2119,7 +2139,7 @@ var citySelector = requirePlugin("citySelector");
     } // 是否登录
 
 
-    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_11__[/* isLogin */ "b"])()) {
+    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
       this.showlogin = false;
       this.visible = false;
     } else {
@@ -2250,6 +2270,7 @@ var render = function () {
                               staticClass: "roll-down",
                               attrs: {
                                 src: "https://yuepai-oss.qubeitech.com/static/images/common/back.png",
+                                "lazy-load": true,
                               },
                             }),
                           ]
@@ -2267,11 +2288,13 @@ var render = function () {
                               ? _c("image", {
                                   attrs: {
                                     src: "https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg",
+                                    "lazy-load": true,
                                   },
                                 })
                               : _c("image", {
                                   attrs: {
                                     src: "https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg",
+                                    "lazy-load": true,
                                   },
                                 }),
                           ]
@@ -2355,6 +2378,7 @@ var render = function () {
                                 attrs: {
                                   mode: "aspectFill",
                                   src: item.image_url,
+                                  "lazy-load": true,
                                 },
                               }),
                             ]),
@@ -2429,6 +2453,7 @@ var render = function () {
                     staticClass: "page-nav-img",
                     attrs: {
                       src: "https://yuepai-oss.qubeitech.com/static/images/icon_model.png",
+                      "lazy-load": true,
                     },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
@@ -2444,6 +2469,7 @@ var render = function () {
                     staticClass: "page-nav-img",
                     attrs: {
                       src: "https://yuepai-oss.qubeitech.com/static/images/take.png",
+                      "lazy-load": true,
                     },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
@@ -2453,23 +2479,17 @@ var render = function () {
               ),
               _c(
                 "view",
-                {
-                  staticClass: "page-nav-item",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.goMore(2)
-                    },
-                  },
-                },
+                { staticClass: "page-nav-item", on: { tap: _vm.goActivity } },
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
                     attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/more1.png",
+                      src: "https://yuepai-oss.qubeitech.com/static/images/activity-icon.png",
+                      "lazy-load": true,
                     },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
-                    _vm._v("作品"),
+                    _vm._v("活动"),
                   ]),
                 ]
               ),
@@ -2481,6 +2501,7 @@ var render = function () {
                     staticClass: "page-nav-img",
                     attrs: {
                       src: "https://yuepai-oss.qubeitech.com/static/images/moka.png",
+                      "lazy-load": true,
                     },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
@@ -2512,6 +2533,7 @@ var render = function () {
                   _c("view", { staticClass: "page-nav-rt" }, [
                     _c("image", {
                       attrs: {
+                        "lazy-load": true,
                         src: "https://yuepai-oss.qubeitech.com/static/images/common/photo_white.png",
                       },
                     }),
@@ -2540,6 +2562,7 @@ var render = function () {
                   _c("view", { staticClass: "page-nav-rt" }, [
                     _c("image", {
                       attrs: {
+                        "lazy-load": true,
                         src: "https://yuepai-oss.qubeitech.com/static/images/common/tonggao_white.png",
                       },
                     }),
@@ -2756,6 +2779,7 @@ var render = function () {
             ]
           )
         : _vm._e(),
+      _c("privacyPopup"),
     ],
     1
   )

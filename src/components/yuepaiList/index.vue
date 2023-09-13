@@ -15,6 +15,7 @@
               "
               class="avatar"
               @tap="goZhuye(item.author.uuid)"
+              :lazy-load="true"
             ></image>
             <view class="list_info">
               <view class="list_name">
@@ -24,11 +25,13 @@
                     src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
                     class="list_sex"
                     v-if="item.author.sex == 1"
+                    :lazy-load="true"
                   ></image>
                   <image
                     src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
                     class="list_sex"
                     v-if="item.author.sex == 0"
+                    :lazy-load="true"
                   ></image>
                 </block>
               </view>
@@ -78,6 +81,7 @@
               class="list_img_item"
               v-for="(url, coverIndex) in item.details.media.cover"
               :key="coverIndex"
+              :lazy-load="true"
             ></image>
           </scroll-view>
         </view>
@@ -97,18 +101,21 @@
           <view class="list_time">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/common/time.png"
+              :lazy-load="true"
             ></image>
             {{ item.basic.date_humanize }}
           </view>
           <view class="list_yuepai">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
+              :lazy-load="true"
             ></image>
             收到约拍 {{ item.statistic.invite_cnt }}
           </view>
           <view class="list_read">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+              :lazy-load="true"
             ></image>
             阅读 {{ item.statistic.read_cnt }}
           </view>

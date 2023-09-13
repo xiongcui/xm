@@ -1015,7 +1015,7 @@ var _methods;
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyList */ "e"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyList */ "g"])(params);
 
             case 3:
               res = _context.sent;
@@ -1057,7 +1057,7 @@ var _methods;
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyManage */ "f"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyManage */ "h"])(params);
 
             case 3:
               res = _context2.sent;
@@ -1090,7 +1090,7 @@ var _methods;
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* imVerify */ "C"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* imVerify */ "I"])(params);
 
             case 3:
               res = _context3.sent;
@@ -1125,7 +1125,7 @@ var _methods;
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyInfo */ "d"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyInfo */ "f"])(params);
 
             case 3:
               res = _context4.sent;

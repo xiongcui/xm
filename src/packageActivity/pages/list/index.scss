@@ -1,0 +1,143 @@
+page {
+  background-color: #f4f4f4;
+}
+.activity {
+  padding-bottom: 30px;
+  .activity-box {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+  }
+  .activity-top {
+    display: flex;
+  }
+  .activity-left {
+    position: relative;
+    margin-right: 16px;
+    image {
+      width: 180px;
+      max-height: 240px;
+      height: 100%;
+      border-radius: 12px;
+    }
+    .activity-label {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      background: #e5722d;
+      padding: 4px 6px;
+      font-size: 24px;
+      border-radius: 12px 0px 12px 0px;
+      color: #ffffff;
+    }
+  }
+  .activity-title {
+    font-size: 30rpx;
+    font-weight: bold;
+    color: #333333;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-height: 40px;
+    max-height: 80px;
+  }
+  .activity-tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    .tag {
+      padding: 4px 10px;
+      background: rgba(245, 50, 24, 0.08);
+      color: #ff1e3e;
+      font-size: 22px;
+      border-radius: 8px;
+      margin-right: 10px;
+      margin-top: 6px;
+    }
+  }
+  .activity-location {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 26px;
+    background: url(https://yuepai-oss.qubeitech.com/static/images/common/local.png)
+      left center no-repeat;
+    background-size: 30rpx;
+    padding-left: 36rpx;
+  }
+  .activity-time {
+    width: 490px;
+    display: flex;
+    justify-content: space-between;
+    .activity-price {
+      font-size: 28px;
+      color: #ff1e3e;
+    }
+    .price-blod {
+      font-size: 36px;
+      font-weight: bold;
+    }
+  }
+  .activity-txt {
+    margin-top: 6px;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 26px;
+    background: url(https://yuepai-oss.qubeitech.com/static/images/time.png)
+      left center no-repeat;
+    background-size: 28rpx;
+    padding-left: 36rpx;
+  }
+  .activity-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6b6b6b;
+    border-top: 1rpx solid #ebebeb;
+    font-size: 24px;
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+  .activity-info {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.5);
+    image {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+  }
+  .application-time {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .schedule {
+    padding: 2px 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    .schedule-bg {
+      //   width: 50%;
+      height: 100%;
+      background: #61b985;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+    .schedule-txt {
+      position: relative;
+      z-index: 99;
+    }
+    .schedule-num {
+      margin-left: 16px;
+      position: relative;
+      z-index: 99;
+    }
+  }
+}

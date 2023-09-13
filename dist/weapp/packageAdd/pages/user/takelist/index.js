@@ -269,10 +269,6 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -462,7 +458,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFilter */ "Qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFilter */ "Zb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -546,7 +542,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userList */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userList */ "cc"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -634,7 +630,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "ac"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -663,7 +659,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "dc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "nc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -694,7 +690,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "C"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "I"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -954,19 +950,9 @@ var render = function () {
                     ]),
                   ]),
                   item.basic.resume
-                    ? _c(
-                        "view",
-                        {
-                          staticClass: "list_desc",
-                          on: {
-                            tap: function ($event) {
-                              $event.stopPropagation()
-                              return _vm.follow(item)
-                            },
-                          },
-                        },
-                        [_vm._v(" " + _vm._s(item.basic.resume) + " ")]
-                      )
+                    ? _c("view", { staticClass: "list_desc" }, [
+                        _vm._v(" " + _vm._s(item.basic.resume) + " "),
+                      ])
                     : _vm._e(),
                   item.album.photo_album.length
                     ? _c(

@@ -133,6 +133,9 @@
         <view class="agreement-btn" @tap="agreementAgree">同意并继续</view>
       </view>
     </view>
+    <!--隐私权益弹框-->
+    <privacyPopup></privacyPopup>
+    <!--隐私权益弹框-->
   </view>
 </template>
 
@@ -141,6 +144,7 @@ import "./index.scss";
 import { wxlogin, getPhone, userRegister } from "../../api/index";
 import { Base64 } from "js-Base64";
 import { errortip, openPage } from "../../utils/util";
+import privacyPopup from "../../components/privacyPopup/index.vue";
 import clickThrottle from "../../utils/clickThrottle";
 
 export default {
@@ -168,6 +172,9 @@ export default {
       scene: "",
     };
   },
+  components: {
+    privacyPopup,
+  },
   methods: {
     selectChange() {
       this.select = !this.select;
@@ -185,7 +192,6 @@ export default {
     },
     // 可以在模拟器唤起授权 获得用户信息
     getUserProfile() {
-      if (!clickThrottle()) return;
       if (!this.select) {
         this.agreementVisible = true;
         return false;

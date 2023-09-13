@@ -163,6 +163,20 @@ export default defineAppConfig({
         "pages/apply/index",
       ],
     },
+    {
+      root: "packageActivity/",
+      name: "packageactivity",
+      pages: [
+        "pages/list/index",
+        "pages/add/index",
+        "pages/detail/index",
+        "pages/application/index",
+        "pages/applicationConfirm/index",
+        "pages/packetmode/index",
+        "pages/myActivity/index",
+        "pages/myActivityDetail/index",
+      ],
+    },
   ],
   // permission: {
   //   "scope.userLocation": {

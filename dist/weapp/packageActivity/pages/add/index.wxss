@@ -1,0 +1,707 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.add-activity {
+  padding-bottom: 150rpx;
+}
+
+.add-activity .activity-lable {
+  color: #333333;
+  font-size: 30rpx;
+  min-width: 120rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-activity .input-placeholder,
+.add-activity .textarea-placeholder {
+  font-size: 28rpx;
+}
+
+.add-activity .required {
+  color: #fe3e3f;
+  margin-right: 10rpx;
+}
+
+.add-activity .activity-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #ffffff;
+  border-radius: 8rpx;
+  height: 78rpx;
+  margin: 16rpx;
+  padding: 0 16rpx;
+}
+
+.add-activity .activity-name-input,
+.add-activity .activity-location-input {
+  margin-left: 16rpx;
+  width: 82%;
+  height: 78rpx;
+  line-height: 78rpx;
+}
+
+.add-activity .activity-info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 16rpx;
+}
+
+.add-activity .activity-info-left {
+  background: #ffffff;
+  border-radius: 8rpx;
+  width: 502rpx;
+  margin-right: 16rpx;
+  padding: 0 16rpx;
+}
+
+.add-activity .activity-info-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 78rpx;
+}
+
+.add-activity .activity-setup-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 78rpx;
+}
+
+.add-activity .activity-content {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+}
+
+.add-activity .activity-content-time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-activity .to {
+  font-size: 30rpx;
+  color: #333333;
+  margin: 0 6rpx;
+}
+
+.add-activity .activity-content input {
+  text-align: right;
+  height: 78rpx;
+  line-height: 78rpx;
+}
+
+.add-activity .activity-content text {
+  color: #333333;
+  font-size: 30rpx;
+  margin-left: 16rpx;
+}
+
+.add-activity .picker {
+  height: 78rpx;
+  line-height: 78rpx;
+}
+
+.add-activity .picker_children {
+  color: #808080;
+  text-align: right;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/right.png") right center no-repeat;
+  background-size: 12rpx;
+  padding-right: 24rpx;
+  font-size: 30rpx;
+}
+
+.add-activity .picked {
+  color: #333333;
+}
+
+.add-activity .w100 {
+  width: 100%;
+}
+
+.add-activity .activity-info-right {
+  width: 190rpx;
+}
+
+.add-activity .upload-cover {
+  width: 100%;
+  height: 100%;
+  margin-right: 10rpx;
+  background-color: #e7e7e8;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 16rpx;
+  position: relative;
+}
+
+.add-activity .works-upload-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  position: relative;
+}
+
+.add-activity .works-upload-img {
+  width: 158rpx;
+  height: 158rpx;
+  margin-right: 10rpx;
+  background-color: #f7f7f7;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 16rpx;
+  position: relative;
+}
+
+.add-activity .upload-width {
+  width: 100%;
+  height: 100%;
+  border-radius: 8rpx;
+}
+
+.add-activity .cover-img,
+.add-activity .upload-img {
+  width: 40rpx;
+  height: 36rpx;
+}
+
+.add-activity .cover-txt,
+.add-activity .upload-txt {
+  color: #c7c7c7;
+  font-size: 26rpx;
+}
+
+.add-activity .upload-close {
+  width: 38rpx;
+  height: 38rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png") no-repeat rgba(0, 0, 0, 0.55);
+  background-size: 38rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.add-activity .activity-venue {
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin: 16rpx;
+  padding: 0 16rpx;
+}
+
+.add-activity .activity-location {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  -webkit-flex-direction: row-reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+}
+
+.add-activity .activity-location-input {
+  width: 100%;
+  text-align: right;
+}
+
+.add-activity .activity-desc,
+.add-activity .activity-upload,
+.add-activity .activity-cost,
+.add-activity .activity-mode,
+.add-activity .activity-security,
+.add-activity .activity-task,
+.add-activity .setup,
+.add-activity .activity-agreement {
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding: 0 16rpx;
+  margin: 16rpx;
+}
+
+.add-activity .activity-upload {
+  padding: 0 16rpx 4rpx 16rpx;
+}
+
+.add-activity .activity-desc-input {
+  width: 100%;
+}
+
+.add-activity .deduction-amount {
+  width: 200rpx;
+}
+
+.add-activity .deduction-amount2 {
+  width: 120rpx;
+  margin-left: 16rpx;
+}
+
+.add-activity .deduction-box,
+.add-activity .early-bird-discount {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-activity .early-bird-mr {
+  margin-right: 16rpx;
+}
+
+.add-activity .early-bird-unit {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.add-activity .tab {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #ffffff;
+}
+
+.add-activity .tab-item {
+  position: relative;
+  color: #333333;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #ffffff;
+  margin: 0 15%;
+}
+
+.add-activity .tab-item.on {
+  color: #333333;
+  font-weight: bold;
+  border-bottom-color: #ff1e3e;
+}
+
+.add-activity .charge-amount {
+  text-align: right;
+  margin-right: 16rpx;
+}
+
+.add-activity .charge-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-activity .session-title {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.4);
+  padding: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-activity .session-delete,
+.add-activity .group-delete,
+.add-activity .task-delete,
+.add-activity .invited-delete {
+  color: #6493d7;
+}
+
+.add-activity .group-delete {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-top: 16rpx;
+  font-size: 28rpx;
+}
+
+.add-activity .task-delete {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-bottom: 16rpx;
+  font-size: 28rpx;
+}
+
+.add-activity .add-application,
+.add-activity .add-group,
+.add-activity .add-agreement,
+.add-activity .add-packet-mode {
+  background: #e7e7e8;
+  border-radius: 8rpx;
+  height: 68rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.add-activity .add-application image,
+.add-activity .add-group image,
+.add-activity .add-agreement image,
+.add-activity .add-packet-mode image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.add-activity .application-padding {
+  width: 100%;
+  height: 16rpx;
+}
+
+.add-activity .font24 {
+  font-size: 24rpx;
+}
+
+.add-activity .check_box {
+  color: #999;
+  font-size: 26rpx;
+  padding-left: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-activity .check_box_ed {
+  color: #333;
+}
+
+.add-activity .check_box image {
+  height: 26rpx;
+  padding-left: 16rpx;
+  vertical-align: middle;
+  width: 26rpx;
+}
+
+.add-activity .activity-check-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-activity .group-text {
+  font-size: 24rpx;
+}
+
+.add-activity .font26 {
+  font-size: 26rpx;
+}
+
+.add-activity .font24 {
+  font-size: 24rpx !important;
+}
+
+.add-activity .font22 {
+  font-size: 22rpx !important;
+}
+
+.add-activity .group-red {
+  color: #fe3e3f;
+  font-weight: bold;
+}
+
+.add-activity .group-box {
+  background: #efefef;
+  padding: 0 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .split {
+  padding-bottom: 16rpx;
+}
+
+.add-activity .security-amount {
+  text-align: right;
+}
+
+.add-activity .remand-ratio {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-activity .remand-ratio-input {
+  width: 150rpx;
+  margin-left: 6rpx;
+  text-align: right;
+}
+
+.add-activity .task-desc {
+  width: calc(100% - 32rpx);
+  background: #e7e7e8;
+  border-radius: 8rpx;
+  height: 200rpx;
+  margin-bottom: 16rpx;
+  padding: 16rpx 16rpx;
+}
+
+.add-activity .activity-tips {
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 40rpx;
+}
+
+.add-activity .now-day-txt {
+  margin: 0 16rpx;
+  font-size: 30rpx;
+}
+
+.add-activity .mleft {
+  margin-left: 16rpx;
+}
+
+.add-activity .agreement-content {
+  background: #e7e7e8;
+  border-radius: 8rpx;
+  padding: 16rpx 16rpx;
+  height: 50rpx;
+  margin-left: 16rpx;
+}
+
+.add-activity .agreement-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 16rpx 0;
+}
+
+.add-activity .create-agreement {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+
+.add-activity .create-agreement .agreement-box {
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding: 16rpx 30rpx;
+  width: 600rpx;
+}
+
+.add-activity .create-agreement .agreement-box .agreement-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.add-activity .create-agreement .agreement-box .agreement-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png") no-repeat;
+  background-size: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.add-activity .create-agreement .agreement-box .agreement-content,
+.add-activity .create-agreement .agreement-box .agreement-name {
+  width: 80%;
+}
+
+.add-activity .create-agreement .agreement-box .agreement-name {
+  padding: 0 16rpx;
+}
+
+.add-activity .create-agreement .agreement-name {
+  margin-left: 16rpx;
+}
+
+.add-activity .create-agreement .agreement-btns {
+  width: 80%;
+  margin: 16rpx auto;
+  height: 66rpx;
+  line-height: 66rpx;
+  background: #fe3e3f;
+  border-radius: 33rpx;
+  color: #ffffff;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.add-activity .member-row {
+  width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+.add-activity .end-day-time {
+  font-size: 30rpx;
+  color: #333333;
+  margin: 0 6rpx;
+}
+
+.add-activity .activity-time {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-activity .active-echo {
+  background: #fdf6ea;
+  border-radius: 8rpx;
+  padding: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .active-echo-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-activity .active-echo-txt {
+  color: #adaca9;
+  font-size: 28rpx;
+  margin-left: 16rpx;
+}
+
+.add-activity .active-echo-content {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 24rpx;
+  color: #b68634;
+  border: 2rpx solid #b68634;
+  border-radius: 24rpx;
+  padding: 4rpx 16rpx;
+  margin-top: 16rpx;
+}
+
+.add-activity .active-echo-edit image {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.add-activity .add_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  padding: 20rpx 20rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 99;
+}
+
+.add-activity .add_bottom .add_btn {
+  width: 80%;
+  text-align: center;
+  background: #fe5457;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  padding: 14rpx 40rpx;
+}

@@ -14,6 +14,7 @@
                   v-for="(tagitem, tagindex) in item.topic.headline.tag"
                   :key="tagindex"
                   :src="tagitem"
+                  :lazy-load="true"
                 >
                 </image>
               </block>
@@ -46,6 +47,7 @@
               <image
                 :src="item.details.media.cover[0]"
                 mode="aspectFill"
+                :lazy-load="true"
               ></image>
             </view>
           </view>
@@ -58,11 +60,13 @@
                   ? item.author.avatar
                   : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
               "
+              :lazy-load="true"
             ></image>
             {{ item.author.nickname }}
           </view>
           <view class="tonggao-yuepai">
             <image
+              :lazy-load="true"
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
             ></image>
             {{ item.statistic.invite_cnt }}
@@ -70,6 +74,7 @@
           <view class="tonggao-read">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/eyes.png"
+              :lazy-load="true"
             ></image>
             {{ item.statistic.read_cnt }}
           </view>
@@ -81,6 +86,7 @@
         src="https://yuepai-oss.qubeitech.com/static/images/common/none.png"
         mode="aspectFill"
         class="none-img"
+        :lazy-load="true"
       ></image>
       <view>当前暂无数据哦～</view>
     </view>

@@ -1,0 +1,498 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.packetmode {
+  padding-bottom: 150rpx;
+}
+
+.packetmode .activity-mode {
+  background: #ffffff;
+  border-radius: 8rpx;
+  margin: 16rpx;
+}
+
+.packetmode .activity-info-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 78rpx;
+}
+
+.packetmode .activity-lable {
+  color: #333333;
+  font-size: 30rpx;
+  min-width: 120rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.packetmode .input-placeholder,
+.packetmode .textarea-placeholder {
+  font-size: 28rpx;
+}
+
+.packetmode .required {
+  color: #fe3e3f;
+  margin-right: 10rpx;
+}
+
+.packetmode .tab {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  background: #ffffff;
+}
+
+.packetmode .tab-item {
+  position: relative;
+  color: #333333;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-bottom: 6rpx solid #ffffff;
+  margin: 0 5%;
+}
+
+.packetmode .tab-item.on {
+  color: #333333;
+  font-weight: bold;
+  border-bottom-color: #ff1e3e;
+}
+
+.packetmode .add-group,
+.packetmode .add-fixed-group {
+  background: #e7e7e8;
+  border-radius: 8rpx;
+  height: 68rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.packetmode .add-group image,
+.packetmode .add-fixed-group image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.packetmode .check_box {
+  color: #999;
+  font-size: 26rpx;
+  padding-left: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.packetmode .check_box_ed {
+  color: #333;
+}
+
+.packetmode .check_box image {
+  height: 26rpx;
+  padding-left: 16rpx;
+  vertical-align: middle;
+  width: 26rpx;
+}
+
+.packetmode .activity-check-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.packetmode .picker {
+  height: 78rpx;
+  line-height: 78rpx;
+}
+
+.packetmode .picker_children {
+  color: #808080;
+  text-align: right;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/right.png") right center no-repeat;
+  background-size: 12rpx;
+  padding-right: 24rpx;
+  font-size: 30rpx;
+}
+
+.packetmode .picked {
+  color: #333333;
+}
+
+.packetmode .group-text {
+  font-size: 24rpx;
+}
+
+.packetmode .font26 {
+  font-size: 26rpx;
+}
+
+.packetmode .font22 {
+  font-size: 22rpx;
+}
+
+.packetmode .group-red {
+  color: #fe3e3f;
+  font-weight: bold;
+}
+
+.packetmode .group-box {
+  background: #efefef;
+  padding: 0 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.packetmode .randomization,
+.packetmode .regularActivities {
+  padding: 0 16rpx;
+}
+
+.packetmode .split {
+  padding-bottom: 16rpx;
+}
+
+.packetmode .group-delete,
+.packetmode .invited-delete,
+.packetmode .fixed-group-delete,
+.packetmode .fixed-group-name-delete {
+  color: #6493d7;
+}
+
+.packetmode .group-delete,
+.packetmode .fixed-group-delete {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding-top: 16rpx;
+  font-size: 28rpx;
+}
+
+.packetmode .fixed-group-name-delete {
+  position: absolute;
+  right: 0;
+  top: 16rpx;
+  font-size: 28rpx;
+}
+
+.packetmode .create-group {
+  padding: 0 16rpx;
+}
+
+.packetmode .fixed-group {
+  background-color: #f4f4f4;
+}
+
+.packetmode .fixed-group-list {
+  margin-top: 16rpx;
+  background: #ffffff;
+  padding: 0 16rpx;
+}
+
+.packetmode .group-name {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 78rpx;
+  position: relative;
+}
+
+.packetmode .group-name .activity-lable {
+  font-weight: bold;
+}
+
+.packetmode .group-name-input {
+  margin-left: 16rpx;
+}
+
+.packetmode .constituency-name {
+  text-align: right;
+}
+
+.packetmode .error-label {
+  color: #fe3e3f;
+  text-align: right;
+  font-size: 26rpx;
+}
+
+.packetmode .invite {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.packetmode .invite .invite-members {
+  width: 600rpx;
+  background-color: #ffffff;
+  border-radius: 8rpx;
+  padding: 16rpx 30rpx;
+}
+
+.packetmode .invite .invite-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.packetmode .invite .invite-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png") no-repeat;
+  background-size: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.packetmode .invite .invite-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.packetmode .invite .query-box {
+  margin-left: 16rpx;
+  width: 420rpx;
+  position: relative;
+}
+
+.packetmode .invite .query-input {
+  border: 1rpx solid #efefef;
+  border-radius: 2rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100%;
+  padding: 0 16rpx;
+}
+
+.packetmode .invite .check_box {
+  margin-left: 16rpx;
+}
+
+.packetmode .invite .group {
+  position: absolute;
+  z-index: 9;
+  background: #ffffff;
+  left: 0;
+  right: 0;
+  top: 62rpx;
+  width: 454rpx;
+  -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+          box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+}
+
+.packetmode .invite .group-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  padding: 8rpx 16rpx;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.packetmode .invite .group-item-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.packetmode .invite .group-item-left image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.packetmode .invite .group-item-center {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.packetmode .invite .identity {
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 16rpx;
+}
+
+.packetmode .invite .group-item-right {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  right: 16rpx;
+  top: 0;
+}
+
+.packetmode .invite .group-item-right image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.packetmode .invite .invited-user-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: #333333;
+  padding: 0 16rpx;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.packetmode .invite .invited-user-item image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.packetmode .invite .invited-user-item .invited-uuid {
+  width: 100rpx;
+}
+
+.packetmode .invite .invited-user-item .invited-name {
+  width: 180rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+.packetmode .invite .invited-box {
+  border: 1rpx solid #efefef;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.packetmode .invite .invited-num {
+  border-left: 6rpx solid #fe3e3f;
+  border-radius: 3rpx;
+  padding-left: 16rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  margin-top: 16rpx;
+}
+
+.packetmode .invite .invited-delete {
+  font-size: 26rpx;
+}
+
+.packetmode .invite .confirm-invitation {
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  background: #fe3e3f;
+  border-radius: 30rpx;
+  text-align: center;
+  margin: 16rpx auto;
+}
+
+.packetmode .fixed-group-input {
+  text-align: right;
+}
+
+.packetmode .fixed-group-box {
+  background: #efefef;
+  padding: 0 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.packetmode .packetmode_bottom {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  width: 100%;
+  padding: 20rpx 20rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  z-index: 99;
+}
+
+.packetmode .packetmode_bottom .packetmode_btn {
+  width: 80%;
+  text-align: center;
+  background: #fe5457;
+  color: #ffffff;
+  font-size: 30rpx;
+  border-radius: 40rpx;
+  padding: 14rpx 40rpx;
+}

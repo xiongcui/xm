@@ -6,48 +6,48 @@
         "bigPackageSizeSupport": true,
         "autoAudits": false
     },
-    "libVersion": "2.32.1",
+    "libVersion": "3.0.1",
     "condition": {
         "miniprogram": {
             "list": [
                 {
-                    "name": "我的模卡",
-                    "pathName": "packageMoka/pages/moka/myModelCardlist/index",
+                    "name": "我的活动",
+                    "pathName": "packageActivity/pages/myActivity/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "模卡列表",
-                    "pathName": "packageMoka/pages/moka/editmoka/index",
+                    "name": "活动详情",
+                    "pathName": "packageActivity/pages/myActivityDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "生成模卡成功",
-                    "pathName": "packageMoka/pages/moka/makesuccess/index",
+                    "name": "活动详情",
+                    "pathName": "packageActivity/pages/detail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "制作模卡-首页",
-                    "pathName": "packageMoka/pages/moka/index/index",
+                    "name": "报名支付",
+                    "pathName": "packageActivity/pages/application/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "模特卡",
-                    "pathName": "packageMoka/pages/moka/modelcard/index",
+                    "name": "报名确认",
+                    "pathName": "packageActivity/pages/applicationConfirm/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "选择照片",
-                    "pathName": "packageMoka/pages/moka/choosephoto/index",
+                    "name": "分组模式",
+                    "pathName": "packageActivity/pages/packetmode/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
