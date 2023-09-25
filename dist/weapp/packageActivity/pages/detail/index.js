@@ -850,7 +850,7 @@ var _methods;
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "I"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "M"])(params);
 
             case 3:
               res = _context.sent;
@@ -917,7 +917,7 @@ var _methods;
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* exploreInfo */ "y"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* exploreInfo */ "A"])(params);
 
             case 3:
               res = _context3.sent;
@@ -994,7 +994,7 @@ var _methods;
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Gb"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Nb"])(params);
 
             case 3:
               res = _context4.sent;
@@ -1021,7 +1021,7 @@ var _methods;
             case 0:
               _context5.prev = 0;
               _context5.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Gb"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Nb"])(params);
 
             case 3:
               res = _context5.sent;
@@ -1050,7 +1050,7 @@ var _methods;
             case 0:
               _context6.prev = 0;
               _context6.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "Hb"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "Ob"])(params);
 
             case 3:
               res = _context6.sent;
@@ -1082,7 +1082,7 @@ var _methods;
             case 0:
               _context7.prev = 0;
               _context7.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "Hb"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "Ob"])(params);
 
             case 3:
               res = _context7.sent;

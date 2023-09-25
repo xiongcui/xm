@@ -302,15 +302,15 @@
             ></image>
           </view>
         </view>
-        <!-- <view catchtap="coin" class="item ub line-t">
+        <view class="item ub line-t" @tap="myHuodong">
           <view class="item_icon">
             <image
               mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/huodong.png"
             ></image>
           </view>
           <view class="ub-f1">
-            <view class="item_text">模卡管理</view>
+            <view class="item_text">我的活动</view>
           </view>
           <view class="arrow">
             <image
@@ -318,7 +318,7 @@
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
             ></image>
           </view>
-        </view> -->
+        </view>
       </view>
       <view class="my-title"> 我的服务 </view>
       <view class="items myblock">
@@ -681,6 +681,13 @@ export default {
         return false;
       }
       openPage("/packageMoka/pages/moka/myModelCardlist/index");
+    },
+    myHuodong() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageActivity/pages/myActivity/index");
     },
     follow() {
       openPage("/packageAdd/pages/user/follow/index");

@@ -815,6 +815,9 @@ var citySelector = requirePlugin("citySelector");
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
       }
     },
+    goCompetition: function goCompetition() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* errortip */ "a"])("内测中暂未开放"); // openPage("/packageActivity/pages/match/index");
+    },
     signClose: function signClose() {
       this.showModelSign = false;
     },
@@ -1026,7 +1029,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteList */ "N"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteList */ "R"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1131,7 +1134,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteAdviseList */ "J"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteAdviseList */ "N"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1174,7 +1177,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeAdviseList */ "eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeAdviseList */ "kb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1215,7 +1218,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* notifyNumber */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* notifyNumber */ "qb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1256,7 +1259,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* isSign */ "Q"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* isSign */ "U"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1287,7 +1290,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userStatus */ "lc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userStatus */ "tc"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1362,7 +1365,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userSelectCity */ "ic"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userSelectCity */ "qc"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1395,7 +1398,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteFilter */ "K"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteFilter */ "O"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -1479,7 +1482,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeFilter */ "fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeFilter */ "lb"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1566,7 +1569,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoFilter */ "nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoFilter */ "tb"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1636,7 +1639,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeList */ "hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeList */ "nb"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1741,7 +1744,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoList */ "pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoList */ "vb"])(params);
 
               case 3:
                 res = _context12.sent;
@@ -1844,7 +1847,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInvite */ "Gb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInvite */ "Nb"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1874,7 +1877,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInviteInfo */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInviteInfo */ "Ob"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1905,7 +1908,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* sourceItems */ "Jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* sourceItems */ "Qb"])(params);
 
               case 3:
                 res = _context15.sent;
@@ -1933,7 +1936,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* popupLogs */ "rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* popupLogs */ "xb"])(params);
 
               case 3:
                 res = _context16.sent;
@@ -1963,7 +1966,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context17.prev = 0;
                 _context17.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* submitSign */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* submitSign */ "Zb"])(params);
 
               case 3:
                 res = _context17.sent;
@@ -2495,17 +2498,20 @@ var render = function () {
               ),
               _c(
                 "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.gomoka } },
+                {
+                  staticClass: "page-nav-item",
+                  on: { tap: _vm.goCompetition },
+                },
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
                     attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/moka.png",
+                      src: __webpack_require__(/*! ../../assets/images/competition-icon.png */ "./src/assets/images/competition-icon.png"),
                       "lazy-load": true,
                     },
                   }),
                   _c("text", { staticClass: "page-nav-text" }, [
-                    _vm._v("模卡"),
+                    _vm._v("赛事"),
                   ]),
                 ]
               ),
@@ -2788,6 +2794,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/competition-icon.png":
+/*!************************************************!*\
+  !*** ./src/assets/images/competition-icon.png ***!
+  \************************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/competition-icon.png";
 
 /***/ }),
 

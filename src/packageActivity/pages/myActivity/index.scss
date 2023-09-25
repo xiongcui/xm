@@ -26,6 +26,14 @@ page {
       font-size: 28px;
       color: #eb9b4c;
     }
+    .activity-status2 {
+      font-size: 28px;
+      color: #00ba7f;
+    }
+    .activity-status3 {
+      font-size: 28px;
+      color: #bdbdbd;
+    }
   }
   .activity-ct {
     display: flex;
@@ -302,5 +310,18 @@ page {
       color: rgba(0, 0, 0, 0.5);
       font-size: 28px;
     }
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
   }
 }

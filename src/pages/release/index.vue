@@ -82,7 +82,7 @@
           </view>
         </view>
       </view>
-      <view class="release-item" @tap="releaseUrl(5)" v-if="false">
+      <view class="release-item" @tap="releaseUrl(5)">
         <view class="release-left color5">
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/release-activity.png"
@@ -96,7 +96,7 @@
           </view>
           <view>
             <text class="release-list-content"
-              >免费制作专业高清模卡，数百个模板可供选择，制作专业模卡的神器</text
+              >发布主题摄影活动，满足多种场次、角色选择、随意分组的活动策划，提供个性化的活动组织服务</text
             >
           </view>
         </view>

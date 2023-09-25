@@ -208,7 +208,7 @@ component.options.__file = "src/pages/release/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publishVerify */ "Db"])(params);
 
               case 3:
                 res = _context.sent;
@@ -409,9 +409,42 @@ var render = function () {
           ]),
         ]
       ),
-      false
-        ? undefined
-        : _vm._e(),
+      _c(
+        "view",
+        {
+          staticClass: "release-item",
+          on: {
+            tap: function ($event) {
+              return _vm.releaseUrl(5)
+            },
+          },
+        },
+        [
+          _c("view", { staticClass: "release-left color5" }, [
+            _c("image", {
+              staticClass: "release-image",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/release-activity.png",
+                mode: "aspectFit",
+              },
+            }),
+          ]),
+          _c("view", { staticClass: "release-right" }, [
+            _c("view", [
+              _c("text", { staticClass: "release-list-title" }, [
+                _vm._v(" 发布活动 "),
+              ]),
+            ]),
+            _c("view", [
+              _c("text", { staticClass: "release-list-content" }, [
+                _vm._v(
+                  "发布主题摄影活动，满足多种场次、角色选择、随意分组的活动策划，提供个性化的活动组织服务"
+                ),
+              ]),
+            ]),
+          ]),
+        ]
+      ),
     ]),
   ])
 }

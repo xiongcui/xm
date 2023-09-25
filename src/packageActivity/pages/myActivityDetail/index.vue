@@ -1,10 +1,9 @@
 <template>
   <view class="my-activity-detail">
-    <view class="activity-detail-top">
+    <view class="activity-detail-top" @tap="showOrderInfo">
       <view class="activity-status">
         <view class="circle-red"></view>
-        <text class="activity-txt-red">活动中</text>
-        <text class="activity-time-red">09-11 22:42</text>
+        <text class="activity-txt-red">{{ status }}</text>
       </view>
       <view class="activity-right">
         <image
@@ -15,44 +14,29 @@
     </view>
     <view class="activity-box">
       <view class="activity-top">
-        <view class="activity-name"> 虾米摄影俱乐部</view>
+        <view class="activity-name"> {{ partner_name }}</view>
       </view>
       <view class="activity-ct">
         <view class="activity-left">
-          <image
-            src="https://yuepai-oss.qubeitech.com/notice/111111/34fb075d-02c0-11ee-8f34-812b5b24112e-qa60.png"
-            mode="aspectFill"
-          ></image>
+          <image :src="main_cover" mode="aspectFill"></image>
         </view>
         <view class="activity-right">
-          <view class="activity-title"> 标题标题标题标题标题标题标题 </view>
-          <view class="activity-location"> 北京奥林匹克公园</view>
+          <view class="activity-title"> {{ title }} </view>
+          <view class="activity-location"> {{ address }}</view>
           <view class="activity-time">
-            <text class="activity-txt">2023.07.02 周六 15:00</text>
+            <text class="activity-txt">{{ begin_datetime }}</text>
           </view>
         </view>
       </view>
       <view class="activity-bt">
         <view class="group-top">
-          <view class="group-label">固定分组</view>
-          <view class="group-identity">竹林汉服｜摄影师</view>
+          <view class="group-label">{{ divide_teams_name }}</view>
+          <view class="group-identity">{{ enter_desc }}</view>
         </view>
         <view class="group-info">
-          <view class="group-item">
-            <text>订单编号</text>
-            <text>IEuuuu从男男女女</text>
-          </view>
-          <view class="group-item">
-            <text>实付金额</text>
-            <text>200</text>
-          </view>
-          <view class="group-item">
-            <text>创建时间</text>
-            <text>2023-09-11 19:46:00</text>
-          </view>
-          <view class="group-item">
-            <text>支付时间</text>
-            <text>2023-09-11 19:46:00</text>
+          <view class="group-item" v-for="(item, index) in list" :key="index">
+            <text>{{ item.name }}</text>
+            <text>{{ item.value }}</text>
           </view>
         </view>
       </view>
@@ -60,18 +44,26 @@
     <view class="bottom-modal" v-if="visible" @tap="close">
       <view class="bottom-content">
         <view class="bottom-title"> 详细信息 </view>
-        <view class="activity-status-box">
+        <!-- <view
+          class="activity-status-box"
+          v-for="(item, index) in flowing"
+          :key="index"
+        >
           <view class="activity-status">
             <view class="circle-in-progress"></view>
-            <text class="activity-txt-in-progress">活动中</text>
-            <text class="activity-time-in-progress">09-11 22:42</text>
+            <text class="activity-txt-in-progress">{{ item.status }}</text>
+            <text class="activity-time-in-progress">{{ item.time }}</text>
           </view>
-        </view>
-        <view class="activity-status-box">
+        </view> -->
+        <view
+          class="activity-status-box"
+          v-for="(item, index) in flowing"
+          :key="index"
+        >
           <view class="activity-status">
             <view class="circle-not-started"></view>
-            <text class="activity-txt-not-started">活动中</text>
-            <text class="activity-time-not-started">09-11 22:42</text>
+            <text class="activity-txt-not-started">{{ item.status }}</text>
+            <text class="activity-time-not-started">{{ item.time }}</text>
           </view>
         </view>
       </view>
@@ -81,17 +73,54 @@
 
 <script>
 import "./index.scss";
+import { sportInfo } from "../../../api/index.js";
 export default {
   name: "myActivityDetail",
   data() {
     return {
       visible: false,
+      apply_oid: "",
+      status: "",
+      title: "",
+      address: "",
+      begin_datetime: "",
+      divide_teams_name: "",
+      enter_desc: "",
+      list: [],
+      flowing: [],
+      partner_name: "",
+      main_cover: "",
     };
   },
   methods: {
+    showOrderInfo() {
+      this.visible = true;
+    },
     close() {
       this.visible = false;
     },
+    async sportInfo(params) {
+      try {
+        let res = await sportInfo(params);
+        this.status = res.data.data.status.label;
+        this.title = res.data.data.source.title;
+        this.address = res.data.data.source.address;
+        this.begin_datetime = res.data.data.source.begin_datetime;
+        this.divide_teams_name = res.data.data.source.divide_teams_name;
+        this.enter_desc = res.data.data.source.enter_desc;
+        this.main_cover = res.data.data.source.main_cover;
+        this.list = res.data.data.expense.concat(res.data.data.payment);
+        this.flowing = res.data.data.flowing;
+      } catch (error) {}
+    },
+  },
+  onLoad: function (options) {
+    if (options.uuid) {
+      this.apply_oid = options.uuid;
+    }
+    this.sportInfo({
+      apply_oid: this.apply_oid,
+    });
   },
 };
 </script>

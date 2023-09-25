@@ -141,13 +141,13 @@
             ></image>
             <text class="page-nav-text">活动</text>
           </view>
-          <view class="page-nav-item" @tap="gomoka">
+          <view class="page-nav-item" @tap="goCompetition">
             <image
-              src="https://yuepai-oss.qubeitech.com/static/images/moka.png"
+              src="../../assets/images/competition-icon.png"
               class="page-nav-img"
               :lazy-load="true"
             ></image>
-            <text class="page-nav-text">模卡</text>
+            <text class="page-nav-text">赛事</text>
           </view>
         </view>
         <view class="page-nav-bottom">
@@ -736,6 +736,10 @@ export default {
       } else {
         openPage("/pages/login/index");
       }
+    },
+    goCompetition() {
+      errortip("内测中暂未开放");
+      // openPage("/packageActivity/pages/match/index");
     },
     signClose() {
       this.showModelSign = false;

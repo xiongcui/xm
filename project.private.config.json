@@ -25,29 +25,29 @@
                     "scene": null
                 },
                 {
-                    "name": "活动详情",
-                    "pathName": "packageActivity/pages/detail/index",
+                    "name": "作品详情",
+                    "pathName": "packageActivity/pages/photographyDetail/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "报名支付",
-                    "pathName": "packageActivity/pages/application/index",
+                    "name": "活动列表",
+                    "pathName": "packageActivity/pages/list/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "报名确认",
-                    "pathName": "packageActivity/pages/applicationConfirm/index",
+                    "name": "摄影比赛",
+                    "pathName": "packageActivity/pages/photography/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "分组模式",
-                    "pathName": "packageActivity/pages/packetmode/index",
+                    "name": "赛事活动",
+                    "pathName": "packageActivity/pages/match/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

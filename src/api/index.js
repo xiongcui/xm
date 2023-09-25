@@ -1,6 +1,6 @@
 import { request, requestUpload } from "../utils/util";
-// const baseUrl = "https://pai.qubeitech.com";
-const baseUrl = "https://dev.qubeitech.com";
+const baseUrl = "https://pai.qubeitech.com";
+// const baseUrl = "https://dev.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({
@@ -1060,6 +1060,109 @@ export const applyResult = (data) => {
 export const activityVerify = (data) => {
   return request({
     url: baseUrl + "/v1/sport/apply/verify",
+    method: "post",
+    data,
+  });
+};
+// 活动列表（我的活动）
+export const myActivityList = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/manage/apply/list",
+    method: "post",
+    data,
+  });
+};
+// 订单操作（我的活动）
+export const myActivityEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/manage/apply/event",
+    method: "post",
+    data,
+  });
+};
+// 订单详情接口
+export const sportInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/manage/apply/info",
+    method: "post",
+    data,
+  });
+};
+
+// 发布作品
+export const publishWorks = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/publish/works",
+    method: "post",
+    data,
+  });
+};
+
+// 作品列表
+export const worksList = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/works/list",
+    method: "post",
+    data,
+  });
+};
+// 赛事列表
+export const guideList = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/guide/list",
+    method: "post",
+    data,
+  });
+};
+// 赛事详情
+export const guideInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/guide/info",
+    method: "post",
+    data,
+  });
+};
+
+// 作品列表（自己）
+export const worksListOwn = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/works/list/own",
+    method: "post",
+    data,
+  });
+};
+
+// 作品详情
+export const worksInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/works/info",
+    method: "post",
+    data,
+  });
+};
+
+// 留言详情
+export const commentInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/works/comment/info",
+    method: "post",
+    data,
+  });
+};
+
+// 创建留言
+export const commentCreate = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/works/comment/create",
+    method: "post",
+    data,
+  });
+};
+
+// 作品点赞
+export const worksEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/games/explore/works/event",
     method: "post",
     data,
   });

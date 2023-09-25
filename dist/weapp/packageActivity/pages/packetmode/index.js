@@ -1017,7 +1017,7 @@ component.options.__file = "src/packageActivity/pages/packetmode/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publishConfig */ "vb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* publishConfig */ "Bb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1061,7 +1061,7 @@ component.options.__file = "src/packageActivity/pages/packetmode/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userSearch */ "hc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userSearch */ "pc"])(params);
 
               case 3:
                 res = _context2.sent;

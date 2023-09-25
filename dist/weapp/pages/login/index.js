@@ -395,7 +395,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "qc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Cc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -432,7 +432,8 @@ component.options.__file = "src/pages/login/index.vue"
                     url: "/pages/home/index",
                     success: function success(e) {
                       var page = getCurrentPages().pop();
-                      if (page == undefined || page == null) return; // page.onLoad();
+                      if (page == undefined || page == null) return;
+                      page.onLoad();
                     }
                   });
                 }
@@ -464,7 +465,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "F"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "H"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -499,7 +500,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "fc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "nc"])(params);
 
               case 3:
                 res = _context3.sent;

@@ -1,0 +1,594 @@
+page {
+  background-color: #f4f4f4;
+}
+.photography {
+  .photography-top,
+  .zuopin-recommend-top {
+    position: relative;
+    .photography-mc,
+    .zuopin-recommend-mc {
+      background: rgba(0, 0, 0, 0.25);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    image {
+      width: 100%;
+      //   height: 340px;
+    }
+    .photography-info,
+    .zuopin-recommend-info {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      padding: 30px;
+      color: #ffffff;
+      font-size: 24px;
+      z-index: 99;
+    }
+    .photography-info-rt,
+    .zuopin-recommend-info-rt {
+      display: flex;
+      .photography-info-item,
+      .zuopin-recommend-info-item {
+        background: url("../../../assets/images/eyes-white.png") no-repeat left
+          center;
+        background-size: 30px;
+        padding-left: 40px;
+        margin-right: 30px;
+      }
+      .photography-info-item2,
+      .zuopin-recommend-info-item2 {
+        background: url("../../../assets/images/photo-white.png") no-repeat left
+          center;
+        background-size: 30px;
+        padding-left: 40px;
+      }
+    }
+    .invite {
+      width: 200px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.5);
+      position: absolute;
+      left: 50%;
+      margin-left: -100px;
+      bottom: 30px;
+      border-radius: 30px;
+      .share-btn {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+      }
+      .invite-btn {
+        background: url("../../../assets//images/share-white.png") no-repeat
+          left center;
+        background-size: 28px;
+        padding-left: 40px;
+        color: #ffffff;
+        font-size: 28px;
+      }
+    }
+    .invite2 {
+      width: 200px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.9);
+      position: absolute;
+      left: 50%;
+      margin-left: -100px;
+      bottom: 30px;
+      color: #ffffff;
+      font-size: 28px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+  }
+  .zuopin-recommend-top image {
+    height: 340px;
+  }
+  .tab {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+  }
+  .tab-fixed {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+  }
+  .zuopin-tab-fixed {
+    position: fixed;
+    top: 80px;
+    z-index: 998;
+  }
+  .tab-item {
+    color: rgba(0, 0, 0, 0.5);
+    flex: 1;
+    font-size: 30px;
+    text-align: center;
+    line-height: 66px;
+    border-bottom: 6rpx solid #ffffff;
+  }
+  .content {
+    flex: 1;
+    height: 100vh;
+  }
+  .content > swiper {
+    height: 100%;
+  }
+  .tab-item.on {
+    color: #ff1e3e;
+    font-weight: bold;
+    border-bottom-color: #ff1e3e;
+  }
+  .swiper-box {
+    height: 100%;
+  }
+  .componets-box:first-child {
+    margin-top: 104px;
+  }
+  .zuopin_tab {
+    width: 100%;
+    display: flex;
+    background: #ffffff;
+    .zuopin_tab_item {
+      color: rgba(0, 0, 0, 0.5);
+      flex: 1;
+      font-size: 28px;
+      text-align: center;
+      line-height: 60px;
+    }
+    .on {
+      color: #333333;
+      font-weight: bold;
+    }
+  }
+  .zuopin_list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 120px;
+  }
+  .zuopin-box {
+    position: relative;
+    border-radius: 8px;
+    margin: 16px 0px 0px 16px;
+    width: 350px;
+    image {
+      width: 100%;
+      height: 350px;
+    }
+    .zuopin_mc {
+      background: rgba(0, 0, 0, 0.25);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 8px;
+    }
+    .zuopin_bt {
+      padding: 16px;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      z-index: 99;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      font-size: 26px;
+    }
+    .like {
+      background: url("../../../assets/images/like-white.png") no-repeat right
+        center;
+      background-size: 28px;
+      padding-right: 36px;
+    }
+    .like-active {
+      background: url("../../../assets/images/like-red.png") no-repeat right
+        center;
+      background-size: 28px;
+      padding-right: 36px;
+    }
+  }
+  .awards-text,
+  .guidance-text {
+    padding: 16px;
+    margin: 16px;
+    background: #ffffff;
+  }
+  .awards-box {
+    position: relative;
+    margin: 16px;
+    width: 718px;
+    .cover {
+      width: 100%;
+      height: 300px;
+      border-radius: 8px;
+    }
+    .awards-mc {
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.25);
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .awards-info {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      font-size: 26px;
+      z-index: 99;
+      .headimg {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 16px;
+      }
+    }
+    .awards-bt {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 16px;
+      color: #ffffff;
+      font-size: 26px;
+    }
+    .like {
+      background: url("../../../assets/images/like-white.png") no-repeat right
+        center;
+      background-size: 28px;
+      padding-right: 36px;
+    }
+    .like-active {
+      background: url("../../../assets/images/like-red.png") no-repeat right
+        center;
+      background-size: 28px;
+      padding-right: 36px;
+    }
+    .awards-num {
+      margin-left: 16px;
+      background: #ffffff;
+      padding: 2px 10px;
+      border-radius: 8px;
+      color: #ff1e3e;
+    }
+  }
+  .upload-zuopin {
+    position: fixed;
+    bottom: 40px;
+    width: 200px;
+    font-size: 28px;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 33px;
+    height: 66px;
+    line-height: 66px;
+    text-align: center;
+    left: 50%;
+    margin-left: -100px;
+    z-index: 999;
+  }
+  .my-zuopin-num {
+    padding: 6px 16px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 26px;
+  }
+  .no-zuopin-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    .no-zuopin-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    image {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 16px;
+    }
+    .no-zuopin-txt {
+      color: rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+    }
+    .now-btn {
+      width: 200px;
+      font-size: 28px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 1);
+      border-radius: 30px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      margin-top: 30px;
+    }
+  }
+  .zuopin-type {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .zuopin-type-box {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      width: 500px;
+    }
+    .zuopin-type-select {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 60px;
+      margin-bottom: 30px;
+    }
+    .select-box {
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+    }
+    .zuopin-type-title {
+      text-align: center;
+      font-size: 32px;
+      color: #333333;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    .select {
+      width: 30px;
+      height: 30px;
+      margin-right: 16px;
+    }
+  }
+  .zuopin-tips {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    .zuopin-tips-title {
+      color: #333333;
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .zuopin-tips-txt {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 28px;
+    }
+  }
+  .zuopin-tips-agree {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 16px;
+    font-size: 28px;
+    color: #333333;
+    .link {
+      color: #6493d7;
+    }
+  }
+  .zuopin-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px;
+    margin-top: 46px;
+    margin-bottom: 16px;
+    .zuopin-cancle,
+    .zuopin-confirm {
+      width: 150px;
+      height: 60px;
+      line-height: 60px;
+      border-radius: 30px;
+      text-align: center;
+      font-size: 26px;
+    }
+    .zuopin-cancle {
+      border: 2px solid #bbbbbb;
+      color: #333333;
+    }
+    .zuopin-confirm {
+      background: #ff1e3e;
+      color: #ffffff;
+    }
+  }
+  .my-zuopin {
+    padding: 16px;
+    .my-zuopin-tips {
+      color: #f69a40;
+      font-size: 28px;
+      line-height: 40px;
+      margin-bottom: 16px;
+    }
+    .zuopin-upload {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .zuopin-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      .check {
+        color: #ff1e3e;
+        font-size: 30px;
+      }
+      .zuopin-label {
+        font-size: 30px;
+        color: #333333;
+        font-weight: bold;
+        margin-left: 16px;
+      }
+      .zuopin-img-tip {
+        color: #ff1e3e;
+        font-size: 26px;
+        margin-left: 16px;
+      }
+      .blod {
+        font-weight: bold;
+      }
+    }
+    .zuopin-upload-img {
+      width: 158px;
+      height: 158px;
+      margin-right: 10px;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .upload-close {
+      width: 38px;
+      height: 38px;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png")
+        no-repeat rgba(0, 0, 0, 0.55);
+      background-size: 38px;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .upload-width {
+      width: 100%;
+      height: 100%;
+    }
+    .upload-img {
+      width: 40px;
+      height: 36px;
+    }
+    .upload-txt {
+      color: #c7c7c7;
+      font-size: 26px;
+    }
+    .zuopin-upload-list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .zuopin-info {
+      background: #ffffff;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 16px 0px;
+    }
+  }
+  .placeholder_input {
+    color: #999;
+    font-size: 26rpx;
+  }
+  .placeholder_text {
+    color: #bbb;
+    font-size: 26rpx;
+    line-height: 37rpx;
+  }
+  .productname {
+    height: 66px;
+    line-height: 66px;
+    border-bottom: 1px solid #f4f4f4;
+    margin-bottom: 16px;
+    padding: 0px 16px;
+    color: #333333;
+    font-size: 28px;
+  }
+  .desc {
+    color: #333333;
+    font-size: 28px;
+    padding: 0px 16px;
+  }
+  .zuopin-text {
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-left: 16px;
+  }
+  .release-box {
+    display: flex;
+    justify-content: center;
+    .release-btn {
+      margin-top: 16px;
+      height: 66px;
+      line-height: 66px;
+      font-size: 30px;
+      background: #ff1e3e;
+      border-radius: 33px;
+      width: 200px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  .zuopin-recommend {
+    margin: 16px;
+    background: #ffffff;
+    border-radius: 8px;
+    .zuopin-recommend-bt {
+      padding: 16px;
+      .zuopin-recommend-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 6px;
+      }
+      .zuopin-recommend-desc {
+        font-size: 28px;
+        color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+  .totop {
+    position: fixed;
+    right: 10px;
+    bottom: 40px;
+    z-index: 9999;
+    image {
+      width: 90px;
+      height: 90px;
+    }
+  }
+}
