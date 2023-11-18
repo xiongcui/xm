@@ -292,7 +292,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrCard */ "rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrCard */ "ub"])(params);
 
               case 3:
                 res = _context.sent;
@@ -377,7 +377,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrIdcard */ "sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ocrIdcard */ "vb"])(params);
 
               case 3:
                 res = _context3.sent;

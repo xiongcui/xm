@@ -105,7 +105,7 @@
             ></image>
             {{ item.basic.date_humanize }}
           </view>
-          <view class="list_yuepai">
+          <view class="list_yuepai" v-if="item.statistic.invite_cnt > 0">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
               :lazy-load="true"

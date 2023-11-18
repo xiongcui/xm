@@ -77,6 +77,7 @@
         auto-height
         placeholder="请分享作品背后的故事吧（内容中不得含有任何联系方式，敏感语句、私房话题等，否则审核不予通过，选填）"
         v-model="desc"
+        maxlength="2000"
       />
     </view>
     <view class="zuopin-item">

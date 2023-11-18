@@ -147,7 +147,9 @@
             <text class="comment-btn-num">{{ vote_cnt }}</text>
           </view>
           <view class="comment-btn">
-            <image src="../../../assets/images/comment.png"></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/comment.png"
+            ></image>
             <text class="comment-btn-num">{{ comment_cnt }}</text>
           </view>
           <view class="comment-btn">

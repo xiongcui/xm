@@ -1,0 +1,46 @@
+page {
+  background-color: #f4f4f4;
+}
+.account-details {
+  margin: 16px;
+  .account-box {
+    background: #ffffff;
+    border-radius: 12px;
+  }
+  .coin-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 30px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .task-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .task-info-box {
+    display: flex;
+    justify-content: space-between;
+  }
+  .task-title {
+    font-weight: bold;
+    font-size: 30px;
+  }
+  .task-coin {
+    font-size: 28px;
+    color: #edb16e;
+    margin-left: 30px;
+  }
+  .task-tips {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.4);
+  }
+  .task-num {
+    color: #edb16e;
+  }
+}

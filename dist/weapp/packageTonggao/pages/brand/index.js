@@ -340,6 +340,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
 //
 //
 //
+//
 
 
 
@@ -673,7 +674,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Ab"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Eb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -705,7 +706,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "Yb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "fc"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -750,7 +751,7 @@ component.options.__file = "src/packageTonggao/pages/brand/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "ob"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "rb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1366,6 +1367,7 @@ var render = function () {
               "auto-height": "",
               placeholder:
                 "您需要什么样的合作？请介绍您的产品特征、产品价格、合作费用、合作要求等，但不得含有联系方式，否则不予通过。",
+              maxlength: "2000",
             },
             domProps: { value: _vm.desc },
             on: {

@@ -230,6 +230,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 //
 //
 //
+//
 
 
 
@@ -553,7 +554,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Eb"])(params);
 
               case 3:
                 _res = _context.sent;
@@ -599,7 +600,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "bc"])(params);
 
               case 3:
                 _res2 = _context2.sent;
@@ -803,6 +804,7 @@ var render = function () {
             "auto-height": "",
             placeholder:
               "请分享作品背后的故事吧（内容中不得含有任何联系方式，敏感语句、私房话题等，否则审核不予通过，选填）",
+            maxlength: "2000",
           },
           domProps: { value: _vm.desc },
           on: {

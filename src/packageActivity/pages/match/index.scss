@@ -7,7 +7,8 @@ page {
     .zuopin-recommend-mc {
       background: rgba(0, 0, 0, 0.25);
       width: 100%;
-      height: 100%;
+      //   height: 340px;
+      height: calc(100% - 16px);
       position: absolute;
       left: 0;
       top: 0;
@@ -16,7 +17,7 @@ page {
     }
     image {
       width: 100%;
-      height: 340px;
+      //   height: 340px;
     }
     .zuopin-recommend-info {
       position: absolute;
@@ -33,15 +34,15 @@ page {
     .zuopin-recommend-info-rt {
       display: flex;
       .zuopin-recommend-info-item {
-        background: url("../../../assets/images/eyes-white.png") no-repeat left
-          center;
+        background: url("https://yuepai-oss.qubeitech.com/static/images/eyes-white.png")
+          no-repeat left center;
         background-size: 30px;
         padding-left: 40px;
         margin-right: 30px;
       }
       .zuopin-recommend-info-item2 {
-        background: url("../../../assets/images/photo-white.png") no-repeat left
-          center;
+        background: url("https://yuepai-oss.qubeitech.com/static/images/photo-white.png")
+          no-repeat left center;
         background-size: 30px;
         padding-left: 40px;
       }

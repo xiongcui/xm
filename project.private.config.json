@@ -6,55 +6,55 @@
         "bigPackageSizeSupport": true,
         "autoAudits": false
     },
-    "libVersion": "3.0.1",
+    "libVersion": "3.2.0",
     "condition": {
         "miniprogram": {
             "list": [
                 {
-                    "name": "我的活动",
-                    "pathName": "packageActivity/pages/myActivity/index",
+                    "name": "我的钱包",
+                    "pathName": "packageVip/pages/wallet/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "活动详情",
-                    "pathName": "packageActivity/pages/myActivityDetail/index",
+                    "name": "钱包账户",
+                    "pathName": "packageVip/pages/walletAccount/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "作品详情",
-                    "pathName": "packageActivity/pages/photographyDetail/index",
+                    "name": "账户提现",
+                    "pathName": "packageVip/pages/withdrawal/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "活动列表",
-                    "pathName": "packageActivity/pages/list/index",
+                    "name": "账户明细",
+                    "pathName": "packageVip/pages/accounDetails/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "摄影比赛",
-                    "pathName": "packageActivity/pages/photography/index",
+                    "name": "我的等级",
+                    "pathName": "packageVip/pages/grade/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "赛事活动",
-                    "pathName": "packageActivity/pages/match/index",
+                    "name": "成长指南",
+                    "pathName": "packageVip/pages/growthGuide/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
                 },
                 {
-                    "name": "他/她模卡资料",
-                    "pathName": "packageMoka/pages/moka/inforother/index",
+                    "name": "邀请有礼",
+                    "pathName": "packageAdd/pages/user/inviteGift/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

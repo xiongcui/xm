@@ -2041,7 +2041,7 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publishConfig */ "Bb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publishConfig */ "Fb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -2126,7 +2126,7 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publishCreate */ "Cb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publishCreate */ "Gb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -4040,7 +4040,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageActivity/pages/add/index.vue");
 
 
-var config = {"navigationBarTitleText":"发布活动","enablePullDownRefresh":true};
+var config = {"navigationBarTitleText":"发布活动"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageActivity/pages/add/index', {root:{cn:[]}}, config || {}))

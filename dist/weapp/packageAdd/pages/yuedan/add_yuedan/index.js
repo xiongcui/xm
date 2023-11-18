@@ -384,6 +384,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
 //
 //
 //
+//
 
 
 
@@ -833,7 +834,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/add_yuedan/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Eb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1041,6 +1042,7 @@ var render = function () {
           "auto-height": "",
           placeholder:
             "请描述您的约单内容，如您的特长、才艺、需求、地点、时间等（内容中不得含有任何联系方式，敏感语句、私房话题等，否则审核不予通过，至少7字以上）",
+          maxlength: "2000",
         },
         domProps: { value: _vm.desc },
         on: {

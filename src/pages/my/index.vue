@@ -399,6 +399,23 @@
             ></image>
           </view>
         </view>
+        <view @tap="goEnterGroup" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/weChat.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">加入社群</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
         <!-- <view @tap="customerService" class="item ub line-t">
           <view class="item_icon">
             <image
@@ -453,6 +470,24 @@
       </view>
       <view class="my-title"> 其他服务 </view>
       <view class="items myblock">
+        <view @tap="goResource" class="item ub line-t">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/resource.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">领取资料</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+
         <view @tap="goAbout" class="item ub line-t">
           <view class="item_icon">
             <image
@@ -697,6 +732,12 @@ export default {
     },
     goAbout() {
       openPage("/packageSet/pages/about/index");
+    },
+    goResource() {
+      openPage("/packageActivity/pages/resource/index");
+    },
+    goEnterGroup() {
+      openPage("/packageActivity/pages/publicize/index");
     },
     goFollowAndfans(type) {
       openPage("/packageAdd/pages/user/followAndfans/index?type=" + type);

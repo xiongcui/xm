@@ -650,7 +650,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "Ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* recordCollect */ "Mb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -680,7 +680,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -710,7 +710,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -741,7 +741,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -771,7 +771,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -804,7 +804,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "ic"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "pc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -835,7 +835,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_detail/index.vue"
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "vc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Cc"])(params);
 
               case 3:
                 res = _context10.sent;

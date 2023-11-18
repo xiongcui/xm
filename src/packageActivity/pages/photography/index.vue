@@ -18,41 +18,41 @@
     </view>
     <view class="components"></view>
     <view class="tab" :class="isfixed ? 'tab-fixed' : ''">
-      <view
+      <!-- <view
         class="tab-item"
         :class="currentTab == 0 ? 'on' : ''"
         @tap="changeItem(0)"
         >参赛奖品</view
+      > -->
+      <view
+        class="tab-item"
+        :class="currentTab == 0 ? 'on' : ''"
+        @tap="changeItem(0)"
+        >参赛指南</view
       >
       <view
         class="tab-item"
         :class="currentTab == 1 ? 'on' : ''"
         @tap="changeItem(1)"
-        >参赛指南</view
+        >佳作赏欣</view
       >
       <view
         class="tab-item"
         :class="currentTab == 2 ? 'on' : ''"
         @tap="changeItem(2)"
-        >佳作赏欣</view
+        >我的作品</view
       >
       <view
         class="tab-item"
         :class="currentTab == 3 ? 'on' : ''"
         @tap="changeItem(3)"
-        >我的作品</view
-      >
-      <view
-        class="tab-item"
-        :class="currentTab == 4 ? 'on' : ''"
-        @tap="changeItem(4)"
         >赛事推荐</view
       >
     </view>
     <view
       class="zuopin_tab"
-      :class="isfixed && currentTab == 2 ? 'zuopin-tab-fixed' : ''"
-      v-if="currentTab == 2"
+      :class="isfixed && currentTab == 1 ? 'zuopin-tab-fixed' : ''"
+      v-if="currentTab == 1"
     >
       <text
         class="zuopin_tab_item"
@@ -81,11 +81,11 @@
         @change="bindChange"
         :style="{ height: swiperHeightCt ? swiperHeightCt : '100vh' }"
       >
-        <swiper-item>
+        <!-- <swiper-item>
           <view class="awards-text">
             <rich-text :nodes="awardsTextContent"></rich-text>
           </view>
-        </swiper-item>
+        </swiper-item> -->
         <swiper-item>
           <view class="guidance-text">
             <rich-text :nodes="guidanceTextContent"></rich-text>
@@ -182,7 +182,7 @@
                   ></image>
                   <view class="no-zuopin-txt">您还未上传任何作品</view>
                   <view class="no-zuopin-txt">赶快参与活动吧</view>
-                  <view class="now-btn" @tap="uploadZuopin">即刻上传</view>
+                  <!-- <view class="now-btn" @tap="uploadZuopin">即刻上传</view> -->
                 </view>
               </view>
             </block>
@@ -284,9 +284,6 @@
                     maxlength="140"
                   ></textarea>
                 </view>
-                <view class="release-box">
-                  <text class="release-btn" @tap="submit">发布作品</text>
-                </view>
               </view>
             </block>
           </view>
@@ -336,7 +333,12 @@
         </swiper-item>
       </swiper>
     </view>
-    <view class="upload-zuopin" @tap="uploadZuopin">上传作品</view>
+    <view class="upload-zuopin" @tap="uploadZuopin" v-if="zuopinType != 2"
+      >上传作品</view
+    >
+    <view class="release-box" v-if="zuopinType == 2">
+      <text class="release-btn" @tap="submit">发布作品</text>
+    </view>
     <view class="zuopin-type" v-if="visible">
       <view class="zuopin-type-box">
         <view class="zuopin-type-title">作品组别</view>
@@ -372,7 +374,7 @@
             <text>组图</text>
           </view>
         </view>
-        <view class="zuopin-tips">
+        <!-- <view class="zuopin-tips">
           <view class="zuopin-tips-title">温馨提示</view>
           <view class="zuopin-tips-txt">发布作品前先阅读以下协议</view>
           <view class="zuopin-tips-agree">
@@ -392,7 +394,7 @@
             ></image>
             <text>我同意<text class="link">《参赛作品授权协议》</text></text>
           </view>
-        </view>
+        </view> -->
         <view class="zuopin-btns">
           <view class="zuopin-cancle" @tap.stop="close">取消</view>
           <view class="zuopin-confirm" @tap.stop="confirm">确认</view>
@@ -425,7 +427,7 @@ export default {
   name: "photography",
   data() {
     return {
-      currentTab: 2,
+      currentTab: 1,
       zuopinTab: 1,
       winHeight: 0,
       select: 0,
@@ -467,14 +469,12 @@ export default {
     setSwiperHeight() {
       let dom = "";
       if (this.currentTab == 0) {
-        dom = ".awards-text";
-      } else if (this.currentTab == 1) {
         dom = ".guidance-text";
-      } else if (this.currentTab == 2) {
+      } else if (this.currentTab == 1) {
         dom = ".zuopin_list";
-      } else if (this.currentTab == 3) {
+      } else if (this.currentTab == 2) {
         dom = ".my-zuopin-ct";
-      } else if (this.currentTab == 4) {
+      } else if (this.currentTab == 3) {
         dom = ".zuopin-recommend-box";
       }
       wx.createSelectorQuery()
@@ -495,21 +495,24 @@ export default {
           this.setSwiperHeight();
           break;
         case 1:
-          this.setSwiperHeight();
-          break;
-        case 2:
           this.queryZuopinList(type);
           break;
-        case 3:
-          this.queryMyZuopinList(type);
+        case 2:
+          if (this.zuopinType != 2 && !this.visible) {
+            this.queryMyZuopinList(type);
+          } else {
+            setTimeout(() => {
+              this.setSwiperHeight();
+            }, 800);
+          }
           break;
-        case 4:
+        case 3:
           this.queryGameList(type);
           break;
       }
     },
     changeQuery(game_oid) {
-      this.currentTab = 2;
+      this.currentTab = 1;
       this.zuopinTab = 1;
       this.pageNum = 1;
       this.zuopinList = [];
@@ -565,6 +568,7 @@ export default {
         this.currentTab = index;
         this.pageNum = 1;
         this.list = [];
+        this.zuopinType = 0;
         this.switchQuery("init");
       }
     },
@@ -572,6 +576,7 @@ export default {
       this.currentTab = e.detail.current;
       this.pageNum = 1;
       this.list = [];
+      this.zuopinType = 0;
       this.switchQuery("init");
     },
     scrollToLower() {
@@ -663,13 +668,12 @@ export default {
       this.visible = false;
     },
     confirm() {
-      if (!this.radio) {
-        errortip("请勾选《参赛作品授权协议》");
-        return false;
-      }
-      this.visible = false;
-      this.currentTab = 3;
-      this.zuopinType = 2;
+      this.currentTab = 2;
+      setTimeout(() => {
+        this.visible = false;
+        this.zuopinType = 2;
+        // this.setSwiperHeight();
+      }, 600);
     },
     submit() {
       if (!this.imgList.length) {
@@ -687,7 +691,6 @@ export default {
         describe: this.desc,
         picture: this.imgList,
       };
-      console.log(params);
       this.publishWorks(params);
     },
     queryZuopinList(type) {
@@ -741,6 +744,7 @@ export default {
       try {
         let res = await publishWorks(params);
         errortip("发布成功");
+        this.pageNum = 1;
         this.zuopinType = 1;
         this.queryMyZuopinList("init");
       } catch (error) {}
@@ -771,7 +775,7 @@ export default {
         }
         setTimeout(() => {
           this.setSwiperHeight();
-        }, 200);
+        }, 300);
       } catch (error) {}
     },
     async guideList(params, type) {
@@ -800,7 +804,7 @@ export default {
         }
         setTimeout(() => {
           this.setSwiperHeight();
-        }, 200);
+        }, 300);
       } catch (error) {}
     },
     async worksListOwn(params, type) {
@@ -813,7 +817,7 @@ export default {
         wx.hideNavigationBarLoading();
         //停止下拉刷新
         wx.stopPullDownRefresh();
-        if (!res.data.data.items.length) {
+        if (!res.data.data.items.length && type == "init") {
           this.zuopinType = 0;
           return false;
         }
@@ -835,7 +839,7 @@ export default {
         }
         setTimeout(() => {
           this.setSwiperHeight();
-        }, 200);
+        }, 300);
       } catch (error) {}
     },
     async guideInfo(params) {

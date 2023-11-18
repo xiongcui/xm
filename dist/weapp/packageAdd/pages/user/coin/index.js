@@ -375,7 +375,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "gc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -532,7 +532,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -562,7 +562,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context6.sent;

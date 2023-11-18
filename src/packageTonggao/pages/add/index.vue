@@ -207,6 +207,7 @@
           auto-height
           placeholder="您需要什么样的合作? 比如：模特形象、模特风格、模特经验、合作费用等。配图更佳，但不得含有联系方式，否则不予通过。"
           v-model="desc"
+          maxlength="2000"
         />
       </view>
       <view class="tonggao-item">

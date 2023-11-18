@@ -1,0 +1,175 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.wallet-account {
+  margin: 16rpx;
+}
+
+.wallet-account .commission {
+  background: #ffffff;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.wallet-account .commission .commission-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wallet-account .commission .commission-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.wallet-account .commission .account-detail {
+  font-size: 26rpx;
+  color: #c8c8c8;
+}
+
+.wallet-account .commission .commission-ct {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 16rpx;
+}
+
+.wallet-account .commission .commission-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 522rpx;
+}
+
+.wallet-account .commission .commission-price {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #ec4b46;
+  margin-bottom: 6rpx;
+}
+
+.wallet-account .commission .progress {
+  position: relative;
+  width: 100%;
+  height: 8rpx;
+  background: #ec4b46;
+  border-radius: 4rpx;
+  margin-bottom: 16rpx;
+}
+
+.wallet-account .commission .progress-box {
+  position: relative;
+}
+
+.wallet-account .commission .progress-circle {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  position: absolute;
+  left: 80%;
+  margin-left: -10rpx;
+  top: 50%;
+  margin-top: -6rpx;
+  z-index: 99;
+  background: #ec4b46;
+}
+
+.wallet-account .commission .progress-tips {
+  padding: 4rpx 16rpx;
+  font-size: 24rpx;
+  color: #333333;
+  background: #ecad65;
+  border-radius: 8rpx;
+  position: absolute;
+  top: -70rpx;
+  right: 0;
+}
+
+.wallet-account .commission .triangle {
+  width: 0;
+  height: 0;
+  border-top: 20rpx solid #ecad65;
+  border-right: 20rpx solid transparent;
+  border-left: 20rpx solid transparent;
+  position: absolute;
+  bottom: 16rpx;
+  left: 80%;
+  margin-left: -10rpx;
+}
+
+.wallet-account .commission .commission-right image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.wallet-account .commission .commission-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-top: 1rpx solid #e5e5e5;
+  padding-top: 16rpx;
+}
+
+.wallet-account .commission .commission-tips {
+  font-size: 22rpx;
+  color: #c8c8c8;
+}
+
+.wallet-account .commission .commission-btn {
+  padding: 4rpx 16rpx;
+  border: 2rpx solid #c8c8c8;
+  border-radius: 22rpx;
+  color: #c8c8c8;
+  font-size: 22rpx;
+}
+
+.wallet-account .cash {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.wallet-account .cash .cash-price {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.wallet-account .cash .cash-btn {
+  padding: 6rpx 36rpx;
+  font-size: 24rpx;
+  border-radius: 28rpx;
+  border: 2rpx solid #ecad65;
+  color: #ecad65;
+}

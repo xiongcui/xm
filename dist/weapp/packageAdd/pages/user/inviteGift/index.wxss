@@ -1,0 +1,154 @@
+page {
+  background-color: #fcc77b;
+}
+
+.invite-gift {
+  padding-bottom: 300rpx;
+}
+
+.invite-gift .invite-img {
+  width: 100%;
+}
+
+.invite-gift .invite-gift-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  text-align: center;
+  padding: 16rpx 0;
+}
+
+.invite-gift .invite-gift-txt {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.invite-gift .detail-btn {
+  padding: 8rpx 16rpx;
+  font-size: 28rpx;
+  background: #efefef;
+  color: #b4b4b4;
+  margin: 16rpx 30rpx;
+  border-radius: 8rpx;
+}
+
+.invite-gift .invite-friends {
+  height: 66rpx;
+  line-height: 66rpx;
+  background-color: #fe3e3f;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 33rpx;
+  font-size: 28rpx;
+  margin: 16rpx;
+}
+
+.invite-gift .invite-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.invite-gift .invite-mask .mask-box {
+  background: #ffffff;
+  padding: 30rpx;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 60rpx);
+  border-radius: 16rpx 16rpx 0 0;
+}
+
+.invite-gift .invite-mask .mask-box .mask-title {
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.invite-gift .invite-mask .mask-box .mask-ct {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+
+.invite-gift .invite-mask .mask-box .mask-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 30rpx;
+  text-align: left;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.invite-gift .invite-mask .mask-box .mask-item image {
+  width: 60rpx;
+  height: 50rpx;
+  margin-right: 16rpx;
+}
+
+.invite-gift .invite-mask .mask-box .mask-item .mask-share {
+  color: #333333 !important;
+  font-size: 32rpx;
+}
+
+.invite-gift .invite-mask .mask-box .mask-item .mask-share-p {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+}
+
+.invite-gift .invite-mask .mask-box .close {
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 16rpx;
+  right: 10rpx;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png") no-repeat;
+  background-size: 38rpx;
+}
+
+.invite-gift .invite-mask .mask-img-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.invite-gift .invite-mask .mask-img {
+  width: 80%;
+  height: 90vh;
+  margin: 0 auto;
+}
+
+.invite-gift .invite-mask .mask-save {
+  background-color: #fffb05;
+  color: #333333;
+  height: 88rpx;
+  line-height: 88rpx;
+  width: 80%;
+  margin: 16rpx auto 0 auto;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.invite-gift .invite-mask .share-btn {
+  background-color: transparent;
+  text-align: left;
+  line-height: normal;
+  padding: 0;
+}

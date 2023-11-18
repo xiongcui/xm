@@ -239,6 +239,7 @@
           auto-height
           placeholder="您需要什么样的合作？请介绍您的店铺、产品、合作费用、合作要求等，但不得含有联系方式，否则不予通过。"
           v-model="desc"
+          maxlength="2000"
         />
       </view>
       <view class="shop-item">

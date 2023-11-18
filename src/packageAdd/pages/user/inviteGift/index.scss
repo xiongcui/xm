@@ -1,0 +1,122 @@
+page {
+  background-color: #fcc77b;
+}
+.invite-gift {
+  padding-bottom: 300px;
+  .invite-img {
+    width: 100%;
+  }
+  .invite-gift-fixed {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: #ffffff;
+    text-align: center;
+    padding: 16px 0px;
+  }
+  .invite-gift-txt {
+    font-size: 26px;
+    color: #333333;
+  }
+  .detail-btn {
+    padding: 8px 16px;
+    font-size: 28px;
+    background: #efefef;
+    color: #b4b4b4;
+    margin: 16px 30px;
+    border-radius: 8px;
+  }
+  .invite-friends {
+    height: 66px;
+    line-height: 66px;
+    background-color: #fe3e3f;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 33px;
+    font-size: 28px;
+    margin: 16px;
+  }
+  .invite-mask {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.5);
+    .mask-box {
+      background: #ffffff;
+      padding: 30px;
+      position: absolute;
+      bottom: 0px;
+      width: calc(100% - 60px);
+      border-radius: 16px 16px 0px 0px;
+      .mask-title {
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .mask-ct {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .mask-item {
+        display: flex;
+        padding: 30px;
+        text-align: left;
+        align-items: center;
+        image {
+          width: 60px;
+          height: 50px;
+          margin-right: 16px;
+        }
+        .mask-share {
+          color: #333333 !important;
+          font-size: 32px;
+        }
+        .mask-share-p {
+          color: rgba(0, 0, 0, 0.5);
+          font-size: 28px;
+        }
+      }
+      .close {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 16px;
+        right: 10px;
+        background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png")
+          no-repeat;
+        background-size: 38px;
+      }
+    }
+    .mask-img-box {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .mask-img {
+      width: 80%;
+      height: 90vh;
+      margin: 0 auto;
+    }
+    .mask-save {
+      background-color: #fffb05;
+      color: #333333;
+      height: 88px;
+      line-height: 88px;
+      width: 80%;
+      margin: 16px auto 0 auto;
+      border-radius: 8px;
+      font-size: 28px;
+      text-align: center;
+    }
+    .share-btn {
+      background-color: transparent;
+      text-align: left;
+      line-height: normal;
+      padding: 0;
+    }
+  }
+}

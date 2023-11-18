@@ -187,7 +187,6 @@ export default {
         this.list = res.data.data.items;
         this.user_cnt = res.data.data.total.user_cnt;
         this.coin_sum = res.data.data.total.coin_sum;
-        console.log(res);
       } catch (error) {}
     },
   },

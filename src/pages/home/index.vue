@@ -143,7 +143,7 @@
           </view>
           <view class="page-nav-item" @tap="goCompetition">
             <image
-              src="../../assets/images/competition-icon.png"
+              src="https://yuepai-oss.qubeitech.com/static/images/competition-icon.png"
               class="page-nav-img"
               :lazy-load="true"
             ></image>
@@ -738,8 +738,7 @@ export default {
       }
     },
     goCompetition() {
-      errortip("内测中暂未开放");
-      // openPage("/packageActivity/pages/match/index");
+      openPage("/packageActivity/pages/match/index");
     },
     signClose() {
       this.showModelSign = false;
@@ -776,12 +775,12 @@ export default {
       });
     },
     goActivity() {
-      // if (isLogin()) {
-      //   openPage("/packageActivity/pages/list/index");
-      // } else {
-      //   openPage("/pages/login/index");
-      // }
-      errortip("内测中暂未开放");
+      if (isLogin()) {
+        openPage("/packageActivity/pages/list/index");
+      } else {
+        openPage("/pages/login/index");
+      }
+      // errortip("内测中暂未开放");
     },
     goMore(index) {
       if (isLogin()) {

@@ -235,6 +235,8 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
 //
 //
 //
+//
+//
 
 
 
@@ -431,7 +433,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "ic"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "pc"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -462,7 +464,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "vc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Cc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -493,7 +495,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksInfo */ "zc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksInfo */ "Gc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -536,7 +538,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksEvent */ "yc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksEvent */ "Fc"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -603,7 +605,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -633,7 +635,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -664,7 +666,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -694,7 +696,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1094,7 +1096,7 @@ var render = function () {
                 _c("view", { staticClass: "comment-btn" }, [
                   _c("image", {
                     attrs: {
-                      src: __webpack_require__(/*! ../../../assets/images/comment.png */ "./src/assets/images/comment.png"),
+                      src: "https://yuepai-oss.qubeitech.com/static/images/comment.png",
                     },
                   }),
                   _c("text", { staticClass: "comment-btn-num" }, [
@@ -1162,18 +1164,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/comment.png":
-/*!***************************************!*\
-  !*** ./src/assets/images/comment.png ***!
-  \***************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/comment.png";
 
 /***/ }),
 

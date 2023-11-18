@@ -23,7 +23,7 @@
             </view>
           </view>
           <image
-            mode="aspectFill"
+            mode="widthFix"
             :src="item.games.main_cover"
             :lazy-load="true"
           ></image>

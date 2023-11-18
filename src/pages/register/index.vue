@@ -137,6 +137,7 @@ export default {
       multiArray: [], //地区
       type: 0,
       identityList: [],
+      from: "",
     };
   },
   methods: {
@@ -157,15 +158,21 @@ export default {
       openPage("/packageAdd/pages/user/identity/index");
     },
     goHome() {
-      // 跳转首页
-      wx.switchTab({
-        url: "/pages/home/index",
-        success: function (e) {
-          var page = getCurrentPages().pop();
-          if (page == undefined || page == null) return;
-          // page.onLoad();
-        },
-      });
+      if (this.from == "resource") {
+        openPage("/packageActivity/pages/resource/index");
+      } else if (this.from == "publicize") {
+        openPage("/packageActivity/pages/publicize/index");
+      } else {
+        // 跳转首页
+        wx.switchTab({
+          url: "/pages/home/index",
+          success: function (e) {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return;
+            // page.onLoad();
+          },
+        });
+      }
     },
     submit() {
       if (!this.nickname) {
@@ -203,15 +210,21 @@ export default {
     async userRegister(params) {
       try {
         let res = await userRegister(params);
-        // 跳转首页
-        wx.switchTab({
-          url: "/pages/home/index",
-          success: function (e) {
-            var page = getCurrentPages().pop();
-            if (page == undefined || page == null) return;
-            page.onLoad();
-          },
-        });
+        if (this.from == "resource") {
+          openPage("/packageActivity/pages/resource/index");
+        } else if (this.from == "publicize") {
+          openPage("/packageActivity/pages/publicize/index");
+        } else {
+          // 跳转首页
+          wx.switchTab({
+            url: "/pages/home/index",
+            success: function (e) {
+              var page = getCurrentPages().pop();
+              if (page == undefined || page == null) return;
+              page.onLoad();
+            },
+          });
+        }
       } catch (error) {}
     },
     async getCareer(params) {
@@ -233,6 +246,11 @@ export default {
   },
   onShow() {
     this.getCareer("");
+  },
+  onLoad: function (options) {
+    if (options.from) {
+      this.from = options.from;
+    }
   },
 };
 </script>

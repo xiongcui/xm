@@ -1,0 +1,23 @@
+page {
+  background-color: #f4f4f4;
+}
+.growth-guide {
+  .growth-guide-box {
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 30px;
+  }
+  .growth-guide-title {
+    font-size: 30px;
+    color: #333333;
+    margin-bottom: 16px;
+    text-align: center;
+    font-weight: bold;
+  }
+  .growth-guide-txt {
+    font-size: 28px;
+    color: #333333;
+    line-height: 36px;
+  }
+}

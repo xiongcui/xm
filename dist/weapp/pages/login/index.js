@@ -226,7 +226,8 @@ component.options.__file = "src/pages/login/index.vue"
         phone: ""
       },
       pageshow: "login",
-      scene: ""
+      scene: "",
+      from: ""
     };
   },
   components: {
@@ -395,7 +396,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Cc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Jc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -500,7 +501,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "nc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "uc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -509,10 +510,9 @@ component.options.__file = "src/pages/login/index.vue"
                 userInfo.avatar = params.avatar;
                 userInfo.nickname = params.nickname;
                 wx.setStorageSync("userInfo", userInfo);
-                console.log(_this5.bind_type, _this5.login_type);
 
                 if (_this5.login_type == 1) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index?from=" + _this5.from);
                 } else {
                   // 跳转首页
                   wx.switchTab({
@@ -524,25 +524,30 @@ component.options.__file = "src/pages/login/index.vue"
                   });
                 }
 
-                _context3.next = 15;
+                _context3.next = 14;
                 break;
 
-              case 13:
-                _context3.prev = 13;
+              case 12:
+                _context3.prev = 12;
                 _context3.t0 = _context3["catch"](0);
 
-              case 15:
+              case 14:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 13]]);
+        }, _callee3, null, [[0, 12]]);
       }))();
     }
   },
   created: function created() {
     this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.scene = wx.getLaunchOptionsSync().scene;
+  },
+  onLoad: function onLoad(options) {
+    if (options.from) {
+      this.from = options.from;
+    }
   }
 });
 

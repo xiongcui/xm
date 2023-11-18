@@ -1,0 +1,135 @@
+page {
+  background-color: #f4f4f4;
+}
+.wallet {
+  padding: 16px;
+  .wallet-top {
+    background: #ffffff;
+    border-radius: 12px 12px 0px 0px;
+  }
+  .wallet-account {
+    background: url("../../../assets/images/coin.png") no-repeat 600px center
+      #e4c284;
+    background-size: 100px;
+    border-radius: 12px 12px 0px 0px;
+    padding: 30px;
+  }
+  .total-balance {
+    display: flex;
+    align-items: center;
+    .total-label {
+      color: #9a732d;
+      font-size: 26px;
+      margin-right: 16px;
+    }
+    .total-num {
+      color: #333333;
+      font-size: 34px;
+      font-weight: bold;
+    }
+  }
+  .sub-account-box {
+    display: flex;
+    margin-top: 16px;
+    .sub-account {
+      font-size: 26px;
+      color: #8c8b8a;
+      margin-right: 30px;
+    }
+    .sub-account-label {
+      margin-bottom: 10px;
+    }
+  }
+  .wallet-account-btns {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 80px;
+  }
+  .recharge {
+    width: 140px;
+    height: 50px;
+    line-height: 50px;
+    border: 2px solid #ae7946;
+    color: #ae7946;
+    font-size: 26px;
+    border-radius: 30px;
+    text-align: center;
+  }
+  .withdrawal {
+    width: 140px;
+    height: 54px;
+    line-height: 54px;
+    background: #a26222;
+    color: #ffffff;
+    font-size: 26px;
+    border-radius: 30px;
+    text-align: center;
+  }
+  .wallet-ct {
+    background: #ffffff;
+    border-radius: 12px;
+    margin-top: 16px;
+    .tab {
+      display: flex;
+      //   justify-content: center;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 20px 20px 0px 0px;
+    }
+    .tab-item {
+      color: #333333;
+      //   flex: 1;
+      width: 30%;
+      font-size: 30px;
+      text-align: center;
+      line-height: 80rpx;
+      border-bottom: 6rpx solid #ffffff;
+      margin: 0px 30px;
+    }
+    .tab-item.on {
+      color: #333333;
+      font-weight: bold;
+      border-bottom-color: #f3c695;
+    }
+    .detailed-list {
+      margin-top: 16px;
+      padding-bottom: 60px;
+    }
+    .coin-task {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 30px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .task-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .task-info-box {
+      display: flex;
+      justify-content: space-between;
+    }
+    .task-title {
+      font-weight: bold;
+      font-size: 30px;
+    }
+    .task-coin {
+      font-size: 28px;
+      color: #edb16e;
+      margin-left: 30px;
+    }
+    .task-tips {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 6px;
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.4);
+    }
+    .task-num {
+      color: #edb16e;
+    }
+  }
+}

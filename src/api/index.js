@@ -1167,3 +1167,66 @@ export const worksEvent = (data) => {
     data,
   });
 };
+
+// 资料列表
+export const materialsList = (data) => {
+  return request({
+    url: baseUrl + "/v1/task/receive/materials/list",
+    method: "post",
+    data,
+  });
+};
+
+// 领取资料
+export const materialsEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/task/receive/materials/event",
+    method: "post",
+    data,
+  });
+};
+
+// 领取支付
+export const materialsPayment = (data) => {
+  return request({
+    url: baseUrl + "/v1/task/receive/materials/payment",
+    method: "post",
+    data,
+  });
+};
+
+//  加入社群 -详情页
+export const posterInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/social/poster/info",
+    method: "post",
+    data,
+  });
+};
+
+// 社群支付check
+export const socialCheck = (data) => {
+  return request({
+    url: baseUrl + "/v1/social/apply/check",
+    method: "post",
+    data,
+  });
+};
+
+// 社群获取支付结果
+export const socialResult = (data) => {
+  return request({
+    url: baseUrl + "/v1/social/apply/result",
+    method: "post",
+    data,
+  });
+};
+
+// 社群支付接口，唤起微信支付
+export const socialPay = (data) => {
+  return request({
+    url: baseUrl + "/v1/social/wx/mina/social/poster",
+    method: "post",
+    data,
+  });
+};

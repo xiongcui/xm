@@ -1,0 +1,158 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.resource {
+  padding: 16rpx;
+}
+
+.resource .resource-banner {
+  margin-bottom: 16rpx;
+}
+
+.resource .resource-banner image {
+  width: 100%;
+}
+
+.resource .resource-box {
+  background: #ffffff;
+  border-radius: 8rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 16rpx;
+  position: relative;
+  margin-bottom: 16rpx;
+}
+
+.resource .resource-box .resource-hot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.resource .resource-box .resource-left image {
+  width: 180rpx;
+  height: 100%;
+}
+
+.resource .resource-box .resource-right {
+  margin-left: 16rpx;
+  width: calc(100% - 200rpx);
+}
+
+.resource .resource-box .resource-right .resource-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 6rpx;
+}
+
+.resource .resource-box .resource-right .resource-desc {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 36rpx;
+}
+
+.resource .resource-box .resource-right .resource-get {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.resource .resource-box .resource-right .resource-get-num {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.resource .resource-box .resource-right .resource-btn {
+  font-size: 24rpx;
+  border: 2rpx solid #f7922b;
+  color: #f7922b;
+  padding: 3rpx 16rpx;
+  border-radius: 8rpx;
+}
+
+.resource .resource-modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column-reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.resource .resource-modal .resource-content {
+  padding: 30rpx;
+  background: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.resource .resource-modal .resource-content-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+
+.resource .resource-modal .resource-msg {
+  font-size: 28rpx;
+  color: #333333;
+  text-align: center;
+}
+
+.resource .resource-modal .resource-operate {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+}
+
+.resource .resource-modal .resource-now-btn {
+  background: #38ba80;
+  font-size: 26rpx;
+  padding: 12rpx 0;
+  border-radius: 8rpx;
+  color: #ffffff;
+  width: 180rpx;
+  text-align: center;
+}
+
+.resource .resource-modal .resource-cancle-btn {
+  background: #a4adb3;
+  font-size: 26rpx;
+  padding: 12rpx 0;
+  border-radius: 8rpx;
+  color: #ffffff;
+  width: 180rpx;
+  text-align: center;
+}
+
+.resource .resource-modal .resource-operate2 {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+  padding: 0 100rpx;
+}

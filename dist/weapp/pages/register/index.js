@@ -194,7 +194,8 @@ component.options.__file = "src/pages/register/index.vue"
       multiArray: [],
       //地区
       type: 0,
-      identityList: []
+      identityList: [],
+      from: ""
     };
   },
   methods: {
@@ -215,14 +216,20 @@ component.options.__file = "src/pages/register/index.vue"
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
     },
     goHome: function goHome() {
-      // 跳转首页
-      wx.switchTab({
-        url: "/pages/home/index",
-        success: function success(e) {
-          var page = getCurrentPages().pop();
-          if (page == undefined || page == null) return; // page.onLoad();
-        }
-      });
+      if (this.from == "resource") {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/resource/index");
+      } else if (this.from == "publicize") {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/publicize/index");
+      } else {
+        // 跳转首页
+        wx.switchTab({
+          url: "/pages/home/index",
+          success: function success(e) {
+            var page = getCurrentPages().pop();
+            if (page == undefined || page == null) return; // page.onLoad();
+          }
+        });
+      }
     },
     submit: function submit() {
       if (!this.nickname) {
@@ -263,6 +270,8 @@ component.options.__file = "src/pages/register/index.vue"
       this.userRegister(params);
     },
     userRegister: function userRegister(params) {
+      var _this = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
@@ -271,19 +280,27 @@ component.options.__file = "src/pages/register/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "nc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "uc"])(params);
 
               case 3:
                 res = _context.sent;
-                // 跳转首页
-                wx.switchTab({
-                  url: "/pages/home/index",
-                  success: function success(e) {
-                    var page = getCurrentPages().pop();
-                    if (page == undefined || page == null) return;
-                    page.onLoad();
-                  }
-                });
+
+                if (_this.from == "resource") {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/resource/index");
+                } else if (_this.from == "publicize") {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/publicize/index");
+                } else {
+                  // 跳转首页
+                  wx.switchTab({
+                    url: "/pages/home/index",
+                    success: function success(e) {
+                      var page = getCurrentPages().pop();
+                      if (page == undefined || page == null) return;
+                      page.onLoad();
+                    }
+                  });
+                }
+
                 _context.next = 9;
                 break;
 
@@ -300,7 +317,7 @@ component.options.__file = "src/pages/register/index.vue"
       }))();
     },
     getCareer: function getCareer(params) {
-      var _this = this;
+      var _this2 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
         var res, data, arr;
@@ -318,8 +335,8 @@ component.options.__file = "src/pages/register/index.vue"
 
                 if (data.user_career.career_label) {
                   arr = data.user_career.career_label;
-                  _this.identity = arr.join(".");
-                  _this.identityList = data.user_career.career_label;
+                  _this2.identity = arr.join(".");
+                  _this2.identityList = data.user_career.career_label;
                 }
 
                 _context2.next = 10;
@@ -345,6 +362,11 @@ component.options.__file = "src/pages/register/index.vue"
   },
   onShow: function onShow() {
     this.getCareer("");
+  },
+  onLoad: function onLoad(options) {
+    if (options.from) {
+      this.from = options.from;
+    }
   }
 });
 

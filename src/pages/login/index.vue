@@ -138,7 +138,7 @@
     <!--隐私权益弹框-->
   </view>
 </template>
-
+å
 <script>
 import "./index.scss";
 import { wxlogin, getPhone, userRegister } from "../../api/index";
@@ -170,6 +170,7 @@ export default {
       },
       pageshow: "login",
       scene: "",
+      from: "",
     };
   },
   components: {
@@ -379,9 +380,8 @@ export default {
         userInfo.avatar = params.avatar;
         userInfo.nickname = params.nickname;
         wx.setStorageSync("userInfo", userInfo);
-        console.log(this.bind_type, this.login_type);
         if (this.login_type == 1) {
-          openPage("/pages/register/index");
+          openPage("/pages/register/index?from=" + this.from);
         } else {
           // 跳转首页
           wx.switchTab({
@@ -399,6 +399,11 @@ export default {
   created() {
     this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.scene = wx.getLaunchOptionsSync().scene;
+  },
+  onLoad: function (options) {
+    if (options.from) {
+      this.from = options.from;
+    }
   },
 };
 </script>

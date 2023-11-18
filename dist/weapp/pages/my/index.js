@@ -565,6 +565,41 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -761,6 +796,12 @@ component.options.__file = "src/pages/my/index.vue"
     goAbout: function goAbout() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/about/index");
     },
+    goResource: function goResource() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/resource/index");
+    },
+    goEnterGroup: function goEnterGroup() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/publicize/index");
+    },
     goFollowAndfans: function goFollowAndfans(type) {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/followAndfans/index?type=" + type);
     },
@@ -775,7 +816,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "jc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "qc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -850,7 +891,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -880,7 +921,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -913,7 +954,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "gc"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1614,6 +1655,31 @@ var render = function () {
           ]),
           _c(
             "view",
+            { staticClass: "item ub line-t", on: { tap: _vm.goEnterGroup } },
+            [
+              _c("view", { staticClass: "item_icon" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/weChat.png",
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "ub-f1" }, [
+                _c("view", { staticClass: "item_text" }, [_vm._v("加入社群")]),
+              ]),
+              _c("view", { staticClass: "arrow" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
+                  },
+                }),
+              ]),
+            ]
+          ),
+          _c(
+            "view",
             { staticClass: "item ub line-t", on: { tap: _vm.customerCenter } },
             [
               _c("view", { staticClass: "item_icon" }, [
@@ -1667,6 +1733,31 @@ var render = function () {
         ]),
         _c("view", { staticClass: "my-title" }, [_vm._v(" 其他服务 ")]),
         _c("view", { staticClass: "items myblock" }, [
+          _c(
+            "view",
+            { staticClass: "item ub line-t", on: { tap: _vm.goResource } },
+            [
+              _c("view", { staticClass: "item_icon" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/resource.png",
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "ub-f1" }, [
+                _c("view", { staticClass: "item_text" }, [_vm._v("领取资料")]),
+              ]),
+              _c("view", { staticClass: "arrow" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
+                  },
+                }),
+              ]),
+            ]
+          ),
           _c(
             "view",
             { staticClass: "item ub line-t", on: { tap: _vm.goAbout } },

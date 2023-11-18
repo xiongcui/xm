@@ -254,7 +254,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Nb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -284,7 +284,7 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Ob"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -317,27 +317,26 @@ component.options.__file = "src/packageAdd/pages/user/invite/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "Pb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteList */ "Tb"])(params);
 
               case 3:
                 res = _context4.sent;
                 _this4.list = res.data.data.items;
                 _this4.user_cnt = res.data.data.total.user_cnt;
                 _this4.coin_sum = res.data.data.total.coin_sum;
-                console.log(res);
-                _context4.next = 12;
+                _context4.next = 11;
                 break;
 
-              case 10:
-                _context4.prev = 10;
+              case 9:
+                _context4.prev = 9;
                 _context4.t0 = _context4["catch"](0);
 
-              case 12:
+              case 11:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 10]]);
+        }, _callee4, null, [[0, 9]]);
       }))();
     }
   },

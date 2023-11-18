@@ -89,21 +89,21 @@ export const request = (params) => {
       success: (res) => {
         // 上报接口性能
         wx.reportEvent &&
-          wx.reportEvent("wxdata perf_monitor", {
+          wx.reportEvent("wxdata_perf_monitor", {
             //接口ID，可以使用URL相似的ID，也可以另外命名
             wxdata_perf_monitor_id: params.url,
             //接口等级，0为普通，非0为重要，数值越大越重要。根据实际业务情况进行设置
-            "wxdata perf_monitor_leveu": 1,
+            wxdata_perf_monitor_level: 1,
             //错误码，0为调用成功，非0为调用失败
-            "wxdata perf_error_code": res.data.code == 200 ? 0 : -1,
+            wxdata_perf_error_code: res.data.code == 200 ? 0 : -1,
             //错误信息，选填，可以上报错误相关信息，方便后续排查问题
-            "wxdata perf_error_msg": res.data.msg,
+            wxdata_perf_error_msg: res.data.msg,
             //接口耗时，选填
-            "wxdata _perf_cost_time": +new Date() - start,
+            wxdata_perf_cost_time: +new Date() - start,
             //以下为补充字段，可额外上报其他监控信息，用于事件分析，非必填
-            "wxdata_perf_extra infol": JSON.stringify(res.data),
-            "wxdata perf_extra info2": "",
-            "wxdata perf_extra info3": "",
+            wxdata_perf_extra_info1: JSON.stringify(res.data),
+            wxdata_perf_extra_info2: "",
+            wxdata_perf_extra_info3: "",
           });
         if (res.data.code == 200) {
           resolve(res);

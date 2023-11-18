@@ -21,6 +21,7 @@
         auto-height
         placeholder="请描述您的约单内容，如您的特长、才艺、需求、地点、时间等（内容中不得含有任何联系方式，敏感语句、私房话题等，否则审核不予通过，至少7字以上）"
         v-model="desc"
+        maxlength="2000"
       />
     </view>
     <view class="works-item">

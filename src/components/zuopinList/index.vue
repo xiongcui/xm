@@ -59,7 +59,7 @@
                 item.author.province_name
               }}</text
             >
-            <text class="read">{{ item.statistic.read_cnt }}</text>
+            <!-- <text class="read">{{ item.statistic.read_cnt }}</text> -->
           </view>
         </view>
       </view>

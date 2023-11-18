@@ -74,6 +74,7 @@ export default defineAppConfig({
         "pages/user/rechargecoin/index",
         "pages/user/we-cropper/index",
         "pages/user/invite/index",
+        "pages/user/inviteGift/index",
         "pages/user/follow/index",
         "pages/user/platform/index",
         "pages/yuedan/add_yuedan/index",
@@ -144,7 +145,15 @@ export default defineAppConfig({
     {
       root: "packageVip/",
       name: "packagevip",
-      pages: ["pages/vip/index"],
+      pages: [
+        "pages/vip/index",
+        "pages/wallet/index",
+        "pages/walletAccount/index",
+        "pages/withdrawal/index",
+        "pages/accounDetails/index",
+        "pages/grade/index",
+        "pages/growthGuide/index",
+      ],
     },
     {
       root: "packageSet/",
@@ -178,6 +187,8 @@ export default defineAppConfig({
         "pages/photography/index",
         "pages/photographyDetail/index",
         "pages/match/index",
+        "pages/resource/index",
+        "pages/publicize/index",
       ],
     },
   ],
