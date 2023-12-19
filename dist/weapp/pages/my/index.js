@@ -611,6 +611,23 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -681,6 +698,14 @@ component.options.__file = "src/pages/my/index.vue"
     },
     personDetail: function personDetail() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+    },
+    goAd: function goAd() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/tonggao_manage/index");
     },
     goZhuye: function goZhuye() {
       if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
@@ -780,6 +805,14 @@ component.options.__file = "src/pages/my/index.vue"
       }
 
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
+    },
+    goApplication: function goApplication() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/signup/index");
     },
     myHuodong: function myHuodong() {
       if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
@@ -1382,35 +1415,15 @@ var render = function () {
               _c("text", [_vm._v("个人主页")]),
             ]
           ),
-          _c(
-            "view",
-            {
-              staticClass: "my-column-item",
-              on: { tap: _vm.goReleaseManagement },
-            },
-            [
-              _c("image", {
-                staticClass: "my-column-img",
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/release-management.png",
-                },
-              }),
-              _c("text", [_vm._v("发布管理")]),
-            ]
-          ),
-          _c(
-            "view",
-            { staticClass: "my-column-item", on: { tap: _vm.goZuopin } },
-            [
-              _c("image", {
-                staticClass: "my-column-img",
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/works-management.png",
-                },
-              }),
-              _c("text", [_vm._v("作品管理")]),
-            ]
-          ),
+          _c("view", { staticClass: "my-column-item", on: { tap: _vm.goAd } }, [
+            _c("image", {
+              staticClass: "my-column-img",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/release-management.png",
+              },
+            }),
+            _c("text", [_vm._v("通告管理")]),
+          ]),
           _c(
             "view",
             { staticClass: "my-column-item", on: { tap: _vm.goCollection } },
@@ -1454,7 +1467,7 @@ var render = function () {
           ),
           _c(
             "view",
-            { staticClass: "item ub line-t", on: { tap: _vm.myMoka } },
+            { staticClass: "item ub line-t", on: { tap: _vm.goApplication } },
             [
               _c("view", { staticClass: "item_icon" }, [
                 _c("image", {
@@ -1465,7 +1478,7 @@ var render = function () {
                 }),
               ]),
               _c("view", { staticClass: "ub-f1" }, [
-                _c("view", { staticClass: "item_text" }, [_vm._v("我的模卡")]),
+                _c("view", { staticClass: "item_text" }, [_vm._v("收到报名")]),
               ]),
               _c("view", { staticClass: "arrow" }, [
                 _c("image", {
@@ -1477,31 +1490,12 @@ var render = function () {
               ]),
             ]
           ),
-          _c(
-            "view",
-            { staticClass: "item ub line-t", on: { tap: _vm.myHuodong } },
-            [
-              _c("view", { staticClass: "item_icon" }, [
-                _c("image", {
-                  attrs: {
-                    mode: "aspectFit",
-                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/huodong.png",
-                  },
-                }),
-              ]),
-              _c("view", { staticClass: "ub-f1" }, [
-                _c("view", { staticClass: "item_text" }, [_vm._v("我的活动")]),
-              ]),
-              _c("view", { staticClass: "arrow" }, [
-                _c("image", {
-                  attrs: {
-                    mode: "aspectFit",
-                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
-                  },
-                }),
-              ]),
-            ]
-          ),
+          false
+            ? undefined
+            : _vm._e(),
+          false
+            ? undefined
+            : _vm._e(),
         ]),
         _c("view", { staticClass: "my-title" }, [_vm._v(" 我的服务 ")]),
         _c("view", { staticClass: "items myblock" }, [

@@ -128,7 +128,6 @@ component.options.__file = "src/pages/msg/index.vue"
 //
 //
 //
-//
 
 
 
@@ -219,11 +218,11 @@ component.options.__file = "src/pages/msg/index.vue"
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 } else {
                   wx.hideTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 }
 
@@ -318,88 +317,9 @@ var render = function () {
             ),
           ])
         : _vm._e(),
-      _c("view", { staticClass: "msg-icon" }, [
-        _c(
-          "view",
-          {
-            staticClass: "msg-icon-item",
-            on: {
-              tap: function ($event) {
-                return _vm.openUrl(1)
-              },
-            },
-          },
-          [
-            _c("image", {
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/msg/fabulous.png",
-              },
-            }),
-            _c("text", [_vm._v("赞与访客")]),
-            _vm.vote_visitor_cnt > 0
-              ? _c("view", { staticClass: "msg-num" }, [
-                  _vm._v(_vm._s(_vm.vote_visitor_cnt)),
-                ])
-              : _vm._e(),
-          ]
-        ),
-        _c(
-          "view",
-          {
-            staticClass: "msg-icon-item",
-            on: {
-              tap: function ($event) {
-                return _vm.openUrl(2)
-              },
-            },
-          },
-          [
-            _c("image", {
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/msg/yuepai.png",
-              },
-            }),
-            _c("text", [_vm._v("收到约拍")]),
-            _vm.invite_cnt > 0
-              ? _c("view", { staticClass: "msg-num" }, [
-                  _vm._v(_vm._s(_vm.invite_cnt)),
-                ])
-              : _vm._e(),
-          ]
-        ),
-        _c(
-          "view",
-          {
-            staticClass: "msg-icon-item",
-            on: {
-              tap: function ($event) {
-                return _vm.openUrl(3)
-              },
-            },
-          },
-          [
-            _c("image", {
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/msg/baoming.png",
-              },
-            }),
-            _c("text", [_vm._v("收到报名")]),
-            _vm.notice_cnt > 0
-              ? _c("view", { staticClass: "msg-num" }, [
-                  _vm._v(_vm._s(_vm.notice_cnt)),
-                ])
-              : _vm._e(),
-          ]
-        ),
-        _c("view", { staticClass: "msg-icon-item" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/msg/contact.png",
-            },
-          }),
-          _c("text", [_vm._v("收到联系")]),
-        ]),
-      ]),
+      false
+        ? undefined
+        : _vm._e(),
       _c(
         "view",
         {

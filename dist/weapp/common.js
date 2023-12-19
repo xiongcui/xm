@@ -9870,11 +9870,13 @@ var throttle = function throttle(fn, t) {
 };
 var platformMap = {
   XM: "虾米约拍",
-  YPTG: "约拍通告"
+  YPTG: "约拍通告",
+  ZCTG: "种草通告"
 };
 var platformLogo = {
   XM: "https://yuepai-oss.qubeitech.com/static/banner/xiamiyuepai.png",
-  YPTG: "https://yuepai-oss.qubeitech.com/static/banner/yuepaitonggao.png"
+  YPTG: "https://yuepai-oss.qubeitech.com/static/banner/yuepaitonggao.png",
+  ZCTG: "https://yuepai-oss.qubeitech.com/static/banner/zhongcaotonggao.png"
 };
 
 /***/ })

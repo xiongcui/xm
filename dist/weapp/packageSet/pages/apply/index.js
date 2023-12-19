@@ -234,7 +234,7 @@ component.options.__file = "src/packageSet/pages/apply/index.vue"
   name: "apply",
   data: function data() {
     return {
-      currentTab: 0,
+      currentTab: 1,
       type: "NE",
       // 页面配置
       winWidth: 0,
@@ -423,19 +423,6 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "apply" }, [
     _c("view", { staticClass: "tab" }, [
-      _c(
-        "view",
-        {
-          staticClass: "tab-item",
-          class: _vm.currentTab == 0 ? "on" : "",
-          on: {
-            tap: function ($event) {
-              return _vm.changeItem(0, "NE")
-            },
-          },
-        },
-        [_vm._v("约拍")]
-      ),
       _c(
         "view",
         {

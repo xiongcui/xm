@@ -724,7 +724,7 @@ var citySelector = requirePlugin("citySelector");
       interval: 5000,
       interval2: 10000,
       duration: 500,
-      componetActive: 0,
+      componetActive: 1,
       navActive: 0,
       headCurrent: 0,
       pageNum: 1,
@@ -1249,11 +1249,11 @@ var citySelector = requirePlugin("citySelector");
 
                 if (res.data.data.is_notify_warn) {
                   wx.showTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 } else {
                   wx.hideTabBarRedDot({
-                    index: 3
+                    index: 2
                   });
                 }
 
@@ -2115,27 +2115,26 @@ var citySelector = requirePlugin("citySelector");
       }))();
     }
   },
-  onPageScroll: function onPageScroll(e) {
-    var _this18 = this;
-
-    this.scrollTop = e.scrollTop;
-    this.setSwiperHeight();
-
-    if (!this.isclick) {
-      var query = wx.createSelectorQuery();
-      query.select(".componets").boundingClientRect(function (rect) {
-        var top = rect.top;
-
-        if (top <= 50) {
-          _this18.navShow = true;
-          _this18.autoplay = false;
-        } else {
-          _this18.navShow = false;
-          _this18.autoplay = true;
-        }
-      }).exec();
-    }
-  },
+  // onPageScroll: function (e) {
+  //   this.scrollTop = e.scrollTop;
+  //   this.setSwiperHeight();
+  //   if (!this.isclick) {
+  //     let query = wx.createSelectorQuery();
+  //     query
+  //       .select(".componets")
+  //       .boundingClientRect((rect) => {
+  //         let top = rect.top;
+  //         if (top <= 50) {
+  //           this.navShow = true;
+  //           this.autoplay = false;
+  //         } else {
+  //           this.navShow = false;
+  //           this.autoplay = true;
+  //         }
+  //       })
+  //       .exec();
+  //   }
+  // },
   onPullDownRefresh: function onPullDownRefresh() {
     //调用刷新时将执行的方法
     this.bannerList({
@@ -2162,7 +2161,7 @@ var citySelector = requirePlugin("citySelector");
     this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_12__[/* platformMap */ "e"];
   },
   onLoad: function onLoad(options) {
-    var _this19 = this;
+    var _this18 = this;
 
     if (options.scene) {
       wx.setStorageSync("invited_uuid", options.scene);
@@ -2200,7 +2199,7 @@ var citySelector = requirePlugin("citySelector");
     }
 
     setTimeout(function () {
-      _this19.added = true;
+      _this18.added = true;
     }, 10000);
   },
   // 从城市选择器插件返回后，在页面的onShow生命周期函数中能够调用插件接口，获取cityInfo结果对象
@@ -2520,167 +2519,12 @@ var render = function () {
             ],
             1
           ),
-          _c("view", { staticClass: "page-nav" }, [
-            _c("view", { staticClass: "page-nav-top" }, [
-              _c(
-                "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.goTakelist } },
-                [
-                  _c("image", {
-                    staticClass: "page-nav-img",
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/icon_model.png",
-                      "lazy-load": true,
-                    },
-                  }),
-                  _c("text", { staticClass: "page-nav-text" }, [
-                    _vm._v("要约模特"),
-                  ]),
-                ]
-              ),
-              _c(
-                "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.goTakelist } },
-                [
-                  _c("image", {
-                    staticClass: "page-nav-img",
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/take.png",
-                      "lazy-load": true,
-                    },
-                  }),
-                  _c("text", { staticClass: "page-nav-text" }, [
-                    _vm._v("要找摄影"),
-                  ]),
-                ]
-              ),
-              _c(
-                "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.goActivity } },
-                [
-                  _c("image", {
-                    staticClass: "page-nav-img",
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/activity-icon.png",
-                      "lazy-load": true,
-                    },
-                  }),
-                  _c("text", { staticClass: "page-nav-text" }, [
-                    _vm._v("活动通告"),
-                  ]),
-                ]
-              ),
-              _c(
-                "view",
-                {
-                  staticClass: "page-nav-item",
-                  on: { tap: _vm.goCompetition },
-                },
-                [
-                  _c("image", {
-                    staticClass: "page-nav-img",
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/competition-icon.png",
-                      "lazy-load": true,
-                    },
-                  }),
-                  _c("text", { staticClass: "page-nav-text" }, [
-                    _vm._v("拍摄比赛"),
-                  ]),
-                ]
-              ),
-            ]),
-            _c("view", { staticClass: "page-nav-bottom" }, [
-              _c(
-                "view",
-                {
-                  staticClass: "page-nav-box nav_bg1",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.goMore(0)
-                    },
-                  },
-                },
-                [
-                  _c("view", { staticClass: "page-nav-left" }, [
-                    _c("view", { staticClass: "page-nav-title" }, [
-                      _vm._v("约拍"),
-                    ]),
-                    _c("view", { staticClass: "page-nav-desc" }, [
-                      _vm._v("你约我拍"),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "page-nav-rt" }, [
-                    _c("image", {
-                      attrs: {
-                        "lazy-load": true,
-                        src: "https://yuepai-oss.qubeitech.com/static/images/common/photo_white.png",
-                      },
-                    }),
-                  ]),
-                ]
-              ),
-              _c(
-                "view",
-                {
-                  staticClass: "page-nav-box nav_bg2",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.goMore(1)
-                    },
-                  },
-                },
-                [
-                  _c("view", { staticClass: "page-nav-left" }, [
-                    _c("view", { staticClass: "page-nav-title" }, [
-                      _vm._v("通告"),
-                    ]),
-                    _c("view", { staticClass: "page-nav-desc" }, [
-                      _vm._v("招募公告"),
-                    ]),
-                  ]),
-                  _c("view", { staticClass: "page-nav-rt" }, [
-                    _c("image", {
-                      attrs: {
-                        "lazy-load": true,
-                        src: "https://yuepai-oss.qubeitech.com/static/images/common/tonggao_white.png",
-                      },
-                    }),
-                  ]),
-                ]
-              ),
-            ]),
-          ]),
-          _c(
-            "view",
-            { staticClass: "componets" },
-            _vm._l(_vm.componetsNav, function (item, index) {
-              return _c(
-                "view",
-                {
-                  key: index,
-                  class:
-                    index == _vm.componetActive
-                      ? "componets-nav-acitve"
-                      : "componets-nav",
-                  on: {
-                    tap: function ($event) {
-                      return _vm.componetClick(index)
-                    },
-                  },
-                },
-                [
-                  _c("view", { staticClass: "componets-title" }, [
-                    _vm._v(_vm._s(item.name)),
-                  ]),
-                  _c("view", { staticClass: "componets-btn" }, [
-                    _vm._v(_vm._s(item.desc)),
-                  ]),
-                ]
-              )
-            }),
-            0
-          ),
+          false
+            ? undefined
+            : _vm._e(),
+          false
+            ? undefined
+            : _vm._e(),
         ],
         1
       ),

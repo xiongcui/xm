@@ -578,32 +578,6 @@ var render = function () {
         },
         [_vm._v("通告")]
       ),
-      _c(
-        "view",
-        {
-          staticClass: "tab-item",
-          class: _vm.currentTab == 1 ? "on" : "",
-          on: {
-            tap: function ($event) {
-              return _vm.changeItem(1, "NE")
-            },
-          },
-        },
-        [_vm._v("约拍")]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "tab-item",
-          class: _vm.currentTab == 2 ? "on" : "",
-          on: {
-            tap: function ($event) {
-              return _vm.changeItem(2, "PH")
-            },
-          },
-        },
-        [_vm._v("作品")]
-      ),
     ]),
     _c(
       "view",

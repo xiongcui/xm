@@ -4,7 +4,7 @@
       <view class="msg-tips-left"> 开启推送通知，及时接收约拍通知 </view>
       <view class="msg-tips-rt" @tap="toopen"> 去开启 > </view>
     </view>
-    <view class="msg-icon">
+    <view class="msg-icon" v-if="false">
       <view class="msg-icon-item" @tap="openUrl(1)">
         <image
           src="https://yuepai-oss.qubeitech.com/static/images/msg/fabulous.png"
@@ -51,7 +51,6 @@
       </view>
       <view class="dian" v-if="mailbox_cnt >= 1"></view>
     </view>
-
     <view
       class="msg-notification"
       v-for="(item, index) in list"
@@ -161,11 +160,11 @@ export default {
         this.mailbox_cnt = res.data.data.mailbox_cnt;
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         } else {
           wx.hideTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         }
       } catch (error) {}

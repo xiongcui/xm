@@ -242,20 +242,20 @@
           ></image>
           <text>个人主页</text>
         </view>
-        <view class="my-column-item" @tap="goReleaseManagement">
+        <view class="my-column-item" @tap="goAd">
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/release-management.png"
             class="my-column-img"
           ></image>
-          <text>发布管理</text>
+          <text>通告管理</text>
         </view>
-        <view class="my-column-item" @tap="goZuopin">
+        <!-- <view class="my-column-item" @tap="goZuopin">
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/works-management.png"
             class="my-column-img"
           ></image>
           <text>作品管理</text>
-        </view>
+        </view> -->
         <view class="my-column-item" @tap="goCollection">
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/collect-management.png"
@@ -283,7 +283,24 @@
             ></image>
           </view>
         </view>
-        <view class="item ub line-t" @tap="myMoka">
+        <view class="item ub line-t" @tap="goApplication">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/moka.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">收到报名</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
+        <view class="item ub line-t" @tap="myMoka" v-if="false">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -300,7 +317,7 @@
             ></image>
           </view>
         </view>
-        <view class="item ub line-t" @tap="myHuodong">
+        <view class="item ub line-t" @tap="myHuodong" v-if="false">
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -634,6 +651,13 @@ export default {
     personDetail() {
       openPage("/packageAdd/pages/user/editinfor/index");
     },
+    goAd() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageTonggao/pages/tonggao_manage/index");
+    },
     goZhuye() {
       if (!isLogin()) {
         openPage("/pages/login/index");
@@ -720,6 +744,13 @@ export default {
         return false;
       }
       openPage("/packageMoka/pages/moka/myModelCardlist/index");
+    },
+    goApplication() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageMsg/pages/signup/index");
     },
     myHuodong() {
       if (!isLogin()) {

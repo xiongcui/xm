@@ -203,9 +203,11 @@ export const throttle = (fn, t) => {
 export const platformMap = {
   XM: "虾米约拍",
   YPTG: "约拍通告",
+  ZCTG: "种草通告",
 };
 
 export const platformLogo = {
   XM: "https://yuepai-oss.qubeitech.com/static/banner/xiamiyuepai.png",
   YPTG: "https://yuepai-oss.qubeitech.com/static/banner/yuepaitonggao.png",
+  ZCTG: "https://yuepai-oss.qubeitech.com/static/banner/zhongcaotonggao.png",
 };

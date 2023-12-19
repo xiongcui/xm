@@ -1,12 +1,12 @@
 <template>
   <view class="apply">
     <view class="tab">
-      <view
+      <!-- <view
         class="tab-item"
         :class="currentTab == 0 ? 'on' : ''"
         @tap="changeItem(0, 'NE')"
         >约拍</view
-      >
+      > -->
       <view
         class="tab-item"
         :class="currentTab == 1 ? 'on' : ''"
@@ -177,7 +177,7 @@ export default {
   name: "apply",
   data() {
     return {
-      currentTab: 0,
+      currentTab: 1,
       type: "NE",
       // 页面配置
       winWidth: 0,

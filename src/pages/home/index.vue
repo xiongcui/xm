@@ -121,7 +121,7 @@
           </swiper-item>
         </swiper>
       </view>
-      <view class="page-nav">
+      <view class="page-nav" v-if="false">
         <view class="page-nav-top">
           <view class="page-nav-item" @tap="goTakelist">
             <image
@@ -473,7 +473,7 @@
           </view>
         </view>
       </view> -->
-      <view class="componets">
+      <view class="componets" v-if="false">
         <view
           :class="
             index == componetActive ? 'componets-nav-acitve' : 'componets-nav'
@@ -645,7 +645,7 @@ export default {
       interval: 5000,
       interval2: 10000,
       duration: 500,
-      componetActive: 0,
+      componetActive: 1,
       navActive: 0,
       headCurrent: 0,
       pageNum: 1,
@@ -1087,11 +1087,11 @@ export default {
         let res = await notifyNumber(params);
         if (res.data.data.is_notify_warn) {
           wx.showTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         } else {
           wx.hideTabBarRedDot({
-            index: 3,
+            index: 2,
           });
         }
       } catch (error) {}
@@ -1499,26 +1499,26 @@ export default {
       } catch (error) {}
     },
   },
-  onPageScroll: function (e) {
-    this.scrollTop = e.scrollTop;
-    this.setSwiperHeight();
-    if (!this.isclick) {
-      let query = wx.createSelectorQuery();
-      query
-        .select(".componets")
-        .boundingClientRect((rect) => {
-          let top = rect.top;
-          if (top <= 50) {
-            this.navShow = true;
-            this.autoplay = false;
-          } else {
-            this.navShow = false;
-            this.autoplay = true;
-          }
-        })
-        .exec();
-    }
-  },
+  // onPageScroll: function (e) {
+  //   this.scrollTop = e.scrollTop;
+  //   this.setSwiperHeight();
+  //   if (!this.isclick) {
+  //     let query = wx.createSelectorQuery();
+  //     query
+  //       .select(".componets")
+  //       .boundingClientRect((rect) => {
+  //         let top = rect.top;
+  //         if (top <= 50) {
+  //           this.navShow = true;
+  //           this.autoplay = false;
+  //         } else {
+  //           this.navShow = false;
+  //           this.autoplay = true;
+  //         }
+  //       })
+  //       .exec();
+  //   }
+  // },
   onPullDownRefresh: function () {
     //调用刷新时将执行的方法
     this.bannerList({

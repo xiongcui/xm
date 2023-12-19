@@ -27,12 +27,12 @@ export default defineAppConfig({
         selectedIconPath: "assets/images/home-sel.png",
         text: "首页",
       },
-      {
-        pagePath: "pages/zuopin/index",
-        iconPath: "assets/images/zuopin.png",
-        selectedIconPath: "assets/images/zuopin-sel.png",
-        text: "作品",
-      },
+      // {
+      //   pagePath: "pages/zuopin/index",
+      //   iconPath: "assets/images/zuopin.png",
+      //   selectedIconPath: "assets/images/zuopin-sel.png",
+      //   text: "作品",
+      // },
       {
         pagePath: "pages/release/index",
         iconPath: "assets/images/release-sel.png",

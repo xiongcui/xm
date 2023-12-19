@@ -6,9 +6,6 @@ page {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: 100%;
   background: #ffffff;
   position: fixed;
@@ -16,9 +13,7 @@ page {
 }
 .collection .tab-item {
   color: #333333;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  width: 50%;
   font-size: 30rpx;
   text-align: center;
   line-height: 80rpx;

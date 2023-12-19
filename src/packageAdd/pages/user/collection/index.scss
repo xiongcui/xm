@@ -4,7 +4,7 @@ page {
 .collection {
   .tab {
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     width: 100%;
     background: #ffffff;
     position: fixed;
@@ -12,7 +12,8 @@ page {
   }
   .tab-item {
     color: #333333;
-    flex: 1;
+    // flex: 1;
+    width: 50%;
     font-size: 30px;
     text-align: center;
     line-height: 80rpx;

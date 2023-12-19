@@ -74,132 +74,24 @@ component.options.__file = "src/pages/release/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "release",
   methods: {
-    releaseUrl: function releaseUrl(type) {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
+    goRelease: function goRelease(type) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
+        this.publishVerify({
+          project_code: "NT"
+        }, "", type);
+      } else {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/pages/login/index");
-        return false;
       }
-
-      var url = "";
-
-      switch (type) {
-        case 1:
-          url = "/packageTonggao/pages/index/index";
-          break;
-
-        case 2:
-          url = "appointment/index";
-          break;
-
-        case 3:
-          this.publishVerify({
-            project_code: "PH"
-          });
-          break;
-
-        case 4:
-          url = "/packageMoka/pages/moka/modelcard/index";
-          break;
-
-        case 5:
-          url = "/packageActivity/pages/add/index";
-          break;
-      }
-
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])(url);
     },
-    publishVerify: function publishVerify(params) {
+    publishVerify: function publishVerify(params, row, type) {
+      var _this = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
@@ -212,7 +104,19 @@ component.options.__file = "src/pages/release/index.vue"
 
               case 3:
                 res = _context.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/zuopin/add_zuopin/index");
+
+                if (type) {
+                  if (type == 1) {
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
+                  }
+
+                  if (type == 2) {
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
+                  }
+                } else {
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + _this.code + "&type=" + row.value + "&key=" + row.key);
+                }
+
                 _context.next = 10;
                 break;
 
@@ -222,8 +126,22 @@ component.options.__file = "src/pages/release/index.vue"
 
                 if (_context.t0.data.error_code == 21030 || _context.t0.data.error_code == 21040) {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                } else if (_context.t0.data.error_code == 21060) {
+                  wx.showModal({
+                    title: "温馨提示",
+                    content: "还未完善个人资料，请前往完善个人资料",
+                    confirmText: "完善资料",
+                    success: function success(res) {
+                      if (res.confirm) {
+                        console.log("用户点击确定");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+                      } else if (res.cancel) {
+                        console.log("用户点击取消");
+                      }
+                    }
+                  });
                 } else {
-                  errortip(_context.t0.data.msg);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context.t0.data.msg);
                 }
 
               case 10:
@@ -255,196 +173,52 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("view", { staticClass: "release-box" }, [
-    _c("view", { staticClass: "release-title" }, [
-      _vm._v(" 你可以在这里发布 "),
-    ]),
-    _c("view", { staticClass: "release-list" }, [
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
-              return _vm.releaseUrl(2)
+    _c("view", { staticClass: "release-content" }, [
+      _c("view", { staticClass: "release-title" }, [_vm._v(" 选择发布类型 ")]),
+      _c("view", { staticClass: "release-list" }, [
+        _c(
+          "view",
+          {
+            staticClass: "release-item bgcolor1",
+            on: {
+              tap: function ($event) {
+                return _vm.goRelease(1)
+              },
             },
           },
-        },
-        [
-          _c("view", { staticClass: "release-left color2" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/publish2.png",
-                mode: "aspectFit",
+          [
+            _c("view", { staticClass: "release-sub-title" }, [
+              _vm._v(" 产品评测 "),
+            ]),
+            _c("view", { staticClass: "release-img" }, [
+              _c("image", {
+                attrs: { src: __webpack_require__(/*! ../../assets/images/product-icon.png */ "./src/assets/images/product-icon.png") },
+              }),
+            ]),
+          ]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: "release-item bgcolor2",
+            on: {
+              tap: function ($event) {
+                return _vm.goRelease(2)
               },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布约拍 "),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "发布互免、收费、付费、置换等约拍，邀约模特、摄影、妆造、修图等 "
-                ),
-              ]),
-            ]),
-          ]),
-          _c("image", {
-            staticClass: "hot",
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/hot.png",
-            },
-          }),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
-              return _vm.releaseUrl(3)
             },
           },
-        },
-        [
-          _c("view", { staticClass: "release-left color3" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/publish3.png",
-                mode: "aspectFit",
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布作品 "),
-              ]),
+          [
+            _c("view", { staticClass: "release-sub-title" }, [
+              _vm._v(" 探店体验 "),
             ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "分享自己的作品或照片，提升自己的约拍专业影响力，获得更多曝光"
-                ),
-              ]),
+            _c("view", { staticClass: "release-img" }, [
+              _c("image", {
+                attrs: { src: __webpack_require__(/*! ../../assets/images/store-icon.png */ "./src/assets/images/store-icon.png") },
+              }),
             ]),
-          ]),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
-              return _vm.releaseUrl(1)
-            },
-          },
-        },
-        [
-          _c("view", { staticClass: "release-left color1" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/publish1.png",
-                mode: "aspectFit",
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布通告 "),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "发布创作、影视、造型、种草、探店等通告，招募模特、演员、红人、主播等 "
-                ),
-              ]),
-            ]),
-          ]),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
-              return _vm.releaseUrl(4)
-            },
-          },
-        },
-        [
-          _c("view", { staticClass: "release-left color4" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/moka_icon.png",
-                mode: "aspectFit",
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 制作模卡 "),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "免费制作专业高清模卡，数百个模板可供选择，制作专业模卡的神器"
-                ),
-              ]),
-            ]),
-          ]),
-        ]
-      ),
-      _c(
-        "view",
-        {
-          staticClass: "release-item",
-          on: {
-            tap: function ($event) {
-              return _vm.releaseUrl(5)
-            },
-          },
-        },
-        [
-          _c("view", { staticClass: "release-left color5" }, [
-            _c("image", {
-              staticClass: "release-image",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/release-activity.png",
-                mode: "aspectFit",
-              },
-            }),
-          ]),
-          _c("view", { staticClass: "release-right" }, [
-            _c("view", [
-              _c("text", { staticClass: "release-list-title" }, [
-                _vm._v(" 发布活动 "),
-              ]),
-            ]),
-            _c("view", [
-              _c("text", { staticClass: "release-list-content" }, [
-                _vm._v(
-                  "发布主题摄影活动，满足多种场次、角色选择、随意分组的活动策划，提供个性化的活动组织服务"
-                ),
-              ]),
-            ]),
-          ]),
-        ]
-      ),
+          ]
+        ),
+      ]),
     ]),
   ])
 }
@@ -452,6 +226,30 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/product-icon.png":
+/*!********************************************!*\
+  !*** ./src/assets/images/product-icon.png ***!
+  \********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/product-icon.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/store-icon.png":
+/*!******************************************!*\
+  !*** ./src/assets/images/store-icon.png ***!
+  \******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/store-icon.png";
 
 /***/ }),
 

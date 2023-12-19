@@ -7,7 +7,7 @@
         @tap="changeItem(0, 'NT')"
         >通告</view
       >
-      <view
+      <!-- <view
         class="tab-item"
         :class="currentTab == 1 ? 'on' : ''"
         @tap="changeItem(1, 'NE')"
@@ -18,7 +18,7 @@
         :class="currentTab == 2 ? 'on' : ''"
         @tap="changeItem(2, 'PH')"
         >作品</view
-      >
+      > -->
     </view>
     <view class="content">
       <swiper
