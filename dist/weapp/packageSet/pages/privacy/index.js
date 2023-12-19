@@ -649,10 +649,29 @@ component.options.__file = "src/packageSet/pages/privacy/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "privacy",
+  data: function data() {
+    return {
+      platformMap: {}
+    };
+  },
   methods: {
     openUrl: function openUrl(url) {
       wx.setClipboardData({
@@ -671,6 +690,10 @@ component.options.__file = "src/packageSet/pages/privacy/index.vue"
         }
       });
     }
+  },
+  created: function created() {
+    this.globalData = this.globalData;
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformMap */ "e"];
   }
 });
 
@@ -700,7 +723,9 @@ var render = function () {
     _c("view", { staticClass: "privacy-title" }, [_vm._v(" 引言 ")]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        " 虾米约拍（以下简称为“我们”或“平台”）尊重并保护所有用户的个人信息及隐私安全。为同时给你提供更准确、有个性化的服务和更安全的互联网环境，我们依据《中华人民共和国网络安全法》《中华人民共和国个人信息保护法》《中华人民共和国民法典》《信息安全技术个人信息安全规范》以及其他相关法律法规和技术规范明确了我们收集/使用/对外提供个人信息的原则，进一步阐述了关于你个人信息的相关权利。 "
+        " " +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "（以下简称为“我们”或“平台”）尊重并保护所有用户的个人信息及隐私安全。为同时给你提供更准确、有个性化的服务和更安全的互联网环境，我们依据《中华人民共和国网络安全法》《中华人民共和国个人信息保护法》《中华人民共和国民法典》《信息安全技术个人信息安全规范》以及其他相关法律法规和技术规范明确了我们收集/使用/对外提供个人信息的原则，进一步阐述了关于你个人信息的相关权利。 "
       ),
     ]),
     _c("view", { staticClass: "privacy-p" }, [
@@ -715,13 +740,16 @@ var render = function () {
     ]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        " 请在使用/继续使用我们的各项产品与服务前，仔细阅读并充分理解本政策，并在需要时，按照本政策的指引，做出适当的选择。如果你不同意本政策的内容，将可能导致我们的产品与/或服务无法正常运行，或者无法达到我们拟达到的服务效果，你应立即停止访问/使用我们的产品与/或服务。你使用或继续使用我们提供的产品与/或服务的行为，都表示你充分理解和同意本《虾米约拍用户隐私政策》（包括更新版本）的全部内容。 "
+        " 请在使用/继续使用我们的各项产品与服务前，仔细阅读并充分理解本政策，并在需要时，按照本政策的指引，做出适当的选择。如果你不同意本政策的内容，将可能导致我们的产品与/或服务无法正常运行，或者无法达到我们拟达到的服务效果，你应立即停止访问/使用我们的产品与/或服务。你使用或继续使用我们提供的产品与/或服务的行为，都表示你充分理解和同意本《" +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "用户隐私政策》（包括更新版本）的全部内容。 "
       ),
     ]),
     _c("view", { staticClass: "privacy-title" }, [_vm._v(" 关于我们 ")]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        "虾米约拍的网站、H4、小程序及APP的经营者为北京趣呗科技有限公司。 "
+        _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "的网站、H4、小程序及APP的经营者为北京趣呗科技有限公司。 "
       ),
     ]),
     _c("view", { staticClass: "privacy-p" }, [
@@ -734,7 +762,9 @@ var render = function () {
     _c("view", { staticClass: "privacy-title" }, [_vm._v("你理解并同意：")]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        " 虾米约拍是深受大众青睐的优质摄影约拍平台，集摄影约拍、通告发布、活动组织、作品展示、探店种草等功能于一体，旨在为模特、摄影师、主播、演员、网红、传媒机构等参与主体，提供安全、快捷、高效、可靠的多元化服务。可以使你快速的找到与你有合作意向的对方，开始你的创作之旅。 "
+        " " +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "是深受大众青睐的优质摄影约拍平台，集摄影约拍、通告发布、活动组织、作品展示、探店种草等功能于一体，旨在为模特、摄影师、主播、演员、网红、传媒机构等参与主体，提供安全、快捷、高效、可靠的多元化服务。可以使你快速的找到与你有合作意向的对方，开始你的创作之旅。 "
       ),
     ]),
     _c("view", { staticClass: "privacy-p" }, [
@@ -958,7 +988,9 @@ var render = function () {
     ]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        "我们对虾米约拍在提供服务过程中，会调用你的主要设备权限汇总如下。你可以在设备的设置功能中选择关闭部分或全部权限。在不同设备中，权限显示方式及关闭方式可能有所不同，具体请参考设备及系统开发方说明或指引："
+        "我们对" +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "在提供服务过程中，会调用你的主要设备权限汇总如下。你可以在设备的设置功能中选择关闭部分或全部权限。在不同设备中，权限显示方式及关闭方式可能有所不同，具体请参考设备及系统开发方说明或指引："
       ),
     ]),
     _c("view", { staticClass: "privacy-table" }, [
@@ -1066,7 +1098,11 @@ var render = function () {
           "第三方平台会向我们同步你在该平台上使用的头像、昵称、地区（如有）、性别（如有），"
         ),
       ]),
-      _vm._v(" 以使你可以直接登录并使用虾米约拍。 "),
+      _vm._v(
+        " 以使你可以直接登录并使用" +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "。 "
+      ),
     ]),
     _c("view", { staticClass: "privacy-title" }, [
       _vm._v("征得授权同意的例外"),
@@ -1152,7 +1188,9 @@ var render = function () {
     ]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        "D. 合作的第三方SDK服务商：当你使用虾米约拍APP中由第三方提供的功能时，我们可能会接入由第三方提供的软件开发包（SDK）以实现相关功能。此时，第三方SDK服务商可能会收集与你相关的个人信息。 "
+        "D. 合作的第三方SDK服务商：当你使用" +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "APP中由第三方提供的功能时，我们可能会接入由第三方提供的软件开发包（SDK）以实现相关功能。此时，第三方SDK服务商可能会收集与你相关的个人信息。 "
       ),
       _c("text", { staticClass: "blod" }, [
         _vm._v(
@@ -1182,7 +1220,9 @@ var render = function () {
     ]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        "e. 云储存服务：为给你提供云端储存服务（你上传至虾米约拍的图片、音视频内容会储存在云端以及有关场景），第三方服务商可能会收集你的设备信息、网络相关信息、运营商信息； "
+        "e. 云储存服务：为给你提供云端储存服务（你上传至" +
+          _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "的图片、音视频内容会储存在云端以及有关场景），第三方服务商可能会收集你的设备信息、网络相关信息、运营商信息； "
       ),
     ]),
     _c("view", { staticClass: "privacy-p" }, [
@@ -1418,7 +1458,8 @@ var render = function () {
     ]),
     _c("view", { staticClass: "privacy-p" }, [
       _vm._v(
-        "虾米约拍中可能包括第三方产品和/或服务或链接至第三方提供的信息和/或服务， "
+        _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+          "中可能包括第三方产品和/或服务或链接至第三方提供的信息和/或服务， "
       ),
       _c("text", { staticClass: "blod" }, [
         _vm._v(

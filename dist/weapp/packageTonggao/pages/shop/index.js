@@ -705,7 +705,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Eb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Lb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -737,7 +737,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "fc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* submitNotice */ "oc"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -782,7 +782,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "rb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* noticePayment */ "xb"])(params);
 
               case 3:
                 res = _context3.sent;

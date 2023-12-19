@@ -1,0 +1,59 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.release-management .my-title {
+  font-weight: bold;
+  color: #333333;
+  font-size: 30rpx;
+  margin: 16rpx 30rpx;
+}
+
+.release-management .myblock {
+  margin: 16rpx;
+}
+
+.release-management .item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 74rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.release-management .items {
+  background: #ffffff;
+  padding: 0 30rpx;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+}
+
+.release-management .item_icon {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 16rpx;
+}
+
+.release-management .item_icon image {
+  width: 45rpx;
+  height: 45rpx;
+}
+
+.release-management .arrow image {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.release-management .arrow {
+  float: right;
+  position: absolute;
+  right: 0;
+}

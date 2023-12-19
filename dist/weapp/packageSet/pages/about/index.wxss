@@ -18,6 +18,7 @@ page {
   width: 150rpx;
   height: 150rpx;
   margin: 16rpx auto;
+  border-radius: 50%;
 }
 
 .about .about-item {

@@ -236,7 +236,7 @@ var _methods;
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* checkFollow */ "q"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* checkFollow */ "s"])(params);
 
             case 3:
               res = _context.sent;
@@ -266,7 +266,7 @@ var _methods;
             case 0:
               _context2.prev = 0;
               _context2.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subscribeEvent */ "hc"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subscribeEvent */ "qc"])(params);
 
             case 3:
               res = _context2.sent;

@@ -18,6 +18,7 @@
 .login-top .logo-img {
   width: 150rpx;
   height: 150rpx;
+  border-radius: 50%;
 }
 
 .login-top .desc {

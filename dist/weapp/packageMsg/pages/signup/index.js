@@ -1195,7 +1195,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyList */ "g"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyList */ "h"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1238,7 +1238,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyManage */ "h"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyManage */ "i"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1274,7 +1274,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "f"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "g"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1308,7 +1308,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "Lb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "Sb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1337,7 +1337,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "R"])(params);
 
               case 3:
                 res = _context5.sent;

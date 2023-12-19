@@ -167,7 +167,7 @@ component.options.__file = "src/packageSet/pages/customerCenter/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* categoryList */ "n"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* categoryList */ "o"])(params);
 
               case 3:
                 res = _context.sent;

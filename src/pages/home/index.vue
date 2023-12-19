@@ -23,8 +23,12 @@
                 :lazy-load="true"
               ></image>
             </view>
-            <view class="head_sign" @tap="showSign" v-if="!showlogin">
+            <view class="head_sign" @tap="goSign">
               <image
+                src="https://yuepai-oss.qubeitech.com/static/images/get-red-envelope.png"
+                :lazy-load="true"
+              ></image>
+              <!-- <image
                 src="https://yuepai-oss.qubeitech.com/static/images/icon_signed.jpg"
                 v-if="is_today_sign"
                 :lazy-load="true"
@@ -33,10 +37,12 @@
                 src="https://yuepai-oss.qubeitech.com/static/images/icon_sign.jpg"
                 v-else
                 :lazy-load="true"
-              ></image>
+              ></image> -->
             </view>
           </view>
-          <view class="head_title"> 虾米约拍 </view>
+          <view class="head_title">
+            {{ platformMap[globalData.NODE_ENV] }}
+          </view>
         </view>
         <view
           class="custom_tips_box"
@@ -123,7 +129,7 @@
               class="page-nav-img"
               :lazy-load="true"
             ></image>
-            <text class="page-nav-text">模特</text>
+            <text class="page-nav-text">要约模特</text>
           </view>
           <view class="page-nav-item" @tap="goTakelist">
             <image
@@ -131,7 +137,7 @@
               class="page-nav-img"
               :lazy-load="true"
             ></image>
-            <text class="page-nav-text">摄影</text>
+            <text class="page-nav-text">要找摄影</text>
           </view>
           <view class="page-nav-item" @tap="goActivity">
             <image
@@ -139,7 +145,7 @@
               class="page-nav-img"
               :lazy-load="true"
             ></image>
-            <text class="page-nav-text">活动</text>
+            <text class="page-nav-text">活动通告</text>
           </view>
           <view class="page-nav-item" @tap="goCompetition">
             <image
@@ -147,7 +153,7 @@
               class="page-nav-img"
               :lazy-load="true"
             ></image>
-            <text class="page-nav-text">赛事</text>
+            <text class="page-nav-text">拍摄比赛</text>
           </view>
         </view>
         <view class="page-nav-bottom">
@@ -551,23 +557,28 @@
     <!--未登录提示-->
     <ShowLogin v-if="showlogin" @getUserProfile="goLogin"></ShowLogin>
     <!--未登录提示-->
-    <!--特邀用户-->
-    <view class="invited-users" v-if="invitedVisible" @tap.stop="invitedClose">
-      <view class="invited-users-box">
-        <view class="invited-users-close" @tap.stop="invitedClose"></view>
-        <view class="invited-users-title">{{ invitedTitle }}</view>
-        <view class="invited-users-txt">
-          <text>{{ invitedText }}</text>
-        </view>
-        <view class="invited-users-btn" @tap.stop="invited">
-          {{ invitedBtn }}
-        </view>
+    <!--隐私权益弹框-->
+    <privacyPopup @noticeAgree="noticeAgree"></privacyPopup>
+    <!--隐私权益弹框-->
+    <!--专享红包弹框-->
+    <view
+      class="exclusive-red-envelope"
+      v-if="redEnvelopeVisible"
+      @tap="redEnvelopeClose"
+    >
+      <view class="exclusive-ct">
+        <image
+          @tap.stop="redEnvelopeClick"
+          :src="
+            redEnvelopeType
+              ? 'https://yuepai-oss.qubeitech.com/static/banner/newcomer_redpacket_login.png'
+              : 'https://yuepai-oss.qubeitech.com/static/banner/newcomer_redpacket_logout.png'
+          "
+          mode="widthFix"
+        ></image>
       </view>
     </view>
-    <!--特邀用户-->
-    <!--隐私权益弹框-->
-    <privacyPopup></privacyPopup>
-    <!--隐私权益弹框-->
+    <!--专享红包弹框-->
   </view>
 </template>
 
@@ -601,8 +612,10 @@ import {
   shareInviteInfo,
   sourceItems,
   popupLogs,
+  checkStatus,
+  checkEvent,
 } from "../../api/index";
-import { openPage, isLogin, errortip } from "../../utils/util";
+import { openPage, isLogin, errortip, platformMap } from "../../utils/util";
 import clickThrottle from "../../utils/clickThrottle";
 export default {
   name: "home",
@@ -610,10 +623,11 @@ export default {
     return {
       showlogin: false,
       visible: false,
+      redEnvelopeVisible: false,
+      redEnvelopeType: 0,
       noMore: false,
       showLoading: true,
       loading: false,
-      invitedVisible: false,
       topNum: 0,
       swiperheight: 144,
       tonggaoSwiperHeight: 240,
@@ -677,10 +691,7 @@ export default {
       winHeight: 0,
       swiperHeightCt: 0,
       added: false,
-      invitedTitle: "恭喜成为特邀用户",
-      invitedText: "现邀你参加快捷约拍活动↵发布约拍后将获得更多曝光机会",
-      invitedBtn: "立即参加",
-      invitedRedirectUrl: "",
+      platformMap: {},
     };
   },
   components: {
@@ -694,18 +705,23 @@ export default {
     privacyPopup,
   },
   methods: {
-    invitedClose() {
-      this.invitedVisible = false;
-      this.popupLogs({
-        click_event: 0,
-      });
+    noticeAgree() {
+      setTimeout(() => {
+        this.redEnvelopeVisible = false;
+      }, 10000);
     },
-    invited() {
-      this.popupLogs({
-        click_event: 1,
-      });
-      this.invitedVisible = false;
-      openPage(this.invitedRedirectUrl);
+    redEnvelopeClick() {
+      if (this.redEnvelopeType) {
+        this.checkEvent({
+          event_type: "newcomer_redpacket",
+          click_type: "done",
+        });
+      } else {
+        openPage("/pages/login/index");
+      }
+    },
+    redEnvelopeClose() {
+      this.redEnvelopeVisible = false;
     },
     changeTips() {
       this.added = !this.added;
@@ -726,6 +742,13 @@ export default {
     modelClose() {
       this.visible = false;
     },
+    goSign() {
+      if (isLogin()) {
+        openPage("/packageAdd/pages/user/coin/index");
+      } else {
+        openPage("/pages/login/index");
+      }
+    },
     goZhuye(uuid) {
       if (!clickThrottle()) return;
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
@@ -738,14 +761,15 @@ export default {
       }
     },
     goCompetition() {
-      openPage("/packageActivity/pages/match/index");
+      // openPage("/packageActivity/pages/match/index");
+      errortip("正在开发中");
     },
     signClose() {
       this.showModelSign = false;
     },
-    showSign() {
-      this.submitSign("");
-    },
+    // showSign() {
+    //   this.submitSign("");
+    // },
     goYuepaiDetail(oid, author_id) {
       openPage(
         "/packageAdd/pages/yuedan/yuedan_detail/index?oid=" +
@@ -1094,13 +1118,6 @@ export default {
               key: "token",
             });
           }
-          setTimeout(() => {
-            this.invitedVisible = res.data.data.advice.popup.is_homepage_popup;
-            this.invitedTitle = res.data.data.advice.popup.title;
-            this.invitedText = res.data.data.advice.popup.body;
-            this.invitedBtn = res.data.data.advice.popup.redirect_tip;
-            this.invitedRedirectUrl = res.data.data.advice.popup.redirect_url;
-          }, 3000);
         }
         this.yuepaiList = [];
         this.inviteRecommendList = [];
@@ -1438,6 +1455,26 @@ export default {
         let res = await popupLogs(params);
       } catch (error) {}
     },
+    async checkStatus(params) {
+      try {
+        let res = await checkStatus(params);
+        if (
+          res.data.data.newcomer &&
+          res.data.data.newcomer.redpacket_status == "todo"
+        ) {
+          this.redEnvelopeVisible = true;
+          setTimeout(() => {
+            this.redEnvelopeVisible = false;
+          }, 10000);
+        }
+      } catch (error) {}
+    },
+    async checkEvent(params) {
+      try {
+        let res = await checkEvent(params);
+        openPage("/packageVip/pages/wallet/index");
+      } catch (error) {}
+    },
     async submitSign(params) {
       try {
         let res = await submitSign(params);
@@ -1504,6 +1541,7 @@ export default {
   },
   created() {
     this.globalData = this.globalData;
+    this.platformMap = platformMap;
   },
   onLoad: function (options) {
     if (options.scene) {
@@ -1539,12 +1577,6 @@ export default {
         args: params,
       });
     }
-    // 检查微信小程序是否添加到我的
-    // wx.checkIsAddedToMyMiniProgram({
-    //   success: (res) => {
-    //     that.added = res.added;
-    //   },
-    // });
     setTimeout(() => {
       this.added = true;
     }, 10000);
@@ -1564,8 +1596,12 @@ export default {
     if (isLogin()) {
       this.showlogin = false;
       this.visible = false;
+      this.redEnvelopeType = 1;
+      this.checkStatus("");
     } else {
       this.showlogin = true;
+      this.redEnvelopeVisible = true;
+      this.redEnvelopeType = 0;
     }
   },
   onHide() {

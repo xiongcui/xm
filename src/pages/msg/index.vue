@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import { openPage, isLogin } from "../../utils/util";
+import { openPage, isLogin, platformMap } from "../../utils/util";
 import { notifyNumber, msgList } from "../../api/index";
 import "./index.scss";
 export default {
@@ -92,6 +92,7 @@ export default {
         create_time: "",
       },
       mailbox_cnt: 0,
+      platformMap: {},
     };
   },
   methods: {
@@ -121,10 +122,13 @@ export default {
       }
     },
     toopen() {
+      let name = this.platformMap[this.globalData.NODE_ENV];
       wx.showModal({
         title: "温馨提示",
         content:
-          "微信关注【虾米约拍】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
+          "微信关注【" +
+          name +
+          "】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
         success: function (res) {
           if (res.confirm) {
             openPage("/packageAdd/pages/user/follow/index");
@@ -177,6 +181,10 @@ export default {
   onShow() {
     this.notifyNumber("");
     this.msgList("");
+  },
+  created() {
+    this.globalData = this.globalData;
+    this.platformMap = platformMap;
   },
 };
 </script>

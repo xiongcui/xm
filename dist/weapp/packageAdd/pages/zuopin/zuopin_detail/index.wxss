@@ -33,6 +33,18 @@ page {
   display: flex;
 }
 
+.zuopin_detail .zuopin_top_box {
+  position: relative;
+}
+
+.zuopin_detail .user-vip {
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 0;
+  top: 84rpx;
+}
+
 .zuopin_detail .zuopin_author_info {
   display: -webkit-flex;
   display: -ms-flexbox;

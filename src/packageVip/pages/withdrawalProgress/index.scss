@@ -1,0 +1,141 @@
+page {
+  background-color: #f4f4f4;
+}
+.w-progress {
+  .withdrawal-box {
+    margin: 16px;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 16px;
+  }
+  .withdrawal-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 30px;
+    padding-left: 16px;
+  }
+  .step {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .item_left {
+    width: 60rpx;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .line {
+    width: 2rpx;
+    height: 85%;
+    align-self: flex-end;
+    background-color: gray;
+  }
+
+  .iconbox {
+    width: 100%;
+    height: 60rpx;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+  }
+
+  .circle {
+    width: 30rpx;
+    height: 30rpx;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+  }
+  .lineActive {
+    background-color: #65b85d;
+  }
+  .active {
+    background: url("https://yuepai-oss.qubeitech.com/static/images/common/sucess.png")
+      no-repeat #ffffff;
+    background-size: 100%;
+  }
+
+  .item_right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10rpx;
+    margin-right: 10rpx;
+  }
+
+  .item_title {
+    width: 100%;
+    height: 30rpx;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 26rpx;
+    justify-content: space-between;
+  }
+  .item_title_rt {
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: normal;
+    font-size: 24px;
+  }
+
+  .item_content {
+    width: 100%;
+  }
+
+  .cntext {
+    width: 100%;
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: normal;
+    margin-bottom: 30px;
+    margin-top: 6px;
+  }
+  .withdrawal-info {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 16px;
+    .withdrawal-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding: 0px 16px;
+      .withdrawal-left {
+        font-size: 24rpx;
+        color: rgba(0, 0, 0, 0.4);
+      }
+      .withdrawal-rt {
+        font-size: 24rpx;
+        color: #333333;
+      }
+    }
+  }
+  .withdrawal-tips {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0px;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    bottom: 0px;
+    .withdrawal-p {
+      margin-bottom: 16px;
+    }
+  }
+  .no-withdrawal-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px 50px 0px;
+    color: #333333;
+    font-size: 26px;
+    image {
+      width: 28px;
+      height: 28px;
+      margin-right: 16px;
+    }
+  }
+}

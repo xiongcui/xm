@@ -1,124 +1,31 @@
+page {
+  background-color: #f4f4f4;
+}
+
 .invite {
   text-align: center;
 }
-.invite .invite-title {
-  font-size: 50rpx;
+
+.invite .invite-top {
+  font-size: 26rpx;
   color: #333333;
-  text-align: center;
-  margin: 30rpx 0;
+  padding: 16rpx;
 }
-.invite .invite-txt {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 30rpx;
-}
-.invite .invite-btn {
-  font-size: 34rpx;
-  width: 80%;
-  height: 80rpx;
-  line-height: 80rpx;
-  margin: 100rpx auto 30rpx auto;
-  background-color: #ff5355;
-  color: #ffffff;
-  border-radius: 8rpx;
-}
-.invite .cumulative {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 34rpx;
-}
-.invite .red {
-  color: red;
-}
-.invite .invite-mask {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-.invite .invite-mask .mask-box {
+
+.invite .invite-list,
+.invite .invite-top {
   background: #ffffff;
-  padding: 30rpx;
-  position: absolute;
-  bottom: 0;
-  width: calc(100% - 60rpx);
-  border-radius: 16rpx 16rpx 0 0;
-}
-.invite .invite-mask .mask-box .mask-title {
-  margin-bottom: 30rpx;
-  text-align: center;
-}
-.invite .invite-mask .mask-box .mask-ct {
-  position: relative;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-}
-.invite .invite-mask .mask-box .mask-item {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 30rpx;
-  text-align: left;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.invite .invite-mask .mask-box .mask-item image {
-  width: 60rpx;
-  height: 50rpx;
-  margin-right: 16rpx;
-}
-.invite .invite-mask .mask-box .mask-item .mask-share {
-  color: #333333 !important;
-  font-size: 32rpx;
-}
-.invite .invite-mask .mask-box .mask-item .mask-share-p {
-  color: rgba(0, 0, 0, 0.5);
-  font-size: 28rpx;
-}
-.invite .invite-mask .mask-box .close {
-  width: 50rpx;
-  height: 50rpx;
-  position: absolute;
-  top: 16rpx;
-  right: 10rpx;
-  background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png") no-repeat;
-  background-size: 38rpx;
-}
-.invite .invite-mask .mask-img {
-  width: 80%;
-  height: 90vh;
-}
-.invite .invite-mask .mask-save {
-  background-color: #fffb05;
-  color: #333333;
-  height: 70rpx;
-  line-height: 70rpx;
-  width: 80%;
-  margin: 16rpx auto 0 auto;
+  margin: 16rpx;
   border-radius: 8rpx;
 }
-.invite .invite-mask .share-btn {
-  background-color: transparent;
-  text-align: left;
-  line-height: normal;
-  padding: 0;
-}
-.invite .invite-list {
-  background: #f7f7f7;
-  margin: 0 16rpx;
-  border-radius: 8rpx;
-}
+
 .invite .invite-list-title {
   margin: 16rpx auto;
   font-size: 32rpx;
   color: #333333;
 }
-.invite .invite-item {
+
+.invite .invite-p {
   padding: 16rpx 30rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -128,11 +35,37 @@
           justify-content: space-between;
   color: rgba(0, 0, 0, 0.5);
 }
-.invite .invite-num {
-  background: #ff5355;
-  color: #ffffff;
-  padding: 2rpx 6rpx;
-  border-radius: 30rpx;
-  font-size: 30rpx;
-  margin-right: 16rpx;
+
+.invite .invite-item {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.invite .blod {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.invite .none-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 180rpx;
+  color: #333;
+}
+
+.invite .none-img {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 16rpx;
 }

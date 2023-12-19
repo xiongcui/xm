@@ -13,7 +13,6 @@ export default defineAppConfig({
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
-    navigationBarTitleText: "虾米约拍",
     navigationBarTextStyle: "black",
   },
   tabBar: {
@@ -89,6 +88,8 @@ export default defineAppConfig({
         "pages/user/baiduRealnameAuth/index",
         "pages/user/homelist/index",
         "pages/user/takelist/index",
+        "pages/user/releaseManagement/index",
+        "pages/user/rechargeWallet/index",
         "pages/guideTips/index",
       ],
     },
@@ -153,6 +154,7 @@ export default defineAppConfig({
         "pages/accounDetails/index",
         "pages/grade/index",
         "pages/growthGuide/index",
+        "pages/withdrawalProgress/index",
       ],
     },
     {

@@ -554,7 +554,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* publicConfig */ "Lb"])(params);
 
               case 3:
                 _res = _context.sent;
@@ -600,7 +600,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "bc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* subNotePhoto */ "kc"])(params);
 
               case 3:
                 _res2 = _context2.sent;

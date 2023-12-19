@@ -47,8 +47,28 @@ component.options.__file = "src/packageVip/pages/wallet/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageVip/pages/wallet/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageVip/pages/wallet/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index.js */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -101,12 +121,97 @@ component.options.__file = "src/packageVip/pages/wallet/index.vue"
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "wallet",
   data: function data() {
     return {
-      currentTab: 0
+      currentTab: 0,
+      wallet: 0,
+      wallet_money: 0,
+      wallet_virtual: 0,
+      list: []
     };
+  },
+  methods: {
+    goWithdrawal: function goWithdrawal() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/walletAccount/index");
+    },
+    goRechargeWallet: function goRechargeWallet() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargeWallet/index");
+    },
+    goWithdrawalProgress: function goWithdrawalProgress(order_no) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/withdrawalProgress/index?order_no=" + order_no);
+    },
+    acctInfo: function acctInfo(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* acctInfo */ "a"])(params);
+
+              case 3:
+                res = _context.sent;
+                _this.wallet = res.data.data.wallet.info.wallet;
+                _this.wallet_money = res.data.data.wallet.info.wallet_money;
+                _this.wallet_virtual = res.data.data.wallet.info.wallet_virtual;
+                _context.next = 11;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
+    },
+    walletOrder: function walletOrder(params) {
+      var _this2 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.prev = 0;
+                _context2.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* walletOrder */ "Oc"])(params);
+
+              case 3:
+                res = _context2.sent;
+                _this2.list = res.data.data.items;
+                _context2.next = 9;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](0);
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[0, 7]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.acctInfo("");
+    this.walletOrder("");
   }
 });
 
@@ -132,7 +237,9 @@ var render = function () {
       _c("view", { staticClass: "wallet-account" }, [
         _c("view", { staticClass: "total-balance" }, [
           _c("text", { staticClass: "total-label" }, [_vm._v("总余额")]),
-          _c("text", { staticClass: "total-num" }, [_vm._v("¥200")]),
+          _c("text", { staticClass: "total-num" }, [
+            _vm._v("¥" + _vm._s(_vm.wallet)),
+          ]),
         ]),
         _c("view", { staticClass: "sub-account-box" }, [
           _c("view", { staticClass: "sub-account" }, [
@@ -140,7 +247,7 @@ var render = function () {
               _vm._v("现金账户"),
             ]),
             _c("view", { staticClass: "sub-account-num" }, [
-              _vm._v("150.00元"),
+              _vm._v(_vm._s(_vm.wallet_money) + "元"),
             ]),
           ]),
           _c("view", { staticClass: "sub-account" }, [
@@ -148,14 +255,22 @@ var render = function () {
               _vm._v("佣金账户"),
             ]),
             _c("view", { staticClass: "sub-account-num" }, [
-              _vm._v("150.00元"),
+              _vm._v(_vm._s(_vm.wallet_virtual) + "元"),
             ]),
           ]),
         ]),
       ]),
       _c("view", { staticClass: "wallet-account-btns" }, [
-        _c("view", { staticClass: "recharge" }, [_vm._v("充值")]),
-        _c("view", { staticClass: "withdrawal" }, [_vm._v("提现")]),
+        _c(
+          "view",
+          { staticClass: "recharge", on: { tap: _vm.goRechargeWallet } },
+          [_vm._v("充值")]
+        ),
+        _c(
+          "view",
+          { staticClass: "withdrawal", on: { tap: _vm.goWithdrawal } },
+          [_vm._v("提现")]
+        ),
       ]),
     ]),
     _c("view", { staticClass: "wallet-ct" }, [
@@ -167,25 +282,56 @@ var render = function () {
         ),
       ]),
       _c("view", { staticClass: "wallet-list" }, [
-        _c("view", { staticClass: "detailed" }, [
-          _c("view", { staticClass: "detailed-list" }, [
-            _c("view", { staticClass: "coin-task" }, [
-              _c("view", { staticClass: "task-info" }, [
-                _c("view", { staticClass: "task-info-box" }, [
-                  _c("text", { staticClass: "task-title" }, [
-                    _vm._v("标题标题标题"),
-                  ]),
-                  _c("view", { staticClass: "task-num" }, [_vm._v("+10.00")]),
-                ]),
-                _c("view", { staticClass: "task-tips" }, [
-                  _c("text", [_vm._v("2023-2-3 17:30:00")]),
-                  _vm._v(" "),
-                  _c("text", [_vm._v("余额：10.00")]),
-                ]),
-              ]),
+        _vm.list.length
+          ? _c("view", { staticClass: "detailed" }, [
+              _c(
+                "view",
+                { staticClass: "detailed-list" },
+                _vm._l(_vm.list, function (item, index) {
+                  return _c(
+                    "view",
+                    {
+                      key: index,
+                      staticClass: "coin-task",
+                      on: {
+                        tap: function ($event) {
+                          return _vm.goWithdrawalProgress(item.order_no)
+                        },
+                      },
+                    },
+                    [
+                      _c("view", { staticClass: "task-info" }, [
+                        _c("view", { staticClass: "task-info-box" }, [
+                          _c("text", { staticClass: "task-title" }, [
+                            _vm._v(_vm._s(item.order_name)),
+                          ]),
+                          _c("view", { staticClass: "task-num" }, [
+                            _vm._v(_vm._s(item.curr_amount)),
+                          ]),
+                        ]),
+                        _c("view", { staticClass: "task-tips" }, [
+                          _c("text", [_vm._v(_vm._s(item.create_time))]),
+                          _c("text", [
+                            _vm._v("余额：" + _vm._s(item.bala_amount)),
+                          ]),
+                        ]),
+                      ]),
+                    ]
+                  )
+                }),
+                0
+              ),
+            ])
+          : _c("view", { staticClass: "none-data" }, [
+              _c("image", {
+                staticClass: "none-img",
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/none.png",
+                  mode: "aspectFill",
+                },
+              }),
+              _c("view", [_vm._v("当前暂无信息哦～")]),
             ]),
-          ]),
-        ]),
       ]),
     ]),
   ])
@@ -264,5 +410,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageVip/pages/wallet/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageVip/pages/wallet/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

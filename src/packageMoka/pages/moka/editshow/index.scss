@@ -27,27 +27,73 @@
   }
   .my-head {
     display: flex;
-    padding: 30px 30px 4px 30px;
+    padding: 30px 30px 6px 30px;
+    .my-head-left {
+      position: relative;
+      align-items: center;
+      display: flex;
+    }
+    .user-vip {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      right: 0px;
+      top: 96px;
+    }
     .head-img {
       width: 120px;
       height: 120px;
-      margin-right: 16px;
       border-radius: 50%;
+    }
+    .my-head-top {
+      display: flex;
     }
     .my-head-name {
       font-size: 36px;
       color: #fffefb;
-      margin-top: 10px;
     }
-
+    .my-head-vip {
+      background: url("https://yuepai-oss.qubeitech.com/static/images/level-icon.png")
+        left center no-repeat;
+      background-size: 128px 64px;
+      color: #ffffff;
+      font-size: 24px;
+      width: 128px;
+      display: flex;
+      align-items: center;
+      text-indent: 60px;
+      transform: scale(0.7);
+    }
     .my-head-ct {
       width: 64%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .my-account {
       color: #fffefb;
       font-size: 26px;
       margin-bottom: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      .my-account-item {
+        margin-right: 30px;
+      }
     }
+    // .my-head-name {
+    //   font-size: 36px;
+    //   color: #fffefb;
+    //   margin-top: 10px;
+    // }
+
+    // .my-head-ct {
+    //   width: 64%;
+    // }
+    // .my-account {
+    //   color: #fffefb;
+    //   font-size: 26px;
+    //   margin-bottom: 5px;
+    // }
     .my-info {
       color: #fffefb;
       font-size: 26px;
@@ -57,7 +103,7 @@
     }
     .head-tag-box {
       display: flex;
-      margin-left: 16px;
+      margin-right: 16px;
     }
     .head-tag {
       display: flex;
@@ -72,7 +118,7 @@
     .head-tag-img {
       width: 100px;
       height: 30px;
-      margin-left: 16px;
+      margin-right: 16px;
     }
     .my-head-rt {
       display: flex;

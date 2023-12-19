@@ -47,8 +47,15 @@ component.options.__file = "src/packageVip/pages/withdrawal/index.vue"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "./src/packageVip/pages/withdrawal/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js */ "./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js");
+/* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageVip/pages/withdrawal/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _api_index_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../api/index.js */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+
+
 //
 //
 //
@@ -88,12 +95,110 @@ component.options.__file = "src/packageVip/pages/withdrawal/index.vue"
 //
 //
 
+
+
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "withdrawal",
   data: function data() {
     return {
-      blance: ""
+      blance: "",
+      amount: "",
+      type: 0
     };
+  },
+  methods: {
+    fullWithdrawal: function fullWithdrawal() {
+      this.blance = this.amount;
+    },
+    submit: function submit() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
+      this.wxTransfer({
+        amount: Number(this.blance),
+        acct_type: this.type ? "money" : "virtual"
+      });
+    },
+    acctInfo: function acctInfo(params) {
+      var _this = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* acctInfo */ "a"])(params);
+
+              case 3:
+                res = _context.sent;
+
+                if (_this.type == 1) {
+                  _this.amount = res.data.data.wallet.money.amount;
+                } else {
+                  _this.amount = res.data.data.wallet.virtual.amount;
+                }
+
+                _context.next = 9;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+              case 9:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    wxTransfer: function wxTransfer(params) {
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee2() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("正在提现中，请耐心等待！");
+                _context2.prev = 1;
+                _context2.next = 4;
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* wxTransfer */ "Uc"])(params);
+
+              case 4:
+                res = _context2.sent;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/withdrawalProgress/index?order_no=" + res.data.data.order_no);
+                _context2.next = 10;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](1);
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 8]]);
+      }))();
+    }
+  },
+  mounted: function mounted() {
+    this.acctInfo("");
+  },
+  onLoad: function onLoad(options) {
+    if (options.type == 0) {
+      this.type = options.type;
+      wx.setNavigationBarTitle("佣金账户提现");
+    }
+
+    if (options.type == 1) {
+      this.type = options.type;
+      wx.setNavigationBarTitle("现金账户提现");
+    }
   }
 });
 
@@ -165,8 +270,14 @@ var render = function () {
         }),
       ]),
       _c("view", { staticClass: "withdrawal-blance-tips" }, [
-        _c("text", { staticClass: "blance-tips" }, [_vm._v("可提现余额¥0.00")]),
-        _c("text", { staticClass: "full-withdrawal" }, [_vm._v("全部提现")]),
+        _c("text", { staticClass: "blance-tips" }, [
+          _vm._v("可提现余额¥" + _vm._s(_vm.amount)),
+        ]),
+        _c(
+          "text",
+          { staticClass: "full-withdrawal", on: { tap: _vm.fullWithdrawal } },
+          [_vm._v("全部提现")]
+        ),
       ]),
     ]),
     _c("view", { staticClass: "immediate-withdrawal" }, [
@@ -208,7 +319,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageVip/pages/withdrawal/index.vue");
 
 
-var config = {"navigationBarTitleText":"现金账户提现"};
+var config = {"navigationBarTitleText":"账户提现"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageVip/pages/withdrawal/index', {root:{cn:[]}}, config || {}))
@@ -250,5 +361,5 @@ var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageC
 
 /***/ })
 
-},[["./src/packageVip/pages/withdrawal/index.vue","runtime","taro","vendors"]]]);
+},[["./src/packageVip/pages/withdrawal/index.vue","runtime","taro","vendors","common"]]]);
 //# sourceMappingURL=index.js.map

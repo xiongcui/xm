@@ -1,0 +1,194 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.w-progress .withdrawal-box {
+  margin: 16rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 16rpx;
+}
+
+.w-progress .withdrawal-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+  padding-left: 16rpx;
+}
+
+.w-progress .step {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.w-progress .item_left {
+  width: 60rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.w-progress .line {
+  width: 2rpx;
+  height: 85%;
+  -webkit-align-self: flex-end;
+      -ms-flex-item-align: end;
+          align-self: flex-end;
+  background-color: gray;
+}
+
+.w-progress .iconbox {
+  width: 100%;
+  height: 60rpx;
+  position: absolute;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.w-progress .circle {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.4);
+  -webkit-flex-shrink: 0;
+      -ms-flex-negative: 0;
+          flex-shrink: 0;
+}
+
+.w-progress .lineActive {
+  background-color: #65b85d;
+}
+
+.w-progress .active {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/sucess.png") no-repeat #ffffff;
+  background-size: 100%;
+}
+
+.w-progress .item_right {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.w-progress .item_title {
+  width: 100%;
+  height: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  font-size: 26rpx;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.w-progress .item_title_rt {
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: normal;
+  font-size: 24rpx;
+}
+
+.w-progress .item_content {
+  width: 100%;
+}
+
+.w-progress .cntext {
+  width: 100%;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: normal;
+  margin-bottom: 30rpx;
+  margin-top: 6rpx;
+}
+
+.w-progress .withdrawal-info {
+  border-top: 1rpx solid #e5e5e5;
+  padding-top: 16rpx;
+}
+
+.w-progress .withdrawal-info .withdrawal-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 16rpx;
+  padding: 0 16rpx;
+}
+
+.w-progress .withdrawal-info .withdrawal-item .withdrawal-left {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.w-progress .withdrawal-info .withdrawal-item .withdrawal-rt {
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.w-progress .withdrawal-tips {
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 40rpx 0;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  bottom: 0;
+}
+
+.w-progress .withdrawal-tips .withdrawal-p {
+  margin-bottom: 16rpx;
+}
+
+.w-progress .no-withdrawal-data {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20rpx 0 50rpx 0;
+  color: #333333;
+  font-size: 26rpx;
+}
+
+.w-progress .no-withdrawal-data image {
+  width: 28rpx;
+  height: 28rpx;
+  margin-right: 16rpx;
+}

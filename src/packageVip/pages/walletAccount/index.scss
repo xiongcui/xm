@@ -48,29 +48,36 @@ page {
       margin-bottom: 16px;
     }
     .progress-box {
-      position: relative;
+      //   min-width: 200px;
+      //   margin-left: -100px;
+      //   text-align: center;
+      position: absolute;
+      left: 0;
+      //   display: flex;
+      //   flex-direction: column;
+      z-index: 999;
     }
     .progress-circle {
       width: 20px;
       height: 20px;
       border-radius: 10px;
-      position: absolute;
-      left: 80%;
-      margin-left: -10px;
-      top: 50%;
       margin-top: -6px;
-      z-index: 99;
       background: #ec4b46;
     }
     .progress-tips {
+      min-width: 150px;
       padding: 4px 16px;
-      font-size: 24px;
+      font-size: 22px;
       color: #333333;
       background: #ecad65;
       border-radius: 8px;
       position: absolute;
-      top: -70px;
-      right: 0px;
+      top: -80px;
+      left: 0px;
+      text-align: center;
+      //   right: 0px;
+      //   margin-top: -80px;
+      //   margin-left: -20px;
     }
     .triangle {
       width: 0;
@@ -79,30 +86,63 @@ page {
       border-right: 20px solid transparent;
       border-left: 20px solid transparent;
       position: absolute;
-      bottom: 16px;
-      left: 80%;
-      margin-left: -10px;
+      bottom: -16px;
+      left: 10px;
     }
-    .commission-right image {
-      width: 120px;
-      height: 120px;
+    .commission-right {
+      position: relative;
+      z-index: 99999;
+      .commission-price-box {
+        position: absolute;
+        top: 16px;
+        width: 100%;
+        color: #ec4b46;
+        font-weight: bold;
+        text-align: center;
+        .symbol {
+          font-size: 22px;
+        }
+        .price {
+          font-size: 32px;
+        }
+        .unit {
+          font-size: 28px;
+        }
+      }
+      image {
+        width: 120px;
+        height: 120px;
+      }
     }
     .commission-bt {
+      border-top: 1px solid #e5e5e5;
+    }
+    .commission-bt-item {
+      padding-top: 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid #e5e5e5;
-      padding-top: 16px;
     }
     .commission-tips {
       font-size: 22px;
       color: #c8c8c8;
     }
     .commission-btn {
+      width: 100px;
+      text-align: center;
       padding: 4px 16px;
       border: 2px solid #c8c8c8;
       border-radius: 22px;
       color: #c8c8c8;
+      font-size: 22px;
+    }
+    .commission-btn2 {
+      width: 100px;
+      text-align: center;
+      padding: 4px 16px;
+      border: 2px solid #ecad65;
+      border-radius: 22px;
+      color: #ecad65;
       font-size: 22px;
     }
   }
@@ -123,5 +163,31 @@ page {
       border: 2px solid #ecad65;
       color: #ecad65;
     }
+  }
+  .commission-modal {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99999;
+    .commission-ct {
+      width: 600px;
+      image {
+        width: 600px;
+      }
+    }
+  }
+  .share-btn {
+    background-color: transparent;
+    text-align: left;
+    line-height: normal;
+    padding: 0;
   }
 }

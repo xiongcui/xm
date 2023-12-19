@@ -8,8 +8,8 @@ page {
     border-radius: 12px 12px 0px 0px;
   }
   .wallet-account {
-    background: url("../../../assets/images/coin.png") no-repeat 600px center
-      #e4c284;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/coin.png")
+      no-repeat 600px center #e4c284;
     background-size: 100px;
     border-radius: 12px 12px 0px 0px;
     padding: 30px;
@@ -131,5 +131,18 @@ page {
     .task-num {
       color: #edb16e;
     }
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 180px 0px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
   }
 }

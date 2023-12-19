@@ -1,0 +1,46 @@
+page {
+  background-color: #f7f8fa;
+}
+.release-management {
+  .my-title {
+    font-weight: bold;
+    color: #333333;
+    font-size: 30px;
+    margin: 16px 30px;
+  }
+  .myblock {
+    margin: 16px;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    height: 74px;
+    border-bottom: 2px solid #f5f5f5;
+  }
+  .items {
+    background: #ffffff;
+    padding: 0px 30px;
+    border-radius: 8px;
+    // margin: 16px 0px;
+    font-size: 30px;
+  }
+  .item_icon {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+  .item_icon image {
+    width: 45px;
+    height: 45px;
+  }
+  .arrow image {
+    width: 26px;
+    height: 26px;
+  }
+  .arrow {
+    float: right;
+    position: absolute;
+    right: 0px;
+  }
+}

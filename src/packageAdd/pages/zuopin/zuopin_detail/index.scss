@@ -21,6 +21,16 @@ page {
   .zuopin_top_left {
     display: flex;
   }
+  .zuopin_top_box {
+    position: relative;
+  }
+  .user-vip {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 0px;
+    top: 84px;
+  }
   .zuopin_author_info {
     display: flex;
     flex-direction: column;

@@ -1,10 +1,7 @@
 <template>
   <view class="about">
     <view class="about-top">
-      <image
-        src="https://yuepai-oss.qubeitech.com/static/images/logo.png"
-        class="about-img"
-      ></image>
+      <image :src="platformLogo[globalData.NODE_ENV]" class="about-img"></image>
     </view>
     <view class="about-service">
       <view class="about-item" @tap="customerService">
@@ -78,10 +75,15 @@
 </template>
 
 <script>
-import { openPage } from "../../../utils/util";
+import { openPage, platformLogo } from "../../../utils/util";
 import "./index.scss";
 export default {
   name: "about",
+  data() {
+    return {
+      platformLogo: {},
+    };
+  },
   methods: {
     customerService() {
       wx.openCustomerServiceChat({
@@ -105,6 +107,10 @@ export default {
     privacy() {
       openPage("/packageSet/pages/privacy/index");
     },
+  },
+  created() {
+    this.globalData = this.globalData;
+    this.platformLogo = platformLogo;
   },
 };
 </script>

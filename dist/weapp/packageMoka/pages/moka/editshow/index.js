@@ -460,6 +460,15 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -487,6 +496,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
           visitor_cnt: 0
         }
       },
+      level: "",
       currentTab: 0,
       select_tab: "home",
       isartist: [],
@@ -522,7 +532,8 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       shareTitle: "",
       shareImg: "",
       sharePath: "",
-      next: false
+      next: false,
+      s_member: 0
     };
   },
   components: {
@@ -668,11 +679,13 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "qc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userInfo */ "zc"])(params);
 
               case 3:
                 res = _context.sent;
                 _this2.infor = res.data.data;
+                _this2.level = res.data.data.acct.level;
+                _this2.is_member = res.data.data.member.is_member;
                 _this2.homeInfor.personimg = [];
                 _this2.homeInfor.video = [];
                 _this2.homeInfor.personimg = res.data.data.album.photo_album;
@@ -688,19 +701,19 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
                 _this2.homeInfor.shoe = res.data.data.shape.size;
                 _this2.is_followed = res.data.data.follow_status.is_followed;
                 _this2.is_follower = res.data.data.follow_status.is_follower;
-                _context.next = 24;
+                _context.next = 26;
                 break;
 
-              case 22:
-                _context.prev = 22;
+              case 24:
+                _context.prev = 24;
                 _context.t0 = _context["catch"](0);
 
-              case 24:
+              case 26:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 22]]);
+        }, _callee, null, [[0, 24]]);
       }))();
     },
     userShapeDetail: function userShapeDetail(params) {
@@ -714,7 +727,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "zc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userShapeDetail */ "Ic"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -748,7 +761,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "lc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userAlbumDetail */ "uc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -778,7 +791,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Bc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userSticker */ "Kc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -811,7 +824,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* photoListOwn */ "Gb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -851,7 +864,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInvite */ "Zb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -881,7 +894,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* shareInviteInfo */ "ac"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -915,7 +928,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "pc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userFollow */ "yc"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -957,7 +970,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Cc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* userUnfollow */ "Lc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -998,7 +1011,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyVerify */ "l"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyVerify */ "m"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1035,7 +1048,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "M"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "R"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1179,19 +1192,33 @@ var render = function () {
                   mode: "aspectFit",
                 },
               }),
+              _vm.is_member
+                ? _c("image", {
+                    staticClass: "user-vip",
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/user-vip.png",
+                    },
+                  })
+                : _vm._e(),
             ]),
             _c("view", { staticClass: "my-head-ct" }, [
-              _c("view", [
+              _c("view", { staticClass: "my-head-top" }, [
                 _c("text", { staticClass: "my-head-name" }, [
                   _vm._v(_vm._s(_vm.infor.nickname)),
                 ]),
+                _c("text", { staticClass: "my-head-vip" }, [
+                  _vm._v(_vm._s(_vm.level ? _vm.level : "Lv0")),
+                ]),
               ]),
               _c("view", { staticClass: "my-account" }, [
-                _vm._v("账号：" + _vm._s(_vm.infor.uuid)),
+                _c("view", { staticClass: "my-account-item" }, [
+                  _vm._v(" 账号:" + _vm._s(_vm.infor.uuid) + " "),
+                ]),
+                _c("view", { staticClass: "my-account-item" }, [
+                  _vm._v("IP归属:" + _vm._s(_vm.infor.login_ip_city)),
+                ]),
               ]),
               _c("view", { staticClass: "my-info" }, [
-                _c("text", [_vm._v("IP归属：")]),
-                _c("text", [_vm._v(_vm._s(_vm.infor.login_ip_city))]),
                 _c("view", { staticClass: "head-tag-box" }, [
                   _vm.infor.is_certify
                     ? _c("image", {

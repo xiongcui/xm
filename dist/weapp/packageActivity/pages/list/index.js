@@ -165,7 +165,7 @@ component.options.__file = "src/packageActivity/pages/list/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* exploreList */ "B"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* exploreList */ "E"])(params);
 
               case 3:
                 res = _context.sent;

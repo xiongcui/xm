@@ -1,10 +1,12 @@
+page {
+  background-color: #f7f8fa;
+}
 .coin {
+  margin: 16px;
   .coin-bg {
-    padding: 0px 30px;
-    background: #ea6a6b;
-    color: #fffefb;
-    height: 270px;
-    padding-bottom: 30px;
+    padding: 30px;
+    background: #fbd5a1;
+    color: #aa6e31;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -24,26 +26,103 @@
     }
   }
   .coin-bg-rt {
-    padding: 6px 12px 6px 50px;
-    border: 2px solid #fffefb;
-    border-radius: 14px;
+    padding: 6px 26px;
+    border: 2px solid #ff1e3e;
+    color: #ff1e3e;
+    border-radius: 30px;
     font-size: 28px;
-    background: url("https://yuepai-oss.qubeitech.com/static/images/user/coin/coin.png")
-      no-repeat 10px center;
-    background-size: 30px;
+  }
+  .signin {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 0px 0px 30px 30px;
+    .signin-title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      .signin-lable {
+        font-size: 28px;
+        color: #333333;
+        font-weight: bold;
+      }
+      .signin-tips {
+        padding: 4px 16px 4px 50px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333333;
+        background: url("https://yuepai-oss.qubeitech.com/static/images/timebg.png")
+          no-repeat 16px center #fdeeb0;
+        border-radius: 28px;
+        background-size: 26px;
+      }
+    }
+    .signin-p {
+      font-size: 26px;
+      color: #333333;
+    }
+    .signin-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 16px 0px;
+    }
+    .signin-box {
+      width: 84px;
+    }
+    .signin-box-top {
+      background: #f5f1eb;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      image {
+        width: 40px;
+        height: 40px;
+        margin-top: 4px;
+      }
+    }
+    .signin-num {
+      font-size: 24px;
+      color: #ba8d61;
+    }
+    .signin-box-bt {
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      margin-top: 6px;
+    }
+    .immediately-signin {
+      height: 66px;
+      line-height: 66px;
+      font-size: 30px;
+      border-radius: 33px;
+      background: #fae35a;
+      color: #ae742a;
+      text-align: center;
+      font-weight: bold;
+    }
+    .immediately-sign {
+      height: 66px;
+      line-height: 66px;
+      font-size: 30px;
+      border-radius: 33px;
+      background: #f5f1eb;
+      color: #a09c9b;
+      text-align: center;
+      font-weight: bold;
+    }
   }
   .coin-content {
-    margin-top: -60px;
+    margin-top: 16px;
+    background: #ffffff;
+    border-radius: 30px;
   }
 
   .tab {
     display: flex;
     justify-content: center;
     width: 100%;
-    background: #ffffff;
-    // position: fixed;
-    // z-index: 9999;
-    border-radius: 20px 20px 0px 0px;
   }
   .tab-item {
     color: #333333;
@@ -61,6 +140,9 @@
   .detailed,
   .get-coin {
     padding-bottom: 60px;
+  }
+  .detailed {
+    background: #ffffff;
   }
   .content > swiper {
     height: 100%;
@@ -191,5 +273,115 @@
     width: 150px;
     height: 150px;
     margin-bottom: 16px;
+  }
+  .task-split {
+    text-align: center;
+    padding: 30px 0px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ea6a6b;
+  }
+  .task-list {
+    padding: 0px 16px 30px 16px;
+    background: #ffffff;
+  }
+  .task-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  .task-left {
+    display: flex;
+    flex-direction: column;
+  }
+  .task-title-box {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    .task-tag {
+      padding: 2px 16px;
+      border-radius: 8px;
+      background: #fac8a4;
+      color: #f78c82;
+      font-size: 22px;
+    }
+    .task-title {
+      font-size: 26px;
+      color: #333333;
+      margin-left: 16px;
+    }
+  }
+  .task-label,
+  .coin-box,
+  .growup-box {
+    display: flex;
+    align-items: center;
+  }
+  .coin-box {
+    border: 2px solid #fefaf2;
+    border-radius: 8px 0px 0px 8px;
+  }
+  .growup-box {
+    border: 2px solid #f1faff;
+    border-radius: 8px 0px 0px 8px;
+    margin-left: 16px;
+  }
+  .coin-tag {
+    padding: 2px 10px;
+    background: #fef8e6;
+    color: #f9c073;
+    font-size: 20px;
+    border-radius: 8px 0px 0px 8px;
+  }
+  .growup-tag {
+    padding: 2px 10px;
+    background: #e6f7ff;
+    color: #59b6ff;
+    font-size: 20px;
+    border-radius: 8px 0px 0px 8px;
+  }
+  .coin-num {
+    padding: 0px 10px;
+    text-align: center;
+    color: #f9c073;
+    font-size: 20px;
+  }
+  .growup-num {
+    padding: 0px 10px;
+    color: #59b6ff;
+    text-align: center;
+    font-size: 20px;
+  }
+  .task-rt {
+    display: flex;
+    align-items: center;
+  }
+  .tocomplete {
+    font-size: 24px;
+    text-align: center;
+    padding: 4px 20px;
+    border-radius: 22px;
+    border: 2px solid #ea6a6b;
+    color: #ea6a6b;
+  }
+  .completed {
+    font-size: 24px;
+    text-align: center;
+    padding: 4px 20px;
+    border-radius: 22px;
+    border: 2px solid #a1a2a2;
+    color: #a1a2a2;
+  }
+  .task-schedule {
+    margin-top: 16px;
+    padding-left: 36px;
+    display: flex;
+    align-items: center;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/schedule.png")
+      no-repeat left center;
+    background-size: 24px;
+    color: #a7a6a6;
+    font-size: 24px;
   }
 }

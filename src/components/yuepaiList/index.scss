@@ -12,6 +12,16 @@
     display: flex;
     align-items: center;
   }
+  .user-vip {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 0px;
+    top: 44px;
+  }
+  .list_top_box {
+    position: relative;
+  }
   .list_top_rt {
     display: flex;
     flex-direction: column;
@@ -23,7 +33,8 @@
     margin-left: 16px;
     justify-content: center;
     .list_name {
-      // margin-bottom: 5px;
+      display: flex;
+      align-items: center;
       color: #111111;
       font-size: 34px;
     }

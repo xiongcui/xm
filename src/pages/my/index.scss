@@ -3,21 +3,45 @@
   padding-bottom: 16px;
   .my-head {
     display: flex;
+    align-items: center;
     background-color: #ffffff;
-    padding: 16px 30px 4px 30px;
+    padding: 16px 30px 6px 30px;
     margin-top: 16px;
+    .my-head-left {
+      position: relative;
+      display: flex;
+    }
+    .user-vip {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      right: 0px;
+      top: 88px;
+    }
     .head-img {
       width: 120px;
       height: 120px;
-      margin-right: 16px;
       border-radius: 50%;
+    }
+    .my-head-top {
+      display: flex;
     }
     .my-head-name {
       font-size: 36px;
       color: #333333;
-      margin-top: 10px;
     }
-
+    .my-head-vip {
+      background: url("https://yuepai-oss.qubeitech.com/static/images/level-icon.png")
+        left center no-repeat;
+      background-size: 128px 64px;
+      color: #ffffff;
+      font-size: 24px;
+      width: 128px;
+      display: flex;
+      align-items: center;
+      text-indent: 60px;
+      transform: scale(0.7);
+    }
     .my-head-ct {
       width: 64%;
       display: flex;
@@ -27,7 +51,11 @@
     .my-account {
       color: #999999;
       font-size: 26px;
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      .my-account-item {
+        margin-right: 30px;
+      }
     }
     .my-info {
       color: #999999;
@@ -37,7 +65,7 @@
     }
     .head-tag-box {
       display: flex;
-      margin-left: 16px;
+      margin-right: 16px;
     }
     .head-tag {
       display: flex;
@@ -52,7 +80,7 @@
     .head-tag-img {
       width: 100px;
       height: 30px;
-      margin-left: 16px;
+      margin-right: 16px;
     }
     .my-head-rt {
       display: flex;
@@ -93,57 +121,91 @@
     .my-count-box {
       display: flex;
       flex-direction: column;
-      margin-right: 26px;
+      margin-right: 36px;
       text-align: center;
       color: #999999;
       .num {
         margin-bottom: 4px;
+        font-weight: bold;
+        font-size: 30px;
       }
     }
   }
   .my-vip {
-    display: flex;
-    justify-content: space-between;
     background-color: #363636;
-    height: 96px;
     border-radius: 10px;
     margin: 16px 16px 0px 16px;
-    .my-vip-img {
-      width: 40px;
-      height: 40px;
-      margin-right: 16px;
-    }
-
-    .my-vip-title {
+    .my-vip-top {
       display: flex;
-      align-items: center;
-      font-size: 24px;
-      font-weight: bold;
-      color: #ffe9b0;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .my-vip-txt {
-      font-size: 20px;
-      color: #ffdd90;
-    }
-    .my-vip-left,
-    .my-vip-rt {
-      width: 50%;
-      display: flex;
-      align-items: center;
-      font-size: 26px;
-      color: rgba(255, 255, 255, 0.9);
-      text-align: center;
-      line-height: 34px;
-      margin: 16px 0px;
-      padding: 0px 24px;
+      justify-content: space-between;
+      border-bottom: 1px solid #434346;
     }
     .my-vip-left {
-      border-right: 1px solid rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+    }
+    .my-vip-img {
+      width: 80px;
+      height: 80px;
+    }
+    .vip-center {
+      padding: 2px 10px;
+      border: 2px solid #fbd591;
+      border-radius: 30px 0px 0px 30px;
+      font-size: 24px;
+      color: #fbd591;
     }
     .vip-text {
-      color: #e5c385;
+      font-size: 24px;
+      color: #fbd591;
+      margin-left: 16px;
+    }
+    .my-vip-rt {
+      display: flex;
+      align-items: center;
+      padding-right: 16px;
+      .vip-btn {
+        font-size: 26px;
+        background: #f9cc84;
+        color: #774c04;
+        padding: 6px 20px;
+        border-radius: 30px;
+      }
+    }
+    .my-vip-bt {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      .my-vip-info {
+        display: flex;
+        flex-direction: column;
+        padding-left: 14px;
+      }
+      .my-vip-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        image {
+          width: 26px;
+          height: 26px;
+        }
+        text {
+          color: #e0b97a;
+          font-size: 26px;
+          margin-left: 16px;
+        }
+      }
+      .vip-img-box {
+        display: flex;
+        image {
+          width: 100px;
+          height: 100px;
+          border-radius: 8px;
+          background: #cccccc;
+          margin-left: 16px;
+        }
+      }
     }
   }
   .my-title {
@@ -152,15 +214,55 @@
     font-size: 30px;
     margin: 16px 30px;
   }
+  .my-account-box {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin: 16px 16px 0px 16px;
+    padding: 20px 0px;
+    .account-item {
+      text-align: center;
+      position: relative;
+      flex: 1;
+      .account-line {
+        height: 80%;
+        width: 1px;
+        background: #d9d9d9;
+        position: absolute;
+        right: 0px;
+        top: 10%;
+      }
+      .account-num {
+        font-size: 34px;
+        font-weight: bold;
+        color: #f2280c;
+        margin-bottom: 6px;
+      }
+      .account-label {
+        color: #999999;
+        font-size: 26px;
+      }
+      .account-btn {
+        padding: 2px 16px;
+        font-size: 22px;
+        border: 2px solid #fbd244;
+        border-radius: 24px;
+        color: #fbd244;
+        margin: 6px auto 0px auto;
+        width: 100px;
+      }
+    }
+  }
   .my-column {
     display: flex;
     background-color: #ffffff;
     border-radius: 10px;
     margin: 16px 16px 0px 16px;
-    padding: 20px 30px;
+    padding: 20px 0px;
     justify-content: space-between;
     .my-column-item {
-      width: 90px;
+      width: 178px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -213,11 +315,21 @@
     right: 30px;
     color: #fe5457;
     font-size: 26px;
+    display: flex;
+    align-items: center;
+    image {
+      width: 36px;
+      // height: 36px;
+      margin-right: 6px;
+    }
   }
-  .page_settings image,
-  .sign_block image {
+  .page_settings image {
     width: 42px;
     height: 42px;
+  }
+  .sign_block image {
+    width: 50px;
+    height: 50px;
   }
   .custom_head {
     width: 750rpx;

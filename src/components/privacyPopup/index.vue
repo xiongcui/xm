@@ -5,7 +5,9 @@
       <view class="privacy-popup-text">
         <view>尊敬的用户:</view>
         <view
-          >感谢您信任并使用虾米约拍，为保障您的合法权益，我们高度重视个人隐私信息保护，为此我们依据相关法律制定了<text
+          >感谢您信任并使用{{
+            platformMap[globalData.NODE_ENV]
+          }}，为保障您的合法权益，我们高度重视个人隐私信息保护，为此我们依据相关法律制定了<text
             class="privacy-popup-color"
             @tap="openPrivacyContract"
             >《隐私保护指引》</text
@@ -26,13 +28,14 @@
 </template>
 
 <script>
-import { errortip } from "../../utils/util";
+import { errortip, platformMap } from "../../utils/util";
 import "./index.scss";
 export default {
   name: "privacyPopup",
   data() {
     return {
       innerShow: false,
+      platformMap: {},
     };
   },
   methods: {
@@ -59,6 +62,7 @@ export default {
     handleAgree() {
       this.agree();
       this.disPopUp();
+      this.$emit("noticeAgree");
     },
     disagree() {
       console.log("用户拒绝隐私授权, 未同意过的隐私协议中的接口将不能调用");
@@ -106,6 +110,10 @@ export default {
       //   errortip("低版本基础库不支持 wx.getPrivacySetting 接口");
       this.agree();
     }
+  },
+  created() {
+    this.globalData = this.globalData;
+    this.platformMap = platformMap;
   },
 };
 </script>

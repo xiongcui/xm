@@ -1,0 +1,75 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.recharge-wallet {
+  margin: 16rpx 0;
+  background: #ffffff;
+  padding: 16rpx;
+}
+
+.recharge-wallet .recharge-wallet-title {
+  font-size: 32rpx;
+  color: #333333;
+  font-weight: bold;
+  padding: 0 30rpx;
+}
+
+.recharge-wallet .wallet-list {
+  padding: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.recharge-wallet .wallet-list .select-coin {
+  width: 260rpx;
+  padding: 30rpx;
+  border: 2rpx solid rgba(0, 0, 0, 0.2);
+  color: #333333;
+  font-size: 36rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+  position: relative;
+}
+
+.recharge-wallet .wallet-list .active {
+  border-color: #ea6a6b;
+  color: #ea6a6b;
+}
+
+.recharge-wallet .wallet-list .amount {
+  height: 100%;
+  width: 100%;
+}
+
+.recharge-wallet .wallet-list .tag {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #ff1e3e;
+  color: #ffffff;
+  font-size: 22rpx;
+  padding: 6rpx;
+  border-radius: 25% 0 25% 0;
+}
+
+.recharge-wallet .wallet-tips {
+  background: #f3f3f3;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 16rpx;
+  margin: 0 16rpx;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+}
+
+.recharge-wallet .wallet-tips .wallet-p {
+  margin-bottom: 6rpx;
+}

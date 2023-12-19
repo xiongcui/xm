@@ -247,7 +247,7 @@ var render = function () {
     ]),
     _c("view", { staticClass: "set-bt" }, [
       _c("view", { staticClass: "set-item", on: { tap: _vm.goAbout } }, [
-        _c("text", [_vm._v("关于虾米约拍")]),
+        _c("text", [_vm._v("关于我们")]),
         _c("view", { staticClass: "arrow" }, [
           _c("image", {
             attrs: {

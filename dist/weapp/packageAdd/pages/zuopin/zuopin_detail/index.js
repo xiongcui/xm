@@ -241,6 +241,13 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -338,7 +345,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "Eb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -372,7 +379,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* giveUp */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* giveUp */ "L"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -404,7 +411,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "Mb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "Tb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -434,7 +441,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -464,7 +471,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -495,7 +502,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -525,7 +532,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -558,7 +565,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "pc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "yc"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -589,7 +596,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Cc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Lc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -620,7 +627,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyVerify */ "l"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* applyVerify */ "m"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -725,15 +732,25 @@ var render = function () {
   return _c("view", { staticClass: "zuopin_detail" }, [
     _c("view", { staticClass: "zuopin_top" }, [
       _c("view", { staticClass: "zuopin_top_left" }, [
-        _c("image", {
-          staticClass: "avatar",
-          attrs: { src: _vm.zuopinInfo.author.avatar },
-          on: {
-            tap: function ($event) {
-              return _vm.goZhuye(_vm.zuopinInfo.author.uuid)
+        _c("view", { staticClass: "zuopin_top_box" }, [
+          _c("image", {
+            staticClass: "avatar",
+            attrs: { src: _vm.zuopinInfo.author.avatar },
+            on: {
+              tap: function ($event) {
+                return _vm.goZhuye(_vm.zuopinInfo.author.uuid)
+              },
             },
-          },
-        }),
+          }),
+          _vm.zuopinInfo.author.is_member
+            ? _c("image", {
+                staticClass: "user-vip",
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/user-vip.png",
+                },
+              })
+            : _vm._e(),
+        ]),
         _c("view", { staticClass: "zuopin_author_info" }, [
           _c(
             "view",
@@ -746,7 +763,7 @@ var render = function () {
                       ? _c("image", {
                           staticClass: "zuopin_sex",
                           attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
+                            src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
                           },
                         })
                       : _vm._e(),
@@ -754,7 +771,7 @@ var render = function () {
                       ? _c("image", {
                           staticClass: "zuopin_sex",
                           attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
+                            src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
                           },
                         })
                       : _vm._e(),

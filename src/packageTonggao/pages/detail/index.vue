@@ -92,26 +92,33 @@
       </view>
       <view class="list_top">
         <view class="list_top_left">
-          <image
-            :src="
-              tonggaoInfo.author.avatar
-                ? tonggaoInfo.author.avatar
-                : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
-            "
-            class="avatar"
-            @tap="goZhuye"
-          ></image>
+          <view class="list_top_box">
+            <image
+              :src="
+                tonggaoInfo.author.avatar
+                  ? tonggaoInfo.author.avatar
+                  : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+              "
+              class="avatar"
+              @tap="goZhuye"
+            ></image>
+            <image
+              v-if="tonggaoInfo.author.is_member"
+              class="user-vip"
+              src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
+            ></image>
+          </view>
           <view class="list_info">
             <view class="list_name">
               {{ tonggaoInfo.author.nickname }}
               <block v-if="tonggaoInfo.author.sex !== null">
                 <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/boy.png"
                   class="list_sex"
                   v-if="tonggaoInfo.author.sex == 1"
                 ></image>
                 <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                  src="https://yuepai-oss.qubeitech.com/static/images/girl.png"
                   class="list_sex"
                   v-if="tonggaoInfo.author.sex == 0"
                 ></image>

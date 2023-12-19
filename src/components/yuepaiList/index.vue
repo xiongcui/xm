@@ -7,28 +7,35 @@
       >
         <view class="list_top">
           <view class="list_top_left">
-            <image
-              :src="
-                item.author.avatar
-                  ? item.author.avatar
-                  : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
-              "
-              class="avatar"
-              @tap="goZhuye(item.author.uuid)"
-              :lazy-load="true"
-            ></image>
+            <view class="list_top_box">
+              <image
+                :src="
+                  item.author.avatar
+                    ? item.author.avatar
+                    : 'https://yuepai-oss.qubeitech.com/static/images/avatar_default.png'
+                "
+                class="avatar"
+                @tap="goZhuye(item.author.uuid)"
+                :lazy-load="true"
+              ></image>
+              <image
+                v-if="item.author.is_member"
+                class="user-vip"
+                src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
+              ></image>
+            </view>
             <view class="list_info">
               <view class="list_name">
                 {{ item.author.nickname }}
                 <block v-if="item.author.sex !== null">
                   <image
-                    src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                    src="https://yuepai-oss.qubeitech.com/static/images/boy.png"
                     class="list_sex"
                     v-if="item.author.sex == 1"
                     :lazy-load="true"
                   ></image>
                   <image
-                    src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                    src="https://yuepai-oss.qubeitech.com/static/images/girl.png"
                     class="list_sex"
                     v-if="item.author.sex == 0"
                     :lazy-load="true"

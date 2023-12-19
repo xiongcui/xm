@@ -147,7 +147,8 @@ component.options.__file = "src/pages/msg/index.vue"
         tips: "",
         create_time: ""
       },
-      mailbox_cnt: 0
+      mailbox_cnt: 0,
+      platformMap: {}
     };
   },
   methods: {
@@ -176,9 +177,10 @@ component.options.__file = "src/pages/msg/index.vue"
       }
     },
     toopen: function toopen() {
+      var name = this.platformMap[this.globalData.NODE_ENV];
       wx.showModal({
         title: "温馨提示",
-        content: "微信关注【虾米约拍】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
+        content: "微信关注【" + name + "】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
         success: function success(res) {
           if (res.confirm) {
             Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
@@ -202,7 +204,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* notifyNumber */ "zb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -251,7 +253,7 @@ component.options.__file = "src/pages/msg/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "ib"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* msgList */ "ob"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -276,6 +278,10 @@ component.options.__file = "src/pages/msg/index.vue"
   onShow: function onShow() {
     this.notifyNumber("");
     this.msgList("");
+  },
+  created: function created() {
+    this.globalData = this.globalData;
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_2__[/* platformMap */ "e"];
   }
 });
 

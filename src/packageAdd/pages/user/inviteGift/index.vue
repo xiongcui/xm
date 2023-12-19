@@ -2,7 +2,7 @@
   <view class="invite-gift">
     <image
       class="invite-img"
-      src="../../../../assets/images/invite-gift.jpg"
+      src="https://yuepai-oss.qubeitech.com/static/banner/invite_friends_poster.png"
       mode="widthFix"
     ></image>
     <view
@@ -10,11 +10,11 @@
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
       <view class="invite-gift-txt"
-        >已累计邀请{{ user_cnt }}人，获得100元现金，获得{{
-          coin_sum
+        >已累计邀请{{ user_cnt }}人，获得{{ reward_amount }}元现金，获得{{
+          reward_coin
         }}个金币</view
       >
-      <view class="detail-btn">查看邀请明细</view>
+      <view class="detail-btn" @tap="goInviteDetail">查看邀请明细</view>
       <view class="invite-friends" @tap="invite">立即邀请好友</view>
     </view>
     <view class="invite-mask" v-if="visible">
@@ -63,7 +63,9 @@ import {
   inviteImage,
   shareInvite,
   shareInviteInfo,
+  inviteFriendsList,
 } from "../../../../api/index";
+import { openPage } from "../../../../utils/util";
 export default {
   name: "inviteGift",
   data() {
@@ -78,7 +80,8 @@ export default {
       sharePath: "",
       list: [],
       user_cnt: 0,
-      coin_sum: 0,
+      reward_coin: 0,
+      reward_amount: 0,
     };
   },
   methods: {
@@ -152,6 +155,9 @@ export default {
         },
       });
     },
+    goInviteDetail() {
+      openPage("/packageAdd/pages/user/invite/index");
+    },
     async inviteImage(params) {
       try {
         let res = await inviteImage(params);
@@ -173,12 +179,12 @@ export default {
         this.sharePath = res.data.data.path;
       } catch (error) {}
     },
-    async shareInviteList(params) {
+    async inviteFriendsList(params) {
       try {
-        let res = await shareInviteList(params);
-        this.list = res.data.data.items;
-        this.user_cnt = res.data.data.total.user_cnt;
-        this.coin_sum = res.data.data.total.coin_sum;
+        let res = await inviteFriendsList(params);
+        this.reward_amount = res.data.data.stats.reward_amount;
+        this.reward_coin = res.data.data.stats.reward_coin;
+        this.user_cnt = res.data.data.stats.user_cnt;
       } catch (error) {}
     },
   },
@@ -204,11 +210,11 @@ export default {
     this.isIphoneX = this.globalData.isIphoneX;
   },
   mounted() {
+    this.inviteFriendsList("");
     this.shareInviteInfo({
       source: "share_friend",
       type: "wechat",
     });
-    this.shareInviteList("");
   },
 };
 </script>

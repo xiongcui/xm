@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "现金账户提现",
+  navigationBarTitleText: "账户提现",
 });

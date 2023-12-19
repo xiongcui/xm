@@ -21,15 +21,24 @@
               class="head-img"
               mode="aspectFit"
             ></image>
+            <image
+              v-if="is_member"
+              class="user-vip"
+              src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
+            ></image>
           </view>
           <view class="my-head-ct">
-            <view>
+            <view class="my-head-top">
               <text class="my-head-name">{{ infor.nickname }}</text>
+              <text class="my-head-vip">{{ level ? level : "Lv0" }}</text>
             </view>
-            <view class="my-account">账号：{{ infor.uuid }}</view>
+            <view class="my-account">
+              <view class="my-account-item"> 账号:{{ infor.uuid }} </view>
+              <view class="my-account-item"
+                >IP归属:{{ infor.login_ip_city }}</view
+              >
+            </view>
             <view class="my-info">
-              <text>IP归属：</text>
-              <text>{{ infor.login_ip_city }}</text>
               <view class="head-tag-box">
                 <image
                   src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
@@ -441,6 +450,7 @@ export default {
           visitor_cnt: 0,
         },
       },
+      level: "",
       currentTab: 0,
       select_tab: "home",
       isartist: [],
@@ -480,6 +490,7 @@ export default {
       shareImg: "",
       sharePath: "",
       next: false,
+      s_member: 0,
     };
   },
   components: {
@@ -630,6 +641,8 @@ export default {
       try {
         let res = await userInfo(params);
         this.infor = res.data.data;
+        this.level = res.data.data.acct.level;
+        this.is_member = res.data.data.member.is_member;
         this.homeInfor.personimg = [];
         this.homeInfor.video = [];
         this.homeInfor.personimg = res.data.data.album.photo_album;

@@ -10,6 +10,7 @@ const App = {
     let _this = App;
     // 判断是否为iphoneX
     Vue.prototype.globalData = _this.globalData;
+    _this.globalData.NODE_ENV = process.env.NODE_ENV;
     wx.getSystemInfo({
       success: (res) => {
         let model = res.model;

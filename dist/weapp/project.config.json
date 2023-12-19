@@ -1,63 +1,63 @@
 {
-  "miniprogramRoot": "./",
-  "projectname": "xiamiyuepai",
-  "description": "虾米约拍",
-  "appid": "wxf2d391f5561eae0c",
-  "setting": {
-    "localPlugins": false,
-    "urlCheck": true,
-    "es6": true,
-    "enhance": true,
-    "postcss": false,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": false,
-    "coverView": false,
-    "nodeModules": false,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": false,
-    "scopeDataCheck": false,
-    "uglifyFileName": true,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": true,
-    "lazyloadPlaceholderEnable": false,
-    "useMultiFrameRuntime": false,
-    "useApiHook": false,
-    "useApiHostProcess": false,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
+    "miniprogramRoot": "",
+    "projectname": "xiamiyuepai",
+    "description": "虾米约拍",
+    "appid": "wxa9cce965d072c6b9",
+    "setting": {
+        "localPlugins": false,
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": false,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "newFeature": false,
+        "coverView": false,
+        "nodeModules": false,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": false,
+        "scopeDataCheck": false,
+        "uglifyFileName": true,
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": true,
+        "lazyloadPlaceholderEnable": false,
+        "useMultiFrameRuntime": false,
+        "useApiHook": false,
+        "useApiHostProcess": false,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "enableEngineNative": false,
+        "useIsolateContext": true,
+        "userConfirmedBundleSwitch": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "useLanDebug": false,
+        "showES6CompileOption": false,
+        "ignoreUploadUnusedFiles": false,
+        "ignoreDevUnusedFiles": false,
+        "condition": true,
+        "skylineRenderEnable": false
     },
-    "enableEngineNative": false,
-    "useIsolateContext": true,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "useLanDebug": false,
-    "showES6CompileOption": false,
-    "ignoreUploadUnusedFiles": false,
-    "ignoreDevUnusedFiles": false,
-    "condition": true,
-    "skylineRenderEnable": false
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.26.2",
-  "srcMiniprogramRoot": "dist/weapp/",
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
-  "editorSetting": {
-    "tabIndent": "insertSpaces",
-    "tabSize": 4
-  },
-  "condition": {},
-  "simulatorPluginLibVersion": {
-    "wxext14566970e7e9f62": "2.27.3"
-  },
-  "projectArchitecture": "multiPlatform"
+    "compileType": "miniprogram",
+    "libVersion": "2.26.2",
+    "srcMiniprogramRoot": "dist/weapp/",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    },
+    "condition": {},
+    "simulatorPluginLibVersion": {
+        "wxext14566970e7e9f62": "2.27.3"
+    },
+    "projectArchitecture": "multiPlatform"
 }

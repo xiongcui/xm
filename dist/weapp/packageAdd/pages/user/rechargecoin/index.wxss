@@ -45,7 +45,7 @@
 .coin-list .select-coin {
   width: 260rpx;
   padding: 30rpx;
-  border: 1rpx solid rgba(0, 0, 0, 0.2);
+  border: 2rpx solid rgba(0, 0, 0, 0.2);
   color: #333333;
   font-size: 36rpx;
   text-align: center;

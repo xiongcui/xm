@@ -260,7 +260,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "Dc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* visitorList */ "Mc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -302,7 +302,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "Ec"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* voteList */ "Nc"])(params);
 
               case 3:
                 res = _context2.sent;

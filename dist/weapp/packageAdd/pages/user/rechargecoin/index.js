@@ -152,11 +152,11 @@ component.options.__file = "src/packageAdd/pages/user/rechargecoin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinAcct */ "r"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinAcct */ "u"])(params);
 
               case 3:
                 res = _context.sent;
-                _this2.coin = res.data.data.coin;
+                _this2.coin = res.data.data.wallet.info.wallet_money;
                 _context.next = 9;
                 break;
 
@@ -184,7 +184,7 @@ component.options.__file = "src/packageAdd/pages/user/rechargecoin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinStore */ "u"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* coinStore */ "x"])(params);
 
               case 3:
                 res = _context2.sent;

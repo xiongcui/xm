@@ -6,20 +6,56 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: #ffffff;
-  padding: 16rpx 30rpx 4rpx 30rpx;
+  padding: 16rpx 30rpx 6rpx 30rpx;
   margin-top: 16rpx;
+}
+.my .my-head .my-head-left {
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.my .my-head .user-vip {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 0;
+  top: 88rpx;
 }
 .my .my-head .head-img {
   width: 120rpx;
   height: 120rpx;
-  margin-right: 16rpx;
   border-radius: 50%;
+}
+.my .my-head .my-head-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .my .my-head .my-head-name {
   font-size: 36rpx;
   color: #333333;
-  margin-top: 10rpx;
+}
+.my .my-head .my-head-vip {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/level-icon.png") left center no-repeat;
+  background-size: 128rpx 64rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  width: 128rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-indent: 60rpx;
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
 }
 .my .my-head .my-head-ct {
   width: 64%;
@@ -36,7 +72,13 @@
 .my .my-head .my-account {
   color: #999999;
   font-size: 26rpx;
-  margin-bottom: 5rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.my .my-head .my-account .my-account-item {
+  margin-right: 30rpx;
 }
 .my .my-head .my-info {
   color: #999999;
@@ -52,7 +94,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 16rpx;
+  margin-right: 16rpx;
 }
 .my .my-head .head-tag {
   display: -webkit-flex;
@@ -71,7 +113,7 @@
 .my .my-head .head-tag-img {
   width: 100rpx;
   height: 30rpx;
-  margin-left: 16rpx;
+  margin-right: 16rpx;
 }
 .my .my-head .my-head-rt {
   display: -webkit-flex;
@@ -128,74 +170,171 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-right: 26rpx;
+  margin-right: 36rpx;
   text-align: center;
   color: #999999;
 }
 .my .my-count .my-count-box .num {
   margin-bottom: 4rpx;
+  font-weight: bold;
+  font-size: 30rpx;
 }
 .my .my-vip {
+  background-color: #363636;
+  border-radius: 10rpx;
+  margin: 16rpx 16rpx 0 16rpx;
+}
+.my .my-vip .my-vip-top {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: #363636;
-  height: 96rpx;
-  border-radius: 10rpx;
-  margin: 16rpx 16rpx 0 16rpx;
-}
-.my .my-vip .my-vip-img {
-  width: 40rpx;
-  height: 40rpx;
-  margin-right: 16rpx;
-}
-.my .my-vip .my-vip-title {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 24rpx;
-  font-weight: bold;
-  color: #ffe9b0;
-  margin-top: 10rpx;
-  margin-bottom: 10rpx;
-}
-.my .my-vip .my-vip-txt {
-  font-size: 20rpx;
-  color: #ffdd90;
-}
-.my .my-vip .my-vip-left,
-.my .my-vip .my-vip-rt {
-  width: 50%;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 26rpx;
-  color: rgba(255, 255, 255, 0.9);
-  text-align: center;
-  line-height: 34rpx;
-  margin: 16rpx 0;
-  padding: 0 24rpx;
+  border-bottom: 1rpx solid #434346;
 }
 .my .my-vip .my-vip-left {
-  border-right: 1rpx solid rgba(255, 255, 255, 0.85);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.my .my-vip .my-vip-img {
+  width: 80rpx;
+  height: 80rpx;
+}
+.my .my-vip .vip-center {
+  padding: 2rpx 10rpx;
+  border: 2rpx solid #fbd591;
+  border-radius: 30rpx 0 0 30rpx;
+  font-size: 24rpx;
+  color: #fbd591;
 }
 .my .my-vip .vip-text {
-  color: #e5c385;
+  font-size: 24rpx;
+  color: #fbd591;
+  margin-left: 16rpx;
+}
+.my .my-vip .my-vip-rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 16rpx;
+}
+.my .my-vip .my-vip-rt .vip-btn {
+  font-size: 26rpx;
+  background: #f9cc84;
+  color: #774c04;
+  padding: 6rpx 20rpx;
+  border-radius: 30rpx;
+}
+.my .my-vip .my-vip-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 16rpx;
+}
+.my .my-vip .my-vip-bt .my-vip-info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-left: 14rpx;
+}
+.my .my-vip .my-vip-bt .my-vip-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16rpx;
+}
+.my .my-vip .my-vip-bt .my-vip-item image {
+  width: 26rpx;
+  height: 26rpx;
+}
+.my .my-vip .my-vip-bt .my-vip-item text {
+  color: #e0b97a;
+  font-size: 26rpx;
+  margin-left: 16rpx;
+}
+.my .my-vip .my-vip-bt .vip-img-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.my .my-vip .my-vip-bt .vip-img-box image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+  background: #cccccc;
+  margin-left: 16rpx;
 }
 .my .my-title {
   font-weight: bold;
   color: #333333;
   font-size: 30rpx;
   margin: 16rpx 30rpx;
+}
+.my .my-account-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  margin: 16rpx 16rpx 0 16rpx;
+  padding: 20rpx 0;
+}
+.my .my-account-box .account-item {
+  text-align: center;
+  position: relative;
+  -webkit-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.my .my-account-box .account-item .account-line {
+  height: 80%;
+  width: 1rpx;
+  background: #d9d9d9;
+  position: absolute;
+  right: 0;
+  top: 10%;
+}
+.my .my-account-box .account-item .account-num {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #f2280c;
+  margin-bottom: 6rpx;
+}
+.my .my-account-box .account-item .account-label {
+  color: #999999;
+  font-size: 26rpx;
+}
+.my .my-account-box .account-item .account-btn {
+  padding: 2rpx 16rpx;
+  font-size: 22rpx;
+  border: 2rpx solid #fbd244;
+  border-radius: 24rpx;
+  color: #fbd244;
+  margin: 6rpx auto 0 auto;
+  width: 100rpx;
 }
 .my .my-column {
   display: -webkit-flex;
@@ -204,13 +343,13 @@
   background-color: #ffffff;
   border-radius: 10rpx;
   margin: 16rpx 16rpx 0 16rpx;
-  padding: 20rpx 30rpx;
+  padding: 20rpx 0;
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 .my .my-column .my-column-item {
-  width: 90rpx;
+  width: 178rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -275,11 +414,24 @@
   right: 30rpx;
   color: #fe5457;
   font-size: 26rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-.my .page_settings image,
-.my .sign_block image {
+.my .item_tip image {
+  width: 36rpx;
+  margin-right: 6rpx;
+}
+.my .page_settings image {
   width: 42rpx;
   height: 42rpx;
+}
+.my .sign_block image {
+  width: 50rpx;
+  height: 50rpx;
 }
 .my .custom_head {
   width: 750rpx;

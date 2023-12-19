@@ -157,6 +157,16 @@ page {
       -ms-flex-align: center;
           align-items: center;
 }
+.tonggao_detail .list_top_box {
+  position: relative;
+}
+.tonggao_detail .user-vip {
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 0;
+  top: 44rpx;
+}
 .tonggao_detail .list_top_rt {
   display: -webkit-flex;
   display: -ms-flexbox;

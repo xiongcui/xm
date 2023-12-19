@@ -199,6 +199,8 @@ component.options.__file = "src/pages/login/index.vue"
 //
 //
 //
+//
+//
 
 
 
@@ -227,7 +229,9 @@ component.options.__file = "src/pages/login/index.vue"
       },
       pageshow: "login",
       scene: "",
-      from: ""
+      from: "",
+      platformMap: {},
+      platformLogo: {}
     };
   },
   components: {
@@ -265,7 +269,8 @@ component.options.__file = "src/pages/login/index.vue"
               _this.getWxLogin({
                 account: res.code,
                 secret: "",
-                type: 200
+                type: 200,
+                app: _this.globalData.NODE_ENV
               });
             },
             fail: function fail(err) {
@@ -281,13 +286,16 @@ component.options.__file = "src/pages/login/index.vue"
     onGetPhoneNumber: function onGetPhoneNumber(e) {
       var _this = this;
 
+      console.log(e);
+
       if ("getPhoneNumber:ok" == e.detail.errMsg) {
         wx.login({
           success: function success(res) {
             _this.getPhone({
               code: res.code,
               encryptedData: e.detail.encryptedData,
-              iv: e.detail.iv
+              iv: e.detail.iv,
+              app: _this.globalData.NODE_ENV
             });
           },
           fail: function fail(err) {
@@ -396,7 +404,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Jc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* wxlogin */ "Vc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -466,7 +474,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "H"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* getPhone */ "K"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -501,7 +509,7 @@ component.options.__file = "src/pages/login/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "uc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userRegister */ "Dc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -541,6 +549,9 @@ component.options.__file = "src/pages/login/index.vue"
     }
   },
   created: function created() {
+    this.globalData = this.globalData;
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_5__[/* platformMap */ "e"];
+    this.platformLogo = _utils_util__WEBPACK_IMPORTED_MODULE_5__[/* platformLogo */ "d"];
     this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.scene = wx.getLaunchOptionsSync().scene;
   },
@@ -577,12 +588,17 @@ var render = function () {
               _c("image", {
                 staticClass: "logo-img",
                 attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/logo.png",
+                  src: _vm.platformLogo[_vm.globalData.NODE_ENV],
                   mode: "aspectFit",
                 },
               }),
               _c("view", { staticClass: "desc" }, [
-                _c("text", [_vm._v("虾米约拍 - 严肃靠谱模特约拍平台")]),
+                _c("text", [
+                  _vm._v(
+                    _vm._s(_vm.platformMap[_vm.globalData.NODE_ENV]) +
+                      " - 严肃靠谱模特约拍平台"
+                  ),
+                ]),
               ]),
               _c("view", { staticClass: "small-desc" }, [
                 _c("text", [_vm._v("MODEL PHOTOGRAPH")]),

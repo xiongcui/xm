@@ -1,6 +1,6 @@
 import { request, requestUpload } from "../utils/util";
-const baseUrl = "https://pai.qubeitech.com";
-// const baseUrl = "https://dev.qubeitech.com";
+// const baseUrl = "https://pai.qubeitech.com";
+const baseUrl = "https://dev.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({
@@ -1226,6 +1226,123 @@ export const socialResult = (data) => {
 export const socialPay = (data) => {
   return request({
     url: baseUrl + "/v1/social/wx/mina/social/poster",
+    method: "post",
+    data,
+  });
+};
+
+// 钱包信息
+export const acctInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/info",
+    method: "post",
+    data,
+  });
+};
+
+// 任务规则
+export const ruleList = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/order/rule/list",
+    method: "post",
+    data,
+  });
+};
+
+// 快速升级-table
+export const growthRuleList = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/growth/rule/list",
+    method: "post",
+    data,
+  });
+};
+
+// 钱包明细
+export const walletOrder = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/wallet/order/items",
+    method: "post",
+    data,
+  });
+};
+
+// 签到计划列表
+export const signinList = (data) => {
+  return request({
+    url: baseUrl + "/v1/signin/event/plan",
+    method: "post",
+    data,
+  });
+};
+
+// 成长详情
+export const growthInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/growth/info",
+    method: "post",
+    data,
+  });
+};
+
+// 邀请好友列表
+export const inviteFriendsList = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/invite/friends/list",
+    method: "post",
+    data,
+  });
+};
+
+// 钱包充值（获取数据后唤起微信支付）
+export const walletRecharge = (data) => {
+  return request({
+    url: baseUrl + "/v1/pay/wx/mina/recharge",
+    method: "post",
+    data,
+  });
+};
+
+// 签到
+export const signinLogs = (data) => {
+  return request({
+    url: baseUrl + "/v1/signin/event/logs",
+    method: "post",
+    data,
+  });
+};
+
+// 弹窗接口
+export const checkStatus = (data) => {
+  return request({
+    url: baseUrl + "/v1/poster/check/status",
+    method: "post",
+    data,
+  });
+};
+
+// 弹窗点击行为接口
+export const checkEvent = (data) => {
+  return request({
+    url: baseUrl + "/v1/poster/click/event",
+    method: "post",
+    data,
+  });
+};
+
+// 提现的接口
+export const wxTransfer = (data) => {
+  return request({
+    url: baseUrl + "/v1/pay/wx/mina/transfer",
+    method: "post",
+    data,
+  });
+};
+
+// 提现进度
+export const orderInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/acct/wallet/order/info",
     method: "post",
     data,
   });

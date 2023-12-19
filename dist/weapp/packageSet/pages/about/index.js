@@ -126,13 +126,15 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: "about",
+  data: function data() {
+    return {
+      platformLogo: {}
+    };
+  },
   methods: {
     customerService: function customerService() {
       wx.openCustomerServiceChat({
@@ -158,6 +160,10 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
     privacy: function privacy() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/privacy/index");
     }
+  },
+  created: function created() {
+    this.globalData = this.globalData;
+    this.platformLogo = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformLogo */ "d"];
   }
 });
 
@@ -182,9 +188,7 @@ var render = function () {
     _c("view", { staticClass: "about-top" }, [
       _c("image", {
         staticClass: "about-img",
-        attrs: {
-          src: "https://yuepai-oss.qubeitech.com/static/images/logo.png",
-        },
+        attrs: { src: _vm.platformLogo[_vm.globalData.NODE_ENV] },
       }),
     ]),
     _c("view", { staticClass: "about-service" }, [
@@ -323,7 +327,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageSet/pages/about/index.vue");
 
 
-var config = {"navigationBarTitleText":"关于虾米约拍"};
+var config = {"navigationBarTitleText":"关于我们"};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageSet/pages/about/index', {root:{cn:[]}}, config || {}))

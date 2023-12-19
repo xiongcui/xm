@@ -1,3 +1,3 @@
 export default definePageConfig({
-  navigationBarTitleText: "金币中心",
+  navigationBarTitleText: "我的金币",
 });

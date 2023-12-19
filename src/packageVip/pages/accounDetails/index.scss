@@ -3,6 +3,7 @@ page {
 }
 .account-details {
   margin: 16px;
+  padding-bottom: 60px;
   .account-box {
     background: #ffffff;
     border-radius: 12px;
@@ -27,6 +28,12 @@ page {
   .task-title {
     font-weight: bold;
     font-size: 30px;
+    .task-status {
+      font-size: 24px;
+      font-weight: normal;
+      margin-left: 16px;
+      color: rgba(0, 0, 0, 0.4);
+    }
   }
   .task-coin {
     font-size: 28px;
@@ -42,5 +49,18 @@ page {
   }
   .task-num {
     color: #edb16e;
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 180px 0px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
   }
 }

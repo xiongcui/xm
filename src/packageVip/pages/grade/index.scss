@@ -37,7 +37,8 @@ page {
     align-items: center;
     height: 30px;
     font-size: 26px;
-    background: url("../../../assets/images/growth.png") no-repeat left center;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/growth.png")
+      no-repeat left center;
     background-size: 28px;
     padding-left: 36px;
   }
@@ -47,7 +48,8 @@ page {
     display: flex;
     align-items: center;
     margin-top: 30px;
-    background: url("../../../assets/images/leavel-bg.png") no-repeat;
+    background: url("https://yuepai-oss.qubeitech.com/static/images/leavel-bg.png")
+      no-repeat;
     background-size: 100%;
   }
   .swiper-item {
@@ -142,6 +144,127 @@ page {
         font-size: 24px;
         border-radius: 24px;
       }
+    }
+  }
+  .grade-ct {
+    background: #ffffff;
+    border-radius: 8px;
+    margin: 16px;
+    padding: 16px;
+    .grade-ct-title {
+      font-size: 30px;
+      color: #333333;
+      font-weight: bold;
+      text-align: center;
+    }
+    .task-split {
+      text-align: center;
+      padding: 30px 0px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #ea6a6b;
+    }
+    .task-list {
+      padding: 16px;
+    }
+    .task-box {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    .task-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .task-title-box {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+      .task-tag {
+        padding: 2px 16px;
+        border-radius: 8px;
+        background: #fac8a4;
+        color: #f78c82;
+        font-size: 22px;
+      }
+      .task-title {
+        font-size: 26px;
+        color: #333333;
+        margin-left: 16px;
+      }
+    }
+    .task-label,
+    .coin-box,
+    .growup-box {
+      display: flex;
+      align-items: center;
+    }
+    .coin-box {
+      border: 2px solid #fefaf2;
+      border-radius: 8px 0px 0px 8px;
+    }
+    .growup-box {
+      border: 2px solid #f1faff;
+      border-radius: 8px 0px 0px 8px;
+      margin-left: 16px;
+    }
+    .coin-tag {
+      padding: 2px 10px;
+      background: #fef8e6;
+      color: #f9c073;
+      font-size: 20px;
+      border-radius: 8px 0px 0px 8px;
+    }
+    .growup-tag {
+      padding: 2px 10px;
+      background: #e6f7ff;
+      color: #59b6ff;
+      font-size: 20px;
+      border-radius: 8px 0px 0px 8px;
+    }
+    .coin-num {
+      padding: 0px 10px;
+      text-align: center;
+      color: #f9c073;
+      font-size: 20px;
+    }
+    .growup-num {
+      padding: 0px 10px;
+      color: #59b6ff;
+      text-align: center;
+      font-size: 20px;
+    }
+    .task-rt {
+      display: flex;
+      align-items: center;
+    }
+    .tocomplete {
+      font-size: 24px;
+      text-align: center;
+      padding: 4px 20px;
+      border-radius: 22px;
+      border: 2px solid #ea6a6b;
+      color: #ea6a6b;
+    }
+    .completed {
+      font-size: 24px;
+      text-align: center;
+      padding: 4px 20px;
+      border-radius: 22px;
+      border: 2px solid #a1a2a2;
+      color: #a1a2a2;
+    }
+    .task-schedule {
+      margin-top: 16px;
+      padding-left: 36px;
+      display: flex;
+      align-items: center;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/schedule.png")
+        no-repeat left center;
+      background-size: 24px;
+      color: #a7a6a6;
+      font-size: 24px;
     }
   }
 }

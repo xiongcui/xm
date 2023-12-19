@@ -17,7 +17,15 @@
             ></image>
           </view>
           <block v-if="!showlogin">
-            <view class="sign_block fl" v-if="is_today_sign">
+            <view @tap="goSign" class="sign_block fl">
+              <image
+                class="icon_sign"
+                src="https://yuepai-oss.qubeitech.com/static/images/get-red-envelope.png"
+                :lazy-load="true"
+              ></image>
+            </view>
+
+            <!-- <view class="sign_block fl" v-if="is_today_sign">
               <image
                 class="icon_sign"
                 src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_signed.png"
@@ -30,7 +38,7 @@
                 src="https://yuepai-oss.qubeitech.com/static/images/user/index/icon_sign.png"
               ></image>
               <view>签到</view>
-            </view>
+            </view> -->
           </block>
         </view>
       </view>
@@ -50,32 +58,43 @@
           class="head-img"
           mode="aspectFit"
         ></image>
+        <image
+          v-if="is_member"
+          class="user-vip"
+          src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
+        ></image>
       </view>
       <view class="my-head-ct" v-if="!showlogin && infor.uuid">
-        <view>
+        <view class="my-head-top">
           <text class="my-head-name">{{ infor.nickname }}</text>
+          <text class="my-head-vip">{{ level ? level : "Lv0" }}</text>
         </view>
-        <view class="my-account">账号：{{ infor.uuid }}</view>
+        <view class="my-account">
+          <view class="my-account-item"> 账号:{{ infor.uuid }} </view>
+          <view class="my-account-item">IP归属:{{ infor.login_ip_city }}</view>
+        </view>
         <view class="my-info">
-          <text>IP归属：</text>
-          <text>{{ infor.login_ip_city }}</text>
           <view class="head-tag-box">
             <image
+              @tap="myCertification"
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
               class="head-tag-img"
               v-if="infor.is_certify"
             ></image>
             <image
+              @tap="myCertification"
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real_none.png"
               class="head-tag-img"
               v-else
             ></image>
             <image
+              @tap="pledgecash"
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="head-tag-img"
               v-if="infor.is_security"
             ></image>
             <image
+              @tap="pledgecash"
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge_none.png"
               class="head-tag-img"
               v-else
@@ -148,126 +167,105 @@
       </view>
     </view>
     <view class="my-ct">
-      <view class="my-vip">
-        <view class="my-vip-left" @tap="goCoin">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/money.png"
-            class="my-vip-img"
-            mode="aspectFit"
-          ></image>
-          <view>
-            <view>我的金币</view>
-            <view>{{ coin }}币</view>
+      <view class="my-vip" @tap="goVip" v-if="false">
+        <view class="my-vip-top">
+          <view class="my-vip-left">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/vip-logo.png"
+              class="my-vip-img"
+              mode="aspectFit"
+            ></image>
+            <view class="vip-center">会员中心</view>
+            <view class="vip-text">{{ guide_desc }}</view>
+          </view>
+          <view class="my-vip-rt">
+            <text class="vip-btn">{{
+              is_member ? "续费会员" : "开通会员"
+            }}</text>
           </view>
         </view>
-        <view class="my-vip-rt" @tap="goVip">
-          <image
-            src="https://yuepai-oss.qubeitech.com/static/images/vip.png"
-            class="my-vip-img"
-            mode="aspectFit"
-          ></image>
-          <view>
-            <view>会员中心</view>
-            <view class="vip-text">开通会员尊享特权</view>
+        <view class="my-vip-bt">
+          <view class="my-vip-info">
+            <view class="my-vip-item">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/private-letter.png"
+              ></image>
+              <text>专享在线私信</text>
+            </view>
+            <view class="my-vip-item">
+              <image
+                src="https://yuepai-oss.qubeitech.com/static/images/accelerated-growth.png"
+              ></image>
+              <text>尊享成长加速</text>
+            </view>
           </view>
+          <view class="vip-img-box">
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/level-upgrade.png"
+              @tap.stop="goGrade"
+            ></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/daily-attendance.png"
+              @tap.stop="goSign"
+            ></image>
+            <image
+              src="https://yuepai-oss.qubeitech.com/static/images/invite-friends.png"
+              @tap.stop="invitego"
+            ></image>
+          </view>
+        </view>
+      </view>
+      <view class="my-account-box" v-if="false">
+        <view class="account-item" @tap="goCoin">
+          <view class="account-num"> {{ coin }} </view>
+          <view class="account-label">金币</view>
+          <view class="account-btn">领取金币</view>
+          <view class="account-line"></view>
+        </view>
+        <view class="account-item" @tap="goWallet">
+          <view class="account-num"> {{ wallet }} </view>
+          <view class="account-label">钱包</view>
+          <view class="account-btn">立即提现</view>
+          <view class="account-line"></view>
+        </view>
+        <view class="account-item" @tap="goGrade">
+          <view class="account-num"> {{ level ? level : "Lv0" }} </view>
+          <view class="account-label">等级</view>
+          <view class="account-btn">升级等级</view>
         </view>
       </view>
       <view class="my-column">
         <view class="my-column-item" @tap="goZhuye">
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/zhuye.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/my-home.png"
             class="my-column-img"
-            mode="aspectFill"
           ></image>
-          <text>主页</text>
+          <text>个人主页</text>
+        </view>
+        <view class="my-column-item" @tap="goReleaseManagement">
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/release-management.png"
+            class="my-column-img"
+          ></image>
+          <text>发布管理</text>
         </view>
         <view class="my-column-item" @tap="goZuopin">
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/album.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/works-management.png"
             class="my-column-img"
-            mode="aspectFill"
           ></image>
-          <text>作品</text>
+          <text>作品管理</text>
         </view>
         <view class="my-column-item" @tap="goCollection">
           <image
-            src="https://yuepai-oss.qubeitech.com/static/images/collection.png"
+            src="https://yuepai-oss.qubeitech.com/static/images/collect-management.png"
             class="my-column-img"
-            mode="aspectFill"
           ></image>
-          <text>收藏</text>
+          <text>我的收藏</text>
         </view>
       </view>
       <view class="my-title"> 我的发布 </view>
       <view class="items myblock">
-        <view @tap="onMyAd" class="item ub line-t">
-          <view class="item_icon">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/ad.png"
-            ></image>
-          </view>
-          <view class="ub-f1">
-            <view class="item_text">通告管理</view>
-          </view>
-          <view class="arrow">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
-            ></image>
-          </view>
-        </view>
-        <view @tap="myYuepai" class="item ub">
-          <view class="item_icon">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/yuepai.png"
-            ></image>
-          </view>
-          <view class="ub-f1">
-            <view class="item_text">约拍管理</view>
-          </view>
-          <view class="arrow">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
-            ></image>
-          </view>
-        </view>
-        <!-- <view catchtap="coin" class="item ub line-t">
-          <view class="item_icon">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/huodong.png"
-            ></image>
-          </view>
-          <view class="ub-f1">
-            <view class="item_text">活动管理</view>
-          </view>
-          <view class="arrow">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
-            ></image>
-          </view>
-        </view> -->
-        <view @tap="myZuopin" class="item ub line-t">
-          <view class="item_icon">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/zuopin1.png"
-            ></image>
-          </view>
-          <view class="ub-f1">
-            <view class="item_text">作品管理</view>
-          </view>
-          <view class="arrow">
-            <image
-              mode="aspectFit"
-              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
-            ></image>
-          </view>
-        </view>
         <view class="item ub line-t" @tap="myApply">
           <view class="item_icon">
             <image
@@ -391,7 +389,13 @@
           <view class="ub-f1">
             <view class="item_text">邀请好友</view>
           </view>
-          <view class="item_tip">赚金豆</view>
+          <view class="item_tip">
+            <image
+              mode="widthFix"
+              src="https://yuepai-oss.qubeitech.com/static/images/get-red-envelope.png"
+            ></image>
+            领红包 赚佣金
+          </view>
           <view class="arrow">
             <image
               mode="aspectFit"
@@ -459,6 +463,13 @@
           </view>
           <view class="ub-f1">
             <view class="item_text">关注公众号</view>
+          </view>
+          <view class="item_tip">
+            <image
+              mode="widthFix"
+              src="https://yuepai-oss.qubeitech.com/static/images/msg-icon.png"
+            ></image>
+            开启消息通知
           </view>
           <view class="arrow">
             <image
@@ -580,7 +591,11 @@ export default {
           visitor_cnt: 0,
         },
       },
+      is_member: 0,
       coin: 0,
+      level: "",
+      wallet: 0,
+      guide_desc: "",
       hyper_desc: "",
       shareTitle: "",
       sharePath: "",
@@ -588,8 +603,12 @@ export default {
     };
   },
   methods: {
-    showSign() {
-      this.submitSign("");
+    goSign() {
+      if (isLogin()) {
+        openPage("/packageAdd/pages/user/coin/index");
+      } else {
+        openPage("/pages/login/index");
+      }
     },
     open_settings() {
       if (!isLogin()) {
@@ -621,6 +640,13 @@ export default {
         return false;
       }
       openPage("/packageMoka/pages/moka/editshow/index");
+    },
+    goReleaseManagement() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageAdd/pages/user/releaseManagement/index");
     },
     goZuopin() {
       if (!isLogin()) {
@@ -654,21 +680,6 @@ export default {
         openPage("/packageAdd/pages/user/realnameAuth/index");
       }
     },
-    myYuepai() {
-      // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
-      if (!isLogin()) {
-        openPage("/pages/login/index");
-        return false;
-      }
-      openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
-    },
-    myZuopin() {
-      if (!isLogin()) {
-        openPage("/pages/login/index");
-        return false;
-      }
-      openPage("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
-    },
     goVip() {
       if (!isLogin()) {
         openPage("/pages/login/index");
@@ -683,15 +694,8 @@ export default {
       }
       openPage("/packageAdd/pages/user/coin/index");
     },
-    onMyAd() {
-      if (!isLogin()) {
-        openPage("/pages/login/index");
-        return false;
-      }
-      openPage("/packageTonggao/pages/tonggao_manage/index");
-    },
     invitego() {
-      openPage("/packageAdd/pages/user/invite/index");
+      openPage("/packageAdd/pages/user/inviteGift/index");
     },
     customerService() {
       wx.openCustomerServiceChat({
@@ -740,13 +744,35 @@ export default {
       openPage("/packageActivity/pages/publicize/index");
     },
     goFollowAndfans(type) {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
       openPage("/packageAdd/pages/user/followAndfans/index?type=" + type);
+    },
+    goWallet() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageVip/pages/wallet/index");
+    },
+    goGrade() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageVip/pages/grade/index");
     },
     async userInfo(params) {
       try {
         let res = await userInfo(params);
         this.infor = res.data.data;
         this.coin = res.data.data.acct.coin;
+        this.level = res.data.data.acct.level;
+        this.wallet = res.data.data.acct.wallet;
+        this.is_member = res.data.data.member.is_member;
+        this.guide_desc = res.data.data.member.guide_desc;
       } catch (error) {
         this.infor = {
           age: 0,

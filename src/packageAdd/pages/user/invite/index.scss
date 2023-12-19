@@ -1,108 +1,17 @@
+page {
+  background-color: #f4f4f4;
+}
 .invite {
   text-align: center;
-  .invite-title {
-    font-size: 50px;
+  .invite-top {
+    font-size: 26px;
     color: #333333;
-    text-align: center;
-    margin: 30px 0px;
+    padding: 16px;
   }
-  .invite-txt {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 30px;
-  }
-  .invite-btn {
-    font-size: 34px;
-    width: 80%;
-    height: 80px;
-    line-height: 80px;
-    margin: 100px auto 30px auto;
-    background-color: #ff5355;
-    color: #ffffff;
-    border-radius: 8px;
-  }
-  .cumulative {
-    color: rgba(0, 0, 0, 0.5);
-    font-size: 34px;
-  }
-  .red {
-    color: red;
-  }
-  .invite-mask {
-    position: fixed;
-    top: 0px;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background: rgba(0, 0, 0, 0.5);
-    .mask-box {
-      background: #ffffff;
-      padding: 30px;
-      position: absolute;
-      bottom: 0px;
-      width: calc(100% - 60px);
-      border-radius: 16px 16px 0px 0px;
-      .mask-title {
-        margin-bottom: 30px;
-        text-align: center;
-      }
-      .mask-ct {
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
-      }
-      .mask-item {
-        display: flex;
-        padding: 30px;
-        text-align: left;
-        align-items: center;
-        image {
-          width: 60px;
-          height: 50px;
-          margin-right: 16px;
-        }
-        .mask-share {
-          color: #333333 !important;
-          font-size: 32px;
-        }
-        .mask-share-p {
-          color: rgba(0, 0, 0, 0.5);
-          font-size: 28px;
-        }
-      }
-      .close {
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        top: 16px;
-        right: 10px;
-        background: url("https://yuepai-oss.qubeitech.com/static/images/common/x_icon.png")
-          no-repeat;
-        background-size: 38px;
-      }
-    }
-    .mask-img {
-      width: 80%;
-      height: 90vh;
-    }
-    .mask-save {
-      background-color: #fffb05;
-      color: #333333;
-      height: 70px;
-      line-height: 70px;
-      width: 80%;
-      margin: 16px auto 0 auto;
-      border-radius: 8px;
-    }
-    .share-btn {
-      background-color: transparent;
-      text-align: left;
-      line-height: normal;
-      padding: 0;
-    }
-  }
-  .invite-list {
-    background: #f7f7f7;
-    margin: 0 16px;
+  .invite-list,
+  .invite-top {
+    background: #ffffff;
+    margin: 16px;
     border-radius: 8px;
   }
   .invite-list-title {
@@ -110,18 +19,32 @@
     font-size: 32px;
     color: #333333;
   }
-  .invite-item {
+  .invite-p {
     padding: 16px 30px;
     display: flex;
     justify-content: space-between;
     color: rgba(0, 0, 0, 0.5);
   }
-  .invite-num {
-    background: #ff5355;
-    color: #ffffff;
-    padding: 2px 6px;
-    border-radius: 30px;
-    font-size: 30px;
-    margin-right: 16px;
+  .invite-item {
+    font-size: 26px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .blod {
+    font-size: 26px;
+    font-weight: bold;
+    color: #333333;
+  }
+  .none-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 180px;
+    color: #333;
+  }
+  .none-img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
   }
 }

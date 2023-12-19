@@ -1,9 +1,15 @@
+page {
+  background-color: #f7f8fa;
+}
+
+.coin {
+  margin: 16rpx;
+}
+
 .coin .coin-bg {
-  padding: 0 30rpx;
-  background: #ea6a6b;
-  color: #fffefb;
-  height: 270rpx;
-  padding-bottom: 30rpx;
+  padding: 30rpx;
+  background: #fbd5a1;
+  color: #aa6e31;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -14,6 +20,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
+
 .coin .coin-bg-left {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,27 +29,143 @@
       -ms-flex-direction: column;
           flex-direction: column;
 }
+
 .coin .coin-bg-left .coin-total {
   font-size: 50rpx;
   margin-bottom: 16rpx;
 }
+
 .coin .coin-bg-left .company {
   font-size: 30rpx;
 }
+
 .coin .coin-bg-left .coin-tips {
   font-size: 28rpx;
 }
+
 .coin .coin-bg-rt {
-  padding: 6rpx 12rpx 6rpx 50rpx;
-  border: 2rpx solid #fffefb;
-  border-radius: 14rpx;
+  padding: 6rpx 26rpx;
+  border: 2rpx solid #ff1e3e;
+  color: #ff1e3e;
+  border-radius: 30rpx;
   font-size: 28rpx;
-  background: url("https://yuepai-oss.qubeitech.com/static/images/user/coin/coin.png") no-repeat 10rpx center;
-  background-size: 30rpx;
 }
+
+.coin .signin {
+  background: #ffffff;
+  padding: 30rpx;
+  border-radius: 0 0 30rpx 30rpx;
+}
+
+.coin .signin .signin-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 6rpx;
+}
+
+.coin .signin .signin-title .signin-lable {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+}
+
+.coin .signin .signin-title .signin-tips {
+  padding: 4rpx 16rpx 4rpx 50rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #333333;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/timebg.png") no-repeat 16rpx center #fdeeb0;
+  border-radius: 28rpx;
+  background-size: 26rpx;
+}
+
+.coin .signin .signin-p {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.coin .signin .signin-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx 0;
+}
+
+.coin .signin .signin-box {
+  width: 84rpx;
+}
+
+.coin .signin .signin-box-top {
+  background: #f5f1eb;
+  border-radius: 8rpx;
+  padding: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.coin .signin .signin-box-top image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 4rpx;
+}
+
+.coin .signin .signin-num {
+  font-size: 24rpx;
+  color: #ba8d61;
+}
+
+.coin .signin .signin-box-bt {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-top: 6rpx;
+}
+
+.coin .signin .immediately-signin {
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 30rpx;
+  border-radius: 33rpx;
+  background: #fae35a;
+  color: #ae742a;
+  text-align: center;
+  font-weight: bold;
+}
+
+.coin .signin .immediately-sign {
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 30rpx;
+  border-radius: 33rpx;
+  background: #f5f1eb;
+  color: #a09c9b;
+  text-align: center;
+  font-weight: bold;
+}
+
 .coin .coin-content {
-  margin-top: -60rpx;
+  margin-top: 16rpx;
+  background: #ffffff;
+  border-radius: 30rpx;
 }
+
 .coin .tab {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -51,9 +174,8 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  background: #ffffff;
-  border-radius: 20rpx 20rpx 0 0;
 }
+
 .coin .tab-item {
   color: #333333;
   -webkit-flex: 1;
@@ -65,30 +187,41 @@
   border-bottom: 6rpx solid #ffffff;
   margin: 0 30rpx;
 }
+
 .coin .content {
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
   height: 100vh;
 }
+
 .coin .detailed,
 .coin .get-coin {
   padding-bottom: 60rpx;
 }
+
+.coin .detailed {
+  background: #ffffff;
+}
+
 .coin .content > swiper {
   height: 100%;
 }
+
 .coin .tab-item.on {
   color: #333333;
   font-weight: bold;
   border-bottom-color: #ff1e3e;
 }
+
 .coin .swiper-box {
   height: 100%;
 }
+
 .coin .privilege-list {
   margin-top: 16rpx;
 }
+
 .coin .privilege-box {
   margin: 0 30rpx;
   padding: 16rpx 0;
@@ -102,11 +235,13 @@
   font-size: 26rpx;
   color: rgba(0, 0, 0, 0.4);
 }
+
 .coin .privilege-box .blod {
   font-weight: bold;
   color: #333333;
   font-size: 30rpx;
 }
+
 .coin .privilege-box .service,
 .coin .privilege-box .vip,
 .coin .privilege-box .novip {
@@ -114,27 +249,34 @@
       -ms-flex: 1;
           flex: 1;
 }
+
 .coin .privilege-box .vip {
   text-align: center;
 }
+
 .coin .privilege-box .novip {
   text-align: right;
 }
+
 .coin .privilege-box image {
   width: 30rpx;
   height: 30rpx;
 }
+
 .coin .red {
   color: #ea6a6b;
 }
+
 .coin .coin-title {
   text-align: center;
   font-size: 32rpx;
   color: #ea6a6b;
 }
+
 .coin .get-coin {
   margin-top: 30rpx;
 }
+
 .coin .coin-task {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -148,6 +290,7 @@
   padding: 16rpx 30rpx;
   border-bottom: 1rpx solid #f5f5f5;
 }
+
 .coin .task-dian {
   width: 14rpx;
   height: 14rpx;
@@ -157,6 +300,7 @@
   left: 0;
   top: 16rpx;
 }
+
 .coin .task-info {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -167,20 +311,24 @@
   padding-left: 30rpx;
   position: relative;
 }
+
 .coin .task-title {
   font-weight: bold;
   font-size: 30rpx;
 }
+
 .coin .task-coin {
   font-size: 28rpx;
   color: #ea6a6b;
   margin-left: 30rpx;
 }
+
 .coin .task-tips {
   margin-top: 6rpx;
   font-size: 24rpx;
   color: rgba(0, 0, 0, 0.4);
 }
+
 .coin .task-btn {
   width: 100rpx;
   height: 50rpx;
@@ -191,19 +339,24 @@
   font-size: 26rpx;
   border-radius: 10rpx;
 }
+
 .coin .task-sucess-btn {
   color: rgba(0, 0, 0, 0.5);
 }
+
 .coin .mt16 {
   margin-top: 16rpx;
 }
+
 .coin .task-num {
   color: #ea6a6b;
   padding-right: 30rpx;
 }
+
 .coin .detailed-list {
   margin-top: 16rpx;
 }
+
 .coin .none-data {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -220,8 +373,160 @@
   padding-top: 180rpx;
   color: #333;
 }
+
 .coin .none-img {
   width: 150rpx;
   height: 150rpx;
   margin-bottom: 16rpx;
+}
+
+.coin .task-split {
+  text-align: center;
+  padding: 30rpx 0;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ea6a6b;
+}
+
+.coin .task-list {
+  padding: 0 16rpx 30rpx 16rpx;
+  background: #ffffff;
+}
+
+.coin .task-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 16rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.coin .task-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.coin .task-title-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.coin .task-title-box .task-tag {
+  padding: 2rpx 16rpx;
+  border-radius: 8rpx;
+  background: #fac8a4;
+  color: #f78c82;
+  font-size: 22rpx;
+}
+
+.coin .task-title-box .task-title {
+  font-size: 26rpx;
+  color: #333333;
+  margin-left: 16rpx;
+}
+
+.coin .task-label,
+.coin .coin-box,
+.coin .growup-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.coin .coin-box {
+  border: 2rpx solid #fefaf2;
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.coin .growup-box {
+  border: 2rpx solid #f1faff;
+  border-radius: 8rpx 0 0 8rpx;
+  margin-left: 16rpx;
+}
+
+.coin .coin-tag {
+  padding: 2rpx 10rpx;
+  background: #fef8e6;
+  color: #f9c073;
+  font-size: 20rpx;
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.coin .growup-tag {
+  padding: 2rpx 10rpx;
+  background: #e6f7ff;
+  color: #59b6ff;
+  font-size: 20rpx;
+  border-radius: 8rpx 0 0 8rpx;
+}
+
+.coin .coin-num {
+  padding: 0 10rpx;
+  text-align: center;
+  color: #f9c073;
+  font-size: 20rpx;
+}
+
+.coin .growup-num {
+  padding: 0 10rpx;
+  color: #59b6ff;
+  text-align: center;
+  font-size: 20rpx;
+}
+
+.coin .task-rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.coin .tocomplete {
+  font-size: 24rpx;
+  text-align: center;
+  padding: 4rpx 20rpx;
+  border-radius: 22rpx;
+  border: 2rpx solid #ea6a6b;
+  color: #ea6a6b;
+}
+
+.coin .completed {
+  font-size: 24rpx;
+  text-align: center;
+  padding: 4rpx 20rpx;
+  border-radius: 22rpx;
+  border: 2rpx solid #a1a2a2;
+  color: #a1a2a2;
+}
+
+.coin .task-schedule {
+  margin-top: 16rpx;
+  padding-left: 36rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/schedule.png") no-repeat left center;
+  background-size: 24rpx;
+  color: #a7a6a6;
+  font-size: 24rpx;
 }

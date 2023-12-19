@@ -368,7 +368,7 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* applyMember */ "i"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* applyMember */ "j"])(params);
 
               case 3:
                 res = _context.sent;
@@ -400,7 +400,7 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityEvent */ "jb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityEvent */ "pb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -442,7 +442,7 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityList */ "kb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityList */ "qb"])(params);
 
               case 3:
                 res = _context3.sent;

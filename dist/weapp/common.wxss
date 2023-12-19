@@ -370,6 +370,16 @@
       -ms-flex-align: center;
           align-items: center;
 }
+.componets-list .user-vip {
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 0;
+  top: 44rpx;
+}
+.componets-list .list_top_box {
+  position: relative;
+}
 .componets-list .list_top_rt {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -394,6 +404,12 @@
           justify-content: center;
 }
 .componets-list .list_info .list_name {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: #111111;
   font-size: 34rpx;
 }

@@ -90,7 +90,7 @@ export default {
     async coinAcct(params) {
       try {
         let res = await coinAcct(params);
-        this.coin = res.data.data.coin;
+        this.coin = res.data.data.wallet.info.wallet_money;
       } catch (error) {}
     },
     async coinStore(params) {

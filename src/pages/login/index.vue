@@ -3,12 +3,14 @@
     <block class="login" v-if="pageshow == 'login'">
       <view class="login-top">
         <image
-          src="https://yuepai-oss.qubeitech.com/static/images/logo.png"
+          :src="platformLogo[globalData.NODE_ENV]"
           mode="aspectFit"
           class="logo-img"
         ></image>
         <view class="desc">
-          <text>虾米约拍 - 严肃靠谱模特约拍平台</text>
+          <text
+            >{{ platformMap[globalData.NODE_ENV] }} - 严肃靠谱模特约拍平台</text
+          >
         </view>
         <view class="small-desc">
           <text>MODEL PHOTOGRAPH</text>
@@ -143,10 +145,14 @@
 import "./index.scss";
 import { wxlogin, getPhone, userRegister } from "../../api/index";
 import { Base64 } from "js-Base64";
-import { errortip, openPage } from "../../utils/util";
+import {
+  errortip,
+  openPage,
+  platformMap,
+  platformLogo,
+} from "../../utils/util";
 import privacyPopup from "../../components/privacyPopup/index.vue";
 import clickThrottle from "../../utils/clickThrottle";
-
 export default {
   name: "login",
   data() {
@@ -171,6 +177,8 @@ export default {
       pageshow: "login",
       scene: "",
       from: "",
+      platformMap: {},
+      platformLogo: {},
     };
   },
   components: {
@@ -207,6 +215,7 @@ export default {
                 account: res.code,
                 secret: "",
                 type: 200,
+                app: _this.globalData.NODE_ENV,
               });
             },
             fail(err) {
@@ -221,6 +230,7 @@ export default {
     },
     onGetPhoneNumber(e) {
       let _this = this;
+      console.log(e);
       if ("getPhoneNumber:ok" == e.detail.errMsg) {
         wx.login({
           success(res) {
@@ -228,6 +238,7 @@ export default {
               code: res.code,
               encryptedData: e.detail.encryptedData,
               iv: e.detail.iv,
+              app: _this.globalData.NODE_ENV,
             });
           },
           fail(err) {
@@ -397,6 +408,9 @@ export default {
     },
   },
   created() {
+    this.globalData = this.globalData;
+    this.platformMap = platformMap;
+    this.platformLogo = platformLogo;
     this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.scene = wx.getLaunchOptionsSync().scene;
   },

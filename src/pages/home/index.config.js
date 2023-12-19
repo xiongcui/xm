@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: "虾米约拍",
+  navigationBarTitleText: "",
   enablePullDownRefresh: true,
   navigationStyle: "custom",
   navigationBarBackgroundColor: "#FE5457",

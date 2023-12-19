@@ -147,6 +147,16 @@ page {
     display: flex;
     align-items: center;
   }
+  .list_top_box {
+    position: relative;
+  }
+  .user-vip {
+    width: 26px;
+    height: 26px;
+    position: absolute;
+    right: 0px;
+    top: 44px;
+  }
   .list_top_rt {
     display: flex;
     flex-direction: column;

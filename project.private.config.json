@@ -46,8 +46,8 @@
                     "scene": null
                 },
                 {
-                    "name": "成长指南",
-                    "pathName": "packageVip/pages/growthGuide/index",
+                    "name": "提现进度",
+                    "pathName": "packageVip/pages/withdrawalProgress/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null
@@ -60,8 +60,29 @@
                     "scene": null
                 },
                 {
-                    "name": "模卡列表",
-                    "pathName": "packageMoka/pages/moka/otherlist/index",
+                    "name": "邀请明细",
+                    "pathName": "packageAdd/pages/user/invite/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "登录",
+                    "pathName": "pages/login/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "钱包充值",
+                    "pathName": "packageAdd/pages/user/rechargeWallet/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "我的金币",
+                    "pathName": "packageAdd/pages/user/coin/index",
                     "query": "",
                     "launchMode": "default",
                     "scene": null

@@ -53,6 +53,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/user/inviteGift/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 
 
 
@@ -115,6 +116,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -127,7 +129,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
       imgVisible: false,
       imageUrl: "",
       isIphoneX: false
-    }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "imageUrl", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "shareTitle", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "shareImg", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "sharePath", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "list", []), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "user_cnt", 0), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "coin_sum", 0), _ref;
+    }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "imageUrl", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "shareTitle", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "shareImg", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "sharePath", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "list", []), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "user_cnt", 0), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "reward_coin", 0), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "reward_amount", 0), _ref;
   },
   methods: {
     invite: function invite() {
@@ -202,6 +204,9 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
         }
       });
     },
+    goInviteDetail: function goInviteDetail() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/invite/index");
+    },
     inviteImage: function inviteImage(params) {
       var _this2 = this;
 
@@ -213,7 +218,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* inviteImage */ "P"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* inviteImage */ "V"])(params);
 
               case 3:
                 res = _context.sent;
@@ -244,7 +249,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Rb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Zb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -274,7 +279,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "ac"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -296,17 +301,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
         }, _callee3, null, [[0, 9]]);
       }))();
     },
-    shareInviteList: function (_shareInviteList) {
-      function shareInviteList(_x) {
-        return _shareInviteList.apply(this, arguments);
-      }
-
-      shareInviteList.toString = function () {
-        return _shareInviteList.toString();
-      };
-
-      return shareInviteList;
-    }(function (params) {
+    inviteFriendsList: function inviteFriendsList(params) {
       var _this4 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
@@ -317,13 +312,13 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return shareInviteList(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* inviteFriendsList */ "U"])(params);
 
               case 3:
                 res = _context4.sent;
-                _this4.list = res.data.data.items;
-                _this4.user_cnt = res.data.data.total.user_cnt;
-                _this4.coin_sum = res.data.data.total.coin_sum;
+                _this4.reward_amount = res.data.data.stats.reward_amount;
+                _this4.reward_coin = res.data.data.stats.reward_coin;
+                _this4.user_cnt = res.data.data.stats.user_cnt;
                 _context4.next = 11;
                 break;
 
@@ -338,7 +333,7 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
           }
         }, _callee4, null, [[0, 9]]);
       }))();
-    })
+    }
   },
   onShareAppMessage: function onShareAppMessage() {
     this.shareInvite({
@@ -364,11 +359,11 @@ component.options.__file = "src/packageAdd/pages/user/inviteGift/index.vue"
     this.isIphoneX = this.globalData.isIphoneX;
   },
   mounted: function mounted() {
+    this.inviteFriendsList("");
     this.shareInviteInfo({
       source: "share_friend",
       type: "wechat"
     });
-    this.shareInviteList("");
   }
 });
 
@@ -393,7 +388,7 @@ var render = function () {
     _c("image", {
       staticClass: "invite-img",
       attrs: {
-        src: __webpack_require__(/*! ../../../../assets/images/invite-gift.jpg */ "./src/assets/images/invite-gift.jpg"),
+        src: "https://yuepai-oss.qubeitech.com/static/banner/invite_friends_poster.png",
         mode: "widthFix",
       },
     }),
@@ -408,12 +403,18 @@ var render = function () {
           _vm._v(
             "已累计邀请" +
               _vm._s(_vm.user_cnt) +
-              "人，获得100元现金，获得" +
-              _vm._s(_vm.coin_sum) +
+              "人，获得" +
+              _vm._s(_vm.reward_amount) +
+              "元现金，获得" +
+              _vm._s(_vm.reward_coin) +
               "个金币"
           ),
         ]),
-        _c("view", { staticClass: "detail-btn" }, [_vm._v("查看邀请明细")]),
+        _c(
+          "view",
+          { staticClass: "detail-btn", on: { tap: _vm.goInviteDetail } },
+          [_vm._v("查看邀请明细")]
+        ),
         _c("view", { staticClass: "invite-friends", on: { tap: _vm.invite } }, [
           _vm._v("立即邀请好友"),
         ]),
@@ -493,18 +494,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./src/assets/images/invite-gift.jpg":
-/*!*******************************************!*\
-  !*** ./src/assets/images/invite-gift.jpg ***!
-  \*******************************************/
-/*! no static exports found */
-/*! all exports used */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/images/invite-gift.jpg";
 
 /***/ }),
 

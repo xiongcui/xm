@@ -34,26 +34,78 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding: 30rpx 30rpx 4rpx 30rpx;
+  padding: 30rpx 30rpx 6rpx 30rpx;
+}
+.main .my-head .my-head-left {
+  position: relative;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.main .my-head .user-vip {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 0;
+  top: 96rpx;
 }
 .main .my-head .head-img {
   width: 120rpx;
   height: 120rpx;
-  margin-right: 16rpx;
   border-radius: 50%;
+}
+.main .my-head .my-head-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
 .main .my-head .my-head-name {
   font-size: 36rpx;
   color: #fffefb;
-  margin-top: 10rpx;
+}
+.main .my-head .my-head-vip {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/level-icon.png") left center no-repeat;
+  background-size: 128rpx 64rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  width: 128rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-indent: 60rpx;
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
 }
 .main .my-head .my-head-ct {
   width: 64%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .main .my-head .my-account {
   color: #fffefb;
   font-size: 26rpx;
   margin-bottom: 5rpx;
+  margin-bottom: 10rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.main .my-head .my-account .my-account-item {
+  margin-right: 30rpx;
 }
 .main .my-head .my-info {
   color: #fffefb;
@@ -70,7 +122,7 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  margin-left: 16rpx;
+  margin-right: 16rpx;
 }
 .main .my-head .head-tag {
   display: -webkit-flex;
@@ -89,7 +141,7 @@
 .main .my-head .head-tag-img {
   width: 100rpx;
   height: 30rpx;
-  margin-left: 16rpx;
+  margin-right: 16rpx;
 }
 .main .my-head .my-head-rt {
   display: -webkit-flex;

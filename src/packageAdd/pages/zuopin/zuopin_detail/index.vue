@@ -2,22 +2,29 @@
   <view class="zuopin_detail">
     <view class="zuopin_top">
       <view class="zuopin_top_left">
-        <image
-          :src="zuopinInfo.author.avatar"
-          class="avatar"
-          @tap="goZhuye(zuopinInfo.author.uuid)"
-        ></image>
+        <view class="zuopin_top_box">
+          <image
+            :src="zuopinInfo.author.avatar"
+            class="avatar"
+            @tap="goZhuye(zuopinInfo.author.uuid)"
+          ></image>
+          <image
+            v-if="zuopinInfo.author.is_member"
+            class="user-vip"
+            src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
+          ></image>
+        </view>
         <view class="zuopin_author_info">
           <view class="zuopin_name">
             {{ zuopinInfo.author.nickname }}
             <block v-if="zuopinInfo.author.sex !== null">
               <image
-                src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/boy.png"
                 class="zuopin_sex"
                 v-if="zuopinInfo.author.sex == 1"
               ></image>
               <image
-                src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
+                src="https://yuepai-oss.qubeitech.com/static/images/girl.png"
                 class="zuopin_sex"
                 v-if="zuopinInfo.author.sex == 0"
               ></image>
