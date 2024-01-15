@@ -1,0 +1,41 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.share-show {
+  padding: 16rpx;
+}
+
+.share-show .share-show-list {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.share-show .share-show-list .share-show-item {
+  margin-bottom: 16rpx;
+}
+
+.share-show .share-show-list .share-show-item image {
+  width: 350rpx;
+  height: 350rpx;
+  border-radius: 8rpx;
+}
+
+.share-show .share-show-list .share-show-item .share-show-txt {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-top: 6rpx;
+  width: 350rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}

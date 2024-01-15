@@ -393,7 +393,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* commentCreate */ "z"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* commentCreate */ "A"])(params);
 
               case 3:
                 res = _context.sent;
@@ -433,7 +433,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "yc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Gc"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -464,7 +464,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Lc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Uc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -495,7 +495,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksInfo */ "Rc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksInfo */ "ad"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -538,7 +538,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksEvent */ "Qc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* worksEvent */ "Zc"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -576,7 +576,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* commentInfo */ "A"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* commentInfo */ "B"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -605,7 +605,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -635,7 +635,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -666,7 +666,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -696,7 +696,7 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context10.sent;

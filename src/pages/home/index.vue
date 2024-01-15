@@ -90,13 +90,21 @@
           </swiper>
         </view>
       </block>
-      <!-- <view class="news">
-        <view class="news-title">消息</view>
-        <view class="news-line">|</view>
-        <view class="news-txt">看大佬如何用手机拍出黑白大片</view>
-        <view class="news-btn">去看看</view>
-      </view> -->
-      <view class="news">
+      <view class="banner-txt">
+        <view class="banner-txt-item">
+          <image src="../../assets/images/banner-icon-1.png"></image>
+          <text>无忧约拍</text>
+        </view>
+        <view class="banner-txt-item">
+          <image src="../../assets/images/banner-icon-2.png"></image>
+          <text>正规靠谱</text>
+        </view>
+        <view class="banner-txt-item">
+          <image src="../../assets/images/banner-icon-3.png"></image>
+          <text>资源丰富</text>
+        </view>
+      </view>
+      <view class="news" v-if="false">
         <view class="news-title">消息</view>
         <view class="news-line">|</view>
         <swiper
@@ -123,7 +131,7 @@
       </view>
       <view class="page-nav">
         <view class="page-nav-top">
-          <view class="page-nav-item" @tap="goTakelist">
+          <view class="page-nav-item" @tap="goTakelist(2)">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/icon_model.png"
               class="page-nav-img"
@@ -131,7 +139,7 @@
             ></image>
             <text class="page-nav-text">要约模特</text>
           </view>
-          <view class="page-nav-item" @tap="goTakelist">
+          <view class="page-nav-item" @tap="goTakelist(1)">
             <image
               src="https://yuepai-oss.qubeitech.com/static/images/take.png"
               class="page-nav-img"
@@ -642,7 +650,7 @@ export default {
       indicatorDots2: false,
       vertical: false,
       autoplay: true,
-      interval: 5000,
+      interval: 3000,
       interval2: 10000,
       duration: 500,
       componetActive: 0,
@@ -761,8 +769,7 @@ export default {
       }
     },
     goCompetition() {
-      // openPage("/packageActivity/pages/match/index");
-      errortip("正在开发中");
+      openPage("/packageActivity/pages/match/index");
     },
     signClose() {
       this.showModelSign = false;
@@ -818,9 +825,12 @@ export default {
         openPage("/pages/login/index");
       }
     },
-    goTakelist() {
+    goTakelist(navactive) {
       openPage(
-        "/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter
+        "/packageAdd/pages/user/takelist/index?city_filter=" +
+          this.city_filter +
+          "&navactive=" +
+          navactive
       );
     },
     componetClick(index) {

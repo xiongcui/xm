@@ -138,12 +138,12 @@ module.exports = _objectSpread2, module.exports.__esModule = true, module.export
 
 var App = {
   onLaunch: function onLaunch() {
-    console.log("YPTG", 112122); // 微信登陆
+    console.log("XM", 112122); // 微信登陆
 
     var _this = App; // 判断是否为iphoneX
 
     vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].prototype.globalData = _this.globalData;
-    _this.globalData.NODE_ENV = "YPTG";
+    _this.globalData.NODE_ENV = "XM";
     wx.getSystemInfo({
       success: function success(res) {
         var model = res.model;
@@ -1056,12 +1056,12 @@ var config = ({
   /**
    * Show production mode tip message on boot?
    */
-  productionTip: "YPTG" !== 'production',
+  productionTip: "XM" !== 'production',
 
   /**
    * Whether to enable devtools
    */
-  devtools: "YPTG" !== 'production',
+  devtools: "XM" !== 'production',
 
   /**
    * Whether to record perf
@@ -2043,7 +2043,7 @@ strats.computed = function (
   vm,
   key
 ) {
-  if (childVal && "YPTG" !== 'production') {
+  if (childVal && "XM" !== 'production') {
     assertObjectType(key, childVal, vm);
   }
   if (!parentVal) { return childVal }

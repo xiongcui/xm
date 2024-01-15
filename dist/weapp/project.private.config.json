@@ -1,4 +1,114 @@
 {
     "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-    "libVersion": "3.2.2"
+    "condition": {
+        "miniprogram": {
+            "list": [
+                {
+                    "name": "活动详情",
+                    "pathName": "packageActivity/pages/detail/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "发布活动",
+                    "pathName": "packageActivity/pages/add/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "活动列表",
+                    "pathName": "packageActivity/pages/list/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "报名支付",
+                    "pathName": "packageActivity/pages/application/index",
+                    "query": "roles_oid=SR231221210516907313837",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "我的活动",
+                    "pathName": "packageActivity/pages/myActivity/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "报名确认",
+                    "pathName": "packageActivity/pages/applicationConfirm/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "信用担保",
+                    "pathName": "packageMsg/pages/creditGuarantee/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "我的解锁",
+                    "pathName": "packageAdd/pages/user/unlock/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "用户推荐",
+                    "pathName": "packageAdd/pages/user/takelist/index",
+                    "query": "city_filter=430100",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "注册",
+                    "pathName": "pages/register/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "我的",
+                    "pathName": "pages/my/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "信用担保",
+                    "pathName": "packageMsg/pages/creditGuarantee/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "用户推荐",
+                    "pathName": "packageAdd/pages/user/takelist/index",
+                    "query": "city_filter=430100&navactive=2",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "收到报名",
+                    "pathName": "packageMsg/pages/signup/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "会员中心",
+                    "pathName": "packageVip/pages/vip/index",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                }
+            ]
+        }
+    }
 }

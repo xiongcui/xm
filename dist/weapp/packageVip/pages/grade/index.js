@@ -257,7 +257,7 @@ component.options.__file = "src/packageVip/pages/grade/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* ruleList */ "Ub"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* ruleList */ "Wb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -298,7 +298,7 @@ component.options.__file = "src/packageVip/pages/grade/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* growthInfo */ "M"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* growthInfo */ "N"])(params);
 
               case 3:
                 res = _context2.sent;

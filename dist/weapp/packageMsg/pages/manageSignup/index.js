@@ -1090,7 +1090,7 @@ var _methods;
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* imVerify */ "R"])(params);
+              return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* imVerify */ "S"])(params);
 
             case 3:
               res = _context3.sent;

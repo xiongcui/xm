@@ -130,7 +130,7 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* pushInit */ "Qb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* pushInit */ "Sb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -161,7 +161,7 @@ component.options.__file = "src/packageTonggao/pages/open_recruitment/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subOpenRecruitment */ "lc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* subOpenRecruitment */ "oc"])(params);
 
               case 3:
                 res = _context2.sent;

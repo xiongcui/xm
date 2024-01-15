@@ -523,6 +523,150 @@ var _methods;
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -554,8 +698,7 @@ var _methods;
       desc_detail_cover: [],
       guide: [],
       service: "",
-      enter_current_number: "",
-      enter_total_number: "",
+      enter_current_babel: "",
       scene: {},
       time: "",
       enter_current_member: [],
@@ -568,7 +711,7 @@ var _methods;
       selectedGroup: [],
       selectedTeams: [],
       price: "",
-      steamid: "",
+      roles_oid: "",
       teams_name: "",
       sessionList: [],
       shareTitle: "",
@@ -582,7 +725,19 @@ var _methods;
       sceneList: [],
       groupList: [],
       characterList: [],
-      scenemsg: "请选择"
+      scenemsg: "请选择",
+      rateindex: 0,
+      roleVisible: false,
+      roleList: [],
+      selectedRole: [],
+      invitedList: [],
+      memberList: [],
+      commentList: [],
+      sharingList: [],
+      commentTotal: 0,
+      contentType: "text",
+      required_certify: "",
+      return_security: ""
     };
   },
   created: function created() {
@@ -640,6 +795,15 @@ var _methods;
     }
   },
   methods: (_methods = {
+    rateChange: function rateChange(e) {
+      this.rateindex = e.detail.index;
+    },
+    goComment: function goComment() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/comment/index?pid=" + this.pid);
+    },
+    goShareShow: function goShareShow() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/shareShow/index?pid=" + this.pid);
+    },
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
@@ -649,6 +813,41 @@ var _methods;
     },
     close: function close() {
       this.visible = false;
+    },
+    sceneClick: function sceneClick(data, index) {
+      if (data.scene_apply_schedule.status_code == "done") {
+        return false;
+      }
+
+      this.selectedSessions = [data];
+      this.sceneList.map(function (item) {
+        item.scene_default_select = 0;
+      });
+      this.sceneList[index].scene_default_select = 1;
+      this.sceneList = this.sceneList.concat([]);
+      var roleData = this.selectable.roles[data.scene_oid];
+      console.log(roleData, roleData.length > 1, "roleData----");
+
+      if (roleData.length > 1) {
+        this.roleVisible = true;
+        this.roleList = roleData;
+      } else {
+        this.roleVisible = false;
+        this.roleList = [];
+        this.selectedRole = [];
+        this.roles_oid = roleData[0].roles_oid;
+      }
+
+      this.price = roleData[0].roles_apply_schedule.original_amount.show == "text" ? roleData[0].roles_apply_schedule.original_amount.label : roleData[0].roles_apply_schedule.original_amount.amount;
+    },
+    roleClick: function roleClick(data, index) {
+      this.selectedRole = [data];
+      this.roleList.map(function (item) {
+        item.is_select = 0;
+      });
+      this.roleList[index].is_select = 1;
+      this.roleList = this.roleList.concat([]);
+      this.price = data.roles_apply_schedule.original_amount.show == "text" ? data.roles_apply_schedule.original_amount.label : data.roles_apply_schedule.original_amount.amount;
     },
     eventFrequency: function eventFrequency(data, index) {
       this.selectedSessions = [data];
@@ -763,58 +962,35 @@ var _methods;
       this.current_price = this.price;
     },
     submit: function submit() {
-      if (this.groupVisible) {
-        var groupData = this.groupList.find(function (item) {
+      if (this.roleVisible && this.roleList.length) {
+        var roleData = this.roleList.find(function (item) {
           return item.is_select == 1;
         });
 
-        if (!groupData) {
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择分组！");
-          return false;
-        }
-
-        this.steamid = this.selectedGroup[0].group_oid;
-      }
-
-      if (this.characterVisible) {
-        var teamsData = this.characterList.find(function (item) {
-          return item.is_select == 1;
-        });
-
-        if (!teamsData) {
+        if (!roleData) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择角色！");
           return false;
         }
 
-        this.steamid = this.selectedTeams[0].teams_oid;
-      }
-
-      if (!this.groupVisible && !this.characterVisible) {
-        this.steamid = this.selectedSessions[0].teams_oid;
+        this.roles_oid = this.selectedRole[0].roles_oid;
       }
 
       this.visible = false;
       this.scene = this.selectedSessions[0];
       console.log(JSON.stringify(this.scene));
-      var data = this.selectable.service.find(function (item) {
-        return item.is_select == 1;
-      });
-
-      if (data) {
-        this.service = data.name;
-      }
-
       this.current_price = this.price;
     },
     nowApplication: function nowApplication() {
-      if (!this.scene.scene_name && !this.scene.scene_desc) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])("请选择场次！");
+      console.log(this.scene, "this.scene-----");
+
+      if (!this.scene.scene_name) {
+        this.visible = true;
         return false;
       }
 
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
       this.activityVerify({
-        teams_oid: this.steamid
+        roles_oid: this.roles_oid
       });
     },
     myJoin: function myJoin(item, index, steamid, teams_name) {
@@ -850,7 +1026,7 @@ var _methods;
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "R"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "S"])(params);
 
             case 3:
               res = _context.sent;
@@ -917,73 +1093,83 @@ var _methods;
             case 0:
               _context3.prev = 0;
               _context3.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* exploreInfo */ "D"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* exploreInfo */ "E"])(params);
 
             case 3:
               res = _context3.sent;
               _this4.uuid = res.data.data.basic.uuid;
               _this4.title = res.data.data.topic.title;
-              _this4.label = res.data.data.topic.label;
-              _this4.enter_deadline_time = res.data.data.topic.enter_deadline_time;
+              _this4.label = res.data.data.topic.keynote_label;
+              _this4.enter_deadline_time = res.data.data.topic.deadline_time;
               _this4.original_price = res.data.data.topic.original_price;
-              _this4.price = _this4.current_price = res.data.data.topic.current_price;
+              _this4.price = _this4.current_price = res.data.data.topic.original_amount.show == "text" ? res.data.data.topic.original_amount.label : res.data.data.topic.original_amount.amount;
               _this4.desc_cover = res.data.data.basic.main_cover;
-              _this4.is_required_certify = res.data.data.certify.is_required_certify;
-              _this4.certify_title = res.data.data.certify.name + "：" + res.data.data.certify.amount;
-              _this4.certify_desc = res.data.data.certify.desc;
-              _this4.time = res.data.data.time.begin_date + " " + res.data.data.time.begin_time + "~" + res.data.data.time.finish_time;
-              _this4.address = res.data.data.address.address;
-              _this4.position = res.data.data.address.position;
-              _this4.avatar = res.data.data.publisher.avatar;
-              _this4.nickname = res.data.data.publisher.nickname;
-              _this4.labelTxt = res.data.data.publisher.label;
-              _this4.publish_num = res.data.data.publisher.publish_num;
-              _this4.evaluate_score = res.data.data.publisher.evaluate_score * 10;
-              _this4.content = res.data.data.details.content;
-              _this4.desc_detail_cover = res.data.data.details.desc_cover;
-              _this4.guide = res.data.data.guide;
-              _this4.service = res.data.data.selectable.service[0];
-              _this4.enter_current_number = res.data.data.enter.enter_current_number;
-              _this4.enter_total_number = res.data.data.enter.enter_total_number;
-              _this4.enter_current_member = res.data.data.enter.enter_current_member;
+              _this4.enter_current_babel = res.data.data.member.schedule;
+              _this4.time = res.data.data.selected.datetime;
+              _this4.address = res.data.data.selected.address;
+              _this4.scenemsg = res.data.data.selected.scene;
+              _this4.avatar = res.data.data.partner.basic.avatar;
+              _this4.nickname = res.data.data.partner.basic.name;
+              _this4.labelTxt = res.data.data.partner.basic.mode;
+              _this4.publish_num = res.data.data.partner.basic.publish_cnt;
+              _this4.evaluate_score = res.data.data.partner.basic.favorable_rate;
+              _this4.enter_current_member = res.data.data.member.overview;
+              _this4.required_certify = res.data.data.selected.certify.required_certify;
+              _this4.return_security = res.data.data.selected.certify.return_security;
+              _this4.invitedList = res.data.data.invited.details;
               _this4.selectable = res.data.data.selectable;
-              _this4.sceneList = res.data.data.selectable.scene.scene.list.map(function (item) {
-                item.is_select = 0;
-                return item;
-              });
-              _this4.selectable.service = res.data.data.selectable.service.map(function (item) {
-                return {
-                  name: item,
-                  is_select: _this4.service == item ? 1 : 0
-                };
-              });
+              _this4.sceneList = res.data.data.selectable.scene;
+              res.data.data.selectable.scene.map(function (item) {
+                if (item.scene_default_select) {
+                  _this4.selectedSessions = [item];
+                  var roleData = _this4.selectable.roles[item.scene_oid];
 
-              if (res.data.data.selected.scene.show_type == "select") {
-                _this4.scenemsg = res.data.data.selected.scene.data;
-              } else if (res.data.data.selected.scene.show_type == "direct") {
-                _this4.scene = res.data.data.selected.scene.data;
-                _this4.steamid = res.data.data.selected.scene.data.teams_oid;
-                _this4.selectedSessions = [res.data.data.selected.scene.data];
-                _this4.sceneList[0].is_select = 1;
+                  if (roleData.length > 1) {
+                    _this4.roleVisible = true;
+                    _this4.roleList = roleData;
+                  } else {
+                    _this4.roleVisible = false;
+                    _this4.roleList = [];
+                    _this4.roles_oid = _this4.selectable.roles[item.scene_oid][0].roles_oid;
+                  }
+                }
+              });
+              _this4.memberList = res.data.data.member.details;
+              _this4.pid = res.data.data.partner.basic.pid;
+              _this4.contentType = res.data.data.content.type;
+
+              if (_this4.contentType == "text") {
+                _this4.content = res.data.data.content.body;
+                _this4.desc_detail_cover = res.data.data.content.cover;
+              } else {
+                _this4.content = res.data.data.content.body;
               }
 
-              _this4.applyMember({
-                sport_oid: res.data.data.basic.oid
+              _this4.comment({
+                partner_pid: _this4.pid,
+                page: 1,
+                per_page: 3
               });
 
-              _context3.next = 38;
+              _this4.sharingInfo({
+                partner_pid: _this4.pid,
+                page: 1,
+                per_page: 10
+              });
+
+              _context3.next = 37;
               break;
 
-            case 36:
-              _context3.prev = 36;
+            case 35:
+              _context3.prev = 35;
               _context3.t0 = _context3["catch"](0);
 
-            case 38:
+            case 37:
             case "end":
               return _context3.stop();
           }
         }
-      }, _callee3, null, [[0, 36]]);
+      }, _callee3, null, [[0, 35]]);
     }))();
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "shareInvite", function shareInvite(params) {
     return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee4() {
@@ -994,7 +1180,7 @@ var _methods;
             case 0:
               _context4.prev = 0;
               _context4.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Zb"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "bc"])(params);
 
             case 3:
               res = _context4.sent;
@@ -1021,7 +1207,7 @@ var _methods;
             case 0:
               _context5.prev = 0;
               _context5.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "Zb"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInvite */ "bc"])(params);
 
             case 3:
               res = _context5.sent;
@@ -1050,7 +1236,7 @@ var _methods;
             case 0:
               _context6.prev = 0;
               _context6.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "ac"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "cc"])(params);
 
             case 3:
               res = _context6.sent;
@@ -1082,7 +1268,7 @@ var _methods;
             case 0:
               _context7.prev = 0;
               _context7.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "ac"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* shareInviteInfo */ "cc"])(params);
 
             case 3:
               res = _context7.sent;
@@ -1103,32 +1289,93 @@ var _methods;
         }
       }, _callee7, null, [[0, 9]]);
     }))();
-  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "activityVerify", function activityVerify(params) {
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "comment", function comment(params) {
     var _this7 = this;
 
     return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee8() {
-      var res, _this;
-
+      var res;
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee8$(_context8) {
         while (1) {
           switch (_context8.prev = _context8.next) {
             case 0:
               _context8.prev = 0;
               _context8.next = 3;
-              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* activityVerify */ "b"])(params);
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* comment */ "z"])(params);
 
             case 3:
               res = _context8.sent;
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/application/index?scene_oid=" + _this7.scene.scene_oid + "&service=" + _this7.service + "&steamid=" + _this7.steamid);
+              _this7.commentList = res.data.data.items;
+              _this7.commentTotal = res.data.data.total;
               _context8.next = 10;
               break;
 
-            case 7:
-              _context8.prev = 7;
+            case 8:
+              _context8.prev = 8;
               _context8.t0 = _context8["catch"](0);
 
-              if (_context8.t0.data.error_code == 50170) {
-                _this = _this7;
+            case 10:
+            case "end":
+              return _context8.stop();
+          }
+        }
+      }, _callee8, null, [[0, 8]]);
+    }))();
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "sharingInfo", function sharingInfo(params) {
+    var _this8 = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee9() {
+      var res;
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee9$(_context9) {
+        while (1) {
+          switch (_context9.prev = _context9.next) {
+            case 0:
+              _context9.prev = 0;
+              _context9.next = 3;
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* sharingInfo */ "dc"])(params);
+
+            case 3:
+              res = _context9.sent;
+              _this8.sharingList = res.data.data.items;
+              _context9.next = 9;
+              break;
+
+            case 7:
+              _context9.prev = 7;
+              _context9.t0 = _context9["catch"](0);
+
+            case 9:
+            case "end":
+              return _context9.stop();
+          }
+        }
+      }, _callee9, null, [[0, 7]]);
+    }))();
+  }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "activityVerify", function activityVerify(params) {
+    var _this9 = this;
+
+    return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().mark(function _callee10() {
+      var res, _this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])().wrap(function _callee10$(_context10) {
+        while (1) {
+          switch (_context10.prev = _context10.next) {
+            case 0:
+              _context10.prev = 0;
+              _context10.next = 3;
+              return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_4__[/* activityVerify */ "b"])(params);
+
+            case 3:
+              res = _context10.sent;
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/application/index?roles_oid=" + _this9.roles_oid);
+              _context10.next = 10;
+              break;
+
+            case 7:
+              _context10.prev = 7;
+              _context10.t0 = _context10["catch"](0);
+
+              if (_context10.t0.data.error_code == 50170) {
+                _this = _this9;
                 wx.showModal({
                   title: "温馨提示",
                   content: "\u5DF2\u6EE1\u5458\uFF0C\u662F\u5426\u52A0\u5165\u5230\u7B49\u4F4D\u533A",
@@ -1148,10 +1395,10 @@ var _methods;
 
             case 10:
             case "end":
-              return _context8.stop();
+              return _context10.stop();
           }
         }
-      }, _callee8, null, [[0, 7]]);
+      }, _callee10, null, [[0, 7]]);
     }))();
   }), _methods)
 });
@@ -1190,17 +1437,15 @@ var render = function () {
         _c("view", { staticClass: "activity-top" }, [
           _c("view", { staticClass: "activity-left" }, [
             _c("view", { staticClass: "activity-price" }, [
-              _vm._v("¥" + _vm._s(_vm.current_price)),
-            ]),
-            _c("view", { staticClass: "original-price" }, [
-              _vm.original_price !== "免费" && _vm.original_price !== "置换"
-                ? _c("text", [_vm._v("原价")])
+              _vm.current_price !== "免费" && _vm.current_price !== "置换"
+                ? _c("text", [_vm._v("¥")])
                 : _vm._e(),
-              _vm._v("¥" + _vm._s(_vm.original_price)),
+              _vm._v(" " + _vm._s(_vm.current_price) + " "),
             ]),
           ]),
           _c("view", { staticClass: "activity-right" }, [
-            _vm._v(" " + _vm._s(_vm.enter_deadline_time) + " "),
+            _c("text", [_vm._v("报名结束时间")]),
+            _c("text", [_vm._v(_vm._s(_vm.enter_deadline_time))]),
           ]),
         ]),
         _c("view", { staticClass: "activity-title" }, [
@@ -1224,31 +1469,29 @@ var render = function () {
           "view",
           { staticClass: "service-item", on: { tap: _vm.showSession } },
           [
-            _c("view", { staticClass: "service-label" }, [_vm._v(" 场次 ")]),
-            _vm.scene.scene_name && _vm.scene.scene_desc
+            _c("view", { staticClass: "service-label" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../../assets/images/scene-icon.png */ "./src/assets/images/scene-icon.png"),
+                },
+              }),
+              _vm._v(" 场景 "),
+            ]),
+            _vm.scene.scene_name
               ? _c("view", { staticClass: "service-content" }, [
-                  _c("view", { staticClass: "service-title" }, [
+                  _c("view", { staticClass: "service-title service-acitve" }, [
                     _c("text", [_vm._v(_vm._s(_vm.scene.scene_name))]),
-                    _vm.selectedGroup.length
+                    _vm.selectedRole[0] && _vm.selectedRole.length
                       ? _c("text", [
                           _vm._v(
-                            "| " + _vm._s(_vm.selectedGroup[0].group_name)
+                            " | " +
+                              _vm._s(
+                                _vm.selectedRole[0] &&
+                                  _vm.selectedRole[0].roles_name
+                              )
                           ),
                         ])
                       : _vm._e(),
-                    _vm.selectedTeams.length
-                      ? _c("text", [
-                          _vm._v(
-                            "| " + _vm._s(_vm.selectedTeams[0].teams_name)
-                          ),
-                        ])
-                      : _vm._e(),
-                  ]),
-                  _c("view", { staticClass: "service-p" }, [
-                    _c("view", { staticClass: "service-tag" }, [
-                      _vm._v(_vm._s(_vm.scene.divide_teams)),
-                    ]),
-                    _c("view", [_vm._v(_vm._s(_vm.scene.scene_desc))]),
                   ]),
                 ])
               : _c("view", { staticClass: "service-content" }, [
@@ -1265,84 +1508,110 @@ var render = function () {
             ]),
           ]
         ),
-        _c(
-          "view",
-          { staticClass: "service-item", on: { tap: _vm.showSession } },
-          [
-            _c("view", { staticClass: "service-box" }, [
-              _c("view", { staticClass: "service-label" }, [_vm._v(" 服务 ")]),
-              _c("view", { staticClass: "service-txt" }, [
-                _vm._v(_vm._s(_vm.service)),
+        _vm.required_certify && _vm.return_security
+          ? _c("view", { staticClass: "service-item" }, [
+              _c("view", { staticClass: "service-box" }, [
+                _c("view", { staticClass: "service-label" }, [
+                  _c("image", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../assets/images/security.png */ "./src/assets/images/security.png"),
+                    },
+                  }),
+                  _vm._v(" 担保 "),
+                ]),
+                _c("view", { staticClass: "service-txt" }, [
+                  _c("text", { staticClass: "deposit" }, [
+                    _vm._v(" " + _vm._s(_vm.required_certify) + " "),
+                  ]),
+                  _c("text", { staticClass: "deposit-tips" }, [
+                    _vm._v(" " + _vm._s(_vm.return_security) + " "),
+                  ]),
+                ]),
               ]),
-            ]),
-            _c("view", { staticClass: "service-right" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_down.png",
-                },
-              }),
-            ]),
-          ]
-        ),
-      ]),
-      _c("view", { staticClass: "info-box" }, [
-        _vm.is_required_certify
-          ? _c("view", { staticClass: "guarantee-deposit" }, [
-              _c("view", { staticClass: "security-image" }, [
+              _c("view", { staticClass: "service-right" }, [
                 _c("image", {
                   attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/security-icon.png",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_down.png",
                   },
                 }),
               ]),
-              _c("view", { staticClass: "security-box" }, [
-                _c("view", { staticClass: "security-title" }, [
-                  _vm._v(_vm._s(_vm.certify_title)),
-                ]),
-                _c("view", { staticClass: "security-txt" }, [
-                  _vm._v(_vm._s(_vm.certify_desc)),
-                ]),
-              ]),
             ])
           : _vm._e(),
-        _c("view", { staticClass: "activity-box" }, [
-          _c("view", { staticClass: "activity-time" }, [
-            _c("image", {
-              staticClass: "activity-icon",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/time.png",
-              },
-            }),
-            _vm._v(" 活动时间 " + _vm._s(_vm.time) + " "),
-          ]),
-          _c("view", { staticClass: "activity-loction" }, [
-            _c("view", { staticClass: "loction-title" }, [
+        _c("view", { staticClass: "service-item" }, [
+          _c("view", { staticClass: "service-box" }, [
+            _c("view", { staticClass: "service-label" }, [
               _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/local.png",
-                },
+                attrs: { src: __webpack_require__(/*! ../../../assets/images/time-icon.png */ "./src/assets/images/time-icon.png") },
               }),
-              _vm._v(_vm._s(_vm.address) + " "),
+              _vm._v(" 时间 "),
             ]),
-            _c("view", { staticClass: "loction-detail" }, [
-              _vm._v(" " + _vm._s(_vm.position) + " "),
+            _c("view", { staticClass: "service-txt" }, [
+              _vm._v(" " + _vm._s(_vm.time) + " "),
             ]),
           ]),
         ]),
+        _c("view", { staticClass: "service-item" }, [
+          _c("view", { staticClass: "service-box" }, [
+            _c("view", { staticClass: "service-label" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../../assets/images/address-icon.png */ "./src/assets/images/address-icon.png"),
+                },
+              }),
+              _vm._v(" 地点 "),
+            ]),
+            _c("view", { staticClass: "service-txt" }, [
+              _vm._v(" " + _vm._s(_vm.address) + " "),
+            ]),
+          ]),
+        ]),
+        _c("view", { staticClass: "service-item" }, [
+          _c("view", { staticClass: "service-box" }, [
+            _c("view", { staticClass: "service-label" }, [
+              _c("image", {
+                attrs: { src: __webpack_require__(/*! ../../../assets/images/site-icon.png */ "./src/assets/images/site-icon.png") },
+              }),
+              _vm._v(" 场地 "),
+            ]),
+            _c("view", { staticClass: "service-txt" }),
+          ]),
+        ]),
       ]),
+      _vm.invitedList.length
+        ? _c("view", { staticClass: "specially-invite" }, [
+            _c("view", { staticClass: "specially-invite-title" }, [
+              _c("text", { staticClass: "border-left" }),
+              _vm._v(" 特邀嘉宾 "),
+            ]),
+            _c(
+              "view",
+              { staticClass: "specially-invite-box" },
+              _vm._l(_vm.invitedList, function (item, index) {
+                return _c(
+                  "view",
+                  { key: index, staticClass: "specially-invite-item" },
+                  [
+                    _c("image", { attrs: { src: item.apply_avatar } }),
+                    _c("view", { staticClass: "specially-invite-txt" }, [
+                      _vm._v(_vm._s(item.apply_nickname)),
+                    ]),
+                    _c("view", { staticClass: "specially-invite-txt" }, [
+                      _vm._v(_vm._s(item.apply_career)),
+                    ]),
+                  ]
+                )
+              }),
+              0
+            ),
+          ])
+        : _vm._e(),
       _c("view", { staticClass: "registered" }, [
         _c("view", { staticClass: "registered-title" }, [
           _c("view", [
             _c("text", { staticClass: "border-left" }),
             _vm._v(" 已报名 "),
             _c("text", { staticClass: "registered-num" }, [
-              _vm._v(
-                "（" +
-                  _vm._s(_vm.enter_current_number) +
-                  "/" +
-                  _vm._s(_vm.enter_total_number) +
-                  "）"
-              ),
+              _vm._v(_vm._s(_vm.enter_current_babel)),
             ]),
           ]),
           !_vm.open
@@ -1370,390 +1639,298 @@ var render = function () {
               "view",
               { staticClass: "registered-img" },
               _vm._l(_vm.enter_current_member, function (item, index) {
-                return _c("image", { key: index, attrs: { src: item.avatar } })
+                return _c("image", { key: index, attrs: { src: item } })
               }),
               0
             )
           : _c(
               "view",
-              { staticClass: "session" },
-              _vm._l(_vm.sessionList, function (item, index) {
+              { staticClass: "application-list" },
+              _vm._l(_vm.memberList, function (item, index) {
                 return _c(
-                  "block",
-                  { key: index },
+                  "view",
+                  { key: index, staticClass: "application-list-item" },
                   [
-                    item.enter_display == "folded"
-                      ? _c("view", { staticClass: "session-title" }, [
-                          _c("view", { staticClass: "session-lable" }, [
-                            _c("text", { staticClass: "session-txt" }, [
-                              _vm._v(" " + _vm._s(item.scene_name)),
-                            ]),
-                            _c("view", { staticClass: "session-line" }),
-                          ]),
-                        ])
-                      : _vm._e(),
-                    _vm._l(item.scene_data, function (sceneItem, sceneIndex) {
+                    _c("view", { staticClass: "application-title" }, [
+                      _vm._v(" " + _vm._s(item.scene_name) + " "),
+                    ]),
+                    _vm._l(item.scene_items, function (sceneItem, sceneIndex) {
                       return _c(
                         "view",
-                        { key: sceneIndex, staticClass: "distinguish" },
+                        { key: sceneIndex, staticClass: "application-box" },
                         [
-                          sceneItem.teams_name
-                            ? _c("view", { staticClass: "candidate-name" }, [
-                                _vm._v(_vm._s(sceneItem.teams_name)),
+                          sceneItem.is_show_roles_name
+                            ? _c("view", { staticClass: "application-role" }, [
+                                _c("text", [
+                                  _vm._v(_vm._s(sceneItem.roles_name)),
+                                ]),
                               ])
                             : _vm._e(),
-                          sceneItem.teams_list.listed
-                            ? _c(
+                          _c("view", { staticClass: "application-tip" }, [
+                            _vm._v(_vm._s(sceneItem.apply_desc)),
+                          ]),
+                          _vm._l(
+                            sceneItem.apply_items.listed,
+                            function (user, userIndex) {
+                              return _c(
                                 "view",
-                                { staticClass: "group-box" },
+                                {
+                                  key: userIndex,
+                                  staticClass: "application-user",
+                                },
                                 [
-                                  _c("view", { staticClass: "group-title" }, [
-                                    _c("text", { staticClass: "group-blod" }, [
-                                      _vm._v(
-                                        _vm._s(
-                                          sceneItem.teams_list.listed.info.title
-                                        )
-                                      ),
-                                    ]),
-                                    _c("text", { staticClass: "group-num" }, [
-                                      _vm._v(
-                                        _vm._s(
-                                          sceneItem.teams_list.listed.info.desc
-                                        )
-                                      ),
-                                    ]),
-                                  ]),
-                                  sceneItem.teams_list.listed.show
-                                    ? _c(
-                                        "block",
-                                        _vm._l(
-                                          sceneItem.teams_list.listed.details,
-                                          function (
-                                            sceneDetailItem,
-                                            sceneDetailIndex
-                                          ) {
-                                            return _c(
-                                              "block",
-                                              { key: sceneDetailIndex },
-                                              [
-                                                sceneDetailItem.member_list
-                                                  .length
-                                                  ? _c(
-                                                      "view",
-                                                      { staticClass: "group" },
-                                                      [
-                                                        item.enter_display ==
-                                                          "folded" &&
-                                                        sceneDetailItem.group_name
-                                                          ? _c(
-                                                              "view",
-                                                              {
-                                                                staticClass:
-                                                                  "group-top",
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "view",
-                                                                  {
-                                                                    staticClass:
-                                                                      "group-left",
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "image",
-                                                                      {
-                                                                        attrs: {
-                                                                          src: "https://yuepai-oss.qubeitech.com/static/images/group.png",
-                                                                        },
-                                                                      }
-                                                                    ),
-                                                                    _vm._v(
-                                                                      " " +
-                                                                        _vm._s(
-                                                                          sceneDetailItem.group_name
-                                                                        ) +
-                                                                        " "
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                              ]
-                                                            )
-                                                          : _vm._e(),
-                                                        _vm._l(
-                                                          sceneDetailItem.member_list,
-                                                          function (
-                                                            memberItem,
-                                                            memberIndex
-                                                          ) {
-                                                            return _c(
-                                                              "view",
-                                                              {
-                                                                key: memberIndex,
-                                                                staticClass:
-                                                                  "group-list",
-                                                              },
-                                                              [
-                                                                _c("image", {
-                                                                  attrs: {
-                                                                    src: memberItem.apply_avatar,
-                                                                  },
-                                                                }),
-                                                                _c(
-                                                                  "view",
-                                                                  {
-                                                                    staticClass:
-                                                                      "group-identity-list",
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      _vm._s(
-                                                                        memberItem.apply_career
-                                                                      )
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                                _c(
-                                                                  "view",
-                                                                  {
-                                                                    staticClass:
-                                                                      "group-home",
-                                                                    on: {
-                                                                      tap: function (
-                                                                        $event
-                                                                      ) {
-                                                                        return _vm.goZhuye(
-                                                                          memberItem.apply_uuid
-                                                                        )
-                                                                      },
-                                                                    },
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      "看主页"
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                              ]
-                                                            )
-                                                          }
-                                                        ),
-                                                      ],
-                                                      2
-                                                    )
-                                                  : _vm._e(),
-                                              ]
-                                            )
-                                          }
-                                        ),
-                                        1
-                                      )
-                                    : _c("view", { staticClass: "none-data" }, [
-                                        _vm._v(" 暂无报名信息 "),
+                                  _c(
+                                    "view",
+                                    { staticClass: "application-left" },
+                                    [
+                                      _c("image", {
+                                        attrs: { src: user.apply_avatar },
+                                      }),
+                                      _c("text", [
+                                        _vm._v(_vm._s(user.apply_nickname)),
                                       ]),
-                                ],
-                                1
+                                    ]
+                                  ),
+                                  _c(
+                                    "view",
+                                    { staticClass: "application-ct" },
+                                    [
+                                      user.sex !== null
+                                        ? _c("block", [
+                                            user.sex == 1
+                                              ? _c("image", {
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
+                                                  },
+                                                })
+                                              : _vm._e(),
+                                            user.sex == 0
+                                              ? _c("image", {
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
+                                                  },
+                                                })
+                                              : _vm._e(),
+                                          ])
+                                        : _vm._e(),
+                                      _c("text", [
+                                        _vm._v(_vm._s(user.apply_career)),
+                                      ]),
+                                    ],
+                                    1
+                                  ),
+                                  _c(
+                                    "view",
+                                    {
+                                      staticClass: "application-rt",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.goZhuye(user.apply_uuid)
+                                        },
+                                      },
+                                    },
+                                    [_vm._v("看主页")]
+                                  ),
+                                ]
                               )
+                            }
+                          ),
+                          sceneItem.apply_items.waiting.length
+                            ? _c("view", { staticClass: "gradeing" }, [
+                                _c("text", [_vm._v("等位中")]),
+                              ])
                             : _vm._e(),
-                          sceneItem.teams_list.waiting
-                            ? _c(
+                          _vm._l(
+                            sceneItem.apply_items.waiting,
+                            function (waituser, waituserIndex) {
+                              return _c(
                                 "view",
-                                { staticClass: "group-box" },
+                                {
+                                  key: waituserIndex,
+                                  staticClass: "application-user",
+                                },
                                 [
-                                  _c("view", { staticClass: "group-title" }, [
-                                    _c("text", { staticClass: "group-blod" }, [
-                                      _vm._v(
-                                        _vm._s(
-                                          sceneItem.teams_list.waiting.info
-                                            .title
-                                        )
-                                      ),
-                                    ]),
-                                    _c("text", { staticClass: "group-num" }, [
-                                      _vm._v(
-                                        _vm._s(
-                                          sceneItem.teams_list.waiting.info.desc
-                                        )
-                                      ),
-                                    ]),
-                                  ]),
-                                  sceneItem.teams_list.waiting.show
-                                    ? _c(
-                                        "block",
-                                        _vm._l(
-                                          sceneItem.teams_list.waiting.details,
-                                          function (
-                                            sceneDetailItem,
-                                            sceneDetailIndex
-                                          ) {
-                                            return _c(
-                                              "block",
-                                              { key: sceneDetailIndex },
-                                              [
-                                                sceneDetailItem.member_list
-                                                  .length
-                                                  ? _c(
-                                                      "view",
-                                                      { staticClass: "group" },
-                                                      [
-                                                        item.enter_display ==
-                                                          "folded" &&
-                                                        sceneDetailItem.group_name
-                                                          ? _c(
-                                                              "view",
-                                                              {
-                                                                staticClass:
-                                                                  "group-top",
-                                                              },
-                                                              [
-                                                                _c(
-                                                                  "view",
-                                                                  {
-                                                                    staticClass:
-                                                                      "group-left",
-                                                                  },
-                                                                  [
-                                                                    _c(
-                                                                      "image",
-                                                                      {
-                                                                        attrs: {
-                                                                          src: "https://yuepai-oss.qubeitech.com/static/images/group.png",
-                                                                        },
-                                                                      }
-                                                                    ),
-                                                                    _vm._v(
-                                                                      " " +
-                                                                        _vm._s(
-                                                                          sceneDetailItem.group_name
-                                                                        ) +
-                                                                        " "
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                              ]
-                                                            )
-                                                          : _vm._e(),
-                                                        _vm._l(
-                                                          sceneDetailItem.member_list,
-                                                          function (
-                                                            memberItem,
-                                                            memberIndex
-                                                          ) {
-                                                            return _c(
-                                                              "view",
-                                                              {
-                                                                key: memberIndex,
-                                                                staticClass:
-                                                                  "group-list",
-                                                              },
-                                                              [
-                                                                _c("image", {
-                                                                  attrs: {
-                                                                    src: memberItem.apply_avatar,
-                                                                  },
-                                                                }),
-                                                                _c(
-                                                                  "view",
-                                                                  {
-                                                                    staticClass:
-                                                                      "group-identity-list",
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      _vm._s(
-                                                                        memberItem.apply_career
-                                                                      )
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                                _c(
-                                                                  "view",
-                                                                  {
-                                                                    staticClass:
-                                                                      "group-home",
-                                                                    on: {
-                                                                      tap: function (
-                                                                        $event
-                                                                      ) {
-                                                                        return _vm.goZhuye(
-                                                                          memberItem.apply_uuid
-                                                                        )
-                                                                      },
-                                                                    },
-                                                                  },
-                                                                  [
-                                                                    _vm._v(
-                                                                      "看主页"
-                                                                    ),
-                                                                  ]
-                                                                ),
-                                                              ]
-                                                            )
-                                                          }
-                                                        ),
-                                                      ],
-                                                      2
-                                                    )
-                                                  : _vm._e(),
-                                              ]
-                                            )
-                                          }
-                                        ),
-                                        1
-                                      )
-                                    : _c("view", { staticClass: "none-data" }, [
-                                        _vm._v(" 暂无报名信息 "),
+                                  _c(
+                                    "view",
+                                    { staticClass: "application-left" },
+                                    [
+                                      _c("image", {
+                                        attrs: { src: waituser.apply_avatar },
+                                      }),
+                                      _c("text", [
+                                        _vm._v(_vm._s(waituser.apply_nickname)),
                                       ]),
-                                ],
-                                1
+                                    ]
+                                  ),
+                                  _c(
+                                    "view",
+                                    { staticClass: "application-ct" },
+                                    [
+                                      waituser.sex !== null
+                                        ? _c("block", [
+                                            waituser.sex == 1
+                                              ? _c("image", {
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
+                                                  },
+                                                })
+                                              : _vm._e(),
+                                            waituser.sex == 0
+                                              ? _c("image", {
+                                                  attrs: {
+                                                    src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
+                                                  },
+                                                })
+                                              : _vm._e(),
+                                          ])
+                                        : _vm._e(),
+                                      _c("text", [
+                                        _vm._v(_vm._s(waituser.apply_career)),
+                                      ]),
+                                    ],
+                                    1
+                                  ),
+                                  _c(
+                                    "view",
+                                    {
+                                      staticClass: "application-rt",
+                                      on: {
+                                        tap: function ($event) {
+                                          return _vm.goZhuye(
+                                            waituser.apply_uuid
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [_vm._v("看主页")]
+                                  ),
+                                ]
                               )
-                            : _vm._e(),
-                        ]
+                            }
+                          ),
+                        ],
+                        2
                       )
                     }),
                   ],
                   2
                 )
               }),
-              1
+              0
             ),
       ]),
       _c("view", { staticClass: "userinfo" }, [
-        _c("view", { staticClass: "userinfo-top" }, [
-          _c("image", { attrs: { src: _vm.avatar } }),
-          _c("view", { staticClass: "userinfo-content" }, [
-            _c("view", { staticClass: "userinfo-title" }, [
-              _vm._v(" " + _vm._s(_vm.nickname) + " "),
+        _c("view", { staticClass: "userinfo-box" }, [
+          _c("view", { staticClass: "userinfo-top" }, [
+            _c("image", { attrs: { src: _vm.avatar } }),
+            _c("view", { staticClass: "userinfo-content" }, [
+              _c("view", { staticClass: "userinfo-title" }, [
+                _vm._v(" " + _vm._s(_vm.nickname) + " "),
+              ]),
+              _c("view", { staticClass: "userinfo-lable-box" }, [
+                _c("text", { staticClass: "self-support" }, [
+                  _vm._v(_vm._s(_vm.labelTxt)),
+                ]),
+                _c("text", { staticClass: "lable" }, [
+                  _vm._v("发布活动 ｜ " + _vm._s(_vm.publish_num) + "场"),
+                ]),
+                _c("text", { staticClass: "lable" }, [
+                  _vm._v("好评率 ｜ " + _vm._s(_vm.evaluate_score)),
+                ]),
+              ]),
             ]),
-            _c("view", { staticClass: "userinfo-lable-box" }, [
-              _c("text", { staticClass: "self-support" }, [
-                _vm._v(_vm._s(_vm.labelTxt)),
-              ]),
-              _c("text", { staticClass: "lable" }, [
-                _vm._v("发布活动 ｜ " + _vm._s(_vm.publish_num) + "场"),
-              ]),
-              _c("text", { staticClass: "lable" }, [
-                _vm._v("好评率 ｜ " + _vm._s(_vm.evaluate_score) + "%"),
-              ]),
+          ]),
+          _c("view", { staticClass: "userinfo-btns" }, [
+            _c("view", { staticClass: "gohome", on: { tap: _vm.goZhuye } }, [
+              _vm._v(" 进入主页 "),
             ]),
+            _c(
+              "view",
+              { staticClass: "contact", on: { tap: _vm.communicate } },
+              [_vm._v(" 联系沟通 ")]
+            ),
           ]),
         ]),
-        _c("view", { staticClass: "userinfo-btns" }, [
-          _c("view", { staticClass: "gohome", on: { tap: _vm.goZhuye } }, [
-            _c("image", {
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/home-icon.png",
-              },
-            }),
-            _vm._v(" 进入主页 "),
+        _c("view", { staticClass: "evaluate" }, [
+          _c("view", { staticClass: "evaluate-title" }, [
+            _c("view", { staticClass: "evaluate-left" }, [
+              _c("text", { staticClass: "evaluate-label" }, [_vm._v(" 评价 ")]),
+              _c("text", { staticClass: "evaluate-num" }, [
+                _vm._v("(" + _vm._s(_vm.commentTotal) + ")"),
+              ]),
+            ]),
+            _c(
+              "view",
+              { staticClass: "evaluate-rt", on: { tap: _vm.goComment } },
+              [_vm._v("好评度96% >")]
+            ),
           ]),
-          _c("view", { staticClass: "contact", on: { tap: _vm.communicate } }, [
-            _c("image", {
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/phone-icon.png",
-              },
+          _c(
+            "view",
+            { staticClass: "evaluate-list" },
+            _vm._l(_vm.commentList, function (item, index) {
+              return _c("view", { key: index, staticClass: "evaluate-item" }, [
+                _c("view", { staticClass: "evaluate-list-top" }, [
+                  _c("image", { attrs: { src: item.comment_avatar } }),
+                  _c(
+                    "view",
+                    { staticClass: "evaluate-list-info" },
+                    [
+                      _c("view", { staticClass: "evaluate-nickname" }, [
+                        _vm._v(_vm._s(item.comment_nickname)),
+                      ]),
+                      _c("i-rate", {
+                        key: index,
+                        staticClass: "evaluate-rate",
+                        attrs: { size: 16, value: item.score },
+                      }),
+                    ],
+                    1
+                  ),
+                ]),
+                _c("view", { staticClass: "evaluate-desc" }, [
+                  _vm._v(" " + _vm._s(item.content)),
+                ]),
+              ])
             }),
-            _vm._v(" 联系沟通 "),
+            0
+          ),
+        ]),
+        _c("view", { staticClass: "share-show" }, [
+          _c("view", { staticClass: "share-show-title" }, [
+            _c("view", { staticClass: "share-show-left" }, [
+              _c("text", { staticClass: "share-show-label" }, [
+                _vm._v(" 分享秀 "),
+              ]),
+              _c("text", { staticClass: "share-show-num" }, [
+                _vm._v("(100人正在参与分享)"),
+              ]),
+            ]),
+            _c(
+              "view",
+              { staticClass: "share-show-rt", on: { tap: _vm.goShareShow } },
+              [_vm._v("查看全部 >")]
+            ),
           ]),
+          _c(
+            "view",
+            { staticClass: "share-show-list" },
+            _vm._l(_vm.sharingList, function (item, index) {
+              return _c(
+                "view",
+                { key: index, staticClass: "share-show-item" },
+                [
+                  _c("image", {
+                    attrs: { mode: "aspectFill", src: item.share_cover[0] },
+                  }),
+                  _c("text", { staticClass: "share-show-txt" }, [
+                    _vm._v(_vm._s(item.share_content)),
+                  ]),
+                ]
+              )
+            }),
+            0
+          ),
         ]),
       ]),
       _c(
@@ -1764,17 +1941,25 @@ var render = function () {
             _c("text", { staticClass: "border-left" }),
             _vm._v(" 活动详情 "),
           ]),
-          _c("view", { staticClass: "activity-desc" }, [
-            _vm._v(" " + _vm._s(_vm.content) + " "),
-          ]),
-          _vm._l(_vm.desc_detail_cover, function (item, index) {
-            return _c("image", {
-              key: index,
-              attrs: { src: item, mode: "widthFix" },
-            })
-          }),
+          _vm.contentType == "text"
+            ? _c(
+                "block",
+                [
+                  _c("view", { staticClass: "activity-desc" }, [
+                    _vm._v(" " + _vm._s(_vm.content) + " "),
+                  ]),
+                  _vm._l(_vm.desc_detail_cover, function (item, index) {
+                    return _c("image", {
+                      key: index,
+                      attrs: { src: item, mode: "widthFix" },
+                    })
+                  }),
+                ],
+                2
+              )
+            : _c("rich-text", { attrs: { nodes: _vm.content } }),
         ],
-        2
+        1
       ),
       _c(
         "view",
@@ -1855,7 +2040,10 @@ var render = function () {
                   { staticClass: "application-top" },
                   [
                     _c("view", { staticClass: "application-price" }, [
-                      _vm._v(" ¥" + _vm._s(_vm.price) + " "),
+                      _vm.price !== "免费" && _vm.price !== "置换"
+                        ? _c("text", [_vm._v("¥")])
+                        : _vm._e(),
+                      _c("text", [_vm._v(_vm._s(_vm.price))]),
                     ]),
                     _c("view", { staticClass: "close-img" }, [
                       _c("image", {
@@ -1870,24 +2058,15 @@ var render = function () {
                         "view",
                         { key: item.scene_name, staticClass: "selected" },
                         [
-                          _vm._v(
-                            " 已选：" +
-                              _vm._s(item.scene_name) +
-                              "｜总" +
-                              _vm._s(item.enter_number) +
-                              "人 "
-                          ),
-                          _vm.selectedGroup.length
+                          _vm._v(" 已选：" + _vm._s(item.scene_name) + " "),
+                          _vm.selectedRole[0] && _vm.selectedRole.length
                             ? _c("text", [
                                 _vm._v(
-                                  "｜" + _vm._s(_vm.selectedGroup[0].group_name)
-                                ),
-                              ])
-                            : _vm._e(),
-                          _vm.selectedTeams.length
-                            ? _c("text", [
-                                _vm._v(
-                                  "｜" + _vm._s(_vm.selectedTeams[0].teams_name)
+                                  "｜" +
+                                    _vm._s(
+                                      _vm.selectedRole[0] &&
+                                        _vm.selectedRole[0].roles_name
+                                    )
                                 ),
                               ])
                             : _vm._e(),
@@ -1908,187 +2087,114 @@ var render = function () {
                   },
                   [
                     _c("view", { staticClass: "event-frequency-title" }, [
-                      _vm._v("活动场次"),
+                      _vm._v("选择场景"),
                     ]),
-                    _vm._l(_vm.sceneList, function (item, sceneIndex) {
+                    _vm._l(_vm.sceneList, function (item, index) {
                       return _c(
                         "view",
                         {
-                          key: sceneIndex,
+                          key: index,
+                          staticClass: "select-scene",
+                          class: item.scene_default_select
+                            ? "select-scene-active"
+                            : "",
                           on: {
                             tap: function ($event) {
                               $event.stopPropagation()
-                              return _vm.eventFrequency(item, sceneIndex)
+                              return _vm.sceneClick(item, index)
                             },
                           },
                         },
                         [
-                          _c(
-                            "view",
-                            {
-                              staticClass: "event-frequency-box",
-                              class: [item.is_select ? "event-active" : ""],
-                            },
-                            [
-                              _c(
-                                "view",
-                                { staticClass: "event-frequency-item" },
-                                [
-                                  _c("view", [_vm._v(_vm._s(item.scene_name))]),
-                                  _c(
-                                    "view",
-                                    { staticClass: "application-txt" },
-                                    [
-                                      _vm._v(
-                                        "成员总数：" + _vm._s(item.enter_number)
-                                      ),
-                                    ]
-                                  ),
-                                ]
-                              ),
-                              _c(
-                                "view",
-                                { staticClass: "event-frequency-bt" },
-                                [
-                                  _c(
-                                    "view",
-                                    { staticClass: "application-tag" },
-                                    [_vm._v(_vm._s(item.divide_teams))]
-                                  ),
-                                  _c(
-                                    "view",
-                                    { staticClass: "application-txt" },
-                                    [_vm._v(_vm._s(item.scene_desc))]
-                                  ),
-                                ]
-                              ),
-                            ]
-                          ),
+                          _c("view", { staticClass: "select-scene-left" }, [
+                            item.scene_apply_schedule.status_code == "todo"
+                              ? _c(
+                                  "view",
+                                  { staticClass: "select-scene-status1" },
+                                  [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          item.scene_apply_schedule.status_name
+                                        ) +
+                                        " "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            item.scene_apply_schedule.status_code == "wait"
+                              ? _c(
+                                  "view",
+                                  { staticClass: "select-scene-status2" },
+                                  [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          item.scene_apply_schedule.status_name
+                                        ) +
+                                        " "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            item.scene_apply_schedule.status_code == "done"
+                              ? _c(
+                                  "view",
+                                  { staticClass: "select-scene-status3" },
+                                  [
+                                    _vm._v(
+                                      " " +
+                                        _vm._s(
+                                          item.scene_apply_schedule.status_name
+                                        ) +
+                                        " "
+                                    ),
+                                  ]
+                                )
+                              : _vm._e(),
+                            _c("text", { staticClass: "select-scene-label" }, [
+                              _vm._v(_vm._s(item.scene_name)),
+                            ]),
+                          ]),
+                          _c("view", { staticClass: "select-scene-rt" }, [
+                            _vm._v(
+                              " " +
+                                _vm._s(item.scene_apply_schedule.status_desc) +
+                                " "
+                            ),
+                          ]),
                         ]
                       )
                     }),
-                    _vm.groupVisible
-                      ? _c(
-                          "block",
-                          [
-                            _c(
-                              "view",
-                              { staticClass: "event-frequency-title" },
-                              [_vm._v("选择分组")]
-                            ),
-                            _vm._l(_vm.groupList, function (item, index) {
-                              return _c(
-                                "view",
-                                { key: index, staticClass: "select-group" },
-                                [
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "select-group-item",
-                                      class: [
-                                        item.is_select
-                                          ? "select-group-active"
-                                          : "",
-                                      ],
-                                      on: {
-                                        tap: function ($event) {
-                                          $event.stopPropagation()
-                                          return _vm.groupClick(item, index)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("text", [
-                                        _vm._v(_vm._s(item.group_name)),
-                                      ]),
-                                      _c("text", [
-                                        _vm._v(
-                                          "每组成员：" +
-                                            _vm._s(item.every_number)
-                                        ),
-                                      ]),
-                                    ]
-                                  ),
-                                ]
-                              )
-                            }),
-                          ],
-                          2
-                        )
-                      : _vm._e(),
-                    _vm.characterVisible
-                      ? _c(
-                          "block",
-                          [
-                            _c(
-                              "view",
-                              { staticClass: "event-frequency-title" },
-                              [_vm._v("选择角色")]
-                            ),
-                            _vm._l(_vm.characterList, function (item, index) {
+                    _vm.roleVisible
+                      ? _c("block", [
+                          _c("view", { staticClass: "event-frequency-title" }, [
+                            _vm._v("选择角色"),
+                          ]),
+                          _c(
+                            "view",
+                            { staticClass: "role" },
+                            _vm._l(_vm.roleList, function (item, index) {
                               return _c(
                                 "view",
                                 {
                                   key: index,
-                                  staticClass: "select-character",
+                                  staticClass: "role-item",
+                                  class: item.is_select ? "active" : "",
                                   on: {
                                     tap: function ($event) {
                                       $event.stopPropagation()
-                                      return _vm.teamsClick(item, index)
+                                      return _vm.roleClick(item, index)
                                     },
                                   },
                                 },
-                                [
-                                  _c(
-                                    "view",
-                                    {
-                                      staticClass: "select-character-item",
-                                      class: [
-                                        item.is_select
-                                          ? "select-group-active"
-                                          : "",
-                                      ],
-                                    },
-                                    [
-                                      _c("text", [
-                                        _vm._v(_vm._s(item.teams_name)),
-                                      ]),
-                                    ]
-                                  ),
-                                ]
+                                [_vm._v(_vm._s(item.roles_name))]
                               )
                             }),
-                          ],
-                          2
-                        )
+                            0
+                          ),
+                        ])
                       : _vm._e(),
-                  ],
-                  2
-                ),
-                _c(
-                  "view",
-                  { staticClass: "insure-box" },
-                  [
-                    _c("view", { staticClass: "insure-title" }, [
-                      _vm._v("保险服务"),
-                    ]),
-                    _vm._l(_vm.selectable.service, function (items, indexs) {
-                      return _c(
-                        "view",
-                        {
-                          key: indexs,
-                          staticClass: "insure-item",
-                          class: [items.is_select ? "active" : ""],
-                          on: {
-                            tap: function ($event) {
-                              $event.stopPropagation()
-                              return _vm.serviceClick(indexs)
-                            },
-                          },
-                        },
-                        [_vm._v(" " + _vm._s(items.name) + " ")]
-                      )
-                    }),
                   ],
                   2
                 ),
@@ -2121,6 +2227,66 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./src/assets/images/address-icon.png":
+/*!********************************************!*\
+  !*** ./src/assets/images/address-icon.png ***!
+  \********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/address-icon.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/scene-icon.png":
+/*!******************************************!*\
+  !*** ./src/assets/images/scene-icon.png ***!
+  \******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/scene-icon.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/security.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/security.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/security.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/site-icon.png":
+/*!*****************************************!*\
+  !*** ./src/assets/images/site-icon.png ***!
+  \*****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/site-icon.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/time-icon.png":
+/*!*****************************************!*\
+  !*** ./src/assets/images/time-icon.png ***!
+  \*****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/time-icon.png";
+
+/***/ }),
+
 /***/ "./src/packageActivity/pages/detail/index.scss":
 /*!*****************************************************!*\
   !*** ./src/packageActivity/pages/detail/index.scss ***!
@@ -2146,7 +2312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../node_modules/@tarojs/taro-loader/lib/raw.js!./index.vue */ "./node_modules/@tarojs/taro-loader/lib/raw.js!./src/packageActivity/pages/detail/index.vue");
 
 
-var config = {"navigationBarTitleText":"活动详情"};
+var config = {"navigationBarTitleText":"活动详情","component":true,"usingComponents":{"i-rate":"../../../assets/iview-weapp/dist/rate/index"}};
 
 
 var inst = Page(Object(_tarojs_runtime__WEBPACK_IMPORTED_MODULE_0__["createPageConfig"])(_node_modules_tarojs_taro_loader_lib_raw_js_index_vue__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"], 'packageActivity/pages/detail/index', {root:{cn:[]}}, config || {}))

@@ -24,20 +24,12 @@
       </view>
       <view class="application-info-bt">
         <view class="application-item">
-          <view class="application-label"> 活动场次 </view>
+          <view class="application-label"> 场景 </view>
           <view class="application-content-none"> {{ scene }}</view>
         </view>
-        <view class="application-item">
-          <view class="application-label"> 保险服务 </view>
-          <view class="application-content-none"> {{ service }}</view>
-        </view>
-        <view class="application-item">
-          <view class="application-label"> 报名留言 </view>
-          <input
-            placeholder="报名前有任何问题，可进行留言"
-            v-model="message"
-            class="message"
-          />
+        <view class="application-item" v-if="role">
+          <view class="application-label"> 角色 </view>
+          <view class="application-content-none"> {{ role }}</view>
         </view>
       </view>
     </view>
@@ -153,8 +145,10 @@ export default {
       original_amount: "",
       reduce_payment: "",
       scene: "",
+      role: "",
       service: "",
       apply_wait: "",
+      roles_oid: "",
     };
   },
   created() {
@@ -173,7 +167,7 @@ export default {
     confirmPayment() {
       if (!clickThrottle()) return;
       let params = {
-        teams_oid: this.teams_oid,
+        roles_oid: this.roles_oid,
       };
       if (this.apply_wait) {
         params.apply_wait = this.apply_wait;
@@ -184,13 +178,16 @@ export default {
       try {
         let res = await sceneInfo(params);
         this.title = res.data.data.topic.title;
-        this.scene = res.data.data.selectable.scene;
+        this.scene = res.data.data.selected.scene_name;
+        this.role = res.data.data.selected.roles_name
+          ? res.data.data.selected.roles_name
+          : "";
+        this.original_amount = res.data.data.topic.original_amount.amount;
         this.address = res.data.data.topic.address;
         this.begin_datetime = res.data.data.topic.begin_datetime;
-        this.actual_payment = res.data.data.expense_details.actual_amount;
-        this.reduce_payment = res.data.data.expense_details.reduce_amount;
-        this.original_amount = res.data.data.topic.original_amount.amount;
-        this.expense_details = res.data.data.expense_details.details;
+        this.actual_payment = res.data.data.expense.details.actual_amount;
+        this.reduce_payment = res.data.data.expense.details.reduce_amount;
+        this.expense_details = res.data.data.expense.details.details;
         this.payment_method = res.data.data.payment_method;
       } catch (error) {}
     },
@@ -198,7 +195,6 @@ export default {
       try {
         let res = await applicationPay(params);
         let data = res.data.data;
-        console.log(data);
         if (data.pay_type == "wx_pay") {
           let _this = this;
           wx.requestPayment({
@@ -210,7 +206,7 @@ export default {
             success: function (res) {
               console.log(res, "成功了");
               _this.applyResult({
-                teams_oid: _this.teams_oid,
+                roles_oid: _this.roles_oid,
               });
             },
             fail: function (res) {},
@@ -218,37 +214,35 @@ export default {
           });
         } else if (data.pay_type == "no_pay") {
           this.applyResult({
-            teams_oid: this.teams_oid,
+            roles_oid: this.roles_oid,
           });
         }
       } catch (error) {}
     },
     async applyResult(params) {
+      wx.showLoading({
+        title: "正在提交中...",
+      });
       try {
         let res = await applyResult(params);
+        wx.hideLoading();
         openPage(
           "/packageActivity/pages/applicationConfirm/index?result=" +
             res.data.data.result +
             "&desc=" +
-            res.data.data.desc
+            res.data.data.desc +
+            "&wechat_qrc=" +
+            res.data.data.wechat_qrc
         );
       } catch (error) {}
     },
   },
   onLoad: function (options) {
-    if (options.scene_oid) {
-      this.scene_oid = options.scene_oid;
-      this.teams_oid = options.steamid;
+    if (options.roles_oid) {
+      this.roles_oid = options.roles_oid;
       this.sceneInfo({
-        scene_oid: this.scene_oid,
-        teams_oid: this.teams_oid,
+        roles_oid: this.roles_oid,
       });
-    }
-    if (options.service) {
-      this.service = options.service;
-    }
-    if (options.wait) {
-      this.apply_wait = Number(options.wait);
     }
   },
 };

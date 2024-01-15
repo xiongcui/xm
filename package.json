@@ -41,6 +41,8 @@
     "@tarojs/runtime": "3.4.10",
     "@tarojs/taro": "3.4.10",
     "@tencentcloud/chat-uikit-wechat": "^1.0.14",
+    "iview": "^3.5.4",
+    "iview-weapp": "^2.0.0",
     "js-base64": "^3.7.2",
     "taro-ui": "^2.3.4",
     "tim-js-sdk": "^2.26.2",

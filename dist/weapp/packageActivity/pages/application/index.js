@@ -180,14 +180,6 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -210,8 +202,10 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
       original_amount: "",
       reduce_payment: "",
       scene: "",
+      role: "",
       service: "",
-      apply_wait: ""
+      apply_wait: "",
+      roles_oid: ""
     };
   },
   created: function created() {
@@ -227,7 +221,7 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
     confirmPayment: function confirmPayment() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       var params = {
-        teams_oid: this.teams_oid
+        roles_oid: this.roles_oid
       };
 
       if (this.apply_wait) {
@@ -247,32 +241,33 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* sceneInfo */ "Vb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* sceneInfo */ "Xb"])(params);
 
               case 3:
                 res = _context.sent;
                 _this2.title = res.data.data.topic.title;
-                _this2.scene = res.data.data.selectable.scene;
+                _this2.scene = res.data.data.selected.scene_name;
+                _this2.role = res.data.data.selected.roles_name ? res.data.data.selected.roles_name : "";
+                _this2.original_amount = res.data.data.topic.original_amount.amount;
                 _this2.address = res.data.data.topic.address;
                 _this2.begin_datetime = res.data.data.topic.begin_datetime;
-                _this2.actual_payment = res.data.data.expense_details.actual_amount;
-                _this2.reduce_payment = res.data.data.expense_details.reduce_amount;
-                _this2.original_amount = res.data.data.topic.original_amount.amount;
-                _this2.expense_details = res.data.data.expense_details.details;
+                _this2.actual_payment = res.data.data.expense.details.actual_amount;
+                _this2.reduce_payment = res.data.data.expense.details.reduce_amount;
+                _this2.expense_details = res.data.data.expense.details.details;
                 _this2.payment_method = res.data.data.payment_method;
-                _context.next = 17;
+                _context.next = 18;
                 break;
 
-              case 15:
-                _context.prev = 15;
+              case 16:
+                _context.prev = 16;
                 _context.t0 = _context["catch"](0);
 
-              case 17:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 15]]);
+        }, _callee, null, [[0, 16]]);
       }))();
     },
     applicationPay: function applicationPay(params) {
@@ -292,7 +287,6 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
               case 3:
                 res = _context2.sent;
                 data = res.data.data;
-                console.log(data);
 
                 if (data.pay_type == "wx_pay") {
                   _this = _this3;
@@ -306,7 +300,7 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
                       console.log(res, "成功了");
 
                       _this.applyResult({
-                        teams_oid: _this.teams_oid
+                        roles_oid: _this.roles_oid
                       });
                     },
                     fail: function fail(res) {},
@@ -314,23 +308,23 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
                   });
                 } else if (data.pay_type == "no_pay") {
                   _this3.applyResult({
-                    teams_oid: _this3.teams_oid
+                    roles_oid: _this3.roles_oid
                   });
                 }
 
-                _context2.next = 11;
+                _context2.next = 10;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](0);
 
-              case 11:
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 9]]);
+        }, _callee2, null, [[0, 8]]);
       }))();
     },
     applyResult: function applyResult(params) {
@@ -340,45 +334,39 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
+                wx.showLoading({
+                  title: "正在提交中..."
+                });
+                _context3.prev = 1;
+                _context3.next = 4;
                 return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* applyResult */ "l"])(params);
 
-              case 3:
+              case 4:
                 res = _context3.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/applicationConfirm/index?result=" + res.data.data.result + "&desc=" + res.data.data.desc);
-                _context3.next = 9;
+                wx.hideLoading();
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/applicationConfirm/index?result=" + res.data.data.result + "&desc=" + res.data.data.desc + "&wechat_qrc=" + res.data.data.wechat_qrc);
+                _context3.next = 11;
                 break;
 
-              case 7:
-                _context3.prev = 7;
-                _context3.t0 = _context3["catch"](0);
-
               case 9:
+                _context3.prev = 9;
+                _context3.t0 = _context3["catch"](1);
+
+              case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 7]]);
+        }, _callee3, null, [[1, 9]]);
       }))();
     }
   },
   onLoad: function onLoad(options) {
-    if (options.scene_oid) {
-      this.scene_oid = options.scene_oid;
-      this.teams_oid = options.steamid;
+    if (options.roles_oid) {
+      this.roles_oid = options.roles_oid;
       this.sceneInfo({
-        scene_oid: this.scene_oid,
-        teams_oid: this.teams_oid
+        roles_oid: this.roles_oid
       });
-    }
-
-    if (options.service) {
-      this.service = options.service;
-    }
-
-    if (options.wait) {
-      this.apply_wait = Number(options.wait);
     }
   }
 });
@@ -434,47 +422,21 @@ var render = function () {
       ]),
       _c("view", { staticClass: "application-info-bt" }, [
         _c("view", { staticClass: "application-item" }, [
-          _c("view", { staticClass: "application-label" }, [
-            _vm._v(" 活动场次 "),
-          ]),
+          _c("view", { staticClass: "application-label" }, [_vm._v(" 场景 ")]),
           _c("view", { staticClass: "application-content-none" }, [
             _vm._v(" " + _vm._s(_vm.scene)),
           ]),
         ]),
-        _c("view", { staticClass: "application-item" }, [
-          _c("view", { staticClass: "application-label" }, [
-            _vm._v(" 保险服务 "),
-          ]),
-          _c("view", { staticClass: "application-content-none" }, [
-            _vm._v(" " + _vm._s(_vm.service)),
-          ]),
-        ]),
-        _c("view", { staticClass: "application-item" }, [
-          _c("view", { staticClass: "application-label" }, [
-            _vm._v(" 报名留言 "),
-          ]),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.message,
-                expression: "message",
-              },
-            ],
-            staticClass: "message",
-            attrs: { placeholder: "报名前有任何问题，可进行留言" },
-            domProps: { value: _vm.message },
-            on: {
-              input: function ($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.message = $event.target.value
-              },
-            },
-          }),
-        ]),
+        _vm.role
+          ? _c("view", { staticClass: "application-item" }, [
+              _c("view", { staticClass: "application-label" }, [
+                _vm._v(" 角色 "),
+              ]),
+              _c("view", { staticClass: "application-content-none" }, [
+                _vm._v(" " + _vm._s(_vm.role)),
+              ]),
+            ])
+          : _vm._e(),
       ]),
     ]),
     _c(

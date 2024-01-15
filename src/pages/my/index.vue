@@ -51,8 +51,8 @@
       <view class="my-head-left">
         <image
           :src="
-            infor.avatar
-              ? infor.avatar
+            infor.basic.avatar
+              ? infor.basic.avatar
               : 'https://yuepai-oss.qubeitech.com/static/images/head.png'
           "
           class="head-img"
@@ -64,14 +64,14 @@
           src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
         ></image>
       </view>
-      <view class="my-head-ct" v-if="!showlogin && infor.uuid">
+      <view class="my-head-ct" v-if="!showlogin && infor.basic.uuid">
         <view class="my-head-top">
-          <text class="my-head-name">{{ infor.nickname }}</text>
+          <text class="my-head-name">{{ infor.basic.nickname }}</text>
           <text class="my-head-vip">{{ level ? level : "Lv0" }}</text>
         </view>
         <view class="my-account">
-          <view class="my-account-item"> 账号:{{ infor.uuid }} </view>
-          <view class="my-account-item">IP归属:{{ infor.login_ip_city }}</view>
+          <view class="my-account-item"> 账号:{{ infor.basic.uuid }} </view>
+          <view class="my-account-item">IP归属:{{ infor.basic.ip_city }}</view>
         </view>
         <view class="my-info">
           <view class="head-tag-box">
@@ -79,7 +79,7 @@
               @tap="myCertification"
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png"
               class="head-tag-img"
-              v-if="infor.is_certify"
+              v-if="infor.basic.is_certify"
             ></image>
             <image
               @tap="myCertification"
@@ -91,7 +91,7 @@
               @tap="pledgecash"
               src="https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png"
               class="head-tag-img"
-              v-if="infor.is_security"
+              v-if="infor.basic.is_security"
             ></image>
             <image
               @tap="pledgecash"
@@ -113,26 +113,26 @@
       <view class="my-desc" v-if="infor.resume">
         {{ infor.resume }}
       </view>
-      <view class="my_tags" v-if="infor.age">
+      <view class="my_tags" v-if="infor.basic.age">
         <view class="tag">
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
             mode="aspectFit"
             class="sex"
-            v-if="infor.sex == 1"
+            v-if="infor.basic.sex == 1"
           ></image>
           <image
             src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
             mode="aspectFit"
             class="sex"
-            v-if="infor.sex == 0"
+            v-if="infor.basic.sex == 0"
           ></image>
-          {{ infor.age }}岁
+          {{ infor.basic.age }}岁
         </view>
-        <view class="tag"> {{ infor.province_name }} </view>
+        <view class="tag"> {{ infor.basic.province_name }} </view>
         <view
           class="tag"
-          v-for="(item, index) in infor.career_label"
+          v-for="(item, index) in infor.basic.career_label"
           :key="index"
         >
           {{ item }}
@@ -167,7 +167,7 @@
       </view>
     </view>
     <view class="my-ct">
-      <view class="my-vip" @tap="goVip" v-if="false">
+      <view class="my-vip" @tap="goVip" v-if="showMember">
         <view class="my-vip-top">
           <view class="my-vip-left">
             <image
@@ -215,7 +215,7 @@
           </view>
         </view>
       </view>
-      <view class="my-account-box" v-if="false">
+      <view class="my-account-box" v-if="showAcct">
         <view class="account-item" @tap="goCoin">
           <view class="account-num"> {{ coin }} </view>
           <view class="account-label">金币</view>
@@ -240,7 +240,8 @@
             src="https://yuepai-oss.qubeitech.com/static/images/my-home.png"
             class="my-column-img"
           ></image>
-          <text>个人主页</text>
+          <text>主页管理</text>
+          <text class="wait_complete" v-if="wait_complete">待完善</text>
         </view>
         <view class="my-column-item" @tap="goReleaseManagement">
           <image
@@ -254,7 +255,7 @@
             src="https://yuepai-oss.qubeitech.com/static/images/works-management.png"
             class="my-column-img"
           ></image>
-          <text>作品管理</text>
+          <text>我的作品</text>
         </view>
         <view class="my-column-item" @tap="goCollection">
           <image
@@ -317,6 +318,23 @@
             ></image>
           </view>
         </view>
+        <view class="item ub line-t" @tap="myUnlock">
+          <view class="item_icon">
+            <image
+              mode="aspectFit"
+              src="../../assets/images/unlock-icon.png"
+            ></image>
+          </view>
+          <view class="ub-f1">
+            <view class="item_text">我的解锁</view>
+          </view>
+          <view class="arrow">
+            <image
+              mode="aspectFit"
+              src="https://yuepai-oss.qubeitech.com/static/images/user/index/right.png"
+            ></image>
+          </view>
+        </view>
       </view>
       <view class="my-title"> 我的服务 </view>
       <view class="items myblock">
@@ -360,7 +378,11 @@
             ></image>
           </view>
         </view>
-        <view @tap="pledgecash" class="item ub" v-if="infor.ispledge != 1">
+        <view
+          @tap="pledgecash"
+          class="item ub"
+          v-if="infor.basic.ispledge != 1"
+        >
           <view class="item_icon">
             <image
               mode="aspectFit"
@@ -370,8 +392,8 @@
           <view class="ub-f1">
             <view class="item_text">信用担保</view>
           </view>
-          <view class="item_tip" v-if="infor.ispledge == 1">担保中</view>
-          <view class="item_tip" v-if="infor.ispledge == 2">退款中</view>
+          <view class="item_tip" v-if="infor.basic.ispledge == 1">担保中</view>
+          <view class="item_tip" v-if="infor.basic.ispledge == 2">退款中</view>
           <view class="arrow">
             <image
               mode="aspectFit"
@@ -553,18 +575,29 @@
       </view>
     </view>
     <sign :visible="showModelSign" :msg="hyper_desc" @close="close"></sign>
+    <view class="moka-tips" v-if="showMokaVisible">
+      <view class="moka-left">
+        完善<text>{{ notify_msg }}</text
+        >曝光将提升{{ increase }}
+      </view>
+      <view class="moka-rt">
+        <view class="moka-btn" @tap="goZhuye">去完善</view>
+        <view class="moka-close" @tap="mokaClose">X</view>
+      </view>
+    </view>
   </view>
 </template>
 
 <script>
 import "./index.scss";
 import {
-  userInfo,
+  userHomeInfo,
   isSign,
   shareInvite,
   shareInviteInfo,
   submitSign,
   idcardInfo,
+  posterClick,
 } from "../../api/index";
 import { isLogin, openPage } from "../../utils/util";
 import sign from "../../components/sign/index.vue";
@@ -578,11 +611,9 @@ export default {
       show_my_ad: false,
       showModelSign: false,
       showlogin: false,
+      showMokaVisible: false,
       infor: {
-        age: 0,
-        avatar: "",
-        realname: "",
-        ispledge: "",
+        basic: { age: 0, avatar: "", realname: "", ispledge: "" },
         statistic: {
           followed_cnt: 0,
           follower_cnt: 0,
@@ -600,6 +631,11 @@ export default {
       shareTitle: "",
       sharePath: "",
       shareImg: "",
+      showMember: 0,
+      showAcct: 0,
+      notify_msg: "",
+      wait_complete: 0,
+      increase: "",
     };
   },
   methods: {
@@ -674,7 +710,7 @@ export default {
         openPage("/pages/login/index");
         return false;
       }
-      if (this.infor.is_certify) {
+      if (this.infor.basic.is_certify) {
         openPage("/packageSet/pages/success/index?msg=实名认证审核通过！");
       } else {
         openPage("/packageAdd/pages/user/realnameAuth/index");
@@ -728,6 +764,13 @@ export default {
       }
       openPage("/packageActivity/pages/myActivity/index");
     },
+    myUnlock() {
+      if (!isLogin()) {
+        openPage("/pages/login/index");
+        return false;
+      }
+      openPage("/packageAdd/pages/user/unlock/index");
+    },
     follow() {
       openPage("/packageAdd/pages/user/follow/index");
     },
@@ -764,21 +807,38 @@ export default {
       }
       openPage("/packageVip/pages/grade/index");
     },
-    async userInfo(params) {
+    mokaClose() {
+      console.log(1111);
+      this.posterClick({
+        event_type: "profile_complete",
+        click_type: "done",
+      });
+    },
+    async userHomeInfo(params) {
       try {
-        let res = await userInfo(params);
+        let res = await userHomeInfo(params);
         this.infor = res.data.data;
         this.coin = res.data.data.acct.coin;
         this.level = res.data.data.acct.level;
         this.wallet = res.data.data.acct.wallet;
         this.is_member = res.data.data.member.is_member;
         this.guide_desc = res.data.data.member.guide_desc;
+        this.showMember = res.data.data.config.member;
+        this.showAcct = res.data.data.config.acct;
+        this.showMokaVisible = res.data.data.notify.schedule_status
+          ? true
+          : false;
+        this.notify_msg = res.data.data.notify.notify_msg;
+        this.wait_complete = res.data.data.notify.wait_complete;
+        this.increase = res.data.data.notify.increase;
       } catch (error) {
         this.infor = {
-          age: 0,
-          avatar: "",
-          realname: "",
-          ispledge: "",
+          basic: {
+            age: 0,
+            avatar: "",
+            realname: "",
+            ispledge: "",
+          },
           statistic: {
             followed_cnt: 0,
             follower_cnt: 0,
@@ -788,6 +848,8 @@ export default {
           },
         };
         this.coin = 0;
+        this.showMember = 0;
+        this.showAcct = 0;
       }
     },
     async isSign(params) {
@@ -832,13 +894,19 @@ export default {
         }
       }
     },
+    async posterClick(params) {
+      try {
+        let res = await posterClick(params);
+        this.showMokaVisible = false;
+      } catch (error) {}
+    },
   },
   components: {
     sign,
   },
   created() {
     this.globalData = this.globalData;
-    this.userInfo("");
+    this.userHomeInfo("");
     // 是否签到
     this.isSign("");
     this.shareInviteInfo({
@@ -853,7 +921,7 @@ export default {
     } else {
       this.showlogin = true;
     }
-    this.userInfo("");
+    this.userHomeInfo("");
   },
   onLoad: function (options) {
     console.log(options);

@@ -362,8 +362,16 @@
           }} -->
         </view>
       </view>
-      <view class="tonggao_fixed_rt" @tap="launchYuepai"> 立即报名 </view>
+      <view class="tonggao_fixed_rt">
+        <text class="rapid-connection" @tap="rapidConnection"> 急速快联 </text>
+        <text @tap="launchYuepai" class="immediately-yuepai"> 立即报名 </text>
+      </view>
     </view>
+    <unlock
+      v-show="unlockVisible"
+      @unlockClose="unlockClose"
+      :uuid="author_id"
+    ></unlock>
   </view>
 </template>
 
@@ -371,6 +379,7 @@
 import "./index.scss";
 import clickThrottle from "../../../utils/clickThrottle";
 import TonggaoList from "../../../components/tonggaoList/index.vue";
+import unlock from "../../../components/unlock/index.vue";
 import {
   noticeInfo,
   recordCollect,
@@ -434,10 +443,12 @@ export default {
       shareFriendsTitle: "",
       shareFriendsImg: "",
       shareFriendsPath: "",
+      unlockVisible: false,
     };
   },
   components: {
     TonggaoList,
+    unlock,
   },
   methods: {
     previewImage(src, urls) {
@@ -446,6 +457,19 @@ export default {
         current: src, // 图片的地址url
         urls: urls, // 预览的地址url
       });
+    },
+    unlockClose() {
+      this.unlockVisible = false;
+    },
+    rapidConnection() {
+      if (!clickThrottle()) return;
+      if (isLogin()) {
+        this.unlockVisible = true;
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+      }
     },
     godetail(oid, author_id) {
       openPage(

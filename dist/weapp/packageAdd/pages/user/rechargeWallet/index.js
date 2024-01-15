@@ -151,7 +151,7 @@ component.options.__file = "src/packageAdd/pages/user/rechargeWallet/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* walletRecharge */ "Pc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* walletRecharge */ "Yc"])(params);
 
               case 3:
                 res = _context.sent;

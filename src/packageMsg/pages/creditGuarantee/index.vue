@@ -35,13 +35,13 @@
       </view>
     </view>
     <view class="price"> 300元 </view>
-    <view v-if="is_security === 0 && is_member == 0">
+    <!-- <view v-if="is_security === 0">
       <view class="submit-red" @tap="submitSecurity">立即存入</view>
       <view class="or">或</view>
       <view class="submit-yellow" @tap="goVip">成为VIP</view>
       <view class="credit-tips">VIP免担保金 自动享担保权益 >></view>
-    </view>
-    <view v-if="is_security === 1 && is_member == 1">
+    </view> -->
+    <!-- <view v-if="is_security === 1">
       <view class="credit-tips">
         <image
           src="https://yuepai-oss.qubeitech.com/static/images/guaranteed.png"
@@ -50,8 +50,8 @@
         您已存入保障金，已享受担保权益
       </view>
       <view class="submit-red">申请提取保证金</view>
-    </view>
-    <view v-if="is_security === 1 && is_member == 0">
+    </view> -->
+    <view v-if="is_security === 1">
       <view class="credit-tips">
         <image
           src="https://yuepai-oss.qubeitech.com/static/images/guaranteed.png"
@@ -59,12 +59,9 @@
         ></image>
         您已存入保障金，已享受担保权益
       </view>
-      <view class="submit-red">申请提取保证金</view>
-      <view class="or">或</view>
-      <view class="submit-yellow" @tap="goVip">成为VIP</view>
-      <view class="credit-tips">VIP免担保金 自动享担保权益 >></view>
+      <view class="submit-red" @tap="withdrawalOfMargin">申请提取保证金</view>
     </view>
-    <view v-if="is_security === 0 && is_member === 1">
+    <view v-if="is_security === 0">
       <view class="submit-red" @tap="submitSecurity">立即存入</view>
     </view>
     <view class="credit-content">
@@ -77,6 +74,21 @@
       <view>
         4.在对方没有同意的情况下，不会公开对方隐私；
         如果违反了其中一条，经客服同双方调查确认后，可以扣除保证金；
+      </view>
+    </view>
+    <view class="margin-modal" @tap="marginClose" v-if="marginVisible">
+      <view class="margin-ct">
+        <view class="margin-title">申请提取保证金</view>
+        <view class="margin-tip">提取保证金后将不在享受担保权益</view>
+        <view class="margin-p">按以下两种方式提取保证金</view>
+        <view class="margin-p">1、添加客服微信：binywon（备注：保证金）</view>
+        <view class="margin-p"
+          >2、点击咨询在线客服申请提取保证金核实通过后，预计24小时到账</view
+        >
+        <view class="margin-btns">
+          <text @tap.stop="marginClose">放弃提取</text>
+          <text @tap.stop="customerService">在线客服</text>
+        </view>
       </view>
     </view>
   </view>
@@ -92,6 +104,7 @@ export default {
     return {
       is_security: 0,
       is_member: 0,
+      marginVisible: false,
     };
   },
   methods: {
@@ -102,6 +115,19 @@ export default {
       this.securityOpen({
         amount: 300,
       });
+    },
+    marginClose() {
+      this.marginVisible = false;
+    },
+    customerService() {
+      wx.openCustomerServiceChat({
+        extInfo: { url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6" },
+        corpId: "ww9ad8086390afbfaa",
+        success(res) {},
+      });
+    },
+    withdrawalOfMargin() {
+      this.marginVisible = true;
     },
     async securityOpen(params) {
       try {

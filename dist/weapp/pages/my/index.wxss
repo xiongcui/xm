@@ -361,6 +361,17 @@
           align-items: center;
   font-size: 28rpx;
   color: #333333;
+  position: relative;
+}
+.my .my-column .wait_complete {
+  position: absolute;
+  right: -4rpx;
+  top: 0;
+  background: #f36941;
+  color: #ffffff;
+  padding: 2rpx 10rpx;
+  font-size: 16rpx;
+  border-radius: 16rpx;
 }
 .my .my-column .my-column-img {
   width: 40rpx;
@@ -600,4 +611,40 @@
 .my .share-btn {
   background-color: transparent;
   line-height: normal;
+}
+.my .moka-tips {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: fixed;
+  bottom: 16rpx;
+  left: 16rpx;
+  right: 16rpx;
+  color: #ffffff;
+  padding: 16rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  z-index: 9999;
+  background: #fe5457;
+}
+.my .moka-tips .moka-left text {
+  margin: 0 16rpx;
+  color: #fbd244;
+}
+.my .moka-tips .moka-rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.my .moka-tips .moka-btn {
+  border: 2rpx solid #ffffff;
+  font-size: 24rpx;
+  padding: 2rpx 20rpx;
+  border-radius: 24rpx;
+}
+.my .moka-tips .moka-close {
+  margin-left: 30rpx;
 }

@@ -77,6 +77,11 @@ component.options.__file = "src/packageActivity/pages/applicationConfirm/index.v
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -84,7 +89,8 @@ component.options.__file = "src/packageActivity/pages/applicationConfirm/index.v
   data: function data() {
     return {
       result: "报名成功",
-      desc: "你已经进入候选区，还未完成组队，开始组队区吧"
+      desc: "你已经进入候选区，还未完成组队，开始组队区吧",
+      wechat_qrc: ""
     };
   },
   methods: {
@@ -108,6 +114,10 @@ component.options.__file = "src/packageActivity/pages/applicationConfirm/index.v
 
     if (options.desc) {
       this.desc = options.desc;
+    }
+
+    if (options.wechat_qrc) {
+      this.wechat_qrc = options.wechat_qrc;
     }
   }
 });
@@ -155,6 +165,23 @@ var render = function () {
         ]),
       ]),
     ]),
+    _vm.wechat_qrc
+      ? _c("view", { staticClass: "add-weChat" }, [
+          _c("view", { staticClass: "add-weChat-left" }, [
+            _c("view", { staticClass: "add-weChat-title" }, [
+              _vm._v("长按识别二维码参加活动"),
+            ]),
+            _c("view", { staticClass: "add-weChat-btn" }, [
+              _vm._v("报名成功后记得添加微信哦"),
+            ]),
+          ]),
+          _c("view", { staticClass: "add-weChat-rt" }, [
+            _c("image", {
+              attrs: { src: _vm.wechat_qrc, "show-menu-by-longpress": true },
+            }),
+          ]),
+        ])
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

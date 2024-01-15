@@ -1,1 +1,1 @@
-{"navigationBarTitleText":"活动详情","usingComponents":{"custom-wrapper":"../../../custom-wrapper","comp":"../../../comp"}}
+{"navigationBarTitleText":"活动详情","component":true,"usingComponents":{"custom-wrapper":"../../../custom-wrapper","i-rate":"../../../assets/iview-weapp/dist/rate/index","comp":"../../../comp"}}

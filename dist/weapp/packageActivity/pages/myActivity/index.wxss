@@ -183,7 +183,8 @@ page {
           flex-direction: column-reverse;
 }
 
-.my-activity .bottom-modal .bottom-content {
+.my-activity .bottom-modal .bottom-content,
+.my-activity .bottom-modal .weChat-content {
   width: 100%;
   background: #ffffff;
   height: 70vh;
@@ -192,7 +193,8 @@ page {
   position: relative;
 }
 
-.my-activity .bottom-modal .bottom-title {
+.my-activity .bottom-modal .bottom-title,
+.my-activity .bottom-modal .weChat-title {
   text-align: center;
   padding: 16rpx 0;
   font-size: 30rpx;
@@ -422,4 +424,159 @@ page {
   width: 150rpx;
   height: 150rpx;
   margin-bottom: 16rpx;
+}
+
+.my-activity .application-list {
+  margin-bottom: 16rpx;
+  padding: 0 16rpx;
+}
+
+.my-activity .application-list .application-list-item {
+  background: #fff7f4;
+  border-radius: 8rpx;
+  padding: 16rpx 0;
+  margin-bottom: 16rpx;
+}
+
+.my-activity .application-list .application-title {
+  font-size: 28rpx;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.my-activity .application-list .application-box {
+  background: #ffffff;
+  margin: 16rpx;
+  padding: 16rpx;
+  border-radius: 8rpx;
+}
+
+.my-activity .application-list .application-user {
+  margin-bottom: 6rpx;
+}
+
+.my-activity .application-list .application-role {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 16rpx;
+}
+
+.my-activity .application-list .application-role text {
+  font-size: 28rpx;
+  color: #333333;
+  border-bottom: 6rpx solid #69bd8c;
+}
+
+.my-activity .application-list .application-tip {
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  margin-bottom: 16rpx;
+}
+
+.my-activity .application-list .application-user {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.my-activity .application-list .application-user .application-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.my-activity .application-list .application-user .application-left image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 6rpx;
+}
+
+.my-activity .application-list .application-user .application-left text {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.5);
+  width: 200rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+.my-activity .application-list .application-user .application-ct {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.my-activity .application-list .application-user .application-ct image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 6rpx;
+}
+
+.my-activity .application-list .application-user .application-ct text {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.my-activity .application-list .application-user .application-rt {
+  padding: 2rpx 10rpx;
+  font-size: 22rpx;
+  border-radius: 28rpx;
+  border: 2rpx solid #f9b435;
+  color: #f9b435;
+}
+
+.my-activity .application-list .gradeing {
+  border-bottom: 1rpx dashed #e5e5e5;
+  text-align: center;
+  position: relative;
+  margin: 30rpx 0;
+}
+
+.my-activity .application-list .gradeing text {
+  width: 100rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 50%;
+  margin-left: -50rpx;
+  top: -16rpx;
+  background: #ffffff;
+}
+
+.my-activity .weChat-content {
+  height: auto !important;
+}
+
+.my-activity .weChat-box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.my-activity .weChat-img {
+  width: 360rpx;
+  padding-bottom: 60rpx;
 }

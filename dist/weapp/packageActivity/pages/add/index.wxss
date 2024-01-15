@@ -311,7 +311,6 @@ page {
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  background: #ffffff;
 }
 
 .add-activity .tab-item {
@@ -322,8 +321,8 @@ page {
           flex: 1;
   font-size: 30rpx;
   text-align: center;
-  line-height: 80rpx;
-  border-bottom: 6rpx solid #ffffff;
+  line-height: 66rpx;
+  border-bottom: 6rpx solid #fdf6e8;
   margin: 0 15%;
 }
 
@@ -336,6 +335,7 @@ page {
 .add-activity .charge-amount {
   text-align: right;
   margin-right: 16rpx;
+  width: 300rpx;
 }
 
 .add-activity .charge-box {
@@ -409,6 +409,55 @@ page {
 .add-activity .add-group image,
 .add-activity .add-agreement image,
 .add-activity .add-packet-mode image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.add-activity .add-scene-mode {
+  background: #fff6e9;
+  border-radius: 8rpx;
+  height: 68rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: #f8a940;
+  margin-top: 16rpx;
+}
+
+.add-activity .add-scene-mode image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 16rpx;
+}
+
+.add-activity .add-role {
+  background: #ffffff;
+  border-radius: 8rpx;
+  height: 68rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: #bbbbbb;
+  margin-top: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .add-role image {
   width: 30rpx;
   height: 30rpx;
   margin-right: 16rpx;
@@ -704,4 +753,315 @@ page {
   font-size: 30rpx;
   border-radius: 40rpx;
   padding: 14rpx 40rpx;
+}
+
+.add-activity .set-scene {
+  background: #ffffff;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  margin: 16rpx;
+}
+
+.add-activity .set-scene .set-scene-title {
+  font-size: 30rpx;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .set-scene .set-scene-box {
+  background: #fdf6e8;
+  padding: 16rpx;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .set-scene .scene-theme {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 16rpx 0;
+  position: relative;
+}
+
+.add-activity .set-scene .theme-name {
+  font-size: 30rpx;
+  margin-right: 16rpx;
+}
+
+.add-activity .set-scene .theme-input {
+  border-bottom: 1rpx solid #d4d0cb;
+  color: #333333;
+  font-size: 26rpx;
+}
+
+.add-activity .set-scene .theme-delete {
+  position: absolute;
+  right: 0;
+  font-size: 26rpx;
+  color: #6493d7;
+}
+
+.add-activity .set-scene .scene-item {
+  border: 2rpx solid #f4cb9b;
+  border-radius: 8rpx;
+  padding: 0 16rpx;
+}
+
+.add-activity .set-scene .scene-tips {
+  color: #cc9a4b;
+  font-size: 22rpx;
+  margin: 16rpx 0;
+}
+
+.add-activity .set-scene .set-scene-ct {
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding: 16rpx;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .set-scene .role-delete {
+  font-size: 28rpx;
+  color: #6493d7;
+  text-align: right;
+}
+
+.add-activity .set-scene .role-name {
+  text-align: right;
+  width: 420rpx;
+}
+
+.add-activity .set-scene .object {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.add-activity .set-scene .object-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 16rpx;
+}
+
+.add-activity .set-scene .object-item image {
+  width: 26rpx;
+  height: 26rpx;
+  margin-right: 6rpx;
+}
+
+.add-activity .set-scene .object-item text {
+  font-size: 24rpx;
+  color: #808080;
+}
+
+.add-activity .invite {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.add-activity .invite .invite-members {
+  width: 600rpx;
+  background-color: #ffffff;
+  border-radius: 8rpx;
+  padding: 16rpx 30rpx;
+}
+
+.add-activity .invite .invite-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  text-align: center;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.add-activity .invite .invite-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png") no-repeat;
+  background-size: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.add-activity .invite .invite-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16rpx;
+}
+
+.add-activity .invite .query-box {
+  margin-left: 16rpx;
+  width: 420rpx;
+  position: relative;
+}
+
+.add-activity .invite .query-input {
+  border: 1rpx solid #efefef;
+  border-radius: 2rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  width: 100%;
+  padding: 0 16rpx;
+}
+
+.add-activity .invite .check_box {
+  margin-left: 16rpx;
+}
+
+.add-activity .invite .group {
+  position: absolute;
+  z-index: 9;
+  background: #ffffff;
+  left: 0;
+  right: 0;
+  top: 62rpx;
+  width: 454rpx;
+  -webkit-box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+          box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+}
+
+.add-activity .invite .group-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  padding: 8rpx 16rpx;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.add-activity .invite .group-item-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add-activity .invite .group-item-left image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.add-activity .invite .group-item-center {
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.add-activity .invite .identity {
+  color: rgba(0, 0, 0, 0.5);
+  margin-left: 16rpx;
+}
+
+.add-activity .invite .group-item-right {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  right: 16rpx;
+  top: 0;
+}
+
+.add-activity .invite .group-item-right image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.add-activity .invite .invited-user-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 28rpx;
+  color: #333333;
+  padding: 0 16rpx;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.add-activity .invite .invited-user-item image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.add-activity .invite .invited-user-item .invited-uuid {
+  width: 100rpx;
+}
+
+.add-activity .invite .invited-user-item .invited-name {
+  width: 180rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+
+.add-activity .invite .invited-box {
+  border: 1rpx solid #efefef;
+  padding: 16rpx 0;
+  position: relative;
+}
+
+.add-activity .invite .invited-num {
+  border-left: 6rpx solid #fe3e3f;
+  border-radius: 3rpx;
+  padding-left: 16rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  margin-top: 16rpx;
+}
+
+.add-activity .invite .invited-delete {
+  font-size: 26rpx;
+}
+
+.add-activity .invite .confirm-invitation {
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #ffffff;
+  background: #fe3e3f;
+  border-radius: 30rpx;
+  text-align: center;
+  margin: 16rpx auto;
 }

@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    NODE_ENV: '"YPTG"',
+    NODE_ENV: '"XM"',
   },
   defineConstants: {},
   mini: {},

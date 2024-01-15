@@ -269,6 +269,25 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -458,7 +477,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFilter */ "xc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFilter */ "Fc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -542,7 +561,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userList */ "Ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userList */ "Jc"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -630,7 +649,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "yc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userFollow */ "Gc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -659,7 +678,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Lc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* userUnfollow */ "Uc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -690,7 +709,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_4__[/* imVerify */ "S"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -719,6 +738,10 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
     }
   },
   onLoad: function onLoad(options) {
+    if (options.navactive) {
+      this.navActive = Number(options.navactive);
+    }
+
     if (options.city_filter) {
       this.city_filter = Number(options.city_filter);
       this.showLoading = true;
@@ -853,53 +876,58 @@ var render = function () {
                 [
                   _c("view", { staticClass: "list_top" }, [
                     _c("view", { staticClass: "list_top_left" }, [
-                      _c(
-                        "view",
-                        { staticClass: "avatar-box" },
-                        [
-                          _c("image", {
-                            staticClass: "avatar",
-                            attrs: {
-                              src: item.basic.avatar
-                                ? item.basic.avatar
-                                : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
-                            },
-                          }),
-                          item.basic.sex !== null
-                            ? _c("block", [
-                                item.basic.sex == 1
-                                  ? _c("image", {
-                                      staticClass: "list_sex",
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/nan.png",
-                                      },
-                                    })
-                                  : _vm._e(),
-                                item.basic.sex == 0
-                                  ? _c("image", {
-                                      staticClass: "list_sex",
-                                      attrs: {
-                                        src: "https://yuepai-oss.qubeitech.com/static/images/nv.png",
-                                      },
-                                    })
-                                  : _vm._e(),
-                              ])
-                            : _vm._e(),
-                        ],
-                        1
-                      ),
+                      _c("view", { staticClass: "avatar-box" }, [
+                        _c("image", {
+                          staticClass: "avatar",
+                          attrs: {
+                            src: item.basic.avatar
+                              ? item.basic.avatar
+                              : "https://yuepai-oss.qubeitech.com/static/images/avatar_default.png",
+                          },
+                        }),
+                        item.basic.is_member
+                          ? _c("image", {
+                              staticClass: "user-vip",
+                              attrs: {
+                                src: "https://yuepai-oss.qubeitech.com/static/images/user-vip.png",
+                              },
+                            })
+                          : _vm._e(),
+                      ]),
                       _c("view", { staticClass: "list_info" }, [
-                        _c("view", { staticClass: "list_name" }, [
-                          _vm._v(" " + _vm._s(item.basic.nickname) + " "),
-                        ]),
+                        _c(
+                          "view",
+                          { staticClass: "list_name" },
+                          [
+                            _c("text", [_vm._v(_vm._s(item.basic.nickname))]),
+                            item.basic.sex !== null
+                              ? _c("block", [
+                                  item.basic.sex == 1
+                                    ? _c("image", {
+                                        staticClass: "list_sex",
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
+                                        },
+                                      })
+                                    : _vm._e(),
+                                  item.basic.sex == 0
+                                    ? _c("image", {
+                                        staticClass: "list_sex",
+                                        attrs: {
+                                          src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
+                                        },
+                                      })
+                                    : _vm._e(),
+                                ])
+                              : _vm._e(),
+                          ],
+                          1
+                        ),
                         _c("view", { staticClass: "list_p" }, [
                           item.basic.career_label.length
                             ? _c("text", [
                                 _vm._v(
-                                  " " +
-                                    _vm._s(item.basic.career_label[0]) +
-                                    "｜" +
-                                    _vm._s(item.basic.province_name)
+                                  " " + _vm._s(item.basic.career_label[0])
                                 ),
                               ])
                             : _vm._e(),
@@ -917,36 +945,14 @@ var render = function () {
                       ]),
                     ]),
                     _c("view", { staticClass: "list_top_rt" }, [
+                      _c("view", { staticClass: "list_loction" }, [
+                        _vm._v(_vm._s(item.basic.province_name)),
+                      ]),
                       _c("view", { staticClass: "list_time" }, [
                         _vm._v(
                           " " + _vm._s(item.basic.login_time_humanize) + " "
                         ),
                       ]),
-                      !item.follow.is_follower
-                        ? _c("image", {
-                            staticClass: "follow_img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/follow.png",
-                            },
-                            on: {
-                              tap: function ($event) {
-                                $event.stopPropagation()
-                                return _vm.follow(item)
-                              },
-                            },
-                          })
-                        : _c("image", {
-                            staticClass: "follow_img",
-                            attrs: {
-                              src: "https://yuepai-oss.qubeitech.com/static/images/followed.png",
-                            },
-                            on: {
-                              tap: function ($event) {
-                                $event.stopPropagation()
-                                return _vm.unfollow(item)
-                              },
-                            },
-                          }),
                     ]),
                   ]),
                   item.basic.resume
@@ -954,63 +960,68 @@ var render = function () {
                         _vm._v(" " + _vm._s(item.basic.resume) + " "),
                       ])
                     : _vm._e(),
-                  item.album.photo_album.length
+                  item.cover.show_type == "photo_album"
                     ? _c(
                         "view",
                         { staticClass: "list_img" },
-                        [
-                          _c(
-                            "scroll-view",
-                            { attrs: { enhanced: true, scrollX: true } },
-                            _vm._l(
-                              item.album.photo_album,
-                              function (url, coverIndex) {
-                                return _c("image", {
-                                  key: coverIndex,
+                        _vm._l(
+                          item.cover.photo_album,
+                          function (url, coverIndex) {
+                            return _c(
+                              "view",
+                              { key: coverIndex, staticClass: "list_box" },
+                              [
+                                _c("image", {
                                   staticClass: "list_img_item",
                                   attrs: { src: url, mode: "aspectFill" },
-                                })
-                              }
-                            ),
-                            0
-                          ),
-                        ],
-                        1
+                                }),
+                              ]
+                            )
+                          }
+                        ),
+                        0
                       )
                     : _vm._e(),
-                  !item.album.photo_album.length &&
-                  item.album.video_album.length
+                  item.cover.show_type == "photo_works"
                     ? _c(
                         "view",
-                        { staticClass: "list_video" },
-                        [
-                          _c(
-                            "scroll-view",
-                            { attrs: { enhanced: true, scrollX: true } },
-                            _vm._l(
-                              item.album.video_album,
-                              function (videoItem, videoIndex) {
-                                return _c("video", {
-                                  key: videoIndex,
-                                  staticClass: "list_video-width",
-                                  attrs: {
-                                    objectFit: "cover",
-                                    poster: videoItem.cover,
-                                    src: videoItem.file,
-                                  },
-                                  on: {
-                                    tap: function ($event) {
-                                      $event.stopPropagation()
-                                    },
-                                  },
-                                })
-                              }
-                            ),
-                            0
-                          ),
-                        ],
-                        1
+                        { staticClass: "list_img" },
+                        _vm._l(
+                          item.cover.photo_works,
+                          function (url, coverIndex) {
+                            return _c(
+                              "view",
+                              { key: coverIndex, staticClass: "list_box" },
+                              [
+                                url.cover && url.cover.length
+                                  ? _c("image", {
+                                      staticClass: "list_img_item",
+                                      attrs: {
+                                        src: url.cover[0],
+                                        mode: "aspectFill",
+                                      },
+                                    })
+                                  : _vm._e(),
+                                _c("view", { staticClass: "list_subtitle" }, [
+                                  _vm._v(" " + _vm._s(url.title) + " "),
+                                ]),
+                              ]
+                            )
+                          }
+                        ),
+                        0
                       )
+                    : _vm._e(),
+                  item.cover.show_type == "mocha_works"
+                    ? _c("view", { staticClass: "list_moka_img" }, [
+                        _c("image", {
+                          staticClass: "list_img_moka",
+                          attrs: {
+                            src: item.cover.mocha_works[0],
+                            mode: "widthFix",
+                          },
+                        }),
+                      ])
                     : _vm._e(),
                 ]
               )

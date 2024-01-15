@@ -256,8 +256,16 @@
           </text>
         </view>
       </view>
-      <view class="yuepai_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
+      <view class="yuepai_fixed_rt">
+        <text class="rapid-connection" @tap="rapidConnection"> 急速快联 </text>
+        <text @tap="launchYuepai" class="immediately-yuepai"> 申请约拍 </text>
+      </view>
     </view>
+    <unlock
+      v-show="unlockVisible"
+      @unlockClose="unlockClose"
+      :uuid="author_id"
+    ></unlock>
   </view>
 </template>
 
@@ -274,6 +282,7 @@ import {
   applyVerify,
 } from "../../../../api/index";
 import YuepaiList from "../../../../components/yuepaiList/index.vue";
+import unlock from "../../../../components/unlock/index.vue";
 import { errortip, isLogin, openPage } from "../../../../utils/util";
 import clickThrottle from "../../../../utils/clickThrottle";
 import "./index.scss";
@@ -286,6 +295,7 @@ export default {
       indicatorDots: true,
       vertical: false,
       autoplay: false,
+      unlockVisible: false,
       interval: 2000,
       duration: 500,
       backdrop: "",
@@ -340,8 +350,12 @@ export default {
   },
   components: {
     YuepaiList,
+    unlock,
   },
   methods: {
+    unlockClose() {
+      this.unlockVisible = false;
+    },
     showbigPersonimg(src, urls) {
       // 微信预览图片的方法
       wx.previewImage({
@@ -366,16 +380,19 @@ export default {
     bindended() {
       wx.createVideoContext("video").exitFullScreen();
     },
+    rapidConnection() {
+      if (!clickThrottle()) return;
+      if (isLogin()) {
+        this.unlockVisible = true;
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+      }
+    },
     launchYuepai() {
       if (!clickThrottle()) return;
       if (isLogin()) {
-        console.log(
-          {
-            source: "note",
-            oid: this.oid,
-          },
-          "params------"
-        );
         this.applyVerify({
           source: "note",
           oid: this.oid,

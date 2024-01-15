@@ -165,7 +165,7 @@ component.options.__file = "src/packageVip/pages/withdrawal/index.vue"
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])("正在提现中，请耐心等待！");
                 _context2.prev = 1;
                 _context2.next = 4;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* wxTransfer */ "Uc"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* wxTransfer */ "dd"])(params);
 
               case 4:
                 res = _context2.sent;

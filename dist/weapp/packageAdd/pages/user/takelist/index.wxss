@@ -1,7 +1,7 @@
+@charset "UTF-8";
 page {
   background-color: #f4f4f4;
 }
-
 .takelist .nav_list {
   background: #ffffff;
   padding: 0 16rpx;
@@ -10,18 +10,15 @@ page {
   width: calc(100% - 32rpx);
   top: 0;
 }
-
 .takelist .nav_list .nav_item {
   color: #333333;
   font-size: 30rpx;
   line-height: 82rpx;
   padding: 0 16rpx;
 }
-
 .takelist .takect {
   margin-top: 104rpx;
 }
-
 .takelist .swiper_tab {
   background-color: #fff;
   height: 88rpx;
@@ -29,27 +26,23 @@ page {
   width: calc(100% - 110rpx);
   z-index: 99;
 }
-
 .takelist .swiper_tab ::-webkit-scrollbar {
   color: transparent;
   display: none;
   height: 0;
   width: 0;
 }
-
 .takelist .nav_list_ct {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-
 .takelist .sizer_block {
   height: 70rpx;
   position: absolute;
   right: 0;
   top: 0;
 }
-
 .takelist .gradient {
   background-image: -webkit-gradient(linear, left top, right top, from(hsla(0deg, 0%, 100%, 0)), to(#fff));
   background-image: -webkit-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #fff);
@@ -62,14 +55,12 @@ page {
   width: 30rpx;
   z-index: 91;
 }
-
 .takelist .gradient2 {
   background-image: -webkit-gradient(linear, left top, right top, from(hsla(0deg, 0%, 100%, 0)), to(#f7f8fa));
   background-image: -webkit-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #f7f8fa);
   background-image: -o-linear-gradient(left, hsla(0deg, 0%, 100%, 0), #f7f8fa);
   background-image: linear-gradient(90deg, hsla(0deg, 0%, 100%, 0), #f7f8fa);
 }
-
 .takelist .sizer {
   background-color: #f1f1f1;
   border-radius: 8rpx;
@@ -80,18 +71,15 @@ page {
   margin: 16rpx 18rpx 0 8rpx;
   padding-left: 10rpx;
 }
-
 .takelist .sizer_dian {
   font-family: Courier New, Courier, monospace;
   padding: 0 4rpx;
 }
-
 .takelist .sizer_img {
   height: 10rpx;
   margin: 0 10rpx 0 5rpx;
   width: 10rpx;
 }
-
 .takelist .sizer_img image {
   height: 10rpx;
   margin-top: 6rpx;
@@ -101,27 +89,29 @@ page {
   bottom: 12rpx;
   right: 24rpx;
 }
-
 .takelist .ub {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-
 .takelist .nav_active {
   border-bottom: 6rpx solid #ff1e3e;
 }
-
 .takelist .avatar-box {
   position: relative;
 }
-
 .takelist .avatar {
   width: 70rpx;
   height: 70rpx;
   border-radius: 50%;
 }
-
+.takelist .user-vip {
+  width: 26rpx;
+  height: 26rpx;
+  position: absolute;
+  right: 0;
+  top: 44rpx;
+}
 .takelist .list_top {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -130,7 +120,6 @@ page {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-
 .takelist .list_top_left {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,7 +128,6 @@ page {
       -ms-flex-align: center;
           align-items: center;
 }
-
 .takelist .list_top_rt {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -151,7 +139,6 @@ page {
       -ms-flex-align: end;
           align-items: flex-end;
 }
-
 .takelist .list_info {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -164,15 +151,9 @@ page {
       -ms-flex-pack: center;
           justify-content: center;
 }
-
 .takelist .list_info .list_name {
   color: #111111;
   font-size: 34rpx;
-}
-
-.takelist .list_info .list_p {
-  color: #686868;
-  font-size: 26rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -180,13 +161,38 @@ page {
       -ms-flex-align: center;
           align-items: center;
 }
-
+.takelist .list_info .level {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/level-icon.png") left center no-repeat;
+  background-size: 128rpx 64rpx;
+  color: #ffffff;
+  font-size: 24rpx;
+  width: 128rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-indent: 60rpx;
+  -webkit-transform: scale(0.7);
+      -ms-transform: scale(0.7);
+          transform: scale(0.7);
+}
+.takelist .list_info .list_p {
+  color: #686868;
+  font-size: 24rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .takelist .list_info .list_p_img {
   width: 100rpx;
   height: 30rpx;
   margin-left: 16rpx;
 }
-
 .takelist .list_info .icon_pledge {
   background: url("https://yuepai-oss.qubeitech.com/static/images/pledge.png") #f0f6ff 10rpx center no-repeat;
   background-size: 26rpx;
@@ -195,9 +201,8 @@ page {
   padding: 2rpx 10rpx;
   border-radius: 8rpx;
   padding-left: 40rpx;
-  margin-left: 16rpx;
+  margin-left: 10rpx;
 }
-
 .takelist .list_info .icon_real {
   background: url("https://yuepai-oss.qubeitech.com/static/images/real.png") #fbede4 10rpx center no-repeat;
   background-size: 26rpx;
@@ -208,24 +213,20 @@ page {
   padding-left: 40rpx;
   margin-left: 16rpx;
 }
-
 .takelist .list_collection image {
   width: 40rpx;
   height: 40rpx;
 }
-
 .takelist .list_content {
   color: #2f2f2f;
   font-size: 30rpx;
   margin: 16rpx 0;
 }
-
 .takelist .list_content .list_title {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
-
 .takelist .list_content .list_title_desc {
   font-size: 30rpx;
   font-weight: bold;
@@ -237,7 +238,6 @@ page {
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
 }
-
 .takelist .list_loction {
   background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png") left center no-repeat;
   background-size: 36rpx;
@@ -245,44 +245,73 @@ page {
   font-size: 36rpx;
   color: #3a3a3a;
 }
-
 .takelist .list_date {
   color: #686868;
   font-size: 24rpx;
 }
-
 .takelist .list_desc {
   font-size: 30rpx;
   color: #6b6b6b;
   line-height: 36rpx;
   margin: 16rpx 0;
+  overflow: hidden;
+  /*隐藏多出部分文字*/
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  /*用省略号代替多出部分文字*/
+  display: -webkit-box;
+  /* 显示多行文本容器 */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  /*显示行数*/
 }
-
+.takelist .list_moka_img {
+  margin-top: 16rpx;
+}
+.takelist .list_moka_img .list_img_moka {
+  width: 100%;
+  border-radius: 10rpx;
+  margin-bottom: 16rpx;
+}
 .takelist .list_img {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   white-space: nowrap;
   margin-top: 16rpx;
+  overflow-x: auto;
 }
-
 .takelist .list_img .list_img_item {
   width: 214rpx;
   height: 214rpx;
   border-radius: 10rpx;
-  margin-right: 20rpx;
   background: #e5e5e5;
 }
-
+.takelist .list_img .list_box {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 214rpx;
+  margin-right: 20rpx;
+}
+.takelist .list_img .list_subtitle {
+  margin-top: 6rpx;
+  width: 214rpx;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
 .takelist .list_sex {
   width: 30rpx;
   height: 30rpx;
   margin-left: 4rpx;
-  position: absolute;
-  right: -8rpx;
-  top: -8rpx;
 }
-
 .takelist .list_tags {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -292,7 +321,6 @@ page {
           flex-wrap: wrap;
   margin-top: 16rpx;
 }
-
 .takelist .list_tags .tag {
   padding: 4rpx 10rpx;
   background: rgba(245, 50, 24, 0.08);
@@ -302,7 +330,6 @@ page {
   margin-right: 10rpx;
   margin-bottom: 16rpx;
 }
-
 .takelist .list_bottom {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -313,7 +340,19 @@ page {
   color: #6b6b6b;
   border-top: 1rpx solid #ebebeb;
 }
-
+.takelist .list_loction {
+  background: url("https://yuepai-oss.qubeitech.com/static/images/common/local.png") left center no-repeat;
+  background-size: 30rpx;
+  padding-left: 36rpx;
+  font-size: 28rpx;
+  color: #6b6b6b;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
 .takelist .list_time {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -321,17 +360,15 @@ page {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 24rpx;
-  color: #6b6b6b;
-  margin-bottom: 16rpx;
+  font-size: 22rpx;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 6rpx;
 }
-
 .takelist .list_time image {
   width: 26rpx;
   height: 26rpx;
   margin-right: 4rpx;
 }
-
 .takelist .contact {
   width: 110rpx;
   padding: 4rpx 0;
@@ -342,17 +379,14 @@ page {
   padding-left: 40rpx;
   border-radius: 8rpx;
 }
-
 .takelist .list_video {
   white-space: nowrap;
   margin-top: 16rpx;
 }
-
 .takelist .list_video-width {
   width: 49%;
   margin-right: 1%;
 }
-
 .takelist .followed_btn {
   padding: 4rpx 10rpx;
   border: 1rpx solid #cecece;
@@ -360,7 +394,6 @@ page {
   border-radius: 8rpx;
   font-size: 28rpx;
 }
-
 .takelist .followed_btn_red {
   padding: 4rpx 10rpx;
   border: 1rpx solid #ff465f;
@@ -368,19 +401,16 @@ page {
   border-radius: 8rpx;
   font-size: 28rpx;
 }
-
 .takelist .follow_img {
   width: 40rpx;
   height: 40rpx;
 }
-
 .takelist .nomore {
   padding: 0 0 16rpx 0;
   text-align: center;
   font-size: 28rpx;
   color: rgba(0, 0, 0, 0.5);
 }
-
 .takelist .none-data {
   height: calc(100vh - 110rpx);
   display: -webkit-flex;
@@ -398,7 +428,6 @@ page {
   padding-top: 80rpx;
   color: #333;
 }
-
 .takelist .none-img {
   width: 150rpx;
   height: 150rpx;

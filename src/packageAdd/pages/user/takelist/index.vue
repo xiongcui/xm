@@ -50,28 +50,35 @@
                 "
                 class="avatar"
               ></image>
-              <block v-if="item.basic.sex !== null">
-                <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/nan.png"
-                  class="list_sex"
-                  v-if="item.basic.sex == 1"
-                ></image>
-                <image
-                  src="https://yuepai-oss.qubeitech.com/static/images/nv.png"
-                  class="list_sex"
-                  v-if="item.basic.sex == 0"
-                ></image>
-              </block>
+              <image
+                v-if="item.basic.is_member"
+                class="user-vip"
+                src="https://yuepai-oss.qubeitech.com/static/images/user-vip.png"
+              ></image>
             </view>
 
             <view class="list_info">
-              <view class="list_name"> {{ item.basic.nickname }} </view>
+              <view class="list_name">
+                <text>{{ item.basic.nickname }}</text>
+                <block v-if="item.basic.sex !== null">
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/boy.png"
+                    class="list_sex"
+                    v-if="item.basic.sex == 1"
+                  ></image>
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/girl.png"
+                    class="list_sex"
+                    v-if="item.basic.sex == 0"
+                  ></image>
+                </block>
+                <!-- <view class="level">{{ item.basic.level }}</view> -->
+              </view>
               <view class="list_p">
                 <text v-if="item.basic.career_label.length">
-                  {{ item.basic.career_label[0] }}｜{{
-                    item.basic.province_name
-                  }}</text
+                  {{ item.basic.career_label[0] }}</text
                 >
+
                 <view class="icon_real" v-if="item.basic.is_certify"
                   >已实名</view
                 >
@@ -82,38 +89,50 @@
             </view>
           </view>
           <view class="list_top_rt">
+            <view class="list_loction">{{ item.basic.province_name }}</view>
             <view class="list_time">
               {{ item.basic.login_time_humanize }}
             </view>
-            <image
-              class="follow_img"
-              src="https://yuepai-oss.qubeitech.com/static/images/follow.png"
-              v-if="!item.follow.is_follower"
-              @tap.stop="follow(item)"
-            ></image>
-            <image
-              class="follow_img"
-              src="https://yuepai-oss.qubeitech.com/static/images/followed.png"
-              @tap.stop="unfollow(item)"
-              v-else
-            ></image>
           </view>
         </view>
         <view class="list_desc" v-if="item.basic.resume">
           {{ item.basic.resume }}
         </view>
-        <view class="list_img" v-if="item.album.photo_album.length">
-          <scroll-view :enhanced="true" :scrollX="true">
+        <view class="list_img" v-if="item.cover.show_type == 'photo_album'">
+          <view
+            class="list_box"
+            v-for="(url, coverIndex) in item.cover.photo_album"
+            :key="coverIndex"
+          >
+            <image :src="url" mode="aspectFill" class="list_img_item"></image>
+          </view>
+        </view>
+        <view class="list_img" v-if="item.cover.show_type == 'photo_works'">
+          <view
+            class="list_box"
+            v-for="(url, coverIndex) in item.cover.photo_works"
+            :key="coverIndex"
+          >
             <image
-              :src="url"
+              v-if="url.cover && url.cover.length"
+              :src="url.cover[0]"
               mode="aspectFill"
               class="list_img_item"
-              v-for="(url, coverIndex) in item.album.photo_album"
-              :key="coverIndex"
             ></image>
-          </scroll-view>
+            <view class="list_subtitle"> {{ url.title }} </view>
+          </view>
         </view>
         <view
+          class="list_moka_img"
+          v-if="item.cover.show_type == 'mocha_works'"
+        >
+          <image
+            :src="item.cover.mocha_works[0]"
+            mode="widthFix"
+            class="list_img_moka"
+          ></image>
+        </view>
+        <!-- <view
           class="list_video"
           v-if="!item.album.photo_album.length && item.album.video_album.length"
         >
@@ -128,7 +147,7 @@
               @tap.stop=""
             ></video>
           </scroll-view>
-        </view>
+        </view> -->
       </view>
     </view>
     <view v-else class="none-data">
@@ -549,6 +568,9 @@ export default {
     },
   },
   onLoad: function (options) {
+    if (options.navactive) {
+      this.navActive = Number(options.navactive);
+    }
     if (options.city_filter) {
       this.city_filter = Number(options.city_filter);
       this.showLoading = true;

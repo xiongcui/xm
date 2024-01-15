@@ -51,24 +51,34 @@ export default {
       coin: 0,
       list: [
         {
+          amount: 49,
+          coin: 50,
+          discount: 0,
+        },
+        {
           amount: 98,
           coin: 100,
           discount: 0,
         },
         {
           amount: 198,
-          coin: 240,
-          discount: 8.5,
+          coin: 220,
+          discount: 9.0,
         },
         {
           amount: 298,
-          coin: 400,
-          discount: 7.5,
+          coin: 380,
+          discount: 8.0,
         },
         {
           amount: 398,
-          coin: 600,
-          discount: 6.5,
+          coin: 570,
+          discount: 7.0,
+        },
+        {
+          amount: 498,
+          coin: 800,
+          discount: 6.0,
         },
       ],
     };
@@ -90,7 +100,7 @@ export default {
     async coinAcct(params) {
       try {
         let res = await coinAcct(params);
-        this.coin = res.data.data.wallet.info.wallet_money;
+        this.coin = res.data.data.coin;
       } catch (error) {}
     },
     async coinStore(params) {

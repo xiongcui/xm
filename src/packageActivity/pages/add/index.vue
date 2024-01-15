@@ -184,7 +184,238 @@
         </view>
       </view>
     </view>
-    <view class="activity-cost">
+    <view class="set-scene">
+      <view class="set-scene-title"
+        ><text class="required">*</text> 设置场景
+      </view>
+      <view
+        class="set-scene-box"
+        v-for="(item, index) in sceneList"
+        :key="index"
+      >
+        <view class="scene-theme">
+          <text class="theme-name">场景主题</text>
+          <input
+            class="theme-input"
+            placeholder="请输入场景名称(限8字)"
+            v-model="item.sceneName"
+          />
+          <view
+            class="theme-delete"
+            @tap="deleteTheme(index)"
+            v-if="sceneList.length > 1"
+          >
+            删除
+          </view>
+        </view>
+        <view class="scene-item">
+          <view class="tab">
+            <view
+              class="tab-item"
+              :class="item.sceneTab == 0 ? 'on' : ''"
+              @tap="changeItem(index, 0)"
+              >常规配置
+            </view>
+            <view
+              class="tab-item"
+              :class="item.sceneTab == 1 ? 'on' : ''"
+              @tap="changeItem(index, 1)"
+              >角色配置
+            </view>
+          </view>
+          <view class="scene-tips" v-if="item.sceneTab == 0">
+            *若招募时对用户参与的角色无特殊要求，建议选择此配置
+          </view>
+          <view class="scene-tips" v-else
+            >*此需设置报名时可供选择的角色，请按所需设置至少2个角色</view
+          >
+          <view
+            class="set-scene-ct"
+            v-for="(sceneitem, scenekey) in item.list"
+            :key="scenekey"
+          >
+            <view
+              class="role-delete"
+              @tap="deleteRole(index, scenekey)"
+              v-if="item.sceneTab == 1 && item.list.length > 2"
+            >
+              删除
+            </view>
+            <view class="activity-info-item" v-if="item.sceneTab == 1">
+              <view class="activity-lable">
+                <text class="required">*</text>
+                <text>角色名称</text>
+              </view>
+              <input
+                class="role-name"
+                placeholder="参与人员的角色名称(如模特等)"
+                v-model="sceneitem.roleName"
+              />
+            </view>
+            <view class="activity-info-item">
+              <view class="activity-lable">
+                <text class="required">*</text>
+                <text>收费模式</text>
+              </view>
+              <picker
+                @change="
+                  (e) => {
+                    chargeChange(e, index, scenekey);
+                  }
+                "
+                :value="sceneitem.chargeIndex"
+                :range="chargeList"
+                :range-key="'key'"
+              >
+                <view class="picker_children picked" v-if="sceneitem.charge">{{
+                  sceneitem.charge
+                }}</view>
+                <view class="picker_children" v-else>请选择</view>
+              </picker>
+            </view>
+            <view class="activity-info-item" v-if="sceneitem.showAmount">
+              <view class="activity-lable">
+                <text class="required">*</text>
+                <text>报名费用</text>
+              </view>
+              <view class="charge-box">
+                <input
+                  placeholder="请输入收费金额"
+                  v-model="sceneitem.chargeAmount"
+                  type="number"
+                  class="charge-amount"
+                />
+                <text class="early-bird-unit">元/人</text>
+              </view>
+            </view>
+            <view class="activity-info-item">
+              <view class="activity-lable">
+                <text class="required">*</text>
+                <text>报名人数</text>
+              </view>
+              <view class="charge-box">
+                <input
+                  placeholder="请输入报名人数"
+                  v-model="sceneitem.enrollment"
+                  type="number"
+                  class="charge-amount"
+                />
+                <text class="early-bird-unit">人</text>
+              </view>
+            </view>
+            <view class="activity-info-item">
+              <view class="activity-lable">
+                <text>报名对象</text>
+              </view>
+              <view class="object">
+                <view
+                  class="object-item"
+                  @tap="objectChange(index, scenekey, 100)"
+                >
+                  <image
+                    :src="
+                      sceneitem.objectRadio == 100
+                        ? 'https://yuepai-oss.qubeitech.com/static/images/common/select_1.png'
+                        : 'https://yuepai-oss.qubeitech.com/static/images/common/select_0.png'
+                    "
+                  ></image>
+                  <text>公向众开放</text>
+                </view>
+                <view
+                  class="object-item"
+                  @tap="objectChange(index, scenekey, 200)"
+                >
+                  <image
+                    :src="
+                      sceneitem.objectRadio == 200
+                        ? 'https://yuepai-oss.qubeitech.com/static/images/common/select_1.png'
+                        : 'https://yuepai-oss.qubeitech.com/static/images/common/select_0.png'
+                    "
+                  ></image>
+                  <text>仅邀请参与</text>
+                </view>
+                <view
+                  class="object-item"
+                  @tap="objectChange(index, scenekey, 300)"
+                >
+                  <image
+                    :src="
+                      sceneitem.objectRadio == 300
+                        ? 'https://yuepai-oss.qubeitech.com/static/images/common/select_1.png'
+                        : 'https://yuepai-oss.qubeitech.com/static/images/common/select_0.png'
+                    "
+                  ></image>
+                  <text>混合</text>
+                </view>
+              </view>
+            </view>
+            <view class="activity-info-item" v-if="sceneitem.objectRadio !== 0">
+              <view class="activity-lable">
+                <text>邀请成员</text>
+              </view>
+              <view
+                class="picker_children picked member-row"
+                v-if="sceneitem.member.length"
+                @tap="memberClick(index, scenekey)"
+                >{{ formatMember(sceneitem.member) }}</view
+              >
+              <view
+                class="picker_children"
+                v-else
+                @tap="memberClick(index, scenekey)"
+                >邀请报名成员,待对方确认后有效</view
+              >
+            </view>
+            <view class="activity-info-item">
+              <view class="activity-lable">
+                <text>邀请成员是否展示在详情页</text>
+              </view>
+              <view class="activity-check-box">
+                <view
+                  @tap="chooseShowMember(index, scenekey)"
+                  class="check_box"
+                  :class="sceneitem.showMember === 1 ? 'check_box_ed' : ''"
+                  data-status="1"
+                >
+                  是
+                  <image
+                    :src="`https://yuepai-oss.qubeitech.com/static/images/common/select2_${
+                      sceneitem.showMember === 1 ? 1 : 0
+                    }.png`"
+                  ></image>
+                </view>
+                <view
+                  @tap="chooseShowMember(index, scenekey)"
+                  class="check_box"
+                  :class="sceneitem.showMember === 0 ? 'check_box_ed' : ''"
+                  data-status="2"
+                >
+                  否
+                  <image
+                    :src="`https://yuepai-oss.qubeitech.com/static/images/common/select2_${
+                      sceneitem.showMember === 0 ? 1 : 0
+                    }.png`"
+                  ></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view
+            class="add-role"
+            @tap="addRole(index)"
+            v-if="item.sceneTab == 1"
+          >
+            <image src="../../../assets/images/add-role.png"></image>
+            新建角色
+          </view>
+        </view>
+      </view>
+      <view class="add-scene-mode" @tap="addScene">
+        <image src="../../../assets/images/add-scene.png"></image>
+        新建场景
+      </view>
+    </view>
+    <view class="activity-cost" v-if="false">
       <view class="activity-info-item">
         <view class="activity-lable">
           <text>活动费用</text>
@@ -263,7 +494,7 @@
           <text class="early-bird-unit">元/人</text>
         </view>
       </view>
-      <view class="tab">
+      <!-- <view class="tab">
         <view
           class="tab-item"
           :class="applicationTab == 0 ? 'on' : ''"
@@ -413,7 +644,6 @@
             :key="index"
           >
             <view class="active-echo-content">
-              <!-- 荷塘汉服（模特1名，摄影3名）,已邀请1名成员 -->
               {{ formatFixedGroup(item) }}
               <view class="active-echo-edit" @tap="editActivity">
                 <image
@@ -581,7 +811,6 @@
               :key="indexs"
             >
               <view class="active-echo-content">
-                <!-- 荷塘汉服（模特1名，摄影3名）,已邀请1名成员 -->
                 {{ formatFixedGroup(items) }}
                 <view class="active-echo-edit" @tap="editActivity(index)">
                   <image
@@ -610,7 +839,7 @@
           添加场次
         </view>
         <view class="application-padding"></view>
-      </view>
+      </view> -->
     </view>
     <view class="activity-security">
       <view class="activity-info-item">
@@ -857,7 +1086,7 @@
         </view>
         <view class="activity-tips"> 报名满员后，可报名等位候补 </view>
       </view>
-      <view class="activity-setup-item">
+      <view class="activity-setup-item" v-if="false">
         <view class="activity-lable">
           <text>容许转让</text>
         </view>
@@ -983,7 +1212,7 @@
         <text class="now-day-txt">开放报名</text>
       </view>
     </view>
-    <view class="activity-agreement">
+    <view class="activity-agreement" v-if="false">
       <view class="activity-info-item">
         <view class="activity-lable">
           <text>协议文本</text>
@@ -1063,12 +1292,124 @@
     <view class="add_bottom" :class="isIphoneX ? 'fix-iphonex-button' : ''">
       <view class="add_btn" @tap="submit">确认发布</view>
     </view>
+    <!--邀请成员-->
+    <view class="invite" v-if="inviteVisble">
+      <view class="invite-members" @tap="clearUserMember">
+        <view class="invite-title">
+          邀请成员
+          <view class="invite-close" @tap="closeInvitation"></view>
+        </view>
+        <view class="invite-item">
+          <view class="activity-lable">
+            <text>查询方式</text>
+          </view>
+          <view class="activity-check-box">
+            <view
+              @tap="chooseQueryMethods"
+              class="check_box"
+              :class="queryMethods === 1 ? 'check_box_ed' : ''"
+              data-status="1"
+            >
+              用户ID
+              <image
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select2_${
+                  queryMethods === 1 ? 1 : 0
+                }.png`"
+              ></image>
+            </view>
+            <view
+              @tap="chooseQueryMethods"
+              class="check_box"
+              :class="queryMethods === 0 ? 'check_box_ed' : ''"
+              data-status="2"
+            >
+              用户昵称
+              <image
+                :src="`https://yuepai-oss.qubeitech.com/static/images/common/select2_${
+                  queryMethods === 0 ? 1 : 0
+                }.png`"
+              ></image>
+            </view>
+          </view>
+        </view>
+        <view class="invite-item">
+          <view class="activity-lable">
+            <text>查询条件</text>
+          </view>
+          <view class="query-box">
+            <input
+              placeholder="请输入查询条件"
+              v-model="query"
+              class="query-input"
+              @input="queryInput"
+            />
+            <view class="group" v-if="userMemberList.length">
+              <view
+                class="group-item"
+                v-for="(item, index) in userMemberList"
+                :key="index"
+                @tap.stop="userMemberClick(index)"
+              >
+                <view class="group-item-left">
+                  <image :src="item.avatar"></image>
+                </view>
+                <view class="group-item-center">
+                  <view class="uuid"> {{ item.uuid }} </view>
+                  <view class="name">
+                    {{ item.nickname }}
+                    <text class="identity">{{ item.career }}</text>
+                  </view>
+                </view>
+                <view class="group-item-right" v-if="item.checked">
+                  <image
+                    src="https://yuepai-oss.qubeitech.com/static/images/common/select2_1.png"
+                  ></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="invited-num"
+          >已邀请成员（{{ invitedList.length }}/{{ enrollment }}）</view
+        >
+        <scroll-view
+          :scroll-y="true"
+          :style="{ height: 200 + 'px' }"
+          class="invited-box"
+          v-if="invitedList.length"
+        >
+          <view class="invited-user">
+            <view
+              class="invited-user-item"
+              v-for="(item, index) in invitedList"
+              :key="index"
+            >
+              <image :src="item.avatar"></image>
+              <view class="invited-uuid">{{ item.uuid }}</view>
+              <view class="invited-name"> {{ item.nickname }} </view>
+              <view class="invited-identity">{{ item.career }}</view>
+              <view class="invited-delete" @tap="invitedDelete(index)"
+                >删除</view
+              >
+            </view>
+          </view>
+        </scroll-view>
+        <view class="confirm-invitation" @tap="confirmInvitation"
+          >确认邀请</view
+        >
+      </view>
+    </view>
+    <!--邀请成员-->
   </view>
 </template>
 
 <script>
 import { errortip, openPage } from "../../../utils/util";
-import { publishConfig, publishCreate } from "../../../api/index.js";
+import {
+  publishConfig,
+  publishCreate,
+  userSearch,
+} from "../../../api/index.js";
 import "./index.scss";
 import { Base64 } from "js-Base64";
 export default {
@@ -1227,9 +1568,42 @@ export default {
       memberItemIndex: "",
       activeEchoIndex: "",
       showAmount: true,
+      sceneList: [
+        {
+          sceneName: "",
+          sceneTab: 0,
+          list: [
+            {
+              roleName: "",
+              charge: "",
+              chargeIndex: "",
+              showAmount: true,
+              chargeAmount: "",
+              enrollment: "",
+              object: "",
+              objectRadio: 300,
+              member: [],
+              showMember: 1,
+            },
+          ],
+        },
+      ],
     };
   },
   methods: {
+    queryInput(e) {
+      if (e.detail.value) {
+        let params = {
+          query_value: e.detail.value,
+        };
+        if (this.queryMethods) {
+          params.query_method = "uuid";
+        } else {
+          params.query_method = "nickname";
+        }
+        this.userSearch(params);
+      }
+    },
     bindRegionChange(e) {
       this.select_city = e.detail.value.join("-");
       this.regionList = e.detail.code;
@@ -1265,17 +1639,18 @@ export default {
       this.before = this.beforeList[e.detail.value].key;
       this.beforeIndex = e.detail.value;
     },
-    chargeChange(e) {
+    chargeChange(e, parentIndex, sceneIndex) {
       console.log(this.chargeList[e.detail.value].value);
-      this.charge = this.chargeList[e.detail.value].key;
-      this.chargeIndex = e.detail.value;
+      this.sceneList[parentIndex].list[sceneIndex].charge =
+        this.chargeList[e.detail.value].key;
+      this.sceneList[parentIndex].list[sceneIndex].chargeIndex = e.detail.value;
       if (
         this.chargeList[e.detail.value].value == 100 ||
         this.chargeList[e.detail.value].value == 300
       ) {
-        this.showAmount = false;
+        this.sceneList[parentIndex].list[sceneIndex].showAmount = false;
       } else {
-        this.showAmount = true;
+        this.sceneList[parentIndex].list[sceneIndex].showAmount = true;
       }
     },
     groupChange(e) {
@@ -1325,6 +1700,15 @@ export default {
     },
     taskDelete(index) {
       this.taskList.splice(index, 1);
+    },
+    deleteTheme(index) {
+      this.sceneList.splice(index, 1);
+    },
+    deleteRole(parentindex, index) {
+      this.sceneList[parentindex].list.splice(index, 1);
+    },
+    objectChange(parentIndex, sceneIndex, radioindex) {
+      this.sceneList[parentIndex].list[sceneIndex].objectRadio = radioindex;
     },
     addApplication() {
       this.applicationList.push({
@@ -1385,11 +1769,50 @@ export default {
     closeAgreement() {
       this.agreementVisble = false;
     },
-    changeItem(index) {
-      if (this.applicationTab === index) {
-        return false;
+    changeItem(index, tabindex) {
+      this.sceneList[index].sceneTab = tabindex;
+      if (this.sceneList[index].sceneTab) {
+        this.sceneList[index].list = [
+          {
+            roleName: "",
+            charge: "",
+            chargeIndex: "",
+            showAmount: true,
+            chargeAmount: "",
+            enrollment: "",
+            object: "",
+            objectRadio: 300,
+            member: [],
+            showMember: 1,
+          },
+          {
+            roleName: "",
+            charge: "",
+            chargeIndex: "",
+            showAmount: true,
+            chargeAmount: "",
+            enrollment: "",
+            object: "",
+            objectRadio: 300,
+            member: [],
+            showMember: 1,
+          },
+        ];
       } else {
-        this.applicationTab = index;
+        this.sceneList[index].list = [
+          {
+            roleName: "",
+            charge: "",
+            chargeIndex: "",
+            showAmount: true,
+            chargeAmount: "",
+            enrollment: "",
+            object: "",
+            objectRadio: 300,
+            member: [],
+            showMember: 1,
+          },
+        ];
       }
     },
     activityModeChange(index) {
@@ -1399,9 +1822,12 @@ export default {
         this.activityModeTab = index;
       }
     },
-    memberClick() {
-      this.memberType = 1;
+    memberClick(parentIndex, sceneIndex) {
+      this.memberItemIndex = [parentIndex, sceneIndex];
       this.inviteVisble = true;
+      if (this.sceneList[parentIndex].list[sceneIndex].member.length) {
+        this.invitedList = this.sceneList[parentIndex].list[sceneIndex].member;
+      }
     },
     memberItemClick(index) {
       this.memberType = 2;
@@ -1438,6 +1864,13 @@ export default {
     },
     choosePublicActivity() {
       this.publicActivity = !this.publicActivity ? 1 : 0;
+    },
+    chooseShowMember(parenIndex, index) {
+      this.sceneList[parenIndex].list[index].showMember = !this.sceneList[
+        parenIndex
+      ].list[index].showMember
+        ? 1
+        : 0;
     },
     chooseSetupAllow() {
       this.setupAllow = !this.setupAllow ? 1 : 0;
@@ -1489,17 +1922,14 @@ export default {
     },
     confirmInvitation() {
       this.inviteVisble = false;
-      if (this.memberType == 1) {
-        this.member = this.invitedList;
-      }
-      if (this.memberType == 2) {
-        this.candidateAreaList[this.memberItemIndex].member = this.invitedList;
-      }
+      this.sceneList[this.memberItemIndex[0]].list[
+        this.memberItemIndex[1]
+      ].member = this.invitedList;
       this.invitedList = [];
     },
-    formatMember() {
+    formatMember(data) {
       let arr = [];
-      arr = this.member.map((item) => {
+      arr = data.map((item) => {
         return item.nickname;
       });
       return arr.join(",");
@@ -1781,6 +2211,44 @@ export default {
         },
       });
     },
+    addScene() {
+      if (this.sceneList.length == 5) {
+        errortip("只能新建5个场景");
+        return false;
+      }
+      this.sceneList.push({
+        sceneName: "",
+        sceneTab: 0,
+        list: [
+          {
+            roleName: "",
+            charge: "",
+            chargeIndex: "",
+            showAmount: true,
+            chargeAmount: "",
+            enrollment: "",
+            object: "",
+            objectRadio: 300,
+            member: [],
+            showMember: 1,
+          },
+        ],
+      });
+    },
+    addRole(index) {
+      this.sceneList[index].list.push({
+        roleName: "",
+        charge: "",
+        chargeIndex: "",
+        showAmount: true,
+        chargeAmount: "",
+        enrollment: "",
+        object: "",
+        objectRadio: 300,
+        member: [],
+        showMember: 1,
+      });
+    },
     submit() {
       if (!this.title) {
         errortip("请输入标题！");
@@ -1826,56 +2294,56 @@ export default {
         errortip("请上传图片！");
         return false;
       }
-      if (this.deductionChecked && !this.preferential) {
-        errortip("请选择优惠！");
-        return false;
-      }
-      if (this.deductionChecked && !this.deductionAmount) {
-        errortip("请输入减免金额！");
-        return false;
-      }
-      if (this.earlyBirdChecked && !this.before) {
-        errortip("请选择活动开始前！");
-        return false;
-      }
-      if (this.earlyBirdChecked && !this.earlyBirdDeductionAmount) {
-        errortip("请输入减免金额！");
-        return false;
-      }
-      if (this.applicationTab == 0 && !this.sessionName) {
-        errortip("请输入场次名称！");
-        return false;
-      }
-      if (this.applicationTab == 0 && !this.charge) {
-        errortip("请选择收费模式！");
-        return false;
-      }
-      if (this.applicationTab == 0 && !this.chargeAmount && this.showAmount) {
-        errortip("请输入报名费用！");
-        return false;
-      }
-      if (this.applicationTab == 0 && !this.enrollment) {
-        errortip("请输入报名人数！");
-        return false;
-      }
+      //   if (this.deductionChecked && !this.preferential) {
+      //     errortip("请选择优惠！");
+      //     return false;
+      //   }
+      //   if (this.deductionChecked && !this.deductionAmount) {
+      //     errortip("请输入减免金额！");
+      //     return false;
+      //   }
+      //   if (this.earlyBirdChecked && !this.before) {
+      //     errortip("请选择活动开始前！");
+      //     return false;
+      //   }
+      //   if (this.earlyBirdChecked && !this.earlyBirdDeductionAmount) {
+      //     errortip("请输入减免金额！");
+      //     return false;
+      //   }
+      //   if (this.applicationTab == 0 && !this.sessionName) {
+      //     errortip("请输入场次名称！");
+      //     return false;
+      //   }
+      //   if (this.applicationTab == 0 && !this.charge) {
+      //     errortip("请选择收费模式！");
+      //     return false;
+      //   }
+      //   if (this.applicationTab == 0 && !this.chargeAmount && this.showAmount) {
+      //     errortip("请输入报名费用！");
+      //     return false;
+      //   }
+      //   if (this.applicationTab == 0 && !this.enrollment) {
+      //     errortip("请输入报名人数！");
+      //     return false;
+      //   }
 
-      if (this.applicationTab == 1) {
-        let off = false;
-        this.applicationList.map((item) => {
-          if (
-            !item.sessionName ||
-            !item.charge ||
-            (!item.chargeAmount && item.showAmount) ||
-            !item.enrollment
-          ) {
-            off = true;
-          }
-        });
-        if (off) {
-          errortip("请填写分场报名必填项！");
-          return false;
-        }
-      }
+      //   if (this.applicationTab == 1) {
+      //     let off = false;
+      //     this.applicationList.map((item) => {
+      //       if (
+      //         !item.sessionName ||
+      //         !item.charge ||
+      //         (!item.chargeAmount && item.showAmount) ||
+      //         !item.enrollment
+      //       ) {
+      //         off = true;
+      //       }
+      //     });
+      //     if (off) {
+      //       errortip("请填写分场报名必填项！");
+      //       return false;
+      //     }
+      //   }
       if (this.regularTime && !this.nowDay) {
         errortip("请选择活动当前天数！");
         return false;
@@ -1886,7 +2354,8 @@ export default {
       }
       let params = {
         title: this.title,
-        content: this.desc,
+        content_type: "text",
+        content_body: this.desc,
         begin_date: this.date,
         begin_time: this.startTime,
         finish_time: this.endTime,
@@ -1898,7 +2367,7 @@ export default {
         address: this.regionList,
         locale_address: this.venue,
         main_cover: this.cover,
-        desc_cover: this.imgList,
+        content_cover: this.imgList,
         scene: [],
         is_required_certify: this.securityChecked ? 1 : 0,
         required_security_amount: Number(this.securityAmount),
@@ -1907,163 +2376,186 @@ export default {
         is_required_task: 0,
         is_public: this.publicActivity,
         is_wait: this.setupAllow,
-        is_transfer: this.transference,
+        // is_transfer: this.transference,
         is_certify: this.realName,
         is_schedule_publish: this.regularTime,
         agreement: {},
       };
-      if (this.deductionChecked) {
-        params.special_discount_type = Number(
-          this.preferentialList[this.preferentialIndex].value
-        );
-        params.special_discount_name = this.preferential;
-        params.special_discount_amount = Number(this.deductionAmount);
-      }
-      if (this.earlyBirdChecked) {
-        params.early_discount_hour = Number(
-          this.beforeList[this.beforeIndex].value
-        );
-        params.early_discount_amount = this.earlyBirdDeductionAmount;
-      }
-      if (this.applicationTab === 0) {
-        params.scene = [
-          {
-            enter_type: 100,
-            enter_name: "统一报名",
-            enter_number: Number(this.enrollment),
-            payment_type: Number(this.chargeList[this.chargeIndex].value),
-            payment_name: this.charge,
-            payment_amount: this.showAmount ? Number(this.chargeAmount) : 0,
-            scene_name: this.sessionName,
-            teams: {},
-          },
-        ];
-        if (this.activityModeTab === 0) {
-          // 常规活动
-          params.scene[0].teams = {
-            divide_teams_type: 100,
-            divide_teams_name: "常规活动",
-            invite_member: this.member.length,
-            allow_enter: this.allow,
-            invite_member_list: this.member,
-          };
-        }
-        if (this.activityModeTab === 1) {
-          // 随机活动
-          params.scene[0].teams = {
-            divide_teams_type: 200,
-            divide_teams_name: "随机活动",
-            every_teams_number: this.groupNum,
-            candidate_area_flag: this.candidateAreaList.length ? 1 : 0,
-            candidate_area_list: this.candidateAreaList.map((item) => {
-              return {
-                candidate_area_name: item.constituencyName,
-                candidate_area_number: item.groupNum,
-                allow_enter: item.allow,
-                invite_member: item.member.length,
-                invite_member_list: item.member,
-              };
-            }),
-          };
-        }
-        if (this.activityModeTab === 2) {
-          // 固定活动
-          params.scene[0].teams = {
-            divide_teams_type: 300,
-            divide_teams_name: "固定分组",
-            divide_teams_list: this.fixedGroupList.map((item) => {
-              console.log(item);
-              return {
-                teams_area_name: item.groupName,
-                group_list: item.list.map((items) => {
-                  return {
-                    teams_group_name: items.groupIdentity,
-                    teams_group_number: items.groupNum,
-                    allow_enter: items.allow,
-                    invite_member: items.member.length,
-                    invite_member_list: items.member,
-                  };
-                }),
-              };
-            }),
-          };
-        }
-      } else if (this.applicationTab === 1) {
-        params.scene = this.applicationList.map((item) => {
-          let obj = {
-            enter_type: 200,
-            enter_name: "分场报名",
-            enter_number: Number(item.enrollment),
-            payment_type: Number(this.chargeList[item.chargeIndex].value),
-            payment_name: item.charge,
-            payment_amount: item.showAmount ? Number(item.chargeAmount) : 0,
-            scene_name: item.sessionName,
-            teams: {},
-          };
-          if (item.activityModeTab === 0) {
-            // 常规活动
-            obj.teams = {
-              divide_teams_type: 100,
-              divide_teams_name: "常规活动",
-              invite_member: item.member.length,
-              allow_enter: item.allow,
-              invite_member_list: item.member,
-            };
-          }
-          if (item.activityModeTab === 1) {
-            // 随机活动
-            obj.teams = {
-              divide_teams_type: 200,
-              divide_teams_name: "随机活动",
-              every_teams_number: item.groupNum,
-              candidate_area_flag: item.candidateAreaList.length ? 1 : 0,
-              candidate_area_list: item.candidateAreaList.map((items) => {
-                return {
-                  candidate_area_name: items.constituencyName,
-                  candidate_area_number: items.groupNum,
-                  allow_enter: items.allow,
-                  invite_member: items.member.length,
-                  invite_member_list: items.member,
-                };
-              }),
-            };
-          }
-          if (item.activityModeTab === 2) {
-            // 固定活动
-            obj.teams = {
-              divide_teams_type: 300,
-              divide_teams_name: "固定分组",
-              divide_teams_list: item.fixedGroupList.map((items) => {
-                return {
-                  teams_area_name: items.groupName,
-                  group_list: items.list.map((groupItems) => {
-                    return {
-                      teams_group_name: groupItems.groupIdentity,
-                      teams_group_number: groupItems.groupNum,
-                      allow_enter: groupItems.allow,
-                      invite_member: groupItems.member.length,
-                      invite_member_list: groupItems.member,
-                    };
-                  }),
-                };
-              }),
-            };
-          }
-          return obj;
+      //   if (this.deductionChecked) {
+      //     params.special_discount_type = Number(
+      //       this.preferentialList[this.preferentialIndex].value
+      //     );
+      //     params.special_discount_name = this.preferential;
+      //     params.special_discount_amount = Number(this.deductionAmount);
+      //   }
+      //   if (this.earlyBirdChecked) {
+      //     params.early_discount_hour = Number(
+      //       this.beforeList[this.beforeIndex].value
+      //     );
+      //     params.early_discount_amount = this.earlyBirdDeductionAmount;
+      //   }
+
+      params.scene = this.sceneList.map((item) => {
+        let obj = {
+          scene_name: item.sceneName,
+          roles_type: item.sceneTab ? 200 : 100,
+          roles_item: [],
+        };
+        item.list.map((sceneItem) => {
+          obj.roles_item.push({
+            roles_name: sceneItem.roleName,
+            payment_type: Number(this.chargeList[sceneItem.chargeIndex].value),
+            payment_name: sceneItem.charge,
+            payment_amount: sceneItem.showAmount
+              ? Number(sceneItem.chargeAmount)
+              : 0,
+            enter_member_num: Number(sceneItem.enrollment),
+            enter_member_type: sceneItem.objectRadio,
+            invite_member_list: sceneItem.member,
+            invite_member_show: sceneItem.showMember,
+          });
         });
-      }
+        return obj;
+      });
+      //   if (this.applicationTab === 0) {
+      //     params.scene = [
+      //       {
+      //         enter_type: 100,
+      //         enter_name: "统一报名",
+      //         enter_number: Number(this.enrollment),
+      //         payment_type: Number(this.chargeList[this.chargeIndex].value),
+      //         payment_name: this.charge,
+      //         payment_amount: this.showAmount ? Number(this.chargeAmount) : 0,
+      //         scene_name: this.sessionName,
+      //         teams: {},
+      //       },
+      //     ];
+      //     if (this.activityModeTab === 0) {
+      //       // 常规活动
+      //       params.scene[0].teams = {
+      //         divide_teams_type: 100,
+      //         divide_teams_name: "常规活动",
+      //         invite_member: this.member.length,
+      //         allow_enter: this.allow,
+      //         invite_member_list: this.member,
+      //       };
+      //     }
+      //     if (this.activityModeTab === 1) {
+      //       // 随机活动
+      //       params.scene[0].teams = {
+      //         divide_teams_type: 200,
+      //         divide_teams_name: "随机活动",
+      //         every_teams_number: this.groupNum,
+      //         candidate_area_flag: this.candidateAreaList.length ? 1 : 0,
+      //         candidate_area_list: this.candidateAreaList.map((item) => {
+      //           return {
+      //             candidate_area_name: item.constituencyName,
+      //             candidate_area_number: item.groupNum,
+      //             allow_enter: item.allow,
+      //             invite_member: item.member.length,
+      //             invite_member_list: item.member,
+      //           };
+      //         }),
+      //       };
+      //     }
+      //     if (this.activityModeTab === 2) {
+      //       // 固定活动
+      //       params.scene[0].teams = {
+      //         divide_teams_type: 300,
+      //         divide_teams_name: "固定分组",
+      //         divide_teams_list: this.fixedGroupList.map((item) => {
+      //           console.log(item);
+      //           return {
+      //             teams_area_name: item.groupName,
+      //             group_list: item.list.map((items) => {
+      //               return {
+      //                 teams_group_name: items.groupIdentity,
+      //                 teams_group_number: items.groupNum,
+      //                 allow_enter: items.allow,
+      //                 invite_member: items.member.length,
+      //                 invite_member_list: items.member,
+      //               };
+      //             }),
+      //           };
+      //         }),
+      //       };
+      //     }
+      //   } else if (this.applicationTab === 1) {
+      //     params.scene = this.applicationList.map((item) => {
+      //       let obj = {
+      //         enter_type: 200,
+      //         enter_name: "分场报名",
+      //         enter_number: Number(item.enrollment),
+      //         payment_type: Number(this.chargeList[item.chargeIndex].value),
+      //         payment_name: item.charge,
+      //         payment_amount: item.showAmount ? Number(item.chargeAmount) : 0,
+      //         scene_name: item.sessionName,
+      //         teams: {},
+      //       };
+      //       if (item.activityModeTab === 0) {
+      //         // 常规活动
+      //         obj.teams = {
+      //           divide_teams_type: 100,
+      //           divide_teams_name: "常规活动",
+      //           invite_member: item.member.length,
+      //           allow_enter: item.allow,
+      //           invite_member_list: item.member,
+      //         };
+      //       }
+      //       if (item.activityModeTab === 1) {
+      //         // 随机活动
+      //         obj.teams = {
+      //           divide_teams_type: 200,
+      //           divide_teams_name: "随机活动",
+      //           every_teams_number: item.groupNum,
+      //           candidate_area_flag: item.candidateAreaList.length ? 1 : 0,
+      //           candidate_area_list: item.candidateAreaList.map((items) => {
+      //             return {
+      //               candidate_area_name: items.constituencyName,
+      //               candidate_area_number: items.groupNum,
+      //               allow_enter: items.allow,
+      //               invite_member: items.member.length,
+      //               invite_member_list: items.member,
+      //             };
+      //           }),
+      //         };
+      //       }
+      //       if (item.activityModeTab === 2) {
+      //         // 固定活动
+      //         obj.teams = {
+      //           divide_teams_type: 300,
+      //           divide_teams_name: "固定分组",
+      //           divide_teams_list: item.fixedGroupList.map((items) => {
+      //             return {
+      //               teams_area_name: items.groupName,
+      //               group_list: items.list.map((groupItems) => {
+      //                 return {
+      //                   teams_group_name: groupItems.groupIdentity,
+      //                   teams_group_number: groupItems.groupNum,
+      //                   allow_enter: groupItems.allow,
+      //                   invite_member: groupItems.member.length,
+      //                   invite_member_list: groupItems.member,
+      //                 };
+      //               }),
+      //             };
+      //           }),
+      //         };
+      //       }
+      //       return obj;
+      //     });
+      //   }
       if (this.regularTime) {
         params.schedule_publish_day = this.nowDayList[this.nowDayIndex].value;
         params.schedule_publish_hour = this.nowTime;
       }
-      let agreement = {};
-      this.agreementList.map((item) => {
-        agreement[item.name] = {
-          body: item.agreementContent,
-          checked: item.checked,
-        };
-      });
-      params.agreement = agreement;
+      //   let agreement = {};
+      //   this.agreementList.map((item) => {
+      //     agreement[item.name] = {
+      //       body: item.agreementContent,
+      //       checked: item.checked,
+      //     };
+      //   });
+      //   params.agreement = agreement;
       console.log(params);
       console.log(JSON.stringify(params));
       this.publishCreate(params);
@@ -2128,6 +2620,18 @@ export default {
         wx.switchTab({
           url: "/pages/home/index",
         });
+      } catch (error) {}
+    },
+    async userSearch(params) {
+      try {
+        let res = await userSearch(params);
+        if (res.data.data) {
+          this.userMemberList = [];
+          res.data.data.map((item) => {
+            item.checked = false;
+            this.userMemberList.push(item);
+          });
+        }
       } catch (error) {}
     },
   },

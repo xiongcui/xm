@@ -352,13 +352,28 @@ page {
       font-size: 22px;
     }
     .yuepai_fixed_rt {
-      width: 280px;
-      text-align: center;
-      background: #fe5457;
-      color: #ffffff;
-      font-size: 30px;
-      border-radius: 40px;
-      padding: 14px 40px;
+      display: flex;
+      .rapid-connection {
+        width: 180px;
+        text-align: center;
+        background: #f89505;
+        color: #ffffff;
+        font-size: 30px;
+        font-weight: bold;
+        border-radius: 40px;
+        padding: 14px 16px;
+        margin-right: 16px;
+      }
+      .immediately-yuepai {
+        width: 180px;
+        text-align: center;
+        background: #fe5457;
+        color: #ffffff;
+        font-size: 30px;
+        font-weight: bold;
+        border-radius: 40px;
+        padding: 14px 16px;
+      }
     }
   }
   .share {

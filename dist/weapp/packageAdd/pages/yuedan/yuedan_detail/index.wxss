@@ -437,13 +437,30 @@ page {
   font-size: 22rpx;
 }
 .yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt {
-  width: 280rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt .rapid-connection {
+  width: 180rpx;
+  text-align: center;
+  background: #f89505;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: bold;
+  border-radius: 40rpx;
+  padding: 14rpx 16rpx;
+  margin-right: 16rpx;
+}
+.yuedan_detail .yuepai_fixed_bottom .yuepai_fixed_rt .immediately-yuepai {
+  width: 180rpx;
   text-align: center;
   background: #fe5457;
   color: #ffffff;
   font-size: 30rpx;
+  font-weight: bold;
   border-radius: 40rpx;
-  padding: 14rpx 40rpx;
+  padding: 14rpx 16rpx;
 }
 .yuedan_detail .share {
   display: -webkit-flex;

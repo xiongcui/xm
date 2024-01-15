@@ -1,17 +1,19 @@
+page {
+  background: #f5f5f5;
+}
+
 .vip-center {
   padding-bottom: 200rpx;
 }
 
 .vip-bg {
-  background: #333333;
-  width: 100%;
+  background: #ffe7be;
   height: 180rpx;
-  border-radius: 0 0 10rpx 10rpx;
+  padding: 60rpx 30rpx 0 30rpx;
 }
 
 .vip-card {
-  background: #e4c284;
-  margin: -140rpx 30rpx 30rpx 30rpx;
+  background: #ffc072;
   border-radius: 10rpx;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -146,6 +148,8 @@
 }
 
 .package-list .package-box {
+  background: #ffffff;
+  border: 1rpx solid #ffffff;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -153,8 +157,7 @@
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: 1rpx solid #babbbb;
-  border-radius: 8rpx;
+  border-radius: 18rpx;
   font-size: 30rpx;
   width: 200rpx;
   text-align: center;
@@ -170,12 +173,14 @@
 
 .package-list .amount {
   font-size: 50rpx;
+  font-weight: bold;
   color: #d3a94f;
   margin: 5rpx 0;
 }
 
 .package-list .company {
   font-size: 30rpx;
+  font-weight: normal;
 }
 
 .package-list .original-price {
@@ -192,7 +197,7 @@
 
 .package-list .active {
   background: #faf4ea;
-  border-color: #d4a850;
+  border-color: #e8ca98;
 }
 
 .package-list .tag {
@@ -207,11 +212,13 @@
 }
 
 .privilege-list {
-  margin-top: 16rpx;
+  margin: 16rpx;
+  background: #ffffff;
+  border-radius: 18rpx;
 }
 
 .privilege-box {
-  margin: 0 30rpx;
+  margin-left: 30rpx;
   padding: 16rpx 0;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -219,9 +226,12 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  border-bottom: 1rpx solid #cfcece;
   font-size: 26rpx;
   color: rgba(0, 0, 0, 0.4);
+}
+
+.privilege-box .service {
+  color: #333333;
 }
 
 .privilege-box .blod {
@@ -240,10 +250,11 @@
 
 .privilege-box .vip {
   text-align: center;
+  color: #db6b23;
 }
 
 .privilege-box .novip {
-  text-align: right;
+  text-align: center;
 }
 
 .privilege-box image {
@@ -255,7 +266,7 @@
   position: absolute;
   right: 16rpx;
   top: 0;
-  background: #ff1e3e;
+  background: #ff8c31;
   color: #ffffff;
   font-size: 22rpx;
   padding: 6rpx;
@@ -266,4 +277,8 @@
   color: #ffffff;
   font-size: 32rpx;
   font-weight: 600;
+}
+
+.subbtn_bottom {
+  position: relative;
 }

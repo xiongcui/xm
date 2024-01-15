@@ -1,0 +1,127 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.comment {
+  background: #ffffff;
+  padding: 16rpx;
+  margin: 16rpx;
+}
+
+.comment .comment-info {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comment .comment-info image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.comment .comment-info .commentmsg {
+  width: 652rpx;
+  padding: 10rpx 30rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  background: #efefef;
+}
+
+.comment .comment-list {
+  padding: 16rpx 0;
+}
+
+.comment .comment-list .comment-box {
+  margin-bottom: 16rpx;
+}
+
+.comment .comment-list .comment-top {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.comment .comment-list .comment-bt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 66rpx;
+  margin-top: 6rpx;
+}
+
+.comment .comment-list .child-comment {
+  margin-left: 66rpx;
+}
+
+.comment .comment-list image {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.comment .comment-list .comment-box-rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.comment .comment-list .comment-name {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.comment .comment-list .comment-ct {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.comment .comment-list .comment-txt {
+  color: #333333;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+
+.comment .comment-list .comment-reply-nickname {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+
+.comment .comment-list .comment-date {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 24rpx;
+  margin-right: 16rpx;
+  min-width: 100rpx;
+  -webkit-align-self: self-start;
+      -ms-flex-item-align: self-start;
+          align-self: self-start;
+}
+
+.comment .comment-list .comment-reply {
+  color: #6493d7;
+  font-size: 26rpx;
+}
+
+.comment .comment-item .child-comment:last-child {
+  border-bottom: 1rpx solid #f7f7f7;
+  padding-bottom: 16rpx;
+}

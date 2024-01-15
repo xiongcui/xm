@@ -476,7 +476,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "pc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "sc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -511,7 +511,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* signinList */ "bc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* signinList */ "ec"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -544,7 +544,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* signinLogs */ "cc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* signinLogs */ "fc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -620,7 +620,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ruleList */ "Ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* ruleList */ "Wb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -744,7 +744,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -774,7 +774,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context9.sent;

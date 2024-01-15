@@ -1,6 +1,6 @@
 import { request, requestUpload } from "../utils/util";
-// const baseUrl = "https://pai.qubeitech.com";
-const baseUrl = "https://dev.qubeitech.com";
+const baseUrl = "https://pai.qubeitech.com";
+// const baseUrl = "https://dev.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({
@@ -95,7 +95,16 @@ export const inviteInfo = (data) => {
 // 用户主页信息
 export const userInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/user/info",
+    // url: baseUrl + "/v1/user/info",
+    url: baseUrl + "/v1/home/user/explore/info",
+    method: "post",
+    data,
+  });
+};
+// 我的-用户主页信息
+export const userHomeInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/home/user/homepage/info",
     method: "post",
     data,
   });
@@ -843,7 +852,7 @@ export const userFilter = (data) => {
 // 用户推荐列表
 export const userList = (data) => {
   return request({
-    url: baseUrl + "/v1/user/list",
+    url: baseUrl + "/v1/home/user/explore/list",
     method: "post",
     data,
   });
@@ -1027,7 +1036,7 @@ export const exploreInfo = (data) => {
 // 活动报名详情
 export const sceneInfo = (data) => {
   return request({
-    url: baseUrl + "/v1/sport/explore/scene/info",
+    url: baseUrl + "/v1/sport/apply/select/info",
     method: "post",
     data,
   });
@@ -1343,6 +1352,78 @@ export const wxTransfer = (data) => {
 export const orderInfo = (data) => {
   return request({
     url: baseUrl + "/v1/acct/wallet/order/info",
+    method: "post",
+    data,
+  });
+};
+
+// 评论
+export const comment = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/explore/comment/info",
+    method: "post",
+    data,
+  });
+};
+
+// 分享秀
+export const sharingInfo = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/explore/sharing/info",
+    method: "post",
+    data,
+  });
+};
+
+// 评价晒单
+export const sunbathingCreate = (data) => {
+  return request({
+    url: baseUrl + "/v1/sport/publish/comment/create",
+    method: "post",
+    data,
+  });
+};
+
+// 解锁
+export const unlockCommit = (data) => {
+  return request({
+    url: baseUrl + "/v1/unlock/apply/commit",
+    method: "post",
+    data,
+  });
+};
+
+// 解锁确认支付
+export const unlockPayment = (data) => {
+  return request({
+    url: baseUrl + "/v1/unlock/apply/payment",
+    method: "post",
+    data,
+  });
+};
+
+// 解锁详情列表
+export const unlockList = (data) => {
+  return request({
+    url: baseUrl + "/v1/unlock/apply/list",
+    method: "post",
+    data,
+  });
+};
+
+// 约拍动态
+export const trendsList = (data) => {
+  return request({
+    url: baseUrl + "/v1/note/explore/trends/list",
+    method: "post",
+    data,
+  });
+};
+
+// 点击关闭
+export const posterClick = (data) => {
+  return request({
+    url: baseUrl + "/v1/poster/click/event",
     method: "post",
     data,
   });

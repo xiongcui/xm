@@ -137,7 +137,8 @@ page {
     height: calc(100vh - 60px);
     display: flex;
     flex-direction: column-reverse;
-    .bottom-content {
+    .bottom-content,
+    .weChat-content {
       width: 100%;
       background: #ffffff;
       height: 70vh;
@@ -145,7 +146,8 @@ page {
       border-radius: 10px 10px 0px 0px;
       position: relative;
     }
-    .bottom-title {
+    .bottom-title,
+    .weChat-title {
       text-align: center;
       padding: 16px 0px;
       font-size: 30px;
@@ -323,5 +325,116 @@ page {
     width: 150px;
     height: 150px;
     margin-bottom: 16px;
+  }
+  .application-list {
+    margin-bottom: 16px;
+    padding: 0px 16px;
+    .application-list-item {
+      background: #fff7f4;
+      border-radius: 8px;
+      padding: 16px 0px;
+      margin-bottom: 16px;
+    }
+    .application-title {
+      font-size: 28px;
+      color: #333333;
+      font-weight: bold;
+      text-align: center;
+    }
+    .application-box {
+      background: #ffffff;
+      margin: 16px;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .application-user {
+      margin-bottom: 6px;
+    }
+    .application-role {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+      text {
+        font-size: 28px;
+        color: #333333;
+        border-bottom: 6px solid #69bd8c;
+      }
+    }
+    .application-tip {
+      font-size: 24px;
+      color: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .application-user {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .application-left {
+        display: flex;
+        align-items: center;
+        image {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin-right: 6px;
+        }
+        text {
+          font-size: 26px;
+          color: rgba(0, 0, 0, 0.5);
+          width: 200px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      .application-ct {
+        display: flex;
+        align-items: center;
+        image {
+          width: 30px;
+          height: 30px;
+          margin-right: 6px;
+        }
+        text {
+          font-size: 26px;
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+      .application-rt {
+        padding: 2px 10px;
+        font-size: 22px;
+        border-radius: 28px;
+        border: 2px solid #f9b435;
+        color: #f9b435;
+      }
+    }
+    .gradeing {
+      border-bottom: 1px dashed #e5e5e5;
+      text-align: center;
+      position: relative;
+      margin: 30px 0px;
+      text {
+        width: 100px;
+        font-size: 28px;
+        color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        left: 50%;
+        margin-left: -50px;
+        top: -16px;
+        background: #ffffff;
+      }
+    }
+  }
+  .weChat-content {
+    height: auto !important;
+  }
+  .weChat-box {
+    display: flex;
+    justify-content: center;
+  }
+  .weChat-img {
+    width: 360px;
+    padding-bottom: 60px;
   }
 }

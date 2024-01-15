@@ -447,13 +447,30 @@ page {
   font-size: 22rpx;
 }
 .tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_rt {
-  width: 280rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_rt .rapid-connection {
+  width: 180rpx;
+  text-align: center;
+  background: #f89505;
+  color: #ffffff;
+  font-size: 30rpx;
+  font-weight: bold;
+  border-radius: 40rpx;
+  padding: 14rpx 16rpx;
+  margin-right: 16rpx;
+}
+.tonggao_detail .tonggao_fixed_bottom .tonggao_fixed_rt .immediately-yuepai {
+  width: 180rpx;
   text-align: center;
   background: #fe5457;
   color: #ffffff;
   font-size: 30rpx;
+  font-weight: bold;
   border-radius: 40rpx;
-  padding: 14rpx 40rpx;
+  padding: 14rpx 16rpx;
 }
 .tonggao_detail .recommend {
   padding: 0 16rpx 0 16rpx;

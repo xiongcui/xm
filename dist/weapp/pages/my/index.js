@@ -611,6 +611,38 @@ component.options.__file = "src/pages/my/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -625,11 +657,14 @@ component.options.__file = "src/pages/my/index.vue"
       show_my_ad: false,
       showModelSign: false,
       showlogin: false,
+      showMokaVisible: false,
       infor: {
-        age: 0,
-        avatar: "",
-        realname: "",
-        ispledge: "",
+        basic: {
+          age: 0,
+          avatar: "",
+          realname: "",
+          ispledge: ""
+        },
         statistic: {
           followed_cnt: 0,
           follower_cnt: 0,
@@ -646,7 +681,12 @@ component.options.__file = "src/pages/my/index.vue"
       hyper_desc: "",
       shareTitle: "",
       sharePath: "",
-      shareImg: ""
+      shareImg: "",
+      showMember: 0,
+      showAcct: 0,
+      notify_msg: "",
+      wait_complete: 0,
+      increase: ""
     };
   },
   methods: {
@@ -728,7 +768,7 @@ component.options.__file = "src/pages/my/index.vue"
         return false;
       }
 
-      if (this.infor.is_certify) {
+      if (this.infor.basic.is_certify) {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/success/index?msg=实名认证审核通过！");
       } else {
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
@@ -789,6 +829,14 @@ component.options.__file = "src/pages/my/index.vue"
 
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/myActivity/index");
     },
+    myUnlock: function myUnlock() {
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        return false;
+      }
+
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/unlock/index");
+    },
     follow: function follow() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
     },
@@ -828,7 +876,14 @@ component.options.__file = "src/pages/my/index.vue"
 
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/grade/index");
     },
-    userInfo: function userInfo(params) {
+    mokaClose: function mokaClose() {
+      console.log(1111);
+      this.posterClick({
+        event_type: "profile_complete",
+        click_type: "done"
+      });
+    },
+    userHomeInfo: function userHomeInfo(params) {
       var _this = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
@@ -839,7 +894,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userInfo */ "zc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userHomeInfo */ "Hc"])(params);
 
               case 3:
                 res = _context.sent;
@@ -849,17 +904,25 @@ component.options.__file = "src/pages/my/index.vue"
                 _this.wallet = res.data.data.acct.wallet;
                 _this.is_member = res.data.data.member.is_member;
                 _this.guide_desc = res.data.data.member.guide_desc;
-                _context.next = 16;
+                _this.showMember = res.data.data.config.member;
+                _this.showAcct = res.data.data.config.acct;
+                _this.showMokaVisible = res.data.data.notify.schedule_status ? true : false;
+                _this.notify_msg = res.data.data.notify.notify_msg;
+                _this.wait_complete = res.data.data.notify.wait_complete;
+                _this.increase = res.data.data.notify.increase;
+                _context.next = 24;
                 break;
 
-              case 12:
-                _context.prev = 12;
+              case 18:
+                _context.prev = 18;
                 _context.t0 = _context["catch"](0);
                 _this.infor = {
-                  age: 0,
-                  avatar: "",
-                  realname: "",
-                  ispledge: "",
+                  basic: {
+                    age: 0,
+                    avatar: "",
+                    realname: "",
+                    ispledge: ""
+                  },
                   statistic: {
                     followed_cnt: 0,
                     follower_cnt: 0,
@@ -869,13 +932,15 @@ component.options.__file = "src/pages/my/index.vue"
                   }
                 };
                 _this.coin = 0;
+                _this.showMember = 0;
+                _this.showAcct = 0;
 
-              case 16:
+              case 24:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 12]]);
+        }, _callee, null, [[0, 18]]);
       }))();
     },
     isSign: function isSign(params) {
@@ -889,7 +954,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* isSign */ "bb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -918,7 +983,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -948,7 +1013,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -981,7 +1046,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "pc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* submitSign */ "sc"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1016,7 +1081,7 @@ component.options.__file = "src/pages/my/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "Q"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* idcardInfo */ "R"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1039,6 +1104,37 @@ component.options.__file = "src/pages/my/index.vue"
           }
         }, _callee6, null, [[0, 7]]);
       }))();
+    },
+    posterClick: function posterClick(params) {
+      var _this6 = this;
+
+      return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee7() {
+        var res;
+        return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.prev = 0;
+                _context7.next = 3;
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* posterClick */ "Jb"])(params);
+
+              case 3:
+                res = _context7.sent;
+                _this6.showMokaVisible = false;
+                _context7.next = 9;
+                break;
+
+              case 7:
+                _context7.prev = 7;
+                _context7.t0 = _context7["catch"](0);
+
+              case 9:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, null, [[0, 7]]);
+      }))();
     }
   },
   components: {
@@ -1046,7 +1142,7 @@ component.options.__file = "src/pages/my/index.vue"
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.userInfo(""); // 是否签到
+    this.userHomeInfo(""); // 是否签到
 
     this.isSign("");
     this.shareInviteInfo({
@@ -1062,7 +1158,7 @@ component.options.__file = "src/pages/my/index.vue"
       this.showlogin = true;
     }
 
-    this.userInfo("");
+    this.userHomeInfo("");
   },
   onLoad: function onLoad(options) {
     console.log(options);
@@ -1176,8 +1272,8 @@ var render = function () {
           _c("image", {
             staticClass: "head-img",
             attrs: {
-              src: _vm.infor.avatar
-                ? _vm.infor.avatar
+              src: _vm.infor.basic.avatar
+                ? _vm.infor.basic.avatar
                 : "https://yuepai-oss.qubeitech.com/static/images/head.png",
               mode: "aspectFit",
             },
@@ -1191,11 +1287,11 @@ var render = function () {
               })
             : _vm._e(),
         ]),
-        !_vm.showlogin && _vm.infor.uuid
+        !_vm.showlogin && _vm.infor.basic.uuid
           ? _c("view", { staticClass: "my-head-ct" }, [
               _c("view", { staticClass: "my-head-top" }, [
                 _c("text", { staticClass: "my-head-name" }, [
-                  _vm._v(_vm._s(_vm.infor.nickname)),
+                  _vm._v(_vm._s(_vm.infor.basic.nickname)),
                 ]),
                 _c("text", { staticClass: "my-head-vip" }, [
                   _vm._v(_vm._s(_vm.level ? _vm.level : "Lv0")),
@@ -1203,15 +1299,15 @@ var render = function () {
               ]),
               _c("view", { staticClass: "my-account" }, [
                 _c("view", { staticClass: "my-account-item" }, [
-                  _vm._v(" 账号:" + _vm._s(_vm.infor.uuid) + " "),
+                  _vm._v(" 账号:" + _vm._s(_vm.infor.basic.uuid) + " "),
                 ]),
                 _c("view", { staticClass: "my-account-item" }, [
-                  _vm._v("IP归属:" + _vm._s(_vm.infor.login_ip_city)),
+                  _vm._v("IP归属:" + _vm._s(_vm.infor.basic.ip_city)),
                 ]),
               ]),
               _c("view", { staticClass: "my-info" }, [
                 _c("view", { staticClass: "head-tag-box" }, [
-                  _vm.infor.is_certify
+                  _vm.infor.basic.is_certify
                     ? _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
@@ -1226,7 +1322,7 @@ var render = function () {
                         },
                         on: { tap: _vm.myCertification },
                       }),
-                  _vm.infor.is_security
+                  _vm.infor.basic.is_security
                     ? _c("image", {
                         staticClass: "head-tag-img",
                         attrs: {
@@ -1259,13 +1355,13 @@ var render = function () {
               _vm._v(" " + _vm._s(_vm.infor.resume) + " "),
             ])
           : _vm._e(),
-        _vm.infor.age
+        _vm.infor.basic.age
           ? _c(
               "view",
               { staticClass: "my_tags" },
               [
                 _c("view", { staticClass: "tag" }, [
-                  _vm.infor.sex == 1
+                  _vm.infor.basic.sex == 1
                     ? _c("image", {
                         staticClass: "sex",
                         attrs: {
@@ -1274,7 +1370,7 @@ var render = function () {
                         },
                       })
                     : _vm._e(),
-                  _vm.infor.sex == 0
+                  _vm.infor.basic.sex == 0
                     ? _c("image", {
                         staticClass: "sex",
                         attrs: {
@@ -1283,12 +1379,12 @@ var render = function () {
                         },
                       })
                     : _vm._e(),
-                  _vm._v(" " + _vm._s(_vm.infor.age) + "岁 "),
+                  _vm._v(" " + _vm._s(_vm.infor.basic.age) + "岁 "),
                 ]),
                 _c("view", { staticClass: "tag" }, [
-                  _vm._v(" " + _vm._s(_vm.infor.province_name) + " "),
+                  _vm._v(" " + _vm._s(_vm.infor.basic.province_name) + " "),
                 ]),
-                _vm._l(_vm.infor.career_label, function (item, index) {
+                _vm._l(_vm.infor.basic.career_label, function (item, index) {
                   return _c("view", { key: index, staticClass: "tag" }, [
                     _vm._v(" " + _vm._s(item) + " "),
                   ])
@@ -1362,11 +1458,137 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "my-ct" }, [
-        false
-          ? undefined
+        _vm.showMember
+          ? _c("view", { staticClass: "my-vip", on: { tap: _vm.goVip } }, [
+              _c("view", { staticClass: "my-vip-top" }, [
+                _c("view", { staticClass: "my-vip-left" }, [
+                  _c("image", {
+                    staticClass: "my-vip-img",
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/vip-logo.png",
+                      mode: "aspectFit",
+                    },
+                  }),
+                  _c("view", { staticClass: "vip-center" }, [
+                    _vm._v("会员中心"),
+                  ]),
+                  _c("view", { staticClass: "vip-text" }, [
+                    _vm._v(_vm._s(_vm.guide_desc)),
+                  ]),
+                ]),
+                _c("view", { staticClass: "my-vip-rt" }, [
+                  _c("text", { staticClass: "vip-btn" }, [
+                    _vm._v(_vm._s(_vm.is_member ? "续费会员" : "开通会员")),
+                  ]),
+                ]),
+              ]),
+              _c("view", { staticClass: "my-vip-bt" }, [
+                _c("view", { staticClass: "my-vip-info" }, [
+                  _c("view", { staticClass: "my-vip-item" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/private-letter.png",
+                      },
+                    }),
+                    _c("text", [_vm._v("专享在线私信")]),
+                  ]),
+                  _c("view", { staticClass: "my-vip-item" }, [
+                    _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/accelerated-growth.png",
+                      },
+                    }),
+                    _c("text", [_vm._v("尊享成长加速")]),
+                  ]),
+                ]),
+                _c("view", { staticClass: "vip-img-box" }, [
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/level-upgrade.png",
+                    },
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.goGrade.apply(null, arguments)
+                      },
+                    },
+                  }),
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/daily-attendance.png",
+                    },
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.goSign.apply(null, arguments)
+                      },
+                    },
+                  }),
+                  _c("image", {
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/invite-friends.png",
+                    },
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.invitego.apply(null, arguments)
+                      },
+                    },
+                  }),
+                ]),
+              ]),
+            ])
           : _vm._e(),
-        false
-          ? undefined
+        _vm.showAcct
+          ? _c("view", { staticClass: "my-account-box" }, [
+              _c(
+                "view",
+                { staticClass: "account-item", on: { tap: _vm.goCoin } },
+                [
+                  _c("view", { staticClass: "account-num" }, [
+                    _vm._v(" " + _vm._s(_vm.coin) + " "),
+                  ]),
+                  _c("view", { staticClass: "account-label" }, [
+                    _vm._v("金币"),
+                  ]),
+                  _c("view", { staticClass: "account-btn" }, [
+                    _vm._v("领取金币"),
+                  ]),
+                  _c("view", { staticClass: "account-line" }),
+                ]
+              ),
+              _c(
+                "view",
+                { staticClass: "account-item", on: { tap: _vm.goWallet } },
+                [
+                  _c("view", { staticClass: "account-num" }, [
+                    _vm._v(" " + _vm._s(_vm.wallet) + " "),
+                  ]),
+                  _c("view", { staticClass: "account-label" }, [
+                    _vm._v("钱包"),
+                  ]),
+                  _c("view", { staticClass: "account-btn" }, [
+                    _vm._v("立即提现"),
+                  ]),
+                  _c("view", { staticClass: "account-line" }),
+                ]
+              ),
+              _c(
+                "view",
+                { staticClass: "account-item", on: { tap: _vm.goGrade } },
+                [
+                  _c("view", { staticClass: "account-num" }, [
+                    _vm._v(" " + _vm._s(_vm.level ? _vm.level : "Lv0") + " "),
+                  ]),
+                  _c("view", { staticClass: "account-label" }, [
+                    _vm._v("等级"),
+                  ]),
+                  _c("view", { staticClass: "account-btn" }, [
+                    _vm._v("升级等级"),
+                  ]),
+                ]
+              ),
+            ])
           : _vm._e(),
         _c("view", { staticClass: "my-column" }, [
           _c(
@@ -1379,7 +1601,12 @@ var render = function () {
                   src: "https://yuepai-oss.qubeitech.com/static/images/my-home.png",
                 },
               }),
-              _c("text", [_vm._v("个人主页")]),
+              _c("text", [_vm._v("主页管理")]),
+              _vm.wait_complete
+                ? _c("text", { staticClass: "wait_complete" }, [
+                    _vm._v("待完善"),
+                  ])
+                : _vm._e(),
             ]
           ),
           _c(
@@ -1408,7 +1635,7 @@ var render = function () {
                   src: "https://yuepai-oss.qubeitech.com/static/images/works-management.png",
                 },
               }),
-              _c("text", [_vm._v("作品管理")]),
+              _c("text", [_vm._v("我的作品")]),
             ]
           ),
           _c(
@@ -1502,6 +1729,31 @@ var render = function () {
               ]),
             ]
           ),
+          _c(
+            "view",
+            { staticClass: "item ub line-t", on: { tap: _vm.myUnlock } },
+            [
+              _c("view", { staticClass: "item_icon" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: __webpack_require__(/*! ../../assets/images/unlock-icon.png */ "./src/assets/images/unlock-icon.png"),
+                  },
+                }),
+              ]),
+              _c("view", { staticClass: "ub-f1" }, [
+                _c("view", { staticClass: "item_text" }, [_vm._v("我的解锁")]),
+              ]),
+              _c("view", { staticClass: "arrow" }, [
+                _c("image", {
+                  attrs: {
+                    mode: "aspectFit",
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user/index/right.png",
+                  },
+                }),
+              ]),
+            ]
+          ),
         ]),
         _c("view", { staticClass: "my-title" }, [_vm._v(" 我的服务 ")]),
         _c("view", { staticClass: "items myblock" }, [
@@ -1543,7 +1795,7 @@ var render = function () {
                 ]
               )
             : _vm._e(),
-          _vm.infor.ispledge != 1
+          _vm.infor.basic.ispledge != 1
             ? _c(
                 "view",
                 { staticClass: "item ub", on: { tap: _vm.pledgecash } },
@@ -1561,12 +1813,12 @@ var render = function () {
                       _vm._v("信用担保"),
                     ]),
                   ]),
-                  _vm.infor.ispledge == 1
+                  _vm.infor.basic.ispledge == 1
                     ? _c("view", { staticClass: "item_tip" }, [
                         _vm._v("担保中"),
                       ])
                     : _vm._e(),
-                  _vm.infor.ispledge == 2
+                  _vm.infor.basic.ispledge == 2
                     ? _c("view", { staticClass: "item_tip" }, [
                         _vm._v("退款中"),
                       ])
@@ -1807,6 +2059,27 @@ var render = function () {
         attrs: { visible: _vm.showModelSign, msg: _vm.hyper_desc },
         on: { close: _vm.close },
       }),
+      _vm.showMokaVisible
+        ? _c("view", { staticClass: "moka-tips" }, [
+            _c("view", { staticClass: "moka-left" }, [
+              _vm._v(" 完善"),
+              _c("text", [_vm._v(_vm._s(_vm.notify_msg))]),
+              _vm._v("曝光将提升" + _vm._s(_vm.increase) + " "),
+            ]),
+            _c("view", { staticClass: "moka-rt" }, [
+              _c(
+                "view",
+                { staticClass: "moka-btn", on: { tap: _vm.goZhuye } },
+                [_vm._v("去完善")]
+              ),
+              _c(
+                "view",
+                { staticClass: "moka-close", on: { tap: _vm.mokaClose } },
+                [_vm._v("X")]
+              ),
+            ]),
+          ])
+        : _vm._e(),
     ],
     1
   )
@@ -1815,6 +2088,18 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/unlock-icon.png":
+/*!*******************************************!*\
+  !*** ./src/assets/images/unlock-icon.png ***!
+  \*******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/unlock-icon.png";
 
 /***/ }),
 

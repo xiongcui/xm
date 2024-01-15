@@ -1,0 +1,224 @@
+page {
+  background-color: #f4f4f4;
+}
+
+.unlock-list {
+  padding: 16rpx 16rpx 150rpx 16rpx;
+}
+
+.unlock-list .unlock-item {
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding: 16rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.unlock-list .unlock-item .unlock-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.unlock-list .unlock-item .unlock-left .unlock-title {
+  font-size: 34rpx;
+  color: #333333;
+}
+
+.unlock-list .unlock-item .unlock-left image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+
+.unlock-list .unlock-item .unlock-left .sex {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 4rpx;
+}
+
+.unlock-list .unlock-item .unlock-left .unlock-p {
+  color: #686868;
+  font-size: 26rpx;
+}
+
+.unlock-list .unlock-item .unlock-rt {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.unlock-list .unlock-item .unlock-rt .unlock-btn {
+  font-size: 28rpx;
+  padding: 6rpx 30rpx;
+  border-radius: 30rpx;
+  border: 2rpx solid #a5adb2;
+  color: #a5adb2;
+}
+
+.unlock-list .unlock {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.unlock-list .unlock .unlock-modal {
+  position: relative;
+}
+
+.unlock-list .unlock .unlock-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #fff8e6;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+  padding: 30rpx;
+}
+
+.unlock-list .unlock .unlock-item .unlock-img-box {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  background: #3ac757;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.unlock-list .unlock .unlock-item image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.unlock-list .unlock .unlock-item .unlock-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #d46b09;
+  margin-bottom: 6rpx;
+}
+
+.unlock-list .unlock .unlock-item .unlock-txt {
+  font-size: 28rpx;
+  color: #d46b09;
+}
+
+.unlock-list .unlock .unlock-img-phone-box {
+  background: #f66704 !important;
+}
+
+.unlock-list .unlock .unlock-item-phone {
+  background: #fef1f7;
+}
+
+.unlock-list .unlock .unlock-tips {
+  font-size: 26rpx;
+  color: #f88a87;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.unlock-list .unlock .unlock-success-box {
+  width: calc(100% - 60rpx);
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 30rpx;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-title {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-title .close-img {
+  text-align: right;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-title .close-img image {
+  width: 48rpx;
+  height: 48rpx;
+  position: absolute;
+  right: 16rpx;
+  top: 0;
+  z-index: 99;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-item {
+  background: #efefef;
+  border-radius: 8rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 28rpx;
+  padding: 30rpx;
+  margin-bottom: 16rpx;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-left {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-left image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-label {
+  color: #adadad;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-txt {
+  color: #333333;
+}
+
+.unlock-list .unlock .unlock-success-box .unlock-success-rt {
+  color: #4fb0ff;
+}

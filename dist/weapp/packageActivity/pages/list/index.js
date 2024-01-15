@@ -119,6 +119,10 @@ component.options.__file = "src/packageActivity/pages/list/index.vue"
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -165,7 +169,7 @@ component.options.__file = "src/packageActivity/pages/list/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* exploreList */ "E"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* exploreList */ "F"])(params);
 
               case 3:
                 res = _context.sent;
@@ -203,7 +207,7 @@ component.options.__file = "src/packageActivity/pages/list/index.vue"
 
               case 17:
                 data = res.data.data.items;
-                _this.list = _this.yuepaiList.concat(data);
+                _this.list = _this.list.concat(data);
                 _this.loading = true;
 
               case 20:
@@ -306,22 +310,26 @@ var render = function () {
                 _c("text", { staticClass: "activity-txt" }, [
                   _vm._v(_vm._s(item.begin_datetime)),
                 ]),
-                _c("text", { staticClass: "activity-price" }, [
-                  _c("text", { staticClass: "price-blod" }, [
-                    _vm._v(_vm._s(item.payment)),
-                  ]),
-                  item.payment !== "免费" && item.payment !== "置换"
-                    ? _c("text", [_vm._v("元")])
-                    : _vm._e(),
-                ]),
+                item.original_amount.show == "text"
+                  ? _c("text", { staticClass: "activity-price" }, [
+                      _c("text", { staticClass: "price-blod" }, [
+                        _vm._v(_vm._s(item.original_amount.label)),
+                      ]),
+                    ])
+                  : _c("text", { staticClass: "activity-price" }, [
+                      _c("text", { staticClass: "price-blod" }, [
+                        _vm._v(_vm._s(item.original_amount.amount)),
+                      ]),
+                      _c("text", [_vm._v("元")]),
+                    ]),
               ]),
             ]),
           ]),
           _c("view", { staticClass: "activity-bottom" }, [
             _c("view", { staticClass: "activity-info" }, [
-              _c("image", { attrs: { src: item.publisher.avatar } }),
+              _c("image", { attrs: { src: item.partner_avatar } }),
               _c("text", { staticClass: "activity-name" }, [
-                _vm._v(_vm._s(item.publisher.nickname)),
+                _vm._v(_vm._s(item.partner_name)),
               ]),
             ]),
             _c("view", { staticClass: "schedule" }, [
@@ -329,19 +337,19 @@ var render = function () {
                 staticClass: "schedule-bg",
                 style: {
                   width:
-                    (item.enter_current_number / item.enter_total_number) *
+                    (item.apply_current_number / item.apply_total_number) *
                       100 +
                     "%",
                 },
               }),
               _c("text", { staticClass: "schedule-txt" }, [
-                _vm._v(_vm._s(item.enter_status)),
+                _vm._v(_vm._s(item.apply_schedule_status)),
               ]),
               _c("text", { staticClass: "schedule-num" }, [
                 _vm._v(
-                  _vm._s(item.enter_current_number) +
+                  _vm._s(item.apply_current_number) +
                     " / " +
-                    _vm._s(item.enter_total_number)
+                    _vm._s(item.apply_total_number)
                 ),
               ]),
             ]),

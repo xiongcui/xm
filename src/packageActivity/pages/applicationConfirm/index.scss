@@ -2,7 +2,8 @@ page {
   background-color: #f4f4f4;
 }
 .application-confirm {
-  .confirm-success {
+  .confirm-success,
+  .add-weChat {
     background: #ffffff;
     border-radius: 8px;
     margin: 16px;
@@ -74,5 +75,32 @@ page {
     margin-top: 16px;
     border: 2px solid rgba(0, 0, 0, 0.4);
     margin-right: 30px;
+  }
+  .add-weChat {
+    display: flex;
+    justify-content: space-between;
+    .add-weChat-left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      .add-weChat-title {
+        font-size: 34px;
+        color: #333333;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      .add-weChat-btn {
+        background: #fa8c16;
+        padding: 16px 40px;
+        font-size: 28px;
+        border-radius: 36px;
+        color: #ffffff;
+      }
+    }
+    .add-weChat-rt image {
+      width: 180px;
+      height: 180px;
+    }
   }
 }

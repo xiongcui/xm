@@ -683,6 +683,14 @@ component.options.__file = "src/pages/home/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 var citySelector = requirePlugin("citySelector");
 
@@ -721,7 +729,7 @@ var citySelector = requirePlugin("citySelector");
       indicatorDots2: false,
       vertical: false,
       autoplay: true,
-      interval: 5000,
+      interval: 3000,
       interval2: 10000,
       duration: 500,
       componetActive: 0,
@@ -839,8 +847,7 @@ var citySelector = requirePlugin("citySelector");
       }
     },
     goCompetition: function goCompetition() {
-      // openPage("/packageActivity/pages/match/index");
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* errortip */ "a"])("正在开发中");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageActivity/pages/match/index");
     },
     signClose: function signClose() {
       this.showModelSign = false;
@@ -883,8 +890,8 @@ var citySelector = requirePlugin("citySelector");
         Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
       }
     },
-    goTakelist: function goTakelist() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter);
+    goTakelist: function goTakelist(navactive) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter + "&navactive=" + navactive);
     },
     componetClick: function componetClick(index) {
       if (this.componetActive != index) {
@@ -1053,7 +1060,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteList */ "X"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteList */ "Y"])(params);
 
               case 3:
                 res = _context.sent;
@@ -1158,7 +1165,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteAdviseList */ "S"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteAdviseList */ "T"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -1201,7 +1208,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeAdviseList */ "tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeAdviseList */ "ub"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -1242,7 +1249,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* notifyNumber */ "zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* notifyNumber */ "Ab"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -1283,7 +1290,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* isSign */ "ab"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* isSign */ "bb"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -1314,7 +1321,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userStatus */ "Jc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userStatus */ "Sc"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -1381,7 +1388,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userSelectCity */ "Gc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* userSelectCity */ "Pc"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -1414,7 +1421,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteFilter */ "T"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* inviteFilter */ "U"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -1498,7 +1505,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeFilter */ "ub"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeFilter */ "vb"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -1585,7 +1592,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context10.prev = 0;
                 _context10.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoFilter */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoFilter */ "Eb"])(params);
 
               case 3:
                 res = _context10.sent;
@@ -1655,7 +1662,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context11.prev = 0;
                 _context11.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeList */ "wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* noticeList */ "xb"])(params);
 
               case 3:
                 res = _context11.sent;
@@ -1760,7 +1767,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context12.prev = 0;
                 _context12.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoList */ "Fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* photoList */ "Gb"])(params);
 
               case 3:
                 res = _context12.sent;
@@ -1863,7 +1870,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context13.prev = 0;
                 _context13.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context13.sent;
@@ -1893,7 +1900,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context14.prev = 0;
                 _context14.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context14.sent;
@@ -1924,7 +1931,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context15.prev = 0;
                 _context15.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* sourceItems */ "gc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* sourceItems */ "jc"])(params);
 
               case 3:
                 res = _context15.sent;
@@ -1952,7 +1959,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context16.prev = 0;
                 _context16.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* popupLogs */ "Hb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* popupLogs */ "Ib"])(params);
 
               case 3:
                 res = _context16.sent;
@@ -2049,7 +2056,7 @@ var citySelector = requirePlugin("citySelector");
               case 0:
                 _context19.prev = 0;
                 _context19.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* submitSign */ "pc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_11__[/* submitSign */ "sc"])(params);
 
               case 3:
                 res = _context19.sent;
@@ -2471,60 +2478,47 @@ var render = function () {
               1
             ),
           ]),
-          _c(
-            "view",
-            { staticClass: "news" },
-            [
-              _c("view", { staticClass: "news-title" }, [_vm._v("消息")]),
-              _c("view", { staticClass: "news-line" }, [_vm._v("|")]),
-              _c(
-                "swiper",
-                {
-                  staticClass: "home_notify",
-                  attrs: {
-                    "indicator-dots": false,
-                    autoplay: true,
-                    interval: _vm.interval,
-                    duration: _vm.duration,
-                    vertical: true,
-                  },
+          _c("view", { staticClass: "banner-txt" }, [
+            _c("view", { staticClass: "banner-txt-item" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/banner-icon-1.png */ "./src/assets/images/banner-icon-1.png"),
                 },
-                _vm._l(_vm.notify, function (item, index) {
-                  return _c(
-                    "swiper-item",
-                    { key: index, staticClass: "home_notify_item" },
-                    [
-                      _c("view", { staticClass: "news-txt" }, [
-                        _vm._v(_vm._s(item.name)),
-                      ]),
-                      _c(
-                        "view",
-                        {
-                          staticClass: "news-btn",
-                          on: {
-                            tap: function ($event) {
-                              return _vm.bannerClick(
-                                item.event,
-                                item.redirect_url
-                              )
-                            },
-                          },
-                        },
-                        [_vm._v("去看看")]
-                      ),
-                    ]
-                  )
-                }),
-                1
-              ),
-            ],
-            1
-          ),
+              }),
+              _c("text", [_vm._v("无忧约拍")]),
+            ]),
+            _c("view", { staticClass: "banner-txt-item" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/banner-icon-2.png */ "./src/assets/images/banner-icon-2.png"),
+                },
+              }),
+              _c("text", [_vm._v("正规靠谱")]),
+            ]),
+            _c("view", { staticClass: "banner-txt-item" }, [
+              _c("image", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../assets/images/banner-icon-3.png */ "./src/assets/images/banner-icon-3.png"),
+                },
+              }),
+              _c("text", [_vm._v("资源丰富")]),
+            ]),
+          ]),
+          false
+            ? undefined
+            : _vm._e(),
           _c("view", { staticClass: "page-nav" }, [
             _c("view", { staticClass: "page-nav-top" }, [
               _c(
                 "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.goTakelist } },
+                {
+                  staticClass: "page-nav-item",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.goTakelist(2)
+                    },
+                  },
+                },
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
@@ -2540,7 +2534,14 @@ var render = function () {
               ),
               _c(
                 "view",
-                { staticClass: "page-nav-item", on: { tap: _vm.goTakelist } },
+                {
+                  staticClass: "page-nav-item",
+                  on: {
+                    tap: function ($event) {
+                      return _vm.goTakelist(1)
+                    },
+                  },
+                },
                 [
                   _c("image", {
                     staticClass: "page-nav-img",
@@ -2849,6 +2850,42 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/banner-icon-1.png":
+/*!*********************************************!*\
+  !*** ./src/assets/images/banner-icon-1.png ***!
+  \*********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/banner-icon-1.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/banner-icon-2.png":
+/*!*********************************************!*\
+  !*** ./src/assets/images/banner-icon-2.png ***!
+  \*********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/banner-icon-2.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/banner-icon-3.png":
+/*!*********************************************!*\
+  !*** ./src/assets/images/banner-icon-3.png ***!
+  \*********************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/banner-icon-3.png";
 
 /***/ }),
 

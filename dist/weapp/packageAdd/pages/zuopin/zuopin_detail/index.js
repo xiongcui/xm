@@ -52,8 +52,9 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.scss */ "./src/packageAdd/pages/zuopin/zuopin_detail/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _api_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../api/index */ "./src/api/index.js");
-/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
-/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
+/* harmony import */ var _components_unlock_index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../components/unlock/index.vue */ "./src/components/unlock/index.vue");
+/* harmony import */ var _utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../utils/clickThrottle */ "./src/utils/clickThrottle.js");
+/* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../utils/util */ "./src/utils/util.js");
 
 
 //
@@ -248,6 +249,15 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -273,21 +283,39 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       sharePath: "",
       shareFriendsTitle: "",
       shareFriendsImg: "",
-      shareFriendsPath: ""
+      shareFriendsPath: "",
+      unlockVisible: false
     };
+  },
+  components: {
+    unlock: _components_unlock_index_vue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]
   },
   methods: {
     goZhuye: function goZhuye(uuid) {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     bindended: function bindended() {
       wx.createVideoContext("video").exitFullScreen();
     },
-    launchYuepai: function launchYuepai() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
+    rapidConnection: function rapidConnection() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "b"])()) {
+        this.unlockVisible = true;
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index"
+        });
+      }
+    },
+    unlockClose: function unlockClose() {
+      this.unlockVisible = false;
+    },
+    launchYuepai: function launchYuepai() {
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
+
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "b"])()) {
         this.applyVerify({
           source: "note",
           oid: this.oid
@@ -299,7 +327,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       }
     },
     subGiveUp: function subGiveUp() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       var params = {
         oid: this.oid,
         visited_id: this.author_id,
@@ -311,7 +339,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       this.giveUp(params);
     },
     subRecordCollect: function subRecordCollect() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       var params = {
         oid: this.oid,
         visited_id: this.author_id,
@@ -323,13 +351,13 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       this.recordCollect(params);
     },
     follow: function follow() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.userFollow({
         follow_uuid: this.zuopinInfo.author_id
       });
     },
     unfollow: function unfollow() {
-      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
+      if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
       this.userUnfollow({
         unfollow_uuid: this.zuopinInfo.author_id
       });
@@ -345,7 +373,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "Eb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* photoInfo */ "Fb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -379,7 +407,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* giveUp */ "L"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* giveUp */ "M"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -411,7 +439,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "Tb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* recordCollect */ "Vb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -441,7 +469,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context4.sent;
@@ -471,7 +499,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context5.sent;
@@ -502,7 +530,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context6.prev = 0;
                 _context6.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "Zb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInvite */ "bc"])(params);
 
               case 3:
                 res = _context6.sent;
@@ -532,7 +560,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context7.prev = 0;
                 _context7.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "ac"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* shareInviteInfo */ "cc"])(params);
 
               case 3:
                 res = _context7.sent;
@@ -565,7 +593,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context8.prev = 0;
                 _context8.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "yc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Gc"])(params);
 
               case 3:
                 res = _context8.sent;
@@ -596,7 +624,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
               case 0:
                 _context9.prev = 0;
                 _context9.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Lc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Uc"])(params);
 
               case 3:
                 res = _context9.sent;
@@ -631,7 +659,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 
               case 3:
                 res = _context10.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.oid + "&source=note");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.oid + "&source=note");
                 _context10.next = 10;
                 break;
 
@@ -640,7 +668,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
                 _context10.t0 = _context10["catch"](0);
 
                 if (_context10.t0.data.error_code == 21030 || _context10.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
                 } else {
                   errortip(_context10.t0.data.msg);
                 }
@@ -729,293 +757,323 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("view", { staticClass: "zuopin_detail" }, [
-    _c("view", { staticClass: "zuopin_top" }, [
-      _c("view", { staticClass: "zuopin_top_left" }, [
-        _c("view", { staticClass: "zuopin_top_box" }, [
-          _c("image", {
-            staticClass: "avatar",
-            attrs: { src: _vm.zuopinInfo.author.avatar },
-            on: {
-              tap: function ($event) {
-                return _vm.goZhuye(_vm.zuopinInfo.author.uuid)
-              },
-            },
-          }),
-          _vm.zuopinInfo.author.is_member
-            ? _c("image", {
-                staticClass: "user-vip",
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/user-vip.png",
+  return _c(
+    "view",
+    { staticClass: "zuopin_detail" },
+    [
+      _c("view", { staticClass: "zuopin_top" }, [
+        _c("view", { staticClass: "zuopin_top_left" }, [
+          _c("view", { staticClass: "zuopin_top_box" }, [
+            _c("image", {
+              staticClass: "avatar",
+              attrs: { src: _vm.zuopinInfo.author.avatar },
+              on: {
+                tap: function ($event) {
+                  return _vm.goZhuye(_vm.zuopinInfo.author.uuid)
                 },
+              },
+            }),
+            _vm.zuopinInfo.author.is_member
+              ? _c("image", {
+                  staticClass: "user-vip",
+                  attrs: {
+                    src: "https://yuepai-oss.qubeitech.com/static/images/user-vip.png",
+                  },
+                })
+              : _vm._e(),
+          ]),
+          _c("view", { staticClass: "zuopin_author_info" }, [
+            _c(
+              "view",
+              { staticClass: "zuopin_name" },
+              [
+                _vm._v(" " + _vm._s(_vm.zuopinInfo.author.nickname) + " "),
+                _vm.zuopinInfo.author.sex !== null
+                  ? _c("block", [
+                      _vm.zuopinInfo.author.sex == 1
+                        ? _c("image", {
+                            staticClass: "zuopin_sex",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
+                            },
+                          })
+                        : _vm._e(),
+                      _vm.zuopinInfo.author.sex == 0
+                        ? _c("image", {
+                            staticClass: "zuopin_sex",
+                            attrs: {
+                              src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
+                            },
+                          })
+                        : _vm._e(),
+                    ])
+                  : _vm._e(),
+              ],
+              1
+            ),
+            _c("view", { staticClass: "zuopin_p" }, [
+              _c("text", [
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.zuopinInfo.author.career_list[0]) +
+                    " | " +
+                    _vm._s(_vm.zuopinInfo.author.province_name) +
+                    " "
+                ),
+              ]),
+              _vm.zuopinInfo.author.is_certify
+                ? _c("image", {
+                    staticClass: "zuopin_p_img",
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png",
+                    },
+                  })
+                : _vm._e(),
+              _vm.zuopinInfo.author.is_security
+                ? _c("image", {
+                    staticClass: "zuopin_p_img",
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png",
+                    },
+                  })
+                : _vm._e(),
+            ]),
+          ]),
+        ]),
+        _c("view", { staticClass: "zuopin_right" }, [
+          _vm.is_follow == 0
+            ? _c("image", {
+                staticClass: "follow",
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png",
+                },
+                on: { tap: _vm.follow },
+              })
+            : _vm._e(),
+          _vm.is_follow == 1
+            ? _c("image", {
+                staticClass: "follow",
+                attrs: {
+                  src: "https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png",
+                },
+                on: { tap: _vm.unfollow },
               })
             : _vm._e(),
         ]),
-        _c("view", { staticClass: "zuopin_author_info" }, [
-          _c(
-            "view",
-            { staticClass: "zuopin_name" },
-            [
-              _vm._v(" " + _vm._s(_vm.zuopinInfo.author.nickname) + " "),
-              _vm.zuopinInfo.author.sex !== null
-                ? _c("block", [
-                    _vm.zuopinInfo.author.sex == 1
-                      ? _c("image", {
-                          staticClass: "zuopin_sex",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
-                          },
-                        })
-                      : _vm._e(),
-                    _vm.zuopinInfo.author.sex == 0
-                      ? _c("image", {
-                          staticClass: "zuopin_sex",
-                          attrs: {
-                            src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
-                          },
-                        })
-                      : _vm._e(),
-                  ])
-                : _vm._e(),
-            ],
-            1
-          ),
-          _c("view", { staticClass: "zuopin_p" }, [
-            _c("text", [
-              _vm._v(
-                " " +
-                  _vm._s(_vm.zuopinInfo.author.career_list[0]) +
-                  " | " +
-                  _vm._s(_vm.zuopinInfo.author.province_name) +
-                  " "
-              ),
+      ]),
+      _c("view", { staticClass: "zuopin_info" }, [
+        _c("view", { staticClass: "zuopin_title" }, [
+          _vm._v(" " + _vm._s(_vm.zuopinInfo.title) + " "),
+        ]),
+        _c("view", { staticClass: "zuopin_content" }, [
+          _c("text", [_vm._v(" " + _vm._s(_vm.zuopinInfo.content))]),
+        ]),
+        _c("view", { staticClass: "zuopin_icon" }, [
+          _c("view", { staticClass: "zuopin_icon_box" }, [
+            _c("view", { staticClass: "zuopin_icon_title" }, [
+              _c("view", { staticClass: "spot" }),
+              _c("text", { staticClass: "zuopin_text" }, [
+                _vm._v("地点：" + _vm._s(_vm.zuopinInfo.capture_locale)),
+              ]),
             ]),
-            _vm.zuopinInfo.author.is_certify
-              ? _c("image", {
-                  staticClass: "zuopin_p_img",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_real.png",
-                  },
+          ]),
+        ]),
+        _c("view", { staticClass: "zuopin_icon" }, [
+          _c("view", { staticClass: "zuopin_icon_box" }, [
+            _c("view", { staticClass: "zuopin_icon_title" }, [
+              _c("view", { staticClass: "spot" }),
+              _c("text", { staticClass: "zuopin_text" }, [
+                _vm._v(
+                  "返片：" + _vm._s(_vm.zuopinInfo.return_photo ? "是" : "否")
+                ),
+              ]),
+            ]),
+          ]),
+        ]),
+        _c("view", { staticClass: "zuopin_icon" }, [
+          _c("view", { staticClass: "zuopin_icon_box" }, [
+            _c("view", { staticClass: "zuopin_icon_title" }, [
+              _c("view", { staticClass: "spot" }),
+              _c("text", { staticClass: "zuopin_text" }, [
+                _vm._v("设备：" + _vm._s(_vm.zuopinInfo.capture_tools)),
+              ]),
+            ]),
+          ]),
+        ]),
+        _vm.zuopinInfo.file_type == "picture"
+          ? _c(
+              "view",
+              { staticClass: "zuopin_img" },
+              _vm._l(_vm.zuopinInfo.cover, function (item, index) {
+                return _c("image", {
+                  key: index,
+                  attrs: { mode: "widthFix", src: item },
                 })
-              : _vm._e(),
-            _vm.zuopinInfo.author.is_security
-              ? _c("image", {
-                  staticClass: "zuopin_p_img",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_pledge.png",
-                  },
-                })
-              : _vm._e(),
-          ]),
-        ]),
-      ]),
-      _c("view", { staticClass: "zuopin_right" }, [
-        _vm.is_follow == 0
-          ? _c("image", {
-              staticClass: "follow",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/common/follow_red.png",
-              },
-              on: { tap: _vm.follow },
-            })
+              }),
+              0
+            )
           : _vm._e(),
-        _vm.is_follow == 1
-          ? _c("image", {
-              staticClass: "follow",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/common/followed_gray.png",
-              },
-              on: { tap: _vm.unfollow },
-            })
+        _vm.zuopinInfo.file_type == "video"
+          ? _c("view", [
+              _c("video", {
+                staticClass: "zuopin_video-width",
+                attrs: {
+                  objectFit: "cover",
+                  poster: _vm.zuopinInfo.cover && _vm.zuopinInfo.cover[0],
+                  src:
+                    _vm.zuopinInfo.video_cover && _vm.zuopinInfo.video_cover[0],
+                  id: "video",
+                },
+                on: { ended: _vm.bindended },
+              }),
+            ])
           : _vm._e(),
-      ]),
-    ]),
-    _c("view", { staticClass: "zuopin_info" }, [
-      _c("view", { staticClass: "zuopin_title" }, [
-        _vm._v(" " + _vm._s(_vm.zuopinInfo.title) + " "),
-      ]),
-      _c("view", { staticClass: "zuopin_content" }, [
-        _c("text", [_vm._v(" " + _vm._s(_vm.zuopinInfo.content))]),
-      ]),
-      _c("view", { staticClass: "zuopin_icon" }, [
-        _c("view", { staticClass: "zuopin_icon_box" }, [
-          _c("view", { staticClass: "zuopin_icon_title" }, [
-            _c("view", { staticClass: "spot" }),
-            _c("text", { staticClass: "zuopin_text" }, [
-              _vm._v("地点：" + _vm._s(_vm.zuopinInfo.capture_locale)),
-            ]),
-          ]),
-        ]),
-      ]),
-      _c("view", { staticClass: "zuopin_icon" }, [
-        _c("view", { staticClass: "zuopin_icon_box" }, [
-          _c("view", { staticClass: "zuopin_icon_title" }, [
-            _c("view", { staticClass: "spot" }),
-            _c("text", { staticClass: "zuopin_text" }, [
-              _vm._v(
-                "返片：" + _vm._s(_vm.zuopinInfo.return_photo ? "是" : "否")
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
-      _c("view", { staticClass: "zuopin_icon" }, [
-        _c("view", { staticClass: "zuopin_icon_box" }, [
-          _c("view", { staticClass: "zuopin_icon_title" }, [
-            _c("view", { staticClass: "spot" }),
-            _c("text", { staticClass: "zuopin_text" }, [
-              _vm._v("设备：" + _vm._s(_vm.zuopinInfo.capture_tools)),
-            ]),
-          ]),
-        ]),
-      ]),
-      _vm.zuopinInfo.file_type == "picture"
-        ? _c(
-            "view",
-            { staticClass: "zuopin_img" },
-            _vm._l(_vm.zuopinInfo.cover, function (item, index) {
-              return _c("image", {
-                key: index,
-                attrs: { mode: "widthFix", src: item },
-              })
-            }),
-            0
-          )
-        : _vm._e(),
-      _vm.zuopinInfo.file_type == "video"
-        ? _c("view", [
-            _c("video", {
-              staticClass: "zuopin_video-width",
+        _c(
+          "view",
+          { staticClass: "zuopin_tags" },
+          _vm._l(_vm.zuopinInfo.style_label, function (styleItem, styleIndex) {
+            return _c("view", { key: styleIndex, staticClass: "tag" }, [
+              _vm._v(_vm._s(styleItem)),
+            ])
+          }),
+          0
+        ),
+        _c("view", { staticClass: "zuopin_bottom" }, [
+          _c("view", { staticClass: "zuopin_bottom_time" }, [
+            _c("image", {
               attrs: {
-                objectFit: "cover",
-                poster: _vm.zuopinInfo.cover && _vm.zuopinInfo.cover[0],
-                src:
-                  _vm.zuopinInfo.video_cover && _vm.zuopinInfo.video_cover[0],
-                id: "video",
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
               },
-              on: { ended: _vm.bindended },
             }),
-          ])
-        : _vm._e(),
+            _vm._v(" " + _vm._s(_vm.zuopinInfo.date_humanize) + " "),
+          ]),
+          _c("view", { staticClass: "zuopin_bottom_read" }, [
+            _c("image", {
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png",
+              },
+            }),
+            _vm._v(" 阅读 " + _vm._s(_vm.zuopinInfo.statistic.read_cnt) + " "),
+          ]),
+          _c("view", { staticClass: "zuopin_bottom_dianzan" }, [
+            _c("image", {
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
+              },
+            }),
+            _vm._v(" 点赞 " + _vm._s(_vm.zuopinInfo.statistic.vote_cnt) + " "),
+          ]),
+        ]),
+      ]),
       _c(
         "view",
-        { staticClass: "zuopin_tags" },
-        _vm._l(_vm.zuopinInfo.style_label, function (styleItem, styleIndex) {
-          return _c("view", { key: styleIndex, staticClass: "tag" }, [
-            _vm._v(_vm._s(styleItem)),
-          ])
-        }),
-        0
-      ),
-      _c("view", { staticClass: "zuopin_bottom" }, [
-        _c("view", { staticClass: "zuopin_bottom_time" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/common/time.png",
-            },
-          }),
-          _vm._v(" " + _vm._s(_vm.zuopinInfo.date_humanize) + " "),
-        ]),
-        _c("view", { staticClass: "zuopin_bottom_read" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/index/invoice.png",
-            },
-          }),
-          _vm._v(" 阅读 " + _vm._s(_vm.zuopinInfo.statistic.read_cnt) + " "),
-        ]),
-        _c("view", { staticClass: "zuopin_bottom_dianzan" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
-            },
-          }),
-          _vm._v(" 点赞 " + _vm._s(_vm.zuopinInfo.statistic.vote_cnt) + " "),
-        ]),
-      ]),
-    ]),
-    _c(
-      "view",
-      {
-        staticClass: "zuopin_fixed_bottom",
-        class: _vm.isIphoneX ? "fix-iphonex-button" : "",
-      },
-      [
-        _c("view", { staticClass: "zuopin_fixed_left" }, [
-          _c("view", { staticClass: "zuopin_fixed_item" }, [
+        {
+          staticClass: "zuopin_fixed_bottom",
+          class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+        },
+        [
+          _c("view", { staticClass: "zuopin_fixed_left" }, [
+            _c("view", { staticClass: "zuopin_fixed_item" }, [
+              _c(
+                "button",
+                { staticClass: "share-btn", attrs: { "open-type": "share" } },
+                [
+                  _c("image", {
+                    staticClass: "share",
+                    attrs: {
+                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png",
+                    },
+                  }),
+                ]
+              ),
+            ]),
             _c(
-              "button",
-              { staticClass: "share-btn", attrs: { "open-type": "share" } },
+              "view",
+              { staticClass: "zuopin_fixed_item", on: { tap: _vm.subGiveUp } },
               [
-                _c("image", {
-                  staticClass: "share",
-                  attrs: {
-                    src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_share.png",
-                  },
-                }),
+                _vm.is_vote
+                  ? _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png",
+                      },
+                    })
+                  : _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
+                      },
+                    }),
+                _vm.zuopinInfo.statistic.vote_cnt
+                  ? _c("text", { staticClass: "vote_cnt" }, [
+                      _vm._v(
+                        " " + _vm._s(_vm.zuopinInfo.statistic.vote_cnt) + " "
+                      ),
+                    ])
+                  : _vm._e(),
+              ]
+            ),
+            _c(
+              "view",
+              {
+                staticClass: "zuopin_fixed_item",
+                on: { tap: _vm.subRecordCollect },
+              },
+              [
+                _vm.is_collect
+                  ? _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png",
+                      },
+                    })
+                  : _c("image", {
+                      attrs: {
+                        src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png",
+                      },
+                    }),
+                _vm.zuopinInfo.statistic.collect_cnt
+                  ? _c("text", { staticClass: "collect_cnt" }, [
+                      _vm._v(
+                        " " + _vm._s(_vm.zuopinInfo.statistic.collect_cnt) + " "
+                      ),
+                    ])
+                  : _vm._e(),
               ]
             ),
           ]),
-          _c(
-            "view",
-            { staticClass: "zuopin_fixed_item", on: { tap: _vm.subGiveUp } },
-            [
-              _vm.is_vote
-                ? _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_likeed.png",
-                    },
-                  })
-                : _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_like.png",
-                    },
-                  }),
-              _vm.zuopinInfo.statistic.vote_cnt
-                ? _c("text", { staticClass: "vote_cnt" }, [
-                    _vm._v(
-                      " " + _vm._s(_vm.zuopinInfo.statistic.vote_cnt) + " "
-                    ),
-                  ])
-                : _vm._e(),
-            ]
-          ),
-          _c(
-            "view",
-            {
-              staticClass: "zuopin_fixed_item",
-              on: { tap: _vm.subRecordCollect },
-            },
-            [
-              _vm.is_collect
-                ? _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favoriteed.png",
-                    },
-                  })
-                : _c("image", {
-                    attrs: {
-                      src: "https://yuepai-oss.qubeitech.com/static/images/common/icon_favorite.png",
-                    },
-                  }),
-              _vm.zuopinInfo.statistic.collect_cnt
-                ? _c("text", { staticClass: "collect_cnt" }, [
-                    _vm._v(
-                      " " + _vm._s(_vm.zuopinInfo.statistic.collect_cnt) + " "
-                    ),
-                  ])
-                : _vm._e(),
-            ]
-          ),
-        ]),
-        _c(
-          "view",
-          { staticClass: "zuopin_fixed_rt", on: { tap: _vm.launchYuepai } },
-          [_vm._v(" 立即约拍 ")]
-        ),
-      ]
-    ),
-  ])
+          _c("view", { staticClass: "zuopin_fixed_rt" }, [
+            _c(
+              "text",
+              {
+                staticClass: "rapid-connection",
+                on: { tap: _vm.rapidConnection },
+              },
+              [_vm._v(" 急速快联 ")]
+            ),
+            _c(
+              "text",
+              {
+                staticClass: "immediately-yuepai",
+                on: { tap: _vm.launchYuepai },
+              },
+              [_vm._v(" 申请约拍 ")]
+            ),
+          ]),
+        ]
+      ),
+      _c("unlock", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.unlockVisible,
+            expression: "unlockVisible",
+          },
+        ],
+        attrs: { uuid: _vm.author_id },
+        on: { unlockClose: _vm.unlockClose },
+      }),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

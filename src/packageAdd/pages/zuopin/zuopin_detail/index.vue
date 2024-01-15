@@ -185,8 +185,16 @@
           </text>
         </view>
       </view>
-      <view class="zuopin_fixed_rt" @tap="launchYuepai"> 立即约拍 </view>
+      <view class="zuopin_fixed_rt">
+        <text class="rapid-connection" @tap="rapidConnection"> 急速快联 </text>
+        <text @tap="launchYuepai" class="immediately-yuepai"> 申请约拍 </text>
+      </view>
     </view>
+    <unlock
+      v-show="unlockVisible"
+      @unlockClose="unlockClose"
+      :uuid="author_id"
+    ></unlock>
   </view>
 </template>
 
@@ -202,6 +210,7 @@ import {
   userUnfollow,
   applyVerify,
 } from "../../../../api/index";
+import unlock from "../../../../components/unlock/index.vue";
 import clickThrottle from "../../../../utils/clickThrottle";
 import { isLogin, openPage } from "../../../../utils/util";
 export default {
@@ -226,7 +235,11 @@ export default {
       shareFriendsTitle: "",
       shareFriendsImg: "",
       shareFriendsPath: "",
+      unlockVisible: false,
     };
+  },
+  components: {
+    unlock,
   },
   methods: {
     goZhuye(uuid) {
@@ -235,6 +248,19 @@ export default {
     },
     bindended() {
       wx.createVideoContext("video").exitFullScreen();
+    },
+    rapidConnection() {
+      if (!clickThrottle()) return;
+      if (isLogin()) {
+        this.unlockVisible = true;
+      } else {
+        wx.redirectTo({
+          url: "/pages/login/index",
+        });
+      }
+    },
+    unlockClose() {
+      this.unlockVisible = false;
     },
     launchYuepai() {
       if (!clickThrottle()) return;

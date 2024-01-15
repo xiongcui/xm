@@ -213,7 +213,6 @@ page {
     display: flex;
     justify-content: center;
     width: 100%;
-    background: #ffffff;
   }
   .tab-item {
     position: relative;
@@ -221,8 +220,8 @@ page {
     flex: 1;
     font-size: 30px;
     text-align: center;
-    line-height: 80rpx;
-    border-bottom: 6rpx solid #ffffff;
+    line-height: 66rpx;
+    border-bottom: 6rpx solid #fdf6e8;
     margin: 0px 15%;
   }
   .tab-item.on {
@@ -233,6 +232,7 @@ page {
   .charge-amount {
     text-align: right;
     margin-right: 16px;
+    width: 300px;
   }
   .charge-box {
     display: flex;
@@ -274,6 +274,39 @@ page {
     align-items: center;
     font-size: 28px;
     color: rgba(0, 0, 0, 0.5);
+    image {
+      width: 30px;
+      height: 30px;
+      margin-right: 16px;
+    }
+  }
+  .add-scene-mode {
+    background: #fff6e9;
+    border-radius: 8px;
+    height: 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #f8a940;
+    margin-top: 16px;
+    image {
+      width: 30px;
+      height: 30px;
+      margin-right: 16px;
+    }
+  }
+  .add-role {
+    background: #ffffff;
+    border-radius: 8px;
+    height: 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    color: #bbbbbb;
+    margin-top: 16px;
+    margin-bottom: 16px;
     image {
       width: 30px;
       height: 30px;
@@ -498,6 +531,240 @@ page {
       font-size: 30px;
       border-radius: 40px;
       padding: 14px 40px;
+    }
+  }
+  .set-scene {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px;
+    .set-scene-title {
+      font-size: 30px;
+      color: #333333;
+      margin-bottom: 16px;
+    }
+    .set-scene-box {
+      background: #fdf6e8;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .scene-theme {
+      display: flex;
+      justify-content: center;
+      margin: 16px 0px;
+      position: relative;
+    }
+    .theme-name {
+      font-size: 30px;
+      margin-right: 16px;
+    }
+    .theme-input {
+      border-bottom: 1px solid #d4d0cb;
+      color: #333333;
+      font-size: 26px;
+    }
+    .theme-delete {
+      position: absolute;
+      right: 0;
+      font-size: 26px;
+      color: #6493d7;
+    }
+    .scene-item {
+      border: 2px solid #f4cb9b;
+      border-radius: 8px;
+      padding: 0px 16px;
+    }
+    .scene-tips {
+      color: #cc9a4b;
+      font-size: 22px;
+      margin: 16px 0px;
+    }
+    .set-scene-ct {
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .role-delete {
+      font-size: 28px;
+      color: #6493d7;
+      text-align: right;
+    }
+    .role-name {
+      text-align: right;
+      width: 420px;
+    }
+    .object {
+      display: flex;
+    }
+    .object-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 16px;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 6px;
+      }
+      text {
+        font-size: 24px;
+        color: #808080;
+      }
+    }
+  }
+  .invite {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    .invite-members {
+      width: 600px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 16px 30px;
+    }
+    .invite-title {
+      font-size: 30px;
+      font-weight: bold;
+      text-align: center;
+      padding: 16px 0px;
+      position: relative;
+    }
+    .invite-close {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      background: url("https://yuepai-oss.qubeitech.com/static/images/common/icon_sizer_close.png")
+        no-repeat;
+      background-size: 40px;
+      width: 40px;
+      height: 40px;
+    }
+    .invite-item {
+      display: flex;
+      margin-bottom: 16px;
+    }
+    .query-box {
+      margin-left: 16px;
+      width: 420px;
+      position: relative;
+    }
+    .query-input {
+      border: 1px solid #efefef;
+      border-radius: 2px;
+      height: 60px;
+      line-height: 60px;
+      width: 100%;
+      padding: 0px 16px;
+    }
+    .check_box {
+      margin-left: 16px;
+    }
+    .group {
+      position: absolute;
+      z-index: 9;
+      background: #ffffff;
+      left: 0px;
+      right: 0px;
+      top: 62px;
+      width: 454px;
+      box-shadow: 0 -1rpx 8rpx 0 rgba(0, 0, 0, 0.02);
+    }
+    .group-item {
+      display: flex;
+      position: relative;
+      padding: 8px 16px;
+      border-bottom: 1px solid #efefef;
+    }
+    .group-item-left {
+      display: flex;
+      align-items: center;
+    }
+    .group-item-left image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 16px;
+    }
+    .group-item-center {
+      font-size: 26px;
+      color: #333333;
+    }
+    .identity {
+      color: rgba(0, 0, 0, 0.5);
+      margin-left: 16px;
+    }
+    .group-item-right {
+      display: flex;
+      height: 100%;
+      align-items: center;
+      position: absolute;
+      right: 16px;
+      top: 0;
+    }
+    .group-item-right image {
+      width: 30px;
+      height: 30px;
+    }
+    .invited-user-item {
+      display: flex;
+      align-items: center;
+      font-size: 28px;
+      color: #333333;
+      padding: 0px 16px;
+      justify-content: space-between;
+      image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 16px;
+      }
+      .invited-uuid {
+        width: 100px;
+      }
+      .invited-name {
+        width: 180px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .invited-box {
+      border: 1rpx solid #efefef;
+      padding: 16px 0px;
+      position: relative;
+    }
+    .invited-num {
+      border-left: 6px solid #fe3e3f;
+      border-radius: 3px;
+      padding-left: 16px;
+      color: #333333;
+      font-weight: bold;
+      margin-bottom: 16px;
+      margin-top: 16px;
+    }
+    .invited-delete {
+      font-size: 26px;
+    }
+    .confirm-invitation {
+      width: 300px;
+      height: 60px;
+      line-height: 60px;
+      color: #ffffff;
+      background: #fe3e3f;
+      border-radius: 30px;
+      text-align: center;
+      margin: 16px auto;
     }
   }
 }

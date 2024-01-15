@@ -27,33 +27,37 @@
           <view class="activity-location"> {{ item.address }} </view>
           <view class="activity-time">
             <text class="activity-txt">{{ item.begin_datetime }}</text>
-            <text class="activity-price">
-              <text class="price-blod">{{ item.payment }}</text>
-              <text v-if="item.payment !== '免费' && item.payment !== '置换'"
-                >元</text
-              >
+            <text
+              class="activity-price"
+              v-if="item.original_amount.show == 'text'"
+            >
+              <text class="price-blod">{{ item.original_amount.label }}</text>
+            </text>
+            <text class="activity-price" v-else>
+              <text class="price-blod">{{ item.original_amount.amount }}</text>
+              <text>元</text>
             </text>
           </view>
         </view>
       </view>
       <view class="activity-bottom">
         <view class="activity-info">
-          <image :src="item.publisher.avatar"></image>
-          <text class="activity-name">{{ item.publisher.nickname }}</text>
+          <image :src="item.partner_avatar"></image>
+          <text class="activity-name">{{ item.partner_name }}</text>
         </view>
         <view class="schedule">
           <view
             class="schedule-bg"
             :style="{
               width:
-                (item.enter_current_number / item.enter_total_number) * 100 +
+                (item.apply_current_number / item.apply_total_number) * 100 +
                 '%',
             }"
           ></view>
-          <text class="schedule-txt">{{ item.enter_status }}</text>
+          <text class="schedule-txt">{{ item.apply_schedule_status }}</text>
           <text class="schedule-num"
-            >{{ item.enter_current_number }} /
-            {{ item.enter_total_number }}</text
+            >{{ item.apply_current_number }} /
+            {{ item.apply_total_number }}</text
           >
         </view>
         <view class="application-time"> {{ item.enter_deadline_time }} </view>
@@ -122,7 +126,7 @@ export default {
             return false;
           }
           let data = res.data.data.items;
-          this.list = this.yuepaiList.concat(data);
+          this.list = this.list.concat(data);
           this.loading = true;
         }
       } catch (error) {}

@@ -201,54 +201,6 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -289,7 +241,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
       }
 
       if (active == 2) {
-        this.coin = 150;
+        this.coin = 100;
       }
     },
     memberOpen: function memberOpen(params) {
@@ -301,7 +253,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "kb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberOpen */ "lb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -348,7 +300,7 @@ component.options.__file = "src/packageVip/pages/vip/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "jb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* memberInfo */ "kb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -401,11 +353,8 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "view",
-    { staticClass: "vip-center" },
-    [
-      _c("view", { staticClass: "vip-bg" }),
+  return _c("view", { staticClass: "vip-center" }, [
+    _c("view", { staticClass: "vip-bg" }, [
       _c("view", { staticClass: "vip-card" }, [
         _c("view", { staticClass: "card-left" }, [
           _c("view", { staticClass: "card-left-info" }, [
@@ -416,7 +365,7 @@ var render = function () {
               ]),
               !_vm.ismember
                 ? _c("view", { staticClass: "vip-tips" }, [
-                    _vm._v("会员尚未开通"),
+                    _vm._v("暂未开通·会员尊享特权服务"),
                   ])
                 : _c("view", { staticClass: "vip-tips" }, [
                     _vm._v(_vm._s(_vm.endtime) + "到期"),
@@ -424,10 +373,7 @@ var render = function () {
             ]),
           ]),
           _c("view", { staticClass: "card-left-vipinfo" }, [
-            _c("view", [_vm._v("¥49/月起")]),
-            !_vm.ismember
-              ? _c("view", [_vm._v("开通会员，再得金豆")])
-              : _vm._e(),
+            _c("view", [_vm._v("尊享特权，每月25元")]),
           ]),
         ]),
         _c("view", { staticClass: "card-rt" }, [
@@ -436,293 +382,252 @@ var render = function () {
               src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/vip-card.png",
             },
           }),
-          _c("text", [_vm._v("会员权限设置")]),
         ]),
       ]),
-      _c("view", { staticClass: "vip-icon-list" }, [
-        _c("view", { staticClass: "vip-icon" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/user.png",
-            },
-          }),
-          _c("text", [_vm._v("查看访客")]),
-        ]),
-        _c("view", { staticClass: "vip-icon" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/qiandao.png",
-            },
-          }),
-          _c("text", [_vm._v("无限签到")]),
-        ]),
-        _c("view", { staticClass: "vip-icon" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/baojing.png",
-            },
-          }),
-          _c("text", [_vm._v("免担保金")]),
-        ]),
-        _c("view", { staticClass: "vip-icon" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/tuijian.png",
-            },
-          }),
-          _c("text", [_vm._v("优先推荐")]),
-        ]),
-        _c("view", { staticClass: "vip-icon" }, [
-          _c("image", {
-            attrs: {
-              src: "https://yuepai-oss.qubeitech.com/static/images/user/vip/fuli.png",
-            },
-          }),
-          _c("text", [_vm._v("会员福利")]),
-        ]),
-      ]),
-      _c("view", { staticClass: "vip-package" }, [
-        _c("view", { staticClass: "vip-title" }, [_vm._v("/ 会员套餐推荐 /")]),
-        _c("view", { staticClass: "package-list" }, [
-          _c(
-            "view",
-            {
-              staticClass: "package-box",
-              class: _vm.active == 0 ? "active" : "",
-              on: {
-                tap: function ($event) {
-                  return _vm.packageClick(0, 49)
-                },
+    ]),
+    _c("view", { staticClass: "vip-package" }, [
+      _c("view", { staticClass: "package-list" }, [
+        _c(
+          "view",
+          {
+            staticClass: "package-box",
+            class: _vm.active == 0 ? "active" : "",
+            on: {
+              tap: function ($event) {
+                return _vm.packageClick(0, 49)
               },
             },
-            [
-              _c("text", { staticClass: "month" }, [_vm._v("1个月")]),
-              _c("text", { staticClass: "amount" }, [
-                _c("text", { staticClass: "company" }, [_vm._v("¥")]),
-                _vm._v("49"),
-              ]),
-              _c("text", { staticClass: "original-price" }, [
-                _vm._v("原价 ¥99"),
-              ]),
-              _c("text", { staticClass: "price-red" }, [_vm._v("¥49/月")]),
-              _c("text", { staticClass: "tag" }, [_vm._v("限时")]),
-            ]
-          ),
-          _c(
-            "view",
-            {
-              staticClass: "package-box",
-              class: _vm.active == 1 ? "active" : "",
-              on: {
-                tap: function ($event) {
-                  return _vm.packageClick(1, 119)
-                },
+          },
+          [
+            _c("text", { staticClass: "month" }, [_vm._v("1个月")]),
+            _c("text", { staticClass: "amount" }, [
+              _c("text", { staticClass: "company" }, [_vm._v("¥")]),
+              _vm._v("49"),
+            ]),
+            _c("text", { staticClass: "original-price" }, [_vm._v("原价 ¥99")]),
+            _c("text", { staticClass: "price-red" }, [_vm._v("¥49/月")]),
+            _c("text", { staticClass: "tag" }, [_vm._v("限时")]),
+          ]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: "package-box",
+            class: _vm.active == 1 ? "active" : "",
+            on: {
+              tap: function ($event) {
+                return _vm.packageClick(1, 119)
               },
             },
-            [
-              _c("text", { staticClass: "month" }, [_vm._v("3个月")]),
-              _c("text", { staticClass: "amount" }, [
-                _c("text", { staticClass: "company" }, [_vm._v("¥")]),
-                _vm._v("119"),
-              ]),
-              _c("text", { staticClass: "original-price" }, [
-                _vm._v("原价 ¥299"),
-              ]),
-              _c("text", { staticClass: "price-red" }, [_vm._v("¥39/月")]),
-              _c("text", { staticClass: "tag" }, [_vm._v("送30金币")]),
-            ]
-          ),
-          _c(
-            "view",
-            {
-              staticClass: "package-box",
-              class: _vm.active == 2 ? "active" : "",
-              on: {
-                tap: function ($event) {
-                  return _vm.packageClick(2, 299)
-                },
+          },
+          [
+            _c("text", { staticClass: "month" }, [_vm._v("3个月")]),
+            _c("text", { staticClass: "amount" }, [
+              _c("text", { staticClass: "company" }, [_vm._v("¥")]),
+              _vm._v("119"),
+            ]),
+            _c("text", { staticClass: "original-price" }, [
+              _vm._v("原价 ¥299"),
+            ]),
+            _c("text", { staticClass: "price-red" }, [_vm._v("¥39/月")]),
+            _c("text", { staticClass: "tag" }, [_vm._v("送30金币")]),
+          ]
+        ),
+        _c(
+          "view",
+          {
+            staticClass: "package-box",
+            class: _vm.active == 2 ? "active" : "",
+            on: {
+              tap: function ($event) {
+                return _vm.packageClick(2, 299)
               },
             },
-            [
-              _c("text", { staticClass: "month" }, [_vm._v("1年")]),
-              _c("text", { staticClass: "amount" }, [
-                _c("text", { staticClass: "company" }, [_vm._v("¥")]),
-                _vm._v("299"),
-              ]),
-              _c("text", { staticClass: "original-price" }, [
-                _vm._v("原价 ¥599"),
-              ]),
-              _c("text", { staticClass: "price-red" }, [_vm._v("¥25/月")]),
-              _c("text", { staticClass: "tag" }, [_vm._v("送150金币")]),
-            ]
-          ),
-        ]),
+          },
+          [
+            _c("text", { staticClass: "month" }, [_vm._v("1年")]),
+            _c("text", { staticClass: "amount" }, [
+              _c("text", { staticClass: "company" }, [_vm._v("¥")]),
+              _vm._v("299"),
+            ]),
+            _c("text", { staticClass: "original-price" }, [
+              _vm._v("原价 ¥599"),
+            ]),
+            _c("text", { staticClass: "price-red" }, [_vm._v("¥25/月")]),
+            _c("text", { staticClass: "tag" }, [_vm._v("送100金币")]),
+          ]
+        ),
       ]),
-      _c("view", { staticClass: "vip-privilege" }, [
-        _c("view", { staticClass: "vip-title" }, [_vm._v("/ 会员尊享特权 /")]),
-        _c("view", { staticClass: "privilege-list" }, [
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service blod" }, [_vm._v("特权服务")]),
-            _c("view", { staticClass: "vip blod" }, [_vm._v("会员")]),
-            _c("view", { staticClass: "novip blod" }, [_vm._v("非会员")]),
+    ]),
+    _c("view", { staticClass: "vip-privilege" }, [
+      _c("view", { staticClass: "privilege-list" }, [
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service blod" }, [_vm._v("专属特权")]),
+          _c("view", { staticClass: "novip blod" }, [_vm._v("普通用户")]),
+          _c("view", { staticClass: "vip blod" }, [_vm._v("会员用户")]),
+        ]),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("专享在线私信")]),
+          _c("view", { staticClass: "novip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/novip-icon.png */ "./src/assets/images/novip-icon.png") },
+            }),
           ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("查看访客记录")]),
-            _c("view", { staticClass: "vip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "novip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
-                },
-              }),
-            ]),
-          ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("免信用担保金")]),
-            _c("view", { staticClass: "vip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "novip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
-                },
-              }),
-            ]),
-          ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("发起沟通特权")]),
-            _c("view", { staticClass: "vip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "novip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
-                },
-              }),
-            ]),
-          ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("优先推荐特权")]),
-            _c("view", { staticClass: "vip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/sucess.png",
-                },
-              }),
-            ]),
-            _c("view", { staticClass: "novip" }, [
-              _c("image", {
-                attrs: {
-                  src: "https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png",
-                },
-              }),
-            ]),
-          ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("签到次数上限")]),
-            _c("view", { staticClass: "vip" }, [_vm._v("无上限")]),
-            _c("view", { staticClass: "novip" }, [_vm._v("有上线")]),
-          ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("约拍报名消耗")]),
-            _c("view", { staticClass: "vip" }, [_vm._v("3金币")]),
-            _c("view", { staticClass: "novip" }, [_vm._v("5金币")]),
-          ]),
-          _c("view", { staticClass: "privilege-box" }, [
-            _c("view", { staticClass: "service" }, [_vm._v("通告报名消耗")]),
-            _c("view", { staticClass: "vip" }, [_vm._v("3金币")]),
-            _c("view", { staticClass: "novip" }, [_vm._v("5金币")]),
+          _c("view", { staticClass: "vip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/vip-icon.png */ "./src/assets/images/vip-icon.png") },
+            }),
           ]),
         ]),
-      ]),
-      _c(
-        "cover-view",
-        {
-          staticClass: "subbtn_bottom_block",
-          class: _vm.isIphoneX ? "fix-iphonex-button" : "",
-        },
-        [
-          _c("cover-view", { staticClass: "subbtn_bottom" }, [
-            _vm.active == 0
-              ? _c("button", { key: 0, on: { tap: _vm.submit } }, [
-                  _vm._v(
-                    " " +
-                      _vm._s(
-                        "立即以" +
-                          _vm.price +
-                          "元" +
-                          (_vm.ismember ? "续费" : "开通")
-                      ) +
-                      " "
-                  ),
-                ])
-              : _vm._e(),
-            _vm.active == 1
-              ? _c("button", { key: 1, on: { tap: _vm.submit } }, [
-                  _vm._v(
-                    " " +
-                      _vm._s(
-                        "立即以" +
-                          _vm.price +
-                          "元" +
-                          (_vm.ismember ? "续费" : "开通")
-                      ) +
-                      " "
-                  ),
-                ])
-              : _vm._e(),
-            _vm.active == 2
-              ? _c("button", { key: 2, on: { tap: _vm.submit } }, [
-                  _vm._v(
-                    " " +
-                      _vm._s(
-                        "立即以" +
-                          _vm.price +
-                          "元" +
-                          (_vm.ismember ? "续费" : "开通")
-                      ) +
-                      " "
-                  ),
-                ])
-              : _vm._e(),
-            _vm.coin > 0
-              ? _c("text", { staticClass: "tagcoin" }, [
-                  _vm._v(
-                    _vm._s(_vm.ismember ? "续费" : "开通") +
-                      "可得" +
-                      _vm._s(_vm.coin) +
-                      "金币"
-                  ),
-                ])
-              : _vm._e(),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("专享急速快联")]),
+          _c("view", { staticClass: "novip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/novip-icon.png */ "./src/assets/images/novip-icon.png") },
+            }),
           ]),
-        ],
-        1
-      ),
-    ],
-    1
-  )
+          _c("view", { staticClass: "vip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/vip-icon.png */ "./src/assets/images/vip-icon.png") },
+            }),
+          ]),
+        ]),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("尊享身份标识")]),
+          _c("view", { staticClass: "novip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/novip-icon.png */ "./src/assets/images/novip-icon.png") },
+            }),
+          ]),
+          _c("view", { staticClass: "vip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/vip-icon.png */ "./src/assets/images/vip-icon.png") },
+            }),
+          ]),
+        ]),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("等级加速成长")]),
+          _c("view", { staticClass: "novip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/novip-icon.png */ "./src/assets/images/novip-icon.png") },
+            }),
+          ]),
+          _c("view", { staticClass: "vip" }, [
+            _c("image", {
+              attrs: { src: __webpack_require__(/*! ../../../assets/images/vip-icon.png */ "./src/assets/images/vip-icon.png") },
+            }),
+          ]),
+        ]),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("签到次数限制")]),
+          _c("view", { staticClass: "novip" }, [_vm._v("有上线")]),
+          _c("view", { staticClass: "vip" }, [_vm._v("无上限")]),
+        ]),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("约拍自动刷新")]),
+          _c("view", { staticClass: "novip" }, [_vm._v("5金币/次")]),
+          _c("view", { staticClass: "vip" }, [_vm._v("自动刷新/天")]),
+        ]),
+        _c("view", { staticClass: "privilege-box" }, [
+          _c("view", { staticClass: "service" }, [_vm._v("申请约拍报名")]),
+          _c("view", { staticClass: "novip" }, [_vm._v("5金币")]),
+          _c("view", { staticClass: "vip" }, [_vm._v("3金币")]),
+        ]),
+      ]),
+    ]),
+    _c(
+      "view",
+      {
+        staticClass: "subbtn_bottom_block",
+        class: _vm.isIphoneX ? "fix-iphonex-button" : "",
+      },
+      [
+        _c("view", { staticClass: "subbtn_bottom" }, [
+          _vm.active == 0
+            ? _c("button", { key: 0, on: { tap: _vm.submit } }, [
+                _vm._v(
+                  " " +
+                    _vm._s(
+                      "立即以" +
+                        _vm.price +
+                        "元" +
+                        (_vm.ismember ? "续费" : "开通")
+                    ) +
+                    " "
+                ),
+              ])
+            : _vm._e(),
+          _vm.active == 1
+            ? _c("button", { key: 1, on: { tap: _vm.submit } }, [
+                _vm._v(
+                  " " +
+                    _vm._s(
+                      "立即以" +
+                        _vm.price +
+                        "元" +
+                        (_vm.ismember ? "续费" : "开通")
+                    ) +
+                    " "
+                ),
+              ])
+            : _vm._e(),
+          _vm.active == 2
+            ? _c("button", { key: 2, on: { tap: _vm.submit } }, [
+                _vm._v(
+                  " " +
+                    _vm._s(
+                      "立即以" +
+                        _vm.price +
+                        "元" +
+                        (_vm.ismember ? "续费" : "开通")
+                    ) +
+                    " "
+                ),
+              ])
+            : _vm._e(),
+          _vm.coin > 0
+            ? _c("text", { staticClass: "tagcoin" }, [
+                _vm._v(
+                  _vm._s(_vm.ismember ? "续费" : "开通") +
+                    "可得" +
+                    _vm._s(_vm.coin) +
+                    "金币"
+                ),
+              ])
+            : _vm._e(),
+        ]),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./src/assets/images/novip-icon.png":
+/*!******************************************!*\
+  !*** ./src/assets/images/novip-icon.png ***!
+  \******************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/novip-icon.png";
+
+/***/ }),
+
+/***/ "./src/assets/images/vip-icon.png":
+/*!****************************************!*\
+  !*** ./src/assets/images/vip-icon.png ***!
+  \****************************************/
+/*! no static exports found */
+/*! all exports used */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/images/vip-icon.png";
 
 /***/ }),
 

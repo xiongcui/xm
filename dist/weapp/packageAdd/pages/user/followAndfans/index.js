@@ -286,7 +286,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followerList */ "I"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followerList */ "J"])(params);
 
               case 3:
                 res = _context.sent;
@@ -328,7 +328,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followedList */ "H"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* followedList */ "I"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -370,7 +370,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "yc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userFollow */ "Gc"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -404,7 +404,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Lc"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* userUnfollow */ "Uc"])(params);
 
               case 3:
                 res = _context4.sent;

@@ -1,62 +1,31 @@
 <template>
   <view class="vip-center">
-    <view class="vip-bg"> </view>
-    <view class="vip-card">
-      <view class="card-left">
-        <view class="card-left-info">
-          <image class="headimg" :src="avatar"> </image>
-          <view class="info-box">
-            <view class="name">{{ nickname }}</view>
-            <view class="vip-tips" v-if="!ismember">会员尚未开通</view>
-            <view class="vip-tips" v-else>{{ endtime }}到期</view>
+    <view class="vip-bg">
+      <view class="vip-card">
+        <view class="card-left">
+          <view class="card-left-info">
+            <image class="headimg" :src="avatar"> </image>
+            <view class="info-box">
+              <view class="name">{{ nickname }}</view>
+              <view class="vip-tips" v-if="!ismember"
+                >暂未开通·会员尊享特权服务</view
+              >
+              <view class="vip-tips" v-else>{{ endtime }}到期</view>
+            </view>
+          </view>
+          <view class="card-left-vipinfo">
+            <view>尊享特权，每月25元</view>
+            <!-- <view v-if="!ismember">开通会员，再得金豆</view> -->
           </view>
         </view>
-        <view class="card-left-vipinfo">
-          <view>¥49/月起</view>
-          <view v-if="!ismember">开通会员，再得金豆</view>
+        <view class="card-rt">
+          <image
+            src="https://yuepai-oss.qubeitech.com/static/images/user/vip/vip-card.png"
+          ></image>
         </view>
-      </view>
-      <view class="card-rt">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/vip-card.png"
-        ></image>
-        <text>会员权限设置</text>
-      </view>
-    </view>
-    <view class="vip-icon-list">
-      <view class="vip-icon">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/user.png"
-        ></image>
-        <text>查看访客</text>
-      </view>
-      <view class="vip-icon">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/qiandao.png"
-        ></image>
-        <text>无限签到</text>
-      </view>
-      <view class="vip-icon">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/baojing.png"
-        ></image>
-        <text>免担保金</text>
-      </view>
-      <view class="vip-icon">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/tuijian.png"
-        ></image>
-        <text>优先推荐</text>
-      </view>
-      <view class="vip-icon">
-        <image
-          src="https://yuepai-oss.qubeitech.com/static/images/user/vip/fuli.png"
-        ></image>
-        <text>会员福利</text>
       </view>
     </view>
     <view class="vip-package">
-      <view class="vip-title">/ 会员套餐推荐 /</view>
       <view class="package-list">
         <view
           class="package-box"
@@ -89,92 +58,75 @@
           <text class="amount"> <text class="company">¥</text>299</text>
           <text class="original-price">原价 ¥599</text>
           <text class="price-red">¥25/月</text>
-          <text class="tag">送150金币</text>
+          <text class="tag">送100金币</text>
         </view>
       </view>
     </view>
     <view class="vip-privilege">
-      <view class="vip-title">/ 会员尊享特权 /</view>
       <view class="privilege-list">
         <view class="privilege-box">
-          <view class="service blod">特权服务</view>
-          <view class="vip blod">会员</view>
-          <view class="novip blod">非会员</view>
+          <view class="service blod">专属特权</view>
+          <view class="novip blod">普通用户</view>
+          <view class="vip blod">会员用户</view>
         </view>
         <view class="privilege-box">
-          <view class="service">查看访客记录</view>
-          <view class="vip">
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
-            ></image>
-          </view>
+          <view class="service">专享在线私信</view>
           <view class="novip"
-            ><image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
-            ></image
+            ><image src="../../../assets/images/novip-icon.png"></image
           ></view>
-        </view>
-        <view class="privilege-box">
-          <view class="service">免信用担保金</view>
           <view class="vip">
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
-            ></image>
+            <image src="../../../assets/images/vip-icon.png"></image>
           </view>
-          <view class="novip"
-            ><image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
-            ></image
-          ></view>
         </view>
         <view class="privilege-box">
-          <view class="service">发起沟通特权</view>
+          <view class="service">专享急速快联</view>
+          <view class="novip"
+            ><image src="../../../assets/images/novip-icon.png"></image
+          ></view>
           <view class="vip">
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
-            ></image>
+            <image src="../../../assets/images/vip-icon.png"></image>
           </view>
-          <view class="novip"
-            ><image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
-            ></image
-          ></view>
         </view>
         <view class="privilege-box">
-          <view class="service">优先推荐特权</view>
+          <view class="service">尊享身份标识</view>
+          <view class="novip"
+            ><image src="../../../assets/images/novip-icon.png"></image
+          ></view>
           <view class="vip">
-            <image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/sucess.png"
-            ></image>
+            <image src="../../../assets/images/vip-icon.png"></image>
           </view>
-          <view class="novip"
-            ><image
-              src="https://yuepai-oss.qubeitech.com/static/images/common/tip_fail.png"
-            ></image
-          ></view>
         </view>
         <view class="privilege-box">
-          <view class="service">签到次数上限</view>
-          <view class="vip">无上限</view>
+          <view class="service">等级加速成长</view>
+          <view class="novip"
+            ><image src="../../../assets/images/novip-icon.png"></image
+          ></view>
+          <view class="vip">
+            <image src="../../../assets/images/vip-icon.png"></image>
+          </view>
+        </view>
+        <view class="privilege-box">
+          <view class="service">签到次数限制</view>
           <view class="novip">有上线</view>
+          <view class="vip">无上限</view>
         </view>
         <view class="privilege-box">
-          <view class="service">约拍报名消耗</view>
-          <view class="vip">3金币</view>
-          <view class="novip">5金币</view>
+          <view class="service">约拍自动刷新</view>
+          <view class="novip">5金币/次</view>
+          <view class="vip">自动刷新/天</view>
         </view>
         <view class="privilege-box">
-          <view class="service">通告报名消耗</view>
-          <view class="vip">3金币</view>
+          <view class="service">申请约拍报名</view>
           <view class="novip">5金币</view>
+          <view class="vip">3金币</view>
         </view>
       </view>
     </view>
-    <cover-view
+    <view
       class="subbtn_bottom_block"
       :class="isIphoneX ? 'fix-iphonex-button' : ''"
     >
-      <cover-view class="subbtn_bottom">
+      <view class="subbtn_bottom">
         <button @tap="submit" v-if="active == 0" :key="0">
           {{ `立即以${price}元${ismember ? "续费" : "开通"}` }}
         </button>
@@ -187,8 +139,8 @@
         <text class="tagcoin" v-if="coin > 0"
           >{{ ismember ? "续费" : "开通" }}可得{{ coin }}金币</text
         >
-      </cover-view>
-    </cover-view>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -230,7 +182,7 @@ export default {
         this.coin = 30;
       }
       if (active == 2) {
-        this.coin = 150;
+        this.coin = 100;
       }
     },
     async memberOpen(params) {

@@ -130,3 +130,63 @@
   height: 32rpx;
   margin-right: 6rpx;
 }
+.credit-guarantee .margin-modal {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 99999;
+}
+.credit-guarantee .margin-modal .margin-ct {
+  border-radius: 8rpx;
+  width: 500rpx;
+  padding: 30rpx 60rpx;
+  background: #ffffff;
+}
+.credit-guarantee .margin-modal .margin-ct .margin-title {
+  text-align: center;
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+}
+.credit-guarantee .margin-modal .margin-ct .margin-tip {
+  color: #fa8b15;
+  font-size: 30rpx;
+  margin: 30rpx 0 30rpx 0;
+}
+.credit-guarantee .margin-modal .margin-ct .margin-p {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 50rpx;
+}
+.credit-guarantee .margin-modal .margin-ct .margin-btns {
+  margin-top: 30rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.credit-guarantee .margin-modal .margin-ct .margin-btns text {
+  padding: 10rpx 30rpx;
+  text-align: center;
+  font-size: 26rpx;
+  border: 2rpx solid #c4c4c4;
+  border-radius: 30rpx;
+  color: #333333;
+}

@@ -18,10 +18,15 @@
         <view class="tips-btn" @tap="goactivity">返回活动列表</view>
       </view>
     </view>
-    <!-- <view class="application-fixed">
-      <view class="application-fixed-left"> 稍后组队 </view>
-      <view class="application-fixed-rt" @tap="gohome"> 完成组队 </view>
-    </view> -->
+    <view class="add-weChat" v-if="wechat_qrc">
+      <view class="add-weChat-left">
+        <view class="add-weChat-title">长按识别二维码参加活动</view>
+        <view class="add-weChat-btn">报名成功后记得添加微信哦</view>
+      </view>
+      <view class="add-weChat-rt">
+        <image :src="wechat_qrc" :show-menu-by-longpress="true"></image>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -34,6 +39,7 @@ export default {
     return {
       result: "报名成功",
       desc: "你已经进入候选区，还未完成组队，开始组队区吧",
+      wechat_qrc: "",
     };
   },
   methods: {
@@ -57,6 +63,9 @@ export default {
     }
     if (options.desc) {
       this.desc = options.desc;
+    }
+    if (options.wechat_qrc) {
+      this.wechat_qrc = options.wechat_qrc;
     }
   },
 };

@@ -41,8 +41,17 @@
         <view class="activity-bt">
           <view class="more" @tap.stop="more(item.apply_oid)">更多</view>
           <view class="activity-btns">
+            <text
+              class="btn"
+              @tap.stop="goSunbathing(item.apply_oid)"
+              v-if="item.attend_status == '已结束'"
+              >评价晒单</text
+            >
             <text class="btn" @tap.stop="membersClick(item.sport_oid)"
               >组员</text
+            >
+            <text class="btn" @tap.stop="addOrganizer(item.partner_wechat_qrc)"
+              >添加组织者</text
             >
           </view>
         </view>
@@ -60,137 +69,101 @@
     <view class="bottom-modal" v-if="visible" @tap="close">
       <view class="bottom-content">
         <view class="bottom-title"> 组员信息 </view>
-        <view class="session">
-          <block v-for="(item, index) in sessionList" :key="index">
-            <view class="session-title" v-if="item.enter_display == 'folded'">
-              <view class="session-lable">
-                <text class="session-txt"> {{ item.scene_name }}</text>
-                <view class="session-line"></view>
-              </view>
-            </view>
+        <view class="application-list">
+          <view
+            class="application-list-item"
+            v-for="(item, index) in memberList"
+            :key="index"
+          >
+            <view class="application-title"> {{ item.scene_name }} </view>
             <view
-              class="distinguish"
-              v-for="(sceneItem, sceneIndex) in item.scene_data"
+              class="application-box"
+              v-for="(sceneItem, sceneIndex) in item.scene_items"
               :key="sceneIndex"
             >
-              <view class="candidate-name" v-if="sceneItem.teams_name">{{
-                sceneItem.teams_name
-              }}</view>
-              <view class="group-box" v-if="sceneItem.teams_list.listed">
-                <view class="group-title">
-                  <text class="group-blod">{{
-                    sceneItem.teams_list.listed.info.title
-                  }}</text>
-                  <text class="group-num">{{
-                    sceneItem.teams_list.listed.info.desc
-                  }}</text>
+              <view class="application-role" v-if="sceneItem.is_show_roles_name"
+                ><text>{{ sceneItem.roles_name }}</text></view
+              >
+              <view class="application-tip">{{ sceneItem.apply_desc }}</view>
+              <view
+                class="application-user"
+                v-for="(user, userIndex) in sceneItem.apply_items.listed"
+                :key="userIndex"
+              >
+                <view class="application-left">
+                  <image :src="user.apply_avatar"></image>
+                  <text>{{ user.apply_nickname }}</text>
                 </view>
-                <block v-if="sceneItem.teams_list.listed.show">
-                  <block
-                    v-for="(sceneDetailItem, sceneDetailIndex) in sceneItem
-                      .teams_list.listed.details"
-                    :key="sceneDetailIndex"
-                  >
-                    <view
-                      class="group"
-                      v-if="sceneDetailItem.member_list.length"
-                    >
-                      <view
-                        class="group-top"
-                        v-if="
-                          item.enter_display == 'folded' &&
-                          sceneDetailItem.group_name
-                        "
-                      >
-                        <view class="group-left">
-                          <image
-                            src="https://yuepai-oss.qubeitech.com/static/images/group.png"
-                          ></image>
-                          {{ sceneDetailItem.group_name }}
-                        </view>
-                      </view>
-                      <view
-                        class="group-list"
-                        v-for="(
-                          memberItem, memberIndex
-                        ) in sceneDetailItem.member_list"
-                        :key="memberIndex"
-                      >
-                        <image :src="memberItem.apply_avatar"></image>
-                        <view class="group-identity-list">{{
-                          memberItem.apply_career
-                        }}</view>
-                        <view
-                          class="group-home"
-                          @tap="goZhuye(memberItem.apply_uuid)"
-                          >看主页</view
-                        >
-                      </view>
-                    </view>
+                <view class="application-ct">
+                  <block v-if="user.sex !== null">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/boy.png"
+                      v-if="user.sex == 1"
+                    ></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/girl.png"
+                      v-if="user.sex == 0"
+                    ></image>
                   </block>
-                </block>
-                <view class="none-data" v-else> 暂无报名信息 </view>
+                  <text>{{ user.apply_career }}</text>
+                </view>
+                <view class="application-rt" @tap="goZhuye(user.apply_uuid)"
+                  >看主页</view
+                >
               </view>
-              <view class="group-box" v-if="sceneItem.teams_list.waiting">
-                <view class="group-title">
-                  <text class="group-blod">{{
-                    sceneItem.teams_list.waiting.info.title
-                  }}</text>
-                  <text class="group-num">{{
-                    sceneItem.teams_list.waiting.info.desc
-                  }}</text>
+              <view
+                class="gradeing"
+                v-if="sceneItem.apply_items.waiting.length"
+              >
+                <text>等位中</text>
+              </view>
+              <view
+                class="application-user"
+                v-for="(waituser, waituserIndex) in sceneItem.apply_items
+                  .waiting"
+                :key="waituserIndex"
+              >
+                <view class="application-left">
+                  <image :src="waituser.apply_avatar"></image>
+                  <text>{{ waituser.apply_nickname }}</text>
                 </view>
-                <block v-if="sceneItem.teams_list.waiting.show">
-                  <block
-                    v-for="(sceneDetailItem, sceneDetailIndex) in sceneItem
-                      .teams_list.waiting.details"
-                    :key="sceneDetailIndex"
-                  >
-                    <view
-                      class="group"
-                      v-if="sceneDetailItem.member_list.length"
-                    >
-                      <view
-                        class="group-top"
-                        v-if="
-                          item.enter_display == 'folded' &&
-                          sceneDetailItem.group_name
-                        "
-                      >
-                        <view class="group-left">
-                          <image
-                            src="https://yuepai-oss.qubeitech.com/static/images/group.png"
-                          ></image>
-                          {{ sceneDetailItem.group_name }}
-                        </view>
-                      </view>
-                      <view
-                        class="group-list"
-                        v-for="(
-                          memberItem, memberIndex
-                        ) in sceneDetailItem.member_list"
-                        :key="memberIndex"
-                      >
-                        <image :src="memberItem.apply_avatar"></image>
-                        <view class="group-identity-list">{{
-                          memberItem.apply_career
-                        }}</view>
-                        <view
-                          class="group-home"
-                          @tap="goZhuye(memberItem.apply_uuid)"
-                          >看主页</view
-                        >
-                      </view>
-                    </view>
+                <view class="application-ct">
+                  <block v-if="waituser.sex !== null">
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/boy.png"
+                      v-if="waituser.sex == 1"
+                    ></image>
+                    <image
+                      src="https://yuepai-oss.qubeitech.com/static/images/girl.png"
+                      v-if="waituser.sex == 0"
+                    ></image>
                   </block>
-                </block>
-                <view class="none-data" v-else> 暂无报名信息 </view>
+                  <text>{{ waituser.apply_career }}</text>
+                </view>
+                <view class="application-rt" @tap="goZhuye(waituser.apply_uuid)"
+                  >看主页</view
+                >
               </view>
             </view>
-          </block>
+          </view>
         </view>
       </view>
     </view>
+    <!--添加组织者-->
+    <view class="bottom-modal" v-if="weChatVisible" @tap="weChatClose">
+      <view class="weChat-content">
+        <view class="weChat-title"> 添加活动组织者微信 </view>
+        <view class="weChat-box">
+          <image
+            :show-menu-by-longpress="true"
+            class="weChat-img"
+            mode="widthFix"
+            :src="qrcode"
+          ></image>
+        </view>
+      </view>
+    </view>
+    <!--添加组织者-->
   </view>
 </template>
 
@@ -208,14 +181,20 @@ export default {
   data() {
     return {
       visible: false,
+      weChatVisible: false,
       pageNum: 1,
       pageSize: 10,
       list: [],
       loading: true,
       sessionList: [],
+      memberList: [],
+      qrcode: "",
     };
   },
   methods: {
+    goSunbathing(oid) {
+      openPage("/packageActivity/pages/sunbathing/index?oid=" + oid);
+    },
     goZhuye(uuid) {
       if (!clickThrottle()) return;
       openPage("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
@@ -223,6 +202,9 @@ export default {
     goDetail(uuid) {
       if (!clickThrottle()) return;
       openPage("/packageActivity/pages/myActivityDetail/index?uuid=" + uuid);
+    },
+    weChatClose() {
+      this.weChatVisible = false;
     },
     close() {
       this.visible = false;
@@ -284,6 +266,10 @@ export default {
         sport_oid: oid,
       });
     },
+    addOrganizer(src) {
+      this.qrcode = src;
+      this.weChatVisible = true;
+    },
     // 加载更多
     onMore() {
       //在当前页面显示导航条加载动画
@@ -309,7 +295,7 @@ export default {
       try {
         let res = await applyMember(params);
         this.visible = true;
-        this.sessionList = res.data.data;
+        this.memberList = res.data.data;
       } catch (error) {}
     },
     async myActivityEvent(params) {

@@ -1,0 +1,29 @@
+page {
+  background-color: #f4f4f4;
+}
+.share-show {
+  padding: 16px;
+  .share-show-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .share-show-item {
+      margin-bottom: 16px;
+      image {
+        width: 350px;
+        height: 350px;
+        border-radius: 8px;
+      }
+      .share-show-txt {
+        font-size: 28px;
+        color: #333333;
+        font-weight: bold;
+        margin-top: 6px;
+        width: 350px;
+        white-space: nowrap; //不支持换行
+        overflow: hidden; //隐藏多出部分文字
+        text-overflow: ellipsis; //用省略号代替多出部分文字
+      }
+    }
+  }
+}

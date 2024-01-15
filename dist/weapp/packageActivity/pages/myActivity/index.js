@@ -225,33 +225,6 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -261,14 +234,20 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
   data: function data() {
     return {
       visible: false,
+      weChatVisible: false,
       pageNum: 1,
       pageSize: 10,
       list: [],
       loading: true,
-      sessionList: []
+      sessionList: [],
+      memberList: [],
+      qrcode: ""
     };
   },
   methods: {
+    goSunbathing: function goSunbathing(oid) {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/sunbathing/index?oid=" + oid);
+    },
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
@@ -276,6 +255,9 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
     goDetail: function goDetail(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/myActivityDetail/index?uuid=" + uuid);
+    },
+    weChatClose: function weChatClose() {
+      this.weChatVisible = false;
     },
     close: function close() {
       this.visible = false;
@@ -339,6 +321,10 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
         sport_oid: oid
       });
     },
+    addOrganizer: function addOrganizer(src) {
+      this.qrcode = src;
+      this.weChatVisible = true;
+    },
     // 加载更多
     onMore: function onMore() {
       //在当前页面显示导航条加载动画
@@ -373,7 +359,7 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
               case 3:
                 res = _context.sent;
                 _this2.visible = true;
-                _this2.sessionList = res.data.data;
+                _this2.memberList = res.data.data;
                 _context.next = 10;
                 break;
 
@@ -400,7 +386,7 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityEvent */ "pb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityEvent */ "qb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -442,7 +428,7 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityList */ "qb"])(params);
+                return Object(_api_index_js__WEBPACK_IMPORTED_MODULE_3__[/* myActivityList */ "rb"])(params);
 
               case 3:
                 res = _context3.sent;
@@ -617,6 +603,21 @@ var render = function () {
                       [_vm._v("更多")]
                     ),
                     _c("view", { staticClass: "activity-btns" }, [
+                      item.attend_status == "已结束"
+                        ? _c(
+                            "text",
+                            {
+                              staticClass: "btn",
+                              on: {
+                                tap: function ($event) {
+                                  $event.stopPropagation()
+                                  return _vm.goSunbathing(item.apply_oid)
+                                },
+                              },
+                            },
+                            [_vm._v("评价晒单")]
+                          )
+                        : _vm._e(),
                       _c(
                         "text",
                         {
@@ -629,6 +630,19 @@ var render = function () {
                           },
                         },
                         [_vm._v("组员")]
+                      ),
+                      _c(
+                        "text",
+                        {
+                          staticClass: "btn",
+                          on: {
+                            tap: function ($event) {
+                              $event.stopPropagation()
+                              return _vm.addOrganizer(item.partner_wechat_qrc)
+                            },
+                          },
+                        },
+                        [_vm._v("添加组织者")]
                       ),
                     ]),
                   ]),
@@ -655,370 +669,219 @@ var render = function () {
               ]),
               _c(
                 "view",
-                { staticClass: "session" },
-                _vm._l(_vm.sessionList, function (item, index) {
+                { staticClass: "application-list" },
+                _vm._l(_vm.memberList, function (item, index) {
                   return _c(
-                    "block",
-                    { key: index },
+                    "view",
+                    { key: index, staticClass: "application-list-item" },
                     [
-                      item.enter_display == "folded"
-                        ? _c("view", { staticClass: "session-title" }, [
-                            _c("view", { staticClass: "session-lable" }, [
-                              _c("text", { staticClass: "session-txt" }, [
-                                _vm._v(" " + _vm._s(item.scene_name)),
+                      _c("view", { staticClass: "application-title" }, [
+                        _vm._v(" " + _vm._s(item.scene_name) + " "),
+                      ]),
+                      _vm._l(
+                        item.scene_items,
+                        function (sceneItem, sceneIndex) {
+                          return _c(
+                            "view",
+                            { key: sceneIndex, staticClass: "application-box" },
+                            [
+                              sceneItem.is_show_roles_name
+                                ? _c(
+                                    "view",
+                                    { staticClass: "application-role" },
+                                    [
+                                      _c("text", [
+                                        _vm._v(_vm._s(sceneItem.roles_name)),
+                                      ]),
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _c("view", { staticClass: "application-tip" }, [
+                                _vm._v(_vm._s(sceneItem.apply_desc)),
                               ]),
-                              _c("view", { staticClass: "session-line" }),
-                            ]),
-                          ])
-                        : _vm._e(),
-                      _vm._l(item.scene_data, function (sceneItem, sceneIndex) {
-                        return _c(
-                          "view",
-                          { key: sceneIndex, staticClass: "distinguish" },
-                          [
-                            sceneItem.teams_name
-                              ? _c("view", { staticClass: "candidate-name" }, [
-                                  _vm._v(_vm._s(sceneItem.teams_name)),
-                                ])
-                              : _vm._e(),
-                            sceneItem.teams_list.listed
-                              ? _c(
-                                  "view",
-                                  { staticClass: "group-box" },
-                                  [
-                                    _c("view", { staticClass: "group-title" }, [
+                              _vm._l(
+                                sceneItem.apply_items.listed,
+                                function (user, userIndex) {
+                                  return _c(
+                                    "view",
+                                    {
+                                      key: userIndex,
+                                      staticClass: "application-user",
+                                    },
+                                    [
                                       _c(
-                                        "text",
-                                        { staticClass: "group-blod" },
+                                        "view",
+                                        { staticClass: "application-left" },
                                         [
-                                          _vm._v(
-                                            _vm._s(
-                                              sceneItem.teams_list.listed.info
-                                                .title
-                                            )
-                                          ),
+                                          _c("image", {
+                                            attrs: { src: user.apply_avatar },
+                                          }),
+                                          _c("text", [
+                                            _vm._v(_vm._s(user.apply_nickname)),
+                                          ]),
                                         ]
                                       ),
-                                      _c("text", { staticClass: "group-num" }, [
-                                        _vm._v(
-                                          _vm._s(
-                                            sceneItem.teams_list.listed.info
-                                              .desc
-                                          )
-                                        ),
-                                      ]),
-                                    ]),
-                                    sceneItem.teams_list.listed.show
-                                      ? _c(
-                                          "block",
-                                          _vm._l(
-                                            sceneItem.teams_list.listed.details,
-                                            function (
-                                              sceneDetailItem,
-                                              sceneDetailIndex
-                                            ) {
-                                              return _c(
-                                                "block",
-                                                { key: sceneDetailIndex },
-                                                [
-                                                  sceneDetailItem.member_list
-                                                    .length
-                                                    ? _c(
-                                                        "view",
-                                                        {
-                                                          staticClass: "group",
-                                                        },
-                                                        [
-                                                          item.enter_display ==
-                                                            "folded" &&
-                                                          sceneDetailItem.group_name
-                                                            ? _c(
-                                                                "view",
-                                                                {
-                                                                  staticClass:
-                                                                    "group-top",
-                                                                },
-                                                                [
-                                                                  _c(
-                                                                    "view",
-                                                                    {
-                                                                      staticClass:
-                                                                        "group-left",
-                                                                    },
-                                                                    [
-                                                                      _c(
-                                                                        "image",
-                                                                        {
-                                                                          attrs:
-                                                                            {
-                                                                              src: "https://yuepai-oss.qubeitech.com/static/images/group.png",
-                                                                            },
-                                                                        }
-                                                                      ),
-                                                                      _vm._v(
-                                                                        " " +
-                                                                          _vm._s(
-                                                                            sceneDetailItem.group_name
-                                                                          ) +
-                                                                          " "
-                                                                      ),
-                                                                    ]
-                                                                  ),
-                                                                ]
-                                                              )
-                                                            : _vm._e(),
-                                                          _vm._l(
-                                                            sceneDetailItem.member_list,
-                                                            function (
-                                                              memberItem,
-                                                              memberIndex
-                                                            ) {
-                                                              return _c(
-                                                                "view",
-                                                                {
-                                                                  key: memberIndex,
-                                                                  staticClass:
-                                                                    "group-list",
-                                                                },
-                                                                [
-                                                                  _c("image", {
-                                                                    attrs: {
-                                                                      src: memberItem.apply_avatar,
-                                                                    },
-                                                                  }),
-                                                                  _c(
-                                                                    "view",
-                                                                    {
-                                                                      staticClass:
-                                                                        "group-identity-list",
-                                                                    },
-                                                                    [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          memberItem.apply_career
-                                                                        )
-                                                                      ),
-                                                                    ]
-                                                                  ),
-                                                                  _c(
-                                                                    "view",
-                                                                    {
-                                                                      staticClass:
-                                                                        "group-home",
-                                                                      on: {
-                                                                        tap: function (
-                                                                          $event
-                                                                        ) {
-                                                                          return _vm.goZhuye(
-                                                                            memberItem.apply_uuid
-                                                                          )
-                                                                        },
-                                                                      },
-                                                                    },
-                                                                    [
-                                                                      _vm._v(
-                                                                        "看主页"
-                                                                      ),
-                                                                    ]
-                                                                  ),
-                                                                ]
-                                                              )
-                                                            }
-                                                          ),
-                                                        ],
-                                                        2
-                                                      )
-                                                    : _vm._e(),
-                                                ]
-                                              )
-                                            }
-                                          ),
-                                          1
-                                        )
-                                      : _c(
-                                          "view",
-                                          { staticClass: "none-data" },
-                                          [_vm._v(" 暂无报名信息 ")]
-                                        ),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            sceneItem.teams_list.waiting
-                              ? _c(
-                                  "view",
-                                  { staticClass: "group-box" },
-                                  [
-                                    _c("view", { staticClass: "group-title" }, [
                                       _c(
-                                        "text",
-                                        { staticClass: "group-blod" },
+                                        "view",
+                                        { staticClass: "application-ct" },
                                         [
-                                          _vm._v(
-                                            _vm._s(
-                                              sceneItem.teams_list.waiting.info
-                                                .title
-                                            )
-                                          ),
+                                          user.sex !== null
+                                            ? _c("block", [
+                                                user.sex == 1
+                                                  ? _c("image", {
+                                                      attrs: {
+                                                        src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
+                                                      },
+                                                    })
+                                                  : _vm._e(),
+                                                user.sex == 0
+                                                  ? _c("image", {
+                                                      attrs: {
+                                                        src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
+                                                      },
+                                                    })
+                                                  : _vm._e(),
+                                              ])
+                                            : _vm._e(),
+                                          _c("text", [
+                                            _vm._v(_vm._s(user.apply_career)),
+                                          ]),
+                                        ],
+                                        1
+                                      ),
+                                      _c(
+                                        "view",
+                                        {
+                                          staticClass: "application-rt",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.goZhuye(
+                                                user.apply_uuid
+                                              )
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("看主页")]
+                                      ),
+                                    ]
+                                  )
+                                }
+                              ),
+                              sceneItem.apply_items.waiting.length
+                                ? _c("view", { staticClass: "gradeing" }, [
+                                    _c("text", [_vm._v("等位中")]),
+                                  ])
+                                : _vm._e(),
+                              _vm._l(
+                                sceneItem.apply_items.waiting,
+                                function (waituser, waituserIndex) {
+                                  return _c(
+                                    "view",
+                                    {
+                                      key: waituserIndex,
+                                      staticClass: "application-user",
+                                    },
+                                    [
+                                      _c(
+                                        "view",
+                                        { staticClass: "application-left" },
+                                        [
+                                          _c("image", {
+                                            attrs: {
+                                              src: waituser.apply_avatar,
+                                            },
+                                          }),
+                                          _c("text", [
+                                            _vm._v(
+                                              _vm._s(waituser.apply_nickname)
+                                            ),
+                                          ]),
                                         ]
                                       ),
-                                      _c("text", { staticClass: "group-num" }, [
-                                        _vm._v(
-                                          _vm._s(
-                                            sceneItem.teams_list.waiting.info
-                                              .desc
-                                          )
-                                        ),
-                                      ]),
-                                    ]),
-                                    sceneItem.teams_list.waiting.show
-                                      ? _c(
-                                          "block",
-                                          _vm._l(
-                                            sceneItem.teams_list.waiting
-                                              .details,
-                                            function (
-                                              sceneDetailItem,
-                                              sceneDetailIndex
-                                            ) {
-                                              return _c(
-                                                "block",
-                                                { key: sceneDetailIndex },
-                                                [
-                                                  sceneDetailItem.member_list
-                                                    .length
-                                                    ? _c(
-                                                        "view",
-                                                        {
-                                                          staticClass: "group",
-                                                        },
-                                                        [
-                                                          item.enter_display ==
-                                                            "folded" &&
-                                                          sceneDetailItem.group_name
-                                                            ? _c(
-                                                                "view",
-                                                                {
-                                                                  staticClass:
-                                                                    "group-top",
-                                                                },
-                                                                [
-                                                                  _c(
-                                                                    "view",
-                                                                    {
-                                                                      staticClass:
-                                                                        "group-left",
-                                                                    },
-                                                                    [
-                                                                      _c(
-                                                                        "image",
-                                                                        {
-                                                                          attrs:
-                                                                            {
-                                                                              src: "https://yuepai-oss.qubeitech.com/static/images/group.png",
-                                                                            },
-                                                                        }
-                                                                      ),
-                                                                      _vm._v(
-                                                                        " " +
-                                                                          _vm._s(
-                                                                            sceneDetailItem.group_name
-                                                                          ) +
-                                                                          " "
-                                                                      ),
-                                                                    ]
-                                                                  ),
-                                                                ]
-                                                              )
-                                                            : _vm._e(),
-                                                          _vm._l(
-                                                            sceneDetailItem.member_list,
-                                                            function (
-                                                              memberItem,
-                                                              memberIndex
-                                                            ) {
-                                                              return _c(
-                                                                "view",
-                                                                {
-                                                                  key: memberIndex,
-                                                                  staticClass:
-                                                                    "group-list",
-                                                                },
-                                                                [
-                                                                  _c("image", {
-                                                                    attrs: {
-                                                                      src: memberItem.apply_avatar,
-                                                                    },
-                                                                  }),
-                                                                  _c(
-                                                                    "view",
-                                                                    {
-                                                                      staticClass:
-                                                                        "group-identity-list",
-                                                                    },
-                                                                    [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          memberItem.apply_career
-                                                                        )
-                                                                      ),
-                                                                    ]
-                                                                  ),
-                                                                  _c(
-                                                                    "view",
-                                                                    {
-                                                                      staticClass:
-                                                                        "group-home",
-                                                                      on: {
-                                                                        tap: function (
-                                                                          $event
-                                                                        ) {
-                                                                          return _vm.goZhuye(
-                                                                            memberItem.apply_uuid
-                                                                          )
-                                                                        },
-                                                                      },
-                                                                    },
-                                                                    [
-                                                                      _vm._v(
-                                                                        "看主页"
-                                                                      ),
-                                                                    ]
-                                                                  ),
-                                                                ]
-                                                              )
-                                                            }
-                                                          ),
-                                                        ],
-                                                        2
-                                                      )
-                                                    : _vm._e(),
-                                                ]
+                                      _c(
+                                        "view",
+                                        { staticClass: "application-ct" },
+                                        [
+                                          waituser.sex !== null
+                                            ? _c("block", [
+                                                waituser.sex == 1
+                                                  ? _c("image", {
+                                                      attrs: {
+                                                        src: "https://yuepai-oss.qubeitech.com/static/images/boy.png",
+                                                      },
+                                                    })
+                                                  : _vm._e(),
+                                                waituser.sex == 0
+                                                  ? _c("image", {
+                                                      attrs: {
+                                                        src: "https://yuepai-oss.qubeitech.com/static/images/girl.png",
+                                                      },
+                                                    })
+                                                  : _vm._e(),
+                                              ])
+                                            : _vm._e(),
+                                          _c("text", [
+                                            _vm._v(
+                                              _vm._s(waituser.apply_career)
+                                            ),
+                                          ]),
+                                        ],
+                                        1
+                                      ),
+                                      _c(
+                                        "view",
+                                        {
+                                          staticClass: "application-rt",
+                                          on: {
+                                            tap: function ($event) {
+                                              return _vm.goZhuye(
+                                                waituser.apply_uuid
                                               )
-                                            }
-                                          ),
-                                          1
-                                        )
-                                      : _c(
-                                          "view",
-                                          { staticClass: "none-data" },
-                                          [_vm._v(" 暂无报名信息 ")]
-                                        ),
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                          ]
-                        )
-                      }),
+                                            },
+                                          },
+                                        },
+                                        [_vm._v("看主页")]
+                                      ),
+                                    ]
+                                  )
+                                }
+                              ),
+                            ],
+                            2
+                          )
+                        }
+                      ),
                     ],
                     2
                   )
                 }),
-                1
+                0
               ),
             ]),
           ])
+        : _vm._e(),
+      _vm.weChatVisible
+        ? _c(
+            "view",
+            { staticClass: "bottom-modal", on: { tap: _vm.weChatClose } },
+            [
+              _c("view", { staticClass: "weChat-content" }, [
+                _c("view", { staticClass: "weChat-title" }, [
+                  _vm._v(" 添加活动组织者微信 "),
+                ]),
+                _c("view", { staticClass: "weChat-box" }, [
+                  _c("image", {
+                    staticClass: "weChat-img",
+                    attrs: {
+                      "show-menu-by-longpress": true,
+                      mode: "widthFix",
+                      src: _vm.qrcode,
+                    },
+                  }),
+                ]),
+              ]),
+            ]
+          )
         : _vm._e(),
     ],
     1

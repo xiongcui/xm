@@ -1,6 +1,6 @@
 module.exports = {
   a: function (l, n, s) {
-    var a = ["view","catch-view","cover-view","static-view","pure-view","block","text","static-text","slot","slot-view","label","form","scroll-view","swiper","swiper-item","selector-component"]
+    var a = ["view","catch-view","cover-view","static-view","pure-view","block","text","static-text","slot","slot-view","label","form","scroll-view","swiper","swiper-item","selector-component","i-rate"]
     var b = ["static-text","slot","slot-view","label","form","scroll-view","swiper","swiper-item"]
     if (a.indexOf(n) === -1) {
       l = 0

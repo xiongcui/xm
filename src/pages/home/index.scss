@@ -121,6 +121,32 @@
     height: 100%;
     border-radius: 20px;
   }
+  .banner-txt {
+    display: flex;
+    padding: 0px 16px 16px 16px;
+    align-items: center;
+    justify-content: space-between;
+    .banner-txt-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-right: 1px solid #ff6633;
+      width: 33%;
+      image {
+        width: 26px;
+        height: 26px;
+        margin-right: 10px;
+      }
+      text {
+        font-size: 24px;
+        font-weight: bold;
+        color: #ff6633;
+      }
+    }
+    .banner-txt-item:last-child {
+      border-right: none;
+    }
+  }
   .news {
     display: flex;
     padding: 0px 16px 16px 16px;

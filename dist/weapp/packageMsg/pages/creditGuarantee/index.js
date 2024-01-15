@@ -139,6 +139,18 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -147,7 +159,8 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
   data: function data() {
     return {
       is_security: 0,
-      is_member: 0
+      is_member: 0,
+      marginVisible: false
     };
   },
   methods: {
@@ -158,6 +171,21 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
       this.securityOpen({
         amount: 300
       });
+    },
+    marginClose: function marginClose() {
+      this.marginVisible = false;
+    },
+    customerService: function customerService() {
+      wx.openCustomerServiceChat({
+        extInfo: {
+          url: "https://work.weixin.qq.com/kfid/kfc70400e4245eaa1b6"
+        },
+        corpId: "ww9ad8086390afbfaa",
+        success: function success(res) {}
+      });
+    },
+    withdrawalOfMargin: function withdrawalOfMargin() {
+      this.marginVisible = true;
     },
     securityOpen: function securityOpen(params) {
       var _this2 = this;
@@ -171,7 +199,7 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityOpen */ "Xb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityOpen */ "Zb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -219,7 +247,7 @@ component.options.__file = "src/packageMsg/pages/creditGuarantee/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityInfo */ "Wb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_3__[/* securityInfo */ "Yb"])(params);
 
               case 3:
                 res = _context2.sent;
@@ -309,58 +337,25 @@ var render = function () {
       ]),
     ]),
     _c("view", { staticClass: "price" }, [_vm._v(" 300元 ")]),
-    _vm.is_security === 0 && _vm.is_member == 0
+    _vm.is_security === 1
       ? _c("view", [
+          _c("view", { staticClass: "credit-tips" }, [
+            _c("image", {
+              staticClass: "credit-icon",
+              attrs: {
+                src: "https://yuepai-oss.qubeitech.com/static/images/guaranteed.png",
+              },
+            }),
+            _vm._v(" 您已存入保障金，已享受担保权益 "),
+          ]),
           _c(
             "view",
-            { staticClass: "submit-red", on: { tap: _vm.submitSecurity } },
-            [_vm._v("立即存入")]
+            { staticClass: "submit-red", on: { tap: _vm.withdrawalOfMargin } },
+            [_vm._v("申请提取保证金")]
           ),
-          _c("view", { staticClass: "or" }, [_vm._v("或")]),
-          _c("view", { staticClass: "submit-yellow", on: { tap: _vm.goVip } }, [
-            _vm._v("成为VIP"),
-          ]),
-          _c("view", { staticClass: "credit-tips" }, [
-            _vm._v("VIP免担保金 自动享担保权益 >>"),
-          ]),
         ])
       : _vm._e(),
-    _vm.is_security === 1 && _vm.is_member == 1
-      ? _c("view", [
-          _c("view", { staticClass: "credit-tips" }, [
-            _c("image", {
-              staticClass: "credit-icon",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/guaranteed.png",
-              },
-            }),
-            _vm._v(" 您已存入保障金，已享受担保权益 "),
-          ]),
-          _c("view", { staticClass: "submit-red" }, [_vm._v("申请提取保证金")]),
-        ])
-      : _vm._e(),
-    _vm.is_security === 1 && _vm.is_member == 0
-      ? _c("view", [
-          _c("view", { staticClass: "credit-tips" }, [
-            _c("image", {
-              staticClass: "credit-icon",
-              attrs: {
-                src: "https://yuepai-oss.qubeitech.com/static/images/guaranteed.png",
-              },
-            }),
-            _vm._v(" 您已存入保障金，已享受担保权益 "),
-          ]),
-          _c("view", { staticClass: "submit-red" }, [_vm._v("申请提取保证金")]),
-          _c("view", { staticClass: "or" }, [_vm._v("或")]),
-          _c("view", { staticClass: "submit-yellow", on: { tap: _vm.goVip } }, [
-            _vm._v("成为VIP"),
-          ]),
-          _c("view", { staticClass: "credit-tips" }, [
-            _vm._v("VIP免担保金 自动享担保权益 >>"),
-          ]),
-        ])
-      : _vm._e(),
-    _vm.is_security === 0 && _vm.is_member === 1
+    _vm.is_security === 0
       ? _c("view", [
           _c(
             "view",
@@ -388,6 +383,59 @@ var render = function () {
         ),
       ]),
     ]),
+    _vm.marginVisible
+      ? _c(
+          "view",
+          { staticClass: "margin-modal", on: { tap: _vm.marginClose } },
+          [
+            _c("view", { staticClass: "margin-ct" }, [
+              _c("view", { staticClass: "margin-title" }, [
+                _vm._v("申请提取保证金"),
+              ]),
+              _c("view", { staticClass: "margin-tip" }, [
+                _vm._v("提取保证金后将不在享受担保权益"),
+              ]),
+              _c("view", { staticClass: "margin-p" }, [
+                _vm._v("按以下两种方式提取保证金"),
+              ]),
+              _c("view", { staticClass: "margin-p" }, [
+                _vm._v("1、添加客服微信：binywon（备注：保证金）"),
+              ]),
+              _c("view", { staticClass: "margin-p" }, [
+                _vm._v(
+                  "2、点击咨询在线客服申请提取保证金核实通过后，预计24小时到账"
+                ),
+              ]),
+              _c("view", { staticClass: "margin-btns" }, [
+                _c(
+                  "text",
+                  {
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.marginClose.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [_vm._v("放弃提取")]
+                ),
+                _c(
+                  "text",
+                  {
+                    on: {
+                      tap: function ($event) {
+                        $event.stopPropagation()
+                        return _vm.customerService.apply(null, arguments)
+                      },
+                    },
+                  },
+                  [_vm._v("在线客服")]
+                ),
+              ]),
+            ]),
+          ]
+        )
+      : _vm._e(),
   ])
 }
 var staticRenderFns = []

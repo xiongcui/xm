@@ -162,7 +162,7 @@ component.options.__file = "src/pages/zuopin/index.vue"
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* photoFilter */ "Db"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* photoFilter */ "Eb"])(params);
 
               case 3:
                 res = _context.sent;
@@ -232,7 +232,7 @@ component.options.__file = "src/pages/zuopin/index.vue"
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* photoList */ "Fb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_7__[/* photoList */ "Gb"])(params);
 
               case 3:
                 res = _context2.sent;

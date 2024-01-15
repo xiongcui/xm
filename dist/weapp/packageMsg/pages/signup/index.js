@@ -1170,12 +1170,21 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
             case 1:
               console.log("查看联系方式");
-              _this.contactVisible = true;
+              wx.showModal({
+                title: "温馨提示",
+                content: "\u67E5\u770B\u8054\u7CFB\u65B9\u5F0F\u6D88\u8017".concat(row.visited_coin, "\u4E2A\u91D1\u8C46\uFF0C\u786E\u5B9A\u67E5\u770B\u5417\uFF1F"),
+                success: function success(res) {
+                  if (res.confirm) {
+                    console.log("用户点击确定");
 
-              _this.applyInfo({
-                sid: row.sid
+                    _this.receivePayment({
+                      sid: row.sid
+                    });
+                  } else if (res.cancel) {
+                    console.log("用户点击取消");
+                  }
+                }
               });
-
               break;
           }
         },
@@ -1263,7 +1272,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
         }, _callee2, null, [[0, 10]]);
       }))();
     },
-    applyInfo: function applyInfo(params) {
+    receivePayment: function receivePayment(params) {
       var _this5 = this;
 
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee3() {
@@ -1274,32 +1283,34 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "g"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "Ub"])(params);
 
               case 3:
                 res = _context3.sent;
-                _this5.showContact = res.data.data.contact.is_enable;
-                _this5.showCelebrity = res.data.data.celebrity.is_enable;
-                _this5.showAddress = res.data.data.address.is_enable;
-                _this5.data.contact = res.data.data.contact.body;
-                _this5.data.celebrity = res.data.data.celebrity.body;
-                _this5.data.address = res.data.data.address.body;
-                _context3.next = 14;
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("支付成功");
+                setTimeout(function () {
+                  _this5.applyInfo({
+                    sid: params.sid
+                  });
+                }, 2000);
+                _context3.next = 10;
                 break;
 
-              case 12:
-                _context3.prev = 12;
+              case 8:
+                _context3.prev = 8;
                 _context3.t0 = _context3["catch"](0);
 
-              case 14:
+              case 10:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 12]]);
+        }, _callee3, null, [[0, 8]]);
       }))();
     },
-    receivePayment: function receivePayment(params) {
+    applyInfo: function applyInfo(params) {
+      var _this6 = this;
+
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee4() {
         var res;
         return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().wrap(function _callee4$(_context4) {
@@ -1308,24 +1319,30 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* receivePayment */ "Sb"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* applyInfo */ "g"])(params);
 
               case 3:
                 res = _context4.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("支付成功");
-                _context4.next = 9;
+                _this6.contactVisible = true;
+                _this6.showContact = res.data.data.contact.is_enable;
+                _this6.showCelebrity = res.data.data.celebrity.is_enable;
+                _this6.showAddress = res.data.data.address.is_enable;
+                _this6.data.contact = res.data.data.contact.body;
+                _this6.data.celebrity = res.data.data.celebrity.body;
+                _this6.data.address = res.data.data.address.body;
+                _context4.next = 15;
                 break;
 
-              case 7:
-                _context4.prev = 7;
+              case 13:
+                _context4.prev = 13;
                 _context4.t0 = _context4["catch"](0);
 
-              case 9:
+              case 15:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 7]]);
+        }, _callee4, null, [[0, 13]]);
       }))();
     },
     imVerify: function imVerify(params, row) {
@@ -1337,7 +1354,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
               case 0:
                 _context5.prev = 0;
                 _context5.next = 3;
-                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "R"])(params);
+                return Object(_api_index__WEBPACK_IMPORTED_MODULE_2__[/* imVerify */ "S"])(params);
 
               case 3:
                 res = _context5.sent;

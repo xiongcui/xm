@@ -1129,8 +1129,20 @@ export default {
               break;
             case 1:
               console.log("查看联系方式");
-              _this.contactVisible = true;
-              _this.applyInfo({ sid: row.sid });
+              wx.showModal({
+                title: "温馨提示",
+                content: `查看联系方式消耗${row.visited_coin}个金豆，确定查看吗？`,
+                success: function (res) {
+                  if (res.confirm) {
+                    console.log("用户点击确定");
+                    _this.receivePayment({
+                      sid: row.sid,
+                    });
+                  } else if (res.cancel) {
+                    console.log("用户点击取消");
+                  }
+                },
+              });
               break;
           }
         },
@@ -1160,9 +1172,21 @@ export default {
         this.query();
       } catch (error) {}
     },
+    async receivePayment(params) {
+      try {
+        let res = await receivePayment(params);
+        errortip("支付成功");
+        setTimeout(() => {
+          this.applyInfo({
+            sid: params.sid,
+          });
+        }, 2000);
+      } catch (error) {}
+    },
     async applyInfo(params) {
       try {
         let res = await applyInfo(params);
+        this.contactVisible = true;
         this.showContact = res.data.data.contact.is_enable;
         this.showCelebrity = res.data.data.celebrity.is_enable;
         this.showAddress = res.data.data.address.is_enable;
@@ -1170,12 +1194,6 @@ export default {
         this.data.contact = res.data.data.contact.body;
         this.data.celebrity = res.data.data.celebrity.body;
         this.data.address = res.data.data.address.body;
-      } catch (error) {}
-    },
-    async receivePayment(params) {
-      try {
-        let res = await receivePayment(params);
-        errortip("支付成功");
       } catch (error) {}
     },
     async imVerify(params, row) {
