@@ -267,7 +267,7 @@
             <view class="needcoin">
               <text> {{ pay_coin }} 金豆 </text>
               <text class="vip-tips" v-if="!is_member" @tap="goVip">
-                开通会员仅需2金豆 >>
+                开通会员仅需{{ member_coin }}金豆 >>
               </text>
             </view>
             <view class="surplus_coin">剩余：{{ balance_coin }} 金豆</view>
@@ -332,6 +332,7 @@ export default {
       showTipModel: false,
       pay_coin: 0,
       balance_coin: 0,
+      member_coin: 0,
       is_member: 0,
       visible: false,
       sid: "",
@@ -526,6 +527,7 @@ export default {
         }
         if (res.data.data.visitor_acct) {
           this.pay_coin = res.data.data.visitor_acct.pay_coin;
+          this.member_coin = res.data.data.visitor_acct.member_coin;
           this.balance_coin = res.data.data.visitor_acct.balance_coin;
         }
         if (res.data.data.address) {

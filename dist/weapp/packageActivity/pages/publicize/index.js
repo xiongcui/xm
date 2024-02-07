@@ -140,6 +140,9 @@ component.options.__file = "src/packageActivity/pages/publicize/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -167,7 +170,9 @@ component.options.__file = "src/packageActivity/pages/publicize/index.vue"
       shareFriendsTitle: "",
       shareFriendsImg: "",
       shareFriendsPath: "",
-      amount: 0
+      amount: 0,
+      show: 0,
+      apply_tips: ""
     };
   },
   methods: {
@@ -238,19 +243,21 @@ component.options.__file = "src/packageActivity/pages/publicize/index.vue"
                 _this2.list = res.data.data.crowd;
                 _this2.userList = res.data.data.guidance.user_list;
                 _this2.headcount = res.data.data.guidance.headcount;
-                _context.next = 16;
+                _this2.show = res.data.data.contact.show;
+                _this2.apply_tips = res.data.data.guidance.apply_tips;
+                _context.next = 18;
                 break;
 
-              case 14:
-                _context.prev = 14;
+              case 16:
+                _context.prev = 16;
                 _context.t0 = _context["catch"](0);
 
-              case 16:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 14]]);
+        }, _callee, null, [[0, 16]]);
       }))();
     },
     socialCheck: function socialCheck(params, amount) {
@@ -272,7 +279,7 @@ component.options.__file = "src/packageActivity/pages/publicize/index.vue"
                 data = res.data.data;
                 _this = _this3;
 
-                if (!data) {
+                if (data.pay_type == "pay") {
                   wx.showModal({
                     title: "温馨提示",
                     content: "\u4E3A\u9632\u6B62\u9891\u7E41\u6076\u610F\u52A0\u7FA4\uFF0C\u5165\u7FA4\u9700\u652F\u4ED8".concat(amount, "\u5143\u95E8\u69DB\u8D39\uFF0C\u8FD8\u8BF7\u4F60\u7406\u89E3"),
@@ -586,33 +593,37 @@ var render = function () {
         ]),
       ]),
       _c("view", { staticClass: "publicize-info" }, [
-        _c("view", { staticClass: "publicize-info-box" }, [
-          _c("view", { staticClass: "publicize-info-left" }, [
-            _c("view", { staticClass: "publicize-avatar" }, [
-              _c("image", { attrs: { src: _vm.avatar } }),
-              _c("view", { staticClass: "publicize-avatar-info" }, [
-                _c("view", { staticClass: "publicize-nickname" }, [
-                  _vm._v(" " + _vm._s(_vm.nickname) + " "),
+        _vm.show
+          ? _c("view", { staticClass: "publicize-info-box" }, [
+              _c("view", { staticClass: "publicize-info-left" }, [
+                _c("view", { staticClass: "publicize-avatar" }, [
+                  _c("image", { attrs: { src: _vm.avatar } }),
+                  _c("view", { staticClass: "publicize-avatar-info" }, [
+                    _c("view", { staticClass: "publicize-nickname" }, [
+                      _vm._v(" " + _vm._s(_vm.nickname) + " "),
+                    ]),
+                    _c("view", { staticClass: "publicize-secure" }, [
+                      _vm._v(_vm._s(_vm.organ)),
+                    ]),
+                  ]),
                 ]),
-                _c("view", { staticClass: "publicize-secure" }, [
-                  _vm._v(_vm._s(_vm.organ)),
+                _c("view", { staticClass: "publicize-tips" }, [
+                  _c("view", [_vm._v("添加右侧客服微信")]),
+                  _c("view", [_vm._v("邀您加入约拍摄影社群")]),
                 ]),
               ]),
-            ]),
-            _c("view", { staticClass: "publicize-tips" }, [
-              _c("view", [_vm._v("添加右侧客服微信")]),
-              _c("view", [_vm._v("邀您加入约拍摄影社群")]),
-            ]),
-          ]),
-          _c("view", { staticClass: "publicize-info-rt" }, [
-            _c("image", {
-              attrs: { src: _vm.qrcode, "show-menu-by-longpress": true },
-            }),
-          ]),
-        ]),
-        _c("view", { staticClass: "qrcode-tips" }, [
-          _vm._v("长按识别二维码，添加客服联系方式"),
-        ]),
+              _c("view", { staticClass: "publicize-info-rt" }, [
+                _c("image", {
+                  attrs: { src: _vm.qrcode, "show-menu-by-longpress": true },
+                }),
+              ]),
+            ])
+          : _vm._e(),
+        _vm.show
+          ? _c("view", { staticClass: "qrcode-tips" }, [
+              _vm._v("长按识别二维码，添加客服联系方式"),
+            ])
+          : _vm._e(),
         _c("view", { staticClass: "group-num" }, [
           _vm._v("最近已有 "),
           _c("text", { staticClass: "red" }, [_vm._v(_vm._s(_vm.headcount))]),
@@ -639,6 +650,9 @@ var render = function () {
     _c("view", { staticClass: "publicize-ct" }, [
       _c("view", { staticClass: "exchange-title" }, [
         _vm._v("加入交流社群，遇见更多同伴"),
+      ]),
+      _c("view", { staticClass: "exchange-tips" }, [
+        _vm._v(_vm._s(_vm.apply_tips)),
       ]),
       _c(
         "view",

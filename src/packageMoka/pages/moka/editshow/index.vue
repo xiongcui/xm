@@ -227,6 +227,9 @@
               v-if="infor.mocha"
               @tap="showbigPersonimg(infor.mocha, [infor.mocha])"
             ></image>
+            <view class="make_moka" @tap="makeMoka" v-if="myself">
+              <text>制作高清模卡</text>
+            </view>
           </view>
           <view
             class="home_item"
@@ -712,6 +715,9 @@ export default {
         "/packageMoka/pages/moka/editmoka/index?uuid=" +
           this.infor.basic.uuid || this.uuid
       );
+    },
+    makeMoka() {
+      openPage("/packageMoka/pages/moka/myModelCardlist/index");
     },
     editpersondata() {
       openPage("/packageMoka/pages/moka/editpersondata/index");

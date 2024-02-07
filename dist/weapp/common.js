@@ -3585,9 +3585,9 @@ render._withStripped = true
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wc", function() { return trendsList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return posterClick; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
+ // const baseUrl = "https://pai.qubeitech.com";
 
-var baseUrl = "https://pai.qubeitech.com"; // const baseUrl = "https://dev.qubeitech.com";
-// WX登录,拿code换登录
+var baseUrl = "https://dev.qubeitech.com"; // WX登录,拿code换登录
 
 var wxlogin = function wxlogin(data) {
   return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
@@ -4942,7 +4942,14 @@ var posterClick = function posterClick(data) {
     method: "post",
     data: data
   });
-};
+}; // // 加入社群
+// export const socialCheck = (data) => {
+//   return request({
+//     url: baseUrl + "/v1/social/apply/check",
+//     method: "post",
+//     data,
+//   });
+// };
 
 /***/ }),
 
@@ -10663,11 +10670,13 @@ var throttle = function throttle(fn, t) {
 };
 var platformMap = {
   XM: "虾米约拍",
-  YPTG: "约拍通告"
+  YPTG: "约拍通告",
+  ZCTG: "种草通告"
 };
 var platformLogo = {
   XM: "https://yuepai-oss.qubeitech.com/static/banner/xiamiyuepai.png",
-  YPTG: "https://yuepai-oss.qubeitech.com/static/banner/yuepaitonggao.png"
+  YPTG: "https://yuepai-oss.qubeitech.com/static/banner/yuepaitonggao.png",
+  ZCTG: "https://yuepai-oss.qubeitech.com/static/banner/zhongcaotonggao.png"
 };
 
 /***/ })

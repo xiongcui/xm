@@ -141,6 +141,12 @@ page {
   margin-bottom: 16rpx;
 }
 
+.publicize .publicize-ct .exchange-tips {
+  font-size: 26rpx;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
 .publicize .publicize-ct .exchange-list {
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -393,6 +393,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
       showTipModel: false,
       pay_coin: 0,
       balance_coin: 0,
+      member_coin: 0,
       is_member: 0,
       visible: false
     }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "sid", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "rule_code", ""), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(_ref, "yuepaiInfo", {
@@ -588,6 +589,7 @@ component.options.__file = "src/packageAdd/pages/user/launchyuepai/index.vue"
 
                 if (res.data.data.visitor_acct) {
                   _this2.pay_coin = res.data.data.visitor_acct.pay_coin;
+                  _this2.member_coin = res.data.data.visitor_acct.member_coin;
                   _this2.balance_coin = res.data.data.visitor_acct.balance_coin;
                 }
 
@@ -1243,7 +1245,13 @@ var render = function () {
                                 staticClass: "vip-tips",
                                 on: { tap: _vm.goVip },
                               },
-                              [_vm._v(" 开通会员仅需2金豆 >> ")]
+                              [
+                                _vm._v(
+                                  " 开通会员仅需" +
+                                    _vm._s(_vm.member_coin) +
+                                    "金豆 >> "
+                                ),
+                              ]
                             )
                           : _vm._e(),
                       ]),

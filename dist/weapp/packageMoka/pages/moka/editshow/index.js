@@ -629,6 +629,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 //
 //
 //
+//
+//
+//
 
 
 
@@ -745,6 +748,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     },
     gomoka: function gomoka() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.basic.uuid || false);
+    },
+    makeMoka: function makeMoka() {
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
     },
     editpersondata: function editpersondata() {
       Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
@@ -1868,6 +1874,16 @@ var render = function () {
                                       },
                                     },
                                   })
+                                : _vm._e(),
+                              _vm.myself
+                                ? _c(
+                                    "view",
+                                    {
+                                      staticClass: "make_moka",
+                                      on: { tap: _vm.makeMoka },
+                                    },
+                                    [_c("text", [_vm._v("制作高清模卡")])]
+                                  )
                                 : _vm._e(),
                             ])
                           : _vm._e(),

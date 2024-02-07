@@ -1,6 +1,6 @@
 import { request, requestUpload } from "../utils/util";
-const baseUrl = "https://pai.qubeitech.com";
-// const baseUrl = "https://dev.qubeitech.com";
+// const baseUrl = "https://pai.qubeitech.com";
+const baseUrl = "https://dev.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({
@@ -1428,3 +1428,12 @@ export const posterClick = (data) => {
     data,
   });
 };
+
+// // 加入社群
+// export const socialCheck = (data) => {
+//   return request({
+//     url: baseUrl + "/v1/social/apply/check",
+//     method: "post",
+//     data,
+//   });
+// };

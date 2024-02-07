@@ -524,6 +524,23 @@ page {
   width: 100%;
 }
 
+.main .make_moka {
+  border: 2rpx solid #ffc069;
+  color: #ffc069;
+  height: 66rpx;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 16rpx 0;
+  border-radius: 33rpx;
+}
+
 .main .zhuye_fixed_bottom {
   display: -webkit-flex;
   display: -ms-flexbox;

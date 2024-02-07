@@ -6,7 +6,7 @@
         <view class="publicize-subtitle">让影像创作更有趣</view>
       </view>
       <view class="publicize-info">
-        <view class="publicize-info-box">
+        <view class="publicize-info-box" v-if="show">
           <view class="publicize-info-left">
             <view class="publicize-avatar">
               <image :src="avatar"></image>
@@ -24,7 +24,9 @@
             <image :src="qrcode" :show-menu-by-longpress="true"></image>
           </view>
         </view>
-        <view class="qrcode-tips">长按识别二维码，添加客服联系方式</view>
+        <view class="qrcode-tips" v-if="show"
+          >长按识别二维码，添加客服联系方式</view
+        >
         <view class="group-num"
           >最近已有 <text class="red">{{ headcount }}</text> 人添加入社群</view
         >
@@ -41,6 +43,7 @@
     </view>
     <view class="publicize-ct">
       <view class="exchange-title">加入交流社群，遇见更多同伴</view>
+      <view class="exchange-tips">{{ apply_tips }}</view>
       <view class="exchange-list">
         <view class="exchange-box" v-for="(item, index) in list" :key="index">
           <image :src="item.cover"></image>
@@ -118,6 +121,8 @@ export default {
       shareFriendsImg: "",
       shareFriendsPath: "",
       amount: 0,
+      show: 0,
+      apply_tips: "",
     };
   },
   methods: {
@@ -179,6 +184,8 @@ export default {
         this.list = res.data.data.crowd;
         this.userList = res.data.data.guidance.user_list;
         this.headcount = res.data.data.guidance.headcount;
+        this.show = res.data.data.contact.show;
+        this.apply_tips = res.data.data.guidance.apply_tips;
       } catch (error) {}
     },
     async socialCheck(params, amount) {
@@ -186,7 +193,7 @@ export default {
         let res = await socialCheck(params);
         let data = res.data.data;
         let _this = this;
-        if (!data) {
+        if (data.pay_type == "pay") {
           wx.showModal({
             title: "温馨提示",
             content: `为防止频繁恶意加群，入群需支付${amount}元门槛费，还请你理解`,
