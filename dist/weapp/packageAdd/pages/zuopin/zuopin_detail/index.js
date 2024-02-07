@@ -293,7 +293,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
   methods: {
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     bindended: function bindended() {
       wx.createVideoContext("video").exitFullScreen();
@@ -301,7 +301,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
     rapidConnection: function rapidConnection() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "c"])()) {
         this.unlockVisible = true;
       } else {
         wx.redirectTo({
@@ -315,7 +315,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
     launchYuepai: function launchYuepai() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* isLogin */ "c"])()) {
         this.applyVerify({
           source: "note",
           oid: this.oid
@@ -659,7 +659,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
 
               case 3:
                 res = _context10.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.oid + "&source=note");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "d"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.oid + "&source=note");
                 _context10.next = 10;
                 break;
 
@@ -668,7 +668,7 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
                 _context10.t0 = _context10["catch"](0);
 
                 if (_context10.t0.data.error_code == 21030 || _context10.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
                 } else {
                   errortip(_context10.t0.data.msg);
                 }
@@ -720,10 +720,14 @@ component.options.__file = "src/packageAdd/pages/zuopin/zuopin_detail/index.vue"
       this.author_id = options.author_id;
     }
 
-    if (this.oid && this.author_id) {
+    var res = Object(_utils_util__WEBPACK_IMPORTED_MODULE_6__[/* formatUrl */ "b"])(options);
+    var oid = res.oid;
+    var author_id = res.author_id;
+
+    if (this.oid && this.author_id || oid && author_id) {
       var params = {
-        oid: this.oid,
-        author_id: this.author_id
+        oid: this.oid || oid,
+        author_id: this.author_id || author_id
       };
       this.photoInfo(params);
       this.shareInviteInfo({

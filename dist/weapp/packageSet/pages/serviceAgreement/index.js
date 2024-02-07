@@ -373,7 +373,7 @@ component.options.__file = "src/packageSet/pages/serviceAgreement/index.vue"
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_1__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_1__[/* platformMap */ "f"];
   }
 });
 

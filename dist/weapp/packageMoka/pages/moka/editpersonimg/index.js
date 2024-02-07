@@ -148,7 +148,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
             return item.tempFilePath;
           });
           wx.setStorageSync("imgList", arr);
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/we-cropper/index?type=imgList");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/we-cropper/index?type=imgList");
         }
       });
     },
@@ -179,7 +179,7 @@ component.options.__file = "src/packageMoka/pages/moka/editpersonimg/index.vue"
                   var arr = res.tempFiles.map(function (item) {
                     return item.tempFilePath;
                   });
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/we-cropper/index?type=imgId&imgId=" + index + "&imgSrc=" + arr[0]);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/we-cropper/index?type=imgId&imgId=" + index + "&imgSrc=" + arr[0]);
                 }
               });
               break;

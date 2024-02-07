@@ -410,9 +410,9 @@ component.options.__file = "src/packageMoka/pages/moka/inforother/index.vue"
                 wx.setStorageSync("carduserinfo", carduserinfo);
 
                 if ("vertical" == wx.getStorageSync("card-type")) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makecardv/index?sub_user_id=" + _this2.sub_user_id);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/makecardv/index?sub_user_id=" + _this2.sub_user_id);
                 } else {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makecard/index?sub_user_id=" + _this2.sub_user_id);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/makecard/index?sub_user_id=" + _this2.sub_user_id);
                 }
 
                 _context2.next = 13;

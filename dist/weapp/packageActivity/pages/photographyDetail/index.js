@@ -296,28 +296,28 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
     follow: function follow() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
         this.userFollow({
           follow_uuid: this.uuid
         });
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     unfollow: function unfollow() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
         this.userUnfollow({
           unfollow_uuid: this.uuid
         });
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     commentFocus: function commentFocus() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     commentInput: function commentInput() {
@@ -362,24 +362,24 @@ component.options.__file = "src/packageActivity/pages/photographyDetail/index.vu
       }
     },
     reply: function reply(nickname, oid) {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
         this.show = true;
         this.parent_oid = oid;
         this.commentPlaceholder = "回复 @" + nickname;
         this.isFocused = true;
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     likeClick: function likeClick() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
         this.worksEvent({
           works_oid: this.works_oid,
           event_type: "vote",
           event_action: this.is_vote == 1 ? -1 : 1
         });
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     commentCreate: function commentCreate(params) {

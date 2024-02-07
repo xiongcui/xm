@@ -205,7 +205,7 @@ var _methods;
       this.visible = false;
     },
     officialAccount: function officialAccount() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageAdd/pages/user/follow/index");
     },
     goback: function goback() {
       // 跳转首页
@@ -224,7 +224,7 @@ var _methods;
       });
     }
   }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "officialAccount", function officialAccount() {
-    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageAdd/pages/user/follow/index");
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "checkFollow", function checkFollow(params) {
     var _this = this;
 

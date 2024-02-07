@@ -164,7 +164,7 @@
   },
   methods: {
     goAddZuopin: function goAddZuopin() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/zuopin/add_zuopin/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/zuopin/add_zuopin/index");
     },
     previewImage: function previewImage(src, urls) {
       // 微信预览图片的方法
@@ -176,7 +176,7 @@
       });
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
   }
 });
@@ -840,7 +840,7 @@
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformMap */ "f"];
   }
 });
 
@@ -1077,7 +1077,7 @@
       });
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     }
   }
 });
@@ -1389,7 +1389,7 @@
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.data.error_code == 21050 || _context.t0.data.error_code == 21040 || _context.t0.data.error_code == 21030) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
                 }
 
               case 10:
@@ -1442,7 +1442,7 @@
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_4__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_4__[/* platformMap */ "f"];
   }
 });
 
@@ -1637,10 +1637,10 @@
       });
     },
     goZhuye: function goZhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     goYuepaiDetail: function goYuepaiDetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
   }
 });
@@ -1763,10 +1763,10 @@
   },
   methods: {
     goZhuye: function goZhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + author_id);
     }
   }
 });
@@ -3585,12 +3585,12 @@ render._withStripped = true
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "wc", function() { return trendsList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jb", function() { return posterClick; });
 /* harmony import */ var _utils_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/util */ "./src/utils/util.js");
- // const baseUrl = "https://pai.qubeitech.com";
 
-var baseUrl = "https://dev.qubeitech.com"; // WX登录,拿code换登录
+var baseUrl = "https://pai.qubeitech.com"; // const baseUrl = "https://dev.qubeitech.com";
+// WX登录,拿code换登录
 
 var wxlogin = function wxlogin(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/token",
     method: "POST",
     data: data
@@ -3598,7 +3598,7 @@ var wxlogin = function wxlogin(data) {
 }; // 获取手机号码
 
 var getPhone = function getPhone(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/decrypt/mobile",
     method: "POST",
     data: data
@@ -3606,7 +3606,7 @@ var getPhone = function getPhone(data) {
 }; // 上传文件
 
 var uploadFile = function uploadFile(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/file/upload",
     method: "POST",
     data: data
@@ -3614,7 +3614,7 @@ var uploadFile = function uploadFile(data) {
 }; // 注册
 
 var userRegister = function userRegister(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/register",
     method: "post",
     data: data
@@ -3622,7 +3622,7 @@ var userRegister = function userRegister(data) {
 }; // 更新个人资料
 
 var profileUpdate = function profileUpdate(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/register",
     method: "post",
     data: data
@@ -3630,7 +3630,7 @@ var profileUpdate = function profileUpdate(data) {
 }; // 获得身份
 
 var getCareer = function getCareer(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/career/list",
     method: "post",
     data: data
@@ -3638,7 +3638,7 @@ var getCareer = function getCareer(data) {
 }; // 创建身份
 
 var creatCareer = function creatCareer(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/career",
     method: "post",
     data: data
@@ -3646,7 +3646,7 @@ var creatCareer = function creatCareer(data) {
 }; // 获得参数
 
 var publicConfig = function publicConfig(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/public/config",
     method: "post",
     data: data
@@ -3654,7 +3654,7 @@ var publicConfig = function publicConfig(data) {
 }; // 创建约拍
 
 var creatInvite = function creatInvite(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/publish/invite",
     method: "post",
     data: data
@@ -3662,7 +3662,7 @@ var creatInvite = function creatInvite(data) {
 }; // 约拍列表
 
 var inviteList = function inviteList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/invite/list",
     method: "post",
     data: data
@@ -3670,7 +3670,7 @@ var inviteList = function inviteList(data) {
 }; // 约拍详情页
 
 var inviteInfo = function inviteInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/invite/info",
     method: "post",
     data: data
@@ -3678,7 +3678,7 @@ var inviteInfo = function inviteInfo(data) {
 }; // 用户主页信息
 
 var userInfo = function userInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     // url: baseUrl + "/v1/user/info",
     url: baseUrl + "/v1/home/user/explore/info",
     method: "post",
@@ -3687,7 +3687,7 @@ var userInfo = function userInfo(data) {
 }; // 我的-用户主页信息
 
 var userHomeInfo = function userHomeInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/home/user/homepage/info",
     method: "post",
     data: data
@@ -3695,7 +3695,7 @@ var userHomeInfo = function userHomeInfo(data) {
 }; // 地理位置
 
 var getGeometry = function getGeometry(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/public/geometry",
     method: "post",
     data: data
@@ -3703,7 +3703,7 @@ var getGeometry = function getGeometry(data) {
 }; // 自我简介
 
 var userResume = function userResume(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/resume",
     method: "post",
     data: data
@@ -3711,7 +3711,7 @@ var userResume = function userResume(data) {
 }; // 获取编辑资料
 
 var userProfile = function userProfile(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/profile",
     method: "post",
     data: data
@@ -3719,7 +3719,7 @@ var userProfile = function userProfile(data) {
 }; // 更新头像
 
 var updateAvatar = function updateAvatar(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/avatar",
     method: "PUT",
     data: data
@@ -3727,7 +3727,7 @@ var updateAvatar = function updateAvatar(data) {
 }; // 保存体型
 
 var userShape = function userShape(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/shape",
     method: "post",
     data: data
@@ -3735,7 +3735,7 @@ var userShape = function userShape(data) {
 }; // 保存形象视频&主页视频
 
 var userAlbum = function userAlbum(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/album",
     method: "post",
     data: data
@@ -3743,11 +3743,11 @@ var userAlbum = function userAlbum(data) {
 }; // 上传形象照片
 
 var uploadImagePhoto = function uploadImagePhoto(path, params) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* requestUpload */ "g"])(path, params);
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* requestUpload */ "h"])(path, params);
 }; // 获取形象信息
 
 var userShapeDetail = function userShapeDetail(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/shape/info",
     method: "post",
     data: data
@@ -3755,7 +3755,7 @@ var userShapeDetail = function userShapeDetail(data) {
 }; // 获取相册和视频
 
 var userAlbumDetail = function userAlbumDetail(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/album/list",
     method: "post",
     data: data
@@ -3763,7 +3763,7 @@ var userAlbumDetail = function userAlbumDetail(data) {
 }; // 获取标签
 
 var userSticker = function userSticker(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/sticker/info",
     method: "post",
     data: data
@@ -3771,7 +3771,7 @@ var userSticker = function userSticker(data) {
 }; // 提交标签
 
 var subUserSticker = function subUserSticker(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/sticker",
     method: "post",
     data: data
@@ -3779,7 +3779,7 @@ var subUserSticker = function subUserSticker(data) {
 }; // 创建作品
 
 var subNotePhoto = function subNotePhoto(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/publish/photo",
     method: "post",
     data: data
@@ -3787,7 +3787,7 @@ var subNotePhoto = function subNotePhoto(data) {
 }; // 作品列表
 
 var photoList = function photoList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/photo/list",
     method: "post",
     data: data
@@ -3795,7 +3795,7 @@ var photoList = function photoList(data) {
 }; // 作品详情
 
 var photoInfo = function photoInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/photo/info",
     method: "post",
     data: data
@@ -3803,7 +3803,7 @@ var photoInfo = function photoInfo(data) {
 }; // 通告详情
 
 var noticeTemplate = function noticeTemplate(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/notice/template",
     method: "post",
     data: data
@@ -3811,7 +3811,7 @@ var noticeTemplate = function noticeTemplate(data) {
 }; // 提交通告
 
 var submitNotice = function submitNotice(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/publish/notice",
     method: "post",
     data: data
@@ -3819,7 +3819,7 @@ var submitNotice = function submitNotice(data) {
 }; // 通告列表页筛选
 
 var noticeFilter = function noticeFilter(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/notice/filter",
     method: "post",
     data: data
@@ -3827,7 +3827,7 @@ var noticeFilter = function noticeFilter(data) {
 }; // 通告列表
 
 var noticeList = function noticeList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/notice/list",
     method: "post",
     data: data
@@ -3835,7 +3835,7 @@ var noticeList = function noticeList(data) {
 }; // 通告详情
 
 var noticeInfo = function noticeInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/notice/info",
     method: "post",
     data: data
@@ -3843,7 +3843,7 @@ var noticeInfo = function noticeInfo(data) {
 }; // 支付
 
 var paymina = function paymina(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/pay/mina",
     method: "post",
     data: data
@@ -3851,7 +3851,7 @@ var paymina = function paymina(data) {
 }; // 获取发起约拍页模版
 
 var inviteTemplate = function inviteTemplate(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/apply/template",
     method: "post",
     data: data
@@ -3859,7 +3859,7 @@ var inviteTemplate = function inviteTemplate(data) {
 }; // 发起约拍提交
 
 var inviteApply = function inviteApply(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/record/invite/apply",
     method: "post",
     data: data
@@ -3867,7 +3867,7 @@ var inviteApply = function inviteApply(data) {
 }; // 红人列表
 
 var celebrityList = function celebrityList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/celebrity/list",
     method: "post",
     data: data
@@ -3875,7 +3875,7 @@ var celebrityList = function celebrityList(data) {
 }; // 创建|更新红人账号
 
 var userCelebrity = function userCelebrity(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/celebrity",
     method: "post",
     data: data
@@ -3883,7 +3883,7 @@ var userCelebrity = function userCelebrity(data) {
 }; // 红人详情
 
 var celebrityInfo = function celebrityInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/celebrity/info",
     method: "post",
     data: data
@@ -3891,7 +3891,7 @@ var celebrityInfo = function celebrityInfo(data) {
 }; // 获取地址列表
 
 var addressList = function addressList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/address/list",
     method: "post",
     data: data
@@ -3899,7 +3899,7 @@ var addressList = function addressList(data) {
 }; // 创建｜更新地址
 
 var submitAddress = function submitAddress(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/address",
     method: "post",
     data: data
@@ -3907,7 +3907,7 @@ var submitAddress = function submitAddress(data) {
 }; // 地址详情
 
 var addressInfo = function addressInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/address/info",
     method: "post",
     data: data
@@ -3915,7 +3915,7 @@ var addressInfo = function addressInfo(data) {
 }; // 获取我的联系方式
 
 var userContact = function userContact(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/contact/list",
     method: "post",
     data: data
@@ -3923,7 +3923,7 @@ var userContact = function userContact(data) {
 }; // 提交我的联系方式
 
 var subContact = function subContact(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/contact",
     method: "post",
     data: data
@@ -3931,7 +3931,7 @@ var subContact = function subContact(data) {
 }; // 提交我的联系方式
 
 var subApply = function subApply(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/apply/commit",
     method: "post",
     data: data
@@ -3939,7 +3939,7 @@ var subApply = function subApply(data) {
 }; // 收到约拍列表
 
 var applyList = function applyList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/receive/list",
     method: "post",
     data: data
@@ -3947,7 +3947,7 @@ var applyList = function applyList(data) {
 }; // 收到约拍详情
 
 var applyInfo = function applyInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/receive/info",
     method: "post",
     data: data
@@ -3955,7 +3955,7 @@ var applyInfo = function applyInfo(data) {
 }; // 我的访客
 
 var visitorList = function visitorList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/record/visitor/list",
     method: "post",
     data: data
@@ -3963,7 +3963,7 @@ var visitorList = function visitorList(data) {
 }; // 收到的赞
 
 var voteList = function voteList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/record/vote/list",
     method: "post",
     data: data
@@ -3971,7 +3971,7 @@ var voteList = function voteList(data) {
 }; // 点赞
 
 var giveUp = function giveUp(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/record/vote",
     method: "post",
     data: data
@@ -3979,7 +3979,7 @@ var giveUp = function giveUp(data) {
 }; // 收藏
 
 var recordCollect = function recordCollect(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/record/collect",
     method: "post",
     data: data
@@ -3987,7 +3987,7 @@ var recordCollect = function recordCollect(data) {
 }; // 约单管理
 
 var noteManageList = function noteManageList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/publish/list",
     method: "post",
     data: data
@@ -3995,7 +3995,7 @@ var noteManageList = function noteManageList(data) {
 }; // 作品管理和约拍管理按钮操作
 
 var manageEvent = function manageEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/publish/event",
     method: "post",
     data: data
@@ -4003,7 +4003,7 @@ var manageEvent = function manageEvent(data) {
 }; // 作品列表
 
 var photoListOwn = function photoListOwn(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/photo/list/own",
     method: "post",
     data: data
@@ -4011,7 +4011,7 @@ var photoListOwn = function photoListOwn(data) {
 }; // 收藏列表
 
 var collectList = function collectList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/record/collect/list",
     method: "post",
     data: data
@@ -4019,7 +4019,7 @@ var collectList = function collectList(data) {
 }; // 开通会员
 
 var memberOpen = function memberOpen(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/pay/wx/mina/member",
     method: "post",
     data: data
@@ -4027,7 +4027,7 @@ var memberOpen = function memberOpen(data) {
 }; // 会员信息
 
 var memberInfo = function memberInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/info",
     method: "post",
     data: data
@@ -4035,7 +4035,7 @@ var memberInfo = function memberInfo(data) {
 }; // 金币用途、赚取金币
 
 var coinList = function coinList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/coin/order/rule",
     method: "post",
     data: data
@@ -4043,7 +4043,7 @@ var coinList = function coinList(data) {
 }; // 金币明细
 
 var coinItemList = function coinItemList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/coin/order/list",
     method: "post",
     data: data
@@ -4051,7 +4051,7 @@ var coinItemList = function coinItemList(data) {
 }; // 获取金币数量
 
 var coinAcct = function coinAcct(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/info",
     method: "post",
     data: data
@@ -4059,7 +4059,7 @@ var coinAcct = function coinAcct(data) {
 }; // 金币充值
 
 var coinStore = function coinStore(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/pay/wx/mina/coin",
     method: "post",
     data: data
@@ -4067,21 +4067,21 @@ var coinStore = function coinStore(data) {
 }; // 消息通知
 
 var notifyNumber = function notifyNumber(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/notify/number/warn",
     method: "post",
     data: data
   });
 };
 var faceToken = function faceToken(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/identify/face/token",
     method: "post",
     data: data
   });
 };
 var facePrint = function facePrint(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: "https://brain.baidu.com/face/print",
     method: "post",
     data: data
@@ -4089,7 +4089,7 @@ var facePrint = function facePrint(data) {
 }; // 收到操作
 
 var applyManage = function applyManage(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/receive/event",
     method: "post",
     data: data
@@ -4097,7 +4097,7 @@ var applyManage = function applyManage(data) {
 }; // 投诉
 
 var publicComplain = function publicComplain(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/public/complain",
     method: "post",
     data: data
@@ -4105,7 +4105,7 @@ var publicComplain = function publicComplain(data) {
 }; // 存保证金
 
 var securityOpen = function securityOpen(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/pay/wx/mina/security",
     method: "post",
     data: data
@@ -4113,7 +4113,7 @@ var securityOpen = function securityOpen(data) {
 }; // 查询用户保障金或会员
 
 var securityInfo = function securityInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/security/info",
     method: "post",
     data: data
@@ -4121,7 +4121,7 @@ var securityInfo = function securityInfo(data) {
 }; // 通告列表
 
 var manageList = function manageList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/publish/list",
     method: "post",
     data: data
@@ -4129,7 +4129,7 @@ var manageList = function manageList(data) {
 }; // 通告管理-操作
 
 var manageOperation = function manageOperation(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/publish/event",
     method: "post",
     data: data
@@ -4137,7 +4137,7 @@ var manageOperation = function manageOperation(data) {
 }; // 开放招募-详情
 
 var pushInit = function pushInit(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/publish/notice/open/template",
     method: "post",
     data: data
@@ -4145,7 +4145,7 @@ var pushInit = function pushInit(data) {
 }; // 开放招募-提交
 
 var subOpenRecruitment = function subOpenRecruitment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/publish/notice/open/payment",
     method: "post",
     data: data
@@ -4153,7 +4153,7 @@ var subOpenRecruitment = function subOpenRecruitment(data) {
 }; // 生成海报
 
 var inviteImage = function inviteImage(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/share/invite/image",
     method: "post",
     data: data
@@ -4161,7 +4161,7 @@ var inviteImage = function inviteImage(data) {
 }; // 转发
 
 var shareInvite = function shareInvite(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/share/invite/mina",
     method: "post",
     data: data
@@ -4169,7 +4169,7 @@ var shareInvite = function shareInvite(data) {
 }; // 转发详情
 
 var shareInviteInfo = function shareInviteInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/share/invite/mina/info",
     method: "post",
     data: data
@@ -4177,7 +4177,7 @@ var shareInviteInfo = function shareInviteInfo(data) {
 }; // 是否签到
 
 var isSign = function isSign(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sign/check/logs",
     method: "post",
     data: data
@@ -4185,7 +4185,7 @@ var isSign = function isSign(data) {
 }; // 提交签到
 
 var submitSign = function submitSign(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sign/event/logs",
     method: "post",
     data: data
@@ -4193,7 +4193,7 @@ var submitSign = function submitSign(data) {
 }; // 关注公众号
 
 var followRedirect = function followRedirect(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/wechat/follow/redirect",
     method: "post",
     data: data
@@ -4201,7 +4201,7 @@ var followRedirect = function followRedirect(data) {
 }; // 邀请好友列表
 
 var shareInviteList = function shareInviteList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/share/invite/list",
     method: "post",
     data: data
@@ -4209,7 +4209,7 @@ var shareInviteList = function shareInviteList(data) {
 }; // 客服中心
 
 var categoryList = function categoryList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/clientele/category/list",
     method: "post",
     data: data
@@ -4217,7 +4217,7 @@ var categoryList = function categoryList(data) {
 }; // 意见反馈
 
 var feedback = function feedback(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/public/feedback",
     method: "post",
     data: data
@@ -4225,7 +4225,7 @@ var feedback = function feedback(data) {
 }; // 添加用户
 
 var addImUser = function addImUser(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/im/add/user",
     method: "post",
     data: data
@@ -4233,7 +4233,7 @@ var addImUser = function addImUser(data) {
 }; // 发送消息
 
 var sendMsg = function sendMsg(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/im/send/msg",
     method: "post",
     data: data
@@ -4241,7 +4241,7 @@ var sendMsg = function sendMsg(data) {
 }; // 消息列表
 
 var msgList = function msgList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/im/msg/list",
     method: "post",
     data: data
@@ -4249,7 +4249,7 @@ var msgList = function msgList(data) {
 }; // 消息详情
 
 var msgInfo = function msgInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/im/msg/info",
     method: "post",
     data: data
@@ -4257,7 +4257,7 @@ var msgInfo = function msgInfo(data) {
 }; // 公众号
 
 var checkFollow = function checkFollow(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/notify/check/follow/gzh",
     method: "post",
     data: data
@@ -4265,7 +4265,7 @@ var checkFollow = function checkFollow(data) {
 }; // 金币支付
 
 var applyPay = function applyPay(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/apply/payment",
     method: "post",
     data: data
@@ -4273,7 +4273,7 @@ var applyPay = function applyPay(data) {
 }; // 关注
 
 var userFollow = function userFollow(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/follow",
     method: "post",
     data: data
@@ -4281,7 +4281,7 @@ var userFollow = function userFollow(data) {
 }; // 取关
 
 var userUnfollow = function userUnfollow(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/unfollow",
     method: "post",
     data: data
@@ -4289,7 +4289,7 @@ var userUnfollow = function userUnfollow(data) {
 }; // 关注列表
 
 var followerList = function followerList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/follower/list",
     method: "post",
     data: data
@@ -4297,7 +4297,7 @@ var followerList = function followerList(data) {
 }; // 粉丝列表
 
 var followedList = function followedList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/followed/list",
     method: "post",
     data: data
@@ -4305,7 +4305,7 @@ var followedList = function followedList(data) {
 }; // 消息通知列表
 
 var systemList = function systemList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/notify/system/list",
     method: "post",
     data: data
@@ -4313,7 +4313,7 @@ var systemList = function systemList(data) {
 }; // OCR识别接口
 
 var ocrCard = function ocrCard(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/identify/ocr/id_card",
     method: "post",
     data: data
@@ -4321,7 +4321,7 @@ var ocrCard = function ocrCard(data) {
 }; // 信息上报接口
 
 var submitCard = function submitCard(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/identify/submit/id_card",
     method: "post",
     data: data
@@ -4329,7 +4329,7 @@ var submitCard = function submitCard(data) {
 }; // 识别结果接口
 
 var idcardInfo = function idcardInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/identify/ocr/id_card/info",
     method: "post",
     data: data
@@ -4337,7 +4337,7 @@ var idcardInfo = function idcardInfo(data) {
 }; // 击提交后调用信息上报接口
 
 var ocrIdcard = function ocrIdcard(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/identify/submit/id_card",
     method: "post",
     data: data
@@ -4345,7 +4345,7 @@ var ocrIdcard = function ocrIdcard(data) {
 }; // 约拍推荐
 
 var inviteAdviseList = function inviteAdviseList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/invite/list/advise",
     method: "post",
     data: data
@@ -4353,7 +4353,7 @@ var inviteAdviseList = function inviteAdviseList(data) {
 }; // 通告推荐
 
 var noticeAdviseList = function noticeAdviseList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/notice/list/advise",
     method: "post",
     data: data
@@ -4361,7 +4361,7 @@ var noticeAdviseList = function noticeAdviseList(data) {
 }; // 用户选择城市
 
 var userSelectCity = function userSelectCity(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/select/city",
     method: "post",
     data: data
@@ -4369,7 +4369,7 @@ var userSelectCity = function userSelectCity(data) {
 }; // 当前城市和签到
 
 var userStatus = function userStatus(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/status",
     method: "post",
     data: data
@@ -4377,7 +4377,7 @@ var userStatus = function userStatus(data) {
 }; // 筛选-约拍下拉选项
 
 var inviteFilter = function inviteFilter(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/invite/filter",
     method: "post",
     data: data
@@ -4385,7 +4385,7 @@ var inviteFilter = function inviteFilter(data) {
 }; // 筛选-作品下拉选项
 
 var photoFilter = function photoFilter(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/photo/filter",
     method: "post",
     data: data
@@ -4393,7 +4393,7 @@ var photoFilter = function photoFilter(data) {
 }; // 用户推荐筛选
 
 var userFilter = function userFilter(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/list/filter",
     method: "post",
     data: data
@@ -4401,7 +4401,7 @@ var userFilter = function userFilter(data) {
 }; // 用户推荐列表
 
 var userList = function userList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/home/user/explore/list",
     method: "post",
     data: data
@@ -4409,7 +4409,7 @@ var userList = function userList(data) {
 }; // 查看联系方式-支付
 
 var receivePayment = function receivePayment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/receive/payment",
     method: "post",
     data: data
@@ -4417,7 +4417,7 @@ var receivePayment = function receivePayment(data) {
 }; // 约拍支付
 
 var invitePayment = function invitePayment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/publish/invite/payment",
     method: "post",
     data: data
@@ -4425,7 +4425,7 @@ var invitePayment = function invitePayment(data) {
 }; // 通告支付
 
 var noticePayment = function noticePayment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/publish/notice/payment",
     method: "post",
     data: data
@@ -4433,7 +4433,7 @@ var noticePayment = function noticePayment(data) {
 }; // 发布校验
 
 var publishVerify = function publishVerify(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/publish/verify",
     method: "post",
     data: data
@@ -4441,7 +4441,7 @@ var publishVerify = function publishVerify(data) {
 }; // 申请报名检验
 
 var applyVerify = function applyVerify(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/apply/verify",
     method: "post",
     data: data
@@ -4449,7 +4449,7 @@ var applyVerify = function applyVerify(data) {
 }; // 订阅模版
 
 var subscribeEvent = function subscribeEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/wechat/nina/subscribe/msg/event",
     method: "post",
     data: data
@@ -4457,7 +4457,7 @@ var subscribeEvent = function subscribeEvent(data) {
 }; // banner
 
 var bannerList = function bannerList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/banner/list",
     method: "post",
     data: data
@@ -4465,7 +4465,7 @@ var bannerList = function bannerList(data) {
 }; // 我的申请列表
 
 var manageApplyList = function manageApplyList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/apply/list",
     method: "post",
     data: data
@@ -4473,7 +4473,7 @@ var manageApplyList = function manageApplyList(data) {
 }; // 申请-列表操作
 
 var manageApplyEvent = function manageApplyEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/manage/apply/event",
     method: "post",
     data: data
@@ -4481,7 +4481,7 @@ var manageApplyEvent = function manageApplyEvent(data) {
 }; // 沟通校验
 
 var imVerify = function imVerify(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/im/verify",
     method: "post",
     data: data
@@ -4489,7 +4489,7 @@ var imVerify = function imVerify(data) {
 }; // 获取小程序码
 
 var qrcode = function qrcode(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/public/user/unlimited/qrcode",
     method: "post",
     data: data
@@ -4497,7 +4497,7 @@ var qrcode = function qrcode(data) {
 }; // 子用户列表
 
 var nonpersonalList = function nonpersonalList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/shape/non_personal/list",
     method: "post",
     data: data
@@ -4505,7 +4505,7 @@ var nonpersonalList = function nonpersonalList(data) {
 }; // 创建模卡
 
 var userMocha = function userMocha(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/mocha",
     method: "post",
     data: data
@@ -4513,7 +4513,7 @@ var userMocha = function userMocha(data) {
 }; // 模卡列表
 
 var mochaList = function mochaList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/mocha/list",
     method: "post",
     data: data
@@ -4521,7 +4521,7 @@ var mochaList = function mochaList(data) {
 }; // 模卡操作
 
 var mochaEvent = function mochaEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/mocha/event",
     method: "post",
     data: data
@@ -4529,7 +4529,7 @@ var mochaEvent = function mochaEvent(data) {
 }; // 来源
 
 var sourceItems = function sourceItems(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/public/promotion/source/items",
     method: "post",
     data: data
@@ -4537,7 +4537,7 @@ var sourceItems = function sourceItems(data) {
 }; // 首页弹框操作
 
 var popupLogs = function popupLogs(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/task/popup/logs",
     method: "post",
     data: data
@@ -4545,7 +4545,7 @@ var popupLogs = function popupLogs(data) {
 }; // 活动获得参数
 
 var publishConfig = function publishConfig(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/publish/config",
     method: "post",
     data: data
@@ -4553,7 +4553,7 @@ var publishConfig = function publishConfig(data) {
 }; // 搜索用户
 
 var userSearch = function userSearch(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/user/search",
     method: "post",
     data: data
@@ -4561,7 +4561,7 @@ var userSearch = function userSearch(data) {
 }; // 活动发布
 
 var publishCreate = function publishCreate(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/publish/create",
     method: "post",
     data: data
@@ -4569,7 +4569,7 @@ var publishCreate = function publishCreate(data) {
 }; // 活动列表
 
 var exploreList = function exploreList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/explore/list",
     method: "post",
     data: data
@@ -4577,7 +4577,7 @@ var exploreList = function exploreList(data) {
 }; // 活动详情
 
 var exploreInfo = function exploreInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/explore/info",
     method: "post",
     data: data
@@ -4585,7 +4585,7 @@ var exploreInfo = function exploreInfo(data) {
 }; // 活动报名详情
 
 var sceneInfo = function sceneInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/apply/select/info",
     method: "post",
     data: data
@@ -4593,7 +4593,7 @@ var sceneInfo = function sceneInfo(data) {
 }; // 报名支付
 
 var applicationPay = function applicationPay(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/apply/commit",
     method: "post",
     data: data
@@ -4601,7 +4601,7 @@ var applicationPay = function applicationPay(data) {
 }; // 获取报名成员列表
 
 var applyMember = function applyMember(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/apply/member",
     method: "post",
     data: data
@@ -4609,7 +4609,7 @@ var applyMember = function applyMember(data) {
 }; // 获取报名状态
 
 var applyResult = function applyResult(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/apply/result",
     method: "post",
     data: data
@@ -4617,7 +4617,7 @@ var applyResult = function applyResult(data) {
 }; // 活动校验
 
 var activityVerify = function activityVerify(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/apply/verify",
     method: "post",
     data: data
@@ -4625,7 +4625,7 @@ var activityVerify = function activityVerify(data) {
 }; // 活动列表（我的活动）
 
 var myActivityList = function myActivityList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/manage/apply/list",
     method: "post",
     data: data
@@ -4633,7 +4633,7 @@ var myActivityList = function myActivityList(data) {
 }; // 订单操作（我的活动）
 
 var myActivityEvent = function myActivityEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/manage/apply/event",
     method: "post",
     data: data
@@ -4641,7 +4641,7 @@ var myActivityEvent = function myActivityEvent(data) {
 }; // 订单详情接口
 
 var sportInfo = function sportInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/manage/apply/info",
     method: "post",
     data: data
@@ -4649,7 +4649,7 @@ var sportInfo = function sportInfo(data) {
 }; // 发布作品
 
 var publishWorks = function publishWorks(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/publish/works",
     method: "post",
     data: data
@@ -4657,7 +4657,7 @@ var publishWorks = function publishWorks(data) {
 }; // 作品列表
 
 var worksList = function worksList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/works/list",
     method: "post",
     data: data
@@ -4665,7 +4665,7 @@ var worksList = function worksList(data) {
 }; // 赛事列表
 
 var guideList = function guideList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/guide/list",
     method: "post",
     data: data
@@ -4673,7 +4673,7 @@ var guideList = function guideList(data) {
 }; // 赛事详情
 
 var guideInfo = function guideInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/guide/info",
     method: "post",
     data: data
@@ -4681,7 +4681,7 @@ var guideInfo = function guideInfo(data) {
 }; // 作品列表（自己）
 
 var worksListOwn = function worksListOwn(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/works/list/own",
     method: "post",
     data: data
@@ -4689,7 +4689,7 @@ var worksListOwn = function worksListOwn(data) {
 }; // 作品详情
 
 var worksInfo = function worksInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/works/info",
     method: "post",
     data: data
@@ -4697,7 +4697,7 @@ var worksInfo = function worksInfo(data) {
 }; // 留言详情
 
 var commentInfo = function commentInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/works/comment/info",
     method: "post",
     data: data
@@ -4705,7 +4705,7 @@ var commentInfo = function commentInfo(data) {
 }; // 创建留言
 
 var commentCreate = function commentCreate(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/works/comment/create",
     method: "post",
     data: data
@@ -4713,7 +4713,7 @@ var commentCreate = function commentCreate(data) {
 }; // 作品点赞
 
 var worksEvent = function worksEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/games/explore/works/event",
     method: "post",
     data: data
@@ -4721,7 +4721,7 @@ var worksEvent = function worksEvent(data) {
 }; // 资料列表
 
 var materialsList = function materialsList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/task/receive/materials/list",
     method: "post",
     data: data
@@ -4729,7 +4729,7 @@ var materialsList = function materialsList(data) {
 }; // 领取资料
 
 var materialsEvent = function materialsEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/task/receive/materials/event",
     method: "post",
     data: data
@@ -4737,7 +4737,7 @@ var materialsEvent = function materialsEvent(data) {
 }; // 领取支付
 
 var materialsPayment = function materialsPayment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/task/receive/materials/payment",
     method: "post",
     data: data
@@ -4745,7 +4745,7 @@ var materialsPayment = function materialsPayment(data) {
 }; //  加入社群 -详情页
 
 var posterInfo = function posterInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/social/poster/info",
     method: "post",
     data: data
@@ -4753,7 +4753,7 @@ var posterInfo = function posterInfo(data) {
 }; // 社群支付check
 
 var socialCheck = function socialCheck(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/social/apply/check",
     method: "post",
     data: data
@@ -4761,7 +4761,7 @@ var socialCheck = function socialCheck(data) {
 }; // 社群获取支付结果
 
 var socialResult = function socialResult(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/social/apply/result",
     method: "post",
     data: data
@@ -4769,7 +4769,7 @@ var socialResult = function socialResult(data) {
 }; // 社群支付接口，唤起微信支付
 
 var socialPay = function socialPay(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/social/wx/mina/social/poster",
     method: "post",
     data: data
@@ -4777,7 +4777,7 @@ var socialPay = function socialPay(data) {
 }; // 钱包信息
 
 var acctInfo = function acctInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/info",
     method: "post",
     data: data
@@ -4785,7 +4785,7 @@ var acctInfo = function acctInfo(data) {
 }; // 任务规则
 
 var ruleList = function ruleList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/order/rule/list",
     method: "post",
     data: data
@@ -4793,7 +4793,7 @@ var ruleList = function ruleList(data) {
 }; // 快速升级-table
 
 var growthRuleList = function growthRuleList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/growth/rule/list",
     method: "post",
     data: data
@@ -4801,7 +4801,7 @@ var growthRuleList = function growthRuleList(data) {
 }; // 钱包明细
 
 var walletOrder = function walletOrder(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/wallet/order/items",
     method: "post",
     data: data
@@ -4809,7 +4809,7 @@ var walletOrder = function walletOrder(data) {
 }; // 签到计划列表
 
 var signinList = function signinList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/signin/event/plan",
     method: "post",
     data: data
@@ -4817,7 +4817,7 @@ var signinList = function signinList(data) {
 }; // 成长详情
 
 var growthInfo = function growthInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/growth/info",
     method: "post",
     data: data
@@ -4825,7 +4825,7 @@ var growthInfo = function growthInfo(data) {
 }; // 邀请好友列表
 
 var inviteFriendsList = function inviteFriendsList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/invite/friends/list",
     method: "post",
     data: data
@@ -4833,7 +4833,7 @@ var inviteFriendsList = function inviteFriendsList(data) {
 }; // 钱包充值（获取数据后唤起微信支付）
 
 var walletRecharge = function walletRecharge(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/pay/wx/mina/recharge",
     method: "post",
     data: data
@@ -4841,7 +4841,7 @@ var walletRecharge = function walletRecharge(data) {
 }; // 签到
 
 var signinLogs = function signinLogs(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/signin/event/logs",
     method: "post",
     data: data
@@ -4849,7 +4849,7 @@ var signinLogs = function signinLogs(data) {
 }; // 弹窗接口
 
 var checkStatus = function checkStatus(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/poster/check/status",
     method: "post",
     data: data
@@ -4857,7 +4857,7 @@ var checkStatus = function checkStatus(data) {
 }; // 弹窗点击行为接口
 
 var checkEvent = function checkEvent(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/poster/click/event",
     method: "post",
     data: data
@@ -4865,7 +4865,7 @@ var checkEvent = function checkEvent(data) {
 }; // 提现的接口
 
 var wxTransfer = function wxTransfer(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/pay/wx/mina/transfer",
     method: "post",
     data: data
@@ -4873,7 +4873,7 @@ var wxTransfer = function wxTransfer(data) {
 }; // 提现进度
 
 var orderInfo = function orderInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/acct/wallet/order/info",
     method: "post",
     data: data
@@ -4881,7 +4881,7 @@ var orderInfo = function orderInfo(data) {
 }; // 评论
 
 var comment = function comment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/explore/comment/info",
     method: "post",
     data: data
@@ -4889,7 +4889,7 @@ var comment = function comment(data) {
 }; // 分享秀
 
 var sharingInfo = function sharingInfo(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/explore/sharing/info",
     method: "post",
     data: data
@@ -4897,7 +4897,7 @@ var sharingInfo = function sharingInfo(data) {
 }; // 评价晒单
 
 var sunbathingCreate = function sunbathingCreate(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/sport/publish/comment/create",
     method: "post",
     data: data
@@ -4905,7 +4905,7 @@ var sunbathingCreate = function sunbathingCreate(data) {
 }; // 解锁
 
 var unlockCommit = function unlockCommit(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/unlock/apply/commit",
     method: "post",
     data: data
@@ -4913,7 +4913,7 @@ var unlockCommit = function unlockCommit(data) {
 }; // 解锁确认支付
 
 var unlockPayment = function unlockPayment(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/unlock/apply/payment",
     method: "post",
     data: data
@@ -4921,7 +4921,7 @@ var unlockPayment = function unlockPayment(data) {
 }; // 解锁详情列表
 
 var unlockList = function unlockList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/unlock/apply/list",
     method: "post",
     data: data
@@ -4929,7 +4929,7 @@ var unlockList = function unlockList(data) {
 }; // 约拍动态
 
 var trendsList = function trendsList(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/note/explore/trends/list",
     method: "post",
     data: data
@@ -4937,7 +4937,7 @@ var trendsList = function trendsList(data) {
 }; // 点击关闭
 
 var posterClick = function posterClick(data) {
-  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "f"])({
+  return Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* request */ "g"])({
     url: baseUrl + "/v1/poster/click/event",
     method: "post",
     data: data
@@ -10468,22 +10468,23 @@ function clickThrottle() {
 /*!***************************!*\
   !*** ./src/utils/util.js ***!
   \***************************/
-/*! exports provided: formatTime, formatNumber, openPage, timeformat, request, requestUpload, errortip, isLogin, throttle, platformMap, platformLogo */
-/*! exports used: errortip, isLogin, openPage, platformLogo, platformMap, request, requestUpload */
+/*! exports provided: formatTime, formatNumber, openPage, timeformat, request, requestUpload, errortip, isLogin, throttle, formatUrl, platformMap, platformLogo */
+/*! exports used: errortip, formatUrl, isLogin, openPage, platformLogo, platformMap, request, requestUpload */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export formatTime */
 /* unused harmony export formatNumber */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return openPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return openPage; });
 /* unused harmony export timeformat */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return request; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return requestUpload; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return request; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return requestUpload; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return errortip; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isLogin; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isLogin; });
 /* unused harmony export throttle */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return platformMap; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return platformLogo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return formatUrl; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return platformMap; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return platformLogo; });
 /* harmony import */ var _Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_objectSpread2_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
 /* harmony import */ var js_Base64__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! js-Base64 */ "./node_modules/js-Base64/base64.mjs");
 
@@ -10667,6 +10668,31 @@ var throttle = function throttle(fn, t) {
       }, interval);
     }
   };
+};
+var formatUrl = function formatUrl(options) {
+  var url = decodeURIComponent(options.q);
+  var res = {}; //下面这个方法是方便收集成对象做的工具类
+
+  var query = (url.split("?")[1] || "").trim().replace(/^(\?|#|&)/, "");
+
+  if (!query) {
+    return res;
+  }
+
+  query.split("&").forEach(function (param) {
+    var parts = param.replace(/\+/g, " ").split("=");
+    var key = decodeURIComponent(parts.shift());
+    var val = parts.length > 0 ? decodeURIComponent(parts.join("=")) : null;
+
+    if (res[key] === undefined) {
+      res[key] = val;
+    } else if (Array.isArray(res[key])) {
+      res[key].push(val);
+    } else {
+      res[key] = [res[key], val];
+    }
+  });
+  return res;
 };
 var platformMap = {
   XM: "虾米约拍",

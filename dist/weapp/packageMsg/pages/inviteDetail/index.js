@@ -372,7 +372,7 @@ component.options.__file = "src/packageMsg/pages/inviteDetail/index.vue"
       this.showModel = false;
     },
     goYuepaiDetail: function goYuepaiDetail() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + this.yuepaiInfo.oid + "&author_id=" + this.yuepaiInfo.author);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + this.yuepaiInfo.oid + "&author_id=" + this.yuepaiInfo.author);
     },
     submit: function submit() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])(5000)) return;

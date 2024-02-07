@@ -609,7 +609,7 @@ component.options.__file = "src/packageActivity/pages/photography/index.vue"
       }
     },
     zuopinDetail: function zuopinDetail(works_oid, visited_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/photographyDetail/index?works_oid=" + works_oid + "&visited_id=" + visited_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/photographyDetail/index?works_oid=" + works_oid + "&visited_id=" + visited_id);
     },
     changeItem: function changeItem(index) {
       if (this.currentTab === index) {
@@ -715,12 +715,12 @@ component.options.__file = "src/packageActivity/pages/photography/index.vue"
       });
     },
     uploadZuopin: function uploadZuopin() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
         this.select = 0;
         this.radio = false;
         this.visible = true;
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     close: function close() {
@@ -780,14 +780,14 @@ component.options.__file = "src/packageActivity/pages/photography/index.vue"
       }, type);
     },
     likeClick: function likeClick(data) {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* isLogin */ "c"])()) {
         this.worksEvent({
           works_oid: data.works.works_oid,
           event_type: "vote",
           event_action: data.works.is_vote == 1 ? -1 : 1
         }, data);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     publishWorks: function publishWorks(params) {

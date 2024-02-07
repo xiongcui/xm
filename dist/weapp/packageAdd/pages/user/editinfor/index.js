@@ -230,10 +230,10 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
       this.regionList = e.detail.code;
     },
     goEditUserIntro: function goEditUserIntro() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/editusertro/index?resume=" + this.infor.intro);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/editusertro/index?resume=" + this.infor.intro);
     },
     goIdentity: function goIdentity() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/identity/index");
     },
     chooseImage: function chooseImage() {
       wx.chooseMedia({
@@ -244,7 +244,7 @@ component.options.__file = "src/packageAdd/pages/user/editinfor/index.vue"
         camera: "back",
         success: function success(res) {
           var path = res.tempFiles[0].tempFilePath;
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/we-cropper/index?imgSrc=" + path + "&type=avatar");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/we-cropper/index?imgSrc=" + path + "&type=avatar");
         }
       });
     },

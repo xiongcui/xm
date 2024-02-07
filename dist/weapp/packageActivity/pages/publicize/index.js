@@ -191,12 +191,12 @@ component.options.__file = "src/packageActivity/pages/publicize/index.vue"
     addGroup: function addGroup(oid, amount) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
         this.socialCheck({
           crowd_oid: oid
         }, amount);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index?from=publicize");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index?from=publicize");
       }
     },
     saveImg: function saveImg() {

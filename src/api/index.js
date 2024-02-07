@@ -1,6 +1,6 @@
 import { request, requestUpload } from "../utils/util";
-// const baseUrl = "https://pai.qubeitech.com";
-const baseUrl = "https://dev.qubeitech.com";
+const baseUrl = "https://pai.qubeitech.com";
+// const baseUrl = "https://dev.qubeitech.com";
 // WX登录,拿code换登录
 export const wxlogin = (data) => {
   return request({

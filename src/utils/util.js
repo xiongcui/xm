@@ -200,6 +200,29 @@ export const throttle = (fn, t) => {
   };
 };
 
+export const formatUrl = (options) => {
+  const url = decodeURIComponent(options.q);
+  let res = {};
+  //下面这个方法是方便收集成对象做的工具类
+  const query = (url.split("?")[1] || "").trim().replace(/^(\?|#|&)/, "");
+  if (!query) {
+    return res;
+  }
+  query.split("&").forEach((param) => {
+    const parts = param.replace(/\+/g, " ").split("=");
+    const key = decodeURIComponent(parts.shift());
+    const val = parts.length > 0 ? decodeURIComponent(parts.join("=")) : null;
+    if (res[key] === undefined) {
+      res[key] = val;
+    } else if (Array.isArray(res[key])) {
+      res[key].push(val);
+    } else {
+      res[key] = [res[key], val];
+    }
+  });
+  return res;
+};
+
 export const platformMap = {
   XM: "虾米约拍",
   YPTG: "约拍通告",

@@ -90,7 +90,7 @@ component.options.__file = "src/packageMsg/pages/msgList/index.vue"
   },
   methods: {
     hyper_link: function hyper_link(url) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])(url);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])(url);
     },
     query: function query() {
       this.loading = false;

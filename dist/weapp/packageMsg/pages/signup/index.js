@@ -904,7 +904,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
   },
   methods: {
     gozhuye: function gozhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     copy: function copy(txt) {
       wx.setClipboardData({
@@ -1013,7 +1013,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       });
     },
     signupAllDetail: function signupAllDetail(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMsg/pages/manageSignup/index?oid=" + oid + "&type=" + this.status + "&currentTab=" + this.currentTab);
     },
     signupDetail: function signupDetail(sid, visited_status) {
       // openPage(
@@ -1022,7 +1022,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
       //     "&visited_status=" +
       //     visited_status
       // );
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid + "&visited_status=" + visited_status);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMsg/pages/inviteDetail/index?sid=" + sid + "&visited_status=" + visited_status);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -1048,7 +1048,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
             case 1:
               console.log("投诉");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
               break;
           }
         },
@@ -1358,7 +1358,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
 
               case 3:
                 res = _context5.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
                 _context5.next = 11;
                 break;
 
@@ -1368,7 +1368,7 @@ component.options.__file = "src/packageMsg/pages/signup/index.vue"
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context5.t0.data.msg);
 
                 if (_context5.t0.data.error_code == 21050 || _context5.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context5.t0.data.msg, "&code=").concat(_context5.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context5.t0.data.msg, "&code=").concat(_context5.t0.data.error_code));
                 }
 
               case 11:

@@ -691,19 +691,19 @@ component.options.__file = "src/pages/my/index.vue"
   },
   methods: {
     goSign: function goSign() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/coin/index");
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/coin/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     open_settings: function open_settings() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/index/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageSet/pages/index/index");
     },
     close: function close() {
       this.showModelSign = false;
@@ -720,78 +720,78 @@ component.options.__file = "src/pages/my/index.vue"
       });
     },
     personDetail: function personDetail() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/editinfor/index");
     },
     goZhuye: function goZhuye() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index");
     },
     goReleaseManagement: function goReleaseManagement() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/releaseManagement/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/releaseManagement/index");
     },
     goZuopin: function goZuopin() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_list/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/zuopin/zuopin_list/index");
     },
     goCollection: function goCollection() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/collection/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/collection/index");
     },
     pledgecash: function pledgecash() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/creditGuarantee/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/creditGuarantee/index");
     },
     myCertification: function myCertification() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
       if (this.infor.basic.is_certify) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/success/index?msg=实名认证审核通过！");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageSet/pages/success/index?msg=实名认证审核通过！");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/realnameAuth/index");
       }
     },
     goVip: function goVip() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/vip/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/vip/index");
     },
     goCoin: function goCoin() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/coin/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/coin/index");
     },
     invitego: function invitego() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/inviteGift/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/inviteGift/index");
     },
     customerService: function customerService() {
       wx.openCustomerServiceChat({
@@ -803,78 +803,78 @@ component.options.__file = "src/pages/my/index.vue"
       });
     },
     customerCenter: function customerCenter() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/customerCenter/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageSet/pages/customerCenter/index");
     },
     myApply: function myApply() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/apply/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageSet/pages/apply/index");
     },
     myMoka: function myMoka() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/myModelCardlist/index");
     },
     myHuodong: function myHuodong() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/myActivity/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/myActivity/index");
     },
     myUnlock: function myUnlock() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/unlock/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/unlock/index");
     },
     follow: function follow() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/follow/index");
     },
     login: function login() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
     },
     goAbout: function goAbout() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/about/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageSet/pages/about/index");
     },
     goResource: function goResource() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/resource/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/resource/index");
     },
     goEnterGroup: function goEnterGroup() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/publicize/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/publicize/index");
     },
     goFollowAndfans: function goFollowAndfans(type) {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/followAndfans/index?type=" + type);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/followAndfans/index?type=" + type);
     },
     goWallet: function goWallet() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/wallet/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/wallet/index");
     },
     goGrade: function goGrade() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/grade/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/grade/index");
     },
     mokaClose: function mokaClose() {
       console.log(1111);
@@ -1085,7 +1085,7 @@ component.options.__file = "src/pages/my/index.vue"
 
               case 3:
                 res = _context6.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" + res.data.data.verify_token + "&uuid=" + _this5.infor.uuid);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" + res.data.data.verify_token + "&uuid=" + _this5.infor.uuid);
                 _context6.next = 10;
                 break;
 
@@ -1094,7 +1094,7 @@ component.options.__file = "src/pages/my/index.vue"
                 _context6.t0 = _context6["catch"](0);
 
                 if (_context6.t0.data.error_code == 21002) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/realnameAuth/index");
                 }
 
               case 10:
@@ -1152,7 +1152,7 @@ component.options.__file = "src/pages/my/index.vue"
   },
   onShow: function onShow() {
     // 是否登录
-    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
+    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
       this.showlogin = false;
     } else {
       this.showlogin = true;

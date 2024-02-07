@@ -285,7 +285,7 @@ component.options.__file = "src/packageSet/pages/apply/index.vue"
 
             case 1:
               console.log("投诉");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visited_id=" + row.visited_id + "&avatar=" + row.visited.avatar + "&nickname=" + row.visited.nickname + "&province_name=" + row.visited.province_name + "&career=" + row.visited.career_list[0]);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMsg/pages/complaint/index?visited_id=" + row.visited_id + "&avatar=" + row.visited.avatar + "&nickname=" + row.visited.nickname + "&province_name=" + row.visited.province_name + "&career=" + row.visited.career_list[0]);
               break;
           }
         },
@@ -302,7 +302,7 @@ component.options.__file = "src/packageSet/pages/apply/index.vue"
     },
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     manageApplyList: function manageApplyList(params) {
       var _this2 = this;

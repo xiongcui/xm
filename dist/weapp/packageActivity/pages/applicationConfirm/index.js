@@ -104,7 +104,7 @@ component.options.__file = "src/packageActivity/pages/applicationConfirm/index.v
       });
     },
     goactivity: function goactivity() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* openPage */ "c"])("/packageActivity/pages/list/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_1__[/* openPage */ "d"])("/packageActivity/pages/list/index");
     }
   },
   onLoad: function onLoad(options) {

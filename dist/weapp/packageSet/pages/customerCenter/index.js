@@ -128,12 +128,12 @@ component.options.__file = "src/packageSet/pages/customerCenter/index.vue"
   },
   methods: {
     gofeedback: function gofeedback() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageSet/pages/feedback/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageSet/pages/feedback/index");
     },
     customerService: function customerService() {
       wx.openCustomerServiceChat({

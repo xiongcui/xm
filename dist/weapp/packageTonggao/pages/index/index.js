@@ -210,22 +210,22 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
 
                 if (type) {
                   if (type == 1) {
-                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/brand/index");
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/brand/index");
                   }
 
                   if (type == 2) {
-                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/shop/index");
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/shop/index");
                   }
 
                   if (type == 3) {
-                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/add/index?code=creation_content&type=发型创作&key=CC1002");
                   }
 
                   if (type == 4) {
-                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
+                    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/add/index?code=creation_content&type=人像创作&key=CC1001");
                   }
                 } else {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/add/index?code=" + _this2.code + "&type=" + row.value + "&key=" + row.key);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/add/index?code=" + _this2.code + "&type=" + row.value + "&key=" + row.key);
                 }
 
                 _context2.next = 10;
@@ -236,7 +236,7 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
                 _context2.t0 = _context2["catch"](0);
 
                 if (_context2.t0.data.error_code == 21030 || _context2.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context2.t0.data.msg, "&code=").concat(_context2.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context2.t0.data.msg, "&code=").concat(_context2.t0.data.error_code));
                 } else if (_context2.t0.data.error_code == 21060) {
                   wx.showModal({
                     title: "温馨提示",
@@ -245,7 +245,7 @@ component.options.__file = "src/packageTonggao/pages/index/index.vue"
                     success: function success(res) {
                       if (res.confirm) {
                         console.log("用户点击确定");
-                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/editinfor/index");
                       } else if (res.cancel) {
                         console.log("用户点击取消");
                       }

@@ -546,7 +546,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
         sourceType: ["album"],
         success: function success(e) {
           var t = e.tempFilePaths;
-          wx.setStorageSync("selectedPhotos", t), t.length >= o.maxCount ? Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/chooseisself/index") : Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/choosephoto/index");
+          wx.setStorageSync("selectedPhotos", t), t.length >= o.maxCount ? Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/chooseisself/index") : Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/choosephoto/index");
         }
       });
     },
@@ -561,7 +561,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
         sourceType: ["album"],
         success: function success(e) {
           var t = e.tempFilePaths;
-          wx.setStorageSync("selectedPhotos", t), t.length >= o.maxCount ? Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/chooseisself/index") : Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/choosephoto/index");
+          wx.setStorageSync("selectedPhotos", t), t.length >= o.maxCount ? Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/chooseisself/index") : Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/choosephoto/index");
         }
       });
     }

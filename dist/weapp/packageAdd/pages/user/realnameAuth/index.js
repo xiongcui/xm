@@ -382,7 +382,7 @@ component.options.__file = "src/packageAdd/pages/user/realnameAuth/index.vue"
               case 3:
                 res = _context3.sent;
                 userInfo = wx.getStorageSync("userInfo");
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" + res.data.data.verify_token + "&uuid=" + userInfo.uuid);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageAdd/pages/user/baiduRealnameAuth/index?verify_token=" + res.data.data.verify_token + "&uuid=" + userInfo.uuid);
                 _context3.next = 10;
                 break;
 

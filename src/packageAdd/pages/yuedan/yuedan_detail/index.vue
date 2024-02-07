@@ -283,7 +283,7 @@ import {
 } from "../../../../api/index";
 import YuepaiList from "../../../../components/yuepaiList/index.vue";
 import unlock from "../../../../components/unlock/index.vue";
-import { errortip, isLogin, openPage } from "../../../../utils/util";
+import { errortip, isLogin, openPage, formatUrl } from "../../../../utils/util";
 import clickThrottle from "../../../../utils/clickThrottle";
 import "./index.scss";
 export default {
@@ -616,10 +616,13 @@ export default {
       this.oid = options.scene;
       this.author_id = options.author_id;
     }
-    if (this.oid && this.author_id) {
+    const res = formatUrl(options);
+    const oid = res.oid;
+    const author_id = res.author_id;
+    if ((this.oid && this.author_id) || (oid && author_id)) {
       let params = {
-        oid: this.oid,
-        author_id: this.author_id,
+        oid: this.oid || oid,
+        author_id: this.author_id || author_id,
       };
       this.inviteInfo(params);
       this.shareInviteInfo({

@@ -247,7 +247,7 @@ component.options.__file = "src/packageMsg/pages/livevisitor/index.vue"
       this.query();
     },
     goZhuye: function goZhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     visitorList: function visitorList(params) {
       var _this = this;

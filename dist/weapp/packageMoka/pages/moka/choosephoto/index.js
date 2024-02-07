@@ -102,7 +102,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
       this.photos;
       var o = this.photos.length,
           e = this.maxCount;
-      if (o >= e) return wx.setStorageSync("selectedPhotos", this.photos), void Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/chooseisself/index");
+      if (o >= e) return wx.setStorageSync("selectedPhotos", this.photos), void Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/chooseisself/index");
       var s = this;
       wx.chooseImage({
         count: e - o,

@@ -114,7 +114,7 @@ component.options.__file = "src/packageMoka/pages/moka/index/index.vue"
   },
   methods: {
     goModel: function goModel() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/modelcard/index");
     } // goActor() {},
     // goAnchor() {},
     // goTheme() {},

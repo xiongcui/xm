@@ -968,7 +968,7 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
       });
     },
     openTonggao: function openTonggao(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/open_recruitment/index?oid=" + oid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/open_recruitment/index?oid=" + oid);
     },
     overTonggao: function overTonggao(oid) {
       var _this = this;
@@ -1011,7 +1011,7 @@ component.options.__file = "src/packageTonggao/pages/tonggao_manage/index.vue"
       });
     },
     manageTonggao: function manageTonggao(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?oid=" + oid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/manageSignup/index?oid=" + oid);
     },
     reopenTonggao: function reopenTonggao(oid) {
       var _this = this;

@@ -166,8 +166,8 @@ component.options.__file = "src/pages/release/index.vue"
   name: "release",
   methods: {
     releaseUrl: function releaseUrl(type) {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
@@ -197,7 +197,7 @@ component.options.__file = "src/pages/release/index.vue"
           break;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])(url);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])(url);
     },
     publishVerify: function publishVerify(params) {
       return Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])( /*#__PURE__*/Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_regeneratorRuntime_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])().mark(function _callee() {
@@ -212,7 +212,7 @@ component.options.__file = "src/pages/release/index.vue"
 
               case 3:
                 res = _context.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/zuopin/add_zuopin/index");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/zuopin/add_zuopin/index");
                 _context.next = 10;
                 break;
 
@@ -221,7 +221,7 @@ component.options.__file = "src/pages/release/index.vue"
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.data.error_code == 21030 || _context.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
                 } else {
                   errortip(_context.t0.data.msg);
                 }

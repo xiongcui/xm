@@ -127,7 +127,7 @@ component.options.__file = "src/packageMoka/pages/moka/editvideo/index.vue"
           var arr = res.tempFiles.map(function (item) {
             return item.tempFilePath;
           });
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/we-cropper/index?type=videoId&videoId=" + index + "&imgSrc=" + arr[0]);
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/we-cropper/index?type=videoId&videoId=" + index + "&imgSrc=" + arr[0]);
         }
       });
     },

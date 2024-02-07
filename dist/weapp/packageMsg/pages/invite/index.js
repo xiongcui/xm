@@ -411,7 +411,7 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
   },
   methods: {
     gozhuye: function gozhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     // 点击tab切换
     changeItem: function changeItem(index, type) {
@@ -447,7 +447,7 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
       this.applyList(params);
     },
     goDetail: function goDetail(sid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/inviteDetail/index?sid=" + sid);
     },
     moreClick: function moreClick(sid, row) {
       var _this = this;
@@ -463,7 +463,7 @@ component.options.__file = "src/packageMsg/pages/invite/index.vue"
 
             case 1:
               console.log("投诉");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/complaint/index?visitor_id=" + row.visitor_id + "&avatar=" + row.visitor.avatar + "&nickname=" + row.visitor.nickname + "&province_name=" + row.visitor.province_name + "&career=" + row.visitor.career_list[0]);
               break;
           }
         },

@@ -1429,7 +1429,7 @@ component.options.__file = "src/packageAdd/pages/yuedan/yuedan_manage/index.vue"
           success: function success(res) {
             if (res.confirm) {
               console.log("用户点击确定");
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/realnameAuth/index");
             } else if (res.cancel) {
               console.log("用户点击取消");
             }

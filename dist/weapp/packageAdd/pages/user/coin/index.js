@@ -349,7 +349,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
   },
   methods: {
     openUrl: function openUrl(url) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])(url);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])(url);
     },
     findDom: function findDom() {
       if (this.currentTab == 0) {
@@ -378,23 +378,23 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
           break;
 
         case "invite_friends":
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/invite/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/invite/index");
           break;
 
         case "finish_profile":
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/editinfor/index");
           break;
 
         case "real_certify":
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/realnameAuth/index");
           break;
 
         case "follow_wechat":
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/follow/index");
           break;
 
         case "bind_phone":
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/contact/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/contact/index");
           break;
       }
     },
@@ -460,7 +460,7 @@ component.options.__file = "src/packageAdd/pages/user/coin/index.vue"
       });
     },
     goPay: function goPay() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargecoin/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/rechargecoin/index");
     },
     immediatelySignin: function immediatelySignin() {
       this.signinLogs("");

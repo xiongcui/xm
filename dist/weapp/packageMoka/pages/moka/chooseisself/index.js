@@ -197,13 +197,13 @@ component.options.__file = "src/packageMoka/pages/moka/chooseisself/index.vue"
   },
   methods: {
     goSelfMoka: function goSelfMoka() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMoka/pages/moka/inforother/index?myself=1");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMoka/pages/moka/inforother/index?myself=1");
     },
     goOtherMoka: function goOtherMoka() {
       if (this.infor.has_sub_user) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMoka/pages/moka/otherlist/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMoka/pages/moka/otherlist/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMoka/pages/moka/inforother/index?=0");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMoka/pages/moka/inforother/index?=0");
       }
     },
     nonpersonalList: function nonpersonalList(params) {

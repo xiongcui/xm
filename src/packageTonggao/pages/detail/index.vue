@@ -391,7 +391,7 @@ import {
   applyVerify,
   imVerify,
 } from "../../../api/index";
-import { errortip, isLogin, openPage } from "../../../utils/util";
+import { errortip, isLogin, openPage, formatUrl } from "../../../utils/util";
 export default {
   name: "tonggaoDetail",
   data() {
@@ -753,7 +753,10 @@ export default {
       this.oid = options.scene;
       this.author_id = options.author_id;
     }
-    if (this.oid && this.author_id) {
+    const res = formatUrl(options);
+    const oid = res.oid;
+    const author_id = res.author_id;
+    if ((this.oid && this.author_id) || (oid && author_id)) {
       let params = {
         oid: this.oid,
         author_id: this.author_id,

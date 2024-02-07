@@ -328,7 +328,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
   },
   methods: {
     goZhuye: function goZhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     clear: function clear() {
       this.appointmentData = this.appointmentData.map(function (item, index) {
@@ -444,7 +444,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
       this.query("init", true);
     },
     connect: function connect(row) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.basic.uuid + "&nickname=" + row.basic.nickname + "&avatar=" + row.basic.avatar);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + row.basic.uuid + "&nickname=" + row.basic.nickname + "&avatar=" + row.basic.avatar);
     },
     onRefresh: function onRefresh() {
       //在当前页面显示导航条加载动画
@@ -725,7 +725,7 @@ component.options.__file = "src/packageAdd/pages/user/takelist/index.vue"
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])(_context5.t0.data.msg);
 
                 if (_context5.t0.data.error_code == 21050 || _context5.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context5.t0.data.msg, "&code=").concat(_context5.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context5.t0.data.msg, "&code=").concat(_context5.t0.data.error_code));
                 }
 
               case 11:

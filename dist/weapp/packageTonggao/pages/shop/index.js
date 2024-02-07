@@ -786,7 +786,7 @@ component.options.__file = "src/packageTonggao/pages/shop/index.vue"
 
               case 3:
                 res = _context3.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1&msg=".concat(res.data.data));
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/tips/index?type=1&msg=".concat(res.data.data));
                 _context3.next = 9;
                 break;
 

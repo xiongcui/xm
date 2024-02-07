@@ -233,7 +233,7 @@ component.options.__file = "src/packageVip/pages/grade/index.vue"
       this.cur_level_item = this.all_level_item[this.list[index].level];
     },
     goGrowthGuide: function goGrowthGuide() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/growthGuide/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/growthGuide/index");
     },
     queryRuleList: function queryRuleList() {
       this.ruleList({
@@ -241,10 +241,10 @@ component.options.__file = "src/packageVip/pages/grade/index.vue"
       });
     },
     openUrl: function openUrl(url) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])(url);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])(url);
     },
     goVip: function goVip() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/vip/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/vip/index");
     },
     ruleList: function ruleList(params) {
       var _this = this;

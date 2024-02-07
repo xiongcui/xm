@@ -136,13 +136,13 @@ component.options.__file = "src/packageVip/pages/wallet/index.vue"
   },
   methods: {
     goWithdrawal: function goWithdrawal() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/walletAccount/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/walletAccount/index");
     },
     goRechargeWallet: function goRechargeWallet() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/rechargeWallet/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/rechargeWallet/index");
     },
     goWithdrawalProgress: function goWithdrawalProgress(order_no) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/withdrawalProgress/index?order_no=" + order_no);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/withdrawalProgress/index?order_no=" + order_no);
     },
     acctInfo: function acctInfo(params) {
       var _this = this;

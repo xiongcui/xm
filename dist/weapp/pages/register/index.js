@@ -213,13 +213,13 @@ component.options.__file = "src/pages/register/index.vue"
       this.regionList = e.detail.code;
     },
     identityFocus: function identityFocus() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/identity/index");
     },
     goHome: function goHome() {
       if (this.from == "resource") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/resource/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/resource/index");
       } else if (this.from == "publicize") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/publicize/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/publicize/index");
       } else {
         // 跳转首页
         wx.switchTab({
@@ -286,9 +286,9 @@ component.options.__file = "src/pages/register/index.vue"
                 res = _context.sent;
 
                 if (_this.from == "resource") {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/resource/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/resource/index");
                 } else if (_this.from == "publicize") {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/publicize/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/publicize/index");
                 } else {
                   // 跳转首页
                   wx.switchTab({

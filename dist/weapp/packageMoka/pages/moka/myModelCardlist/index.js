@@ -172,7 +172,7 @@ component.options.__file = "src/packageMoka/pages/moka/myModelCardlist/index.vue
   },
   methods: {
     makeMoka: function makeMoka() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/modelcard/index");
     },
     // 滑动切换tab
     bindChange: function bindChange(e) {

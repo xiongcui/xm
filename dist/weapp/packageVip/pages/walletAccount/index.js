@@ -189,10 +189,10 @@ component.options.__file = "src/packageVip/pages/walletAccount/index.vue"
   },
   methods: {
     goDetail: function goDetail(type) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageVip/pages/accounDetails/index?type=" + type);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageVip/pages/accounDetails/index?type=" + type);
     },
     inviteFriends: function inviteFriends() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/inviteGift/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/inviteGift/index");
     },
     withdrawal: function withdrawal(type) {
       if (type == 0 && this.virtual.take_amount_auth == 0) {
@@ -200,7 +200,7 @@ component.options.__file = "src/packageVip/pages/walletAccount/index.vue"
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageVip/pages/withdrawal/index?type=" + type);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageVip/pages/withdrawal/index?type=" + type);
     },
     commissionClose: function commissionClose() {
       this.commissionVisible = false;

@@ -120,7 +120,7 @@ component.options.__file = "src/packageActivity/pages/match/index.vue"
   },
   methods: {
     gameDetail: function gameDetail(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageActivity/pages/photography/index?game_oid=" + oid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageActivity/pages/photography/index?game_oid=" + oid);
     },
     // 加载更多
     onMore: function onMore() {

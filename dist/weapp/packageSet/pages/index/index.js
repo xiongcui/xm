@@ -146,19 +146,19 @@ component.options.__file = "src/packageSet/pages/index/index.vue"
       });
     },
     personDetail: function personDetail() {
-      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/editinfor/index");
     },
     goAddress: function goAddress() {
-      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/addresslist/index");
+      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/addresslist/index");
     },
     goSensationlist: function goSensationlist() {
-      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/sensationlist/index");
+      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/sensationlist/index");
     },
     goContact: function goContact() {
-      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/contact/index");
+      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/contact/index");
     },
     goAbout: function goAbout() {
-      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/about/index");
+      Object(_utils_util_js__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageSet/pages/about/index");
     }
   }
 });

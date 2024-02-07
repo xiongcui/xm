@@ -212,7 +212,7 @@ import {
 } from "../../../../api/index";
 import unlock from "../../../../components/unlock/index.vue";
 import clickThrottle from "../../../../utils/clickThrottle";
-import { isLogin, openPage } from "../../../../utils/util";
+import { isLogin, openPage, formatUrl } from "../../../../utils/util";
 export default {
   name: "zuopin_detail",
   data() {
@@ -423,10 +423,13 @@ export default {
       this.oid = options.scene;
       this.author_id = options.author_id;
     }
-    if (this.oid && this.author_id) {
+    const res = formatUrl(options);
+    const oid = res.oid;
+    const author_id = res.author_id;
+    if ((this.oid && this.author_id) || (oid && author_id)) {
       let params = {
-        oid: this.oid,
-        author_id: this.author_id,
+        oid: this.oid || oid,
+        author_id: this.author_id || author_id,
       };
       this.photoInfo(params);
       this.shareInviteInfo({

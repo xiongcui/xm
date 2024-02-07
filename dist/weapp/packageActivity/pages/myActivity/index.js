@@ -246,15 +246,15 @@ component.options.__file = "src/packageActivity/pages/myActivity/index.vue"
   },
   methods: {
     goSunbathing: function goSunbathing(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/sunbathing/index?oid=" + oid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/sunbathing/index?oid=" + oid);
     },
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     goDetail: function goDetail(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/myActivityDetail/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/myActivityDetail/index?uuid=" + uuid);
     },
     weChatClose: function weChatClose() {
       this.weChatVisible = false;

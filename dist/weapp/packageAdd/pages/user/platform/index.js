@@ -97,7 +97,7 @@ component.options.__file = "src/packageAdd/pages/user/platform/index.vue"
   },
   methods: {
     goChooseMedia: function goChooseMedia(row) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/addfans/index?platform_code=" + row.platform_code + "&platform_name=" + row.platform_name);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/addfans/index?platform_code=" + row.platform_code + "&platform_name=" + row.platform_name);
     }
   }
 });

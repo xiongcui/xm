@@ -218,7 +218,7 @@ component.options.__file = "src/packageAdd/pages/user/followAndfans/index.vue"
   },
   methods: {
     gozhuye: function gozhuye(uuid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     // 点击tab切换
     changeItem: function changeItem(index, type) {

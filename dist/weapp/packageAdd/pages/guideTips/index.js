@@ -78,13 +78,13 @@ component.options.__file = "src/packageAdd/pages/guideTips/index.vue"
   },
   methods: {
     goRealnameAuth: function goRealnameAuth() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/realnameAuth/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/realnameAuth/index");
     },
     goPledgecash: function goPledgecash() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMsg/pages/creditGuarantee/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMsg/pages/creditGuarantee/index");
     },
     goVip: function goVip() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageVip/pages/vip/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageVip/pages/vip/index");
     }
   },
   onLoad: function onLoad(options) {

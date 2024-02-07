@@ -284,7 +284,7 @@ component.options.__file = "src/packageAdd/pages/user/unlock/index.vue"
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_4__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_4__[/* platformMap */ "f"];
     this.query();
   },
   onReachBottom: function onReachBottom() {

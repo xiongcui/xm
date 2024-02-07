@@ -804,7 +804,7 @@ var citySelector = requirePlugin("citySelector");
           click_type: "done"
         });
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     redEnvelopeClose: function redEnvelopeClose() {
@@ -829,25 +829,25 @@ var citySelector = requirePlugin("citySelector");
       this.visible = false;
     },
     goSign: function goSign() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/coin/index");
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageAdd/pages/user/coin/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     gomoka: function gomoka() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageMoka/pages/moka/modelcard/index");
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageMoka/pages/moka/modelcard/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     goCompetition: function goCompetition() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageActivity/pages/match/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageActivity/pages/match/index");
     },
     signClose: function signClose() {
       this.showModelSign = false;
@@ -856,10 +856,10 @@ var citySelector = requirePlugin("citySelector");
     //   this.submitSign("");
     // },
     goYuepaiDetail: function goYuepaiDetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     previewImage: function previewImage(src, urls) {
       // 微信预览图片的方法
@@ -876,22 +876,22 @@ var citySelector = requirePlugin("citySelector");
       });
     },
     goActivity: function goActivity() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageActivity/pages/list/index");
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageActivity/pages/list/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/pages/login/index");
       } // errortip("内测中暂未开放");
 
     },
     goMore: function goMore(index) {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/homelist/index?componetActive=" + index + "&city_filter=" + this.city_filter);
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageAdd/pages/user/homelist/index?componetActive=" + index + "&city_filter=" + this.city_filter);
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/pages/login/index");
       }
     },
     goTakelist: function goTakelist(navactive) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter + "&navactive=" + navactive);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageAdd/pages/user/takelist/index?city_filter=" + this.city_filter + "&navactive=" + navactive);
     },
     componetClick: function componetClick(index) {
       if (this.componetActive != index) {
@@ -1036,7 +1036,7 @@ var citySelector = requirePlugin("citySelector");
       }
     },
     goLogin: function goLogin() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/pages/login/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/pages/login/index");
     },
     bannerClick: function bannerClick(event, url) {
       // static:无导向，静态的，不进行跳转
@@ -1044,9 +1044,9 @@ var citySelector = requirePlugin("citySelector");
       // gzh:公众号, 跳转至公众号
       // h5:H5页面，跳转至H5
       if (event == "mina") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])(url);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])(url);
       } else if (event == "gzh" || event == "h5") {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageSet/pages/webview/index?url=" + url);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageSet/pages/webview/index?url=" + url);
       }
     },
     inviteList: function inviteList(params, type, scroll) {
@@ -2029,7 +2029,7 @@ var citySelector = requirePlugin("citySelector");
 
               case 3:
                 res = _context18.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "c"])("/packageVip/pages/wallet/index");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* openPage */ "d"])("/packageVip/pages/wallet/index");
                 _context18.next = 9;
                 break;
 
@@ -2166,7 +2166,7 @@ var citySelector = requirePlugin("citySelector");
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_12__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_12__[/* platformMap */ "f"];
   },
   onLoad: function onLoad(options) {
     var _this19 = this;
@@ -2227,7 +2227,7 @@ var citySelector = requirePlugin("citySelector");
     } // 是否登录
 
 
-    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "b"])()) {
+    if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_12__[/* isLogin */ "c"])()) {
       this.showlogin = false;
       this.visible = false;
       this.redEnvelopeType = 1;

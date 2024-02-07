@@ -174,7 +174,7 @@ component.options.__file = "src/pages/release/appointment/index.vue"
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.data.error_code == 21030 || _context.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
                 } else if (_context.t0.data.error_code == 22010) {
                   wx.showModal({
                     title: "温馨提示",
@@ -184,9 +184,9 @@ component.options.__file = "src/pages/release/appointment/index.vue"
                     success: function success(res) {
                       if (res.confirm) {
                         console.log("用户点击确定");
-                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageTonggao/pages/index/index");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageTonggao/pages/index/index");
                       } else if (res.cancel) {
-                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/identity/index");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/identity/index");
                         console.log("用户点击取消");
                       }
                     }
@@ -199,7 +199,7 @@ component.options.__file = "src/pages/release/appointment/index.vue"
                     success: function success(res) {
                       if (res.confirm) {
                         console.log("用户点击确定");
-                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+                        Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/user/editinfor/index");
                       } else if (res.cancel) {
                         console.log("用户点击取消");
                       }

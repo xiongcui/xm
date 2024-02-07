@@ -1006,7 +1006,7 @@ var moka = __webpack_require__(/*! ../../../../assets/js/moka.js */ "./src/asset
               case 3:
                 res = _context2.sent;
                 wx.setStorageSync("successImgSrc", file);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMoka/pages/moka/makesuccess/index?isVertical=1&has_qrcode=" + i);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMoka/pages/moka/makesuccess/index?isVertical=1&has_qrcode=" + i);
                 wx.hideLoading();
                 _context2.next = 11;
                 break;

@@ -146,24 +146,24 @@ component.options.__file = "src/packageSet/pages/about/index.vue"
       });
     },
     officialAccount: function officialAccount() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/user/follow/index");
     },
     userAgreement: function userAgreement() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/serviceAgreement/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageSet/pages/serviceAgreement/index");
     },
     cheatPrevention: function cheatPrevention() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/cheatPrevention/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageSet/pages/cheatPrevention/index");
     },
     businessLicense: function businessLicense() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/businessLicense/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageSet/pages/businessLicense/index");
     },
     privacy: function privacy() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageSet/pages/privacy/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageSet/pages/privacy/index");
     }
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformLogo = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformLogo */ "d"];
+    this.platformLogo = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformLogo */ "e"];
   }
 });
 

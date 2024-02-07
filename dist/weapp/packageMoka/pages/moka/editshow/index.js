@@ -714,16 +714,16 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       this.unlockVisible = false;
     },
     goZuopin: function goZuopin() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/zuopin/add_zuopin/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/zuopin/add_zuopin/index");
     },
     goZuopinDetail: function goZuopinDetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + this.infor.basic.uuid || false);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/zuopin/zuopin_detail/index?oid=" + oid + "&author_id=" + this.infor.basic.uuid || false);
     },
     personDetail: function personDetail() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editinfor/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/user/editinfor/index");
     },
     goYuepaiDetail: function goYuepaiDetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/yuedan/yuedan_detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     goback: function goback() {
       wx.navigateBack({
@@ -747,22 +747,22 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       this.queryZuopinList();
     },
     gomoka: function gomoka() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.basic.uuid || false);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/editmoka/index?uuid=" + this.infor.basic.uuid || false);
     },
     makeMoka: function makeMoka() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/myModelCardlist/index");
     },
     editpersondata: function editpersondata() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersondata/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/editpersondata/index");
     },
     editpersonimg: function editpersonimg() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself + "&uuid=" + this.infor.basic.uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/editpersonimg/index?myself=" + this.myself + "&uuid=" + this.infor.basic.uuid);
     },
     editvideo: function editvideo() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself + "&uuid=" + this.infor.basic.uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/editvideo/index?myself=" + this.myself + "&uuid=" + this.infor.basic.uuid);
     },
     editzytag: function editzytag() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/editlabel/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/user/editlabel/index");
     },
     swichTab: function swichTab(index) {
       this.select_tab = this.tabList[index].tab_id;
@@ -819,10 +819,10 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       });
     },
     sendMsg: function sendMsg() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.uuid + "&nickname=" + this.infor.basic.nickname + "&avatar=" + this.infor.basic.avatar);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + this.uuid + "&nickname=" + this.infor.basic.nickname + "&avatar=" + this.infor.basic.avatar);
     },
     rapidConnection: function rapidConnection() {
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "c"])()) {
         this.unlockVisible = true;
       } else {
         wx.redirectTo({
@@ -838,7 +838,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
     launchYuepai: function launchYuepai() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "c"])()) {
         this.applyVerify({
           source: "home",
           oid: this.uuid
@@ -874,9 +874,9 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
       wx.setStorageSync("carduserinfo", carduserinfo);
 
       if ("vertical" == wx.getStorageSync("card-type")) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecardv/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/makecardv/index");
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageMoka/pages/moka/makecard/index");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageMoka/pages/moka/makecard/index");
       }
     },
     bindended: function bindended(id) {
@@ -1202,7 +1202,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
 
               case 3:
                 res = _context9.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.uuid + "&source=home");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this8.uuid + "&source=home");
                 _context9.next = 10;
                 break;
 
@@ -1211,7 +1211,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
                 _context9.t0 = _context9["catch"](0);
 
                 if (_context9.t0.data.error_code == 21030 || _context9.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context9.t0.data.msg, "&code=").concat(_context9.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context9.t0.data.msg, "&code=").concat(_context9.t0.data.error_code));
                 } else {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context9.t0.data.msg);
                 }
@@ -1251,7 +1251,7 @@ component.options.__file = "src/packageMoka/pages/moka/editshow/index.vue"
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])(_context10.t0.data.msg);
 
                 if (_context10.t0.data.error_code == 21050 || _context10.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context10.t0.data.msg, "&code=").concat(_context10.t0.data.error_code));
                 }
 
               case 11:

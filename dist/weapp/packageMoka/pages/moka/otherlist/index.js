@@ -152,7 +152,7 @@ component.options.__file = "src/packageMoka/pages/moka/otherlist/index.vue"
   methods: {
     goInforother: function goInforother(e) {
       var id = e.currentTarget.dataset.id;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMoka/pages/moka/inforother/index?sub_user_id=" + id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMoka/pages/moka/inforother/index?sub_user_id=" + id);
     },
     nonpersonalList: function nonpersonalList(params) {
       var _this = this;

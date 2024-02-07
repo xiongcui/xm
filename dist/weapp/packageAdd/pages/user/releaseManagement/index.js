@@ -116,29 +116,29 @@ component.options.__file = "src/packageAdd/pages/user/releaseManagement/index.vu
   name: "releaseManagement",
   methods: {
     onMyAd: function onMyAd() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageTonggao/pages/tonggao_manage/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageTonggao/pages/tonggao_manage/index");
     },
     myYuepai: function myYuepai() {
       // 'type': 'NT', 约拍：NE； 通告：NT；照片：PH
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=NE");
     },
     myZuopin: function myZuopin() {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageAdd/pages/yuedan/yuedan_manage/index?type=PH");
     }
   }
 });

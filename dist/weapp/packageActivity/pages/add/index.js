@@ -1945,14 +1945,14 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.enrollment);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.enrollment);
       } else if (this.applicationTab === 1) {
         if (!this.applicationList[index].enrollment) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写报名人数");
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&sessionIndex=" + index + "&enrollment=" + this.applicationList[index].enrollment);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&sessionIndex=" + index + "&enrollment=" + this.applicationList[index].enrollment);
       }
     },
     editActivity: function editActivity(index) {
@@ -1962,21 +1962,21 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.enrollment + "&member=" + JSON.stringify(this.member) + "&allow=" + this.allow + "&activityModeTab=" + this.activityModeTab);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.enrollment + "&member=" + JSON.stringify(this.member) + "&allow=" + this.allow + "&activityModeTab=" + this.activityModeTab);
       } else if (this.applicationTab === 0 && this.activityModeTab === 1) {
         if (!this.enrollment) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写报名人数");
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.enrollment + "&candidateAreaList=" + JSON.stringify(this.candidateAreaList) + "&groupNum=" + this.groupNum + "&activityModeTab=" + this.activityModeTab);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.enrollment + "&candidateAreaList=" + JSON.stringify(this.candidateAreaList) + "&groupNum=" + this.groupNum + "&activityModeTab=" + this.activityModeTab);
       } else if (this.applicationTab === 0 && this.activityModeTab === 2) {
         if (!this.enrollment) {
           Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* errortip */ "a"])("请填写报名人数");
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&fixedGroupList=" + JSON.stringify(this.fixedGroupList) + "&activityModeTab=" + this.activityModeTab);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&fixedGroupList=" + JSON.stringify(this.fixedGroupList) + "&activityModeTab=" + this.activityModeTab);
       } else if (this.applicationTab === 1 && this.applicationList[index].activityModeTab === 0) {
         var sessionIndex = index;
 
@@ -1985,7 +1985,7 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.applicationList[sessionIndex].enrollment + "&member=" + JSON.stringify(this.applicationList[sessionIndex].member) + "&allow=" + this.applicationList[sessionIndex].allow + "&activityModeTab=" + this.applicationList[sessionIndex].activityModeTab + "&sessionIndex=" + index);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.applicationList[sessionIndex].enrollment + "&member=" + JSON.stringify(this.applicationList[sessionIndex].member) + "&allow=" + this.applicationList[sessionIndex].allow + "&activityModeTab=" + this.applicationList[sessionIndex].activityModeTab + "&sessionIndex=" + index);
       } else if (this.applicationTab === 1 && this.applicationList[index].activityModeTab === 1) {
         var _sessionIndex = index;
 
@@ -1994,7 +1994,7 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.applicationList[_sessionIndex].enrollment + "&candidateAreaList=" + JSON.stringify(this.applicationList[_sessionIndex].candidateAreaList) + "&groupNum=" + this.applicationList[_sessionIndex].groupNum + "&activityModeTab=" + this.applicationList[_sessionIndex].activityModeTab + "&sessionIndex=" + index);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&enrollment=" + this.applicationList[_sessionIndex].enrollment + "&candidateAreaList=" + JSON.stringify(this.applicationList[_sessionIndex].candidateAreaList) + "&groupNum=" + this.applicationList[_sessionIndex].groupNum + "&activityModeTab=" + this.applicationList[_sessionIndex].activityModeTab + "&sessionIndex=" + index);
       } else if (this.applicationTab === 1 && this.applicationList[index].activityModeTab === 2) {
         var _sessionIndex2 = index;
 
@@ -2003,7 +2003,7 @@ component.options.__file = "src/packageActivity/pages/add/index.vue"
           return false;
         }
 
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&fixedGroupList=" + JSON.stringify(this.applicationList[_sessionIndex2].fixedGroupList) + "&activityModeTab=" + this.applicationList[_sessionIndex2].activityModeTab + "&sessionIndex=" + index);
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageActivity/pages/packetmode/index?applicationType=" + this.applicationTab + "&fixedGroupList=" + JSON.stringify(this.applicationList[_sessionIndex2].fixedGroupList) + "&activityModeTab=" + this.applicationList[_sessionIndex2].activityModeTab + "&sessionIndex=" + index);
       }
     },
     chooseCoverImage: function chooseCoverImage() {

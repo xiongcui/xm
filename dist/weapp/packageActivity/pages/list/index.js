@@ -156,7 +156,7 @@ component.options.__file = "src/packageActivity/pages/list/index.vue"
       }, type);
     },
     godetail: function godetail(oid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/detail/index?oid=" + oid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/detail/index?oid=" + oid);
     },
     exploreList: function exploreList(params, type) {
       var _this = this;

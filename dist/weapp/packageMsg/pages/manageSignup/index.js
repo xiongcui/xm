@@ -854,7 +854,7 @@ var _methods;
       this.visible = false;
     },
     signupDetail: function signupDetail(sid) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/manageSignup/index?sid=" + sid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/manageSignup/index?sid=" + sid);
     },
     clickSave: function clickSave() {
       this.applyManage({
@@ -972,7 +972,7 @@ var _methods;
       this.query();
     }
   }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "signupDetail", function signupDetail(sid, visited_status) {
-    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/inviteDetail/index?sid=" + sid + "&visited_status=" + visited_status);
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/inviteDetail/index?sid=" + sid + "&visited_status=" + visited_status);
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "contactNow", function contactNow(row) {
     var _this = this;
 
@@ -1094,7 +1094,7 @@ var _methods;
 
             case 3:
               res = _context3.sent;
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + row.visitor.uuid + "&nickname=" + row.visitor.nickname + "&avatar=" + row.visitor.avatar);
               _context3.next = 11;
               break;
 
@@ -1104,7 +1104,7 @@ var _methods;
               Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* errortip */ "a"])(_context3.t0.data.msg);
 
               if (_context3.t0.data.error_code == 21050 || _context3.t0.data.error_code == 21040) {
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context3.t0.data.msg, "&code=").concat(_context3.t0.data.error_code));
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context3.t0.data.msg, "&code=").concat(_context3.t0.data.error_code));
               }
 
             case 11:

@@ -604,14 +604,14 @@ component.options.__file = "src/packageAdd/pages/zuopin/add_zuopin/index.vue"
 
               case 3:
                 _res2 = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=1&msg=".concat(_res2.data.data));
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/tips/index?type=1&msg=".concat(_res2.data.data));
                 _context2.next = 10;
                 break;
 
               case 7:
                 _context2.prev = 7;
                 _context2.t0 = _context2["catch"](0);
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/packageAdd/pages/tips/index?type=0&msg=".concat(res.data.data.msg));
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/packageAdd/pages/tips/index?type=0&msg=".concat(res.data.data.msg));
 
               case 10:
               case "end":

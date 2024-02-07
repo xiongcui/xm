@@ -122,7 +122,7 @@ component.options.__file = "src/packageMoka/pages/moka/makesuccess/index.vue"
       }
     },
     myMoka: function myMoka() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "c"])("/packageMoka/pages/moka/myModelCardlist/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_0__[/* openPage */ "d"])("/packageMoka/pages/moka/myModelCardlist/index");
     },
     save: function save() {
       var _this = this;

@@ -135,12 +135,12 @@ component.options.__file = "src/packageActivity/pages/resource/index.vue"
     resourceGet: function resourceGet(oid) {
       this.oid = oid;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* isLogin */ "c"])()) {
         this.materialsEvent({
           oid: oid
         });
       } else {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "c"])("/pages/login/index?from=resource");
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_3__[/* openPage */ "d"])("/pages/login/index?from=resource");
       }
     },
     copy: function copy() {

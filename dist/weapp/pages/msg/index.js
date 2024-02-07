@@ -153,26 +153,26 @@ component.options.__file = "src/pages/msg/index.vue"
   },
   methods: {
     openUrl: function openUrl(type) {
-      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/pages/login/index");
+      if (!Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/pages/login/index");
         return false;
       }
 
       switch (type) {
         case 1:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/livevisitor/index?vote_cnt=" + this.vote_cnt + "&visitor_cnt=" + this.visitor_cnt);
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMsg/pages/livevisitor/index?vote_cnt=" + this.vote_cnt + "&visitor_cnt=" + this.visitor_cnt);
           break;
 
         case 2:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/invite/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMsg/pages/invite/index");
           break;
 
         case 3:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/signup/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMsg/pages/signup/index");
           break;
 
         case 5:
-          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/msgList/index");
+          Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMsg/pages/msgList/index");
           break;
       }
     },
@@ -183,7 +183,7 @@ component.options.__file = "src/pages/msg/index.vue"
         content: "微信关注【" + name + "】公众号，即可开启消息通知。关注还可获得5个金豆奖励哦",
         success: function success(res) {
           if (res.confirm) {
-            Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageAdd/pages/user/follow/index");
+            Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageAdd/pages/user/follow/index");
           } else if (res.cancel) {
             console.log("用户点击取消");
           }
@@ -191,7 +191,7 @@ component.options.__file = "src/pages/msg/index.vue"
       });
     },
     gochat: function gochat(row) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + row.from_account_profile.uuid + "&nickname=" + row.from_account_profile.nick_name + "&avatar=" + row.from_account_profile.face_url);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_2__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + row.from_account_profile.uuid + "&nickname=" + row.from_account_profile.nick_name + "&avatar=" + row.from_account_profile.face_url);
     },
     notifyNumber: function notifyNumber(params) {
       var _this = this;
@@ -281,7 +281,7 @@ component.options.__file = "src/pages/msg/index.vue"
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_2__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_2__[/* platformMap */ "f"];
   }
 });
 

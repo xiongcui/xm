@@ -169,7 +169,7 @@ component.options.__file = "src/packageVip/pages/withdrawal/index.vue"
 
               case 4:
                 res = _context2.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageVip/pages/withdrawalProgress/index?order_no=" + res.data.data.order_no);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageVip/pages/withdrawalProgress/index?order_no=" + res.data.data.order_no);
                 _context2.next = 10;
                 break;
 

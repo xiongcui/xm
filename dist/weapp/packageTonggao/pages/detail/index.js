@@ -515,7 +515,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     rapidConnection: function rapidConnection() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* isLogin */ "c"])()) {
         this.unlockVisible = true;
       } else {
         wx.redirectTo({
@@ -524,7 +524,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       }
     },
     godetail: function godetail(oid, author_id) {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageTonggao/pages/detail/index?oid=" + oid + "&author_id=" + author_id);
     },
     toCommunicate: function toCommunicate() {
       var _this = this;
@@ -551,7 +551,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       });
     },
     sendMsg: function sendMsg() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.tonggaoInfo.author.uuid + "&nickname=" + this.tonggaoInfo.author.nickname + "&avatar=" + this.tonggaoInfo.author.avatar);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + this.tonggaoInfo.author.uuid + "&nickname=" + this.tonggaoInfo.author.nickname + "&avatar=" + this.tonggaoInfo.author.avatar);
     },
     formatSex: function formatSex(sex) {
       if (sex == 1) {
@@ -565,8 +565,8 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     nowYuepai: function nowYuepai(oid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* isLogin */ "b"])()) {
-        Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + oid + "&source=note");
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* isLogin */ "c"])()) {
+        Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageAdd/pages/user/launchyuepai/index?oid=" + oid + "&source=note");
       } else {
         wx.redirectTo({
           url: "/pages/login/index"
@@ -576,7 +576,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     launchYuepai: function launchYuepai() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
 
-      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* isLogin */ "b"])()) {
+      if (Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* isLogin */ "c"])()) {
         this.applyVerify({
           source: "note",
           oid: this.oid
@@ -589,7 +589,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
     },
     goZhuye: function goZhuye() {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.author_id);
     },
     subRecordCollect: function subRecordCollect() {
       var params = {
@@ -660,7 +660,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
                 Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* errortip */ "a"])(_context.t0.data.msg);
 
                 if (_context.t0.data.error_code == 21050 || _context.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
                 }
 
               case 11:
@@ -1022,7 +1022,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
 
               case 3:
                 res = _context11.sent;
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this10.oid + "&source=note");
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageAdd/pages/user/launchyuepai/index?oid=" + _this10.oid + "&source=note");
                 _context11.next = 10;
                 break;
 
@@ -1031,7 +1031,7 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
                 _context11.t0 = _context11["catch"](0);
 
                 if (_context11.t0.data.error_code == 21030 || _context11.t0.data.error_code == 21040) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context11.t0.data.msg, "&code=").concat(_context11.t0.data.error_code));
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context11.t0.data.msg, "&code=").concat(_context11.t0.data.error_code));
                 } else {
                   Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* errortip */ "a"])(_context11.t0.data.msg);
                 }
@@ -1083,7 +1083,11 @@ component.options.__file = "src/packageTonggao/pages/detail/index.vue"
       this.author_id = options.author_id;
     }
 
-    if (this.oid && this.author_id) {
+    var res = Object(_utils_util__WEBPACK_IMPORTED_MODULE_7__[/* formatUrl */ "b"])(options);
+    var oid = res.oid;
+    var author_id = res.author_id;
+
+    if (this.oid && this.author_id || oid && author_id) {
       var params = {
         oid: this.oid,
         author_id: this.author_id

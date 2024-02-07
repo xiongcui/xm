@@ -344,7 +344,7 @@ component.options.__file = "src/packageActivity/pages/application/index.vue"
               case 4:
                 res = _context3.sent;
                 wx.hideLoading();
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageActivity/pages/applicationConfirm/index?result=" + res.data.data.result + "&desc=" + res.data.data.desc + "&wechat_qrc=" + res.data.data.wechat_qrc);
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageActivity/pages/applicationConfirm/index?result=" + res.data.data.result + "&desc=" + res.data.data.desc + "&wechat_qrc=" + res.data.data.wechat_qrc);
                 _context3.next = 11;
                 break;
 

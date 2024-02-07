@@ -799,14 +799,14 @@ var _methods;
       this.rateindex = e.detail.index;
     },
     goComment: function goComment() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/comment/index?pid=" + this.pid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/comment/index?pid=" + this.pid);
     },
     goShareShow: function goShareShow() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/shareShow/index?pid=" + this.pid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/shareShow/index?pid=" + this.pid);
     },
     goZhuye: function goZhuye(uuid) {
       if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + uuid);
     },
     expand: function expand() {
       this.open = !this.open;
@@ -1006,15 +1006,15 @@ var _methods;
     }
   }, Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "goZhuye", function goZhuye() {
     if (!Object(_utils_clickThrottle__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"])()) return;
-    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.uuid);
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageMoka/pages/moka/editshow/index?uuid=" + this.uuid);
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "sendMsg", function sendMsg() {
-    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.uuid + "&nickname=" + this.nickname + "&avatar=" + this.avatar);
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + this.uuid + "&nickname=" + this.nickname + "&avatar=" + this.avatar);
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "communicate", function communicate() {
     this.imVerify({
       to_account: this.uuid
     });
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "goRegistrationPayment", function goRegistrationPayment() {
-    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/application/index?scene_oid=" + this.scene.scene_oid + "&service=" + this.service + "&steamid=" + this.steamid + "&wait=1");
+    Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/application/index?scene_oid=" + this.scene.scene_oid + "&service=" + this.service + "&steamid=" + this.steamid + "&wait=1");
   }), Object(_Users_niujun_WeChatProjects_xiamiyuepai_node_modules_babel_runtime_helpers_esm_defineProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_methods, "imVerify", function imVerify(params) {
     var _this2 = this;
 
@@ -1042,7 +1042,7 @@ var _methods;
               Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* errortip */ "a"])(_context.t0.data.msg);
 
               if (_context.t0.data.error_code == 21050 || _context.t0.data.error_code == 21040) {
-                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
+                Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageAdd/pages/guideTips/index?msg=".concat(_context.t0.data.msg, "&code=").concat(_context.t0.data.error_code));
               }
 
             case 11:
@@ -1366,7 +1366,7 @@ var _methods;
 
             case 3:
               res = _context10.sent;
-              Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageActivity/pages/application/index?roles_oid=" + _this9.roles_oid);
+              Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageActivity/pages/application/index?roles_oid=" + _this9.roles_oid);
               _context10.next = 10;
               break;
 

@@ -693,7 +693,7 @@ component.options.__file = "src/packageSet/pages/privacy/index.vue"
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformMap */ "e"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_0__[/* platformMap */ "f"];
   }
 });
 

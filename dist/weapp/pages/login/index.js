@@ -330,10 +330,10 @@ component.options.__file = "src/pages/login/index.vue"
       this.upImgs(this.userInfo.avatar);
     },
     userAgreement: function userAgreement() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageSet/pages/serviceAgreement/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageSet/pages/serviceAgreement/index");
     },
     privacy: function privacy() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/packageSet/pages/privacy/index");
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/packageSet/pages/privacy/index");
     },
     upImgs: function upImgs(filePath) {
       var _this2 = this;
@@ -434,7 +434,7 @@ component.options.__file = "src/pages/login/index.vue"
                   _this3.visible = true;
                 } else if (_this3.bind_type == 1 && _this3.login_type == 1) {
                   // 注册
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index");
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/register/index");
                 } else if (_this3.bind_type == 1 && _this3.login_type == 2) {
                   // 跳转首页
                   wx.switchTab({
@@ -520,7 +520,7 @@ component.options.__file = "src/pages/login/index.vue"
                 wx.setStorageSync("userInfo", userInfo);
 
                 if (_this5.login_type == 1) {
-                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "c"])("/pages/register/index?from=" + _this5.from);
+                  Object(_utils_util__WEBPACK_IMPORTED_MODULE_5__[/* openPage */ "d"])("/pages/register/index?from=" + _this5.from);
                 } else {
                   // 跳转首页
                   wx.switchTab({
@@ -550,8 +550,8 @@ component.options.__file = "src/pages/login/index.vue"
   },
   created: function created() {
     this.globalData = this.globalData;
-    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_5__[/* platformMap */ "e"];
-    this.platformLogo = _utils_util__WEBPACK_IMPORTED_MODULE_5__[/* platformLogo */ "d"];
+    this.platformMap = _utils_util__WEBPACK_IMPORTED_MODULE_5__[/* platformMap */ "f"];
+    this.platformLogo = _utils_util__WEBPACK_IMPORTED_MODULE_5__[/* platformLogo */ "e"];
     this.invited_uuid = wx.getStorageSync("invited_uuid");
     this.scene = wx.getLaunchOptionsSync().scene;
   },

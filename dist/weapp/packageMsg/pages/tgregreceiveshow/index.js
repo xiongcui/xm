@@ -388,10 +388,10 @@ component.options.__file = "src/packageMsg/pages/tgregreceiveshow/index.vue"
       });
     },
     complaint: function complaint() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/complaint/index?visitor_id=" + this.tgregreceiveInfo.visitor_id + "&avatar=" + this.tgregreceiveInfo.visitor.avatar + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&province_name=" + this.tgregreceiveInfo.visitor.province_name + "&career=" + this.tgregreceiveInfo.visitor.career_list[0]);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/complaint/index?visitor_id=" + this.tgregreceiveInfo.visitor_id + "&avatar=" + this.tgregreceiveInfo.visitor.avatar + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&province_name=" + this.tgregreceiveInfo.visitor.province_name + "&career=" + this.tgregreceiveInfo.visitor.career_list[0]);
     },
     communicate: function communicate() {
-      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "c"])("/packageMsg/pages/chat/index?uuid=" + this.tgregreceiveInfo.visitor.uuid + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&avatar=" + this.tgregreceiveInfo.visitor.avatar);
+      Object(_utils_util__WEBPACK_IMPORTED_MODULE_4__[/* openPage */ "d"])("/packageMsg/pages/chat/index?uuid=" + this.tgregreceiveInfo.visitor.uuid + "&nickname=" + this.tgregreceiveInfo.visitor.nickname + "&avatar=" + this.tgregreceiveInfo.visitor.avatar);
     },
     applyInfo: function applyInfo(params) {
       var _this3 = this;
